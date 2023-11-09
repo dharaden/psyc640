@@ -59,7 +59,11 @@ library(tidyverse)
 library(rio)
 
 #for the penguins dataset
+
+# command to install the 'palmerpenguins' package if it's not already installed
 #install.packages('palmerpenguins')
+
+# Load the 'palmerpenguins' package which contains the 'penguins' dataset
 library(palmerpenguins)
 
 #Remove Scientific Notation 
@@ -73,6 +77,7 @@ options(scipen=999)
 Will be using a dataset from the `palmerpenguins` library ([link](https://allisonhorst.github.io/palmerpenguins/articles/intro.html#exploring-distributions)) which is a dataset about...[penguins](https://www.youtube.com/watch?v=-GnLDJAgrws). This function will pull that data into our environment:
 
 ```{r}
+# Load the 'penguins' dataset into the current R session
 data(penguins)
 ```
 
@@ -80,14 +85,14 @@ Now we can get some descriptive statistics:
 
 ```{r}
 #| code-fold: true
-penguins %>% 
-  group_by(species) %>% 
-  summarize(
-    mean_flipper = mean(flipper_length_mm, na.rm = TRUE),
-    mean_mass = mean(body_mass_g, na.rm = TRUE),
-    std_flipper = sd(flipper_length_mm, na.rm = TRUE), 
-    std_mass = sd(body_mass_g, na.rm = TRUE), 
-    cor_flip_mass = cor(flipper_length_mm, body_mass_g)
+penguins %>%                  # Take the 'penguins' dataset...
+  group_by(species) %>%       # Group the data by the 'species' column
+  summarize(                   # Summarize the data for each species based on the following calculations:
+    mean_flipper = mean(flipper_length_mm, na.rm = TRUE), # Calculate the mean of 'flipper_length_mm', removing any missing values
+    mean_mass = mean(body_mass_g, na.rm = TRUE),          # Calculate the mean of 'body_mass_g', removing any missing values
+    std_flipper = sd(flipper_length_mm, na.rm = TRUE),    # Calculate the standard deviation of 'flipper_length_mm', removing any missing values
+    std_mass = sd(body_mass_g, na.rm = TRUE),             # Calculate the standard deviation of 'body_mass_g', removing any missing values
+    cor_flip_mass = cor(flipper_length_mm, body_mass_g)   # Calculate the correlation between 'flipper_length_mm' and 'body_mass_g'
   )
 ```
 
@@ -161,9 +166,11 @@ Let's start with a basic figure with `palmerpenguins`
 ```{r, eval = FALSE}
 #the dataset is called penguins
 
-penguins %>% 
-  ggplot(aes(x = flipper_length_mm, 
-             y = body_mass_g))
+penguins %>%             # Take the 'penguins' dataset...
+  ggplot(                # ...and create a plot using the 'ggplot' function
+    aes(x = flipper_length_mm, # Map 'flipper_length_mm' to the x-axis
+        y = body_mass_g)       # Map 'body_mass_g' to the y-axis
+  )
 ```
 
 What happens?
@@ -175,10 +182,12 @@ We forgot to tell it what to do with the data!
 Need to add the appropriate `geom` to have it plot points for each observation
 
 ```{r, eval = FALSE}
-penguins %>% 
-  ggplot(aes(x = flipper_length_mm, 
-             y = body_mass_g)) + 
-  geom_point()
+penguins %>%               # Take the 'penguins' dataset...
+  ggplot(                  # ...and start building a plot using the 'ggplot' function
+    aes(x = flipper_length_mm, # Map 'flipper_length_mm' to the x-axis
+        y = body_mass_g)       # Map 'body_mass_g' to the y-axis
+  ) + 
+  geom_point()             # Add a layer to the plot that displays points for each observation
 ```
 
 ***\
@@ -193,10 +202,14 @@ Maybe we would like to have each of the points colored by their respective `spec
 This information will be added to the `aes()` within the `geom_point()` layer
 
 ```{r, eval = FALSE}
-penguins %>% 
-  ggplot(aes(x = flipper_length_mm, 
-             y = body_mass_g)) + 
-  geom_point(aes(color = species))
+penguins %>%               # Take the 'penguins' dataset...
+  ggplot(                  # ...and start building a plot using the 'ggplot' function
+    aes(x = flipper_length_mm, # Map 'flipper_length_mm' to the x-axis
+        y = body_mass_g)       # Map 'body_mass_g' to the y-axis
+  ) + 
+  geom_point(              # Add a layer to the plot that displays points for each observation
+    aes(color = species)   # Within the points layer, map the color of the points to the 'species' column of the dataset
+  )
 ```
 
 ------------------------------------------------------------------------
@@ -208,11 +221,15 @@ Why don't we put in a line that represents the relationship between these variab
 We will want to add another layer/geom
 
 ```{r, eval = FALSE}
-penguins %>% 
-  ggplot(aes(x = flipper_length_mm, 
-             y = body_mass_g)) + 
-  geom_point(aes(color = species)) + 
-  geom_smooth()
+penguins %>%               # Take the 'penguins' dataset...
+  ggplot(                  # ...and start building a plot using the 'ggplot' function
+    aes(x = flipper_length_mm, # Map 'flipper_length_mm' to the x-axis
+        y = body_mass_g)       # Map 'body_mass_g' to the y-axis
+  ) + 
+  geom_point(              # Add a layer to the plot that displays points for each observation
+    aes(color = species)   # Within the points layer, map the color of the points to the 'species' column of the dataset
+  ) + 
+  geom_smooth()            # Add a layer that computes and displays a smoothed line (typically a loess curve) to show the trend in the data
 ```
 
 \
@@ -227,11 +244,16 @@ The `geom_smooth()` defaults to using a loess line to fit to the data
 In order to update that, we need to change some of the defaults for that layer and specify that we want a "linear model" or `lm` function to the data
 
 ```{r, eval = FALSE}
-penguins %>% 
-  ggplot(aes(x = flipper_length_mm, 
-             y = body_mass_g)) + 
-  geom_point(aes(color = species)) + 
-  geom_smooth(method = 'lm')
+penguins %>%               # Take the 'penguins' dataset...
+  ggplot(                  # ...and start building a plot using the 'ggplot' function
+    aes(x = flipper_length_mm, # Map 'flipper_length_mm' to the x-axis
+        y = body_mass_g)       # Map 'body_mass_g' to the y-axis
+  ) + 
+  geom_point(              # Add a layer to the plot that displays points for each observation
+    aes(color = species)   # Within the points layer, map the color of the points to the 'species' column of the dataset
+  ) + 
+  geom_smooth(method = 'lm')   # Add a layer that computes and displays a linear regression line (using 'lm' for linear model) to show the relationship between the x and y variables
+
 ```
 
 \
@@ -244,12 +266,16 @@ Did that look a little better?
 It might make more sense to have individual lines for each of the species instead of something that is across all
 
 ```{r, eval = FALSE}
-penguins %>% 
-  ggplot(aes(x = flipper_length_mm, 
-             y = body_mass_g, 
-             color = species)) + 
-  geom_point() + 
-  geom_smooth(method = 'lm')
+penguins %>%               # Take the 'penguins' dataset...
+  ggplot(                  # ...and start building a plot using the 'ggplot' function
+    aes(x = flipper_length_mm, # Map 'flipper_length_mm' to the x-axis
+        y = body_mass_g,       # Map 'body_mass_g' to the y-axis
+        color = species)       # Map the color to the 'species' column of the dataset for all layers unless overridden
+  ) + 
+  geom_point()             # Add a layer to the plot that displays points for each observation
+  + 
+  geom_smooth(method = 'lm')   # Add a layer that computes and displays a linear regression line (using 'lm' for linear model) to show the relationship between the x and y variables
+
 ```
 
 \
@@ -264,18 +290,22 @@ It will default to including the variable names as the `x` and `y` labels, but t
 We add on another layer called `labs()` for our labels ([link](https://ggplot2.tidyverse.org/reference/labs.html))
 
 ```{r, eval = FALSE}
-penguins %>% 
-  ggplot(aes(x = flipper_length_mm, 
-             y = body_mass_g, 
-             color = species)) + 
-  geom_point() + 
-  geom_smooth(method = 'lm') + 
+penguins %>%               # Take the 'penguins' dataset...
+  ggplot(                  # ...and start building a plot using the 'ggplot' function
+    aes(x = flipper_length_mm, # Map 'flipper_length_mm' to the x-axis
+        y = body_mass_g,       # Map 'body_mass_g' to the y-axis
+        color = species)       # Map the color to the 'species' column of the dataset for all layers unless overridden
+  ) + 
+  geom_point()             # Add a layer to the plot that displays points for each observation
+  + 
+  geom_smooth(method = 'lm')   # Add a layer that computes and displays a linear regression line (using 'lm' for linear model) to show the relationship between the x and y variables
+  + 
   labs(
-    title = "Palmer Penguins",
-    subtitle = "Body Mass by Flipper Length", 
-    x = "Flipper Length (mm)", 
-    y = "Body Mass (g)", 
-    color = "Species"
+    title = "Palmer Penguins",             # Set the main title of the plot
+    subtitle = "Body Mass by Flipper Length",  # Set the subtitle for the plot
+    x = "Flipper Length (mm)",             # Label the x-axis
+    y = "Body Mass (g)",                   # Label the y-axis
+    color = "Species"                      # Label the color legend
   )
 ```
 
@@ -286,11 +316,16 @@ penguins %>%
 Taken from the website for `palmerpenguins` ([link](https://allisonhorst.github.io/palmerpenguins/articles/intro.html#exploring-distributions))
 
 ```{r}
-penguins %>% 
-  ggplot(aes(x = flipper_length_mm)) +
-    geom_histogram(aes(fill = species), 
-                   alpha = 0.5, 
-                   position = "identity")
+penguins %>%               # Take the 'penguins' dataset...
+  ggplot(                  # ...and start building a plot using the 'ggplot' function
+    aes(x = flipper_length_mm) # Map 'flipper_length_mm' to the x-axis
+  ) + 
+  geom_histogram(          # Add a histogram layer to visualize the distribution of flipper lengths
+    aes(fill = species),   # Map the fill color of the bars to the 'species' column of the dataset
+    alpha = 0.5,           # Set the transparency of the bars to 0.5, making them semi-transparent
+    position = "identity"  # Ensure the bars are overlaid directly on top of each other
+  )
+
 ```
 
 # Example 2
@@ -304,19 +339,19 @@ I have uploaded three datasets. I would like us to explore the datasets together
 ```{r}
 #| code-fold: true
 data1 <- import("https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data1.csv") %>% 
-  mutate(dataset = "data1")
+  mutate(dataset = "data1")   # Import the CSV file from the provided URL into 'data1' and add a new column 'dataset' with the value "data1" for all rows
 
 data2 <- import("https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data2.csv") %>% 
-  mutate(dataset = "data2")
+  mutate(dataset = "data2")   # Import the CSV file from the provided URL into 'data2' and add a new column 'dataset' with the value "data2" for all rows
 
 data3 <- import("https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data3.csv") %>% 
-  mutate(dataset = "data3")
+  mutate(dataset = "data3")   # Import the CSV file from the provided URL into 'data3' and add a new column 'dataset' with the value "data3" for all rows
 ```
 
 We need to combine them together just to make things easier:
 
 ```{r}
-three_data <- bind_rows(data1, data2, data3)
+three_data <- bind_rows(data1, data2, data3)   # Combine the rows of 'data1', 'data2', and 'data3' into a single data frame named 'three_data'
 ```
 
 ------------------------------------------------------------------------
@@ -325,14 +360,14 @@ three_data <- bind_rows(data1, data2, data3)
 
 ```{r}
 #| code-fold: true
-three_data %>%
-  group_by(dataset) %>% 
-  summarize(
-    mean_x = mean(x),
-    mean_y = mean(y),
-    std_x = sd(x), 
-    std_y = sd(y), 
-    cor_xy = cor(x,y)
+three_data %>%  # Take the combined 'three_data' dataset...
+  group_by(dataset) %>% # ...and group the data by the 'dataset' column (which indicates the source: 'data1', 'data2', or 'data3')
+  summarize( # Summarize the data for each group (i.e., for each original dataset) based on the following calculations:
+    mean_x = mean(x), # Calculate the mean of the 'x' column
+    mean_y = mean(y), # Calculate the mean of the 'y' column
+    std_x = sd(x),    # Calculate the standard deviation of the 'x' column
+    std_y = sd(y),    # Calculate the standard deviation of the 'y' column
+    cor_xy = cor(x,y) # Calculate the correlation between the 'x' and 'y' columns
   )
 ```
 
@@ -353,7 +388,8 @@ Check out [ChatGPT](https://chat.openai.com/)
 Take a look at the data that we have been using and try making various visualizations for two of the variables
 
 ```{r}
-state_school <- import("https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/NM-NY_CAS.csv")
+state_school <- import("https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/NM-NY_CAS.csv")   
+# Import the CSV file from the provided URL into the 'state_school' data frame
 ```
 
 # Next time...
