@@ -8,36 +8,36 @@ execute:
 
 Slides for the course will be posted here prior to the lecture in which they occur. I will do my best to keep on top of them and I would like to have them be in both a PDF and HTML format so that it is easy to access for everyone.
 
-| Week   | Date  | Topic                   | Lecture Slides                                                                  |
-|-------------|-------------|:------------|:--------------------------------|
-| 1      | 08/27 | Getting Started         | [Week 1](docs/lecture/GradStats_Week1_Orientation.pdf){target="_blank"}         |
-| \-     | 08/29 | Easing into R           | [Slides](docs/lecture/GradStats_Week1_GettingStarted.pdf){target="_blank"}      |
-| 2      | 09/03 | Research Design & Stats | [Slides](docs/lecture/GradStats_Week2_ResearchDesign-Data.pdf){target="_blank"} |
-| \-     | 09/05 |                         |                                                                                 |
-| 3      | 09/10 |                         |                                                                                 |
-| \-     | 09/12 |                         |                                                                                 |
-| 4      | 09/17 |                         |                                                                                 |
-| \-     | 09/19 |                         |                                                                                 |
-| 5      | 09/24 |                         |                                                                                 |
-| \-     | 09/26 |                         |                                                                                 |
-| 6      | 10/01 |                         |                                                                                 |
-| \-     | 10/03 |                         |                                                                                 |
-| 7      | 10/08 |                         |                                                                                 |
-| \-     | 10/10 |                         |                                                                                 |
-| 8      | 10/15 | **NO CLASS**            |                                                                                 |
-| \-     | 10/17 |                         |                                                                                 |
-| 9      | 10/22 |                         |                                                                                 |
-| \-     | 10/24 |                         |                                                                                 |
-| 10     | 10/29 |                         |                                                                                 |
-| \-     | 10/31 |                         |                                                                                 |
-| 11     | 11/05 |                         |                                                                                 |
-| \-     | 11/07 |                         |                                                                                 |
-| 12     | 11/12 |                         |                                                                                 |
-| \-     | 11/14 |                         |                                                                                 |
-| 13     | 11/19 |                         |                                                                                 |
-| \-     | 11/21 |                         |                                                                                 |
-| 14     | 11/26 |                         |                                                                                 |
-| \-     | 11/28 | **NO CLASS**            |                                                                                 |
-| 15     | 12/03 |                         |                                                                                 |
-| \-     | 12/05 |                         |                                                                                 |
-| Finals |       |                         |                                                                                 |
+| Week   | Date  | Topic                                   | Lecture Slides                                                                  |
+|---------------|---------------|:--------------|:----------------|
+| 1      | 08/27 | Getting Started                         | [Week 1](docs/lecture/GradStats_Week1_Orientation.pdf){target="_blank"}         |
+| \-     | 08/29 | Easing into R                           | [Slides](docs/lecture/GradStats_Week1_GettingStarted.pdf){target="_blank"}      |
+| 2      | 09/03 | Research Design & Stats                 | [Slides](docs/lecture/GradStats_Week2_ResearchDesign-Data.pdf){target="_blank"} |
+| \-     | 09/05 | R Workflow                              |                                                                                 |
+| 3      | 09/10 | Visualizing                             |                                                                                 |
+| \-     | 09/12 | Data Wrangling                          |                                                                                 |
+| 4      | 09/17 | Data Wrangling                          |                                                                                 |
+| \-     | 09/19 | Descriptives                            |                                                                                 |
+| 5      | 09/24 | Descriptives                            |                                                                                 |
+| \-     | 09/26 | Statistical Thinking                    |                                                                                 |
+| 6      | 10/01 | ANOVA                                   |                                                                                 |
+| \-     | 10/03 | ANOVA                                   |                                                                                 |
+| 7      | 10/08 | Regression                              |                                                                                 |
+| \-     | 10/10 | Regression                              |                                                                                 |
+| 8      | 10/15 | **NO CLASS**                            |                                                                                 |
+| \-     | 10/17 | Probability, Distributions & Inferences |                                                                                 |
+| 9      | 10/22 | Probability, Distributions & Inferences |                                                                                 |
+| \-     | 10/24 | Hypothesis Testing & Power              |                                                                                 |
+| 10     | 10/29 | Hypothesis Testing & Power              |                                                                                 |
+| \-     | 10/31 | Categorical Data Analysis               |                                                                                 |
+| 11     | 11/05 | Categorical Data Analysis               |                                                                                 |
+| \-     | 11/07 | Comparing Means                         |                                                                                 |
+| 12     | 11/12 | Comparing Means                         |                                                                                 |
+| \-     | 11/14 | ANOVA                                   |                                                                                 |
+| 13     | 11/19 | ANOVA                                   |                                                                                 |
+| \-     | 11/21 | Regression                              |                                                                                 |
+| 14     | 11/26 | Regression                              |                                                                                 |
+| \-     | 11/28 | **NO CLASS**                            |                                                                                 |
+| 15     | 12/03 |                                         |                                                                                 |
+| \-     | 12/05 |                                         |                                                                                 |
+| Finals |       |                                         |                                                                                 |
