@@ -24,19 +24,17 @@ website:
       - icon: github
         href: https://github.com/dharaden/psyc640
         text: "GitHub"
-        
-
+    
     style: "docked"
     search: true
-    collapse-level: 1
     contents:
       - href: index.qmd
         text: Welcome
       - syllabus.qmd
       - section: "Lectures"
-          contents:
-          - text: "3 - Visualizing"
-            href: lectures/wk3_visualizations/index.qmd
+        contents:
+        - text: "3 - Visualizing"
+          href: lectures/wk3_visualizations/index.qmd
       - homework.qmd
       - href: previous-years.qmd
         text: Previous Years
