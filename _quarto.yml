@@ -33,12 +33,10 @@ website:
       - href: index.qmd
         text: Welcome
       - syllabus.qmd
-      - section: 
-        - href: lectures.qmd
-          text: Lectures
-        contents: 
-        - text: "Week 3 - Visualizing"
-          href: lectures/wk3_visualizations/slides.qmd
+       - section: "Lectures"
+            contents:
+            - text: "3 - Visualizing"
+              href: lectures/wk3_visualizations/index.qmd
       - homework.qmd
       - href: previous-years.qmd
         text: Previous Years
