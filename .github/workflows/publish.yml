@@ -21,6 +21,10 @@ jobs:
         run: |
           install.packages("rmarkdown")
           install.packages("knitr")
+          install.packages("here")
+          install.packages("tidyverse")
+          install.pacakges("rio")
+          install.packages("palmerpenguins")
         shell: Rscript {0}
         
       - name: Set up Quarto
