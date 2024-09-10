@@ -7,13 +7,6 @@
     "text": "Last Class\n\n\nComparing Means: \\(t\\)-test\n\nIndependent Samples \\(t\\)-test Review\nPaired Samples \\(t\\)-test"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#looking-ahead",
-    "href": "lectures/wk3_visualizations/slides.html#looking-ahead",
-    "title": "Figures: Using ggplot2",
-    "section": "Looking Ahead",
-    "text": "Looking Ahead\n\nPlan to have 2 more labs that will be similar to the last lab\n\nLikely take place on 10/25 and sometime the week of 11/13\n\nOutside of these labs, I am going to plan on having additional mini-labs\n\nLikely to take place on 11/1, 11/22 and 11/29 (will update based on how things are going in class)"
-  },
-  {
     "objectID": "lectures/wk3_visualizations/slides.html#today",
     "href": "lectures/wk3_visualizations/slides.html#today",
     "title": "Figures: Using ggplot2",
@@ -25,7 +18,7 @@
     "href": "lectures/wk3_visualizations/slides.html#take-a-look-at-the-data",
     "title": "Figures: Using ggplot2",
     "section": "Take a look at the data",
-    "text": "Take a look at the data\nWill be using a dataset from the palmerpenguins library (link) which is a dataset about…penguins. This function will pull that data into our environment:\n\ndata(penguins)\n\nNow we can get some descriptive statistics:\n\n\nCode\npenguins %&gt;% \n  group_by(species) %&gt;% \n  summarize(\n    mean_flipper = mean(flipper_length_mm, na.rm = TRUE),\n    mean_mass = mean(body_mass_g, na.rm = TRUE),\n    std_flipper = sd(flipper_length_mm, na.rm = TRUE), \n    std_mass = sd(body_mass_g, na.rm = TRUE), \n    cor_flip_mass = cor(flipper_length_mm, body_mass_g)\n  )\n\n\n# A tibble: 3 × 6\n  species   mean_flipper mean_mass std_flipper std_mass cor_flip_mass\n  &lt;fct&gt;            &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;\n1 Adelie            190.     3701.        6.54     459.        NA    \n2 Chinstrap         196.     3733.        7.13     384.         0.642\n3 Gentoo            217.     5076.        6.48     504.        NA"
+    "text": "Take a look at the data\nWill be using a dataset from the palmerpenguins library (link) which is a dataset about…penguins. This function will pull that data into our environment:\n\ndata(penguins)"
   },
   {
     "objectID": "lectures/wk3_visualizations/slides.html#ggplot2-from-the-tidyverse",

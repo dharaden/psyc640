@@ -416,19 +416,6 @@ Dustin Haraden, PhD
 </ul>
 </div>
 </section>
-<section id="looking-ahead" class="slide level2">
-<h2>Looking Ahead</h2>
-<ul>
-<li><p>Plan to have 2 more labs that will be similar to the last lab</p>
-<ul>
-<li>Likely take place on 10/25 and sometime the week of 11/13</li>
-</ul></li>
-<li><p>Outside of these labs, I am going to plan on having additional mini-labs</p>
-<ul>
-<li>Likely to take place on 11/1, 11/22 and 11/29 (will update based on how things are going in class)</li>
-</ul></li>
-</ul>
-</section>
 <section id="today" class="slide level2">
 <h2>Today…</h2>
 <p>Working with <code>ggplot2</code> to get some really fancy visualizations!</p>
@@ -454,29 +441,6 @@ Dustin Haraden, PhD
 <p>Will be using a dataset from the <code>palmerpenguins</code> library (<a href="https://allisonhorst.github.io/palmerpenguins/articles/intro.html#exploring-distributions">link</a>) which is a dataset about…<a href="https://www.youtube.com/watch?v=-GnLDJAgrws">penguins</a>. This function will pull that data into our environment:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">data</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Now we can get some descriptive statistics:</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb3-2"><a></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-3"><a></a>  <span class="fu">summarize</span>(</span>
-<span id="cb3-4"><a></a>    <span class="at">mean_flipper =</span> <span class="fu">mean</span>(flipper_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb3-5"><a></a>    <span class="at">mean_mass =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb3-6"><a></a>    <span class="at">std_flipper =</span> <span class="fu">sd</span>(flipper_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb3-7"><a></a>    <span class="at">std_mass =</span> <span class="fu">sd</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb3-8"><a></a>    <span class="at">cor_flip_mass =</span> <span class="fu">cor</span>(flipper_length_mm, body_mass_g)</span>
-<span id="cb3-9"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 6
-  species   mean_flipper mean_mass std_flipper std_mass cor_flip_mass
-  &lt;fct&gt;            &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;
-1 Adelie            190.     3701.        6.54     459.        NA    
-2 Chinstrap         196.     3733.        7.13     384.         0.642
-3 Gentoo            217.     5076.        6.48     504.        NA    </code></pre>
-</div>
 </div>
 </section>
 <section>
@@ -521,13 +485,13 @@ Dustin Haraden, PhD
 </ol>
 <p>In R it looks like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="sc">&lt;</span>DATA<span class="sc">&gt;</span>) <span class="sc">+</span> </span>
-<span id="cb5-2"><a></a>  <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>))</span>
-<span id="cb5-3"><a></a></span>
-<span id="cb5-4"><a></a><span class="co">#or how I like to do it</span></span>
-<span id="cb5-5"><a></a><span class="sc">&lt;</span>DATA<span class="sc">&gt;</span> <span class="sc">%&gt;%</span> </span>
-<span id="cb5-6"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>)) <span class="sc">+</span> </span>
-<span id="cb5-7"><a></a>  <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="sc">&lt;</span>DATA<span class="sc">&gt;</span>) <span class="sc">+</span> </span>
+<span id="cb3-2"><a></a>  <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>))</span>
+<span id="cb3-3"><a></a></span>
+<span id="cb3-4"><a></a><span class="co">#or how I like to do it</span></span>
+<span id="cb3-5"><a></a><span class="sc">&lt;</span>DATA<span class="sc">&gt;</span> <span class="sc">%&gt;%</span> </span>
+<span id="cb3-6"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>)) <span class="sc">+</span> </span>
+<span id="cb3-7"><a></a>  <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="ggplot2-syntax-1" class="slide level2">
@@ -535,11 +499,11 @@ Dustin Haraden, PhD
 <p>Let’s start with a basic figure with <code>palmerpenguins</code></p>
 <p><strong>First</strong> we will define the data that we are using and the variables we are visualizing</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co">#the dataset is called penguins</span></span>
-<span id="cb6-2"><a></a></span>
-<span id="cb6-3"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb6-4"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb6-5"><a></a>             <span class="at">y =</span> body_mass_g))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co">#the dataset is called penguins</span></span>
+<span id="cb4-2"><a></a></span>
+<span id="cb4-3"><a></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb4-4"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
+<span id="cb4-5"><a></a>             <span class="at">y =</span> body_mass_g))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>What happens?</p>
 </section>
@@ -548,10 +512,10 @@ Dustin Haraden, PhD
 <p>We forgot to tell it what to do with the data!</p>
 <p>Need to add the appropriate <code>geom</code> to have it plot points for each observation</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb7-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb7-3"><a></a>             <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> </span>
-<span id="cb7-4"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
+<span id="cb5-3"><a></a>             <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> </span>
+<span id="cb5-4"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong><em><br>
 Note:</em></strong> the <code>geom_point()</code> layer will inherit what is in the <code>aes()</code> in the previous layer</p>
@@ -561,10 +525,10 @@ Note:</em></strong> the <code>geom_point()</code> layer will inherit what is in 
 <p>Maybe we would like to have each of the points colored by their respective <code>species</code></p>
 <p>This information will be added to the <code>aes()</code> within the <code>geom_point()</code> layer</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb8-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb8-3"><a></a>             <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> </span>
-<span id="cb8-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
+<span id="cb6-3"><a></a>             <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> </span>
+<span id="cb6-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="including-a-fit-line" class="slide level2">
@@ -572,11 +536,11 @@ Note:</em></strong> the <code>geom_point()</code> layer will inherit what is in 
 <p>Why don’t we put in a line that represents the relationship between these variables?</p>
 <p>We will want to add another layer/geom</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb9-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb9-3"><a></a>             <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> </span>
-<span id="cb9-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span> </span>
-<span id="cb9-5"><a></a>  <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
+<span id="cb7-3"><a></a>             <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> </span>
+<span id="cb7-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span> </span>
+<span id="cb7-5"><a></a>  <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br>
 That looks a little wonky…why is that? Did you get a note in the console?</p>
@@ -586,11 +550,11 @@ That looks a little wonky…why is that? Did you get a note in the console?</p>
 <p>The <code>geom_smooth()</code> defaults to using a loess line to fit to the data</p>
 <p>In order to update that, we need to change some of the defaults for that layer and specify that we want a “linear model” or <code>lm</code> function to the data</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb10-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb10-3"><a></a>             <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> </span>
-<span id="cb10-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span> </span>
-<span id="cb10-5"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">'lm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
+<span id="cb8-3"><a></a>             <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> </span>
+<span id="cb8-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span> </span>
+<span id="cb8-5"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">'lm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br>
 Did that look a little better?</p>
@@ -599,12 +563,12 @@ Did that look a little better?</p>
 <h2>Individual fit lines</h2>
 <p>It might make more sense to have individual lines for each of the species instead of something that is across all</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb11-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb11-3"><a></a>             <span class="at">y =</span> body_mass_g, </span>
-<span id="cb11-4"><a></a>             <span class="at">color =</span> species)) <span class="sc">+</span> </span>
-<span id="cb11-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb11-6"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">'lm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
+<span id="cb9-3"><a></a>             <span class="at">y =</span> body_mass_g, </span>
+<span id="cb9-4"><a></a>             <span class="at">color =</span> species)) <span class="sc">+</span> </span>
+<span id="cb9-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb9-6"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">'lm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br>
 What did we move around from the last set of code?</p>
@@ -614,33 +578,33 @@ What did we move around from the last set of code?</p>
 <p>It will default to including the variable names as the <code>x</code> and <code>y</code> labels, but that isn’t something that makes sense. Also would be good to have a title!</p>
 <p>We add on another layer called <code>labs()</code> for our labels (<a href="https://ggplot2.tidyverse.org/reference/labs.html">link</a>)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb12-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb12-3"><a></a>             <span class="at">y =</span> body_mass_g, </span>
-<span id="cb12-4"><a></a>             <span class="at">color =</span> species)) <span class="sc">+</span> </span>
-<span id="cb12-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb12-6"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">'lm'</span>) <span class="sc">+</span> </span>
-<span id="cb12-7"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb12-8"><a></a>    <span class="at">title =</span> <span class="st">"Palmer Penguins"</span>,</span>
-<span id="cb12-9"><a></a>    <span class="at">subtitle =</span> <span class="st">"Body Mass by Flipper Length"</span>, </span>
-<span id="cb12-10"><a></a>    <span class="at">x =</span> <span class="st">"Flipper Length (mm)"</span>, </span>
-<span id="cb12-11"><a></a>    <span class="at">y =</span> <span class="st">"Body Mass (g)"</span>, </span>
-<span id="cb12-12"><a></a>    <span class="at">color =</span> <span class="st">"Species"</span></span>
-<span id="cb12-13"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
+<span id="cb10-3"><a></a>             <span class="at">y =</span> body_mass_g, </span>
+<span id="cb10-4"><a></a>             <span class="at">color =</span> species)) <span class="sc">+</span> </span>
+<span id="cb10-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb10-6"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">'lm'</span>) <span class="sc">+</span> </span>
+<span id="cb10-7"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb10-8"><a></a>    <span class="at">title =</span> <span class="st">"Palmer Penguins"</span>,</span>
+<span id="cb10-9"><a></a>    <span class="at">subtitle =</span> <span class="st">"Body Mass by Flipper Length"</span>, </span>
+<span id="cb10-10"><a></a>    <span class="at">x =</span> <span class="st">"Flipper Length (mm)"</span>, </span>
+<span id="cb10-11"><a></a>    <span class="at">y =</span> <span class="st">"Body Mass (g)"</span>, </span>
+<span id="cb10-12"><a></a>    <span class="at">color =</span> <span class="st">"Species"</span></span>
+<span id="cb10-13"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="penguin-histogram" class="slide level2">
 <h2>Penguin Histogram</h2>
 <p>Taken from the website for <code>palmerpenguins</code> (<a href="https://allisonhorst.github.io/palmerpenguins/articles/intro.html#exploring-distributions">link</a>)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb13-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm)) <span class="sc">+</span></span>
-<span id="cb13-3"><a></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">fill =</span> species), </span>
-<span id="cb13-4"><a></a>                   <span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
-<span id="cb13-5"><a></a>                   <span class="at">position =</span> <span class="st">"identity"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm)) <span class="sc">+</span></span>
+<span id="cb11-3"><a></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">fill =</span> species), </span>
+<span id="cb11-4"><a></a>                   <span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
+<span id="cb11-5"><a></a>                   <span class="at">position =</span> <span class="st">"identity"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section></section>
 <section>
 <section id="example-2" class="title-slide slide level1 center">
 <h1>Example 2</h1>
@@ -651,19 +615,19 @@ What did we move around from the last set of code?</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>data1 <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data1.csv"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb14-2"><a></a>  <span class="fu">mutate</span>(<span class="at">dataset =</span> <span class="st">"data1"</span>)</span>
-<span id="cb14-3"><a></a></span>
-<span id="cb14-4"><a></a>data2 <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data2.csv"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb14-5"><a></a>  <span class="fu">mutate</span>(<span class="at">dataset =</span> <span class="st">"data2"</span>)</span>
-<span id="cb14-6"><a></a></span>
-<span id="cb14-7"><a></a>data3 <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data3.csv"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb14-8"><a></a>  <span class="fu">mutate</span>(<span class="at">dataset =</span> <span class="st">"data3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>data1 <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data1.csv"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a></a>  <span class="fu">mutate</span>(<span class="at">dataset =</span> <span class="st">"data1"</span>)</span>
+<span id="cb12-3"><a></a></span>
+<span id="cb12-4"><a></a>data2 <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data2.csv"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-5"><a></a>  <span class="fu">mutate</span>(<span class="at">dataset =</span> <span class="st">"data2"</span>)</span>
+<span id="cb12-6"><a></a></span>
+<span id="cb12-7"><a></a>data3 <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data3.csv"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-8"><a></a>  <span class="fu">mutate</span>(<span class="at">dataset =</span> <span class="st">"data3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>We need to combine them together just to make things easier:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>three_data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(data1, data2, data3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>three_data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(data1, data2, data3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="descriptive-stats-on-the-3" class="slide level2">
@@ -671,15 +635,15 @@ What did we move around from the last set of code?</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>three_data <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a></a>  <span class="fu">group_by</span>(dataset) <span class="sc">%&gt;%</span> </span>
-<span id="cb16-3"><a></a>  <span class="fu">summarize</span>(</span>
-<span id="cb16-4"><a></a>    <span class="at">mean_x =</span> <span class="fu">mean</span>(x),</span>
-<span id="cb16-5"><a></a>    <span class="at">mean_y =</span> <span class="fu">mean</span>(y),</span>
-<span id="cb16-6"><a></a>    <span class="at">std_x =</span> <span class="fu">sd</span>(x), </span>
-<span id="cb16-7"><a></a>    <span class="at">std_y =</span> <span class="fu">sd</span>(y), </span>
-<span id="cb16-8"><a></a>    <span class="at">cor_xy =</span> <span class="fu">cor</span>(x,y)</span>
-<span id="cb16-9"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>three_data <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a></a>  <span class="fu">group_by</span>(dataset) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a></a>  <span class="fu">summarize</span>(</span>
+<span id="cb14-4"><a></a>    <span class="at">mean_x =</span> <span class="fu">mean</span>(x),</span>
+<span id="cb14-5"><a></a>    <span class="at">mean_y =</span> <span class="fu">mean</span>(y),</span>
+<span id="cb14-6"><a></a>    <span class="at">std_x =</span> <span class="fu">sd</span>(x), </span>
+<span id="cb14-7"><a></a>    <span class="at">std_y =</span> <span class="fu">sd</span>(y), </span>
+<span id="cb14-8"><a></a>    <span class="at">cor_xy =</span> <span class="fu">cor</span>(x,y)</span>
+<span id="cb14-9"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 6
@@ -704,7 +668,7 @@ What did we move around from the last set of code?</p>
 <h1>Try it out on data</h1>
 <p>Take a look at the data that we have been using and try making various visualizations for two of the variables</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>state_school <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/NM-NY_CAS.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>state_school <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/NM-NY_CAS.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 
