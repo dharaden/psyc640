@@ -17,15 +17,23 @@ jobs:
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
         
+      - name: Cache R packages
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-renv-
+            
       - name: Install R packages
+        if: steps.cache-r-packages.outputs.cache-hit != 'true'
         run: |
-          install.packages("rmarkdown")
-          install.packages("knitr")
-          install.packages("here")
-          install.packages("tidyverse")
-          install.packages("rio")
-          install.packages("palmerpenguins")
-        shell: Rscript {0}
+          install.packages(c("rmarkdown", "knitr", "here", 
+          "dplyr", "ggplot2" "rio", "palmerpenguins"))
+          
+      - name: Restore R packages
+        run: |
+          renv::restore()
         
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
