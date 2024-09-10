@@ -29,7 +29,7 @@ jobs:
         if: steps.cache-r-packages.outputs.cache-hit != 'true'
         run: |
           install.packages(c("rmarkdown", "knitr", "here", 
-          "dplyr", "ggplot2" "rio", "palmerpenguins"))
+          "dplyr", "ggplot2", "rio", "palmerpenguins"))
           
       - name: Restore R packages
         run: |
