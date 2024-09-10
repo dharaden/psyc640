@@ -25,9 +25,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-renv-
             
-      - name: Restore R packages
+      - name: Initialize renv
         run: |
           if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
+          renv::init()
+        shell: Rscript {0}
+        
+      - name: Restore R packages
+        run: |
           renv::restore()
         shell: Rscript {0}
         
