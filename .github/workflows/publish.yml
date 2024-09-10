@@ -44,9 +44,8 @@ jobs:
             # Add more packages as needed
       
       - name: Render and Publish to GitHub Pages
-        run: |
-          quarto render --files $(git diff --name-only HEAD^1 | grep '\.qmd$')
-          quarto publish gh-pages
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-

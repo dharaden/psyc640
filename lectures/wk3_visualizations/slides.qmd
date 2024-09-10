@@ -32,18 +32,6 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 
 ------------------------------------------------------------------------
 
-## Looking Ahead
-
--   Plan to have 2 more labs that will be similar to the last lab
-
-    -   Likely take place on 10/25 and sometime the week of 11/13
-
--   Outside of these labs, I am going to plan on having additional mini-labs
-
-    -   Likely to take place on 11/1, 11/22 and 11/29 (will update based on how things are going in class)
-
-------------------------------------------------------------------------
-
 ## Today...
 
 Working with `ggplot2` to get some really fancy visualizations!
@@ -74,21 +62,6 @@ Will be using a dataset from the `palmerpenguins` library ([link](https://alliso
 
 ```{r}
 data(penguins)
-```
-
-Now we can get some descriptive statistics:
-
-```{r}
-#| code-fold: true
-penguins %>% 
-  group_by(species) %>% 
-  summarize(
-    mean_flipper = mean(flipper_length_mm, na.rm = TRUE),
-    mean_mass = mean(body_mass_g, na.rm = TRUE),
-    std_flipper = sd(flipper_length_mm, na.rm = TRUE), 
-    std_mass = sd(body_mass_g, na.rm = TRUE), 
-    cor_flip_mass = cor(flipper_length_mm, body_mass_g)
-  )
 ```
 
 # `ggplot2`
