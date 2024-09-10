@@ -25,15 +25,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-renv-
             
-      - name: Install R packages
-        if: steps.cache-r-packages.outputs.cache-hit != 'true'
+      - name: Restore R packages
+        run: |
+          if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
+          renv::restore()
+        
+      - name: Install additional R packages
         run: |
           install.packages(c("rmarkdown", "knitr", "here", "dplyr", "ggplot2", "rio", "palmerpenguins"))
           
-      - name: Restore R packages
-        run: |
-          renv::restore()
-        
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
