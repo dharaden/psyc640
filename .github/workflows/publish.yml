@@ -29,10 +29,12 @@ jobs:
         run: |
           if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
           renv::restore()
+        shell: Rscript {0}
         
       - name: Install additional R packages
         run: |
           install.packages(c("rmarkdown", "knitr", "here", "dplyr", "ggplot2", "rio", "palmerpenguins"))
+        shell: Rscript {0}
           
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
