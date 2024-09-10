@@ -1,10 +1,17 @@
 [
   {
+    "objectID": "lectures/wk3_visualizations/slides.html#reminders",
+    "href": "lectures/wk3_visualizations/slides.html#reminders",
+    "title": "Figures: Using ggplot2",
+    "section": "Reminders",
+    "text": "Reminders\n\n\nJournal Entries\nReverse Results - Due 9/17"
+  },
+  {
     "objectID": "lectures/wk3_visualizations/slides.html#last-class",
     "href": "lectures/wk3_visualizations/slides.html#last-class",
     "title": "Figures: Using ggplot2",
     "section": "Last Class",
-    "text": "Last Class\n\n\nComparing Means: \\(t\\)-test\n\nIndependent Samples \\(t\\)-test Review\nPaired Samples \\(t\\)-test"
+    "text": "Last Class\n\n\nThe workflow\n\nStarting with a Project and going from there"
   },
   {
     "objectID": "lectures/wk3_visualizations/slides.html#today",
@@ -12,6 +19,13 @@
     "title": "Figures: Using ggplot2",
     "section": "Today…",
     "text": "Today…\nWorking with ggplot2 to get some really fancy visualizations!\nMaybe integrating some generative AI (ChatGPT) to help us out too\n\n# File management\nlibrary(here)\n# for dplyr, ggplot2\nlibrary(tidyverse)\n#Loading data\nlibrary(rio)\n\n#for the penguins dataset\n#install.packages('palmerpenguins')\nlibrary(palmerpenguins)\n\n#Remove Scientific Notation \noptions(scipen=999)"
+  },
+  {
+    "objectID": "lectures/wk3_visualizations/slides.html#starting-out",
+    "href": "lectures/wk3_visualizations/slides.html#starting-out",
+    "title": "Figures: Using ggplot2",
+    "section": "Starting out",
+    "text": "Starting out\nLet’s first start by opening our Project\nThen, create a new Notebook/Markdown Document that we will use for today\nSetup the libraries and bring in the data\n\nWe will use the “Sleep Data” file as well\n\n\n#import sleep data - Your path may be different\nsleep_data &lt;- import(here(\"lectures\", \"data\", \"Sleep_Data.csv\"))"
   },
   {
     "objectID": "lectures/wk3_visualizations/slides.html#take-a-look-at-the-data",
@@ -46,7 +60,7 @@
     "href": "lectures/wk3_visualizations/slides.html#ggplot2-syntax-1",
     "title": "Figures: Using ggplot2",
     "section": "ggplot2 syntax",
-    "text": "ggplot2 syntax\nLet’s start with a basic figure with palmerpenguins\nFirst we will define the data that we are using and the variables we are visualizing\n\n#the dataset is called penguins\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g))\n\nWhat happens?"
+    "text": "ggplot2 syntax\nLet’s start with a basic figure with palmerpenguins\nFirst we will define the data that we are using and the variables we are visualizing\n\n#the dataset is called penguins\n\npenguins %&gt;% \n  #including the variables we want to visualize\n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g))\n\nWhat happens?"
   },
   {
     "objectID": "lectures/wk3_visualizations/slides.html#adding-in-color",
@@ -91,25 +105,32 @@
     "text": "Penguin Histogram\nTaken from the website for palmerpenguins (link)\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm)) +\n    geom_histogram(aes(fill = species), \n                   alpha = 0.5, \n                   position = \"identity\")"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#the-three-datasets",
-    "href": "lectures/wk3_visualizations/slides.html#the-three-datasets",
+    "objectID": "lectures/wk3_visualizations/slides.html#sleep-data",
+    "href": "lectures/wk3_visualizations/slides.html#sleep-data",
     "title": "Figures: Using ggplot2",
-    "section": "The Three Datasets",
-    "text": "The Three Datasets\n\n\nCode\ndata1 &lt;- import(\"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data1.csv\") %&gt;% \n  mutate(dataset = \"data1\")\n\ndata2 &lt;- import(\"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data2.csv\") %&gt;% \n  mutate(dataset = \"data2\")\n\ndata3 &lt;- import(\"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data3.csv\") %&gt;% \n  mutate(dataset = \"data3\")\n\n\nWe need to combine them together just to make things easier:\n\nthree_data &lt;- bind_rows(data1, data2, data3)"
+    "section": "Sleep Data",
+    "text": "Sleep Data\nLet’s start by looking at our data. You can either click on the dataset in the Environment or use the View(sleep_data) command. Here, I am using the head() command just to visualize a sample of the data for the slides.\n\nhead(sleep_data)\n\n            StartDate             EndDate Status Progress Duration__in_seconds_\n1 2017-08-16 13:13:06 2017-08-16 13:15:13      0      100                   126\n2 2017-08-16 13:17:16 2017-08-16 13:19:03      0      100                   106\n3 2017-11-27 16:59:07 2017-11-27 17:07:27      0      100                   499\n4 2017-11-27 18:57:16 2017-11-27 19:13:00      0      100                   943\n5 2017-11-27 18:54:35 2017-11-27 19:14:12      0      100                  1177\n6 2017-11-27 19:41:14 2017-11-27 19:46:48      0      100                   333\n  Finished        RecordedDate DistributionChannel UserLanguage Q5 Q7 Q8 Q12\n1        1 2017-08-16 13:15:14           anonymous           EN 12  2  2   3\n2        1 2017-08-16 13:19:03           anonymous           EN  1  2  2   1\n3        1 2017-11-27 17:07:27           anonymous           EN 19  1  2   1\n4        1 2017-11-27 19:13:00           anonymous           EN 18  2  2   2\n5        1 2017-11-27 19:14:13           anonymous           EN 21  1  2   2\n6        1 2017-11-27 19:46:48           anonymous           EN 18  2  1   3\n  Q13_1 Q13_2 Q13_3 Q13_4 Q13_5 Q13_6 Q13_7 Q13_8 Q13_9 Q13_10 Q14_1 Q14_2\n1     2     2     2    NA     2     2     2     2     2      2     2     2\n2     1     1     1    NA     2     3     2     3     2      3     4     2\n3     1     2     2     5     3     4     1     1     2      1     5     5\n4     3     4     5     5     5     5     5     5     5      1     5     5\n5     1     2     2     5     4     2     2     1     1      2     5     5\n6     1     2     4     5     4     2     4     4     5      4     5     5\n  Q14_3 Q14_4 Q14_5 Q14_6 Q14_7 Q14_8 Q11_1 Q11_2 Q11_3 Q11_4 Q11_5 Q11_6 Q17_1\n1     2     2     2    NA     2     2     2     3     3     4     4     3     2\n2     4     4     4    NA     4     4     4     4     4     4     4     4     2\n3     5     5     1     1     1     1     4     5     4     4     5     4     4\n4     5     5     5     1     5     5     2     3     4     3     1     1     4\n5     5     5     2     1     3     4     2     1     4     3     4     2     2\n6     5     5     4     1     4     3     1     4     2     2     4     5     2\n  Q17_2 Q17_3 Q17_4 Q18_1 Q18_2 Q18_3 Q18_4 Q18_5 Q20_1 Q20_2 Q21_1 Q21_2 Q21_3\n1     3     3     2     2     2     2     3     1     1     2     4     3     3\n2     2     1     2     3     1     1     1     1     2     3     5     4     4\n3     2     1     4     3     1     4     1     2     3     3     1     2     3\n4     4     1     3     4     1     2     1     1     4     2     5     2     1\n5     2     2     4     3     1     1     1     2     3     3     4     1     3\n6     4     3     4     4     1     1     1     4     6     5     4     4     5\n  Q21_4 Q21_5 Q21_6 Q22_1 Q22_2 Q22_3 Q22_4 Q22_5 Q23_1 Q23_2 Q23_3 Q23_4 Q23_5\n1    NA     5     3     3     2     1     2     3     4     5     3     3     2\n2    NA     2     2     2     3     4     5     5     5     5     4     3     3\n3     4     1     1     5     4     3     4     4     5     6     2     5     5\n4     4     1     1     2     5     1     6     1     6     6     2     5     6\n5     4     1     2     3     4     1     4     2     2     6     3     5     5\n6     4     1     2     2     2     3     4     3     4     5     2     3     3\n  Q23_6 Q23_7 Q23_8 Q24_1 Q24_2 Q24_3 Q24_4 Q24_5 Q25_1 Q25_2 Q25_3 Q25_4 Q25_5\n1    NA     3     3     3     3     3     3     3     3     3     3    NA     4\n2    NA     3     3     3     3     2     2     1     1     2     1    NA     1\n3     1     1     3     1     1     1     1     2     3     4     2     1     1\n4     1     3     1     1     6     2     1     1     4     2     6     1     6\n5     1     2     2     1     2     2     1     2     5     4     2     1     1\n6     1     2     4     4     5     1     2     6     6     3     5     1     3\n  Q26_1 Q26_2 Q27_1 Q27_2 SC0 SC1 SC2 SC3 SC4 SC5    id Attention\n1     3     3     3     3  19  11  19  14  82   0 15516        NA\n2     1     1     1     1  24   5  24  26  79   0 15516        NA\n3     3     1     4     1  26  13  26  23  70   0 17915        NA\n4     4     4     1     1  14  12  14  35  89   0 17648        NA\n5     5     2     5     5  16   9  16  29  76   0 17799        NA\n6     5     1     6     6  18  15  18  31  99   0 18003        NA\n\n\nWhat do these variables mean? Who does this?"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#descriptive-stats-on-the-3",
-    "href": "lectures/wk3_visualizations/slides.html#descriptive-stats-on-the-3",
+    "objectID": "lectures/wk3_visualizations/slides.html#data-documentation",
+    "href": "lectures/wk3_visualizations/slides.html#data-documentation",
     "title": "Figures: Using ggplot2",
-    "section": "Descriptive Stats on the 3",
-    "text": "Descriptive Stats on the 3\n\n\nCode\nthree_data %&gt;%\n  group_by(dataset) %&gt;% \n  summarize(\n    mean_x = mean(x),\n    mean_y = mean(y),\n    std_x = sd(x), \n    std_y = sd(y), \n    cor_xy = cor(x,y)\n  )\n\n\n# A tibble: 3 × 6\n  dataset mean_x mean_y std_x std_y  cor_xy\n  &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;\n1 data1     54.3   47.8  16.8  26.9 -0.0641\n2 data2     54.3   47.8  16.8  26.9 -0.0683\n3 data3     54.3   47.8  16.8  26.9 -0.0645"
+    "section": "Data Documentation",
+    "text": "Data Documentation\nIt is always important to have appropriate data documentation!\nIf you can’t look at your data and know what it means right away, you aren’t going to remember what it means later on.\nSleep Data Documentation - myCourses"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#visualize-the-datasets",
-    "href": "lectures/wk3_visualizations/slides.html#visualize-the-datasets",
+    "objectID": "lectures/wk3_visualizations/slides.html#visualizing-demographics",
+    "href": "lectures/wk3_visualizations/slides.html#visualizing-demographics",
     "title": "Figures: Using ggplot2",
-    "section": "Visualize the datasets",
-    "text": "Visualize the datasets\nCreate a scatterplot for each of the datasets\nBut I didn’t talk about how to do that for multiple datasets…\nCheck out ChatGPT"
+    "section": "Visualizing Demographics",
+    "text": "Visualizing Demographics\n“Q5” - What is your age in years? (open text)\nThis is a free text field…is that a good way to get quality data?\nLet’s see if everyone followed directions. Check the “structure” of the variable\n\n# Here we use str() to check structure of a variable\n  # Then we state the data and the variable, linked by the $\nstr(sleep_data$Q5)\n\n int [1:1520] 12 1 19 18 21 18 18 18 18 18 ..."
+  },
+  {
+    "objectID": "lectures/wk3_visualizations/slides.html#giving-it-a-try",
+    "href": "lectures/wk3_visualizations/slides.html#giving-it-a-try",
+    "title": "Figures: Using ggplot2",
+    "section": "Giving it a try",
+    "text": "Giving it a try\nUse the ggplot cheatsheet to identify an appropriate way to visualize the data\n\nAdd some color\nUpdate the title and axes\n\nWhen you are done, post your creation here!"
   },
   {
     "objectID": "syllabus.html",
