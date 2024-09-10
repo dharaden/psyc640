@@ -1,5 +1,124 @@
 [
   {
+    "objectID": "lectures/wk3_visualizations/slides.html#last-class",
+    "href": "lectures/wk3_visualizations/slides.html#last-class",
+    "title": "Figures: Using ggplot2",
+    "section": "Last Class",
+    "text": "Last Class\n\n\nComparing Means: \\(t\\)-test\n\nIndependent Samples \\(t\\)-test Review\nPaired Samples \\(t\\)-test"
+  },
+  {
+    "objectID": "lectures/wk3_visualizations/slides.html#looking-ahead",
+    "href": "lectures/wk3_visualizations/slides.html#looking-ahead",
+    "title": "Figures: Using ggplot2",
+    "section": "Looking Ahead",
+    "text": "Looking Ahead\n\nPlan to have 2 more labs that will be similar to the last lab\n\nLikely take place on 10/25 and sometime the week of 11/13\n\nOutside of these labs, I am going to plan on having additional mini-labs\n\nLikely to take place on 11/1, 11/22 and 11/29 (will update based on how things are going in class)"
+  },
+  {
+    "objectID": "lectures/wk3_visualizations/slides.html#today",
+    "href": "lectures/wk3_visualizations/slides.html#today",
+    "title": "Figures: Using ggplot2",
+    "section": "Today…",
+    "text": "Today…\nWorking with ggplot2 to get some really fancy visualizations!\nMaybe integrating some generative AI (ChatGPT) to help us out too\n\n# File management\nlibrary(here)\n# for dplyr, ggplot2\nlibrary(tidyverse)\n#Loading data\nlibrary(rio)\n\n#for the penguins dataset\n#install.packages('palmerpenguins')\nlibrary(palmerpenguins)\n\n#Remove Scientific Notation \noptions(scipen=999)"
+  },
+  {
+    "objectID": "lectures/wk3_visualizations/slides.html#take-a-look-at-the-data",
+    "href": "lectures/wk3_visualizations/slides.html#take-a-look-at-the-data",
+    "title": "Figures: Using ggplot2",
+    "section": "Take a look at the data",
+    "text": "Take a look at the data\nWill be using a dataset from the palmerpenguins library (link) which is a dataset about…penguins. This function will pull that data into our environment:\n\ndata(penguins)\n\nNow we can get some descriptive statistics:\n\n\nCode\npenguins %&gt;% \n  group_by(species) %&gt;% \n  summarize(\n    mean_flipper = mean(flipper_length_mm, na.rm = TRUE),\n    mean_mass = mean(body_mass_g, na.rm = TRUE),\n    std_flipper = sd(flipper_length_mm, na.rm = TRUE), \n    std_mass = sd(body_mass_g, na.rm = TRUE), \n    cor_flip_mass = cor(flipper_length_mm, body_mass_g)\n  )\n\n\n# A tibble: 3 × 6\n  species   mean_flipper mean_mass std_flipper std_mass cor_flip_mass\n  &lt;fct&gt;            &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;\n1 Adelie            190.     3701.        6.54     459.        NA    \n2 Chinstrap         196.     3733.        7.13     384.         0.642\n3 Gentoo            217.     5076.        6.48     504.        NA"
+  },
+  {
+    "objectID": "lectures/wk3_visualizations/slides.html#ggplot2-from-the-tidyverse",
+    "href": "lectures/wk3_visualizations/slides.html#ggplot2-from-the-tidyverse",
+    "title": "Figures: Using ggplot2",
+    "section": "ggplot2 from the tidyverse",
+    "text": "ggplot2 from the tidyverse\nSince we have already installed and loaded the library, we don’t have to do anything else at this point!\nggplot2 follows the “grammar of graphics”\n\nTheoretical framework for creating data visualizations\nBreaks the process down into separate components:\n\n\n\nData\nAesthetics (aes)\nGeometric Objects (geoms)\n\nFaceting\nThemes"
+  },
+  {
+    "objectID": "lectures/wk3_visualizations/slides.html#grammar-of-graphics",
+    "href": "lectures/wk3_visualizations/slides.html#grammar-of-graphics",
+    "title": "Figures: Using ggplot2",
+    "section": "Grammar of Graphics",
+    "text": "Grammar of Graphics"
+  },
+  {
+    "objectID": "lectures/wk3_visualizations/slides.html#ggplot2-syntax",
+    "href": "lectures/wk3_visualizations/slides.html#ggplot2-syntax",
+    "title": "Figures: Using ggplot2",
+    "section": "ggplot2 syntax",
+    "text": "ggplot2 syntax\nThere is a basic structure to create a plot within ggplot2, and consists of at least these three things:\n\nA Data Set\nCoordinate System\nGeoms - visual marks to represent the data points\n\nIn R it looks like this:\n\nggplot(data = &lt;DATA&gt;) + \n  &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;MAPPINGS&gt;))\n\n#or how I like to do it\n&lt;DATA&gt; %&gt;% \n  ggplot(aes(&lt;MAPPINGS&gt;)) + \n  &lt;GEOM_FUNCTION&gt;()"
+  },
+  {
+    "objectID": "lectures/wk3_visualizations/slides.html#ggplot2-syntax-1",
+    "href": "lectures/wk3_visualizations/slides.html#ggplot2-syntax-1",
+    "title": "Figures: Using ggplot2",
+    "section": "ggplot2 syntax",
+    "text": "ggplot2 syntax\nLet’s start with a basic figure with palmerpenguins\nFirst we will define the data that we are using and the variables we are visualizing\n\n#the dataset is called penguins\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g))\n\nWhat happens?"
+  },
+  {
+    "objectID": "lectures/wk3_visualizations/slides.html#adding-in-color",
+    "href": "lectures/wk3_visualizations/slides.html#adding-in-color",
+    "title": "Figures: Using ggplot2",
+    "section": "Adding in Color",
+    "text": "Adding in Color\nMaybe we would like to have each of the points colored by their respective species\nThis information will be added to the aes() within the geom_point() layer\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g)) + \n  geom_point(aes(color = species))"
+  },
+  {
+    "objectID": "lectures/wk3_visualizations/slides.html#including-a-fit-line",
+    "href": "lectures/wk3_visualizations/slides.html#including-a-fit-line",
+    "title": "Figures: Using ggplot2",
+    "section": "Including a fit line",
+    "text": "Including a fit line\nWhy don’t we put in a line that represents the relationship between these variables?\nWe will want to add another layer/geom\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g)) + \n  geom_point(aes(color = species)) + \n  geom_smooth()\n\n\nThat looks a little wonky…why is that? Did you get a note in the console?"
+  },
+  {
+    "objectID": "lectures/wk3_visualizations/slides.html#including-a-fit-line-1",
+    "href": "lectures/wk3_visualizations/slides.html#including-a-fit-line-1",
+    "title": "Figures: Using ggplot2",
+    "section": "Including a fit line",
+    "text": "Including a fit line\nThe geom_smooth() defaults to using a loess line to fit to the data\nIn order to update that, we need to change some of the defaults for that layer and specify that we want a “linear model” or lm function to the data\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g)) + \n  geom_point(aes(color = species)) + \n  geom_smooth(method = 'lm')\n\n\nDid that look a little better?"
+  },
+  {
+    "objectID": "lectures/wk3_visualizations/slides.html#individual-fit-lines",
+    "href": "lectures/wk3_visualizations/slides.html#individual-fit-lines",
+    "title": "Figures: Using ggplot2",
+    "section": "Individual fit lines",
+    "text": "Individual fit lines\nIt might make more sense to have individual lines for each of the species instead of something that is across all\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g, \n             color = species)) + \n  geom_point() + \n  geom_smooth(method = 'lm')\n\n\nWhat did we move around from the last set of code?"
+  },
+  {
+    "objectID": "lectures/wk3_visualizations/slides.html#updating-labelstitle",
+    "href": "lectures/wk3_visualizations/slides.html#updating-labelstitle",
+    "title": "Figures: Using ggplot2",
+    "section": "Updating Labels/Title",
+    "text": "Updating Labels/Title\nIt will default to including the variable names as the x and y labels, but that isn’t something that makes sense. Also would be good to have a title!\nWe add on another layer called labs() for our labels (link)\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g, \n             color = species)) + \n  geom_point() + \n  geom_smooth(method = 'lm') + \n  labs(\n    title = \"Palmer Penguins\",\n    subtitle = \"Body Mass by Flipper Length\", \n    x = \"Flipper Length (mm)\", \n    y = \"Body Mass (g)\", \n    color = \"Species\"\n  )"
+  },
+  {
+    "objectID": "lectures/wk3_visualizations/slides.html#penguin-histogram",
+    "href": "lectures/wk3_visualizations/slides.html#penguin-histogram",
+    "title": "Figures: Using ggplot2",
+    "section": "Penguin Histogram",
+    "text": "Penguin Histogram\nTaken from the website for palmerpenguins (link)\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm)) +\n    geom_histogram(aes(fill = species), \n                   alpha = 0.5, \n                   position = \"identity\")"
+  },
+  {
+    "objectID": "lectures/wk3_visualizations/slides.html#the-three-datasets",
+    "href": "lectures/wk3_visualizations/slides.html#the-three-datasets",
+    "title": "Figures: Using ggplot2",
+    "section": "The Three Datasets",
+    "text": "The Three Datasets\n\n\nCode\ndata1 &lt;- import(\"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data1.csv\") %&gt;% \n  mutate(dataset = \"data1\")\n\ndata2 &lt;- import(\"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data2.csv\") %&gt;% \n  mutate(dataset = \"data2\")\n\ndata3 &lt;- import(\"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data3.csv\") %&gt;% \n  mutate(dataset = \"data3\")\n\n\nWe need to combine them together just to make things easier:\n\nthree_data &lt;- bind_rows(data1, data2, data3)"
+  },
+  {
+    "objectID": "lectures/wk3_visualizations/slides.html#descriptive-stats-on-the-3",
+    "href": "lectures/wk3_visualizations/slides.html#descriptive-stats-on-the-3",
+    "title": "Figures: Using ggplot2",
+    "section": "Descriptive Stats on the 3",
+    "text": "Descriptive Stats on the 3\n\n\nCode\nthree_data %&gt;%\n  group_by(dataset) %&gt;% \n  summarize(\n    mean_x = mean(x),\n    mean_y = mean(y),\n    std_x = sd(x), \n    std_y = sd(y), \n    cor_xy = cor(x,y)\n  )\n\n\n# A tibble: 3 × 6\n  dataset mean_x mean_y std_x std_y  cor_xy\n  &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;\n1 data1     54.3   47.8  16.8  26.9 -0.0641\n2 data2     54.3   47.8  16.8  26.9 -0.0683\n3 data3     54.3   47.8  16.8  26.9 -0.0645"
+  },
+  {
+    "objectID": "lectures/wk3_visualizations/slides.html#visualize-the-datasets",
+    "href": "lectures/wk3_visualizations/slides.html#visualize-the-datasets",
+    "title": "Figures: Using ggplot2",
+    "section": "Visualize the datasets",
+    "text": "Visualize the datasets\nCreate a scatterplot for each of the datasets\nBut I didn’t talk about how to do that for multiple datasets…\nCheck out ChatGPT"
+  },
+  {
     "objectID": "syllabus.html",
     "href": "syllabus.html",
     "title": "Syllabus",
@@ -114,10 +233,7 @@
     "href": "lectures.html",
     "title": "Lectures",
     "section": "",
-    "text": "Schedule\nSlides for the course will be posted here prior to the lecture in which they occur. I will do my best to keep on top of them and I would like to have them be in both a PDF and HTML format so that it is easy to access for everyone.\n\n\n\nWeek\nDate\nTopic\nLecture Slides\n\n\n\n\n1\n08/27\nGetting Started\nWeek 1\n\n\n-\n08/29\nEasing into R\nSlides\n\n\n2\n09/03\nResearch Design & Stats\nSlides\n\n\n-\n09/05\nR Workflow\nSlides\n\n\n3\n09/10\nVisualizing\n\n\n\n-\n09/12\nData Wrangling\n\n\n\n4\n09/17\nData Wrangling\n\n\n\n-\n09/19\nDescriptives\n\n\n\n5\n09/24\nDescriptives\n\n\n\n-\n09/26\nStatistical Thinking\n\n\n\n6\n10/01\nANOVA\n\n\n\n-\n10/03\nANOVA\n\n\n\n7\n10/08\nRegression\n\n\n\n-\n10/10\nRegression\n\n\n\n8\n10/15\nNO CLASS\n\n\n\n-\n10/17\nProbability, Distributions & Inferences\n\n\n\n9\n10/22\nProbability, Distributions & Inferences\n\n\n\n-\n10/24\nHypothesis Testing & Power\n\n\n\n10\n10/29\nHypothesis Testing & Power\n\n\n\n-\n10/31\nCategorical Data Analysis\n\n\n\n11\n11/05\nCategorical Data Analysis\n\n\n\n-\n11/07\nComparing Means\n\n\n\n12\n11/12\nComparing Means\n\n\n\n-\n11/14\nANOVA\n\n\n\n13\n11/19\nANOVA\n\n\n\n-\n11/21\nRegression\n\n\n\n14\n11/26\nRegression\n\n\n\n-\n11/28\nNO CLASS\n\n\n\n15\n12/03\n\n\n\n\n-\n12/05\n\n\n\n\nFinals",
-    "crumbs": [
-      "Lectures"
-    ]
+    "text": "Schedule\nSlides for the course will be posted here prior to the lecture in which they occur. I will do my best to keep on top of them and I would like to have them be in both a PDF and HTML format so that it is easy to access for everyone.\n\n\n\nWeek\nDate\nTopic\nLecture Slides\n\n\n\n\n1\n08/27\nGetting Started\nWeek 1\n\n\n-\n08/29\nEasing into R\nSlides\n\n\n2\n09/03\nResearch Design & Stats\nSlides\n\n\n-\n09/05\nR Workflow\nSlides\n\n\n3\n09/10\nVisualizing\n\n\n\n-\n09/12\nData Wrangling\n\n\n\n4\n09/17\nData Wrangling\n\n\n\n-\n09/19\nDescriptives\n\n\n\n5\n09/24\nDescriptives\n\n\n\n-\n09/26\nStatistical Thinking\n\n\n\n6\n10/01\nANOVA\n\n\n\n-\n10/03\nANOVA\n\n\n\n7\n10/08\nRegression\n\n\n\n-\n10/10\nRegression\n\n\n\n8\n10/15\nNO CLASS\n\n\n\n-\n10/17\nProbability, Distributions & Inferences\n\n\n\n9\n10/22\nProbability, Distributions & Inferences\n\n\n\n-\n10/24\nHypothesis Testing & Power\n\n\n\n10\n10/29\nHypothesis Testing & Power\n\n\n\n-\n10/31\nCategorical Data Analysis\n\n\n\n11\n11/05\nCategorical Data Analysis\n\n\n\n-\n11/07\nComparing Means\n\n\n\n12\n11/12\nComparing Means\n\n\n\n-\n11/14\nANOVA\n\n\n\n13\n11/19\nANOVA\n\n\n\n-\n11/21\nRegression\n\n\n\n14\n11/26\nRegression\n\n\n\n-\n11/28\nNO CLASS\n\n\n\n15\n12/03\n\n\n\n\n-\n12/05\n\n\n\n\nFinals"
   },
   {
     "objectID": "homework.html",
@@ -127,36 +243,6 @@
     "text": "Homework assignments will be posted here. You will be able to access the assignment as well as any data or additional information that may be necessary. Submit your homework assignments via myCourses by the due date and time.\n\n\n\nWeek\nDate\nTopic\nLecture Slides\n\n\n\n\n1\n08/27\n\n\n\n\n-\n08/29\n\n\n\n\n2\n09/03\n\n\n\n\n-\n09/05\n\n\n\n\n3\n09/10\n\n\n\n\n-\n09/12\n\n\n\n\n4\n09/17\n\n\n\n\n-\n09/19\n\n\n\n\n5\n09/24\n\n\n\n\n-\n09/26\n\n\n\n\n6\n10/01\n\n\n\n\n-\n10/03\n\n\n\n\n7\n10/08\n\n\n\n\n-\n10/10\n\n\n\n\n8\n10/15\nNO CLASS\n\n\n\n-\n10/17\n\n\n\n\n9\n10/22\n\n\n\n\n-\n10/24\n\n\n\n\n10\n10/29\n\n\n\n\n-\n10/31\n\n\n\n\n11\n11/05\n\n\n\n\n-\n11/07\n\n\n\n\n12\n11/12\n\n\n\n\n-\n11/14\n\n\n\n\n13\n11/19\n\n\n\n\n-\n11/21\n\n\n\n\n14\n11/26\n\n\n\n\n-\n11/28\nNO CLASS\n\n\n\n15\n12/03\n\n\n\n\n-\n12/05\n\n\n\n\nFinals",
     "crumbs": [
       "Homework Assignments"
-    ]
-  },
-  {
-    "objectID": "previous-years.html",
-    "href": "previous-years.html",
-    "title": "Previous Years",
-    "section": "",
-    "text": "This course has been taught for a number of years, but this instructor has only started teaching it in Fall 2023. Below are previous iterations of the course in case you would like to check out how it has progressed!",
-    "crumbs": [
-      "Previous Years"
-    ]
-  },
-  {
-    "objectID": "previous-years.html#overview",
-    "href": "previous-years.html#overview",
-    "title": "Previous Years",
-    "section": "",
-    "text": "This course has been taught for a number of years, but this instructor has only started teaching it in Fall 2023. Below are previous iterations of the course in case you would like to check out how it has progressed!",
-    "crumbs": [
-      "Previous Years"
-    ]
-  },
-  {
-    "objectID": "previous-years.html#fall-2023",
-    "href": "previous-years.html#fall-2023",
-    "title": "Previous Years",
-    "section": "Fall 2023",
-    "text": "Fall 2023\nWebsite",
-    "crumbs": [
-      "Previous Years"
     ]
   },
   {
@@ -217,6 +303,47 @@
     "text": "R and RStudio\nStudents must have the latest version of R as well as the RStudio GUI. Both applications are free and can be found here.",
     "crumbs": [
       "Welcome"
+    ]
+  },
+  {
+    "objectID": "previous-years.html",
+    "href": "previous-years.html",
+    "title": "Previous Years",
+    "section": "",
+    "text": "This course has been taught for a number of years, but this instructor has only started teaching it in Fall 2023. Below are previous iterations of the course in case you would like to check out how it has progressed!",
+    "crumbs": [
+      "Previous Years"
+    ]
+  },
+  {
+    "objectID": "previous-years.html#overview",
+    "href": "previous-years.html#overview",
+    "title": "Previous Years",
+    "section": "",
+    "text": "This course has been taught for a number of years, but this instructor has only started teaching it in Fall 2023. Below are previous iterations of the course in case you would like to check out how it has progressed!",
+    "crumbs": [
+      "Previous Years"
+    ]
+  },
+  {
+    "objectID": "previous-years.html#fall-2023",
+    "href": "previous-years.html#fall-2023",
+    "title": "Previous Years",
+    "section": "Fall 2023",
+    "text": "Fall 2023\nWebsite",
+    "crumbs": [
+      "Previous Years"
+    ]
+  },
+  {
+    "objectID": "lectures/wk3_visualizations/index.html",
+    "href": "lectures/wk3_visualizations/index.html",
+    "title": "Week 3 - Visualizations",
+    "section": "",
+    "text": "During this lecture, we will explore the functionality of ggplot2 and begin our entry into the tidyverse. For this lecture, have the datasets downloaded and put in the appropriate place in your files\n\nFull Screen",
+    "crumbs": [
+      "Lectures",
+      "3 - Visualizing"
     ]
   }
 ]

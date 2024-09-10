@@ -29,7 +29,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./lectures.html" rel="next">
+<link href="./lectures/wk3_visualizations/index.html" rel="next">
 <link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -124,12 +124,23 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lectures.html" class="sidebar-item-text sidebar-link">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Lectures</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lectures/wk3_visualizations/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3 - Visualizing</span></a>
   </div>
 </li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./homework.html" class="sidebar-item-text sidebar-link">
@@ -213,8 +224,7 @@ ul.task-list li input[type="checkbox"] {
 <th>Date</th>
 <th style="text-align: left;">Topic</th>
 <th style="text-align: left;">Readings</th>
-<th>Presenter</th>
-<th>Homework</th>
+<th>Lecture Slides</th>
 </tr>
 </thead>
 <tbody>
@@ -223,39 +233,34 @@ ul.task-list li input[type="checkbox"] {
 <td>08/27</td>
 <td style="text-align: left;">Course Orientation</td>
 <td style="text-align: left;"></td>
-<td></td>
-<td></td>
+<td><a href="docs/lecture/GradStats_Week1_Orientation.pdf" target="_blank">Week 1</a></td>
 </tr>
 <tr class="even">
 <td>-</td>
 <td>08/29</td>
 <td style="text-align: left;">Getting Started with R</td>
 <td style="text-align: left;">R4DS: Intro &amp; 7</td>
-<td></td>
-<td></td>
+<td><a href="docs/lecture/GradStats_Week1_GettingStarted.pdf" target="_blank">Slides</a></td>
 </tr>
 <tr class="odd">
 <td>2</td>
 <td>09/03</td>
 <td style="text-align: left;">Why Use Stats? &amp; Research Designs</td>
 <td style="text-align: left;">LSR: 1 &amp; 2</td>
-<td>DH</td>
-<td></td>
+<td><a href="docs/lecture/GradStats_Week2_ResearchDesign-Data.pdf" target="_blank">Slides</a></td>
 </tr>
 <tr class="even">
 <td>-</td>
 <td>09/05</td>
 <td style="text-align: left;">R Workflow - structure of results</td>
 <td style="text-align: left;">RDS: 4 &amp; 6 (or First Edition Chapter 8)</td>
-<td>SC</td>
-<td></td>
+<td><a href="docs/lecture/GradStats_Week2_Workflow.pdf" target="_blank">Slides</a></td>
 </tr>
 <tr class="odd">
 <td>3</td>
 <td>09/10</td>
 <td style="text-align: left;">Visualizing</td>
 <td style="text-align: left;">RDS: 1</td>
-<td>ThH</td>
 <td></td>
 </tr>
 <tr class="even">
@@ -263,7 +268,6 @@ ul.task-list li input[type="checkbox"] {
 <td>09/12</td>
 <td style="text-align: left;">Data Wrangling</td>
 <td style="text-align: left;">RDS: 5</td>
-<td>EM</td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -271,7 +275,6 @@ ul.task-list li input[type="checkbox"] {
 <td>09/17</td>
 <td style="text-align: left;">Data Wrangling</td>
 <td style="text-align: left;"></td>
-<td>AMG &amp; HM</td>
 <td></td>
 </tr>
 <tr class="even">
@@ -279,7 +282,6 @@ ul.task-list li input[type="checkbox"] {
 <td>09/19</td>
 <td style="text-align: left;">Descriptives</td>
 <td style="text-align: left;">LSR: 5</td>
-<td>HS &amp; NG</td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -287,7 +289,6 @@ ul.task-list li input[type="checkbox"] {
 <td>09/24</td>
 <td style="text-align: left;">Descriptives</td>
 <td style="text-align: left;"></td>
-<td>JLS &amp; ES</td>
 <td></td>
 </tr>
 <tr class="even">
@@ -296,7 +297,6 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: left;">Statistical Thinking</td>
 <td style="text-align: left;"><p><a href="http://users.stat.umn.edu/~rend0020/Teaching/STAT8801-resources/docs/Tea.pdf">Lady Tasting Tea</a></p>
 <p>TBD</p></td>
-<td>JB &amp; CM</td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -304,7 +304,6 @@ ul.task-list li input[type="checkbox"] {
 <td>10/01</td>
 <td style="text-align: left;">ANOVA</td>
 <td style="text-align: left;"><a href="https://onlinestatbook.com/2/analysis_of_variance/intro.html">Intro</a> &amp; <a href="https://onlinestatbook.com/2/analysis_of_variance/anova_designs.html">Design</a></td>
-<td>MP &amp; JR</td>
 <td></td>
 </tr>
 <tr class="even">
@@ -312,7 +311,6 @@ ul.task-list li input[type="checkbox"] {
 <td>10/03</td>
 <td style="text-align: left;">ANOVA</td>
 <td style="text-align: left;"></td>
-<td>RH</td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -320,7 +318,6 @@ ul.task-list li input[type="checkbox"] {
 <td>10/08</td>
 <td style="text-align: left;">Regression</td>
 <td style="text-align: left;">LSR: 15</td>
-<td>BP &amp; ZK</td>
 <td></td>
 </tr>
 <tr class="even">
@@ -328,7 +325,6 @@ ul.task-list li input[type="checkbox"] {
 <td>10/10</td>
 <td style="text-align: left;">Regression</td>
 <td style="text-align: left;"></td>
-<td>TaH</td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -337,14 +333,12 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: left;"><strong>NO CLASS</strong></td>
 <td style="text-align: left;"></td>
 <td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td>-</td>
 <td>10/17</td>
 <td style="text-align: left;">Probability, Distributions &amp; Inferences</td>
 <td style="text-align: left;">LSR: 9 &amp; 10</td>
-<td></td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -353,14 +347,12 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: left;">Probability, Distributions &amp; Inferences</td>
 <td style="text-align: left;"></td>
 <td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td>-</td>
 <td>10/24</td>
 <td style="text-align: left;">Hypothesis Testing &amp; Power</td>
 <td style="text-align: left;">LSR: 11 <a href="https://www.youtube.com/watch?v=RVxHlsIw_Do">Video – “What is a p-value?”</a></td>
-<td></td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -369,14 +361,12 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: left;">Hypothesis Testing &amp; Power</td>
 <td style="text-align: left;"></td>
 <td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td>-</td>
 <td>10/31</td>
 <td style="text-align: left;">Categorical Data Analysis</td>
 <td style="text-align: left;">LSR: 12</td>
-<td></td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -385,14 +375,12 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: left;">Categorical Data Analysis</td>
 <td style="text-align: left;"></td>
 <td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td>-</td>
 <td>11/07</td>
 <td style="text-align: left;">Comparing Means</td>
 <td style="text-align: left;">LSR: 13</td>
-<td></td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -401,14 +389,12 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: left;">Comparing Means</td>
 <td style="text-align: left;"></td>
 <td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td>-</td>
 <td>11/14</td>
 <td style="text-align: left;">ANOVA</td>
 <td style="text-align: left;">LSR: 14</td>
-<td></td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -417,14 +403,12 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: left;">ANOVA</td>
 <td style="text-align: left;"></td>
 <td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td>-</td>
 <td>11/21</td>
 <td style="text-align: left;">Regression</td>
 <td style="text-align: left;">LSR: 15</td>
-<td></td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -433,14 +417,12 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: left;">Regression</td>
 <td style="text-align: left;"></td>
 <td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td>-</td>
 <td>11/28</td>
 <td style="text-align: left;"><strong>NO CLASS</strong></td>
 <td style="text-align: left;"></td>
-<td></td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -449,7 +431,6 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: left;">Overflow</td>
 <td style="text-align: left;"></td>
 <td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td>-</td>
@@ -457,14 +438,12 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: left;">Overflow</td>
 <td style="text-align: left;"></td>
 <td></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td>Finals</td>
 <td></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
-<td></td>
 <td></td>
 </tr>
 </tbody>
@@ -1196,8 +1175,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./lectures.html" class="pagination-link" aria-label="Lectures">
-        <span class="nav-page-text">Lectures</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./lectures/wk3_visualizations/index.html" class="pagination-link" aria-label="3 - Visualizing">
+        <span class="nav-page-text">3 - Visualizing</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
