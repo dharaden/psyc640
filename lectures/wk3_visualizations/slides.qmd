@@ -22,12 +22,21 @@ editor_options:
 knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 ```
 
+## Reminders
+
+::: nonincremental
+-   Journal Entries
+
+-   Reverse Results - Due 9/17
+:::
+
+------------------------------------------------------------------------
+
 ## Last Class
 
 ::: nonincremental
--   Comparing Means: $t$-test
-    -   Independent Samples $t$-test Review
-    -   Paired Samples $t$-test
+-   The workflow
+    -   Starting with a Project and going from there
 :::
 
 ------------------------------------------------------------------------
@@ -52,6 +61,23 @@ library(palmerpenguins)
 
 #Remove Scientific Notation 
 options(scipen=999)
+```
+
+------------------------------------------------------------------------
+
+## Starting out
+
+Let's first start by opening our **`Project`**
+
+Then, create a new Notebook/Markdown Document that we will use for today
+
+Setup the libraries and bring in the data
+
+-   We will use the "Sleep Data" file as well
+
+```{r}
+#import sleep data - Your path may be different
+sleep_data <- import(here("lectures", "data", "Sleep_Data.csv"))
 ```
 
 ------------------------------------------------------------------------
@@ -135,6 +161,7 @@ Let's start with a basic figure with `palmerpenguins`
 #the dataset is called penguins
 
 penguins %>% 
+  #including the variables we want to visualize
   ggplot(aes(x = flipper_length_mm, 
              y = body_mass_g))
 ```
@@ -144,6 +171,10 @@ What happens?
 ------------------------------------------------------------------------
 
 We forgot to tell it what to do with the data!
+
+![](/images/data-aes.png){fig-align="center"}
+
+------------------------------------------------------------------------
 
 Need to add the appropriate `geom` to have it plot points for each observation
 
@@ -266,69 +297,54 @@ penguins %>%
                    position = "identity")
 ```
 
-# Example 2
-
-I have uploaded three datasets. I would like us to explore the datasets together to see what is going on with them.
+# Now our own data! 🎉
 
 ------------------------------------------------------------------------
 
-## The Three Datasets
+## Sleep Data
+
+Let's start by looking at our data. You can either click on the dataset in the `Environment` or use the `View(sleep_data)` command. Here, I am using the `head()` command just to visualize a sample of the data for the slides.
 
 ```{r}
-#| code-fold: true
-data1 <- import("https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data1.csv") %>% 
-  mutate(dataset = "data1")
-
-data2 <- import("https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data2.csv") %>% 
-  mutate(dataset = "data2")
-
-data3 <- import("https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data3.csv") %>% 
-  mutate(dataset = "data3")
+head(sleep_data)
 ```
 
-We need to combine them together just to make things easier:
-
-```{r}
-three_data <- bind_rows(data1, data2, data3)
-```
+***What do these variables mean? Who does this?***
 
 ------------------------------------------------------------------------
 
-## Descriptive Stats on the 3
+## Data Documentation
+
+It is always important to have appropriate data documentation!
+
+If you can't look at your data and know what it means right away, you aren't going to remember what it means later on.
+
+Sleep Data Documentation - [myCourses](https://mycourses.rit.edu/d2l/le/content/1101433/viewContent/10311985/View){target="_blank"}
+
+------------------------------------------------------------------------
+
+## Visualizing Demographics
+
+"Q5" - *What is your age in years? (open text)*
+
+This is a free text field...is that a good way to get quality data?
+
+Let's see if everyone followed directions. Check the "structure" of the variable
 
 ```{r}
-#| code-fold: true
-three_data %>%
-  group_by(dataset) %>% 
-  summarize(
-    mean_x = mean(x),
-    mean_y = mean(y),
-    std_x = sd(x), 
-    std_y = sd(y), 
-    cor_xy = cor(x,y)
-  )
+# Here we use str() to check structure of a variable
+  # Then we state the data and the variable, linked by the $
+str(sleep_data$Q5)
 ```
 
 ------------------------------------------------------------------------
 
-## Visualize the datasets
+## Giving it a try
 
-Create a scatterplot for each of the datasets
+Use the [ggplot cheatsheet](https://rstudio.github.io/cheatsheets/data-visualization.pdf){target="_blank"} to identify an appropriate way to visualize the data
 
-But I didn't talk about how to do that for multiple datasets...
+-   Add some color
 
-Check out [ChatGPT](https://chat.openai.com/)
+-   Update the title and axes
 
-------------------------------------------------------------------------
-
-# Try it out on data
-
-Take a look at the data that we have been using and try making various visualizations for two of the variables
-
-```{r}
-state_school <- import("https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/NM-NY_CAS.csv")
-```
-
-# Next time...
-
--   ANOVA!
+When you are done, [**post your creation here!**](https://docs.google.com/document/d/10fVTcIyTo-TQskKOgvL-BVCiN6vaGb2B96krBDaGQ2g/edit?usp=sharing){target="_blank"}
