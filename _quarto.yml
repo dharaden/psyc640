@@ -35,6 +35,8 @@ website:
         contents:
         - text: "3 - Visualizing"
           href: lectures/wk3_visualizations/index.qmd
+        - text: "4 - Data Wrangling"
+          href: lectures/unit4_data-wrangler/index.qmd
       - homework.qmd
       - href: previous-years.qmd
         text: Previous Years
