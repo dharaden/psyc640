@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Dustin Haraden, PhD">
-  <title>PSYC 640 2024 – Figures: Using ggplot2</title>
+  <title>PSYC 640 2024 – Unit 4 - Data Wrangling</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -392,7 +392,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Figures: Using ggplot2</h1>
+  <h1 class="title">Unit 4 - Data Wrangling</h1>
   <p class="subtitle">PSYC 640 - Fall 2024</p>
 
 <div class="quarto-title-authors">
@@ -417,17 +417,14 @@ Dustin Haraden, PhD
 <h2>Last Class</h2>
 <div>
 <ul>
-<li>The workflow
-<ul>
-<li>Starting with a Project and going from there</li>
-</ul></li>
+<li>Entry into the tidyverse with dplyr</li>
 </ul>
 </div>
 </section>
 <section id="today" class="slide level2">
 <h2>Today…</h2>
-<p>Working with <code>ggplot2</code> to get some really fancy visualizations!</p>
-<p>Maybe integrating some generative AI (ChatGPT) to help us out too</p>
+<p>Continuing on this trend to get more comfortable with all that <code>dplyr</code> can do!</p>
+<p><a href="https://p4a.jhelvy.com/data-wrangling" target="_blank">This is a nice website that walks through a lot of this as well</a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># File management</span></span>
 <span id="cb1-2"><a></a><span class="fu">library</span>(here)</span>
@@ -436,300 +433,232 @@ Dustin Haraden, PhD
 <span id="cb1-5"><a></a><span class="co">#Loading data</span></span>
 <span id="cb1-6"><a></a><span class="fu">library</span>(rio)</span>
 <span id="cb1-7"><a></a></span>
-<span id="cb1-8"><a></a><span class="co">#for the penguins dataset</span></span>
-<span id="cb1-9"><a></a><span class="co">#install.packages('palmerpenguins')</span></span>
-<span id="cb1-10"><a></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb1-11"><a></a></span>
-<span id="cb1-12"><a></a><span class="co">#Remove Scientific Notation </span></span>
-<span id="cb1-13"><a></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a></a><span class="co">#Remove Scientific Notation </span></span>
+<span id="cb1-9"><a></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="starting-out" class="slide level2">
-<h2>Starting out</h2>
+<section id="but-first" class="slide level2">
+<h2>But first…</h2>
+<p>We need to revisit how to read the <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf" target="_blank">ggplot2 cheatsheet</a>!</p>
+<p>A lot of cheatsheets will have something that looks like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>c <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(hwy))</span>
+<span id="cb2-2"><a></a></span>
+<span id="cb2-3"><a></a><span class="do">## Then later on it will say</span></span>
+<span id="cb2-4"><a></a></span>
+<span id="cb2-5"><a></a>c <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<section id="what-is-c" class="slide level2">
+<h2>WHAT IS <code>c</code>?!</h2>
+<p><code>c</code> is just an object that is referring to the first line that we have in a ggplot function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>c <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(hwy))</span>
+<span id="cb3-2"><a></a></span>
+<span id="cb3-3"><a></a><span class="do">## So this...</span></span>
+<span id="cb3-4"><a></a>c <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>)</span>
+<span id="cb3-5"><a></a></span>
+<span id="cb3-6"><a></a><span class="do">## Is the same as this...</span></span>
+<span id="cb3-7"><a></a>mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb3-8"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(hwy)) <span class="sc">+</span> </span>
+<span id="cb3-9"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="back-to-regular-scheduled-programming" class="slide level2">
+<h2>Back to regular scheduled programming</h2>
 <p>Let’s first start by opening our <strong><code>Project</code></strong></p>
 <p>Then, create a new Notebook/Markdown Document that we will use for today</p>
 <p>Setup the libraries and bring in the data</p>
 <ul>
-<li>We will use the “Sleep Data” file as well</li>
+<li>We will use the “Sleep Data” file</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co">#import sleep data - Your path may be different</span></span>
-<span id="cb2-2"><a></a>sleep_data <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"lectures"</span>, <span class="st">"data"</span>, <span class="st">"Sleep_Data.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="take-a-look-at-the-data" class="slide level2">
-<h2>Take a look at the data</h2>
-<p>Will be using a dataset from the <code>palmerpenguins</code> library (<a href="https://allisonhorst.github.io/palmerpenguins/articles/intro.html#exploring-distributions">link</a>) which is a dataset about…<a href="https://www.youtube.com/watch?v=-GnLDJAgrws">penguins</a>. This function will pull that data into our environment:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">data</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co">#import sleep data - Your path may be different</span></span>
+<span id="cb4-2"><a></a>sleep_data <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"lectures"</span>, <span class="st">"data"</span>, <span class="st">"Sleep_Data.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section>
-<section id="ggplot2" class="title-slide slide level1 center">
-<h1><code>ggplot2</code></h1>
+<section id="select" class="title-slide slide level1 center">
+<h1>select()</h1>
 
-</section>
-<section id="ggplot2-from-the-tidyverse" class="slide level2">
-<h2><code>ggplot2</code> from the <code>tidyverse</code></h2>
-<p>Since we have already installed and loaded the library, we don’t have to do anything else at this point!</p>
-<p><code>ggplot2</code> follows the “grammar of graphics”</p>
+<img data-src="../../images/select().png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="variable-renaming" class="slide level2">
+<h2>Variable Renaming</h2>
+<p>Ooof…These variable names look terrible! How do we update those? Our brains would break having to remember how to connect them and having to reference another document.&nbsp;</p>
+<p>First, let’s get rid of the variables that we don’t need for the moment:&nbsp;</p>
 <ul>
-<li>Theoretical framework for creating data visualizations</li>
-<li>Breaks the process down into separate components:</li>
+<li><p>Use <code>select()</code> to remove the following variables:&nbsp;</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>sleep_data <span class="ot">&lt;-</span> sleep_data <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="st">'StartDate'</span>, <span class="st">'EndDate'</span>, <span class="st">'Status'</span>, <span class="st">'Progress'</span>, </span>
+<span id="cb5-3"><a></a>  <span class="st">'Duration__in_seconds_'</span>, <span class="st">'Finished'</span>, <span class="st">'RecordedDate'</span>,</span>
+<span id="cb5-4"><a></a>  <span class="st">'DistributionChannel'</span>, <span class="st">'UserLanguage'</span>, <span class="st">'SC0'</span>, <span class="st">'SC1'</span>,</span>
+<span id="cb5-5"><a></a>  <span class="st">'SC2'</span>, <span class="st">'SC3'</span>, <span class="st">'SC4'</span>, <span class="st">'SC5'</span>, <span class="st">'Attention'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
 </ul>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>Data</p>
-<p>Aesthetics (<code>aes</code>)</p>
-<p>Geometric Objects (<code>geoms</code>)</p>
-</div><div class="column" style="width:50%;">
-<p>Faceting</p>
-<p>Themes</p>
-</div></div>
 </section>
-<section id="grammar-of-graphics" class="slide level2">
-<h2>Grammar of Graphics</h2>
-<p><a href="https://gkesari.medium.com/my-talk-on-grammar-of-graphics-the-secret-sauce-of-powerful-data-stories-3da618cf1bbf"><img data-src="../../images/grammargraphics.webp" width="779"></a></p>
+<section class="slide level2">
+
+<p>Now we can update the names</p>
+<ul>
+<li><p>Using the <code>names()</code> command, we can rename <strong><em>all</em></strong> columns in the file&nbsp;</p></li>
+<li><p>Here is a list so that it makes it easier to do instead of having to type everything out…that would just be cruel</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">names</span>(sleep_data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'age'</span>, <span class="st">'gender'</span>, <span class="st">'roommate'</span>, <span class="st">'other_sleep'</span>, <span class="st">'bed_read'</span>, <span class="st">'bed_study'</span>, <span class="st">'bed_hw'</span>, <span class="st">'attention1'</span>, <span class="st">'bed_internet'</span>,</span>
+<span id="cb6-2"><a></a>                       <span class="st">'bed_tv'</span>, <span class="st">'bed_eat'</span>, <span class="st">'bed_friends'</span>, <span class="st">'bed_videogame'</span>, <span class="st">'bed_readp'</span>, <span class="st">'BL_1'</span>, <span class="st">'BL_2'</span>, <span class="st">'BL_3'</span>, <span class="st">'BL_4'</span>,</span>
+<span id="cb6-3"><a></a>                       <span class="st">'BL_5'</span>, <span class="st">'attention2'</span>, <span class="st">'BL_6'</span>, <span class="st">'BL_7'</span>, <span class="st">'sleepsat1'</span>, <span class="st">'sleepsat2'</span>, <span class="st">'sleepsat3'</span>, <span class="st">'sleepsat4'</span>, <span class="st">'sleepsat5'</span>,</span>
+<span id="cb6-4"><a></a>                       <span class="st">'sleepsat6'</span>, <span class="st">'ESS1'</span>, <span class="st">'ESS2'</span>, <span class="st">'ESS3'</span>, <span class="st">'ESS4'</span>, <span class="st">'ESS5'</span>, <span class="st">'ESS6'</span>, <span class="st">'ESS7'</span>, <span class="st">'ESS8'</span>, <span class="st">'ESS00'</span>, <span class="st">'ashs1'</span>, <span class="st">'ashs2'</span>, </span>
+<span id="cb6-5"><a></a>                       <span class="st">'ashs3'</span>, <span class="st">'ashs4'</span>, <span class="st">'ashs5'</span>, <span class="st">'attention3'</span>, <span class="st">'ashs6'</span>, <span class="st">'ashs7'</span>, <span class="st">'ashs8'</span>, <span class="st">'ashs9'</span>, <span class="st">'ashs10'</span>, <span class="st">'ashs11'</span>, </span>
+<span id="cb6-6"><a></a>                       <span class="st">'ashs12'</span>, <span class="st">'ashs13'</span>, <span class="st">'ashs14'</span>, <span class="st">'ashs15'</span>, <span class="st">'ashs16'</span>, <span class="st">'ashs17'</span>, <span class="st">'attention4'</span>, <span class="st">'ashs18'</span>, <span class="st">'ashs19'</span>, </span>
+<span id="cb6-7"><a></a>                       <span class="st">'ashs20'</span>, <span class="st">'ashs21'</span>, <span class="st">'ashs22'</span>, <span class="st">'ashs23'</span>, <span class="st">'ashs24'</span>, <span class="st">'ashs26'</span>, <span class="st">'ashs27'</span>, <span class="st">'ashs28'</span>, <span class="st">'attention5'</span>, </span>
+<span id="cb6-8"><a></a>                       <span class="st">'ashs29'</span>, <span class="st">'ashs30'</span>, <span class="st">'ashs31'</span>, <span class="st">'ashs32'</span>, <span class="st">'ashs33'</span>, <span class="st">'id'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section></section>
 <section>
-<section id="ggplot2-cheatsheet" class="title-slide slide level1 center">
-<h1><code>ggplot2</code> <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf">cheatsheet</a></h1>
+<section id="filter" class="title-slide slide level1 center">
+<h1>filter()</h1>
 
-</section>
-<section id="ggplot2-syntax" class="slide level2 smaller scrollable">
-<h2><code>ggplot2</code> syntax</h2>
-<p>There is a basic structure to create a plot within <code>ggplot2</code>, and consists of at least these three things:</p>
-<ol type="1">
-<li>A Data Set</li>
-<li>Coordinate System</li>
-<li>Geoms - visual marks to represent the data points</li>
-</ol>
-<p>In R it looks like this:</p>
+<img data-src="../../images/filter().png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="extract-rows" class="slide level2">
+<h2>Extract Rows</h2>
+<p>The ‘filter()’ function is used to subset observations based on their values.</p>
+<p>The result of filtering is a data frame with the same number of columns as before but fewer rows.</p>
+<p>The first argument is data and subsequent arguments are logical expressions that tell you which observations to retain in the data frame.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="sc">&lt;</span>DATA<span class="sc">&gt;</span>) <span class="sc">+</span> </span>
-<span id="cb4-2"><a></a>  <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>))</span>
-<span id="cb4-3"><a></a></span>
-<span id="cb4-4"><a></a><span class="co">#or how I like to do it</span></span>
-<span id="cb4-5"><a></a><span class="sc">&lt;</span>DATA<span class="sc">&gt;</span> <span class="sc">%&gt;%</span> </span>
-<span id="cb4-6"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>)) <span class="sc">+</span> </span>
-<span id="cb4-7"><a></a>  <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">filter</span>(starwars, hair_color <span class="sc">==</span> <span class="st">"none"</span> <span class="sc">|</span> eye_color <span class="sc">==</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 39 × 14
+   name     height  mass hair_color skin_color eye_color birth_year sex   gender
+   &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+ 1 Darth V…    202   136 none       white      yellow          41.9 male  mascu…
+ 2 Greedo      173    74 &lt;NA&gt;       green      black           44   male  mascu…
+ 3 IG-88       200   140 none       metal      red             15   none  mascu…
+ 4 Bossk       190   113 none       green      red             53   male  mascu…
+ 5 Lobot       175    79 none       light      blue            37   male  mascu…
+ 6 Ackbar      180    83 none       brown mot… orange          41   male  mascu…
+ 7 Nien Nu…    160    68 none       grey       black           NA   male  mascu…
+ 8 Nute Gu…    191    90 none       mottled g… red             NA   male  mascu…
+ 9 Jar Jar…    196    66 none       orange     orange          52   male  mascu…
+10 Roos Ta…    224    82 none       grey       orange          NA   male  mascu…
+# ℹ 29 more rows
+# ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
+#   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
+</div>
 </div>
 </section>
-<section id="ggplot2-syntax-1" class="slide level2">
-<h2><code>ggplot2</code> syntax</h2>
-<p>Let’s start with a basic figure with <code>palmerpenguins</code></p>
-<p><strong>First</strong> we will define the data that we are using and the variables we are visualizing</p>
+<section id="filter-observations" class="slide level2">
+<h2>Filter observations</h2>
+<p>We can now generate a subset of observations based on a particular value</p>
+<p>Since the <code>age</code> variable has been giving us some trouble, let’s filter based on that variable to only include appropriate ages for “college aged” participants</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co">#the dataset is called penguins</span></span>
-<span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb5-4"><a></a>  <span class="co">#including the variables we want to visualize</span></span>
-<span id="cb5-5"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb5-6"><a></a>             <span class="at">y =</span> body_mass_g))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>What happens?</p>
-</section>
-<section class="slide level2">
-
-<p>We forgot to tell it what to do with the data!</p>
-
-<img data-src="../../images/data-aes.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section class="slide level2">
-
-<p>Need to add the appropriate <code>geom</code> to have it plot points for each observation</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb6-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb6-3"><a></a>             <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> </span>
-<span id="cb6-4"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong><em><br>
-Note:</em></strong> the <code>geom_point()</code> layer will inherit what is in the <code>aes()</code> in the previous layer</p>
-</section>
-<section id="adding-in-color" class="slide level2">
-<h2>Adding in Color</h2>
-<p>Maybe we would like to have each of the points colored by their respective <code>species</code></p>
-<p>This information will be added to the <code>aes()</code> within the <code>geom_point()</code> layer</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb7-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb7-3"><a></a>             <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> </span>
-<span id="cb7-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># Assigning it to a new variable</span></span>
+<span id="cb9-2"><a></a>mod_sleep_data <span class="ot">&lt;-</span> sleep_data <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a></a>  <span class="fu">filter</span>(age <span class="sc">&gt;=</span> <span class="dv">17</span>, age <span class="sc">&lt;=</span> <span class="dv">25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="including-a-fit-line" class="slide level2">
-<h2>Including a fit line</h2>
-<p>Why don’t we put in a line that represents the relationship between these variables?</p>
-<p>We will want to add another layer/geom</p>
+<section id="filter-obs.---check" class="slide level2">
+<h2>Filter Obs. - Check</h2>
+<p>Generating a bar chart to see if it worked out!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb8-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb8-3"><a></a>             <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> </span>
-<span id="cb8-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span> </span>
-<span id="cb8-5"><a></a>  <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><br>
-That looks a little wonky…why is that? Did you get a note in the console?</p>
-</section>
-<section id="including-a-fit-line-1" class="slide level2">
-<h2>Including a fit line</h2>
-<p>The <code>geom_smooth()</code> defaults to using a loess line to fit to the data</p>
-<p>In order to update that, we need to change some of the defaults for that layer and specify that we want a “linear model” or <code>lm</code> function to the data</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb9-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb9-3"><a></a>             <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> </span>
-<span id="cb9-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span> </span>
-<span id="cb9-5"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">'lm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><br>
-Did that look a little better?</p>
-</section>
-<section id="individual-fit-lines" class="slide level2">
-<h2>Individual fit lines</h2>
-<p>It might make more sense to have individual lines for each of the species instead of something that is across all</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb10-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb10-3"><a></a>             <span class="at">y =</span> body_mass_g, </span>
-<span id="cb10-4"><a></a>             <span class="at">color =</span> species)) <span class="sc">+</span> </span>
-<span id="cb10-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb10-6"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">'lm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><br>
-What did we move around from the last set of code?</p>
-</section>
-<section id="updating-labelstitle" class="slide level2">
-<h2>Updating Labels/Title</h2>
-<p>It will default to including the variable names as the <code>x</code> and <code>y</code> labels, but that isn’t something that makes sense. Also would be good to have a title!</p>
-<p>We add on another layer called <code>labs()</code> for our labels (<a href="https://ggplot2.tidyverse.org/reference/labs.html">link</a>)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb11-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb11-3"><a></a>             <span class="at">y =</span> body_mass_g, </span>
-<span id="cb11-4"><a></a>             <span class="at">color =</span> species)) <span class="sc">+</span> </span>
-<span id="cb11-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb11-6"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">'lm'</span>) <span class="sc">+</span> </span>
-<span id="cb11-7"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb11-8"><a></a>    <span class="at">title =</span> <span class="st">"Palmer Penguins"</span>,</span>
-<span id="cb11-9"><a></a>    <span class="at">subtitle =</span> <span class="st">"Body Mass by Flipper Length"</span>, </span>
-<span id="cb11-10"><a></a>    <span class="at">x =</span> <span class="st">"Flipper Length (mm)"</span>, </span>
-<span id="cb11-11"><a></a>    <span class="at">y =</span> <span class="st">"Body Mass (g)"</span>, </span>
-<span id="cb11-12"><a></a>    <span class="at">color =</span> <span class="st">"Species"</span></span>
-<span id="cb11-13"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="penguin-histogram" class="slide level2">
-<h2>Penguin Histogram</h2>
-<p>Taken from the website for <code>palmerpenguins</code> (<a href="https://allisonhorst.github.io/palmerpenguins/articles/intro.html#exploring-distributions">link</a>)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb12-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm)) <span class="sc">+</span></span>
-<span id="cb12-3"><a></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">fill =</span> species), </span>
-<span id="cb12-4"><a></a>                   <span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
-<span id="cb12-5"><a></a>                   <span class="at">position =</span> <span class="st">"identity"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>mod_sleep_data <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(age)) <span class="sc">+</span> </span>
+<span id="cb10-3"><a></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section></section>
 <section>
-<section id="now-our-own-data" class="title-slide slide level1 center">
-<h1>Now our own data! 🎉</h1>
+<section id="mutate" class="title-slide slide level1 center">
+<h1>mutate()</h1>
 
+<img data-src="../../images/mutate().png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="compute-new-variable" class="slide level2">
+<h2>Compute new variable</h2>
+<p>We often need to make a sum/mean score for a variable of interest</p>
+<p>For example, in the <code>mod_sleep_data</code>, we have the <a href="https://nasemso.org/wp-content/uploads/neuro-epworthsleepscale.pdf" target="_blank">Epworth Sleepiness Scale</a></p>
+<p>Take a look at the scoring of the ESS and compute the total score labelled <code>ess_total</code></p>
 </section>
-<section id="sleep-data" class="slide level2">
-<h2>Sleep Data</h2>
-<p>Let’s start by looking at our data. You can either click on the dataset in the <code>Environment</code> or use the <code>View(sleep_data)</code> command. Here, I am using the <code>head()</code> command just to visualize a sample of the data for the slides.</p>
+<section id="ess_total" class="slide level2">
+<h2><code>ess_total</code></h2>
+<p>It is a sum score with a scale of 0 - 24</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">head</span>(sleep_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>            StartDate             EndDate Status Progress Duration__in_seconds_
-1 2017-08-16 13:13:06 2017-08-16 13:15:13      0      100                   126
-2 2017-08-16 13:17:16 2017-08-16 13:19:03      0      100                   106
-3 2017-11-27 16:59:07 2017-11-27 17:07:27      0      100                   499
-4 2017-11-27 18:57:16 2017-11-27 19:13:00      0      100                   943
-5 2017-11-27 18:54:35 2017-11-27 19:14:12      0      100                  1177
-6 2017-11-27 19:41:14 2017-11-27 19:46:48      0      100                   333
-  Finished        RecordedDate DistributionChannel UserLanguage Q5 Q7 Q8 Q12
-1        1 2017-08-16 13:15:14           anonymous           EN 12  2  2   3
-2        1 2017-08-16 13:19:03           anonymous           EN  1  2  2   1
-3        1 2017-11-27 17:07:27           anonymous           EN 19  1  2   1
-4        1 2017-11-27 19:13:00           anonymous           EN 18  2  2   2
-5        1 2017-11-27 19:14:13           anonymous           EN 21  1  2   2
-6        1 2017-11-27 19:46:48           anonymous           EN 18  2  1   3
-  Q13_1 Q13_2 Q13_3 Q13_4 Q13_5 Q13_6 Q13_7 Q13_8 Q13_9 Q13_10 Q14_1 Q14_2
-1     2     2     2    NA     2     2     2     2     2      2     2     2
-2     1     1     1    NA     2     3     2     3     2      3     4     2
-3     1     2     2     5     3     4     1     1     2      1     5     5
-4     3     4     5     5     5     5     5     5     5      1     5     5
-5     1     2     2     5     4     2     2     1     1      2     5     5
-6     1     2     4     5     4     2     4     4     5      4     5     5
-  Q14_3 Q14_4 Q14_5 Q14_6 Q14_7 Q14_8 Q11_1 Q11_2 Q11_3 Q11_4 Q11_5 Q11_6 Q17_1
-1     2     2     2    NA     2     2     2     3     3     4     4     3     2
-2     4     4     4    NA     4     4     4     4     4     4     4     4     2
-3     5     5     1     1     1     1     4     5     4     4     5     4     4
-4     5     5     5     1     5     5     2     3     4     3     1     1     4
-5     5     5     2     1     3     4     2     1     4     3     4     2     2
-6     5     5     4     1     4     3     1     4     2     2     4     5     2
-  Q17_2 Q17_3 Q17_4 Q18_1 Q18_2 Q18_3 Q18_4 Q18_5 Q20_1 Q20_2 Q21_1 Q21_2 Q21_3
-1     3     3     2     2     2     2     3     1     1     2     4     3     3
-2     2     1     2     3     1     1     1     1     2     3     5     4     4
-3     2     1     4     3     1     4     1     2     3     3     1     2     3
-4     4     1     3     4     1     2     1     1     4     2     5     2     1
-5     2     2     4     3     1     1     1     2     3     3     4     1     3
-6     4     3     4     4     1     1     1     4     6     5     4     4     5
-  Q21_4 Q21_5 Q21_6 Q22_1 Q22_2 Q22_3 Q22_4 Q22_5 Q23_1 Q23_2 Q23_3 Q23_4 Q23_5
-1    NA     5     3     3     2     1     2     3     4     5     3     3     2
-2    NA     2     2     2     3     4     5     5     5     5     4     3     3
-3     4     1     1     5     4     3     4     4     5     6     2     5     5
-4     4     1     1     2     5     1     6     1     6     6     2     5     6
-5     4     1     2     3     4     1     4     2     2     6     3     5     5
-6     4     1     2     2     2     3     4     3     4     5     2     3     3
-  Q23_6 Q23_7 Q23_8 Q24_1 Q24_2 Q24_3 Q24_4 Q24_5 Q25_1 Q25_2 Q25_3 Q25_4 Q25_5
-1    NA     3     3     3     3     3     3     3     3     3     3    NA     4
-2    NA     3     3     3     3     2     2     1     1     2     1    NA     1
-3     1     1     3     1     1     1     1     2     3     4     2     1     1
-4     1     3     1     1     6     2     1     1     4     2     6     1     6
-5     1     2     2     1     2     2     1     2     5     4     2     1     1
-6     1     2     4     4     5     1     2     6     6     3     5     1     3
-  Q26_1 Q26_2 Q27_1 Q27_2 SC0 SC1 SC2 SC3 SC4 SC5    id Attention
-1     3     3     3     3  19  11  19  14  82   0 15516        NA
-2     1     1     1     1  24   5  24  26  79   0 15516        NA
-3     3     1     4     1  26  13  26  23  70   0 17915        NA
-4     4     4     1     1  14  12  14  35  89   0 17648        NA
-5     5     2     5     5  16   9  16  29  76   0 17799        NA
-6     5     1     6     6  18  15  18  31  99   0 18003        NA</code></pre>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="co"># We will assign it to the same dataset</span></span>
+<span id="cb11-2"><a></a>mod_sleep_data <span class="ot">&lt;-</span> mod_sleep_data <span class="sc">%&gt;%</span> </span>
+<span id="cb11-3"><a></a>  <span class="fu">mutate</span>(<span class="at">ess_total =</span> ESS1 <span class="sc">+</span> ESS2 <span class="sc">+</span> ESS3 <span class="sc">+</span> </span>
+<span id="cb11-4"><a></a>           ESS4 <span class="sc">+</span> ESS5 <span class="sc">+</span> ESS6 <span class="sc">+</span> ESS7 <span class="sc">+</span> ESS8)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p><strong><em>What do these variables mean? Who does this?</em></strong></p>
 </section>
-<section id="data-documentation" class="slide level2">
-<h2>Data Documentation</h2>
-<p>It is always important to have appropriate data documentation!</p>
-<p>If you can’t look at your data and know what it means right away, you aren’t going to remember what it means later on.</p>
-<p>Sleep Data Documentation - <a href="https://mycourses.rit.edu/d2l/le/content/1101433/viewContent/10311985/View" target="_blank">myCourses</a></p>
-</section>
-<section id="visualizing-demographics" class="slide level2">
-<h2>Visualizing Demographics</h2>
-<p>“Q5” - <em>What is your age in years? (open text)</em></p>
-<p>This is a free text field…is that a good way to get quality data?</p>
-<p>Let’s see if everyone followed directions. Check the “structure” of the variable</p>
+<section id="visualize" class="slide level2">
+<h2>Visualize</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="co"># Here we use str() to check structure of a variable</span></span>
-<span id="cb15-2"><a></a>  <span class="co"># Then we state the data and the variable, linked by the $</span></span>
-<span id="cb15-3"><a></a><span class="fu">str</span>(sleep_data<span class="sc">$</span>Q5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> int [1:1520] 12 1 19 18 21 18 18 18 18 18 ...</code></pre>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>mod_sleep_data <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(ess_total)) <span class="sc">+</span> </span>
+<span id="cb12-3"><a></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
-</div>
-</section>
-<section id="giving-it-a-try" class="slide level2">
-<h2>Giving it a try</h2>
-<p>Use the <a href="https://rstudio.github.io/cheatsheets/data-visualization.pdf" target="_blank">ggplot cheatsheet</a> to identify an appropriate way to visualize the data</p>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"><div>
 <ul>
-<li><p>Add some color</p></li>
-<li><p>Update the title and axes</p></li>
+<li class="fragment">But why are there some above 24??</li>
 </ul>
-<p>When you are done, <a href="https://docs.google.com/document/d/10fVTcIyTo-TQskKOgvL-BVCiN6vaGb2B96krBDaGQ2g/edit?usp=sharing" target="_blank"><strong>post your creation here!</strong></a></p>
+</div>
+</section>
+<section id="ess-variables" class="slide level2">
+<h2>ESS Variables</h2>
+<p>The original items are supposed to be on a 0-3 scale</p>
+<p>The data that we have are on a 1-4 scale</p>
+<p><strong><em>What should we do?!</em></strong></p>
+</section>
+<section id="ess-rescale" class="slide level2">
+<h2>ESS Rescale</h2>
+<p>We could subtract 1 from each item before creating another sum</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>mod_sleep_data <span class="ot">&lt;-</span> mod_sleep_data <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a></a>  <span class="fu">mutate</span>(<span class="at">ESS1m1 =</span> ESS1 <span class="sc">-</span> <span class="dv">1</span>, </span>
+<span id="cb13-3"><a></a>         <span class="at">ESS2m1 =</span> ESS2 <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb13-4"><a></a>         <span class="at">ESS3m1 =</span> ESS3 <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb13-5"><a></a>         <span class="at">ESS4m1 =</span> ESS4 <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb13-6"><a></a>         <span class="at">ESS5m1 =</span> ESS5 <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb13-7"><a></a>         <span class="at">ESS6m1 =</span> ESS6 <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb13-8"><a></a>         <span class="at">ESS7m1 =</span> ESS7 <span class="sc">-</span> <span class="dv">1</span>, </span>
+<span id="cb13-9"><a></a>         <span class="at">ESS8m1 =</span> ESS8 <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-10"><a></a>  <span class="fu">mutate</span>(<span class="at">ess_total2 =</span> ESS1m1 <span class="sc">+</span> ESS2m1 <span class="sc">+</span> ESS3m1 <span class="sc">+</span> </span>
+<span id="cb13-11"><a></a>           ESS4m1 <span class="sc">+</span> ESS5m1 <span class="sc">+</span> ESS6m1 <span class="sc">+</span> ESS7m1 <span class="sc">+</span> ESS8m1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="ess-rescale-1" class="slide level2">
+<h2>ESS Rescale</h2>
+<p>Or we could combine all the <code>1</code>’s that we are subtracting and just take that from the total score</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>mod_sleep_data <span class="ot">&lt;-</span> mod_sleep_data <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a></a>  <span class="fu">mutate</span>(<span class="at">ess_total =</span> ESS1 <span class="sc">+</span> ESS2 <span class="sc">+</span> ESS3 <span class="sc">+</span> </span>
+<span id="cb14-3"><a></a>           ESS4 <span class="sc">+</span> ESS5 <span class="sc">+</span> ESS6 <span class="sc">+</span> ESS7 <span class="sc">+</span> ESS8) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-4"><a></a>  <span class="fu">mutate</span>(<span class="at">ess_total3 =</span> ess_total<span class="dv">-8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="ess-rescale-2" class="slide level2">
+<h2>ESS Rescale</h2>
+<p>Let’s see what the differences are between these methods</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>mod_sleep_data <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">"_total"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ess_total ess_total2 ess_total3
+1        20         12         12
+2        20         12         12
+3        16          8          8
+4        20         12         12
+5        13          5          5
+6        22         14         14</code></pre>
+</div>
+</div>
+</section>
+<section id="rescaling-conclusion" class="slide level2">
+<h2>Rescaling Conclusion</h2>
+<p>It is good to always know what the original scaling needs to be (e.g., 1-4 or 0-3)</p>
+<p>Extremely important to visualize the data! ALWAYS VISUALIZE</p>
+<p>There is also another way to allow for the <code>sum()</code> function in <code>mutate()</code>, but we’ll get to that later</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -770,7 +699,7 @@ What did we move around from the last set of code?</p>
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'multiplex': {"secret":null,"id":"45a060e124c3d269","url":"https://reveal-multiplex.glitch.me/"},
+'multiplex': {"secret":null,"id":"3d46f21f17a3eaa6","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
  
         // Display controls in the bottom right corner
