@@ -144,135 +144,6 @@
     ]
   },
   {
-    "objectID": "previous-years.html",
-    "href": "previous-years.html",
-    "title": "Previous Years",
-    "section": "",
-    "text": "This course has been taught for a number of years, but this instructor has only started teaching it in Fall 2023. Below are previous iterations of the course in case you would like to check out how it has progressed!",
-    "crumbs": [
-      "Previous Years"
-    ]
-  },
-  {
-    "objectID": "previous-years.html#overview",
-    "href": "previous-years.html#overview",
-    "title": "Previous Years",
-    "section": "",
-    "text": "This course has been taught for a number of years, but this instructor has only started teaching it in Fall 2023. Below are previous iterations of the course in case you would like to check out how it has progressed!",
-    "crumbs": [
-      "Previous Years"
-    ]
-  },
-  {
-    "objectID": "previous-years.html#fall-2023",
-    "href": "previous-years.html#fall-2023",
-    "title": "Previous Years",
-    "section": "Fall 2023",
-    "text": "Fall 2023\nWebsite",
-    "crumbs": [
-      "Previous Years"
-    ]
-  },
-  {
-    "objectID": "lectures.html",
-    "href": "lectures.html",
-    "title": "Lectures",
-    "section": "",
-    "text": "Schedule\nSlides for the course will be posted here prior to the lecture in which they occur. I will do my best to keep on top of them and I would like to have them be in both a PDF and HTML format so that it is easy to access for everyone.\n\n\n\nWeek\nDate\nTopic\nLecture Slides\n\n\n\n\n1\n08/27\nGetting Started\nWeek 1\n\n\n-\n08/29\nEasing into R\nSlides\n\n\n2\n09/03\nResearch Design & Stats\nSlides\n\n\n-\n09/05\nR Workflow\nSlides\n\n\n3\n09/10\nVisualizing\n\n\n\n-\n09/12\nData Wrangling\n\n\n\n4\n09/17\nData Wrangling\n\n\n\n-\n09/19\nDescriptives\n\n\n\n5\n09/24\nDescriptives\n\n\n\n-\n09/26\nStatistical Thinking\n\n\n\n6\n10/01\nANOVA\n\n\n\n-\n10/03\nANOVA\n\n\n\n7\n10/08\nRegression\n\n\n\n-\n10/10\nRegression\n\n\n\n8\n10/15\nNO CLASS\n\n\n\n-\n10/17\nProbability, Distributions & Inferences\n\n\n\n9\n10/22\nProbability, Distributions & Inferences\n\n\n\n-\n10/24\nHypothesis Testing & Power\n\n\n\n10\n10/29\nHypothesis Testing & Power\n\n\n\n-\n10/31\nCategorical Data Analysis\n\n\n\n11\n11/05\nCategorical Data Analysis\n\n\n\n-\n11/07\nComparing Means\n\n\n\n12\n11/12\nComparing Means\n\n\n\n-\n11/14\nANOVA\n\n\n\n13\n11/19\nANOVA\n\n\n\n-\n11/21\nRegression\n\n\n\n14\n11/26\nRegression\n\n\n\n-\n11/28\nNO CLASS\n\n\n\n15\n12/03\n\n\n\n\n-\n12/05\n\n\n\n\nFinals"
-  },
-  {
-    "objectID": "homework.html",
-    "href": "homework.html",
-    "title": "Homework Assignments",
-    "section": "",
-    "text": "Homework assignments will be posted here. You will be able to access the assignment as well as any data or additional information that may be necessary. Submit your homework assignments via myCourses by the due date and time.\n\n\n\nWeek\nDate\nTopic\nLecture Slides\n\n\n\n\n1\n08/27\n\n\n\n\n-\n08/29\n\n\n\n\n2\n09/03\n\n\n\n\n-\n09/05\n\n\n\n\n3\n09/10\n\n\n\n\n-\n09/12\n\n\n\n\n4\n09/17\n\n\n\n\n-\n09/19\n\n\n\n\n5\n09/24\n\n\n\n\n-\n09/26\n\n\n\n\n6\n10/01\n\n\n\n\n-\n10/03\n\n\n\n\n7\n10/08\n\n\n\n\n-\n10/10\n\n\n\n\n8\n10/15\nNO CLASS\n\n\n\n-\n10/17\n\n\n\n\n9\n10/22\n\n\n\n\n-\n10/24\n\n\n\n\n10\n10/29\n\n\n\n\n-\n10/31\n\n\n\n\n11\n11/05\n\n\n\n\n-\n11/07\n\n\n\n\n12\n11/12\n\n\n\n\n-\n11/14\n\n\n\n\n13\n11/19\n\n\n\n\n-\n11/21\n\n\n\n\n14\n11/26\n\n\n\n\n-\n11/28\nNO CLASS\n\n\n\n15\n12/03\n\n\n\n\n-\n12/05\n\n\n\n\nFinals",
-    "crumbs": [
-      "Homework Assignments"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "PSYC 640: Graduate Statistics",
-    "section": "",
-    "text": "This course is the introduction to statistics for graduate students. The goal of the course is to provide a grounding in statistical concepts, methods and application to research. I aim to increase student’s confidence in using these techniques and introducing them to R. Topics will range from including mathematical conceptualizations to practical application with various techniques ranging from descriptive statistics to ending with regression.\nThe course will be broken up into two main sections. The first will be getting used to using R and the practicalities of performing a data analysis. The second section will then “pop the hood” of these tools with a deeper understanding of the how and why.\n\n\nThis course reviews critical concepts and data analysis methods in descriptive and inferential statistics. Basic and advanced material will be presented on topics that include measurement, descriptive and inferential data analyses for single and multiple group designs, and computer applications. There will be an emphasis on Open Science practices, especially reproducibility. Course content will be taught through lectures, discussion, and applied data analysis exercises. Throughout the course, I will try to maintain an emphasis on both the basic theory behind the statistics and its practical application to data sets.\n\n\n\nLecture: Tuesdays & Thursdays, 11:00am - 12:15pm, Liberal Arts 3233\n\n\n\nDustin Haraden – dxhgsh@rit.edu\n\nOffice: EAS 3378\nOffice Hours: Tuesdays & Wednesdays 12:30 – 2:00pm or By Appointment",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#course-description",
-    "href": "index.html#course-description",
-    "title": "PSYC 640: Graduate Statistics",
-    "section": "",
-    "text": "This course reviews critical concepts and data analysis methods in descriptive and inferential statistics. Basic and advanced material will be presented on topics that include measurement, descriptive and inferential data analyses for single and multiple group designs, and computer applications. There will be an emphasis on Open Science practices, especially reproducibility. Course content will be taught through lectures, discussion, and applied data analysis exercises. Throughout the course, I will try to maintain an emphasis on both the basic theory behind the statistics and its practical application to data sets.",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#meeting-time-and-location",
-    "href": "index.html#meeting-time-and-location",
-    "title": "PSYC 640: Graduate Statistics",
-    "section": "",
-    "text": "Lecture: Tuesdays & Thursdays, 11:00am - 12:15pm, Liberal Arts 3233",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#instructor",
-    "href": "index.html#instructor",
-    "title": "PSYC 640: Graduate Statistics",
-    "section": "",
-    "text": "Dustin Haraden – dxhgsh@rit.edu\n\nOffice: EAS 3378\nOffice Hours: Tuesdays & Wednesdays 12:30 – 2:00pm or By Appointment",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#textbook",
-    "href": "index.html#textbook",
-    "title": "PSYC 640: Graduate Statistics",
-    "section": "Textbook",
-    "text": "Textbook\nWe will primarily be referring to chapters in the following textbooks:\n\nLearning Statistics with R by Danielle Navarro.\nR for Data Science (2e) (Wickham, Çetinkaya-Rundel, & Grolemund, 2023)\nOpenIntro Statistics 4th ed. (Diez, Barr, & Cetinkaya-Rundel, 2022)\n\nThese textbook is available for free online and able to be downloaded. You may choose to purchase a paper copy if you wish, but it is not required.",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#r-and-rstudio",
-    "href": "index.html#r-and-rstudio",
-    "title": "PSYC 640: Graduate Statistics",
-    "section": "R and RStudio",
-    "text": "R and RStudio\nStudents must have the latest version of R as well as the RStudio GUI. Both applications are free and can be found here.",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "lectures/unit4_data-wrangler/index.html",
-    "href": "lectures/unit4_data-wrangler/index.html",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "",
-    "text": "During this section, we will highlight the utility of the dplyr package and further dive into the tidyverse. For this lecture, have the datasets downloaded and put in the appropriate place in your files\nThis is currently situated as a document which you can find below:",
-    "crumbs": [
-      "Lectures",
-      "4 - Data Wrangling"
-    ]
-  },
-  {
-    "objectID": "lectures/unit4_data-wrangler/index.html#link-to-document",
-    "href": "lectures/unit4_data-wrangler/index.html#link-to-document",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "Link to Document",
-    "text": "Link to Document\nThe instructor is working to put these into some beautiful slides :)",
-    "crumbs": [
-      "Lectures",
-      "4 - Data Wrangling"
-    ]
-  },
-  {
     "objectID": "syllabus.html",
     "href": "syllabus.html",
     "title": "Syllabus",
@@ -380,6 +251,135 @@
     "text": "Course Specific Policies\nIf you anticipate issues related to the format or requirements of this course, please meet with me. I would like us to discuss ways to make sure you can participate to your best ability in the course. This course abides by university policies at RIT. In particular, please note the following:\nPHONE/LAPTOP USE IN CLASS: Please do not use cell phones during class. If you need to take an emergency phone call, please feel free to leave the class quietly.  Laptops may be used when necessary for course-related uses.\nCLASS CANCELLATION: In the event of a University-wide emergency course requirements, classes, deadlines and grading schemes are subject to changes that may include alternative delivery methods, alternative methods of interaction with the instructor, class materials, and/or classmates, a revised attendance policy, and a revised semester calendar and/or grading scheme.\nCHANGES TO THE SYLLABUS: I have provided this syllabus as a guide to our course and have made every attempt to provide an accurate overview of the course. However, as instructor, I reserve the right to modify this document during the semester, if necessary, to ensure that we achieve course learning objectives. You will receive advance notice of any changes to the syllabus through myCourses/email.",
     "crumbs": [
       "Syllabus"
+    ]
+  },
+  {
+    "objectID": "lectures.html",
+    "href": "lectures.html",
+    "title": "Lectures",
+    "section": "",
+    "text": "Schedule\nSlides for the course will be posted here prior to the lecture in which they occur. I will do my best to keep on top of them and I would like to have them be in both a PDF and HTML format so that it is easy to access for everyone.\n\n\n\nWeek\nDate\nTopic\nLecture Slides\n\n\n\n\n1\n08/27\nGetting Started\nWeek 1\n\n\n-\n08/29\nEasing into R\nSlides\n\n\n2\n09/03\nResearch Design & Stats\nSlides\n\n\n-\n09/05\nR Workflow\nSlides\n\n\n3\n09/10\nVisualizing\n\n\n\n-\n09/12\nData Wrangling\n\n\n\n4\n09/17\nData Wrangling\n\n\n\n-\n09/19\nDescriptives\n\n\n\n5\n09/24\nDescriptives\n\n\n\n-\n09/26\nStatistical Thinking\n\n\n\n6\n10/01\nANOVA\n\n\n\n-\n10/03\nANOVA\n\n\n\n7\n10/08\nRegression\n\n\n\n-\n10/10\nRegression\n\n\n\n8\n10/15\nNO CLASS\n\n\n\n-\n10/17\nProbability, Distributions & Inferences\n\n\n\n9\n10/22\nProbability, Distributions & Inferences\n\n\n\n-\n10/24\nHypothesis Testing & Power\n\n\n\n10\n10/29\nHypothesis Testing & Power\n\n\n\n-\n10/31\nCategorical Data Analysis\n\n\n\n11\n11/05\nCategorical Data Analysis\n\n\n\n-\n11/07\nComparing Means\n\n\n\n12\n11/12\nComparing Means\n\n\n\n-\n11/14\nANOVA\n\n\n\n13\n11/19\nANOVA\n\n\n\n-\n11/21\nRegression\n\n\n\n14\n11/26\nRegression\n\n\n\n-\n11/28\nNO CLASS\n\n\n\n15\n12/03\n\n\n\n\n-\n12/05\n\n\n\n\nFinals"
+  },
+  {
+    "objectID": "homework.html",
+    "href": "homework.html",
+    "title": "Homework Assignments",
+    "section": "",
+    "text": "Homework assignments will be posted here. You will be able to access the assignment as well as any data or additional information that may be necessary. Submit your homework assignments via myCourses by the due date and time.\n\n\n\nWeek\nDate\nTopic\nLecture Slides\n\n\n\n\n1\n08/27\n\n\n\n\n-\n08/29\n\n\n\n\n2\n09/03\n\n\n\n\n-\n09/05\n\n\n\n\n3\n09/10\n\n\n\n\n-\n09/12\n\n\n\n\n4\n09/17\n\n\n\n\n-\n09/19\n\n\n\n\n5\n09/24\n\n\n\n\n-\n09/26\n\n\n\n\n6\n10/01\n\n\n\n\n-\n10/03\n\n\n\n\n7\n10/08\n\n\n\n\n-\n10/10\n\n\n\n\n8\n10/15\nNO CLASS\n\n\n\n-\n10/17\n\n\n\n\n9\n10/22\n\n\n\n\n-\n10/24\n\n\n\n\n10\n10/29\n\n\n\n\n-\n10/31\n\n\n\n\n11\n11/05\n\n\n\n\n-\n11/07\n\n\n\n\n12\n11/12\n\n\n\n\n-\n11/14\n\n\n\n\n13\n11/19\n\n\n\n\n-\n11/21\n\n\n\n\n14\n11/26\n\n\n\n\n-\n11/28\nNO CLASS\n\n\n\n15\n12/03\n\n\n\n\n-\n12/05\n\n\n\n\nFinals",
+    "crumbs": [
+      "Homework Assignments"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PSYC 640: Graduate Statistics",
+    "section": "",
+    "text": "This course is the introduction to statistics for graduate students. The goal of the course is to provide a grounding in statistical concepts, methods and application to research. I aim to increase student’s confidence in using these techniques and introducing them to R. Topics will range from including mathematical conceptualizations to practical application with various techniques ranging from descriptive statistics to ending with regression.\nThe course will be broken up into two main sections. The first will be getting used to using R and the practicalities of performing a data analysis. The second section will then “pop the hood” of these tools with a deeper understanding of the how and why.\n\n\nThis course reviews critical concepts and data analysis methods in descriptive and inferential statistics. Basic and advanced material will be presented on topics that include measurement, descriptive and inferential data analyses for single and multiple group designs, and computer applications. There will be an emphasis on Open Science practices, especially reproducibility. Course content will be taught through lectures, discussion, and applied data analysis exercises. Throughout the course, I will try to maintain an emphasis on both the basic theory behind the statistics and its practical application to data sets.\n\n\n\nLecture: Tuesdays & Thursdays, 11:00am - 12:15pm, Liberal Arts 3233\n\n\n\nDustin Haraden – dxhgsh@rit.edu\n\nOffice: EAS 3378\nOffice Hours: Tuesdays & Wednesdays 12:30 – 2:00pm or By Appointment",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#course-description",
+    "href": "index.html#course-description",
+    "title": "PSYC 640: Graduate Statistics",
+    "section": "",
+    "text": "This course reviews critical concepts and data analysis methods in descriptive and inferential statistics. Basic and advanced material will be presented on topics that include measurement, descriptive and inferential data analyses for single and multiple group designs, and computer applications. There will be an emphasis on Open Science practices, especially reproducibility. Course content will be taught through lectures, discussion, and applied data analysis exercises. Throughout the course, I will try to maintain an emphasis on both the basic theory behind the statistics and its practical application to data sets.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#meeting-time-and-location",
+    "href": "index.html#meeting-time-and-location",
+    "title": "PSYC 640: Graduate Statistics",
+    "section": "",
+    "text": "Lecture: Tuesdays & Thursdays, 11:00am - 12:15pm, Liberal Arts 3233",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#instructor",
+    "href": "index.html#instructor",
+    "title": "PSYC 640: Graduate Statistics",
+    "section": "",
+    "text": "Dustin Haraden – dxhgsh@rit.edu\n\nOffice: EAS 3378\nOffice Hours: Tuesdays & Wednesdays 12:30 – 2:00pm or By Appointment",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#textbook",
+    "href": "index.html#textbook",
+    "title": "PSYC 640: Graduate Statistics",
+    "section": "Textbook",
+    "text": "Textbook\nWe will primarily be referring to chapters in the following textbooks:\n\nLearning Statistics with R by Danielle Navarro.\nR for Data Science (2e) (Wickham, Çetinkaya-Rundel, & Grolemund, 2023)\nOpenIntro Statistics 4th ed. (Diez, Barr, & Cetinkaya-Rundel, 2022)\n\nThese textbook is available for free online and able to be downloaded. You may choose to purchase a paper copy if you wish, but it is not required.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#r-and-rstudio",
+    "href": "index.html#r-and-rstudio",
+    "title": "PSYC 640: Graduate Statistics",
+    "section": "R and RStudio",
+    "text": "R and RStudio\nStudents must have the latest version of R as well as the RStudio GUI. Both applications are free and can be found here.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "previous-years.html",
+    "href": "previous-years.html",
+    "title": "Previous Years",
+    "section": "",
+    "text": "This course has been taught for a number of years, but this instructor has only started teaching it in Fall 2023. Below are previous iterations of the course in case you would like to check out how it has progressed!",
+    "crumbs": [
+      "Previous Years"
+    ]
+  },
+  {
+    "objectID": "previous-years.html#overview",
+    "href": "previous-years.html#overview",
+    "title": "Previous Years",
+    "section": "",
+    "text": "This course has been taught for a number of years, but this instructor has only started teaching it in Fall 2023. Below are previous iterations of the course in case you would like to check out how it has progressed!",
+    "crumbs": [
+      "Previous Years"
+    ]
+  },
+  {
+    "objectID": "previous-years.html#fall-2023",
+    "href": "previous-years.html#fall-2023",
+    "title": "Previous Years",
+    "section": "Fall 2023",
+    "text": "Fall 2023\nWebsite",
+    "crumbs": [
+      "Previous Years"
+    ]
+  },
+  {
+    "objectID": "lectures/unit4_data-wrangler/index.html",
+    "href": "lectures/unit4_data-wrangler/index.html",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "",
+    "text": "During this section, we will highlight the utility of the dplyr package and further dive into the tidyverse. For this lecture, have the datasets downloaded and put in the appropriate place in your files\nThis is currently situated as a document which you can find below:",
+    "crumbs": [
+      "Lectures",
+      "4 - Data Wrangling"
+    ]
+  },
+  {
+    "objectID": "lectures/unit4_data-wrangler/index.html#link-to-document",
+    "href": "lectures/unit4_data-wrangler/index.html#link-to-document",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Link to Document",
+    "text": "Link to Document\nThe instructor is working to put these into some beautiful slides :)\nFull Screen",
+    "crumbs": [
+      "Lectures",
+      "4 - Data Wrangling"
     ]
   },
   {
