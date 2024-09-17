@@ -8,10 +8,10 @@
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.57">
+  <meta name="generator" content="quarto-1.4.555">
 
   <meta name="author" content="Dustin Haraden, PhD">
-  <title>PSYC 640 2024 – Unit 4 - Data Wrangling</title>
+  <title>PSYC 640 2024 - Unit 4 - Data Wrangling</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -42,7 +42,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -576,6 +576,11 @@ Dustin Haraden, PhD
 <section id="compute-new-variable" class="slide level2">
 <h2>Compute new variable</h2>
 <p>We often need to make a sum/mean score for a variable of interest</p>
+<p>The <code>mutate()</code> function is most commonly used to add new columns to your data frame that are functions of existing columns.</p>
+<p><code>mutate()</code> requires data as its first argument, followed by a set of expressions defining new columns.</p>
+<ul>
+<li><strong>Note</strong>: New variables are automatically added at the end of the data frame (scroll to the right to see them)</li>
+</ul>
 <p>For example, in the <code>mod_sleep_data</code>, we have the <a href="https://nasemso.org/wp-content/uploads/neuro-epworthsleepscale.pdf" target="_blank">Epworth Sleepiness Scale</a></p>
 <p>Take a look at the scoring of the ESS and compute the total score labelled <code>ess_total</code></p>
 </section>
@@ -586,7 +591,7 @@ Dustin Haraden, PhD
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="co"># We will assign it to the same dataset</span></span>
 <span id="cb11-2"><a></a>mod_sleep_data <span class="ot">&lt;-</span> mod_sleep_data <span class="sc">%&gt;%</span> </span>
 <span id="cb11-3"><a></a>  <span class="fu">mutate</span>(<span class="at">ess_total =</span> ESS1 <span class="sc">+</span> ESS2 <span class="sc">+</span> ESS3 <span class="sc">+</span> </span>
-<span id="cb11-4"><a></a>           ESS4 <span class="sc">+</span> ESS5 <span class="sc">+</span> ESS6 <span class="sc">+</span> ESS7)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-4"><a></a>           ESS4 <span class="sc">+</span> ESS5 <span class="sc">+</span> ESS6 <span class="sc">+</span> ESS7 <span class="sc">+</span> ESS8)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="visualize" class="slide level2">
@@ -602,8 +607,179 @@ Dustin Haraden, PhD
 <li class="fragment">But why are there some above 24??</li>
 </ul>
 </div>
+</section>
+<section id="ess-variables" class="slide level2">
+<h2>ESS Variables</h2>
+<p>The original items are supposed to be on a 0-3 scale</p>
+<p>The data that we have are on a 1-4 scale</p>
+<p><strong><em>What should we do?!</em></strong></p>
+</section>
+<section id="ess-rescale" class="slide level2">
+<h2>ESS Rescale</h2>
+<p>We could subtract 1 from each item before creating another sum</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>mod_sleep_data <span class="ot">&lt;-</span> mod_sleep_data <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a></a>  <span class="fu">mutate</span>(<span class="at">ESS1m1 =</span> ESS1 <span class="sc">-</span> <span class="dv">1</span>, </span>
+<span id="cb13-3"><a></a>         <span class="at">ESS2m1 =</span> ESS2 <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb13-4"><a></a>         <span class="at">ESS3m1 =</span> ESS3 <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb13-5"><a></a>         <span class="at">ESS4m1 =</span> ESS4 <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb13-6"><a></a>         <span class="at">ESS5m1 =</span> ESS5 <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb13-7"><a></a>         <span class="at">ESS6m1 =</span> ESS6 <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb13-8"><a></a>         <span class="at">ESS7m1 =</span> ESS7 <span class="sc">-</span> <span class="dv">1</span>, </span>
+<span id="cb13-9"><a></a>         <span class="at">ESS8m1 =</span> ESS8 <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-10"><a></a>  <span class="fu">mutate</span>(<span class="at">ess_total2 =</span> ESS1m1 <span class="sc">+</span> ESS2m1 <span class="sc">+</span> ESS3m1 <span class="sc">+</span> </span>
+<span id="cb13-11"><a></a>           ESS4m1 <span class="sc">+</span> ESS5m1 <span class="sc">+</span> ESS6m1 <span class="sc">+</span> ESS7m1 <span class="sc">+</span> ESS8m1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="ess-rescale-1" class="slide level2">
+<h2>ESS Rescale</h2>
+<p>Or we could combine all the <code>1</code>’s that we are subtracting and just take that from the total score</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>mod_sleep_data <span class="ot">&lt;-</span> mod_sleep_data <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a></a>  <span class="fu">mutate</span>(<span class="at">ess_total =</span> ESS1 <span class="sc">+</span> ESS2 <span class="sc">+</span> ESS3 <span class="sc">+</span> </span>
+<span id="cb14-3"><a></a>           ESS4 <span class="sc">+</span> ESS5 <span class="sc">+</span> ESS6 <span class="sc">+</span> ESS7 <span class="sc">+</span> ESS8) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-4"><a></a>  <span class="fu">mutate</span>(<span class="at">ess_total3 =</span> ess_total<span class="dv">-8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="ess-rescale-2" class="slide level2">
+<h2>ESS Rescale</h2>
+<p>Let’s see what the differences are between these methods</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>mod_sleep_data <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">"_total"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ess_total ess_total2 ess_total3
+1        20         12         12
+2        20         12         12
+3        16          8          8
+4        20         12         12
+5        13          5          5
+6        22         14         14</code></pre>
+</div>
+</div>
+</section>
+<section id="rescaling-conclusion" class="slide level2">
+<h2>Rescaling Conclusion</h2>
+<p>It is good to always know what the original scaling needs to be (e.g., 1-4 or 0-3)</p>
+<p>Extremely important to visualize the data! <strong>ALWAYS VISUALIZE</strong></p>
+<p>There is also another way to allow for the <code>sum()</code> function in <code>mutate()</code>, but we’ll get to that later</p>
+</section>
+<section id="attention-checks" class="slide level2">
+<h2>Attention Checks</h2>
 
-<div class="quarto-auto-generated-content">
+<img data-src="../..\images/attention.webp" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="how-do-we-know-participants-were-paying-attention" class="slide level2">
+<h2>How do we know participants were paying attention?</h2>
+<p>You may have noticed the <code>attention</code> variables throughout.</p>
+<p>These are “attention checks” that researchers put in to…um….check the attention of the participants. It’s right in the name.</p>
+<p>For this survey, they were nonsensical questions that were embedded to look like the others.</p>
+</section>
+<section class="slide level2">
+
+<table class="caption-top" style="width:99%;">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 67%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Var Name</th>
+<th>Question</th>
+<th>Responses</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>attention1</td>
+<td><em>How often do you breathe in bed?</em></td>
+<td>1-5 (Never to Always)</td>
+</tr>
+<tr class="even">
+<td>attention2</td>
+<td><em>How often have you used a screen device to steal over a million dollars?</em></td>
+<td>1-5 (Never to Every Day)</td>
+</tr>
+<tr class="odd">
+<td>attention3</td>
+<td><em>After 6:00 in the evening…Choose 60%</em></td>
+<td><p>1-6 (Never to Always)</p>
+<p>4 = 60%</p></td>
+</tr>
+<tr class="even">
+<td>attention4</td>
+<td><em>I go to bed and know that a magical train will literally take me to see Santa.</em></td>
+<td>1-6 (Never to Always)</td>
+</tr>
+<tr class="odd">
+<td>attention5</td>
+<td><em>I have gone 30 days or more without sleeping at all.</em></td>
+<td>1-6 (Never to Always)</td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section>
+<section id="recoding-variables" class="title-slide slide level1 center">
+<h1>Recoding Variables</h1>
+
+<img data-src="../..\images/matrix.gif" class="quarto-figure quarto-figure-center r-stretch" width="548"></section>
+<section id="using-recode" class="slide level2">
+<h2>Using <code>recode()</code></h2>
+<p>We can combine our <code>mutate()</code> with this new function to produce the results we want</p>
+<p><a href="https://www.statology.org/recode-dplyr/" target="_blank">Nice website to explain the process</a></p>
+<div>
+<ul>
+<li><p>When using <code>recode()</code>, we have to first tell it the variable we want to recode</p></li>
+<li><p>The next arguments are how we want to recode the values</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">recode</span>(variable_name, <span class="st">"old_value"</span> <span class="ot">=</span> <span class="st">"new_value"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+</ul>
+</div>
+</section>
+<section id="putting-it-together" class="slide level2">
+<h2>Putting it together</h2>
+<p>Now let’s put this into action by recoding the attention variables</p>
+<p>Getting a <code>1</code> indicates that they were paying attention</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>mod_sleep_data <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a></a>  <span class="fu">mutate</span>(<span class="at">attention1r =</span> <span class="fu">recode</span>(attention1, </span>
+<span id="cb18-3"><a></a>                              <span class="st">`</span><span class="at">1</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>, <span class="co">#NOTICE THE BACKTICKS</span></span>
+<span id="cb18-4"><a></a>                              <span class="st">`</span><span class="at">2</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb18-5"><a></a>                              <span class="st">`</span><span class="at">3</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb18-6"><a></a>                              <span class="st">`</span><span class="at">4</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb18-7"><a></a>                              <span class="st">`</span><span class="at">5</span><span class="st">`</span><span class="ot">=</span><span class="dv">1</span>)) <span class="co">#be sure to finish the rest</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="create-composite-attention-score" class="slide level2">
+<h2>Create composite attention score</h2>
+<p>Let’s make a total score for the attention variable so that we can get rid of folks who are not paying attention</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>mod_sleep_data <span class="ot">&lt;-</span> mod_sleep_data <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a></a>  <span class="fu">mutate</span>(<span class="at">att_sum =</span> (attention1r <span class="sc">+</span> attention2r <span class="sc">+</span> attention3r <span class="sc">+</span></span>
+<span id="cb19-3"><a></a>                      attention4r <span class="sc">+</span> attention5r))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong><em>OR</em></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>mod_sleep_data <span class="ot">&lt;-</span> mod_sleep_data <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb20-3"><a></a>  <span class="fu">mutate</span>(<span class="at">att_sum =</span> <span class="fu">sum</span>(attention1r, attention2r, attention3r,</span>
+<span id="cb20-4"><a></a>                      attention4r, attention5r)) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-5"><a></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="visualize-1" class="slide level2">
+<h2>Visualize</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>mod_sleep_data <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(att_sum)) <span class="sc">+</span> </span>
+<span id="cb21-3"><a></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch"><div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
@@ -930,7 +1106,18 @@ Dustin Haraden, PhD
         }
         return false;
       }
-      const onCopySuccess = function(e) {
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -962,29 +1149,7 @@ Dustin Haraden, PhD
         }, 1000);
         // clear code selection
         e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
       });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        // For code content inside modals, clipBoardJS needs to be initialized with a container option
-        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp("https:\/\/dharaden\.github\.io\/psyc640\/");
@@ -992,7 +1157,7 @@ Dustin Haraden, PhD
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

@@ -202,6 +202,12 @@ mod_sleep_data %>%
 
 We often need to make a sum/mean score for a variable of interest
 
+The `mutate()` function is most commonly used to add new columns to your data frame that are functions of existing columns.
+
+`mutate()` requires data as its first argument, followed by a set of expressions defining new columns.
+
+-   **Note**: New variables are automatically added at the end of the data frame (scroll to the right to see them)
+
 For example, in the `mod_sleep_data`, we have the [Epworth Sleepiness Scale](https://nasemso.org/wp-content/uploads/neuro-epworthsleepscale.pdf){target="_blank"}
 
 Take a look at the scoring of the ESS and compute the total score labelled `ess_total`
@@ -294,6 +300,169 @@ mod_sleep_data %>%
 
 It is good to always know what the original scaling needs to be (e.g., 1-4 or 0-3)
 
-Extremely important to visualize the data! ALWAYS VISUALIZE
+Extremely important to visualize the data! **ALWAYS VISUALIZE**
 
 There is also another way to allow for the `sum()` function in `mutate()`, but we'll get to that later
+
+------------------------------------------------------------------------
+
+## Attention Checks
+
+![](/images/attention.webp){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## How do we know participants were paying attention?
+
+You may have noticed the `attention` variables throughout.
+
+These are "attention checks" that researchers put in to...um....check the attention of the participants. It's right in the name.
+
+For this survey, they were nonsensical questions that were embedded to look like the others.
+
+------------------------------------------------------------------------
+
++------------+-----------------------------------------------------------------------------------+--------------------------+
+| Var Name   | Question                                                                          | Responses                |
++============+===================================================================================+==========================+
+| attention1 | *How often do you breathe in bed?*                                                | 1-5 (Never to Always)    |
++------------+-----------------------------------------------------------------------------------+--------------------------+
+| attention2 | *How often have you used a screen device to steal over a million dollars?*        | 1-5 (Never to Every Day) |
++------------+-----------------------------------------------------------------------------------+--------------------------+
+| attention3 | *After 6:00 in the evening...Choose 60%*                                          | 1-6 (Never to Always)    |
+|            |                                                                                   |                          |
+|            |                                                                                   | 4 = 60%                  |
++------------+-----------------------------------------------------------------------------------+--------------------------+
+| attention4 | *I go to bed and know that a magical train will literally take me to see Santa.*  | 1-6 (Never to Always)    |
++------------+-----------------------------------------------------------------------------------+--------------------------+
+| attention5 | *I have gone 30 days or more without sleeping at all.*                            | 1-6 (Never to Always)    |
++------------+-----------------------------------------------------------------------------------+--------------------------+
+
+# Recoding Variables
+
+![](/images/matrix.gif){fig-align="center" width="548"}
+
+------------------------------------------------------------------------
+
+## Using `recode()`
+
+We can combine our `mutate()` with this new function to produce the results we want
+
+[Nice website to explain the process](https://www.statology.org/recode-dplyr/){target="_blank"}
+
+::: nonincremental
+-   When using `recode()`, we have to first tell it the variable we want to recode
+
+-   The next arguments are how we want to recode the values
+
+    ```{r eval = FALSE}
+    recode(variable_name, "old_value" = "new_value")
+    ```
+:::
+
+------------------------------------------------------------------------
+
+## Putting it together
+
+Now let's put this into action by recoding the attention variables
+
+Getting a `1` indicates that they were paying attention
+
+```{r eval=FALSE}
+mod_sleep_data %>% 
+  mutate(attention1r = recode(attention1, 
+                              `1`=0, #NOTICE THE BACKTICKS
+                              `2`=0,
+                              `3`=0,
+                              `4`=0,
+                              `5`=1)) #be sure to finish the rest
+```
+
+```{r include=FALSE}
+mod_sleep_data <- mod_sleep_data %>% 
+  mutate(attention1r = recode(attention1, 
+                              `1`=0,
+                              `2`=0,
+                              `3`=0,
+                              `4`=0,
+                              `5`=1),
+         attention2r = recode(attention2, 
+                              `1`=1,
+                              `2`=0,
+                              `3`=0,
+                              `4`=0,
+                              `5`=0),
+         attention3r = recode(attention3, 
+                              `1`=0,
+                              `2`=0,
+                              `3`=0,
+                              `4`=1,
+                              `5`=0),
+         attention4r = recode(attention4, 
+                              `1`=1,
+                              `2`=0,
+                              `3`=0,
+                              `4`=0,
+                              `5`=0,
+                              `6`=0),
+         attention5r = recode(attention5, 
+                              `1`=1,
+                              `2`=0,
+                              `3`=0,
+                              `4`=0,
+                              `5`=0,
+                              `6`=0))
+```
+
+------------------------------------------------------------------------
+
+## Create composite attention score
+
+Let's make a total score for the attention variable so that we can get rid of folks who are not paying attention
+
+```{r}
+mod_sleep_data <- mod_sleep_data %>% 
+  mutate(att_sum = (attention1r + attention2r + attention3r +
+                      attention4r + attention5r))
+```
+
+***OR***
+
+```{r eval=FALSE}
+mod_sleep_data <- mod_sleep_data %>% 
+  rowwise() %>% 
+  mutate(att_sum = sum(attention1r, attention2r, attention3r,
+                      attention4r, attention5r)) %>% 
+  ungroup()
+```
+
+------------------------------------------------------------------------
+
+## Visualize
+
+```{r}
+mod_sleep_data %>% 
+  ggplot(aes(att_sum)) + 
+  geom_bar() + 
+  geom_text(stat = "count", #Tells it to calculate the statistic
+            aes(label=after_stat(count))) + #Puts label of the count
+  theme_minimal() #or theme_bw
+```
+
+# Your turn!
+
+------------------------------------------------------------------------
+
+## Steps to do if we have time
+
+Create two new datasets labeled (1) “data_attend” and (2) “data_distract”. In each dataset have those who were paying attention in the “data_attend” and those who were not in the “data_distract”. Paying attention is operationalized as having a score of 5 on the aggregated variable.
+
+Get the sample size of each of these datasets (use Google to search for things like number of rows)
+
+What is the mean/average of `ess_total` in each of the samples?
+
+# Next Class
+
+Starting to look at descriptive statistics and how to make these nice tables
+
+Will begin Lab 1 (as long as we have time to do so)
