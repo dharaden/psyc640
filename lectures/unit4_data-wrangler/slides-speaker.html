@@ -576,6 +576,11 @@ Dustin Haraden, PhD
 <section id="compute-new-variable" class="slide level2">
 <h2>Compute new variable</h2>
 <p>We often need to make a sum/mean score for a variable of interest</p>
+<p>The <code>mutate()</code> function is most commonly used to add new columns to your data frame that are functions of existing columns.</p>
+<p><code>mutate()</code> requires data as its first argument, followed by a set of expressions defining new columns.</p>
+<ul>
+<li><strong>Note</strong>: New variables are automatically added at the end of the data frame (scroll to the right to see them)</li>
+</ul>
 <p>For example, in the <code>mod_sleep_data</code>, we have the <a href="https://nasemso.org/wp-content/uploads/neuro-epworthsleepscale.pdf" target="_blank">Epworth Sleepiness Scale</a></p>
 <p>Take a look at the scoring of the ESS and compute the total score labelled <code>ess_total</code></p>
 </section>
@@ -657,15 +662,148 @@ Dustin Haraden, PhD
 <section id="rescaling-conclusion" class="slide level2">
 <h2>Rescaling Conclusion</h2>
 <p>It is good to always know what the original scaling needs to be (e.g., 1-4 or 0-3)</p>
-<p>Extremely important to visualize the data! ALWAYS VISUALIZE</p>
+<p>Extremely important to visualize the data! <strong>ALWAYS VISUALIZE</strong></p>
 <p>There is also another way to allow for the <code>sum()</code> function in <code>mutate()</code>, but we’ll get to that later</p>
+</section>
+<section id="attention-checks" class="slide level2">
+<h2>Attention Checks</h2>
+
+<img data-src="../../images/attention.webp" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="how-do-we-know-participants-were-paying-attention" class="slide level2">
+<h2>How do we know participants were paying attention?</h2>
+<p>You may have noticed the <code>attention</code> variables throughout.</p>
+<p>These are “attention checks” that researchers put in to…um….check the attention of the participants. It’s right in the name.</p>
+<p>For this survey, they were nonsensical questions that were embedded to look like the others.</p>
+</section>
+<section class="slide level2">
+
+<table class="caption-top" style="width:99%;">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 67%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Var Name</th>
+<th>Question</th>
+<th>Responses</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>attention1</td>
+<td><em>How often do you breathe in bed?</em></td>
+<td>1-5 (Never to Always)</td>
+</tr>
+<tr class="even">
+<td>attention2</td>
+<td><em>How often have you used a screen device to steal over a million dollars?</em></td>
+<td>1-5 (Never to Every Day)</td>
+</tr>
+<tr class="odd">
+<td>attention3</td>
+<td><em>After 6:00 in the evening…Choose 60%</em></td>
+<td><p>1-6 (Never to Always)</p>
+<p>4 = 60%</p></td>
+</tr>
+<tr class="even">
+<td>attention4</td>
+<td><em>I go to bed and know that a magical train will literally take me to see Santa.</em></td>
+<td>1-6 (Never to Always)</td>
+</tr>
+<tr class="odd">
+<td>attention5</td>
+<td><em>I have gone 30 days or more without sleeping at all.</em></td>
+<td>1-6 (Never to Always)</td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section>
+<section id="recoding-variables" class="title-slide slide level1 center">
+<h1>Recoding Variables</h1>
+
+<img data-src="../../images/matrix.gif" class="quarto-figure quarto-figure-center r-stretch" width="548"></section>
+<section id="using-recode" class="slide level2">
+<h2>Using <code>recode()</code></h2>
+<p>We can combine our <code>mutate()</code> with this new function to produce the results we want</p>
+<p><a href="https://www.statology.org/recode-dplyr/" target="_blank">Nice website to explain the process</a></p>
+<div>
+<ul>
+<li><p>When using <code>recode()</code>, we have to first tell it the variable we want to recode</p></li>
+<li><p>The next arguments are how we want to recode the values</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">recode</span>(variable_name, <span class="st">"old_value"</span> <span class="ot">=</span> <span class="st">"new_value"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+</ul>
+</div>
+</section>
+<section id="putting-it-together" class="slide level2">
+<h2>Putting it together</h2>
+<p>Now let’s put this into action by recoding the attention variables</p>
+<p>Getting a <code>1</code> indicates that they were paying attention</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>mod_sleep_data <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a></a>  <span class="fu">mutate</span>(<span class="at">attention1r =</span> <span class="fu">recode</span>(attention1, </span>
+<span id="cb18-3"><a></a>                              <span class="st">`</span><span class="at">1</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>, <span class="co">#NOTICE THE BACKTICKS</span></span>
+<span id="cb18-4"><a></a>                              <span class="st">`</span><span class="at">2</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb18-5"><a></a>                              <span class="st">`</span><span class="at">3</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb18-6"><a></a>                              <span class="st">`</span><span class="at">4</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb18-7"><a></a>                              <span class="st">`</span><span class="at">5</span><span class="st">`</span><span class="ot">=</span><span class="dv">1</span>)) <span class="co">#be sure to finish the rest</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="create-composite-attention-score" class="slide level2">
+<h2>Create composite attention score</h2>
+<p>Let’s make a total score for the attention variable so that we can get rid of folks who are not paying attention</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>mod_sleep_data <span class="ot">&lt;-</span> mod_sleep_data <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a></a>  <span class="fu">mutate</span>(<span class="at">att_sum =</span> (attention1r <span class="sc">+</span> attention2r <span class="sc">+</span> attention3r <span class="sc">+</span></span>
+<span id="cb19-3"><a></a>                      attention4r <span class="sc">+</span> attention5r))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong><em>OR</em></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>mod_sleep_data <span class="ot">&lt;-</span> mod_sleep_data <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb20-3"><a></a>  <span class="fu">mutate</span>(<span class="at">att_sum =</span> <span class="fu">sum</span>(attention1r, attention2r, attention3r,</span>
+<span id="cb20-4"><a></a>                      attention4r, attention5r)) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-5"><a></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="visualize-1" class="slide level2">
+<h2>Visualize</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>mod_sleep_data <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(att_sum)) <span class="sc">+</span> </span>
+<span id="cb21-3"><a></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
+<span id="cb21-4"><a></a>  <span class="fu">geom_text</span>(<span class="at">stat =</span> <span class="st">"count"</span>, <span class="co">#Tells it to calculate the statistic</span></span>
+<span id="cb21-5"><a></a>            <span class="fu">aes</span>(<span class="at">label=</span><span class="fu">after_stat</span>(count))) <span class="sc">+</span> <span class="co">#Puts label of the count</span></span>
+<span id="cb21-6"><a></a>  <span class="fu">theme_minimal</span>() <span class="co">#or theme_bw</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch"></section></section>
+<section>
+<section id="your-turn" class="title-slide slide level1 center">
+<h1>Your turn!</h1>
+
+</section>
+<section id="steps-to-do-if-we-have-time" class="slide level2">
+<h2>Steps to do if we have time</h2>
+<p>Create two new datasets labeled (1) “data_attend” and (2) “data_distract”. In each dataset have those who were paying attention in the “data_attend” and those who were not in the “data_distract”. Paying attention is operationalized as having a score of 5 on the aggregated variable.</p>
+<p>Get the sample size of each of these datasets (use Google to search for things like number of rows)</p>
+<p>What is the mean/average of <code>ess_total</code> in each of the samples?</p>
+</section></section>
+<section id="next-class" class="title-slide slide level1 center">
+<h1>Next Class</h1>
+<p>Starting to look at descriptive statistics and how to make these nice tables</p>
+<p>Will begin Lab 1 (as long as we have time to do so)</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 

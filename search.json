@@ -1,136 +1,178 @@
 [
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#reminders",
-    "href": "lectures/wk3_visualizations/slides.html#reminders",
-    "title": "Figures: Using ggplot2",
+    "objectID": "lectures/unit4_data-wrangler/slides.html#reminders",
+    "href": "lectures/unit4_data-wrangler/slides.html#reminders",
+    "title": "Unit 4 - Data Wrangling",
     "section": "Reminders",
     "text": "Reminders\n\n\nJournal Entries\nReverse Results - Due 9/17"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#last-class",
-    "href": "lectures/wk3_visualizations/slides.html#last-class",
-    "title": "Figures: Using ggplot2",
+    "objectID": "lectures/unit4_data-wrangler/slides.html#last-class",
+    "href": "lectures/unit4_data-wrangler/slides.html#last-class",
+    "title": "Unit 4 - Data Wrangling",
     "section": "Last Class",
-    "text": "Last Class\n\n\nThe workflow\n\nStarting with a Project and going from there"
+    "text": "Last Class\n\n\nEntry into the tidyverse with dplyr"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#today",
-    "href": "lectures/wk3_visualizations/slides.html#today",
-    "title": "Figures: Using ggplot2",
+    "objectID": "lectures/unit4_data-wrangler/slides.html#today",
+    "href": "lectures/unit4_data-wrangler/slides.html#today",
+    "title": "Unit 4 - Data Wrangling",
     "section": "Today…",
-    "text": "Today…\nWorking with ggplot2 to get some really fancy visualizations!\nMaybe integrating some generative AI (ChatGPT) to help us out too\n\n# File management\nlibrary(here)\n# for dplyr, ggplot2\nlibrary(tidyverse)\n#Loading data\nlibrary(rio)\n\n#for the penguins dataset\n#install.packages('palmerpenguins')\nlibrary(palmerpenguins)\n\n#Remove Scientific Notation \noptions(scipen=999)"
+    "text": "Today…\nContinuing on this trend to get more comfortable with all that dplyr can do!\nThis is a nice website that walks through a lot of this as well\n\n# File management\nlibrary(here)\n# for dplyr, ggplot2\nlibrary(tidyverse)\n#Loading data\nlibrary(rio)\n\n#Remove Scientific Notation \noptions(scipen=999)"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#starting-out",
-    "href": "lectures/wk3_visualizations/slides.html#starting-out",
-    "title": "Figures: Using ggplot2",
-    "section": "Starting out",
-    "text": "Starting out\nLet’s first start by opening our Project\nThen, create a new Notebook/Markdown Document that we will use for today\nSetup the libraries and bring in the data\n\nWe will use the “Sleep Data” file as well\n\n\n#import sleep data - Your path may be different\nsleep_data &lt;- import(here(\"lectures\", \"data\", \"Sleep_Data.csv\"))"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#but-first",
+    "href": "lectures/unit4_data-wrangler/slides.html#but-first",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "But first…",
+    "text": "But first…\nWe need to revisit how to read the ggplot2 cheatsheet!\nA lot of cheatsheets will have something that looks like this:\n\nc &lt;- ggplot(mpg, aes(hwy))\n\n## Then later on it will say\n\nc + geom_histogram(binwidth = 5)"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#take-a-look-at-the-data",
-    "href": "lectures/wk3_visualizations/slides.html#take-a-look-at-the-data",
-    "title": "Figures: Using ggplot2",
-    "section": "Take a look at the data",
-    "text": "Take a look at the data\nWill be using a dataset from the palmerpenguins library (link) which is a dataset about…penguins. This function will pull that data into our environment:\n\ndata(penguins)"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#what-is-c",
+    "href": "lectures/unit4_data-wrangler/slides.html#what-is-c",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "WHAT IS c?!",
+    "text": "WHAT IS c?!\nc is just an object that is referring to the first line that we have in a ggplot function\n\nc &lt;- ggplot(mpg, aes(hwy))\n\n## So this...\nc + geom_histogram(binwidth = 5)\n\n## Is the same as this...\nmpg %&gt;% \n  ggplot(aes(hwy)) + \n  geom_histogram(binwidth = 5)"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#ggplot2-from-the-tidyverse",
-    "href": "lectures/wk3_visualizations/slides.html#ggplot2-from-the-tidyverse",
-    "title": "Figures: Using ggplot2",
-    "section": "ggplot2 from the tidyverse",
-    "text": "ggplot2 from the tidyverse\nSince we have already installed and loaded the library, we don’t have to do anything else at this point!\nggplot2 follows the “grammar of graphics”\n\nTheoretical framework for creating data visualizations\nBreaks the process down into separate components:\n\n\n\nData\nAesthetics (aes)\nGeometric Objects (geoms)\n\nFaceting\nThemes"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#back-to-regular-scheduled-programming",
+    "href": "lectures/unit4_data-wrangler/slides.html#back-to-regular-scheduled-programming",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Back to regular scheduled programming",
+    "text": "Back to regular scheduled programming\nLet’s first start by opening our Project\nThen, create a new Notebook/Markdown Document that we will use for today\nSetup the libraries and bring in the data\n\nWe will use the “Sleep Data” file\n\n\n#import sleep data - Your path may be different\nsleep_data &lt;- import(here(\"lectures\", \"data\", \"Sleep_Data.csv\"))"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#grammar-of-graphics",
-    "href": "lectures/wk3_visualizations/slides.html#grammar-of-graphics",
-    "title": "Figures: Using ggplot2",
-    "section": "Grammar of Graphics",
-    "text": "Grammar of Graphics"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#variable-renaming",
+    "href": "lectures/unit4_data-wrangler/slides.html#variable-renaming",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Variable Renaming",
+    "text": "Variable Renaming\nOoof…These variable names look terrible! How do we update those? Our brains would break having to remember how to connect them and having to reference another document. \nFirst, let’s get rid of the variables that we don’t need for the moment: \n\nUse select() to remove the following variables: \n\nsleep_data &lt;- sleep_data %&gt;% \n  select(-c('StartDate', 'EndDate', 'Status', 'Progress', \n  'Duration__in_seconds_', 'Finished', 'RecordedDate',\n  'DistributionChannel', 'UserLanguage', 'SC0', 'SC1',\n  'SC2', 'SC3', 'SC4', 'SC5', 'Attention'))"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#ggplot2-syntax",
-    "href": "lectures/wk3_visualizations/slides.html#ggplot2-syntax",
-    "title": "Figures: Using ggplot2",
-    "section": "ggplot2 syntax",
-    "text": "ggplot2 syntax\nThere is a basic structure to create a plot within ggplot2, and consists of at least these three things:\n\nA Data Set\nCoordinate System\nGeoms - visual marks to represent the data points\n\nIn R it looks like this:\n\nggplot(data = &lt;DATA&gt;) + \n  &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;MAPPINGS&gt;))\n\n#or how I like to do it\n&lt;DATA&gt; %&gt;% \n  ggplot(aes(&lt;MAPPINGS&gt;)) + \n  &lt;GEOM_FUNCTION&gt;()"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#extract-rows",
+    "href": "lectures/unit4_data-wrangler/slides.html#extract-rows",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Extract Rows",
+    "text": "Extract Rows\nThe ‘filter()’ function is used to subset observations based on their values.\nThe result of filtering is a data frame with the same number of columns as before but fewer rows.\nThe first argument is data and subsequent arguments are logical expressions that tell you which observations to retain in the data frame.\n\nfilter(starwars, hair_color == \"none\" | eye_color == \"black\")\n\n# A tibble: 39 × 14\n   name     height  mass hair_color skin_color eye_color birth_year sex   gender\n   &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; \n 1 Darth V…    202   136 none       white      yellow          41.9 male  mascu…\n 2 Greedo      173    74 &lt;NA&gt;       green      black           44   male  mascu…\n 3 IG-88       200   140 none       metal      red             15   none  mascu…\n 4 Bossk       190   113 none       green      red             53   male  mascu…\n 5 Lobot       175    79 none       light      blue            37   male  mascu…\n 6 Ackbar      180    83 none       brown mot… orange          41   male  mascu…\n 7 Nien Nu…    160    68 none       grey       black           NA   male  mascu…\n 8 Nute Gu…    191    90 none       mottled g… red             NA   male  mascu…\n 9 Jar Jar…    196    66 none       orange     orange          52   male  mascu…\n10 Roos Ta…    224    82 none       grey       orange          NA   male  mascu…\n# ℹ 29 more rows\n# ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,\n#   vehicles &lt;list&gt;, starships &lt;list&gt;"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#ggplot2-syntax-1",
-    "href": "lectures/wk3_visualizations/slides.html#ggplot2-syntax-1",
-    "title": "Figures: Using ggplot2",
-    "section": "ggplot2 syntax",
-    "text": "ggplot2 syntax\nLet’s start with a basic figure with palmerpenguins\nFirst we will define the data that we are using and the variables we are visualizing\n\n#the dataset is called penguins\n\npenguins %&gt;% \n  #including the variables we want to visualize\n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g))\n\nWhat happens?"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#filter-observations",
+    "href": "lectures/unit4_data-wrangler/slides.html#filter-observations",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Filter observations",
+    "text": "Filter observations\nWe can now generate a subset of observations based on a particular value\nSince the age variable has been giving us some trouble, let’s filter based on that variable to only include appropriate ages for “college aged” participants\n\n# Assigning it to a new variable\nmod_sleep_data &lt;- sleep_data %&gt;% \n  filter(age &gt;= 17, age &lt;= 25)"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#adding-in-color",
-    "href": "lectures/wk3_visualizations/slides.html#adding-in-color",
-    "title": "Figures: Using ggplot2",
-    "section": "Adding in Color",
-    "text": "Adding in Color\nMaybe we would like to have each of the points colored by their respective species\nThis information will be added to the aes() within the geom_point() layer\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g)) + \n  geom_point(aes(color = species))"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#filter-obs.---check",
+    "href": "lectures/unit4_data-wrangler/slides.html#filter-obs.---check",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Filter Obs. - Check",
+    "text": "Filter Obs. - Check\nGenerating a bar chart to see if it worked out!\n\nmod_sleep_data %&gt;% \n  ggplot(aes(age)) + \n  geom_bar()"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#including-a-fit-line",
-    "href": "lectures/wk3_visualizations/slides.html#including-a-fit-line",
-    "title": "Figures: Using ggplot2",
-    "section": "Including a fit line",
-    "text": "Including a fit line\nWhy don’t we put in a line that represents the relationship between these variables?\nWe will want to add another layer/geom\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g)) + \n  geom_point(aes(color = species)) + \n  geom_smooth()\n\n\nThat looks a little wonky…why is that? Did you get a note in the console?"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#compute-new-variable",
+    "href": "lectures/unit4_data-wrangler/slides.html#compute-new-variable",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Compute new variable",
+    "text": "Compute new variable\nWe often need to make a sum/mean score for a variable of interest\nThe mutate() function is most commonly used to add new columns to your data frame that are functions of existing columns.\nmutate() requires data as its first argument, followed by a set of expressions defining new columns.\n\nNote: New variables are automatically added at the end of the data frame (scroll to the right to see them)\n\nFor example, in the mod_sleep_data, we have the Epworth Sleepiness Scale\nTake a look at the scoring of the ESS and compute the total score labelled ess_total"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#including-a-fit-line-1",
-    "href": "lectures/wk3_visualizations/slides.html#including-a-fit-line-1",
-    "title": "Figures: Using ggplot2",
-    "section": "Including a fit line",
-    "text": "Including a fit line\nThe geom_smooth() defaults to using a loess line to fit to the data\nIn order to update that, we need to change some of the defaults for that layer and specify that we want a “linear model” or lm function to the data\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g)) + \n  geom_point(aes(color = species)) + \n  geom_smooth(method = 'lm')\n\n\nDid that look a little better?"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#ess_total",
+    "href": "lectures/unit4_data-wrangler/slides.html#ess_total",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "ess_total",
+    "text": "ess_total\nIt is a sum score with a scale of 0 - 24\n\n# We will assign it to the same dataset\nmod_sleep_data &lt;- mod_sleep_data %&gt;% \n  mutate(ess_total = ESS1 + ESS2 + ESS3 + \n           ESS4 + ESS5 + ESS6 + ESS7 + ESS8)"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#individual-fit-lines",
-    "href": "lectures/wk3_visualizations/slides.html#individual-fit-lines",
-    "title": "Figures: Using ggplot2",
-    "section": "Individual fit lines",
-    "text": "Individual fit lines\nIt might make more sense to have individual lines for each of the species instead of something that is across all\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g, \n             color = species)) + \n  geom_point() + \n  geom_smooth(method = 'lm')\n\n\nWhat did we move around from the last set of code?"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#visualize",
+    "href": "lectures/unit4_data-wrangler/slides.html#visualize",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Visualize",
+    "text": "Visualize\n\nmod_sleep_data %&gt;% \n  ggplot(aes(ess_total)) + \n  geom_bar()\n\n\n\n\nBut why are there some above 24??"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#updating-labelstitle",
-    "href": "lectures/wk3_visualizations/slides.html#updating-labelstitle",
-    "title": "Figures: Using ggplot2",
-    "section": "Updating Labels/Title",
-    "text": "Updating Labels/Title\nIt will default to including the variable names as the x and y labels, but that isn’t something that makes sense. Also would be good to have a title!\nWe add on another layer called labs() for our labels (link)\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g, \n             color = species)) + \n  geom_point() + \n  geom_smooth(method = 'lm') + \n  labs(\n    title = \"Palmer Penguins\",\n    subtitle = \"Body Mass by Flipper Length\", \n    x = \"Flipper Length (mm)\", \n    y = \"Body Mass (g)\", \n    color = \"Species\"\n  )"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#ess-variables",
+    "href": "lectures/unit4_data-wrangler/slides.html#ess-variables",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "ESS Variables",
+    "text": "ESS Variables\nThe original items are supposed to be on a 0-3 scale\nThe data that we have are on a 1-4 scale\nWhat should we do?!"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#penguin-histogram",
-    "href": "lectures/wk3_visualizations/slides.html#penguin-histogram",
-    "title": "Figures: Using ggplot2",
-    "section": "Penguin Histogram",
-    "text": "Penguin Histogram\nTaken from the website for palmerpenguins (link)\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm)) +\n    geom_histogram(aes(fill = species), \n                   alpha = 0.5, \n                   position = \"identity\")"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#ess-rescale",
+    "href": "lectures/unit4_data-wrangler/slides.html#ess-rescale",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "ESS Rescale",
+    "text": "ESS Rescale\nWe could subtract 1 from each item before creating another sum\n\nmod_sleep_data &lt;- mod_sleep_data %&gt;% \n  mutate(ESS1m1 = ESS1 - 1, \n         ESS2m1 = ESS2 - 1,\n         ESS3m1 = ESS3 - 1,\n         ESS4m1 = ESS4 - 1,\n         ESS5m1 = ESS5 - 1,\n         ESS6m1 = ESS6 - 1,\n         ESS7m1 = ESS7 - 1, \n         ESS8m1 = ESS8 - 1) %&gt;% \n  mutate(ess_total2 = ESS1m1 + ESS2m1 + ESS3m1 + \n           ESS4m1 + ESS5m1 + ESS6m1 + ESS7m1 + ESS8m1)"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#sleep-data",
-    "href": "lectures/wk3_visualizations/slides.html#sleep-data",
-    "title": "Figures: Using ggplot2",
-    "section": "Sleep Data",
-    "text": "Sleep Data\nLet’s start by looking at our data. You can either click on the dataset in the Environment or use the View(sleep_data) command. Here, I am using the head() command just to visualize a sample of the data for the slides.\n\nhead(sleep_data)\n\n            StartDate             EndDate Status Progress Duration__in_seconds_\n1 2017-08-16 13:13:06 2017-08-16 13:15:13      0      100                   126\n2 2017-08-16 13:17:16 2017-08-16 13:19:03      0      100                   106\n3 2017-11-27 16:59:07 2017-11-27 17:07:27      0      100                   499\n4 2017-11-27 18:57:16 2017-11-27 19:13:00      0      100                   943\n5 2017-11-27 18:54:35 2017-11-27 19:14:12      0      100                  1177\n6 2017-11-27 19:41:14 2017-11-27 19:46:48      0      100                   333\n  Finished        RecordedDate DistributionChannel UserLanguage Q5 Q7 Q8 Q12\n1        1 2017-08-16 13:15:14           anonymous           EN 12  2  2   3\n2        1 2017-08-16 13:19:03           anonymous           EN  1  2  2   1\n3        1 2017-11-27 17:07:27           anonymous           EN 19  1  2   1\n4        1 2017-11-27 19:13:00           anonymous           EN 18  2  2   2\n5        1 2017-11-27 19:14:13           anonymous           EN 21  1  2   2\n6        1 2017-11-27 19:46:48           anonymous           EN 18  2  1   3\n  Q13_1 Q13_2 Q13_3 Q13_4 Q13_5 Q13_6 Q13_7 Q13_8 Q13_9 Q13_10 Q14_1 Q14_2\n1     2     2     2    NA     2     2     2     2     2      2     2     2\n2     1     1     1    NA     2     3     2     3     2      3     4     2\n3     1     2     2     5     3     4     1     1     2      1     5     5\n4     3     4     5     5     5     5     5     5     5      1     5     5\n5     1     2     2     5     4     2     2     1     1      2     5     5\n6     1     2     4     5     4     2     4     4     5      4     5     5\n  Q14_3 Q14_4 Q14_5 Q14_6 Q14_7 Q14_8 Q11_1 Q11_2 Q11_3 Q11_4 Q11_5 Q11_6 Q17_1\n1     2     2     2    NA     2     2     2     3     3     4     4     3     2\n2     4     4     4    NA     4     4     4     4     4     4     4     4     2\n3     5     5     1     1     1     1     4     5     4     4     5     4     4\n4     5     5     5     1     5     5     2     3     4     3     1     1     4\n5     5     5     2     1     3     4     2     1     4     3     4     2     2\n6     5     5     4     1     4     3     1     4     2     2     4     5     2\n  Q17_2 Q17_3 Q17_4 Q18_1 Q18_2 Q18_3 Q18_4 Q18_5 Q20_1 Q20_2 Q21_1 Q21_2 Q21_3\n1     3     3     2     2     2     2     3     1     1     2     4     3     3\n2     2     1     2     3     1     1     1     1     2     3     5     4     4\n3     2     1     4     3     1     4     1     2     3     3     1     2     3\n4     4     1     3     4     1     2     1     1     4     2     5     2     1\n5     2     2     4     3     1     1     1     2     3     3     4     1     3\n6     4     3     4     4     1     1     1     4     6     5     4     4     5\n  Q21_4 Q21_5 Q21_6 Q22_1 Q22_2 Q22_3 Q22_4 Q22_5 Q23_1 Q23_2 Q23_3 Q23_4 Q23_5\n1    NA     5     3     3     2     1     2     3     4     5     3     3     2\n2    NA     2     2     2     3     4     5     5     5     5     4     3     3\n3     4     1     1     5     4     3     4     4     5     6     2     5     5\n4     4     1     1     2     5     1     6     1     6     6     2     5     6\n5     4     1     2     3     4     1     4     2     2     6     3     5     5\n6     4     1     2     2     2     3     4     3     4     5     2     3     3\n  Q23_6 Q23_7 Q23_8 Q24_1 Q24_2 Q24_3 Q24_4 Q24_5 Q25_1 Q25_2 Q25_3 Q25_4 Q25_5\n1    NA     3     3     3     3     3     3     3     3     3     3    NA     4\n2    NA     3     3     3     3     2     2     1     1     2     1    NA     1\n3     1     1     3     1     1     1     1     2     3     4     2     1     1\n4     1     3     1     1     6     2     1     1     4     2     6     1     6\n5     1     2     2     1     2     2     1     2     5     4     2     1     1\n6     1     2     4     4     5     1     2     6     6     3     5     1     3\n  Q26_1 Q26_2 Q27_1 Q27_2 SC0 SC1 SC2 SC3 SC4 SC5    id Attention\n1     3     3     3     3  19  11  19  14  82   0 15516        NA\n2     1     1     1     1  24   5  24  26  79   0 15516        NA\n3     3     1     4     1  26  13  26  23  70   0 17915        NA\n4     4     4     1     1  14  12  14  35  89   0 17648        NA\n5     5     2     5     5  16   9  16  29  76   0 17799        NA\n6     5     1     6     6  18  15  18  31  99   0 18003        NA\n\n\nWhat do these variables mean? Who does this?"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#ess-rescale-1",
+    "href": "lectures/unit4_data-wrangler/slides.html#ess-rescale-1",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "ESS Rescale",
+    "text": "ESS Rescale\nOr we could combine all the 1’s that we are subtracting and just take that from the total score\n\nmod_sleep_data &lt;- mod_sleep_data %&gt;% \n  mutate(ess_total = ESS1 + ESS2 + ESS3 + \n           ESS4 + ESS5 + ESS6 + ESS7 + ESS8) %&gt;% \n  mutate(ess_total3 = ess_total-8)"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#data-documentation",
-    "href": "lectures/wk3_visualizations/slides.html#data-documentation",
-    "title": "Figures: Using ggplot2",
-    "section": "Data Documentation",
-    "text": "Data Documentation\nIt is always important to have appropriate data documentation!\nIf you can’t look at your data and know what it means right away, you aren’t going to remember what it means later on.\nSleep Data Documentation - myCourses"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#ess-rescale-2",
+    "href": "lectures/unit4_data-wrangler/slides.html#ess-rescale-2",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "ESS Rescale",
+    "text": "ESS Rescale\nLet’s see what the differences are between these methods\n\nmod_sleep_data %&gt;% \n  select(contains(\"_total\")) %&gt;% \n  head()\n\n  ess_total ess_total2 ess_total3\n1        20         12         12\n2        20         12         12\n3        16          8          8\n4        20         12         12\n5        13          5          5\n6        22         14         14"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#visualizing-demographics",
-    "href": "lectures/wk3_visualizations/slides.html#visualizing-demographics",
-    "title": "Figures: Using ggplot2",
-    "section": "Visualizing Demographics",
-    "text": "Visualizing Demographics\n“Q5” - What is your age in years? (open text)\nThis is a free text field…is that a good way to get quality data?\nLet’s see if everyone followed directions. Check the “structure” of the variable\n\n# Here we use str() to check structure of a variable\n  # Then we state the data and the variable, linked by the $\nstr(sleep_data$Q5)\n\n int [1:1520] 12 1 19 18 21 18 18 18 18 18 ..."
+    "objectID": "lectures/unit4_data-wrangler/slides.html#rescaling-conclusion",
+    "href": "lectures/unit4_data-wrangler/slides.html#rescaling-conclusion",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Rescaling Conclusion",
+    "text": "Rescaling Conclusion\nIt is good to always know what the original scaling needs to be (e.g., 1-4 or 0-3)\nExtremely important to visualize the data! ALWAYS VISUALIZE\nThere is also another way to allow for the sum() function in mutate(), but we’ll get to that later"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#giving-it-a-try",
-    "href": "lectures/wk3_visualizations/slides.html#giving-it-a-try",
-    "title": "Figures: Using ggplot2",
-    "section": "Giving it a try",
-    "text": "Giving it a try\nUse the ggplot cheatsheet to identify an appropriate way to visualize the data\n\nAdd some color\nUpdate the title and axes\n\nWhen you are done, post your creation here!"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#attention-checks",
+    "href": "lectures/unit4_data-wrangler/slides.html#attention-checks",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Attention Checks",
+    "text": "Attention Checks"
+  },
+  {
+    "objectID": "lectures/unit4_data-wrangler/slides.html#how-do-we-know-participants-were-paying-attention",
+    "href": "lectures/unit4_data-wrangler/slides.html#how-do-we-know-participants-were-paying-attention",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "How do we know participants were paying attention?",
+    "text": "How do we know participants were paying attention?\nYou may have noticed the attention variables throughout.\nThese are “attention checks” that researchers put in to…um….check the attention of the participants. It’s right in the name.\nFor this survey, they were nonsensical questions that were embedded to look like the others."
+  },
+  {
+    "objectID": "lectures/unit4_data-wrangler/slides.html#using-recode",
+    "href": "lectures/unit4_data-wrangler/slides.html#using-recode",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Using recode()",
+    "text": "Using recode()\nWe can combine our mutate() with this new function to produce the results we want\nNice website to explain the process\n\n\nWhen using recode(), we have to first tell it the variable we want to recode\nThe next arguments are how we want to recode the values\n\nrecode(variable_name, \"old_value\" = \"new_value\")"
+  },
+  {
+    "objectID": "lectures/unit4_data-wrangler/slides.html#putting-it-together",
+    "href": "lectures/unit4_data-wrangler/slides.html#putting-it-together",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Putting it together",
+    "text": "Putting it together\nNow let’s put this into action by recoding the attention variables\nGetting a 1 indicates that they were paying attention\n\nmod_sleep_data %&gt;% \n  mutate(attention1r = recode(attention1, \n                              `1`=0, #NOTICE THE BACKTICKS\n                              `2`=0,\n                              `3`=0,\n                              `4`=0,\n                              `5`=1)) #be sure to finish the rest"
+  },
+  {
+    "objectID": "lectures/unit4_data-wrangler/slides.html#create-composite-attention-score",
+    "href": "lectures/unit4_data-wrangler/slides.html#create-composite-attention-score",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Create composite attention score",
+    "text": "Create composite attention score\nLet’s make a total score for the attention variable so that we can get rid of folks who are not paying attention\n\nmod_sleep_data &lt;- mod_sleep_data %&gt;% \n  mutate(att_sum = (attention1r + attention2r + attention3r +\n                      attention4r + attention5r))\n\nOR\n\nmod_sleep_data &lt;- mod_sleep_data %&gt;% \n  rowwise() %&gt;% \n  mutate(att_sum = sum(attention1r, attention2r, attention3r,\n                      attention4r, attention5r)) %&gt;% \n  ungroup()"
+  },
+  {
+    "objectID": "lectures/unit4_data-wrangler/slides.html#visualize-1",
+    "href": "lectures/unit4_data-wrangler/slides.html#visualize-1",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Visualize",
+    "text": "Visualize\n\nmod_sleep_data %&gt;% \n  ggplot(aes(att_sum)) + \n  geom_bar() + \n  geom_text(stat = \"count\", #Tells it to calculate the statistic\n            aes(label=after_stat(count))) + #Puts label of the count\n  theme_minimal() #or theme_bw"
+  },
+  {
+    "objectID": "lectures/unit4_data-wrangler/slides.html#steps-to-do-if-we-have-time",
+    "href": "lectures/unit4_data-wrangler/slides.html#steps-to-do-if-we-have-time",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Steps to do if we have time",
+    "text": "Steps to do if we have time\nCreate two new datasets labeled (1) “data_attend” and (2) “data_distract”. In each dataset have those who were paying attention in the “data_attend” and those who were not in the “data_distract”. Paying attention is operationalized as having a score of 5 on the aggregated variable.\nGet the sample size of each of these datasets (use Google to search for things like number of rows)\nWhat is the mean/average of ess_total in each of the samples?"
   },
   {
     "objectID": "lectures/wk3_visualizations/index.html",
@@ -383,129 +425,136 @@
     ]
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#reminders",
-    "href": "lectures/unit4_data-wrangler/slides.html#reminders",
-    "title": "Unit 4 - Data Wrangling",
+    "objectID": "lectures/wk3_visualizations/slides.html#reminders",
+    "href": "lectures/wk3_visualizations/slides.html#reminders",
+    "title": "Figures: Using ggplot2",
     "section": "Reminders",
     "text": "Reminders\n\n\nJournal Entries\nReverse Results - Due 9/17"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#last-class",
-    "href": "lectures/unit4_data-wrangler/slides.html#last-class",
-    "title": "Unit 4 - Data Wrangling",
+    "objectID": "lectures/wk3_visualizations/slides.html#last-class",
+    "href": "lectures/wk3_visualizations/slides.html#last-class",
+    "title": "Figures: Using ggplot2",
     "section": "Last Class",
-    "text": "Last Class\n\n\nEntry into the tidyverse with dplyr"
+    "text": "Last Class\n\n\nThe workflow\n\nStarting with a Project and going from there"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#today",
-    "href": "lectures/unit4_data-wrangler/slides.html#today",
-    "title": "Unit 4 - Data Wrangling",
+    "objectID": "lectures/wk3_visualizations/slides.html#today",
+    "href": "lectures/wk3_visualizations/slides.html#today",
+    "title": "Figures: Using ggplot2",
     "section": "Today…",
-    "text": "Today…\nContinuing on this trend to get more comfortable with all that dplyr can do!\nThis is a nice website that walks through a lot of this as well\n\n# File management\nlibrary(here)\n# for dplyr, ggplot2\nlibrary(tidyverse)\n#Loading data\nlibrary(rio)\n\n#Remove Scientific Notation \noptions(scipen=999)"
+    "text": "Today…\nWorking with ggplot2 to get some really fancy visualizations!\nMaybe integrating some generative AI (ChatGPT) to help us out too\n\n# File management\nlibrary(here)\n# for dplyr, ggplot2\nlibrary(tidyverse)\n#Loading data\nlibrary(rio)\n\n#for the penguins dataset\n#install.packages('palmerpenguins')\nlibrary(palmerpenguins)\n\n#Remove Scientific Notation \noptions(scipen=999)"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#but-first",
-    "href": "lectures/unit4_data-wrangler/slides.html#but-first",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "But first…",
-    "text": "But first…\nWe need to revisit how to read the ggplot2 cheatsheet!\nA lot of cheatsheets will have something that looks like this:\n\nc &lt;- ggplot(mpg, aes(hwy))\n\n## Then later on it will say\n\nc + geom_histogram(binwidth = 5)"
+    "objectID": "lectures/wk3_visualizations/slides.html#starting-out",
+    "href": "lectures/wk3_visualizations/slides.html#starting-out",
+    "title": "Figures: Using ggplot2",
+    "section": "Starting out",
+    "text": "Starting out\nLet’s first start by opening our Project\nThen, create a new Notebook/Markdown Document that we will use for today\nSetup the libraries and bring in the data\n\nWe will use the “Sleep Data” file as well\n\n\n#import sleep data - Your path may be different\nsleep_data &lt;- import(here(\"lectures\", \"data\", \"Sleep_Data.csv\"))"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#what-is-c",
-    "href": "lectures/unit4_data-wrangler/slides.html#what-is-c",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "WHAT IS c?!",
-    "text": "WHAT IS c?!\nc is just an object that is referring to the first line that we have in a ggplot function\n\nc &lt;- ggplot(mpg, aes(hwy))\n\n## So this...\nc + geom_histogram(binwidth = 5)\n\n## Is the same as this...\nmpg %&gt;% \n  ggplot(aes(hwy)) + \n  geom_histogram(binwidth = 5)"
+    "objectID": "lectures/wk3_visualizations/slides.html#take-a-look-at-the-data",
+    "href": "lectures/wk3_visualizations/slides.html#take-a-look-at-the-data",
+    "title": "Figures: Using ggplot2",
+    "section": "Take a look at the data",
+    "text": "Take a look at the data\nWill be using a dataset from the palmerpenguins library (link) which is a dataset about…penguins. This function will pull that data into our environment:\n\ndata(penguins)"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#back-to-regular-scheduled-programming",
-    "href": "lectures/unit4_data-wrangler/slides.html#back-to-regular-scheduled-programming",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "Back to regular scheduled programming",
-    "text": "Back to regular scheduled programming\nLet’s first start by opening our Project\nThen, create a new Notebook/Markdown Document that we will use for today\nSetup the libraries and bring in the data\n\nWe will use the “Sleep Data” file\n\n\n#import sleep data - Your path may be different\nsleep_data &lt;- import(here(\"lectures\", \"data\", \"Sleep_Data.csv\"))"
+    "objectID": "lectures/wk3_visualizations/slides.html#ggplot2-from-the-tidyverse",
+    "href": "lectures/wk3_visualizations/slides.html#ggplot2-from-the-tidyverse",
+    "title": "Figures: Using ggplot2",
+    "section": "ggplot2 from the tidyverse",
+    "text": "ggplot2 from the tidyverse\nSince we have already installed and loaded the library, we don’t have to do anything else at this point!\nggplot2 follows the “grammar of graphics”\n\nTheoretical framework for creating data visualizations\nBreaks the process down into separate components:\n\n\n\nData\nAesthetics (aes)\nGeometric Objects (geoms)\n\nFaceting\nThemes"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#variable-renaming",
-    "href": "lectures/unit4_data-wrangler/slides.html#variable-renaming",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "Variable Renaming",
-    "text": "Variable Renaming\nOoof…These variable names look terrible! How do we update those? Our brains would break having to remember how to connect them and having to reference another document. \nFirst, let’s get rid of the variables that we don’t need for the moment: \n\nUse select() to remove the following variables: \n\nsleep_data &lt;- sleep_data %&gt;% \n  select(-c('StartDate', 'EndDate', 'Status', 'Progress', \n  'Duration__in_seconds_', 'Finished', 'RecordedDate',\n  'DistributionChannel', 'UserLanguage', 'SC0', 'SC1',\n  'SC2', 'SC3', 'SC4', 'SC5', 'Attention'))"
+    "objectID": "lectures/wk3_visualizations/slides.html#grammar-of-graphics",
+    "href": "lectures/wk3_visualizations/slides.html#grammar-of-graphics",
+    "title": "Figures: Using ggplot2",
+    "section": "Grammar of Graphics",
+    "text": "Grammar of Graphics"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#extract-rows",
-    "href": "lectures/unit4_data-wrangler/slides.html#extract-rows",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "Extract Rows",
-    "text": "Extract Rows\nThe ‘filter()’ function is used to subset observations based on their values.\nThe result of filtering is a data frame with the same number of columns as before but fewer rows.\nThe first argument is data and subsequent arguments are logical expressions that tell you which observations to retain in the data frame.\n\nfilter(starwars, hair_color == \"none\" | eye_color == \"black\")\n\n# A tibble: 39 × 14\n   name     height  mass hair_color skin_color eye_color birth_year sex   gender\n   &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; \n 1 Darth V…    202   136 none       white      yellow          41.9 male  mascu…\n 2 Greedo      173    74 &lt;NA&gt;       green      black           44   male  mascu…\n 3 IG-88       200   140 none       metal      red             15   none  mascu…\n 4 Bossk       190   113 none       green      red             53   male  mascu…\n 5 Lobot       175    79 none       light      blue            37   male  mascu…\n 6 Ackbar      180    83 none       brown mot… orange          41   male  mascu…\n 7 Nien Nu…    160    68 none       grey       black           NA   male  mascu…\n 8 Nute Gu…    191    90 none       mottled g… red             NA   male  mascu…\n 9 Jar Jar…    196    66 none       orange     orange          52   male  mascu…\n10 Roos Ta…    224    82 none       grey       orange          NA   male  mascu…\n# ℹ 29 more rows\n# ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,\n#   vehicles &lt;list&gt;, starships &lt;list&gt;"
+    "objectID": "lectures/wk3_visualizations/slides.html#ggplot2-syntax",
+    "href": "lectures/wk3_visualizations/slides.html#ggplot2-syntax",
+    "title": "Figures: Using ggplot2",
+    "section": "ggplot2 syntax",
+    "text": "ggplot2 syntax\nThere is a basic structure to create a plot within ggplot2, and consists of at least these three things:\n\nA Data Set\nCoordinate System\nGeoms - visual marks to represent the data points\n\nIn R it looks like this:\n\nggplot(data = &lt;DATA&gt;) + \n  &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;MAPPINGS&gt;))\n\n#or how I like to do it\n&lt;DATA&gt; %&gt;% \n  ggplot(aes(&lt;MAPPINGS&gt;)) + \n  &lt;GEOM_FUNCTION&gt;()"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#filter-observations",
-    "href": "lectures/unit4_data-wrangler/slides.html#filter-observations",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "Filter observations",
-    "text": "Filter observations\nWe can now generate a subset of observations based on a particular value\nSince the age variable has been giving us some trouble, let’s filter based on that variable to only include appropriate ages for “college aged” participants\n\n# Assigning it to a new variable\nmod_sleep_data &lt;- sleep_data %&gt;% \n  filter(age &gt;= 17, age &lt;= 25)"
+    "objectID": "lectures/wk3_visualizations/slides.html#ggplot2-syntax-1",
+    "href": "lectures/wk3_visualizations/slides.html#ggplot2-syntax-1",
+    "title": "Figures: Using ggplot2",
+    "section": "ggplot2 syntax",
+    "text": "ggplot2 syntax\nLet’s start with a basic figure with palmerpenguins\nFirst we will define the data that we are using and the variables we are visualizing\n\n#the dataset is called penguins\n\npenguins %&gt;% \n  #including the variables we want to visualize\n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g))\n\nWhat happens?"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#filter-obs.---check",
-    "href": "lectures/unit4_data-wrangler/slides.html#filter-obs.---check",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "Filter Obs. - Check",
-    "text": "Filter Obs. - Check\nGenerating a bar chart to see if it worked out!\n\nmod_sleep_data %&gt;% \n  ggplot(aes(age)) + \n  geom_bar()"
+    "objectID": "lectures/wk3_visualizations/slides.html#adding-in-color",
+    "href": "lectures/wk3_visualizations/slides.html#adding-in-color",
+    "title": "Figures: Using ggplot2",
+    "section": "Adding in Color",
+    "text": "Adding in Color\nMaybe we would like to have each of the points colored by their respective species\nThis information will be added to the aes() within the geom_point() layer\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g)) + \n  geom_point(aes(color = species))"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#compute-new-variable",
-    "href": "lectures/unit4_data-wrangler/slides.html#compute-new-variable",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "Compute new variable",
-    "text": "Compute new variable\nWe often need to make a sum/mean score for a variable of interest\nFor example, in the mod_sleep_data, we have the Epworth Sleepiness Scale\nTake a look at the scoring of the ESS and compute the total score labelled ess_total"
+    "objectID": "lectures/wk3_visualizations/slides.html#including-a-fit-line",
+    "href": "lectures/wk3_visualizations/slides.html#including-a-fit-line",
+    "title": "Figures: Using ggplot2",
+    "section": "Including a fit line",
+    "text": "Including a fit line\nWhy don’t we put in a line that represents the relationship between these variables?\nWe will want to add another layer/geom\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g)) + \n  geom_point(aes(color = species)) + \n  geom_smooth()\n\n\nThat looks a little wonky…why is that? Did you get a note in the console?"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#ess_total",
-    "href": "lectures/unit4_data-wrangler/slides.html#ess_total",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "ess_total",
-    "text": "ess_total\nIt is a sum score with a scale of 0 - 24\n\n# We will assign it to the same dataset\nmod_sleep_data &lt;- mod_sleep_data %&gt;% \n  mutate(ess_total = ESS1 + ESS2 + ESS3 + \n           ESS4 + ESS5 + ESS6 + ESS7 + ESS8)"
+    "objectID": "lectures/wk3_visualizations/slides.html#including-a-fit-line-1",
+    "href": "lectures/wk3_visualizations/slides.html#including-a-fit-line-1",
+    "title": "Figures: Using ggplot2",
+    "section": "Including a fit line",
+    "text": "Including a fit line\nThe geom_smooth() defaults to using a loess line to fit to the data\nIn order to update that, we need to change some of the defaults for that layer and specify that we want a “linear model” or lm function to the data\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g)) + \n  geom_point(aes(color = species)) + \n  geom_smooth(method = 'lm')\n\n\nDid that look a little better?"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#visualize",
-    "href": "lectures/unit4_data-wrangler/slides.html#visualize",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "Visualize",
-    "text": "Visualize\n\nmod_sleep_data %&gt;% \n  ggplot(aes(ess_total)) + \n  geom_bar()\n\n\n\n\nBut why are there some above 24??"
+    "objectID": "lectures/wk3_visualizations/slides.html#individual-fit-lines",
+    "href": "lectures/wk3_visualizations/slides.html#individual-fit-lines",
+    "title": "Figures: Using ggplot2",
+    "section": "Individual fit lines",
+    "text": "Individual fit lines\nIt might make more sense to have individual lines for each of the species instead of something that is across all\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g, \n             color = species)) + \n  geom_point() + \n  geom_smooth(method = 'lm')\n\n\nWhat did we move around from the last set of code?"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#ess-variables",
-    "href": "lectures/unit4_data-wrangler/slides.html#ess-variables",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "ESS Variables",
-    "text": "ESS Variables\nThe original items are supposed to be on a 0-3 scale\nThe data that we have are on a 1-4 scale\nWhat should we do?!"
+    "objectID": "lectures/wk3_visualizations/slides.html#updating-labelstitle",
+    "href": "lectures/wk3_visualizations/slides.html#updating-labelstitle",
+    "title": "Figures: Using ggplot2",
+    "section": "Updating Labels/Title",
+    "text": "Updating Labels/Title\nIt will default to including the variable names as the x and y labels, but that isn’t something that makes sense. Also would be good to have a title!\nWe add on another layer called labs() for our labels (link)\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g, \n             color = species)) + \n  geom_point() + \n  geom_smooth(method = 'lm') + \n  labs(\n    title = \"Palmer Penguins\",\n    subtitle = \"Body Mass by Flipper Length\", \n    x = \"Flipper Length (mm)\", \n    y = \"Body Mass (g)\", \n    color = \"Species\"\n  )"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#ess-rescale",
-    "href": "lectures/unit4_data-wrangler/slides.html#ess-rescale",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "ESS Rescale",
-    "text": "ESS Rescale\nWe could subtract 1 from each item before creating another sum\n\nmod_sleep_data &lt;- mod_sleep_data %&gt;% \n  mutate(ESS1m1 = ESS1 - 1, \n         ESS2m1 = ESS2 - 1,\n         ESS3m1 = ESS3 - 1,\n         ESS4m1 = ESS4 - 1,\n         ESS5m1 = ESS5 - 1,\n         ESS6m1 = ESS6 - 1,\n         ESS7m1 = ESS7 - 1, \n         ESS8m1 = ESS8 - 1) %&gt;% \n  mutate(ess_total2 = ESS1m1 + ESS2m1 + ESS3m1 + \n           ESS4m1 + ESS5m1 + ESS6m1 + ESS7m1 + ESS8m1)"
+    "objectID": "lectures/wk3_visualizations/slides.html#penguin-histogram",
+    "href": "lectures/wk3_visualizations/slides.html#penguin-histogram",
+    "title": "Figures: Using ggplot2",
+    "section": "Penguin Histogram",
+    "text": "Penguin Histogram\nTaken from the website for palmerpenguins (link)\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm)) +\n    geom_histogram(aes(fill = species), \n                   alpha = 0.5, \n                   position = \"identity\")"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#ess-rescale-1",
-    "href": "lectures/unit4_data-wrangler/slides.html#ess-rescale-1",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "ESS Rescale",
-    "text": "ESS Rescale\nOr we could combine all the 1’s that we are subtracting and just take that from the total score\n\nmod_sleep_data &lt;- mod_sleep_data %&gt;% \n  mutate(ess_total = ESS1 + ESS2 + ESS3 + \n           ESS4 + ESS5 + ESS6 + ESS7 + ESS8) %&gt;% \n  mutate(ess_total3 = ess_total-8)"
+    "objectID": "lectures/wk3_visualizations/slides.html#sleep-data",
+    "href": "lectures/wk3_visualizations/slides.html#sleep-data",
+    "title": "Figures: Using ggplot2",
+    "section": "Sleep Data",
+    "text": "Sleep Data\nLet’s start by looking at our data. You can either click on the dataset in the Environment or use the View(sleep_data) command. Here, I am using the head() command just to visualize a sample of the data for the slides.\n\nhead(sleep_data)\n\n            StartDate             EndDate Status Progress Duration__in_seconds_\n1 2017-08-16 13:13:06 2017-08-16 13:15:13      0      100                   126\n2 2017-08-16 13:17:16 2017-08-16 13:19:03      0      100                   106\n3 2017-11-27 16:59:07 2017-11-27 17:07:27      0      100                   499\n4 2017-11-27 18:57:16 2017-11-27 19:13:00      0      100                   943\n5 2017-11-27 18:54:35 2017-11-27 19:14:12      0      100                  1177\n6 2017-11-27 19:41:14 2017-11-27 19:46:48      0      100                   333\n  Finished        RecordedDate DistributionChannel UserLanguage Q5 Q7 Q8 Q12\n1        1 2017-08-16 13:15:14           anonymous           EN 12  2  2   3\n2        1 2017-08-16 13:19:03           anonymous           EN  1  2  2   1\n3        1 2017-11-27 17:07:27           anonymous           EN 19  1  2   1\n4        1 2017-11-27 19:13:00           anonymous           EN 18  2  2   2\n5        1 2017-11-27 19:14:13           anonymous           EN 21  1  2   2\n6        1 2017-11-27 19:46:48           anonymous           EN 18  2  1   3\n  Q13_1 Q13_2 Q13_3 Q13_4 Q13_5 Q13_6 Q13_7 Q13_8 Q13_9 Q13_10 Q14_1 Q14_2\n1     2     2     2    NA     2     2     2     2     2      2     2     2\n2     1     1     1    NA     2     3     2     3     2      3     4     2\n3     1     2     2     5     3     4     1     1     2      1     5     5\n4     3     4     5     5     5     5     5     5     5      1     5     5\n5     1     2     2     5     4     2     2     1     1      2     5     5\n6     1     2     4     5     4     2     4     4     5      4     5     5\n  Q14_3 Q14_4 Q14_5 Q14_6 Q14_7 Q14_8 Q11_1 Q11_2 Q11_3 Q11_4 Q11_5 Q11_6 Q17_1\n1     2     2     2    NA     2     2     2     3     3     4     4     3     2\n2     4     4     4    NA     4     4     4     4     4     4     4     4     2\n3     5     5     1     1     1     1     4     5     4     4     5     4     4\n4     5     5     5     1     5     5     2     3     4     3     1     1     4\n5     5     5     2     1     3     4     2     1     4     3     4     2     2\n6     5     5     4     1     4     3     1     4     2     2     4     5     2\n  Q17_2 Q17_3 Q17_4 Q18_1 Q18_2 Q18_3 Q18_4 Q18_5 Q20_1 Q20_2 Q21_1 Q21_2 Q21_3\n1     3     3     2     2     2     2     3     1     1     2     4     3     3\n2     2     1     2     3     1     1     1     1     2     3     5     4     4\n3     2     1     4     3     1     4     1     2     3     3     1     2     3\n4     4     1     3     4     1     2     1     1     4     2     5     2     1\n5     2     2     4     3     1     1     1     2     3     3     4     1     3\n6     4     3     4     4     1     1     1     4     6     5     4     4     5\n  Q21_4 Q21_5 Q21_6 Q22_1 Q22_2 Q22_3 Q22_4 Q22_5 Q23_1 Q23_2 Q23_3 Q23_4 Q23_5\n1    NA     5     3     3     2     1     2     3     4     5     3     3     2\n2    NA     2     2     2     3     4     5     5     5     5     4     3     3\n3     4     1     1     5     4     3     4     4     5     6     2     5     5\n4     4     1     1     2     5     1     6     1     6     6     2     5     6\n5     4     1     2     3     4     1     4     2     2     6     3     5     5\n6     4     1     2     2     2     3     4     3     4     5     2     3     3\n  Q23_6 Q23_7 Q23_8 Q24_1 Q24_2 Q24_3 Q24_4 Q24_5 Q25_1 Q25_2 Q25_3 Q25_4 Q25_5\n1    NA     3     3     3     3     3     3     3     3     3     3    NA     4\n2    NA     3     3     3     3     2     2     1     1     2     1    NA     1\n3     1     1     3     1     1     1     1     2     3     4     2     1     1\n4     1     3     1     1     6     2     1     1     4     2     6     1     6\n5     1     2     2     1     2     2     1     2     5     4     2     1     1\n6     1     2     4     4     5     1     2     6     6     3     5     1     3\n  Q26_1 Q26_2 Q27_1 Q27_2 SC0 SC1 SC2 SC3 SC4 SC5    id Attention\n1     3     3     3     3  19  11  19  14  82   0 15516        NA\n2     1     1     1     1  24   5  24  26  79   0 15516        NA\n3     3     1     4     1  26  13  26  23  70   0 17915        NA\n4     4     4     1     1  14  12  14  35  89   0 17648        NA\n5     5     2     5     5  16   9  16  29  76   0 17799        NA\n6     5     1     6     6  18  15  18  31  99   0 18003        NA\n\n\nWhat do these variables mean? Who does this?"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#ess-rescale-2",
-    "href": "lectures/unit4_data-wrangler/slides.html#ess-rescale-2",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "ESS Rescale",
-    "text": "ESS Rescale\nLet’s see what the differences are between these methods\n\nmod_sleep_data %&gt;% \n  select(contains(\"_total\")) %&gt;% \n  head()\n\n  ess_total ess_total2 ess_total3\n1        20         12         12\n2        20         12         12\n3        16          8          8\n4        20         12         12\n5        13          5          5\n6        22         14         14"
+    "objectID": "lectures/wk3_visualizations/slides.html#data-documentation",
+    "href": "lectures/wk3_visualizations/slides.html#data-documentation",
+    "title": "Figures: Using ggplot2",
+    "section": "Data Documentation",
+    "text": "Data Documentation\nIt is always important to have appropriate data documentation!\nIf you can’t look at your data and know what it means right away, you aren’t going to remember what it means later on.\nSleep Data Documentation - myCourses"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#rescaling-conclusion",
-    "href": "lectures/unit4_data-wrangler/slides.html#rescaling-conclusion",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "Rescaling Conclusion",
-    "text": "Rescaling Conclusion\nIt is good to always know what the original scaling needs to be (e.g., 1-4 or 0-3)\nExtremely important to visualize the data! ALWAYS VISUALIZE\nThere is also another way to allow for the sum() function in mutate(), but we’ll get to that later"
+    "objectID": "lectures/wk3_visualizations/slides.html#visualizing-demographics",
+    "href": "lectures/wk3_visualizations/slides.html#visualizing-demographics",
+    "title": "Figures: Using ggplot2",
+    "section": "Visualizing Demographics",
+    "text": "Visualizing Demographics\n“Q5” - What is your age in years? (open text)\nThis is a free text field…is that a good way to get quality data?\nLet’s see if everyone followed directions. Check the “structure” of the variable\n\n# Here we use str() to check structure of a variable\n  # Then we state the data and the variable, linked by the $\nstr(sleep_data$Q5)\n\n int [1:1520] 12 1 19 18 21 18 18 18 18 18 ..."
+  },
+  {
+    "objectID": "lectures/wk3_visualizations/slides.html#giving-it-a-try",
+    "href": "lectures/wk3_visualizations/slides.html#giving-it-a-try",
+    "title": "Figures: Using ggplot2",
+    "section": "Giving it a try",
+    "text": "Giving it a try\nUse the ggplot cheatsheet to identify an appropriate way to visualize the data\n\nAdd some color\nUpdate the title and axes\n\nWhen you are done, post your creation here!"
   }
 ]
