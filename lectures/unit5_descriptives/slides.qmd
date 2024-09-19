@@ -27,7 +27,7 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 ::: nonincremental
 -   Journal Entries
 
--   Lab 1 to be posted soon (if we have time today I will try to introduce it)
+-   Lab 1 to be posted soon (Due 10/1)
 :::
 
 ------------------------------------------------------------------------
@@ -170,15 +170,11 @@ This is now a file that we will use in the future to import. That way we don't h
 
 ## Some Terminology
 
-+--------------------------------------------------+--------------------------------------------------+
 | Population                                       | Sample                                           |
-+==================================================+==================================================+
+|------------------------------------|------------------------------------|
 | $\mu$ (mu) = Population Mean                     | $\bar{X}$ (x bar) = Sample Mean                  |
-+--------------------------------------------------+--------------------------------------------------+
 | $\sigma$ (sigma) = Population Standard Deviation | $s$ = $\hat{\sigma}$ = Sample Standard Deviation |
-+--------------------------------------------------+--------------------------------------------------+
 | $\sigma^2$ (sigma squared) = Population Variance | $s^2$ = $\hat{\sigma^2}$ = Sample Variance       |
-+--------------------------------------------------+--------------------------------------------------+
 
 ------------------------------------------------------------------------
 
@@ -262,7 +258,7 @@ Find the range of the `ess_total` variable.
 
 ### Variance and Standard Deviation
 
-#### 68-95-99.7 Rule 
+#### 68-95-99.7 Rule
 
 For nearly normally distributed data:
 
@@ -290,19 +286,13 @@ $$\hat{\sigma}^2 = s^2 = \frac{1}{N-1}\sum_{i=1}^N(X-\bar{X})^2$$
 
 ------------------------------------------------------------------------
 
-+-------------------+---------------+-------------------------+---------------------------------------+-----------------------------------------+
 | $i$ (observation) | $X_i$ (value) | $\bar{X}$ (sample mean) | $X_i - \bar{X}$ (deviation from mean) | $(X_i - \bar{X})^2$ (squared deviation) |
-+===================+===============+=========================+=======================================+=========================================+
+|--------------|--------------|--------------|---------------|----------------|
 | 1                 | 56            | 36.6                    | 19.4                                  | 376.36                                  |
-+-------------------+---------------+-------------------------+---------------------------------------+-----------------------------------------+
 | 2                 | 31            | 36.6                    | -5.6                                  | 31.36                                   |
-+-------------------+---------------+-------------------------+---------------------------------------+-----------------------------------------+
 | 3                 | 56            | 36.6                    | 19.4                                  | 376.36                                  |
-+-------------------+---------------+-------------------------+---------------------------------------+-----------------------------------------+
 | 4                 | 8             | 36.6                    | -28.6                                 | 817.96                                  |
-+-------------------+---------------+-------------------------+---------------------------------------+-----------------------------------------+
 | 5                 | 32            | 36.6                    | -4.6                                  | 21.16                                   |
-+-------------------+---------------+-------------------------+---------------------------------------+-----------------------------------------+
 
 ------------------------------------------------------------------------
 
@@ -316,21 +306,36 @@ $$\hat{\sigma}^2 = s^2 = \frac{1}{N-1}\sum_{i=1}^N(X-\bar{X})^2$$
 
 ------------------------------------------------------------------------
 
-## In-Class Variance
+## In-Class Activity: Variance
+
+Open up Instagram (that is still a thing right?)
+
+Identify a celebrity and look at their most recent instagram posts.
+
+Let's calculate the variance of their likes.
 
 [Google Sheet](https://docs.google.com/spreadsheets/d/1C54Dy_lcRuZUXBBtGhavTePTNojb59Oe1xVKg7pnNv4/edit?usp=sharing)
 
 ------------------------------------------------------------------------
 
+## Variance in R
+
 To find the variance and standard deviation, we use var() and sd(), respectively. Find the variance and standard deviation of the age variable.
+
+```{r}
+var(sleep_data$age)
+sd(sleep_data$age)
+```
+
+------------------------------------------------------------------------
 
 # Summarizing Data
 
 So far we have been calculating various descriptive statistics (somewhat painstakingly) using an assortment of different functions. So what if we have a dataset with a bunch of variables we want descriptive statistics for? Surely we don’t want to calculate descriptives for each variable by hand…
 
-Fortunately for us, there is a function called describe() from the {psych} package, which we can use to quickly summarize a whole set of variables in a dataset.
+Fortunately for us, there is a function called `describe()` from the `{psych}` package, which we can use to quickly summarize a whole set of variables in a dataset.
 
-Be sure to first install the package prior to putting it into your library code chunk. Reminder: anytime you add a library, be sure you actually run the code line **library(psych)**. Otherwise, you will have a hard time trying to use the next functions. 
+Be sure to first install the package prior to putting it into your library code chunk. Reminder: anytime you add a library, be sure you actually run the code line **`library(psych)`**. Otherwise, you will have a hard time trying to use the next functions. 
 
 Let’s use it with our sleep dataset!
 
@@ -340,14 +345,18 @@ This function automatically calculates all of the descriptives we reviewed above
 
 **Notes:** If you load a library at the beginning, you can directly call any function from it. Instead, you can call a function by library_name::function_name without loading the entire library.
 
-+--------------------------------------------------+
-| **psych::describe(sleep_data)**                  |
-|                                                  |
-| **\# or if you have already loaded the library** |
-|                                                  |
-| **describe(sleep_data)**                         |
-+--------------------------------------------------+
+```{r}
+psych::describe(sleep_data)
 
-NOTE: Some variables are not numeric and are **categorical** variables of type character. By default, the describe() function forces non-numeric variables to be numeric and attempts to calculate descriptives for them. These variables are marked with an asterisk (\*). In this case, it doesn’t make sense to calculate descriptive statistics for these variables, so we get a warning message and a bunch of NaN’s and NA’s for these variables.
+# or if you have already loaded the library
+
+describe(sleep_data)
+```
+
+**NOTE**: Some variables are not numeric and are **categorical** variables of type character. By default, the describe() function forces non-numeric variables to be numeric and attempts to calculate descriptives for them. These variables are marked with an asterisk (\*). In this case, it doesn’t make sense to calculate descriptive statistics for these variables, so we get a warning message and a bunch of NaN’s and NA’s for these variables.
 
 A better approach would be to remove non-numeric variables before you attempt to run numerical calculations on your dataset.
+
+------------------------------------------------------------------------
+
+### If we reach this slide and there is still time, Dr. Haraden will need to switch over to the PowerPoint because he is a bad professor who didn't plan properly this week.
