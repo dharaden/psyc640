@@ -546,6 +546,35 @@ Dustin Haraden, PhD
 <h1>Descriptive Statistics</h1>
 
 </section>
+<section id="some-terminology" class="slide level2">
+<h2>Some Terminology</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Population</th>
+<th>Sample</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\mu\)</span> (mu) = Population Mean</td>
+<td><span class="math inline">\(\bar{X}\)</span> (x bar) = Sample Mean</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\sigma\)</span> (sigma) = Population Standard Deviation</td>
+<td><span class="math inline">\(s\)</span> = <span class="math inline">\(\hat{\sigma}\)</span> = Sample Standard Deviation</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\sigma^2\)</span> (sigma squared) = Population Variance</td>
+<td><span class="math inline">\(s^2\)</span> = <span class="math inline">\(\hat{\sigma^2}\)</span> = Sample Variance</td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="measures-of-central-tendency" class="slide level2">
 <h2>Measures of Central Tendency</h2>
 <p>For a given set of observations, measures of central tendency allow us to get the “gist” of the data.</p>
@@ -554,7 +583,18 @@ Dustin Haraden, PhD
 </section>
 <section class="slide level2">
 
-<h3 id="mean">Mean</h3>
+<h3 id="meanaverage">Mean/Average</h3>
+<p><span class="math display">\[
+\bar{X} = \frac{X_1+X_2+...+X\_{N-1}X_N}{N}
+\]</span></p>
+<p>OR</p>
+<p><span class="math display">\[
+\bar{X} = \frac{1}{N}\sum_{i=1}^{N} X_i
+\]</span></p>
+</section>
+<section class="slide level2">
+
+<h3 id="mean-in-r">Mean in R</h3>
 <p>A quick way to find the mean is to use the aptly named <code>mean()</code> function from base R. Use this function to get the average <code>age</code> and <code>ess total</code> in our dataset.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">mean</span>(sleep_data<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -566,25 +606,137 @@ Dustin Haraden, PhD
 <pre><code>[1] NA</code></pre>
 </div>
 </div>
-<p><span class="math inline">\(\bar{X} = \frac{X_1+X_2+...+X_{N-1}X_N}{N}\)</span></p>
-<p>Oh no! We forgot to account for the missing variables in our variable! We got NA! The reason for this is that the mean is calculated by using every value for a given variable, so if you don’t remove (or impute) the missing values before getting the mean, it won’t work.</p>
-<p>Let’s try that again, but using the additional argument to eliminate (or remove) the NA’s from the variable prior to computing the mean.&nbsp;</p>
-<table class="caption-top">
+</section>
+<section class="slide level2">
+
+<p>Oh no! A mean of <code>NA</code> makes no sense…</p>
+<p>We forgot to account for the missing variables in our variable! We got <code>NA</code>! The reason for this is that the mean is calculated by using every value for a given variable, so if you don’t remove (or impute) the missing values before getting the mean, it won’t work.</p>
+<p>Let’s try that again, but using the additional argument to eliminate (or remove) the <code>NA</code>’s from the variable prior to computing the mean.&nbsp;</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">mean</span>(sleep_data<span class="sc">$</span>ess_total, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.794057</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="median">Median</h3>
+<p>The median is the middle value of a set of observations: 50% of the data points fall below the median, and 50% fall above.</p>
+<p>To find the median, we can use the <code>median()</code> function. Use it on the age variable.</p>
+</section>
+<section class="slide level2">
+
+
+<img data-src="../../images/mean_median.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="measures-of-variability" class="slide level2">
+<h2>Measures of Variability</h2>
+<p>The overall spread of the data; How far from the middle?</p>
+
+<img data-src="../../images/variance.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="range">Range</h3>
+<p>The range gives us the distance between the smallest and largest value in a dataset.</p>
+<p>You can find the range using the <code>range()</code> function, which will output the minimum and maximum values.</p>
+<p>Find the range of the <code>ess_total</code> variable.</p>
+</section>
+<section class="slide level2">
+
+<h3 id="variance-and-standard-deviation">Variance and Standard Deviation</h3>
+<h4 id="rule">68-95-99.7 Rule</h4>
+<p>For nearly normally distributed data:</p>
+<ul>
+<li><p>about 68% falls within 1 SD of the mean,</p></li>
+<li><p>about 95% falls within 2 SD of the mean,</p></li>
+<li><p>about 99.7% falls within 3 SD of the mean.</p></li>
+</ul>
+<p>It is possible for observations to fall 4, 5, or more standard deviations away from the mean, but these occurrences are very rare if the data are nearly normal.</p>
+</section>
+<section class="slide level2">
+
+
+<img data-src="../../images/var2.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="variance" class="slide level2">
+<h2>Variance</h2>
+<p>The sum of squared deviations</p>
+<p><span class="math display">\[\sigma^2 = \frac{1}{N}\sum_{i=1}^N(X-\bar{X})^2\]</span></p>
+<p><span class="math display">\[\hat{\sigma}^2 = s^2 = \frac{1}{N-1}\sum_{i=1}^N(X-\bar{X})^2\]</span></p>
+</section>
+<section class="slide level2">
+
+<table class="caption-top" style="width:98%;">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 10%">
+<col style="width: 17%">
+<col style="width: 27%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(i\)</span> (observation)</th>
+<th><span class="math inline">\(X_i\)</span> (value)</th>
+<th><span class="math inline">\(\bar{X}\)</span> (sample mean)</th>
+<th><span class="math inline">\(X_i - \bar{X}\)</span> (deviation from mean)</th>
+<th><span class="math inline">\((X_i - \bar{X})^2\)</span> (squared deviation)</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td><strong>mean(sleep_data$age, na.rm = TRUE)</strong></td>
+<td>1</td>
+<td>56</td>
+<td>36.6</td>
+<td>19.4</td>
+<td>376.36</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>31</td>
+<td>36.6</td>
+<td>-5.6</td>
+<td>31.36</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>56</td>
+<td>36.6</td>
+<td>19.4</td>
+<td>376.36</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>8</td>
+<td>36.6</td>
+<td>-28.6</td>
+<td>817.96</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>32</td>
+<td>36.6</td>
+<td>-4.6</td>
+<td>21.16</td>
 </tr>
 </tbody>
 </table>
-<h3 id="median">Median</h3>
-<p>The median is the middle value of a set of observations: 50% of the data points fall below the median, and 50% fall above.</p>
-<p>To find the median, we can use the median() function. Use it on the age variable.</p>
 </section>
-<section id="measures-of-variability" class="slide level2">
-<h2>Measures of Variability</h2>
-<h3 id="range">Range</h3>
-<p>The range gives us the distance between the smallest and largest value in a dataset. You can find the range using the range() function, which will output the minimum and maximum values. Find the range of the age variable.</p>
-<h3 id="variance-and-standard-deviation">Variance and Standard Deviation</h3>
+<section class="slide level2">
+
+<p><strong><em>Why do we use the squared deviation in the calculation of variance?</em></strong></p>
+<div>
+<ul>
+<li class="fragment"><p>To get rid of negative values so that observations equally distant from the mean are weighted equally</p></li>
+<li class="fragment"><p>To weigh larger deviations from the mean</p></li>
+</ul>
+</div>
+</section>
+<section id="in-class-variance" class="slide level2">
+<h2>In-Class Variance</h2>
+<p><a href="https://docs.google.com/spreadsheets/d/1C54Dy_lcRuZUXBBtGhavTePTNojb59Oe1xVKg7pnNv4/edit?usp=sharing">Google Sheet</a></p>
+</section>
+<section class="slide level2">
+
 <p>To find the variance and standard deviation, we use var() and sd(), respectively. Find the variance and standard deviation of the age variable.</p>
 </section></section>
 <section>

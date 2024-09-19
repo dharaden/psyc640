@@ -210,6 +210,13 @@
     "text": "Save the cleaned up file\n\nwrite.csv(sleep_data, \n          here(\"lectures\", \"data\", \"named_Sleep_Data.csv\"), \n          row.names = FALSE)\n\nThis is now a file that we will use in the future to import. That way we don’t have to make sure that the code above is in all of our scripts/recipes moving forward!"
   },
   {
+    "objectID": "lectures/unit5_descriptives/slides.html#some-terminology",
+    "href": "lectures/unit5_descriptives/slides.html#some-terminology",
+    "title": "Unit 5 - Descriptives",
+    "section": "Some Terminology",
+    "text": "Some Terminology\n\n\n\n\n\n\n\nPopulation\nSample\n\n\n\n\n\\(\\mu\\) (mu) = Population Mean\n\\(\\bar{X}\\) (x bar) = Sample Mean\n\n\n\\(\\sigma\\) (sigma) = Population Standard Deviation\n\\(s\\) = \\(\\hat{\\sigma}\\) = Sample Standard Deviation\n\n\n\\(\\sigma^2\\) (sigma squared) = Population Variance\n\\(s^2\\) = \\(\\hat{\\sigma^2}\\) = Sample Variance"
+  },
+  {
     "objectID": "lectures/unit5_descriptives/slides.html#measures-of-central-tendency",
     "href": "lectures/unit5_descriptives/slides.html#measures-of-central-tendency",
     "title": "Unit 5 - Descriptives",
@@ -221,7 +228,21 @@
     "href": "lectures/unit5_descriptives/slides.html#measures-of-variability",
     "title": "Unit 5 - Descriptives",
     "section": "Measures of Variability",
-    "text": "Measures of Variability\nRange\nThe range gives us the distance between the smallest and largest value in a dataset. You can find the range using the range() function, which will output the minimum and maximum values. Find the range of the age variable.\nVariance and Standard Deviation\nTo find the variance and standard deviation, we use var() and sd(), respectively. Find the variance and standard deviation of the age variable."
+    "text": "Measures of Variability\nThe overall spread of the data; How far from the middle?"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides.html#variance",
+    "href": "lectures/unit5_descriptives/slides.html#variance",
+    "title": "Unit 5 - Descriptives",
+    "section": "Variance",
+    "text": "Variance\nThe sum of squared deviations\n\\[\\sigma^2 = \\frac{1}{N}\\sum_{i=1}^N(X-\\bar{X})^2\\]\n\\[\\hat{\\sigma}^2 = s^2 = \\frac{1}{N-1}\\sum_{i=1}^N(X-\\bar{X})^2\\]"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides.html#in-class-variance",
+    "href": "lectures/unit5_descriptives/slides.html#in-class-variance",
+    "title": "Unit 5 - Descriptives",
+    "section": "In-Class Variance",
+    "text": "In-Class Variance\nGoogle Sheet"
   },
   {
     "objectID": "lectures/unit5_descriptives/slides.html#describe",
