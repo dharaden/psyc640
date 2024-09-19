@@ -567,6 +567,52 @@ Dustin Haraden, PhD
 </div>
 </div>
 <p><span class="math inline">\(\bar{X} = \frac{X_1+X_2+...+X_{N-1}X_N}{N}\)</span></p>
+<p>Oh no! We forgot to account for the missing variables in our variable! We got NA! The reason for this is that the mean is calculated by using every value for a given variable, so if you don’t remove (or impute) the missing values before getting the mean, it won’t work.</p>
+<p>Let’s try that again, but using the additional argument to eliminate (or remove) the NA’s from the variable prior to computing the mean.&nbsp;</p>
+<table class="caption-top">
+<tbody>
+<tr class="odd">
+<td><strong>mean(sleep_data$age, na.rm = TRUE)</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="median">Median</h3>
+<p>The median is the middle value of a set of observations: 50% of the data points fall below the median, and 50% fall above.</p>
+<p>To find the median, we can use the median() function. Use it on the age variable.</p>
+</section>
+<section id="measures-of-variability" class="slide level2">
+<h2>Measures of Variability</h2>
+<h3 id="range">Range</h3>
+<p>The range gives us the distance between the smallest and largest value in a dataset. You can find the range using the range() function, which will output the minimum and maximum values. Find the range of the age variable.</p>
+<h3 id="variance-and-standard-deviation">Variance and Standard Deviation</h3>
+<p>To find the variance and standard deviation, we use var() and sd(), respectively. Find the variance and standard deviation of the age variable.</p>
+</section></section>
+<section>
+<section id="summarizing-data" class="title-slide slide level1 center">
+<h1>Summarizing Data</h1>
+<p>So far we have been calculating various descriptive statistics (somewhat painstakingly) using an assortment of different functions. So what if we have a dataset with a bunch of variables we want descriptive statistics for? Surely we don’t want to calculate descriptives for each variable by hand…</p>
+<p>Fortunately for us, there is a function called describe() from the {psych} package, which we can use to quickly summarize a whole set of variables in a dataset.</p>
+<p>Be sure to first install the package prior to putting it into your library code chunk. Reminder: anytime you add a library, be sure you actually run the code line <strong>library(psych)</strong>. Otherwise, you will have a hard time trying to use the next functions.&nbsp;</p>
+<p>Let’s use it with our sleep dataset!</p>
+</section>
+<section id="describe" class="slide level2">
+<h2>describe()</h2>
+<p>This function automatically calculates all of the descriptives we reviewed above (and more!). Use the describe() function from the <strong>psych</strong> package on the entire sleep_data dataset.</p>
+<p><strong>Notes:</strong> If you load a library at the beginning, you can directly call any function from it. Instead, you can call a function by library_name::function_name without loading the entire library.</p>
+<table class="caption-top" style="width:71%;">
+<colgroup>
+<col style="width: 70%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p><strong>psych::describe(sleep_data)</strong></p>
+<p><strong># or if you have already loaded the library</strong></p>
+<p><strong>describe(sleep_data)</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>NOTE: Some variables are not numeric and are <strong>categorical</strong> variables of type character. By default, the describe() function forces non-numeric variables to be numeric and attempts to calculate descriptives for them. These variables are marked with an asterisk (*). In this case, it doesn’t make sense to calculate descriptive statistics for these variables, so we get a warning message and a bunch of NaN’s and NA’s for these variables.</p>
+<p>A better approach would be to remove non-numeric variables before you attempt to run numerical calculations on your dataset.</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">

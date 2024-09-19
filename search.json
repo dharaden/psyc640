@@ -217,6 +217,20 @@
     "text": "Measures of Central Tendency\nFor a given set of observations, measures of central tendency allow us to get the “gist” of the data.\nThey tell us about where the “average” or the “mid-point” of the data lies or how much deviation there is from a central point.\nLet’s take a look at the data that we have already loaded in, and complete some of these tasks."
   },
   {
+    "objectID": "lectures/unit5_descriptives/slides.html#measures-of-variability",
+    "href": "lectures/unit5_descriptives/slides.html#measures-of-variability",
+    "title": "Unit 5 - Descriptives",
+    "section": "Measures of Variability",
+    "text": "Measures of Variability\nRange\nThe range gives us the distance between the smallest and largest value in a dataset. You can find the range using the range() function, which will output the minimum and maximum values. Find the range of the age variable.\nVariance and Standard Deviation\nTo find the variance and standard deviation, we use var() and sd(), respectively. Find the variance and standard deviation of the age variable."
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides.html#describe",
+    "href": "lectures/unit5_descriptives/slides.html#describe",
+    "title": "Unit 5 - Descriptives",
+    "section": "describe()",
+    "text": "describe()\nThis function automatically calculates all of the descriptives we reviewed above (and more!). Use the describe() function from the psych package on the entire sleep_data dataset.\nNotes: If you load a library at the beginning, you can directly call any function from it. Instead, you can call a function by library_name::function_name without loading the entire library.\n\n\n\n\n\n\npsych::describe(sleep_data)\n# or if you have already loaded the library\ndescribe(sleep_data)\n\n\n\nNOTE: Some variables are not numeric and are categorical variables of type character. By default, the describe() function forces non-numeric variables to be numeric and attempts to calculate descriptives for them. These variables are marked with an asterisk (*). In this case, it doesn’t make sense to calculate descriptive statistics for these variables, so we get a warning message and a bunch of NaN’s and NA’s for these variables.\nA better approach would be to remove non-numeric variables before you attempt to run numerical calculations on your dataset."
+  },
+  {
     "objectID": "lectures/unit5_descriptives/index.html",
     "href": "lectures/unit5_descriptives/index.html",
     "title": "Unit 5 - Descriptive Statistics",
