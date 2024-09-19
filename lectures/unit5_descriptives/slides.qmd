@@ -1,0 +1,110 @@
+---
+title: "Unit 5 - Descriptives"
+subtitle: "PSYC 640 - Fall 2024"
+author: "Dustin Haraden, PhD"
+format: 
+  revealjs:
+    multiplex: true
+    scrollable: true
+    slide-number: true
+    incremental: false
+    touch: true
+    code-overflow: wrap
+    theme: dark
+execute: 
+  echo: true
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = F}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```
+
+## Reminders
+
+::: nonincremental
+-   Journal Entries
+
+-   Lab 1 to be posted soon (if we have time today I will try to introduce it)
+:::
+
+------------------------------------------------------------------------
+
+## Last Class
+
+::: nonincremental
+-   Used various functions to wrangle data
+    -   `select()`
+    -   `filter()`
+    -   `mutate()`
+:::
+
+------------------------------------------------------------------------
+
+## Today...
+
+Entering into the world of describing our data with numerical values.
+
+```{r, results = 'hide', message = F, warning = F}
+# File management
+library(here)
+# for dplyr, ggplot2
+library(tidyverse)
+#Loading data
+library(rio)
+# for descriptives
+library(psych)
+
+#Remove Scientific Notation 
+options(scipen=999)
+```
+
+# Let's get caught up
+
+------------------------------------------------------------------------
+
+Getting the code a little cleaner. And doing it all in one step
+
+```{r}
+#import sleep data - Your path may be different
+sleep_data <- import(here("lectures", "data", "Sleep_Data.csv")) %>% 
+  
+  #Select only the variables we are interested in
+  select(-c('StartDate', 'EndDate', 'Status', 'Progress', 
+  'Duration__in_seconds_', 'Finished', 'RecordedDate',
+  'DistributionChannel', 'UserLanguage', 'SC0', 'SC1',
+  'SC2', 'SC3', 'SC4', 'SC5', 'Attention')) %>% 
+  
+  #rename the variable names so they make sense
+  setNames(c('age', 'gender', 'roommate', 'other_sleep', 'bed_read', 'bed_study', 'bed_hw', 'attention1', 'bed_internet',
+                       'bed_tv', 'bed_eat', 'bed_friends', 'bed_videogame', 'bed_readp', 'BL_1', 'BL_2', 'BL_3', 'BL_4',
+                       'BL_5', 'attention2', 'BL_6', 'BL_7', 'sleepsat1', 'sleepsat2', 'sleepsat3', 'sleepsat4', 'sleepsat5',
+                       'sleepsat6', 'ESS1', 'ESS2', 'ESS3', 'ESS4', 'ESS5', 'ESS6', 'ESS7', 'ESS8', 'ESS00', 'ashs1', 'ashs2', 
+                       'ashs3', 'ashs4', 'ashs5', 'attention3', 'ashs6', 'ashs7', 'ashs8', 'ashs9', 'ashs10', 'ashs11', 
+                       'ashs12', 'ashs13', 'ashs14', 'ashs15', 'ashs16', 'ashs17', 'attention4', 'ashs18', 'ashs19', 
+                       'ashs20', 'ashs21', 'ashs22', 'ashs23', 'ashs24', 'ashs26', 'ashs27', 'ashs28', 'attention5', 
+                       'ashs29', 'ashs30', 'ashs31', 'ashs32', 'ashs33', 'id')) %>% 
+  
+  # Only include college aged participants
+  filter(age >= 17, age <= 25) %>% 
+  
+  # Rescale the ESS
+  mutate(ESS1m1 = ESS1 - 1, 
+         ESS2m1 = ESS2 - 1,
+         ESS3m1 = ESS3 - 1,
+         ESS4m1 = ESS4 - 1,
+         ESS5m1 = ESS5 - 1,
+         ESS6m1 = ESS6 - 1,
+         ESS7m1 = ESS7 - 1, 
+         ESS8m1 = ESS8 - 1) %>% 
+  
+  # Create a total score for the ESS
+  mutate(ess_total = ESS1m1 + ESS2m1 + ESS3m1 + 
+           ESS4m1 + ESS5m1 + ESS6m1 + ESS7m1 + ESS8m1)
+```
+
+------------------------------------------------------------------------
+
+$\bar{X} = \frac{X_1+X_2+...+X_{N-1}X_N}{N}$
