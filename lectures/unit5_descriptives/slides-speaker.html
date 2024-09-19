@@ -409,7 +409,7 @@ Dustin Haraden, PhD
 <div>
 <ul>
 <li><p>Journal Entries</p></li>
-<li><p>Lab 1 to be posted soon (if we have time today I will try to introduce it)</p></li>
+<li><p>Lab 1 to be posted soon (Due 10/1)</p></li>
 </ul>
 </div>
 </section>
@@ -665,13 +665,13 @@ Dustin Haraden, PhD
 </section>
 <section class="slide level2">
 
-<table class="caption-top" style="width:98%;">
+<table class="caption-top">
 <colgroup>
-<col style="width: 13%">
-<col style="width: 10%">
-<col style="width: 17%">
-<col style="width: 27%">
-<col style="width: 28%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 20%">
+<col style="width: 21%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -731,40 +731,414 @@ Dustin Haraden, PhD
 </ul>
 </div>
 </section>
-<section id="in-class-variance" class="slide level2">
-<h2>In-Class Variance</h2>
+<section id="in-class-activity-variance" class="slide level2">
+<h2>In-Class Activity: Variance</h2>
+<p>Open up Instagram (that is still a thing right?)</p>
+<p>Identify a celebrity and look at their most recent instagram posts.</p>
+<p>Let’s calculate the variance of their likes.</p>
 <p><a href="https://docs.google.com/spreadsheets/d/1C54Dy_lcRuZUXBBtGhavTePTNojb59Oe1xVKg7pnNv4/edit?usp=sharing">Google Sheet</a></p>
+</section>
+<section id="variance-in-r" class="slide level2">
+<h2>Variance in R</h2>
+<p>To find the variance and standard deviation, we use var() and sd(), respectively. Find the variance and standard deviation of the age variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">var</span>(sleep_data<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.537247</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">sd</span>(sleep_data<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.592874</code></pre>
+</div>
+</div>
 </section>
 <section class="slide level2">
 
-<p>To find the variance and standard deviation, we use var() and sd(), respectively. Find the variance and standard deviation of the age variable.</p>
 </section></section>
 <section>
 <section id="summarizing-data" class="title-slide slide level1 center">
 <h1>Summarizing Data</h1>
 <p>So far we have been calculating various descriptive statistics (somewhat painstakingly) using an assortment of different functions. So what if we have a dataset with a bunch of variables we want descriptive statistics for? Surely we don’t want to calculate descriptives for each variable by hand…</p>
-<p>Fortunately for us, there is a function called describe() from the {psych} package, which we can use to quickly summarize a whole set of variables in a dataset.</p>
-<p>Be sure to first install the package prior to putting it into your library code chunk. Reminder: anytime you add a library, be sure you actually run the code line <strong>library(psych)</strong>. Otherwise, you will have a hard time trying to use the next functions.&nbsp;</p>
+<p>Fortunately for us, there is a function called <code>describe()</code> from the <code>{psych}</code> package, which we can use to quickly summarize a whole set of variables in a dataset.</p>
+<p>Be sure to first install the package prior to putting it into your library code chunk. Reminder: anytime you add a library, be sure you actually run the code line <strong><code>library(psych)</code></strong>. Otherwise, you will have a hard time trying to use the next functions.&nbsp;</p>
 <p>Let’s use it with our sleep dataset!</p>
 </section>
 <section id="describe" class="slide level2">
 <h2>describe()</h2>
 <p>This function automatically calculates all of the descriptives we reviewed above (and more!). Use the describe() function from the <strong>psych</strong> package on the entire sleep_data dataset.</p>
 <p><strong>Notes:</strong> If you load a library at the beginning, you can directly call any function from it. Instead, you can call a function by library_name::function_name without loading the entire library.</p>
-<table class="caption-top" style="width:71%;">
-<colgroup>
-<col style="width: 70%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><p><strong>psych::describe(sleep_data)</strong></p>
-<p><strong># or if you have already loaded the library</strong></p>
-<p><strong>describe(sleep_data)</strong></p></td>
-</tr>
-</tbody>
-</table>
-<p>NOTE: Some variables are not numeric and are <strong>categorical</strong> variables of type character. By default, the describe() function forces non-numeric variables to be numeric and attempts to calculate descriptives for them. These variables are marked with an asterisk (*). In this case, it doesn’t make sense to calculate descriptive statistics for these variables, so we get a warning message and a bunch of NaN’s and NA’s for these variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>psych<span class="sc">::</span><span class="fu">describe</span>(sleep_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              vars    n     mean      sd  median  trimmed     mad   min   max
+age              1 1452    19.56    1.59    19.0    19.39    1.48    17    25
+gender           2 1452     1.43    0.56     1.0     1.37    0.00     1     3
+roommate         3 1452     1.55    0.50     2.0     1.56    0.00     1     2
+other_sleep      4 1452     1.65    0.95     1.0     1.45    0.00     1     5
+bed_read         5 1452     1.67    0.96     1.0     1.47    0.00     1     5
+bed_study        6 1452     1.90    1.05     2.0     1.72    1.48     1     5
+bed_hw           7 1452     2.11    1.19     2.0     1.95    1.48     1     5
+attention1       8 1452     4.64    0.88     5.0     4.89    0.00     1     5
+bed_internet     9 1452     3.62    1.05     4.0     3.67    1.48     1     5
+bed_tv          10 1452     3.30    1.22     4.0     3.35    1.48     1     5
+bed_eat         11 1452     1.96    1.10     2.0     1.77    1.48     1     5
+bed_friends     12 1452     1.76    0.96     2.0     1.58    1.48     1     5
+bed_videogame   13 1452     1.96    1.15     2.0     1.77    1.48     1     5
+bed_readp       14 1452     2.10    1.16     2.0     1.93    1.48     1     5
+BL_1            15 1448     4.49    1.11     5.0     4.80    0.00     1     5
+BL_2            16 1448     4.23    1.24     5.0     4.48    0.00     1     5
+BL_3            17 1448     4.08    1.22     5.0     4.28    0.00     1     5
+BL_4            18 1448     4.26    1.34     5.0     4.57    0.00     1     5
+BL_5            19 1448     2.57    1.57     2.0     2.46    1.48     1     5
+attention2      20 1448     1.07    0.48     1.0     1.00    0.00     1     5
+BL_6            21 1448     2.09    1.14     2.0     1.90    1.48     1     5
+BL_7            22 1448     4.25    1.15     5.0     4.49    0.00     1     5
+sleepsat1       23 1447     3.09    1.16     3.0     3.11    1.48     1     5
+sleepsat2       24 1447     3.14    1.18     3.0     3.16    1.48     1     5
+sleepsat3       25 1447     3.11    1.23     3.0     3.13    1.48     1     5
+sleepsat4       26 1447     3.03    1.34     3.0     3.04    1.48     1     5
+sleepsat5       27 1447     3.78    1.17     4.0     3.91    1.48     1     5
+sleepsat6       28 1447     2.75    1.13     3.0     2.74    1.48     1     5
+ESS1            29 1447     2.29    0.98     2.0     2.24    1.48     1     4
+ESS2            30 1447     2.29    0.87     2.0     2.25    1.48     1     4
+ESS3            31 1447     1.65    0.82     1.0     1.52    0.00     1     4
+ESS4            32 1447     2.58    1.01     3.0     2.60    1.48     1     4
+ESS5            33 1447     3.02    0.92     3.0     3.11    1.48     1     4
+ESS6            34 1447     1.11    0.38     1.0     1.00    0.00     1     4
+ESS7            35 1447     1.64    0.79     1.0     1.52    0.00     1     4
+ESS8            36 1447     1.21    0.55     1.0     1.06    0.00     1     4
+ESS00           37 1447     2.21    0.88     2.0     2.14    1.48     1     4
+ashs1           38 1438     2.58    1.28     2.0     2.45    1.48     1     6
+ashs2           39 1438     3.26    1.49     3.0     3.21    1.48     1     6
+ashs3           40 1438     2.31    1.39     2.0     2.10    1.48     1     6
+ashs4           41 1438     1.98    1.12     2.0     1.78    1.48     1     6
+ashs5           42 1437     2.72    1.42     2.0     2.59    1.48     1     6
+attention3      43 1438     4.00    0.00     4.0     4.00    0.00     4     4
+ashs6           44 1438     1.55    1.34     1.0     1.15    0.00     1     6
+ashs7           45 1438     1.76    1.02     1.0     1.58    0.00     1     6
+ashs8           46 1438     3.17    1.45     3.0     3.13    1.48     1     6
+ashs9           47 1437     2.73    1.24     3.0     2.63    1.48     1     6
+ashs10          48 1437     1.73    1.14     1.0     1.48    0.00     1     6
+ashs11          49 1438     4.03    1.37     4.0     4.09    1.48     1     6
+ashs12          50 1438     2.44    1.53     2.0     2.23    1.48     1     6
+ashs13          51 1437     4.28    1.47     5.0     4.41    1.48     1     6
+ashs14          52 1437     4.38    1.26     5.0     4.47    1.48     1     6
+ashs15          53 1437     2.69    1.26     2.0     2.57    1.48     1     6
+ashs16          54 1436     3.27    1.43     3.0     3.23    1.48     1     6
+ashs17          55 1437     3.87    1.37     4.0     3.87    1.48     1     6
+attention4      56 1437     1.20    0.87     1.0     1.00    0.00     1     6
+ashs18          57 1437     1.75    0.96     2.0     1.58    1.48     1     6
+ashs19          58 1437     2.41    1.12     2.0     2.30    1.48     1     6
+ashs20          59 1437     1.57    1.02     1.0     1.33    0.00     1     6
+ashs21          60 1437     2.59    1.56     2.0     2.42    1.48     1     6
+ashs22          61 1437     1.66    0.95     1.0     1.47    0.00     1     6
+ashs23          62 1437     1.33    0.84     1.0     1.11    0.00     1     6
+ashs24          63 1436     2.44    1.28     2.0     2.29    1.48     1     6
+ashs26          64 1437     3.23    1.26     3.0     3.16    1.48     1     6
+ashs27          65 1437     3.25    1.65     3.0     3.19    1.48     1     6
+ashs28          66 1436     3.75    1.63     4.0     3.80    1.48     1     6
+attention5      67 1437     1.10    0.63     1.0     1.00    0.00     1     6
+ashs29          68 1437     2.28    1.28     2.0     2.09    1.48     1     6
+ashs30          69 1437     3.94    1.38     4.0     3.96    1.48     1     6
+ashs31          70 1437     2.61    1.38     2.0     2.47    1.48     1     6
+ashs32          71 1437     4.87    1.19     5.0     5.04    1.48     1     6
+ashs33          72 1437     4.73    1.32     5.0     4.91    1.48     1     6
+id              73 1452 21734.02 7471.43 21089.5 20852.52 2684.99 11918 76858
+ESS1m1          74 1447     1.29    0.98     1.0     1.24    1.48     0     3
+ESS2m1          75 1447     1.29    0.87     1.0     1.25    1.48     0     3
+ESS3m1          76 1447     0.65    0.82     0.0     0.52    0.00     0     3
+ESS4m1          77 1447     1.58    1.01     2.0     1.60    1.48     0     3
+ESS5m1          78 1447     2.02    0.92     2.0     2.11    1.48     0     3
+ESS6m1          79 1447     0.11    0.38     0.0     0.00    0.00     0     3
+ESS7m1          80 1447     0.64    0.79     0.0     0.52    0.00     0     3
+ESS8m1          81 1447     0.21    0.55     0.0     0.06    0.00     0     3
+ess_total       82 1447     7.79    3.58     8.0     7.72    2.97     0    24
+attention1r     83 1452     0.82    0.38     1.0     0.91    0.00     0     1
+attention2r     84 1448     0.97    0.17     1.0     1.00    0.00     0     1
+attention3r     85 1438     1.00    0.00     1.0     1.00    0.00     1     1
+attention4r     86 1437     0.93    0.25     1.0     1.00    0.00     0     1
+attention5r     87 1437     0.97    0.17     1.0     1.00    0.00     0     1
+att_sum         88 1437     4.70    0.63     5.0     4.82    0.00     1     5
+              range  skew kurtosis     se
+age               8  0.87     0.54   0.04
+gender            2  0.83    -0.36   0.01
+roommate          1 -0.20    -1.96   0.01
+other_sleep       4  1.75     2.87   0.02
+bed_read          4  1.61     2.18   0.03
+bed_study         4  1.15     0.64   0.03
+bed_hw            4  0.92    -0.15   0.03
+attention1        4 -2.50     5.33   0.02
+bed_internet      4 -0.41    -0.69   0.03
+bed_tv            4 -0.29    -1.02   0.03
+bed_eat           4  1.22     0.81   0.03
+bed_friends       4  1.42     1.72   0.03
+bed_videogame     4  1.14     0.40   0.03
+bed_readp         4  0.97     0.04   0.03
+BL_1              4 -2.15     3.31   0.03
+BL_2              4 -1.44     0.76   0.03
+BL_3              4 -1.06    -0.17   0.03
+BL_4              4 -1.59     0.97   0.04
+BL_5              4  0.48    -1.34   0.04
+attention2        4  7.11    51.85   0.01
+BL_6              4  1.12     0.62   0.03
+BL_7              4 -1.47     1.09   0.03
+sleepsat1         4 -0.18    -1.09   0.03
+sleepsat2         4 -0.20    -1.04   0.03
+sleepsat3         4 -0.11    -1.12   0.03
+sleepsat4         4 -0.05    -1.24   0.04
+sleepsat5         4 -0.78    -0.33   0.03
+sleepsat6         4  0.16    -0.94   0.03
+ESS1              3  0.27    -0.94   0.03
+ESS2              3  0.27    -0.59   0.02
+ESS3              3  1.10     0.45   0.02
+ESS4              3  0.00    -1.11   0.03
+ESS5              3 -0.54    -0.70   0.02
+ESS6              3  4.02    19.11   0.01
+ESS7              3  1.07     0.54   0.02
+ESS8              3  3.04     9.55   0.01
+ESS00             3  0.42    -0.49   0.02
+ashs1             5  0.81    -0.06   0.03
+ashs2             5  0.28    -0.94   0.04
+ashs3             5  0.99     0.07   0.04
+ashs4             5  1.30     1.41   0.03
+ashs5             5  0.64    -0.45   0.04
+attention3        0   NaN      NaN   0.00
+ashs6             5  2.41     4.45   0.04
+ashs7             5  1.49     2.08   0.03
+ashs8             5  0.30    -0.87   0.04
+ashs9             5  0.61    -0.16   0.03
+ashs10            5  1.84     3.11   0.03
+ashs11            5 -0.33    -0.73   0.04
+ashs12            5  0.86    -0.35   0.04
+ashs13            5 -0.58    -0.65   0.04
+ashs14            5 -0.47    -0.54   0.03
+ashs15            5  0.85     0.21   0.03
+ashs16            5  0.29    -0.83   0.04
+ashs17            5 -0.07    -0.93   0.04
+attention4        5  4.77    22.14   0.02
+ashs18            5  1.72     3.67   0.03
+ashs19            5  0.92     0.80   0.03
+ashs20            5  2.09     4.23   0.03
+ashs21            5  0.71    -0.64   0.04
+ashs22            5  1.83     3.83   0.03
+ashs23            5  3.23    11.47   0.02
+ashs24            5  0.92     0.38   0.03
+ashs26            5  0.44    -0.45   0.03
+ashs27            5  0.15    -1.21   0.04
+ashs28            5 -0.08    -1.25   0.04
+attention5        5  6.63    44.55   0.02
+ashs29            5  1.13     0.73   0.03
+ashs30            5 -0.13    -0.96   0.04
+ashs31            5  0.72    -0.29   0.04
+ashs32            5 -1.00     0.44   0.03
+ashs33            5 -0.86    -0.17   0.03
+id            64940  6.54    44.82 196.07
+ESS1m1            3  0.27    -0.94   0.03
+ESS2m1            3  0.27    -0.59   0.02
+ESS3m1            3  1.10     0.45   0.02
+ESS4m1            3  0.00    -1.11   0.03
+ESS5m1            3 -0.54    -0.70   0.02
+ESS6m1            3  4.02    19.11   0.01
+ESS7m1            3  1.07     0.54   0.02
+ESS8m1            3  3.04     9.55   0.01
+ess_total        24  0.30     0.23   0.09
+attention1r       1 -1.70     0.90   0.01
+attention2r       1 -5.54    28.66   0.00
+attention3r       0   NaN      NaN   0.00
+attention4r       1 -3.49    10.18   0.01
+attention5r       1 -5.38    26.92   0.00
+att_sum           4 -2.79    10.04   0.02</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="co"># or if you have already loaded the library</span></span>
+<span id="cb16-2"><a></a></span>
+<span id="cb16-3"><a></a><span class="fu">describe</span>(sleep_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              vars    n     mean      sd  median  trimmed     mad   min   max
+age              1 1452    19.56    1.59    19.0    19.39    1.48    17    25
+gender           2 1452     1.43    0.56     1.0     1.37    0.00     1     3
+roommate         3 1452     1.55    0.50     2.0     1.56    0.00     1     2
+other_sleep      4 1452     1.65    0.95     1.0     1.45    0.00     1     5
+bed_read         5 1452     1.67    0.96     1.0     1.47    0.00     1     5
+bed_study        6 1452     1.90    1.05     2.0     1.72    1.48     1     5
+bed_hw           7 1452     2.11    1.19     2.0     1.95    1.48     1     5
+attention1       8 1452     4.64    0.88     5.0     4.89    0.00     1     5
+bed_internet     9 1452     3.62    1.05     4.0     3.67    1.48     1     5
+bed_tv          10 1452     3.30    1.22     4.0     3.35    1.48     1     5
+bed_eat         11 1452     1.96    1.10     2.0     1.77    1.48     1     5
+bed_friends     12 1452     1.76    0.96     2.0     1.58    1.48     1     5
+bed_videogame   13 1452     1.96    1.15     2.0     1.77    1.48     1     5
+bed_readp       14 1452     2.10    1.16     2.0     1.93    1.48     1     5
+BL_1            15 1448     4.49    1.11     5.0     4.80    0.00     1     5
+BL_2            16 1448     4.23    1.24     5.0     4.48    0.00     1     5
+BL_3            17 1448     4.08    1.22     5.0     4.28    0.00     1     5
+BL_4            18 1448     4.26    1.34     5.0     4.57    0.00     1     5
+BL_5            19 1448     2.57    1.57     2.0     2.46    1.48     1     5
+attention2      20 1448     1.07    0.48     1.0     1.00    0.00     1     5
+BL_6            21 1448     2.09    1.14     2.0     1.90    1.48     1     5
+BL_7            22 1448     4.25    1.15     5.0     4.49    0.00     1     5
+sleepsat1       23 1447     3.09    1.16     3.0     3.11    1.48     1     5
+sleepsat2       24 1447     3.14    1.18     3.0     3.16    1.48     1     5
+sleepsat3       25 1447     3.11    1.23     3.0     3.13    1.48     1     5
+sleepsat4       26 1447     3.03    1.34     3.0     3.04    1.48     1     5
+sleepsat5       27 1447     3.78    1.17     4.0     3.91    1.48     1     5
+sleepsat6       28 1447     2.75    1.13     3.0     2.74    1.48     1     5
+ESS1            29 1447     2.29    0.98     2.0     2.24    1.48     1     4
+ESS2            30 1447     2.29    0.87     2.0     2.25    1.48     1     4
+ESS3            31 1447     1.65    0.82     1.0     1.52    0.00     1     4
+ESS4            32 1447     2.58    1.01     3.0     2.60    1.48     1     4
+ESS5            33 1447     3.02    0.92     3.0     3.11    1.48     1     4
+ESS6            34 1447     1.11    0.38     1.0     1.00    0.00     1     4
+ESS7            35 1447     1.64    0.79     1.0     1.52    0.00     1     4
+ESS8            36 1447     1.21    0.55     1.0     1.06    0.00     1     4
+ESS00           37 1447     2.21    0.88     2.0     2.14    1.48     1     4
+ashs1           38 1438     2.58    1.28     2.0     2.45    1.48     1     6
+ashs2           39 1438     3.26    1.49     3.0     3.21    1.48     1     6
+ashs3           40 1438     2.31    1.39     2.0     2.10    1.48     1     6
+ashs4           41 1438     1.98    1.12     2.0     1.78    1.48     1     6
+ashs5           42 1437     2.72    1.42     2.0     2.59    1.48     1     6
+attention3      43 1438     4.00    0.00     4.0     4.00    0.00     4     4
+ashs6           44 1438     1.55    1.34     1.0     1.15    0.00     1     6
+ashs7           45 1438     1.76    1.02     1.0     1.58    0.00     1     6
+ashs8           46 1438     3.17    1.45     3.0     3.13    1.48     1     6
+ashs9           47 1437     2.73    1.24     3.0     2.63    1.48     1     6
+ashs10          48 1437     1.73    1.14     1.0     1.48    0.00     1     6
+ashs11          49 1438     4.03    1.37     4.0     4.09    1.48     1     6
+ashs12          50 1438     2.44    1.53     2.0     2.23    1.48     1     6
+ashs13          51 1437     4.28    1.47     5.0     4.41    1.48     1     6
+ashs14          52 1437     4.38    1.26     5.0     4.47    1.48     1     6
+ashs15          53 1437     2.69    1.26     2.0     2.57    1.48     1     6
+ashs16          54 1436     3.27    1.43     3.0     3.23    1.48     1     6
+ashs17          55 1437     3.87    1.37     4.0     3.87    1.48     1     6
+attention4      56 1437     1.20    0.87     1.0     1.00    0.00     1     6
+ashs18          57 1437     1.75    0.96     2.0     1.58    1.48     1     6
+ashs19          58 1437     2.41    1.12     2.0     2.30    1.48     1     6
+ashs20          59 1437     1.57    1.02     1.0     1.33    0.00     1     6
+ashs21          60 1437     2.59    1.56     2.0     2.42    1.48     1     6
+ashs22          61 1437     1.66    0.95     1.0     1.47    0.00     1     6
+ashs23          62 1437     1.33    0.84     1.0     1.11    0.00     1     6
+ashs24          63 1436     2.44    1.28     2.0     2.29    1.48     1     6
+ashs26          64 1437     3.23    1.26     3.0     3.16    1.48     1     6
+ashs27          65 1437     3.25    1.65     3.0     3.19    1.48     1     6
+ashs28          66 1436     3.75    1.63     4.0     3.80    1.48     1     6
+attention5      67 1437     1.10    0.63     1.0     1.00    0.00     1     6
+ashs29          68 1437     2.28    1.28     2.0     2.09    1.48     1     6
+ashs30          69 1437     3.94    1.38     4.0     3.96    1.48     1     6
+ashs31          70 1437     2.61    1.38     2.0     2.47    1.48     1     6
+ashs32          71 1437     4.87    1.19     5.0     5.04    1.48     1     6
+ashs33          72 1437     4.73    1.32     5.0     4.91    1.48     1     6
+id              73 1452 21734.02 7471.43 21089.5 20852.52 2684.99 11918 76858
+ESS1m1          74 1447     1.29    0.98     1.0     1.24    1.48     0     3
+ESS2m1          75 1447     1.29    0.87     1.0     1.25    1.48     0     3
+ESS3m1          76 1447     0.65    0.82     0.0     0.52    0.00     0     3
+ESS4m1          77 1447     1.58    1.01     2.0     1.60    1.48     0     3
+ESS5m1          78 1447     2.02    0.92     2.0     2.11    1.48     0     3
+ESS6m1          79 1447     0.11    0.38     0.0     0.00    0.00     0     3
+ESS7m1          80 1447     0.64    0.79     0.0     0.52    0.00     0     3
+ESS8m1          81 1447     0.21    0.55     0.0     0.06    0.00     0     3
+ess_total       82 1447     7.79    3.58     8.0     7.72    2.97     0    24
+attention1r     83 1452     0.82    0.38     1.0     0.91    0.00     0     1
+attention2r     84 1448     0.97    0.17     1.0     1.00    0.00     0     1
+attention3r     85 1438     1.00    0.00     1.0     1.00    0.00     1     1
+attention4r     86 1437     0.93    0.25     1.0     1.00    0.00     0     1
+attention5r     87 1437     0.97    0.17     1.0     1.00    0.00     0     1
+att_sum         88 1437     4.70    0.63     5.0     4.82    0.00     1     5
+              range  skew kurtosis     se
+age               8  0.87     0.54   0.04
+gender            2  0.83    -0.36   0.01
+roommate          1 -0.20    -1.96   0.01
+other_sleep       4  1.75     2.87   0.02
+bed_read          4  1.61     2.18   0.03
+bed_study         4  1.15     0.64   0.03
+bed_hw            4  0.92    -0.15   0.03
+attention1        4 -2.50     5.33   0.02
+bed_internet      4 -0.41    -0.69   0.03
+bed_tv            4 -0.29    -1.02   0.03
+bed_eat           4  1.22     0.81   0.03
+bed_friends       4  1.42     1.72   0.03
+bed_videogame     4  1.14     0.40   0.03
+bed_readp         4  0.97     0.04   0.03
+BL_1              4 -2.15     3.31   0.03
+BL_2              4 -1.44     0.76   0.03
+BL_3              4 -1.06    -0.17   0.03
+BL_4              4 -1.59     0.97   0.04
+BL_5              4  0.48    -1.34   0.04
+attention2        4  7.11    51.85   0.01
+BL_6              4  1.12     0.62   0.03
+BL_7              4 -1.47     1.09   0.03
+sleepsat1         4 -0.18    -1.09   0.03
+sleepsat2         4 -0.20    -1.04   0.03
+sleepsat3         4 -0.11    -1.12   0.03
+sleepsat4         4 -0.05    -1.24   0.04
+sleepsat5         4 -0.78    -0.33   0.03
+sleepsat6         4  0.16    -0.94   0.03
+ESS1              3  0.27    -0.94   0.03
+ESS2              3  0.27    -0.59   0.02
+ESS3              3  1.10     0.45   0.02
+ESS4              3  0.00    -1.11   0.03
+ESS5              3 -0.54    -0.70   0.02
+ESS6              3  4.02    19.11   0.01
+ESS7              3  1.07     0.54   0.02
+ESS8              3  3.04     9.55   0.01
+ESS00             3  0.42    -0.49   0.02
+ashs1             5  0.81    -0.06   0.03
+ashs2             5  0.28    -0.94   0.04
+ashs3             5  0.99     0.07   0.04
+ashs4             5  1.30     1.41   0.03
+ashs5             5  0.64    -0.45   0.04
+attention3        0   NaN      NaN   0.00
+ashs6             5  2.41     4.45   0.04
+ashs7             5  1.49     2.08   0.03
+ashs8             5  0.30    -0.87   0.04
+ashs9             5  0.61    -0.16   0.03
+ashs10            5  1.84     3.11   0.03
+ashs11            5 -0.33    -0.73   0.04
+ashs12            5  0.86    -0.35   0.04
+ashs13            5 -0.58    -0.65   0.04
+ashs14            5 -0.47    -0.54   0.03
+ashs15            5  0.85     0.21   0.03
+ashs16            5  0.29    -0.83   0.04
+ashs17            5 -0.07    -0.93   0.04
+attention4        5  4.77    22.14   0.02
+ashs18            5  1.72     3.67   0.03
+ashs19            5  0.92     0.80   0.03
+ashs20            5  2.09     4.23   0.03
+ashs21            5  0.71    -0.64   0.04
+ashs22            5  1.83     3.83   0.03
+ashs23            5  3.23    11.47   0.02
+ashs24            5  0.92     0.38   0.03
+ashs26            5  0.44    -0.45   0.03
+ashs27            5  0.15    -1.21   0.04
+ashs28            5 -0.08    -1.25   0.04
+attention5        5  6.63    44.55   0.02
+ashs29            5  1.13     0.73   0.03
+ashs30            5 -0.13    -0.96   0.04
+ashs31            5  0.72    -0.29   0.04
+ashs32            5 -1.00     0.44   0.03
+ashs33            5 -0.86    -0.17   0.03
+id            64940  6.54    44.82 196.07
+ESS1m1            3  0.27    -0.94   0.03
+ESS2m1            3  0.27    -0.59   0.02
+ESS3m1            3  1.10     0.45   0.02
+ESS4m1            3  0.00    -1.11   0.03
+ESS5m1            3 -0.54    -0.70   0.02
+ESS6m1            3  4.02    19.11   0.01
+ESS7m1            3  1.07     0.54   0.02
+ESS8m1            3  3.04     9.55   0.01
+ess_total        24  0.30     0.23   0.09
+attention1r       1 -1.70     0.90   0.01
+attention2r       1 -5.54    28.66   0.00
+attention3r       0   NaN      NaN   0.00
+attention4r       1 -3.49    10.18   0.01
+attention5r       1 -5.38    26.92   0.00
+att_sum           4 -2.79    10.04   0.02</code></pre>
+</div>
+</div>
+<p><strong>NOTE</strong>: Some variables are not numeric and are <strong>categorical</strong> variables of type character. By default, the describe() function forces non-numeric variables to be numeric and attempts to calculate descriptives for them. These variables are marked with an asterisk (*). In this case, it doesn’t make sense to calculate descriptive statistics for these variables, so we get a warning message and a bunch of NaN’s and NA’s for these variables.</p>
 <p>A better approach would be to remove non-numeric variables before you attempt to run numerical calculations on your dataset.</p>
+</section>
+<section class="slide level2">
+
+<h3 id="if-we-reach-this-slide-and-there-is-still-time-dr.-haraden-will-need-to-switch-over-to-the-powerpoint-because-he-is-a-bad-professor-who-didnt-plan-properly-this-week.">If we reach this slide and there is still time, Dr.&nbsp;Haraden will need to switch over to the PowerPoint because he is a bad professor who didn’t plan properly this week.</h3>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
