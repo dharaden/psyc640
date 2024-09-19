@@ -189,3 +189,55 @@ mean(sleep_data$ess_total)
 ```
 
 $\bar{X} = \frac{X_1+X_2+...+X_{N-1}X_N}{N}$
+
+Oh no! We forgot to account for the missing variables in our variable! We got NA! The reason for this is that the mean is calculated by using every value for a given variable, so if you don’t remove (or impute) the missing values before getting the mean, it won’t work.
+
+Let’s try that again, but using the additional argument to eliminate (or remove) the NA’s from the variable prior to computing the mean. 
+
+|                                         |
+|-----------------------------------------|
+| **mean(sleep_data\$age, na.rm = TRUE)** |
+
+### Median
+
+The median is the middle value of a set of observations: 50% of the data points fall below the median, and 50% fall above.
+
+To find the median, we can use the median() function. Use it on the age variable.
+
+## Measures of Variability
+
+### Range
+
+The range gives us the distance between the smallest and largest value in a dataset. You can find the range using the range() function, which will output the minimum and maximum values. Find the range of the age variable.
+
+### Variance and Standard Deviation
+
+To find the variance and standard deviation, we use var() and sd(), respectively. Find the variance and standard deviation of the age variable.
+
+# Summarizing Data
+
+So far we have been calculating various descriptive statistics (somewhat painstakingly) using an assortment of different functions. So what if we have a dataset with a bunch of variables we want descriptive statistics for? Surely we don’t want to calculate descriptives for each variable by hand…
+
+Fortunately for us, there is a function called describe() from the {psych} package, which we can use to quickly summarize a whole set of variables in a dataset.
+
+Be sure to first install the package prior to putting it into your library code chunk. Reminder: anytime you add a library, be sure you actually run the code line **library(psych)**. Otherwise, you will have a hard time trying to use the next functions. 
+
+Let’s use it with our sleep dataset!
+
+## describe()
+
+This function automatically calculates all of the descriptives we reviewed above (and more!). Use the describe() function from the **psych** package on the entire sleep_data dataset.
+
+**Notes:** If you load a library at the beginning, you can directly call any function from it. Instead, you can call a function by library_name::function_name without loading the entire library.
+
++--------------------------------------------------+
+| **psych::describe(sleep_data)**                  |
+|                                                  |
+| **\# or if you have already loaded the library** |
+|                                                  |
+| **describe(sleep_data)**                         |
++--------------------------------------------------+
+
+NOTE: Some variables are not numeric and are **categorical** variables of type character. By default, the describe() function forces non-numeric variables to be numeric and attempts to calculate descriptives for them. These variables are marked with an asterisk (\*). In this case, it doesn’t make sense to calculate descriptive statistics for these variables, so we get a warning message and a bunch of NaN’s and NA’s for these variables.
+
+A better approach would be to remove non-numeric variables before you attempt to run numerical calculations on your dataset.
