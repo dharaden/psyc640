@@ -527,9 +527,108 @@ Dustin Haraden, PhD
 <span id="cb2-73"><a></a>                      attention4r <span class="sc">+</span> attention5r))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+<section id="address-the-inattention" class="slide level2">
+<h2>Address the Inattention</h2>
+<p>Create two new datasets labeled (1) “data_attend” and (2) “data_distract”. In each dataset have those who were paying attention in the “data_attend” and those who were not in the “data_distract”. Paying attention is operationalized as having a score of 5 on the aggregated variable.</p>
+<p>Get the sample size of each of these datasets (use Google to search for things like number of rows)</p>
+</section>
+<section id="save-the-cleaned-up-file" class="slide level2">
+<h2>Save the cleaned up file</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">write.csv</span>(sleep_data, </span>
+<span id="cb3-2"><a></a>          <span class="fu">here</span>(<span class="st">"lectures"</span>, <span class="st">"data"</span>, <span class="st">"named_Sleep_Data.csv"</span>), </span>
+<span id="cb3-3"><a></a>          <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This is now a file that we will use in the future to import. That way we don’t have to make sure that the code above is in all of our scripts/recipes moving forward!</p>
+</section></section>
+<section>
+<section id="descriptive-statistics" class="title-slide slide level1 center">
+<h1>Descriptive Statistics</h1>
+
+</section>
+<section id="measures-of-central-tendency" class="slide level2">
+<h2>Measures of Central Tendency</h2>
+<p>For a given set of observations, measures of central tendency allow us to get the “gist” of the data.</p>
+<p>They tell us about where the “average” or the “mid-point” of the data lies or how much deviation there is from a central point.</p>
+<p>Let’s take a look at the data that we have already loaded in, and complete some of these tasks.</p>
+</section>
 <section class="slide level2">
 
-<p><span class="math inline">\(\bar{X} = \frac{X_1+X_2+...+X_{N-1}X_N}{N}\)</span></p>
+<h3 id="meanaverage">Mean/Average</h3>
+<p><span class="math display">\[
+\bar{X} = \frac{X_1+X_2+...+X\_{N-1}X_N}{N}
+\]</span></p>
+<p>OR</p>
+<p><span class="math display">\[
+\bar{X} = \frac{1}{N}\sum_{i=1}^{N} X_i
+\]</span></p>
+</section>
+<section class="slide level2">
+
+<h3 id="mean-in-r">Mean in R</h3>
+<p>A quick way to find the mean is to use the aptly named <code>mean()</code> function from base R. Use this function to get the average <code>age</code> and <code>ess total</code> in our dataset.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">mean</span>(sleep_data<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 19.56129</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">mean</span>(sleep_data<span class="sc">$</span>ess_total)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p>Oh no! A mean of <code>NA</code> makes no sense…</p>
+<p>We forgot to account for the missing variables in our variable! We got <code>NA</code>! The reason for this is that the mean is calculated by using every value for a given variable, so if you don’t remove (or impute) the missing values before getting the mean, it won’t work.</p>
+<p>Let’s try that again, but using the additional argument to eliminate (or remove) the <code>NA</code>’s from the variable prior to computing the mean.&nbsp;</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">mean</span>(sleep_data<span class="sc">$</span>ess_total, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.794057</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="median">Median</h3>
+<p>The median is the middle value of a set of observations: 50% of the data points fall below the median, and 50% fall above.</p>
+<p>To find the median, we can use the median() function. Use it on the age variable.</p>
+</section>
+<section id="measures-of-variability" class="slide level2">
+<h2>Measures of Variability</h2>
+<h3 id="range">Range</h3>
+<p>The range gives us the distance between the smallest and largest value in a dataset. You can find the range using the range() function, which will output the minimum and maximum values. Find the range of the age variable.</p>
+<h3 id="variance-and-standard-deviation">Variance and Standard Deviation</h3>
+<p>To find the variance and standard deviation, we use var() and sd(), respectively. Find the variance and standard deviation of the age variable.</p>
+</section></section>
+<section>
+<section id="summarizing-data" class="title-slide slide level1 center">
+<h1>Summarizing Data</h1>
+<p>So far we have been calculating various descriptive statistics (somewhat painstakingly) using an assortment of different functions. So what if we have a dataset with a bunch of variables we want descriptive statistics for? Surely we don’t want to calculate descriptives for each variable by hand…</p>
+<p>Fortunately for us, there is a function called describe() from the {psych} package, which we can use to quickly summarize a whole set of variables in a dataset.</p>
+<p>Be sure to first install the package prior to putting it into your library code chunk. Reminder: anytime you add a library, be sure you actually run the code line <strong>library(psych)</strong>. Otherwise, you will have a hard time trying to use the next functions.&nbsp;</p>
+<p>Let’s use it with our sleep dataset!</p>
+</section>
+<section id="describe" class="slide level2">
+<h2>describe()</h2>
+<p>This function automatically calculates all of the descriptives we reviewed above (and more!). Use the describe() function from the <strong>psych</strong> package on the entire sleep_data dataset.</p>
+<p><strong>Notes:</strong> If you load a library at the beginning, you can directly call any function from it. Instead, you can call a function by library_name::function_name without loading the entire library.</p>
+<table class="caption-top" style="width:71%;">
+<colgroup>
+<col style="width: 70%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p><strong>psych::describe(sleep_data)</strong></p>
+<p><strong># or if you have already loaded the library</strong></p>
+<p><strong>describe(sleep_data)</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>NOTE: Some variables are not numeric and are <strong>categorical</strong> variables of type character. By default, the describe() function forces non-numeric variables to be numeric and attempts to calculate descriptives for them. These variables are marked with an asterisk (*). In this case, it doesn’t make sense to calculate descriptive statistics for these variables, so we get a warning message and a bunch of NaN’s and NA’s for these variables.</p>
+<p>A better approach would be to remove non-numeric variables before you attempt to run numerical calculations on your dataset.</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">

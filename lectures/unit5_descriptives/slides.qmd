@@ -168,6 +168,20 @@ This is now a file that we will use in the future to import. That way we don't h
 
 ------------------------------------------------------------------------
 
+## Some Terminology
+
++--------------------------------------------------+--------------------------------------------------+
+| Population                                       | Sample                                           |
++==================================================+==================================================+
+| $\mu$ (mu) = Population Mean                     | $\bar{X}$ (x bar) = Sample Mean                  |
++--------------------------------------------------+--------------------------------------------------+
+| $\sigma$ (sigma) = Population Standard Deviation | $s$ = $\hat{\sigma}$ = Sample Standard Deviation |
++--------------------------------------------------+--------------------------------------------------+
+| $\sigma^2$ (sigma squared) = Population Variance | $s^2$ = $\hat{\sigma^2}$ = Sample Variance       |
++--------------------------------------------------+--------------------------------------------------+
+
+------------------------------------------------------------------------
+
 ## Measures of Central Tendency
 
 For a given set of observations, measures of central tendency allow us to get the “gist” of the data.
@@ -178,7 +192,21 @@ Let’s take a look at the data that we have already loaded in, and complete som
 
 ------------------------------------------------------------------------
 
-### Mean
+### Mean/Average
+
+$$
+\bar{X} = \frac{X_1+X_2+...+X\_{N-1}X_N}{N}
+$$
+
+OR
+
+$$
+\bar{X} = \frac{1}{N}\sum_{i=1}^{N} X_i
+$$
+
+------------------------------------------------------------------------
+
+### Mean in R
 
 A quick way to find the mean is to use the aptly named `mean()` function from base R. Use this function to get the average `age` and `ess total` in our dataset.
 
@@ -188,29 +216,111 @@ mean(sleep_data$age)
 mean(sleep_data$ess_total)
 ```
 
-$\bar{X} = \frac{X_1+X_2+...+X_{N-1}X_N}{N}$
+------------------------------------------------------------------------
 
-Oh no! We forgot to account for the missing variables in our variable! We got NA! The reason for this is that the mean is calculated by using every value for a given variable, so if you don’t remove (or impute) the missing values before getting the mean, it won’t work.
+Oh no! A mean of `NA` makes no sense...
 
-Let’s try that again, but using the additional argument to eliminate (or remove) the NA’s from the variable prior to computing the mean. 
+We forgot to account for the missing variables in our variable! We got `NA`! The reason for this is that the mean is calculated by using every value for a given variable, so if you don’t remove (or impute) the missing values before getting the mean, it won’t work.
 
-|                                         |
-|-----------------------------------------|
-| **mean(sleep_data\$age, na.rm = TRUE)** |
+Let’s try that again, but using the additional argument to eliminate (or remove) the `NA`’s from the variable prior to computing the mean. 
+
+```{r}
+mean(sleep_data$ess_total, na.rm = TRUE)
+```
+
+------------------------------------------------------------------------
 
 ### Median
 
 The median is the middle value of a set of observations: 50% of the data points fall below the median, and 50% fall above.
 
-To find the median, we can use the median() function. Use it on the age variable.
+To find the median, we can use the `median()` function. Use it on the age variable.
+
+------------------------------------------------------------------------
+
+![](/images/mean_median.png){fig-align="center"}
+
+------------------------------------------------------------------------
 
 ## Measures of Variability
 
+The overall spread of the data; How far from the middle?
+
+![](/images/variance.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
 ### Range
 
-The range gives us the distance between the smallest and largest value in a dataset. You can find the range using the range() function, which will output the minimum and maximum values. Find the range of the age variable.
+The range gives us the distance between the smallest and largest value in a dataset.
+
+You can find the range using the `range()` function, which will output the minimum and maximum values.
+
+Find the range of the `ess_total` variable.
+
+------------------------------------------------------------------------
 
 ### Variance and Standard Deviation
+
+#### 68-95-99.7 Rule 
+
+For nearly normally distributed data:
+
+-   about 68% falls within 1 SD of the mean,
+
+-   about 95% falls within 2 SD of the mean,
+
+-   about 99.7% falls within 3 SD of the mean.
+
+It is possible for observations to fall 4, 5, or more standard deviations away from the mean, but these occurrences are very rare if the data are nearly normal.
+
+------------------------------------------------------------------------
+
+![](/images/var2.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Variance
+
+The sum of squared deviations
+
+$$\sigma^2 = \frac{1}{N}\sum_{i=1}^N(X-\bar{X})^2$$
+
+$$\hat{\sigma}^2 = s^2 = \frac{1}{N-1}\sum_{i=1}^N(X-\bar{X})^2$$
+
+------------------------------------------------------------------------
+
++-------------------+---------------+-------------------------+---------------------------------------+-----------------------------------------+
+| $i$ (observation) | $X_i$ (value) | $\bar{X}$ (sample mean) | $X_i - \bar{X}$ (deviation from mean) | $(X_i - \bar{X})^2$ (squared deviation) |
++===================+===============+=========================+=======================================+=========================================+
+| 1                 | 56            | 36.6                    | 19.4                                  | 376.36                                  |
++-------------------+---------------+-------------------------+---------------------------------------+-----------------------------------------+
+| 2                 | 31            | 36.6                    | -5.6                                  | 31.36                                   |
++-------------------+---------------+-------------------------+---------------------------------------+-----------------------------------------+
+| 3                 | 56            | 36.6                    | 19.4                                  | 376.36                                  |
++-------------------+---------------+-------------------------+---------------------------------------+-----------------------------------------+
+| 4                 | 8             | 36.6                    | -28.6                                 | 817.96                                  |
++-------------------+---------------+-------------------------+---------------------------------------+-----------------------------------------+
+| 5                 | 32            | 36.6                    | -4.6                                  | 21.16                                   |
++-------------------+---------------+-------------------------+---------------------------------------+-----------------------------------------+
+
+------------------------------------------------------------------------
+
+***Why do we use the squared deviation in the calculation of variance?***
+
+::: incremental
+-   To get rid of negative values so that observations equally distant from the mean are weighted equally
+
+-   To weigh larger deviations from the mean
+:::
+
+------------------------------------------------------------------------
+
+## In-Class Variance
+
+[Google Sheet](https://docs.google.com/spreadsheets/d/1C54Dy_lcRuZUXBBtGhavTePTNojb59Oe1xVKg7pnNv4/edit?usp=sharing)
+
+------------------------------------------------------------------------
 
 To find the variance and standard deviation, we use var() and sd(), respectively. Find the variance and standard deviation of the age variable.
 
