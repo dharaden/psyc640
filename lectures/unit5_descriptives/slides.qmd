@@ -102,7 +102,45 @@ sleep_data <- import(here("lectures", "data", "Sleep_Data.csv")) %>%
   
   # Create a total score for the ESS
   mutate(ess_total = ESS1m1 + ESS2m1 + ESS3m1 + 
-           ESS4m1 + ESS5m1 + ESS6m1 + ESS7m1 + ESS8m1)
+           ESS4m1 + ESS5m1 + ESS6m1 + ESS7m1 + ESS8m1) %>% 
+  
+  # Recode the attention check variables
+  mutate(attention1r = recode(attention1, 
+                              `1`=0,
+                              `2`=0,
+                              `3`=0,
+                              `4`=0,
+                              `5`=1),
+         attention2r = recode(attention2, 
+                              `1`=1,
+                              `2`=0,
+                              `3`=0,
+                              `4`=0,
+                              `5`=0),
+         attention3r = recode(attention3, 
+                              `1`=0,
+                              `2`=0,
+                              `3`=0,
+                              `4`=1,
+                              `5`=0),
+         attention4r = recode(attention4, 
+                              `1`=1,
+                              `2`=0,
+                              `3`=0,
+                              `4`=0,
+                              `5`=0,
+                              `6`=0),
+         attention5r = recode(attention5, 
+                              `1`=1,
+                              `2`=0,
+                              `3`=0,
+                              `4`=0,
+                              `5`=0,
+                              `6`=0)) %>% 
+  
+  # Compute a total Attention Score
+  mutate(att_sum = (attention1r + attention2r + attention3r +
+                      attention4r + attention5r))
 ```
 
 ------------------------------------------------------------------------

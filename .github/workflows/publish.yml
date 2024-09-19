@@ -41,6 +41,9 @@ jobs:
             any::rio
             any::tidyverse
             any::palmerpenguins
+            any::psych
+            any::sjPlot
+            any::lsr
             # Add more packages as needed
       
       - name: Render and Publish to GitHub Pages

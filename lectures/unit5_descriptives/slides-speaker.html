@@ -454,115 +454,82 @@ Dustin Haraden, PhD
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co">#import sleep data - Your path may be different</span></span>
 <span id="cb2-2"><a></a>sleep_data <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"lectures"</span>, <span class="st">"data"</span>, <span class="st">"Sleep_Data.csv"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-3"><a></a>  <span class="co">#Select only the variables we are interested in</span></span>
-<span id="cb2-4"><a></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="st">'StartDate'</span>, <span class="st">'EndDate'</span>, <span class="st">'Status'</span>, <span class="st">'Progress'</span>, </span>
-<span id="cb2-5"><a></a>  <span class="st">'Duration__in_seconds_'</span>, <span class="st">'Finished'</span>, <span class="st">'RecordedDate'</span>,</span>
-<span id="cb2-6"><a></a>  <span class="st">'DistributionChannel'</span>, <span class="st">'UserLanguage'</span>, <span class="st">'SC0'</span>, <span class="st">'SC1'</span>,</span>
-<span id="cb2-7"><a></a>  <span class="st">'SC2'</span>, <span class="st">'SC3'</span>, <span class="st">'SC4'</span>, <span class="st">'SC5'</span>, <span class="st">'Attention'</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-8"><a></a>  <span class="co">#rename the variable names so they make sense</span></span>
-<span id="cb2-9"><a></a>  <span class="fu">setNames</span>(<span class="fu">c</span>(<span class="st">'age'</span>, <span class="st">'gender'</span>, <span class="st">'roommate'</span>, <span class="st">'other_sleep'</span>, <span class="st">'bed_read'</span>, <span class="st">'bed_study'</span>, <span class="st">'bed_hw'</span>, <span class="st">'attention1'</span>, <span class="st">'bed_internet'</span>,</span>
-<span id="cb2-10"><a></a>                       <span class="st">'bed_tv'</span>, <span class="st">'bed_eat'</span>, <span class="st">'bed_friends'</span>, <span class="st">'bed_videogame'</span>, <span class="st">'bed_readp'</span>, <span class="st">'BL_1'</span>, <span class="st">'BL_2'</span>, <span class="st">'BL_3'</span>, <span class="st">'BL_4'</span>,</span>
-<span id="cb2-11"><a></a>                       <span class="st">'BL_5'</span>, <span class="st">'attention2'</span>, <span class="st">'BL_6'</span>, <span class="st">'BL_7'</span>, <span class="st">'sleepsat1'</span>, <span class="st">'sleepsat2'</span>, <span class="st">'sleepsat3'</span>, <span class="st">'sleepsat4'</span>, <span class="st">'sleepsat5'</span>,</span>
-<span id="cb2-12"><a></a>                       <span class="st">'sleepsat6'</span>, <span class="st">'ESS1'</span>, <span class="st">'ESS2'</span>, <span class="st">'ESS3'</span>, <span class="st">'ESS4'</span>, <span class="st">'ESS5'</span>, <span class="st">'ESS6'</span>, <span class="st">'ESS7'</span>, <span class="st">'ESS8'</span>, <span class="st">'ESS00'</span>, <span class="st">'ashs1'</span>, <span class="st">'ashs2'</span>, </span>
-<span id="cb2-13"><a></a>                       <span class="st">'ashs3'</span>, <span class="st">'ashs4'</span>, <span class="st">'ashs5'</span>, <span class="st">'attention3'</span>, <span class="st">'ashs6'</span>, <span class="st">'ashs7'</span>, <span class="st">'ashs8'</span>, <span class="st">'ashs9'</span>, <span class="st">'ashs10'</span>, <span class="st">'ashs11'</span>, </span>
-<span id="cb2-14"><a></a>                       <span class="st">'ashs12'</span>, <span class="st">'ashs13'</span>, <span class="st">'ashs14'</span>, <span class="st">'ashs15'</span>, <span class="st">'ashs16'</span>, <span class="st">'ashs17'</span>, <span class="st">'attention4'</span>, <span class="st">'ashs18'</span>, <span class="st">'ashs19'</span>, </span>
-<span id="cb2-15"><a></a>                       <span class="st">'ashs20'</span>, <span class="st">'ashs21'</span>, <span class="st">'ashs22'</span>, <span class="st">'ashs23'</span>, <span class="st">'ashs24'</span>, <span class="st">'ashs26'</span>, <span class="st">'ashs27'</span>, <span class="st">'ashs28'</span>, <span class="st">'attention5'</span>, </span>
-<span id="cb2-16"><a></a>                       <span class="st">'ashs29'</span>, <span class="st">'ashs30'</span>, <span class="st">'ashs31'</span>, <span class="st">'ashs32'</span>, <span class="st">'ashs33'</span>, <span class="st">'id'</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-17"><a></a>  <span class="co"># Only include college aged participants</span></span>
-<span id="cb2-18"><a></a>  <span class="fu">filter</span>(age <span class="sc">&gt;=</span> <span class="dv">17</span>, age <span class="sc">&lt;=</span> <span class="dv">25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a></a>  </span>
+<span id="cb2-4"><a></a>  <span class="co">#Select only the variables we are interested in</span></span>
+<span id="cb2-5"><a></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="st">'StartDate'</span>, <span class="st">'EndDate'</span>, <span class="st">'Status'</span>, <span class="st">'Progress'</span>, </span>
+<span id="cb2-6"><a></a>  <span class="st">'Duration__in_seconds_'</span>, <span class="st">'Finished'</span>, <span class="st">'RecordedDate'</span>,</span>
+<span id="cb2-7"><a></a>  <span class="st">'DistributionChannel'</span>, <span class="st">'UserLanguage'</span>, <span class="st">'SC0'</span>, <span class="st">'SC1'</span>,</span>
+<span id="cb2-8"><a></a>  <span class="st">'SC2'</span>, <span class="st">'SC3'</span>, <span class="st">'SC4'</span>, <span class="st">'SC5'</span>, <span class="st">'Attention'</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-9"><a></a>  </span>
+<span id="cb2-10"><a></a>  <span class="co">#rename the variable names so they make sense</span></span>
+<span id="cb2-11"><a></a>  <span class="fu">setNames</span>(<span class="fu">c</span>(<span class="st">'age'</span>, <span class="st">'gender'</span>, <span class="st">'roommate'</span>, <span class="st">'other_sleep'</span>, <span class="st">'bed_read'</span>, <span class="st">'bed_study'</span>, <span class="st">'bed_hw'</span>, <span class="st">'attention1'</span>, <span class="st">'bed_internet'</span>,</span>
+<span id="cb2-12"><a></a>                       <span class="st">'bed_tv'</span>, <span class="st">'bed_eat'</span>, <span class="st">'bed_friends'</span>, <span class="st">'bed_videogame'</span>, <span class="st">'bed_readp'</span>, <span class="st">'BL_1'</span>, <span class="st">'BL_2'</span>, <span class="st">'BL_3'</span>, <span class="st">'BL_4'</span>,</span>
+<span id="cb2-13"><a></a>                       <span class="st">'BL_5'</span>, <span class="st">'attention2'</span>, <span class="st">'BL_6'</span>, <span class="st">'BL_7'</span>, <span class="st">'sleepsat1'</span>, <span class="st">'sleepsat2'</span>, <span class="st">'sleepsat3'</span>, <span class="st">'sleepsat4'</span>, <span class="st">'sleepsat5'</span>,</span>
+<span id="cb2-14"><a></a>                       <span class="st">'sleepsat6'</span>, <span class="st">'ESS1'</span>, <span class="st">'ESS2'</span>, <span class="st">'ESS3'</span>, <span class="st">'ESS4'</span>, <span class="st">'ESS5'</span>, <span class="st">'ESS6'</span>, <span class="st">'ESS7'</span>, <span class="st">'ESS8'</span>, <span class="st">'ESS00'</span>, <span class="st">'ashs1'</span>, <span class="st">'ashs2'</span>, </span>
+<span id="cb2-15"><a></a>                       <span class="st">'ashs3'</span>, <span class="st">'ashs4'</span>, <span class="st">'ashs5'</span>, <span class="st">'attention3'</span>, <span class="st">'ashs6'</span>, <span class="st">'ashs7'</span>, <span class="st">'ashs8'</span>, <span class="st">'ashs9'</span>, <span class="st">'ashs10'</span>, <span class="st">'ashs11'</span>, </span>
+<span id="cb2-16"><a></a>                       <span class="st">'ashs12'</span>, <span class="st">'ashs13'</span>, <span class="st">'ashs14'</span>, <span class="st">'ashs15'</span>, <span class="st">'ashs16'</span>, <span class="st">'ashs17'</span>, <span class="st">'attention4'</span>, <span class="st">'ashs18'</span>, <span class="st">'ashs19'</span>, </span>
+<span id="cb2-17"><a></a>                       <span class="st">'ashs20'</span>, <span class="st">'ashs21'</span>, <span class="st">'ashs22'</span>, <span class="st">'ashs23'</span>, <span class="st">'ashs24'</span>, <span class="st">'ashs26'</span>, <span class="st">'ashs27'</span>, <span class="st">'ashs28'</span>, <span class="st">'attention5'</span>, </span>
+<span id="cb2-18"><a></a>                       <span class="st">'ashs29'</span>, <span class="st">'ashs30'</span>, <span class="st">'ashs31'</span>, <span class="st">'ashs32'</span>, <span class="st">'ashs33'</span>, <span class="st">'id'</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-19"><a></a>  </span>
+<span id="cb2-20"><a></a>  <span class="co"># Only include college aged participants</span></span>
+<span id="cb2-21"><a></a>  <span class="fu">filter</span>(age <span class="sc">&gt;=</span> <span class="dv">17</span>, age <span class="sc">&lt;=</span> <span class="dv">25</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-22"><a></a>  </span>
+<span id="cb2-23"><a></a>  <span class="co"># Rescale the ESS</span></span>
+<span id="cb2-24"><a></a>  <span class="fu">mutate</span>(<span class="at">ESS1m1 =</span> ESS1 <span class="sc">-</span> <span class="dv">1</span>, </span>
+<span id="cb2-25"><a></a>         <span class="at">ESS2m1 =</span> ESS2 <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb2-26"><a></a>         <span class="at">ESS3m1 =</span> ESS3 <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb2-27"><a></a>         <span class="at">ESS4m1 =</span> ESS4 <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb2-28"><a></a>         <span class="at">ESS5m1 =</span> ESS5 <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb2-29"><a></a>         <span class="at">ESS6m1 =</span> ESS6 <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb2-30"><a></a>         <span class="at">ESS7m1 =</span> ESS7 <span class="sc">-</span> <span class="dv">1</span>, </span>
+<span id="cb2-31"><a></a>         <span class="at">ESS8m1 =</span> ESS8 <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-32"><a></a>  </span>
+<span id="cb2-33"><a></a>  <span class="co"># Create a total score for the ESS</span></span>
+<span id="cb2-34"><a></a>  <span class="fu">mutate</span>(<span class="at">ess_total =</span> ESS1m1 <span class="sc">+</span> ESS2m1 <span class="sc">+</span> ESS3m1 <span class="sc">+</span> </span>
+<span id="cb2-35"><a></a>           ESS4m1 <span class="sc">+</span> ESS5m1 <span class="sc">+</span> ESS6m1 <span class="sc">+</span> ESS7m1 <span class="sc">+</span> ESS8m1) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-36"><a></a>  </span>
+<span id="cb2-37"><a></a>  <span class="co"># Recode the attention check variables</span></span>
+<span id="cb2-38"><a></a>  <span class="fu">mutate</span>(<span class="at">attention1r =</span> <span class="fu">recode</span>(attention1, </span>
+<span id="cb2-39"><a></a>                              <span class="st">`</span><span class="at">1</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb2-40"><a></a>                              <span class="st">`</span><span class="at">2</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb2-41"><a></a>                              <span class="st">`</span><span class="at">3</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb2-42"><a></a>                              <span class="st">`</span><span class="at">4</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb2-43"><a></a>                              <span class="st">`</span><span class="at">5</span><span class="st">`</span><span class="ot">=</span><span class="dv">1</span>),</span>
+<span id="cb2-44"><a></a>         <span class="at">attention2r =</span> <span class="fu">recode</span>(attention2, </span>
+<span id="cb2-45"><a></a>                              <span class="st">`</span><span class="at">1</span><span class="st">`</span><span class="ot">=</span><span class="dv">1</span>,</span>
+<span id="cb2-46"><a></a>                              <span class="st">`</span><span class="at">2</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb2-47"><a></a>                              <span class="st">`</span><span class="at">3</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb2-48"><a></a>                              <span class="st">`</span><span class="at">4</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb2-49"><a></a>                              <span class="st">`</span><span class="at">5</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>),</span>
+<span id="cb2-50"><a></a>         <span class="at">attention3r =</span> <span class="fu">recode</span>(attention3, </span>
+<span id="cb2-51"><a></a>                              <span class="st">`</span><span class="at">1</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb2-52"><a></a>                              <span class="st">`</span><span class="at">2</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb2-53"><a></a>                              <span class="st">`</span><span class="at">3</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb2-54"><a></a>                              <span class="st">`</span><span class="at">4</span><span class="st">`</span><span class="ot">=</span><span class="dv">1</span>,</span>
+<span id="cb2-55"><a></a>                              <span class="st">`</span><span class="at">5</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>),</span>
+<span id="cb2-56"><a></a>         <span class="at">attention4r =</span> <span class="fu">recode</span>(attention4, </span>
+<span id="cb2-57"><a></a>                              <span class="st">`</span><span class="at">1</span><span class="st">`</span><span class="ot">=</span><span class="dv">1</span>,</span>
+<span id="cb2-58"><a></a>                              <span class="st">`</span><span class="at">2</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb2-59"><a></a>                              <span class="st">`</span><span class="at">3</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb2-60"><a></a>                              <span class="st">`</span><span class="at">4</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb2-61"><a></a>                              <span class="st">`</span><span class="at">5</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb2-62"><a></a>                              <span class="st">`</span><span class="at">6</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>),</span>
+<span id="cb2-63"><a></a>         <span class="at">attention5r =</span> <span class="fu">recode</span>(attention5, </span>
+<span id="cb2-64"><a></a>                              <span class="st">`</span><span class="at">1</span><span class="st">`</span><span class="ot">=</span><span class="dv">1</span>,</span>
+<span id="cb2-65"><a></a>                              <span class="st">`</span><span class="at">2</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb2-66"><a></a>                              <span class="st">`</span><span class="at">3</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb2-67"><a></a>                              <span class="st">`</span><span class="at">4</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb2-68"><a></a>                              <span class="st">`</span><span class="at">5</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb2-69"><a></a>                              <span class="st">`</span><span class="at">6</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-70"><a></a>  </span>
+<span id="cb2-71"><a></a>  <span class="co"># Compute a total Attention Score</span></span>
+<span id="cb2-72"><a></a>  <span class="fu">mutate</span>(<span class="at">att_sum =</span> (attention1r <span class="sc">+</span> attention2r <span class="sc">+</span> attention3r <span class="sc">+</span></span>
+<span id="cb2-73"><a></a>                      attention4r <span class="sc">+</span> attention5r))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section></section>
-<section>
-<section id="mutate" class="title-slide slide level1 center">
-<h1>mutate()</h1>
+</section>
+<section class="slide level2">
 
-<img data-src="../..\images/mutate().png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="compute-new-variable" class="slide level2">
-<h2>Compute new variable</h2>
-<p>We often need to make a sum/mean score for a variable of interest</p>
-<p>For example, in the <code>sleep_data</code>, we have the <a href="https://nasemso.org/wp-content/uploads/neuro-epworthsleepscale.pdf" target="_blank">Epworth Sleepiness Scale</a></p>
-<p>Take a look at the scoring of the ESS and compute the total score labelled <code>ess_total</code></p>
-</section>
-<section id="ess_total" class="slide level2">
-<h2><code>ess_total</code></h2>
-<p>It is a sum score with a scale of 0 - 24</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># We will assign it to the same dataset</span></span>
-<span id="cb3-2"><a></a>sleep_data <span class="ot">&lt;-</span> sleep_data <span class="sc">%&gt;%</span> </span>
-<span id="cb3-3"><a></a>  <span class="fu">mutate</span>(<span class="at">ess_total =</span> ESS1 <span class="sc">+</span> ESS2 <span class="sc">+</span> ESS3 <span class="sc">+</span> </span>
-<span id="cb3-4"><a></a>           ESS4 <span class="sc">+</span> ESS5 <span class="sc">+</span> ESS6 <span class="sc">+</span> ESS7 <span class="sc">+</span> ESS8)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="visualize" class="slide level2">
-<h2>Visualize</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>sleep_data <span class="sc">%&gt;%</span> </span>
-<span id="cb4-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(ess_total)) <span class="sc">+</span> </span>
-<span id="cb4-3"><a></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"><div>
-<ul>
-<li class="fragment">But why are there some above 24??</li>
-</ul>
-</div>
-</section>
-<section id="ess-variables" class="slide level2">
-<h2>ESS Variables</h2>
-<p>The original items are supposed to be on a 0-3 scale</p>
-<p>The data that we have are on a 1-4 scale</p>
-<p><strong><em>What should we do?!</em></strong></p>
-</section>
-<section id="ess-rescale" class="slide level2">
-<h2>ESS Rescale</h2>
-<p>We could subtract 1 from each item before creating another sum</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>sleep_data <span class="ot">&lt;-</span> sleep_data <span class="sc">%&gt;%</span> </span>
-<span id="cb5-2"><a></a>  <span class="fu">mutate</span>(<span class="at">ESS1m1 =</span> ESS1 <span class="sc">-</span> <span class="dv">1</span>, </span>
-<span id="cb5-3"><a></a>         <span class="at">ESS2m1 =</span> ESS2 <span class="sc">-</span> <span class="dv">1</span>,</span>
-<span id="cb5-4"><a></a>         <span class="at">ESS3m1 =</span> ESS3 <span class="sc">-</span> <span class="dv">1</span>,</span>
-<span id="cb5-5"><a></a>         <span class="at">ESS4m1 =</span> ESS4 <span class="sc">-</span> <span class="dv">1</span>,</span>
-<span id="cb5-6"><a></a>         <span class="at">ESS5m1 =</span> ESS5 <span class="sc">-</span> <span class="dv">1</span>,</span>
-<span id="cb5-7"><a></a>         <span class="at">ESS6m1 =</span> ESS6 <span class="sc">-</span> <span class="dv">1</span>,</span>
-<span id="cb5-8"><a></a>         <span class="at">ESS7m1 =</span> ESS7 <span class="sc">-</span> <span class="dv">1</span>, </span>
-<span id="cb5-9"><a></a>         <span class="at">ESS8m1 =</span> ESS8 <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-10"><a></a>  <span class="fu">mutate</span>(<span class="at">ess_total2 =</span> ESS1m1 <span class="sc">+</span> ESS2m1 <span class="sc">+</span> ESS3m1 <span class="sc">+</span> </span>
-<span id="cb5-11"><a></a>           ESS4m1 <span class="sc">+</span> ESS5m1 <span class="sc">+</span> ESS6m1 <span class="sc">+</span> ESS7m1 <span class="sc">+</span> ESS8m1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="ess-rescale-1" class="slide level2">
-<h2>ESS Rescale</h2>
-<p>Or we could combine all the <code>1</code>’s that we are subtracting and just take that from the total score</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>sleep_data <span class="ot">&lt;-</span> sleep_data <span class="sc">%&gt;%</span> </span>
-<span id="cb6-2"><a></a>  <span class="fu">mutate</span>(<span class="at">ess_total =</span> ESS1 <span class="sc">+</span> ESS2 <span class="sc">+</span> ESS3 <span class="sc">+</span> </span>
-<span id="cb6-3"><a></a>           ESS4 <span class="sc">+</span> ESS5 <span class="sc">+</span> ESS6 <span class="sc">+</span> ESS7 <span class="sc">+</span> ESS8) <span class="sc">%&gt;%</span> </span>
-<span id="cb6-4"><a></a>  <span class="fu">mutate</span>(<span class="at">ess_total3 =</span> ess_total<span class="dv">-8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="ess-rescale-2" class="slide level2">
-<h2>ESS Rescale</h2>
-<p>Let’s see what the differences are between these methods</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>sleep_data <span class="sc">%&gt;%</span> </span>
-<span id="cb7-2"><a></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">"_total"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-3"><a></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  ess_total ess_total2 ess_total3
-1        20         12         12
-2        20         12         12
-3        16          8          8
-4        20         12         12
-5        13          5          5
-6        22         14         14</code></pre>
-</div>
-</div>
-</section>
-<section id="rescaling-conclusion" class="slide level2">
-<h2>Rescaling Conclusion</h2>
-<p>It is good to always know what the original scaling needs to be (e.g., 1-4 or 0-3)</p>
-<p>Extremely important to visualize the data! ALWAYS VISUALIZE</p>
-<p>There is also another way to allow for the <code>sum()</code> function in <code>mutate()</code>, but we’ll get to that later</p>
+<p><span class="math inline">\(\bar{X} = \frac{X_1+X_2+...+X_{N-1}X_N}{N}\)</span></p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
