@@ -145,4 +145,47 @@ sleep_data <- import(here("lectures", "data", "Sleep_Data.csv")) %>%
 
 ------------------------------------------------------------------------
 
+## Address the Inattention
+
+Create two new datasets labeled (1) “data_attend” and (2) “data_distract”. In each dataset have those who were paying attention in the “data_attend” and those who were not in the “data_distract”. Paying attention is operationalized as having a score of 5 on the aggregated variable.
+
+Get the sample size of each of these datasets (use Google to search for things like number of rows)
+
+------------------------------------------------------------------------
+
+## Save the cleaned up file
+
+```{r eval = FALSE}
+write.csv(sleep_data, 
+          here("lectures", "data", "named_Sleep_Data.csv"), 
+          row.names = FALSE)
+
+```
+
+This is now a file that we will use in the future to import. That way we don't have to make sure that the code above is in all of our scripts/recipes moving forward!
+
+# Descriptive Statistics
+
+------------------------------------------------------------------------
+
+## Measures of Central Tendency
+
+For a given set of observations, measures of central tendency allow us to get the “gist” of the data.
+
+They tell us about where the “average” or the “mid-point” of the data lies or how much deviation there is from a central point.
+
+Let’s take a look at the data that we have already loaded in, and complete some of these tasks.
+
+------------------------------------------------------------------------
+
+### Mean
+
+A quick way to find the mean is to use the aptly named `mean()` function from base R. Use this function to get the average `age` and `ess total` in our dataset.
+
+```{r}
+mean(sleep_data$age)
+
+mean(sleep_data$ess_total)
+```
+
 $\bar{X} = \frac{X_1+X_2+...+X_{N-1}X_N}{N}$
