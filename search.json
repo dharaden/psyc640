@@ -175,14 +175,35 @@
     "text": "Steps to do if we have time\nCreate two new datasets labeled (1) “data_attend” and (2) “data_distract”. In each dataset have those who were paying attention in the “data_attend” and those who were not in the “data_distract”. Paying attention is operationalized as having a score of 5 on the aggregated variable.\nGet the sample size of each of these datasets (use Google to search for things like number of rows)\nWhat is the mean/average of ess_total in each of the samples?"
   },
   {
-    "objectID": "lectures/wk3_visualizations/index.html",
-    "href": "lectures/wk3_visualizations/index.html",
-    "title": "Week 3 - Visualizations",
+    "objectID": "lectures/unit5_descriptives/slides.html#reminders",
+    "href": "lectures/unit5_descriptives/slides.html#reminders",
+    "title": "Unit 5 - Descriptives",
+    "section": "Reminders",
+    "text": "Reminders\n\n\nJournal Entries\nLab 1 to be posted soon (if we have time today I will try to introduce it)"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides.html#last-class",
+    "href": "lectures/unit5_descriptives/slides.html#last-class",
+    "title": "Unit 5 - Descriptives",
+    "section": "Last Class",
+    "text": "Last Class\n\n\nUsed various functions to wrangle data\n\nselect()\nfilter()\nmutate()"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides.html#today",
+    "href": "lectures/unit5_descriptives/slides.html#today",
+    "title": "Unit 5 - Descriptives",
+    "section": "Today…",
+    "text": "Today…\nEntering into the world of describing our data with numerical values.\n\n# File management\nlibrary(here)\n# for dplyr, ggplot2\nlibrary(tidyverse)\n#Loading data\nlibrary(rio)\n# for descriptives\nlibrary(psych)\n\n#Remove Scientific Notation \noptions(scipen=999)"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/index.html",
+    "href": "lectures/unit5_descriptives/index.html",
+    "title": "Unit 5 - Descriptive Statistics",
     "section": "",
-    "text": "During this lecture, we will explore the functionality of ggplot2 and begin our entry into the tidyverse. For this lecture, have the datasets downloaded and put in the appropriate place in your files\n\nFull Screen",
+    "text": "Now that we have gotten somewhat more comfortable with wrangling our data and visualizing it, we are going to shift our focus to describing our data. This is always an important step and will begin our journey into inferential statistics.\n\nFull Screen",
     "crumbs": [
       "Lectures",
-      "3 - Visualizing"
+      "5 - Descriptives"
     ]
   },
   {
@@ -422,6 +443,17 @@
     "crumbs": [
       "Lectures",
       "4 - Data Wrangling"
+    ]
+  },
+  {
+    "objectID": "lectures/wk3_visualizations/index.html",
+    "href": "lectures/wk3_visualizations/index.html",
+    "title": "Week 3 - Visualizations",
+    "section": "",
+    "text": "During this lecture, we will explore the functionality of ggplot2 and begin our entry into the tidyverse. For this lecture, have the datasets downloaded and put in the appropriate place in your files\n\nFull Screen",
+    "crumbs": [
+      "Lectures",
+      "3 - Visualizing"
     ]
   },
   {
