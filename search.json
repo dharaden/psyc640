@@ -196,6 +196,27 @@
     "text": "Today…\nEntering into the world of describing our data with numerical values.\n\n# File management\nlibrary(here)\n# for dplyr, ggplot2\nlibrary(tidyverse)\n#Loading data\nlibrary(rio)\n# for descriptives\nlibrary(psych)\n\n#Remove Scientific Notation \noptions(scipen=999)"
   },
   {
+    "objectID": "lectures/unit5_descriptives/slides.html#address-the-inattention",
+    "href": "lectures/unit5_descriptives/slides.html#address-the-inattention",
+    "title": "Unit 5 - Descriptives",
+    "section": "Address the Inattention",
+    "text": "Address the Inattention\nCreate two new datasets labeled (1) “data_attend” and (2) “data_distract”. In each dataset have those who were paying attention in the “data_attend” and those who were not in the “data_distract”. Paying attention is operationalized as having a score of 5 on the aggregated variable.\nGet the sample size of each of these datasets (use Google to search for things like number of rows)"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides.html#save-the-cleaned-up-file",
+    "href": "lectures/unit5_descriptives/slides.html#save-the-cleaned-up-file",
+    "title": "Unit 5 - Descriptives",
+    "section": "Save the cleaned up file",
+    "text": "Save the cleaned up file\n\nwrite.csv(sleep_data, \n          here(\"lectures\", \"data\", \"named_Sleep_Data.csv\"), \n          row.names = FALSE)\n\nThis is now a file that we will use in the future to import. That way we don’t have to make sure that the code above is in all of our scripts/recipes moving forward!"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides.html#measures-of-central-tendency",
+    "href": "lectures/unit5_descriptives/slides.html#measures-of-central-tendency",
+    "title": "Unit 5 - Descriptives",
+    "section": "Measures of Central Tendency",
+    "text": "Measures of Central Tendency\nFor a given set of observations, measures of central tendency allow us to get the “gist” of the data.\nThey tell us about where the “average” or the “mid-point” of the data lies or how much deviation there is from a central point.\nLet’s take a look at the data that we have already loaded in, and complete some of these tasks."
+  },
+  {
     "objectID": "lectures/unit5_descriptives/index.html",
     "href": "lectures/unit5_descriptives/index.html",
     "title": "Unit 5 - Descriptive Statistics",

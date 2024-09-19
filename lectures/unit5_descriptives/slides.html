@@ -527,8 +527,45 @@ Dustin Haraden, PhD
 <span id="cb2-73"><a></a>                      attention4r <span class="sc">+</span> attention5r))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+<section id="address-the-inattention" class="slide level2">
+<h2>Address the Inattention</h2>
+<p>Create two new datasets labeled (1) “data_attend” and (2) “data_distract”. In each dataset have those who were paying attention in the “data_attend” and those who were not in the “data_distract”. Paying attention is operationalized as having a score of 5 on the aggregated variable.</p>
+<p>Get the sample size of each of these datasets (use Google to search for things like number of rows)</p>
+</section>
+<section id="save-the-cleaned-up-file" class="slide level2">
+<h2>Save the cleaned up file</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">write.csv</span>(sleep_data, </span>
+<span id="cb3-2"><a></a>          <span class="fu">here</span>(<span class="st">"lectures"</span>, <span class="st">"data"</span>, <span class="st">"named_Sleep_Data.csv"</span>), </span>
+<span id="cb3-3"><a></a>          <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This is now a file that we will use in the future to import. That way we don’t have to make sure that the code above is in all of our scripts/recipes moving forward!</p>
+</section></section>
+<section>
+<section id="descriptive-statistics" class="title-slide slide level1 center">
+<h1>Descriptive Statistics</h1>
+
+</section>
+<section id="measures-of-central-tendency" class="slide level2">
+<h2>Measures of Central Tendency</h2>
+<p>For a given set of observations, measures of central tendency allow us to get the “gist” of the data.</p>
+<p>They tell us about where the “average” or the “mid-point” of the data lies or how much deviation there is from a central point.</p>
+<p>Let’s take a look at the data that we have already loaded in, and complete some of these tasks.</p>
+</section>
 <section class="slide level2">
 
+<h3 id="mean">Mean</h3>
+<p>A quick way to find the mean is to use the aptly named <code>mean()</code> function from base R. Use this function to get the average <code>age</code> and <code>ess total</code> in our dataset.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">mean</span>(sleep_data<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 19.56129</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">mean</span>(sleep_data<span class="sc">$</span>ess_total)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+</div>
 <p><span class="math inline">\(\bar{X} = \frac{X_1+X_2+...+X_{N-1}X_N}{N}\)</span></p>
 
 <div class="quarto-auto-generated-content">
