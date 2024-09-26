@@ -44,6 +44,9 @@ jobs:
             any::psych
             any::sjPlot
             any::lsr
+            any::kable
+            any::patchwork
+            any::ggstatsplot
             # Add more packages as needed
       
       - name: Render and Publish to GitHub Pages

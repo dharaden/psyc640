@@ -1,0 +1,626 @@
+---
+title: "Unit 5 - Descriptives (pt. 2)"
+subtitle: "PSYC 640 - Fall 2024"
+author: "Dustin Haraden, PhD"
+format: 
+  revealjs:
+    multiplex: true
+    scrollable: true
+    slide-number: true
+    incremental: false
+    touch: true
+    code-overflow: wrap
+    theme: dark
+execute: 
+  echo: true
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = F}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```
+
+## Reminders
+
+::: nonincremental
+-   Journal Entries
+
+-   Lab 1 - Now due 10/6
+:::
+
+------------------------------------------------------------------------
+
+## Last Class
+
+::: nonincremental
+-   Focused on basic descriptives
+    -   `mean()`
+    -   `median()`
+    -   `describe()`
+:::
+
+------------------------------------------------------------------------
+
+## Today...
+
+Explore correlations and comparing means.
+
+```{r, results = 'hide', message = F, warning = F}
+# File management
+library(here)
+# for dplyr, ggplot2
+library(tidyverse)
+# Loading data
+library(rio)
+# Pretty tables
+library(sjPlot)
+library(kableExtra)
+# Putting Plots together
+library(patchwork)
+
+#Remove Scientific Notation 
+options(scipen=999)
+```
+
+------------------------------------------------------------------------
+
+## Import cleaned up file
+
+Last class we created a new .csv file named `named_Sleep_Data`. We will continue to use that! Let's make sure to import that data.
+
+```{r}
+# Remember that your path will probably be different
+sleep_data <- read.csv(here("lectures", 
+                            "data", 
+                            "named_Sleep_Data.csv"))
+
+```
+
+# Relationships between variables
+
+## Association - Correlation
+
+Examine the relationship between two continuous variables
+
+Similar to the mean and standard deviation, but it is *between* two variables
+
+Typically displayed as a `scatterplot`
+
+------------------------------------------------------------------------
+
+```{r}
+#| code-fold: true
+
+set.seed(42)
+
+n <- 200
+x <- rnorm(n, mean = 10, sd = 2)
+y <- 2 * x + rnorm(n, mean = 0, sd = 2) 
+corr_data <- data.frame(x,y)
+
+corr_data %>% 
+  ggplot(aes(x,y)) + 
+  geom_point() + 
+  geom_smooth(method="lm", 
+              se = FALSE) + 
+  labs(
+    x = "Number of Houses", 
+    y = "Amount of Candy"
+  )
+
+
+```
+
+------------------------------------------------------------------------
+
+## Association - Covariance
+
+Before we talk about correlation, we need to take a look at covariance
+
+$$
+cov_{xy} = \frac{\sum(x-\bar{x})(y-\bar{y})}{N-1}
+$$
+
+::: incremental
+-   Covariance can be thought of as the "average cross product" between two variables
+
+-   It captures the *raw/unstandardized* relationship between two variables
+
+-   Covariance matrix is the basis for many statistical analyses
+:::
+
+------------------------------------------------------------------------
+
+## Covariance to Correlation
+
+The Pearson correlation coefficient $r$ addresses this by standardizing the covariance
+
+It is done in the same way that we would create a $z-score$...by dividing by the standard deviation
+
+$$
+r_{xy} = \frac{Cov(x,y)}{sd_x sd_y}
+$$
+
+------------------------------------------------------------------------
+
+## Correlations
+
+-   Tells us: How much 2 variables are *linearly* related
+
+-   Range: -1 to +1
+
+-   Most common and basic effect size measure
+
+-   Is used to build the regression model
+
+------------------------------------------------------------------------
+
+### Interpreting Correlations ([5.7.5](https://learningstatisticswithr.com/book/descriptives.html#interpretingcorrelations))
+
+| Correlation  |  Strength   | Direction |
+|:------------:|:-----------:|:---------:|
+| -1.0 to -0.9 | Very Strong | Negative  |
+| -0.9 to -0.7 |   Strong    | Negative  |
+| -0.7 to -0.4 |  Moderate   | Negative  |
+| -0.4 to -0.2 |    Weak     | Negative  |
+|  -0.2 to 0   | Negligible  | Negative  |
+|   0 to 0.2   | Negligible  | Positive  |
+|  0.2 to 0.4  |    Weak     | Positive  |
+|  0.4 to 0.7  |  Moderate   | Positive  |
+|  0.7 to 0.9  |   Strong    | Positive  |
+|  0.9 to 1.0  | Very Strong | Positive  |
+
+# Pearson Correlations in R
+
+## Calculating Correlation in R
+
+Now how do we get a correlation value in R?
+
+```{r}
+cor(corr_data$x, corr_data$y)
+
+```
+
+That will give us the correlation, but we also want to know how to get our p-value
+
+------------------------------------------------------------------------
+
+### Correlation Test
+
+To get the test of a single pair of variables, we will use the `cor.test()` function:
+
+```{r}
+cor.test(x, y, data = corr_data)
+```
+
+------------------------------------------------------------------------
+
+## Using real data - Epworth Sleepiness Scale
+
+So far we have been looking at single variables, but we often care about the relationships between multiple variables in a dataset
+
+```{r}
+#| code-fold: true
+
+sleep_data %>% 
+  select(ESS1m1:ESS8m1) %>% 
+  cor() %>% 
+  kable()
+```
+
+# Missing Values - `na.rm = TRUE`?
+
+------------------------------------------------------------------------
+
+## Handling Missing - Correlation
+
+-   Listwise Deletion (complete cases)
+
+    ::: incremental
+    -   Removes participants completely if they are missing a value being compared
+    -   Smaller Sample Sizes
+    -   Doesn't bias correlation estimate
+    :::
+
+-   Pairwise Deletion
+
+    ::: incremental
+    -   Removes participants for that single pair, but leaves information in when there are complete information
+    -   Larger Sample Sizes
+    -   Could bias estimates if there is a systematic reason things are missing
+    :::
+
+------------------------------------------------------------------------
+
+```{r}
+sleep_data %>% 
+  select(ESS1m1:ESS8m1) %>% 
+  cor(use = "complete") %>% 
+  kable()
+```
+
+------------------------------------------------------------------------
+
+```{r}
+sleep_data %>% 
+  select(ESS1m1:ESS8m1) %>% 
+  cor(use = "pairwise") %>% 
+  kable()
+```
+
+# Spearman's Rank Correaltion
+
+------------------------------------------------------------------------
+
+## Spearman's Rank Correlation
+
+We need to be able to capture this different (ordinal) "relationship"
+
+-   If student 1 works more hours than student 2, then we can guarantee that student 1 will get a better grade
+
+Instead of using the amount given by the variables ("hours studied"), we rank the variables based on least (rank = 1) to most (rank = 10)
+
+Then we correlate the rankings with one another
+
+# Foundations of Statistics
+
+Who were those white dudes that started this?
+
+------------------------------------------------------------------------
+
+## Statistics and Eugenics
+
+The concept of the correlation is primarily attributed to Sir Frances Galton
+
+-   He was also the founder of the [concept of eugenics](https://www.theguardian.com/commentisfree/2019/oct/03/eugenics-francis-galton-science-ideas)
+
+The correlation coefficient was developed by his student, [Karl Pearson](https://www.britannica.com/biography/Karl-Pearson), and adapted into the ANOVA framework by [Sir Ronald Fisher](https://statmodeling.stat.columbia.edu/2020/08/01/ra-fisher-and-the-science-of-hatred/)
+
+-   Both were prominent advocates for the eugenics movement
+
+------------------------------------------------------------------------
+
+## What do we do with this info?
+
+::: incremental
+-   Never use the correlation or the later techniques developed on it? Of course not.
+
+-   Acknowledge this history? Certainly.
+
+-   [Understand how the perspectives](https://medium.com/swlh/is-statistics-racist-59cd4ddb5fa9) of Galton, Fisher, Pearson and others [shaped our practices](http://gppreview.com/2019/12/16/eugenics-ethics-statistical-analysis/)? We must! -- these are not set in stone, [nor are they necessarily the best way](https://www.forbes.com/sites/jerrybowyer/2016/01/06/beer-vs-eugenics-the-good-and-the-bad-uses-of-statistics/?sh=3114a0c82a14) to move forward.
+:::
+
+------------------------------------------------------------------------
+
+## Be aware of the assumptions
+
+::: incremental
+-   Statistics are often thought of as being absent of bias...they are just numbers
+
+-   Statistical significance was a way to avoid talking about nuance or degree.
+
+-   "Correlation does not imply causation" was a refutation of work demonstrating associations between environment and poverty.
+
+-   Need to be particularly mindful of our goals as scientists and how they can influence the way we interpret the findings
+:::
+
+# Fancy Tables
+
+------------------------------------------------------------------------
+
+## Correlation Tables
+
+Before we used the `cor()` function to create a correlation matrix of our variables
+
+***But what is missing?***
+
+```{r}
+sleep_data %>% 
+  select(ESS1m1:ESS8m1) %>% 
+  cor(use = "complete") %>% 
+  kable()
+```
+
+## Correlation Tables - [sjPlot](https://strengejacke.github.io/sjPlot/reference/tab_corr.html)
+
+```{r}
+sleep_data %>% 
+  select(ESS1m1:ESS8m1) %>% 
+  cor(use = "complete") %>% 
+  tab_corr(na.deletion = "listwise", triangle = "lower")
+```
+
+------------------------------------------------------------------------
+
+## Correlation Tables - [sjPlot](https://strengejacke.github.io/sjPlot/reference/tab_corr.html)
+
+So many different cusomizations for this type of plot
+
+Can add titles, indicate what missingness and method
+
+Saves you a TON of time when putting it into a manuscript
+
+------------------------------------------------------------------------
+
+## Writing up a Correlation
+
+Template: *r*(degress of freedom) = the *r* statistic, *p* = *p* value.
+
+Imagine we have conducted a study of 40 students that looked at whether IQ scores and GPA are correlated. We might report the results like this:
+
+> IQ and GPA were found to be moderately positively correlated, *r*(38) = .34, *p* = .032.
+
+Other example:
+
+> Among the students of Hogwarts University, the number of hours playing Fortnite per week and midterm exam results were negatively correlated, *r*(78) = -.45, *p* \< .001.
+
+And another:
+
+> Table 1 reports descriptive statistics and correlations among variables of interest. Knowledge of Weird Al Songs was positively correlated with perceptions of humor for Dr. Haraden (*r*(49) = .79, *p \<*.001), such that the more Weird Al songs a student knew, the more they thought Dr. Haraden was funny.
+
+# Visualizing Data
+
+------------------------------------------------------------------------
+
+## Visualizing Data
+
+It is always important to visualize our data! Even after getting the correlations and other descriptives
+
+Let's look at some data:
+
+```{r}
+#| code-fold: true
+data1 <- import("https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data1.csv") %>% 
+  mutate(dataset = "data1")
+
+data2 <- import("https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data2.csv") %>% 
+  mutate(dataset = "data2")
+
+data3 <- import("https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data3.csv") %>% 
+  mutate(dataset = "data3")
+```
+
+And then combine them to make it easier to do summary stats
+
+```{r}
+three_data <- bind_rows(data1, data2, data3)
+```
+
+------------------------------------------------------------------------
+
+## Descriptive Stats on the 3 datasets
+
+```{r}
+three_data %>%
+  group_by(dataset) %>% 
+  summarize(
+    mean_x = mean(x),
+    mean_y = mean(y),
+    std_x = sd(x), 
+    std_y = sd(y), 
+    cor_xy = cor(x,y)
+  )
+```
+
+------------------------------------------------------------------------
+
+## Visualizing Dataset 1
+
+```{r}
+#| code-fold: true
+data1 %>% 
+  ggplot(aes(x, y)) + 
+  geom_point() + 
+  labs(title = "Dataset 1")
+```
+
+------------------------------------------------------------------------
+
+## Visualizing Dataset 1
+
+```{r}
+#| code-fold: true
+vis1 <- data1 %>% 
+  ggplot(aes(x, y)) + 
+  geom_point() + 
+  labs(title = "Dataset 1") +
+  geom_smooth(method = "lm", 
+              se = FALSE)
+vis1
+```
+
+------------------------------------------------------------------------
+
+## Visualizing Dataset 2
+
+```{r}
+#| code-fold: true
+vis2 <- data2 %>% 
+  ggplot(aes(x, y)) + 
+  geom_point() + 
+  labs(title = "Dataset 2") +
+  geom_smooth(method = "lm", 
+              se = FALSE)
+vis2
+```
+
+------------------------------------------------------------------------
+
+## Finally...Dataset 3
+
+```{r}
+#| code-fold: true
+vis3 <- data3 %>% 
+  ggplot(aes(x, y)) + 
+  geom_point() + 
+  labs(title = "Dataset 3") +
+  geom_smooth(method = "lm", 
+              se = FALSE)
+vis3
+```
+
+------------------------------------------------------------------------
+
+## Not all data are created equally
+
+```{r}
+vis1 + vis2 + vis3
+```
+
+# ALWAYS VISUALIZE YOUR DATA
+
+![](/images/important.gif){fig-align="center"}
+
+------------------------------------------------------------------------
+
+# Comparing Means
+
+## Comparing Means
+
+Calculated using a t-test. To calculate the t-statistic, you will use this formula:
+
+$$t_{df=N-1} = \frac{\bar{X}-\mu}{\frac{\hat{\sigma}}{\sqrt{N}}}$$
+
+The heavier tails of the t-distribution, especially for small N, are the penalty we pay for having to estimate the population standard deviation from the sample.
+
+------------------------------------------------------------------------
+
+## Types of t-Tests
+
+Single Samples t-test
+
+Independent Samples t-test
+
+Paired Samples t-test
+
+------------------------------------------------------------------------
+
+## Dataset
+
+Moving forward for today, we will use this dataset
+
+::: nonincremental
+-   100 students from New York
+
+-   100 students from New Mexico
+:::
+
+```{r}
+
+state_school <- import("https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/NM-NY_CAS.csv")
+
+```
+
+## Normality Assumption
+
+1.  **Check for Normality**: Visualizing data (histograms), Q-Q plots, and statistical tests (Shapiro-Wilk, Anderson-Darling) to assess normality.
+
+2.  **Remedies for Violations**: data transformation or non-parametric alternatives when data is not normally distributed.
+
+------------------------------------------------------------------------
+
+# Independent Samples t-test
+
+Two different types: Student's & Welch's
+
+-   Start with Student's t-test which assumes equal variances between the groups
+
+$$ t = \frac{\bar{X_1} - \bar{X_2}}{SE(\bar{X_1} - \bar{X_2})} $$
+
+------------------------------------------------------------------------
+
+## Student's t-test
+
+$$ H_0 : \mu_1 = \mu_2  \ \  H_1 : \mu_1 \neq \mu_2 $$
+
+![](/images/student_H.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Student's t-test: Calculate SE
+
+Are able to use a pooled variance estimate
+
+Both variances/standard deviations are assumed to be equal
+
+Therefore:
+
+$$ SE(\bar{X_1} - \bar{X_2}) = \hat{\sigma} \sqrt{\frac{1}{N_1} + \frac{1}{N_2}} $$
+
+We are calculating the **Standard Error of the Difference between means**
+
+Degrees of Freedom: Total N - 2
+
+------------------------------------------------------------------------
+
+### Student's t-test
+
+Let's try it out using the traditional `t.test()` function
+
+```{r}
+t.test(
+  formula = Sleep_Hours_Schoolnight ~ Region, 
+  data = state_school, 
+  var.equal = TRUE
+)
+```
+
+------------------------------------------------------------------------
+
+### Student's t-test: Write-up
+
+The mean amount of sleep in New Mexico for youth was 6.989 (SD = 1.379), while the mean in New York was 6.994 (SD = 1.512). A Student's independent samples t-test showed that there was not a significant mean difference (*t*(180)=-0.024, *p*=.981, $CI_{95}$=\[-0.43, 0.42\], *d*=.004). This suggests that there is no difference between youth in NM and NY on amount of sleep on school nights.
+
+------------------------------------------------------------------------
+
+## Welch's t-test
+
+$$
+H_0 : \mu_1 = \mu_2  \ \  H_1 : \mu_1 \neq \mu_2
+$$
+
+![](/images/welch_H.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Welch's t-test: Calculate SE
+
+Since the variances are not equal, we have to estimate the SE differently
+
+$$ SE(\bar{X_1} - \bar{X_2}) = \sqrt{\frac{\hat{\sigma_1^2}}{N_1} + \frac{\hat{\sigma_2^2}}{N_2}} $$
+
+Degrees of Freedom is also very different:
+
+![](/images/welch_df.png){fig-align="center" width="380"}
+
+------------------------------------------------------------------------
+
+### Welch's t-test: In R (classic)
+
+Let's try it out using the traditional `t.test()` function...turns out it is pretty straightforward
+
+```{r}
+t.test(
+  formula = Sleep_Hours_Schoolnight ~ Region, 
+  data = state_school, 
+  var.equal = FALSE
+)
+```
+
+------------------------------------------------------------------------
+
+## Cool Visualizations
+
+The library [ggstatsplot](https://indrajeetpatil.github.io/ggstatsplot/) has some wonderful visualizations of various tests
+
+```{r}
+#| code-fold: true
+ggstatsplot::ggbetweenstats(
+  data  = state_school,
+  x     = Region,
+  y     = Sleep_Hours_Schoolnight,
+  title = "Distribution of hours of sleep across Region"
+)
+```
