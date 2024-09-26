@@ -37,7 +37,7 @@ jobs:
             any::psych
             any::sjPlot
             any::lsr
-            any::kable
+            any::kableExtra
             any::patchwork
             any::ggstatsplot
           cache-version: 1
