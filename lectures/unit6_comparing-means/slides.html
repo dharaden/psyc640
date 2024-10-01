@@ -974,8 +974,979 @@ mean in group NM mean in group NY
 </details>
 
 </div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"><div class="quarto-auto-generated-content">
+<h3 id="interpreting-and-writing-up-an-independent-samples-t-test">Interpreting and writing up an independent samples t-test</h3>
+<div style="font-size: 30px">
+<p>The first sentence usually conveys some descriptive information about the two groups you were comparing. Then you identify the type of test you conducted and what was determined (be sure to include the “stat block” here as well with the t-statistic, df, p-value, CI and Effect size). Finish it up by putting that into person words and saying what that means.</p>
+</div>
+<blockquote>
+<div style="font-size: 30px">
+<p>The mean amount of sleep in New Mexico for youth was 6.989 (SD = 1.379), while the mean in New York was 6.994 (SD = 1.512). A Student’s independent samples t-test showed that there was not a significant mean difference (<em>t</em>(180)=-0.024, <em>p</em>=.981, <span class="math inline">\(CI_{95}\)</span>=[-0.43, 0.42], <em>d</em>=.004). This suggests that there is no difference between youth in NM and NY on amount of sleep on school nights.</p>
+</div>
+</blockquote>
+</section>
+<section id="paired-samples-t-test" class="slide level2">
+<h2>Paired Samples <span class="math inline">\(t\)</span>-Test</h2>
+<p><a href="https://learningstatisticswithr.com/book/ttest.html#pairedsamplesttest">Chapter 13.5 - Learning Stats with R</a></p>
+<p>Also called “Dependent Samples t-test”</p>
+<ul>
+<li><p>We have been testing means between two <em>independent</em> samples. Participants may be randomly assigned to the separate groups</p>
+<ul>
+<li>This is limited to those types of study designs, but what if we have repeated measures?</li>
+</ul></li>
+<li><p>We will then need to compare scores across people…the samples we are comparing now <em>depend</em> on one another and are <em>paired</em></p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="paired-samples-t-test-1">Paired Samples <span class="math inline">\(t\)</span>-test</h3>
+<p>Each of the repeated measures (or pairs) can be viewed as a <em>difference score</em></p>
+<p>This reduces the analysis to a one-sample t-test of the <em>difference score</em></p>
+<ul>
+<li>We are comparing the sample (i.e., difference scores) to a population <span class="math inline">\(\mu\)</span> = 0</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="assumptions-paired-samples">Assumptions: Paired Samples</h3>
+<p>The variable of interest (<em>difference scores</em>):</p>
+<ul>
+<li><p>Continuous (Interval/Ratio)</p></li>
+<li><p>Have 2 groups (and only two groups) that are matched</p></li>
+<li><p>Normally Distributed</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="why-paired-samples">Why paired samples??</h3>
+<p>Previously, we looked at independent samples <span class="math inline">\(t\)</span>-tests, which we <em>could</em> do here as well (nobody will yell at you)</p>
+<ul>
+<li><p>However, this would violate the assumption that the data points are independent of one another!</p></li>
+<li><p>Within vs.&nbsp;Between-subjects</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="within-vs.-between-subjects">Within vs.&nbsp;Between Subjects</h3>
+
+<img data-src="../../images/between-subjects-design.avif" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="paired-samples-single-sample">Paired Samples: Single Sample</h3>
+<p>Instead of focusing on these variables as being separate/independent, we need to be able to account for their dependency on one another</p>
+<p>This is done by calculating a <em>difference</em> or <em>change</em> score for each participant</p>
+<p><span class="math display">\[ D_i = X_{i1} - X_{i2} \]</span></p>
+<p>Notice: The equation is set up as <code>variable1</code> minus <code>variable2</code>. This will be important when we interpret the results</p>
+</section>
+<section class="slide level2">
+
+<h3 id="paired-samples-hypotheses-t-statistic">Paired Samples: Hypotheses &amp; <span class="math inline">\(t\)</span>-statistic</h3>
+<p>The hypotheses would then be:</p>
+<p><span class="math display">\[ H_0:  \mu_D = 0; H_1: \mu_D \neq 0 \]</span></p>
+<p>And to calculate our t-statistic: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="math inline">\(t_{df=n-1} = \frac{\bar{D}}{SE(D)}\)</span></p>
+<p>where the Standard Error of the difference score is: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="math inline">\(\frac{\hat{\sigma_D}}{\sqrt{N}}\)</span></p>
+</section>
+<section id="review-of-the-t-test-process" class="slide level2 scrollable">
+<h2>Review of the t-test process</h2>
+<ol type="1">
+<li><p>Collect Sample and define hypotheses</p></li>
+<li><p>Set alpha level</p></li>
+<li><p>Determine the sampling distribution (<span class="math inline">\(t\)</span> distribution for now)</p></li>
+<li><p>Identify the critical value that corresponds to alpha and <em>df</em></p></li>
+<li><p>Calculate test statistic for sample collected</p></li>
+<li><p>Inspect &amp; compare statistic to critical value; Calculate probability</p></li>
+</ol>
+</section></section>
+<section>
+<section id="example-1-simple" class="title-slide slide level1 center">
+<h1>Example 1: Simple</h1>
+<p>Participants are placed in two differently colored rooms and are asked to rate overall happiness levels after each</p>
+<p>Hypotheses:</p>
+<ul>
+<li><p><span class="math inline">\(H_0:\)</span> There is no difference in ratings of happiness between the rooms ( <span class="math inline">\(\mu = 0\)</span> )</p></li>
+<li><p><span class="math inline">\(H_1:\)</span> There is a difference in ratings of happiness between the rooms ( <span class="math inline">\(\mu \neq 0\)</span> )</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<table class="caption-top">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Participant</th>
+<th style="text-align: center;">Blue Room Score</th>
+<th style="text-align: center;">Orange Room Score</th>
+<th style="text-align: center;">Difference (<span class="math inline">\(X_{iB} - X_{iO}\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">-3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">-8</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">-2</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>ex1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb20-2"><a></a>  <span class="at">id =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>),</span>
+<span id="cb20-3"><a></a>  <span class="at">blue =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">9</span>,<span class="dv">2</span>,<span class="dv">9</span>,<span class="dv">5</span>,<span class="dv">5</span>), </span>
+<span id="cb20-4"><a></a>  <span class="at">orange =</span> <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">7</span>),</span>
+<span id="cb20-5"><a></a>  <span class="at">diff_score =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="determining-t-crit" class="slide level2">
+<h2>Determining <span class="math inline">\(t\)</span>-crit</h2>
+<p>Can look things up using a <a href="https://www.tdistributiontable.com/">t-table</a> where you need the degrees of freedom and the alpha</p>
+<p>But we have R to do those things for us:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="co">#the qt() function is for a 1 tailed test, so we are having to divide it in half to get both tails</span></span>
+<span id="cb21-2"><a></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb21-3"><a></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(ex1)</span>
+<span id="cb21-4"><a></a>t_crit <span class="ot">&lt;-</span> <span class="fu">qt</span>(alpha<span class="sc">/</span><span class="dv">2</span>, n<span class="dv">-1</span>)</span>
+<span id="cb21-5"><a></a>t_crit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.570582</code></pre>
+</div>
+</div>
+</section>
+<section id="calculating-t" class="slide level2">
+<h2>Calculating t</h2>
+<p>Let’s get all of the information for the sample we are focusing on (difference scores):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>d <span class="ot">&lt;-</span> <span class="fu">mean</span>(ex1<span class="sc">$</span>diff_score)</span>
+<span id="cb23-2"><a></a>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1.166667</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>sd_diff <span class="ot">&lt;-</span> <span class="fu">sd</span>(ex1<span class="sc">$</span>diff_score)</span>
+<span id="cb25-2"><a></a>sd_diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.167333</code></pre>
+</div>
+</div>
+</section>
+<section id="calculating-t-1" class="slide level2">
+<h2>Calculating t</h2>
+<p>Now we can calculate our <span class="math inline">\(t\)</span>-statistic: <span class="math display">\[t_{df=n-1} = \frac{\bar{D}}{\frac{sd_{diff}}{\sqrt{n}}}\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>t_stat <span class="ot">&lt;-</span> d<span class="sc">/</span>(sd_diff<span class="sc">/</span>(<span class="fu">sqrt</span>(n)))</span>
+<span id="cb27-2"><a></a>t_stat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.6857474</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="co">#Probability of this t-statistic </span></span>
+<span id="cb29-2"><a></a>p_val <span class="ot">&lt;-</span> <span class="fu">pt</span>(t_stat, n<span class="dv">-1</span>)<span class="sc">*</span><span class="dv">2</span></span>
+<span id="cb29-3"><a></a>p_val</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5233677</code></pre>
+</div>
+</div>
+</section>
+<section id="make-a-decision" class="slide level2">
+<h2>Make a decision</h2>
+<p>Hypotheses:</p>
+<div>
+<ul>
+<li><p><span class="math inline">\(H_0:\)</span> There is no difference in ratings of happiness between the rooms ( <span class="math inline">\(\mu = 0\)</span> )</p></li>
+<li><p><span class="math inline">\(H_1:\)</span> There is a difference in ratings of happiness between the rooms ( <span class="math inline">\(\mu \neq 0\)</span> )</p></li>
+</ul>
+</div>
+<table class="caption-top">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 28%">
+<col style="width: 23%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(alpha\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(t-crit\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(t-statistic\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(p-value\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.05</td>
+<td style="text-align: center;"><span class="math inline">\(\pm\)</span> -2.57</td>
+<td style="text-align: center;">-0.69</td>
+<td style="text-align: center;">0.52</td>
+</tr>
+</tbody>
+</table>
+<p><strong>What can we conclude??</strong></p>
+</section></section>
+<section>
+<section id="example-2-data-in-r" class="title-slide slide level1 center">
+<h1>Example 2: Data in R</h1>
+<p>We will use the same dataset that we have in the last few classes</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>state_school <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/NM-NY_CAS.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="lets-look-at-the-data" class="slide level2">
+<h2>Let’s Look at the data</h2>
+<p>Research Question: Is there a difference between school nights and weekend nights for amount of time slept?</p>
+<p>Only looking at the variables that we are potentially interested in:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>state_school <span class="sc">%&gt;%</span> </span>
+<span id="cb32-2"><a></a>  <span class="fu">select</span>(Gender, Ageyears, Sleep_Hours_Schoolnight, Sleep_Hours_Non_Schoolnight) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-3"><a></a>  <span class="fu">head</span>() <span class="co">#look at first few observations</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Gender Ageyears Sleep_Hours_Schoolnight Sleep_Hours_Non_Schoolnight
+1 Female       16                     8.0                          13
+2   Male       17                     8.0                           9
+3 Female       19                     8.0                           7
+4   Male       17                     8.0                           9
+5   Male       16                     8.5                           5
+6 Female       11                    11.0                          12</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="difference-score">Difference Score</h3>
+<div style="font-size: 30px">
+<p>This can be done in a couple different ways and sometimes you will see things computed this way:</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>state_school<span class="sc">$</span>sleep_diff <span class="ot">&lt;-</span> state_school<span class="sc">$</span>Sleep_Hours_Schoolnight <span class="sc">-</span> state_school<span class="sc">$</span>Sleep_Hours_Non_Schoolnight</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div style="font-size: 30px">
+<p>However, we like the <code>tidyverse</code> so why don’t we use the <code>mutate()</code> function</p>
+<p>And I always overdo things, so I am going to make a new dataset that only has the variables that I’m interested in (<code>sleep_state_school</code>)</p>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>sleep_state_school <span class="ot">&lt;-</span> state_school <span class="sc">%&gt;%</span> </span>
+<span id="cb35-2"><a></a>  <span class="fu">mutate</span>(<span class="at">sleep_diff =</span> Sleep_Hours_Schoolnight <span class="sc">-</span> Sleep_Hours_Non_Schoolnight) <span class="sc">%&gt;%</span></span>
+<span id="cb35-3"><a></a>  <span class="fu">select</span>(Gender, Ageyears, Sleep_Hours_Schoolnight,</span>
+<span id="cb35-4"><a></a>         Sleep_Hours_Non_Schoolnight, sleep_diff)</span>
+<span id="cb35-5"><a></a></span>
+<span id="cb35-6"><a></a><span class="fu">head</span>(sleep_state_school)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Gender Ageyears Sleep_Hours_Schoolnight Sleep_Hours_Non_Schoolnight
+1 Female       16                     8.0                          13
+2   Male       17                     8.0                           9
+3 Female       19                     8.0                           7
+4   Male       17                     8.0                           9
+5   Male       16                     8.5                           5
+6 Female       11                    11.0                          12
+  sleep_diff
+1       -5.0
+2       -1.0
+3        1.0
+4       -1.0
+5        3.5
+6       -1.0</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="visualizing">Visualizing</h3>
+<p>Now that we have our variable of interest, let’s take a look at it!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>sleep_state_school <span class="sc">%&gt;%</span></span>
+<span id="cb37-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(sleep_diff)) <span class="sc">+</span> </span>
+<span id="cb37-3"><a></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-23-1.png" width="960" class="r-stretch"></section>
+<section id="doing-the-test-in-r-one-sample" class="slide level2">
+<h2>Doing the test in R: One Sample</h2>
+<p>Since we have calculated the difference scores, we can basically just do a one-sample t-test with the <code>lsr</code> library</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="fu">oneSampleTTest</span>(sleep_state_school<span class="sc">$</span>sleep_diff, <span class="at">mu =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   One sample t-test 
+
+Data variable:   sleep_state_school$sleep_diff 
+
+Descriptive statistics: 
+            sleep_diff
+   mean         -1.866
+   std dev.      2.741
+
+Hypotheses: 
+   null:        population mean equals 0 
+   alternative: population mean not equal to 0 
+
+Test results: 
+   t-statistic:  -9.106 
+   degrees of freedom:  178 
+   p-value:  &lt;.001 
+
+Other information: 
+   two-sided 95% confidence interval:  [-2.27, -1.462] 
+   estimated effect size (Cohen's d):  0.681 </code></pre>
+</div>
+</div>
+</section>
+<section id="doing-the-test-in-r-paired-sample" class="slide level2">
+<h2>Doing the test in R: Paired Sample</h2>
+<p>Maybe we want to keep things separate and don’t want to calculate separate values. We can use <code>pairedSamplesTTest()</code> instead!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">pairedSamplesTTest</span>(</span>
+<span id="cb40-2"><a></a>  <span class="at">formula =</span> <span class="sc">~</span> Sleep_Hours_Schoolnight <span class="sc">+</span> Sleep_Hours_Non_Schoolnight, </span>
+<span id="cb40-3"><a></a>  <span class="at">data =</span> sleep_state_school</span>
+<span id="cb40-4"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   Paired samples t-test 
+
+Variables:  Sleep_Hours_Schoolnight , Sleep_Hours_Non_Schoolnight 
+
+Descriptive statistics: 
+            Sleep_Hours_Schoolnight Sleep_Hours_Non_Schoolnight difference
+   mean                       6.992                       8.858     -1.866
+   std dev.                   1.454                       2.412      2.741
+
+Hypotheses: 
+   null:        population means equal for both measurements
+   alternative: different population means for each measurement
+
+Test results: 
+   t-statistic:  -9.106 
+   degrees of freedom:  178 
+   p-value:  &lt;.001 
+
+Other information: 
+   two-sided 95% confidence interval:  [-2.27, -1.462] 
+   estimated effect size (Cohen's d):  0.681 </code></pre>
+</div>
+</div>
+</section>
+<section id="doing-the-test-in-r-classic-edition" class="slide level2">
+<h2>Doing the test in R: Classic Edition</h2>
+<p>As you Google around to figure things out, you will likely see folks using `t.test()</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="fu">t.test</span>(</span>
+<span id="cb42-2"><a></a>  <span class="at">x =</span> sleep_state_school<span class="sc">$</span>Sleep_Hours_Schoolnight, </span>
+<span id="cb42-3"><a></a>  <span class="at">y =</span> sleep_state_school<span class="sc">$</span>Sleep_Hours_Non_Schoolnight, </span>
+<span id="cb42-4"><a></a>  <span class="at">paired =</span> <span class="cn">TRUE</span></span>
+<span id="cb42-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Paired t-test
+
+data:  sleep_state_school$Sleep_Hours_Schoolnight and sleep_state_school$Sleep_Hours_Non_Schoolnight
+t = -9.1062, df = 178, p-value &lt; 0.00000000000000022
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -2.270281 -1.461563
+sample estimates:
+mean difference 
+      -1.865922 </code></pre>
+</div>
+</div>
+</section>
+<section id="reporting-t-test" class="slide level2">
+<h2>Reporting <span class="math inline">\(t\)</span>-test</h2>
+<p>The first sentence usually conveys some descriptive information about the sample you were comparing (e.g., pre &amp; post test).</p>
+<p>Then you identify the type of test you conducted and what was determined (be sure to include the “stat block” here as well with the t-statistic, df, p-value, CI and Effect size).</p>
+<p>Finish it up by putting that into person words and saying what that means.</p>
+</section></section>
+<section>
+<section id="anova-analysis-of-variance" class="title-slide slide level1 center">
+<h1>ANOVA (Analysis of Variance)</h1>
+
+</section>
+<section id="what-is-anova-lsr-ch.-14" class="slide level2">
+<h2>What is ANOVA? (<a href="https://learningstatisticswithr.com/book/anova.html">LSR Ch. 14</a>)</h2>
+<div>
+<ul>
+<li class="fragment">ANOVA stands for <u><strong><em>An</em></strong></u>alysis <u><strong><em>o</em></strong></u>f <u><strong><em>Va</em></strong></u>riance</li>
+<li class="fragment">Comparing means between two or more groups (usually 3 or more)
+<ul>
+<li class="fragment">Continuous outcome and grouping variable with 2 or more levels</li>
+</ul></li>
+<li class="fragment">Under the larger umbrella of general linear models
+<ul>
+<li class="fragment">ANOVA is basically a regression with only categorical predictors</li>
+</ul></li>
+<li class="fragment">Likely the most widely used tool in Psychology</li>
+</ul>
+</div>
+</section>
+<section id="different-types-of-anova" class="slide level2">
+<h2>Different Types of ANOVA</h2>
+<ul>
+<li><div class="fragment highlight-green">
+<p>One-Way ANOVA</p>
+</div></li>
+<li><p>Two-Way ANOVA</p></li>
+<li><p>Repeated Measures ANOVA</p></li>
+<li><p>ANCOVA</p></li>
+<li><p>MANOVA</p></li>
+</ul>
+</section>
+<section id="one-way-anova" class="slide level2">
+<h2>One-Way ANOVA</h2>
+<p>Goal: Inform of differences among the levels of our variable of interest (Omnibus Test)</p>
+<ul>
+<li>But cannot tell us more than that…</li>
+</ul>
+<p>Hypotheses:</p>
+<p><span class="math display">\[
+H_0: it\: is\: true\: that\: \mu_1 = \mu_2 = \mu_3 =\: ...\mu_k
+\\
+H_1: it\: is\: \boldsymbol{not}\: true\: that\: \mu_1 = \mu_2 = \mu_3 =\: ...\mu_k
+\]</span></p>
+</section>
+<section id="waitmeans-or-variance" class="slide level2">
+<h2>Wait…Means or Variance?</h2>
+<p>We are using the variance to create a ratio (within group versus between group variance) to determine differences in means</p>
+<ul>
+<li>We are not directly investigating variance, but operationalize variance to create the ratio:</li>
+</ul>
+<p><span class="math display">\[
+F_{df_b, \: df_w} = \frac{MS_{between}}{MS_{within}}
+\]</span></p>
+</section>
+<section class="slide level2">
+
+
+<img data-src="../../images/ANOVA.png" width="729" class="r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="../../images/ANOVA.png" width="729" class="r-stretch"><div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math inline">\(F = \frac{MS_{between}}{MS_{within}} = \frac{small}{large} &lt; 1\)</span></p>
+</div><div class="column" style="width:50%;">
+<p><span class="math inline">\(F = \frac{MS_{between}}{MS_{within}} = \frac{large}{small} &gt; 1\)</span></p>
+</div></div>
+</section>
+<section id="anova-assumptions" class="slide level2">
+<h2>ANOVA: Assumptions</h2>
+<div style="font-size: 30px">
+<p><strong>Independence</strong></p>
+<ul>
+<li>Observations between and within groups should be independent. No autocorrelation</li>
+</ul>
+<p><strong>Homogeneity of Variance</strong></p>
+<ul>
+<li>The variances within each group should be roughly equal
+<ul>
+<li>Levene’s test –&gt; Welch’s ANOVA for unequal variances</li>
+</ul></li>
+</ul>
+<p><strong>Normality</strong></p>
+<ul>
+<li>The data within each group should follow a normal distribution
+<ul>
+<li>Shapiro-Wilk test –&gt; can transform the data or use non-parametric tests</li>
+</ul></li>
+</ul>
+</div>
+</section></section>
+<section>
+<section id="nhst-with-anova" class="title-slide slide level1 center">
+<h1>NHST with ANOVA</h1>
+
+</section>
+<section id="review-of-the-nhst-process" class="slide level2 scrollable">
+<h2>Review of the NHST process</h2>
+<div>
+<ol type="1">
+<li class="fragment"><p>Collect Sample and define hypotheses</p></li>
+<li class="fragment"><p>Set alpha level</p></li>
+<li class="fragment"><p>Determine the sampling distribution (will be using <span class="math inline">\(F\)</span>-distribution now)</p></li>
+<li class="fragment"><p>Identify the critical value</p></li>
+<li class="fragment"><p>Calculate test statistic for sample collected</p></li>
+<li class="fragment"><p>Inspect &amp; compare statistic to critical value; Calculate probability</p></li>
+</ol>
+</div>
+</section>
+<section id="steps-to-calculating-f-ratio" class="slide level2 scrollable">
+<h2>Steps to calculating F-ratio</h2>
+<ol type="1">
+<li>Capture variance both between and within groups</li>
+<li>Variance to Sum of Squares</li>
+<li>Degrees of Freedom</li>
+<li>Mean squares values</li>
+<li>F-Statistic</li>
+</ol>
+</section>
+<section id="capturing-variance" class="slide level2">
+<h2>Capturing Variance</h2>
+<p>We have calculated variance before!</p>
+<p><span class="math display">\[
+Var = \frac{1}{N}\sum(x_i - \bar{x})^2
+\]</span></p>
+<p>Now we have to take into account the variance between and within the groups:</p>
+<p><span class="math display">\[
+Var(Y) = \frac{1}{N} \sum^G_{k=1}\sum^{N_k}_{i=i}(Y_{ik} - \bar{Y})^2
+\]</span></p>
+<div style="font-size: 20px; text-align: center">
+<p>Notice that we have the summation across each group ( <span class="math inline">\(G\)</span> ) and the person in the group ( <span class="math inline">\(N_k\)</span> )</p>
+</div>
+</section>
+<section id="variance-to-sum-of-squares" class="slide level2">
+<h2>Variance to Sum of Squares</h2>
+<p><strong>Total Sum of Squares -</strong> Adding up the sum of squares instead of getting the average (notice the removal of <span class="math inline">\(\frac{1}{N}\)</span>)</p>
+<p><span class="math display">\[
+SS_{total} = \sum^G_{k=1}\sum^{N_k}_{i=i}(Y_{ik} - \bar{Y})^2
+\]</span></p>
+<p>Can be broken up to see what is the variation <strong><em>between</em></strong> the groups AND the variation <strong><em>within</em></strong> the groups</p>
+<p><span class="math display">\[
+SS_{total}=SS_{between}+SS_{within}
+\]</span></p>
+<div style="font-size: 20px; text-align: center">
+<p>This gets us closer to understanding the difference between means</p>
+</div>
+</section></section>
+<section>
+<section id="sum-of-squares" class="title-slide slide level1 center">
+<h1>Sum of Squares</h1>
+
+</section>
+<section class="slide level2">
+
+<h3 id="sum-of-squares-1">Sum of Squares</h3>
+<p><span class="math display">\[
+SS_{total}=SS_{between}+SS_{within}
+\]</span></p>
+
+<img data-src="../../images/var_ss.PNG" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="example-data">Example Data</h3>
+
+<img data-src="../../images/table1.PNG" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="example-data-1">Example Data</h3>
+
+<img data-src="../../images/table2.PNG" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="example-data-2">Example Data</h3>
+
+<img data-src="../../images/table3.PNG" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="example-data-3">Example Data</h3>
+
+<img data-src="../../images/table4.PNG" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="sum-of-squares---between" class="slide level2">
+<h2>Sum of Squares - Between</h2>
+<p>The difference between the <em>group mean</em> and <em>grand mean</em></p>
+<p><span class="math display">\[
+SS_{between} = \sum^G_{k=1}N_k(\bar{Y_k} - \bar{Y})^2
+\]</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Group</th>
+<th style="text-align: center;">Group Mean <span class="math inline">\(\bar{Y_k}\)</span></th>
+<th style="text-align: center;">Grand Mean <span class="math inline">\(\bar{Y}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Cool</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">41.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Uncool</td>
+<td style="text-align: center;">56.5</td>
+<td style="text-align: center;">41.8</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sum-of-squares---between-1" class="slide level2">
+<h2>Sum of Squares - Between</h2>
+<p>The difference between the <em>group mean</em> and <em>grand mean</em></p>
+<p><span class="math display">\[ SS_{between} = \sum^G_{k=1}N_k(\bar{Y_k} - \bar{Y})^2 \]</span></p>
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Group</th>
+<th style="text-align: center;">Group Mean <span class="math inline">\(\bar{Y_k}\)</span></th>
+<th style="text-align: center;">Grand Mean <span class="math inline">\(\bar{Y}\)</span></th>
+<th style="text-align: center;">Sq. Dev.</th>
+<th style="text-align: center;">N</th>
+<th style="text-align: center;">Weighted Sq. Dev.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Cool</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">41.8</td>
+<td style="text-align: center;">96.04</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">288.12</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Uncool</td>
+<td style="text-align: center;">56.5</td>
+<td style="text-align: center;">41.8</td>
+<td style="text-align: center;">216.09</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">432.18</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sum-of-squares---between-2" class="slide level2">
+<h2>Sum of Squares - Between</h2>
+<p>The difference between the <em>group mean</em> and <em>grand mean</em></p>
+<p><span class="math display">\[ SS_{between} = \sum^G_{k=1}N_k(\bar{Y_k} - \bar{Y})^2 \]</span></p>
+<p>Now we can sum the Weighted Squared Deviations together to get our Sum of Squares Between:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>ssb <span class="ot">&lt;-</span> <span class="fl">288.12</span> <span class="sc">+</span> <span class="fl">432.18</span></span>
+<span id="cb44-2"><a></a>ssb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 720.3</code></pre>
+</div>
+</div>
+</section>
+<section id="sum-of-squares---within" class="slide level2">
+<h2>Sum of Squares - Within</h2>
+<p>The difference between the <u><em>individual</em></u> and their <u><em>group mean</em></u></p>
+<p><span class="math display">\[
+SS_{within} = \sum^G_{k=1}\sum^{N_k}_{i=i}(Y_{ik} - \bar{Y_k})^2
+\]</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Name</th>
+<th style="text-align: center;">Grumpiness <span class="math inline">\(Y_{ik}\)</span></th>
+<th style="text-align: center;">Group Mean <span class="math inline">\(\bar{Y_K}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Frodo</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">32</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Sam</td>
+<td style="text-align: center;">55</td>
+<td style="text-align: center;">32</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Bandit</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">32</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Dolores U.</td>
+<td style="text-align: center;">91</td>
+<td style="text-align: center;">56.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Dustin</td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">56.5</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sum-of-squares---within-1" class="slide level2">
+<h2>Sum of Squares - Within</h2>
+<p>The difference between the <u><em>individual</em></u> and their <u><em>group mean</em></u></p>
+<p><span class="math display">\[ SS_{within} = \sum^G_{k=1}\sum^{N_k}_{i=i}(Y_{ik} - \bar{Y_k})^2 \]</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Name</th>
+<th style="text-align: center;">Grumpiness <span class="math inline">\(Y_{ik}\)</span></th>
+<th style="text-align: center;">Group Mean <span class="math inline">\(\bar{Y_K}\)</span></th>
+<th>Sq. Dev</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Frodo</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">32</td>
+<td>144</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Sam</td>
+<td style="text-align: center;">55</td>
+<td style="text-align: center;">32</td>
+<td>529</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Bandit</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">32</td>
+<td>121</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Dolores U.</td>
+<td style="text-align: center;">91</td>
+<td style="text-align: center;">56.5</td>
+<td>1190.25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Dustin</td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">56.5</td>
+<td>1190.25</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a>score <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">55</span>, <span class="dv">21</span>, <span class="dv">91</span>, <span class="dv">22</span>)</span>
+<span id="cb46-2"><a></a>group_m <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">32</span>, <span class="dv">32</span>, <span class="dv">32</span>, <span class="fl">56.5</span>, <span class="fl">56.5</span>)</span>
+<span id="cb46-3"><a></a>sq_dev <span class="ot">&lt;-</span> (score <span class="sc">-</span> group_m)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="sum-of-squares---within-2" class="slide level2">
+<h2>Sum of Squares - Within</h2>
+<p>The difference between the <u><em>individual</em></u> and their <u><em>group mean</em></u></p>
+<p><span class="math display">\[ SS_{within} = \sum^G_{k=1}\sum^{N_k}_{i=i}(Y_{ik} - \bar{Y_k})^2 \]</span> Now we can sum the Squared Deviations together to get our Sum of Squares Within:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a><span class="fu">sum</span>(sq_dev)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3174.5</code></pre>
+</div>
+</div>
+</section>
+<section id="sum-of-squares-2" class="slide level2">
+<h2>Sum of Squares</h2>
+<p>Can start to have an idea of what this looks like</p>
+<p><span class="math display">\[
+SS_{between} = \sum^G_{k=1}N_k(\bar{Y_k} - \bar{Y})^2 = 720.3
+\]</span></p>
+<p><span class="math display">\[
+SS_{within} = \sum^G_{k=1}\sum^{N_k}_{i=i}(Y_{ik} - \bar{Y_k})^2 = 3174.5
+\]</span></p>
+<p>Next we have to take into account the degrees of freedom</p>
+</section></section>
+<section>
+<section id="degrees-of-freedom---anova" class="title-slide slide level1 center">
+<h1>Degrees of Freedom - ANOVA</h1>
+
+</section>
+<section id="degrees-of-freedom" class="slide level2 scrollable">
+<h2>Degrees of Freedom</h2>
+<p>Since we have 2 types of variations that we are examining, this needs to be reflected in the degrees of freedom</p>
+<ol type="1">
+<li><p>Take the number of groups and subtract 1<br>
+<span class="math inline">\(df_{between} = G - 1\)</span></p></li>
+<li><p>Take the total number of observations and subtract the number of groups<br>
+</p>
+<p><span class="math inline">\(df_{within} = N - G\)</span></p></li>
+</ol>
+</section></section>
+<section>
+<section id="mean-squares" class="title-slide slide level1 center">
+<h1>Mean Squares</h1>
+
+</section>
+<section id="calculating-mean-squares" class="slide level2">
+<h2>Calculating Mean Squares</h2>
+<p>Next we convert our summed squares value into a “mean squares”</p>
+<p>This is done by dividing by the respective degrees of freedom</p>
+<p><span class="math display">\[
+MS_b = \frac{SS_b}{df_b}
+\]</span></p>
+<p><span class="math display">\[
+MS_W = \frac{SS_w}{df_w}
+\]</span></p>
+</section>
+<section id="calculating-mean-squares---example" class="slide level2">
+<h2>Calculating Mean Squares - Example</h2>
+<p>Let’s take a look at how this applies to our example: <span class="math display">\[ MS_b = \frac{SS_b}{G-1} = \frac{720.3}{2-1} = 720.3 \]</span></p>
+<p><span class="math display">\[ MS_W = \frac{SS_w}{N-G} = \frac{3174.5}{5-2} = 1058.167  \]</span></p>
+</section></section>
+<section>
+<section id="f-statistic" class="title-slide slide level1 center">
+<h1><span class="math inline">\(F\)</span>-Statistic</h1>
+
+</section>
+<section id="calculating-the-f-statistic" class="slide level2">
+<h2>Calculating the F-Statistic</h2>
+<p><span class="math display">\[F = \frac{MS_b}{MS_w}\]</span></p>
+<p>If the null hypothesis is true, <span class="math inline">\(F\)</span> has an expected value close to 1 (numerator and denominator are estimates of the same variability)</p>
+<p>If it is false, the numerator will likely be larger, because systematic, between-group differences contribute to the variance of the means, but not to variance within group.</p>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a><span class="fu">data.frame</span>(<span class="at">F =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">8</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb49-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> F)) <span class="sc">+</span></span>
+<span id="cb49-3"><a></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> <span class="cf">function</span>(x) <span class="fu">df</span>(x, <span class="at">df1 =</span> <span class="dv">3</span>, <span class="at">df2 =</span> <span class="dv">196</span>), </span>
+<span id="cb49-4"><a></a>                <span class="at">geom =</span> <span class="st">"line"</span>) <span class="sc">+</span></span>
+<span id="cb49-5"><a></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> <span class="cf">function</span>(x) <span class="fu">df</span>(x, <span class="at">df1 =</span> <span class="dv">3</span>, <span class="at">df2 =</span> <span class="dv">196</span>), </span>
+<span id="cb49-6"><a></a>                <span class="at">geom =</span> <span class="st">"area"</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">2.65</span>, <span class="dv">8</span>), <span class="at">fill =</span> <span class="st">"purple"</span>) <span class="sc">+</span></span>
+<span id="cb49-7"><a></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="fl">2.65</span>), <span class="at">color =</span> <span class="st">"purple"</span>) <span class="sc">+</span></span>
+<span id="cb49-8"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="st">"Density"</span>) <span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="st">"F statistic"</span>, <span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb49-9"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-30-1.png" width="960" class="r-stretch"><p>If data are normally distributed, then the variance is <span class="math inline">\(\chi^2\)</span> distributed</p>
+<p><span class="math inline">\(F\)</span>-distributions are one-tailed tests. Recall that we’re interested in how far away our test statistic from the null <span class="math inline">\((F = 1).\)</span></p>
+</section>
+<section id="calculating-f-statistic-example" class="slide level2">
+<h2>Calculating F-statistic: Example</h2>
+<p><span class="math display">\[F = \frac{MS_b}{MS_w} = \frac{720.3}{1058.167} = 0.68\]</span></p>
+<p><a href="http://courses.atlas.illinois.edu/spring2016/STAT/STAT200/pf.html">Link</a> to probability calculator</p>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a><span class="fu">data.frame</span>(<span class="at">F =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">8</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb50-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> F)) <span class="sc">+</span></span>
+<span id="cb50-3"><a></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> <span class="cf">function</span>(x) <span class="fu">df</span>(x, <span class="at">df1 =</span> <span class="dv">3</span>, <span class="at">df2 =</span> <span class="dv">196</span>), </span>
+<span id="cb50-4"><a></a>                <span class="at">geom =</span> <span class="st">"line"</span>) <span class="sc">+</span></span>
+<span id="cb50-5"><a></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> <span class="cf">function</span>(x) <span class="fu">df</span>(x, <span class="at">df1 =</span> <span class="dv">3</span>, <span class="at">df2 =</span> <span class="dv">196</span>), </span>
+<span id="cb50-6"><a></a>                <span class="at">geom =</span> <span class="st">"area"</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">2.65</span>, <span class="dv">8</span>), <span class="at">fill =</span> <span class="st">"purple"</span>) <span class="sc">+</span></span>
+<span id="cb50-7"><a></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="fl">2.65</span>), <span class="at">color =</span> <span class="st">"purple"</span>) <span class="sc">+</span> </span>
+<span id="cb50-8"><a></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="fl">0.68</span>), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span> </span>
+<span id="cb50-9"><a></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>,</span>
+<span id="cb50-10"><a></a>           <span class="at">label =</span> <span class="st">"F=0.68"</span>, </span>
+<span id="cb50-11"><a></a>           <span class="at">x =</span> <span class="fl">1.1</span>, <span class="at">y =</span> <span class="fl">0.65</span>, <span class="at">size =</span> <span class="dv">8</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span> </span>
+<span id="cb50-12"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="st">"Density"</span>) <span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="st">"F statistic"</span>, <span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb50-13"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-31-1.png" width="960" class="r-stretch"><p>What can we conclude?</p>
+</section>
+<section id="contrastspost-hoc-tests" class="slide level2 scrollable">
+<h2>Contrasts/Post-Hoc Tests</h2>
+<p>Performed when there is a significant difference among the groups to examine which groups are different</p>
+<ol type="1">
+<li><strong>Contrasts</strong>: When we have <em>a priori</em> hypotheses</li>
+<li><strong>Post-hoc Tests</strong>: When we want to test everything</li>
+</ol>
+</section></section>
+<section>
+<section id="reporting-results" class="title-slide slide level1 center">
+<h1>Reporting Results</h1>
+
+</section>
+<section id="tables" class="slide level2">
+<h2>Tables</h2>
+<p>Often times the output will be in the form of a table and then it is often reported this way in the manuscript</p>
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Source of Variation</th>
+<th style="text-align: center;">df</th>
+<th style="text-align: center;">Sum of Squares</th>
+<th style="text-align: center;">Mean Squares</th>
+<th style="text-align: center;">F-statistic</th>
+<th style="text-align: center;">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Group</td>
+<td style="text-align: center;"><span class="math inline">\(G-1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(SS_b\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(MS_b = \frac{SS_b}{df_b}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(F = \frac{MS_b}{MS_w}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(p\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Residual</td>
+<td style="text-align: center;"><span class="math inline">\(N-G\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(SS_w\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(MS_w = \frac{SS_w}{df_w}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Total</td>
+<td style="text-align: center;"><span class="math inline">\(N-1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(SS_{total}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="in-text" class="slide level2">
+<h2>In-Text</h2>
+<blockquote>
+<p>A one-way analysis of variance was used to test for differences in the [variable of interest/outcome variable] as a function of [whatever the factor is]. Specifically, differences in [variable of interest] were assessed for the [list different levels and be sure to include (M= , SD= )] . The one-way ANOVA revealed a significant/nonsignificant effect of [factor] on scores on the [variable of interest] (F(dfb, dfw) = f-ratio, p = p-value, η2 = effect size).</p>
+<p>Planned comparisons were conducted to compare expected differences among the [however many groups] means. Planned contrasts revealed that participants in the [one of the conditions] had a greater/fewer [variable of interest] and then include the p-value. This same type of sentence is repeated for whichever contrasts you completed. Descriptive statistics were reported in Table 1.</p>
+</blockquote>
+
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>

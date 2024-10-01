@@ -1,234 +1,395 @@
 [
   {
-    "objectID": "lectures/unit5_descriptives/slides2.html#reminders",
-    "href": "lectures/unit5_descriptives/slides2.html#reminders",
-    "title": "Unit 5 - Descriptives (pt. 2)",
+    "objectID": "lectures/unit6_comparing-means/slides.html#reminders",
+    "href": "lectures/unit6_comparing-means/slides.html#reminders",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
     "section": "Reminders",
-    "text": "Reminders\n\n\nJournal Entries\nLab 1 - Now due 10/6"
+    "text": "Reminders\n\n\nJournal Entries\nLab #1 - Due 10/6"
   },
   {
-    "objectID": "lectures/unit5_descriptives/slides2.html#last-class",
-    "href": "lectures/unit5_descriptives/slides2.html#last-class",
-    "title": "Unit 5 - Descriptives (pt. 2)",
+    "objectID": "lectures/unit6_comparing-means/slides.html#last-class",
+    "href": "lectures/unit6_comparing-means/slides.html#last-class",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
     "section": "Last Class",
-    "text": "Last Class\n\n\nFocused on basic descriptives\n\nmean()\nmedian()\ndescribe()"
+    "text": "Last Class\n\n\nDescriptive Statistics\nCorrelations\n\nProfessor made it complicated, but we got some pretty tables out of it with sjPlot()"
   },
   {
-    "objectID": "lectures/unit5_descriptives/slides2.html#today",
-    "href": "lectures/unit5_descriptives/slides2.html#today",
-    "title": "Unit 5 - Descriptives (pt. 2)",
+    "objectID": "lectures/unit6_comparing-means/slides.html#today",
+    "href": "lectures/unit6_comparing-means/slides.html#today",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
     "section": "Today…",
-    "text": "Today…\nExplore correlations and comparing means.\n\n# File management\nlibrary(here)\n# for dplyr, ggplot2\nlibrary(tidyverse)\n# Loading data\nlibrary(rio)\n# Pretty tables\nlibrary(sjPlot)\nlibrary(kableExtra)\n# Putting Plots together\nlibrary(patchwork)\n\n#Remove Scientific Notation \noptions(scipen=999)"
+    "text": "Today…\n\nHypotheses & NHST\nComparing Two Means\n\nOne-Sample, Independent, Paired\n\nComparing MANY MUCH Means\n\n\n# File management\nlibrary(here)\n# just because\nlibrary(tidyverse)\n# Loading data\nlibrary(rio)\n# makes for easier to look at output\nlibrary(lsr)\n# cool visualizations\nlibrary(ggstatsplot)\n\n\n\n#Remove Scientific Notation \noptions(scipen=999)"
   },
   {
-    "objectID": "lectures/unit5_descriptives/slides2.html#import-cleaned-up-file",
-    "href": "lectures/unit5_descriptives/slides2.html#import-cleaned-up-file",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "Import cleaned up file",
-    "text": "Import cleaned up file\nLast class we created a new .csv file named named_Sleep_Data. We will continue to use that! Let’s make sure to import that data.\n\n# Remember that your path will probably be different\nsleep_data &lt;- read.csv(here(\"lectures\", \n                            \"data\", \n                            \"named_Sleep_Data.csv\"))"
+    "objectID": "lectures/unit6_comparing-means/slides.html#hypothesis",
+    "href": "lectures/unit6_comparing-means/slides.html#hypothesis",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Hypothesis",
+    "text": "Hypothesis\nWhat is a hypothesis?\nIn statistics, a hypothesis is a statement about the population. It is usually a prediction that a parameter describing some characteristic of a variable takes a particular numerical value, or falls into a certain range of values."
   },
   {
-    "objectID": "lectures/unit5_descriptives/slides2.html#association---correlation",
-    "href": "lectures/unit5_descriptives/slides2.html#association---correlation",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "Association - Correlation",
-    "text": "Association - Correlation\nExamine the relationship between two continuous variables\nSimilar to the mean and standard deviation, but it is between two variables\nTypically displayed as a scatterplot"
+    "objectID": "lectures/unit6_comparing-means/slides.html#hypothesis-1",
+    "href": "lectures/unit6_comparing-means/slides.html#hypothesis-1",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Hypothesis",
+    "text": "Hypothesis\nFor example, dogs are characterized by their ability to read humans’ social cues, but it is (was) unknown whether that skill is biologically prepared. I might hypothesize that when a human points to a hidden treat, puppies do not understand that social cue and their performance on a related task is at-chance. We would call this a research hypothesis.\nThis could be represented numerically as, as a statistical hypothesis:\n\\[\\text{Proportion}_{\\text{Correct Performance}} = .50\\]"
   },
   {
-    "objectID": "lectures/unit5_descriptives/slides2.html#association---covariance",
-    "href": "lectures/unit5_descriptives/slides2.html#association---covariance",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "Association - Covariance",
-    "text": "Association - Covariance\nBefore we talk about correlation, we need to take a look at covariance\n\\[\ncov_{xy} = \\frac{\\sum(x-\\bar{x})(y-\\bar{y})}{N-1}\n\\]\n\n\nCovariance can be thought of as the “average cross product” between two variables\nIt captures the raw/unstandardized relationship between two variables\nCovariance matrix is the basis for many statistical analyses"
+    "objectID": "lectures/unit6_comparing-means/slides.html#the-null-hypothesis",
+    "href": "lectures/unit6_comparing-means/slides.html#the-null-hypothesis",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "The null hypothesis",
+    "text": "The null hypothesis\nIn Null Hypothesis Significance Testing, we… uh… test a null hypothesis.\nA null hypothesis ( \\(H_0\\) ) is a statement of no effect. The research hypothesis states that there is no relationship between X and Y, or our intervention has no effect on the outcome.\n\nThe statistical hypothesis is either that the population parameter is a single value, like 0, or that a range, like 0 or smaller."
   },
   {
-    "objectID": "lectures/unit5_descriptives/slides2.html#covariance-to-correlation",
-    "href": "lectures/unit5_descriptives/slides2.html#covariance-to-correlation",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "Covariance to Correlation",
-    "text": "Covariance to Correlation\nThe Pearson correlation coefficient \\(r\\) addresses this by standardizing the covariance\nIt is done in the same way that we would create a \\(z-score\\)…by dividing by the standard deviation\n\\[\nr_{xy} = \\frac{Cov(x,y)}{sd_x sd_y}\n\\]"
+    "objectID": "lectures/unit6_comparing-means/slides.html#the-alternative-hypothesis",
+    "href": "lectures/unit6_comparing-means/slides.html#the-alternative-hypothesis",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "The alternative hypothesis",
+    "text": "The alternative hypothesis\nAccording to probability theory, our sample space must cover all possible elementary events. Therefore, we create an alternative hypothesis ( \\(H_1\\) ) that is every possible event not represented by our null hypothesis.\n\n\n\\[H_0: \\mu = 4\\] \\[H_1: \\mu \\neq 4\\]\n\n\\[H_0: \\mu \\leq -7\\] \\[H_1: \\mu &gt; -7\\]"
   },
   {
-    "objectID": "lectures/unit5_descriptives/slides2.html#correlations",
-    "href": "lectures/unit5_descriptives/slides2.html#correlations",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "Correlations",
-    "text": "Correlations\n\nTells us: How much 2 variables are linearly related\nRange: -1 to +1\nMost common and basic effect size measure\nIs used to build the regression model"
+    "objectID": "lectures/unit6_comparing-means/slides.html#the-tortured-logic-of-nhst",
+    "href": "lectures/unit6_comparing-means/slides.html#the-tortured-logic-of-nhst",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "The tortured logic of NHST",
+    "text": "The tortured logic of NHST\nWe create two hypotheses, \\(H_0\\) and \\(H_1\\). Usually, we care about \\(H_1\\), not \\(H_0\\). In fact, what we really want to know is how likely \\(H_1\\), given our data.\n\\[P(H_1|Data)\\] Instead, we’re going to test our null hypothesis. Well, not really. We’re going to assume our null hypothesis is true, and test how likely we would be to get these data.\n\\[P(Data|H_0)\\]"
   },
   {
-    "objectID": "lectures/unit5_descriptives/slides2.html#calculating-correlation-in-r",
-    "href": "lectures/unit5_descriptives/slides2.html#calculating-correlation-in-r",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "Calculating Correlation in R",
-    "text": "Calculating Correlation in R\nNow how do we get a correlation value in R?\n\ncor(corr_data$x, corr_data$y)\n\n[1] 0.8929946\n\n\nThat will give us the correlation, but we also want to know how to get our p-value"
+    "objectID": "lectures/unit6_comparing-means/slides.html#example-1",
+    "href": "lectures/unit6_comparing-means/slides.html#example-1",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Example #1",
+    "text": "Example #1\nConsider the example of puppies’ abilities to read human social cues.\nLet \\(\\Pi\\) be the probability the puppy chooses the correct cup that a person points to.\nIn a task with two choices, an at-chance performance is \\(\\Pi = .5\\). This can be the null hypothesis because if this is true, than puppies would make the correct choice as often as they would make an incorrect choice.\nNote that the null hypothesis changes depending on the situation and research question."
   },
   {
-    "objectID": "lectures/unit5_descriptives/slides2.html#using-real-data---epworth-sleepiness-scale",
-    "href": "lectures/unit5_descriptives/slides2.html#using-real-data---epworth-sleepiness-scale",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "Using real data - Epworth Sleepiness Scale",
-    "text": "Using real data - Epworth Sleepiness Scale\nSo far we have been looking at single variables, but we often care about the relationships between multiple variables in a dataset\n\n\nCode\nsleep_data %&gt;% \n  select(ESS1m1:ESS8m1) %&gt;% \n  cor() %&gt;% \n  kable()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nESS1m1\nESS2m1\nESS3m1\nESS4m1\nESS5m1\nESS6m1\nESS7m1\nESS8m1\n\n\n\n\nESS1m1\n1\nNA\nNA\nNA\nNA\nNA\nNA\nNA\n\n\nESS2m1\nNA\n1\nNA\nNA\nNA\nNA\nNA\nNA\n\n\nESS3m1\nNA\nNA\n1\nNA\nNA\nNA\nNA\nNA\n\n\nESS4m1\nNA\nNA\nNA\n1\nNA\nNA\nNA\nNA\n\n\nESS5m1\nNA\nNA\nNA\nNA\n1\nNA\nNA\nNA\n\n\nESS6m1\nNA\nNA\nNA\nNA\nNA\n1\nNA\nNA\n\n\nESS7m1\nNA\nNA\nNA\nNA\nNA\nNA\n1\nNA\n\n\nESS8m1\nNA\nNA\nNA\nNA\nNA\nNA\nNA\n1"
+    "objectID": "lectures/unit6_comparing-means/slides.html#example-1---hypotheses",
+    "href": "lectures/unit6_comparing-means/slides.html#example-1---hypotheses",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Example #1 - Hypotheses",
+    "text": "Example #1 - Hypotheses\nAs a dog-lover, you’re skeptical that reading human social cues is purely learned, and you have an alternative hypothesis that puppies will perform well over chance, thus having a probability of success on any given task greater than .5.\n\\[H_0: \\Pi = .5\\] \\[H_1: \\Pi \\neq .5\\]"
   },
   {
-    "objectID": "lectures/unit5_descriptives/slides2.html#handling-missing---correlation",
-    "href": "lectures/unit5_descriptives/slides2.html#handling-missing---correlation",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "Handling Missing - Correlation",
-    "text": "Handling Missing - Correlation\n\nListwise Deletion (complete cases)\n\n\nRemoves participants completely if they are missing a value being compared\nSmaller Sample Sizes\nDoesn’t bias correlation estimate\n\n\nPairwise Deletion\n\n\nRemoves participants for that single pair, but leaves information in when there are complete information\nLarger Sample Sizes\nCould bias estimates if there is a systematic reason things are missing"
+    "objectID": "lectures/unit6_comparing-means/slides.html#example-1-1",
+    "href": "lectures/unit6_comparing-means/slides.html#example-1-1",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Example #1",
+    "text": "Example #1\nTo test the null hypothesis, you a single puppy and test them 12 times on a pointing task. The puppy makes the correct choice 10 times.\nThe question you’re going to ask is:\n\n\n“How likely is it that the puppy is successful 10 times out of 12, if the probability of success is .5?”\n\n\nThis is the essence of NHST.\nYou can already test this using what you know about the binomial distribution."
   },
   {
-    "objectID": "lectures/unit5_descriptives/slides2.html#spearmans-rank-correlation",
-    "href": "lectures/unit5_descriptives/slides2.html#spearmans-rank-correlation",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "Spearman’s Rank Correlation",
-    "text": "Spearman’s Rank Correlation\nWe need to be able to capture this different (ordinal) “relationship”\n\nIf student 1 works more hours than student 2, then we can guarantee that student 1 will get a better grade\n\nInstead of using the amount given by the variables (“hours studied”), we rank the variables based on least (rank = 1) to most (rank = 10)\nThen we correlate the rankings with one another"
+    "objectID": "lectures/unit6_comparing-means/slides.html#complications-with-the-binomial",
+    "href": "lectures/unit6_comparing-means/slides.html#complications-with-the-binomial",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Complications with the binomial",
+    "text": "Complications with the binomial\nThe likelihood of the puppy being successful 10 times out of 12 if the true probability of success is .5 is 0.02. That’s pretty low! That’s so low that we might begin to suspect that the true probability is not .5.\nBut there’s a problem with this example. The real study used a sample of many puppies (&gt;300), and the average number of correct trials per puppy was about 8.33. But the binomial won’t allow us to calculate the probability of fractional successes!\nWhat we really want is not to assess 10 out of 12 times, but a proportion, like .694. How many different proportions could result puppy to puppy?"
   },
   {
-    "objectID": "lectures/unit5_descriptives/slides2.html#statistics-and-eugenics",
-    "href": "lectures/unit5_descriptives/slides2.html#statistics-and-eugenics",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "Statistics and Eugenics",
-    "text": "Statistics and Eugenics\nThe concept of the correlation is primarily attributed to Sir Frances Galton\n\nHe was also the founder of the concept of eugenics\n\nThe correlation coefficient was developed by his student, Karl Pearson, and adapted into the ANOVA framework by Sir Ronald Fisher\n\nBoth were prominent advocates for the eugenics movement"
+    "objectID": "lectures/unit6_comparing-means/slides.html#our-statistic-is-usually-continuous",
+    "href": "lectures/unit6_comparing-means/slides.html#our-statistic-is-usually-continuous",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Our statistic is usually continuous",
+    "text": "Our statistic is usually continuous\nWhen we estimate a statistic for our sample – like the proportion of puppy success, or the average IQ score, or the relationship between age in months and second attending to a new object – that statistic is nearly always continuous. So we have to assess the probability of that statistic using a probability distribution for continuous variables, like the normal distribution. (Or t, or F, or \\(\\chi^2\\) ).\nWhat is the probability of any value in a continuous distribution?"
   },
   {
-    "objectID": "lectures/unit5_descriptives/slides2.html#what-do-we-do-with-this-info",
-    "href": "lectures/unit5_descriptives/slides2.html#what-do-we-do-with-this-info",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "What do we do with this info?",
-    "text": "What do we do with this info?\n\n\nNever use the correlation or the later techniques developed on it? Of course not.\nAcknowledge this history? Certainly.\nUnderstand how the perspectives of Galton, Fisher, Pearson and others shaped our practices? We must! – these are not set in stone, nor are they necessarily the best way to move forward."
+    "objectID": "lectures/unit6_comparing-means/slides.html#what-are-the-steps-of-nhst",
+    "href": "lectures/unit6_comparing-means/slides.html#what-are-the-steps-of-nhst",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "What are the steps of NHST?",
+    "text": "What are the steps of NHST?\n\n\n\nDefine null and alternative hypothesis.\nSet and justify alpha level.\nDetermine which sampling distribution ( \\(z\\), \\(t\\), or \\(\\chi^2\\) for now)\nCalculate parameters of your sampling distribution under the null.\n\n\nIf \\(z\\), calculate \\(\\mu\\) and \\(\\sigma_M\\)\n\n\n\nCalculate test statistic under the null.\n\n\nIf \\(z\\), \\(\\frac{\\bar{X} - \\mu}{\\sigma_M}\\)\n\n\nCalculate probability of that test statistic or more extreme under the null, and compare to alpha."
   },
   {
-    "objectID": "lectures/unit5_descriptives/slides2.html#be-aware-of-the-assumptions",
-    "href": "lectures/unit5_descriptives/slides2.html#be-aware-of-the-assumptions",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "Be aware of the assumptions",
-    "text": "Be aware of the assumptions\n\n\nStatistics are often thought of as being absent of bias…they are just numbers\nStatistical significance was a way to avoid talking about nuance or degree.\n“Correlation does not imply causation” was a refutation of work demonstrating associations between environment and poverty.\nNeed to be particularly mindful of our goals as scientists and how they can influence the way we interpret the findings"
+    "objectID": "lectures/unit6_comparing-means/slides.html#but-firstdegrees-of-freedom",
+    "href": "lectures/unit6_comparing-means/slides.html#but-firstdegrees-of-freedom",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "but first…Degrees of Freedom",
+    "text": "but first…Degrees of Freedom\nDegrees of Freedom: the number of values in the final calculation of a statistic that are free to vary\nExample: The mean of 3 numbers. First two can be any number, but the final number has to bring the calculation to the correct point.\nExample 2: Drawing a triangle"
   },
   {
-    "objectID": "lectures/unit5_descriptives/slides2.html#correlation-tables",
-    "href": "lectures/unit5_descriptives/slides2.html#correlation-tables",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "Correlation Tables",
-    "text": "Correlation Tables\nBefore we used the cor() function to create a correlation matrix of our variables\nBut what is missing?\n\nsleep_data %&gt;% \n  select(ESS1m1:ESS8m1) %&gt;% \n  cor(use = \"complete\") %&gt;% \n  kable()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nESS1m1\nESS2m1\nESS3m1\nESS4m1\nESS5m1\nESS6m1\nESS7m1\nESS8m1\n\n\n\n\nESS1m1\n1.0000000\n0.3303236\n0.2784836\n0.1455593\n0.2295289\n0.1422071\n0.2206383\n0.0984444\n\n\nESS2m1\n0.3303236\n1.0000000\n0.1976108\n0.1387409\n0.2190331\n0.1748049\n0.2134999\n0.1010883\n\n\nESS3m1\n0.2784836\n0.1976108\n1.0000000\n0.2920448\n0.1948408\n0.2888370\n0.2778982\n0.2178073\n\n\nESS4m1\n0.1455593\n0.1387409\n0.2920448\n1.0000000\n0.2579808\n0.0897873\n0.2589136\n0.2409171\n\n\nESS5m1\n0.2295289\n0.2190331\n0.1948408\n0.2579808\n1.0000000\n0.0704590\n0.2821851\n0.0629151\n\n\nESS6m1\n0.1422071\n0.1748049\n0.2888370\n0.0897873\n0.0704590\n1.0000000\n0.2833070\n0.3493524\n\n\nESS7m1\n0.2206383\n0.2134999\n0.2778982\n0.2589136\n0.2821851\n0.2833070\n1.0000000\n0.2356524\n\n\nESS8m1\n0.0984444\n0.1010883\n0.2178073\n0.2409171\n0.0629151\n0.3493524\n0.2356524\n1.0000000"
+    "objectID": "lectures/unit6_comparing-means/slides.html#one-sample-t-test",
+    "href": "lectures/unit6_comparing-means/slides.html#one-sample-t-test",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "One Sample t-test",
+    "text": "One Sample t-test\nt-tests were developed by William Sealy Gosset, who was a chemist studying the grains used in making beer. (He worked for Guinness.)\n\nSpecifically, he wanted to know whether particular strains of grain made better or worse beer than the standard.\nHe developed the t-test, to test small samples of beer against a population with an unknown standard deviation.\n\nProbably had input from Karl Pearson and Ronald Fisher\n\nPublished this as “Student” because Guinness didn’t want these tests tied to the production of beer."
   },
   {
-    "objectID": "lectures/unit5_descriptives/slides2.html#correlation-tables---sjplot",
-    "href": "lectures/unit5_descriptives/slides2.html#correlation-tables---sjplot",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "Correlation Tables - sjPlot",
-    "text": "Correlation Tables - sjPlot\n\nsleep_data %&gt;% \n  select(ESS1m1:ESS8m1) %&gt;% \n  cor(use = \"complete\") %&gt;% \n  tab_corr(na.deletion = \"listwise\", triangle = \"lower\")\n\n\n\n\n \nESS1m1\nESS2m1\nESS3m1\nESS4m1\nESS5m1\nESS6m1\nESS7m1\nESS8m1\n\n\nESS1m1\n \n \n \n \n \n \n \n \n\n\nESS2m1\n0.330\n \n \n \n \n \n \n \n\n\nESS3m1\n0.278\n0.198\n \n \n \n \n \n \n\n\nESS4m1\n0.146\n0.139\n0.292\n \n \n \n \n \n\n\nESS5m1\n0.230\n0.219\n0.195\n0.258\n \n \n \n \n\n\nESS6m1\n0.142\n0.175\n0.289\n0.090\n0.070\n \n \n \n\n\nESS7m1\n0.221\n0.213\n0.278\n0.259\n0.282\n0.283\n \n \n\n\nESS8m1\n0.098\n0.101\n0.218\n0.241\n0.063\n0.349\n0.236\n \n\n\nComputed correlation used pearson-method with listwise-deletion."
+    "objectID": "lectures/unit6_comparing-means/slides.html#example",
+    "href": "lectures/unit6_comparing-means/slides.html#example",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Example",
+    "text": "Example\nFor examples today, we will use this dataset:\n\n\n100 students from New York\n100 students from New Mexico\n\n\n\nstate_school &lt;- import(\"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/NM-NY_CAS.csv\") %&gt;% \n  #make the score a number\n  mutate(Score_in_memory_game = as.numeric(Score_in_memory_game))"
   },
   {
-    "objectID": "lectures/unit5_descriptives/slides2.html#correlation-tables---sjplot-1",
-    "href": "lectures/unit5_descriptives/slides2.html#correlation-tables---sjplot-1",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "Correlation Tables - sjPlot",
-    "text": "Correlation Tables - sjPlot\nSo many different cusomizations for this type of plot\nCan add titles, indicate what missingness and method\nSaves you a TON of time when putting it into a manuscript"
+    "objectID": "lectures/unit6_comparing-means/slides.html#cohens-d",
+    "href": "lectures/unit6_comparing-means/slides.html#cohens-d",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Cohen’s D",
+    "text": "Cohen’s D\nCohen suggested one of the most common effect size estimates—the standardized mean difference—useful when comparing a group mean to a population mean or two group means to each other.\n\\[\\delta = \\frac{\\mu_1 - \\mu_0}{\\sigma} \\approx d = \\frac{\\bar{X}-\\mu}{\\hat{\\sigma}}\\]\nCohen’s d is in the standard deviation (Z) metric."
   },
   {
-    "objectID": "lectures/unit5_descriptives/slides2.html#writing-up-a-correlation",
-    "href": "lectures/unit5_descriptives/slides2.html#writing-up-a-correlation",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "Writing up a Correlation",
-    "text": "Writing up a Correlation\nTemplate: r(degress of freedom) = the r statistic, p = p value.\nImagine we have conducted a study of 40 students that looked at whether IQ scores and GPA are correlated. We might report the results like this:\n\nIQ and GPA were found to be moderately positively correlated, r(38) = .34, p = .032.\n\nOther example:\n\nAmong the students of Hogwarts University, the number of hours playing Fortnite per week and midterm exam results were negatively correlated, r(78) = -.45, p &lt; .001.\n\nAnd another:\n\nTable 1 reports descriptive statistics and correlations among variables of interest. Knowledge of Weird Al Songs was positively correlated with perceptions of humor for Dr. Haraden (r(49) = .79, p &lt;.001), such that the more Weird Al songs a student knew, the more they thought Dr. Haraden was funny."
-  },
-  {
-    "objectID": "lectures/unit5_descriptives/slides2.html#visualizing-data-1",
-    "href": "lectures/unit5_descriptives/slides2.html#visualizing-data-1",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "Visualizing Data",
-    "text": "Visualizing Data\nIt is always important to visualize our data! Even after getting the correlations and other descriptives\nLet’s look at some data:\n\n\nCode\ndata1 &lt;- import(\"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data1.csv\") %&gt;% \n  mutate(dataset = \"data1\")\n\ndata2 &lt;- import(\"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data2.csv\") %&gt;% \n  mutate(dataset = \"data2\")\n\ndata3 &lt;- import(\"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data3.csv\") %&gt;% \n  mutate(dataset = \"data3\")\n\n\nAnd then combine them to make it easier to do summary stats\n\nthree_data &lt;- bind_rows(data1, data2, data3)"
-  },
-  {
-    "objectID": "lectures/unit5_descriptives/slides2.html#descriptive-stats-on-the-3-datasets",
-    "href": "lectures/unit5_descriptives/slides2.html#descriptive-stats-on-the-3-datasets",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "Descriptive Stats on the 3 datasets",
-    "text": "Descriptive Stats on the 3 datasets\n\nthree_data %&gt;%\n  group_by(dataset) %&gt;% \n  summarize(\n    mean_x = mean(x),\n    mean_y = mean(y),\n    std_x = sd(x), \n    std_y = sd(y), \n    cor_xy = cor(x,y)\n  )\n\n# A tibble: 3 × 6\n  dataset mean_x mean_y std_x std_y  cor_xy\n  &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;\n1 data1     54.3   47.8  16.8  26.9 -0.0641\n2 data2     54.3   47.8  16.8  26.9 -0.0683\n3 data3     54.3   47.8  16.8  26.9 -0.0645"
-  },
-  {
-    "objectID": "lectures/unit5_descriptives/slides2.html#visualizing-dataset-1",
-    "href": "lectures/unit5_descriptives/slides2.html#visualizing-dataset-1",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "Visualizing Dataset 1",
-    "text": "Visualizing Dataset 1\n\n\nCode\ndata1 %&gt;% \n  ggplot(aes(x, y)) + \n  geom_point() + \n  labs(title = \"Dataset 1\")"
-  },
-  {
-    "objectID": "lectures/unit5_descriptives/slides2.html#visualizing-dataset-1-1",
-    "href": "lectures/unit5_descriptives/slides2.html#visualizing-dataset-1-1",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "Visualizing Dataset 1",
-    "text": "Visualizing Dataset 1\n\n\nCode\nvis1 &lt;- data1 %&gt;% \n  ggplot(aes(x, y)) + \n  geom_point() + \n  labs(title = \"Dataset 1\") +\n  geom_smooth(method = \"lm\", \n              se = FALSE)\nvis1"
-  },
-  {
-    "objectID": "lectures/unit5_descriptives/slides2.html#visualizing-dataset-2",
-    "href": "lectures/unit5_descriptives/slides2.html#visualizing-dataset-2",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "Visualizing Dataset 2",
-    "text": "Visualizing Dataset 2\n\n\nCode\nvis2 &lt;- data2 %&gt;% \n  ggplot(aes(x, y)) + \n  geom_point() + \n  labs(title = \"Dataset 2\") +\n  geom_smooth(method = \"lm\", \n              se = FALSE)\nvis2"
-  },
-  {
-    "objectID": "lectures/unit5_descriptives/slides2.html#finallydataset-3",
-    "href": "lectures/unit5_descriptives/slides2.html#finallydataset-3",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "Finally…Dataset 3",
-    "text": "Finally…Dataset 3\n\n\nCode\nvis3 &lt;- data3 %&gt;% \n  ggplot(aes(x, y)) + \n  geom_point() + \n  labs(title = \"Dataset 3\") +\n  geom_smooth(method = \"lm\", \n              se = FALSE)\nvis3"
-  },
-  {
-    "objectID": "lectures/unit5_descriptives/slides2.html#not-all-data-are-created-equally",
-    "href": "lectures/unit5_descriptives/slides2.html#not-all-data-are-created-equally",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "Not all data are created equally",
-    "text": "Not all data are created equally\n\nvis1 + vis2 + vis3"
-  },
-  {
-    "objectID": "lectures/unit5_descriptives/slides2.html#comparing-means-1",
-    "href": "lectures/unit5_descriptives/slides2.html#comparing-means-1",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "Comparing Means",
-    "text": "Comparing Means\nCalculated using a t-test. To calculate the t-statistic, you will use this formula:\n\\[t_{df=N-1} = \\frac{\\bar{X}-\\mu}{\\frac{\\hat{\\sigma}}{\\sqrt{N}}}\\]\nThe heavier tails of the t-distribution, especially for small N, are the penalty we pay for having to estimate the population standard deviation from the sample."
-  },
-  {
-    "objectID": "lectures/unit5_descriptives/slides2.html#types-of-t-tests",
-    "href": "lectures/unit5_descriptives/slides2.html#types-of-t-tests",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "Types of t-Tests",
-    "text": "Types of t-Tests\nSingle Samples t-test\nIndependent Samples t-test\nPaired Samples t-test"
-  },
-  {
-    "objectID": "lectures/unit5_descriptives/slides2.html#dataset",
-    "href": "lectures/unit5_descriptives/slides2.html#dataset",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "Dataset",
-    "text": "Dataset\nMoving forward for today, we will use this dataset\n\n\n100 students from New York\n100 students from New Mexico\n\n\n\nstate_school &lt;- import(\"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/NM-NY_CAS.csv\")"
-  },
-  {
-    "objectID": "lectures/unit5_descriptives/slides2.html#normality-assumption",
-    "href": "lectures/unit5_descriptives/slides2.html#normality-assumption",
-    "title": "Unit 5 - Descriptives (pt. 2)",
-    "section": "Normality Assumption",
-    "text": "Normality Assumption\n\nCheck for Normality: Visualizing data (histograms), Q-Q plots, and statistical tests (Shapiro-Wilk, Anderson-Darling) to assess normality.\nRemedies for Violations: data transformation or non-parametric alternatives when data is not normally distributed."
-  },
-  {
-    "objectID": "lectures/unit5_descriptives/slides2.html#students-t-test",
-    "href": "lectures/unit5_descriptives/slides2.html#students-t-test",
-    "title": "Unit 5 - Descriptives (pt. 2)",
+    "objectID": "lectures/unit6_comparing-means/slides.html#students-t-test",
+    "href": "lectures/unit6_comparing-means/slides.html#students-t-test",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
     "section": "Student’s t-test",
     "text": "Student’s t-test\n\\[ H_0 : \\mu_1 = \\mu_2  \\ \\  H_1 : \\mu_1 \\neq \\mu_2 \\]"
   },
   {
-    "objectID": "lectures/unit5_descriptives/slides2.html#welchs-t-test",
-    "href": "lectures/unit5_descriptives/slides2.html#welchs-t-test",
-    "title": "Unit 5 - Descriptives (pt. 2)",
+    "objectID": "lectures/unit6_comparing-means/slides.html#welchs-t-test",
+    "href": "lectures/unit6_comparing-means/slides.html#welchs-t-test",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
     "section": "Welch’s t-test",
     "text": "Welch’s t-test\n\\[\nH_0 : \\mu_1 = \\mu_2  \\ \\  H_1 : \\mu_1 \\neq \\mu_2\n\\]"
   },
   {
-    "objectID": "lectures/unit5_descriptives/slides2.html#cool-visualizations",
-    "href": "lectures/unit5_descriptives/slides2.html#cool-visualizations",
-    "title": "Unit 5 - Descriptives (pt. 2)",
+    "objectID": "lectures/unit6_comparing-means/slides.html#cool-visualizations",
+    "href": "lectures/unit6_comparing-means/slides.html#cool-visualizations",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
     "section": "Cool Visualizations",
     "text": "Cool Visualizations\nThe library ggstatsplot has some wonderful visualizations of various tests\n\n\nCode\nggstatsplot::ggbetweenstats(\n  data  = state_school,\n  x     = Region,\n  y     = Sleep_Hours_Schoolnight,\n  title = \"Distribution of hours of sleep across Region\"\n)"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#paired-samples-t-test",
+    "href": "lectures/unit6_comparing-means/slides.html#paired-samples-t-test",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Paired Samples \\(t\\)-Test",
+    "text": "Paired Samples \\(t\\)-Test\nChapter 13.5 - Learning Stats with R\nAlso called “Dependent Samples t-test”\n\nWe have been testing means between two independent samples. Participants may be randomly assigned to the separate groups\n\nThis is limited to those types of study designs, but what if we have repeated measures?\n\nWe will then need to compare scores across people…the samples we are comparing now depend on one another and are paired"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#review-of-the-t-test-process",
+    "href": "lectures/unit6_comparing-means/slides.html#review-of-the-t-test-process",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Review of the t-test process",
+    "text": "Review of the t-test process\n\nCollect Sample and define hypotheses\nSet alpha level\nDetermine the sampling distribution (\\(t\\) distribution for now)\nIdentify the critical value that corresponds to alpha and df\nCalculate test statistic for sample collected\nInspect & compare statistic to critical value; Calculate probability"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#determining-t-crit",
+    "href": "lectures/unit6_comparing-means/slides.html#determining-t-crit",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Determining \\(t\\)-crit",
+    "text": "Determining \\(t\\)-crit\nCan look things up using a t-table where you need the degrees of freedom and the alpha\nBut we have R to do those things for us:\n\n#the qt() function is for a 1 tailed test, so we are having to divide it in half to get both tails\nalpha &lt;- 0.05\nn &lt;- nrow(ex1)\nt_crit &lt;- qt(alpha/2, n-1)\nt_crit\n\n[1] -2.570582"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#calculating-t",
+    "href": "lectures/unit6_comparing-means/slides.html#calculating-t",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Calculating t",
+    "text": "Calculating t\nLet’s get all of the information for the sample we are focusing on (difference scores):\n\nd &lt;- mean(ex1$diff_score)\nd\n\n[1] -1.166667\n\nsd_diff &lt;- sd(ex1$diff_score)\nsd_diff\n\n[1] 4.167333"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#calculating-t-1",
+    "href": "lectures/unit6_comparing-means/slides.html#calculating-t-1",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Calculating t",
+    "text": "Calculating t\nNow we can calculate our \\(t\\)-statistic: \\[t_{df=n-1} = \\frac{\\bar{D}}{\\frac{sd_{diff}}{\\sqrt{n}}}\\]\n\nt_stat &lt;- d/(sd_diff/(sqrt(n)))\nt_stat\n\n[1] -0.6857474\n\n#Probability of this t-statistic \np_val &lt;- pt(t_stat, n-1)*2\np_val\n\n[1] 0.5233677"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#make-a-decision",
+    "href": "lectures/unit6_comparing-means/slides.html#make-a-decision",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Make a decision",
+    "text": "Make a decision\nHypotheses:\n\n\n\\(H_0:\\) There is no difference in ratings of happiness between the rooms ( \\(\\mu = 0\\) )\n\\(H_1:\\) There is a difference in ratings of happiness between the rooms ( \\(\\mu \\neq 0\\) )\n\n\n\n\n\n\n\n\n\n\n\n\\(alpha\\)\n\\(t-crit\\)\n\\(t-statistic\\)\n\\(p-value\\)\n\n\n\n\n0.05\n\\(\\pm\\) -2.57\n-0.69\n0.52\n\n\n\nWhat can we conclude??"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#lets-look-at-the-data",
+    "href": "lectures/unit6_comparing-means/slides.html#lets-look-at-the-data",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Let’s Look at the data",
+    "text": "Let’s Look at the data\nResearch Question: Is there a difference between school nights and weekend nights for amount of time slept?\nOnly looking at the variables that we are potentially interested in:\n\nstate_school %&gt;% \n  select(Gender, Ageyears, Sleep_Hours_Schoolnight, Sleep_Hours_Non_Schoolnight) %&gt;% \n  head() #look at first few observations\n\n  Gender Ageyears Sleep_Hours_Schoolnight Sleep_Hours_Non_Schoolnight\n1 Female       16                     8.0                          13\n2   Male       17                     8.0                           9\n3 Female       19                     8.0                           7\n4   Male       17                     8.0                           9\n5   Male       16                     8.5                           5\n6 Female       11                    11.0                          12"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#doing-the-test-in-r-one-sample",
+    "href": "lectures/unit6_comparing-means/slides.html#doing-the-test-in-r-one-sample",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Doing the test in R: One Sample",
+    "text": "Doing the test in R: One Sample\nSince we have calculated the difference scores, we can basically just do a one-sample t-test with the lsr library\n\noneSampleTTest(sleep_state_school$sleep_diff, mu = 0)\n\n\n   One sample t-test \n\nData variable:   sleep_state_school$sleep_diff \n\nDescriptive statistics: \n            sleep_diff\n   mean         -1.866\n   std dev.      2.741\n\nHypotheses: \n   null:        population mean equals 0 \n   alternative: population mean not equal to 0 \n\nTest results: \n   t-statistic:  -9.106 \n   degrees of freedom:  178 \n   p-value:  &lt;.001 \n\nOther information: \n   two-sided 95% confidence interval:  [-2.27, -1.462] \n   estimated effect size (Cohen's d):  0.681"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#doing-the-test-in-r-paired-sample",
+    "href": "lectures/unit6_comparing-means/slides.html#doing-the-test-in-r-paired-sample",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Doing the test in R: Paired Sample",
+    "text": "Doing the test in R: Paired Sample\nMaybe we want to keep things separate and don’t want to calculate separate values. We can use pairedSamplesTTest() instead!\n\npairedSamplesTTest(\n  formula = ~ Sleep_Hours_Schoolnight + Sleep_Hours_Non_Schoolnight, \n  data = sleep_state_school\n)\n\n\n   Paired samples t-test \n\nVariables:  Sleep_Hours_Schoolnight , Sleep_Hours_Non_Schoolnight \n\nDescriptive statistics: \n            Sleep_Hours_Schoolnight Sleep_Hours_Non_Schoolnight difference\n   mean                       6.992                       8.858     -1.866\n   std dev.                   1.454                       2.412      2.741\n\nHypotheses: \n   null:        population means equal for both measurements\n   alternative: different population means for each measurement\n\nTest results: \n   t-statistic:  -9.106 \n   degrees of freedom:  178 \n   p-value:  &lt;.001 \n\nOther information: \n   two-sided 95% confidence interval:  [-2.27, -1.462] \n   estimated effect size (Cohen's d):  0.681"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#doing-the-test-in-r-classic-edition",
+    "href": "lectures/unit6_comparing-means/slides.html#doing-the-test-in-r-classic-edition",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Doing the test in R: Classic Edition",
+    "text": "Doing the test in R: Classic Edition\nAs you Google around to figure things out, you will likely see folks using `t.test()\n\nt.test(\n  x = sleep_state_school$Sleep_Hours_Schoolnight, \n  y = sleep_state_school$Sleep_Hours_Non_Schoolnight, \n  paired = TRUE\n)\n\n\n    Paired t-test\n\ndata:  sleep_state_school$Sleep_Hours_Schoolnight and sleep_state_school$Sleep_Hours_Non_Schoolnight\nt = -9.1062, df = 178, p-value &lt; 0.00000000000000022\nalternative hypothesis: true mean difference is not equal to 0\n95 percent confidence interval:\n -2.270281 -1.461563\nsample estimates:\nmean difference \n      -1.865922"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#reporting-t-test",
+    "href": "lectures/unit6_comparing-means/slides.html#reporting-t-test",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Reporting \\(t\\)-test",
+    "text": "Reporting \\(t\\)-test\nThe first sentence usually conveys some descriptive information about the sample you were comparing (e.g., pre & post test).\nThen you identify the type of test you conducted and what was determined (be sure to include the “stat block” here as well with the t-statistic, df, p-value, CI and Effect size).\nFinish it up by putting that into person words and saying what that means."
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#what-is-anova-lsr-ch.-14",
+    "href": "lectures/unit6_comparing-means/slides.html#what-is-anova-lsr-ch.-14",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "What is ANOVA? (LSR Ch. 14)",
+    "text": "What is ANOVA? (LSR Ch. 14)\n\n\nANOVA stands for Analysis of Variance\nComparing means between two or more groups (usually 3 or more)\n\nContinuous outcome and grouping variable with 2 or more levels\n\nUnder the larger umbrella of general linear models\n\nANOVA is basically a regression with only categorical predictors\n\nLikely the most widely used tool in Psychology"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#different-types-of-anova",
+    "href": "lectures/unit6_comparing-means/slides.html#different-types-of-anova",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Different Types of ANOVA",
+    "text": "Different Types of ANOVA\n\n\nOne-Way ANOVA\n\nTwo-Way ANOVA\nRepeated Measures ANOVA\nANCOVA\nMANOVA"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#one-way-anova",
+    "href": "lectures/unit6_comparing-means/slides.html#one-way-anova",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "One-Way ANOVA",
+    "text": "One-Way ANOVA\nGoal: Inform of differences among the levels of our variable of interest (Omnibus Test)\n\nBut cannot tell us more than that…\n\nHypotheses:\n\\[\nH_0: it\\: is\\: true\\: that\\: \\mu_1 = \\mu_2 = \\mu_3 =\\: ...\\mu_k\n\\\\\nH_1: it\\: is\\: \\boldsymbol{not}\\: true\\: that\\: \\mu_1 = \\mu_2 = \\mu_3 =\\: ...\\mu_k\n\\]"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#waitmeans-or-variance",
+    "href": "lectures/unit6_comparing-means/slides.html#waitmeans-or-variance",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Wait…Means or Variance?",
+    "text": "Wait…Means or Variance?\nWe are using the variance to create a ratio (within group versus between group variance) to determine differences in means\n\nWe are not directly investigating variance, but operationalize variance to create the ratio:\n\n\\[\nF_{df_b, \\: df_w} = \\frac{MS_{between}}{MS_{within}}\n\\]"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#anova-assumptions",
+    "href": "lectures/unit6_comparing-means/slides.html#anova-assumptions",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "ANOVA: Assumptions",
+    "text": "ANOVA: Assumptions\n\nIndependence\n\nObservations between and within groups should be independent. No autocorrelation\n\nHomogeneity of Variance\n\nThe variances within each group should be roughly equal\n\nLevene’s test –&gt; Welch’s ANOVA for unequal variances\n\n\nNormality\n\nThe data within each group should follow a normal distribution\n\nShapiro-Wilk test –&gt; can transform the data or use non-parametric tests"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#review-of-the-nhst-process",
+    "href": "lectures/unit6_comparing-means/slides.html#review-of-the-nhst-process",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Review of the NHST process",
+    "text": "Review of the NHST process\n\n\nCollect Sample and define hypotheses\nSet alpha level\nDetermine the sampling distribution (will be using \\(F\\)-distribution now)\nIdentify the critical value\nCalculate test statistic for sample collected\nInspect & compare statistic to critical value; Calculate probability"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#steps-to-calculating-f-ratio",
+    "href": "lectures/unit6_comparing-means/slides.html#steps-to-calculating-f-ratio",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Steps to calculating F-ratio",
+    "text": "Steps to calculating F-ratio\n\nCapture variance both between and within groups\nVariance to Sum of Squares\nDegrees of Freedom\nMean squares values\nF-Statistic"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#capturing-variance",
+    "href": "lectures/unit6_comparing-means/slides.html#capturing-variance",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Capturing Variance",
+    "text": "Capturing Variance\nWe have calculated variance before!\n\\[\nVar = \\frac{1}{N}\\sum(x_i - \\bar{x})^2\n\\]\nNow we have to take into account the variance between and within the groups:\n\\[\nVar(Y) = \\frac{1}{N} \\sum^G_{k=1}\\sum^{N_k}_{i=i}(Y_{ik} - \\bar{Y})^2\n\\]\n\nNotice that we have the summation across each group ( \\(G\\) ) and the person in the group ( \\(N_k\\) )"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#variance-to-sum-of-squares",
+    "href": "lectures/unit6_comparing-means/slides.html#variance-to-sum-of-squares",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Variance to Sum of Squares",
+    "text": "Variance to Sum of Squares\nTotal Sum of Squares - Adding up the sum of squares instead of getting the average (notice the removal of \\(\\frac{1}{N}\\))\n\\[\nSS_{total} = \\sum^G_{k=1}\\sum^{N_k}_{i=i}(Y_{ik} - \\bar{Y})^2\n\\]\nCan be broken up to see what is the variation between the groups AND the variation within the groups\n\\[\nSS_{total}=SS_{between}+SS_{within}\n\\]\n\nThis gets us closer to understanding the difference between means"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#sum-of-squares---between",
+    "href": "lectures/unit6_comparing-means/slides.html#sum-of-squares---between",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Sum of Squares - Between",
+    "text": "Sum of Squares - Between\nThe difference between the group mean and grand mean\n\\[\nSS_{between} = \\sum^G_{k=1}N_k(\\bar{Y_k} - \\bar{Y})^2\n\\]\n\n\n\nGroup\nGroup Mean \\(\\bar{Y_k}\\)\nGrand Mean \\(\\bar{Y}\\)\n\n\n\n\nCool\n32\n41.8\n\n\nUncool\n56.5\n41.8"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#sum-of-squares---between-1",
+    "href": "lectures/unit6_comparing-means/slides.html#sum-of-squares---between-1",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Sum of Squares - Between",
+    "text": "Sum of Squares - Between\nThe difference between the group mean and grand mean\n\\[ SS_{between} = \\sum^G_{k=1}N_k(\\bar{Y_k} - \\bar{Y})^2 \\]\n\n\n\n\n\n\n\n\n\n\n\nGroup\nGroup Mean \\(\\bar{Y_k}\\)\nGrand Mean \\(\\bar{Y}\\)\nSq. Dev.\nN\nWeighted Sq. Dev.\n\n\n\n\nCool\n32\n41.8\n96.04\n3\n288.12\n\n\nUncool\n56.5\n41.8\n216.09\n2\n432.18"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#sum-of-squares---between-2",
+    "href": "lectures/unit6_comparing-means/slides.html#sum-of-squares---between-2",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Sum of Squares - Between",
+    "text": "Sum of Squares - Between\nThe difference between the group mean and grand mean\n\\[ SS_{between} = \\sum^G_{k=1}N_k(\\bar{Y_k} - \\bar{Y})^2 \\]\nNow we can sum the Weighted Squared Deviations together to get our Sum of Squares Between:\n\nssb &lt;- 288.12 + 432.18\nssb\n\n[1] 720.3"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#sum-of-squares---within",
+    "href": "lectures/unit6_comparing-means/slides.html#sum-of-squares---within",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Sum of Squares - Within",
+    "text": "Sum of Squares - Within\nThe difference between the individual and their group mean\n\\[\nSS_{within} = \\sum^G_{k=1}\\sum^{N_k}_{i=i}(Y_{ik} - \\bar{Y_k})^2\n\\]\n\n\n\nName\nGrumpiness \\(Y_{ik}\\)\nGroup Mean \\(\\bar{Y_K}\\)\n\n\n\n\nFrodo\n20\n32\n\n\nSam\n55\n32\n\n\nBandit\n21\n32\n\n\nDolores U.\n91\n56.5\n\n\nDustin\n22\n56.5"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#sum-of-squares---within-1",
+    "href": "lectures/unit6_comparing-means/slides.html#sum-of-squares---within-1",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Sum of Squares - Within",
+    "text": "Sum of Squares - Within\nThe difference between the individual and their group mean\n\\[ SS_{within} = \\sum^G_{k=1}\\sum^{N_k}_{i=i}(Y_{ik} - \\bar{Y_k})^2 \\]\n\n\n\nName\nGrumpiness \\(Y_{ik}\\)\nGroup Mean \\(\\bar{Y_K}\\)\nSq. Dev\n\n\n\n\nFrodo\n20\n32\n144\n\n\nSam\n55\n32\n529\n\n\nBandit\n21\n32\n121\n\n\nDolores U.\n91\n56.5\n1190.25\n\n\nDustin\n22\n56.5\n1190.25\n\n\n\n\n\nCode\nscore &lt;- c(20, 55, 21, 91, 22)\ngroup_m &lt;- c(32, 32, 32, 56.5, 56.5)\nsq_dev &lt;- (score - group_m)^2"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#sum-of-squares---within-2",
+    "href": "lectures/unit6_comparing-means/slides.html#sum-of-squares---within-2",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Sum of Squares - Within",
+    "text": "Sum of Squares - Within\nThe difference between the individual and their group mean\n\\[ SS_{within} = \\sum^G_{k=1}\\sum^{N_k}_{i=i}(Y_{ik} - \\bar{Y_k})^2 \\] Now we can sum the Squared Deviations together to get our Sum of Squares Within:\n\nsum(sq_dev)\n\n[1] 3174.5"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#sum-of-squares-2",
+    "href": "lectures/unit6_comparing-means/slides.html#sum-of-squares-2",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Sum of Squares",
+    "text": "Sum of Squares\nCan start to have an idea of what this looks like\n\\[\nSS_{between} = \\sum^G_{k=1}N_k(\\bar{Y_k} - \\bar{Y})^2 = 720.3\n\\]\n\\[\nSS_{within} = \\sum^G_{k=1}\\sum^{N_k}_{i=i}(Y_{ik} - \\bar{Y_k})^2 = 3174.5\n\\]\nNext we have to take into account the degrees of freedom"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#degrees-of-freedom",
+    "href": "lectures/unit6_comparing-means/slides.html#degrees-of-freedom",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Degrees of Freedom",
+    "text": "Degrees of Freedom\nSince we have 2 types of variations that we are examining, this needs to be reflected in the degrees of freedom\n\nTake the number of groups and subtract 1\n\\(df_{between} = G - 1\\)\nTake the total number of observations and subtract the number of groups\n\n\\(df_{within} = N - G\\)"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#calculating-mean-squares",
+    "href": "lectures/unit6_comparing-means/slides.html#calculating-mean-squares",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Calculating Mean Squares",
+    "text": "Calculating Mean Squares\nNext we convert our summed squares value into a “mean squares”\nThis is done by dividing by the respective degrees of freedom\n\\[\nMS_b = \\frac{SS_b}{df_b}\n\\]\n\\[\nMS_W = \\frac{SS_w}{df_w}\n\\]"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#calculating-mean-squares---example",
+    "href": "lectures/unit6_comparing-means/slides.html#calculating-mean-squares---example",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Calculating Mean Squares - Example",
+    "text": "Calculating Mean Squares - Example\nLet’s take a look at how this applies to our example: \\[ MS_b = \\frac{SS_b}{G-1} = \\frac{720.3}{2-1} = 720.3 \\]\n\\[ MS_W = \\frac{SS_w}{N-G} = \\frac{3174.5}{5-2} = 1058.167  \\]"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#calculating-the-f-statistic",
+    "href": "lectures/unit6_comparing-means/slides.html#calculating-the-f-statistic",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Calculating the F-Statistic",
+    "text": "Calculating the F-Statistic\n\\[F = \\frac{MS_b}{MS_w}\\]\nIf the null hypothesis is true, \\(F\\) has an expected value close to 1 (numerator and denominator are estimates of the same variability)\nIf it is false, the numerator will likely be larger, because systematic, between-group differences contribute to the variance of the means, but not to variance within group."
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#calculating-f-statistic-example",
+    "href": "lectures/unit6_comparing-means/slides.html#calculating-f-statistic-example",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Calculating F-statistic: Example",
+    "text": "Calculating F-statistic: Example\n\\[F = \\frac{MS_b}{MS_w} = \\frac{720.3}{1058.167} = 0.68\\]\nLink to probability calculator"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#contrastspost-hoc-tests",
+    "href": "lectures/unit6_comparing-means/slides.html#contrastspost-hoc-tests",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Contrasts/Post-Hoc Tests",
+    "text": "Contrasts/Post-Hoc Tests\nPerformed when there is a significant difference among the groups to examine which groups are different\n\nContrasts: When we have a priori hypotheses\nPost-hoc Tests: When we want to test everything"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#tables",
+    "href": "lectures/unit6_comparing-means/slides.html#tables",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Tables",
+    "text": "Tables\nOften times the output will be in the form of a table and then it is often reported this way in the manuscript\n\n\n\n\n\n\n\n\n\n\n\nSource of Variation\ndf\nSum of Squares\nMean Squares\nF-statistic\np-value\n\n\n\n\nGroup\n\\(G-1\\)\n\\(SS_b\\)\n\\(MS_b = \\frac{SS_b}{df_b}\\)\n\\(F = \\frac{MS_b}{MS_w}\\)\n\\(p\\)\n\n\nResidual\n\\(N-G\\)\n\\(SS_w\\)\n\\(MS_w = \\frac{SS_w}{df_w}\\)\n\n\n\n\nTotal\n\\(N-1\\)\n\\(SS_{total}\\)"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#in-text",
+    "href": "lectures/unit6_comparing-means/slides.html#in-text",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "In-Text",
+    "text": "In-Text\n\nA one-way analysis of variance was used to test for differences in the [variable of interest/outcome variable] as a function of [whatever the factor is]. Specifically, differences in [variable of interest] were assessed for the [list different levels and be sure to include (M= , SD= )] . The one-way ANOVA revealed a significant/nonsignificant effect of [factor] on scores on the [variable of interest] (F(dfb, dfw) = f-ratio, p = p-value, η2 = effect size).\nPlanned comparisons were conducted to compare expected differences among the [however many groups] means. Planned contrasts revealed that participants in the [one of the conditions] had a greater/fewer [variable of interest] and then include the p-value. This same type of sentence is repeated for whichever contrasts you completed. Descriptive statistics were reported in Table 1."
   },
   {
     "objectID": "lectures/unit4_data-wrangler/slides.html#reminders",
@@ -895,149 +1056,233 @@
     "text": "Giving it a try\nUse the ggplot cheatsheet to identify an appropriate way to visualize the data\n\nAdd some color\nUpdate the title and axes\n\nWhen you are done, post your creation here!"
   },
   {
-    "objectID": "lectures/unit6_comparing-means/slides.html#reminders",
-    "href": "lectures/unit6_comparing-means/slides.html#reminders",
-    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "objectID": "lectures/unit5_descriptives/slides2.html#reminders",
+    "href": "lectures/unit5_descriptives/slides2.html#reminders",
+    "title": "Unit 5 - Descriptives (pt. 2)",
     "section": "Reminders",
-    "text": "Reminders\n\n\nJournal Entries\nLab #1 - Due 10/6"
+    "text": "Reminders\n\n\nJournal Entries\nLab 1 - Now due 10/6"
   },
   {
-    "objectID": "lectures/unit6_comparing-means/slides.html#last-class",
-    "href": "lectures/unit6_comparing-means/slides.html#last-class",
-    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "objectID": "lectures/unit5_descriptives/slides2.html#last-class",
+    "href": "lectures/unit5_descriptives/slides2.html#last-class",
+    "title": "Unit 5 - Descriptives (pt. 2)",
     "section": "Last Class",
-    "text": "Last Class\n\n\nDescriptive Statistics\nCorrelations\n\nProfessor made it complicated, but we got some pretty tables out of it with sjPlot()"
+    "text": "Last Class\n\n\nFocused on basic descriptives\n\nmean()\nmedian()\ndescribe()"
   },
   {
-    "objectID": "lectures/unit6_comparing-means/slides.html#today",
-    "href": "lectures/unit6_comparing-means/slides.html#today",
-    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "objectID": "lectures/unit5_descriptives/slides2.html#today",
+    "href": "lectures/unit5_descriptives/slides2.html#today",
+    "title": "Unit 5 - Descriptives (pt. 2)",
     "section": "Today…",
-    "text": "Today…\n\nHypotheses & NHST\nComparing Two Means\n\nOne-Sample, Independent, Paired\n\nComparing MANY MUCH Means\n\n\n# File management\nlibrary(here)\n# just because\nlibrary(tidyverse)\n# Loading data\nlibrary(rio)\n# makes for easier to look at output\nlibrary(lsr)\n# cool visualizations\nlibrary(ggstatsplot)\n\n\n\n#Remove Scientific Notation \noptions(scipen=999)"
+    "text": "Today…\nExplore correlations and comparing means.\n\n# File management\nlibrary(here)\n# for dplyr, ggplot2\nlibrary(tidyverse)\n# Loading data\nlibrary(rio)\n# Pretty tables\nlibrary(sjPlot)\nlibrary(kableExtra)\n# Putting Plots together\nlibrary(patchwork)\n\n#Remove Scientific Notation \noptions(scipen=999)"
   },
   {
-    "objectID": "lectures/unit6_comparing-means/slides.html#hypothesis",
-    "href": "lectures/unit6_comparing-means/slides.html#hypothesis",
-    "title": "Unit 6 - Hypotheses & Comparing Means",
-    "section": "Hypothesis",
-    "text": "Hypothesis\nWhat is a hypothesis?\nIn statistics, a hypothesis is a statement about the population. It is usually a prediction that a parameter describing some characteristic of a variable takes a particular numerical value, or falls into a certain range of values."
+    "objectID": "lectures/unit5_descriptives/slides2.html#import-cleaned-up-file",
+    "href": "lectures/unit5_descriptives/slides2.html#import-cleaned-up-file",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "Import cleaned up file",
+    "text": "Import cleaned up file\nLast class we created a new .csv file named named_Sleep_Data. We will continue to use that! Let’s make sure to import that data.\n\n# Remember that your path will probably be different\nsleep_data &lt;- read.csv(here(\"lectures\", \n                            \"data\", \n                            \"named_Sleep_Data.csv\"))"
   },
   {
-    "objectID": "lectures/unit6_comparing-means/slides.html#hypothesis-1",
-    "href": "lectures/unit6_comparing-means/slides.html#hypothesis-1",
-    "title": "Unit 6 - Hypotheses & Comparing Means",
-    "section": "Hypothesis",
-    "text": "Hypothesis\nFor example, dogs are characterized by their ability to read humans’ social cues, but it is (was) unknown whether that skill is biologically prepared. I might hypothesize that when a human points to a hidden treat, puppies do not understand that social cue and their performance on a related task is at-chance. We would call this a research hypothesis.\nThis could be represented numerically as, as a statistical hypothesis:\n\\[\\text{Proportion}_{\\text{Correct Performance}} = .50\\]"
+    "objectID": "lectures/unit5_descriptives/slides2.html#association---correlation",
+    "href": "lectures/unit5_descriptives/slides2.html#association---correlation",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "Association - Correlation",
+    "text": "Association - Correlation\nExamine the relationship between two continuous variables\nSimilar to the mean and standard deviation, but it is between two variables\nTypically displayed as a scatterplot"
   },
   {
-    "objectID": "lectures/unit6_comparing-means/slides.html#the-null-hypothesis",
-    "href": "lectures/unit6_comparing-means/slides.html#the-null-hypothesis",
-    "title": "Unit 6 - Hypotheses & Comparing Means",
-    "section": "The null hypothesis",
-    "text": "The null hypothesis\nIn Null Hypothesis Significance Testing, we… uh… test a null hypothesis.\nA null hypothesis ( \\(H_0\\) ) is a statement of no effect. The research hypothesis states that there is no relationship between X and Y, or our intervention has no effect on the outcome.\n\nThe statistical hypothesis is either that the population parameter is a single value, like 0, or that a range, like 0 or smaller."
+    "objectID": "lectures/unit5_descriptives/slides2.html#association---covariance",
+    "href": "lectures/unit5_descriptives/slides2.html#association---covariance",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "Association - Covariance",
+    "text": "Association - Covariance\nBefore we talk about correlation, we need to take a look at covariance\n\\[\ncov_{xy} = \\frac{\\sum(x-\\bar{x})(y-\\bar{y})}{N-1}\n\\]\n\n\nCovariance can be thought of as the “average cross product” between two variables\nIt captures the raw/unstandardized relationship between two variables\nCovariance matrix is the basis for many statistical analyses"
   },
   {
-    "objectID": "lectures/unit6_comparing-means/slides.html#the-alternative-hypothesis",
-    "href": "lectures/unit6_comparing-means/slides.html#the-alternative-hypothesis",
-    "title": "Unit 6 - Hypotheses & Comparing Means",
-    "section": "The alternative hypothesis",
-    "text": "The alternative hypothesis\nAccording to probability theory, our sample space must cover all possible elementary events. Therefore, we create an alternative hypothesis ( \\(H_1\\) ) that is every possible event not represented by our null hypothesis.\n\n\n\\[H_0: \\mu = 4\\] \\[H_1: \\mu \\neq 4\\]\n\n\\[H_0: \\mu \\leq -7\\] \\[H_1: \\mu &gt; -7\\]"
+    "objectID": "lectures/unit5_descriptives/slides2.html#covariance-to-correlation",
+    "href": "lectures/unit5_descriptives/slides2.html#covariance-to-correlation",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "Covariance to Correlation",
+    "text": "Covariance to Correlation\nThe Pearson correlation coefficient \\(r\\) addresses this by standardizing the covariance\nIt is done in the same way that we would create a \\(z-score\\)…by dividing by the standard deviation\n\\[\nr_{xy} = \\frac{Cov(x,y)}{sd_x sd_y}\n\\]"
   },
   {
-    "objectID": "lectures/unit6_comparing-means/slides.html#the-tortured-logic-of-nhst",
-    "href": "lectures/unit6_comparing-means/slides.html#the-tortured-logic-of-nhst",
-    "title": "Unit 6 - Hypotheses & Comparing Means",
-    "section": "The tortured logic of NHST",
-    "text": "The tortured logic of NHST\nWe create two hypotheses, \\(H_0\\) and \\(H_1\\). Usually, we care about \\(H_1\\), not \\(H_0\\). In fact, what we really want to know is how likely \\(H_1\\), given our data.\n\\[P(H_1|Data)\\] Instead, we’re going to test our null hypothesis. Well, not really. We’re going to assume our null hypothesis is true, and test how likely we would be to get these data.\n\\[P(Data|H_0)\\]"
+    "objectID": "lectures/unit5_descriptives/slides2.html#correlations",
+    "href": "lectures/unit5_descriptives/slides2.html#correlations",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "Correlations",
+    "text": "Correlations\n\nTells us: How much 2 variables are linearly related\nRange: -1 to +1\nMost common and basic effect size measure\nIs used to build the regression model"
   },
   {
-    "objectID": "lectures/unit6_comparing-means/slides.html#example-1",
-    "href": "lectures/unit6_comparing-means/slides.html#example-1",
-    "title": "Unit 6 - Hypotheses & Comparing Means",
-    "section": "Example #1",
-    "text": "Example #1\nConsider the example of puppies’ abilities to read human social cues.\nLet \\(\\Pi\\) be the probability the puppy chooses the correct cup that a person points to.\nIn a task with two choices, an at-chance performance is \\(\\Pi = .5\\). This can be the null hypothesis because if this is true, than puppies would make the correct choice as often as they would make an incorrect choice.\nNote that the null hypothesis changes depending on the situation and research question."
+    "objectID": "lectures/unit5_descriptives/slides2.html#calculating-correlation-in-r",
+    "href": "lectures/unit5_descriptives/slides2.html#calculating-correlation-in-r",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "Calculating Correlation in R",
+    "text": "Calculating Correlation in R\nNow how do we get a correlation value in R?\n\ncor(corr_data$x, corr_data$y)\n\n[1] 0.8929946\n\n\nThat will give us the correlation, but we also want to know how to get our p-value"
   },
   {
-    "objectID": "lectures/unit6_comparing-means/slides.html#example-1---hypotheses",
-    "href": "lectures/unit6_comparing-means/slides.html#example-1---hypotheses",
-    "title": "Unit 6 - Hypotheses & Comparing Means",
-    "section": "Example #1 - Hypotheses",
-    "text": "Example #1 - Hypotheses\nAs a dog-lover, you’re skeptical that reading human social cues is purely learned, and you have an alternative hypothesis that puppies will perform well over chance, thus having a probability of success on any given task greater than .5.\n\\[H_0: \\Pi = .5\\] \\[H_1: \\Pi \\neq .5\\]"
+    "objectID": "lectures/unit5_descriptives/slides2.html#using-real-data---epworth-sleepiness-scale",
+    "href": "lectures/unit5_descriptives/slides2.html#using-real-data---epworth-sleepiness-scale",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "Using real data - Epworth Sleepiness Scale",
+    "text": "Using real data - Epworth Sleepiness Scale\nSo far we have been looking at single variables, but we often care about the relationships between multiple variables in a dataset\n\n\nCode\nsleep_data %&gt;% \n  select(ESS1m1:ESS8m1) %&gt;% \n  cor() %&gt;% \n  kable()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nESS1m1\nESS2m1\nESS3m1\nESS4m1\nESS5m1\nESS6m1\nESS7m1\nESS8m1\n\n\n\n\nESS1m1\n1\nNA\nNA\nNA\nNA\nNA\nNA\nNA\n\n\nESS2m1\nNA\n1\nNA\nNA\nNA\nNA\nNA\nNA\n\n\nESS3m1\nNA\nNA\n1\nNA\nNA\nNA\nNA\nNA\n\n\nESS4m1\nNA\nNA\nNA\n1\nNA\nNA\nNA\nNA\n\n\nESS5m1\nNA\nNA\nNA\nNA\n1\nNA\nNA\nNA\n\n\nESS6m1\nNA\nNA\nNA\nNA\nNA\n1\nNA\nNA\n\n\nESS7m1\nNA\nNA\nNA\nNA\nNA\nNA\n1\nNA\n\n\nESS8m1\nNA\nNA\nNA\nNA\nNA\nNA\nNA\n1"
   },
   {
-    "objectID": "lectures/unit6_comparing-means/slides.html#example-1-1",
-    "href": "lectures/unit6_comparing-means/slides.html#example-1-1",
-    "title": "Unit 6 - Hypotheses & Comparing Means",
-    "section": "Example #1",
-    "text": "Example #1\nTo test the null hypothesis, you a single puppy and test them 12 times on a pointing task. The puppy makes the correct choice 10 times.\nThe question you’re going to ask is:\n\n\n“How likely is it that the puppy is successful 10 times out of 12, if the probability of success is .5?”\n\n\nThis is the essence of NHST.\nYou can already test this using what you know about the binomial distribution."
+    "objectID": "lectures/unit5_descriptives/slides2.html#handling-missing---correlation",
+    "href": "lectures/unit5_descriptives/slides2.html#handling-missing---correlation",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "Handling Missing - Correlation",
+    "text": "Handling Missing - Correlation\n\nListwise Deletion (complete cases)\n\n\nRemoves participants completely if they are missing a value being compared\nSmaller Sample Sizes\nDoesn’t bias correlation estimate\n\n\nPairwise Deletion\n\n\nRemoves participants for that single pair, but leaves information in when there are complete information\nLarger Sample Sizes\nCould bias estimates if there is a systematic reason things are missing"
   },
   {
-    "objectID": "lectures/unit6_comparing-means/slides.html#complications-with-the-binomial",
-    "href": "lectures/unit6_comparing-means/slides.html#complications-with-the-binomial",
-    "title": "Unit 6 - Hypotheses & Comparing Means",
-    "section": "Complications with the binomial",
-    "text": "Complications with the binomial\nThe likelihood of the puppy being successful 10 times out of 12 if the true probability of success is .5 is 0.02. That’s pretty low! That’s so low that we might begin to suspect that the true probability is not .5.\nBut there’s a problem with this example. The real study used a sample of many puppies (&gt;300), and the average number of correct trials per puppy was about 8.33. But the binomial won’t allow us to calculate the probability of fractional successes!\nWhat we really want is not to assess 10 out of 12 times, but a proportion, like .694. How many different proportions could result puppy to puppy?"
+    "objectID": "lectures/unit5_descriptives/slides2.html#spearmans-rank-correlation",
+    "href": "lectures/unit5_descriptives/slides2.html#spearmans-rank-correlation",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "Spearman’s Rank Correlation",
+    "text": "Spearman’s Rank Correlation\nWe need to be able to capture this different (ordinal) “relationship”\n\nIf student 1 works more hours than student 2, then we can guarantee that student 1 will get a better grade\n\nInstead of using the amount given by the variables (“hours studied”), we rank the variables based on least (rank = 1) to most (rank = 10)\nThen we correlate the rankings with one another"
   },
   {
-    "objectID": "lectures/unit6_comparing-means/slides.html#our-statistic-is-usually-continuous",
-    "href": "lectures/unit6_comparing-means/slides.html#our-statistic-is-usually-continuous",
-    "title": "Unit 6 - Hypotheses & Comparing Means",
-    "section": "Our statistic is usually continuous",
-    "text": "Our statistic is usually continuous\nWhen we estimate a statistic for our sample – like the proportion of puppy success, or the average IQ score, or the relationship between age in months and second attending to a new object – that statistic is nearly always continuous. So we have to assess the probability of that statistic using a probability distribution for continuous variables, like the normal distribution. (Or t, or F, or \\(\\chi^2\\) ).\nWhat is the probability of any value in a continuous distribution?"
+    "objectID": "lectures/unit5_descriptives/slides2.html#statistics-and-eugenics",
+    "href": "lectures/unit5_descriptives/slides2.html#statistics-and-eugenics",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "Statistics and Eugenics",
+    "text": "Statistics and Eugenics\nThe concept of the correlation is primarily attributed to Sir Frances Galton\n\nHe was also the founder of the concept of eugenics\n\nThe correlation coefficient was developed by his student, Karl Pearson, and adapted into the ANOVA framework by Sir Ronald Fisher\n\nBoth were prominent advocates for the eugenics movement"
   },
   {
-    "objectID": "lectures/unit6_comparing-means/slides.html#what-are-the-steps-of-nhst",
-    "href": "lectures/unit6_comparing-means/slides.html#what-are-the-steps-of-nhst",
-    "title": "Unit 6 - Hypotheses & Comparing Means",
-    "section": "What are the steps of NHST?",
-    "text": "What are the steps of NHST?\n\n\n\nDefine null and alternative hypothesis.\nSet and justify alpha level.\nDetermine which sampling distribution ( \\(z\\), \\(t\\), or \\(\\chi^2\\) for now)\nCalculate parameters of your sampling distribution under the null.\n\n\nIf \\(z\\), calculate \\(\\mu\\) and \\(\\sigma_M\\)\n\n\n\nCalculate test statistic under the null.\n\n\nIf \\(z\\), \\(\\frac{\\bar{X} - \\mu}{\\sigma_M}\\)\n\n\nCalculate probability of that test statistic or more extreme under the null, and compare to alpha."
+    "objectID": "lectures/unit5_descriptives/slides2.html#what-do-we-do-with-this-info",
+    "href": "lectures/unit5_descriptives/slides2.html#what-do-we-do-with-this-info",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "What do we do with this info?",
+    "text": "What do we do with this info?\n\n\nNever use the correlation or the later techniques developed on it? Of course not.\nAcknowledge this history? Certainly.\nUnderstand how the perspectives of Galton, Fisher, Pearson and others shaped our practices? We must! – these are not set in stone, nor are they necessarily the best way to move forward."
   },
   {
-    "objectID": "lectures/unit6_comparing-means/slides.html#but-firstdegrees-of-freedom",
-    "href": "lectures/unit6_comparing-means/slides.html#but-firstdegrees-of-freedom",
-    "title": "Unit 6 - Hypotheses & Comparing Means",
-    "section": "but first…Degrees of Freedom",
-    "text": "but first…Degrees of Freedom\nDegrees of Freedom: the number of values in the final calculation of a statistic that are free to vary\nExample: The mean of 3 numbers. First two can be any number, but the final number has to bring the calculation to the correct point.\nExample 2: Drawing a triangle"
+    "objectID": "lectures/unit5_descriptives/slides2.html#be-aware-of-the-assumptions",
+    "href": "lectures/unit5_descriptives/slides2.html#be-aware-of-the-assumptions",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "Be aware of the assumptions",
+    "text": "Be aware of the assumptions\n\n\nStatistics are often thought of as being absent of bias…they are just numbers\nStatistical significance was a way to avoid talking about nuance or degree.\n“Correlation does not imply causation” was a refutation of work demonstrating associations between environment and poverty.\nNeed to be particularly mindful of our goals as scientists and how they can influence the way we interpret the findings"
   },
   {
-    "objectID": "lectures/unit6_comparing-means/slides.html#one-sample-t-test",
-    "href": "lectures/unit6_comparing-means/slides.html#one-sample-t-test",
-    "title": "Unit 6 - Hypotheses & Comparing Means",
-    "section": "One Sample t-test",
-    "text": "One Sample t-test\nt-tests were developed by William Sealy Gosset, who was a chemist studying the grains used in making beer. (He worked for Guinness.)\n\nSpecifically, he wanted to know whether particular strains of grain made better or worse beer than the standard.\nHe developed the t-test, to test small samples of beer against a population with an unknown standard deviation.\n\nProbably had input from Karl Pearson and Ronald Fisher\n\nPublished this as “Student” because Guinness didn’t want these tests tied to the production of beer."
+    "objectID": "lectures/unit5_descriptives/slides2.html#correlation-tables",
+    "href": "lectures/unit5_descriptives/slides2.html#correlation-tables",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "Correlation Tables",
+    "text": "Correlation Tables\nBefore we used the cor() function to create a correlation matrix of our variables\nBut what is missing?\n\nsleep_data %&gt;% \n  select(ESS1m1:ESS8m1) %&gt;% \n  cor(use = \"complete\") %&gt;% \n  kable()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nESS1m1\nESS2m1\nESS3m1\nESS4m1\nESS5m1\nESS6m1\nESS7m1\nESS8m1\n\n\n\n\nESS1m1\n1.0000000\n0.3303236\n0.2784836\n0.1455593\n0.2295289\n0.1422071\n0.2206383\n0.0984444\n\n\nESS2m1\n0.3303236\n1.0000000\n0.1976108\n0.1387409\n0.2190331\n0.1748049\n0.2134999\n0.1010883\n\n\nESS3m1\n0.2784836\n0.1976108\n1.0000000\n0.2920448\n0.1948408\n0.2888370\n0.2778982\n0.2178073\n\n\nESS4m1\n0.1455593\n0.1387409\n0.2920448\n1.0000000\n0.2579808\n0.0897873\n0.2589136\n0.2409171\n\n\nESS5m1\n0.2295289\n0.2190331\n0.1948408\n0.2579808\n1.0000000\n0.0704590\n0.2821851\n0.0629151\n\n\nESS6m1\n0.1422071\n0.1748049\n0.2888370\n0.0897873\n0.0704590\n1.0000000\n0.2833070\n0.3493524\n\n\nESS7m1\n0.2206383\n0.2134999\n0.2778982\n0.2589136\n0.2821851\n0.2833070\n1.0000000\n0.2356524\n\n\nESS8m1\n0.0984444\n0.1010883\n0.2178073\n0.2409171\n0.0629151\n0.3493524\n0.2356524\n1.0000000"
   },
   {
-    "objectID": "lectures/unit6_comparing-means/slides.html#example",
-    "href": "lectures/unit6_comparing-means/slides.html#example",
-    "title": "Unit 6 - Hypotheses & Comparing Means",
-    "section": "Example",
-    "text": "Example\nFor examples today, we will use this dataset:\n\n\n100 students from New York\n100 students from New Mexico\n\n\n\nstate_school &lt;- import(\"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/NM-NY_CAS.csv\") %&gt;% \n  #make the score a number\n  mutate(Score_in_memory_game = as.numeric(Score_in_memory_game))"
+    "objectID": "lectures/unit5_descriptives/slides2.html#correlation-tables---sjplot",
+    "href": "lectures/unit5_descriptives/slides2.html#correlation-tables---sjplot",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "Correlation Tables - sjPlot",
+    "text": "Correlation Tables - sjPlot\n\nsleep_data %&gt;% \n  select(ESS1m1:ESS8m1) %&gt;% \n  cor(use = \"complete\") %&gt;% \n  tab_corr(na.deletion = \"listwise\", triangle = \"lower\")\n\n\n\n\n \nESS1m1\nESS2m1\nESS3m1\nESS4m1\nESS5m1\nESS6m1\nESS7m1\nESS8m1\n\n\nESS1m1\n \n \n \n \n \n \n \n \n\n\nESS2m1\n0.330\n \n \n \n \n \n \n \n\n\nESS3m1\n0.278\n0.198\n \n \n \n \n \n \n\n\nESS4m1\n0.146\n0.139\n0.292\n \n \n \n \n \n\n\nESS5m1\n0.230\n0.219\n0.195\n0.258\n \n \n \n \n\n\nESS6m1\n0.142\n0.175\n0.289\n0.090\n0.070\n \n \n \n\n\nESS7m1\n0.221\n0.213\n0.278\n0.259\n0.282\n0.283\n \n \n\n\nESS8m1\n0.098\n0.101\n0.218\n0.241\n0.063\n0.349\n0.236\n \n\n\nComputed correlation used pearson-method with listwise-deletion."
   },
   {
-    "objectID": "lectures/unit6_comparing-means/slides.html#cohens-d",
-    "href": "lectures/unit6_comparing-means/slides.html#cohens-d",
-    "title": "Unit 6 - Hypotheses & Comparing Means",
-    "section": "Cohen’s D",
-    "text": "Cohen’s D\nCohen suggested one of the most common effect size estimates—the standardized mean difference—useful when comparing a group mean to a population mean or two group means to each other.\n\\[\\delta = \\frac{\\mu_1 - \\mu_0}{\\sigma} \\approx d = \\frac{\\bar{X}-\\mu}{\\hat{\\sigma}}\\]\nCohen’s d is in the standard deviation (Z) metric."
+    "objectID": "lectures/unit5_descriptives/slides2.html#correlation-tables---sjplot-1",
+    "href": "lectures/unit5_descriptives/slides2.html#correlation-tables---sjplot-1",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "Correlation Tables - sjPlot",
+    "text": "Correlation Tables - sjPlot\nSo many different cusomizations for this type of plot\nCan add titles, indicate what missingness and method\nSaves you a TON of time when putting it into a manuscript"
   },
   {
-    "objectID": "lectures/unit6_comparing-means/slides.html#students-t-test",
-    "href": "lectures/unit6_comparing-means/slides.html#students-t-test",
-    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "objectID": "lectures/unit5_descriptives/slides2.html#writing-up-a-correlation",
+    "href": "lectures/unit5_descriptives/slides2.html#writing-up-a-correlation",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "Writing up a Correlation",
+    "text": "Writing up a Correlation\nTemplate: r(degress of freedom) = the r statistic, p = p value.\nImagine we have conducted a study of 40 students that looked at whether IQ scores and GPA are correlated. We might report the results like this:\n\nIQ and GPA were found to be moderately positively correlated, r(38) = .34, p = .032.\n\nOther example:\n\nAmong the students of Hogwarts University, the number of hours playing Fortnite per week and midterm exam results were negatively correlated, r(78) = -.45, p &lt; .001.\n\nAnd another:\n\nTable 1 reports descriptive statistics and correlations among variables of interest. Knowledge of Weird Al Songs was positively correlated with perceptions of humor for Dr. Haraden (r(49) = .79, p &lt;.001), such that the more Weird Al songs a student knew, the more they thought Dr. Haraden was funny."
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides2.html#visualizing-data-1",
+    "href": "lectures/unit5_descriptives/slides2.html#visualizing-data-1",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "Visualizing Data",
+    "text": "Visualizing Data\nIt is always important to visualize our data! Even after getting the correlations and other descriptives\nLet’s look at some data:\n\n\nCode\ndata1 &lt;- import(\"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data1.csv\") %&gt;% \n  mutate(dataset = \"data1\")\n\ndata2 &lt;- import(\"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data2.csv\") %&gt;% \n  mutate(dataset = \"data2\")\n\ndata3 &lt;- import(\"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/data3.csv\") %&gt;% \n  mutate(dataset = \"data3\")\n\n\nAnd then combine them to make it easier to do summary stats\n\nthree_data &lt;- bind_rows(data1, data2, data3)"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides2.html#descriptive-stats-on-the-3-datasets",
+    "href": "lectures/unit5_descriptives/slides2.html#descriptive-stats-on-the-3-datasets",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "Descriptive Stats on the 3 datasets",
+    "text": "Descriptive Stats on the 3 datasets\n\nthree_data %&gt;%\n  group_by(dataset) %&gt;% \n  summarize(\n    mean_x = mean(x),\n    mean_y = mean(y),\n    std_x = sd(x), \n    std_y = sd(y), \n    cor_xy = cor(x,y)\n  )\n\n# A tibble: 3 × 6\n  dataset mean_x mean_y std_x std_y  cor_xy\n  &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;\n1 data1     54.3   47.8  16.8  26.9 -0.0641\n2 data2     54.3   47.8  16.8  26.9 -0.0683\n3 data3     54.3   47.8  16.8  26.9 -0.0645"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides2.html#visualizing-dataset-1",
+    "href": "lectures/unit5_descriptives/slides2.html#visualizing-dataset-1",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "Visualizing Dataset 1",
+    "text": "Visualizing Dataset 1\n\n\nCode\ndata1 %&gt;% \n  ggplot(aes(x, y)) + \n  geom_point() + \n  labs(title = \"Dataset 1\")"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides2.html#visualizing-dataset-1-1",
+    "href": "lectures/unit5_descriptives/slides2.html#visualizing-dataset-1-1",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "Visualizing Dataset 1",
+    "text": "Visualizing Dataset 1\n\n\nCode\nvis1 &lt;- data1 %&gt;% \n  ggplot(aes(x, y)) + \n  geom_point() + \n  labs(title = \"Dataset 1\") +\n  geom_smooth(method = \"lm\", \n              se = FALSE)\nvis1"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides2.html#visualizing-dataset-2",
+    "href": "lectures/unit5_descriptives/slides2.html#visualizing-dataset-2",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "Visualizing Dataset 2",
+    "text": "Visualizing Dataset 2\n\n\nCode\nvis2 &lt;- data2 %&gt;% \n  ggplot(aes(x, y)) + \n  geom_point() + \n  labs(title = \"Dataset 2\") +\n  geom_smooth(method = \"lm\", \n              se = FALSE)\nvis2"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides2.html#finallydataset-3",
+    "href": "lectures/unit5_descriptives/slides2.html#finallydataset-3",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "Finally…Dataset 3",
+    "text": "Finally…Dataset 3\n\n\nCode\nvis3 &lt;- data3 %&gt;% \n  ggplot(aes(x, y)) + \n  geom_point() + \n  labs(title = \"Dataset 3\") +\n  geom_smooth(method = \"lm\", \n              se = FALSE)\nvis3"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides2.html#not-all-data-are-created-equally",
+    "href": "lectures/unit5_descriptives/slides2.html#not-all-data-are-created-equally",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "Not all data are created equally",
+    "text": "Not all data are created equally\n\nvis1 + vis2 + vis3"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides2.html#comparing-means-1",
+    "href": "lectures/unit5_descriptives/slides2.html#comparing-means-1",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "Comparing Means",
+    "text": "Comparing Means\nCalculated using a t-test. To calculate the t-statistic, you will use this formula:\n\\[t_{df=N-1} = \\frac{\\bar{X}-\\mu}{\\frac{\\hat{\\sigma}}{\\sqrt{N}}}\\]\nThe heavier tails of the t-distribution, especially for small N, are the penalty we pay for having to estimate the population standard deviation from the sample."
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides2.html#types-of-t-tests",
+    "href": "lectures/unit5_descriptives/slides2.html#types-of-t-tests",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "Types of t-Tests",
+    "text": "Types of t-Tests\nSingle Samples t-test\nIndependent Samples t-test\nPaired Samples t-test"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides2.html#dataset",
+    "href": "lectures/unit5_descriptives/slides2.html#dataset",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "Dataset",
+    "text": "Dataset\nMoving forward for today, we will use this dataset\n\n\n100 students from New York\n100 students from New Mexico\n\n\n\nstate_school &lt;- import(\"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/NM-NY_CAS.csv\")"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides2.html#normality-assumption",
+    "href": "lectures/unit5_descriptives/slides2.html#normality-assumption",
+    "title": "Unit 5 - Descriptives (pt. 2)",
+    "section": "Normality Assumption",
+    "text": "Normality Assumption\n\nCheck for Normality: Visualizing data (histograms), Q-Q plots, and statistical tests (Shapiro-Wilk, Anderson-Darling) to assess normality.\nRemedies for Violations: data transformation or non-parametric alternatives when data is not normally distributed."
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides2.html#students-t-test",
+    "href": "lectures/unit5_descriptives/slides2.html#students-t-test",
+    "title": "Unit 5 - Descriptives (pt. 2)",
     "section": "Student’s t-test",
     "text": "Student’s t-test\n\\[ H_0 : \\mu_1 = \\mu_2  \\ \\  H_1 : \\mu_1 \\neq \\mu_2 \\]"
   },
   {
-    "objectID": "lectures/unit6_comparing-means/slides.html#welchs-t-test",
-    "href": "lectures/unit6_comparing-means/slides.html#welchs-t-test",
-    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "objectID": "lectures/unit5_descriptives/slides2.html#welchs-t-test",
+    "href": "lectures/unit5_descriptives/slides2.html#welchs-t-test",
+    "title": "Unit 5 - Descriptives (pt. 2)",
     "section": "Welch’s t-test",
     "text": "Welch’s t-test\n\\[\nH_0 : \\mu_1 = \\mu_2  \\ \\  H_1 : \\mu_1 \\neq \\mu_2\n\\]"
   },
   {
-    "objectID": "lectures/unit6_comparing-means/slides.html#cool-visualizations",
-    "href": "lectures/unit6_comparing-means/slides.html#cool-visualizations",
-    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "objectID": "lectures/unit5_descriptives/slides2.html#cool-visualizations",
+    "href": "lectures/unit5_descriptives/slides2.html#cool-visualizations",
+    "title": "Unit 5 - Descriptives (pt. 2)",
     "section": "Cool Visualizations",
     "text": "Cool Visualizations\nThe library ggstatsplot has some wonderful visualizations of various tests\n\n\nCode\nggstatsplot::ggbetweenstats(\n  data  = state_school,\n  x     = Region,\n  y     = Sleep_Hours_Schoolnight,\n  title = \"Distribution of hours of sleep across Region\"\n)"
   }
