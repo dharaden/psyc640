@@ -39,6 +39,8 @@ website:
           href: lectures/unit4_data-wrangler/index.qmd
         - text: "5 - Descriptives"
           href: lectures/unit5_descriptives/index.qmd
+        - text: "6 - Comparing Means"
+          href: lectures/unit6_comparing-means/index.qmd
       - homework.qmd
       - href: previous-years.qmd
         text: Previous Years

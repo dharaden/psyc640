@@ -1,0 +1,596 @@
+---
+title: "Unit 6 - Hypotheses & Comparing Means"
+subtitle: "PSYC 640 - Fall 2024"
+author: "Dustin Haraden, PhD"
+format: 
+  revealjs:
+    multiplex: true
+    scrollable: true
+    slide-number: true
+    incremental: false
+    touch: true
+    code-overflow: wrap
+    theme: dark
+execute: 
+  echo: true
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = F}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```
+
+## Reminders
+
+::: nonincremental
+-   Journal Entries
+
+-   Lab #1 - Due 10/6
+:::
+
+------------------------------------------------------------------------
+
+## Last Class
+
+::: nonincremental
+-   Descriptive Statistics
+-   Correlations
+    -   Professor made it complicated, but we got some pretty tables out of it with `sjPlot()`
+:::
+
+------------------------------------------------------------------------
+
+## Today...
+
+-   Hypotheses & NHST
+
+-   Comparing Two Means
+
+    -   One-Sample, Independent, Paired
+
+-   Comparing MANY MUCH Means
+
+```{r, results = 'hide', message = F, warning = F}
+# File management
+library(here)
+# just because
+library(tidyverse)
+# Loading data
+library(rio)
+# makes for easier to look at output
+library(lsr)
+# cool visualizations
+library(ggstatsplot)
+
+
+
+#Remove Scientific Notation 
+options(scipen=999)
+```
+
+------------------------------------------------------------------------
+
+## Hypothesis
+
+What is a hypothesis?
+
+In statistics, a **hypothesis** is a statement about the population. It is usually a prediction that a parameter describing some characteristic of a variable takes a particular numerical value, or falls into a certain range of values.
+
+------------------------------------------------------------------------
+
+## Hypothesis
+
+For example, dogs are characterized by their ability to read humans' social cues, but it is (was) unknown whether that skill is biologically prepared. I might hypothesize that when a human points to a hidden treat, puppies do not understand that social cue and their performance on a related task is at-chance. We would call this a **research hypothesis.**
+
+This could be represented numerically as, as a **statistical hypothesis**:
+
+$$\text{Proportion}_{\text{Correct Performance}} = .50$$
+
+------------------------------------------------------------------------
+
+## The null hypothesis
+
+In Null Hypothesis Significance Testing, we... uh... test a null hypothesis.
+
+A **null hypothesis** ( $H_0$ ) is a statement of no effect. The *research hypothesis* states that there is no relationship between X and Y, or our intervention has no effect on the outcome.
+
+-   The *statistical hypothesis* is either that the population parameter is a single value, like 0, or that a range, like 0 or smaller.
+
+------------------------------------------------------------------------
+
+## The alternative hypothesis
+
+According to probability theory, our sample space must cover all possible elementary events. Therefore, we create an **alternative hypothesis** ( $H_1$ ) that is every possible event not represented by our null hypothesis.
+
+::::: columns
+::: {.column width="50%"}
+$$H_0: \mu = 4$$ $$H_1: \mu \neq 4$$
+:::
+
+::: {.column width="50%"}
+$$H_0: \mu \leq -7$$ $$H_1: \mu > -7$$
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## The tortured logic of NHST
+
+We create two hypotheses, $H_0$ and $H_1$. Usually, we care about $H_1$, not $H_0$. In fact, what we really want to know is how likely $H_1$, given our data.
+
+$$P(H_1|Data)$$ Instead, we're going to test our null hypothesis. Well, not really. We're going to assume our null hypothesis is true, and test how likely we would be to get these data.
+
+$$P(Data|H_0)$$
+
+------------------------------------------------------------------------
+
+## Example #1
+
+Consider the example of puppies' abilities to read human social cues.
+
+Let $\Pi$ be the probability the puppy chooses the correct cup that a person points to.
+
+In a task with two choices, an at-chance performance is $\Pi = .5$. This can be the null hypothesis because if this is true, than puppies would make the correct choice as often as they would make an incorrect choice.
+
+Note that the null hypothesis changes depending on the situation and research question.
+
+------------------------------------------------------------------------
+
+## Example #1 - Hypotheses
+
+As a dog-lover, you're skeptical that reading human social cues is purely learned, and you have an alternative hypothesis that puppies will perform well over chance, thus having a probability of success on any given task greater than .5.
+
+$$H_0: \Pi = .5$$ $$H_1: \Pi \neq .5$$
+
+## Example #1
+
+To test the null hypothesis, you a single puppy and test them 12 times on a pointing task. The puppy makes the correct choice 10 times.
+
+The question you're going to ask is:
+
+::: nonincremental
+-   "How likely is it that the puppy is successful 10 times out of 12, if the probability of success is .5?"
+:::
+
+This is the essence of NHST.
+
+You can already test this using what you know about the binomial distribution.
+
+------------------------------------------------------------------------
+
+```{r, warning = F, message = F}
+#| code-fold: true
+
+trial = 0:12
+data.frame(trial = trial, d = dbinom(trial, size = 12, prob = .5), 
+           color = ifelse(trial == 10, "1", "2")) %>%
+  ggplot(aes(x = trial, y = d, fill = color)) +
+  geom_bar(stat = "identity") + 
+  guides(fill = "none")+
+  scale_x_continuous("Number of puppy successes", breaks = c(0:12))+
+  scale_y_continuous("Probability of X successes") +
+  theme(text = element_text(size = 20))
+  
+```
+
+```{r}
+dbinom(10, size = 12, prob = .5)
+```
+
+------------------------------------------------------------------------
+
+## Complications with the binomial
+
+The likelihood of the puppy being successful 10 times out of 12 *if the true probability of success is .5* is `r round(dbinom(10,12,.5),2)`. That's pretty low! That's so low that we might begin to suspect that the true probability is not .5.
+
+But there's a problem with this example. [The real study](https://doi.org/10.1016/j.anbehav.2020.05.019) used a sample of many puppies (\>300), and the average number of correct trials per puppy was about 8.33. But the binomial won't allow us to calculate the probability of fractional successes!
+
+What we really want is not to assess 10 out of 12 times, but a proportion, like .694. How many different proportions could result puppy to puppy?
+
+------------------------------------------------------------------------
+
+## Our statistic is usually continuous
+
+When we estimate a statistic for our sample -- like the proportion of puppy success, or the average IQ score, or the relationship between age in months and second attending to a new object -- that statistic is nearly always continuous. So we have to assess the probability of that statistic using a probability distribution for continuous variables, like the normal distribution. (Or *t*, or *F*, or $\chi^2$ ).
+
+What is the probability of any value in a continuous distribution?
+
+------------------------------------------------------------------------
+
+::::: columns
+::: {.column width="30%"}
+[Instead of calculating the probability of our statistic, we calculate the probability of our statistic *or more extreme* under the null.<br><br>The probability of success on 10 trials out of 12 or more extreme is `r round((1-pbinom(10,12,.5))*2,2)`.]{style="font-size:30px;"}
+:::
+
+::: {.column width="70%"}
+```{r sampling_binom, warning = F, message = F}
+#| code-fold: true
+data.frame(trials = trial, d = dbinom(trial, size = 12, prob = .5), 
+           color = ifelse(trial %in% c(0,1,2, 10,11,12), "1", "2")) %>%
+  ggplot(aes(x = trials, y = d, fill = color)) +
+  geom_bar(stat = "identity") + 
+  guides(fill = "none")+
+  scale_x_continuous("Number of successes", breaks = c(0:12))+
+  scale_y_continuous("Probability of X successes") +
+  theme(text = element_text(size = 20))
+```
+:::
+:::::
+
+------------------------------------------------------------------------
+
+::::: columns
+::: {.column width="30%"}
+[As we have more trials...]{style="font-size:30px;"}
+:::
+
+::: {.column width="70%"}
+```{r , warning = F, message = F}
+#| code-fold: true
+data.frame(trials = 0:24, 
+           d = dbinom(0:24, size = 24, prob = .5), 
+           color = ifelse(0:24 %in% c(0:4, 20:24), "1", "2")) %>%
+  ggplot(aes(x = trials, y = d, fill = color)) +
+  geom_bar(stat = "identity") + 
+  guides(fill = "none")+
+  scale_x_continuous("Number of trials hired", breaks = c(0:24))+
+  scale_y_continuous("Probability of X trials hired") +
+  theme(text = element_text(size = 20))
+```
+:::
+:::::
+
+------------------------------------------------------------------------
+
+::::: columns
+::: {.column width="30%"}
+[... and more trials...]{style="font-size:30px;"}
+:::
+
+::: {.column width="70%"}
+```{r , warning = F, message = F}
+#| code-fold: true
+data.frame(trials = 0:36, 
+           d = dbinom(0:36, size = 36, prob = .5), 
+           color = ifelse(0:36 %in% c(0:6, 30:36), "1", "2")) %>%
+  ggplot(aes(x = trials, y = d, fill = color)) +
+  geom_bar(stat = "identity") + 
+  guides(fill = "none")+
+  scale_x_continuous("Number of trials hired", breaks = c(0:36))+
+  scale_y_continuous("Probability of X trials hired") +
+  theme(text = element_text(size = 20))
+```
+:::
+:::::
+
+------------------------------------------------------------------------
+
+::::: columns
+::: {.column width="30%"}
+[If our measure was continuous, it would look something like this.]{style="font-size:30px;"}
+:::
+
+::: {.column width="70%"}
+```{r, warning = F, message = F}
+#| code-fold: true
+gg_color_hue <- function(n) {
+  hues = seq(15, 375, length = n + 1)
+  hcl(h = hues, l = 65, c = 100)[1:n]
+}
+
+colors = gg_color_hue(2)
+
+data.frame(x = seq(-4,4)) %>%
+  ggplot(aes(x=x)) +
+  stat_function(fun = function(x) dnorm(x), geom = "area", fill = colors[2])+
+  stat_function(fun = function(x) dnorm(x), xlim = c(-4, -2.32), geom = "area", fill = colors[1])+
+  stat_function(fun = function(x) dnorm(x), xlim = c(2.32, 4), geom = "area", fill = colors[1])+
+  geom_hline(aes(yintercept = 0)) +
+  scale_x_continuous(breaks = NULL)+
+  labs(x = "successes",
+       y = "Probability of X successes") +
+  theme(text = element_text(size = 20))
+```
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## What are the steps of NHST?
+
+::::: columns
+::: {.column width="50%"}
+1.  Define null and alternative hypothesis.
+
+2.  Set and justify alpha level.
+
+3.  Determine which sampling distribution ( $z$, $t$, or $\chi^2$ for now)
+
+4.  Calculate parameters of your sampling distribution under the null.
+
+-   If $z$, calculate $\mu$ and $\sigma_M$
+:::
+
+::: {.column width="50%"}
+5.  Calculate test statistic under the null.
+
+-   If $z$, $\frac{\bar{X} - \mu}{\sigma_M}$
+
+6.  Calculate probability of that test statistic or more extreme under the null, and compare to alpha.
+:::
+:::::
+
+# Comparing Means
+
+Converting to a t-score and checking against the t-distribution
+
+-   One-Sample
+
+-   Independent Sample
+
+-   Paired Sample
+
+------------------------------------------------------------------------
+
+## but first...Degrees of Freedom
+
+**Degrees of Freedom:** *the number of values in the final calculation of a statistic that are free to vary*
+
+Example: The mean of 3 numbers. First two can be any number, but the final number has to bring the calculation to the correct point.
+
+Example 2: Drawing a triangle
+
+------------------------------------------------------------------------
+
+## One Sample t-test
+
+*t*-tests were developed by William Sealy Gosset, who was a chemist studying the grains used in making beer. (He worked for Guinness.)
+
+-   Specifically, he wanted to know whether particular strains of grain made better or worse beer than the standard.
+
+-   He developed the *t*-test, to test small samples of beer against a population with an unknown standard deviation.
+
+    -   Probably had input from Karl Pearson and Ronald Fisher
+
+-   Published this as "Student" because Guinness didn't want these tests tied to the production of beer.
+
+------------------------------------------------------------------------
+
+One-sample tests compare your given sample with a "known" population.
+
+Research question: does this sample come from this population?
+
+**Hypotheses**
+
+-   $H_0$: Yes, this sample comes from this population.
+
+-   $H_1$: No, this sample comes from a different population.
+
+------------------------------------------------------------------------
+
+To calculate the t-statistic, we generally use this formula:
+
+$$t_{df=N-1} = \frac{\bar{X}-\mu}{\frac{\hat{\sigma}}{\sqrt{N}}}$$
+
+The heavier tails of the t-distribution, especially for small N, are the penalty we pay for having to estimate the population standard deviation from the sample.
+
+------------------------------------------------------------------------
+
+![](/images/t-to-z.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Example
+
+For examples today, we will use this dataset:
+
+::: nonincremental
+-   100 students from New York
+
+-   100 students from New Mexico
+:::
+
+```{r}
+
+state_school <- import("https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/NM-NY_CAS.csv") %>% 
+  #make the score a number
+  mutate(Score_in_memory_game = as.numeric(Score_in_memory_game))  
+
+```
+
+------------------------------------------------------------------------
+
+### **Assumptions of the one-sample *t*-test**
+
+**Normality.** We assume the sampling distribution of the mean is normally distributed. Under what two conditions can we be assured that this is true?
+
+**Independence.** Observations in the dataset are not associated with one another. Put another way, collecting a score from Participant A doesn't tell me anything about what Participant B will say. How can we be safe in this assumption?
+
+------------------------------------------------------------------------
+
+### A brief example
+
+Using the Census at School data, we find that New York students who participated in a memory game ( $N = 100$ ) completed the game in an average time of 42.29 seconds ( $s = 13.29$ ). We know that the average US student completed the game in 45.04 seconds. How do our students compare?
+
+**Hypotheses**
+
+$H_0: \mu = 45.05$
+
+$H_1: \mu \neq 45.05$
+
+```{r}
+ny_school <- state_school %>% 
+  filter(Region == "NY")
+```
+
+------------------------------------------------------------------------
+
+::::: columns
+::: {.column width="50%"}
+$$\mu = 45.05$$
+
+$$N = 100$$
+
+$$ \bar{X} = 42.29 $$
+
+$$ s = 13.29 $$
+:::
+
+::: {.column width="50%"}
+```{r}
+t.test(x = ny_school$Score_in_memory_game,         mu = 45.05,        alternative = "two.sided")
+```
+:::
+:::::
+
+------------------------------------------------------------------------
+
+```{r}
+lsr::oneSampleTTest(x = ny_school$Score_in_memory_game,                     mu = 45.05, one.sided = FALSE)
+```
+
+------------------------------------------------------------------------
+
+## Cohen's D
+
+Cohen suggested one of the most common effect size estimates---the standardized mean difference---useful when comparing a group mean to a population mean or two group means to each other.
+
+$$\delta = \frac{\mu_1 - \mu_0}{\sigma} \approx d = \frac{\bar{X}-\mu}{\hat{\sigma}}$$
+
+Cohen's d is in the standard deviation (Z) metric.
+
+------------------------------------------------------------------------
+
+Cohens's d for these data is .05. In other words, the sample mean differs from the population mean by .05 standard deviation units.
+
+Cohen (1988) suggests the following guidelines for interpreting the size of d:
+
+::: nonincremental
+-   .2 = Small
+
+-   .5 = Medium
+
+-   .8 = Large
+:::
+
+[Cohen, J. (1988), Statistical power analysis for the behavioral sciences (2nd Ed.). Hillsdale: Lawrence Erlbaum.]{style="font-size:30px;"}
+
+------------------------------------------------------------------------
+
+### The usefulness of the one-sample *t*-test
+
+How often will you conducted a one-sample *t*-test on raw data?
+
+-   (Probably) never
+
+How often will you come across one-sample *t*-tests?
+
+-   (Probably) a lot!
+
+The one-sample *t*-test is used to test coefficients in a model.
+
+# Independent Samples t-test
+
+Two different types: Student's & Welch's
+
+-   Start with Student's t-test which assumes equal variances between the groups
+
+$$ t = \frac{\bar{X_1} - \bar{X_2}}{SE(\bar{X_1} - \bar{X_2})} $$
+
+------------------------------------------------------------------------
+
+## Student's t-test
+
+$$ H_0 : \mu_1 = \mu_2  \ \  H_1 : \mu_1 \neq \mu_2 $$
+
+![](/images/student_H.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Student's t-test: Calculate SE
+
+Are able to use a pooled variance estimate
+
+Both variances/standard deviations are assumed to be equal
+
+Therefore:
+
+$$ SE(\bar{X_1} - \bar{X_2}) = \hat{\sigma} \sqrt{\frac{1}{N_1} + \frac{1}{N_2}} $$
+
+We are calculating the **Standard Error of the Difference between means**
+
+Degrees of Freedom: Total N - 2
+
+------------------------------------------------------------------------
+
+### Student's t-test
+
+Let's try it out using the traditional `t.test()` function
+
+```{r}
+t.test(
+  formula = Sleep_Hours_Schoolnight ~ Region, 
+  data = state_school, 
+  var.equal = TRUE
+)
+```
+
+------------------------------------------------------------------------
+
+### Student's t-test: Write-up
+
+The mean amount of sleep in New Mexico for youth was 6.989 (SD = 1.379), while the mean in New York was 6.994 (SD = 1.512). A Student's independent samples t-test showed that there was not a significant mean difference (*t*(180)=-0.024, *p*=.981, $CI_{95}$=\[-0.43, 0.42\], *d*=.004). This suggests that there is no difference between youth in NM and NY on amount of sleep on school nights.
+
+------------------------------------------------------------------------
+
+## Welch's t-test
+
+$$
+H_0 : \mu_1 = \mu_2  \ \  H_1 : \mu_1 \neq \mu_2
+$$
+
+![](/images/welch_H.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Welch's t-test: Calculate SE
+
+Since the variances are not equal, we have to estimate the SE differently
+
+$$ SE(\bar{X_1} - \bar{X_2}) = \sqrt{\frac{\hat{\sigma_1^2}}{N_1} + \frac{\hat{\sigma_2^2}}{N_2}} $$
+
+Degrees of Freedom is also very different:
+
+![](/images/welch_df.png){fig-align="center" width="380"}
+
+------------------------------------------------------------------------
+
+### Welch's t-test: In R (classic)
+
+Let's try it out using the traditional `t.test()` function...turns out it is pretty straightforward
+
+```{r}
+t.test(
+  formula = Sleep_Hours_Schoolnight ~ Region, 
+  data = state_school, 
+  var.equal = FALSE
+)
+```
+
+------------------------------------------------------------------------
+
+## Cool Visualizations
+
+The library [ggstatsplot](https://indrajeetpatil.github.io/ggstatsplot/) has some wonderful visualizations of various tests
+
+```{r}
+#| code-fold: true
+ggstatsplot::ggbetweenstats(
+  data  = state_school,
+  x     = Region,
+  y     = Sleep_Hours_Schoolnight,
+  title = "Distribution of hours of sleep across Region"
+)
+```
