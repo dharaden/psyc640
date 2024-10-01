@@ -231,147 +231,273 @@
     "text": "Cool Visualizations\nThe library ggstatsplot has some wonderful visualizations of various tests\n\n\nCode\nggstatsplot::ggbetweenstats(\n  data  = state_school,\n  x     = Region,\n  y     = Sleep_Hours_Schoolnight,\n  title = \"Distribution of hours of sleep across Region\"\n)"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#reminders",
-    "href": "lectures/wk3_visualizations/slides.html#reminders",
-    "title": "Figures: Using ggplot2",
+    "objectID": "lectures/unit4_data-wrangler/slides.html#reminders",
+    "href": "lectures/unit4_data-wrangler/slides.html#reminders",
+    "title": "Unit 4 - Data Wrangling",
     "section": "Reminders",
     "text": "Reminders\n\n\nJournal Entries\nReverse Results - Due 9/17"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#last-class",
-    "href": "lectures/wk3_visualizations/slides.html#last-class",
-    "title": "Figures: Using ggplot2",
+    "objectID": "lectures/unit4_data-wrangler/slides.html#last-class",
+    "href": "lectures/unit4_data-wrangler/slides.html#last-class",
+    "title": "Unit 4 - Data Wrangling",
     "section": "Last Class",
-    "text": "Last Class\n\n\nThe workflow\n\nStarting with a Project and going from there"
+    "text": "Last Class\n\n\nEntry into the tidyverse with dplyr"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#today",
-    "href": "lectures/wk3_visualizations/slides.html#today",
-    "title": "Figures: Using ggplot2",
+    "objectID": "lectures/unit4_data-wrangler/slides.html#today",
+    "href": "lectures/unit4_data-wrangler/slides.html#today",
+    "title": "Unit 4 - Data Wrangling",
     "section": "Today…",
-    "text": "Today…\nWorking with ggplot2 to get some really fancy visualizations!\nMaybe integrating some generative AI (ChatGPT) to help us out too\n\n# File management\nlibrary(here)\n# for dplyr, ggplot2\nlibrary(tidyverse)\n#Loading data\nlibrary(rio)\n\n#for the penguins dataset\n#install.packages('palmerpenguins')\nlibrary(palmerpenguins)\n\n#Remove Scientific Notation \noptions(scipen=999)"
+    "text": "Today…\nContinuing on this trend to get more comfortable with all that dplyr can do!\nThis is a nice website that walks through a lot of this as well\n\n# File management\nlibrary(here)\n# for dplyr, ggplot2\nlibrary(tidyverse)\n#Loading data\nlibrary(rio)\n\n#Remove Scientific Notation \noptions(scipen=999)"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#starting-out",
-    "href": "lectures/wk3_visualizations/slides.html#starting-out",
-    "title": "Figures: Using ggplot2",
-    "section": "Starting out",
-    "text": "Starting out\nLet’s first start by opening our Project\nThen, create a new Notebook/Markdown Document that we will use for today\nSetup the libraries and bring in the data\n\nWe will use the “Sleep Data” file as well\n\n\n#import sleep data - Your path may be different\nsleep_data &lt;- import(here(\"lectures\", \"data\", \"Sleep_Data.csv\"))"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#but-first",
+    "href": "lectures/unit4_data-wrangler/slides.html#but-first",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "But first…",
+    "text": "But first…\nWe need to revisit how to read the ggplot2 cheatsheet!\nA lot of cheatsheets will have something that looks like this:\n\nc &lt;- ggplot(mpg, aes(hwy))\n\n## Then later on it will say\n\nc + geom_histogram(binwidth = 5)"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#take-a-look-at-the-data",
-    "href": "lectures/wk3_visualizations/slides.html#take-a-look-at-the-data",
-    "title": "Figures: Using ggplot2",
-    "section": "Take a look at the data",
-    "text": "Take a look at the data\nWill be using a dataset from the palmerpenguins library (link) which is a dataset about…penguins. This function will pull that data into our environment:\n\ndata(penguins)"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#what-is-c",
+    "href": "lectures/unit4_data-wrangler/slides.html#what-is-c",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "WHAT IS c?!",
+    "text": "WHAT IS c?!\nc is just an object that is referring to the first line that we have in a ggplot function\n\nc &lt;- ggplot(mpg, aes(hwy))\n\n## So this...\nc + geom_histogram(binwidth = 5)\n\n## Is the same as this...\nmpg %&gt;% \n  ggplot(aes(hwy)) + \n  geom_histogram(binwidth = 5)"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#ggplot2-from-the-tidyverse",
-    "href": "lectures/wk3_visualizations/slides.html#ggplot2-from-the-tidyverse",
-    "title": "Figures: Using ggplot2",
-    "section": "ggplot2 from the tidyverse",
-    "text": "ggplot2 from the tidyverse\nSince we have already installed and loaded the library, we don’t have to do anything else at this point!\nggplot2 follows the “grammar of graphics”\n\nTheoretical framework for creating data visualizations\nBreaks the process down into separate components:\n\n\n\nData\nAesthetics (aes)\nGeometric Objects (geoms)\n\nFaceting\nThemes"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#back-to-regular-scheduled-programming",
+    "href": "lectures/unit4_data-wrangler/slides.html#back-to-regular-scheduled-programming",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Back to regular scheduled programming",
+    "text": "Back to regular scheduled programming\nLet’s first start by opening our Project\nThen, create a new Notebook/Markdown Document that we will use for today\nSetup the libraries and bring in the data\n\nWe will use the “Sleep Data” file\n\n\n#import sleep data - Your path may be different\nsleep_data &lt;- import(here(\"lectures\", \"data\", \"Sleep_Data.csv\"))"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#grammar-of-graphics",
-    "href": "lectures/wk3_visualizations/slides.html#grammar-of-graphics",
-    "title": "Figures: Using ggplot2",
-    "section": "Grammar of Graphics",
-    "text": "Grammar of Graphics"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#variable-renaming",
+    "href": "lectures/unit4_data-wrangler/slides.html#variable-renaming",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Variable Renaming",
+    "text": "Variable Renaming\nOoof…These variable names look terrible! How do we update those? Our brains would break having to remember how to connect them and having to reference another document. \nFirst, let’s get rid of the variables that we don’t need for the moment: \n\nUse select() to remove the following variables: \n\nsleep_data &lt;- sleep_data %&gt;% \n  select(-c('StartDate', 'EndDate', 'Status', 'Progress', \n  'Duration__in_seconds_', 'Finished', 'RecordedDate',\n  'DistributionChannel', 'UserLanguage', 'SC0', 'SC1',\n  'SC2', 'SC3', 'SC4', 'SC5', 'Attention'))"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#ggplot2-syntax",
-    "href": "lectures/wk3_visualizations/slides.html#ggplot2-syntax",
-    "title": "Figures: Using ggplot2",
-    "section": "ggplot2 syntax",
-    "text": "ggplot2 syntax\nThere is a basic structure to create a plot within ggplot2, and consists of at least these three things:\n\nA Data Set\nCoordinate System\nGeoms - visual marks to represent the data points\n\nIn R it looks like this:\n\nggplot(data = &lt;DATA&gt;) + \n  &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;MAPPINGS&gt;))\n\n#or how I like to do it\n&lt;DATA&gt; %&gt;% \n  ggplot(aes(&lt;MAPPINGS&gt;)) + \n  &lt;GEOM_FUNCTION&gt;()"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#extract-rows",
+    "href": "lectures/unit4_data-wrangler/slides.html#extract-rows",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Extract Rows",
+    "text": "Extract Rows\nThe ‘filter()’ function is used to subset observations based on their values.\nThe result of filtering is a data frame with the same number of columns as before but fewer rows.\nThe first argument is data and subsequent arguments are logical expressions that tell you which observations to retain in the data frame.\n\nfilter(starwars, hair_color == \"none\" | eye_color == \"black\")\n\n# A tibble: 39 × 14\n   name     height  mass hair_color skin_color eye_color birth_year sex   gender\n   &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; \n 1 Darth V…    202   136 none       white      yellow          41.9 male  mascu…\n 2 Greedo      173    74 &lt;NA&gt;       green      black           44   male  mascu…\n 3 IG-88       200   140 none       metal      red             15   none  mascu…\n 4 Bossk       190   113 none       green      red             53   male  mascu…\n 5 Lobot       175    79 none       light      blue            37   male  mascu…\n 6 Ackbar      180    83 none       brown mot… orange          41   male  mascu…\n 7 Nien Nu…    160    68 none       grey       black           NA   male  mascu…\n 8 Nute Gu…    191    90 none       mottled g… red             NA   male  mascu…\n 9 Jar Jar…    196    66 none       orange     orange          52   male  mascu…\n10 Roos Ta…    224    82 none       grey       orange          NA   male  mascu…\n# ℹ 29 more rows\n# ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,\n#   vehicles &lt;list&gt;, starships &lt;list&gt;"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#ggplot2-syntax-1",
-    "href": "lectures/wk3_visualizations/slides.html#ggplot2-syntax-1",
-    "title": "Figures: Using ggplot2",
-    "section": "ggplot2 syntax",
-    "text": "ggplot2 syntax\nLet’s start with a basic figure with palmerpenguins\nFirst we will define the data that we are using and the variables we are visualizing\n\n#the dataset is called penguins\n\npenguins %&gt;% \n  #including the variables we want to visualize\n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g))\n\nWhat happens?"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#filter-observations",
+    "href": "lectures/unit4_data-wrangler/slides.html#filter-observations",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Filter observations",
+    "text": "Filter observations\nWe can now generate a subset of observations based on a particular value\nSince the age variable has been giving us some trouble, let’s filter based on that variable to only include appropriate ages for “college aged” participants\n\n# Assigning it to a new variable\nmod_sleep_data &lt;- sleep_data %&gt;% \n  filter(age &gt;= 17, age &lt;= 25)"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#adding-in-color",
-    "href": "lectures/wk3_visualizations/slides.html#adding-in-color",
-    "title": "Figures: Using ggplot2",
-    "section": "Adding in Color",
-    "text": "Adding in Color\nMaybe we would like to have each of the points colored by their respective species\nThis information will be added to the aes() within the geom_point() layer\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g)) + \n  geom_point(aes(color = species))"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#filter-obs.---check",
+    "href": "lectures/unit4_data-wrangler/slides.html#filter-obs.---check",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Filter Obs. - Check",
+    "text": "Filter Obs. - Check\nGenerating a bar chart to see if it worked out!\n\nmod_sleep_data %&gt;% \n  ggplot(aes(age)) + \n  geom_bar()"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#including-a-fit-line",
-    "href": "lectures/wk3_visualizations/slides.html#including-a-fit-line",
-    "title": "Figures: Using ggplot2",
-    "section": "Including a fit line",
-    "text": "Including a fit line\nWhy don’t we put in a line that represents the relationship between these variables?\nWe will want to add another layer/geom\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g)) + \n  geom_point(aes(color = species)) + \n  geom_smooth()\n\n\nThat looks a little wonky…why is that? Did you get a note in the console?"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#compute-new-variable",
+    "href": "lectures/unit4_data-wrangler/slides.html#compute-new-variable",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Compute new variable",
+    "text": "Compute new variable\nWe often need to make a sum/mean score for a variable of interest\nThe mutate() function is most commonly used to add new columns to your data frame that are functions of existing columns.\nmutate() requires data as its first argument, followed by a set of expressions defining new columns.\n\nNote: New variables are automatically added at the end of the data frame (scroll to the right to see them)\n\nFor example, in the mod_sleep_data, we have the Epworth Sleepiness Scale\nTake a look at the scoring of the ESS and compute the total score labelled ess_total"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#including-a-fit-line-1",
-    "href": "lectures/wk3_visualizations/slides.html#including-a-fit-line-1",
-    "title": "Figures: Using ggplot2",
-    "section": "Including a fit line",
-    "text": "Including a fit line\nThe geom_smooth() defaults to using a loess line to fit to the data\nIn order to update that, we need to change some of the defaults for that layer and specify that we want a “linear model” or lm function to the data\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g)) + \n  geom_point(aes(color = species)) + \n  geom_smooth(method = 'lm')\n\n\nDid that look a little better?"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#ess_total",
+    "href": "lectures/unit4_data-wrangler/slides.html#ess_total",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "ess_total",
+    "text": "ess_total\nIt is a sum score with a scale of 0 - 24\n\n# We will assign it to the same dataset\nmod_sleep_data &lt;- mod_sleep_data %&gt;% \n  mutate(ess_total = ESS1 + ESS2 + ESS3 + \n           ESS4 + ESS5 + ESS6 + ESS7 + ESS8)"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#individual-fit-lines",
-    "href": "lectures/wk3_visualizations/slides.html#individual-fit-lines",
-    "title": "Figures: Using ggplot2",
-    "section": "Individual fit lines",
-    "text": "Individual fit lines\nIt might make more sense to have individual lines for each of the species instead of something that is across all\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g, \n             color = species)) + \n  geom_point() + \n  geom_smooth(method = 'lm')\n\n\nWhat did we move around from the last set of code?"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#visualize",
+    "href": "lectures/unit4_data-wrangler/slides.html#visualize",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Visualize",
+    "text": "Visualize\n\nmod_sleep_data %&gt;% \n  ggplot(aes(ess_total)) + \n  geom_bar()\n\n\n\n\nBut why are there some above 24??"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#updating-labelstitle",
-    "href": "lectures/wk3_visualizations/slides.html#updating-labelstitle",
-    "title": "Figures: Using ggplot2",
-    "section": "Updating Labels/Title",
-    "text": "Updating Labels/Title\nIt will default to including the variable names as the x and y labels, but that isn’t something that makes sense. Also would be good to have a title!\nWe add on another layer called labs() for our labels (link)\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g, \n             color = species)) + \n  geom_point() + \n  geom_smooth(method = 'lm') + \n  labs(\n    title = \"Palmer Penguins\",\n    subtitle = \"Body Mass by Flipper Length\", \n    x = \"Flipper Length (mm)\", \n    y = \"Body Mass (g)\", \n    color = \"Species\"\n  )"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#ess-variables",
+    "href": "lectures/unit4_data-wrangler/slides.html#ess-variables",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "ESS Variables",
+    "text": "ESS Variables\nThe original items are supposed to be on a 0-3 scale\nThe data that we have are on a 1-4 scale\nWhat should we do?!"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#penguin-histogram",
-    "href": "lectures/wk3_visualizations/slides.html#penguin-histogram",
-    "title": "Figures: Using ggplot2",
-    "section": "Penguin Histogram",
-    "text": "Penguin Histogram\nTaken from the website for palmerpenguins (link)\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm)) +\n    geom_histogram(aes(fill = species), \n                   alpha = 0.5, \n                   position = \"identity\")"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#ess-rescale",
+    "href": "lectures/unit4_data-wrangler/slides.html#ess-rescale",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "ESS Rescale",
+    "text": "ESS Rescale\nWe could subtract 1 from each item before creating another sum\n\nmod_sleep_data &lt;- mod_sleep_data %&gt;% \n  mutate(ESS1m1 = ESS1 - 1, \n         ESS2m1 = ESS2 - 1,\n         ESS3m1 = ESS3 - 1,\n         ESS4m1 = ESS4 - 1,\n         ESS5m1 = ESS5 - 1,\n         ESS6m1 = ESS6 - 1,\n         ESS7m1 = ESS7 - 1, \n         ESS8m1 = ESS8 - 1) %&gt;% \n  mutate(ess_total2 = ESS1m1 + ESS2m1 + ESS3m1 + \n           ESS4m1 + ESS5m1 + ESS6m1 + ESS7m1 + ESS8m1)"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#sleep-data",
-    "href": "lectures/wk3_visualizations/slides.html#sleep-data",
-    "title": "Figures: Using ggplot2",
-    "section": "Sleep Data",
-    "text": "Sleep Data\nLet’s start by looking at our data. You can either click on the dataset in the Environment or use the View(sleep_data) command. Here, I am using the head() command just to visualize a sample of the data for the slides.\n\nhead(sleep_data)\n\n            StartDate             EndDate Status Progress Duration__in_seconds_\n1 2017-08-16 13:13:06 2017-08-16 13:15:13      0      100                   126\n2 2017-08-16 13:17:16 2017-08-16 13:19:03      0      100                   106\n3 2017-11-27 16:59:07 2017-11-27 17:07:27      0      100                   499\n4 2017-11-27 18:57:16 2017-11-27 19:13:00      0      100                   943\n5 2017-11-27 18:54:35 2017-11-27 19:14:12      0      100                  1177\n6 2017-11-27 19:41:14 2017-11-27 19:46:48      0      100                   333\n  Finished        RecordedDate DistributionChannel UserLanguage Q5 Q7 Q8 Q12\n1        1 2017-08-16 13:15:14           anonymous           EN 12  2  2   3\n2        1 2017-08-16 13:19:03           anonymous           EN  1  2  2   1\n3        1 2017-11-27 17:07:27           anonymous           EN 19  1  2   1\n4        1 2017-11-27 19:13:00           anonymous           EN 18  2  2   2\n5        1 2017-11-27 19:14:13           anonymous           EN 21  1  2   2\n6        1 2017-11-27 19:46:48           anonymous           EN 18  2  1   3\n  Q13_1 Q13_2 Q13_3 Q13_4 Q13_5 Q13_6 Q13_7 Q13_8 Q13_9 Q13_10 Q14_1 Q14_2\n1     2     2     2    NA     2     2     2     2     2      2     2     2\n2     1     1     1    NA     2     3     2     3     2      3     4     2\n3     1     2     2     5     3     4     1     1     2      1     5     5\n4     3     4     5     5     5     5     5     5     5      1     5     5\n5     1     2     2     5     4     2     2     1     1      2     5     5\n6     1     2     4     5     4     2     4     4     5      4     5     5\n  Q14_3 Q14_4 Q14_5 Q14_6 Q14_7 Q14_8 Q11_1 Q11_2 Q11_3 Q11_4 Q11_5 Q11_6 Q17_1\n1     2     2     2    NA     2     2     2     3     3     4     4     3     2\n2     4     4     4    NA     4     4     4     4     4     4     4     4     2\n3     5     5     1     1     1     1     4     5     4     4     5     4     4\n4     5     5     5     1     5     5     2     3     4     3     1     1     4\n5     5     5     2     1     3     4     2     1     4     3     4     2     2\n6     5     5     4     1     4     3     1     4     2     2     4     5     2\n  Q17_2 Q17_3 Q17_4 Q18_1 Q18_2 Q18_3 Q18_4 Q18_5 Q20_1 Q20_2 Q21_1 Q21_2 Q21_3\n1     3     3     2     2     2     2     3     1     1     2     4     3     3\n2     2     1     2     3     1     1     1     1     2     3     5     4     4\n3     2     1     4     3     1     4     1     2     3     3     1     2     3\n4     4     1     3     4     1     2     1     1     4     2     5     2     1\n5     2     2     4     3     1     1     1     2     3     3     4     1     3\n6     4     3     4     4     1     1     1     4     6     5     4     4     5\n  Q21_4 Q21_5 Q21_6 Q22_1 Q22_2 Q22_3 Q22_4 Q22_5 Q23_1 Q23_2 Q23_3 Q23_4 Q23_5\n1    NA     5     3     3     2     1     2     3     4     5     3     3     2\n2    NA     2     2     2     3     4     5     5     5     5     4     3     3\n3     4     1     1     5     4     3     4     4     5     6     2     5     5\n4     4     1     1     2     5     1     6     1     6     6     2     5     6\n5     4     1     2     3     4     1     4     2     2     6     3     5     5\n6     4     1     2     2     2     3     4     3     4     5     2     3     3\n  Q23_6 Q23_7 Q23_8 Q24_1 Q24_2 Q24_3 Q24_4 Q24_5 Q25_1 Q25_2 Q25_3 Q25_4 Q25_5\n1    NA     3     3     3     3     3     3     3     3     3     3    NA     4\n2    NA     3     3     3     3     2     2     1     1     2     1    NA     1\n3     1     1     3     1     1     1     1     2     3     4     2     1     1\n4     1     3     1     1     6     2     1     1     4     2     6     1     6\n5     1     2     2     1     2     2     1     2     5     4     2     1     1\n6     1     2     4     4     5     1     2     6     6     3     5     1     3\n  Q26_1 Q26_2 Q27_1 Q27_2 SC0 SC1 SC2 SC3 SC4 SC5    id Attention\n1     3     3     3     3  19  11  19  14  82   0 15516        NA\n2     1     1     1     1  24   5  24  26  79   0 15516        NA\n3     3     1     4     1  26  13  26  23  70   0 17915        NA\n4     4     4     1     1  14  12  14  35  89   0 17648        NA\n5     5     2     5     5  16   9  16  29  76   0 17799        NA\n6     5     1     6     6  18  15  18  31  99   0 18003        NA\n\n\nWhat do these variables mean? Who does this?"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#ess-rescale-1",
+    "href": "lectures/unit4_data-wrangler/slides.html#ess-rescale-1",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "ESS Rescale",
+    "text": "ESS Rescale\nOr we could combine all the 1’s that we are subtracting and just take that from the total score\n\nmod_sleep_data &lt;- mod_sleep_data %&gt;% \n  mutate(ess_total = ESS1 + ESS2 + ESS3 + \n           ESS4 + ESS5 + ESS6 + ESS7 + ESS8) %&gt;% \n  mutate(ess_total3 = ess_total-8)"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#data-documentation",
-    "href": "lectures/wk3_visualizations/slides.html#data-documentation",
-    "title": "Figures: Using ggplot2",
-    "section": "Data Documentation",
-    "text": "Data Documentation\nIt is always important to have appropriate data documentation!\nIf you can’t look at your data and know what it means right away, you aren’t going to remember what it means later on.\nSleep Data Documentation - myCourses"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#ess-rescale-2",
+    "href": "lectures/unit4_data-wrangler/slides.html#ess-rescale-2",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "ESS Rescale",
+    "text": "ESS Rescale\nLet’s see what the differences are between these methods\n\nmod_sleep_data %&gt;% \n  select(contains(\"_total\")) %&gt;% \n  head()\n\n  ess_total ess_total2 ess_total3\n1        20         12         12\n2        20         12         12\n3        16          8          8\n4        20         12         12\n5        13          5          5\n6        22         14         14"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#visualizing-demographics",
-    "href": "lectures/wk3_visualizations/slides.html#visualizing-demographics",
-    "title": "Figures: Using ggplot2",
-    "section": "Visualizing Demographics",
-    "text": "Visualizing Demographics\n“Q5” - What is your age in years? (open text)\nThis is a free text field…is that a good way to get quality data?\nLet’s see if everyone followed directions. Check the “structure” of the variable\n\n# Here we use str() to check structure of a variable\n  # Then we state the data and the variable, linked by the $\nstr(sleep_data$Q5)\n\n int [1:1520] 12 1 19 18 21 18 18 18 18 18 ..."
+    "objectID": "lectures/unit4_data-wrangler/slides.html#rescaling-conclusion",
+    "href": "lectures/unit4_data-wrangler/slides.html#rescaling-conclusion",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Rescaling Conclusion",
+    "text": "Rescaling Conclusion\nIt is good to always know what the original scaling needs to be (e.g., 1-4 or 0-3)\nExtremely important to visualize the data! ALWAYS VISUALIZE\nThere is also another way to allow for the sum() function in mutate(), but we’ll get to that later"
   },
   {
-    "objectID": "lectures/wk3_visualizations/slides.html#giving-it-a-try",
-    "href": "lectures/wk3_visualizations/slides.html#giving-it-a-try",
-    "title": "Figures: Using ggplot2",
-    "section": "Giving it a try",
-    "text": "Giving it a try\nUse the ggplot cheatsheet to identify an appropriate way to visualize the data\n\nAdd some color\nUpdate the title and axes\n\nWhen you are done, post your creation here!"
+    "objectID": "lectures/unit4_data-wrangler/slides.html#attention-checks",
+    "href": "lectures/unit4_data-wrangler/slides.html#attention-checks",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Attention Checks",
+    "text": "Attention Checks"
   },
   {
-    "objectID": "lectures/unit5_descriptives/index.html",
-    "href": "lectures/unit5_descriptives/index.html",
-    "title": "Unit 5 - Descriptive Statistics",
+    "objectID": "lectures/unit4_data-wrangler/slides.html#how-do-we-know-participants-were-paying-attention",
+    "href": "lectures/unit4_data-wrangler/slides.html#how-do-we-know-participants-were-paying-attention",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "How do we know participants were paying attention?",
+    "text": "How do we know participants were paying attention?\nYou may have noticed the attention variables throughout.\nThese are “attention checks” that researchers put in to…um….check the attention of the participants. It’s right in the name.\nFor this survey, they were nonsensical questions that were embedded to look like the others."
+  },
+  {
+    "objectID": "lectures/unit4_data-wrangler/slides.html#using-recode",
+    "href": "lectures/unit4_data-wrangler/slides.html#using-recode",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Using recode()",
+    "text": "Using recode()\nWe can combine our mutate() with this new function to produce the results we want\nNice website to explain the process\n\n\nWhen using recode(), we have to first tell it the variable we want to recode\nThe next arguments are how we want to recode the values\n\nrecode(variable_name, \"old_value\" = \"new_value\")"
+  },
+  {
+    "objectID": "lectures/unit4_data-wrangler/slides.html#putting-it-together",
+    "href": "lectures/unit4_data-wrangler/slides.html#putting-it-together",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Putting it together",
+    "text": "Putting it together\nNow let’s put this into action by recoding the attention variables\nGetting a 1 indicates that they were paying attention\n\nmod_sleep_data %&gt;% \n  mutate(attention1r = recode(attention1, \n                              `1`=0, #NOTICE THE BACKTICKS\n                              `2`=0,\n                              `3`=0,\n                              `4`=0,\n                              `5`=1)) #be sure to finish the rest"
+  },
+  {
+    "objectID": "lectures/unit4_data-wrangler/slides.html#create-composite-attention-score",
+    "href": "lectures/unit4_data-wrangler/slides.html#create-composite-attention-score",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Create composite attention score",
+    "text": "Create composite attention score\nLet’s make a total score for the attention variable so that we can get rid of folks who are not paying attention\n\nmod_sleep_data &lt;- mod_sleep_data %&gt;% \n  mutate(att_sum = (attention1r + attention2r + attention3r +\n                      attention4r + attention5r))\n\nOR\n\nmod_sleep_data &lt;- mod_sleep_data %&gt;% \n  rowwise() %&gt;% \n  mutate(att_sum = sum(attention1r, attention2r, attention3r,\n                      attention4r, attention5r)) %&gt;% \n  ungroup()"
+  },
+  {
+    "objectID": "lectures/unit4_data-wrangler/slides.html#visualize-1",
+    "href": "lectures/unit4_data-wrangler/slides.html#visualize-1",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Visualize",
+    "text": "Visualize\n\nmod_sleep_data %&gt;% \n  ggplot(aes(att_sum)) + \n  geom_bar() + \n  geom_text(stat = \"count\", #Tells it to calculate the statistic\n            aes(label=after_stat(count))) + #Puts label of the count\n  theme_minimal() #or theme_bw"
+  },
+  {
+    "objectID": "lectures/unit4_data-wrangler/slides.html#steps-to-do-if-we-have-time",
+    "href": "lectures/unit4_data-wrangler/slides.html#steps-to-do-if-we-have-time",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Steps to do if we have time",
+    "text": "Steps to do if we have time\nCreate two new datasets labeled (1) “data_attend” and (2) “data_distract”. In each dataset have those who were paying attention in the “data_attend” and those who were not in the “data_distract”. Paying attention is operationalized as having a score of 5 on the aggregated variable.\nGet the sample size of each of these datasets (use Google to search for things like number of rows)\nWhat is the mean/average of ess_total in each of the samples?"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides.html#reminders",
+    "href": "lectures/unit5_descriptives/slides.html#reminders",
+    "title": "Unit 5 - Descriptives",
+    "section": "Reminders",
+    "text": "Reminders\n\n\nJournal Entries\nLab 1 to be posted soon (Due 10/1)"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides.html#last-class",
+    "href": "lectures/unit5_descriptives/slides.html#last-class",
+    "title": "Unit 5 - Descriptives",
+    "section": "Last Class",
+    "text": "Last Class\n\n\nUsed various functions to wrangle data\n\nselect()\nfilter()\nmutate()"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides.html#today",
+    "href": "lectures/unit5_descriptives/slides.html#today",
+    "title": "Unit 5 - Descriptives",
+    "section": "Today…",
+    "text": "Today…\nEntering into the world of describing our data with numerical values.\n\n# File management\nlibrary(here)\n# for dplyr, ggplot2\nlibrary(tidyverse)\n#Loading data\nlibrary(rio)\n# for descriptives\nlibrary(psych)\n\n#Remove Scientific Notation \noptions(scipen=999)"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides.html#address-the-inattention",
+    "href": "lectures/unit5_descriptives/slides.html#address-the-inattention",
+    "title": "Unit 5 - Descriptives",
+    "section": "Address the Inattention",
+    "text": "Address the Inattention\nCreate two new datasets labeled (1) “data_attend” and (2) “data_distract”. In each dataset have those who were paying attention in the “data_attend” and those who were not in the “data_distract”. Paying attention is operationalized as having a score of 5 on the aggregated variable.\nGet the sample size of each of these datasets (use Google to search for things like number of rows)"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides.html#save-the-cleaned-up-file",
+    "href": "lectures/unit5_descriptives/slides.html#save-the-cleaned-up-file",
+    "title": "Unit 5 - Descriptives",
+    "section": "Save the cleaned up file",
+    "text": "Save the cleaned up file\n\nwrite.csv(sleep_data, \n          here(\"lectures\", \"data\", \"named_Sleep_Data.csv\"), \n          row.names = FALSE)\n\nThis is now a file that we will use in the future to import. That way we don’t have to make sure that the code above is in all of our scripts/recipes moving forward!"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides.html#some-terminology",
+    "href": "lectures/unit5_descriptives/slides.html#some-terminology",
+    "title": "Unit 5 - Descriptives",
+    "section": "Some Terminology",
+    "text": "Some Terminology\n\n\n\n\n\n\n\nPopulation\nSample\n\n\n\n\n\\(\\mu\\) (mu) = Population Mean\n\\(\\bar{X}\\) (x bar) = Sample Mean\n\n\n\\(\\sigma\\) (sigma) = Population Standard Deviation\n\\(s\\) = \\(\\hat{\\sigma}\\) = Sample Standard Deviation\n\n\n\\(\\sigma^2\\) (sigma squared) = Population Variance\n\\(s^2\\) = \\(\\hat{\\sigma^2}\\) = Sample Variance"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides.html#measures-of-central-tendency",
+    "href": "lectures/unit5_descriptives/slides.html#measures-of-central-tendency",
+    "title": "Unit 5 - Descriptives",
+    "section": "Measures of Central Tendency",
+    "text": "Measures of Central Tendency\nFor a given set of observations, measures of central tendency allow us to get the “gist” of the data.\nThey tell us about where the “average” or the “mid-point” of the data lies or how much deviation there is from a central point.\nLet’s take a look at the data that we have already loaded in, and complete some of these tasks."
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides.html#measures-of-variability",
+    "href": "lectures/unit5_descriptives/slides.html#measures-of-variability",
+    "title": "Unit 5 - Descriptives",
+    "section": "Measures of Variability",
+    "text": "Measures of Variability\nThe overall spread of the data; How far from the middle?"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides.html#variance",
+    "href": "lectures/unit5_descriptives/slides.html#variance",
+    "title": "Unit 5 - Descriptives",
+    "section": "Variance",
+    "text": "Variance\nThe sum of squared deviations\n\\[\\sigma^2 = \\frac{1}{N}\\sum_{i=1}^N(X-\\bar{X})^2\\]\n\\[\\hat{\\sigma}^2 = s^2 = \\frac{1}{N-1}\\sum_{i=1}^N(X-\\bar{X})^2\\]"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides.html#in-class-activity-variance",
+    "href": "lectures/unit5_descriptives/slides.html#in-class-activity-variance",
+    "title": "Unit 5 - Descriptives",
+    "section": "In-Class Activity: Variance",
+    "text": "In-Class Activity: Variance\nOpen up Instagram (that is still a thing right?)\nIdentify a celebrity and look at their most recent instagram posts.\nLet’s calculate the variance of their likes.\nGoogle Sheet"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides.html#variance-in-r",
+    "href": "lectures/unit5_descriptives/slides.html#variance-in-r",
+    "title": "Unit 5 - Descriptives",
+    "section": "Variance in R",
+    "text": "Variance in R\nTo find the variance and standard deviation, we use var() and sd(), respectively. Find the variance and standard deviation of the age variable.\n\nvar(sleep_data$age)\n\n[1] 2.537247\n\nsd(sleep_data$age)\n\n[1] 1.592874"
+  },
+  {
+    "objectID": "lectures/unit5_descriptives/slides.html#describe",
+    "href": "lectures/unit5_descriptives/slides.html#describe",
+    "title": "Unit 5 - Descriptives",
+    "section": "describe()",
+    "text": "describe()\nThis function automatically calculates all of the descriptives we reviewed above (and more!). Use the describe() function from the psych package on the entire sleep_data dataset.\nNotes: If you load a library at the beginning, you can directly call any function from it. Instead, you can call a function by library_name::function_name without loading the entire library.\n\npsych::describe(sleep_data)\n\n              vars    n     mean      sd  median  trimmed     mad   min   max\nage              1 1452    19.56    1.59    19.0    19.39    1.48    17    25\ngender           2 1452     1.43    0.56     1.0     1.37    0.00     1     3\nroommate         3 1452     1.55    0.50     2.0     1.56    0.00     1     2\nother_sleep      4 1452     1.65    0.95     1.0     1.45    0.00     1     5\nbed_read         5 1452     1.67    0.96     1.0     1.47    0.00     1     5\nbed_study        6 1452     1.90    1.05     2.0     1.72    1.48     1     5\nbed_hw           7 1452     2.11    1.19     2.0     1.95    1.48     1     5\nattention1       8 1452     4.64    0.88     5.0     4.89    0.00     1     5\nbed_internet     9 1452     3.62    1.05     4.0     3.67    1.48     1     5\nbed_tv          10 1452     3.30    1.22     4.0     3.35    1.48     1     5\nbed_eat         11 1452     1.96    1.10     2.0     1.77    1.48     1     5\nbed_friends     12 1452     1.76    0.96     2.0     1.58    1.48     1     5\nbed_videogame   13 1452     1.96    1.15     2.0     1.77    1.48     1     5\nbed_readp       14 1452     2.10    1.16     2.0     1.93    1.48     1     5\nBL_1            15 1448     4.49    1.11     5.0     4.80    0.00     1     5\nBL_2            16 1448     4.23    1.24     5.0     4.48    0.00     1     5\nBL_3            17 1448     4.08    1.22     5.0     4.28    0.00     1     5\nBL_4            18 1448     4.26    1.34     5.0     4.57    0.00     1     5\nBL_5            19 1448     2.57    1.57     2.0     2.46    1.48     1     5\nattention2      20 1448     1.07    0.48     1.0     1.00    0.00     1     5\nBL_6            21 1448     2.09    1.14     2.0     1.90    1.48     1     5\nBL_7            22 1448     4.25    1.15     5.0     4.49    0.00     1     5\nsleepsat1       23 1447     3.09    1.16     3.0     3.11    1.48     1     5\nsleepsat2       24 1447     3.14    1.18     3.0     3.16    1.48     1     5\nsleepsat3       25 1447     3.11    1.23     3.0     3.13    1.48     1     5\nsleepsat4       26 1447     3.03    1.34     3.0     3.04    1.48     1     5\nsleepsat5       27 1447     3.78    1.17     4.0     3.91    1.48     1     5\nsleepsat6       28 1447     2.75    1.13     3.0     2.74    1.48     1     5\nESS1            29 1447     2.29    0.98     2.0     2.24    1.48     1     4\nESS2            30 1447     2.29    0.87     2.0     2.25    1.48     1     4\nESS3            31 1447     1.65    0.82     1.0     1.52    0.00     1     4\nESS4            32 1447     2.58    1.01     3.0     2.60    1.48     1     4\nESS5            33 1447     3.02    0.92     3.0     3.11    1.48     1     4\nESS6            34 1447     1.11    0.38     1.0     1.00    0.00     1     4\nESS7            35 1447     1.64    0.79     1.0     1.52    0.00     1     4\nESS8            36 1447     1.21    0.55     1.0     1.06    0.00     1     4\nESS00           37 1447     2.21    0.88     2.0     2.14    1.48     1     4\nashs1           38 1438     2.58    1.28     2.0     2.45    1.48     1     6\nashs2           39 1438     3.26    1.49     3.0     3.21    1.48     1     6\nashs3           40 1438     2.31    1.39     2.0     2.10    1.48     1     6\nashs4           41 1438     1.98    1.12     2.0     1.78    1.48     1     6\nashs5           42 1437     2.72    1.42     2.0     2.59    1.48     1     6\nattention3      43 1438     4.00    0.00     4.0     4.00    0.00     4     4\nashs6           44 1438     1.55    1.34     1.0     1.15    0.00     1     6\nashs7           45 1438     1.76    1.02     1.0     1.58    0.00     1     6\nashs8           46 1438     3.17    1.45     3.0     3.13    1.48     1     6\nashs9           47 1437     2.73    1.24     3.0     2.63    1.48     1     6\nashs10          48 1437     1.73    1.14     1.0     1.48    0.00     1     6\nashs11          49 1438     4.03    1.37     4.0     4.09    1.48     1     6\nashs12          50 1438     2.44    1.53     2.0     2.23    1.48     1     6\nashs13          51 1437     4.28    1.47     5.0     4.41    1.48     1     6\nashs14          52 1437     4.38    1.26     5.0     4.47    1.48     1     6\nashs15          53 1437     2.69    1.26     2.0     2.57    1.48     1     6\nashs16          54 1436     3.27    1.43     3.0     3.23    1.48     1     6\nashs17          55 1437     3.87    1.37     4.0     3.87    1.48     1     6\nattention4      56 1437     1.20    0.87     1.0     1.00    0.00     1     6\nashs18          57 1437     1.75    0.96     2.0     1.58    1.48     1     6\nashs19          58 1437     2.41    1.12     2.0     2.30    1.48     1     6\nashs20          59 1437     1.57    1.02     1.0     1.33    0.00     1     6\nashs21          60 1437     2.59    1.56     2.0     2.42    1.48     1     6\nashs22          61 1437     1.66    0.95     1.0     1.47    0.00     1     6\nashs23          62 1437     1.33    0.84     1.0     1.11    0.00     1     6\nashs24          63 1436     2.44    1.28     2.0     2.29    1.48     1     6\nashs26          64 1437     3.23    1.26     3.0     3.16    1.48     1     6\nashs27          65 1437     3.25    1.65     3.0     3.19    1.48     1     6\nashs28          66 1436     3.75    1.63     4.0     3.80    1.48     1     6\nattention5      67 1437     1.10    0.63     1.0     1.00    0.00     1     6\nashs29          68 1437     2.28    1.28     2.0     2.09    1.48     1     6\nashs30          69 1437     3.94    1.38     4.0     3.96    1.48     1     6\nashs31          70 1437     2.61    1.38     2.0     2.47    1.48     1     6\nashs32          71 1437     4.87    1.19     5.0     5.04    1.48     1     6\nashs33          72 1437     4.73    1.32     5.0     4.91    1.48     1     6\nid              73 1452 21734.02 7471.43 21089.5 20852.52 2684.99 11918 76858\nESS1m1          74 1447     1.29    0.98     1.0     1.24    1.48     0     3\nESS2m1          75 1447     1.29    0.87     1.0     1.25    1.48     0     3\nESS3m1          76 1447     0.65    0.82     0.0     0.52    0.00     0     3\nESS4m1          77 1447     1.58    1.01     2.0     1.60    1.48     0     3\nESS5m1          78 1447     2.02    0.92     2.0     2.11    1.48     0     3\nESS6m1          79 1447     0.11    0.38     0.0     0.00    0.00     0     3\nESS7m1          80 1447     0.64    0.79     0.0     0.52    0.00     0     3\nESS8m1          81 1447     0.21    0.55     0.0     0.06    0.00     0     3\ness_total       82 1447     7.79    3.58     8.0     7.72    2.97     0    24\nattention1r     83 1452     0.82    0.38     1.0     0.91    0.00     0     1\nattention2r     84 1448     0.97    0.17     1.0     1.00    0.00     0     1\nattention3r     85 1438     1.00    0.00     1.0     1.00    0.00     1     1\nattention4r     86 1437     0.93    0.25     1.0     1.00    0.00     0     1\nattention5r     87 1437     0.97    0.17     1.0     1.00    0.00     0     1\natt_sum         88 1437     4.70    0.63     5.0     4.82    0.00     1     5\n              range  skew kurtosis     se\nage               8  0.87     0.54   0.04\ngender            2  0.83    -0.36   0.01\nroommate          1 -0.20    -1.96   0.01\nother_sleep       4  1.75     2.87   0.02\nbed_read          4  1.61     2.18   0.03\nbed_study         4  1.15     0.64   0.03\nbed_hw            4  0.92    -0.15   0.03\nattention1        4 -2.50     5.33   0.02\nbed_internet      4 -0.41    -0.69   0.03\nbed_tv            4 -0.29    -1.02   0.03\nbed_eat           4  1.22     0.81   0.03\nbed_friends       4  1.42     1.72   0.03\nbed_videogame     4  1.14     0.40   0.03\nbed_readp         4  0.97     0.04   0.03\nBL_1              4 -2.15     3.31   0.03\nBL_2              4 -1.44     0.76   0.03\nBL_3              4 -1.06    -0.17   0.03\nBL_4              4 -1.59     0.97   0.04\nBL_5              4  0.48    -1.34   0.04\nattention2        4  7.11    51.85   0.01\nBL_6              4  1.12     0.62   0.03\nBL_7              4 -1.47     1.09   0.03\nsleepsat1         4 -0.18    -1.09   0.03\nsleepsat2         4 -0.20    -1.04   0.03\nsleepsat3         4 -0.11    -1.12   0.03\nsleepsat4         4 -0.05    -1.24   0.04\nsleepsat5         4 -0.78    -0.33   0.03\nsleepsat6         4  0.16    -0.94   0.03\nESS1              3  0.27    -0.94   0.03\nESS2              3  0.27    -0.59   0.02\nESS3              3  1.10     0.45   0.02\nESS4              3  0.00    -1.11   0.03\nESS5              3 -0.54    -0.70   0.02\nESS6              3  4.02    19.11   0.01\nESS7              3  1.07     0.54   0.02\nESS8              3  3.04     9.55   0.01\nESS00             3  0.42    -0.49   0.02\nashs1             5  0.81    -0.06   0.03\nashs2             5  0.28    -0.94   0.04\nashs3             5  0.99     0.07   0.04\nashs4             5  1.30     1.41   0.03\nashs5             5  0.64    -0.45   0.04\nattention3        0   NaN      NaN   0.00\nashs6             5  2.41     4.45   0.04\nashs7             5  1.49     2.08   0.03\nashs8             5  0.30    -0.87   0.04\nashs9             5  0.61    -0.16   0.03\nashs10            5  1.84     3.11   0.03\nashs11            5 -0.33    -0.73   0.04\nashs12            5  0.86    -0.35   0.04\nashs13            5 -0.58    -0.65   0.04\nashs14            5 -0.47    -0.54   0.03\nashs15            5  0.85     0.21   0.03\nashs16            5  0.29    -0.83   0.04\nashs17            5 -0.07    -0.93   0.04\nattention4        5  4.77    22.14   0.02\nashs18            5  1.72     3.67   0.03\nashs19            5  0.92     0.80   0.03\nashs20            5  2.09     4.23   0.03\nashs21            5  0.71    -0.64   0.04\nashs22            5  1.83     3.83   0.03\nashs23            5  3.23    11.47   0.02\nashs24            5  0.92     0.38   0.03\nashs26            5  0.44    -0.45   0.03\nashs27            5  0.15    -1.21   0.04\nashs28            5 -0.08    -1.25   0.04\nattention5        5  6.63    44.55   0.02\nashs29            5  1.13     0.73   0.03\nashs30            5 -0.13    -0.96   0.04\nashs31            5  0.72    -0.29   0.04\nashs32            5 -1.00     0.44   0.03\nashs33            5 -0.86    -0.17   0.03\nid            64940  6.54    44.82 196.07\nESS1m1            3  0.27    -0.94   0.03\nESS2m1            3  0.27    -0.59   0.02\nESS3m1            3  1.10     0.45   0.02\nESS4m1            3  0.00    -1.11   0.03\nESS5m1            3 -0.54    -0.70   0.02\nESS6m1            3  4.02    19.11   0.01\nESS7m1            3  1.07     0.54   0.02\nESS8m1            3  3.04     9.55   0.01\ness_total        24  0.30     0.23   0.09\nattention1r       1 -1.70     0.90   0.01\nattention2r       1 -5.54    28.66   0.00\nattention3r       0   NaN      NaN   0.00\nattention4r       1 -3.49    10.18   0.01\nattention5r       1 -5.38    26.92   0.00\natt_sum           4 -2.79    10.04   0.02\n\n# or if you have already loaded the library\n\ndescribe(sleep_data)\n\n              vars    n     mean      sd  median  trimmed     mad   min   max\nage              1 1452    19.56    1.59    19.0    19.39    1.48    17    25\ngender           2 1452     1.43    0.56     1.0     1.37    0.00     1     3\nroommate         3 1452     1.55    0.50     2.0     1.56    0.00     1     2\nother_sleep      4 1452     1.65    0.95     1.0     1.45    0.00     1     5\nbed_read         5 1452     1.67    0.96     1.0     1.47    0.00     1     5\nbed_study        6 1452     1.90    1.05     2.0     1.72    1.48     1     5\nbed_hw           7 1452     2.11    1.19     2.0     1.95    1.48     1     5\nattention1       8 1452     4.64    0.88     5.0     4.89    0.00     1     5\nbed_internet     9 1452     3.62    1.05     4.0     3.67    1.48     1     5\nbed_tv          10 1452     3.30    1.22     4.0     3.35    1.48     1     5\nbed_eat         11 1452     1.96    1.10     2.0     1.77    1.48     1     5\nbed_friends     12 1452     1.76    0.96     2.0     1.58    1.48     1     5\nbed_videogame   13 1452     1.96    1.15     2.0     1.77    1.48     1     5\nbed_readp       14 1452     2.10    1.16     2.0     1.93    1.48     1     5\nBL_1            15 1448     4.49    1.11     5.0     4.80    0.00     1     5\nBL_2            16 1448     4.23    1.24     5.0     4.48    0.00     1     5\nBL_3            17 1448     4.08    1.22     5.0     4.28    0.00     1     5\nBL_4            18 1448     4.26    1.34     5.0     4.57    0.00     1     5\nBL_5            19 1448     2.57    1.57     2.0     2.46    1.48     1     5\nattention2      20 1448     1.07    0.48     1.0     1.00    0.00     1     5\nBL_6            21 1448     2.09    1.14     2.0     1.90    1.48     1     5\nBL_7            22 1448     4.25    1.15     5.0     4.49    0.00     1     5\nsleepsat1       23 1447     3.09    1.16     3.0     3.11    1.48     1     5\nsleepsat2       24 1447     3.14    1.18     3.0     3.16    1.48     1     5\nsleepsat3       25 1447     3.11    1.23     3.0     3.13    1.48     1     5\nsleepsat4       26 1447     3.03    1.34     3.0     3.04    1.48     1     5\nsleepsat5       27 1447     3.78    1.17     4.0     3.91    1.48     1     5\nsleepsat6       28 1447     2.75    1.13     3.0     2.74    1.48     1     5\nESS1            29 1447     2.29    0.98     2.0     2.24    1.48     1     4\nESS2            30 1447     2.29    0.87     2.0     2.25    1.48     1     4\nESS3            31 1447     1.65    0.82     1.0     1.52    0.00     1     4\nESS4            32 1447     2.58    1.01     3.0     2.60    1.48     1     4\nESS5            33 1447     3.02    0.92     3.0     3.11    1.48     1     4\nESS6            34 1447     1.11    0.38     1.0     1.00    0.00     1     4\nESS7            35 1447     1.64    0.79     1.0     1.52    0.00     1     4\nESS8            36 1447     1.21    0.55     1.0     1.06    0.00     1     4\nESS00           37 1447     2.21    0.88     2.0     2.14    1.48     1     4\nashs1           38 1438     2.58    1.28     2.0     2.45    1.48     1     6\nashs2           39 1438     3.26    1.49     3.0     3.21    1.48     1     6\nashs3           40 1438     2.31    1.39     2.0     2.10    1.48     1     6\nashs4           41 1438     1.98    1.12     2.0     1.78    1.48     1     6\nashs5           42 1437     2.72    1.42     2.0     2.59    1.48     1     6\nattention3      43 1438     4.00    0.00     4.0     4.00    0.00     4     4\nashs6           44 1438     1.55    1.34     1.0     1.15    0.00     1     6\nashs7           45 1438     1.76    1.02     1.0     1.58    0.00     1     6\nashs8           46 1438     3.17    1.45     3.0     3.13    1.48     1     6\nashs9           47 1437     2.73    1.24     3.0     2.63    1.48     1     6\nashs10          48 1437     1.73    1.14     1.0     1.48    0.00     1     6\nashs11          49 1438     4.03    1.37     4.0     4.09    1.48     1     6\nashs12          50 1438     2.44    1.53     2.0     2.23    1.48     1     6\nashs13          51 1437     4.28    1.47     5.0     4.41    1.48     1     6\nashs14          52 1437     4.38    1.26     5.0     4.47    1.48     1     6\nashs15          53 1437     2.69    1.26     2.0     2.57    1.48     1     6\nashs16          54 1436     3.27    1.43     3.0     3.23    1.48     1     6\nashs17          55 1437     3.87    1.37     4.0     3.87    1.48     1     6\nattention4      56 1437     1.20    0.87     1.0     1.00    0.00     1     6\nashs18          57 1437     1.75    0.96     2.0     1.58    1.48     1     6\nashs19          58 1437     2.41    1.12     2.0     2.30    1.48     1     6\nashs20          59 1437     1.57    1.02     1.0     1.33    0.00     1     6\nashs21          60 1437     2.59    1.56     2.0     2.42    1.48     1     6\nashs22          61 1437     1.66    0.95     1.0     1.47    0.00     1     6\nashs23          62 1437     1.33    0.84     1.0     1.11    0.00     1     6\nashs24          63 1436     2.44    1.28     2.0     2.29    1.48     1     6\nashs26          64 1437     3.23    1.26     3.0     3.16    1.48     1     6\nashs27          65 1437     3.25    1.65     3.0     3.19    1.48     1     6\nashs28          66 1436     3.75    1.63     4.0     3.80    1.48     1     6\nattention5      67 1437     1.10    0.63     1.0     1.00    0.00     1     6\nashs29          68 1437     2.28    1.28     2.0     2.09    1.48     1     6\nashs30          69 1437     3.94    1.38     4.0     3.96    1.48     1     6\nashs31          70 1437     2.61    1.38     2.0     2.47    1.48     1     6\nashs32          71 1437     4.87    1.19     5.0     5.04    1.48     1     6\nashs33          72 1437     4.73    1.32     5.0     4.91    1.48     1     6\nid              73 1452 21734.02 7471.43 21089.5 20852.52 2684.99 11918 76858\nESS1m1          74 1447     1.29    0.98     1.0     1.24    1.48     0     3\nESS2m1          75 1447     1.29    0.87     1.0     1.25    1.48     0     3\nESS3m1          76 1447     0.65    0.82     0.0     0.52    0.00     0     3\nESS4m1          77 1447     1.58    1.01     2.0     1.60    1.48     0     3\nESS5m1          78 1447     2.02    0.92     2.0     2.11    1.48     0     3\nESS6m1          79 1447     0.11    0.38     0.0     0.00    0.00     0     3\nESS7m1          80 1447     0.64    0.79     0.0     0.52    0.00     0     3\nESS8m1          81 1447     0.21    0.55     0.0     0.06    0.00     0     3\ness_total       82 1447     7.79    3.58     8.0     7.72    2.97     0    24\nattention1r     83 1452     0.82    0.38     1.0     0.91    0.00     0     1\nattention2r     84 1448     0.97    0.17     1.0     1.00    0.00     0     1\nattention3r     85 1438     1.00    0.00     1.0     1.00    0.00     1     1\nattention4r     86 1437     0.93    0.25     1.0     1.00    0.00     0     1\nattention5r     87 1437     0.97    0.17     1.0     1.00    0.00     0     1\natt_sum         88 1437     4.70    0.63     5.0     4.82    0.00     1     5\n              range  skew kurtosis     se\nage               8  0.87     0.54   0.04\ngender            2  0.83    -0.36   0.01\nroommate          1 -0.20    -1.96   0.01\nother_sleep       4  1.75     2.87   0.02\nbed_read          4  1.61     2.18   0.03\nbed_study         4  1.15     0.64   0.03\nbed_hw            4  0.92    -0.15   0.03\nattention1        4 -2.50     5.33   0.02\nbed_internet      4 -0.41    -0.69   0.03\nbed_tv            4 -0.29    -1.02   0.03\nbed_eat           4  1.22     0.81   0.03\nbed_friends       4  1.42     1.72   0.03\nbed_videogame     4  1.14     0.40   0.03\nbed_readp         4  0.97     0.04   0.03\nBL_1              4 -2.15     3.31   0.03\nBL_2              4 -1.44     0.76   0.03\nBL_3              4 -1.06    -0.17   0.03\nBL_4              4 -1.59     0.97   0.04\nBL_5              4  0.48    -1.34   0.04\nattention2        4  7.11    51.85   0.01\nBL_6              4  1.12     0.62   0.03\nBL_7              4 -1.47     1.09   0.03\nsleepsat1         4 -0.18    -1.09   0.03\nsleepsat2         4 -0.20    -1.04   0.03\nsleepsat3         4 -0.11    -1.12   0.03\nsleepsat4         4 -0.05    -1.24   0.04\nsleepsat5         4 -0.78    -0.33   0.03\nsleepsat6         4  0.16    -0.94   0.03\nESS1              3  0.27    -0.94   0.03\nESS2              3  0.27    -0.59   0.02\nESS3              3  1.10     0.45   0.02\nESS4              3  0.00    -1.11   0.03\nESS5              3 -0.54    -0.70   0.02\nESS6              3  4.02    19.11   0.01\nESS7              3  1.07     0.54   0.02\nESS8              3  3.04     9.55   0.01\nESS00             3  0.42    -0.49   0.02\nashs1             5  0.81    -0.06   0.03\nashs2             5  0.28    -0.94   0.04\nashs3             5  0.99     0.07   0.04\nashs4             5  1.30     1.41   0.03\nashs5             5  0.64    -0.45   0.04\nattention3        0   NaN      NaN   0.00\nashs6             5  2.41     4.45   0.04\nashs7             5  1.49     2.08   0.03\nashs8             5  0.30    -0.87   0.04\nashs9             5  0.61    -0.16   0.03\nashs10            5  1.84     3.11   0.03\nashs11            5 -0.33    -0.73   0.04\nashs12            5  0.86    -0.35   0.04\nashs13            5 -0.58    -0.65   0.04\nashs14            5 -0.47    -0.54   0.03\nashs15            5  0.85     0.21   0.03\nashs16            5  0.29    -0.83   0.04\nashs17            5 -0.07    -0.93   0.04\nattention4        5  4.77    22.14   0.02\nashs18            5  1.72     3.67   0.03\nashs19            5  0.92     0.80   0.03\nashs20            5  2.09     4.23   0.03\nashs21            5  0.71    -0.64   0.04\nashs22            5  1.83     3.83   0.03\nashs23            5  3.23    11.47   0.02\nashs24            5  0.92     0.38   0.03\nashs26            5  0.44    -0.45   0.03\nashs27            5  0.15    -1.21   0.04\nashs28            5 -0.08    -1.25   0.04\nattention5        5  6.63    44.55   0.02\nashs29            5  1.13     0.73   0.03\nashs30            5 -0.13    -0.96   0.04\nashs31            5  0.72    -0.29   0.04\nashs32            5 -1.00     0.44   0.03\nashs33            5 -0.86    -0.17   0.03\nid            64940  6.54    44.82 196.07\nESS1m1            3  0.27    -0.94   0.03\nESS2m1            3  0.27    -0.59   0.02\nESS3m1            3  1.10     0.45   0.02\nESS4m1            3  0.00    -1.11   0.03\nESS5m1            3 -0.54    -0.70   0.02\nESS6m1            3  4.02    19.11   0.01\nESS7m1            3  1.07     0.54   0.02\nESS8m1            3  3.04     9.55   0.01\ness_total        24  0.30     0.23   0.09\nattention1r       1 -1.70     0.90   0.01\nattention2r       1 -5.54    28.66   0.00\nattention3r       0   NaN      NaN   0.00\nattention4r       1 -3.49    10.18   0.01\nattention5r       1 -5.38    26.92   0.00\natt_sum           4 -2.79    10.04   0.02\n\n\nNOTE: Some variables are not numeric and are categorical variables of type character. By default, the describe() function forces non-numeric variables to be numeric and attempts to calculate descriptives for them. These variables are marked with an asterisk (*). In this case, it doesn’t make sense to calculate descriptive statistics for these variables, so we get a warning message and a bunch of NaN’s and NA’s for these variables.\nA better approach would be to remove non-numeric variables before you attempt to run numerical calculations on your dataset."
+  },
+  {
+    "objectID": "lectures/wk3_visualizations/index.html",
+    "href": "lectures/wk3_visualizations/index.html",
+    "title": "Week 3 - Visualizations",
     "section": "",
-    "text": "Now that we have gotten somewhat more comfortable with wrangling our data and visualizing it, we are going to shift our focus to describing our data. This is always an important step and will begin our journey into inferential statistics.\n\nFull Screen\n\nFull Screen",
+    "text": "During this lecture, we will explore the functionality of ggplot2 and begin our entry into the tidyverse. For this lecture, have the datasets downloaded and put in the appropriate place in your files\n\nFull Screen",
     "crumbs": [
       "Lectures",
-      "5 - Descriptives"
+      "3 - Visualizing"
     ]
   },
   {
@@ -614,273 +740,305 @@
     ]
   },
   {
-    "objectID": "lectures/wk3_visualizations/index.html",
-    "href": "lectures/wk3_visualizations/index.html",
-    "title": "Week 3 - Visualizations",
+    "objectID": "lectures/unit6_comparing-means/index.html",
+    "href": "lectures/unit6_comparing-means/index.html",
+    "title": "Unit 5 - Comparing Means",
     "section": "",
-    "text": "During this lecture, we will explore the functionality of ggplot2 and begin our entry into the tidyverse. For this lecture, have the datasets downloaded and put in the appropriate place in your files\n\nFull Screen",
+    "text": "This unit focuses on comparing means of various groups. Traditionally this is done through the t-test and ANOVA. Here we will learn how to implement them in R and then figure out how to interpret and report!\n\nFull Screen",
     "crumbs": [
       "Lectures",
-      "3 - Visualizing"
+      "6 - Comparing Means"
     ]
   },
   {
-    "objectID": "lectures/unit5_descriptives/slides.html#reminders",
-    "href": "lectures/unit5_descriptives/slides.html#reminders",
-    "title": "Unit 5 - Descriptives",
-    "section": "Reminders",
-    "text": "Reminders\n\n\nJournal Entries\nLab 1 to be posted soon (Due 10/1)"
+    "objectID": "lectures/unit5_descriptives/index.html",
+    "href": "lectures/unit5_descriptives/index.html",
+    "title": "Unit 5 - Descriptive Statistics",
+    "section": "",
+    "text": "Now that we have gotten somewhat more comfortable with wrangling our data and visualizing it, we are going to shift our focus to describing our data. This is always an important step and will begin our journey into inferential statistics.\n\nFull Screen\n\nFull Screen",
+    "crumbs": [
+      "Lectures",
+      "5 - Descriptives"
+    ]
   },
   {
-    "objectID": "lectures/unit5_descriptives/slides.html#last-class",
-    "href": "lectures/unit5_descriptives/slides.html#last-class",
-    "title": "Unit 5 - Descriptives",
-    "section": "Last Class",
-    "text": "Last Class\n\n\nUsed various functions to wrangle data\n\nselect()\nfilter()\nmutate()"
-  },
-  {
-    "objectID": "lectures/unit5_descriptives/slides.html#today",
-    "href": "lectures/unit5_descriptives/slides.html#today",
-    "title": "Unit 5 - Descriptives",
-    "section": "Today…",
-    "text": "Today…\nEntering into the world of describing our data with numerical values.\n\n# File management\nlibrary(here)\n# for dplyr, ggplot2\nlibrary(tidyverse)\n#Loading data\nlibrary(rio)\n# for descriptives\nlibrary(psych)\n\n#Remove Scientific Notation \noptions(scipen=999)"
-  },
-  {
-    "objectID": "lectures/unit5_descriptives/slides.html#address-the-inattention",
-    "href": "lectures/unit5_descriptives/slides.html#address-the-inattention",
-    "title": "Unit 5 - Descriptives",
-    "section": "Address the Inattention",
-    "text": "Address the Inattention\nCreate two new datasets labeled (1) “data_attend” and (2) “data_distract”. In each dataset have those who were paying attention in the “data_attend” and those who were not in the “data_distract”. Paying attention is operationalized as having a score of 5 on the aggregated variable.\nGet the sample size of each of these datasets (use Google to search for things like number of rows)"
-  },
-  {
-    "objectID": "lectures/unit5_descriptives/slides.html#save-the-cleaned-up-file",
-    "href": "lectures/unit5_descriptives/slides.html#save-the-cleaned-up-file",
-    "title": "Unit 5 - Descriptives",
-    "section": "Save the cleaned up file",
-    "text": "Save the cleaned up file\n\nwrite.csv(sleep_data, \n          here(\"lectures\", \"data\", \"named_Sleep_Data.csv\"), \n          row.names = FALSE)\n\nThis is now a file that we will use in the future to import. That way we don’t have to make sure that the code above is in all of our scripts/recipes moving forward!"
-  },
-  {
-    "objectID": "lectures/unit5_descriptives/slides.html#some-terminology",
-    "href": "lectures/unit5_descriptives/slides.html#some-terminology",
-    "title": "Unit 5 - Descriptives",
-    "section": "Some Terminology",
-    "text": "Some Terminology\n\n\n\n\n\n\n\nPopulation\nSample\n\n\n\n\n\\(\\mu\\) (mu) = Population Mean\n\\(\\bar{X}\\) (x bar) = Sample Mean\n\n\n\\(\\sigma\\) (sigma) = Population Standard Deviation\n\\(s\\) = \\(\\hat{\\sigma}\\) = Sample Standard Deviation\n\n\n\\(\\sigma^2\\) (sigma squared) = Population Variance\n\\(s^2\\) = \\(\\hat{\\sigma^2}\\) = Sample Variance"
-  },
-  {
-    "objectID": "lectures/unit5_descriptives/slides.html#measures-of-central-tendency",
-    "href": "lectures/unit5_descriptives/slides.html#measures-of-central-tendency",
-    "title": "Unit 5 - Descriptives",
-    "section": "Measures of Central Tendency",
-    "text": "Measures of Central Tendency\nFor a given set of observations, measures of central tendency allow us to get the “gist” of the data.\nThey tell us about where the “average” or the “mid-point” of the data lies or how much deviation there is from a central point.\nLet’s take a look at the data that we have already loaded in, and complete some of these tasks."
-  },
-  {
-    "objectID": "lectures/unit5_descriptives/slides.html#measures-of-variability",
-    "href": "lectures/unit5_descriptives/slides.html#measures-of-variability",
-    "title": "Unit 5 - Descriptives",
-    "section": "Measures of Variability",
-    "text": "Measures of Variability\nThe overall spread of the data; How far from the middle?"
-  },
-  {
-    "objectID": "lectures/unit5_descriptives/slides.html#variance",
-    "href": "lectures/unit5_descriptives/slides.html#variance",
-    "title": "Unit 5 - Descriptives",
-    "section": "Variance",
-    "text": "Variance\nThe sum of squared deviations\n\\[\\sigma^2 = \\frac{1}{N}\\sum_{i=1}^N(X-\\bar{X})^2\\]\n\\[\\hat{\\sigma}^2 = s^2 = \\frac{1}{N-1}\\sum_{i=1}^N(X-\\bar{X})^2\\]"
-  },
-  {
-    "objectID": "lectures/unit5_descriptives/slides.html#in-class-activity-variance",
-    "href": "lectures/unit5_descriptives/slides.html#in-class-activity-variance",
-    "title": "Unit 5 - Descriptives",
-    "section": "In-Class Activity: Variance",
-    "text": "In-Class Activity: Variance\nOpen up Instagram (that is still a thing right?)\nIdentify a celebrity and look at their most recent instagram posts.\nLet’s calculate the variance of their likes.\nGoogle Sheet"
-  },
-  {
-    "objectID": "lectures/unit5_descriptives/slides.html#variance-in-r",
-    "href": "lectures/unit5_descriptives/slides.html#variance-in-r",
-    "title": "Unit 5 - Descriptives",
-    "section": "Variance in R",
-    "text": "Variance in R\nTo find the variance and standard deviation, we use var() and sd(), respectively. Find the variance and standard deviation of the age variable.\n\nvar(sleep_data$age)\n\n[1] 2.537247\n\nsd(sleep_data$age)\n\n[1] 1.592874"
-  },
-  {
-    "objectID": "lectures/unit5_descriptives/slides.html#describe",
-    "href": "lectures/unit5_descriptives/slides.html#describe",
-    "title": "Unit 5 - Descriptives",
-    "section": "describe()",
-    "text": "describe()\nThis function automatically calculates all of the descriptives we reviewed above (and more!). Use the describe() function from the psych package on the entire sleep_data dataset.\nNotes: If you load a library at the beginning, you can directly call any function from it. Instead, you can call a function by library_name::function_name without loading the entire library.\n\npsych::describe(sleep_data)\n\n              vars    n     mean      sd  median  trimmed     mad   min   max\nage              1 1452    19.56    1.59    19.0    19.39    1.48    17    25\ngender           2 1452     1.43    0.56     1.0     1.37    0.00     1     3\nroommate         3 1452     1.55    0.50     2.0     1.56    0.00     1     2\nother_sleep      4 1452     1.65    0.95     1.0     1.45    0.00     1     5\nbed_read         5 1452     1.67    0.96     1.0     1.47    0.00     1     5\nbed_study        6 1452     1.90    1.05     2.0     1.72    1.48     1     5\nbed_hw           7 1452     2.11    1.19     2.0     1.95    1.48     1     5\nattention1       8 1452     4.64    0.88     5.0     4.89    0.00     1     5\nbed_internet     9 1452     3.62    1.05     4.0     3.67    1.48     1     5\nbed_tv          10 1452     3.30    1.22     4.0     3.35    1.48     1     5\nbed_eat         11 1452     1.96    1.10     2.0     1.77    1.48     1     5\nbed_friends     12 1452     1.76    0.96     2.0     1.58    1.48     1     5\nbed_videogame   13 1452     1.96    1.15     2.0     1.77    1.48     1     5\nbed_readp       14 1452     2.10    1.16     2.0     1.93    1.48     1     5\nBL_1            15 1448     4.49    1.11     5.0     4.80    0.00     1     5\nBL_2            16 1448     4.23    1.24     5.0     4.48    0.00     1     5\nBL_3            17 1448     4.08    1.22     5.0     4.28    0.00     1     5\nBL_4            18 1448     4.26    1.34     5.0     4.57    0.00     1     5\nBL_5            19 1448     2.57    1.57     2.0     2.46    1.48     1     5\nattention2      20 1448     1.07    0.48     1.0     1.00    0.00     1     5\nBL_6            21 1448     2.09    1.14     2.0     1.90    1.48     1     5\nBL_7            22 1448     4.25    1.15     5.0     4.49    0.00     1     5\nsleepsat1       23 1447     3.09    1.16     3.0     3.11    1.48     1     5\nsleepsat2       24 1447     3.14    1.18     3.0     3.16    1.48     1     5\nsleepsat3       25 1447     3.11    1.23     3.0     3.13    1.48     1     5\nsleepsat4       26 1447     3.03    1.34     3.0     3.04    1.48     1     5\nsleepsat5       27 1447     3.78    1.17     4.0     3.91    1.48     1     5\nsleepsat6       28 1447     2.75    1.13     3.0     2.74    1.48     1     5\nESS1            29 1447     2.29    0.98     2.0     2.24    1.48     1     4\nESS2            30 1447     2.29    0.87     2.0     2.25    1.48     1     4\nESS3            31 1447     1.65    0.82     1.0     1.52    0.00     1     4\nESS4            32 1447     2.58    1.01     3.0     2.60    1.48     1     4\nESS5            33 1447     3.02    0.92     3.0     3.11    1.48     1     4\nESS6            34 1447     1.11    0.38     1.0     1.00    0.00     1     4\nESS7            35 1447     1.64    0.79     1.0     1.52    0.00     1     4\nESS8            36 1447     1.21    0.55     1.0     1.06    0.00     1     4\nESS00           37 1447     2.21    0.88     2.0     2.14    1.48     1     4\nashs1           38 1438     2.58    1.28     2.0     2.45    1.48     1     6\nashs2           39 1438     3.26    1.49     3.0     3.21    1.48     1     6\nashs3           40 1438     2.31    1.39     2.0     2.10    1.48     1     6\nashs4           41 1438     1.98    1.12     2.0     1.78    1.48     1     6\nashs5           42 1437     2.72    1.42     2.0     2.59    1.48     1     6\nattention3      43 1438     4.00    0.00     4.0     4.00    0.00     4     4\nashs6           44 1438     1.55    1.34     1.0     1.15    0.00     1     6\nashs7           45 1438     1.76    1.02     1.0     1.58    0.00     1     6\nashs8           46 1438     3.17    1.45     3.0     3.13    1.48     1     6\nashs9           47 1437     2.73    1.24     3.0     2.63    1.48     1     6\nashs10          48 1437     1.73    1.14     1.0     1.48    0.00     1     6\nashs11          49 1438     4.03    1.37     4.0     4.09    1.48     1     6\nashs12          50 1438     2.44    1.53     2.0     2.23    1.48     1     6\nashs13          51 1437     4.28    1.47     5.0     4.41    1.48     1     6\nashs14          52 1437     4.38    1.26     5.0     4.47    1.48     1     6\nashs15          53 1437     2.69    1.26     2.0     2.57    1.48     1     6\nashs16          54 1436     3.27    1.43     3.0     3.23    1.48     1     6\nashs17          55 1437     3.87    1.37     4.0     3.87    1.48     1     6\nattention4      56 1437     1.20    0.87     1.0     1.00    0.00     1     6\nashs18          57 1437     1.75    0.96     2.0     1.58    1.48     1     6\nashs19          58 1437     2.41    1.12     2.0     2.30    1.48     1     6\nashs20          59 1437     1.57    1.02     1.0     1.33    0.00     1     6\nashs21          60 1437     2.59    1.56     2.0     2.42    1.48     1     6\nashs22          61 1437     1.66    0.95     1.0     1.47    0.00     1     6\nashs23          62 1437     1.33    0.84     1.0     1.11    0.00     1     6\nashs24          63 1436     2.44    1.28     2.0     2.29    1.48     1     6\nashs26          64 1437     3.23    1.26     3.0     3.16    1.48     1     6\nashs27          65 1437     3.25    1.65     3.0     3.19    1.48     1     6\nashs28          66 1436     3.75    1.63     4.0     3.80    1.48     1     6\nattention5      67 1437     1.10    0.63     1.0     1.00    0.00     1     6\nashs29          68 1437     2.28    1.28     2.0     2.09    1.48     1     6\nashs30          69 1437     3.94    1.38     4.0     3.96    1.48     1     6\nashs31          70 1437     2.61    1.38     2.0     2.47    1.48     1     6\nashs32          71 1437     4.87    1.19     5.0     5.04    1.48     1     6\nashs33          72 1437     4.73    1.32     5.0     4.91    1.48     1     6\nid              73 1452 21734.02 7471.43 21089.5 20852.52 2684.99 11918 76858\nESS1m1          74 1447     1.29    0.98     1.0     1.24    1.48     0     3\nESS2m1          75 1447     1.29    0.87     1.0     1.25    1.48     0     3\nESS3m1          76 1447     0.65    0.82     0.0     0.52    0.00     0     3\nESS4m1          77 1447     1.58    1.01     2.0     1.60    1.48     0     3\nESS5m1          78 1447     2.02    0.92     2.0     2.11    1.48     0     3\nESS6m1          79 1447     0.11    0.38     0.0     0.00    0.00     0     3\nESS7m1          80 1447     0.64    0.79     0.0     0.52    0.00     0     3\nESS8m1          81 1447     0.21    0.55     0.0     0.06    0.00     0     3\ness_total       82 1447     7.79    3.58     8.0     7.72    2.97     0    24\nattention1r     83 1452     0.82    0.38     1.0     0.91    0.00     0     1\nattention2r     84 1448     0.97    0.17     1.0     1.00    0.00     0     1\nattention3r     85 1438     1.00    0.00     1.0     1.00    0.00     1     1\nattention4r     86 1437     0.93    0.25     1.0     1.00    0.00     0     1\nattention5r     87 1437     0.97    0.17     1.0     1.00    0.00     0     1\natt_sum         88 1437     4.70    0.63     5.0     4.82    0.00     1     5\n              range  skew kurtosis     se\nage               8  0.87     0.54   0.04\ngender            2  0.83    -0.36   0.01\nroommate          1 -0.20    -1.96   0.01\nother_sleep       4  1.75     2.87   0.02\nbed_read          4  1.61     2.18   0.03\nbed_study         4  1.15     0.64   0.03\nbed_hw            4  0.92    -0.15   0.03\nattention1        4 -2.50     5.33   0.02\nbed_internet      4 -0.41    -0.69   0.03\nbed_tv            4 -0.29    -1.02   0.03\nbed_eat           4  1.22     0.81   0.03\nbed_friends       4  1.42     1.72   0.03\nbed_videogame     4  1.14     0.40   0.03\nbed_readp         4  0.97     0.04   0.03\nBL_1              4 -2.15     3.31   0.03\nBL_2              4 -1.44     0.76   0.03\nBL_3              4 -1.06    -0.17   0.03\nBL_4              4 -1.59     0.97   0.04\nBL_5              4  0.48    -1.34   0.04\nattention2        4  7.11    51.85   0.01\nBL_6              4  1.12     0.62   0.03\nBL_7              4 -1.47     1.09   0.03\nsleepsat1         4 -0.18    -1.09   0.03\nsleepsat2         4 -0.20    -1.04   0.03\nsleepsat3         4 -0.11    -1.12   0.03\nsleepsat4         4 -0.05    -1.24   0.04\nsleepsat5         4 -0.78    -0.33   0.03\nsleepsat6         4  0.16    -0.94   0.03\nESS1              3  0.27    -0.94   0.03\nESS2              3  0.27    -0.59   0.02\nESS3              3  1.10     0.45   0.02\nESS4              3  0.00    -1.11   0.03\nESS5              3 -0.54    -0.70   0.02\nESS6              3  4.02    19.11   0.01\nESS7              3  1.07     0.54   0.02\nESS8              3  3.04     9.55   0.01\nESS00             3  0.42    -0.49   0.02\nashs1             5  0.81    -0.06   0.03\nashs2             5  0.28    -0.94   0.04\nashs3             5  0.99     0.07   0.04\nashs4             5  1.30     1.41   0.03\nashs5             5  0.64    -0.45   0.04\nattention3        0   NaN      NaN   0.00\nashs6             5  2.41     4.45   0.04\nashs7             5  1.49     2.08   0.03\nashs8             5  0.30    -0.87   0.04\nashs9             5  0.61    -0.16   0.03\nashs10            5  1.84     3.11   0.03\nashs11            5 -0.33    -0.73   0.04\nashs12            5  0.86    -0.35   0.04\nashs13            5 -0.58    -0.65   0.04\nashs14            5 -0.47    -0.54   0.03\nashs15            5  0.85     0.21   0.03\nashs16            5  0.29    -0.83   0.04\nashs17            5 -0.07    -0.93   0.04\nattention4        5  4.77    22.14   0.02\nashs18            5  1.72     3.67   0.03\nashs19            5  0.92     0.80   0.03\nashs20            5  2.09     4.23   0.03\nashs21            5  0.71    -0.64   0.04\nashs22            5  1.83     3.83   0.03\nashs23            5  3.23    11.47   0.02\nashs24            5  0.92     0.38   0.03\nashs26            5  0.44    -0.45   0.03\nashs27            5  0.15    -1.21   0.04\nashs28            5 -0.08    -1.25   0.04\nattention5        5  6.63    44.55   0.02\nashs29            5  1.13     0.73   0.03\nashs30            5 -0.13    -0.96   0.04\nashs31            5  0.72    -0.29   0.04\nashs32            5 -1.00     0.44   0.03\nashs33            5 -0.86    -0.17   0.03\nid            64940  6.54    44.82 196.07\nESS1m1            3  0.27    -0.94   0.03\nESS2m1            3  0.27    -0.59   0.02\nESS3m1            3  1.10     0.45   0.02\nESS4m1            3  0.00    -1.11   0.03\nESS5m1            3 -0.54    -0.70   0.02\nESS6m1            3  4.02    19.11   0.01\nESS7m1            3  1.07     0.54   0.02\nESS8m1            3  3.04     9.55   0.01\ness_total        24  0.30     0.23   0.09\nattention1r       1 -1.70     0.90   0.01\nattention2r       1 -5.54    28.66   0.00\nattention3r       0   NaN      NaN   0.00\nattention4r       1 -3.49    10.18   0.01\nattention5r       1 -5.38    26.92   0.00\natt_sum           4 -2.79    10.04   0.02\n\n# or if you have already loaded the library\n\ndescribe(sleep_data)\n\n              vars    n     mean      sd  median  trimmed     mad   min   max\nage              1 1452    19.56    1.59    19.0    19.39    1.48    17    25\ngender           2 1452     1.43    0.56     1.0     1.37    0.00     1     3\nroommate         3 1452     1.55    0.50     2.0     1.56    0.00     1     2\nother_sleep      4 1452     1.65    0.95     1.0     1.45    0.00     1     5\nbed_read         5 1452     1.67    0.96     1.0     1.47    0.00     1     5\nbed_study        6 1452     1.90    1.05     2.0     1.72    1.48     1     5\nbed_hw           7 1452     2.11    1.19     2.0     1.95    1.48     1     5\nattention1       8 1452     4.64    0.88     5.0     4.89    0.00     1     5\nbed_internet     9 1452     3.62    1.05     4.0     3.67    1.48     1     5\nbed_tv          10 1452     3.30    1.22     4.0     3.35    1.48     1     5\nbed_eat         11 1452     1.96    1.10     2.0     1.77    1.48     1     5\nbed_friends     12 1452     1.76    0.96     2.0     1.58    1.48     1     5\nbed_videogame   13 1452     1.96    1.15     2.0     1.77    1.48     1     5\nbed_readp       14 1452     2.10    1.16     2.0     1.93    1.48     1     5\nBL_1            15 1448     4.49    1.11     5.0     4.80    0.00     1     5\nBL_2            16 1448     4.23    1.24     5.0     4.48    0.00     1     5\nBL_3            17 1448     4.08    1.22     5.0     4.28    0.00     1     5\nBL_4            18 1448     4.26    1.34     5.0     4.57    0.00     1     5\nBL_5            19 1448     2.57    1.57     2.0     2.46    1.48     1     5\nattention2      20 1448     1.07    0.48     1.0     1.00    0.00     1     5\nBL_6            21 1448     2.09    1.14     2.0     1.90    1.48     1     5\nBL_7            22 1448     4.25    1.15     5.0     4.49    0.00     1     5\nsleepsat1       23 1447     3.09    1.16     3.0     3.11    1.48     1     5\nsleepsat2       24 1447     3.14    1.18     3.0     3.16    1.48     1     5\nsleepsat3       25 1447     3.11    1.23     3.0     3.13    1.48     1     5\nsleepsat4       26 1447     3.03    1.34     3.0     3.04    1.48     1     5\nsleepsat5       27 1447     3.78    1.17     4.0     3.91    1.48     1     5\nsleepsat6       28 1447     2.75    1.13     3.0     2.74    1.48     1     5\nESS1            29 1447     2.29    0.98     2.0     2.24    1.48     1     4\nESS2            30 1447     2.29    0.87     2.0     2.25    1.48     1     4\nESS3            31 1447     1.65    0.82     1.0     1.52    0.00     1     4\nESS4            32 1447     2.58    1.01     3.0     2.60    1.48     1     4\nESS5            33 1447     3.02    0.92     3.0     3.11    1.48     1     4\nESS6            34 1447     1.11    0.38     1.0     1.00    0.00     1     4\nESS7            35 1447     1.64    0.79     1.0     1.52    0.00     1     4\nESS8            36 1447     1.21    0.55     1.0     1.06    0.00     1     4\nESS00           37 1447     2.21    0.88     2.0     2.14    1.48     1     4\nashs1           38 1438     2.58    1.28     2.0     2.45    1.48     1     6\nashs2           39 1438     3.26    1.49     3.0     3.21    1.48     1     6\nashs3           40 1438     2.31    1.39     2.0     2.10    1.48     1     6\nashs4           41 1438     1.98    1.12     2.0     1.78    1.48     1     6\nashs5           42 1437     2.72    1.42     2.0     2.59    1.48     1     6\nattention3      43 1438     4.00    0.00     4.0     4.00    0.00     4     4\nashs6           44 1438     1.55    1.34     1.0     1.15    0.00     1     6\nashs7           45 1438     1.76    1.02     1.0     1.58    0.00     1     6\nashs8           46 1438     3.17    1.45     3.0     3.13    1.48     1     6\nashs9           47 1437     2.73    1.24     3.0     2.63    1.48     1     6\nashs10          48 1437     1.73    1.14     1.0     1.48    0.00     1     6\nashs11          49 1438     4.03    1.37     4.0     4.09    1.48     1     6\nashs12          50 1438     2.44    1.53     2.0     2.23    1.48     1     6\nashs13          51 1437     4.28    1.47     5.0     4.41    1.48     1     6\nashs14          52 1437     4.38    1.26     5.0     4.47    1.48     1     6\nashs15          53 1437     2.69    1.26     2.0     2.57    1.48     1     6\nashs16          54 1436     3.27    1.43     3.0     3.23    1.48     1     6\nashs17          55 1437     3.87    1.37     4.0     3.87    1.48     1     6\nattention4      56 1437     1.20    0.87     1.0     1.00    0.00     1     6\nashs18          57 1437     1.75    0.96     2.0     1.58    1.48     1     6\nashs19          58 1437     2.41    1.12     2.0     2.30    1.48     1     6\nashs20          59 1437     1.57    1.02     1.0     1.33    0.00     1     6\nashs21          60 1437     2.59    1.56     2.0     2.42    1.48     1     6\nashs22          61 1437     1.66    0.95     1.0     1.47    0.00     1     6\nashs23          62 1437     1.33    0.84     1.0     1.11    0.00     1     6\nashs24          63 1436     2.44    1.28     2.0     2.29    1.48     1     6\nashs26          64 1437     3.23    1.26     3.0     3.16    1.48     1     6\nashs27          65 1437     3.25    1.65     3.0     3.19    1.48     1     6\nashs28          66 1436     3.75    1.63     4.0     3.80    1.48     1     6\nattention5      67 1437     1.10    0.63     1.0     1.00    0.00     1     6\nashs29          68 1437     2.28    1.28     2.0     2.09    1.48     1     6\nashs30          69 1437     3.94    1.38     4.0     3.96    1.48     1     6\nashs31          70 1437     2.61    1.38     2.0     2.47    1.48     1     6\nashs32          71 1437     4.87    1.19     5.0     5.04    1.48     1     6\nashs33          72 1437     4.73    1.32     5.0     4.91    1.48     1     6\nid              73 1452 21734.02 7471.43 21089.5 20852.52 2684.99 11918 76858\nESS1m1          74 1447     1.29    0.98     1.0     1.24    1.48     0     3\nESS2m1          75 1447     1.29    0.87     1.0     1.25    1.48     0     3\nESS3m1          76 1447     0.65    0.82     0.0     0.52    0.00     0     3\nESS4m1          77 1447     1.58    1.01     2.0     1.60    1.48     0     3\nESS5m1          78 1447     2.02    0.92     2.0     2.11    1.48     0     3\nESS6m1          79 1447     0.11    0.38     0.0     0.00    0.00     0     3\nESS7m1          80 1447     0.64    0.79     0.0     0.52    0.00     0     3\nESS8m1          81 1447     0.21    0.55     0.0     0.06    0.00     0     3\ness_total       82 1447     7.79    3.58     8.0     7.72    2.97     0    24\nattention1r     83 1452     0.82    0.38     1.0     0.91    0.00     0     1\nattention2r     84 1448     0.97    0.17     1.0     1.00    0.00     0     1\nattention3r     85 1438     1.00    0.00     1.0     1.00    0.00     1     1\nattention4r     86 1437     0.93    0.25     1.0     1.00    0.00     0     1\nattention5r     87 1437     0.97    0.17     1.0     1.00    0.00     0     1\natt_sum         88 1437     4.70    0.63     5.0     4.82    0.00     1     5\n              range  skew kurtosis     se\nage               8  0.87     0.54   0.04\ngender            2  0.83    -0.36   0.01\nroommate          1 -0.20    -1.96   0.01\nother_sleep       4  1.75     2.87   0.02\nbed_read          4  1.61     2.18   0.03\nbed_study         4  1.15     0.64   0.03\nbed_hw            4  0.92    -0.15   0.03\nattention1        4 -2.50     5.33   0.02\nbed_internet      4 -0.41    -0.69   0.03\nbed_tv            4 -0.29    -1.02   0.03\nbed_eat           4  1.22     0.81   0.03\nbed_friends       4  1.42     1.72   0.03\nbed_videogame     4  1.14     0.40   0.03\nbed_readp         4  0.97     0.04   0.03\nBL_1              4 -2.15     3.31   0.03\nBL_2              4 -1.44     0.76   0.03\nBL_3              4 -1.06    -0.17   0.03\nBL_4              4 -1.59     0.97   0.04\nBL_5              4  0.48    -1.34   0.04\nattention2        4  7.11    51.85   0.01\nBL_6              4  1.12     0.62   0.03\nBL_7              4 -1.47     1.09   0.03\nsleepsat1         4 -0.18    -1.09   0.03\nsleepsat2         4 -0.20    -1.04   0.03\nsleepsat3         4 -0.11    -1.12   0.03\nsleepsat4         4 -0.05    -1.24   0.04\nsleepsat5         4 -0.78    -0.33   0.03\nsleepsat6         4  0.16    -0.94   0.03\nESS1              3  0.27    -0.94   0.03\nESS2              3  0.27    -0.59   0.02\nESS3              3  1.10     0.45   0.02\nESS4              3  0.00    -1.11   0.03\nESS5              3 -0.54    -0.70   0.02\nESS6              3  4.02    19.11   0.01\nESS7              3  1.07     0.54   0.02\nESS8              3  3.04     9.55   0.01\nESS00             3  0.42    -0.49   0.02\nashs1             5  0.81    -0.06   0.03\nashs2             5  0.28    -0.94   0.04\nashs3             5  0.99     0.07   0.04\nashs4             5  1.30     1.41   0.03\nashs5             5  0.64    -0.45   0.04\nattention3        0   NaN      NaN   0.00\nashs6             5  2.41     4.45   0.04\nashs7             5  1.49     2.08   0.03\nashs8             5  0.30    -0.87   0.04\nashs9             5  0.61    -0.16   0.03\nashs10            5  1.84     3.11   0.03\nashs11            5 -0.33    -0.73   0.04\nashs12            5  0.86    -0.35   0.04\nashs13            5 -0.58    -0.65   0.04\nashs14            5 -0.47    -0.54   0.03\nashs15            5  0.85     0.21   0.03\nashs16            5  0.29    -0.83   0.04\nashs17            5 -0.07    -0.93   0.04\nattention4        5  4.77    22.14   0.02\nashs18            5  1.72     3.67   0.03\nashs19            5  0.92     0.80   0.03\nashs20            5  2.09     4.23   0.03\nashs21            5  0.71    -0.64   0.04\nashs22            5  1.83     3.83   0.03\nashs23            5  3.23    11.47   0.02\nashs24            5  0.92     0.38   0.03\nashs26            5  0.44    -0.45   0.03\nashs27            5  0.15    -1.21   0.04\nashs28            5 -0.08    -1.25   0.04\nattention5        5  6.63    44.55   0.02\nashs29            5  1.13     0.73   0.03\nashs30            5 -0.13    -0.96   0.04\nashs31            5  0.72    -0.29   0.04\nashs32            5 -1.00     0.44   0.03\nashs33            5 -0.86    -0.17   0.03\nid            64940  6.54    44.82 196.07\nESS1m1            3  0.27    -0.94   0.03\nESS2m1            3  0.27    -0.59   0.02\nESS3m1            3  1.10     0.45   0.02\nESS4m1            3  0.00    -1.11   0.03\nESS5m1            3 -0.54    -0.70   0.02\nESS6m1            3  4.02    19.11   0.01\nESS7m1            3  1.07     0.54   0.02\nESS8m1            3  3.04     9.55   0.01\ness_total        24  0.30     0.23   0.09\nattention1r       1 -1.70     0.90   0.01\nattention2r       1 -5.54    28.66   0.00\nattention3r       0   NaN      NaN   0.00\nattention4r       1 -3.49    10.18   0.01\nattention5r       1 -5.38    26.92   0.00\natt_sum           4 -2.79    10.04   0.02\n\n\nNOTE: Some variables are not numeric and are categorical variables of type character. By default, the describe() function forces non-numeric variables to be numeric and attempts to calculate descriptives for them. These variables are marked with an asterisk (*). In this case, it doesn’t make sense to calculate descriptive statistics for these variables, so we get a warning message and a bunch of NaN’s and NA’s for these variables.\nA better approach would be to remove non-numeric variables before you attempt to run numerical calculations on your dataset."
-  },
-  {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#reminders",
-    "href": "lectures/unit4_data-wrangler/slides.html#reminders",
-    "title": "Unit 4 - Data Wrangling",
+    "objectID": "lectures/wk3_visualizations/slides.html#reminders",
+    "href": "lectures/wk3_visualizations/slides.html#reminders",
+    "title": "Figures: Using ggplot2",
     "section": "Reminders",
     "text": "Reminders\n\n\nJournal Entries\nReverse Results - Due 9/17"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#last-class",
-    "href": "lectures/unit4_data-wrangler/slides.html#last-class",
-    "title": "Unit 4 - Data Wrangling",
+    "objectID": "lectures/wk3_visualizations/slides.html#last-class",
+    "href": "lectures/wk3_visualizations/slides.html#last-class",
+    "title": "Figures: Using ggplot2",
     "section": "Last Class",
-    "text": "Last Class\n\n\nEntry into the tidyverse with dplyr"
+    "text": "Last Class\n\n\nThe workflow\n\nStarting with a Project and going from there"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#today",
-    "href": "lectures/unit4_data-wrangler/slides.html#today",
-    "title": "Unit 4 - Data Wrangling",
+    "objectID": "lectures/wk3_visualizations/slides.html#today",
+    "href": "lectures/wk3_visualizations/slides.html#today",
+    "title": "Figures: Using ggplot2",
     "section": "Today…",
-    "text": "Today…\nContinuing on this trend to get more comfortable with all that dplyr can do!\nThis is a nice website that walks through a lot of this as well\n\n# File management\nlibrary(here)\n# for dplyr, ggplot2\nlibrary(tidyverse)\n#Loading data\nlibrary(rio)\n\n#Remove Scientific Notation \noptions(scipen=999)"
+    "text": "Today…\nWorking with ggplot2 to get some really fancy visualizations!\nMaybe integrating some generative AI (ChatGPT) to help us out too\n\n# File management\nlibrary(here)\n# for dplyr, ggplot2\nlibrary(tidyverse)\n#Loading data\nlibrary(rio)\n\n#for the penguins dataset\n#install.packages('palmerpenguins')\nlibrary(palmerpenguins)\n\n#Remove Scientific Notation \noptions(scipen=999)"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#but-first",
-    "href": "lectures/unit4_data-wrangler/slides.html#but-first",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "But first…",
-    "text": "But first…\nWe need to revisit how to read the ggplot2 cheatsheet!\nA lot of cheatsheets will have something that looks like this:\n\nc &lt;- ggplot(mpg, aes(hwy))\n\n## Then later on it will say\n\nc + geom_histogram(binwidth = 5)"
+    "objectID": "lectures/wk3_visualizations/slides.html#starting-out",
+    "href": "lectures/wk3_visualizations/slides.html#starting-out",
+    "title": "Figures: Using ggplot2",
+    "section": "Starting out",
+    "text": "Starting out\nLet’s first start by opening our Project\nThen, create a new Notebook/Markdown Document that we will use for today\nSetup the libraries and bring in the data\n\nWe will use the “Sleep Data” file as well\n\n\n#import sleep data - Your path may be different\nsleep_data &lt;- import(here(\"lectures\", \"data\", \"Sleep_Data.csv\"))"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#what-is-c",
-    "href": "lectures/unit4_data-wrangler/slides.html#what-is-c",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "WHAT IS c?!",
-    "text": "WHAT IS c?!\nc is just an object that is referring to the first line that we have in a ggplot function\n\nc &lt;- ggplot(mpg, aes(hwy))\n\n## So this...\nc + geom_histogram(binwidth = 5)\n\n## Is the same as this...\nmpg %&gt;% \n  ggplot(aes(hwy)) + \n  geom_histogram(binwidth = 5)"
+    "objectID": "lectures/wk3_visualizations/slides.html#take-a-look-at-the-data",
+    "href": "lectures/wk3_visualizations/slides.html#take-a-look-at-the-data",
+    "title": "Figures: Using ggplot2",
+    "section": "Take a look at the data",
+    "text": "Take a look at the data\nWill be using a dataset from the palmerpenguins library (link) which is a dataset about…penguins. This function will pull that data into our environment:\n\ndata(penguins)"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#back-to-regular-scheduled-programming",
-    "href": "lectures/unit4_data-wrangler/slides.html#back-to-regular-scheduled-programming",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "Back to regular scheduled programming",
-    "text": "Back to regular scheduled programming\nLet’s first start by opening our Project\nThen, create a new Notebook/Markdown Document that we will use for today\nSetup the libraries and bring in the data\n\nWe will use the “Sleep Data” file\n\n\n#import sleep data - Your path may be different\nsleep_data &lt;- import(here(\"lectures\", \"data\", \"Sleep_Data.csv\"))"
+    "objectID": "lectures/wk3_visualizations/slides.html#ggplot2-from-the-tidyverse",
+    "href": "lectures/wk3_visualizations/slides.html#ggplot2-from-the-tidyverse",
+    "title": "Figures: Using ggplot2",
+    "section": "ggplot2 from the tidyverse",
+    "text": "ggplot2 from the tidyverse\nSince we have already installed and loaded the library, we don’t have to do anything else at this point!\nggplot2 follows the “grammar of graphics”\n\nTheoretical framework for creating data visualizations\nBreaks the process down into separate components:\n\n\n\nData\nAesthetics (aes)\nGeometric Objects (geoms)\n\nFaceting\nThemes"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#variable-renaming",
-    "href": "lectures/unit4_data-wrangler/slides.html#variable-renaming",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "Variable Renaming",
-    "text": "Variable Renaming\nOoof…These variable names look terrible! How do we update those? Our brains would break having to remember how to connect them and having to reference another document. \nFirst, let’s get rid of the variables that we don’t need for the moment: \n\nUse select() to remove the following variables: \n\nsleep_data &lt;- sleep_data %&gt;% \n  select(-c('StartDate', 'EndDate', 'Status', 'Progress', \n  'Duration__in_seconds_', 'Finished', 'RecordedDate',\n  'DistributionChannel', 'UserLanguage', 'SC0', 'SC1',\n  'SC2', 'SC3', 'SC4', 'SC5', 'Attention'))"
+    "objectID": "lectures/wk3_visualizations/slides.html#grammar-of-graphics",
+    "href": "lectures/wk3_visualizations/slides.html#grammar-of-graphics",
+    "title": "Figures: Using ggplot2",
+    "section": "Grammar of Graphics",
+    "text": "Grammar of Graphics"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#extract-rows",
-    "href": "lectures/unit4_data-wrangler/slides.html#extract-rows",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "Extract Rows",
-    "text": "Extract Rows\nThe ‘filter()’ function is used to subset observations based on their values.\nThe result of filtering is a data frame with the same number of columns as before but fewer rows.\nThe first argument is data and subsequent arguments are logical expressions that tell you which observations to retain in the data frame.\n\nfilter(starwars, hair_color == \"none\" | eye_color == \"black\")\n\n# A tibble: 39 × 14\n   name     height  mass hair_color skin_color eye_color birth_year sex   gender\n   &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; \n 1 Darth V…    202   136 none       white      yellow          41.9 male  mascu…\n 2 Greedo      173    74 &lt;NA&gt;       green      black           44   male  mascu…\n 3 IG-88       200   140 none       metal      red             15   none  mascu…\n 4 Bossk       190   113 none       green      red             53   male  mascu…\n 5 Lobot       175    79 none       light      blue            37   male  mascu…\n 6 Ackbar      180    83 none       brown mot… orange          41   male  mascu…\n 7 Nien Nu…    160    68 none       grey       black           NA   male  mascu…\n 8 Nute Gu…    191    90 none       mottled g… red             NA   male  mascu…\n 9 Jar Jar…    196    66 none       orange     orange          52   male  mascu…\n10 Roos Ta…    224    82 none       grey       orange          NA   male  mascu…\n# ℹ 29 more rows\n# ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,\n#   vehicles &lt;list&gt;, starships &lt;list&gt;"
+    "objectID": "lectures/wk3_visualizations/slides.html#ggplot2-syntax",
+    "href": "lectures/wk3_visualizations/slides.html#ggplot2-syntax",
+    "title": "Figures: Using ggplot2",
+    "section": "ggplot2 syntax",
+    "text": "ggplot2 syntax\nThere is a basic structure to create a plot within ggplot2, and consists of at least these three things:\n\nA Data Set\nCoordinate System\nGeoms - visual marks to represent the data points\n\nIn R it looks like this:\n\nggplot(data = &lt;DATA&gt;) + \n  &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;MAPPINGS&gt;))\n\n#or how I like to do it\n&lt;DATA&gt; %&gt;% \n  ggplot(aes(&lt;MAPPINGS&gt;)) + \n  &lt;GEOM_FUNCTION&gt;()"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#filter-observations",
-    "href": "lectures/unit4_data-wrangler/slides.html#filter-observations",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "Filter observations",
-    "text": "Filter observations\nWe can now generate a subset of observations based on a particular value\nSince the age variable has been giving us some trouble, let’s filter based on that variable to only include appropriate ages for “college aged” participants\n\n# Assigning it to a new variable\nmod_sleep_data &lt;- sleep_data %&gt;% \n  filter(age &gt;= 17, age &lt;= 25)"
+    "objectID": "lectures/wk3_visualizations/slides.html#ggplot2-syntax-1",
+    "href": "lectures/wk3_visualizations/slides.html#ggplot2-syntax-1",
+    "title": "Figures: Using ggplot2",
+    "section": "ggplot2 syntax",
+    "text": "ggplot2 syntax\nLet’s start with a basic figure with palmerpenguins\nFirst we will define the data that we are using and the variables we are visualizing\n\n#the dataset is called penguins\n\npenguins %&gt;% \n  #including the variables we want to visualize\n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g))\n\nWhat happens?"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#filter-obs.---check",
-    "href": "lectures/unit4_data-wrangler/slides.html#filter-obs.---check",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "Filter Obs. - Check",
-    "text": "Filter Obs. - Check\nGenerating a bar chart to see if it worked out!\n\nmod_sleep_data %&gt;% \n  ggplot(aes(age)) + \n  geom_bar()"
+    "objectID": "lectures/wk3_visualizations/slides.html#adding-in-color",
+    "href": "lectures/wk3_visualizations/slides.html#adding-in-color",
+    "title": "Figures: Using ggplot2",
+    "section": "Adding in Color",
+    "text": "Adding in Color\nMaybe we would like to have each of the points colored by their respective species\nThis information will be added to the aes() within the geom_point() layer\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g)) + \n  geom_point(aes(color = species))"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#compute-new-variable",
-    "href": "lectures/unit4_data-wrangler/slides.html#compute-new-variable",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "Compute new variable",
-    "text": "Compute new variable\nWe often need to make a sum/mean score for a variable of interest\nThe mutate() function is most commonly used to add new columns to your data frame that are functions of existing columns.\nmutate() requires data as its first argument, followed by a set of expressions defining new columns.\n\nNote: New variables are automatically added at the end of the data frame (scroll to the right to see them)\n\nFor example, in the mod_sleep_data, we have the Epworth Sleepiness Scale\nTake a look at the scoring of the ESS and compute the total score labelled ess_total"
+    "objectID": "lectures/wk3_visualizations/slides.html#including-a-fit-line",
+    "href": "lectures/wk3_visualizations/slides.html#including-a-fit-line",
+    "title": "Figures: Using ggplot2",
+    "section": "Including a fit line",
+    "text": "Including a fit line\nWhy don’t we put in a line that represents the relationship between these variables?\nWe will want to add another layer/geom\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g)) + \n  geom_point(aes(color = species)) + \n  geom_smooth()\n\n\nThat looks a little wonky…why is that? Did you get a note in the console?"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#ess_total",
-    "href": "lectures/unit4_data-wrangler/slides.html#ess_total",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "ess_total",
-    "text": "ess_total\nIt is a sum score with a scale of 0 - 24\n\n# We will assign it to the same dataset\nmod_sleep_data &lt;- mod_sleep_data %&gt;% \n  mutate(ess_total = ESS1 + ESS2 + ESS3 + \n           ESS4 + ESS5 + ESS6 + ESS7 + ESS8)"
+    "objectID": "lectures/wk3_visualizations/slides.html#including-a-fit-line-1",
+    "href": "lectures/wk3_visualizations/slides.html#including-a-fit-line-1",
+    "title": "Figures: Using ggplot2",
+    "section": "Including a fit line",
+    "text": "Including a fit line\nThe geom_smooth() defaults to using a loess line to fit to the data\nIn order to update that, we need to change some of the defaults for that layer and specify that we want a “linear model” or lm function to the data\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g)) + \n  geom_point(aes(color = species)) + \n  geom_smooth(method = 'lm')\n\n\nDid that look a little better?"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#visualize",
-    "href": "lectures/unit4_data-wrangler/slides.html#visualize",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "Visualize",
-    "text": "Visualize\n\nmod_sleep_data %&gt;% \n  ggplot(aes(ess_total)) + \n  geom_bar()\n\n\n\n\nBut why are there some above 24??"
+    "objectID": "lectures/wk3_visualizations/slides.html#individual-fit-lines",
+    "href": "lectures/wk3_visualizations/slides.html#individual-fit-lines",
+    "title": "Figures: Using ggplot2",
+    "section": "Individual fit lines",
+    "text": "Individual fit lines\nIt might make more sense to have individual lines for each of the species instead of something that is across all\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g, \n             color = species)) + \n  geom_point() + \n  geom_smooth(method = 'lm')\n\n\nWhat did we move around from the last set of code?"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#ess-variables",
-    "href": "lectures/unit4_data-wrangler/slides.html#ess-variables",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "ESS Variables",
-    "text": "ESS Variables\nThe original items are supposed to be on a 0-3 scale\nThe data that we have are on a 1-4 scale\nWhat should we do?!"
+    "objectID": "lectures/wk3_visualizations/slides.html#updating-labelstitle",
+    "href": "lectures/wk3_visualizations/slides.html#updating-labelstitle",
+    "title": "Figures: Using ggplot2",
+    "section": "Updating Labels/Title",
+    "text": "Updating Labels/Title\nIt will default to including the variable names as the x and y labels, but that isn’t something that makes sense. Also would be good to have a title!\nWe add on another layer called labs() for our labels (link)\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm, \n             y = body_mass_g, \n             color = species)) + \n  geom_point() + \n  geom_smooth(method = 'lm') + \n  labs(\n    title = \"Palmer Penguins\",\n    subtitle = \"Body Mass by Flipper Length\", \n    x = \"Flipper Length (mm)\", \n    y = \"Body Mass (g)\", \n    color = \"Species\"\n  )"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#ess-rescale",
-    "href": "lectures/unit4_data-wrangler/slides.html#ess-rescale",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "ESS Rescale",
-    "text": "ESS Rescale\nWe could subtract 1 from each item before creating another sum\n\nmod_sleep_data &lt;- mod_sleep_data %&gt;% \n  mutate(ESS1m1 = ESS1 - 1, \n         ESS2m1 = ESS2 - 1,\n         ESS3m1 = ESS3 - 1,\n         ESS4m1 = ESS4 - 1,\n         ESS5m1 = ESS5 - 1,\n         ESS6m1 = ESS6 - 1,\n         ESS7m1 = ESS7 - 1, \n         ESS8m1 = ESS8 - 1) %&gt;% \n  mutate(ess_total2 = ESS1m1 + ESS2m1 + ESS3m1 + \n           ESS4m1 + ESS5m1 + ESS6m1 + ESS7m1 + ESS8m1)"
+    "objectID": "lectures/wk3_visualizations/slides.html#penguin-histogram",
+    "href": "lectures/wk3_visualizations/slides.html#penguin-histogram",
+    "title": "Figures: Using ggplot2",
+    "section": "Penguin Histogram",
+    "text": "Penguin Histogram\nTaken from the website for palmerpenguins (link)\n\npenguins %&gt;% \n  ggplot(aes(x = flipper_length_mm)) +\n    geom_histogram(aes(fill = species), \n                   alpha = 0.5, \n                   position = \"identity\")"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#ess-rescale-1",
-    "href": "lectures/unit4_data-wrangler/slides.html#ess-rescale-1",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "ESS Rescale",
-    "text": "ESS Rescale\nOr we could combine all the 1’s that we are subtracting and just take that from the total score\n\nmod_sleep_data &lt;- mod_sleep_data %&gt;% \n  mutate(ess_total = ESS1 + ESS2 + ESS3 + \n           ESS4 + ESS5 + ESS6 + ESS7 + ESS8) %&gt;% \n  mutate(ess_total3 = ess_total-8)"
+    "objectID": "lectures/wk3_visualizations/slides.html#sleep-data",
+    "href": "lectures/wk3_visualizations/slides.html#sleep-data",
+    "title": "Figures: Using ggplot2",
+    "section": "Sleep Data",
+    "text": "Sleep Data\nLet’s start by looking at our data. You can either click on the dataset in the Environment or use the View(sleep_data) command. Here, I am using the head() command just to visualize a sample of the data for the slides.\n\nhead(sleep_data)\n\n            StartDate             EndDate Status Progress Duration__in_seconds_\n1 2017-08-16 13:13:06 2017-08-16 13:15:13      0      100                   126\n2 2017-08-16 13:17:16 2017-08-16 13:19:03      0      100                   106\n3 2017-11-27 16:59:07 2017-11-27 17:07:27      0      100                   499\n4 2017-11-27 18:57:16 2017-11-27 19:13:00      0      100                   943\n5 2017-11-27 18:54:35 2017-11-27 19:14:12      0      100                  1177\n6 2017-11-27 19:41:14 2017-11-27 19:46:48      0      100                   333\n  Finished        RecordedDate DistributionChannel UserLanguage Q5 Q7 Q8 Q12\n1        1 2017-08-16 13:15:14           anonymous           EN 12  2  2   3\n2        1 2017-08-16 13:19:03           anonymous           EN  1  2  2   1\n3        1 2017-11-27 17:07:27           anonymous           EN 19  1  2   1\n4        1 2017-11-27 19:13:00           anonymous           EN 18  2  2   2\n5        1 2017-11-27 19:14:13           anonymous           EN 21  1  2   2\n6        1 2017-11-27 19:46:48           anonymous           EN 18  2  1   3\n  Q13_1 Q13_2 Q13_3 Q13_4 Q13_5 Q13_6 Q13_7 Q13_8 Q13_9 Q13_10 Q14_1 Q14_2\n1     2     2     2    NA     2     2     2     2     2      2     2     2\n2     1     1     1    NA     2     3     2     3     2      3     4     2\n3     1     2     2     5     3     4     1     1     2      1     5     5\n4     3     4     5     5     5     5     5     5     5      1     5     5\n5     1     2     2     5     4     2     2     1     1      2     5     5\n6     1     2     4     5     4     2     4     4     5      4     5     5\n  Q14_3 Q14_4 Q14_5 Q14_6 Q14_7 Q14_8 Q11_1 Q11_2 Q11_3 Q11_4 Q11_5 Q11_6 Q17_1\n1     2     2     2    NA     2     2     2     3     3     4     4     3     2\n2     4     4     4    NA     4     4     4     4     4     4     4     4     2\n3     5     5     1     1     1     1     4     5     4     4     5     4     4\n4     5     5     5     1     5     5     2     3     4     3     1     1     4\n5     5     5     2     1     3     4     2     1     4     3     4     2     2\n6     5     5     4     1     4     3     1     4     2     2     4     5     2\n  Q17_2 Q17_3 Q17_4 Q18_1 Q18_2 Q18_3 Q18_4 Q18_5 Q20_1 Q20_2 Q21_1 Q21_2 Q21_3\n1     3     3     2     2     2     2     3     1     1     2     4     3     3\n2     2     1     2     3     1     1     1     1     2     3     5     4     4\n3     2     1     4     3     1     4     1     2     3     3     1     2     3\n4     4     1     3     4     1     2     1     1     4     2     5     2     1\n5     2     2     4     3     1     1     1     2     3     3     4     1     3\n6     4     3     4     4     1     1     1     4     6     5     4     4     5\n  Q21_4 Q21_5 Q21_6 Q22_1 Q22_2 Q22_3 Q22_4 Q22_5 Q23_1 Q23_2 Q23_3 Q23_4 Q23_5\n1    NA     5     3     3     2     1     2     3     4     5     3     3     2\n2    NA     2     2     2     3     4     5     5     5     5     4     3     3\n3     4     1     1     5     4     3     4     4     5     6     2     5     5\n4     4     1     1     2     5     1     6     1     6     6     2     5     6\n5     4     1     2     3     4     1     4     2     2     6     3     5     5\n6     4     1     2     2     2     3     4     3     4     5     2     3     3\n  Q23_6 Q23_7 Q23_8 Q24_1 Q24_2 Q24_3 Q24_4 Q24_5 Q25_1 Q25_2 Q25_3 Q25_4 Q25_5\n1    NA     3     3     3     3     3     3     3     3     3     3    NA     4\n2    NA     3     3     3     3     2     2     1     1     2     1    NA     1\n3     1     1     3     1     1     1     1     2     3     4     2     1     1\n4     1     3     1     1     6     2     1     1     4     2     6     1     6\n5     1     2     2     1     2     2     1     2     5     4     2     1     1\n6     1     2     4     4     5     1     2     6     6     3     5     1     3\n  Q26_1 Q26_2 Q27_1 Q27_2 SC0 SC1 SC2 SC3 SC4 SC5    id Attention\n1     3     3     3     3  19  11  19  14  82   0 15516        NA\n2     1     1     1     1  24   5  24  26  79   0 15516        NA\n3     3     1     4     1  26  13  26  23  70   0 17915        NA\n4     4     4     1     1  14  12  14  35  89   0 17648        NA\n5     5     2     5     5  16   9  16  29  76   0 17799        NA\n6     5     1     6     6  18  15  18  31  99   0 18003        NA\n\n\nWhat do these variables mean? Who does this?"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#ess-rescale-2",
-    "href": "lectures/unit4_data-wrangler/slides.html#ess-rescale-2",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "ESS Rescale",
-    "text": "ESS Rescale\nLet’s see what the differences are between these methods\n\nmod_sleep_data %&gt;% \n  select(contains(\"_total\")) %&gt;% \n  head()\n\n  ess_total ess_total2 ess_total3\n1        20         12         12\n2        20         12         12\n3        16          8          8\n4        20         12         12\n5        13          5          5\n6        22         14         14"
+    "objectID": "lectures/wk3_visualizations/slides.html#data-documentation",
+    "href": "lectures/wk3_visualizations/slides.html#data-documentation",
+    "title": "Figures: Using ggplot2",
+    "section": "Data Documentation",
+    "text": "Data Documentation\nIt is always important to have appropriate data documentation!\nIf you can’t look at your data and know what it means right away, you aren’t going to remember what it means later on.\nSleep Data Documentation - myCourses"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#rescaling-conclusion",
-    "href": "lectures/unit4_data-wrangler/slides.html#rescaling-conclusion",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "Rescaling Conclusion",
-    "text": "Rescaling Conclusion\nIt is good to always know what the original scaling needs to be (e.g., 1-4 or 0-3)\nExtremely important to visualize the data! ALWAYS VISUALIZE\nThere is also another way to allow for the sum() function in mutate(), but we’ll get to that later"
+    "objectID": "lectures/wk3_visualizations/slides.html#visualizing-demographics",
+    "href": "lectures/wk3_visualizations/slides.html#visualizing-demographics",
+    "title": "Figures: Using ggplot2",
+    "section": "Visualizing Demographics",
+    "text": "Visualizing Demographics\n“Q5” - What is your age in years? (open text)\nThis is a free text field…is that a good way to get quality data?\nLet’s see if everyone followed directions. Check the “structure” of the variable\n\n# Here we use str() to check structure of a variable\n  # Then we state the data and the variable, linked by the $\nstr(sleep_data$Q5)\n\n int [1:1520] 12 1 19 18 21 18 18 18 18 18 ..."
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#attention-checks",
-    "href": "lectures/unit4_data-wrangler/slides.html#attention-checks",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "Attention Checks",
-    "text": "Attention Checks"
+    "objectID": "lectures/wk3_visualizations/slides.html#giving-it-a-try",
+    "href": "lectures/wk3_visualizations/slides.html#giving-it-a-try",
+    "title": "Figures: Using ggplot2",
+    "section": "Giving it a try",
+    "text": "Giving it a try\nUse the ggplot cheatsheet to identify an appropriate way to visualize the data\n\nAdd some color\nUpdate the title and axes\n\nWhen you are done, post your creation here!"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#how-do-we-know-participants-were-paying-attention",
-    "href": "lectures/unit4_data-wrangler/slides.html#how-do-we-know-participants-were-paying-attention",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "How do we know participants were paying attention?",
-    "text": "How do we know participants were paying attention?\nYou may have noticed the attention variables throughout.\nThese are “attention checks” that researchers put in to…um….check the attention of the participants. It’s right in the name.\nFor this survey, they were nonsensical questions that were embedded to look like the others."
+    "objectID": "lectures/unit6_comparing-means/slides.html#reminders",
+    "href": "lectures/unit6_comparing-means/slides.html#reminders",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Reminders",
+    "text": "Reminders\n\n\nJournal Entries\nLab #1 - Due 10/6"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#using-recode",
-    "href": "lectures/unit4_data-wrangler/slides.html#using-recode",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "Using recode()",
-    "text": "Using recode()\nWe can combine our mutate() with this new function to produce the results we want\nNice website to explain the process\n\n\nWhen using recode(), we have to first tell it the variable we want to recode\nThe next arguments are how we want to recode the values\n\nrecode(variable_name, \"old_value\" = \"new_value\")"
+    "objectID": "lectures/unit6_comparing-means/slides.html#last-class",
+    "href": "lectures/unit6_comparing-means/slides.html#last-class",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Last Class",
+    "text": "Last Class\n\n\nDescriptive Statistics\nCorrelations\n\nProfessor made it complicated, but we got some pretty tables out of it with sjPlot()"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#putting-it-together",
-    "href": "lectures/unit4_data-wrangler/slides.html#putting-it-together",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "Putting it together",
-    "text": "Putting it together\nNow let’s put this into action by recoding the attention variables\nGetting a 1 indicates that they were paying attention\n\nmod_sleep_data %&gt;% \n  mutate(attention1r = recode(attention1, \n                              `1`=0, #NOTICE THE BACKTICKS\n                              `2`=0,\n                              `3`=0,\n                              `4`=0,\n                              `5`=1)) #be sure to finish the rest"
+    "objectID": "lectures/unit6_comparing-means/slides.html#today",
+    "href": "lectures/unit6_comparing-means/slides.html#today",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Today…",
+    "text": "Today…\n\nHypotheses & NHST\nComparing Two Means\n\nOne-Sample, Independent, Paired\n\nComparing MANY MUCH Means\n\n\n# File management\nlibrary(here)\n# just because\nlibrary(tidyverse)\n# Loading data\nlibrary(rio)\n# makes for easier to look at output\nlibrary(lsr)\n# cool visualizations\nlibrary(ggstatsplot)\n\n\n\n#Remove Scientific Notation \noptions(scipen=999)"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#create-composite-attention-score",
-    "href": "lectures/unit4_data-wrangler/slides.html#create-composite-attention-score",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "Create composite attention score",
-    "text": "Create composite attention score\nLet’s make a total score for the attention variable so that we can get rid of folks who are not paying attention\n\nmod_sleep_data &lt;- mod_sleep_data %&gt;% \n  mutate(att_sum = (attention1r + attention2r + attention3r +\n                      attention4r + attention5r))\n\nOR\n\nmod_sleep_data &lt;- mod_sleep_data %&gt;% \n  rowwise() %&gt;% \n  mutate(att_sum = sum(attention1r, attention2r, attention3r,\n                      attention4r, attention5r)) %&gt;% \n  ungroup()"
+    "objectID": "lectures/unit6_comparing-means/slides.html#hypothesis",
+    "href": "lectures/unit6_comparing-means/slides.html#hypothesis",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Hypothesis",
+    "text": "Hypothesis\nWhat is a hypothesis?\nIn statistics, a hypothesis is a statement about the population. It is usually a prediction that a parameter describing some characteristic of a variable takes a particular numerical value, or falls into a certain range of values."
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#visualize-1",
-    "href": "lectures/unit4_data-wrangler/slides.html#visualize-1",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "Visualize",
-    "text": "Visualize\n\nmod_sleep_data %&gt;% \n  ggplot(aes(att_sum)) + \n  geom_bar() + \n  geom_text(stat = \"count\", #Tells it to calculate the statistic\n            aes(label=after_stat(count))) + #Puts label of the count\n  theme_minimal() #or theme_bw"
+    "objectID": "lectures/unit6_comparing-means/slides.html#hypothesis-1",
+    "href": "lectures/unit6_comparing-means/slides.html#hypothesis-1",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Hypothesis",
+    "text": "Hypothesis\nFor example, dogs are characterized by their ability to read humans’ social cues, but it is (was) unknown whether that skill is biologically prepared. I might hypothesize that when a human points to a hidden treat, puppies do not understand that social cue and their performance on a related task is at-chance. We would call this a research hypothesis.\nThis could be represented numerically as, as a statistical hypothesis:\n\\[\\text{Proportion}_{\\text{Correct Performance}} = .50\\]"
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/slides.html#steps-to-do-if-we-have-time",
-    "href": "lectures/unit4_data-wrangler/slides.html#steps-to-do-if-we-have-time",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "Steps to do if we have time",
-    "text": "Steps to do if we have time\nCreate two new datasets labeled (1) “data_attend” and (2) “data_distract”. In each dataset have those who were paying attention in the “data_attend” and those who were not in the “data_distract”. Paying attention is operationalized as having a score of 5 on the aggregated variable.\nGet the sample size of each of these datasets (use Google to search for things like number of rows)\nWhat is the mean/average of ess_total in each of the samples?"
+    "objectID": "lectures/unit6_comparing-means/slides.html#the-null-hypothesis",
+    "href": "lectures/unit6_comparing-means/slides.html#the-null-hypothesis",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "The null hypothesis",
+    "text": "The null hypothesis\nIn Null Hypothesis Significance Testing, we… uh… test a null hypothesis.\nA null hypothesis ( \\(H_0\\) ) is a statement of no effect. The research hypothesis states that there is no relationship between X and Y, or our intervention has no effect on the outcome.\n\nThe statistical hypothesis is either that the population parameter is a single value, like 0, or that a range, like 0 or smaller."
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#the-alternative-hypothesis",
+    "href": "lectures/unit6_comparing-means/slides.html#the-alternative-hypothesis",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "The alternative hypothesis",
+    "text": "The alternative hypothesis\nAccording to probability theory, our sample space must cover all possible elementary events. Therefore, we create an alternative hypothesis ( \\(H_1\\) ) that is every possible event not represented by our null hypothesis.\n\n\n\\[H_0: \\mu = 4\\] \\[H_1: \\mu \\neq 4\\]\n\n\\[H_0: \\mu \\leq -7\\] \\[H_1: \\mu &gt; -7\\]"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#the-tortured-logic-of-nhst",
+    "href": "lectures/unit6_comparing-means/slides.html#the-tortured-logic-of-nhst",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "The tortured logic of NHST",
+    "text": "The tortured logic of NHST\nWe create two hypotheses, \\(H_0\\) and \\(H_1\\). Usually, we care about \\(H_1\\), not \\(H_0\\). In fact, what we really want to know is how likely \\(H_1\\), given our data.\n\\[P(H_1|Data)\\] Instead, we’re going to test our null hypothesis. Well, not really. We’re going to assume our null hypothesis is true, and test how likely we would be to get these data.\n\\[P(Data|H_0)\\]"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#example-1",
+    "href": "lectures/unit6_comparing-means/slides.html#example-1",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Example #1",
+    "text": "Example #1\nConsider the example of puppies’ abilities to read human social cues.\nLet \\(\\Pi\\) be the probability the puppy chooses the correct cup that a person points to.\nIn a task with two choices, an at-chance performance is \\(\\Pi = .5\\). This can be the null hypothesis because if this is true, than puppies would make the correct choice as often as they would make an incorrect choice.\nNote that the null hypothesis changes depending on the situation and research question."
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#example-1---hypotheses",
+    "href": "lectures/unit6_comparing-means/slides.html#example-1---hypotheses",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Example #1 - Hypotheses",
+    "text": "Example #1 - Hypotheses\nAs a dog-lover, you’re skeptical that reading human social cues is purely learned, and you have an alternative hypothesis that puppies will perform well over chance, thus having a probability of success on any given task greater than .5.\n\\[H_0: \\Pi = .5\\] \\[H_1: \\Pi \\neq .5\\]"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#example-1-1",
+    "href": "lectures/unit6_comparing-means/slides.html#example-1-1",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Example #1",
+    "text": "Example #1\nTo test the null hypothesis, you a single puppy and test them 12 times on a pointing task. The puppy makes the correct choice 10 times.\nThe question you’re going to ask is:\n\n\n“How likely is it that the puppy is successful 10 times out of 12, if the probability of success is .5?”\n\n\nThis is the essence of NHST.\nYou can already test this using what you know about the binomial distribution."
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#complications-with-the-binomial",
+    "href": "lectures/unit6_comparing-means/slides.html#complications-with-the-binomial",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Complications with the binomial",
+    "text": "Complications with the binomial\nThe likelihood of the puppy being successful 10 times out of 12 if the true probability of success is .5 is 0.02. That’s pretty low! That’s so low that we might begin to suspect that the true probability is not .5.\nBut there’s a problem with this example. The real study used a sample of many puppies (&gt;300), and the average number of correct trials per puppy was about 8.33. But the binomial won’t allow us to calculate the probability of fractional successes!\nWhat we really want is not to assess 10 out of 12 times, but a proportion, like .694. How many different proportions could result puppy to puppy?"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#our-statistic-is-usually-continuous",
+    "href": "lectures/unit6_comparing-means/slides.html#our-statistic-is-usually-continuous",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Our statistic is usually continuous",
+    "text": "Our statistic is usually continuous\nWhen we estimate a statistic for our sample – like the proportion of puppy success, or the average IQ score, or the relationship between age in months and second attending to a new object – that statistic is nearly always continuous. So we have to assess the probability of that statistic using a probability distribution for continuous variables, like the normal distribution. (Or t, or F, or \\(\\chi^2\\) ).\nWhat is the probability of any value in a continuous distribution?"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#what-are-the-steps-of-nhst",
+    "href": "lectures/unit6_comparing-means/slides.html#what-are-the-steps-of-nhst",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "What are the steps of NHST?",
+    "text": "What are the steps of NHST?\n\n\n\nDefine null and alternative hypothesis.\nSet and justify alpha level.\nDetermine which sampling distribution ( \\(z\\), \\(t\\), or \\(\\chi^2\\) for now)\nCalculate parameters of your sampling distribution under the null.\n\n\nIf \\(z\\), calculate \\(\\mu\\) and \\(\\sigma_M\\)\n\n\n\nCalculate test statistic under the null.\n\n\nIf \\(z\\), \\(\\frac{\\bar{X} - \\mu}{\\sigma_M}\\)\n\n\nCalculate probability of that test statistic or more extreme under the null, and compare to alpha."
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#but-firstdegrees-of-freedom",
+    "href": "lectures/unit6_comparing-means/slides.html#but-firstdegrees-of-freedom",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "but first…Degrees of Freedom",
+    "text": "but first…Degrees of Freedom\nDegrees of Freedom: the number of values in the final calculation of a statistic that are free to vary\nExample: The mean of 3 numbers. First two can be any number, but the final number has to bring the calculation to the correct point.\nExample 2: Drawing a triangle"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#one-sample-t-test",
+    "href": "lectures/unit6_comparing-means/slides.html#one-sample-t-test",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "One Sample t-test",
+    "text": "One Sample t-test\nt-tests were developed by William Sealy Gosset, who was a chemist studying the grains used in making beer. (He worked for Guinness.)\n\nSpecifically, he wanted to know whether particular strains of grain made better or worse beer than the standard.\nHe developed the t-test, to test small samples of beer against a population with an unknown standard deviation.\n\nProbably had input from Karl Pearson and Ronald Fisher\n\nPublished this as “Student” because Guinness didn’t want these tests tied to the production of beer."
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#example",
+    "href": "lectures/unit6_comparing-means/slides.html#example",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Example",
+    "text": "Example\nFor examples today, we will use this dataset:\n\n\n100 students from New York\n100 students from New Mexico\n\n\n\nstate_school &lt;- import(\"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/NM-NY_CAS.csv\") %&gt;% \n  #make the score a number\n  mutate(Score_in_memory_game = as.numeric(Score_in_memory_game))"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#cohens-d",
+    "href": "lectures/unit6_comparing-means/slides.html#cohens-d",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Cohen’s D",
+    "text": "Cohen’s D\nCohen suggested one of the most common effect size estimates—the standardized mean difference—useful when comparing a group mean to a population mean or two group means to each other.\n\\[\\delta = \\frac{\\mu_1 - \\mu_0}{\\sigma} \\approx d = \\frac{\\bar{X}-\\mu}{\\hat{\\sigma}}\\]\nCohen’s d is in the standard deviation (Z) metric."
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#students-t-test",
+    "href": "lectures/unit6_comparing-means/slides.html#students-t-test",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Student’s t-test",
+    "text": "Student’s t-test\n\\[ H_0 : \\mu_1 = \\mu_2  \\ \\  H_1 : \\mu_1 \\neq \\mu_2 \\]"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#welchs-t-test",
+    "href": "lectures/unit6_comparing-means/slides.html#welchs-t-test",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Welch’s t-test",
+    "text": "Welch’s t-test\n\\[\nH_0 : \\mu_1 = \\mu_2  \\ \\  H_1 : \\mu_1 \\neq \\mu_2\n\\]"
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/slides.html#cool-visualizations",
+    "href": "lectures/unit6_comparing-means/slides.html#cool-visualizations",
+    "title": "Unit 6 - Hypotheses & Comparing Means",
+    "section": "Cool Visualizations",
+    "text": "Cool Visualizations\nThe library ggstatsplot has some wonderful visualizations of various tests\n\n\nCode\nggstatsplot::ggbetweenstats(\n  data  = state_school,\n  x     = Region,\n  y     = Sleep_Hours_Schoolnight,\n  title = \"Distribution of hours of sleep across Region\"\n)"
   }
 ]
