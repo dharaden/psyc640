@@ -1,0 +1,195 @@
+---
+title: "Unit 6 (pt. 2) - Comparing Means"
+subtitle: "PSYC 640 - Fall 2024"
+author: "Dustin Haraden, PhD"
+format: 
+  revealjs:
+    multiplex: true
+    scrollable: true
+    slide-number: true
+    incremental: false
+    touch: true
+    code-overflow: wrap
+    theme: blood
+execute: 
+  echo: true
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = F}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```
+
+## Reminders
+
+::: nonincremental
+-   Journal Entries
+
+-   Lab #1 - Due 10/6
+:::
+
+------------------------------------------------------------------------
+
+## Last Class
+
+::: nonincremental
+-   Lots of professor talking
+-   Intro to NHST
+-   Different t-tests
+-   More professor talking
+:::
+
+------------------------------------------------------------------------
+
+## Today...
+
+-   Comparing Two Means
+
+    -   But we get to try it out
+
+-   Comparing MANY MUCH Means -ANOVA!
+
+```{r, results = 'hide', message = F, warning = F}
+# File management
+library(here)
+# just because
+library(tidyverse)
+# makes for easier to look at output
+library(lsr)
+# cool visualizations
+library(ggstatsplot)
+# Nice names
+library(janitor)
+
+
+
+#Remove Scientific Notation 
+options(scipen=999)
+```
+
+------------------------------------------------------------------------
+
+## Comparing Means
+
+Converting to a t-score and checking against the t-distribution
+
+-   One-Sample
+
+-   Independent Sample
+
+-   Paired Sample
+
+------------------------------------------------------------------------
+
+## New Data for Today
+
+Dataset collected over 1,000 Americans in September 2017. Funded by [Cards Against Humanity](https://www.kaggle.com/datasets/cardsagainsthumanity/pulse-of-the-nation/data){target="_blank"}.
+
+```{r}
+#import data - Your path may be different
+ghost_data <- read_csv(here("lectures", "data", "ghosts.csv"))
+```
+
+# View Data
+
+woops...sorry
+
+------------------------------------------------------------------------
+
+## Import again
+
+Since there are 2 header rows, we need to only include the first one. To do that, we have to "skip" the first two and then give the names of the columns back to the data.
+
+We also need to specify what the missing values are. Typically we have been working with `NA` which is more traditional. However, missing values in this dataset are `DK/REF` and a blank. This will need to be specified in the import function ([used this website](https://epirhandbook.com/new_pages/importing.html#manage-a-second-header-row){target="_blank"})
+
+```{r}
+# get the names of your columns which is the first row
+ghost_data_names <- read_csv(here("lectures", "data", "ghosts.csv")) %>% 
+  names()
+
+# import second time; skip row 2, and assign column names to argument col_names =
+ghost_data <- read_csv(here("lectures", "data", "ghosts.csv"),
+                       skip = 2,
+                       col_names = ghost_data_names,
+                       na = c("DK/REF", "", " ")
+                      ) %>% 
+  clean_names()
+```
+
+## Study Design
+
+What type of study design is this?
+
+------------------------------------------------------------------------
+
+### Independent t-test
+
+Income by Ghost Belief
+
+```{r}
+t.test(
+  formula = income ~ ghosts, 
+  data = ghost_data, 
+  var.equal = FALSE
+)
+```
+
+------------------------------------------------------------------------
+
+### Student's t-test: Write-up
+
+The mean amount of sleep in New Mexico for youth was 6.989 (SD = 1.379), while the mean in New York was 6.994 (SD = 1.512). A Student's independent samples t-test showed that there was not a significant mean difference (*t*(180)=-0.024, *p*=.981, $CI_{95}$=\[-0.43, 0.42\], *d*=.004). This suggests that there is no difference between youth in NM and NY on amount of sleep on school nights.
+
+------------------------------------------------------------------------
+
+## Welch's t-test
+
+$$
+H_0 : \mu_1 = \mu_2  \ \  H_1 : \mu_1 \neq \mu_2
+$$
+
+![](/images/welch_H.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Welch's t-test: Calculate SE
+
+Since the variances are not equal, we have to estimate the SE differently
+
+$$ SE(\bar{X_1} - \bar{X_2}) = \sqrt{\frac{\hat{\sigma_1^2}}{N_1} + \frac{\hat{\sigma_2^2}}{N_2}} $$
+
+Degrees of Freedom is also very different:
+
+![](/images/welch_df.png){fig-align="center" width="380"}
+
+------------------------------------------------------------------------
+
+### Welch's t-test: In R (classic)
+
+Let's try it out using the traditional `t.test()` function...turns out it is pretty straightforward
+
+```{r}
+t.test(
+  formula = Sleep_Hours_Schoolnight ~ Region, 
+  data = state_school, 
+  var.equal = FALSE
+)
+```
+
+------------------------------------------------------------------------
+
+## Cool Visualizations
+
+The library [ggstatsplot](https://indrajeetpatil.github.io/ggstatsplot/) has some wonderful visualizations of various tests
+
+```{r}
+#| code-fold: true
+ggstatsplot::ggbetweenstats(
+  data  = state_school,
+  x     = Region,
+  y     = Sleep_Hours_Schoolnight,
+  title = "Distribution of hours of sleep across Region"
+)
+```

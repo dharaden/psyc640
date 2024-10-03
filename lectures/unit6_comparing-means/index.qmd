@@ -4,8 +4,17 @@ title: "Unit 6 - Hypotheses and Comparing Means"
 
 > This unit focuses on comparing means of various groups. Traditionally this is done through the t-test and ANOVA. Here we will learn how to implement them in R and then figure out how to interpret and report!
 
-Code File Template
+[Code File Template](comparing_means.Rmd)
 
 [Full Screen](slides-speaker.html)
 
+```{=html}
 <iframe class="slide-deck" src="slides-speaker.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+```
+
+
+[Full Screen](slides2-speaker.html)
+
+```{=html}
+<iframe class="slide-deck" src="slides2-speaker.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+```
