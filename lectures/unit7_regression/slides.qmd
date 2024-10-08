@@ -58,6 +58,8 @@ library(rio)
 library(emmeans)
 # Pretty Tables
 library(kableExtra)
+# Pretty variable names
+library(janitor)
 
 #Remove Scientific Notation 
 options(scipen=999)
@@ -134,11 +136,25 @@ ghost_data <- read_csv(here("lectures", "data", "ghosts.csv"),
 
 ------------------------------------------------------------------------
 
+## Running the Test
+
+Let's take a look at Income by Political Affiliation
+
+```{r}
+aov1 <- aov(income ~ political_affiliation, 
+            data = ghost_data)
+
+summary(aov1)
+```
+
+------------------------------------------------------------------------
+
 ## Post-hoc tests
 
 ```{r}
 #library(emmeans)
-emmeans(fit_1, pairwise ~ Location, adjust = "none")
+emmeans(aov1, pairwise ~ political_affiliation, 
+        adjust = "none")
 ```
 
 ------------------------------------------------------------------------
