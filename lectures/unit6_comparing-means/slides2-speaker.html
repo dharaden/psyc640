@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Dustin Haraden, PhD">
-  <title>PSYC 640 2024 – Unit 4 - Data Wrangling</title>
+  <title>PSYC 640 2024 – Unit 6 (pt.&nbsp;2) - Comparing Means</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -392,7 +392,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Unit 4 - Data Wrangling</h1>
+  <h1 class="title">Unit 6 (pt.&nbsp;2) - Comparing Means</h1>
   <p class="subtitle">PSYC 640 - Fall 2024</p>
 
 <div class="quarto-title-authors">
@@ -409,7 +409,7 @@ Dustin Haraden, PhD
 <div>
 <ul>
 <li><p>Journal Entries</p></li>
-<li><p>Reverse Results - Due 9/17</p></li>
+<li><p>Lab #1 - Due 10/6</p></li>
 </ul>
 </div>
 </section>
@@ -417,386 +417,161 @@ Dustin Haraden, PhD
 <h2>Last Class</h2>
 <div>
 <ul>
-<li>Entry into the tidyverse with dplyr</li>
+<li>Lots of professor talking</li>
+<li>Intro to NHST</li>
+<li>Different t-tests</li>
+<li>More professor talking</li>
 </ul>
 </div>
 </section>
 <section id="today" class="slide level2">
 <h2>Today…</h2>
-<p>Continuing on this trend to get more comfortable with all that <code>dplyr</code> can do!</p>
-<p><a href="https://p4a.jhelvy.com/data-wrangling" target="_blank">This is a nice website that walks through a lot of this as well</a></p>
+<ul>
+<li><p>Comparing Two Means</p>
+<ul>
+<li>But we get to try it out</li>
+</ul></li>
+<li><p>Comparing MANY MUCH Means -ANOVA!</p></li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># File management</span></span>
 <span id="cb1-2"><a></a><span class="fu">library</span>(here)</span>
-<span id="cb1-3"><a></a><span class="co"># for dplyr, ggplot2</span></span>
+<span id="cb1-3"><a></a><span class="co"># just because</span></span>
 <span id="cb1-4"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-5"><a></a><span class="co">#Loading data</span></span>
-<span id="cb1-6"><a></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-7"><a></a></span>
-<span id="cb1-8"><a></a><span class="co">#Remove Scientific Notation </span></span>
-<span id="cb1-9"><a></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a></a><span class="co"># makes for easier to look at output</span></span>
+<span id="cb1-6"><a></a><span class="fu">library</span>(lsr)</span>
+<span id="cb1-7"><a></a><span class="co"># cool visualizations</span></span>
+<span id="cb1-8"><a></a><span class="fu">library</span>(ggstatsplot)</span>
+<span id="cb1-9"><a></a><span class="co"># Nice names</span></span>
+<span id="cb1-10"><a></a><span class="fu">library</span>(janitor)</span>
+<span id="cb1-11"><a></a></span>
+<span id="cb1-12"><a></a></span>
+<span id="cb1-13"><a></a></span>
+<span id="cb1-14"><a></a><span class="co">#Remove Scientific Notation </span></span>
+<span id="cb1-15"><a></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="but-first" class="slide level2">
-<h2>But first…</h2>
-<p>We need to revisit how to read the <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf" target="_blank">ggplot2 cheatsheet</a>!</p>
-<p>A lot of cheatsheets will have something that looks like this:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>c <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(hwy))</span>
-<span id="cb2-2"><a></a></span>
-<span id="cb2-3"><a></a><span class="do">## Then later on it will say</span></span>
-<span id="cb2-4"><a></a></span>
-<span id="cb2-5"><a></a>c <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
-<section id="what-is-c" class="slide level2">
-<h2>WHAT IS <code>c</code>?!</h2>
-<p><code>c</code> is just an object that is referring to the first line that we have in a ggplot function</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>c <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(hwy))</span>
-<span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a><span class="do">## So this...</span></span>
-<span id="cb3-4"><a></a>c <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>)</span>
-<span id="cb3-5"><a></a></span>
-<span id="cb3-6"><a></a><span class="do">## Is the same as this...</span></span>
-<span id="cb3-7"><a></a>mpg <span class="sc">%&gt;%</span> </span>
-<span id="cb3-8"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(hwy)) <span class="sc">+</span> </span>
-<span id="cb3-9"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="back-to-regular-scheduled-programming" class="slide level2">
-<h2>Back to regular scheduled programming</h2>
-<p>Let’s first start by opening our <strong><code>Project</code></strong></p>
-<p>Then, create a new Notebook/Markdown Document that we will use for today</p>
-<p>Setup the libraries and bring in the data</p>
+<section id="comparing-means" class="slide level2">
+<h2>Comparing Means</h2>
+<p>Converting to a t-score and checking against the t-distribution</p>
 <ul>
-<li>We will use the “Sleep Data” file</li>
+<li><p>One-Sample</p></li>
+<li><p>Independent Sample</p></li>
+<li><p>Paired Sample</p></li>
 </ul>
+</section>
+<section id="new-data-for-today" class="slide level2">
+<h2>New Data for Today</h2>
+<p>Dataset collected over 1,000 Americans in September 2017. Funded by <a href="https://www.kaggle.com/datasets/cardsagainsthumanity/pulse-of-the-nation/data" target="_blank">Cards Against Humanity</a>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co">#import sleep data - Your path may be different</span></span>
-<span id="cb4-2"><a></a>sleep_data <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"lectures"</span>, <span class="st">"data"</span>, <span class="st">"Sleep_Data.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co">#import data - Your path may be different</span></span>
+<span id="cb2-2"><a></a>ghost_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"lectures"</span>, <span class="st">"data"</span>, <span class="st">"ghosts.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section>
-<section id="select" class="title-slide slide level1 center">
-<h1>select()</h1>
-
-<img data-src="../../images/select().png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="variable-renaming" class="slide level2">
-<h2>Variable Renaming</h2>
-<p>Ooof…These variable names look terrible! How do we update those? Our brains would break having to remember how to connect them and having to reference another document.&nbsp;</p>
-<p>First, let’s get rid of the variables that we don’t need for the moment:&nbsp;</p>
-<ul>
-<li><p>Use <code>select()</code> to remove the following variables:&nbsp;</p>
+<section id="view-data" class="title-slide slide level1 center">
+<h1>View Data</h1>
+<p>woops…sorry</p>
+</section>
+<section id="import-again" class="slide level2">
+<h2>Import again</h2>
+<p>Since there are 2 header rows, we need to only include the first one. To do that, we have to “skip” the first two and then give the names of the columns back to the data.</p>
+<p>We also need to specify what the missing values are. Typically we have been working with <code>NA</code> which is more traditional. However, missing values in this dataset are <code>DK/REF</code> and a blank. This will need to be specified in the import function (<a href="https://epirhandbook.com/new_pages/importing.html#manage-a-second-header-row" target="_blank">used this website</a>)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>sleep_data <span class="ot">&lt;-</span> sleep_data <span class="sc">%&gt;%</span> </span>
-<span id="cb5-2"><a></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="st">'StartDate'</span>, <span class="st">'EndDate'</span>, <span class="st">'Status'</span>, <span class="st">'Progress'</span>, </span>
-<span id="cb5-3"><a></a>  <span class="st">'Duration__in_seconds_'</span>, <span class="st">'Finished'</span>, <span class="st">'RecordedDate'</span>,</span>
-<span id="cb5-4"><a></a>  <span class="st">'DistributionChannel'</span>, <span class="st">'UserLanguage'</span>, <span class="st">'SC0'</span>, <span class="st">'SC1'</span>,</span>
-<span id="cb5-5"><a></a>  <span class="st">'SC2'</span>, <span class="st">'SC3'</span>, <span class="st">'SC4'</span>, <span class="st">'SC5'</span>, <span class="st">'Attention'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-</ul>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># get the names of your columns which is the first row</span></span>
+<span id="cb3-2"><a></a>ghost_data_names <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"lectures"</span>, <span class="st">"data"</span>, <span class="st">"ghosts.csv"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-3"><a></a>  <span class="fu">names</span>()</span>
+<span id="cb3-4"><a></a></span>
+<span id="cb3-5"><a></a><span class="co"># import second time; skip row 2, and assign column names to argument col_names =</span></span>
+<span id="cb3-6"><a></a>ghost_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"lectures"</span>, <span class="st">"data"</span>, <span class="st">"ghosts.csv"</span>),</span>
+<span id="cb3-7"><a></a>                       <span class="at">skip =</span> <span class="dv">2</span>,</span>
+<span id="cb3-8"><a></a>                       <span class="at">col_names =</span> ghost_data_names,</span>
+<span id="cb3-9"><a></a>                       <span class="at">na =</span> <span class="fu">c</span>(<span class="st">"DK/REF"</span>, <span class="st">""</span>, <span class="st">" "</span>)</span>
+<span id="cb3-10"><a></a>                      ) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-11"><a></a>  <span class="fu">clean_names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="study-design" class="slide level2">
+<h2>Study Design</h2>
+<p>What type of study design is this?</p>
 </section>
 <section class="slide level2">
 
-<p>Now we can update the names</p>
-<ul>
-<li><p>Using the <code>names()</code> command, we can rename <strong><em>all</em></strong> columns in the file&nbsp;</p></li>
-<li><p>Here is a list so that it makes it easier to do instead of having to type everything out…that would just be cruel</p></li>
-</ul>
+<h3 id="independent-t-test">Independent t-test</h3>
+<p>Income by Ghost Belief</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">names</span>(sleep_data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'age'</span>, <span class="st">'gender'</span>, <span class="st">'roommate'</span>, <span class="st">'other_sleep'</span>, <span class="st">'bed_read'</span>, <span class="st">'bed_study'</span>, <span class="st">'bed_hw'</span>, <span class="st">'attention1'</span>, <span class="st">'bed_internet'</span>,</span>
-<span id="cb6-2"><a></a>                       <span class="st">'bed_tv'</span>, <span class="st">'bed_eat'</span>, <span class="st">'bed_friends'</span>, <span class="st">'bed_videogame'</span>, <span class="st">'bed_readp'</span>, <span class="st">'BL_1'</span>, <span class="st">'BL_2'</span>, <span class="st">'BL_3'</span>, <span class="st">'BL_4'</span>,</span>
-<span id="cb6-3"><a></a>                       <span class="st">'BL_5'</span>, <span class="st">'attention2'</span>, <span class="st">'BL_6'</span>, <span class="st">'BL_7'</span>, <span class="st">'sleepsat1'</span>, <span class="st">'sleepsat2'</span>, <span class="st">'sleepsat3'</span>, <span class="st">'sleepsat4'</span>, <span class="st">'sleepsat5'</span>,</span>
-<span id="cb6-4"><a></a>                       <span class="st">'sleepsat6'</span>, <span class="st">'ESS1'</span>, <span class="st">'ESS2'</span>, <span class="st">'ESS3'</span>, <span class="st">'ESS4'</span>, <span class="st">'ESS5'</span>, <span class="st">'ESS6'</span>, <span class="st">'ESS7'</span>, <span class="st">'ESS8'</span>, <span class="st">'ESS00'</span>, <span class="st">'ashs1'</span>, <span class="st">'ashs2'</span>, </span>
-<span id="cb6-5"><a></a>                       <span class="st">'ashs3'</span>, <span class="st">'ashs4'</span>, <span class="st">'ashs5'</span>, <span class="st">'attention3'</span>, <span class="st">'ashs6'</span>, <span class="st">'ashs7'</span>, <span class="st">'ashs8'</span>, <span class="st">'ashs9'</span>, <span class="st">'ashs10'</span>, <span class="st">'ashs11'</span>, </span>
-<span id="cb6-6"><a></a>                       <span class="st">'ashs12'</span>, <span class="st">'ashs13'</span>, <span class="st">'ashs14'</span>, <span class="st">'ashs15'</span>, <span class="st">'ashs16'</span>, <span class="st">'ashs17'</span>, <span class="st">'attention4'</span>, <span class="st">'ashs18'</span>, <span class="st">'ashs19'</span>, </span>
-<span id="cb6-7"><a></a>                       <span class="st">'ashs20'</span>, <span class="st">'ashs21'</span>, <span class="st">'ashs22'</span>, <span class="st">'ashs23'</span>, <span class="st">'ashs24'</span>, <span class="st">'ashs26'</span>, <span class="st">'ashs27'</span>, <span class="st">'ashs28'</span>, <span class="st">'attention5'</span>, </span>
-<span id="cb6-8"><a></a>                       <span class="st">'ashs29'</span>, <span class="st">'ashs30'</span>, <span class="st">'ashs31'</span>, <span class="st">'ashs32'</span>, <span class="st">'ashs33'</span>, <span class="st">'id'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section></section>
-<section>
-<section id="filter" class="title-slide slide level1 center">
-<h1>filter()</h1>
-
-<img data-src="../../images/filter().png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="extract-rows" class="slide level2">
-<h2>Extract Rows</h2>
-<p>The ‘filter()’ function is used to subset observations based on their values.</p>
-<p>The result of filtering is a data frame with the same number of columns as before but fewer rows.</p>
-<p>The first argument is data and subsequent arguments are logical expressions that tell you which observations to retain in the data frame.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">filter</span>(starwars, hair_color <span class="sc">==</span> <span class="st">"none"</span> <span class="sc">|</span> eye_color <span class="sc">==</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">t.test</span>(</span>
+<span id="cb4-2"><a></a>  <span class="at">formula =</span> income <span class="sc">~</span> ghosts, </span>
+<span id="cb4-3"><a></a>  <span class="at">data =</span> ghost_data, </span>
+<span id="cb4-4"><a></a>  <span class="at">var.equal =</span> <span class="cn">FALSE</span></span>
+<span id="cb4-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 39 × 14
-   name     height  mass hair_color skin_color eye_color birth_year sex   gender
-   &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
- 1 Darth V…    202   136 none       white      yellow          41.9 male  mascu…
- 2 Greedo      173    74 &lt;NA&gt;       green      black           44   male  mascu…
- 3 IG-88       200   140 none       metal      red             15   none  mascu…
- 4 Bossk       190   113 none       green      red             53   male  mascu…
- 5 Lobot       175    79 none       light      blue            37   male  mascu…
- 6 Ackbar      180    83 none       brown mot… orange          41   male  mascu…
- 7 Nien Nu…    160    68 none       grey       black           NA   male  mascu…
- 8 Nute Gu…    191    90 none       mottled g… red             NA   male  mascu…
- 9 Jar Jar…    196    66 none       orange     orange          52   male  mascu…
-10 Roos Ta…    224    82 none       grey       orange          NA   male  mascu…
-# ℹ 29 more rows
-# ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
-#   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
-</div>
-</div>
-</section>
-<section id="filter-observations" class="slide level2">
-<h2>Filter observations</h2>
-<p>We can now generate a subset of observations based on a particular value</p>
-<p>Since the <code>age</code> variable has been giving us some trouble, let’s filter based on that variable to only include appropriate ages for “college aged” participants</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># Assigning it to a new variable</span></span>
-<span id="cb9-2"><a></a>mod_sleep_data <span class="ot">&lt;-</span> sleep_data <span class="sc">%&gt;%</span> </span>
-<span id="cb9-3"><a></a>  <span class="fu">filter</span>(age <span class="sc">&gt;=</span> <span class="dv">17</span>, age <span class="sc">&lt;=</span> <span class="dv">25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="filter-obs.---check" class="slide level2">
-<h2>Filter Obs. - Check</h2>
-<p>Generating a bar chart to see if it worked out!</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>mod_sleep_data <span class="sc">%&gt;%</span> </span>
-<span id="cb10-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(age)) <span class="sc">+</span> </span>
-<span id="cb10-3"><a></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>
+    Welch Two Sample t-test
 
+data:  income by ghosts
+t = 0.28606, df = 337.95, p-value = 0.775
+alternative hypothesis: true difference in means between group No and group Yes is not equal to 0
+95 percent confidence interval:
+ -11727.68  15719.22
+sample estimates:
+ mean in group No mean in group Yes 
+         89131.87          87136.09 </code></pre>
 </div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section></section>
-<section>
-<section id="mutate" class="title-slide slide level1 center">
-<h1>mutate()</h1>
-
-<img data-src="../../images/mutate().png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="compute-new-variable" class="slide level2">
-<h2>Compute new variable</h2>
-<p>We often need to make a sum/mean score for a variable of interest</p>
-<p>The <code>mutate()</code> function is most commonly used to add new columns to your data frame that are functions of existing columns.</p>
-<p><code>mutate()</code> requires data as its first argument, followed by a set of expressions defining new columns.</p>
-<ul>
-<li><strong>Note</strong>: New variables are automatically added at the end of the data frame (scroll to the right to see them)</li>
-</ul>
-<p>For example, in the <code>mod_sleep_data</code>, we have the <a href="https://nasemso.org/wp-content/uploads/neuro-epworthsleepscale.pdf" target="_blank">Epworth Sleepiness Scale</a></p>
-<p>Take a look at the scoring of the ESS and compute the total score labelled <code>ess_total</code></p>
-</section>
-<section id="ess_total" class="slide level2">
-<h2><code>ess_total</code></h2>
-<p>It is a sum score with a scale of 0 - 24</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="co"># We will assign it to the same dataset</span></span>
-<span id="cb11-2"><a></a>mod_sleep_data <span class="ot">&lt;-</span> mod_sleep_data <span class="sc">%&gt;%</span> </span>
-<span id="cb11-3"><a></a>  <span class="fu">mutate</span>(<span class="at">ess_total =</span> ESS1 <span class="sc">+</span> ESS2 <span class="sc">+</span> ESS3 <span class="sc">+</span> </span>
-<span id="cb11-4"><a></a>           ESS4 <span class="sc">+</span> ESS5 <span class="sc">+</span> ESS6 <span class="sc">+</span> ESS7 <span class="sc">+</span> ESS8)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="visualize" class="slide level2">
-<h2>Visualize</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>mod_sleep_data <span class="sc">%&gt;%</span> </span>
-<span id="cb12-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(ess_total)) <span class="sc">+</span> </span>
-<span id="cb12-3"><a></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"><div>
-<ul>
-<li class="fragment">But why are there some above 24??</li>
-</ul>
-</div>
-</section>
-<section id="ess-variables" class="slide level2">
-<h2>ESS Variables</h2>
-<p>The original items are supposed to be on a 0-3 scale</p>
-<p>The data that we have are on a 1-4 scale</p>
-<p><strong><em>What should we do?!</em></strong></p>
-</section>
-<section id="ess-rescale" class="slide level2">
-<h2>ESS Rescale</h2>
-<p>We could subtract 1 from each item before creating another sum</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>mod_sleep_data <span class="ot">&lt;-</span> mod_sleep_data <span class="sc">%&gt;%</span> </span>
-<span id="cb13-2"><a></a>  <span class="fu">mutate</span>(<span class="at">ESS1m1 =</span> ESS1 <span class="sc">-</span> <span class="dv">1</span>, </span>
-<span id="cb13-3"><a></a>         <span class="at">ESS2m1 =</span> ESS2 <span class="sc">-</span> <span class="dv">1</span>,</span>
-<span id="cb13-4"><a></a>         <span class="at">ESS3m1 =</span> ESS3 <span class="sc">-</span> <span class="dv">1</span>,</span>
-<span id="cb13-5"><a></a>         <span class="at">ESS4m1 =</span> ESS4 <span class="sc">-</span> <span class="dv">1</span>,</span>
-<span id="cb13-6"><a></a>         <span class="at">ESS5m1 =</span> ESS5 <span class="sc">-</span> <span class="dv">1</span>,</span>
-<span id="cb13-7"><a></a>         <span class="at">ESS6m1 =</span> ESS6 <span class="sc">-</span> <span class="dv">1</span>,</span>
-<span id="cb13-8"><a></a>         <span class="at">ESS7m1 =</span> ESS7 <span class="sc">-</span> <span class="dv">1</span>, </span>
-<span id="cb13-9"><a></a>         <span class="at">ESS8m1 =</span> ESS8 <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-10"><a></a>  <span class="fu">mutate</span>(<span class="at">ess_total2 =</span> ESS1m1 <span class="sc">+</span> ESS2m1 <span class="sc">+</span> ESS3m1 <span class="sc">+</span> </span>
-<span id="cb13-11"><a></a>           ESS4m1 <span class="sc">+</span> ESS5m1 <span class="sc">+</span> ESS6m1 <span class="sc">+</span> ESS7m1 <span class="sc">+</span> ESS8m1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="ess-rescale-1" class="slide level2">
-<h2>ESS Rescale</h2>
-<p>Or we could combine all the <code>1</code>’s that we are subtracting and just take that from the total score</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>mod_sleep_data <span class="ot">&lt;-</span> mod_sleep_data <span class="sc">%&gt;%</span> </span>
-<span id="cb14-2"><a></a>  <span class="fu">mutate</span>(<span class="at">ess_total =</span> ESS1 <span class="sc">+</span> ESS2 <span class="sc">+</span> ESS3 <span class="sc">+</span> </span>
-<span id="cb14-3"><a></a>           ESS4 <span class="sc">+</span> ESS5 <span class="sc">+</span> ESS6 <span class="sc">+</span> ESS7 <span class="sc">+</span> ESS8) <span class="sc">%&gt;%</span> </span>
-<span id="cb14-4"><a></a>  <span class="fu">mutate</span>(<span class="at">ess_total3 =</span> ess_total<span class="dv">-8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="ess-rescale-2" class="slide level2">
-<h2>ESS Rescale</h2>
-<p>Let’s see what the differences are between these methods</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>mod_sleep_data <span class="sc">%&gt;%</span> </span>
-<span id="cb15-2"><a></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">"_total"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb15-3"><a></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>ghost_data <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a></a>  <span class="fu">group_by</span>(ghosts) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(income, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb6-4"><a></a>            <span class="at">sd =</span> <span class="fu">sd</span>(income, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  ess_total ess_total2 ess_total3
-1        20         12         12
-2        20         12         12
-3        16          8          8
-4        20         12         12
-5        13          5          5
-6        22         14         14</code></pre>
+<pre><code># A tibble: 3 × 3
+  ghosts    mean      sd
+  &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+1 No      89132.  68316.
+2 Yes     87136.  73055.
+3 &lt;NA&gt;   128143. 120514.</code></pre>
 </div>
 </div>
-</section>
-<section id="rescaling-conclusion" class="slide level2">
-<h2>Rescaling Conclusion</h2>
-<p>It is good to always know what the original scaling needs to be (e.g., 1-4 or 0-3)</p>
-<p>Extremely important to visualize the data! <strong>ALWAYS VISUALIZE</strong></p>
-<p>There is also another way to allow for the <code>sum()</code> function in <code>mutate()</code>, but we’ll get to that later</p>
-</section>
-<section id="attention-checks" class="slide level2">
-<h2>Attention Checks</h2>
-
-<img data-src="../../images/attention.webp" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="how-do-we-know-participants-were-paying-attention" class="slide level2">
-<h2>How do we know participants were paying attention?</h2>
-<p>You may have noticed the <code>attention</code> variables throughout.</p>
-<p>These are “attention checks” that researchers put in to…um….check the attention of the participants. It’s right in the name.</p>
-<p>For this survey, they were nonsensical questions that were embedded to look like the others.</p>
 </section>
 <section class="slide level2">
 
-<table class="caption-top" style="width:99%;">
-<colgroup>
-<col style="width: 10%">
-<col style="width: 67%">
-<col style="width: 21%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Var Name</th>
-<th>Question</th>
-<th>Responses</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>attention1</td>
-<td><em>How often do you breathe in bed?</em></td>
-<td>1-5 (Never to Always)</td>
-</tr>
-<tr class="even">
-<td>attention2</td>
-<td><em>How often have you used a screen device to steal over a million dollars?</em></td>
-<td>1-5 (Never to Every Day)</td>
-</tr>
-<tr class="odd">
-<td>attention3</td>
-<td><em>After 6:00 in the evening…Choose 60%</em></td>
-<td><p>1-6 (Never to Always)</p>
-<p>4 = 60%</p></td>
-</tr>
-<tr class="even">
-<td>attention4</td>
-<td><em>I go to bed and know that a magical train will literally take me to see Santa.</em></td>
-<td>1-6 (Never to Always)</td>
-</tr>
-<tr class="odd">
-<td>attention5</td>
-<td><em>I have gone 30 days or more without sleeping at all.</em></td>
-<td>1-6 (Never to Always)</td>
-</tr>
-</tbody>
-</table>
-</section></section>
-<section>
-<section id="recoding-variables" class="title-slide slide level1 center">
-<h1>Recoding Variables</h1>
+<h3 id="independent-t-test-lsr">Independent t-test: LSR</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="do">##Need to place the "ghosts" variable to a factor</span></span>
+<span id="cb8-2"><a></a>ghost_data <span class="ot">&lt;-</span> ghost_data <span class="sc">%&gt;%</span> </span>
+<span id="cb8-3"><a></a>  <span class="fu">mutate</span>(<span class="at">ghosts =</span> <span class="fu">as.factor</span>(ghosts))</span>
+<span id="cb8-4"><a></a></span>
+<span id="cb8-5"><a></a><span class="co">#Can't get this to work :(</span></span>
+<span id="cb8-6"><a></a><span class="co">#independentSamplesTTest(</span></span>
+<span id="cb8-7"><a></a><span class="co">#  income ~ ghosts, </span></span>
+<span id="cb8-8"><a></a><span class="co">#  data = ghost_data, </span></span>
+<span id="cb8-9"><a></a><span class="co">#  var.equal = FALSE</span></span>
+<span id="cb8-10"><a></a><span class="co">#)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>But it doesn’t work…</p>
+</section>
+<section class="slide level2">
 
-<img data-src="../../images/matrix.gif" class="quarto-figure quarto-figure-center r-stretch" width="548"></section>
-<section id="using-recode" class="slide level2">
-<h2>Using <code>recode()</code></h2>
-<p>We can combine our <code>mutate()</code> with this new function to produce the results we want</p>
-<p><a href="https://www.statology.org/recode-dplyr/" target="_blank">Nice website to explain the process</a></p>
-<div>
-<ul>
-<li><p>When using <code>recode()</code>, we have to first tell it the variable we want to recode</p></li>
-<li><p>The next arguments are how we want to recode the values</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">recode</span>(variable_name, <span class="st">"old_value"</span> <span class="ot">=</span> <span class="st">"new_value"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-</ul>
-</div>
+<h3 id="t-test-write-up">t-test: Write-up</h3>
+<p>The mean income for those who do not believe in ghotsts was $89,131 (SD = 68316), while the mean in New York was $87,136 (SD = 73055). A Welch’s independent samples t-test showed that there was not a significant mean difference (<em>t</em>(337.95)=-.29, <em>p</em>=.775, <span class="math inline">\(CI_{95}\)</span>=[-0.16, 0.22]). This suggests that there is no difference between believing in ghosts and income.</p>
 </section>
-<section id="putting-it-together" class="slide level2">
-<h2>Putting it together</h2>
-<p>Now let’s put this into action by recoding the attention variables</p>
-<p>Getting a <code>1</code> indicates that they were paying attention</p>
+<section id="cool-visualizations" class="slide level2">
+<h2>Cool Visualizations</h2>
+<p>The library <a href="https://indrajeetpatil.github.io/ggstatsplot/">ggstatsplot</a> has some wonderful visualizations of various tests</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>mod_sleep_data <span class="sc">%&gt;%</span> </span>
-<span id="cb18-2"><a></a>  <span class="fu">mutate</span>(<span class="at">attention1r =</span> <span class="fu">recode</span>(attention1, </span>
-<span id="cb18-3"><a></a>                              <span class="st">`</span><span class="at">1</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>, <span class="co">#NOTICE THE BACKTICKS</span></span>
-<span id="cb18-4"><a></a>                              <span class="st">`</span><span class="at">2</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
-<span id="cb18-5"><a></a>                              <span class="st">`</span><span class="at">3</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
-<span id="cb18-6"><a></a>                              <span class="st">`</span><span class="at">4</span><span class="st">`</span><span class="ot">=</span><span class="dv">0</span>,</span>
-<span id="cb18-7"><a></a>                              <span class="st">`</span><span class="at">5</span><span class="st">`</span><span class="ot">=</span><span class="dv">1</span>)) <span class="co">#be sure to finish the rest</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="create-composite-attention-score" class="slide level2">
-<h2>Create composite attention score</h2>
-<p>Let’s make a total score for the attention variable so that we can get rid of folks who are not paying attention</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>mod_sleep_data <span class="ot">&lt;-</span> mod_sleep_data <span class="sc">%&gt;%</span> </span>
-<span id="cb19-2"><a></a>  <span class="fu">mutate</span>(<span class="at">att_sum =</span> (attention1r <span class="sc">+</span> attention2r <span class="sc">+</span> attention3r <span class="sc">+</span></span>
-<span id="cb19-3"><a></a>                      attention4r <span class="sc">+</span> attention5r))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong><em>OR</em></strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>mod_sleep_data <span class="ot">&lt;-</span> mod_sleep_data <span class="sc">%&gt;%</span> </span>
-<span id="cb20-2"><a></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb20-3"><a></a>  <span class="fu">mutate</span>(<span class="at">att_sum =</span> <span class="fu">sum</span>(attention1r, attention2r, attention3r,</span>
-<span id="cb20-4"><a></a>                      attention4r, attention5r)) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-5"><a></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="visualize-1" class="slide level2">
-<h2>Visualize</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>mod_sleep_data <span class="sc">%&gt;%</span> </span>
-<span id="cb21-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(att_sum)) <span class="sc">+</span> </span>
-<span id="cb21-3"><a></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
-<span id="cb21-4"><a></a>  <span class="fu">geom_text</span>(<span class="at">stat =</span> <span class="st">"count"</span>, <span class="co">#Tells it to calculate the statistic</span></span>
-<span id="cb21-5"><a></a>            <span class="fu">aes</span>(<span class="at">label=</span><span class="fu">after_stat</span>(count))) <span class="sc">+</span> <span class="co">#Puts label of the count</span></span>
-<span id="cb21-6"><a></a>  <span class="fu">theme_minimal</span>() <span class="co">#or theme_bw</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>ggstatsplot<span class="sc">::</span><span class="fu">ggbetweenstats</span>(</span>
+<span id="cb9-2"><a></a>  <span class="at">data  =</span> ghost_data,</span>
+<span id="cb9-3"><a></a>  <span class="at">x     =</span> ghosts,</span>
+<span id="cb9-4"><a></a>  <span class="at">y     =</span> income,</span>
+<span id="cb9-5"><a></a>  <span class="at">title =</span> <span class="st">"Distribution of income across belief in ghosts"</span></span>
+<span id="cb9-6"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 
 </div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch"></section></section>
-<section>
-<section id="your-turn" class="title-slide slide level1 center">
-<h1>Your turn!</h1>
-
-</section>
-<section id="steps-to-do-if-we-have-time" class="slide level2">
-<h2>Steps to do if we have time</h2>
-<p>Create two new datasets labeled (1) “data_attend” and (2) “data_distract”. In each dataset have those who were paying attention in the “data_attend” and those who were not in the “data_distract”. Paying attention is operationalized as having a score of 5 on the aggregated variable.</p>
-<p>Get the sample size of each of these datasets (use Google to search for things like number of rows)</p>
-<p>What is the mean/average of <code>ess_total</code> in each of the samples?</p>
-</section></section>
-<section id="next-class" class="title-slide slide level1 center">
-<h1>Next Class</h1>
-<p>Starting to look at descriptive statistics and how to make these nice tables</p>
-<p>Will begin Lab 1 (as long as we have time to do so)</p>
+<img data-src="slides2_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section></section>
+<section id="now-you-try" class="title-slide slide level1 center">
+<h1>Now you try</h1>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -837,7 +612,7 @@ Dustin Haraden, PhD
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'multiplex': {"secret":"17283910016292703021","id":"7a5eab5412d1b051","url":"https://reveal-multiplex.glitch.me/"},
+'multiplex': {"secret":"17283907146682139825","id":"7f2f1534d27d9f30","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
  
         // Display controls in the bottom right corner
