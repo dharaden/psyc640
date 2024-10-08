@@ -113,14 +113,22 @@ $F = \frac{MS_{between}}{MS_{wihin}} = \frac{large}{small} > 1$
 
 ## Ghost Data 
 
-EMF rating across multiple locations
+Since there are 2 header rows, we need to only include the first one. To do that, we have to "skip" the first two and then give the names of the columns back to the data.
+
+We also need to specify what the missing values are. Typically we have been working with `NA` which is more traditional. However, missing values in this dataset are `DK/REF` and a blank. This will need to be specified in the import function ([used this website](https://epirhandbook.com/new_pages/importing.html#manage-a-second-header-row){target="_blank"})
 
 ```{r}
-spooky <- import("https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/SS%20Calculations.csv") %>% 
-  select(Location, EMF) #There were some extra empty variables in there that we don't care about
+# get the names of your columns which is the first row
+ghost_data_names <- read_csv(here("lectures", "data", "ghosts.csv")) %>% 
+  names()
 
-fit_1 <- aov(EMF ~ Location, data = spooky)
-summary(fit_1)
+# import second time; skip row 2, and assign column names to argument col_names =
+ghost_data <- read_csv(here("lectures", "data", "ghosts.csv"),
+                       skip = 2,
+                       col_names = ghost_data_names,
+                       na = c("DK/REF", "", " ")
+                      ) %>% 
+  clean_names()
 
 ```
 

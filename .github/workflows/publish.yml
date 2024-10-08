@@ -41,6 +41,7 @@ jobs:
             any::patchwork
             any::ggstatsplot
             any::janitor
+            any::emmeans
           cache-version: 1
           needs: website
 
