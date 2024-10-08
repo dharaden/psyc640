@@ -134,49 +134,39 @@ t.test(
   data = ghost_data, 
   var.equal = FALSE
 )
+
+ghost_data %>% 
+  group_by(ghosts) %>% 
+  summarise(mean = mean(income, na.rm = TRUE), 
+            sd = sd(income, na.rm = TRUE))
+
 ```
 
 ------------------------------------------------------------------------
 
-### Student's t-test: Write-up
-
-The mean amount of sleep in New Mexico for youth was 6.989 (SD = 1.379), while the mean in New York was 6.994 (SD = 1.512). A Student's independent samples t-test showed that there was not a significant mean difference (*t*(180)=-0.024, *p*=.981, $CI_{95}$=\[-0.43, 0.42\], *d*=.004). This suggests that there is no difference between youth in NM and NY on amount of sleep on school nights.
-
-------------------------------------------------------------------------
-
-## Welch's t-test
-
-$$
-H_0 : \mu_1 = \mu_2  \ \  H_1 : \mu_1 \neq \mu_2
-$$
-
-![](/images/welch_H.png){fig-align="center"}
-
-------------------------------------------------------------------------
-
-### Welch's t-test: Calculate SE
-
-Since the variances are not equal, we have to estimate the SE differently
-
-$$ SE(\bar{X_1} - \bar{X_2}) = \sqrt{\frac{\hat{\sigma_1^2}}{N_1} + \frac{\hat{\sigma_2^2}}{N_2}} $$
-
-Degrees of Freedom is also very different:
-
-![](/images/welch_df.png){fig-align="center" width="380"}
-
-------------------------------------------------------------------------
-
-### Welch's t-test: In R (classic)
-
-Let's try it out using the traditional `t.test()` function...turns out it is pretty straightforward
+### Independent t-test: LSR
 
 ```{r}
-t.test(
-  formula = Sleep_Hours_Schoolnight ~ Region, 
-  data = state_school, 
-  var.equal = FALSE
-)
+
+##Need to place the "ghosts" variable to a factor
+ghost_data <- ghost_data %>% 
+  mutate(ghosts = as.factor(ghosts))
+
+#Can't get this to work :(
+#independentSamplesTTest(
+#  income ~ ghosts, 
+#  data = ghost_data, 
+#  var.equal = FALSE
+#)
 ```
+
+But it doesn't work...
+
+------------------------------------------------------------------------
+
+### t-test: Write-up
+
+The mean income for those who do not believe in ghotsts was \$89,131 (SD = 68316), while the mean in New York was \$87,136 (SD = 73055). A Welch's independent samples t-test showed that there was not a significant mean difference (*t*(337.95)=-.29, *p*=.775, $CI_{95}$=\[-0.16, 0.22\]). This suggests that there is no difference between believing in ghosts and income.
 
 ------------------------------------------------------------------------
 
@@ -187,9 +177,11 @@ The library [ggstatsplot](https://indrajeetpatil.github.io/ggstatsplot/) has som
 ```{r}
 #| code-fold: true
 ggstatsplot::ggbetweenstats(
-  data  = state_school,
-  x     = Region,
-  y     = Sleep_Hours_Schoolnight,
-  title = "Distribution of hours of sleep across Region"
+  data  = ghost_data,
+  x     = ghosts,
+  y     = income,
+  title = "Distribution of income across belief in ghosts"
 )
 ```
+
+# Now you try
