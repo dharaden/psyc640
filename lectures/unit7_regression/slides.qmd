@@ -1,0 +1,539 @@
+---
+title: "Unit 6 - Hypotheses & Comparing Means"
+subtitle: "PSYC 640 - Fall 2024"
+author: "Dustin Haraden, PhD"
+format: 
+  revealjs:
+    multiplex: true
+    scrollable: true
+    slide-number: true
+    incremental: false
+    touch: true
+    code-overflow: wrap
+    theme: dark
+execute: 
+  echo: true
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = F}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```
+
+## Reminders
+
+::: nonincremental
+-   Journal Entries
+-   Register to Vote
+:::
+
+------------------------------------------------------------------------
+
+## Last Class
+
+::: nonincremental
+-   t-tests
+    -   Professors presentation didn't work, so we did more live coding (and he probably confused everyone)
+    -   We took a look at `easystats::report()`
+:::
+
+------------------------------------------------------------------------
+
+## Today...
+
+One-Way ANOVA
+
+Two-Way ANOVA
+
+```{r, results = 'hide', message = F, warning = F}
+# File management
+library(here)
+# for dplyr, ggplot2
+library(tidyverse)
+#Loading data
+library(rio)
+# Estimating Marginal Means
+library(emmeans)
+# Pretty Tables
+library(kableExtra)
+
+#Remove Scientific Notation 
+options(scipen=999)
+```
+
+# Review of One-Way ANOVA
+
+## One-Way ANOVA
+
+Goal: Inform of differences among the levels of our variable of interest (Omnibus Test)
+
+Using the between and within group variance to create the $F$-statistic/ratio
+
+Hypotheses:
+
+$$
+H_0: it\: is\: true\: that\: \mu_1 = \mu_2 = \mu_3 =\: ...\mu_k 
+\\ 
+H_1: it\: is\: \boldsymbol{not}\: true\: that\: \mu_1 = \mu_2 = \mu_3 =\: ...\mu_k
+$$
+
+------------------------------------------------------------------------
+
+![](/images/ANOVA.png){width="729"}
+
+::::: columns
+::: {.column width="50%"}
+$F = \frac{MS_{between}}{MS_{within}} = \frac{small}{large} < 1$
+:::
+
+::: {.column width="50%"}
+$F = \frac{MS_{between}}{MS_{wihin}} = \frac{large}{small} > 1$
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## ANOVA table
+
++---------------------+----------+----------------+----------------------------+-------------------------+----------+
+| Source of Variation | df       | Sum of Squares | Mean Squares               | F-statistic             | p-value  |
++:===================:+:========:+:==============:+:==========================:+:=======================:+:========:+
+| Group               | $G-1$    | $SS_b$         | $MS_b = \frac{SS_b}{df_b}$ | $F = \frac{MS_b}{MS_w}$ | $p$      |
++---------------------+----------+----------------+----------------------------+-------------------------+----------+
+| Residual            | $N-G$    | $SS_w$         | $MS_w = \frac{SS_w}{df_w}$ |                         |          |
++---------------------+----------+----------------+----------------------------+-------------------------+----------+
+| Total               | $N-1$    | $SS_{total}$   |                            |                         |          |
++---------------------+----------+----------------+----------------------------+-------------------------+----------+
+
+# One-way ANOVA
+
+------------------------------------------------------------------------
+
+## Ghost Data 
+
+EMF rating across multiple locations
+
+```{r}
+spooky <- import("https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/SS%20Calculations.csv") %>% 
+  select(Location, EMF) #There were some extra empty variables in there that we don't care about
+
+fit_1 <- aov(EMF ~ Location, data = spooky)
+summary(fit_1)
+
+```
+
+------------------------------------------------------------------------
+
+## Post-hoc tests
+
+```{r}
+#library(emmeans)
+emmeans(fit_1, pairwise ~ Location, adjust = "none")
+```
+
+------------------------------------------------------------------------
+
+## Family-wise error
+
+These pairwise comparisons can quickly grow in number as the number of Groups increases. With 8 (k) Groups, we have k(k-1)/2 = 28 possible pairwise comparisons.
+
+As the number of groups in the ANOVA grows, the number of possible pairwise comparisons increases dramatically.
+
+```{r,echo = F, fig.width = 10, fig.height = 5.5}
+data.frame(g = 2:15) %>%
+  mutate(num = (g*(g-1))/2) %>%
+  ggplot(aes(x = g, y = num)) +
+  geom_line(size = 1.5) +
+  geom_point(size = 3)+
+  scale_x_continuous("Number of Groups in the ANOVA") +
+  scale_y_continuous("Number of Pairwise Comparisons") +
+  theme_bw()
+```
+
+------------------------------------------------------------------------
+
+As the number of tests grows, and assuming the null hypothesis is true, the probability that we will make one or more Type I errors increases. To approximate the magnitude of the problem, we can assume that the multiple pairwise comparisons are independent. The probability that we **don't** make a Type I error for [**one**]{.underline} test is:
+
+$$P(\text{No Type I}, 1 \text{ test}) = 1-\alpha$$
+
+------------------------------------------------------------------------
+
+The probability that we don't make a Type I error for [**two**]{.underline} tests is:
+
+$$P(\text{No Type I}, 2 \text{ test}) = (1-\alpha)(1-\alpha)$$
+
+For C tests, the probability that we make **no** Type I errors is
+
+$$P(\text{No Type I}, C \text{ tests}) = (1-\alpha)^C$$
+
+We can then use the following to calculate the probability that we make one or more Type I errors in a collection of C independent tests.
+
+$$P(\text{At least one Type I}, C \text{ tests}) = 1-(1-\alpha)^C$$
+
+------------------------------------------------------------------------
+
+The Type I error inflation that accompanies multiple comparisons motivates the large number of "correction" procedures that have been developed.
+
+```{r,echo = F, fig.width = 10, fight.height = 6}
+data.frame(g = 2:15) %>%
+  mutate(num = (g*(g-1))/2,
+         p_notype1 = (1-.05)^num,
+         p_type1 = 1-p_notype1) %>%
+  ggplot(aes(x = g, y = p_type1)) +
+  geom_line(size = 1.5) +
+  geom_point(size = 3)+
+  scale_x_continuous("Number of Groups in the ANOVA") +
+  scale_y_continuous("Probability of a Type I Error") +
+  theme_bw()
+```
+
+------------------------------------------------------------------------
+
+Multiple comparisons, each tested with $\alpha_{per-test}$, increases the family-wise $\alpha$ level.
+
+$$\large \alpha_{family-wise} = 1 - (1-\alpha_{per-test})^C$$ Šidák showed that the family-wise a could be controlled to a desired level (e.g., .05) by changing the $\alpha_{per-test}$ to:
+
+$$\large \alpha_{per-wise} = 1 - (1-\alpha_{family-wise})^{\frac{1}{C}}$$
+
+------------------------------------------------------------------------
+
+### Bonferroni
+
+Bonferroni (and Dunn, and others) suggested this simple approximation:
+
+$$\large \alpha_{per-test} = \frac{\alpha_{family-wise}}{C}$$
+
+This is typically called the Bonferroni correction and is very often used even though better alternatives are available.
+
+------------------------------------------------------------------------
+
+```{r}
+emmeans(fit_1, pairwise ~ Location, adjust = "bonferroni")
+```
+
+------------------------------------------------------------------------
+
+The Bonferroni procedure is conservative. Other correction procedures have been developed that control family-wise Type I error at .05 but that are more powerful than the Bonferroni procedure. The most common one is the Holm procedure.
+
+The Holm procedure does not make a constant adjustment to each per-test $\alpha$. Instead it makes adjustments in stages depending on the relative size of each pairwise p-value.
+
+------------------------------------------------------------------------
+
+### Holm correction
+
+1.  Rank order the p-values from largest to smallest.
+2.  Start with the smallest p-value. Multiply it by its rank.
+3.  Go to the next smallest p-value. Multiply it by its rank. If the result is larger than the adjusted p-value of next smallest rank, keep it. Otherwise replace with the previous step adjusted p-value.
+4.  Repeat Step 3 for the remaining p-values.
+5.  Judge significance of each new p-value against $\alpha = .05$.
+
+------------------------------------------------------------------------
+
+```{r,echo = F, results = 'asis'}
+
+data.frame(or = c(.0012, .0023, .0450, .0470, .0530, .2100),
+           rank = c(6:1)) %>%
+  mutate(rankp = or*rank,
+         holm = p.adjust(or, method = "holm"),
+         bon = p.adjust(or, method = "bonferroni")) %>%
+  kable(., 
+        col.names = c("Original p value", "Rank", 
+                      "Rank x p", "Holm", "Bonferroni")) 
+```
+
+------------------------------------------------------------------------
+
+```{r}
+emmeans(fit_1, pairwise ~ Location, adjust = "holm")
+```
+
+# ANOVA is regression
+
+In regression, we can accommodate categorical predictors. How does this compare to ANOVA?
+
+-   Same omnibus test of the model!
+
+\*(Really the same model, but packaged differently.)
+
+-   When would you use one versus the other?
+
+------------------------------------------------------------------------
+
+::::: columns
+::: {.column width="50%"}
+**ANOVA**
+
+-   More traditional for 3+ groups
+
+-   Comparing/controlling multiple categorical variables
+:::
+
+::: {.column width="50%"}
+**Regression**
+
+-   Best for two groups
+
+-   Incorporating continuous predictors too
+
+-   Good for 3+ groups when you have more specific hypotheses (contrasts)
+:::
+:::::
+
+# Two-Way ANOVA
+
+------------------------------------------------------------------------
+
+## What is a Two-Way ANOVA?
+
+Examines the impact of ***2*** nominal/categorical variables on a continuous outcome
+
+We can now examine:
+
+-   The impact of variable 1 on the outcome (Main Effect)
+
+-   The impact of variable 2 on the outcome (Main Effect)
+
+-   The *interaction* of variable 1 & 2 on the outcome (Interaction Effect)
+
+    ::: incremental
+    -   The effect of variable 1 ***depends*** on the level of variable 2
+    :::
+
+------------------------------------------------------------------------
+
+## Two-Way ANOVA: Assumptions
+
+Same as what we've examined previously, plus a couple more:
+
+:::::: columns
+::: {.column width="50%"}
+-   Independence
+
+-   Normality of Residuals
+
+-   Homoscedasticity (Homogeneity of Variance)
+:::
+
+:::: {.column width="50%" style="font-size: 30px"}
+::: incremental
+-   Additivity
+
+    -   The effects of each factor are consistent across all levels of the other factor
+
+-   Multicollinearity
+
+    -   Correlations between factors. This can make it difficult to separate unique contributions to the outcome
+
+-   Equal Cell Sizes (N)
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+## Main Effect & Interactions
+
+Main Effect: Basically a one-way ANOVA
+
+-   The effect of variable 1 is the same across all levels of variable 2
+
+Interaction:
+
+-   Able to examine the effect of variable 1 across different levels of variable 2
+
+-   Basically speaking, **the effect of variable 1 on our outcome *DEPENDS on the levels of variable 2***
+
+# Example Data
+
+------------------------------------------------------------------------
+
+## Data
+
+::: {style="font-size: 30px"}
+We are interested on the impact of phone usage on overall sleep quality
+
+We include 2 variables of interest: 1) Phone Type (iOS vs. Android) and 2) Amount of usage (High, Medium & Low) to examine if there are differences in terms of sleep quality
+
+*Note: It is important to consider [HOW]{.underline} we operationalize constructs as some things we have as factors could easily be continuous variables*
+:::
+
+```{r}
+#| code-fold: true
+#Generate some data
+
+# Set random seed for reproducibility
+set.seed(42)
+
+n <- 500  # Set number of observations
+
+# Generate Type of Phone data
+phone_type <- sample(c("Android", "iOS"), 
+                     n, 
+                     replace = TRUE)
+
+# Generate Phone Usage data
+phone_usage <- factor(sample(c("Low", "Medium", "High"), 
+                             n, 
+                             replace = TRUE), 
+                      levels= c("Low", "Medium", "High"))
+
+# Generate Sleep Quality data (with some variation)
+# Intentionally inflating to highlight main effects
+sleep_quality <- round(
+  rnorm(n, mean = ifelse(phone_type == "Android", 5, 7) + ifelse(phone_usage == "High", 1, -1), sd = 1),
+  1
+)
+
+# Generate Sleep Quality data (with some variation)
+sleep_quality2 <- round(rnorm(n, mean = 6, sd = 3),1)
+
+# Create a data frame
+sleep_data <- data.frame(phone_type, 
+                         phone_usage, 
+                         sleep_quality,
+                         sleep_quality2)
+
+head(sleep_data)
+```
+
+------------------------------------------------------------------------
+
+## Test Statistics
+
+We've gone too far today without me showing some equations
+
+With one way anova, we calculated the $SS_{between}$ and the $SS_{within}$ and were able to use those to capture the F-statistic
+
+Now we have another variable to take into account. Therefore, we need to calculate:
+
+$$
+SS_{between Group1}, \: SS_{between Group2}
+$$
+
+$$
+SS_{within}, \: SS_{total}
+$$
+
+------------------------------------------------------------------------
+
+## $F$-Statistic/Ratio
+
+Helpful site for hand calculations: ([link](https://www.statology.org/two-way-anova-by-hand/))
+
+-   Since we have these various sum of squares, we can then fill out the ANOVA table
+
+-   This also means that we will have *multiple* F-Statistics
+
+------------------------------------------------------------------------
+
++---------------------+-------------+----------------------------------+-------------------------------------+---------------------------------+----------+
+| Source of Variation | df          | Sum of Squares                   | Mean Squares                        | F-statistic                     | p-value  |
++:===================:+:===========:+:================================:+:===================================:+:===============================:+:========:+
+| Group1              | $j-1$       | $SS_{b1}$                        | $MS_{b1} = \frac{SS_{b1}}{df_{b1}}$ | $F_1 = \frac{MS_{b1}}{MS_{w1}}$ | $p_1$    |
++---------------------+-------------+----------------------------------+-------------------------------------+---------------------------------+----------+
+| Group2              | $k-1$       | $SS_{b2}$                        | $MS_{b2} = \frac{SS_{b2}}{df_{b2}}$ | $F_2 = \frac{MS_{b2}}{MS_{w2}}$ | $p_2$    |
++---------------------+-------------+----------------------------------+-------------------------------------+---------------------------------+----------+
+| Interaction         | $df_1*df_2$ | ::: {.fragment .highlight-green} | $MS_{b3} = \frac{SS_{b3}}{df_{b3}}$ | $F_2 = \frac{MS_{b3}}{MS_{w3}}$ | $p_3$    |
+|                     |             | $SS_{int}$                       |                                     |                                 |          |
+|                     |             | :::                              |                                     |                                 |          |
++---------------------+-------------+----------------------------------+-------------------------------------+---------------------------------+----------+
+| Residual (within)   | $N-G$       | $SS_w$                           | $MS_w = \frac{SS_w}{df_w}$          |                                 |          |
++---------------------+-------------+----------------------------------+-------------------------------------+---------------------------------+----------+
+| Total               | $N-1$       | $SS_{total}$                     |                                     |                                 |          |
++---------------------+-------------+----------------------------------+-------------------------------------+---------------------------------+----------+
+
+------------------------------------------------------------------------
+
+## Calculate $SS_{interaction}$
+
+Now we need to be able to take into account the interaction term
+
+This is done by calculating all other $SS$ and then performing:
+
+$$
+SS_{interaction} = SS_{total} - SS_{b1} - SS_{b2} - SS_{w}
+$$
+
+# Example: Calculate the $SS$ for the new data
+
+::: incremental
+-   no...we aren't doing that
+:::
+
+------------------------------------------------------------------------
+
+# Running in R
+
+Take a peak at the dataset again so we can look at the variables and their names
+
+```{r}
+head(sleep_data)
+```
+
+------------------------------------------------------------------------
+
+## Running in R
+
+We will use the `aov()` function to set up our model
+
+```{r}
+fit2 <- aov(sleep_quality ~ phone_type + phone_usage + phone_type*phone_usage, 
+            data = sleep_data)
+
+#OR 
+
+fit2 <- aov(sleep_quality ~ phone_type * phone_usage, 
+            data = sleep_data)
+
+summary(fit2)
+
+```
+
+------------------------------------------------------------------------
+
+```{r}
+#| code-fold: true
+ggplot(sleep_data, aes(x = phone_usage, 
+                       y = sleep_quality, 
+                       color = phone_type, 
+                       group = phone_type)) +
+  geom_point() +
+  geom_smooth(method = "lm",
+              se=FALSE) +
+  labs(x = "Phone Usage", 
+       y = "Sleep Quality", 
+       color = "Phone Type") +
+  theme_minimal()
+```
+
+## Different Outcome
+
+Created the outcome of `sleep_quality2` to be completely random instead of following a formula so that we could visualize the effect
+
+```{r}
+fit3 <- aov(sleep_quality2 ~ phone_type * phone_usage, 
+            data = sleep_data)
+summary(fit3)
+```
+
+------------------------------------------------------------------------
+
+```{r}
+# Create an interaction plot using ggplot2
+ggplot(sleep_data, aes(x = phone_usage, y = sleep_quality2, color = phone_type, group = phone_type)) +
+  geom_point() +
+  geom_smooth(method = "lm",
+              se=FALSE) +
+  labs(x = "Phone Usage", y = "Sleep Quality", color = "Phone Type") +
+  theme_minimal()
+```
+
+# Next time...
+
+::: incremental
+-   ¯\\\_(ツ)\_/¯
+
+-   Correlation & Regression
+:::

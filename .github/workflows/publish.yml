@@ -40,6 +40,7 @@ jobs:
             any::kableExtra
             any::patchwork
             any::ggstatsplot
+            any::janitor
           cache-version: 1
           needs: website
 
