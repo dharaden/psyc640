@@ -42,6 +42,9 @@ jobs:
             any::ggstatsplot
             any::janitor
             any::emmeans
+            any::broom
+            any::gapminder
+            any::psychTools
           cache-version: 1
           needs: website
 

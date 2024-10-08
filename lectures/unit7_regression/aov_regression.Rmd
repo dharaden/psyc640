@@ -1,0 +1,103 @@
+---
+title: " "
+author: "Me"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: hide
+editor_options:
+  chunk_output_type: console
+  markdown:
+    wrap: 72
+---
+
+```{r}
+
+library(easystats)
+library(dplyr)
+# File management
+library(here)
+# for dplyr, ggplot2
+library(tidyverse)
+#Loading data
+library(rio)
+# Estimating Marginal Means
+library(emmeans)
+# Pretty Tables
+library(kableExtra)
+# Pretty variable names
+library(janitor)
+
+#Remove Scientific Notation 
+options(scipen=999)
+
+#tell R not to display scientific notation
+options(scipen=999)
+
+# Create a list of citations of the libraries that are used
+report::cite_packages()
+
+# Identify the version of R and the type of machine that is running it
+report::report_system()
+
+# Create a list of the package names and the in-text citation 
+report::report_packages()
+```
+
+## Ghost Data
+
+Since there are 2 header rows, we need to only include the first one. To
+do that, we have to "skip" the first two and then give the names of the
+columns back to the data.
+
+We also need to specify what the missing values are. Typically we have
+been working with `NA` which is more traditional. However, missing
+values in this dataset are `DK/REF` and a blank. This will need to be
+specified in the import function ([used this
+website](https://epirhandbook.com/new_pages/importing.html#manage-a-second-header-row){target="_blank"})
+
+```{r}
+# get the names of your columns which is the first row
+ghost_data_names <- read_csv(here("lectures", "data", "ghosts.csv")) %>% 
+  names()
+
+# import second time; skip row 2, and assign column names to argument col_names =
+ghost_data <- read_csv(here("lectures", "data", "ghosts.csv"),
+                       skip = 2,
+                       col_names = ghost_data_names,
+                       na = c("DK/REF", "", " ")
+                      ) %>% 
+  clean_names()
+```
+
+
+
+### Running the Test
+
+Let's take a look at Income by Political Affiliation
+
+```{r}
+aov1 <- aov(income ~ political_affiliation, 
+            data = ghost_data)
+
+summary(aov1)
+```
+
+
+### Post-hoc tests
+
+```{r}
+
+#get basic summary stats
+ghost_data %>% 
+  group_by(political_affiliation) %>% 
+  summarise(mean = mean(income, na.rm = TRUE), 
+            sd = sd(income, na.rm = TRUE))
+
+
+# conduct the comparisons
+emmeans(aov1, pairwise ~ political_affiliation, 
+        adjust = "none")
+```
