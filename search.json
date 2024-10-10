@@ -221,14 +221,14 @@
     "href": "lectures/unit7_regression/slides2.html#reminders",
     "title": "Unit 7 (Part Deux) - ANOVA & regression",
     "section": "Reminders",
-    "text": "Reminders\n\n\nJournal Entries\nRegister to Vote\nPresentation #2\nGrading to be done this week (sorry)\nMid-course Feedback"
+    "text": "Reminders\n\n\nJournal Entries\nMid-course Feedback\nPresentation 2 Groups"
   },
   {
     "objectID": "lectures/unit7_regression/slides2.html#last-class",
     "href": "lectures/unit7_regression/slides2.html#last-class",
     "title": "Unit 7 (Part Deux) - ANOVA & regression",
     "section": "Last Class",
-    "text": "Last Class\n\n\nANOVA\n\nSome theory, but more applied\neasystats::report() makes things easier"
+    "text": "Last Class\n\n\nANOVA\n\nSome theory, but more applied\neasystats::report() makes things easier\nEveryone getting better with R!"
   },
   {
     "objectID": "lectures/unit7_regression/slides2.html#today",
@@ -257,13 +257,6 @@
     "title": "Unit 7 (Part Deux) - ANOVA & regression",
     "section": "Main Effect & Interactions",
     "text": "Main Effect & Interactions\nMain Effect: Basically a one-way ANOVA\n\nThe effect of variable 1 is the same across all levels of variable 2\n\nInteraction:\n\nAble to examine the effect of variable 1 across different levels of variable 2\nBasically speaking, the effect of variable 1 on our outcome DEPENDS on the levels of variable 2"
-  },
-  {
-    "objectID": "lectures/unit7_regression/slides2.html#study-design-collection",
-    "href": "lectures/unit7_regression/slides2.html#study-design-collection",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
-    "section": "Study Design & Collection",
-    "text": "Study Design & Collection\n\n\nDesign - When data are collected\n\nRetrospective/Prospective\nLongitudinal\nCross-Sectional\n\n\nCollection - How data are collected\n\nExperimental\nField\nObservational\nMeta-analysis\nNeuroimaging/Psychophys\nSurvey\nQuasi-Experimental"
   },
   {
     "objectID": "lectures/unit7_regression/slides2.html#ghost-data",
@@ -313,6 +306,13 @@
     "title": "Unit 7 (Part Deux) - ANOVA & regression",
     "section": "Overview of Regression",
     "text": "Overview of Regression\nRegression is a general data analytic system\n\nLots of things fall under the umbrella of regression\nThis system can handle a variety of forms of relations and types of variables\n\nThe output of regression includes both effect sizes and statistical significance\nWe can also incorporate multiple influences (IVs) and account for their intercorrelations"
+  },
+  {
+    "objectID": "lectures/unit7_regression/slides2.html#study-design-collection",
+    "href": "lectures/unit7_regression/slides2.html#study-design-collection",
+    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "section": "Study Design & Collection",
+    "text": "Study Design & Collection\n\n\nDesign - When data are collected\n\nRetrospective/Prospective\nLongitudinal\nCross-Sectional\n\n\nCollection - How data are collected\n\nExperimental\nField\nObservational\nMeta-analysis\nNeuroimaging/Psychophys\nSurvey\nQuasi-Experimental"
   },
   {
     "objectID": "lectures/unit7_regression/slides2.html#ols",
