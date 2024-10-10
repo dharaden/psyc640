@@ -548,6 +548,12 @@ The intercept adjusts the location of the regression line to ensure that it runs
 
 $$\Large b_0 = \bar{Y} - b_1\bar{X}$$
 
+# Visuals of OLS Regression
+
+<https://setosa.io/ev/ordinary-least-squares-regression/>
+
+[https://observablehq.com/\@yizhe-ang/interactive-visualization-of-linear-regression](https://observablehq.com/@yizhe-ang/interactive-visualization-of-linear-regression)
+
 ------------------------------------------------------------------------
 
 ## Example
