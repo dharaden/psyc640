@@ -46,6 +46,7 @@ jobs:
             any::gapminder
             any::psychTools
             any::ggpubr
+            any::easystats
           cache-version: 1
           needs: website
 
