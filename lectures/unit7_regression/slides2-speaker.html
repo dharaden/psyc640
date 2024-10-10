@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Dustin Haraden, PhD">
-  <title>PSYC 640 2024 – Unit 7 - ANOVA &amp; regression</title>
+  <title>PSYC 640 2024 – Unit 7 - ANOVA &amp; Regression</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -392,7 +392,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Unit 7 - ANOVA &amp; regression</h1>
+  <h1 class="title">Unit 7 - ANOVA &amp; Regression</h1>
   <p class="subtitle">PSYC 640 - Fall 2024</p>
 
 <div class="quarto-title-authors">
@@ -416,37 +416,23 @@ Dustin Haraden, PhD
 </ul>
 </div>
 </section>
-<section class="slide level2">
-
-<h3 id="presentation-2">Presentation #2</h3>
-<ul>
-<li><p>Beginning on 10/22</p></li>
-<li><p>Groups of 2-3</p></li>
-<li><p>Identify a paper that performs a statistical analysis that we have (or will) talk about in class.</p>
-<ul>
-<li>If it is outside of what we’ve talked about, reach out to me to see if it may still work</li>
-</ul></li>
-<li><p>Describe the main question, the research design, the analysis and interpretation</p></li>
-<li><p>Provide a brief reflection on the match/mismatch of research design to analytic decision as well as anything else in the paper that could bias the results</p></li>
-<li><p>More structured instructions to be posted on myCourses</p></li>
-</ul>
-</section>
 <section id="last-class" class="slide level2">
 <h2>Last Class</h2>
 <div>
 <ul>
-<li>t-tests
+<li>ANOVA
 <ul>
-<li>Professors presentation didn’t work, so we did more live coding (and he probably confused everyone)</li>
-<li>We took a look at <code>easystats::report()</code></li>
+<li>Some theory, but more applied</li>
+<li><code>easystats::report()</code> makes things easier</li>
+<li></li>
 </ul></li>
 </ul>
 </div>
 </section>
 <section id="today" class="slide level2">
 <h2>Today…</h2>
-<p>One-Way ANOVA</p>
-<p>Two-Way ANOVA</p>
+<p>ANOVA</p>
+<p>Regression!!</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># File management</span></span>
 <span id="cb1-2"><a></a><span class="fu">library</span>(here)</span>
@@ -466,8 +452,8 @@ Dustin Haraden, PhD
 </div>
 </section>
 <section>
-<section id="review-of-one-way-anova" class="title-slide slide level1 center">
-<h1>Review of One-Way ANOVA</h1>
+<section id="review-of-anova" class="title-slide slide level1 center">
+<h1>Review of ANOVA</h1>
 
 </section>
 <section id="one-way-anova" class="slide level2">
@@ -481,69 +467,56 @@ H_0: it\: is\: true\: that\: \mu_1 = \mu_2 = \mu_3 =\: ...\mu_k
 H_1: it\: is\: \boldsymbol{not}\: true\: that\: \mu_1 = \mu_2 = \mu_3 =\: ...\mu_k
 \]</span></p>
 </section>
-<section class="slide level2">
-
-
-<img data-src="../../images/ANOVA.png" width="729" class="r-stretch"><div class="columns">
-<div class="column" style="width:50%;">
-<p><span class="math inline">\(F = \frac{MS_{between}}{MS_{within}} = \frac{small}{large} &lt; 1\)</span></p>
-</div><div class="column" style="width:50%;">
-<p><span class="math inline">\(F = \frac{MS_{between}}{MS_{wihin}} = \frac{large}{small} &gt; 1\)</span></p>
-</div></div>
+<section id="what-is-a-two-way-anova" class="slide level2">
+<h2>What is a Two-Way ANOVA?</h2>
+<p>Examines the impact of <strong><em>2</em></strong> nominal/categorical variables on a continuous outcome</p>
+<p>We can now examine:</p>
+<ul>
+<li><p>The impact of variable 1 on the outcome (Main Effect)</p></li>
+<li><p>The impact of variable 2 on the outcome (Main Effect)</p></li>
+<li><p>The <em>interaction</em>&nbsp;of variable 1 &amp; 2 on the outcome (Interaction Effect)</p>
+<div>
+<ul>
+<li class="fragment">The effect of variable 1 <strong><em>depends</em></strong> on the level of variable 2</li>
+</ul>
+</div></li>
+</ul>
 </section>
-<section id="anova-table" class="slide level2">
-<h2>ANOVA table</h2>
-<table class="caption-top" style="width:97%;">
-<colgroup>
-<col style="width: 18%">
-<col style="width: 9%">
-<col style="width: 14%">
-<col style="width: 24%">
-<col style="width: 21%">
-<col style="width: 9%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Source of Variation</th>
-<th style="text-align: center;">df</th>
-<th style="text-align: center;">Sum of Squares</th>
-<th style="text-align: center;">Mean Squares</th>
-<th style="text-align: center;">F-statistic</th>
-<th style="text-align: center;">p-value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Group</td>
-<td style="text-align: center;"><span class="math inline">\(G-1\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(SS_b\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(MS_b = \frac{SS_b}{df_b}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(F = \frac{MS_b}{MS_w}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(p\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Residual</td>
-<td style="text-align: center;"><span class="math inline">\(N-G\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(SS_w\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(MS_w = \frac{SS_w}{df_w}\)</span></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Total</td>
-<td style="text-align: center;"><span class="math inline">\(N-1\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(SS_{total}\)</span></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-</tbody>
-</table>
-</section></section>
-<section>
-<section id="one-way-anova-1" class="title-slide slide level1 center">
-<h1>One-way ANOVA</h1>
-
+<section id="main-effect-interactions" class="slide level2">
+<h2>Main Effect &amp; Interactions</h2>
+<p>Main Effect: Basically a one-way ANOVA</p>
+<ul>
+<li>The effect of variable 1 is the same across all levels of variable 2</li>
+</ul>
+<p>Interaction:</p>
+<ul>
+<li><p>Able to examine the effect of variable 1 across different levels of variable 2</p></li>
+<li><p>Basically speaking, <strong>the effect of variable 1 on our outcome <em>DEPENDS on the levels of variable 2</em></strong></p>
+<hr></li>
+</ul>
+</section>
+<section id="study-design-collection" class="slide level2">
+<h2>Study Design &amp; Collection</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Design - <em>When</em> data are collected</p>
+<ul>
+<li><p>Retrospective/Prospective</p></li>
+<li><p>Longitudinal</p></li>
+<li><p>Cross-Sectional</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p>Collection - <em>How</em> data are collected</p>
+<ul>
+<li><p>Experimental</p></li>
+<li><p>Field</p></li>
+<li><p>Observational</p></li>
+<li><p>Meta-analysis</p></li>
+<li><p>Neuroimaging/Psychophys</p></li>
+<li><p>Survey</p></li>
+<li><p>Quasi-Experimental</p></li>
+</ul>
+</div></div>
 </section>
 <section id="ghost-data" class="slide level2">
 <h2>Ghost Data</h2>
@@ -618,492 +591,32 @@ $contrasts
 </div>
 </div>
 </section>
-<section id="family-wise-error" class="slide level2">
-<h2>Family-wise error</h2>
-<p>These pairwise comparisons can quickly grow in number as the number of Groups increases. With 3 (k) Groups, we have k(k-1)/2 = 3 possible pairwise comparisons.</p>
-<p>As the number of groups in the ANOVA grows, the number of possible pairwise comparisons increases dramatically.</p>
-
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
-<section class="slide level2">
-
-<p>As the number of tests grows, and assuming the null hypothesis is true, the probability that we will make one or more Type I errors increases. To approximate the magnitude of the problem, we can assume that the multiple pairwise comparisons are independent. The probability that we <strong>don’t</strong> make a Type I error for <u><strong>one</strong></u> test is:</p>
-<p><span class="math display">\[P(\text{No Type I}, 1 \text{ test}) = 1-\alpha\]</span></p>
-</section>
-<section class="slide level2">
-
-<p>The probability that we don’t make a Type I error for <u><strong>two</strong></u> tests is:</p>
-<p><span class="math display">\[P(\text{No Type I}, 2 \text{ test}) = (1-\alpha)(1-\alpha)\]</span></p>
-<p>For C tests, the probability that we make <strong>no</strong> Type I errors is</p>
-<p><span class="math display">\[P(\text{No Type I}, C \text{ tests}) = (1-\alpha)^C\]</span></p>
-<p>We can then use the following to calculate the probability that we make one or more Type I errors in a collection of C independent tests.</p>
-<p><span class="math display">\[P(\text{At least one Type I}, C \text{ tests}) = 1-(1-\alpha)^C\]</span></p>
-</section>
-<section class="slide level2">
-
-<p>The Type I error inflation that accompanies multiple comparisons motivates the large number of “correction” procedures that have been developed.</p>
-
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
-<section class="slide level2">
-
-<p>Multiple comparisons, each tested with <span class="math inline">\(\alpha_{per-test}\)</span>, increases the family-wise <span class="math inline">\(\alpha\)</span> level.</p>
-<p><span class="math display">\[\large \alpha_{family-wise} = 1 - (1-\alpha_{per-test})^C\]</span> Šidák showed that the family-wise a could be controlled to a desired level (e.g., .05) by changing the <span class="math inline">\(\alpha_{per-test}\)</span> to:</p>
-<p><span class="math display">\[\large \alpha_{per-wise} = 1 - (1-\alpha_{family-wise})^{\frac{1}{C}}\]</span></p>
-</section>
-<section class="slide level2">
-
-<h3 id="bonferroni">Bonferroni</h3>
-<p>Bonferroni (and Dunn, and others) suggested this simple approximation:</p>
-<p><span class="math display">\[\large \alpha_{per-test} = \frac{\alpha_{family-wise}}{C}\]</span></p>
-<p>This is typically called the Bonferroni correction and is very often used even though better alternatives are available.</p>
-</section>
-<section class="slide level2">
-
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">emmeans</span>(aov1, pairwise <span class="sc">~</span> political_affiliation, </span>
-<span id="cb9-2"><a></a>        <span class="at">adjust =</span> <span class="st">"bonferroni"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$emmeans
- political_affiliation emmean   SE  df lower.CL upper.CL
- Democrat               80431 6517 393    67618    93244
- Independent           103919 5875 393    92369   115468
- Republican             85623 7217 393    71433    99812
-
-Confidence level used: 0.95 
-
-$contrasts
- contrast                 estimate   SE  df t.ratio p.value
- Democrat - Independent     -23488 8774 393  -2.677  0.0232
- Democrat - Republican       -5192 9724 393  -0.534  1.0000
- Independent - Republican    18296 9306 393   1.966  0.1500
-
-P value adjustment: bonferroni method for 3 tests </code></pre>
-</div>
-</div>
-</section>
-<section class="slide level2">
-
-<p>The Bonferroni procedure is conservative. Other correction procedures have been developed that control family-wise Type I error at .05 but that are more powerful than the Bonferroni procedure. The most common one is the Holm procedure.</p>
-<p>The Holm procedure does not make a constant adjustment to each per-test <span class="math inline">\(\alpha\)</span>. Instead it makes adjustments in stages depending on the relative size of each pairwise p-value.</p>
-</section>
-<section class="slide level2 scrollable">
-
-<h3 id="holm-correction">Holm correction</h3>
-<ol type="1">
-<li>Rank order the p-values from largest to smallest.</li>
-<li>Start with the smallest p-value. Multiply it by its rank.</li>
-<li>Go to the next smallest p-value. Multiply it by its rank. If the result is larger than the adjusted p-value of next smallest rank, keep it. Otherwise replace with the previous step adjusted p-value.</li>
-<li>Repeat Step 3 for the remaining p-values.</li>
-<li>Judge significance of each new p-value against <span class="math inline">\(\alpha = .05\)</span>.</li>
-</ol>
-</section>
-<section class="slide level2">
-
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: right;">Original p value</th>
-<th style="text-align: right;">Rank</th>
-<th style="text-align: right;">Rank x p</th>
-<th style="text-align: right;">Holm</th>
-<th style="text-align: right;">Bonferroni</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">0.0012</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">0.0072</td>
-<td style="text-align: right;">0.0072</td>
-<td style="text-align: right;">0.0072</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0023</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">0.0115</td>
-<td style="text-align: right;">0.0115</td>
-<td style="text-align: right;">0.0138</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0450</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">0.1800</td>
-<td style="text-align: right;">0.1800</td>
-<td style="text-align: right;">0.2700</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.0470</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.1410</td>
-<td style="text-align: right;">0.1800</td>
-<td style="text-align: right;">0.2820</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0.0530</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0.1060</td>
-<td style="text-align: right;">0.1800</td>
-<td style="text-align: right;">0.3180</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.2100</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0.2100</td>
-<td style="text-align: right;">0.2100</td>
-<td style="text-align: right;">1.0000</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section class="slide level2">
-
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">emmeans</span>(aov1, pairwise <span class="sc">~</span> political_affiliation, </span>
-<span id="cb11-2"><a></a>        <span class="at">adjust =</span> <span class="st">"holm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$emmeans
- political_affiliation emmean   SE  df lower.CL upper.CL
- Democrat               80431 6517 393    67618    93244
- Independent           103919 5875 393    92369   115468
- Republican             85623 7217 393    71433    99812
-
-Confidence level used: 0.95 
-
-$contrasts
- contrast                 estimate   SE  df t.ratio p.value
- Democrat - Independent     -23488 8774 393  -2.677  0.0232
- Democrat - Republican       -5192 9724 393  -0.534  0.5937
- Independent - Republican    18296 9306 393   1.966  0.1000
-
-P value adjustment: holm method for 3 tests </code></pre>
-</div>
-</div>
-</section></section>
-<section>
-<section id="anova-is-regression" class="title-slide slide level1 center">
-<h1>ANOVA is regression</h1>
-<p>In regression, we can accommodate categorical predictors. How does this compare to ANOVA?</p>
-<ul>
-<li>Same omnibus test of the model!</li>
-</ul>
-<p>*(Really the same model, but packaged differently.)</p>
-<ul>
-<li>When would you use one versus the other?</li>
-</ul>
-</section>
-<section class="slide level2">
-
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>ANOVA</strong></p>
-<ul>
-<li><p>More traditional for 3+ groups</p></li>
-<li><p>Comparing/controlling multiple categorical variables</p></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<p><strong>Regression</strong></p>
-<ul>
-<li><p>Best for two groups</p></li>
-<li><p>Incorporating continuous predictors too</p></li>
-<li><p>Good for 3+ groups when you have more specific hypotheses (contrasts)</p></li>
-</ul>
-</div></div>
-</section></section>
-<section>
-<section id="two-way-anova" class="title-slide slide level1 center">
-<h1>Two-Way ANOVA</h1>
-
-</section>
-<section id="what-is-a-two-way-anova" class="slide level2">
-<h2>What is a Two-Way ANOVA?</h2>
-<p>Examines the impact of <strong><em>2</em></strong> nominal/categorical variables on a continuous outcome</p>
-<p>We can now examine:</p>
-<ul>
-<li><p>The impact of variable 1 on the outcome (Main Effect)</p></li>
-<li><p>The impact of variable 2 on the outcome (Main Effect)</p></li>
-<li><p>The <em>interaction</em>&nbsp;of variable 1 &amp; 2 on the outcome (Interaction Effect)</p>
-<div>
-<ul>
-<li class="fragment">The effect of variable 1 <strong><em>depends</em></strong> on the level of variable 2</li>
-</ul>
-</div></li>
-</ul>
-</section>
-<section class="slide level2">
-
-</section>
-<section id="main-effect-interactions" class="slide level2">
-<h2>Main Effect &amp; Interactions</h2>
-<p>Main Effect: Basically a one-way ANOVA</p>
-<ul>
-<li>The effect of variable 1 is the same across all levels of variable 2</li>
-</ul>
-<p>Interaction:</p>
-<ul>
-<li><p>Able to examine the effect of variable 1 across different levels of variable 2</p></li>
-<li><p>Basically speaking, <strong>the effect of variable 1 on our outcome <em>DEPENDS on the levels of variable 2</em></strong></p></li>
-</ul>
-</section></section>
-<section>
-<section id="example-data" class="title-slide slide level1 center">
-<h1>Example Data</h1>
-
-</section>
-<section id="data" class="slide level2">
-<h2>Data</h2>
-<div style="font-size: 30px">
-<p>We are interested on the impact of phone usage on overall sleep quality</p>
-<p>We include 2 variables of interest: 1) Phone Type (iOS vs.&nbsp;Android) and 2) Amount of usage (High, Medium &amp; Low) to examine if there are differences in terms of sleep quality</p>
-<p><em>Note: It is important to consider <u>HOW</u> we operationalize constructs as some things we have as factors could easily be continuous variables</em></p>
-</div>
+<section id="visualizing" class="slide level2">
+<h2>Visualizing</h2>
+<p>ggstatsplot <a href="https://indrajeetpatil.github.io/ggstatsplot/" class="uri">https://indrajeetpatil.github.io/ggstatsplot/</a></p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="co">#Generate some data</span></span>
-<span id="cb13-2"><a></a></span>
-<span id="cb13-3"><a></a><span class="co"># Set random seed for reproducibility</span></span>
-<span id="cb13-4"><a></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb13-5"><a></a></span>
-<span id="cb13-6"><a></a>n <span class="ot">&lt;-</span> <span class="dv">500</span>  <span class="co"># Set number of observations</span></span>
-<span id="cb13-7"><a></a></span>
-<span id="cb13-8"><a></a><span class="co"># Generate Type of Phone data</span></span>
-<span id="cb13-9"><a></a>phone_type <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Android"</span>, <span class="st">"iOS"</span>), </span>
-<span id="cb13-10"><a></a>                     n, </span>
-<span id="cb13-11"><a></a>                     <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb13-12"><a></a></span>
-<span id="cb13-13"><a></a><span class="co"># Generate Phone Usage data</span></span>
-<span id="cb13-14"><a></a>phone_usage <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Low"</span>, <span class="st">"Medium"</span>, <span class="st">"High"</span>), </span>
-<span id="cb13-15"><a></a>                             n, </span>
-<span id="cb13-16"><a></a>                             <span class="at">replace =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb13-17"><a></a>                      <span class="at">levels=</span> <span class="fu">c</span>(<span class="st">"Low"</span>, <span class="st">"Medium"</span>, <span class="st">"High"</span>))</span>
-<span id="cb13-18"><a></a></span>
-<span id="cb13-19"><a></a><span class="co"># Generate Sleep Quality data (with some variation)</span></span>
-<span id="cb13-20"><a></a><span class="co"># Intentionally inflating to highlight main effects</span></span>
-<span id="cb13-21"><a></a>sleep_quality <span class="ot">&lt;-</span> <span class="fu">round</span>(</span>
-<span id="cb13-22"><a></a>  <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="fu">ifelse</span>(phone_type <span class="sc">==</span> <span class="st">"Android"</span>, <span class="dv">5</span>, <span class="dv">7</span>) <span class="sc">+</span> <span class="fu">ifelse</span>(phone_usage <span class="sc">==</span> <span class="st">"High"</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>), <span class="at">sd =</span> <span class="dv">1</span>),</span>
-<span id="cb13-23"><a></a>  <span class="dv">1</span></span>
-<span id="cb13-24"><a></a>)</span>
-<span id="cb13-25"><a></a></span>
-<span id="cb13-26"><a></a><span class="co"># Generate Sleep Quality data (with some variation)</span></span>
-<span id="cb13-27"><a></a>sleep_quality2 <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">6</span>, <span class="at">sd =</span> <span class="dv">3</span>),<span class="dv">1</span>)</span>
-<span id="cb13-28"><a></a></span>
-<span id="cb13-29"><a></a><span class="co"># Create a data frame</span></span>
-<span id="cb13-30"><a></a>sleep_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(phone_type, </span>
-<span id="cb13-31"><a></a>                         phone_usage, </span>
-<span id="cb13-32"><a></a>                         sleep_quality,</span>
-<span id="cb13-33"><a></a>                         sleep_quality2)</span>
-<span id="cb13-34"><a></a></span>
-<span id="cb13-35"><a></a><span class="fu">head</span>(sleep_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co">#Welch's F-test</span></span>
+<span id="cb9-2"><a></a><span class="fu">oneway.test</span>(income <span class="sc">~</span> political_affiliation, </span>
+<span id="cb9-3"><a></a>            <span class="at">data =</span> ghost_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>  phone_type phone_usage sleep_quality sleep_quality2
-1    Android        High           5.0           12.5
-2    Android         Low           3.8           12.8
-3    Android      Medium           3.9            8.7
-4    Android      Medium           3.3            5.8
-5        iOS         Low           5.6            8.0
-6        iOS        High           7.8            3.6</code></pre>
-</div>
-</div>
-</section>
-<section id="test-statistics" class="slide level2">
-<h2>Test Statistics</h2>
-<p>We’ve gone too far today without me showing some equations</p>
-<p>With one way anova, we calculated the <span class="math inline">\(SS_{between}\)</span> and the <span class="math inline">\(SS_{within}\)</span> and were able to use those to capture the F-statistic</p>
-<p>Now we have another variable to take into account. Therefore, we need to calculate:</p>
-<p><span class="math display">\[
-SS_{between Group1}, \: SS_{between Group2}
-\]</span></p>
-<p><span class="math display">\[
-SS_{within}, \: SS_{total}
-\]</span></p>
-</section>
-<section id="f-statisticratio" class="slide level2">
-<h2><span class="math inline">\(F\)</span>-Statistic/Ratio</h2>
-<p>Helpful site for hand calculations: (<a href="https://www.statology.org/two-way-anova-by-hand/">link</a>)</p>
-<ul>
-<li><p>Since we have these various sum of squares, we can then fill out the ANOVA table</p></li>
-<li><p>This also means that we will have <em>multiple</em> F-Statistics</p></li>
-</ul>
-</section>
-<section class="slide level2">
+<pre><code>
+    One-way analysis of means (not assuming equal variances)
 
-<table class="caption-top" style="width:97%;">
-<colgroup>
-<col style="width: 13%">
-<col style="width: 8%">
-<col style="width: 22%">
-<col style="width: 24%">
-<col style="width: 21%">
-<col style="width: 6%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Source of Variation</th>
-<th style="text-align: center;">df</th>
-<th style="text-align: center;">Sum of Squares</th>
-<th style="text-align: center;">Mean Squares</th>
-<th style="text-align: center;">F-statistic</th>
-<th style="text-align: center;">p-value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Group1</td>
-<td style="text-align: center;"><span class="math inline">\(j-1\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(SS_{b1}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(MS_{b1} = \frac{SS_{b1}}{df_{b1}}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(F_1 = \frac{MS_{b1}}{MS_{w1}}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(p_1\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Group2</td>
-<td style="text-align: center;"><span class="math inline">\(k-1\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(SS_{b2}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(MS_{b2} = \frac{SS_{b2}}{df_{b2}}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(F_2 = \frac{MS_{b2}}{MS_{w2}}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(p_2\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Interaction</td>
-<td style="text-align: center;"><span class="math inline">\(df_1*df_2\)</span></td>
-<td style="text-align: center;"><div class="fragment highlight-green">
-<p><span class="math inline">\(SS_{int}\)</span></p>
-</div></td>
-<td style="text-align: center;"><span class="math inline">\(MS_{b3} = \frac{SS_{b3}}{df_{b3}}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(F_2 = \frac{MS_{b3}}{MS_{w3}}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(p_3\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Residual (within)</td>
-<td style="text-align: center;"><span class="math inline">\(N-G\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(SS_w\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(MS_w = \frac{SS_w}{df_w}\)</span></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Total</td>
-<td style="text-align: center;"><span class="math inline">\(N-1\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(SS_{total}\)</span></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="calculate-ss_interaction" class="slide level2">
-<h2>Calculate <span class="math inline">\(SS_{interaction}\)</span></h2>
-<p>Now we need to be able to take into account the interaction term</p>
-<p>This is done by calculating all other <span class="math inline">\(SS\)</span> and then performing:</p>
-<p><span class="math display">\[
-SS_{interaction} = SS_{total} - SS_{b1} - SS_{b2} - SS_{w}
-\]</span></p>
-</section></section>
-<section>
-<section id="example-calculate-the-ss-for-the-new-data" class="title-slide slide level1 center">
-<h1>Example: Calculate the <span class="math inline">\(SS\)</span> for the new data</h1>
-<div>
-<ul>
-<li class="fragment">no…we aren’t doing that</li>
-</ul>
+data:  income and political_affiliation
+F = 3.4289, num df = 2.00, denom df = 260.52, p-value = 0.03389</code></pre>
 </div>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="running-in-r" class="title-slide slide level1 center">
-<h1>Running in R</h1>
-<p>Take a peak at the dataset again so we can look at the variables and their names</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">head</span>(sleep_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  phone_type phone_usage sleep_quality sleep_quality2
-1    Android        High           5.0           12.5
-2    Android         Low           3.8           12.8
-3    Android      Medium           3.9            8.7
-4    Android      Medium           3.3            5.8
-5        iOS         Low           5.6            8.0
-6        iOS        High           7.8            3.6</code></pre>
-</div>
-</div>
-</section>
-<section id="running-in-r-1" class="slide level2">
-<h2>Running in R</h2>
-<p>We will use the <code>aov()</code> function to set up our model</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>fit2 <span class="ot">&lt;-</span> <span class="fu">aov</span>(sleep_quality <span class="sc">~</span> phone_type <span class="sc">+</span> phone_usage <span class="sc">+</span> phone_type<span class="sc">*</span>phone_usage, </span>
-<span id="cb17-2"><a></a>            <span class="at">data =</span> sleep_data)</span>
-<span id="cb17-3"><a></a></span>
-<span id="cb17-4"><a></a><span class="co">#OR </span></span>
-<span id="cb17-5"><a></a></span>
-<span id="cb17-6"><a></a>fit2 <span class="ot">&lt;-</span> <span class="fu">aov</span>(sleep_quality <span class="sc">~</span> phone_type <span class="sc">*</span> phone_usage, </span>
-<span id="cb17-7"><a></a>            <span class="at">data =</span> sleep_data)</span>
-<span id="cb17-8"><a></a></span>
-<span id="cb17-9"><a></a><span class="fu">summary</span>(fit2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                        Df Sum Sq Mean Sq F value              Pr(&gt;F)    
-phone_type               1  544.6   544.6 515.727 &lt;0.0000000000000002 ***
-phone_usage              2  498.7   249.4 236.148 &lt;0.0000000000000002 ***
-phone_type:phone_usage   2    0.7     0.3   0.317               0.728    
-Residuals              494  521.6     1.1                                
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
-</div>
-</div>
-</section>
-<section class="slide level2">
-
-<div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">ggplot</span>(sleep_data, <span class="fu">aes</span>(<span class="at">x =</span> phone_usage, </span>
-<span id="cb19-2"><a></a>                       <span class="at">y =</span> sleep_quality, </span>
-<span id="cb19-3"><a></a>                       <span class="at">color =</span> phone_type, </span>
-<span id="cb19-4"><a></a>                       <span class="at">group =</span> phone_type)) <span class="sc">+</span></span>
-<span id="cb19-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb19-6"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,</span>
-<span id="cb19-7"><a></a>              <span class="at">se=</span><span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb19-8"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Phone Usage"</span>, </span>
-<span id="cb19-9"><a></a>       <span class="at">y =</span> <span class="st">"Sleep Quality"</span>, </span>
-<span id="cb19-10"><a></a>       <span class="at">color =</span> <span class="st">"Phone Type"</span>) <span class="sc">+</span></span>
-<span id="cb19-11"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>ggstatsplot<span class="sc">::</span><span class="fu">ggbetweenstats</span>(ghost_data,</span>
+<span id="cb11-2"><a></a>                            political_affiliation, </span>
+<span id="cb11-3"><a></a>                            income)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
-<section id="different-outcome" class="slide level2">
-<h2>Different Outcome</h2>
-<p>Created the outcome of <code>sleep_quality2</code> to be completely random instead of following a formula so that we could visualize the effect</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>fit3 <span class="ot">&lt;-</span> <span class="fu">aov</span>(sleep_quality2 <span class="sc">~</span> phone_type <span class="sc">*</span> phone_usage, </span>
-<span id="cb20-2"><a></a>            <span class="at">data =</span> sleep_data)</span>
-<span id="cb20-3"><a></a><span class="fu">summary</span>(fit3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                        Df Sum Sq Mean Sq F value Pr(&gt;F)   
-phone_type               1     86   85.65   9.162 0.0026 **
-phone_usage              2     56   27.83   2.977 0.0519 . 
-phone_type:phone_usage   2      8    4.18   0.447 0.6399   
-Residuals              494   4618    9.35                  
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
-</div>
-</div>
-</section>
-<section class="slide level2">
-
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="co"># Create an interaction plot using ggplot2</span></span>
-<span id="cb22-2"><a></a><span class="fu">ggplot</span>(sleep_data, <span class="fu">aes</span>(<span class="at">x =</span> phone_usage, <span class="at">y =</span> sleep_quality2, <span class="at">color =</span> phone_type, <span class="at">group =</span> phone_type)) <span class="sc">+</span></span>
-<span id="cb22-3"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb22-4"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,</span>
-<span id="cb22-5"><a></a>              <span class="at">se=</span><span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb22-6"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Phone Usage"</span>, <span class="at">y =</span> <span class="st">"Sleep Quality"</span>, <span class="at">color =</span> <span class="st">"Phone Type"</span>) <span class="sc">+</span></span>
-<span id="cb22-7"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch"></section></section>
+<img data-src="slides2_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section></section>
 <section>
 <section id="regression" class="title-slide slide level1 center">
 <h1>Regression</h1>
@@ -1117,7 +630,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li><p>One equation to rule them all</p></li>
 </ul>
 
-<img data-src="images/reg_precious.gif" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="../../images/reg_precious.gif" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="today-2" class="slide level2">
 <h2>Today…</h2>
 <p>Regression</p>
@@ -1130,17 +643,17 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="co">#Don't know if I'm using all of these, but including theme here anyways</span></span>
-<span id="cb23-2"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb23-3"><a></a><span class="fu">library</span>(rio)</span>
-<span id="cb23-4"><a></a><span class="fu">library</span>(broom)</span>
-<span id="cb23-5"><a></a><span class="fu">library</span>(psych)</span>
-<span id="cb23-6"><a></a><span class="fu">library</span>(gapminder)</span>
-<span id="cb23-7"><a></a><span class="fu">library</span>(psychTools)</span>
-<span id="cb23-8"><a></a></span>
-<span id="cb23-9"><a></a></span>
-<span id="cb23-10"><a></a><span class="co">#Remove Scientific Notation </span></span>
-<span id="cb23-11"><a></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co">#Don't know if I'm using all of these, but including theme here anyways</span></span>
+<span id="cb12-2"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb12-3"><a></a><span class="fu">library</span>(rio)</span>
+<span id="cb12-4"><a></a><span class="fu">library</span>(broom)</span>
+<span id="cb12-5"><a></a><span class="fu">library</span>(psych)</span>
+<span id="cb12-6"><a></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb12-7"><a></a><span class="fu">library</span>(psychTools)</span>
+<span id="cb12-8"><a></a></span>
+<span id="cb12-9"><a></a></span>
+<span id="cb12-10"><a></a><span class="co">#Remove Scientific Notation </span></span>
+<span id="cb12-11"><a></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="overview-of-regression" class="slide level2">
@@ -1262,65 +775,65 @@ There is a different e value for each observation in the dataset</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">set.seed</span>(<span class="dv">142</span>)</span>
-<span id="cb24-2"><a></a>x<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb24-3"><a></a>e<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">2</span>)</span>
-<span id="cb24-4"><a></a>y<span class="fl">.1</span> <span class="ot">&lt;-</span> .<span class="dv">5</span> <span class="sc">+</span> .<span class="dv">55</span> <span class="sc">*</span> x<span class="fl">.1</span> <span class="sc">+</span> e<span class="fl">.1</span></span>
-<span id="cb24-5"><a></a>d<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x<span class="fl">.1</span>,y<span class="fl">.1</span>)</span>
-<span id="cb24-6"><a></a>m<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="fl">.1</span> <span class="sc">~</span> x<span class="fl">.1</span>, <span class="at">data =</span> d<span class="fl">.1</span>)</span>
-<span id="cb24-7"><a></a>d1.f<span class="ot">&lt;-</span> <span class="fu">augment</span>(m<span class="fl">.1</span>)</span>
-<span id="cb24-8"><a></a></span>
-<span id="cb24-9"><a></a></span>
-<span id="cb24-10"><a></a><span class="fu">ggplot</span>(d1.f , <span class="fu">aes</span>(<span class="at">x=</span>x<span class="fl">.1</span>, <span class="at">y=</span>y<span class="fl">.1</span>)) <span class="sc">+</span></span>
-<span id="cb24-11"><a></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb24-12"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb24-13"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">set.seed</span>(<span class="dv">142</span>)</span>
+<span id="cb13-2"><a></a>x<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb13-3"><a></a>e<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb13-4"><a></a>y<span class="fl">.1</span> <span class="ot">&lt;-</span> .<span class="dv">5</span> <span class="sc">+</span> .<span class="dv">55</span> <span class="sc">*</span> x<span class="fl">.1</span> <span class="sc">+</span> e<span class="fl">.1</span></span>
+<span id="cb13-5"><a></a>d<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x<span class="fl">.1</span>,y<span class="fl">.1</span>)</span>
+<span id="cb13-6"><a></a>m<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="fl">.1</span> <span class="sc">~</span> x<span class="fl">.1</span>, <span class="at">data =</span> d<span class="fl">.1</span>)</span>
+<span id="cb13-7"><a></a>d1.f<span class="ot">&lt;-</span> <span class="fu">augment</span>(m<span class="fl">.1</span>)</span>
+<span id="cb13-8"><a></a></span>
+<span id="cb13-9"><a></a></span>
+<span id="cb13-10"><a></a><span class="fu">ggplot</span>(d1.f , <span class="fu">aes</span>(<span class="at">x=</span>x<span class="fl">.1</span>, <span class="at">y=</span>y<span class="fl">.1</span>)) <span class="sc">+</span></span>
+<span id="cb13-11"><a></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb13-12"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb13-13"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
-<img data-src="slides_files/figure-revealjs/plot1-1.png" width="960" class="r-stretch"></section>
+<img data-src="slides2_files/figure-revealjs/plot1-1.png" width="960" class="r-stretch"></section>
 <section class="slide level2">
 
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">ggplot</span>(d1.f , <span class="fu">aes</span>(<span class="at">x=</span>x<span class="fl">.1</span>, <span class="at">y=</span>y<span class="fl">.1</span>)) <span class="sc">+</span></span>
-<span id="cb25-2"><a></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb25-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> .fitted), <span class="at">shape =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb25-4"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">ggplot</span>(d1.f , <span class="fu">aes</span>(<span class="at">x=</span>x<span class="fl">.1</span>, <span class="at">y=</span>y<span class="fl">.1</span>)) <span class="sc">+</span></span>
+<span id="cb14-2"><a></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb14-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> .fitted), <span class="at">shape =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb14-4"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch"></section>
+<img data-src="slides2_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
 <section class="slide level2">
 
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">ggplot</span>(d1.f , <span class="fu">aes</span>(<span class="at">x=</span>x<span class="fl">.1</span>, <span class="at">y=</span>y<span class="fl">.1</span>)) <span class="sc">+</span></span>
-<span id="cb26-2"><a></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb26-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> .fitted), <span class="at">shape =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb26-4"><a></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>( <span class="at">xend =</span> x<span class="fl">.1</span>, <span class="at">yend =</span> .fitted))<span class="sc">+</span></span>
-<span id="cb26-5"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">ggplot</span>(d1.f , <span class="fu">aes</span>(<span class="at">x=</span>x<span class="fl">.1</span>, <span class="at">y=</span>y<span class="fl">.1</span>)) <span class="sc">+</span></span>
+<span id="cb15-2"><a></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb15-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> .fitted), <span class="at">shape =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb15-4"><a></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>( <span class="at">xend =</span> x<span class="fl">.1</span>, <span class="at">yend =</span> .fitted))<span class="sc">+</span></span>
+<span id="cb15-5"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"></section>
+<img data-src="slides2_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
 <section class="slide level2">
 
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">ggplot</span>(d1.f , <span class="fu">aes</span>(<span class="at">x=</span>x<span class="fl">.1</span>, <span class="at">y=</span>y<span class="fl">.1</span>)) <span class="sc">+</span></span>
-<span id="cb27-2"><a></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb27-3"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb27-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> .fitted), <span class="at">shape =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb27-5"><a></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>( <span class="at">xend =</span> x<span class="fl">.1</span>, <span class="at">yend =</span> .fitted))<span class="sc">+</span></span>
-<span id="cb27-6"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">ggplot</span>(d1.f , <span class="fu">aes</span>(<span class="at">x=</span>x<span class="fl">.1</span>, <span class="at">y=</span>y<span class="fl">.1</span>)) <span class="sc">+</span></span>
+<span id="cb16-2"><a></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb16-3"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb16-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> .fitted), <span class="at">shape =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb16-5"><a></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>( <span class="at">xend =</span> x<span class="fl">.1</span>, <span class="at">yend =</span> .fitted))<span class="sc">+</span></span>
+<span id="cb16-6"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-20-1.png" width="960" class="r-stretch"></section>
+<img data-src="slides2_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
 <section id="compare-to-bad-fit" class="slide level2">
 <h2>compare to bad fit</h2>
 <div class="columns">
@@ -1329,7 +842,7 @@ There is a different e value for each observation in the dataset</p>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-21-1.png" width="960"></p>
+<p><img data-src="slides2_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1339,7 +852,7 @@ There is a different e value for each observation in the dataset</p>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
+<p><img data-src="slides2_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1411,16 +924,16 @@ There is a different e value for each observation in the dataset</p>
 <section id="example" class="slide level2">
 <h2>Example</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">library</span>(gapminder)</span>
-<span id="cb28-2"><a></a>gapminder <span class="ot">=</span> gapminder <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span> <span class="sc">&amp;</span> continent <span class="sc">==</span> <span class="st">"Asia"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb28-3"><a></a>  <span class="fu">mutate</span>(<span class="at">log_gdp =</span> <span class="fu">log</span>(gdpPercap))</span>
-<span id="cb28-4"><a></a><span class="fu">describe</span>(gapminder[,<span class="fu">c</span>(<span class="st">"log_gdp"</span>, <span class="st">"lifeExp"</span>)], <span class="at">fast =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb17-2"><a></a>gapminder <span class="ot">=</span> gapminder <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span> <span class="sc">&amp;</span> continent <span class="sc">==</span> <span class="st">"Asia"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-3"><a></a>  <span class="fu">mutate</span>(<span class="at">log_gdp =</span> <span class="fu">log</span>(gdpPercap))</span>
+<span id="cb17-4"><a></a><span class="fu">describe</span>(gapminder[,<span class="fu">c</span>(<span class="st">"log_gdp"</span>, <span class="st">"lifeExp"</span>)], <span class="at">fast =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        vars  n  mean   sd median   min   max range  skew kurtosis   se
 log_gdp    1 33  8.74 1.24   8.41  6.85 10.76  3.91  0.21    -1.37 0.22
 lifeExp    2 33 70.73 7.96  72.40 43.83 82.60 38.77 -1.07     1.79 1.39</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">cor</span>(gapminder<span class="sc">$</span>log_gdp, gapminder<span class="sc">$</span>lifeExp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">cor</span>(gapminder<span class="sc">$</span>log_gdp, gapminder<span class="sc">$</span>lifeExp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.8003474</code></pre>
 </div>
@@ -1430,17 +943,17 @@ lifeExp    2 33 70.73 7.96  72.40 43.83 82.60 38.77 -1.07     1.79 1.39</code></
 
 <p>If we regress lifeExp onto log_gdp:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>r <span class="ot">=</span> <span class="fu">cor</span>(gapminder<span class="sc">$</span>log_gdp, gapminder<span class="sc">$</span>lifeExp)</span>
-<span id="cb32-2"><a></a>m_log_gdp <span class="ot">=</span> <span class="fu">mean</span>(gapminder<span class="sc">$</span>log_gdp)</span>
-<span id="cb32-3"><a></a>m_lifeExp <span class="ot">=</span> <span class="fu">mean</span>(gapminder<span class="sc">$</span>lifeExp)</span>
-<span id="cb32-4"><a></a>s_log_gdp <span class="ot">=</span> <span class="fu">sd</span>(gapminder<span class="sc">$</span>log_gdp)</span>
-<span id="cb32-5"><a></a>s_lifeExp <span class="ot">=</span> <span class="fu">sd</span>(gapminder<span class="sc">$</span>lifeExp)</span>
-<span id="cb32-6"><a></a></span>
-<span id="cb32-7"><a></a>b1 <span class="ot">=</span> r<span class="sc">*</span>(s_lifeExp<span class="sc">/</span>s_log_gdp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>r <span class="ot">=</span> <span class="fu">cor</span>(gapminder<span class="sc">$</span>log_gdp, gapminder<span class="sc">$</span>lifeExp)</span>
+<span id="cb21-2"><a></a>m_log_gdp <span class="ot">=</span> <span class="fu">mean</span>(gapminder<span class="sc">$</span>log_gdp)</span>
+<span id="cb21-3"><a></a>m_lifeExp <span class="ot">=</span> <span class="fu">mean</span>(gapminder<span class="sc">$</span>lifeExp)</span>
+<span id="cb21-4"><a></a>s_log_gdp <span class="ot">=</span> <span class="fu">sd</span>(gapminder<span class="sc">$</span>log_gdp)</span>
+<span id="cb21-5"><a></a>s_lifeExp <span class="ot">=</span> <span class="fu">sd</span>(gapminder<span class="sc">$</span>lifeExp)</span>
+<span id="cb21-6"><a></a></span>
+<span id="cb21-7"><a></a>b1 <span class="ot">=</span> r<span class="sc">*</span>(s_lifeExp<span class="sc">/</span>s_log_gdp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.157259</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>b0 <span class="ot">=</span> m_lifeExp <span class="sc">-</span> b1<span class="sc">*</span>m_log_gdp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>b0 <span class="ot">=</span> m_lifeExp <span class="sc">-</span> b1<span class="sc">*</span>m_log_gdp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 25.65011</code></pre>
 </div>
@@ -1450,21 +963,21 @@ lifeExp    2 33 70.73 7.96  72.40 43.83 82.60 38.77 -1.07     1.79 1.39</code></
 <section class="slide level2">
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>(<span class="at">b1 =</span> r<span class="sc">*</span>(s_lifeExp<span class="sc">/</span>s_log_gdp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>(<span class="at">b1 =</span> r<span class="sc">*</span>(s_lifeExp<span class="sc">/</span>s_log_gdp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.157259</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>(<span class="at">b0 =</span> m_lifeExp <span class="sc">-</span> b1<span class="sc">*</span>m_log_gdp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>(<span class="at">b0 =</span> m_lifeExp <span class="sc">-</span> b1<span class="sc">*</span>m_log_gdp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 25.65011</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>(<span class="at">b1 =</span> r<span class="sc">*</span>(s_log_gdp<span class="sc">/</span>s_lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>(<span class="at">b1 =</span> r<span class="sc">*</span>(s_log_gdp<span class="sc">/</span>s_lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1242047</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>(<span class="at">b0 =</span> m_log_gdp <span class="sc">-</span> b1<span class="sc">*</span>m_lifeExp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>(<span class="at">b0 =</span> m_log_gdp <span class="sc">-</span> b1<span class="sc">*</span>m_lifeExp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.04405086</code></pre>
 </div>
@@ -1473,8 +986,8 @@ lifeExp    2 33 70.73 7.96  72.40 43.83 82.60 38.77 -1.07     1.79 1.39</code></
 <section id="in-r" class="slide level2">
 <h2>In <code>R</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>fit<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(lifeExp <span class="sc">~</span> log_gdp, <span class="at">data =</span> gapminder)</span>
-<span id="cb44-2"><a></a><span class="fu">summary</span>(fit<span class="fl">.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>fit<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(lifeExp <span class="sc">~</span> log_gdp, <span class="at">data =</span> gapminder)</span>
+<span id="cb33-2"><a></a><span class="fu">summary</span>(fit<span class="fl">.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1517,14 +1030,14 @@ F-statistic: 55.24 on 1 and 31 DF,  p-value: 0.00000002263</code></pre>
 <section class="slide level2">
 
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-28-1.png" width="960" class="r-stretch"></section>
+<img data-src="slides2_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch"></section>
 <section class="slide level2">
 
 <h3 id="data-fitted-and-residuals">Data, fitted, and residuals</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="fu">library</span>(broom)</span>
-<span id="cb46-2"><a></a>model_info <span class="ot">=</span> <span class="fu">augment</span>(fit<span class="fl">.1</span>)</span>
-<span id="cb46-3"><a></a><span class="fu">head</span>(model_info)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">library</span>(broom)</span>
+<span id="cb35-2"><a></a>model_info <span class="ot">=</span> <span class="fu">augment</span>(fit<span class="fl">.1</span>)</span>
+<span id="cb35-3"><a></a><span class="fu">head</span>(model_info)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 8
   lifeExp log_gdp .fitted .resid   .hat .sigma .cooksd .std.resid
@@ -1538,7 +1051,7 @@ F-statistic: 55.24 on 1 and 31 DF,  p-value: 0.00000002263</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a><span class="fu">describe</span>(model_info, <span class="at">fast =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">describe</span>(model_info, <span class="at">fast =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           vars  n  mean   sd median    min   max range  skew kurtosis   se
 lifeExp       1 33 70.73 7.96  72.40  43.83 82.60 38.77 -1.07     1.79 1.39
@@ -1571,89 +1084,140 @@ log_gdp       2 33  8.74 1.24   8.41   6.85 10.76  3.91  0.21    -1.37 0.22
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a>model_info <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> log_gdp, <span class="at">y =</span> .fitted)) <span class="sc">+</span></span>
-<span id="cb50-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">se =</span> F, <span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
-<span id="cb50-3"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="st">"X"</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="fu">expression</span>(<span class="fu">hat</span>(Y))) <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>model_info <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> log_gdp, <span class="at">y =</span> .fitted)) <span class="sc">+</span></span>
+<span id="cb39-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">se =</span> F, <span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb39-3"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="st">"X"</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="fu">expression</span>(<span class="fu">hat</span>(Y))) <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-31-1.png" width="768" class="r-stretch"></section>
+<img data-src="slides2_files/figure-revealjs/unnamed-chunk-21-1.png" width="768" class="r-stretch"></section>
 <section class="slide level2">
 
 <h3 id="the-relationship-between-x_i-and-e_i">The relationship between <span class="math inline">\(X_i\)</span> and <span class="math inline">\(e_i\)</span></h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a>model_info <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> log_gdp, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
-<span id="cb51-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">se =</span> F, <span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span> </span>
-<span id="cb51-3"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="st">"X"</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="st">"e"</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>model_info <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> log_gdp, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
+<span id="cb40-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">se =</span> F, <span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span> </span>
+<span id="cb40-3"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="st">"X"</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="st">"e"</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-32-1.png" width="768" class="r-stretch"></section>
+<img data-src="slides2_files/figure-revealjs/unnamed-chunk-22-1.png" width="768" class="r-stretch"></section>
 <section class="slide level2">
 
 <h3 id="the-relationship-between-y_i-and-haty_i">The relationship between <span class="math inline">\(Y_i\)</span> and <span class="math inline">\(\hat{Y_i}\)</span></h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a>model_info <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">y =</span> .fitted)) <span class="sc">+</span></span>
-<span id="cb52-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">se =</span> F, <span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span> </span>
-<span id="cb52-3"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="st">"Y"</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="fu">expression</span>(<span class="fu">hat</span>(Y))) <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>model_info <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">y =</span> .fitted)) <span class="sc">+</span></span>
+<span id="cb41-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">se =</span> F, <span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span> </span>
+<span id="cb41-3"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="st">"Y"</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="fu">expression</span>(<span class="fu">hat</span>(Y))) <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-33-1.png" width="768" class="r-stretch"></section>
+<img data-src="slides2_files/figure-revealjs/unnamed-chunk-23-1.png" width="768" class="r-stretch"></section>
 <section class="slide level2">
 
 <h3 id="the-relationship-between-y_i-and-e_i">The relationship between <span class="math inline">\(Y_i\)</span> and <span class="math inline">\(e_i\)</span></h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a>model_info <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
-<span id="cb53-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">se =</span> F, <span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span> </span>
-<span id="cb53-3"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="st">"Y"</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="st">"e"</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>model_info <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
+<span id="cb42-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">se =</span> F, <span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span> </span>
+<span id="cb42-3"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="st">"Y"</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="st">"e"</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-34-1.png" width="768" class="r-stretch"></section>
+<img data-src="slides2_files/figure-revealjs/unnamed-chunk-24-1.png" width="768" class="r-stretch"></section>
 <section class="slide level2">
 
 <h3 id="the-relationship-between-haty_i-and-e_i">The relationship between <span class="math inline">\(\hat{Y_i}\)</span> and <span class="math inline">\(e_i\)</span></h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a></a>model_info <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
-<span id="cb54-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">se =</span> F, <span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span> </span>
-<span id="cb54-3"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="st">"e"</span>) <span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="fu">expression</span>(<span class="fu">hat</span>(Y))) <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>model_info <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
+<span id="cb43-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">se =</span> F, <span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span> </span>
+<span id="cb43-3"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="st">"e"</span>) <span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="fu">expression</span>(<span class="fu">hat</span>(Y))) <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-35-1.png" width="768" class="r-stretch"></section>
+<img data-src="slides2_files/figure-revealjs/unnamed-chunk-25-1.png" width="768" class="r-stretch"></section>
+<section id="using-easystats" class="slide level2">
+<h2>Using <code>easystats</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>performance<span class="sc">::</span><span class="fu">check_model</span>(fit<span class="fl">.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides2_files/figure-revealjs/unnamed-chunk-26-1.png" width="960" class="r-stretch"></section>
+<section id="using-sjplot" class="slide level2">
+<h2>Using <code>sjPlot</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a>sjPlot<span class="sc">::</span><span class="fu">tab_model</span>(fit<span class="fl">.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top" data-quarto-postprocess="true" style="border-collapse:collapse; border:none;">
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">&nbsp;</td>
+<td colspan="3" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">life Exp</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Predictors</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Estimates</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">CI</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">p</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">(Intercept)</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">25.65</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">13.16&nbsp;–&nbsp;38.14</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">log gdp</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">5.16</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">3.74&nbsp;–&nbsp;6.57</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">Observations</td>
+<td colspan="3" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">33</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">R<sup>2</sup> / R<sup>2</sup> adjusted</td>
+<td colspan="3" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">0.641 / 0.629</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</section>
 <section id="regression-to-the-mean" class="slide level2">
 <h2>Regression to the mean</h2>
 <p>An observation about heights was part of the motivation to develop the regression equation: If you selected a parent who was exceptionally tall (or short), their child was almost always not as tall (or as short).</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a><span class="fu">library</span>(psychTools)</span>
-<span id="cb55-2"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb55-3"><a></a>heights <span class="ot">=</span> psychTools<span class="sc">::</span>galton</span>
-<span id="cb55-4"><a></a>mod <span class="ot">=</span> <span class="fu">lm</span>(child<span class="sc">~</span>parent, <span class="at">data =</span> heights)</span>
-<span id="cb55-5"><a></a>point <span class="ot">=</span> <span class="dv">902</span></span>
-<span id="cb55-6"><a></a>heights <span class="ot">=</span> broom<span class="sc">::</span><span class="fu">augment</span>(mod)</span>
-<span id="cb55-7"><a></a></span>
-<span id="cb55-8"><a></a></span>
-<span id="cb55-9"><a></a>heights <span class="sc">%&gt;%</span></span>
-<span id="cb55-10"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> parent, <span class="at">y =</span> child)) <span class="sc">+</span></span>
-<span id="cb55-11"><a></a>  <span class="fu">geom_jitter</span>(<span class="at">alpha =</span> .<span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb55-12"><a></a>  <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> <span class="dv">72</span>), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb55-13"><a></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="dv">72</span>), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb55-14"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="fu">library</span>(psychTools)</span>
+<span id="cb46-2"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb46-3"><a></a>heights <span class="ot">=</span> psychTools<span class="sc">::</span>galton</span>
+<span id="cb46-4"><a></a>mod <span class="ot">=</span> <span class="fu">lm</span>(child<span class="sc">~</span>parent, <span class="at">data =</span> heights)</span>
+<span id="cb46-5"><a></a>point <span class="ot">=</span> <span class="dv">902</span></span>
+<span id="cb46-6"><a></a>heights <span class="ot">=</span> broom<span class="sc">::</span><span class="fu">augment</span>(mod)</span>
+<span id="cb46-7"><a></a></span>
+<span id="cb46-8"><a></a></span>
+<span id="cb46-9"><a></a>heights <span class="sc">%&gt;%</span></span>
+<span id="cb46-10"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> parent, <span class="at">y =</span> child)) <span class="sc">+</span></span>
+<span id="cb46-11"><a></a>  <span class="fu">geom_jitter</span>(<span class="at">alpha =</span> .<span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb46-12"><a></a>  <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> <span class="dv">72</span>), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb46-13"><a></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="dv">72</span>), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb46-14"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-36-1.png" width="960" class="r-stretch"></section>
+<img data-src="slides2_files/figure-revealjs/unnamed-chunk-28-1.png" width="960" class="r-stretch"></section>
 <section id="regression-to-the-mean-1" class="slide level2">
 <h2>Regression to the mean</h2>
 <p>This phenomenon is known as <strong>regression to the mean.</strong> This describes the phenomenon in which an random variable produces an extreme score on a first measurement, but a lower score on a second measurement.</p>
@@ -1667,7 +1231,7 @@ log_gdp       2 33  8.74 1.24   8.41   6.85 10.76  3.91  0.21    -1.37 0.22
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-37-1.png" width="960"></p>
+<p><img data-src="slides2_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1677,7 +1241,7 @@ log_gdp       2 33  8.74 1.24   8.41   6.85 10.76  3.91  0.21    -1.37 0.22
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-38-1.png" width="960"></p>
+<p><img data-src="slides2_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1727,7 +1291,7 @@ log_gdp       2 33  8.74 1.24   8.41   6.85 10.76  3.91  0.21    -1.37 0.22
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'multiplex': {"secret":null,"id":"e84b88d0ca6b19d7","url":"https://reveal-multiplex.glitch.me/"},
+'multiplex': {"secret":"17285672439496576998","id":"7c8d1d6cf7d5a9be","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -1901,7 +1465,7 @@ log_gdp       2 33  8.74 1.24   8.41   6.85 10.76  3.91  0.21    -1.37 0.22
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
-          
+          RevealNotes,
           RevealSearch,
           RevealZoom
         ]
