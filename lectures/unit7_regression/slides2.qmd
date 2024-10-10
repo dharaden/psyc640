@@ -26,10 +26,8 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 
 ::: nonincremental
 -   Journal Entries
--   Register to Vote
--   Presentation #2
--   Grading to be done this week (sorry)
 -   [Mid-course Feedback](https://forms.gle/bVbLJWUXbEi2JnmH9)
+-   Presentation 2 Groups
 :::
 
 ------------------------------------------------------------------------
@@ -40,7 +38,7 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 -   ANOVA
     -   Some theory, but more applied
     -   `easystats::report()` makes things easier
-    -   
+    -   Everyone getting better with R!
 :::
 
 ------------------------------------------------------------------------
@@ -116,40 +114,6 @@ Interaction:
 -   Able to examine the effect of variable 1 across different levels of variable 2
 
 -   Basically speaking, **the effect of variable 1 on our outcome *DEPENDS on the levels of variable 2***
-
-    ------------------------------------------------------------------------
-
-## Study Design & Collection
-
-::::: columns
-::: {.column width="50%"}
-Design - *When* data are collected
-
--   Retrospective/Prospective
-
--   Longitudinal
-
--   Cross-Sectional
-:::
-
-::: {.column width="50%"}
-Collection - *How* data are collected
-
--   Experimental
-
--   Field
-
--   Observational
-
--   Meta-analysis
-
--   Neuroimaging/Psychophys
-
--   Survey
-
--   Quasi-Experimental
-:::
-:::::
 
 ------------------------------------------------------------------------
 
@@ -290,6 +254,46 @@ We can also incorporate multiple influences (IVs) and account for their intercor
 
 -   **Explanation**: examining the influence of one or more variable on some outcome
 :::
+
+------------------------------------------------------------------------
+
+## Study Design & Collection
+
+::::: columns
+::: {.column width="50%"}
+Design - *When* data are collected
+
+-   Retrospective/Prospective
+
+-   Longitudinal
+
+-   Cross-Sectional
+:::
+
+::: {.column width="50%"}
+Collection - *How* data are collected
+
+-   Experimental
+
+-   Field
+
+-   Observational
+
+-   Meta-analysis
+
+-   Neuroimaging/Psychophys
+
+-   Survey
+
+-   Quasi-Experimental
+:::
+:::::
+
+------------------------------------------------------------------------
+
+# Reminder to Professor for Model Drawings
+
+maybe?
 
 ------------------------------------------------------------------------
 
