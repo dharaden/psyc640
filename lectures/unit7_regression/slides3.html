@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Dustin Haraden, PhD">
-  <title>PSYC 640 2024 – Unit 7 (Part Deux) - ANOVA &amp; regression</title>
+  <title>PSYC 640 2024 – Unit 7 - Wrapping up Regression</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -392,8 +392,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Unit 7 (Part Deux) - ANOVA &amp; regression</h1>
-  <p class="subtitle">PSYC 640 - Fall 2024</p>
+  <h1 class="title">Unit 7 - Wrapping up Regression</h1>
+  <p class="subtitle">Oct 17 PSYC 640 - Fall 2024</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -409,7 +409,6 @@ Dustin Haraden, PhD
 <div>
 <ul>
 <li>Journal Entries</li>
-<li><a href="https://forms.gle/bVbLJWUXbEi2JnmH9">Mid-course Feedback</a></li>
 <li>Presentation 2 Groups</li>
 </ul>
 </div>
@@ -418,273 +417,30 @@ Dustin Haraden, PhD
 <h2>Last Class</h2>
 <div>
 <ul>
-<li>ANOVA
-<ul>
-<li>Some theory, but more applied</li>
-<li><code>easystats::report()</code> makes things easier</li>
-<li>Everyone getting better with R!</li>
-</ul></li>
+<li>Regression Intro</li>
 </ul>
 </div>
 </section>
-<section id="today" class="slide level2">
-<h2>Today…</h2>
-<p>ANOVA</p>
-<p>Regression!!</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># File management</span></span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(here)</span>
-<span id="cb1-3"><a></a><span class="co"># for dplyr, ggplot2</span></span>
-<span id="cb1-4"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-5"><a></a><span class="co">#Loading data</span></span>
-<span id="cb1-6"><a></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-7"><a></a><span class="co"># Estimating Marginal Means</span></span>
-<span id="cb1-8"><a></a><span class="fu">library</span>(emmeans)</span>
-<span id="cb1-9"><a></a><span class="co"># Pretty Tables</span></span>
-<span id="cb1-10"><a></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb1-11"><a></a><span class="co"># Pretty variable names</span></span>
-<span id="cb1-12"><a></a><span class="fu">library</span>(janitor)</span>
-<span id="cb1-13"><a></a></span>
-<span id="cb1-14"><a></a><span class="co">#Remove Scientific Notation </span></span>
-<span id="cb1-15"><a></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section>
-<section id="review-of-anova" class="title-slide slide level1 center">
-<h1>Review of ANOVA</h1>
-
-</section>
-<section id="one-way-anova" class="slide level2">
-<h2>One-Way ANOVA</h2>
-<p>Goal: Inform of differences among the levels of our variable of interest (Omnibus Test)</p>
-<p>Using the between and within group variance to create the <span class="math inline">\(F\)</span>-statistic/ratio</p>
-<p>Hypotheses:</p>
-<p><span class="math display">\[
-H_0: it\: is\: true\: that\: \mu_1 = \mu_2 = \mu_3 =\: ...\mu_k
-\\
-H_1: it\: is\: \boldsymbol{not}\: true\: that\: \mu_1 = \mu_2 = \mu_3 =\: ...\mu_k
-\]</span></p>
-</section>
-<section id="what-is-a-two-way-anova" class="slide level2">
-<h2>What is a Two-Way ANOVA?</h2>
-<p>Examines the impact of <strong><em>2</em></strong> nominal/categorical variables on a continuous outcome</p>
-<p>We can now examine:</p>
-<ul>
-<li><p>The impact of variable 1 on the outcome (Main Effect)</p></li>
-<li><p>The impact of variable 2 on the outcome (Main Effect)</p></li>
-<li><p>The <em>interaction</em>&nbsp;of variable 1 &amp; 2 on the outcome (Interaction Effect)</p>
-<div>
-<ul>
-<li class="fragment">The effect of variable 1 <strong><em>depends</em></strong> on the level of variable 2</li>
-</ul>
-</div></li>
-</ul>
-</section>
-<section id="main-effect-interactions" class="slide level2">
-<h2>Main Effect &amp; Interactions</h2>
-<p>Main Effect: Basically a one-way ANOVA</p>
-<ul>
-<li>The effect of variable 1 is the same across all levels of variable 2</li>
-</ul>
-<p>Interaction:</p>
-<ul>
-<li><p>Able to examine the effect of variable 1 across different levels of variable 2</p></li>
-<li><p>Basically speaking, <strong>the effect of variable 1 on our outcome <em>DEPENDS on the levels of variable 2</em></strong></p></li>
-</ul>
-</section>
-<section id="ghost-data" class="slide level2">
-<h2>Ghost Data</h2>
-<p>Since there are 2 header rows, we need to only include the first one. To do that, we have to “skip” the first two and then give the names of the columns back to the data.</p>
-<p>We also need to specify what the missing values are. Typically we have been working with <code>NA</code> which is more traditional. However, missing values in this dataset are <code>DK/REF</code> and a blank. This will need to be specified in the import function (<a href="https://epirhandbook.com/new_pages/importing.html#manage-a-second-header-row" target="_blank">used this website</a>)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># get the names of your columns which is the first row</span></span>
-<span id="cb2-2"><a></a>ghost_data_names <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"lectures"</span>, <span class="st">"data"</span>, <span class="st">"ghosts.csv"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-3"><a></a>  <span class="fu">names</span>()</span>
-<span id="cb2-4"><a></a></span>
-<span id="cb2-5"><a></a><span class="co"># import second time; skip row 2, and assign column names to argument col_names =</span></span>
-<span id="cb2-6"><a></a>ghost_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"lectures"</span>, <span class="st">"data"</span>, <span class="st">"ghosts.csv"</span>),</span>
-<span id="cb2-7"><a></a>                       <span class="at">skip =</span> <span class="dv">2</span>,</span>
-<span id="cb2-8"><a></a>                       <span class="at">col_names =</span> ghost_data_names,</span>
-<span id="cb2-9"><a></a>                       <span class="at">na =</span> <span class="fu">c</span>(<span class="st">"DK/REF"</span>, <span class="st">""</span>, <span class="st">" "</span>)</span>
-<span id="cb2-10"><a></a>                      ) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-11"><a></a>  <span class="fu">clean_names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="running-the-test" class="slide level2">
-<h2>Running the Test</h2>
-<p>Let’s take a look at Income by Political Affiliation</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>aov1 <span class="ot">&lt;-</span> <span class="fu">aov</span>(income <span class="sc">~</span> political_affiliation, </span>
-<span id="cb3-2"><a></a>            <span class="at">data =</span> ghost_data)</span>
-<span id="cb3-3"><a></a></span>
-<span id="cb3-4"><a></a><span class="fu">summary</span>(aov1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                       Df        Sum Sq     Mean Sq F value Pr(&gt;F)  
-political_affiliation   2   44252069121 22126034561   4.007 0.0189 *
-Residuals             393 2170016726333  5521671059                 
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-604 observations deleted due to missingness</code></pre>
-</div>
-</div>
-</section>
-<section id="post-hoc-tests" class="slide level2">
-<h2>Post-hoc tests</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co">#get basic summary stats</span></span>
-<span id="cb5-2"><a></a>ghost_data <span class="sc">%&gt;%</span> </span>
-<span id="cb5-3"><a></a>  <span class="fu">group_by</span>(political_affiliation) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-4"><a></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(income, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb5-5"><a></a>            <span class="at">sd =</span> <span class="fu">sd</span>(income, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 3
-  political_affiliation    mean     sd
-  &lt;chr&gt;                   &lt;dbl&gt;  &lt;dbl&gt;
-1 Democrat               80431. 73147.
-2 Independent           103919. 87848.
-3 Republican             85623. 49064.
-4 &lt;NA&gt;                   78233. 51022.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># conduct the comparisons</span></span>
-<span id="cb7-2"><a></a><span class="fu">emmeans</span>(aov1, pairwise <span class="sc">~</span> political_affiliation, </span>
-<span id="cb7-3"><a></a>        <span class="at">adjust =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$emmeans
- political_affiliation emmean   SE  df lower.CL upper.CL
- Democrat               80431 6520 393    67618    93244
- Independent           103919 5870 393    92369   115468
- Republican             85623 7220 393    71433    99812
-
-Confidence level used: 0.95 
-
-$contrasts
- contrast                 estimate   SE  df t.ratio p.value
- Democrat - Independent     -23488 8770 393  -2.677  0.0077
- Democrat - Republican       -5192 9720 393  -0.534  0.5937
- Independent - Republican    18296 9310 393   1.966  0.0500</code></pre>
-</div>
-</div>
-</section>
-<section id="visualizing" class="slide level2">
-<h2>Visualizing</h2>
-<p>ggstatsplot <a href="https://indrajeetpatil.github.io/ggstatsplot/" class="uri">https://indrajeetpatil.github.io/ggstatsplot/</a></p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co">#Welch's F-test</span></span>
-<span id="cb9-2"><a></a><span class="fu">oneway.test</span>(income <span class="sc">~</span> political_affiliation, </span>
-<span id="cb9-3"><a></a>            <span class="at">data =</span> ghost_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    One-way analysis of means (not assuming equal variances)
-
-data:  income and political_affiliation
-F = 3.4289, num df = 2.00, denom df = 260.52, p-value = 0.03389</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>ggstatsplot<span class="sc">::</span><span class="fu">ggbetweenstats</span>(ghost_data,</span>
-<span id="cb11-2"><a></a>                            political_affiliation, </span>
-<span id="cb11-3"><a></a>                            income)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-
-</div>
-<img data-src="slides2_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section></section>
-<section>
-<section id="regression" class="title-slide slide level1 center">
-<h1>Regression</h1>
-
-</section>
-<section id="today-1" class="slide level2">
-<h2>Today…</h2>
+<section id="outline" class="slide level2">
+<h2>Outline…</h2>
 <p>Regression</p>
-<ul>
-<li><p>Why use regression?</p></li>
-<li><p>One equation to rule them all</p></li>
-</ul>
-
-<img data-src="../../images/reg_precious.gif" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="today-2" class="slide level2">
-<h2>Today…</h2>
-<p>Regression</p>
-<ul>
-<li><p>Why use regression?</p></li>
-<li><p>One equation to rule them all</p>
-<ul>
-<li><p>Ordinary Least Squares</p></li>
-<li><p>Interpretation</p></li>
-</ul></li>
-</ul>
+<p>Live Coding</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co">#Don't know if I'm using all of these, but including theme here anyways</span></span>
-<span id="cb12-2"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb12-3"><a></a><span class="fu">library</span>(rio)</span>
-<span id="cb12-4"><a></a><span class="fu">library</span>(broom)</span>
-<span id="cb12-5"><a></a><span class="fu">library</span>(psych)</span>
-<span id="cb12-6"><a></a><span class="fu">library</span>(gapminder)</span>
-<span id="cb12-7"><a></a><span class="fu">library</span>(psychTools)</span>
-<span id="cb12-8"><a></a></span>
-<span id="cb12-9"><a></a></span>
-<span id="cb12-10"><a></a><span class="co">#Remove Scientific Notation </span></span>
-<span id="cb12-11"><a></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co">#Don't know if I'm using all of these, but including theme here anyways</span></span>
+<span id="cb1-2"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a></a><span class="fu">library</span>(here)</span>
+<span id="cb1-4"><a></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-5"><a></a><span class="fu">library</span>(broom)</span>
+<span id="cb1-6"><a></a><span class="fu">library</span>(psych)</span>
+<span id="cb1-7"><a></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb1-8"><a></a><span class="fu">library</span>(psychTools)</span>
+<span id="cb1-9"><a></a></span>
+<span id="cb1-10"><a></a><span class="co">#Remove Scientific Notation </span></span>
+<span id="cb1-11"><a></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="overview-of-regression" class="slide level2">
-<h2>Overview of Regression</h2>
-<p>Regression is a general data analytic system</p>
-<ul>
-<li><p>Lots of things fall under the umbrella of regression</p></li>
-<li><p>This system can handle a variety of forms of relations and types of variables</p></li>
-</ul>
-<p>The output of regression includes both effect sizes and statistical significance</p>
-<p>We can also incorporate multiple influences (IVs) and account for their intercorrelations</p>
-</section>
-<section class="slide level2">
-
-<h3 id="uses-for-regression">Uses for regression</h3>
-<div>
-<ul>
-<li class="fragment"><p><strong>Adjustment</strong>: Take into account (<em>control</em>) known effects in a relationship</p></li>
-<li class="fragment"><p><strong>Prediction</strong>: Develop a model based on what has happened previously to predict what will happen in the future</p></li>
-<li class="fragment"><p><strong>Explanation</strong>: examining the influence of one or more variable on some outcome</p></li>
-</ul>
-</div>
-</section>
-<section id="study-design-collection" class="slide level2">
-<h2>Study Design &amp; Collection</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>Design - <em>When</em> data are collected</p>
-<ul>
-<li><p>Retrospective/Prospective</p></li>
-<li><p>Longitudinal</p></li>
-<li><p>Cross-Sectional</p></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<p>Collection - <em>How</em> data are collected</p>
-<ul>
-<li><p>Experimental</p></li>
-<li><p>Field</p></li>
-<li><p>Observational</p></li>
-<li><p>Meta-analysis</p></li>
-<li><p>Neuroimaging/Psychophys</p></li>
-<li><p>Survey</p></li>
-<li><p>Quasi-Experimental</p></li>
-</ul>
-</div></div>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="reminder-to-professor-for-model-drawings" class="title-slide slide level1 center">
-<h1>Reminder to Professor for Model Drawings</h1>
-<p>maybe?</p>
-</section>
-<section class="slide level2">
-
-<h3 id="regression-equation">Regression Equation</h3>
+<section id="regression-equation" class="slide level2">
+<h2>Regression Equation</h2>
 <p>With regression, we are <strong><em>building a model</em></strong> that we think best represents the data at hand</p>
 <p>At the most simple form we are drawing a line to characterize the linear relationship between the variables so that for any value of <code>x</code> we can have an estimate of <code>y</code></p>
 <p><span class="math display">\[
@@ -761,6 +517,41 @@ There is a different e value for each observation in the dataset</p>
           display:block!important;
       }</style></aside>
 </section>
+<section class="slide level2">
+
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">set.seed</span>(<span class="dv">142</span>)</span>
+<span id="cb2-2"><a></a>x<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb2-3"><a></a>e<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb2-4"><a></a>y<span class="fl">.1</span> <span class="ot">&lt;-</span> .<span class="dv">5</span> <span class="sc">+</span> .<span class="dv">55</span> <span class="sc">*</span> x<span class="fl">.1</span> <span class="sc">+</span> e<span class="fl">.1</span></span>
+<span id="cb2-5"><a></a>d<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x<span class="fl">.1</span>,y<span class="fl">.1</span>)</span>
+<span id="cb2-6"><a></a>m<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="fl">.1</span> <span class="sc">~</span> x<span class="fl">.1</span>, <span class="at">data =</span> d<span class="fl">.1</span>)</span>
+<span id="cb2-7"><a></a>d1.f<span class="ot">&lt;-</span> <span class="fu">augment</span>(m<span class="fl">.1</span>)</span>
+<span id="cb2-8"><a></a></span>
+<span id="cb2-9"><a></a></span>
+<span id="cb2-10"><a></a><span class="fu">ggplot</span>(d1.f , <span class="fu">aes</span>(<span class="at">x=</span>x<span class="fl">.1</span>, <span class="at">y=</span>y<span class="fl">.1</span>)) <span class="sc">+</span></span>
+<span id="cb2-11"><a></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb2-12"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb2-13"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="slides3_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">ggplot</span>(d1.f , <span class="fu">aes</span>(<span class="at">x=</span>x<span class="fl">.1</span>, <span class="at">y=</span>y<span class="fl">.1</span>)) <span class="sc">+</span></span>
+<span id="cb3-2"><a></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb3-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> .fitted), <span class="at">shape =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb3-4"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="slides3_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
 <section id="ols" class="slide level2">
 <h2>OLS</h2>
 <div>
@@ -774,95 +565,6 @@ There is a different e value for each observation in the dataset</p>
 <li class="fragment"><p>Other estimation procedures possible (and necessary in some cases)</p></li>
 </ul>
 </div>
-</section>
-<section class="slide level2">
-
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">set.seed</span>(<span class="dv">142</span>)</span>
-<span id="cb13-2"><a></a>x<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb13-3"><a></a>e<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">2</span>)</span>
-<span id="cb13-4"><a></a>y<span class="fl">.1</span> <span class="ot">&lt;-</span> .<span class="dv">5</span> <span class="sc">+</span> .<span class="dv">55</span> <span class="sc">*</span> x<span class="fl">.1</span> <span class="sc">+</span> e<span class="fl">.1</span></span>
-<span id="cb13-5"><a></a>d<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x<span class="fl">.1</span>,y<span class="fl">.1</span>)</span>
-<span id="cb13-6"><a></a>m<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="fl">.1</span> <span class="sc">~</span> x<span class="fl">.1</span>, <span class="at">data =</span> d<span class="fl">.1</span>)</span>
-<span id="cb13-7"><a></a>d1.f<span class="ot">&lt;-</span> <span class="fu">augment</span>(m<span class="fl">.1</span>)</span>
-<span id="cb13-8"><a></a></span>
-<span id="cb13-9"><a></a></span>
-<span id="cb13-10"><a></a><span class="fu">ggplot</span>(d1.f , <span class="fu">aes</span>(<span class="at">x=</span>x<span class="fl">.1</span>, <span class="at">y=</span>y<span class="fl">.1</span>)) <span class="sc">+</span></span>
-<span id="cb13-11"><a></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb13-12"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb13-13"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-
-</div>
-<img data-src="slides2_files/figure-revealjs/plot1-1.png" width="960" class="r-stretch"></section>
-<section class="slide level2">
-
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">ggplot</span>(d1.f , <span class="fu">aes</span>(<span class="at">x=</span>x<span class="fl">.1</span>, <span class="at">y=</span>y<span class="fl">.1</span>)) <span class="sc">+</span></span>
-<span id="cb14-2"><a></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb14-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> .fitted), <span class="at">shape =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb14-4"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-
-</div>
-<img data-src="slides2_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
-<section class="slide level2">
-
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">ggplot</span>(d1.f , <span class="fu">aes</span>(<span class="at">x=</span>x<span class="fl">.1</span>, <span class="at">y=</span>y<span class="fl">.1</span>)) <span class="sc">+</span></span>
-<span id="cb15-2"><a></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb15-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> .fitted), <span class="at">shape =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb15-4"><a></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>( <span class="at">xend =</span> x<span class="fl">.1</span>, <span class="at">yend =</span> .fitted))<span class="sc">+</span></span>
-<span id="cb15-5"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-
-</div>
-<img data-src="slides2_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
-<section class="slide level2">
-
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">ggplot</span>(d1.f , <span class="fu">aes</span>(<span class="at">x=</span>x<span class="fl">.1</span>, <span class="at">y=</span>y<span class="fl">.1</span>)) <span class="sc">+</span></span>
-<span id="cb16-2"><a></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb16-3"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb16-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> .fitted), <span class="at">shape =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb16-5"><a></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>( <span class="at">xend =</span> x<span class="fl">.1</span>, <span class="at">yend =</span> .fitted))<span class="sc">+</span></span>
-<span id="cb16-6"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-
-</div>
-<img data-src="slides2_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
-<section id="compare-to-bad-fit" class="slide level2">
-<h2>compare to bad fit</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="slides2_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="slides2_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
 </section>
 <section id="ols-1" class="slide level2">
 <h2>OLS</h2>
@@ -891,7 +593,8 @@ There is a different e value for each observation in the dataset</p>
 <p><span class="math display">\[\Large Z_{y_i} = b_{yx}^*Z_{x_i}+e_i\]</span></p>
 <p><span class="math display">\[\Large b_{yx}^* = b_{yx}\frac{s_x}{s_y} = r_{xy}\]</span></p>
 <div class="fragment">
-<p>According to this regression equation, when <span class="math inline">\(X = 0, Y = 0\)</span>. Our interpretation of the coefficient is that a one-standard deviation increase in X is associated with a <span class="math inline">\(b_{yx}^*\)</span> standard deviation increase in Y. Our regression coefficient is equivalent to the correlation coefficient <em>when we have only one predictor in our model.</em></p>
+<p>According to this regression equation, when <span class="math inline">\(X = 0, Y = 0\)</span>. Our interpretation of the coefficient is that a one-standard deviation increase in X is associated with a <span class="math inline">\(b_{yx}^*\)</span> standard deviation increase in Y.</p>
+<p>Our regression coefficient is equivalent to the correlation coefficient <em>when we have only one predictor in our model.</em></p>
 </div>
 </section>
 <section id="estimating-the-intercept-b_0" class="slide level2">
@@ -921,30 +624,25 @@ There is a different e value for each observation in the dataset</p>
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
-
-<p>The intercept adjusts the location of the regression line to ensure that it runs through the point <span class="math inline">\(\large (\bar{X}, \bar{Y}).\)</span> We can calculate this value using the equation:</p>
-<p><span class="math display">\[\Large b_0 = \bar{Y} - b_1\bar{X}\]</span></p>
-</section></section>
 <section>
 <section id="visuals-of-ols-regression" class="title-slide slide level1 center">
 <h1>Visuals of OLS Regression</h1>
 <p><a href="https://setosa.io/ev/ordinary-least-squares-regression/" class="uri">https://setosa.io/ev/ordinary-least-squares-regression/</a></p>
 <p><a href="https://observablehq.com/@yizhe-ang/interactive-visualization-of-linear-regression">https://observablehq.com/@yizhe-ang/interactive-visualization-of-linear-regression</a></p>
 </section>
-<section id="example" class="slide level2">
-<h2>Example</h2>
+<section id="regression-example" class="slide level2">
+<h2>Regression Example</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">library</span>(gapminder)</span>
-<span id="cb17-2"><a></a>gapminder <span class="ot">=</span> gapminder <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span> <span class="sc">&amp;</span> continent <span class="sc">==</span> <span class="st">"Asia"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb17-3"><a></a>  <span class="fu">mutate</span>(<span class="at">log_gdp =</span> <span class="fu">log</span>(gdpPercap))</span>
-<span id="cb17-4"><a></a><span class="fu">describe</span>(gapminder[,<span class="fu">c</span>(<span class="st">"log_gdp"</span>, <span class="st">"lifeExp"</span>)], <span class="at">fast =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb4-2"><a></a>gapminder <span class="ot">=</span> gapminder <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span> <span class="sc">&amp;</span> continent <span class="sc">==</span> <span class="st">"Asia"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-3"><a></a>  <span class="fu">mutate</span>(<span class="at">log_gdp =</span> <span class="fu">log</span>(gdpPercap))</span>
+<span id="cb4-4"><a></a><span class="fu">describe</span>(gapminder[,<span class="fu">c</span>(<span class="st">"log_gdp"</span>, <span class="st">"lifeExp"</span>)], <span class="at">fast =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        vars  n  mean   sd median   min   max range  skew kurtosis   se
 log_gdp    1 33  8.74 1.24   8.41  6.85 10.76  3.91  0.21    -1.37 0.22
 lifeExp    2 33 70.73 7.96  72.40 43.83 82.60 38.77 -1.07     1.79 1.39</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">cor</span>(gapminder<span class="sc">$</span>log_gdp, gapminder<span class="sc">$</span>lifeExp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">cor</span>(gapminder<span class="sc">$</span>log_gdp, gapminder<span class="sc">$</span>lifeExp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.8003474</code></pre>
 </div>
@@ -954,17 +652,24 @@ lifeExp    2 33 70.73 7.96  72.40 43.83 82.60 38.77 -1.07     1.79 1.39</code></
 
 <p>If we regress lifeExp onto log_gdp:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>r <span class="ot">=</span> <span class="fu">cor</span>(gapminder<span class="sc">$</span>log_gdp, gapminder<span class="sc">$</span>lifeExp)</span>
-<span id="cb21-2"><a></a>m_log_gdp <span class="ot">=</span> <span class="fu">mean</span>(gapminder<span class="sc">$</span>log_gdp)</span>
-<span id="cb21-3"><a></a>m_lifeExp <span class="ot">=</span> <span class="fu">mean</span>(gapminder<span class="sc">$</span>lifeExp)</span>
-<span id="cb21-4"><a></a>s_log_gdp <span class="ot">=</span> <span class="fu">sd</span>(gapminder<span class="sc">$</span>log_gdp)</span>
-<span id="cb21-5"><a></a>s_lifeExp <span class="ot">=</span> <span class="fu">sd</span>(gapminder<span class="sc">$</span>lifeExp)</span>
-<span id="cb21-6"><a></a></span>
-<span id="cb21-7"><a></a>b1 <span class="ot">=</span> r<span class="sc">*</span>(s_lifeExp<span class="sc">/</span>s_log_gdp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>r <span class="ot">=</span> <span class="fu">cor</span>(gapminder<span class="sc">$</span>log_gdp, gapminder<span class="sc">$</span>lifeExp)</span>
+<span id="cb8-2"><a></a>m_log_gdp <span class="ot">=</span> <span class="fu">mean</span>(gapminder<span class="sc">$</span>log_gdp)</span>
+<span id="cb8-3"><a></a>m_lifeExp <span class="ot">=</span> <span class="fu">mean</span>(gapminder<span class="sc">$</span>lifeExp)</span>
+<span id="cb8-4"><a></a>s_log_gdp <span class="ot">=</span> <span class="fu">sd</span>(gapminder<span class="sc">$</span>log_gdp)</span>
+<span id="cb8-5"><a></a>s_lifeExp <span class="ot">=</span> <span class="fu">sd</span>(gapminder<span class="sc">$</span>lifeExp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><span class="math display">\[b_{1} = \frac{cov_{XY}}{s_{x}^{2}} = r_{xy} \frac{s_{y}}{s_{x}}\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>b1 <span class="ot">=</span> r<span class="sc">*</span>(s_lifeExp<span class="sc">/</span>s_log_gdp)</span>
+<span id="cb9-2"><a></a>b1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.157259</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>b0 <span class="ot">=</span> m_lifeExp <span class="sc">-</span> b1<span class="sc">*</span>m_log_gdp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><span class="math display">\[b_0 = \bar{Y} - b_1\bar{X}\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>b0 <span class="ot">=</span> m_lifeExp <span class="sc">-</span> b1<span class="sc">*</span>m_log_gdp</span>
+<span id="cb11-2"><a></a>b0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 25.65011</code></pre>
 </div>
@@ -974,21 +679,21 @@ lifeExp    2 33 70.73 7.96  72.40 43.83 82.60 38.77 -1.07     1.79 1.39</code></
 <section class="slide level2">
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>(<span class="at">b1 =</span> r<span class="sc">*</span>(s_lifeExp<span class="sc">/</span>s_log_gdp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>(<span class="at">b1 =</span> r<span class="sc">*</span>(s_lifeExp<span class="sc">/</span>s_log_gdp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.157259</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>(<span class="at">b0 =</span> m_lifeExp <span class="sc">-</span> b1<span class="sc">*</span>m_log_gdp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>(<span class="at">b0 =</span> m_lifeExp <span class="sc">-</span> b1<span class="sc">*</span>m_log_gdp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 25.65011</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>(<span class="at">b1 =</span> r<span class="sc">*</span>(s_log_gdp<span class="sc">/</span>s_lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>(<span class="at">b1 =</span> r<span class="sc">*</span>(s_log_gdp<span class="sc">/</span>s_lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1242047</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>(<span class="at">b0 =</span> m_log_gdp <span class="sc">-</span> b1<span class="sc">*</span>m_lifeExp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>(<span class="at">b0 =</span> m_log_gdp <span class="sc">-</span> b1<span class="sc">*</span>m_lifeExp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.04405086</code></pre>
 </div>
@@ -997,8 +702,8 @@ lifeExp    2 33 70.73 7.96  72.40 43.83 82.60 38.77 -1.07     1.79 1.39</code></
 <section id="in-r" class="slide level2">
 <h2>In <code>R</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>fit<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(lifeExp <span class="sc">~</span> log_gdp, <span class="at">data =</span> gapminder)</span>
-<span id="cb33-2"><a></a><span class="fu">summary</span>(fit<span class="fl">.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>fit<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(lifeExp <span class="sc">~</span> log_gdp, <span class="at">data =</span> gapminder)</span>
+<span id="cb21-2"><a></a><span class="fu">summary</span>(fit<span class="fl">.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1041,14 +746,14 @@ F-statistic: 55.24 on 1 and 31 DF,  p-value: 0.00000002263</code></pre>
 <section class="slide level2">
 
 
-<img data-src="slides2_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch"></section>
+<img data-src="slides3_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
 <section class="slide level2">
 
 <h3 id="data-fitted-and-residuals">Data, fitted, and residuals</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">library</span>(broom)</span>
-<span id="cb35-2"><a></a>model_info <span class="ot">=</span> <span class="fu">augment</span>(fit<span class="fl">.1</span>)</span>
-<span id="cb35-3"><a></a><span class="fu">head</span>(model_info)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">library</span>(broom)</span>
+<span id="cb23-2"><a></a>model_info <span class="ot">=</span> <span class="fu">augment</span>(fit<span class="fl">.1</span>)</span>
+<span id="cb23-3"><a></a><span class="fu">head</span>(model_info)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 8
   lifeExp log_gdp .fitted .resid   .hat .sigma .cooksd .std.resid
@@ -1062,7 +767,7 @@ F-statistic: 55.24 on 1 and 31 DF,  p-value: 0.00000002263</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">describe</span>(model_info, <span class="at">fast =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">describe</span>(model_info, <span class="at">fast =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           vars  n  mean   sd median    min   max range  skew kurtosis   se
 lifeExp       1 33 70.73 7.96  72.40  43.83 82.60 38.77 -1.07     1.79 1.39
@@ -1095,76 +800,37 @@ log_gdp       2 33  8.74 1.24   8.41   6.85 10.76  3.91  0.21    -1.37 0.22
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>model_info <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> log_gdp, <span class="at">y =</span> .fitted)) <span class="sc">+</span></span>
-<span id="cb39-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">se =</span> F, <span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
-<span id="cb39-3"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="st">"X"</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="fu">expression</span>(<span class="fu">hat</span>(Y))) <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>model_info <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> log_gdp, <span class="at">y =</span> .fitted)) <span class="sc">+</span></span>
+<span id="cb27-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">se =</span> F, <span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb27-3"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="st">"X"</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="fu">expression</span>(<span class="fu">hat</span>(Y))) <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
-<img data-src="slides2_files/figure-revealjs/unnamed-chunk-21-1.png" width="768" class="r-stretch"></section>
+<img data-src="slides3_files/figure-revealjs/unnamed-chunk-15-1.png" width="768" class="r-stretch"></section>
 <section class="slide level2">
 
 <h3 id="the-relationship-between-x_i-and-e_i">The relationship between <span class="math inline">\(X_i\)</span> and <span class="math inline">\(e_i\)</span></h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>model_info <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> log_gdp, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
-<span id="cb40-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">se =</span> F, <span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span> </span>
-<span id="cb40-3"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="st">"X"</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="st">"e"</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>model_info <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> log_gdp, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
+<span id="cb28-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">se =</span> F, <span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span> </span>
+<span id="cb28-3"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="st">"X"</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="st">"e"</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
-<img data-src="slides2_files/figure-revealjs/unnamed-chunk-22-1.png" width="768" class="r-stretch"></section>
-<section class="slide level2">
-
-<h3 id="the-relationship-between-y_i-and-haty_i">The relationship between <span class="math inline">\(Y_i\)</span> and <span class="math inline">\(\hat{Y_i}\)</span></h3>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>model_info <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">y =</span> .fitted)) <span class="sc">+</span></span>
-<span id="cb41-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">se =</span> F, <span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span> </span>
-<span id="cb41-3"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="st">"Y"</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="fu">expression</span>(<span class="fu">hat</span>(Y))) <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-
-</div>
-<img data-src="slides2_files/figure-revealjs/unnamed-chunk-23-1.png" width="768" class="r-stretch"></section>
-<section class="slide level2">
-
-<h3 id="the-relationship-between-y_i-and-e_i">The relationship between <span class="math inline">\(Y_i\)</span> and <span class="math inline">\(e_i\)</span></h3>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>model_info <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
-<span id="cb42-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">se =</span> F, <span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span> </span>
-<span id="cb42-3"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="st">"Y"</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="st">"e"</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-
-</div>
-<img data-src="slides2_files/figure-revealjs/unnamed-chunk-24-1.png" width="768" class="r-stretch"></section>
-<section class="slide level2">
-
-<h3 id="the-relationship-between-haty_i-and-e_i">The relationship between <span class="math inline">\(\hat{Y_i}\)</span> and <span class="math inline">\(e_i\)</span></h3>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>model_info <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
-<span id="cb43-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">se =</span> F, <span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span> </span>
-<span id="cb43-3"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="st">"e"</span>) <span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="fu">expression</span>(<span class="fu">hat</span>(Y))) <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-
-</div>
-<img data-src="slides2_files/figure-revealjs/unnamed-chunk-25-1.png" width="768" class="r-stretch"></section>
+<img data-src="slides3_files/figure-revealjs/unnamed-chunk-16-1.png" width="768" class="r-stretch"></section>
 <section id="using-easystats" class="slide level2">
 <h2>Using <code>easystats</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>performance<span class="sc">::</span><span class="fu">check_model</span>(fit<span class="fl">.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>performance<span class="sc">::</span><span class="fu">check_model</span>(fit<span class="fl">.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="slides2_files/figure-revealjs/unnamed-chunk-26-1.png" width="960" class="r-stretch"></section>
+<img data-src="slides3_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"></section>
 <section id="using-sjplot" class="slide level2">
 <h2>Using <code>sjPlot</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a>sjPlot<span class="sc">::</span><span class="fu">tab_model</span>(fit<span class="fl">.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>sjPlot<span class="sc">::</span><span class="fu">tab_model</span>(fit<span class="fl">.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top" data-quarto-postprocess="true" style="border-collapse:collapse; border:none;">
 <tbody>
@@ -1211,24 +877,24 @@ log_gdp       2 33  8.74 1.24   8.41   6.85 10.76  3.91  0.21    -1.37 0.22
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="fu">library</span>(psychTools)</span>
-<span id="cb46-2"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb46-3"><a></a>heights <span class="ot">=</span> psychTools<span class="sc">::</span>galton</span>
-<span id="cb46-4"><a></a>mod <span class="ot">=</span> <span class="fu">lm</span>(child<span class="sc">~</span>parent, <span class="at">data =</span> heights)</span>
-<span id="cb46-5"><a></a>point <span class="ot">=</span> <span class="dv">902</span></span>
-<span id="cb46-6"><a></a>heights <span class="ot">=</span> broom<span class="sc">::</span><span class="fu">augment</span>(mod)</span>
-<span id="cb46-7"><a></a></span>
-<span id="cb46-8"><a></a></span>
-<span id="cb46-9"><a></a>heights <span class="sc">%&gt;%</span></span>
-<span id="cb46-10"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> parent, <span class="at">y =</span> child)) <span class="sc">+</span></span>
-<span id="cb46-11"><a></a>  <span class="fu">geom_jitter</span>(<span class="at">alpha =</span> .<span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb46-12"><a></a>  <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> <span class="dv">72</span>), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb46-13"><a></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="dv">72</span>), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb46-14"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">library</span>(psychTools)</span>
+<span id="cb31-2"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb31-3"><a></a>heights <span class="ot">=</span> psychTools<span class="sc">::</span>galton</span>
+<span id="cb31-4"><a></a>mod <span class="ot">=</span> <span class="fu">lm</span>(child<span class="sc">~</span>parent, <span class="at">data =</span> heights)</span>
+<span id="cb31-5"><a></a>point <span class="ot">=</span> <span class="dv">902</span></span>
+<span id="cb31-6"><a></a>heights <span class="ot">=</span> broom<span class="sc">::</span><span class="fu">augment</span>(mod)</span>
+<span id="cb31-7"><a></a></span>
+<span id="cb31-8"><a></a></span>
+<span id="cb31-9"><a></a>heights <span class="sc">%&gt;%</span></span>
+<span id="cb31-10"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> parent, <span class="at">y =</span> child)) <span class="sc">+</span></span>
+<span id="cb31-11"><a></a>  <span class="fu">geom_jitter</span>(<span class="at">alpha =</span> .<span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb31-12"><a></a>  <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> <span class="dv">72</span>), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb31-13"><a></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="dv">72</span>), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb31-14"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
-<img data-src="slides2_files/figure-revealjs/unnamed-chunk-28-1.png" width="960" class="r-stretch"></section>
+<img data-src="slides3_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"></section>
 <section id="regression-to-the-mean-1" class="slide level2">
 <h2>Regression to the mean</h2>
 <p>This phenomenon is known as <strong>regression to the mean.</strong> This describes the phenomenon in which an random variable produces an extreme score on a first measurement, but a lower score on a second measurement.</p>
@@ -1242,7 +908,7 @@ log_gdp       2 33  8.74 1.24   8.41   6.85 10.76  3.91  0.21    -1.37 0.22
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides2_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></p>
+<p><img data-src="slides3_files/figure-revealjs/unnamed-chunk-20-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1252,16 +918,165 @@ log_gdp       2 33  8.74 1.24   8.41   6.85 10.76  3.91  0.21    -1.37 0.22
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides2_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></p>
+<p><img data-src="slides3_files/figure-revealjs/unnamed-chunk-21-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
+</section>
+<section class="slide level2">
+
+
+<img data-src="../../images/what.gif" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="another-dataset" class="slide level2">
+<h2>Another Dataset</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>school <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/example2-chisq.csv"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-2"><a></a>  <span class="fu">mutate</span>(<span class="at">Sleep_Hours_Non_Schoolnight =</span> <span class="fu">as.numeric</span>(Sleep_Hours_Non_Schoolnight)) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-3"><a></a>  <span class="fu">filter</span>(Sleep_Hours_Non_Schoolnight <span class="sc">&lt;</span> <span class="dv">24</span>) <span class="co">#removing impossible values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="statistical-inference" class="slide level2">
+<h2>Statistical Inference</h2>
+<ul>
+<li><p>The way the world is = our model + error</p></li>
+<li><p>How good is our model? Does it “fit” the data well?</p></li>
+</ul>
+<div class="fragment">
+<p>To assess how well our model fits the data, we will examine the proportion of variance in our outcome variable that can be “explained” by our model.</p>
+<p>To do so, we need to partition the variance into different categories. For now, we will partition it into two categories: the variability that is captured by (explained by) our model, and variability that is not.</p>
+</div>
+</section>
+<section id="partitioning-variation" class="slide level2">
+<h2>Partitioning variation</h2>
+<p>Let’s start with the formula defining the relationship between observed <span class="math inline">\(Y\)</span> and fitted <span class="math inline">\(\hat{Y}\)</span>:</p>
+<p><span class="math display">\[Y_i = \hat{Y}_i + e_i\]</span></p>
+<div class="fragment">
+<p>One of the properties that we love about variance is that variances are additive when two variables are independent. In other words, if we create some variable, C, by adding together two other variables, A and B, then the variance of C is equal to the sum of the variances of A and B.</p>
+</div>
+<div class="fragment">
+<p>Why can we use that rule in this case?</p>
+<aside class="notes">
+<p>Students must recognize that Y-hat and e are uncorrelated, they must be the way that we’ve built the OLS function.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="partitioning-variation-1" class="slide level2">
+<h2>Partitioning variation</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span style="font-size:80%"><span class="math inline">\(\hat{Y}_i\)</span> and <span class="math inline">\(e_i\)</span> must be independent from each other. Thus, the variance of <span class="math inline">\(Y\)</span> is equal to the sum of the variance of <span class="math inline">\(\hat{Y}\)</span> and <span class="math inline">\(e\)</span>.</span></p>
+<p><span class="math display">\[\large s^2_Y = s^2_{\hat{Y}} + s^2_{e}\]</span></p>
+</div><div class="column" style="width:50%;">
+<p><span style="font-size:80%">Recall that variances are sums of squares divided by N-1. Thus, all variances have the same sample size, so we can also note the following:</span></p>
+<p><span class="math display">\[\large SS_Y = SS_{\hat{Y}} + SS_{\text{e}}\]</span></p>
+</div></div>
+</section>
+<section class="slide level2">
+
+<p><span style="font-size:80%">A quick note about terminology: I demonstrated these calculations using <span class="math inline">\(Y\)</span>, <span class="math inline">\(\hat{Y}\)</span> and <span class="math inline">\(e\)</span>. However, you may also see the same terms written differently, to more clearly indicate the source of the variance…</span></p>
+<p><span class="math display">\[ SS_Y = SS_{\hat{Y}} + SS_{\text{e}}\]</span> <span class="math display">\[ SS_Y = SS_{\text{Model}} + SS_{\text{Residual}}\]</span></p>
+<p><span style="font-size:80%">The relative magnitudes of sums of squares provides a way of identifying particularly large and important sources of variability.</span></p>
+</section>
+<section id="coefficient-of-determination" class="slide level2">
+<h2>Coefficient of Determination</h2>
+<p><span class="math display">\[\Large \frac{SS_{Model}}{SS_{Y}} = \frac{s_{Model}^2}{s_{y}^2} = R^2\]</span></p>
+<p><span class="math inline">\(R^2\)</span> represents the proportion of variance in Y that is explained by the model.</p>
+<div class="fragment">
+<p><span class="math inline">\(\sqrt{R^2} = R\)</span> is the correlation between the predicted values of Y from the model and the actual values of Y</p>
+<p><span class="math display">\[\large \sqrt{R^2} = r_{Y\hat{Y}}\]</span></p>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="example">Example</h3>
+<div class="cell" data-highlight-output="10">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>fit<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sleep_Hours_Non_Schoolnight <span class="sc">~</span> Ageyears, </span>
+<span id="cb33-2"><a></a>           <span class="at">data =</span> school)</span>
+<span id="cb33-3"><a></a><span class="fu">summary</span>(fit<span class="fl">.1</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Sleep_Hours_Non_Schoolnight ~ Ageyears, data = school)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-8.3947 -0.7306  0.3813  1.2694  4.5974 
+
+Coefficients:
+            Estimate Std. Error t value            Pr(&gt;|t|)    
+(Intercept) 10.52256    0.90536  11.623 &lt;0.0000000000000002 ***
+Ageyears    -0.11199    0.05887  -1.902              0.0585 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.204 on 204 degrees of freedom
+  (1 observation deleted due to missingness)
+Multiple R-squared:  0.01743,   Adjusted R-squared:  0.01261 
+F-statistic: 3.619 on 1 and 204 DF,  p-value: 0.05854</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>model_info <span class="ot">&lt;-</span> <span class="fu">augment</span>(fit<span class="fl">.1</span>)</span>
+<span id="cb35-2"><a></a><span class="fu">summary</span>(fit<span class="fl">.1</span>)<span class="sc">$</span>r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.01742975</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="example-1">Example</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>school <span class="sc">%&gt;%</span> </span>
+<span id="cb37-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Ageyears, <span class="at">y =</span> Sleep_Hours_Non_Schoolnight)) <span class="sc">+</span> </span>
+<span id="cb37-3"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides3_files/figure-revealjs/unnamed-chunk-24-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="example-2">Example</h3>
+<p>The correlation between X and Y is:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="fu">cor</span>(school<span class="sc">$</span>Sleep_Hours_Non_Schoolnight, school<span class="sc">$</span>Ageyears, <span class="at">use =</span> <span class="st">"pairwise"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.1320218</code></pre>
+</div>
+</div>
+<p>. . .</p>
+<p>If we square the correlation, we get:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">cor</span>(school<span class="sc">$</span>Sleep_Hours_Non_Schoolnight, school<span class="sc">$</span>Ageyears, <span class="at">use =</span> <span class="st">"pairwise"</span>)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.01742975</code></pre>
+</div>
+</div>
+<p>. . .</p>
+<p>Ta da!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="fu">summary</span>(fit<span class="fl">.1</span>)<span class="sc">$</span>r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.01742975</code></pre>
+</div>
+</div>
 </section></section>
 <section id="example-in-r" class="title-slide slide level1 center">
 <h1>Example in <code>R</code></h1>
-<p>Try out a linear regression on the Ghosts Data!</p>
+<p>Try some live coding! Also known as “Another opportunity for Dr.&nbsp;Haraden to potentially embarrass himself”</p>
+<p><a href="https://archive.ics.uci.edu/dataset/320/student+performance" class="uri">https://archive.ics.uci.edu/dataset/320/student+performance</a></p>
+<p><a href="https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success" class="uri">https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success</a></p>
+<p><a href="https://datahub.io/collections" class="uri">https://datahub.io/collections</a></p>
+<p><a href="https://www.kaggle.com/datasets" class="uri">https://www.kaggle.com/datasets</a></p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -1302,7 +1117,7 @@ log_gdp       2 33  8.74 1.24   8.41   6.85 10.76  3.91  0.21    -1.37 0.22
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'multiplex': {"secret":"17291678961573698842","id":"cc3972e08e49359e","url":"https://reveal-multiplex.glitch.me/"},
+'multiplex': {"secret":null,"id":"7c7670c5a4d4d3c9","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -1476,7 +1291,7 @@ log_gdp       2 33  8.74 1.24   8.41   6.85 10.76  3.91  0.21    -1.37 0.22
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
-          RevealNotes,
+          
           RevealSearch,
           RevealZoom
         ]
