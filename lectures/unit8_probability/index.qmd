@@ -1,8 +1,8 @@
 ---
-title: "Unit 7 - ANOVA & Regression"
+title: "Unit 8 - Probability"
 ---
 
-> This unit continues talking about ANOVA and then introduces simple linear regression. We try things out and show how to report them and use R to make tables!
+> This unit focuses more on the theory behind how we make the inferences that we do. A little more theory and background than before. 
 
 [Code File Template](aov_regression.Rmd)
 
@@ -16,12 +16,4 @@ title: "Unit 7 - ANOVA & Regression"
 
 ```{=html}
 <iframe class="slide-deck" src="slides2-speaker.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
-```
-
-## Oct 17, 2024
-
-[Full Screen](slides3-speaker.html)
-
-```{=html}
-<iframe class="slide-deck" src="slides3-speaker.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
 ```
