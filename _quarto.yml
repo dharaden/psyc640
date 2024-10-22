@@ -43,7 +43,7 @@ website:
           href: lectures/unit6_comparing-means/index.qmd
         - text: "7 - Regression (and ANOVA)"
           href: lectures/unit7_regression/index.qmd
-        - text: "Checkpoint"
+        - text: "00 - Checkpoint"
           href: lectures/checkpoint_running_tests/index.qmd
       - homework.qmd
       - href: previous-years.qmd
