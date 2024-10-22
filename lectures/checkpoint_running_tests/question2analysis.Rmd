@@ -1,0 +1,88 @@
+---
+title: " "
+author: "Me"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: hide
+editor_options:
+  chunk_output_type: console
+  markdown:
+    wrap: 72
+---
+
+```{r}
+# File management
+library(here)
+# for dplyr, ggplot2
+library(tidyverse)
+#Loading data
+library(rio)
+
+# Pretty variable names
+library(janitor)
+
+library(easystats)
+
+#Remove Scientific Notation 
+options(scipen=999)
+
+life_exp <- import(here("Data", "Life_Expectancy.csv")) %>% 
+  janitor::clean_names()
+
+```
+
+Life expectancy as the outcome or variable that I want to predict
+(continuous)
+
+# Main Question: What factors influence life expectancy?
+
+## Sub Question: 
+
+Life expectancy different by developed vs. not
+
+```{r}
+t.test(life_exp$life_expectancy ~ life_exp$status)
+```
+
+Note: across all years
+
+There is a mean group difference between Developed Countries (m = 79.2,
+sd = XX) and Developing Countries (m = 67.11, sd = XX ), such that
+individuals in developed countries have a higher life expectancy.
+
+Filtering to only include a single year of data so that there is no
+dependence in the variable (one country had multiple observations)
+
+```{r}
+life_exp2015 <- life_exp %>% 
+  filter(year == 2015)
+
+t.test(life_exp2015$life_expectancy ~ life_exp2015$status)
+```
+
+We aren't able to run ANOVA because we don't have a categorical variable
+that has more than 2 groups. This all comes back to how we are measuring
+the data.
+
+### Does life expectancy change over time
+
+Trying to predict life expectancy by our time variable
+
+Y = b0 + b1X +error
+
+```{r}
+reg1 <- lm(life_expectancy ~ year, data = life_exp)
+
+summary(reg1)
+
+life_exp %>% 
+  ggplot(aes(year, life_expectancy)) +
+  geom_point() + 
+  geom_smooth(method = "lm")
+```
+
+For every 1 unit increase in x (for every year), life expectancy
+(y-variable) will increase by b1 units (0.35).
