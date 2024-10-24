@@ -217,191 +217,191 @@
     "text": "Regression to the mean\nThis can be a threat to internal validity if interventins are applied based on first measurement scores."
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#reminders",
-    "href": "lectures/unit8_probability/slides2.html#reminders",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#reminders",
+    "href": "lectures/unit8_probability/slides.html#reminders",
+    "title": "Unit 8 - Probability & Influence",
     "section": "Reminders",
-    "text": "Reminders\n\n\nJournal Entries\nMid-course Feedback\nPresentation 2 Groups"
+    "text": "Reminders\n\n\nJournal Entries\nPresentation 2 Groups"
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#last-class",
-    "href": "lectures/unit8_probability/slides2.html#last-class",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#last-class",
+    "href": "lectures/unit8_probability/slides.html#last-class",
+    "title": "Unit 8 - Probability & Influence",
     "section": "Last Class",
-    "text": "Last Class\n\n\nANOVA\n\nSome theory, but more applied\neasystats::report() makes things easier\nEveryone getting better with R!"
+    "text": "Last Class\n\n\nTalking through data to test"
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#today",
-    "href": "lectures/unit8_probability/slides2.html#today",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#today",
+    "href": "lectures/unit8_probability/slides.html#today",
+    "title": "Unit 8 - Probability & Influence",
     "section": "Today…",
     "text": "Today…\nANOVA\nRegression!!\n\n# File management\nlibrary(here)\n# for dplyr, ggplot2\nlibrary(tidyverse)\n#Loading data\nlibrary(rio)\n# Estimating Marginal Means\nlibrary(emmeans)\n# Pretty Tables\nlibrary(kableExtra)\n# Pretty variable names\nlibrary(janitor)\n\n#Remove Scientific Notation \noptions(scipen=999)"
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#one-way-anova",
-    "href": "lectures/unit8_probability/slides2.html#one-way-anova",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#one-way-anova",
+    "href": "lectures/unit8_probability/slides.html#one-way-anova",
+    "title": "Unit 8 - Probability & Influence",
     "section": "One-Way ANOVA",
     "text": "One-Way ANOVA\nGoal: Inform of differences among the levels of our variable of interest (Omnibus Test)\nUsing the between and within group variance to create the \\(F\\)-statistic/ratio\nHypotheses:\n\\[\nH_0: it\\: is\\: true\\: that\\: \\mu_1 = \\mu_2 = \\mu_3 =\\: ...\\mu_k\n\\\\\nH_1: it\\: is\\: \\boldsymbol{not}\\: true\\: that\\: \\mu_1 = \\mu_2 = \\mu_3 =\\: ...\\mu_k\n\\]"
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#what-is-a-two-way-anova",
-    "href": "lectures/unit8_probability/slides2.html#what-is-a-two-way-anova",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#what-is-a-two-way-anova",
+    "href": "lectures/unit8_probability/slides.html#what-is-a-two-way-anova",
+    "title": "Unit 8 - Probability & Influence",
     "section": "What is a Two-Way ANOVA?",
     "text": "What is a Two-Way ANOVA?\nExamines the impact of 2 nominal/categorical variables on a continuous outcome\nWe can now examine:\n\nThe impact of variable 1 on the outcome (Main Effect)\nThe impact of variable 2 on the outcome (Main Effect)\nThe interaction of variable 1 & 2 on the outcome (Interaction Effect)\n\n\nThe effect of variable 1 depends on the level of variable 2"
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#main-effect-interactions",
-    "href": "lectures/unit8_probability/slides2.html#main-effect-interactions",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#main-effect-interactions",
+    "href": "lectures/unit8_probability/slides.html#main-effect-interactions",
+    "title": "Unit 8 - Probability & Influence",
     "section": "Main Effect & Interactions",
     "text": "Main Effect & Interactions\nMain Effect: Basically a one-way ANOVA\n\nThe effect of variable 1 is the same across all levels of variable 2\n\nInteraction:\n\nAble to examine the effect of variable 1 across different levels of variable 2\nBasically speaking, the effect of variable 1 on our outcome DEPENDS on the levels of variable 2"
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#ghost-data",
-    "href": "lectures/unit8_probability/slides2.html#ghost-data",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#ghost-data",
+    "href": "lectures/unit8_probability/slides.html#ghost-data",
+    "title": "Unit 8 - Probability & Influence",
     "section": "Ghost Data",
     "text": "Ghost Data\nSince there are 2 header rows, we need to only include the first one. To do that, we have to “skip” the first two and then give the names of the columns back to the data.\nWe also need to specify what the missing values are. Typically we have been working with NA which is more traditional. However, missing values in this dataset are DK/REF and a blank. This will need to be specified in the import function (used this website)\n\n# get the names of your columns which is the first row\nghost_data_names &lt;- read_csv(here(\"lectures\", \"data\", \"ghosts.csv\")) %&gt;% \n  names()\n\n# import second time; skip row 2, and assign column names to argument col_names =\nghost_data &lt;- read_csv(here(\"lectures\", \"data\", \"ghosts.csv\"),\n                       skip = 2,\n                       col_names = ghost_data_names,\n                       na = c(\"DK/REF\", \"\", \" \")\n                      ) %&gt;% \n  clean_names()"
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#running-the-test",
-    "href": "lectures/unit8_probability/slides2.html#running-the-test",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#running-the-test",
+    "href": "lectures/unit8_probability/slides.html#running-the-test",
+    "title": "Unit 8 - Probability & Influence",
     "section": "Running the Test",
     "text": "Running the Test\nLet’s take a look at Income by Political Affiliation\n\naov1 &lt;- aov(income ~ political_affiliation, \n            data = ghost_data)\n\nsummary(aov1)\n\n                       Df        Sum Sq     Mean Sq F value Pr(&gt;F)  \npolitical_affiliation   2   44252069121 22126034561   4.007 0.0189 *\nResiduals             393 2170016726333  5521671059                 \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n604 observations deleted due to missingness"
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#post-hoc-tests",
-    "href": "lectures/unit8_probability/slides2.html#post-hoc-tests",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#post-hoc-tests",
+    "href": "lectures/unit8_probability/slides.html#post-hoc-tests",
+    "title": "Unit 8 - Probability & Influence",
     "section": "Post-hoc tests",
     "text": "Post-hoc tests\n\n#get basic summary stats\nghost_data %&gt;% \n  group_by(political_affiliation) %&gt;% \n  summarise(mean = mean(income, na.rm = TRUE), \n            sd = sd(income, na.rm = TRUE))\n\n# A tibble: 4 × 3\n  political_affiliation    mean     sd\n  &lt;chr&gt;                   &lt;dbl&gt;  &lt;dbl&gt;\n1 Democrat               80431. 73147.\n2 Independent           103919. 87848.\n3 Republican             85623. 49064.\n4 &lt;NA&gt;                   78233. 51022.\n\n# conduct the comparisons\nemmeans(aov1, pairwise ~ political_affiliation, \n        adjust = \"none\")\n\n$emmeans\n political_affiliation emmean   SE  df lower.CL upper.CL\n Democrat               80431 6520 393    67618    93244\n Independent           103919 5870 393    92369   115468\n Republican             85623 7220 393    71433    99812\n\nConfidence level used: 0.95 \n\n$contrasts\n contrast                 estimate   SE  df t.ratio p.value\n Democrat - Independent     -23488 8770 393  -2.677  0.0077\n Democrat - Republican       -5192 9720 393  -0.534  0.5937\n Independent - Republican    18296 9310 393   1.966  0.0500"
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#visualizing",
-    "href": "lectures/unit8_probability/slides2.html#visualizing",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#visualizing",
+    "href": "lectures/unit8_probability/slides.html#visualizing",
+    "title": "Unit 8 - Probability & Influence",
     "section": "Visualizing",
     "text": "Visualizing\nggstatsplot https://indrajeetpatil.github.io/ggstatsplot/\n\n\nCode\n#Welch's F-test\noneway.test(income ~ political_affiliation, \n            data = ghost_data)\n\n\n\n    One-way analysis of means (not assuming equal variances)\n\ndata:  income and political_affiliation\nF = 3.4289, num df = 2.00, denom df = 260.52, p-value = 0.03389\n\n\nCode\nggstatsplot::ggbetweenstats(ghost_data,\n                            political_affiliation, \n                            income)"
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#today-1",
-    "href": "lectures/unit8_probability/slides2.html#today-1",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#today-1",
+    "href": "lectures/unit8_probability/slides.html#today-1",
+    "title": "Unit 8 - Probability & Influence",
     "section": "Today…",
     "text": "Today…\nRegression\n\nWhy use regression?\nOne equation to rule them all"
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#today-2",
-    "href": "lectures/unit8_probability/slides2.html#today-2",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#today-2",
+    "href": "lectures/unit8_probability/slides.html#today-2",
+    "title": "Unit 8 - Probability & Influence",
     "section": "Today…",
     "text": "Today…\nRegression\n\nWhy use regression?\nOne equation to rule them all\n\nOrdinary Least Squares\nInterpretation\n\n\n\n#Don't know if I'm using all of these, but including theme here anyways\nlibrary(tidyverse)\nlibrary(rio)\nlibrary(broom)\nlibrary(psych)\nlibrary(gapminder)\nlibrary(psychTools)\n\n\n#Remove Scientific Notation \noptions(scipen=999)"
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#overview-of-regression",
-    "href": "lectures/unit8_probability/slides2.html#overview-of-regression",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#overview-of-regression",
+    "href": "lectures/unit8_probability/slides.html#overview-of-regression",
+    "title": "Unit 8 - Probability & Influence",
     "section": "Overview of Regression",
     "text": "Overview of Regression\nRegression is a general data analytic system\n\nLots of things fall under the umbrella of regression\nThis system can handle a variety of forms of relations and types of variables\n\nThe output of regression includes both effect sizes and statistical significance\nWe can also incorporate multiple influences (IVs) and account for their intercorrelations"
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#study-design-collection",
-    "href": "lectures/unit8_probability/slides2.html#study-design-collection",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#study-design-collection",
+    "href": "lectures/unit8_probability/slides.html#study-design-collection",
+    "title": "Unit 8 - Probability & Influence",
     "section": "Study Design & Collection",
     "text": "Study Design & Collection\n\n\nDesign - When data are collected\n\nRetrospective/Prospective\nLongitudinal\nCross-Sectional\n\n\nCollection - How data are collected\n\nExperimental\nField\nObservational\nMeta-analysis\nNeuroimaging/Psychophys\nSurvey\nQuasi-Experimental"
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#ols",
-    "href": "lectures/unit8_probability/slides2.html#ols",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#ols",
+    "href": "lectures/unit8_probability/slides.html#ols",
+    "title": "Unit 8 - Probability & Influence",
     "section": "OLS",
     "text": "OLS\n\n\nHow do we find the regression estimates?\nOrdinary Least Squares (OLS) estimation\nMinimizes deviations\n\n\\[ min\\sum(Y_{i} - \\hat{Y} ) ^{2} \\]\n\nOther estimation procedures possible (and necessary in some cases)"
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#compare-to-bad-fit",
-    "href": "lectures/unit8_probability/slides2.html#compare-to-bad-fit",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#compare-to-bad-fit",
+    "href": "lectures/unit8_probability/slides.html#compare-to-bad-fit",
+    "title": "Unit 8 - Probability & Influence",
     "section": "compare to bad fit",
     "text": "compare to bad fit"
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#ols-1",
-    "href": "lectures/unit8_probability/slides2.html#ols-1",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#ols-1",
+    "href": "lectures/unit8_probability/slides.html#ols-1",
+    "title": "Unit 8 - Probability & Influence",
     "section": "OLS",
     "text": "OLS\nThe line that yields the smallest sum of squared deviations\n\\[\\Sigma(Y_i - \\hat{Y_i})^2\\] \\[= \\Sigma(Y_i - (b_0+b_{1}X_i))^2\\] \\[= \\Sigma(e_i)^2\\]\n\nIn order to find the OLS solution, you could try many different coefficients \\((b_0 \\text{ and } b_{1})\\) until you find the one with the smallest sum squared deviation. Luckily, there are simple calculations that will yield the OLS solution every time."
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#regression-coefficient-b_1",
-    "href": "lectures/unit8_probability/slides2.html#regression-coefficient-b_1",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#regression-coefficient-b_1",
+    "href": "lectures/unit8_probability/slides.html#regression-coefficient-b_1",
+    "title": "Unit 8 - Probability & Influence",
     "section": "Regression coefficient, \\(b_{1}\\)",
     "text": "Regression coefficient, \\(b_{1}\\)\n\\[b_{1} = \\frac{cov_{XY}}{s_{x}^{2}} = r_{xy} \\frac{s_{y}}{s_{x}}\\]\nWhat units is the regression coefficient in?\n\nThe regression coefficient (slope) equals the estimated change in Y for a 1-unit change in X"
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#standardized-regression-equation",
-    "href": "lectures/unit8_probability/slides2.html#standardized-regression-equation",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#standardized-regression-equation",
+    "href": "lectures/unit8_probability/slides.html#standardized-regression-equation",
+    "title": "Unit 8 - Probability & Influence",
     "section": "Standardized regression equation",
     "text": "Standardized regression equation\n\\[\\Large Z_{y_i} = b_{yx}^*Z_{x_i}+e_i\\]\n\\[\\Large b_{yx}^* = b_{yx}\\frac{s_x}{s_y} = r_{xy}\\]\n\nAccording to this regression equation, when \\(X = 0, Y = 0\\). Our interpretation of the coefficient is that a one-standard deviation increase in X is associated with a \\(b_{yx}^*\\) standard deviation increase in Y. Our regression coefficient is equivalent to the correlation coefficient when we have only one predictor in our model."
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#estimating-the-intercept-b_0",
-    "href": "lectures/unit8_probability/slides2.html#estimating-the-intercept-b_0",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#estimating-the-intercept-b_0",
+    "href": "lectures/unit8_probability/slides.html#estimating-the-intercept-b_0",
+    "title": "Unit 8 - Probability & Influence",
     "section": "Estimating the intercept, \\(b_0\\)",
     "text": "Estimating the intercept, \\(b_0\\)\n\nintercept serves to adjust for differences in means between X and Y\n\n\\[\\hat{Y_i} = \\bar{Y} + r_{xy} \\frac{s_{y}}{s_{x}}(X_i-\\bar{X})\\]\n\nif standardized, intercept drops out\notherwise, intercept is where regression line crosses the y-axis at X = 0\n\n\n\nAlso, notice that when \\(X = \\bar{X}\\) the regression line goes through \\(\\bar{Y}\\)\n\n\\[b_0 = \\bar{Y} - b_1\\bar{X}\\]"
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#example",
-    "href": "lectures/unit8_probability/slides2.html#example",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#example",
+    "href": "lectures/unit8_probability/slides.html#example",
+    "title": "Unit 8 - Probability & Influence",
     "section": "Example",
     "text": "Example\n\nlibrary(gapminder)\ngapminder = gapminder %&gt;% filter(year == 2007 & continent == \"Asia\") %&gt;% \n  mutate(log_gdp = log(gdpPercap))\ndescribe(gapminder[,c(\"log_gdp\", \"lifeExp\")], fast = T)\n\n        vars  n  mean   sd median   min   max range  skew kurtosis   se\nlog_gdp    1 33  8.74 1.24   8.41  6.85 10.76  3.91  0.21    -1.37 0.22\nlifeExp    2 33 70.73 7.96  72.40 43.83 82.60 38.77 -1.07     1.79 1.39\n\ncor(gapminder$log_gdp, gapminder$lifeExp)\n\n[1] 0.8003474"
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#in-r",
-    "href": "lectures/unit8_probability/slides2.html#in-r",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#in-r",
+    "href": "lectures/unit8_probability/slides.html#in-r",
+    "title": "Unit 8 - Probability & Influence",
     "section": "In R",
     "text": "In R\n\nfit.1 &lt;- lm(lifeExp ~ log_gdp, data = gapminder)\nsummary(fit.1)\n\n\nCall:\nlm(formula = lifeExp ~ log_gdp, data = gapminder)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-17.314  -1.650  -0.040   3.428   8.370 \n\nCoefficients:\n            Estimate Std. Error t value     Pr(&gt;|t|)    \n(Intercept)  25.6501     6.1234   4.189     0.000216 ***\nlog_gdp       5.1573     0.6939   7.433 0.0000000226 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 4.851 on 31 degrees of freedom\nMultiple R-squared:  0.6406,    Adjusted R-squared:  0.629 \nF-statistic: 55.24 on 1 and 31 DF,  p-value: 0.00000002263\n\n\n\nThings to discuss\n\nCoefficient estimates\nStatistical tests (covered in more detail soon)"
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#using-easystats",
-    "href": "lectures/unit8_probability/slides2.html#using-easystats",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#using-easystats",
+    "href": "lectures/unit8_probability/slides.html#using-easystats",
+    "title": "Unit 8 - Probability & Influence",
     "section": "Using easystats",
     "text": "Using easystats\n\nperformance::check_model(fit.1)"
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#using-sjplot",
-    "href": "lectures/unit8_probability/slides2.html#using-sjplot",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#using-sjplot",
+    "href": "lectures/unit8_probability/slides.html#using-sjplot",
+    "title": "Unit 8 - Probability & Influence",
     "section": "Using sjPlot",
     "text": "Using sjPlot\n\nsjPlot::tab_model(fit.1)\n\n\n\n\n \nlife Exp\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n25.65\n13.16 – 38.14\n&lt;0.001\n\n\nlog gdp\n5.16\n3.74 – 6.57\n&lt;0.001\n\n\nObservations\n33\n\n\nR2 / R2 adjusted\n0.641 / 0.629"
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#regression-to-the-mean",
-    "href": "lectures/unit8_probability/slides2.html#regression-to-the-mean",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#regression-to-the-mean",
+    "href": "lectures/unit8_probability/slides.html#regression-to-the-mean",
+    "title": "Unit 8 - Probability & Influence",
     "section": "Regression to the mean",
     "text": "Regression to the mean\nAn observation about heights was part of the motivation to develop the regression equation: If you selected a parent who was exceptionally tall (or short), their child was almost always not as tall (or as short).\n\n\nCode\nlibrary(psychTools)\nlibrary(tidyverse)\nheights = psychTools::galton\nmod = lm(child~parent, data = heights)\npoint = 902\nheights = broom::augment(mod)\n\n\nheights %&gt;%\n  ggplot(aes(x = parent, y = child)) +\n  geom_jitter(alpha = .3) +\n  geom_hline(aes(yintercept = 72), color = \"red\") +\n  geom_vline(aes(xintercept = 72), color = \"red\") +\n  theme_bw(base_size = 20)"
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#regression-to-the-mean-1",
-    "href": "lectures/unit8_probability/slides2.html#regression-to-the-mean-1",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#regression-to-the-mean-1",
+    "href": "lectures/unit8_probability/slides.html#regression-to-the-mean-1",
+    "title": "Unit 8 - Probability & Influence",
     "section": "Regression to the mean",
     "text": "Regression to the mean\nThis phenomenon is known as regression to the mean. This describes the phenomenon in which an random variable produces an extreme score on a first measurement, but a lower score on a second measurement."
   },
   {
-    "objectID": "lectures/unit8_probability/slides2.html#regression-to-the-mean-2",
-    "href": "lectures/unit8_probability/slides2.html#regression-to-the-mean-2",
-    "title": "Unit 7 (Part Deux) - ANOVA & regression",
+    "objectID": "lectures/unit8_probability/slides.html#regression-to-the-mean-2",
+    "href": "lectures/unit8_probability/slides.html#regression-to-the-mean-2",
+    "title": "Unit 8 - Probability & Influence",
     "section": "Regression to the mean",
     "text": "Regression to the mean\nThis can be a threat to internal validity if interventions are applied based on first measurement scores."
   },
@@ -806,25 +806,187 @@
     ]
   },
   {
-    "objectID": "lectures/unit6_comparing-means/index.html",
-    "href": "lectures/unit6_comparing-means/index.html",
-    "title": "Unit 6 - Hypotheses and Comparing Means",
+    "objectID": "lectures/unit5_descriptives/index.html",
+    "href": "lectures/unit5_descriptives/index.html",
+    "title": "Unit 5 - Descriptive Statistics",
     "section": "",
-    "text": "This unit focuses on comparing means of various groups. Traditionally this is done through the t-test and ANOVA. Here we will learn how to implement them in R and then figure out how to interpret and report!\n\nCode File Template\nFull Screen\n\nFull Screen",
+    "text": "Now that we have gotten somewhat more comfortable with wrangling our data and visualizing it, we are going to shift our focus to describing our data. This is always an important step and will begin our journey into inferential statistics.\n\nFull Screen\n\nFull Screen",
     "crumbs": [
       "Lectures",
-      "6 - Comparing Means"
+      "5 - Descriptives"
     ]
   },
   {
-    "objectID": "lectures/wk3_visualizations/index.html",
-    "href": "lectures/wk3_visualizations/index.html",
-    "title": "Week 3 - Visualizations",
+    "objectID": "lectures/unit4_data-wrangler/index.html",
+    "href": "lectures/unit4_data-wrangler/index.html",
+    "title": "Unit 4 - Data Wrangling",
     "section": "",
-    "text": "During this lecture, we will explore the functionality of ggplot2 and begin our entry into the tidyverse. For this lecture, have the datasets downloaded and put in the appropriate place in your files\n\nFull Screen",
+    "text": "During this section, we will highlight the utility of the dplyr package and further dive into the tidyverse. For this lecture, have the datasets downloaded and put in the appropriate place in your files\nThis is currently situated as a document which you can find below:",
     "crumbs": [
       "Lectures",
-      "3 - Visualizing"
+      "4 - Data Wrangling"
+    ]
+  },
+  {
+    "objectID": "lectures/unit4_data-wrangler/index.html#link-to-document",
+    "href": "lectures/unit4_data-wrangler/index.html#link-to-document",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Link to Document",
+    "text": "Link to Document\nThe instructor is working to put these into some beautiful slides :)\nFull Screen",
+    "crumbs": [
+      "Lectures",
+      "4 - Data Wrangling"
+    ]
+  },
+  {
+    "objectID": "previous-years.html",
+    "href": "previous-years.html",
+    "title": "Previous Years",
+    "section": "",
+    "text": "This course has been taught for a number of years, but this instructor has only started teaching it in Fall 2023. Below are previous iterations of the course in case you would like to check out how it has progressed!",
+    "crumbs": [
+      "Previous Years"
+    ]
+  },
+  {
+    "objectID": "previous-years.html#overview",
+    "href": "previous-years.html#overview",
+    "title": "Previous Years",
+    "section": "",
+    "text": "This course has been taught for a number of years, but this instructor has only started teaching it in Fall 2023. Below are previous iterations of the course in case you would like to check out how it has progressed!",
+    "crumbs": [
+      "Previous Years"
+    ]
+  },
+  {
+    "objectID": "previous-years.html#fall-2023",
+    "href": "previous-years.html#fall-2023",
+    "title": "Previous Years",
+    "section": "Fall 2023",
+    "text": "Fall 2023\nWebsite",
+    "crumbs": [
+      "Previous Years"
+    ]
+  },
+  {
+    "objectID": "lectures/checkpoint_running_tests/index.html",
+    "href": "lectures/checkpoint_running_tests/index.html",
+    "title": "Checkpoint!",
+    "section": "",
+    "text": "We have been talking a lot about various tests and it all is probably running together. The focus of this class will be to familiarize ourselves with the practical usage of these tests. This will consist of revisiting the tests, answering some questions to generate a helper document, and then implementing that into practice on an actual dataset. Note: No slides for this section\n\n\n\nLink to Helper Document &lt;- Be sure to be signed in with your RIT credentials\nList of Potential Datasets &lt;- Be sure to be signed in with your RIT credentials\nMarkdown Document from Class",
+    "crumbs": [
+      "Lectures",
+      "00 - Checkpoint"
+    ]
+  },
+  {
+    "objectID": "lectures/checkpoint_running_tests/index.html#october-222024",
+    "href": "lectures/checkpoint_running_tests/index.html#october-222024",
+    "title": "Checkpoint!",
+    "section": "",
+    "text": "We have been talking a lot about various tests and it all is probably running together. The focus of this class will be to familiarize ourselves with the practical usage of these tests. This will consist of revisiting the tests, answering some questions to generate a helper document, and then implementing that into practice on an actual dataset. Note: No slides for this section\n\n\n\nLink to Helper Document &lt;- Be sure to be signed in with your RIT credentials\nList of Potential Datasets &lt;- Be sure to be signed in with your RIT credentials\nMarkdown Document from Class",
+    "crumbs": [
+      "Lectures",
+      "00 - Checkpoint"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PSYC 640: Graduate Statistics",
+    "section": "",
+    "text": "This course is the introduction to statistics for graduate students. The goal of the course is to provide a grounding in statistical concepts, methods and application to research. I aim to increase student’s confidence in using these techniques and introducing them to R. Topics will range from including mathematical conceptualizations to practical application with various techniques ranging from descriptive statistics to ending with regression.\nThe course will be broken up into two main sections. The first will be getting used to using R and the practicalities of performing a data analysis. The second section will then “pop the hood” of these tools with a deeper understanding of the how and why.\n\n\nThis course reviews critical concepts and data analysis methods in descriptive and inferential statistics. Basic and advanced material will be presented on topics that include measurement, descriptive and inferential data analyses for single and multiple group designs, and computer applications. There will be an emphasis on Open Science practices, especially reproducibility. Course content will be taught through lectures, discussion, and applied data analysis exercises. Throughout the course, I will try to maintain an emphasis on both the basic theory behind the statistics and its practical application to data sets.\n\n\n\nLecture: Tuesdays & Thursdays, 11:00am - 12:15pm, Liberal Arts 3233\n\n\n\nDustin Haraden – dxhgsh@rit.edu\n\nOffice: EAS 3378\nOffice Hours: Tuesdays & Wednesdays 12:30 – 2:00pm or By Appointment",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#course-description",
+    "href": "index.html#course-description",
+    "title": "PSYC 640: Graduate Statistics",
+    "section": "",
+    "text": "This course reviews critical concepts and data analysis methods in descriptive and inferential statistics. Basic and advanced material will be presented on topics that include measurement, descriptive and inferential data analyses for single and multiple group designs, and computer applications. There will be an emphasis on Open Science practices, especially reproducibility. Course content will be taught through lectures, discussion, and applied data analysis exercises. Throughout the course, I will try to maintain an emphasis on both the basic theory behind the statistics and its practical application to data sets.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#meeting-time-and-location",
+    "href": "index.html#meeting-time-and-location",
+    "title": "PSYC 640: Graduate Statistics",
+    "section": "",
+    "text": "Lecture: Tuesdays & Thursdays, 11:00am - 12:15pm, Liberal Arts 3233",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#instructor",
+    "href": "index.html#instructor",
+    "title": "PSYC 640: Graduate Statistics",
+    "section": "",
+    "text": "Dustin Haraden – dxhgsh@rit.edu\n\nOffice: EAS 3378\nOffice Hours: Tuesdays & Wednesdays 12:30 – 2:00pm or By Appointment",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#textbook",
+    "href": "index.html#textbook",
+    "title": "PSYC 640: Graduate Statistics",
+    "section": "Textbook",
+    "text": "Textbook\nWe will primarily be referring to chapters in the following textbooks:\n\nLearning Statistics with R by Danielle Navarro.\nR for Data Science (2e) (Wickham, Çetinkaya-Rundel, & Grolemund, 2023)\nOpenIntro Statistics 4th ed. (Diez, Barr, & Cetinkaya-Rundel, 2022)\n\nThese textbook is available for free online and able to be downloaded. You may choose to purchase a paper copy if you wish, but it is not required.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#r-and-rstudio",
+    "href": "index.html#r-and-rstudio",
+    "title": "PSYC 640: Graduate Statistics",
+    "section": "R and RStudio",
+    "text": "R and RStudio\nStudents must have the latest version of R as well as the RStudio GUI. Both applications are free and can be found here.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "homework.html",
+    "href": "homework.html",
+    "title": "Homework Assignments",
+    "section": "",
+    "text": "Homework assignments will be posted here. You will be able to access the assignment as well as any data or additional information that may be necessary. Submit your homework assignments via myCourses by the due date and time.\n\n\n\nWeek\nDate\nTopic\nLecture Slides\n\n\n\n\n1\n08/27\n\n\n\n\n-\n08/29\n\n\n\n\n2\n09/03\n\n\n\n\n-\n09/05\n\n\n\n\n3\n09/10\n\n\n\n\n-\n09/12\n\n\n\n\n4\n09/17\n\n\n\n\n-\n09/19\n\n\n\n\n5\n09/24\n\n\n\n\n-\n09/26\n\n\n\n\n6\n10/01\n\n\n\n\n-\n10/03\n\n\n\n\n7\n10/08\n\n\n\n\n-\n10/10\n\n\n\n\n8\n10/15\nNO CLASS\n\n\n\n-\n10/17\n\n\n\n\n9\n10/22\n\n\n\n\n-\n10/24\n\n\n\n\n10\n10/29\n\n\n\n\n-\n10/31\n\n\n\n\n11\n11/05\n\n\n\n\n-\n11/07\n\n\n\n\n12\n11/12\n\n\n\n\n-\n11/14\n\n\n\n\n13\n11/19\n\n\n\n\n-\n11/21\n\n\n\n\n14\n11/26\n\n\n\n\n-\n11/28\nNO CLASS\n\n\n\n15\n12/03\n\n\n\n\n-\n12/05\n\n\n\n\nFinals",
+    "crumbs": [
+      "Homework Assignments"
+    ]
+  },
+  {
+    "objectID": "lectures.html",
+    "href": "lectures.html",
+    "title": "Lectures",
+    "section": "",
+    "text": "Schedule\nSlides for the course will be posted here prior to the lecture in which they occur. I will do my best to keep on top of them and I would like to have them be in both a PDF and HTML format so that it is easy to access for everyone.\n\n\n\nWeek\nDate\nTopic\nLecture Slides\n\n\n\n\n1\n08/27\nGetting Started\nWeek 1\n\n\n-\n08/29\nEasing into R\nSlides\n\n\n2\n09/03\nResearch Design & Stats\nSlides\n\n\n-\n09/05\nR Workflow\nSlides\n\n\n3\n09/10\nVisualizing\n\n\n\n-\n09/12\nData Wrangling\n\n\n\n4\n09/17\nData Wrangling\n\n\n\n-\n09/19\nDescriptives\n\n\n\n5\n09/24\nDescriptives\n\n\n\n-\n09/26\nStatistical Thinking\n\n\n\n6\n10/01\nANOVA\n\n\n\n-\n10/03\nANOVA\n\n\n\n7\n10/08\nRegression\n\n\n\n-\n10/10\nRegression\n\n\n\n8\n10/15\nNO CLASS\n\n\n\n-\n10/17\nProbability, Distributions & Inferences\n\n\n\n9\n10/22\nProbability, Distributions & Inferences\n\n\n\n-\n10/24\nHypothesis Testing & Power\n\n\n\n10\n10/29\nHypothesis Testing & Power\n\n\n\n-\n10/31\nCategorical Data Analysis\n\n\n\n11\n11/05\nCategorical Data Analysis\n\n\n\n-\n11/07\nComparing Means\n\n\n\n12\n11/12\nComparing Means\n\n\n\n-\n11/14\nANOVA\n\n\n\n13\n11/19\nANOVA\n\n\n\n-\n11/21\nRegression\n\n\n\n14\n11/26\nRegression\n\n\n\n-\n11/28\nNO CLASS\n\n\n\n15\n12/03\n\n\n\n\n-\n12/05\n\n\n\n\nFinals"
+  },
+  {
+    "objectID": "lectures/unit8_probability/index.html",
+    "href": "lectures/unit8_probability/index.html",
+    "title": "Unit 8 - Probability",
+    "section": "",
+    "text": "This unit focuses more on the theory behind how we make the inferences that we do. A little more theory and background than before.",
+    "crumbs": [
+      "Lectures",
+      "8 - Probability & Inference"
+    ]
+  },
+  {
+    "objectID": "lectures/unit8_probability/index.html#october-24-2024",
+    "href": "lectures/unit8_probability/index.html#october-24-2024",
+    "title": "Unit 8 - Probability",
+    "section": "October 24, 2024",
+    "text": "October 24, 2024\nGoing old school with a PowerPoint Probability Slides\nCoin Flip R-Script",
+    "crumbs": [
+      "Lectures",
+      "8 - Probability & Inference"
     ]
   },
   {
@@ -938,173 +1100,26 @@
     ]
   },
   {
-    "objectID": "lectures/checkpoint_running_tests/index.html",
-    "href": "lectures/checkpoint_running_tests/index.html",
-    "title": "Checkpoint!",
+    "objectID": "lectures/wk3_visualizations/index.html",
+    "href": "lectures/wk3_visualizations/index.html",
+    "title": "Week 3 - Visualizations",
     "section": "",
-    "text": "We have been talking a lot about various tests and it all is probably running together. The focus of this class will be to familiarize ourselves with the practical usage of these tests. This will consist of revisiting the tests, answering some questions to generate a helper document, and then implementing that into practice on an actual dataset. Note: No slides for this section\n\n\n\nLink to Helper Document &lt;- Be sure to be signed in with your RIT credentials\nList of Potential Datasets &lt;- Be sure to be signed in with your RIT credentials\nMarkdown Document from Class",
+    "text": "During this lecture, we will explore the functionality of ggplot2 and begin our entry into the tidyverse. For this lecture, have the datasets downloaded and put in the appropriate place in your files\n\nFull Screen",
     "crumbs": [
       "Lectures",
-      "00 - Checkpoint"
+      "3 - Visualizing"
     ]
   },
   {
-    "objectID": "lectures/checkpoint_running_tests/index.html#october-222024",
-    "href": "lectures/checkpoint_running_tests/index.html#october-222024",
-    "title": "Checkpoint!",
+    "objectID": "lectures/unit6_comparing-means/index.html",
+    "href": "lectures/unit6_comparing-means/index.html",
+    "title": "Unit 6 - Hypotheses and Comparing Means",
     "section": "",
-    "text": "We have been talking a lot about various tests and it all is probably running together. The focus of this class will be to familiarize ourselves with the practical usage of these tests. This will consist of revisiting the tests, answering some questions to generate a helper document, and then implementing that into practice on an actual dataset. Note: No slides for this section\n\n\n\nLink to Helper Document &lt;- Be sure to be signed in with your RIT credentials\nList of Potential Datasets &lt;- Be sure to be signed in with your RIT credentials\nMarkdown Document from Class",
+    "text": "This unit focuses on comparing means of various groups. Traditionally this is done through the t-test and ANOVA. Here we will learn how to implement them in R and then figure out how to interpret and report!\n\nCode File Template\nFull Screen\n\nFull Screen",
     "crumbs": [
       "Lectures",
-      "00 - Checkpoint"
+      "6 - Comparing Means"
     ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "PSYC 640: Graduate Statistics",
-    "section": "",
-    "text": "This course is the introduction to statistics for graduate students. The goal of the course is to provide a grounding in statistical concepts, methods and application to research. I aim to increase student’s confidence in using these techniques and introducing them to R. Topics will range from including mathematical conceptualizations to practical application with various techniques ranging from descriptive statistics to ending with regression.\nThe course will be broken up into two main sections. The first will be getting used to using R and the practicalities of performing a data analysis. The second section will then “pop the hood” of these tools with a deeper understanding of the how and why.\n\n\nThis course reviews critical concepts and data analysis methods in descriptive and inferential statistics. Basic and advanced material will be presented on topics that include measurement, descriptive and inferential data analyses for single and multiple group designs, and computer applications. There will be an emphasis on Open Science practices, especially reproducibility. Course content will be taught through lectures, discussion, and applied data analysis exercises. Throughout the course, I will try to maintain an emphasis on both the basic theory behind the statistics and its practical application to data sets.\n\n\n\nLecture: Tuesdays & Thursdays, 11:00am - 12:15pm, Liberal Arts 3233\n\n\n\nDustin Haraden – dxhgsh@rit.edu\n\nOffice: EAS 3378\nOffice Hours: Tuesdays & Wednesdays 12:30 – 2:00pm or By Appointment",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#course-description",
-    "href": "index.html#course-description",
-    "title": "PSYC 640: Graduate Statistics",
-    "section": "",
-    "text": "This course reviews critical concepts and data analysis methods in descriptive and inferential statistics. Basic and advanced material will be presented on topics that include measurement, descriptive and inferential data analyses for single and multiple group designs, and computer applications. There will be an emphasis on Open Science practices, especially reproducibility. Course content will be taught through lectures, discussion, and applied data analysis exercises. Throughout the course, I will try to maintain an emphasis on both the basic theory behind the statistics and its practical application to data sets.",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#meeting-time-and-location",
-    "href": "index.html#meeting-time-and-location",
-    "title": "PSYC 640: Graduate Statistics",
-    "section": "",
-    "text": "Lecture: Tuesdays & Thursdays, 11:00am - 12:15pm, Liberal Arts 3233",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#instructor",
-    "href": "index.html#instructor",
-    "title": "PSYC 640: Graduate Statistics",
-    "section": "",
-    "text": "Dustin Haraden – dxhgsh@rit.edu\n\nOffice: EAS 3378\nOffice Hours: Tuesdays & Wednesdays 12:30 – 2:00pm or By Appointment",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#textbook",
-    "href": "index.html#textbook",
-    "title": "PSYC 640: Graduate Statistics",
-    "section": "Textbook",
-    "text": "Textbook\nWe will primarily be referring to chapters in the following textbooks:\n\nLearning Statistics with R by Danielle Navarro.\nR for Data Science (2e) (Wickham, Çetinkaya-Rundel, & Grolemund, 2023)\nOpenIntro Statistics 4th ed. (Diez, Barr, & Cetinkaya-Rundel, 2022)\n\nThese textbook is available for free online and able to be downloaded. You may choose to purchase a paper copy if you wish, but it is not required.",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#r-and-rstudio",
-    "href": "index.html#r-and-rstudio",
-    "title": "PSYC 640: Graduate Statistics",
-    "section": "R and RStudio",
-    "text": "R and RStudio\nStudents must have the latest version of R as well as the RStudio GUI. Both applications are free and can be found here.",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "homework.html",
-    "href": "homework.html",
-    "title": "Homework Assignments",
-    "section": "",
-    "text": "Homework assignments will be posted here. You will be able to access the assignment as well as any data or additional information that may be necessary. Submit your homework assignments via myCourses by the due date and time.\n\n\n\nWeek\nDate\nTopic\nLecture Slides\n\n\n\n\n1\n08/27\n\n\n\n\n-\n08/29\n\n\n\n\n2\n09/03\n\n\n\n\n-\n09/05\n\n\n\n\n3\n09/10\n\n\n\n\n-\n09/12\n\n\n\n\n4\n09/17\n\n\n\n\n-\n09/19\n\n\n\n\n5\n09/24\n\n\n\n\n-\n09/26\n\n\n\n\n6\n10/01\n\n\n\n\n-\n10/03\n\n\n\n\n7\n10/08\n\n\n\n\n-\n10/10\n\n\n\n\n8\n10/15\nNO CLASS\n\n\n\n-\n10/17\n\n\n\n\n9\n10/22\n\n\n\n\n-\n10/24\n\n\n\n\n10\n10/29\n\n\n\n\n-\n10/31\n\n\n\n\n11\n11/05\n\n\n\n\n-\n11/07\n\n\n\n\n12\n11/12\n\n\n\n\n-\n11/14\n\n\n\n\n13\n11/19\n\n\n\n\n-\n11/21\n\n\n\n\n14\n11/26\n\n\n\n\n-\n11/28\nNO CLASS\n\n\n\n15\n12/03\n\n\n\n\n-\n12/05\n\n\n\n\nFinals",
-    "crumbs": [
-      "Homework Assignments"
-    ]
-  },
-  {
-    "objectID": "lectures.html",
-    "href": "lectures.html",
-    "title": "Lectures",
-    "section": "",
-    "text": "Schedule\nSlides for the course will be posted here prior to the lecture in which they occur. I will do my best to keep on top of them and I would like to have them be in both a PDF and HTML format so that it is easy to access for everyone.\n\n\n\nWeek\nDate\nTopic\nLecture Slides\n\n\n\n\n1\n08/27\nGetting Started\nWeek 1\n\n\n-\n08/29\nEasing into R\nSlides\n\n\n2\n09/03\nResearch Design & Stats\nSlides\n\n\n-\n09/05\nR Workflow\nSlides\n\n\n3\n09/10\nVisualizing\n\n\n\n-\n09/12\nData Wrangling\n\n\n\n4\n09/17\nData Wrangling\n\n\n\n-\n09/19\nDescriptives\n\n\n\n5\n09/24\nDescriptives\n\n\n\n-\n09/26\nStatistical Thinking\n\n\n\n6\n10/01\nANOVA\n\n\n\n-\n10/03\nANOVA\n\n\n\n7\n10/08\nRegression\n\n\n\n-\n10/10\nRegression\n\n\n\n8\n10/15\nNO CLASS\n\n\n\n-\n10/17\nProbability, Distributions & Inferences\n\n\n\n9\n10/22\nProbability, Distributions & Inferences\n\n\n\n-\n10/24\nHypothesis Testing & Power\n\n\n\n10\n10/29\nHypothesis Testing & Power\n\n\n\n-\n10/31\nCategorical Data Analysis\n\n\n\n11\n11/05\nCategorical Data Analysis\n\n\n\n-\n11/07\nComparing Means\n\n\n\n12\n11/12\nComparing Means\n\n\n\n-\n11/14\nANOVA\n\n\n\n13\n11/19\nANOVA\n\n\n\n-\n11/21\nRegression\n\n\n\n14\n11/26\nRegression\n\n\n\n-\n11/28\nNO CLASS\n\n\n\n15\n12/03\n\n\n\n\n-\n12/05\n\n\n\n\nFinals"
-  },
-  {
-    "objectID": "previous-years.html",
-    "href": "previous-years.html",
-    "title": "Previous Years",
-    "section": "",
-    "text": "This course has been taught for a number of years, but this instructor has only started teaching it in Fall 2023. Below are previous iterations of the course in case you would like to check out how it has progressed!",
-    "crumbs": [
-      "Previous Years"
-    ]
-  },
-  {
-    "objectID": "previous-years.html#overview",
-    "href": "previous-years.html#overview",
-    "title": "Previous Years",
-    "section": "",
-    "text": "This course has been taught for a number of years, but this instructor has only started teaching it in Fall 2023. Below are previous iterations of the course in case you would like to check out how it has progressed!",
-    "crumbs": [
-      "Previous Years"
-    ]
-  },
-  {
-    "objectID": "previous-years.html#fall-2023",
-    "href": "previous-years.html#fall-2023",
-    "title": "Previous Years",
-    "section": "Fall 2023",
-    "text": "Fall 2023\nWebsite",
-    "crumbs": [
-      "Previous Years"
-    ]
-  },
-  {
-    "objectID": "lectures/unit4_data-wrangler/index.html",
-    "href": "lectures/unit4_data-wrangler/index.html",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "",
-    "text": "During this section, we will highlight the utility of the dplyr package and further dive into the tidyverse. For this lecture, have the datasets downloaded and put in the appropriate place in your files\nThis is currently situated as a document which you can find below:",
-    "crumbs": [
-      "Lectures",
-      "4 - Data Wrangling"
-    ]
-  },
-  {
-    "objectID": "lectures/unit4_data-wrangler/index.html#link-to-document",
-    "href": "lectures/unit4_data-wrangler/index.html#link-to-document",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "Link to Document",
-    "text": "Link to Document\nThe instructor is working to put these into some beautiful slides :)\nFull Screen",
-    "crumbs": [
-      "Lectures",
-      "4 - Data Wrangling"
-    ]
-  },
-  {
-    "objectID": "lectures/unit5_descriptives/index.html",
-    "href": "lectures/unit5_descriptives/index.html",
-    "title": "Unit 5 - Descriptive Statistics",
-    "section": "",
-    "text": "Now that we have gotten somewhat more comfortable with wrangling our data and visualizing it, we are going to shift our focus to describing our data. This is always an important step and will begin our journey into inferential statistics.\n\nFull Screen\n\nFull Screen",
-    "crumbs": [
-      "Lectures",
-      "5 - Descriptives"
-    ]
-  },
-  {
-    "objectID": "lectures/unit8_probability/index.html",
-    "href": "lectures/unit8_probability/index.html",
-    "title": "Unit 8 - Probability",
-    "section": "",
-    "text": "This unit focuses more on the theory behind how we make the inferences that we do. A little more theory and background than before.\n\nCode File Template\nFull Screen\n\nFull Screen"
   },
   {
     "objectID": "lectures/unit5_descriptives/slides.html#reminders",
