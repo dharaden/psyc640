@@ -1,6 +1,6 @@
 ---
-title: "Unit 7 (Part Deux) - ANOVA & regression"
-subtitle: "PSYC 640 - Fall 2024"
+title: "Unit 8 - Probability & Influence"
+subtitle: "10/23/24 - PSYC 640"
 author: "Dustin Haraden, PhD"
 format: 
   revealjs:
@@ -26,7 +26,6 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 
 ::: nonincremental
 -   Journal Entries
--   [Mid-course Feedback](https://forms.gle/bVbLJWUXbEi2JnmH9)
 -   Presentation 2 Groups
 :::
 
@@ -35,10 +34,7 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 ## Last Class
 
 ::: nonincremental
--   ANOVA
-    -   Some theory, but more applied
-    -   `easystats::report()` makes things easier
-    -   Everyone getting better with R!
+-   Talking through data to test
 :::
 
 ------------------------------------------------------------------------

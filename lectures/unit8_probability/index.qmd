@@ -4,16 +4,9 @@ title: "Unit 8 - Probability"
 
 > This unit focuses more on the theory behind how we make the inferences that we do. A little more theory and background than before. 
 
-[Code File Template](aov_regression.Rmd)
+## October 24, 2024
 
-[Full Screen](slides-speaker.html)
+Going old school with a PowerPoint
+[Probability Slides](Unit8_Probability-Inferences.pptx)
 
-```{=html}
-<iframe class="slide-deck" src="slides-speaker.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
-```
-
-[Full Screen](slides2-speaker.html)
-
-```{=html}
-<iframe class="slide-deck" src="slides2-speaker.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
-```
+[Coin Flip R-Script](Coin Flip.Rmd)
