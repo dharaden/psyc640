@@ -51,6 +51,7 @@ jobs:
             any::pwr
             any::transformr
             any::gifski
+            any::papaja
           cache-version: 1
           needs: website
 
