@@ -47,6 +47,8 @@ website:
           href: lectures/checkpoint_running_tests/index.qmd
         - text: "8 - Probability & Inference"
           href: lectures/unit8_probability/index.qmd
+        - text: "9 - Power & Hypotheses"
+          href: lectures/unit9_power/index.qmd
       - homework.qmd
       - href: previous-years.qmd
         text: Previous Years
