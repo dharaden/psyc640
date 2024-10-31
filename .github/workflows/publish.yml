@@ -49,7 +49,6 @@ jobs:
             any::easystats
             any::gganimate
             any::pwr
-            any::pubr
             any::transformr
             any::gifski
           cache-version: 1
