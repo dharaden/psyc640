@@ -10,8 +10,8 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.57">
 
-  <meta name="author" content="Dustin Haraden, PhD">
-  <title>PSYC 640 2024 – Figures: Using ggplot2</title>
+  <meta name="author" content="Dustin Haraden">
+  <title>PSYC 640 2024 – Unit 9 pt.2 - More Power</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -309,7 +309,6 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
-      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -392,351 +391,305 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Figures: Using ggplot2</h1>
-  <p class="subtitle">PSYC 640 - Fall 2024</p>
+  <h1 class="title">Unit 9 pt.2 - More Power</h1>
+  <p class="subtitle">PSYC 640 - Oct 31, 2024</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Dustin Haraden, PhD 
+Dustin Haraden 
 </div>
 </div>
 </div>
 
 </section>
-<section id="reminders" class="slide level2">
-<h2>Reminders</h2>
-<div>
-<ul>
-<li><p>Journal Entries</p></li>
-<li><p>Reverse Results - Due 9/17</p></li>
-</ul>
-</div>
-</section>
-<section id="last-class" class="slide level2">
-<h2>Last Class</h2>
-<div>
-<ul>
-<li>The workflow
-<ul>
-<li>Starting with a Project and going from there</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="today" class="slide level2">
-<h2>Today…</h2>
-<p>Working with <code>ggplot2</code> to get some really fancy visualizations!</p>
-<p>Maybe integrating some generative AI (ChatGPT) to help us out too</p>
+<section id="recap" class="slide level2">
+<h2>Recap</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># File management</span></span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(here)</span>
-<span id="cb1-3"><a></a><span class="co"># for dplyr, ggplot2</span></span>
-<span id="cb1-4"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-5"><a></a><span class="co">#Loading data</span></span>
-<span id="cb1-6"><a></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-7"><a></a></span>
-<span id="cb1-8"><a></a><span class="co">#for the penguins dataset</span></span>
-<span id="cb1-9"><a></a><span class="co">#install.packages('palmerpenguins')</span></span>
-<span id="cb1-10"><a></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb1-11"><a></a></span>
-<span id="cb1-12"><a></a><span class="co">#Remove Scientific Notation </span></span>
-<span id="cb1-13"><a></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a></a><span class="fu">library</span>(gganimate)</span>
+<span id="cb1-3"><a></a><span class="fu">library</span>(pwr)</span>
+<span id="cb1-4"><a></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb1-5"><a></a><span class="fu">library</span>(transformr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="starting-out" class="slide level2">
-<h2>Starting out</h2>
-<p>Let’s first start by opening our <strong><code>Project</code></strong></p>
-<p>Then, create a new Notebook/Markdown Document that we will use for today</p>
-<p>Setup the libraries and bring in the data</p>
 <ul>
-<li>We will use the “Sleep Data” file as well</li>
+<li class="fragment"><p>Everything is based on probability and we are always taking a best guess</p></li>
+<li class="fragment"><p><strong>p-values reflect the probability of getting that statistic IF THE NULL WAS TRUE.</strong></p></li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co">#import sleep data - Your path may be different</span></span>
-<span id="cb2-2"><a></a>sleep_data <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"lectures"</span>, <span class="st">"data"</span>, <span class="st">"Sleep_Data.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
-<section id="take-a-look-at-the-data" class="slide level2">
-<h2>Take a look at the data</h2>
-<p>Will be using a dataset from the <code>palmerpenguins</code> library (<a href="https://allisonhorst.github.io/palmerpenguins/articles/intro.html#exploring-distributions">link</a>) which is a dataset about…<a href="https://www.youtube.com/watch?v=-GnLDJAgrws">penguins</a>. This function will pull that data into our environment:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">data</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="a-p-value-does-not" class="slide level2">
+<h2>A p-value DOES NOT:</h2>
+<ul>
+<li class="fragment"><p>Tell you that the probability that the null hypothesis is true.</p></li>
+<li class="fragment"><p>Prove that the alternative hypothesis is true.</p></li>
+<li class="fragment"><p>Tell you anything about the size or magnitude of any observed difference in your data.</p></li>
+</ul>
 </section>
-<section>
-<section id="ggplot2" class="title-slide slide level1 center">
-<h1><code>ggplot2</code></h1>
+<section class="slide level2">
 
+<h3 id="p-values-and-error">p-values and error</h3>
+<p>Consider what the p-value means. In a world where the null ( <span class="math inline">\(H_0\)</span> ) is true, then by chance, we’ll get statistics in the extreme. Specifically, we’ll get them <span class="math inline">\(\alpha\)</span> proportion of the time. So <span class="math inline">\(\alpha\)</span> is our tolerance for False Positives or incorrectly rejecting the null.</p>
 </section>
-<section id="ggplot2-from-the-tidyverse" class="slide level2">
-<h2><code>ggplot2</code> from the <code>tidyverse</code></h2>
-<p>Since we have already installed and loaded the library, we don’t have to do anything else at this point!</p>
-<p><code>ggplot2</code> follows the “grammar of graphics”</p>
-<ul>
-<li>Theoretical framework for creating data visualizations</li>
-<li>Breaks the process down into separate components:</li>
-</ul>
+<section id="power" class="slide level2">
+<h2>Power</h2>
+<p>In hypothesis testing, we can make two kinds of errors.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: center;">Reject <span class="math inline">\(H_0\)</span></th>
+<th style="text-align: center;">Do not reject</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(H_0\)</span> True</td>
+<td style="text-align: center;">Type I Error</td>
+<td style="text-align: center;">Correct decision</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">\(H_0\)</span> False</td>
+<td style="text-align: center;">Correct decision</td>
+<td style="text-align: center;">Type II Error</td>
+</tr>
+</tbody>
+</table>
+<p>Controlling Type II errors is more challenging because it depends on several factors. But, we usually DO want to control these errors. Some argue that the null hypothesis is usually false, so the only error we can make is a Type II error – a failure to detect a signal that is present. <strong>Power</strong> is the probability of correctly rejecting a false null hypothesis.</p>
+</section>
+<section class="slide level2">
+
+<p>Controlling Type II errors is the goal of power analysis and must contend with four quantities that are interrelated:</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p>Data</p>
-<p>Aesthetics (<code>aes</code>)</p>
-<p>Geometric Objects (<code>geoms</code>)</p>
+<ul>
+<li class="fragment">Sample size</li>
+<li class="fragment">Effect size</li>
+</ul>
 </div><div class="column" style="width:50%;">
-<p>Faceting</p>
-<p>Themes</p>
+<ul>
+<li class="fragment">Significance level ( <span class="math inline">\(\alpha\)</span> )</li>
+<li class="fragment">Power</li>
+</ul>
+</div></div>
+<ul>
+<li class="fragment">When any three are known, the remaining one can be determined. We can use this information to determine the sample size necessary to achieve a desired level of power, given the <em>expected</em> effect size.</li>
+</ul>
+</section>
+<section id="calculating-power-in-r" class="slide level2">
+<h2>Calculating Power in R</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource {r} library(pwr)} number-lines code-with-copy"><code class="sourceCode"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We will use the <code>pwr</code> package and a few tutorials you can look at are as follows:</p>
+<div>
+<ul>
+<li><a href="https://bookdown.org/pdr_higgins/rmrwr/sample-size-calculations-with-pwr.html">Reproducible Medical Research with R</a></li>
+<li><a href="https://www.statmethods.net/stats/power.html">Stat Methods</a></li>
+<li><a href="https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html">Vignettes from pwr package</a></li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<p>The four components are interrelated and by knowing three, we can determine the fourth:</p>
+<div>
+<ol type="1">
+<li>Sample Size</li>
+<li>Effect Size</li>
+<li>Significance Level <span class="math inline">\(\alpha\)</span></li>
+<li>Power <span class="math inline">\(\beta\)</span></li>
+</ol>
+</div>
 </div></div>
 </section>
-<section id="grammar-of-graphics" class="slide level2">
-<h2>Grammar of Graphics</h2>
-<p><a href="https://gkesari.medium.com/my-talk-on-grammar-of-graphics-the-secret-sauce-of-powerful-data-stories-3da618cf1bbf"><img data-src="../../images/grammargraphics.webp" width="779"></a></p>
-</section></section>
-<section>
-<section id="ggplot2-cheatsheet" class="title-slide slide level1 center">
-<h1><code>ggplot2</code> <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf">cheatsheet</a></h1>
+<section class="slide level2">
 
-</section>
-<section id="ggplot2-syntax" class="slide level2 smaller scrollable">
-<h2><code>ggplot2</code> syntax</h2>
-<p>There is a basic structure to create a plot within <code>ggplot2</code>, and consists of at least these three things:</p>
-<ol type="1">
-<li>A Data Set</li>
-<li>Coordinate System</li>
-<li>Geoms - visual marks to represent the data points</li>
-</ol>
-<p>In R it looks like this:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="sc">&lt;</span>DATA<span class="sc">&gt;</span>) <span class="sc">+</span> </span>
-<span id="cb4-2"><a></a>  <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>))</span>
-<span id="cb4-3"><a></a></span>
-<span id="cb4-4"><a></a><span class="co">#or how I like to do it</span></span>
-<span id="cb4-5"><a></a><span class="sc">&lt;</span>DATA<span class="sc">&gt;</span> <span class="sc">%&gt;%</span> </span>
-<span id="cb4-6"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>)) <span class="sc">+</span> </span>
-<span id="cb4-7"><a></a>  <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="ggplot2-syntax-1" class="slide level2">
-<h2><code>ggplot2</code> syntax</h2>
-<p>Let’s start with a basic figure with <code>palmerpenguins</code></p>
-<p><strong>First</strong> we will define the data that we are using and the variables we are visualizing</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co">#the dataset is called penguins</span></span>
-<span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb5-4"><a></a>  <span class="co">#including the variables we want to visualize</span></span>
-<span id="cb5-5"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb5-6"><a></a>             <span class="at">y =</span> body_mass_g))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>What happens?</p>
+<h3 id="calculating-power-in-r-t-tests">Calculating Power in R: t-tests</h3>
+<p><strong>Example:</strong> We want to know how frustrating stats classes can be for graduate students. To do this we want to test if the mean frustration levels of students in a stats class are different than students walking around on campus. Let’s say we survey 30 stats students and 30 grad students and get a “Frustration Score” (f-score) and then take the mean of each group.</p>
+<p>We’ll test for a difference in means using a <em>two-sample t-test</em>.</p>
+<p><strong><em>How powerful is this experiment if we want to detect a medium effect in either direction with a significance level of 0.05?</em></strong></p>
 </section>
 <section class="slide level2">
 
-<p>We forgot to tell it what to do with the data!</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="columns">
+<p>First we indicate what it means to have a “medium” effect</p><div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>pwr<span class="sc">::</span><span class="fu">cohen.ES</span>(<span class="at">test =</span> <span class="st">"t"</span>, <span class="at">size =</span> <span class="st">"medium"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     Conventional effect size from Cohen (1982) 
 
-<img data-src="../../images/data-aes.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+           test = t
+           size = medium
+    effect.size = 0.5</code></pre>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<table class="caption-top">
+<caption>Using <em>Cohen’s d</em></caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Relative Size</th>
+<th style="text-align: center;">Effect Size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Small</td>
+<td style="text-align: center;">0.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Medium</td>
+<td style="text-align: center;">0.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Large</td>
+<td style="text-align: center;">0.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Very Large</td>
+<td style="text-align: center;">1.3</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+<p>Further reading: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3444174/">Sullivan, G. M., &amp; Feinn, R. (2012). Using effect size—or why the P value is not enough. Journal of graduate medical education, 4(3), 279-282.</a></p>
+</section>
 <section class="slide level2">
 
-<p>Need to add the appropriate <code>geom</code> to have it plot points for each observation</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb6-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb6-3"><a></a>             <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> </span>
-<span id="cb6-4"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then we can use the <code>pwr</code> library to calculate the power we can expect. The function looks like:</p>
+<p><code style="font-size:20px;">pwr.t.test(n = , d = , sig.level = , power = , type = c("two.sample", "one.sample", "paired"))</code></p>
+<div style="font-size:25px;">
+<p>where <code>n</code> is the sample size, <code>d</code> is the effect size, <code>power</code> is the power level, and <code>type</code> indicates a two sample t-test, one sample t-test or paired t-test</p>
 </div>
-<p><strong><em><br>
-Note:</em></strong> the <code>geom_point()</code> layer will inherit what is in the <code>aes()</code> in the previous layer</p>
-</section>
-<section id="adding-in-color" class="slide level2">
-<h2>Adding in Color</h2>
-<p>Maybe we would like to have each of the points colored by their respective <code>species</code></p>
-<p>This information will be added to the <code>aes()</code> within the <code>geom_point()</code> layer</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb7-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb7-3"><a></a>             <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> </span>
-<span id="cb7-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="including-a-fit-line" class="slide level2">
-<h2>Including a fit line</h2>
-<p>Why don’t we put in a line that represents the relationship between these variables?</p>
-<p>We will want to add another layer/geom</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb8-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb8-3"><a></a>             <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> </span>
-<span id="cb8-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span> </span>
-<span id="cb8-5"><a></a>  <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><br>
-That looks a little wonky…why is that? Did you get a note in the console?</p>
-</section>
-<section id="including-a-fit-line-1" class="slide level2">
-<h2>Including a fit line</h2>
-<p>The <code>geom_smooth()</code> defaults to using a loess line to fit to the data</p>
-<p>In order to update that, we need to change some of the defaults for that layer and specify that we want a “linear model” or <code>lm</code> function to the data</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb9-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb9-3"><a></a>             <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> </span>
-<span id="cb9-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span> </span>
-<span id="cb9-5"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">'lm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><br>
-Did that look a little better?</p>
-</section>
-<section id="individual-fit-lines" class="slide level2">
-<h2>Individual fit lines</h2>
-<p>It might make more sense to have individual lines for each of the species instead of something that is across all</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb10-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb10-3"><a></a>             <span class="at">y =</span> body_mass_g, </span>
-<span id="cb10-4"><a></a>             <span class="at">color =</span> species)) <span class="sc">+</span> </span>
-<span id="cb10-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb10-6"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">'lm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><br>
-What did we move around from the last set of code?</p>
-</section>
-<section id="updating-labelstitle" class="slide level2">
-<h2>Updating Labels/Title</h2>
-<p>It will default to including the variable names as the <code>x</code> and <code>y</code> labels, but that isn’t something that makes sense. Also would be good to have a title!</p>
-<p>We add on another layer called <code>labs()</code> for our labels (<a href="https://ggplot2.tidyverse.org/reference/labs.html">link</a>)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb11-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb11-3"><a></a>             <span class="at">y =</span> body_mass_g, </span>
-<span id="cb11-4"><a></a>             <span class="at">color =</span> species)) <span class="sc">+</span> </span>
-<span id="cb11-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb11-6"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">'lm'</span>) <span class="sc">+</span> </span>
-<span id="cb11-7"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb11-8"><a></a>    <span class="at">title =</span> <span class="st">"Palmer Penguins"</span>,</span>
-<span id="cb11-9"><a></a>    <span class="at">subtitle =</span> <span class="st">"Body Mass by Flipper Length"</span>, </span>
-<span id="cb11-10"><a></a>    <span class="at">x =</span> <span class="st">"Flipper Length (mm)"</span>, </span>
-<span id="cb11-11"><a></a>    <span class="at">y =</span> <span class="st">"Body Mass (g)"</span>, </span>
-<span id="cb11-12"><a></a>    <span class="at">color =</span> <span class="st">"Species"</span></span>
-<span id="cb11-13"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="penguin-histogram" class="slide level2">
-<h2>Penguin Histogram</h2>
-<p>Taken from the website for <code>palmerpenguins</code> (<a href="https://allisonhorst.github.io/palmerpenguins/articles/intro.html#exploring-distributions">link</a>)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb12-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm)) <span class="sc">+</span></span>
-<span id="cb12-3"><a></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">fill =</span> species), </span>
-<span id="cb12-4"><a></a>                   <span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
-<span id="cb12-5"><a></a>                   <span class="at">position =</span> <span class="st">"identity"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section></section>
-<section>
-<section id="now-our-own-data" class="title-slide slide level1 center">
-<h1>Now our own data! 🎉</h1>
-
-</section>
-<section id="sleep-data" class="slide level2">
-<h2>Sleep Data</h2>
-<p>Let’s start by looking at our data. You can either click on the dataset in the <code>Environment</code> or use the <code>View(sleep_data)</code> command. Here, I am using the <code>head()</code> command just to visualize a sample of the data for the slides.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">head</span>(sleep_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">pwr.t.test</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">d =</span> <span class="fl">0.5</span>, <span class="at">sig.level =</span> <span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>            StartDate             EndDate Status Progress Duration__in_seconds_
-1 2017-08-16 13:13:06 2017-08-16 13:15:13      0      100                   126
-2 2017-08-16 13:17:16 2017-08-16 13:19:03      0      100                   106
-3 2017-11-27 16:59:07 2017-11-27 17:07:27      0      100                   499
-4 2017-11-27 18:57:16 2017-11-27 19:13:00      0      100                   943
-5 2017-11-27 18:54:35 2017-11-27 19:14:12      0      100                  1177
-6 2017-11-27 19:41:14 2017-11-27 19:46:48      0      100                   333
-  Finished        RecordedDate DistributionChannel UserLanguage Q5 Q7 Q8 Q12
-1        1 2017-08-16 13:15:14           anonymous           EN 12  2  2   3
-2        1 2017-08-16 13:19:03           anonymous           EN  1  2  2   1
-3        1 2017-11-27 17:07:27           anonymous           EN 19  1  2   1
-4        1 2017-11-27 19:13:00           anonymous           EN 18  2  2   2
-5        1 2017-11-27 19:14:13           anonymous           EN 21  1  2   2
-6        1 2017-11-27 19:46:48           anonymous           EN 18  2  1   3
-  Q13_1 Q13_2 Q13_3 Q13_4 Q13_5 Q13_6 Q13_7 Q13_8 Q13_9 Q13_10 Q14_1 Q14_2
-1     2     2     2    NA     2     2     2     2     2      2     2     2
-2     1     1     1    NA     2     3     2     3     2      3     4     2
-3     1     2     2     5     3     4     1     1     2      1     5     5
-4     3     4     5     5     5     5     5     5     5      1     5     5
-5     1     2     2     5     4     2     2     1     1      2     5     5
-6     1     2     4     5     4     2     4     4     5      4     5     5
-  Q14_3 Q14_4 Q14_5 Q14_6 Q14_7 Q14_8 Q11_1 Q11_2 Q11_3 Q11_4 Q11_5 Q11_6 Q17_1
-1     2     2     2    NA     2     2     2     3     3     4     4     3     2
-2     4     4     4    NA     4     4     4     4     4     4     4     4     2
-3     5     5     1     1     1     1     4     5     4     4     5     4     4
-4     5     5     5     1     5     5     2     3     4     3     1     1     4
-5     5     5     2     1     3     4     2     1     4     3     4     2     2
-6     5     5     4     1     4     3     1     4     2     2     4     5     2
-  Q17_2 Q17_3 Q17_4 Q18_1 Q18_2 Q18_3 Q18_4 Q18_5 Q20_1 Q20_2 Q21_1 Q21_2 Q21_3
-1     3     3     2     2     2     2     3     1     1     2     4     3     3
-2     2     1     2     3     1     1     1     1     2     3     5     4     4
-3     2     1     4     3     1     4     1     2     3     3     1     2     3
-4     4     1     3     4     1     2     1     1     4     2     5     2     1
-5     2     2     4     3     1     1     1     2     3     3     4     1     3
-6     4     3     4     4     1     1     1     4     6     5     4     4     5
-  Q21_4 Q21_5 Q21_6 Q22_1 Q22_2 Q22_3 Q22_4 Q22_5 Q23_1 Q23_2 Q23_3 Q23_4 Q23_5
-1    NA     5     3     3     2     1     2     3     4     5     3     3     2
-2    NA     2     2     2     3     4     5     5     5     5     4     3     3
-3     4     1     1     5     4     3     4     4     5     6     2     5     5
-4     4     1     1     2     5     1     6     1     6     6     2     5     6
-5     4     1     2     3     4     1     4     2     2     6     3     5     5
-6     4     1     2     2     2     3     4     3     4     5     2     3     3
-  Q23_6 Q23_7 Q23_8 Q24_1 Q24_2 Q24_3 Q24_4 Q24_5 Q25_1 Q25_2 Q25_3 Q25_4 Q25_5
-1    NA     3     3     3     3     3     3     3     3     3     3    NA     4
-2    NA     3     3     3     3     2     2     1     1     2     1    NA     1
-3     1     1     3     1     1     1     1     2     3     4     2     1     1
-4     1     3     1     1     6     2     1     1     4     2     6     1     6
-5     1     2     2     1     2     2     1     2     5     4     2     1     1
-6     1     2     4     4     5     1     2     6     6     3     5     1     3
-  Q26_1 Q26_2 Q27_1 Q27_2 SC0 SC1 SC2 SC3 SC4 SC5    id Attention
-1     3     3     3     3  19  11  19  14  82   0 15516        NA
-2     1     1     1     1  24   5  24  26  79   0 15516        NA
-3     3     1     4     1  26  13  26  23  70   0 17915        NA
-4     4     4     1     1  14  12  14  35  89   0 17648        NA
-5     5     2     5     5  16   9  16  29  76   0 17799        NA
-6     5     1     6     6  18  15  18  31  99   0 18003        NA</code></pre>
+<pre><code>
+     Two-sample t test power calculation 
+
+              n = 30
+              d = 0.5
+      sig.level = 0.05
+          power = 0.4778965
+    alternative = two.sided
+
+NOTE: n is number in *each* group</code></pre>
 </div>
 </div>
-<p><strong><em>What do these variables mean? Who does this?</em></strong></p>
+<p>Ooof…only 48%. Not very powerful.</p>
 </section>
-<section id="data-documentation" class="slide level2">
-<h2>Data Documentation</h2>
-<p>It is always important to have appropriate data documentation!</p>
-<p>If you can’t look at your data and know what it means right away, you aren’t going to remember what it means later on.</p>
-<p>Sleep Data Documentation - <a href="https://mycourses.rit.edu/d2l/le/content/1101433/viewContent/10311985/View" target="_blank">myCourses</a></p>
-</section>
-<section id="visualizing-demographics" class="slide level2">
-<h2>Visualizing Demographics</h2>
-<p>“Q5” - <em>What is your age in years? (open text)</em></p>
-<p>This is a free text field…is that a good way to get quality data?</p>
-<p>Let’s see if everyone followed directions. Check the “structure” of the variable</p>
+<section class="slide level2">
+
+<p>What if we want to get that power to the expected 80%? How many students should we collect data for?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="co"># Here we use str() to check structure of a variable</span></span>
-<span id="cb15-2"><a></a>  <span class="co"># Then we state the data and the variable, linked by the $</span></span>
-<span id="cb15-3"><a></a><span class="fu">str</span>(sleep_data<span class="sc">$</span>Q5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">pwr.t.test</span>(<span class="at">d =</span> <span class="fl">0.5</span>, <span class="at">power =</span> <span class="fl">0.80</span>, <span class="at">sig.level =</span> <span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> int [1:1520] 12 1 19 18 21 18 18 18 18 18 ...</code></pre>
+<pre><code>
+     Two-sample t test power calculation 
+
+              n = 63.76561
+              d = 0.5
+      sig.level = 0.05
+          power = 0.8
+    alternative = two.sided
+
+NOTE: n is number in *each* group</code></pre>
 </div>
 </div>
+<p>Looks like we would need about 64 students <em>per group.</em></p>
 </section>
-<section id="giving-it-a-try" class="slide level2">
-<h2>Giving it a try</h2>
-<p>Use the <a href="https://rstudio.github.io/cheatsheets/data-visualization.pdf" target="_blank">ggplot cheatsheet</a> to identify an appropriate way to visualize the data</p>
+<section id="summary" class="slide level2">
+<h2>Summary</h2>
 <ul>
-<li><p>Add some color</p></li>
-<li><p>Update the title and axes</p></li>
+<li class="fragment"><p>Conducting a study we tend to have null <span class="math inline">\(H_0\)</span> and alternative <span class="math inline">\(H_1\)</span> hypotheses</p></li>
+<li class="fragment"><p>Tested through Null Hypothesis Significance Testing</p></li>
+<li class="fragment"><p><span class="math inline">\(p-values\)</span> are the probability of getting this score or higher <strong>if the null distribution were true</strong></p></li>
+<li class="fragment"><p>Important to consider power in all studies we do</p></li>
 </ul>
-<p>When you are done, <a href="https://docs.google.com/document/d/10fVTcIyTo-TQskKOgvL-BVCiN6vaGb2B96krBDaGQ2g/edit?usp=sharing" target="_blank"><strong>post your creation here!</strong></a></p>
+</section>
+<section class="slide level2">
+
+
+<img data-src="../../images/preg.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="additional-slides" class="slide level2">
+<h2>Additional Slides</h2>
+</section>
+<section id="alpha" class="slide level2">
+<h2>alpha</h2>
+<p>Historically, psychologists have chosen to set their <span class="math inline">\(\alpha\)</span> level at .05, meaning any p-value less than .05 is considered “statistically significant” or the null is rejected.</p>
+<p>This means that, among the times we examine a relationship that is truly null, we will reject the null 1 in 20 times.</p>
+<p>Some have argued that this is not conservative enough and we should use <span class="math inline">\(\alpha &lt; .005\)</span> (<a href="../readings/Benjamin_etal_2018.pdf">Benjamin et al., 2018</a>).</p>
+</section>
+<section id="check-in-and-review" class="slide level2">
+<h2>Check-in and Review</h2>
+<ul>
+<li class="fragment"><p>The null hypothesis ( <span class="math inline">\(H_0\)</span> ) is a claim about the particular value that a population parameter takes.</p></li>
+<li class="fragment"><p>The alternative hypothesis ( <span class="math inline">\(H_1\)</span> ) states an alternative range of values for the population parameter.</p></li>
+<li class="fragment"><p>We test the null hypothesis by determining if we have sufficient evidence that contradicts or nullifies it.</p></li>
+<li class="fragment"><p>We reject the null hypothesis if the data in hand are rare, unusual, or atypical if the null were true. The alternative hypothesis gains support when the null is rejected, but <span class="math inline">\(H_1\)</span> is not proven.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="review-example">Review example</h3>
+<p>Healthy adults send an average of 32 text messages a day <span class="math inline">\((\sigma = 7.3)\)</span>. I recruit a sample of 16 adults with diagnoses of Generalized Anxiety Disorder. In my sample, the average number of texts sent per day is 33.2. <em>Does my sample of adults with GAD come from the same population as healthy adults?</em></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Define hypotheses</strong></p>
+<ul>
+<li class="fragment"><span class="math inline">\(H_0: \mu_{GAD} = 32\)</span></li>
+<li class="fragment"><span class="math inline">\(H_0: \mu_{GAD} \neq 32\)</span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Choose alpha</strong></p>
+<ul>
+<li class="fragment"><span class="math inline">\(\alpha = .05\)</span></li>
+</ul>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="review-example-1">Review example</h3>
+<p><strong>Collect data.</strong></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Define your sampling distribution using your null hypothesis</strong></p>
+<ul>
+<li class="fragment"><span class="math inline">\(\mu_M = \mu_0 = 32\)</span></li>
+<li class="fragment"><span class="math inline">\(\sigma_M = \frac{\sigma}{\sqrt{N}} = \frac{7.3}{\sqrt{16}} = 1.825\)</span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Calculate the probability of your data or more extreme under the null.</strong></p>
+<ul>
+<li class="fragment"><span class="math inline">\(Z_{statistic} = \frac{\bar{X} - \mu_0}{\sigma_M} = \frac{33.2 - 32}{1.825} = 0.658\)</span></li>
+<li class="fragment"><span class="math inline">\(p(Z &gt;= 0.658) = 0.255\)</span></li>
+<li class="fragment"><span class="math inline">\(p = 0.511\)</span></li>
+</ul>
+</div></div>
+</section>
+<section class="slide level2">
+
+<p>Compare your probability ( <span class="math inline">\(p\)</span>-value) to your <span class="math inline">\(\alpha\)</span> level and decide whether your data are “statistically significant” (reject the null) or not (retain the null).</p>
+<p>Our <span class="math inline">\(p\)</span>-value is larger than our <span class="math inline">\(\alpha\)</span> level, so we retain the null.</p>
+</section>
+<section class="slide level2">
+
+<h3 id="review">Review</h3>
+<p>If we do not reject <span class="math inline">\(H_0\)</span>, that does not mean that we accept it. We have simply failed to reject it. It lives to fight another day.</p>
+<p>A <em>Z</em>-statistic summarizes how unusual the sample estimate of a mean compared to the value of the mean as specified by the null hypothesis.</p>
+<p>More broadly, we refer to the <strong>test statistic</strong> as the statistic that summarizes how unusual the sample estimate of a parameter is from the point value specified by the null hypothesis</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
@@ -770,7 +723,7 @@ What did we move around from the last set of code?</p>
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'multiplex': {"secret":"17308200145829994491","id":"565422c24d21500f","url":"https://reveal-multiplex.glitch.me/"},
+'multiplex': {"secret":null,"id":"b8623fffc7e0b21d","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -944,7 +897,7 @@ What did we move around from the last set of code?</p>
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
-          RevealNotes,
+          
           RevealSearch,
           RevealZoom
         ]

@@ -2,203 +2,203 @@
   {
     "objectID": "lectures/unit9_power/slides.html#recap",
     "href": "lectures/unit9_power/slides.html#recap",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "Recap",
     "text": "Recap\n\nlibrary(tidyverse)\nlibrary(gganimate)\nlibrary(pwr)\nlibrary(ggpubr)\nlibrary(transformr)\n\n\nSample statistics are biased estimates of the population\nCan construct confidence intervals around our sample statistics\nUp Next…Hypothesis testing!"
   },
   {
     "objectID": "lectures/unit9_power/slides.html#hypothesis",
     "href": "lectures/unit9_power/slides.html#hypothesis",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "Hypothesis",
     "text": "Hypothesis\nWhat is a hypothesis?\nIn statistics, a hypothesis is a statement about the population. It is usually a prediction that a parameter describing some characteristic of a variable takes a particular numerical value, or falls into a certain range of values."
   },
   {
     "objectID": "lectures/unit9_power/slides.html#hypothesis-1",
     "href": "lectures/unit9_power/slides.html#hypothesis-1",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "Hypothesis",
     "text": "Hypothesis\nFor example, dogs are characterized by their ability to read humans’ social cues, but it is (was) unknown whether that skill is biologically prepared. I might hypothesize that when a human points to a hidden treat, puppies do not understand that social cue and their performance on a related task is at-chance. We would call this a research hypothesis.\nThis could be represented numerically as, as a statistical hypothesis:\n\\[\\text{Proportion}_{\\text{Correct Performance}} = .50\\]"
   },
   {
     "objectID": "lectures/unit9_power/slides.html#the-null-hypothesis",
     "href": "lectures/unit9_power/slides.html#the-null-hypothesis",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "The null hypothesis",
     "text": "The null hypothesis\nIn Null Hypothesis Significance Testing, we… test a null hypothesis.\nA null hypothesis ( \\(H_0\\) ) is a statement of no effect. The research hypothesis states that there is no relationship between X and Y, or our intervention has no effect on the outcome.\n\nThe statistical hypothesis is either that the population parameter is a single value, like 0, or that a range, like 0 or smaller."
   },
   {
     "objectID": "lectures/unit9_power/slides.html#the-alternative-hypothesis",
     "href": "lectures/unit9_power/slides.html#the-alternative-hypothesis",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "The alternative hypothesis",
     "text": "The alternative hypothesis\nAccording to probability theory, our sample space must cover all possible elementary events. Therefore, we create an alternative hypothesis ( \\(H_1\\) ) that is every possible event not represented by our null hypothesis.\n\n\n\\[H_0: \\mu = 4\\] \\[H_1: \\mu \\neq 4\\]\n\n\\[H_0: \\mu \\leq -7\\] \\[H_1: \\mu &gt; -7\\]"
   },
   {
     "objectID": "lectures/unit9_power/slides.html#the-tortured-logic-of-nhst",
     "href": "lectures/unit9_power/slides.html#the-tortured-logic-of-nhst",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "The tortured logic of NHST",
     "text": "The tortured logic of NHST\nWe create two hypotheses, \\(H_0\\) and \\(H_1\\). Usually, we care about \\(H_1\\), not \\(H_0\\). In fact, what we really want to know is how likely \\(H_1\\), given our data.\n\\[P(H_1|Data)\\] Instead, we’re going to test our null hypothesis. Well, not really. We’re going to assume our null hypothesis is true, and test how likely we would be to get these data.\n\\[P(Data|H_0)\\]"
   },
   {
     "objectID": "lectures/unit9_power/slides.html#example-1",
     "href": "lectures/unit9_power/slides.html#example-1",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "Example #1",
     "text": "Example #1\nConsider the example of puppies’ abilities to read human social cues.\nLet \\(\\Pi\\) be the probability the puppy chooses the correct cup that a person points to.\nIn a task with two choices, an at-chance performance is \\(\\Pi = .5\\). This can be the null hypothesis because if this is true, than puppies would make the correct choice as often as they would make an incorrect choice.\nNote that the null hypothesis changes depending on the situation and research question."
   },
   {
     "objectID": "lectures/unit9_power/slides.html#example-1---hypotheses",
     "href": "lectures/unit9_power/slides.html#example-1---hypotheses",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "Example #1 - Hypotheses",
     "text": "Example #1 - Hypotheses\nAs a dog-lover, you’re skeptical that reading human social cues is purely learned, and you have an alternative hypothesis that puppies will perform well over chance, thus having a probability of success on any given task greater than .5.\n\\[H_0: \\Pi = .5\\] \\[H_1: \\Pi \\neq .5\\]"
   },
   {
     "objectID": "lectures/unit9_power/slides.html#example-1-1",
     "href": "lectures/unit9_power/slides.html#example-1-1",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "Example #1",
     "text": "Example #1\nTo test the null hypothesis, you a single puppy and test them 12 times on a pointing task. The puppy makes the correct choice 10 times.\nThe question you’re going to ask is:\n\n\n“How likely is it that the puppy is successful 10 times out of 12, if the probability of success is .5?”\n\n\nThis is the essence of NHST.\nYou can already test this using what you know about the binomial distribution."
   },
   {
     "objectID": "lectures/unit9_power/slides.html#complications-with-the-binomial",
     "href": "lectures/unit9_power/slides.html#complications-with-the-binomial",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "Complications with the binomial",
     "text": "Complications with the binomial\nThe likelihood of the puppy being successful 10 times out of 12 if the true probability of success is .5 is 0.02. That’s pretty low! That’s so low that we might begin to suspect that the true probability is not .5.\nBut there’s a problem with this example. The real study used a sample of many puppies (&gt;300), and the average number of correct trials per puppy was about 8.33. But the binomial won’t allow us to calculate the probability of fractional successes!\nWhat we really want is not to assess 10 out of 12 times, but a proportion, like .694. How many different proportions could result puppy to puppy?"
   },
   {
     "objectID": "lectures/unit9_power/slides.html#our-statistic-is-usually-continuous",
     "href": "lectures/unit9_power/slides.html#our-statistic-is-usually-continuous",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "Our statistic is usually continuous",
     "text": "Our statistic is usually continuous\nWhen we estimate a statistic for our sample – like the proportion of puppy success, or the average IQ score, or the relationship between age in months and second attending to a new object – that statistic is nearly always continuous. So we have to assess the probability of that statistic using a probability distribution for continuous variables, like the normal distribution. (Or t, or F, or \\(\\chi^2\\) ).\nWhat is the probability of any value in a continuous distribution?"
   },
   {
     "objectID": "lectures/unit9_power/slides.html#quick-recap",
     "href": "lectures/unit9_power/slides.html#quick-recap",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "Quick recap",
     "text": "Quick recap\nFor any NHST test, we:\n\nIdentify the null hypothesis ( \\(H_0\\) ), which is usually the opposite of what we think to be true.\nCollect data.\nDetermine how likely we are to get these data or more extreme if the null is true."
   },
   {
     "objectID": "lectures/unit9_power/slides.html#enter-sampling-distributions",
     "href": "lectures/unit9_power/slides.html#enter-sampling-distributions",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "Enter sampling distributions",
     "text": "Enter sampling distributions\n\n\n\n\nCode\ndata.frame(trials = trial, d = dbinom(trial, size = 12, prob = .5), \n           color = ifelse(trial %in% c(0,1,2, 10,11,12), \"1\", \"2\")) %&gt;%\n  ggplot(aes(x = trials, y = d, fill = color)) +\n  geom_bar(stat = \"identity\") + \n  guides(fill = \"none\")+\n  scale_x_continuous(\"Number of successes\", breaks = c(0:12))+\n  scale_y_continuous(\"Probability of X successes\") +\n  theme(text = element_text(size = 20))\n\n\n\n\n\n\n\n\n\n\nWhen we were analyzing the puppy problem, we built the distribution under the null using the binomial.\nThis is our sampling distribution."
   },
   {
     "objectID": "lectures/unit9_power/slides.html#example-2",
     "href": "lectures/unit9_power/slides.html#example-2",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "Example #2",
     "text": "Example #2\nBray and colleagues (2020) test a sample of 10* puppies on multiple cognitive tasks, including their ability to correctly find a treat hidden under one of two cups based on human pointing. The average success rate was 69.41% (SD = 18.88).\nHow do you generate the sampling distribution around the null?"
   },
   {
     "objectID": "lectures/unit9_power/slides.html#a-p-value-does-not",
     "href": "lectures/unit9_power/slides.html#a-p-value-does-not",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "A p-value DOES NOT:",
     "text": "A p-value DOES NOT:\n\nTell you that the probability that the null hypothesis is true.\nProve that the alternative hypothesis is true.\nTell you anything about the size or magnitude of any observed difference in your data."
   },
   {
     "objectID": "lectures/unit9_power/slides.html#p-values",
     "href": "lectures/unit9_power/slides.html#p-values",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "\\(p\\)-values",
     "text": "\\(p\\)-values\nFisher established (rather arbitrarily) the sanctity of the .05 and .01 significance levels during his work in agriculture, including work on the effectiveness of fertilizer. A common source of fertilizer is cow manure. Male cattle are called bulls.\nA common misinterpretation of the \\(p\\)-value ( \\(\\alpha\\) ) is that it is the probability of the null hypothesis being wrong.\nAnother common misunderstanding is that \\(1-\\alpha\\) is the probability that results will replicate."
   },
   {
     "objectID": "lectures/unit9_power/slides.html#p-values-1",
     "href": "lectures/unit9_power/slides.html#p-values-1",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "\\(p\\)-values",
     "text": "\\(p\\)-values\n\nIn most research, the probability that the null hypothesis is true is very small.\nIf the null hypothesis is false, then the only mistake to be made is a failure to detect a real effect."
   },
   {
     "objectID": "lectures/unit9_power/slides.html#errors",
     "href": "lectures/unit9_power/slides.html#errors",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "Errors",
     "text": "Errors\nIn hypothesis testing, we can make two kinds of errors.\n\n\n\n\nReject \\(H_0\\)\nDo not reject\n\n\n\n\n\\(H_0\\) True\nType I Error\nCorrect decision\n\n\n\\(H_0\\) False\nCorrect decision\nType II Error\n\n\n\nFalsely rejecting the null hypothesis is a Type I error. Traditionally, this has been viewed as particularly important to control at a low level (akin to avoiding false conviction of an innocent defendant)."
   },
   {
     "objectID": "lectures/unit9_power/slides.html#errors-1",
     "href": "lectures/unit9_power/slides.html#errors-1",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "Errors",
     "text": "Errors\nIn hypothesis testing, we can make two kinds of errors.\n\n\n\n\nReject \\(H_0\\)\nDo not reject\n\n\n\n\n\\(H_0\\) True\nType I Error\nCorrect decision\n\n\n\\(H_0\\) False\nCorrect decision\nType II Error\n\n\n\nFailing to reject the null hypothesis when it is false is a Type II error. This is sometimes viewed as a failure in signal detection."
   },
   {
     "objectID": "lectures/unit9_power/slides.html#errors-2",
     "href": "lectures/unit9_power/slides.html#errors-2",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "Errors",
     "text": "Errors\nIn hypothesis testing, we can make two kinds of errors.\n\n\n\n\nReject \\(H_0\\)\nDo not reject\n\n\n\n\n\\(H_0\\) True\nType I Error\nCorrect decision\n\n\n\\(H_0\\) False\nCorrect decision\nType II Error\n\n\n\nNull hypothesis testing is designed to make it easy to control Type I errors. We set a minimum proportion of such errors that we would be willing to tolerate in the long run. This is the significance level ( \\(\\alpha\\) ). By tradition this is no greater than .05."
   },
   {
     "objectID": "lectures/unit9_power/slides.html#errors-3",
     "href": "lectures/unit9_power/slides.html#errors-3",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "Errors",
     "text": "Errors\nIn hypothesis testing, we can make two kinds of errors.\n\n\n\n\nReject \\(H_0\\)\nDo not reject\n\n\n\n\n\\(H_0\\) True\nType I Error\nCorrect decision\n\n\n\\(H_0\\) False\nCorrect decision\nType II Error\n\n\n\nControlling Type II errors is more challenging because it depends on several factors. But, we usually DO want to control these errors. Some argue that the null hypothesis is usually false, so the only error we can make is a Type II error – a failure to detect a signal that is present. Power is the probability of correctly rejecting a false null hypothesis."
   },
   {
     "objectID": "lectures/unit9_power/slides.html#example-errors",
     "href": "lectures/unit9_power/slides.html#example-errors",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "Example Errors",
     "text": "Example Errors\n\nIn the long run, if psychology samples have a mean of 110 (\\(\\sigma\\) = 20, \\(N\\) = 25), we will correctly reject the null with probability of 0.71 (power; 1 - \\(\\beta\\)). We will incorrectly fail to reject the null with probability of 0.29 ( \\(\\beta\\) )\n\n\n\n\n\n\n\n\nReject \\(H_0\\)\nDo not reject\n\n\n\n\n\\(H_0\\) True\nType I Error \\(\\alpha\\) = 0.05\nCorrect decision\n\n\n\\(H_0\\) False\nCorrect decision\nType II Error \\(\\beta\\) = 0.29"
   },
   {
     "objectID": "lectures/unit9_power/slides.html#what-if-these-factors-change",
     "href": "lectures/unit9_power/slides.html#what-if-these-factors-change",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "What if these factors change?",
     "text": "What if these factors change?\n\n\nSample size ( \\(N\\) )\nEffect size ( Right now it is difference between means )\n\nSignificance level ( \\(\\alpha\\) )\nPower ( \\(\\beta\\) )"
   },
   {
     "objectID": "lectures/unit9_power/slides.html#calculating-power-in-r",
     "href": "lectures/unit9_power/slides.html#calculating-power-in-r",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "Calculating Power in R",
     "text": "Calculating Power in R\n\n\n\nlibrary(pwr)\n\nWe will use the pwr package and a few tutorials you can look at are as follows:\n\n\nReproducible Medical Research with R\nStat Methods\nVignettes from pwr package\n\n\n\nThe four components are interrelated and by knowing three, we can determine the fourth:\n\n\nSample Size\nEffect Size\nSignificance Level \\(\\alpha\\)\nPower \\(\\beta\\)"
   },
   {
     "objectID": "lectures/unit9_power/slides.html#summary",
     "href": "lectures/unit9_power/slides.html#summary",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "Summary",
     "text": "Summary\n\nConducting a study we tend to have null \\(H_0\\) and alternative \\(H_1\\) hypotheses\nTested through Null Hypothesis Significance Testing\n\\(p-values\\) are the probability of getting this score or higher if the null distribution were true\nImportant to consider power in all studies we do"
   },
   {
     "objectID": "lectures/unit9_power/slides.html#reminders",
     "href": "lectures/unit9_power/slides.html#reminders",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "Reminders",
     "text": "Reminders\n\nLab 2 is due at 11:59pm on Sunday (10/1)"
   },
   {
     "objectID": "lectures/unit9_power/slides.html#additional-slides",
     "href": "lectures/unit9_power/slides.html#additional-slides",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "Additional Slides",
     "text": "Additional Slides"
   },
   {
     "objectID": "lectures/unit9_power/slides.html#alpha",
     "href": "lectures/unit9_power/slides.html#alpha",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "alpha",
     "text": "alpha\nHistorically, psychologists have chosen to set their \\(\\alpha\\) level at .05, meaning any p-value less than .05 is considered “statistically significant” or the null is rejected.\nThis means that, among the times we examine a relationship that is truly null, we will reject the null 1 in 20 times.\nSome have argued that this is not conservative enough and we should use \\(\\alpha &lt; .005\\) (Benjamin et al., 2018)."
   },
   {
     "objectID": "lectures/unit9_power/slides.html#check-in-and-review",
     "href": "lectures/unit9_power/slides.html#check-in-and-review",
-    "title": "Unit 8 - Hypothesis & Power",
+    "title": "Unit 9 - Hypothesis & Power",
     "section": "Check-in and Review",
     "text": "Check-in and Review\n\nThe null hypothesis ( \\(H_0\\) ) is a claim about the particular value that a population parameter takes.\nThe alternative hypothesis ( \\(H_1\\) ) states an alternative range of values for the population parameter.\nWe test the null hypothesis by determining if we have sufficient evidence that contradicts or nullifies it.\nWe reject the null hypothesis if the data in hand are rare, unusual, or atypical if the null were true. The alternative hypothesis gains support when the null is rejected, but \\(H_1\\) is not proven."
   },
@@ -1232,209 +1232,58 @@
     "text": "describe()\nThis function automatically calculates all of the descriptives we reviewed above (and more!). Use the describe() function from the psych package on the entire sleep_data dataset.\nNotes: If you load a library at the beginning, you can directly call any function from it. Instead, you can call a function by library_name::function_name without loading the entire library.\n\npsych::describe(sleep_data)\n\n              vars    n     mean      sd  median  trimmed     mad   min   max\nage              1 1452    19.56    1.59    19.0    19.39    1.48    17    25\ngender           2 1452     1.43    0.56     1.0     1.37    0.00     1     3\nroommate         3 1452     1.55    0.50     2.0     1.56    0.00     1     2\nother_sleep      4 1452     1.65    0.95     1.0     1.45    0.00     1     5\nbed_read         5 1452     1.67    0.96     1.0     1.47    0.00     1     5\nbed_study        6 1452     1.90    1.05     2.0     1.72    1.48     1     5\nbed_hw           7 1452     2.11    1.19     2.0     1.95    1.48     1     5\nattention1       8 1452     4.64    0.88     5.0     4.89    0.00     1     5\nbed_internet     9 1452     3.62    1.05     4.0     3.67    1.48     1     5\nbed_tv          10 1452     3.30    1.22     4.0     3.35    1.48     1     5\nbed_eat         11 1452     1.96    1.10     2.0     1.77    1.48     1     5\nbed_friends     12 1452     1.76    0.96     2.0     1.58    1.48     1     5\nbed_videogame   13 1452     1.96    1.15     2.0     1.77    1.48     1     5\nbed_readp       14 1452     2.10    1.16     2.0     1.93    1.48     1     5\nBL_1            15 1448     4.49    1.11     5.0     4.80    0.00     1     5\nBL_2            16 1448     4.23    1.24     5.0     4.48    0.00     1     5\nBL_3            17 1448     4.08    1.22     5.0     4.28    0.00     1     5\nBL_4            18 1448     4.26    1.34     5.0     4.57    0.00     1     5\nBL_5            19 1448     2.57    1.57     2.0     2.46    1.48     1     5\nattention2      20 1448     1.07    0.48     1.0     1.00    0.00     1     5\nBL_6            21 1448     2.09    1.14     2.0     1.90    1.48     1     5\nBL_7            22 1448     4.25    1.15     5.0     4.49    0.00     1     5\nsleepsat1       23 1447     3.09    1.16     3.0     3.11    1.48     1     5\nsleepsat2       24 1447     3.14    1.18     3.0     3.16    1.48     1     5\nsleepsat3       25 1447     3.11    1.23     3.0     3.13    1.48     1     5\nsleepsat4       26 1447     3.03    1.34     3.0     3.04    1.48     1     5\nsleepsat5       27 1447     3.78    1.17     4.0     3.91    1.48     1     5\nsleepsat6       28 1447     2.75    1.13     3.0     2.74    1.48     1     5\nESS1            29 1447     2.29    0.98     2.0     2.24    1.48     1     4\nESS2            30 1447     2.29    0.87     2.0     2.25    1.48     1     4\nESS3            31 1447     1.65    0.82     1.0     1.52    0.00     1     4\nESS4            32 1447     2.58    1.01     3.0     2.60    1.48     1     4\nESS5            33 1447     3.02    0.92     3.0     3.11    1.48     1     4\nESS6            34 1447     1.11    0.38     1.0     1.00    0.00     1     4\nESS7            35 1447     1.64    0.79     1.0     1.52    0.00     1     4\nESS8            36 1447     1.21    0.55     1.0     1.06    0.00     1     4\nESS00           37 1447     2.21    0.88     2.0     2.14    1.48     1     4\nashs1           38 1438     2.58    1.28     2.0     2.45    1.48     1     6\nashs2           39 1438     3.26    1.49     3.0     3.21    1.48     1     6\nashs3           40 1438     2.31    1.39     2.0     2.10    1.48     1     6\nashs4           41 1438     1.98    1.12     2.0     1.78    1.48     1     6\nashs5           42 1437     2.72    1.42     2.0     2.59    1.48     1     6\nattention3      43 1438     4.00    0.00     4.0     4.00    0.00     4     4\nashs6           44 1438     1.55    1.34     1.0     1.15    0.00     1     6\nashs7           45 1438     1.76    1.02     1.0     1.58    0.00     1     6\nashs8           46 1438     3.17    1.45     3.0     3.13    1.48     1     6\nashs9           47 1437     2.73    1.24     3.0     2.63    1.48     1     6\nashs10          48 1437     1.73    1.14     1.0     1.48    0.00     1     6\nashs11          49 1438     4.03    1.37     4.0     4.09    1.48     1     6\nashs12          50 1438     2.44    1.53     2.0     2.23    1.48     1     6\nashs13          51 1437     4.28    1.47     5.0     4.41    1.48     1     6\nashs14          52 1437     4.38    1.26     5.0     4.47    1.48     1     6\nashs15          53 1437     2.69    1.26     2.0     2.57    1.48     1     6\nashs16          54 1436     3.27    1.43     3.0     3.23    1.48     1     6\nashs17          55 1437     3.87    1.37     4.0     3.87    1.48     1     6\nattention4      56 1437     1.20    0.87     1.0     1.00    0.00     1     6\nashs18          57 1437     1.75    0.96     2.0     1.58    1.48     1     6\nashs19          58 1437     2.41    1.12     2.0     2.30    1.48     1     6\nashs20          59 1437     1.57    1.02     1.0     1.33    0.00     1     6\nashs21          60 1437     2.59    1.56     2.0     2.42    1.48     1     6\nashs22          61 1437     1.66    0.95     1.0     1.47    0.00     1     6\nashs23          62 1437     1.33    0.84     1.0     1.11    0.00     1     6\nashs24          63 1436     2.44    1.28     2.0     2.29    1.48     1     6\nashs26          64 1437     3.23    1.26     3.0     3.16    1.48     1     6\nashs27          65 1437     3.25    1.65     3.0     3.19    1.48     1     6\nashs28          66 1436     3.75    1.63     4.0     3.80    1.48     1     6\nattention5      67 1437     1.10    0.63     1.0     1.00    0.00     1     6\nashs29          68 1437     2.28    1.28     2.0     2.09    1.48     1     6\nashs30          69 1437     3.94    1.38     4.0     3.96    1.48     1     6\nashs31          70 1437     2.61    1.38     2.0     2.47    1.48     1     6\nashs32          71 1437     4.87    1.19     5.0     5.04    1.48     1     6\nashs33          72 1437     4.73    1.32     5.0     4.91    1.48     1     6\nid              73 1452 21734.02 7471.43 21089.5 20852.52 2684.99 11918 76858\nESS1m1          74 1447     1.29    0.98     1.0     1.24    1.48     0     3\nESS2m1          75 1447     1.29    0.87     1.0     1.25    1.48     0     3\nESS3m1          76 1447     0.65    0.82     0.0     0.52    0.00     0     3\nESS4m1          77 1447     1.58    1.01     2.0     1.60    1.48     0     3\nESS5m1          78 1447     2.02    0.92     2.0     2.11    1.48     0     3\nESS6m1          79 1447     0.11    0.38     0.0     0.00    0.00     0     3\nESS7m1          80 1447     0.64    0.79     0.0     0.52    0.00     0     3\nESS8m1          81 1447     0.21    0.55     0.0     0.06    0.00     0     3\ness_total       82 1447     7.79    3.58     8.0     7.72    2.97     0    24\nattention1r     83 1452     0.82    0.38     1.0     0.91    0.00     0     1\nattention2r     84 1448     0.97    0.17     1.0     1.00    0.00     0     1\nattention3r     85 1438     1.00    0.00     1.0     1.00    0.00     1     1\nattention4r     86 1437     0.93    0.25     1.0     1.00    0.00     0     1\nattention5r     87 1437     0.97    0.17     1.0     1.00    0.00     0     1\natt_sum         88 1437     4.70    0.63     5.0     4.82    0.00     1     5\n              range  skew kurtosis     se\nage               8  0.87     0.54   0.04\ngender            2  0.83    -0.36   0.01\nroommate          1 -0.20    -1.96   0.01\nother_sleep       4  1.75     2.87   0.02\nbed_read          4  1.61     2.18   0.03\nbed_study         4  1.15     0.64   0.03\nbed_hw            4  0.92    -0.15   0.03\nattention1        4 -2.50     5.33   0.02\nbed_internet      4 -0.41    -0.69   0.03\nbed_tv            4 -0.29    -1.02   0.03\nbed_eat           4  1.22     0.81   0.03\nbed_friends       4  1.42     1.72   0.03\nbed_videogame     4  1.14     0.40   0.03\nbed_readp         4  0.97     0.04   0.03\nBL_1              4 -2.15     3.31   0.03\nBL_2              4 -1.44     0.76   0.03\nBL_3              4 -1.06    -0.17   0.03\nBL_4              4 -1.59     0.97   0.04\nBL_5              4  0.48    -1.34   0.04\nattention2        4  7.11    51.85   0.01\nBL_6              4  1.12     0.62   0.03\nBL_7              4 -1.47     1.09   0.03\nsleepsat1         4 -0.18    -1.09   0.03\nsleepsat2         4 -0.20    -1.04   0.03\nsleepsat3         4 -0.11    -1.12   0.03\nsleepsat4         4 -0.05    -1.24   0.04\nsleepsat5         4 -0.78    -0.33   0.03\nsleepsat6         4  0.16    -0.94   0.03\nESS1              3  0.27    -0.94   0.03\nESS2              3  0.27    -0.59   0.02\nESS3              3  1.10     0.45   0.02\nESS4              3  0.00    -1.11   0.03\nESS5              3 -0.54    -0.70   0.02\nESS6              3  4.02    19.11   0.01\nESS7              3  1.07     0.54   0.02\nESS8              3  3.04     9.55   0.01\nESS00             3  0.42    -0.49   0.02\nashs1             5  0.81    -0.06   0.03\nashs2             5  0.28    -0.94   0.04\nashs3             5  0.99     0.07   0.04\nashs4             5  1.30     1.41   0.03\nashs5             5  0.64    -0.45   0.04\nattention3        0   NaN      NaN   0.00\nashs6             5  2.41     4.45   0.04\nashs7             5  1.49     2.08   0.03\nashs8             5  0.30    -0.87   0.04\nashs9             5  0.61    -0.16   0.03\nashs10            5  1.84     3.11   0.03\nashs11            5 -0.33    -0.73   0.04\nashs12            5  0.86    -0.35   0.04\nashs13            5 -0.58    -0.65   0.04\nashs14            5 -0.47    -0.54   0.03\nashs15            5  0.85     0.21   0.03\nashs16            5  0.29    -0.83   0.04\nashs17            5 -0.07    -0.93   0.04\nattention4        5  4.77    22.14   0.02\nashs18            5  1.72     3.67   0.03\nashs19            5  0.92     0.80   0.03\nashs20            5  2.09     4.23   0.03\nashs21            5  0.71    -0.64   0.04\nashs22            5  1.83     3.83   0.03\nashs23            5  3.23    11.47   0.02\nashs24            5  0.92     0.38   0.03\nashs26            5  0.44    -0.45   0.03\nashs27            5  0.15    -1.21   0.04\nashs28            5 -0.08    -1.25   0.04\nattention5        5  6.63    44.55   0.02\nashs29            5  1.13     0.73   0.03\nashs30            5 -0.13    -0.96   0.04\nashs31            5  0.72    -0.29   0.04\nashs32            5 -1.00     0.44   0.03\nashs33            5 -0.86    -0.17   0.03\nid            64940  6.54    44.82 196.07\nESS1m1            3  0.27    -0.94   0.03\nESS2m1            3  0.27    -0.59   0.02\nESS3m1            3  1.10     0.45   0.02\nESS4m1            3  0.00    -1.11   0.03\nESS5m1            3 -0.54    -0.70   0.02\nESS6m1            3  4.02    19.11   0.01\nESS7m1            3  1.07     0.54   0.02\nESS8m1            3  3.04     9.55   0.01\ness_total        24  0.30     0.23   0.09\nattention1r       1 -1.70     0.90   0.01\nattention2r       1 -5.54    28.66   0.00\nattention3r       0   NaN      NaN   0.00\nattention4r       1 -3.49    10.18   0.01\nattention5r       1 -5.38    26.92   0.00\natt_sum           4 -2.79    10.04   0.02\n\n# or if you have already loaded the library\n\ndescribe(sleep_data)\n\n              vars    n     mean      sd  median  trimmed     mad   min   max\nage              1 1452    19.56    1.59    19.0    19.39    1.48    17    25\ngender           2 1452     1.43    0.56     1.0     1.37    0.00     1     3\nroommate         3 1452     1.55    0.50     2.0     1.56    0.00     1     2\nother_sleep      4 1452     1.65    0.95     1.0     1.45    0.00     1     5\nbed_read         5 1452     1.67    0.96     1.0     1.47    0.00     1     5\nbed_study        6 1452     1.90    1.05     2.0     1.72    1.48     1     5\nbed_hw           7 1452     2.11    1.19     2.0     1.95    1.48     1     5\nattention1       8 1452     4.64    0.88     5.0     4.89    0.00     1     5\nbed_internet     9 1452     3.62    1.05     4.0     3.67    1.48     1     5\nbed_tv          10 1452     3.30    1.22     4.0     3.35    1.48     1     5\nbed_eat         11 1452     1.96    1.10     2.0     1.77    1.48     1     5\nbed_friends     12 1452     1.76    0.96     2.0     1.58    1.48     1     5\nbed_videogame   13 1452     1.96    1.15     2.0     1.77    1.48     1     5\nbed_readp       14 1452     2.10    1.16     2.0     1.93    1.48     1     5\nBL_1            15 1448     4.49    1.11     5.0     4.80    0.00     1     5\nBL_2            16 1448     4.23    1.24     5.0     4.48    0.00     1     5\nBL_3            17 1448     4.08    1.22     5.0     4.28    0.00     1     5\nBL_4            18 1448     4.26    1.34     5.0     4.57    0.00     1     5\nBL_5            19 1448     2.57    1.57     2.0     2.46    1.48     1     5\nattention2      20 1448     1.07    0.48     1.0     1.00    0.00     1     5\nBL_6            21 1448     2.09    1.14     2.0     1.90    1.48     1     5\nBL_7            22 1448     4.25    1.15     5.0     4.49    0.00     1     5\nsleepsat1       23 1447     3.09    1.16     3.0     3.11    1.48     1     5\nsleepsat2       24 1447     3.14    1.18     3.0     3.16    1.48     1     5\nsleepsat3       25 1447     3.11    1.23     3.0     3.13    1.48     1     5\nsleepsat4       26 1447     3.03    1.34     3.0     3.04    1.48     1     5\nsleepsat5       27 1447     3.78    1.17     4.0     3.91    1.48     1     5\nsleepsat6       28 1447     2.75    1.13     3.0     2.74    1.48     1     5\nESS1            29 1447     2.29    0.98     2.0     2.24    1.48     1     4\nESS2            30 1447     2.29    0.87     2.0     2.25    1.48     1     4\nESS3            31 1447     1.65    0.82     1.0     1.52    0.00     1     4\nESS4            32 1447     2.58    1.01     3.0     2.60    1.48     1     4\nESS5            33 1447     3.02    0.92     3.0     3.11    1.48     1     4\nESS6            34 1447     1.11    0.38     1.0     1.00    0.00     1     4\nESS7            35 1447     1.64    0.79     1.0     1.52    0.00     1     4\nESS8            36 1447     1.21    0.55     1.0     1.06    0.00     1     4\nESS00           37 1447     2.21    0.88     2.0     2.14    1.48     1     4\nashs1           38 1438     2.58    1.28     2.0     2.45    1.48     1     6\nashs2           39 1438     3.26    1.49     3.0     3.21    1.48     1     6\nashs3           40 1438     2.31    1.39     2.0     2.10    1.48     1     6\nashs4           41 1438     1.98    1.12     2.0     1.78    1.48     1     6\nashs5           42 1437     2.72    1.42     2.0     2.59    1.48     1     6\nattention3      43 1438     4.00    0.00     4.0     4.00    0.00     4     4\nashs6           44 1438     1.55    1.34     1.0     1.15    0.00     1     6\nashs7           45 1438     1.76    1.02     1.0     1.58    0.00     1     6\nashs8           46 1438     3.17    1.45     3.0     3.13    1.48     1     6\nashs9           47 1437     2.73    1.24     3.0     2.63    1.48     1     6\nashs10          48 1437     1.73    1.14     1.0     1.48    0.00     1     6\nashs11          49 1438     4.03    1.37     4.0     4.09    1.48     1     6\nashs12          50 1438     2.44    1.53     2.0     2.23    1.48     1     6\nashs13          51 1437     4.28    1.47     5.0     4.41    1.48     1     6\nashs14          52 1437     4.38    1.26     5.0     4.47    1.48     1     6\nashs15          53 1437     2.69    1.26     2.0     2.57    1.48     1     6\nashs16          54 1436     3.27    1.43     3.0     3.23    1.48     1     6\nashs17          55 1437     3.87    1.37     4.0     3.87    1.48     1     6\nattention4      56 1437     1.20    0.87     1.0     1.00    0.00     1     6\nashs18          57 1437     1.75    0.96     2.0     1.58    1.48     1     6\nashs19          58 1437     2.41    1.12     2.0     2.30    1.48     1     6\nashs20          59 1437     1.57    1.02     1.0     1.33    0.00     1     6\nashs21          60 1437     2.59    1.56     2.0     2.42    1.48     1     6\nashs22          61 1437     1.66    0.95     1.0     1.47    0.00     1     6\nashs23          62 1437     1.33    0.84     1.0     1.11    0.00     1     6\nashs24          63 1436     2.44    1.28     2.0     2.29    1.48     1     6\nashs26          64 1437     3.23    1.26     3.0     3.16    1.48     1     6\nashs27          65 1437     3.25    1.65     3.0     3.19    1.48     1     6\nashs28          66 1436     3.75    1.63     4.0     3.80    1.48     1     6\nattention5      67 1437     1.10    0.63     1.0     1.00    0.00     1     6\nashs29          68 1437     2.28    1.28     2.0     2.09    1.48     1     6\nashs30          69 1437     3.94    1.38     4.0     3.96    1.48     1     6\nashs31          70 1437     2.61    1.38     2.0     2.47    1.48     1     6\nashs32          71 1437     4.87    1.19     5.0     5.04    1.48     1     6\nashs33          72 1437     4.73    1.32     5.0     4.91    1.48     1     6\nid              73 1452 21734.02 7471.43 21089.5 20852.52 2684.99 11918 76858\nESS1m1          74 1447     1.29    0.98     1.0     1.24    1.48     0     3\nESS2m1          75 1447     1.29    0.87     1.0     1.25    1.48     0     3\nESS3m1          76 1447     0.65    0.82     0.0     0.52    0.00     0     3\nESS4m1          77 1447     1.58    1.01     2.0     1.60    1.48     0     3\nESS5m1          78 1447     2.02    0.92     2.0     2.11    1.48     0     3\nESS6m1          79 1447     0.11    0.38     0.0     0.00    0.00     0     3\nESS7m1          80 1447     0.64    0.79     0.0     0.52    0.00     0     3\nESS8m1          81 1447     0.21    0.55     0.0     0.06    0.00     0     3\ness_total       82 1447     7.79    3.58     8.0     7.72    2.97     0    24\nattention1r     83 1452     0.82    0.38     1.0     0.91    0.00     0     1\nattention2r     84 1448     0.97    0.17     1.0     1.00    0.00     0     1\nattention3r     85 1438     1.00    0.00     1.0     1.00    0.00     1     1\nattention4r     86 1437     0.93    0.25     1.0     1.00    0.00     0     1\nattention5r     87 1437     0.97    0.17     1.0     1.00    0.00     0     1\natt_sum         88 1437     4.70    0.63     5.0     4.82    0.00     1     5\n              range  skew kurtosis     se\nage               8  0.87     0.54   0.04\ngender            2  0.83    -0.36   0.01\nroommate          1 -0.20    -1.96   0.01\nother_sleep       4  1.75     2.87   0.02\nbed_read          4  1.61     2.18   0.03\nbed_study         4  1.15     0.64   0.03\nbed_hw            4  0.92    -0.15   0.03\nattention1        4 -2.50     5.33   0.02\nbed_internet      4 -0.41    -0.69   0.03\nbed_tv            4 -0.29    -1.02   0.03\nbed_eat           4  1.22     0.81   0.03\nbed_friends       4  1.42     1.72   0.03\nbed_videogame     4  1.14     0.40   0.03\nbed_readp         4  0.97     0.04   0.03\nBL_1              4 -2.15     3.31   0.03\nBL_2              4 -1.44     0.76   0.03\nBL_3              4 -1.06    -0.17   0.03\nBL_4              4 -1.59     0.97   0.04\nBL_5              4  0.48    -1.34   0.04\nattention2        4  7.11    51.85   0.01\nBL_6              4  1.12     0.62   0.03\nBL_7              4 -1.47     1.09   0.03\nsleepsat1         4 -0.18    -1.09   0.03\nsleepsat2         4 -0.20    -1.04   0.03\nsleepsat3         4 -0.11    -1.12   0.03\nsleepsat4         4 -0.05    -1.24   0.04\nsleepsat5         4 -0.78    -0.33   0.03\nsleepsat6         4  0.16    -0.94   0.03\nESS1              3  0.27    -0.94   0.03\nESS2              3  0.27    -0.59   0.02\nESS3              3  1.10     0.45   0.02\nESS4              3  0.00    -1.11   0.03\nESS5              3 -0.54    -0.70   0.02\nESS6              3  4.02    19.11   0.01\nESS7              3  1.07     0.54   0.02\nESS8              3  3.04     9.55   0.01\nESS00             3  0.42    -0.49   0.02\nashs1             5  0.81    -0.06   0.03\nashs2             5  0.28    -0.94   0.04\nashs3             5  0.99     0.07   0.04\nashs4             5  1.30     1.41   0.03\nashs5             5  0.64    -0.45   0.04\nattention3        0   NaN      NaN   0.00\nashs6             5  2.41     4.45   0.04\nashs7             5  1.49     2.08   0.03\nashs8             5  0.30    -0.87   0.04\nashs9             5  0.61    -0.16   0.03\nashs10            5  1.84     3.11   0.03\nashs11            5 -0.33    -0.73   0.04\nashs12            5  0.86    -0.35   0.04\nashs13            5 -0.58    -0.65   0.04\nashs14            5 -0.47    -0.54   0.03\nashs15            5  0.85     0.21   0.03\nashs16            5  0.29    -0.83   0.04\nashs17            5 -0.07    -0.93   0.04\nattention4        5  4.77    22.14   0.02\nashs18            5  1.72     3.67   0.03\nashs19            5  0.92     0.80   0.03\nashs20            5  2.09     4.23   0.03\nashs21            5  0.71    -0.64   0.04\nashs22            5  1.83     3.83   0.03\nashs23            5  3.23    11.47   0.02\nashs24            5  0.92     0.38   0.03\nashs26            5  0.44    -0.45   0.03\nashs27            5  0.15    -1.21   0.04\nashs28            5 -0.08    -1.25   0.04\nattention5        5  6.63    44.55   0.02\nashs29            5  1.13     0.73   0.03\nashs30            5 -0.13    -0.96   0.04\nashs31            5  0.72    -0.29   0.04\nashs32            5 -1.00     0.44   0.03\nashs33            5 -0.86    -0.17   0.03\nid            64940  6.54    44.82 196.07\nESS1m1            3  0.27    -0.94   0.03\nESS2m1            3  0.27    -0.59   0.02\nESS3m1            3  1.10     0.45   0.02\nESS4m1            3  0.00    -1.11   0.03\nESS5m1            3 -0.54    -0.70   0.02\nESS6m1            3  4.02    19.11   0.01\nESS7m1            3  1.07     0.54   0.02\nESS8m1            3  3.04     9.55   0.01\ness_total        24  0.30     0.23   0.09\nattention1r       1 -1.70     0.90   0.01\nattention2r       1 -5.54    28.66   0.00\nattention3r       0   NaN      NaN   0.00\nattention4r       1 -3.49    10.18   0.01\nattention5r       1 -5.38    26.92   0.00\natt_sum           4 -2.79    10.04   0.02\n\n\nNOTE: Some variables are not numeric and are categorical variables of type character. By default, the describe() function forces non-numeric variables to be numeric and attempts to calculate descriptives for them. These variables are marked with an asterisk (*). In this case, it doesn’t make sense to calculate descriptive statistics for these variables, so we get a warning message and a bunch of NaN’s and NA’s for these variables.\nA better approach would be to remove non-numeric variables before you attempt to run numerical calculations on your dataset."
   },
   {
-    "objectID": "lectures/unit6_comparing-means/index.html",
-    "href": "lectures/unit6_comparing-means/index.html",
-    "title": "Unit 6 - Hypotheses and Comparing Means",
+    "objectID": "lectures/unit7_regression/index.html",
+    "href": "lectures/unit7_regression/index.html",
+    "title": "Unit 7 - ANOVA & Regression",
     "section": "",
-    "text": "This unit focuses on comparing means of various groups. Traditionally this is done through the t-test and ANOVA. Here we will learn how to implement them in R and then figure out how to interpret and report!\n\nCode File Template\nFull Screen\n\nFull Screen",
+    "text": "This unit continues talking about ANOVA and then introduces simple linear regression. We try things out and show how to report them and use R to make tables!\nCode File Template\nFull Screen\nFull Screen",
     "crumbs": [
       "Lectures",
-      "6 - Comparing Means"
+      "7 - Regression (and ANOVA)"
     ]
   },
   {
-    "objectID": "lectures/wk3_visualizations/index.html",
-    "href": "lectures/wk3_visualizations/index.html",
-    "title": "Week 3 - Visualizations",
-    "section": "",
-    "text": "During this lecture, we will explore the functionality of ggplot2 and begin our entry into the tidyverse. For this lecture, have the datasets downloaded and put in the appropriate place in your files\n\nFull Screen",
+    "objectID": "lectures/unit7_regression/index.html#oct-17-2024",
+    "href": "lectures/unit7_regression/index.html#oct-17-2024",
+    "title": "Unit 7 - ANOVA & Regression",
+    "section": "Oct 17, 2024",
+    "text": "Oct 17, 2024\nFull Screen",
     "crumbs": [
       "Lectures",
-      "3 - Visualizing"
+      "7 - Regression (and ANOVA)"
     ]
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/index.html",
-    "href": "lectures/unit4_data-wrangler/index.html",
-    "title": "Unit 4 - Data Wrangling",
+    "objectID": "lectures/unit5_descriptives/index.html",
+    "href": "lectures/unit5_descriptives/index.html",
+    "title": "Unit 5 - Descriptive Statistics",
     "section": "",
-    "text": "During this section, we will highlight the utility of the dplyr package and further dive into the tidyverse. For this lecture, have the datasets downloaded and put in the appropriate place in your files\nThis is currently situated as a document which you can find below:",
+    "text": "Now that we have gotten somewhat more comfortable with wrangling our data and visualizing it, we are going to shift our focus to describing our data. This is always an important step and will begin our journey into inferential statistics.\n\nFull Screen\n\nFull Screen",
     "crumbs": [
       "Lectures",
-      "4 - Data Wrangling"
+      "5 - Descriptives"
     ]
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/index.html#link-to-document",
-    "href": "lectures/unit4_data-wrangler/index.html#link-to-document",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "Link to Document",
-    "text": "Link to Document\nThe instructor is working to put these into some beautiful slides :)\nFull Screen",
+    "objectID": "lectures/unit9_power/index.html",
+    "href": "lectures/unit9_power/index.html",
+    "title": "Unit 9 - Power & Hypotheses",
+    "section": "",
+    "text": "For this unit, the focus shifts toward asking the question “how do we know if we can trust a result?” We will talk about the hypotheses that we generate as well as the statistical power of a study sample.\nTo get some comfort with p-values in general, take a look at a video from Daniel Lakens (~20 minutes) Video Link",
     "crumbs": [
       "Lectures",
-      "4 - Data Wrangling"
+      "9 - Power & Hypotheses"
     ]
   },
   {
-    "objectID": "previous-years.html",
-    "href": "previous-years.html",
-    "title": "Previous Years",
-    "section": "",
-    "text": "This course has been taught for a number of years, but this instructor has only started teaching it in Fall 2023. Below are previous iterations of the course in case you would like to check out how it has progressed!",
-    "crumbs": [
-      "Previous Years"
-    ]
-  },
-  {
-    "objectID": "previous-years.html#overview",
-    "href": "previous-years.html#overview",
-    "title": "Previous Years",
-    "section": "",
-    "text": "This course has been taught for a number of years, but this instructor has only started teaching it in Fall 2023. Below are previous iterations of the course in case you would like to check out how it has progressed!",
-    "crumbs": [
-      "Previous Years"
-    ]
-  },
-  {
-    "objectID": "previous-years.html#fall-2023",
-    "href": "previous-years.html#fall-2023",
-    "title": "Previous Years",
-    "section": "Fall 2023",
-    "text": "Fall 2023\nWebsite",
-    "crumbs": [
-      "Previous Years"
-    ]
-  },
-  {
-    "objectID": "lectures/checkpoint_running_tests/index.html",
-    "href": "lectures/checkpoint_running_tests/index.html",
-    "title": "Checkpoint!",
-    "section": "",
-    "text": "We have been talking a lot about various tests and it all is probably running together. The focus of this class will be to familiarize ourselves with the practical usage of these tests. This will consist of revisiting the tests, answering some questions to generate a helper document, and then implementing that into practice on an actual dataset. Note: No slides for this section\n\n\n\nLink to Helper Document &lt;- Be sure to be signed in with your RIT credentials\nList of Potential Datasets &lt;- Be sure to be signed in with your RIT credentials\nMarkdown Document from Class",
+    "objectID": "lectures/unit9_power/index.html#october-31-2024",
+    "href": "lectures/unit9_power/index.html#october-31-2024",
+    "title": "Unit 9 - Power & Hypotheses",
+    "section": "October 31, 2024",
+    "text": "October 31, 2024\nFull Screen",
     "crumbs": [
       "Lectures",
-      "00 - Checkpoint"
-    ]
-  },
-  {
-    "objectID": "lectures/checkpoint_running_tests/index.html#october-222024",
-    "href": "lectures/checkpoint_running_tests/index.html#october-222024",
-    "title": "Checkpoint!",
-    "section": "",
-    "text": "We have been talking a lot about various tests and it all is probably running together. The focus of this class will be to familiarize ourselves with the practical usage of these tests. This will consist of revisiting the tests, answering some questions to generate a helper document, and then implementing that into practice on an actual dataset. Note: No slides for this section\n\n\n\nLink to Helper Document &lt;- Be sure to be signed in with your RIT credentials\nList of Potential Datasets &lt;- Be sure to be signed in with your RIT credentials\nMarkdown Document from Class",
-    "crumbs": [
-      "Lectures",
-      "00 - Checkpoint"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "PSYC 640: Graduate Statistics",
-    "section": "",
-    "text": "This course is the introduction to statistics for graduate students. The goal of the course is to provide a grounding in statistical concepts, methods and application to research. I aim to increase student’s confidence in using these techniques and introducing them to R. Topics will range from including mathematical conceptualizations to practical application with various techniques ranging from descriptive statistics to ending with regression.\nThe course will be broken up into two main sections. The first will be getting used to using R and the practicalities of performing a data analysis. The second section will then “pop the hood” of these tools with a deeper understanding of the how and why.\n\n\nThis course reviews critical concepts and data analysis methods in descriptive and inferential statistics. Basic and advanced material will be presented on topics that include measurement, descriptive and inferential data analyses for single and multiple group designs, and computer applications. There will be an emphasis on Open Science practices, especially reproducibility. Course content will be taught through lectures, discussion, and applied data analysis exercises. Throughout the course, I will try to maintain an emphasis on both the basic theory behind the statistics and its practical application to data sets.\n\n\n\nLecture: Tuesdays & Thursdays, 11:00am - 12:15pm, Liberal Arts 3233\n\n\n\nDustin Haraden – dxhgsh@rit.edu\n\nOffice: EAS 3378\nOffice Hours: Tuesdays & Wednesdays 12:30 – 2:00pm or By Appointment",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#course-description",
-    "href": "index.html#course-description",
-    "title": "PSYC 640: Graduate Statistics",
-    "section": "",
-    "text": "This course reviews critical concepts and data analysis methods in descriptive and inferential statistics. Basic and advanced material will be presented on topics that include measurement, descriptive and inferential data analyses for single and multiple group designs, and computer applications. There will be an emphasis on Open Science practices, especially reproducibility. Course content will be taught through lectures, discussion, and applied data analysis exercises. Throughout the course, I will try to maintain an emphasis on both the basic theory behind the statistics and its practical application to data sets.",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#meeting-time-and-location",
-    "href": "index.html#meeting-time-and-location",
-    "title": "PSYC 640: Graduate Statistics",
-    "section": "",
-    "text": "Lecture: Tuesdays & Thursdays, 11:00am - 12:15pm, Liberal Arts 3233",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#instructor",
-    "href": "index.html#instructor",
-    "title": "PSYC 640: Graduate Statistics",
-    "section": "",
-    "text": "Dustin Haraden – dxhgsh@rit.edu\n\nOffice: EAS 3378\nOffice Hours: Tuesdays & Wednesdays 12:30 – 2:00pm or By Appointment",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#textbook",
-    "href": "index.html#textbook",
-    "title": "PSYC 640: Graduate Statistics",
-    "section": "Textbook",
-    "text": "Textbook\nWe will primarily be referring to chapters in the following textbooks:\n\nLearning Statistics with R by Danielle Navarro.\nR for Data Science (2e) (Wickham, Çetinkaya-Rundel, & Grolemund, 2023)\nOpenIntro Statistics 4th ed. (Diez, Barr, & Cetinkaya-Rundel, 2022)\n\nThese textbook is available for free online and able to be downloaded. You may choose to purchase a paper copy if you wish, but it is not required.",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#r-and-rstudio",
-    "href": "index.html#r-and-rstudio",
-    "title": "PSYC 640: Graduate Statistics",
-    "section": "R and RStudio",
-    "text": "R and RStudio\nStudents must have the latest version of R as well as the RStudio GUI. Both applications are free and can be found here.",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "homework.html",
-    "href": "homework.html",
-    "title": "Homework Assignments",
-    "section": "",
-    "text": "Homework assignments will be posted here. You will be able to access the assignment as well as any data or additional information that may be necessary. Submit your homework assignments via myCourses by the due date and time.\n\n\n\nWeek\nDate\nTopic\nLecture Slides\n\n\n\n\n1\n08/27\n\n\n\n\n-\n08/29\n\n\n\n\n2\n09/03\n\n\n\n\n-\n09/05\n\n\n\n\n3\n09/10\n\n\n\n\n-\n09/12\n\n\n\n\n4\n09/17\n\n\n\n\n-\n09/19\n\n\n\n\n5\n09/24\n\n\n\n\n-\n09/26\n\n\n\n\n6\n10/01\n\n\n\n\n-\n10/03\n\n\n\n\n7\n10/08\n\n\n\n\n-\n10/10\n\n\n\n\n8\n10/15\nNO CLASS\n\n\n\n-\n10/17\n\n\n\n\n9\n10/22\n\n\n\n\n-\n10/24\n\n\n\n\n10\n10/29\n\n\n\n\n-\n10/31\n\n\n\n\n11\n11/05\n\n\n\n\n-\n11/07\n\n\n\n\n12\n11/12\n\n\n\n\n-\n11/14\n\n\n\n\n13\n11/19\n\n\n\n\n-\n11/21\n\n\n\n\n14\n11/26\n\n\n\n\n-\n11/28\nNO CLASS\n\n\n\n15\n12/03\n\n\n\n\n-\n12/05\n\n\n\n\nFinals",
-    "crumbs": [
-      "Homework Assignments"
-    ]
-  },
-  {
-    "objectID": "lectures.html",
-    "href": "lectures.html",
-    "title": "Lectures",
-    "section": "",
-    "text": "Schedule\nSlides for the course will be posted here prior to the lecture in which they occur. I will do my best to keep on top of them and I would like to have them be in both a PDF and HTML format so that it is easy to access for everyone.\n\n\n\nWeek\nDate\nTopic\nLecture Slides\n\n\n\n\n1\n08/27\nGetting Started\nWeek 1\n\n\n-\n08/29\nEasing into R\nSlides\n\n\n2\n09/03\nResearch Design & Stats\nSlides\n\n\n-\n09/05\nR Workflow\nSlides\n\n\n3\n09/10\nVisualizing\n\n\n\n-\n09/12\nData Wrangling\n\n\n\n4\n09/17\nData Wrangling\n\n\n\n-\n09/19\nDescriptives\n\n\n\n5\n09/24\nDescriptives\n\n\n\n-\n09/26\nStatistical Thinking\n\n\n\n6\n10/01\nANOVA\n\n\n\n-\n10/03\nANOVA\n\n\n\n7\n10/08\nRegression\n\n\n\n-\n10/10\nRegression\n\n\n\n8\n10/15\nNO CLASS\n\n\n\n-\n10/17\nProbability, Distributions & Inferences\n\n\n\n9\n10/22\nProbability, Distributions & Inferences\n\n\n\n-\n10/24\nHypothesis Testing & Power\n\n\n\n10\n10/29\nHypothesis Testing & Power\n\n\n\n-\n10/31\nCategorical Data Analysis\n\n\n\n11\n11/05\nCategorical Data Analysis\n\n\n\n-\n11/07\nComparing Means\n\n\n\n12\n11/12\nComparing Means\n\n\n\n-\n11/14\nANOVA\n\n\n\n13\n11/19\nANOVA\n\n\n\n-\n11/21\nRegression\n\n\n\n14\n11/26\nRegression\n\n\n\n-\n11/28\nNO CLASS\n\n\n\n15\n12/03\n\n\n\n\n-\n12/05\n\n\n\n\nFinals"
-  },
-  {
-    "objectID": "lectures/unit8_probability/index.html",
-    "href": "lectures/unit8_probability/index.html",
-    "title": "Unit 8 - Probability",
-    "section": "",
-    "text": "This unit focuses more on the theory behind how we make the inferences that we do. A little more theory and background than before.",
-    "crumbs": [
-      "Lectures",
-      "8 - Probability & Inference"
-    ]
-  },
-  {
-    "objectID": "lectures/unit8_probability/index.html#october-24-2024",
-    "href": "lectures/unit8_probability/index.html#october-24-2024",
-    "title": "Unit 8 - Probability",
-    "section": "October 24, 2024",
-    "text": "October 24, 2024\nGoing old school with a PowerPoint Probability Slides\nCoin Flip R-Script",
-    "crumbs": [
-      "Lectures",
-      "8 - Probability & Inference"
-    ]
-  },
-  {
-    "objectID": "lectures/unit8_probability/index.html#october-29-2024",
-    "href": "lectures/unit8_probability/index.html#october-29-2024",
-    "title": "Unit 8 - Probability",
-    "section": "October 29, 2024",
-    "text": "October 29, 2024\nA helpful video for more review - link\nProbability Slids Pt. 2",
-    "crumbs": [
-      "Lectures",
-      "8 - Probability & Inference"
+      "9 - Power & Hypotheses"
     ]
   },
   {
@@ -1548,59 +1397,266 @@
     ]
   },
   {
-    "objectID": "lectures/unit9_power/index.html",
-    "href": "lectures/unit9_power/index.html",
-    "title": "Unit 9 - Power & Hypotheses",
+    "objectID": "lectures/unit8_probability/index.html",
+    "href": "lectures/unit8_probability/index.html",
+    "title": "Unit 8 - Probability",
     "section": "",
-    "text": "For this unit, the focus shifts toward asking the question “how do we know if we can trust a result?” We will talk about the hypotheses that we generate as well as the statistical power of a study sample.\nTo get some comfort with p-values in general, take a look at a video from Daniel Lakens (~20 minutes) Video Link",
+    "text": "This unit focuses more on the theory behind how we make the inferences that we do. A little more theory and background than before.",
     "crumbs": [
       "Lectures",
-      "9 - Power & Hypotheses"
+      "8 - Probability & Inference"
     ]
   },
   {
-    "objectID": "lectures/unit9_power/index.html#october-31-2024",
-    "href": "lectures/unit9_power/index.html#october-31-2024",
-    "title": "Unit 9 - Power & Hypotheses",
-    "section": "October 31, 2024",
-    "text": "October 31, 2024\nFull Screen",
+    "objectID": "lectures/unit8_probability/index.html#october-24-2024",
+    "href": "lectures/unit8_probability/index.html#october-24-2024",
+    "title": "Unit 8 - Probability",
+    "section": "October 24, 2024",
+    "text": "October 24, 2024\nGoing old school with a PowerPoint Probability Slides\nCoin Flip R-Script",
     "crumbs": [
       "Lectures",
-      "9 - Power & Hypotheses"
+      "8 - Probability & Inference"
     ]
   },
   {
-    "objectID": "lectures/unit5_descriptives/index.html",
-    "href": "lectures/unit5_descriptives/index.html",
-    "title": "Unit 5 - Descriptive Statistics",
+    "objectID": "lectures/unit8_probability/index.html#october-29-2024",
+    "href": "lectures/unit8_probability/index.html#october-29-2024",
+    "title": "Unit 8 - Probability",
+    "section": "October 29, 2024",
+    "text": "October 29, 2024\nA helpful video for more review - link\nProbability Slids Pt. 2",
+    "crumbs": [
+      "Lectures",
+      "8 - Probability & Inference"
+    ]
+  },
+  {
+    "objectID": "lectures.html",
+    "href": "lectures.html",
+    "title": "Lectures",
     "section": "",
-    "text": "Now that we have gotten somewhat more comfortable with wrangling our data and visualizing it, we are going to shift our focus to describing our data. This is always an important step and will begin our journey into inferential statistics.\n\nFull Screen\n\nFull Screen",
-    "crumbs": [
-      "Lectures",
-      "5 - Descriptives"
-    ]
+    "text": "Schedule\nSlides for the course will be posted here prior to the lecture in which they occur. I will do my best to keep on top of them and I would like to have them be in both a PDF and HTML format so that it is easy to access for everyone.\n\n\n\nWeek\nDate\nTopic\nLecture Slides\n\n\n\n\n1\n08/27\nGetting Started\nWeek 1\n\n\n-\n08/29\nEasing into R\nSlides\n\n\n2\n09/03\nResearch Design & Stats\nSlides\n\n\n-\n09/05\nR Workflow\nSlides\n\n\n3\n09/10\nVisualizing\n\n\n\n-\n09/12\nData Wrangling\n\n\n\n4\n09/17\nData Wrangling\n\n\n\n-\n09/19\nDescriptives\n\n\n\n5\n09/24\nDescriptives\n\n\n\n-\n09/26\nStatistical Thinking\n\n\n\n6\n10/01\nANOVA\n\n\n\n-\n10/03\nANOVA\n\n\n\n7\n10/08\nRegression\n\n\n\n-\n10/10\nRegression\n\n\n\n8\n10/15\nNO CLASS\n\n\n\n-\n10/17\nProbability, Distributions & Inferences\n\n\n\n9\n10/22\nProbability, Distributions & Inferences\n\n\n\n-\n10/24\nHypothesis Testing & Power\n\n\n\n10\n10/29\nHypothesis Testing & Power\n\n\n\n-\n10/31\nCategorical Data Analysis\n\n\n\n11\n11/05\nCategorical Data Analysis\n\n\n\n-\n11/07\nComparing Means\n\n\n\n12\n11/12\nComparing Means\n\n\n\n-\n11/14\nANOVA\n\n\n\n13\n11/19\nANOVA\n\n\n\n-\n11/21\nRegression\n\n\n\n14\n11/26\nRegression\n\n\n\n-\n11/28\nNO CLASS\n\n\n\n15\n12/03\n\n\n\n\n-\n12/05\n\n\n\n\nFinals"
   },
   {
-    "objectID": "lectures/unit7_regression/index.html",
-    "href": "lectures/unit7_regression/index.html",
-    "title": "Unit 7 - ANOVA & Regression",
+    "objectID": "homework.html",
+    "href": "homework.html",
+    "title": "Homework Assignments",
     "section": "",
-    "text": "This unit continues talking about ANOVA and then introduces simple linear regression. We try things out and show how to report them and use R to make tables!\nCode File Template\nFull Screen\nFull Screen",
+    "text": "Homework assignments will be posted here. You will be able to access the assignment as well as any data or additional information that may be necessary. Submit your homework assignments via myCourses by the due date and time.\n\n\n\nWeek\nDate\nTopic\nLecture Slides\n\n\n\n\n1\n08/27\n\n\n\n\n-\n08/29\n\n\n\n\n2\n09/03\n\n\n\n\n-\n09/05\n\n\n\n\n3\n09/10\n\n\n\n\n-\n09/12\n\n\n\n\n4\n09/17\n\n\n\n\n-\n09/19\n\n\n\n\n5\n09/24\n\n\n\n\n-\n09/26\n\n\n\n\n6\n10/01\n\n\n\n\n-\n10/03\n\n\n\n\n7\n10/08\n\n\n\n\n-\n10/10\n\n\n\n\n8\n10/15\nNO CLASS\n\n\n\n-\n10/17\n\n\n\n\n9\n10/22\n\n\n\n\n-\n10/24\n\n\n\n\n10\n10/29\n\n\n\n\n-\n10/31\n\n\n\n\n11\n11/05\n\n\n\n\n-\n11/07\n\n\n\n\n12\n11/12\n\n\n\n\n-\n11/14\n\n\n\n\n13\n11/19\n\n\n\n\n-\n11/21\n\n\n\n\n14\n11/26\n\n\n\n\n-\n11/28\nNO CLASS\n\n\n\n15\n12/03\n\n\n\n\n-\n12/05\n\n\n\n\nFinals",
     "crumbs": [
-      "Lectures",
-      "7 - Regression (and ANOVA)"
+      "Homework Assignments"
     ]
   },
   {
-    "objectID": "lectures/unit7_regression/index.html#oct-17-2024",
-    "href": "lectures/unit7_regression/index.html#oct-17-2024",
-    "title": "Unit 7 - ANOVA & Regression",
-    "section": "Oct 17, 2024",
-    "text": "Oct 17, 2024\nFull Screen",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PSYC 640: Graduate Statistics",
+    "section": "",
+    "text": "This course is the introduction to statistics for graduate students. The goal of the course is to provide a grounding in statistical concepts, methods and application to research. I aim to increase student’s confidence in using these techniques and introducing them to R. Topics will range from including mathematical conceptualizations to practical application with various techniques ranging from descriptive statistics to ending with regression.\nThe course will be broken up into two main sections. The first will be getting used to using R and the practicalities of performing a data analysis. The second section will then “pop the hood” of these tools with a deeper understanding of the how and why.\n\n\nThis course reviews critical concepts and data analysis methods in descriptive and inferential statistics. Basic and advanced material will be presented on topics that include measurement, descriptive and inferential data analyses for single and multiple group designs, and computer applications. There will be an emphasis on Open Science practices, especially reproducibility. Course content will be taught through lectures, discussion, and applied data analysis exercises. Throughout the course, I will try to maintain an emphasis on both the basic theory behind the statistics and its practical application to data sets.\n\n\n\nLecture: Tuesdays & Thursdays, 11:00am - 12:15pm, Liberal Arts 3233\n\n\n\nDustin Haraden – dxhgsh@rit.edu\n\nOffice: EAS 3378\nOffice Hours: Tuesdays & Wednesdays 12:30 – 2:00pm or By Appointment",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#course-description",
+    "href": "index.html#course-description",
+    "title": "PSYC 640: Graduate Statistics",
+    "section": "",
+    "text": "This course reviews critical concepts and data analysis methods in descriptive and inferential statistics. Basic and advanced material will be presented on topics that include measurement, descriptive and inferential data analyses for single and multiple group designs, and computer applications. There will be an emphasis on Open Science practices, especially reproducibility. Course content will be taught through lectures, discussion, and applied data analysis exercises. Throughout the course, I will try to maintain an emphasis on both the basic theory behind the statistics and its practical application to data sets.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#meeting-time-and-location",
+    "href": "index.html#meeting-time-and-location",
+    "title": "PSYC 640: Graduate Statistics",
+    "section": "",
+    "text": "Lecture: Tuesdays & Thursdays, 11:00am - 12:15pm, Liberal Arts 3233",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#instructor",
+    "href": "index.html#instructor",
+    "title": "PSYC 640: Graduate Statistics",
+    "section": "",
+    "text": "Dustin Haraden – dxhgsh@rit.edu\n\nOffice: EAS 3378\nOffice Hours: Tuesdays & Wednesdays 12:30 – 2:00pm or By Appointment",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#textbook",
+    "href": "index.html#textbook",
+    "title": "PSYC 640: Graduate Statistics",
+    "section": "Textbook",
+    "text": "Textbook\nWe will primarily be referring to chapters in the following textbooks:\n\nLearning Statistics with R by Danielle Navarro.\nR for Data Science (2e) (Wickham, Çetinkaya-Rundel, & Grolemund, 2023)\nOpenIntro Statistics 4th ed. (Diez, Barr, & Cetinkaya-Rundel, 2022)\n\nThese textbook is available for free online and able to be downloaded. You may choose to purchase a paper copy if you wish, but it is not required.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#r-and-rstudio",
+    "href": "index.html#r-and-rstudio",
+    "title": "PSYC 640: Graduate Statistics",
+    "section": "R and RStudio",
+    "text": "R and RStudio\nStudents must have the latest version of R as well as the RStudio GUI. Both applications are free and can be found here.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "lectures/checkpoint_running_tests/index.html",
+    "href": "lectures/checkpoint_running_tests/index.html",
+    "title": "Checkpoint!",
+    "section": "",
+    "text": "We have been talking a lot about various tests and it all is probably running together. The focus of this class will be to familiarize ourselves with the practical usage of these tests. This will consist of revisiting the tests, answering some questions to generate a helper document, and then implementing that into practice on an actual dataset. Note: No slides for this section\n\n\n\nLink to Helper Document &lt;- Be sure to be signed in with your RIT credentials\nList of Potential Datasets &lt;- Be sure to be signed in with your RIT credentials\nMarkdown Document from Class",
     "crumbs": [
       "Lectures",
-      "7 - Regression (and ANOVA)"
+      "00 - Checkpoint"
     ]
+  },
+  {
+    "objectID": "lectures/checkpoint_running_tests/index.html#october-222024",
+    "href": "lectures/checkpoint_running_tests/index.html#october-222024",
+    "title": "Checkpoint!",
+    "section": "",
+    "text": "We have been talking a lot about various tests and it all is probably running together. The focus of this class will be to familiarize ourselves with the practical usage of these tests. This will consist of revisiting the tests, answering some questions to generate a helper document, and then implementing that into practice on an actual dataset. Note: No slides for this section\n\n\n\nLink to Helper Document &lt;- Be sure to be signed in with your RIT credentials\nList of Potential Datasets &lt;- Be sure to be signed in with your RIT credentials\nMarkdown Document from Class",
+    "crumbs": [
+      "Lectures",
+      "00 - Checkpoint"
+    ]
+  },
+  {
+    "objectID": "previous-years.html",
+    "href": "previous-years.html",
+    "title": "Previous Years",
+    "section": "",
+    "text": "This course has been taught for a number of years, but this instructor has only started teaching it in Fall 2023. Below are previous iterations of the course in case you would like to check out how it has progressed!",
+    "crumbs": [
+      "Previous Years"
+    ]
+  },
+  {
+    "objectID": "previous-years.html#overview",
+    "href": "previous-years.html#overview",
+    "title": "Previous Years",
+    "section": "",
+    "text": "This course has been taught for a number of years, but this instructor has only started teaching it in Fall 2023. Below are previous iterations of the course in case you would like to check out how it has progressed!",
+    "crumbs": [
+      "Previous Years"
+    ]
+  },
+  {
+    "objectID": "previous-years.html#fall-2023",
+    "href": "previous-years.html#fall-2023",
+    "title": "Previous Years",
+    "section": "Fall 2023",
+    "text": "Fall 2023\nWebsite",
+    "crumbs": [
+      "Previous Years"
+    ]
+  },
+  {
+    "objectID": "lectures/unit4_data-wrangler/index.html",
+    "href": "lectures/unit4_data-wrangler/index.html",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "",
+    "text": "During this section, we will highlight the utility of the dplyr package and further dive into the tidyverse. For this lecture, have the datasets downloaded and put in the appropriate place in your files\nThis is currently situated as a document which you can find below:",
+    "crumbs": [
+      "Lectures",
+      "4 - Data Wrangling"
+    ]
+  },
+  {
+    "objectID": "lectures/unit4_data-wrangler/index.html#link-to-document",
+    "href": "lectures/unit4_data-wrangler/index.html#link-to-document",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Link to Document",
+    "text": "Link to Document\nThe instructor is working to put these into some beautiful slides :)\nFull Screen",
+    "crumbs": [
+      "Lectures",
+      "4 - Data Wrangling"
+    ]
+  },
+  {
+    "objectID": "lectures/wk3_visualizations/index.html",
+    "href": "lectures/wk3_visualizations/index.html",
+    "title": "Week 3 - Visualizations",
+    "section": "",
+    "text": "During this lecture, we will explore the functionality of ggplot2 and begin our entry into the tidyverse. For this lecture, have the datasets downloaded and put in the appropriate place in your files\n\nFull Screen",
+    "crumbs": [
+      "Lectures",
+      "3 - Visualizing"
+    ]
+  },
+  {
+    "objectID": "lectures/unit6_comparing-means/index.html",
+    "href": "lectures/unit6_comparing-means/index.html",
+    "title": "Unit 6 - Hypotheses and Comparing Means",
+    "section": "",
+    "text": "This unit focuses on comparing means of various groups. Traditionally this is done through the t-test and ANOVA. Here we will learn how to implement them in R and then figure out how to interpret and report!\n\nCode File Template\nFull Screen\n\nFull Screen",
+    "crumbs": [
+      "Lectures",
+      "6 - Comparing Means"
+    ]
+  },
+  {
+    "objectID": "lectures/unit9_power/slides2.html#recap",
+    "href": "lectures/unit9_power/slides2.html#recap",
+    "title": "Unit 9 pt.2 - More Power",
+    "section": "Recap",
+    "text": "Recap\n\nlibrary(tidyverse)\nlibrary(gganimate)\nlibrary(pwr)\nlibrary(ggpubr)\nlibrary(transformr)\n\n\nEverything is based on probability and we are always taking a best guess\np-values reflect the probability of getting that statistic IF THE NULL WAS TRUE."
+  },
+  {
+    "objectID": "lectures/unit9_power/slides2.html#a-p-value-does-not",
+    "href": "lectures/unit9_power/slides2.html#a-p-value-does-not",
+    "title": "Unit 9 pt.2 - More Power",
+    "section": "A p-value DOES NOT:",
+    "text": "A p-value DOES NOT:\n\nTell you that the probability that the null hypothesis is true.\nProve that the alternative hypothesis is true.\nTell you anything about the size or magnitude of any observed difference in your data."
+  },
+  {
+    "objectID": "lectures/unit9_power/slides2.html#power",
+    "href": "lectures/unit9_power/slides2.html#power",
+    "title": "Unit 9 pt.2 - More Power",
+    "section": "Power",
+    "text": "Power\nIn hypothesis testing, we can make two kinds of errors.\n\n\n\n\nReject \\(H_0\\)\nDo not reject\n\n\n\n\n\\(H_0\\) True\nType I Error\nCorrect decision\n\n\n\\(H_0\\) False\nCorrect decision\nType II Error\n\n\n\nControlling Type II errors is more challenging because it depends on several factors. But, we usually DO want to control these errors. Some argue that the null hypothesis is usually false, so the only error we can make is a Type II error – a failure to detect a signal that is present. Power is the probability of correctly rejecting a false null hypothesis."
+  },
+  {
+    "objectID": "lectures/unit9_power/slides2.html#calculating-power-in-r",
+    "href": "lectures/unit9_power/slides2.html#calculating-power-in-r",
+    "title": "Unit 9 pt.2 - More Power",
+    "section": "Calculating Power in R",
+    "text": "Calculating Power in R\n\n\n\nWe will use the pwr package and a few tutorials you can look at are as follows:\n\n\nReproducible Medical Research with R\nStat Methods\nVignettes from pwr package\n\n\n\nThe four components are interrelated and by knowing three, we can determine the fourth:\n\n\nSample Size\nEffect Size\nSignificance Level \\(\\alpha\\)\nPower \\(\\beta\\)"
+  },
+  {
+    "objectID": "lectures/unit9_power/slides2.html#summary",
+    "href": "lectures/unit9_power/slides2.html#summary",
+    "title": "Unit 9 pt.2 - More Power",
+    "section": "Summary",
+    "text": "Summary\n\nConducting a study we tend to have null \\(H_0\\) and alternative \\(H_1\\) hypotheses\nTested through Null Hypothesis Significance Testing\n\\(p-values\\) are the probability of getting this score or higher if the null distribution were true\nImportant to consider power in all studies we do"
+  },
+  {
+    "objectID": "lectures/unit9_power/slides2.html#additional-slides",
+    "href": "lectures/unit9_power/slides2.html#additional-slides",
+    "title": "Unit 9 pt.2 - More Power",
+    "section": "Additional Slides",
+    "text": "Additional Slides"
+  },
+  {
+    "objectID": "lectures/unit9_power/slides2.html#alpha",
+    "href": "lectures/unit9_power/slides2.html#alpha",
+    "title": "Unit 9 pt.2 - More Power",
+    "section": "alpha",
+    "text": "alpha\nHistorically, psychologists have chosen to set their \\(\\alpha\\) level at .05, meaning any p-value less than .05 is considered “statistically significant” or the null is rejected.\nThis means that, among the times we examine a relationship that is truly null, we will reject the null 1 in 20 times.\nSome have argued that this is not conservative enough and we should use \\(\\alpha &lt; .005\\) (Benjamin et al., 2018)."
+  },
+  {
+    "objectID": "lectures/unit9_power/slides2.html#check-in-and-review",
+    "href": "lectures/unit9_power/slides2.html#check-in-and-review",
+    "title": "Unit 9 pt.2 - More Power",
+    "section": "Check-in and Review",
+    "text": "Check-in and Review\n\nThe null hypothesis ( \\(H_0\\) ) is a claim about the particular value that a population parameter takes.\nThe alternative hypothesis ( \\(H_1\\) ) states an alternative range of values for the population parameter.\nWe test the null hypothesis by determining if we have sufficient evidence that contradicts or nullifies it.\nWe reject the null hypothesis if the data in hand are rare, unusual, or atypical if the null were true. The alternative hypothesis gains support when the null is rejected, but \\(H_1\\) is not proven."
   },
   {
     "objectID": "lectures/unit6_comparing-means/slides2.html#reminders",
