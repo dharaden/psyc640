@@ -1,0 +1,271 @@
+---
+title: "Unit 9 pt.2 - More Power"
+subtitle: "PSYC 640 - Oct 31, 2024"
+author: "Dustin Haraden"
+format: 
+  revealjs:
+    multiplex: true
+    slide-number: true
+    incremental: true
+    touch: true
+    code-overflow: wrap
+    theme: night
+execute: 
+  echo: true
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+## Recap
+
+```{r, results = 'hide', message = F, warning = F}
+library(tidyverse)
+library(gganimate)
+library(pwr)
+library(ggpubr)
+library(transformr)
+```
+
+-   Everything is based on probability and we are always taking a best guess
+
+-   **p-values reflect the probability of getting that statistic IF THE NULL WAS TRUE.**
+
+## A p-value DOES NOT:
+
+-   Tell you that the probability that the null hypothesis is true.
+
+-   Prove that the alternative hypothesis is true.
+
+-   Tell you anything about the size or magnitude of any observed difference in your data.
+
+------------------------------------------------------------------------
+
+### p-values and error
+
+Consider what the p-value means. In a world where the null ( $H_0$ ) is true, then by chance, we'll get statistics in the extreme. Specifically, we'll get them $\alpha$ proportion of the time. So $\alpha$ is our tolerance for False Positives or incorrectly rejecting the null.
+
+------------------------------------------------------------------------
+
+## Power
+
+In hypothesis testing, we can make two kinds of errors.
+
+|             |   Reject $H_0$   |  Do not reject   |
+|------------:|:----------------:|:----------------:|
+|  $H_0$ True |   Type I Error   | Correct decision |
+| $H_0$ False | Correct decision |  Type II Error   |
+
+Controlling Type II errors is more challenging because it depends on several factors. But, we usually DO want to control these errors. Some argue that the null hypothesis is usually false, so the only error we can make is a Type II error -- a failure to detect a signal that is present. **Power** is the probability of correctly rejecting a false null hypothesis.
+
+------------------------------------------------------------------------
+
+Controlling Type II errors is the goal of power analysis and must contend with four quantities that are interrelated:
+
+::::: columns
+::: {.column width="50%"}
+-   Sample size
+-   Effect size
+:::
+
+::: {.column width="50%"}
+-   Significance level ( $\alpha$ )
+-   Power
+:::
+:::::
+
+-   When any three are known, the remaining one can be determined. We can use this information to determine the sample size necessary to achieve a desired level of power, given the *expected* effect size.
+
+------------------------------------------------------------------------
+
+## Calculating Power in R
+
+::::::: columns
+:::: {.column width="50%"}
+```{r} library(pwr)}
+```
+
+We will use the `pwr` package and a few tutorials you can look at are as follows:
+
+::: nonincremental
+-   [Reproducible Medical Research with R](https://bookdown.org/pdr_higgins/rmrwr/sample-size-calculations-with-pwr.html)
+-   [Stat Methods](https://www.statmethods.net/stats/power.html)
+-   [Vignettes from pwr package](https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html)
+:::
+::::
+
+:::: {.column width="50%"}
+The four components are interrelated and by knowing three, we can determine the fourth:
+
+::: nonincremental
+1.  Sample Size
+2.  Effect Size
+3.  Significance Level $\alpha$
+4.  Power $\beta$
+:::
+::::
+:::::::
+
+------------------------------------------------------------------------
+
+### Calculating Power in R: t-tests
+
+**Example:** We want to know how frustrating stats classes can be for graduate students. To do this we want to test if the mean frustration levels of students in a stats class are different than students walking around on campus. Let's say we survey 30 stats students and 30 grad students and get a "Frustration Score" (f-score) and then take the mean of each group.
+
+We'll test for a difference in means using a *two-sample t-test*.
+
+***How powerful is this experiment if we want to detect a medium effect in either direction with a significance level of 0.05?***
+
+------------------------------------------------------------------------
+
+:::::: columns
+:::: {.column width="50%"}
+::: columns
+First we indicate what it means to have a "medium" effect
+
+```{r}
+pwr::cohen.ES(test = "t", size = "medium")
+```
+:::
+::::
+
+::: {.column width="50%"}
+| Relative Size | Effect Size |
+|:-------------:|:-----------:|
+|     None      |     0.0     |
+|     Small     |     0.2     |
+|    Medium     |     0.5     |
+|     Large     |     0.8     |
+|  Very Large   |     1.3     |
+
+: Using *Cohen's d*
+:::
+::::::
+
+Further reading: [Sullivan, G. M., & Feinn, R. (2012). Using effect size---or why the P value is not enough. Journal of graduate medical education, 4(3), 279-282.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3444174/)
+
+------------------------------------------------------------------------
+
+Then we can use the `pwr` library to calculate the power we can expect. The function looks like:
+
+`pwr.t.test(n = , d = , sig.level = , power = , type = c("two.sample", "one.sample", "paired"))`{style="font-size:20px;"}
+
+::: {style="font-size:25px;"}
+where `n` is the sample size, `d` is the effect size, `power` is the power level, and `type` indicates a two sample t-test, one sample t-test or paired t-test
+:::
+
+```{r}
+pwr.t.test(n = 30, d = 0.5, sig.level = 0.05)
+```
+
+Ooof...only 48%. Not very powerful.
+
+------------------------------------------------------------------------
+
+What if we want to get that power to the expected 80%? How many students should we collect data for?
+
+```{r}
+pwr.t.test(d = 0.5, power = 0.80, sig.level = 0.05)
+```
+
+Looks like we would need about 64 students *per group.*
+
+------------------------------------------------------------------------
+
+## Summary
+
+-   Conducting a study we tend to have null $H_0$ and alternative $H_1$ hypotheses
+
+-   Tested through Null Hypothesis Significance Testing
+
+-   $p-values$ are the probability of getting this score or higher **if the null distribution were true**
+
+-   Important to consider power in all studies we do
+
+------------------------------------------------------------------------
+
+![](/images/preg.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Additional Slides
+
+## alpha
+
+Historically, psychologists have chosen to set their $\alpha$ level at .05, meaning any p-value less than .05 is considered "statistically significant" or the null is rejected.
+
+This means that, among the times we examine a relationship that is truly null, we will reject the null 1 in 20 times.
+
+Some have argued that this is not conservative enough and we should use $\alpha < .005$ ([Benjamin et al., 2018](../readings/Benjamin_etal_2018.pdf)).
+
+------------------------------------------------------------------------
+
+## Check-in and Review
+
+-   The null hypothesis ( $H_0$ ) is a claim about the particular value that a population parameter takes.
+
+-   The alternative hypothesis ( $H_1$ ) states an alternative range of values for the population parameter.
+
+-   We test the null hypothesis by determining if we have sufficient evidence that contradicts or nullifies it.
+
+-   We reject the null hypothesis if the data in hand are rare, unusual, or atypical if the null were true. The alternative hypothesis gains support when the null is rejected, but $H_1$ is not proven.
+
+------------------------------------------------------------------------
+
+### Review example
+
+Healthy adults send an average of 32 text messages a day $(\sigma = 7.3)$. I recruit a sample of 16 adults with diagnoses of Generalized Anxiety Disorder. In my sample, the average number of texts sent per day is 33.2. *Does my sample of adults with GAD come from the same population as healthy adults?*
+
+::::: columns
+::: {.column width="50%"}
+**Define hypotheses**
+
+-   $H_0: \mu_{GAD} = 32$
+-   $H_0: \mu_{GAD} \neq 32$
+:::
+
+::: {.column width="50%"}
+**Choose alpha**
+
+-   $\alpha = .05$
+:::
+:::::
+
+------------------------------------------------------------------------
+
+### Review example
+
+**Collect data.**
+
+::::: columns
+::: {.column width="50%"}
+**Define your sampling distribution using your null hypothesis**
+
+-   $\mu_M = \mu_0 = 32$
+-   $\sigma_M = \frac{\sigma}{\sqrt{N}} = \frac{7.3}{\sqrt{16}} = 1.825$
+:::
+
+::: {.column width="50%"}
+**Calculate the probability of your data or more extreme under the null.**
+
+-   $Z_{statistic} = \frac{\bar{X} - \mu_0}{\sigma_M} = \frac{33.2 - 32}{1.825} = 0.658$
+-   $p(Z >= 0.658) = `r round(pnorm((33.2-32)/1.825, lower.tail = F),3)`$
+-   $p = `r round(pnorm((33.2-32)/1.825, lower.tail = F)*2,3)`$
+:::
+:::::
+
+------------------------------------------------------------------------
+
+Compare your probability ( $p$-value) to your $\alpha$ level and decide whether your data are "statistically significant" (reject the null) or not (retain the null).
+
+Our $p$-value is larger than our $\alpha$ level, so we retain the null.
+
+------------------------------------------------------------------------
+
+### Review
+
+If we do not reject $H_0$, that does not mean that we accept it. We have simply failed to reject it. It lives to fight another day.
+
+A *Z*-statistic summarizes how unusual the sample estimate of a mean compared to the value of the mean as specified by the null hypothesis.
+
+More broadly, we refer to the **test statistic** as the statistic that summarizes how unusual the sample estimate of a parameter is from the point value specified by the null hypothesis
