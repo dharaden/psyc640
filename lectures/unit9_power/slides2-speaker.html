@@ -8,10 +8,10 @@
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Dustin Haraden">
-  <title>PSYC 640 2024 - Unit 9 pt.2 - More Power</title>
+  <title>PSYC 640 2024 – Unit 9 pt.2 - More Power</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -42,7 +42,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -221,7 +221,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -405,11 +406,11 @@ Dustin Haraden
 <section id="recap" class="slide level2">
 <h2>Recap</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(gganimate)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(pwr)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(ggpubr)</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(transformr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a></a><span class="fu">library</span>(gganimate)</span>
+<span id="cb1-3"><a></a><span class="fu">library</span>(pwr)</span>
+<span id="cb1-4"><a></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb1-5"><a></a><span class="fu">library</span>(transformr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li class="fragment"><p>Everything is based on probability and we are always taking a best guess</p></li>
@@ -432,7 +433,7 @@ Dustin Haraden
 <section id="power" class="slide level2">
 <h2>Power</h2>
 <p>In hypothesis testing, we can make two kinds of errors.</p>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: right;"></th>
@@ -469,8 +470,7 @@ Dustin Haraden
 <li class="fragment">Significance level ( <span class="math inline">\(\alpha\)</span> )</li>
 <li class="fragment">Power</li>
 </ul>
-</div>
-</div>
+</div></div>
 <ul>
 <li class="fragment">When any three are known, the remaining one can be determined. We can use this information to determine the sample size necessary to achieve a desired level of power, given the <em>expected</em> effect size.</li>
 </ul>
@@ -497,8 +497,7 @@ Dustin Haraden
 <li>Power <span class="math inline">\(\beta\)</span></li>
 </ol>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section class="slide level2">
 
@@ -513,7 +512,7 @@ Dustin Haraden
 <div class="column" style="width:50%;">
 <div class="columns">
 <p>First we indicate what it means to have a “medium” effect</p><div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>pwr<span class="sc">::</span><span class="fu">cohen.ES</span>(<span class="at">test =</span> <span class="st">"t"</span>, <span class="at">size =</span> <span class="st">"medium"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>pwr<span class="sc">::</span><span class="fu">cohen.ES</span>(<span class="at">test =</span> <span class="st">"t"</span>, <span class="at">size =</span> <span class="st">"medium"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
      Conventional effect size from Cohen (1982) 
@@ -525,7 +524,7 @@ Dustin Haraden
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<table>
+<table class="caption-top">
 <caption>Using <em>Cohen’s d</em></caption>
 <thead>
 <tr class="header">
@@ -556,8 +555,7 @@ Dustin Haraden
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 <p>Further reading: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3444174/">Sullivan, G. M., &amp; Feinn, R. (2012). Using effect size—or why the P value is not enough. Journal of graduate medical education, 4(3), 279-282.</a></p>
 </section>
 <section class="slide level2">
@@ -568,7 +566,7 @@ Dustin Haraden
 <p>where <code>n</code> is the sample size, <code>d</code> is the effect size, <code>power</code> is the power level, and <code>type</code> indicates a two sample t-test, one sample t-test or paired t-test</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">pwr.t.test</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">d =</span> <span class="fl">0.5</span>, <span class="at">sig.level =</span> <span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">pwr.t.test</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">d =</span> <span class="fl">0.5</span>, <span class="at">sig.level =</span> <span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
      Two-sample t test power calculation 
@@ -588,7 +586,7 @@ NOTE: n is number in *each* group</code></pre>
 
 <p>What if we want to get that power to the expected 80%? How many students should we collect data for?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">pwr.t.test</span>(<span class="at">d =</span> <span class="fl">0.5</span>, <span class="at">power =</span> <span class="fl">0.80</span>, <span class="at">sig.level =</span> <span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">pwr.t.test</span>(<span class="at">d =</span> <span class="fl">0.5</span>, <span class="at">power =</span> <span class="fl">0.80</span>, <span class="at">sig.level =</span> <span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
      Two-sample t test power calculation 
@@ -616,7 +614,7 @@ NOTE: n is number in *each* group</code></pre>
 <section class="slide level2">
 
 
-<img data-src="../..\images/preg.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="../..\images/preg.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="alpha-alpha" class="slide level2">
 <h2>alpha <span class="math inline">\(\alpha\)</span></h2>
 <p>Historically, psychologists have chosen to set their <span class="math inline">\(\alpha\)</span> level at .05, meaning any p-value less than .05 is considered “statistically significant” or the null is rejected.</p>
@@ -648,8 +646,7 @@ NOTE: n is number in *each* group</code></pre>
 <ul>
 <li class="fragment"><span class="math inline">\(\alpha = .05\)</span></li>
 </ul>
-</div>
-</div>
+</div></div>
 </section>
 <section class="slide level2">
 
@@ -669,8 +666,7 @@ NOTE: n is number in *each* group</code></pre>
 <li class="fragment"><span class="math inline">\(p(Z &gt;= 0.658) = 0.255\)</span></li>
 <li class="fragment"><span class="math inline">\(p = 0.511\)</span></li>
 </ul>
-</div>
-</div>
+</div></div>
 </section>
 <section class="slide level2">
 
@@ -689,14 +685,14 @@ NOTE: n is number in *each* group</code></pre>
 <p><strong>Background</strong><br>
 We’ll examine depression scores (using simulated PHQ-9 data) across different sample sizes to investigate power.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># R code to generate our demonstration data</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="co"># Small effect (2 point reduction in PHQ-9)</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a>small_effect <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
-<span id="cb8-5"><a href="#cb8-5"></a>    pre <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean=</span><span class="dv">15</span>, <span class="at">sd=</span><span class="dv">5</span>)</span>
-<span id="cb8-6"><a href="#cb8-6"></a>    post <span class="ot">&lt;-</span> pre <span class="sc">-</span> <span class="dv">2</span> <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">mean=</span><span class="dv">0</span>, <span class="at">sd=</span><span class="dv">3</span>)</span>
-<span id="cb8-7"><a href="#cb8-7"></a>    <span class="fu">return</span>(<span class="fu">data.frame</span>(<span class="at">pre=</span>pre, <span class="at">post=</span>post))</span>
-<span id="cb8-8"><a href="#cb8-8"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="co"># R code to generate our demonstration data</span></span>
+<span id="cb8-2"><a></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb8-3"><a></a><span class="co"># Small effect (2 point reduction in PHQ-9)</span></span>
+<span id="cb8-4"><a></a>small_effect <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb8-5"><a></a>    pre <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean=</span><span class="dv">15</span>, <span class="at">sd=</span><span class="dv">5</span>)</span>
+<span id="cb8-6"><a></a>    post <span class="ot">&lt;-</span> pre <span class="sc">-</span> <span class="dv">2</span> <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">mean=</span><span class="dv">0</span>, <span class="at">sd=</span><span class="dv">3</span>)</span>
+<span id="cb8-7"><a></a>    <span class="fu">return</span>(<span class="fu">data.frame</span>(<span class="at">pre=</span>pre, <span class="at">post=</span>post))</span>
+<span id="cb8-8"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Analyze three different “studies” of a new therapy intervention:</p>
 <ol type="1">
@@ -705,8 +701,10 @@ We’ll examine depression scores (using simulated PHQ-9 data) across different 
 <li class="fragment"><p>Large clinical trial (n=100)</p></li>
 </ol>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section>
     </div>
@@ -737,7 +735,6 @@ We’ll examine depression scores (using simulated PHQ-9 data) across different 
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -924,42 +921,80 @@ We’ll examine depression scores (using simulated PHQ-9 data) across different 
       });
     </script>
     
+
     <script>
+
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
       // slide changes (different for each slide format).
+
       (function () {
+
         // dispatch for htmlwidgets
+
         function fireSlideEnter() {
+
           const event = window.document.createEvent("Event");
+
           event.initEvent("slideenter", true, true);
+
           window.document.dispatchEvent(event);
+
         }
+
+    
 
         function fireSlideChanged(previousSlide, currentSlide) {
+
           fireSlideEnter();
 
+    
+
           // dispatch for shiny
+
           if (window.jQuery) {
+
             if (previousSlide) {
+
               window.jQuery(previousSlide).trigger("hidden");
+
             }
+
             if (currentSlide) {
+
               window.jQuery(currentSlide).trigger("shown");
+
             }
+
           }
+
         }
+
+    
 
         // hookup for slidy
+
         if (window.w3c_slidy) {
+
           window.w3c_slidy.add_observer(function (slide_num) {
+
             // slide_num starts at position 1
+
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
           });
+
         }
 
+    
+
       })();
+
     </script>
+
+    
 
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -993,18 +1028,7 @@ We’ll examine depression scores (using simulated PHQ-9 data) across different 
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1036,11 +1060,50 @@ We’ll examine depression scores (using simulated PHQ-9 data) across different 
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/dharaden\.github\.io\/psyc640\/");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1050,8 +1113,17 @@ We’ll examine depression scores (using simulated PHQ-9 data) across different 
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1065,7 +1137,11 @@ We’ll examine depression scores (using simulated PHQ-9 data) across different 
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
