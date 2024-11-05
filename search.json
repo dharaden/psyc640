@@ -1254,36 +1254,25 @@
     ]
   },
   {
-    "objectID": "lectures/unit5_descriptives/index.html",
-    "href": "lectures/unit5_descriptives/index.html",
-    "title": "Unit 5 - Descriptive Statistics",
+    "objectID": "lectures/unit6_comparing-means/index.html",
+    "href": "lectures/unit6_comparing-means/index.html",
+    "title": "Unit 6 - Hypotheses and Comparing Means",
     "section": "",
-    "text": "Now that we have gotten somewhat more comfortable with wrangling our data and visualizing it, we are going to shift our focus to describing our data. This is always an important step and will begin our journey into inferential statistics.\n\nFull Screen\n\nFull Screen",
+    "text": "This unit focuses on comparing means of various groups. Traditionally this is done through the t-test and ANOVA. Here we will learn how to implement them in R and then figure out how to interpret and report!\n\nCode File Template\nFull Screen\n\nFull Screen",
     "crumbs": [
       "Lectures",
-      "5 - Descriptives"
+      "6 - Comparing Means"
     ]
   },
   {
-    "objectID": "lectures/unit9_power/index.html",
-    "href": "lectures/unit9_power/index.html",
-    "title": "Unit 9 - Power & Hypotheses",
+    "objectID": "lectures/wk3_visualizations/index.html",
+    "href": "lectures/wk3_visualizations/index.html",
+    "title": "Week 3 - Visualizations",
     "section": "",
-    "text": "For this unit, the focus shifts toward asking the question “how do we know if we can trust a result?” We will talk about the hypotheses that we generate as well as the statistical power of a study sample.\nTo get some comfort with p-values in general, take a look at a video from Daniel Lakens (~20 minutes) Video Link",
+    "text": "During this lecture, we will explore the functionality of ggplot2 and begin our entry into the tidyverse. For this lecture, have the datasets downloaded and put in the appropriate place in your files\n\nFull Screen",
     "crumbs": [
       "Lectures",
-      "9 - Power & Hypotheses"
-    ]
-  },
-  {
-    "objectID": "lectures/unit9_power/index.html#october-31-2024",
-    "href": "lectures/unit9_power/index.html#october-31-2024",
-    "title": "Unit 9 - Power & Hypotheses",
-    "section": "October 31, 2024",
-    "text": "October 31, 2024\nFull Screen",
-    "crumbs": [
-      "Lectures",
-      "9 - Power & Hypotheses"
+      "3 - Visualizing"
     ]
   },
   {
@@ -1581,25 +1570,47 @@
     ]
   },
   {
-    "objectID": "lectures/wk3_visualizations/index.html",
-    "href": "lectures/wk3_visualizations/index.html",
-    "title": "Week 3 - Visualizations",
+    "objectID": "lectures/unit5_descriptives/index.html",
+    "href": "lectures/unit5_descriptives/index.html",
+    "title": "Unit 5 - Descriptive Statistics",
     "section": "",
-    "text": "During this lecture, we will explore the functionality of ggplot2 and begin our entry into the tidyverse. For this lecture, have the datasets downloaded and put in the appropriate place in your files\n\nFull Screen",
+    "text": "Now that we have gotten somewhat more comfortable with wrangling our data and visualizing it, we are going to shift our focus to describing our data. This is always an important step and will begin our journey into inferential statistics.\n\nFull Screen\n\nFull Screen",
     "crumbs": [
       "Lectures",
-      "3 - Visualizing"
+      "5 - Descriptives"
     ]
   },
   {
-    "objectID": "lectures/unit6_comparing-means/index.html",
-    "href": "lectures/unit6_comparing-means/index.html",
-    "title": "Unit 6 - Hypotheses and Comparing Means",
+    "objectID": "lectures/unit9_power/index.html",
+    "href": "lectures/unit9_power/index.html",
+    "title": "Unit 9 - Power & Hypotheses",
     "section": "",
-    "text": "This unit focuses on comparing means of various groups. Traditionally this is done through the t-test and ANOVA. Here we will learn how to implement them in R and then figure out how to interpret and report!\n\nCode File Template\nFull Screen\n\nFull Screen",
+    "text": "For this unit, the focus shifts toward asking the question “how do we know if we can trust a result?” We will talk about the hypotheses that we generate as well as the statistical power of a study sample.\nTo get some comfort with p-values in general, take a look at a video from Daniel Lakens (~20 minutes) Video Link",
     "crumbs": [
       "Lectures",
-      "6 - Comparing Means"
+      "9 - Power & Hypotheses"
+    ]
+  },
+  {
+    "objectID": "lectures/unit9_power/index.html#october-31-2024",
+    "href": "lectures/unit9_power/index.html#october-31-2024",
+    "title": "Unit 9 - Power & Hypotheses",
+    "section": "October 31, 2024",
+    "text": "October 31, 2024\nFull Screen",
+    "crumbs": [
+      "Lectures",
+      "9 - Power & Hypotheses"
+    ]
+  },
+  {
+    "objectID": "lectures/unit9_power/index.html#november-5-2024",
+    "href": "lectures/unit9_power/index.html#november-5-2024",
+    "title": "Unit 9 - Power & Hypotheses",
+    "section": "November 5, 2024",
+    "text": "November 5, 2024\nFull Screen",
+    "crumbs": [
+      "Lectures",
+      "9 - Power & Hypotheses"
     ]
   },
   {
@@ -1628,7 +1639,7 @@
     "href": "lectures/unit9_power/slides2.html#calculating-power-in-r",
     "title": "Unit 9 pt.2 - More Power",
     "section": "Calculating Power in R",
-    "text": "Calculating Power in R\n\n\n\nWe will use the pwr package and a few tutorials you can look at are as follows:\n\n\nReproducible Medical Research with R\nStat Methods\nVignettes from pwr package\n\n\n\nThe four components are interrelated and by knowing three, we can determine the fourth:\n\n\nSample Size\nEffect Size\nSignificance Level \\(\\alpha\\)\nPower \\(\\beta\\)"
+    "text": "Calculating Power in R\n\n\nWe will use the pwr package and a few tutorials you can look at are as follows:\n\n\nReproducible Medical Research with R\nStat Methods\nVignettes from pwr package\n\n\n\nThe four components are interrelated and by knowing three, we can determine the fourth:\n\n\nSample Size\nEffect Size\nSignificance Level \\(\\alpha\\)\nPower \\(\\beta\\)"
   },
   {
     "objectID": "lectures/unit9_power/slides2.html#summary",
@@ -1638,18 +1649,11 @@
     "text": "Summary\n\nConducting a study we tend to have null \\(H_0\\) and alternative \\(H_1\\) hypotheses\nTested through Null Hypothesis Significance Testing\n\\(p-values\\) are the probability of getting this score or higher if the null distribution were true\nImportant to consider power in all studies we do"
   },
   {
-    "objectID": "lectures/unit9_power/slides2.html#additional-slides",
-    "href": "lectures/unit9_power/slides2.html#additional-slides",
+    "objectID": "lectures/unit9_power/slides2.html#alpha-alpha",
+    "href": "lectures/unit9_power/slides2.html#alpha-alpha",
     "title": "Unit 9 pt.2 - More Power",
-    "section": "Additional Slides",
-    "text": "Additional Slides"
-  },
-  {
-    "objectID": "lectures/unit9_power/slides2.html#alpha",
-    "href": "lectures/unit9_power/slides2.html#alpha",
-    "title": "Unit 9 pt.2 - More Power",
-    "section": "alpha",
-    "text": "alpha\nHistorically, psychologists have chosen to set their \\(\\alpha\\) level at .05, meaning any p-value less than .05 is considered “statistically significant” or the null is rejected.\nThis means that, among the times we examine a relationship that is truly null, we will reject the null 1 in 20 times.\nSome have argued that this is not conservative enough and we should use \\(\\alpha &lt; .005\\) (Benjamin et al., 2018)."
+    "section": "alpha \\(\\alpha\\)",
+    "text": "alpha \\(\\alpha\\)\nHistorically, psychologists have chosen to set their \\(\\alpha\\) level at .05, meaning any p-value less than .05 is considered “statistically significant” or the null is rejected.\nThis means that, among the times we examine a relationship that is truly null, we will reject the null 1 in 20 times.\nSome have argued that this is not conservative enough and we should use \\(\\alpha &lt; .005\\) (Benjamin et al., 2018)."
   },
   {
     "objectID": "lectures/unit9_power/slides2.html#check-in-and-review",
@@ -1657,6 +1661,13 @@
     "title": "Unit 9 pt.2 - More Power",
     "section": "Check-in and Review",
     "text": "Check-in and Review\n\nThe null hypothesis ( \\(H_0\\) ) is a claim about the particular value that a population parameter takes.\nThe alternative hypothesis ( \\(H_1\\) ) states an alternative range of values for the population parameter.\nWe test the null hypothesis by determining if we have sufficient evidence that contradicts or nullifies it.\nWe reject the null hypothesis if the data in hand are rare, unusual, or atypical if the null were true. The alternative hypothesis gains support when the null is rejected, but \\(H_1\\) is not proven."
+  },
+  {
+    "objectID": "lectures/unit9_power/slides2.html#the-therapy-outcomes-power-demonstration",
+    "href": "lectures/unit9_power/slides2.html#the-therapy-outcomes-power-demonstration",
+    "title": "Unit 9 pt.2 - More Power",
+    "section": "The Therapy Outcomes Power Demonstration",
+    "text": "The Therapy Outcomes Power Demonstration\nBackground\nWe’ll examine depression scores (using simulated PHQ-9 data) across different sample sizes to investigate power.\n\n# R code to generate our demonstration data\nset.seed(42)\n# Small effect (2 point reduction in PHQ-9)\nsmall_effect &lt;- function(n) {\n    pre &lt;- rnorm(n, mean=15, sd=5)\n    post &lt;- pre - 2 + rnorm(n, mean=0, sd=3)\n    return(data.frame(pre=pre, post=post))\n}\n\nAnalyze three different “studies” of a new therapy intervention:\n\nSmall clinic (n=10)\nMedium practice (n=30)\nLarge clinical trial (n=100)"
   },
   {
     "objectID": "lectures/unit6_comparing-means/slides2.html#reminders",

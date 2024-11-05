@@ -392,7 +392,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Unit 9 pt.2 - More Power</h1>
-  <p class="subtitle">PSYC 640 - Oct 31, 2024</p>
+  <p class="subtitle">PSYC 640 - Nov 5, 2024</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -479,7 +479,6 @@ Dustin Haraden
 <h2>Calculating Power in R</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource {r} library(pwr)} number-lines code-with-copy"><code class="sourceCode"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We will use the <code>pwr</code> package and a few tutorials you can look at are as follows:</p>
 <div>
 <ul>
@@ -513,7 +512,7 @@ Dustin Haraden
 <div class="column" style="width:50%;">
 <div class="columns">
 <p>First we indicate what it means to have a “medium” effect</p><div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>pwr<span class="sc">::</span><span class="fu">cohen.ES</span>(<span class="at">test =</span> <span class="st">"t"</span>, <span class="at">size =</span> <span class="st">"medium"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>pwr<span class="sc">::</span><span class="fu">cohen.ES</span>(<span class="at">test =</span> <span class="st">"t"</span>, <span class="at">size =</span> <span class="st">"medium"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
      Conventional effect size from Cohen (1982) 
@@ -567,7 +566,7 @@ Dustin Haraden
 <p>where <code>n</code> is the sample size, <code>d</code> is the effect size, <code>power</code> is the power level, and <code>type</code> indicates a two sample t-test, one sample t-test or paired t-test</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">pwr.t.test</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">d =</span> <span class="fl">0.5</span>, <span class="at">sig.level =</span> <span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">pwr.t.test</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">d =</span> <span class="fl">0.5</span>, <span class="at">sig.level =</span> <span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
      Two-sample t test power calculation 
@@ -587,7 +586,7 @@ NOTE: n is number in *each* group</code></pre>
 
 <p>What if we want to get that power to the expected 80%? How many students should we collect data for?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">pwr.t.test</span>(<span class="at">d =</span> <span class="fl">0.5</span>, <span class="at">power =</span> <span class="fl">0.80</span>, <span class="at">sig.level =</span> <span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">pwr.t.test</span>(<span class="at">d =</span> <span class="fl">0.5</span>, <span class="at">power =</span> <span class="fl">0.80</span>, <span class="at">sig.level =</span> <span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
      Two-sample t test power calculation 
@@ -616,11 +615,8 @@ NOTE: n is number in *each* group</code></pre>
 
 
 <img data-src="../../images/preg.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="additional-slides" class="slide level2">
-<h2>Additional Slides</h2>
-</section>
-<section id="alpha" class="slide level2">
-<h2>alpha</h2>
+<section id="alpha-alpha" class="slide level2">
+<h2>alpha <span class="math inline">\(\alpha\)</span></h2>
 <p>Historically, psychologists have chosen to set their <span class="math inline">\(\alpha\)</span> level at .05, meaning any p-value less than .05 is considered “statistically significant” or the null is rejected.</p>
 <p>This means that, among the times we examine a relationship that is truly null, we will reject the null 1 in 20 times.</p>
 <p>Some have argued that this is not conservative enough and we should use <span class="math inline">\(\alpha &lt; .005\)</span> (<a href="../readings/Benjamin_etal_2018.pdf">Benjamin et al., 2018</a>).</p>
@@ -683,6 +679,27 @@ NOTE: n is number in *each* group</code></pre>
 <p>If we do not reject <span class="math inline">\(H_0\)</span>, that does not mean that we accept it. We have simply failed to reject it. It lives to fight another day.</p>
 <p>A <em>Z</em>-statistic summarizes how unusual the sample estimate of a mean compared to the value of the mean as specified by the null hypothesis.</p>
 <p>More broadly, we refer to the <strong>test statistic</strong> as the statistic that summarizes how unusual the sample estimate of a parameter is from the point value specified by the null hypothesis</p>
+</section>
+<section id="the-therapy-outcomes-power-demonstration" class="slide level2">
+<h2>The Therapy Outcomes Power Demonstration</h2>
+<p><strong>Background</strong><br>
+We’ll examine depression scores (using simulated PHQ-9 data) across different sample sizes to investigate power.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="co"># R code to generate our demonstration data</span></span>
+<span id="cb8-2"><a></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb8-3"><a></a><span class="co"># Small effect (2 point reduction in PHQ-9)</span></span>
+<span id="cb8-4"><a></a>small_effect <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb8-5"><a></a>    pre <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean=</span><span class="dv">15</span>, <span class="at">sd=</span><span class="dv">5</span>)</span>
+<span id="cb8-6"><a></a>    post <span class="ot">&lt;-</span> pre <span class="sc">-</span> <span class="dv">2</span> <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">mean=</span><span class="dv">0</span>, <span class="at">sd=</span><span class="dv">3</span>)</span>
+<span id="cb8-7"><a></a>    <span class="fu">return</span>(<span class="fu">data.frame</span>(<span class="at">pre=</span>pre, <span class="at">post=</span>post))</span>
+<span id="cb8-8"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Analyze three different “studies” of a new therapy intervention:</p>
+<ol type="1">
+<li class="fragment"><p>Small clinic (n=10)</p></li>
+<li class="fragment"><p>Medium practice (n=30)</p></li>
+<li class="fragment"><p>Large clinical trial (n=100)</p></li>
+</ol>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -723,7 +740,7 @@ NOTE: n is number in *each* group</code></pre>
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'multiplex': {"secret":null,"id":"b8623fffc7e0b21d","url":"https://reveal-multiplex.glitch.me/"},
+'multiplex': {"secret":null,"id":"2306ebcd8d38f7a1","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
  
         // Display controls in the bottom right corner
