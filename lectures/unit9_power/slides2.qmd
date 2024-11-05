@@ -82,8 +82,6 @@ Controlling Type II errors is the goal of power analysis and must contend with f
 
 ::::::: columns
 :::: {.column width="50%"}
-`{r} library(pwr)}`
-
 We will use the `pwr` package and a few tutorials you can look at are as follows:
 
 ::: nonincremental
@@ -287,8 +285,8 @@ small_effect <- function(n) {
 
 Analyze three different "studies" of a new therapy intervention:
 
-1.   Small clinic (n=10)
+1.  Small clinic (n=10)
 
-2.   Medium practice (n=30)
+2.  Medium practice (n=30)
 
-3.   Large clinical trial (n=100)
+3.  Large clinical trial (n=100)
