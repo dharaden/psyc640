@@ -1,6 +1,6 @@
 ---
 title: "Unit 9 pt.2 - More Power"
-subtitle: "PSYC 640 - Oct 31, 2024"
+subtitle: "PSYC 640 - Nov 5, 2024"
 author: "Dustin Haraden"
 format: 
   revealjs:
@@ -82,8 +82,7 @@ Controlling Type II errors is the goal of power analysis and must contend with f
 
 ::::::: columns
 :::: {.column width="50%"}
-```{r} library(pwr)}
-```
+`{r} library(pwr)}`
 
 We will use the `pwr` package and a few tutorials you can look at are as follows:
 
@@ -188,9 +187,7 @@ Looks like we would need about 64 students *per group.*
 
 ------------------------------------------------------------------------
 
-## Additional Slides
-
-## alpha
+## alpha $\alpha$
 
 Historically, psychologists have chosen to set their $\alpha$ level at .05, meaning any p-value less than .05 is considered "statistically significant" or the null is rejected.
 
@@ -269,3 +266,29 @@ If we do not reject $H_0$, that does not mean that we accept it. We have simply 
 A *Z*-statistic summarizes how unusual the sample estimate of a mean compared to the value of the mean as specified by the null hypothesis.
 
 More broadly, we refer to the **test statistic** as the statistic that summarizes how unusual the sample estimate of a parameter is from the point value specified by the null hypothesis
+
+------------------------------------------------------------------------
+
+## The Therapy Outcomes Power Demonstration
+
+**Background**\
+We'll examine depression scores (using simulated PHQ-9 data) across different sample sizes to investigate power.
+
+```{r}
+# R code to generate our demonstration data
+set.seed(42)
+# Small effect (2 point reduction in PHQ-9)
+small_effect <- function(n) {
+    pre <- rnorm(n, mean=15, sd=5)
+    post <- pre - 2 + rnorm(n, mean=0, sd=3)
+    return(data.frame(pre=pre, post=post))
+}
+```
+
+Analyze three different "studies" of a new therapy intervention:
+
+1.   Small clinic (n=10)
+
+2.   Medium practice (n=30)
+
+3.   Large clinical trial (n=100)
