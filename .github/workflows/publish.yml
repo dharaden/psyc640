@@ -47,6 +47,11 @@ jobs:
             any::psychTools
             any::ggpubr
             any::easystats
+            any::gganimate
+            any::pwr
+            any::transformr
+            any::gifski
+            any::papaja
           cache-version: 1
           needs: website
 

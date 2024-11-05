@@ -486,7 +486,7 @@ Another common misunderstanding is that $1-\alpha$ is the probability that resul
 
 We collect a sample and compare this to a null hypothesis: $H_0: \mu_0 = 100$. Holding our sample mean $(\bar{X} = 105)$ constant, how does our $p$-value change as our sample size gets larger?
 
-```{r, results = 'asis', fig.height = 3.5, cache = T}
+```{r, include=FALSE}
 #| code-fold: true
 #| 
 anim <- data.frame(
@@ -511,10 +511,12 @@ ggplot(aes(x=X, y=density, frame=n)) +
                     state_length = 2) +
   theme_pubr()
 
-animate(anim,
-  renderer = av_renderer()
-)
+#animate(anim, width=500, height=250, renderer=gifski_renderer(loop=TRUE))  
+
+#anim_save("animation.gif")
 ```
+
+![](/images/animation.gif){fig-align="center"}
 
 ------------------------------------------------------------------------
 
