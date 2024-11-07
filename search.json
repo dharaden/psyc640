@@ -2497,6 +2497,13 @@
     "text": "Pop Quiz…jk\n\nWhat do we mean when we say a study was powered to an effect of 0.34?\nWhat does a p-value tell us?\n\nScientists get it wrong"
   },
   {
+    "objectID": "lectures/unit10_categorical/slides.html#what-are-the-steps-of-nhst",
+    "href": "lectures/unit10_categorical/slides.html#what-are-the-steps-of-nhst",
+    "title": "Unit 10 - Categorical Data",
+    "section": "What are the steps of NHST?",
+    "text": "What are the steps of NHST?\n\n\n\nDefine null and alternative hypothesis.\nSet and justify alpha level.\nDetermine which sampling distribution ( \\(z\\), \\(t\\), or \\(\\chi^2\\) for now)\nCalculate parameters of your sampling distribution under the null.\n\n\nIf \\(z\\), calculate \\(\\mu\\) and \\(\\sigma_M\\)\n\n\n\nCalculate test statistic under the null.\n\n\nIf \\(z\\), \\(\\frac{\\bar{X} - \\mu}{\\sigma_M}\\)\n\n\nCalculate probability of that test statistic or more extreme under the null, and compare to alpha."
+  },
+  {
     "objectID": "lectures/unit10_categorical/slides.html#example---coffee-shop",
     "href": "lectures/unit10_categorical/slides.html#example---coffee-shop",
     "title": "Unit 10 - Categorical Data",
