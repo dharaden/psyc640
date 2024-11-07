@@ -656,7 +656,8 @@ ny_expected
 ```
 
 ```{r, highlight=2}
-(chi_square = sum((ny_observed - ny_expected)^2/ny_expected)) (critical_val = qchisq(p = 0.95, df = length(ny_expected)-1))
+(chi_square = sum((ny_observed - ny_expected)^2/ny_expected)) 
+(critical_val = qchisq(p = 0.95, df = length(ny_expected)-1))
 ```
 
 ------------------------------------------------------------------------
@@ -665,7 +666,9 @@ ny_expected
 ```
 
 ```{r, highlight=2}
-(chi_square = sum((ny_observed - ny_expected)^2/ny_expected)) (critical_val = qchisq(p = 0.95, df = length(ny_expected)-1)) (p_val = pchisq(q = chi_square, df = length(ny_expected)-1, lower.tail = F))
+(chi_square = sum((ny_observed - ny_expected)^2/ny_expected)) 
+(critical_val = qchisq(p = 0.95, df = length(ny_expected)-1)) 
+(p_val = pchisq(q = chi_square, df = length(ny_expected)-1, lower.tail = F))
 ```
 
 ------------------------------------------------------------------------
@@ -906,7 +909,8 @@ summary(chapek9)
 There are a few different ways to look at these tables. We can use `xtabs()`
 
 ```{r}
-chapekFreq <- xtabs( ~ choice + species, data = chapek9) chapekFreq
+chapekFreq <- xtabs( ~ choice + species, data = chapek9) 
+chapekFreq
 ```
 
 ------------------------------------------------------------------------
