@@ -46,7 +46,7 @@ set.seed(42)
 
 -   Review Assumptions of chi-square test
 
-    ------------------------------------------------------------------------
+------------------------------------------------------------------------
 
 ## Pop Quiz...jk {.center}
 
@@ -66,9 +66,9 @@ p-values = the probability of getting that score or higher *if the null hypothes
 
 -   **Categorical Data!**
 
-    ------------------------------------------------------------------------
+------------------------------------------------------------------------
 
-    ## What are the steps of NHST?
+## What are the steps of NHST?
 
 ::::: columns
 ::: {.column width="50%"}
