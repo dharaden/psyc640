@@ -32,7 +32,6 @@ library(knitr)
 library(kableExtra)
 library(ggpubr)
 library(patchwork)
-library(gganimate)
 
 set.seed(42)
 ```
