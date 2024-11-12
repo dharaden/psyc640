@@ -1040,7 +1040,7 @@
     "href": "lectures/unit10_categorical/slides2.html#lets-try-it-out",
     "title": "Unit 10 - Categorical Data",
     "section": "Let’s Try it Out!",
-    "text": "Let’s Try it Out!"
+    "text": "Let’s Try it Out!\nWe will use the data about Pokemon (https://www.kaggle.com/datasets/abcsds/pokemon?resource=download)\n\npokemon &lt;- read_csv(\"https://raw.githubusercontent.com/dharaden/psyc640/refs/heads/main/docs/data/Pokemon.csv\")\n\nOther possibilities:\n\nWorld Mental Health: https://www.kaggle.com/datasets/imtkaggleteam/mental-health\nSpotify Songs https://www.kaggle.com/datasets/abdulszz/spotify-most-streamed-songs"
   },
   {
     "objectID": "lectures/unit5_descriptives/slides.html#reminders",
@@ -1160,17 +1160,6 @@
     ]
   },
   {
-    "objectID": "lectures/wk3_visualizations/index.html",
-    "href": "lectures/wk3_visualizations/index.html",
-    "title": "Week 3 - Visualizations",
-    "section": "",
-    "text": "During this lecture, we will explore the functionality of ggplot2 and begin our entry into the tidyverse. For this lecture, have the datasets downloaded and put in the appropriate place in your files\n\nFull Screen",
-    "crumbs": [
-      "Lectures",
-      "3 - Visualizing"
-    ]
-  },
-  {
     "objectID": "lectures/unit10_categorical/index.html",
     "href": "lectures/unit10_categorical/index.html",
     "title": "Unit 10 - Categorical Data",
@@ -1190,6 +1179,39 @@
     "crumbs": [
       "Lectures",
       "10 - Categorical Data"
+    ]
+  },
+  {
+    "objectID": "lectures/unit10_categorical/index.html#november-12-2024",
+    "href": "lectures/unit10_categorical/index.html#november-12-2024",
+    "title": "Unit 10 - Categorical Data",
+    "section": "November 12, 2024",
+    "text": "November 12, 2024\nFull Screen",
+    "crumbs": [
+      "Lectures",
+      "10 - Categorical Data"
+    ]
+  },
+  {
+    "objectID": "lectures/unit4_data-wrangler/index.html",
+    "href": "lectures/unit4_data-wrangler/index.html",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "",
+    "text": "During this section, we will highlight the utility of the dplyr package and further dive into the tidyverse. For this lecture, have the datasets downloaded and put in the appropriate place in your files\nThis is currently situated as a document which you can find below:",
+    "crumbs": [
+      "Lectures",
+      "4 - Data Wrangling"
+    ]
+  },
+  {
+    "objectID": "lectures/unit4_data-wrangler/index.html#link-to-document",
+    "href": "lectures/unit4_data-wrangler/index.html#link-to-document",
+    "title": "Unit 4 - Data Wrangling",
+    "section": "Link to Document",
+    "text": "Link to Document\nThe instructor is working to put these into some beautiful slides :)\nFull Screen",
+    "crumbs": [
+      "Lectures",
+      "4 - Data Wrangling"
     ]
   },
   {
@@ -1465,25 +1487,14 @@
     ]
   },
   {
-    "objectID": "lectures/unit4_data-wrangler/index.html",
-    "href": "lectures/unit4_data-wrangler/index.html",
-    "title": "Unit 4 - Data Wrangling",
+    "objectID": "lectures/wk3_visualizations/index.html",
+    "href": "lectures/wk3_visualizations/index.html",
+    "title": "Week 3 - Visualizations",
     "section": "",
-    "text": "During this section, we will highlight the utility of the dplyr package and further dive into the tidyverse. For this lecture, have the datasets downloaded and put in the appropriate place in your files\nThis is currently situated as a document which you can find below:",
+    "text": "During this lecture, we will explore the functionality of ggplot2 and begin our entry into the tidyverse. For this lecture, have the datasets downloaded and put in the appropriate place in your files\n\nFull Screen",
     "crumbs": [
       "Lectures",
-      "4 - Data Wrangling"
-    ]
-  },
-  {
-    "objectID": "lectures/unit4_data-wrangler/index.html#link-to-document",
-    "href": "lectures/unit4_data-wrangler/index.html#link-to-document",
-    "title": "Unit 4 - Data Wrangling",
-    "section": "Link to Document",
-    "text": "Link to Document\nThe instructor is working to put these into some beautiful slides :)\nFull Screen",
-    "crumbs": [
-      "Lectures",
-      "4 - Data Wrangling"
+      "3 - Visualizing"
     ]
   },
   {
