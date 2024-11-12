@@ -935,7 +935,7 @@
     "href": "lectures/unit10_categorical/slides2.html#last-time",
     "title": "Unit 10 - Categorical Data",
     "section": "Last Time",
-    "text": "Last Time\n\nSteps to Hypothesis testing\n\\(\\chi^2\\) goodness of fit test\n\n\n#library(here)\nlibrary(tidyverse)\nlibrary(sjPlot)\n#library(psych)\n#library(psychTools)\n#library(knitr)\n#library(kableExtra)\n#library(ggpubr)\n#library(patchwork)"
+    "text": "Last Time\n\nSteps to Hypothesis testing\n\\(\\chi^2\\) goodness of fit test\n\n\nlibrary(here)\nlibrary(tidyverse)\nlibrary(sjPlot)"
   },
   {
     "objectID": "lectures/unit10_categorical/slides2.html#today",
@@ -1040,7 +1040,14 @@
     "href": "lectures/unit10_categorical/slides2.html#lets-try-it-out",
     "title": "Unit 10 - Categorical Data",
     "section": "Let’s Try it Out!",
-    "text": "Let’s Try it Out!\nWe will use the data about Pokemon (https://www.kaggle.com/datasets/abcsds/pokemon?resource=download)\n\npokemon &lt;- read_csv(\"https://raw.githubusercontent.com/dharaden/psyc640/refs/heads/main/docs/data/Pokemon.csv\")\n\nOther possibilities:\n\nWorld Mental Health: https://www.kaggle.com/datasets/imtkaggleteam/mental-health\nSpotify Songs https://www.kaggle.com/datasets/abdulszz/spotify-most-streamed-songs"
+    "text": "Let’s Try it Out!\nWe will use the data about Pokemon (https://www.kaggle.com/datasets/abcsds/pokemon?resource=download)\nNavigate to myCourses and download the file (from the Content &gt;&gt; Data folder)\n\npokemon &lt;- read_csv(here(\"docs\", \"data\", \"Pokemon.csv\"))\n\nOther possibilities:\n\nWorld Mental Health: https://www.kaggle.com/datasets/imtkaggleteam/mental-health\nSpotify Songs https://www.kaggle.com/datasets/abdulszz/spotify-most-streamed-songs"
+  },
+  {
+    "objectID": "lectures/unit10_categorical/slides2.html#practice",
+    "href": "lectures/unit10_categorical/slides2.html#practice",
+    "title": "Unit 10 - Categorical Data",
+    "section": "Practice",
+    "text": "Practice\n\nDouble check that the “Total” variable is correct.\n\n“Total” consists of the sum of HP through Speed.\nCreate a sum score of those variables\nCorrelate it with the current “Total”\n\nCreate a Correlation Table for the Stats of the Pokemon\nIdentify a research question (e.g., Are there superior types of Pokemon?)"
   },
   {
     "objectID": "lectures/unit5_descriptives/slides.html#reminders",
