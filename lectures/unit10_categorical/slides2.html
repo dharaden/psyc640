@@ -10,8 +10,8 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.57">
 
-  <meta name="author" content="Dustin Haraden, PhD">
-  <title>PSYC 640 2024 – Figures: Using ggplot2</title>
+  <meta name="author" content="Dustin Haraden">
+  <title>PSYC 640 2024 – Unit 10 - Categorical Data</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -309,7 +309,6 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
-      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -392,344 +391,436 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Figures: Using ggplot2</h1>
-  <p class="subtitle">PSYC 640 - Fall 2024</p>
+  <h1 class="title">Unit 10 - Categorical Data</h1>
+  <p class="subtitle">PSYC 640 - Nov 12, 2024</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Dustin Haraden, PhD 
+Dustin Haraden 
 </div>
 </div>
 </div>
 
 </section>
-<section id="reminders" class="slide level2">
-<h2>Reminders</h2>
-<div>
+<section id="last-time" class="slide level2">
+<h2>Last Time</h2>
 <ul>
-<li><p>Journal Entries</p></li>
-<li><p>Reverse Results - Due 9/17</p></li>
+<li class="fragment"><p>Steps to Hypothesis testing</p></li>
+<li class="fragment"><p><span class="math inline">\(\chi^2\)</span> goodness of fit test</p></li>
 </ul>
-</div>
-</section>
-<section id="last-class" class="slide level2">
-<h2>Last Class</h2>
-<div>
-<ul>
-<li>The workflow
-<ul>
-<li>Starting with a Project and going from there</li>
-</ul></li>
-</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co">#library(here)</span></span>
+<span id="cb1-2"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb1-4"><a></a><span class="co">#library(psych)</span></span>
+<span id="cb1-5"><a></a><span class="co">#library(psychTools)</span></span>
+<span id="cb1-6"><a></a><span class="co">#library(knitr)</span></span>
+<span id="cb1-7"><a></a><span class="co">#library(kableExtra)</span></span>
+<span id="cb1-8"><a></a><span class="co">#library(ggpubr)</span></span>
+<span id="cb1-9"><a></a><span class="co">#library(patchwork)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="today" class="slide level2">
 <h2>Today…</h2>
-<p>Working with <code>ggplot2</code> to get some really fancy visualizations!</p>
-<p>Maybe integrating some generative AI (ChatGPT) to help us out too</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># File management</span></span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(here)</span>
-<span id="cb1-3"><a></a><span class="co"># for dplyr, ggplot2</span></span>
-<span id="cb1-4"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-5"><a></a><span class="co">#Loading data</span></span>
-<span id="cb1-6"><a></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-7"><a></a></span>
-<span id="cb1-8"><a></a><span class="co">#for the penguins dataset</span></span>
-<span id="cb1-9"><a></a><span class="co">#install.packages('palmerpenguins')</span></span>
-<span id="cb1-10"><a></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb1-11"><a></a></span>
-<span id="cb1-12"><a></a><span class="co">#Remove Scientific Notation </span></span>
-<span id="cb1-13"><a></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="starting-out" class="slide level2">
-<h2>Starting out</h2>
-<p>Let’s first start by opening our <strong><code>Project</code></strong></p>
-<p>Then, create a new Notebook/Markdown Document that we will use for today</p>
-<p>Setup the libraries and bring in the data</p>
 <ul>
-<li>We will use the “Sleep Data” file as well</li>
+<li class="fragment"><p>The chi-square test of independence (<a href="https://learningstatisticswithr.com/book/chisquare.html#chisqindependence">Book Chapter 12.2</a>)</p></li>
+<li class="fragment"><p>Review the process of running analyses</p></li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co">#import sleep data - Your path may be different</span></span>
-<span id="cb2-2"><a></a>sleep_data <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"lectures"</span>, <span class="st">"data"</span>, <span class="st">"Sleep_Data.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
-<section id="take-a-look-at-the-data" class="slide level2">
-<h2>Take a look at the data</h2>
-<p>Will be using a dataset from the <code>palmerpenguins</code> library (<a href="https://allisonhorst.github.io/palmerpenguins/articles/intro.html#exploring-distributions">link</a>) which is a dataset about…<a href="https://www.youtube.com/watch?v=-GnLDJAgrws">penguins</a>. This function will pull that data into our environment:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">data</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section>
-<section id="ggplot2" class="title-slide slide level1 center">
-<h1><code>ggplot2</code></h1>
-
-</section>
-<section id="ggplot2-from-the-tidyverse" class="slide level2">
-<h2><code>ggplot2</code> from the <code>tidyverse</code></h2>
-<p>Since we have already installed and loaded the library, we don’t have to do anything else at this point!</p>
-<p><code>ggplot2</code> follows the “grammar of graphics”</p>
+<section id="check-in" class="slide level2 center">
+<h2>Check-in</h2>
+<div>
 <ul>
-<li>Theoretical framework for creating data visualizations</li>
-<li>Breaks the process down into separate components:</li>
+<li><p>Next couple of weeks - Faculty Interviews</p></li>
+<li><p>Family things</p></li>
+<li><p>Take care of yourself</p></li>
 </ul>
+</div>
+</section>
+<section id="the-steps-of-nhst" class="slide level2">
+<h2>The Steps of NHST</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p>Data</p>
-<p>Aesthetics (<code>aes</code>)</p>
-<p>Geometric Objects (<code>geoms</code>)</p>
+<ol type="1">
+<li class="fragment"><p>Define null and alternative hypothesis.</p></li>
+<li class="fragment"><p>Set and justify alpha level.</p></li>
+<li class="fragment"><p>Determine which sampling distribution ( <span class="math inline">\(z\)</span>, <span class="math inline">\(t\)</span>, or <span class="math inline">\(\chi^2\)</span> for now)</p></li>
+<li class="fragment"><p>Calculate parameters of your sampling distribution under the null.</p></li>
+</ol>
+<ul>
+<li class="fragment">If <span class="math inline">\(z\)</span>, calculate <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma_M\)</span></li>
+</ul>
 </div><div class="column" style="width:50%;">
-<p>Faceting</p>
-<p>Themes</p>
+<ol start="5" type="1">
+<li class="fragment">Calculate test statistic under the null.</li>
+</ol>
+<ul>
+<li class="fragment">If <span class="math inline">\(z\)</span>, <span class="math inline">\(\frac{\bar{X} - \mu}{\sigma_M}\)</span></li>
+</ul>
+<ol start="6" type="1">
+<li class="fragment">Calculate probability of that test statistic or more extreme under the null, and compare to alpha.</li>
+</ol>
 </div></div>
 </section>
-<section id="grammar-of-graphics" class="slide level2">
-<h2>Grammar of Graphics</h2>
-<p><a href="https://gkesari.medium.com/my-talk-on-grammar-of-graphics-the-secret-sauce-of-powerful-data-stories-3da618cf1bbf"><img data-src="../../images/grammargraphics.webp" width="779"></a></p>
+<section id="the-realistic-steps-of-nhst" class="slide level2">
+<h2>The Realistic Steps of NHST</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ol type="1">
+<li class="fragment"><p>Identify your hypothesis.</p></li>
+<li class="fragment"><p>Determine the null hypothesis (if different from being 0)</p></li>
+<li class="fragment"><p>Choose the statistical test</p></li>
+<li class="fragment"><p>Make sure your data are formatted appropriately</p></li>
+</ol>
+</div><div class="column" style="width:50%;">
+<ol start="5" type="1">
+<li class="fragment">Run the test</li>
+<li class="fragment">Interpret the effect size of interest</li>
+<li class="fragment">Examine the p-value and come to a conclusion</li>
+</ol>
+</div></div>
+</section>
+<section id="the-usefulness-of-chi2" class="slide level2">
+<h2>The usefulness of <span class="math inline">\(\chi^2\)</span></h2>
+<p>How often will you conducted a <span class="math inline">\(\chi^2\)</span> goodness of fit test on raw data?</p>
+<ul>
+<li class="fragment">(Probably) never</li>
+</ul>
+<p>How often will you come across <span class="math inline">\(\chi^2\)</span> tests?</p>
+<ul>
+<li class="fragment">(Probably) a lot!</li>
+</ul>
+<p>The goodness of fit test is used to statistically test the how well a model fits data</p>
+</section>
+<section id="model-fit-with-chi2" class="slide level2">
+<h2>Model Fit with <span class="math inline">\(\chi^2\)</span></h2>
+<p>To calculate Goodness of Fit of a model to data, you build a statistical model of the process as you believe it is in the world.</p>
+<div>
+<ul>
+<li>example: depression ~ age + parental history of depression</li>
+</ul>
+</div>
+<ul>
+<li class="fragment"><p>Then you estimate each subject’s predicted/expected value based on your model.</p></li>
+<li class="fragment"><p>You compare each subject’s predicted value to their actual value – the difference is called the <strong>residual</strong> ( <span class="math inline">\(\varepsilon\)</span> ).</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>If your model is a good fit, then</p>
+<p><span class="math display">\[\Sigma_1^N\varepsilon^2 = \chi^2\]</span></p>
+<ul>
+<li class="fragment"><p>We would then compare that to the distribution of the Null: <span class="math inline">\(\chi^2_{N-p}\)</span> .</p></li>
+<li class="fragment"><p>Significant chi-square tests suggest the model does not fit – the data have values that are far away from “expected.”</p></li>
+</ul>
+</section>
+<section>
+<section id="chi2-test-of-independence-or-association" class="title-slide slide level1 center">
+<h1><span class="math inline">\(\chi^2\)</span> test of independence or association</h1>
+
+</section>
+<section id="chi2-test-of-independence-or-association-1" class="slide level2">
+<h2><span class="math inline">\(\chi^2\)</span> test of independence or association</h2>
+<p>The tests that we conducted last class, we were focused on the way our data (NY Students Superpower Preferences) “fit” to the data of an expected distribution (US Student Superpower Preferences)</p>
+<p>Although this could be interesting, sometimes we have two categorical variables that we want to compare to one another</p>
+<ul>
+<li class="fragment">Example: How do types of traffic stops differ by the gender identity of the police officer?</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>Let’s take a look at a scenario:</p>
+<p>We are part of a delivery company called Planet Express</p>
+
+<img data-src="images/Planet_express.webp" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section class="slide level2">
+
+<p>Let’s take a look at a scenario:</p>
+<p>We are part of a delivery company called Planet Express</p>
+<p>We have been tasked to deliver a package to Chapek 9</p>
+
+<img data-src="images/Chapek_9.webp" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section class="slide level2">
+
+<p>Let’s take a look at a scenario:</p>
+<p>We are part of a delivery company called Planet Express</p>
+<p>We have been tasked to deliver a package to Chapek 9</p>
+<p>Unfortunately, the planet is inhabited completely by robots and humans are not allowed</p>
+<p>In order to deliver the package, we have to go through the guard gate and prove that we are able to gain access</p>
+</section>
+<section class="slide level2">
+
+<h3 id="at-the-guard-gate">At the guard gate</h3>
+<blockquote>
+<p><em>(Robot Voice)</em></p>
+<p>WHICH OF THE FOLLOWING WOULD YOU MOST PREFER?</p>
+<p>A: A Puppy</p>
+<p>B: A pretty flower from your sweetie</p>
+<p>C: A large properly-formatted data file</p>
+<p>CHOOSE NOW!</p>
+</blockquote>
+<ul>
+<li class="fragment">Clearly an ingenious test that will catch any imposters!</li>
+<li class="fragment"><strong><em>But what if humans and robots have similar preferences?</em></strong></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>Luckily, I have connections with Chapek 9 and we can see if there are any similarities between the responses.</p>
+<p>Let’s work through how to do a <span class="math inline">\(\chi^2\)</span> test of independence (or association)</p>
+<p>First, we have to load in the data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>chapek9 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/chapek9.csv"</span>) <span class="sc">%&gt;%</span>    </span>
+<span id="cb2-2"><a></a>  <span class="fu">mutate</span>(<span class="at">choice =</span> <span class="fu">as.factor</span>(choice),           </span>
+<span id="cb2-3"><a></a>         <span class="at">species =</span> <span class="fu">as.factor</span>(species))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="chapek-9-data" class="slide level2">
+<h2>Chapek 9 Data</h2>
+<p>Take a peek at the data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">head</span>(chapek9) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  species choice
+1   robot flower
+2   human   data
+3   human   data
+4   human   data
+5   robot   data
+6   human flower</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># or  </span></span>
+<span id="cb5-2"><a></a><span class="co">#glimpse(chapek9)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="chapek-9-data-1">Chapek 9 Data</h3>
+<p>Look at the summary stats for the data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">summary</span>(chapek9) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  species      choice   
+ human:93   data  :109  
+ robot:87   flower: 43  
+            puppy : 28  </code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="chapek-9-data---cross-tabs">Chapek 9 Data - Cross Tabs</h3>
+<p>There are a few different ways to look at these tables. We can use <code>xtabs()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>chapekFreq <span class="ot">&lt;-</span> <span class="fu">xtabs</span>( <span class="sc">~</span> choice <span class="sc">+</span> species, <span class="at">data =</span> chapek9) </span>
+<span id="cb8-2"><a></a>chapekFreq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        species
+choice   human robot
+  data      65    44
+  flower    13    30
+  puppy     15    13</code></pre>
+</div>
+</div>
+</section>
+<section id="constructing-hypotheses" class="slide level2">
+<h2>Constructing Hypotheses</h2>
+<p>Research hypothesis states that “humans and robots answer the question in different ways”</p>
+<p>Now our notation has two subscript values?? What torture is this??</p>
+
+<img data-src="images/Greek_breakdown-01.PNG" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="constructing-hypotheses-1" class="slide level2">
+<h2>Constructing Hypotheses</h2>
+<p>Once we have this established, we can take a look at the null</p>
+
+<img data-src="images/Null_prob.PNG" class="quarto-figure quarto-figure-center r-stretch"><ul>
+<li class="fragment"><p>Claiming now that the true choice probabilities don’t depend on the species making the choice ( <span class="math inline">\(P_i\)</span> )</p></li>
+<li class="fragment"><p>However, we don’t know what the <strong><em>expected</em></strong> probability would be for each answer choice</p>
+<ul>
+<li class="fragment">We have to calculate the totals of each row/column</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="chapek-9-data---cross-tabs-1">Chapek 9 Data - Cross Tabs</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Let’s use R to make the table look fancy and calculate the totals for us!</p>
+<p>We will use the library <code>sjPlot</code> (<a href="https://strengejacke.github.io/sjPlot/reference/index.html#descriptive-statistics-tables">link</a>)</p>
+<div class="cell" data-codefold="true">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">tab_xtab</span>(<span class="at">var.row =</span> chapek9<span class="sc">$</span>choice,</span>
+<span id="cb10-2"><a></a>         <span class="at">var.col =</span> chapek9<span class="sc">$</span>species, </span>
+<span id="cb10-3"><a></a>         <span class="at">title =</span> <span class="st">"Chapek 9 Frequencies"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<table style="border-collapse:collapse; border:none;">
+<caption style="font-weight: bold; text-align:left;">Chapek 9 Frequencies</caption>
+ <tbody><tr>
+ <th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">choice</th>
+ <th style="border-top:double; text-align:center; font-style:italic; font-weight:normal;" colspan="2">species</th>
+ <th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; font-weight:bolder; font-style:italic; border-bottom:1px solid; " rowspan="2">Total</th>
+ </tr>
+ 
+<tr>
+ <td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">human</td>
+ <td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">robot</td>
+ </tr>
+ 
+<tr> 
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">data</td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">65</span></td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">44</span></td>
+<td style="padding:0.2cm; text-align:center;  "><span style="color:black;">109</span></td> 
+</tr>
+ 
+<tr> 
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">flower</td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">13</span></td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">30</span></td>
+<td style="padding:0.2cm; text-align:center;  "><span style="color:black;">43</span></td> 
+</tr>
+ 
+<tr> 
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">puppy</td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">15</span></td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">13</span></td>
+<td style="padding:0.2cm; text-align:center;  "><span style="color:black;">28</span></td> 
+</tr>
+ 
+<tr> 
+<td style="padding:0.2cm;  border-bottom:double; font-weight:bolder; font-style:italic; text-align:left; vertical-align:middle;">Total</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;"><span style="color:black;">93</span></td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;"><span style="color:black;">87</span></td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;"><span style="color:black;">180</span></td> 
+</tr>
+<tr><td style="text-align:right; font-size:0.9em; font-style:italic; padding:0.2cm;" colspan="4">χ<sup>2</sup>=10.722 · df=2 · Cramer's V=0.244 · p=0.005</td> 
+</tr>
+ 
+</tbody></table>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="note-about-degrees-of-freedom">Note about degrees of freedom</h3>
+<p>Degrees of freedom comes from the number of data points that you have, minus the number of constraints</p>
+<ul>
+<li class="fragment"><p>Using contingency tables (or cross-tabs), the data points we have are <span class="math inline">\(rows * columns\)</span></p></li>
+<li class="fragment"><p>There will be two constraints and <span class="math inline">\(df = (rows-1) * (columns-1)\)</span></p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>We now have all the pieces for a <span class="math inline">\(classic\)</span> Null Hypothesis Significance Test</p>
+<p>But we have these computers, so why not use them?</p>
+<p>Using the <code>associationTest()</code> from the <code>lsr</code> library</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>lsr<span class="sc">::</span><span class="fu">associationTest</span>(<span class="at">formula =</span> <span class="sc">~</span>choice<span class="sc">+</span>species, </span>
+<span id="cb11-2"><a></a>                     <span class="at">data =</span> chapek9)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     Chi-square test of categorical association
+
+Variables:   choice, species 
+
+Hypotheses: 
+   null:        variables are independent of one another
+   alternative: some contingency exists between variables
+
+Observed contingency table:
+        species
+choice   human robot
+  data      65    44
+  flower    13    30
+  puppy     15    13
+
+Expected contingency table under the null hypothesis:
+        species
+choice   human robot
+  data    56.3  52.7
+  flower  22.2  20.8
+  puppy   14.5  13.5
+
+Test results: 
+   X-squared statistic:  10.722 
+   degrees of freedom:  2 
+   p-value:  0.005 
+
+Other information: 
+   estimated effect size (Cramer's v):  0.244 </code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p>Maybe we want to keep it traditional and use <code>chisq.test()</code> will there be a difference?</p>
+<p><a href="https://learningstatisticswithr.com/book/chisquare.html#chisq.test">Book Ch 12.6 - The most typical way to do a chi-square test in R</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>chi <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(<span class="fu">table</span>(chapek9<span class="sc">$</span>choice, chapek9<span class="sc">$</span>species)) </span>
+<span id="cb13-2"><a></a>chi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test
+
+data:  table(chapek9$choice, chapek9$species)
+X-squared = 10.722, df = 2, p-value = 0.004697</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p>But what if we want to visualize it? Use <code>sjPlot</code> again</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">plot_xtab</span>(chapek9<span class="sc">$</span>choice,</span>
+<span id="cb15-2"><a></a>          chapek9<span class="sc">$</span>species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides2_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<p>Let’s clean that up a little bit more</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">plot_xtab</span>(chapek9<span class="sc">$</span>choice, chapek9<span class="sc">$</span>species, </span>
+<span id="cb16-2"><a></a>          <span class="at">margin =</span> <span class="st">"row"</span>, <span class="at">bar.pos =</span> <span class="st">"stack"</span>, <span class="at">coord.flip =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides2_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
+<section id="writing-it-up" class="slide level2">
+<h2>Writing it up</h2>
+<blockquote>
+<p>Pearson’s <span class="math inline">\(\chi^2\)</span> revealed a significant association between species and choice ( <span class="math inline">\(\chi^2 (2) =\)</span> 10.7, <span class="math inline">\(p\)</span> &lt; .01), such that robots appeared to be more likely to say that they prefer flowers, but the humans were more likely to say they prefer data.</p>
+</blockquote>
+</section>
+<section id="assumptions-of-the-test" class="slide level2">
+<h2>Assumptions of the test</h2>
+<ul>
+<li class="fragment"><p>The expected frequencies are rather large</p></li>
+<li class="fragment"><p>Data are independent of one another</p></li>
+</ul>
 </section></section>
 <section>
-<section id="ggplot2-cheatsheet" class="title-slide slide level1 center">
-<h1><code>ggplot2</code> <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf">cheatsheet</a></h1>
+<section id="back-to-the-future" class="title-slide slide level1 center">
+<h1>Back to the Future</h1>
 
+<img data-src="../../images/delorean.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="working-with-data" class="slide level2">
+<h2>Working with Data</h2>
+<p>We are going to start from the beginning and walk through some of the components to work with data from the start</p>
+<p>This will prep everyone for the group based lab next class where similar types of questions will be asked.</p>
 </section>
-<section id="ggplot2-syntax" class="slide level2 smaller scrollable">
-<h2><code>ggplot2</code> syntax</h2>
-<p>There is a basic structure to create a plot within <code>ggplot2</code>, and consists of at least these three things:</p>
+<section id="typical-steps" class="slide level2">
+<h2>Typical Steps</h2>
 <ol type="1">
-<li>A Data Set</li>
-<li>Coordinate System</li>
-<li>Geoms - visual marks to represent the data points</li>
+<li class="fragment">Import Data</li>
+<li class="fragment">Determine Hypothesis/Goal of Analyses</li>
+<li class="fragment">Compute Variables/Data Wrangling</li>
+<li class="fragment">Provide Descriptives &amp; Correlations</li>
+<li class="fragment">Perform Statistical Test &amp; Interpret</li>
 </ol>
-<p>In R it looks like this:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="sc">&lt;</span>DATA<span class="sc">&gt;</span>) <span class="sc">+</span> </span>
-<span id="cb4-2"><a></a>  <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>))</span>
-<span id="cb4-3"><a></a></span>
-<span id="cb4-4"><a></a><span class="co">#or how I like to do it</span></span>
-<span id="cb4-5"><a></a><span class="sc">&lt;</span>DATA<span class="sc">&gt;</span> <span class="sc">%&gt;%</span> </span>
-<span id="cb4-6"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>)) <span class="sc">+</span> </span>
-<span id="cb4-7"><a></a>  <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
-<section id="ggplot2-syntax-1" class="slide level2">
-<h2><code>ggplot2</code> syntax</h2>
-<p>Let’s start with a basic figure with <code>palmerpenguins</code></p>
-<p><strong>First</strong> we will define the data that we are using and the variables we are visualizing</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co">#the dataset is called penguins</span></span>
-<span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb5-4"><a></a>  <span class="co">#including the variables we want to visualize</span></span>
-<span id="cb5-5"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb5-6"><a></a>             <span class="at">y =</span> body_mass_g))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>What happens?</p>
-</section>
-<section class="slide level2">
-
-<p>We forgot to tell it what to do with the data!</p>
-
-<img data-src="../../images/data-aes.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section class="slide level2">
-
-<p>Need to add the appropriate <code>geom</code> to have it plot points for each observation</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb6-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb6-3"><a></a>             <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> </span>
-<span id="cb6-4"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong><em><br>
-Note:</em></strong> the <code>geom_point()</code> layer will inherit what is in the <code>aes()</code> in the previous layer</p>
-</section>
-<section id="adding-in-color" class="slide level2">
-<h2>Adding in Color</h2>
-<p>Maybe we would like to have each of the points colored by their respective <code>species</code></p>
-<p>This information will be added to the <code>aes()</code> within the <code>geom_point()</code> layer</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb7-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb7-3"><a></a>             <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> </span>
-<span id="cb7-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="including-a-fit-line" class="slide level2">
-<h2>Including a fit line</h2>
-<p>Why don’t we put in a line that represents the relationship between these variables?</p>
-<p>We will want to add another layer/geom</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb8-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb8-3"><a></a>             <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> </span>
-<span id="cb8-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span> </span>
-<span id="cb8-5"><a></a>  <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><br>
-That looks a little wonky…why is that? Did you get a note in the console?</p>
-</section>
-<section id="including-a-fit-line-1" class="slide level2">
-<h2>Including a fit line</h2>
-<p>The <code>geom_smooth()</code> defaults to using a loess line to fit to the data</p>
-<p>In order to update that, we need to change some of the defaults for that layer and specify that we want a “linear model” or <code>lm</code> function to the data</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb9-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb9-3"><a></a>             <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> </span>
-<span id="cb9-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span> </span>
-<span id="cb9-5"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">'lm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><br>
-Did that look a little better?</p>
-</section>
-<section id="individual-fit-lines" class="slide level2">
-<h2>Individual fit lines</h2>
-<p>It might make more sense to have individual lines for each of the species instead of something that is across all</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb10-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb10-3"><a></a>             <span class="at">y =</span> body_mass_g, </span>
-<span id="cb10-4"><a></a>             <span class="at">color =</span> species)) <span class="sc">+</span> </span>
-<span id="cb10-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb10-6"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">'lm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><br>
-What did we move around from the last set of code?</p>
-</section>
-<section id="updating-labelstitle" class="slide level2">
-<h2>Updating Labels/Title</h2>
-<p>It will default to including the variable names as the <code>x</code> and <code>y</code> labels, but that isn’t something that makes sense. Also would be good to have a title!</p>
-<p>We add on another layer called <code>labs()</code> for our labels (<a href="https://ggplot2.tidyverse.org/reference/labs.html">link</a>)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb11-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb11-3"><a></a>             <span class="at">y =</span> body_mass_g, </span>
-<span id="cb11-4"><a></a>             <span class="at">color =</span> species)) <span class="sc">+</span> </span>
-<span id="cb11-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb11-6"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">'lm'</span>) <span class="sc">+</span> </span>
-<span id="cb11-7"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb11-8"><a></a>    <span class="at">title =</span> <span class="st">"Palmer Penguins"</span>,</span>
-<span id="cb11-9"><a></a>    <span class="at">subtitle =</span> <span class="st">"Body Mass by Flipper Length"</span>, </span>
-<span id="cb11-10"><a></a>    <span class="at">x =</span> <span class="st">"Flipper Length (mm)"</span>, </span>
-<span id="cb11-11"><a></a>    <span class="at">y =</span> <span class="st">"Body Mass (g)"</span>, </span>
-<span id="cb11-12"><a></a>    <span class="at">color =</span> <span class="st">"Species"</span></span>
-<span id="cb11-13"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="penguin-histogram" class="slide level2">
-<h2>Penguin Histogram</h2>
-<p>Taken from the website for <code>palmerpenguins</code> (<a href="https://allisonhorst.github.io/palmerpenguins/articles/intro.html#exploring-distributions">link</a>)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb12-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm)) <span class="sc">+</span></span>
-<span id="cb12-3"><a></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">fill =</span> species), </span>
-<span id="cb12-4"><a></a>                   <span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
-<span id="cb12-5"><a></a>                   <span class="at">position =</span> <span class="st">"identity"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section></section>
-<section>
-<section id="now-our-own-data" class="title-slide slide level1 center">
-<h1>Now our own data! 🎉</h1>
-
-</section>
-<section id="sleep-data" class="slide level2">
-<h2>Sleep Data</h2>
-<p>Let’s start by looking at our data. You can either click on the dataset in the <code>Environment</code> or use the <code>View(sleep_data)</code> command. Here, I am using the <code>head()</code> command just to visualize a sample of the data for the slides.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">head</span>(sleep_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>            StartDate             EndDate Status Progress Duration__in_seconds_
-1 2017-08-16 13:13:06 2017-08-16 13:15:13      0      100                   126
-2 2017-08-16 13:17:16 2017-08-16 13:19:03      0      100                   106
-3 2017-11-27 16:59:07 2017-11-27 17:07:27      0      100                   499
-4 2017-11-27 18:57:16 2017-11-27 19:13:00      0      100                   943
-5 2017-11-27 18:54:35 2017-11-27 19:14:12      0      100                  1177
-6 2017-11-27 19:41:14 2017-11-27 19:46:48      0      100                   333
-  Finished        RecordedDate DistributionChannel UserLanguage Q5 Q7 Q8 Q12
-1        1 2017-08-16 13:15:14           anonymous           EN 12  2  2   3
-2        1 2017-08-16 13:19:03           anonymous           EN  1  2  2   1
-3        1 2017-11-27 17:07:27           anonymous           EN 19  1  2   1
-4        1 2017-11-27 19:13:00           anonymous           EN 18  2  2   2
-5        1 2017-11-27 19:14:13           anonymous           EN 21  1  2   2
-6        1 2017-11-27 19:46:48           anonymous           EN 18  2  1   3
-  Q13_1 Q13_2 Q13_3 Q13_4 Q13_5 Q13_6 Q13_7 Q13_8 Q13_9 Q13_10 Q14_1 Q14_2
-1     2     2     2    NA     2     2     2     2     2      2     2     2
-2     1     1     1    NA     2     3     2     3     2      3     4     2
-3     1     2     2     5     3     4     1     1     2      1     5     5
-4     3     4     5     5     5     5     5     5     5      1     5     5
-5     1     2     2     5     4     2     2     1     1      2     5     5
-6     1     2     4     5     4     2     4     4     5      4     5     5
-  Q14_3 Q14_4 Q14_5 Q14_6 Q14_7 Q14_8 Q11_1 Q11_2 Q11_3 Q11_4 Q11_5 Q11_6 Q17_1
-1     2     2     2    NA     2     2     2     3     3     4     4     3     2
-2     4     4     4    NA     4     4     4     4     4     4     4     4     2
-3     5     5     1     1     1     1     4     5     4     4     5     4     4
-4     5     5     5     1     5     5     2     3     4     3     1     1     4
-5     5     5     2     1     3     4     2     1     4     3     4     2     2
-6     5     5     4     1     4     3     1     4     2     2     4     5     2
-  Q17_2 Q17_3 Q17_4 Q18_1 Q18_2 Q18_3 Q18_4 Q18_5 Q20_1 Q20_2 Q21_1 Q21_2 Q21_3
-1     3     3     2     2     2     2     3     1     1     2     4     3     3
-2     2     1     2     3     1     1     1     1     2     3     5     4     4
-3     2     1     4     3     1     4     1     2     3     3     1     2     3
-4     4     1     3     4     1     2     1     1     4     2     5     2     1
-5     2     2     4     3     1     1     1     2     3     3     4     1     3
-6     4     3     4     4     1     1     1     4     6     5     4     4     5
-  Q21_4 Q21_5 Q21_6 Q22_1 Q22_2 Q22_3 Q22_4 Q22_5 Q23_1 Q23_2 Q23_3 Q23_4 Q23_5
-1    NA     5     3     3     2     1     2     3     4     5     3     3     2
-2    NA     2     2     2     3     4     5     5     5     5     4     3     3
-3     4     1     1     5     4     3     4     4     5     6     2     5     5
-4     4     1     1     2     5     1     6     1     6     6     2     5     6
-5     4     1     2     3     4     1     4     2     2     6     3     5     5
-6     4     1     2     2     2     3     4     3     4     5     2     3     3
-  Q23_6 Q23_7 Q23_8 Q24_1 Q24_2 Q24_3 Q24_4 Q24_5 Q25_1 Q25_2 Q25_3 Q25_4 Q25_5
-1    NA     3     3     3     3     3     3     3     3     3     3    NA     4
-2    NA     3     3     3     3     2     2     1     1     2     1    NA     1
-3     1     1     3     1     1     1     1     2     3     4     2     1     1
-4     1     3     1     1     6     2     1     1     4     2     6     1     6
-5     1     2     2     1     2     2     1     2     5     4     2     1     1
-6     1     2     4     4     5     1     2     6     6     3     5     1     3
-  Q26_1 Q26_2 Q27_1 Q27_2 SC0 SC1 SC2 SC3 SC4 SC5    id Attention
-1     3     3     3     3  19  11  19  14  82   0 15516        NA
-2     1     1     1     1  24   5  24  26  79   0 15516        NA
-3     3     1     4     1  26  13  26  23  70   0 17915        NA
-4     4     4     1     1  14  12  14  35  89   0 17648        NA
-5     5     2     5     5  16   9  16  29  76   0 17799        NA
-6     5     1     6     6  18  15  18  31  99   0 18003        NA</code></pre>
-</div>
-</div>
-<p><strong><em>What do these variables mean? Who does this?</em></strong></p>
-</section>
-<section id="data-documentation" class="slide level2">
-<h2>Data Documentation</h2>
-<p>It is always important to have appropriate data documentation!</p>
-<p>If you can’t look at your data and know what it means right away, you aren’t going to remember what it means later on.</p>
-<p>Sleep Data Documentation - <a href="https://mycourses.rit.edu/d2l/le/content/1101433/viewContent/10311985/View" target="_blank">myCourses</a></p>
-</section>
-<section id="visualizing-demographics" class="slide level2">
-<h2>Visualizing Demographics</h2>
-<p>“Q5” - <em>What is your age in years? (open text)</em></p>
-<p>This is a free text field…is that a good way to get quality data?</p>
-<p>Let’s see if everyone followed directions. Check the “structure” of the variable</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="co"># Here we use str() to check structure of a variable</span></span>
-<span id="cb15-2"><a></a>  <span class="co"># Then we state the data and the variable, linked by the $</span></span>
-<span id="cb15-3"><a></a><span class="fu">str</span>(sleep_data<span class="sc">$</span>Q5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> int [1:1520] 12 1 19 18 21 18 18 18 18 18 ...</code></pre>
-</div>
-</div>
-</section>
-<section id="giving-it-a-try" class="slide level2">
-<h2>Giving it a try</h2>
-<p>Use the <a href="https://rstudio.github.io/cheatsheets/data-visualization.pdf" target="_blank">ggplot cheatsheet</a> to identify an appropriate way to visualize the data</p>
-<ul>
-<li><p>Add some color</p></li>
-<li><p>Update the title and axes</p></li>
-</ul>
-<p>When you are done, <a href="https://docs.google.com/document/d/10fVTcIyTo-TQskKOgvL-BVCiN6vaGb2B96krBDaGQ2g/edit?usp=sharing" target="_blank"><strong>post your creation here!</strong></a></p>
+<section id="lets-try-it-out" class="slide level2">
+<h2>Let’s Try it Out!</h2>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -770,7 +861,7 @@ What did we move around from the last set of code?</p>
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'multiplex': {"secret":"17313858251363150921","id":"c7acef599ce66464","url":"https://reveal-multiplex.glitch.me/"},
+'multiplex': {"secret":null,"id":"8cb8eb9d1a1487a6","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -944,7 +1035,7 @@ What did we move around from the last set of code?</p>
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
-          RevealNotes,
+          
           RevealSearch,
           RevealZoom
         ]
