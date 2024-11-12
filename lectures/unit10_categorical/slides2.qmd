@@ -24,15 +24,10 @@ editor_options:
 -   $\chi^2$ goodness of fit test
 
 ```{r, results = 'hide', message = F, warning = F}
-#library(here)
+library(here)
 library(tidyverse)
 library(sjPlot)
-#library(psych)
-#library(psychTools)
-#library(knitr)
-#library(kableExtra)
-#library(ggpubr)
-#library(patchwork)
+
 ```
 
 ------------------------------------------------------------------------
@@ -396,8 +391,10 @@ This will prep everyone for the group based lab next class where similar types o
 
 We will use the data about Pokemon (<https://www.kaggle.com/datasets/abcsds/pokemon?resource=download>)
 
+Navigate to myCourses and download the file (from the Content \>\> Data folder)
+
 ```{r}
-pokemon <- read_csv("https://raw.githubusercontent.com/dharaden/psyc640/refs/heads/main/docs/data/Pokemon.csv")
+pokemon <- read_csv(here("docs", "data", "Pokemon.csv"))
 ```
 
 Other possibilities:
@@ -405,3 +402,14 @@ Other possibilities:
 -   World Mental Health: <https://www.kaggle.com/datasets/imtkaggleteam/mental-health>
 
 -   Spotify Songs <https://www.kaggle.com/datasets/abdulszz/spotify-most-streamed-songs>
+
+------------------------------------------------------------------------
+
+## Practice
+
+1.  Double check that the "Total" variable is correct.
+    1.  "Total" consists of the sum of HP through Speed.
+    2.  Create a sum score of those variables
+    3.  Correlate it with the current "Total"
+2.  Create a Correlation Table for the Stats of the Pokemon
+3.  Identify a research question (e.g., Are there superior types of Pokemon?)
