@@ -1,0 +1,395 @@
+---
+title: "Unit 10 - Categorical Data"
+subtitle: "PSYC 640 - Nov 12, 2024"
+author: "Dustin Haraden"
+format: 
+  revealjs:
+    multiplex: true
+    slide-number: true
+    incremental: true
+    touch: true
+    code-overflow: wrap
+    theme: night
+execute: 
+  echo: true
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+## Last Time
+
+-   Steps to Hypothesis testing
+
+-   $\chi^2$ goodness of fit test
+
+```{r, results = 'hide', message = F, warning = F}
+#library(here)
+library(tidyverse)
+library(sjPlot)
+#library(psych)
+#library(psychTools)
+#library(knitr)
+#library(kableExtra)
+#library(ggpubr)
+#library(patchwork)
+```
+
+------------------------------------------------------------------------
+
+## Today...
+
+-   The chi-square test of independence ([Book Chapter 12.2](https://learningstatisticswithr.com/book/chisquare.html#chisqindependence))
+
+-   Review the process of running analyses
+
+------------------------------------------------------------------------
+
+## Check-in {.center}
+
+::: nonincremental
+-   Next couple of weeks - Faculty Interviews
+
+-   Family things
+
+-   Take care of yourself
+:::
+
+------------------------------------------------------------------------
+
+## The Steps of NHST
+
+::::: columns
+::: {.column width="50%"}
+1.  Define null and alternative hypothesis.
+
+2.  Set and justify alpha level.
+
+3.  Determine which sampling distribution ( $z$, $t$, or $\chi^2$ for now)
+
+4.  Calculate parameters of your sampling distribution under the null.
+
+-   If $z$, calculate $\mu$ and $\sigma_M$
+:::
+
+::: {.column width="50%"}
+5.  Calculate test statistic under the null.
+
+-   If $z$, $\frac{\bar{X} - \mu}{\sigma_M}$
+
+6.  Calculate probability of that test statistic or more extreme under the null, and compare to alpha.
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## The Realistic Steps of NHST
+
+::::: columns
+::: {.column width="50%"}
+1.  Identify your hypothesis.
+
+2.  Determine the null hypothesis (if different from being 0)
+
+3.  Choose the statistical test
+
+4.  Make sure your data are formatted appropriately
+:::
+
+::: {.column width="50%"}
+5.  Run the test
+6.  Interpret the effect size of interest
+7.  Examine the p-value and come to a conclusion
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## The usefulness of $\chi^2$
+
+How often will you conducted a $\chi^2$ goodness of fit test on raw data?
+
+-   (Probably) never
+
+How often will you come across $\chi^2$ tests?
+
+-   (Probably) a lot!
+
+The goodness of fit test is used to statistically test the how well a model fits data
+
+------------------------------------------------------------------------
+
+## Model Fit with $\chi^2$
+
+To calculate Goodness of Fit of a model to data, you build a statistical model of the process as you believe it is in the world.
+
+::: nonincremental
+-   example: depression \~ age + parental history of depression
+:::
+
+-   Then you estimate each subject's predicted/expected value based on your model.
+
+-   You compare each subject's predicted value to their actual value -- the difference is called the **residual** ( $\varepsilon$ ).
+
+------------------------------------------------------------------------
+
+If your model is a good fit, then
+
+$$\Sigma_1^N\varepsilon^2 = \chi^2$$
+
+-   We would then compare that to the distribution of the Null: $\chi^2_{N-p}$ .
+
+-   Significant chi-square tests suggest the model does not fit -- the data have values that are far away from "expected."
+
+# $\chi^2$ test of independence or association
+
+------------------------------------------------------------------------
+
+## $\chi^2$ test of independence or association
+
+The tests that we conducted last class, we were focused on the way our data (NY Students Superpower Preferences) "fit" to the data of an expected distribution (US Student Superpower Preferences)
+
+Although this could be interesting, sometimes we have two categorical variables that we want to compare to one another
+
+-   Example: How do types of traffic stops differ by the gender identity of the police officer?
+
+------------------------------------------------------------------------
+
+Let's take a look at a scenario:
+
+We are part of a delivery company called Planet Express
+
+![](images/Planet_express.webp){fig-align="center"}
+
+------------------------------------------------------------------------
+
+Let's take a look at a scenario:
+
+We are part of a delivery company called Planet Express
+
+We have been tasked to deliver a package to Chapek 9
+
+![](images/Chapek_9.webp){fig-align="center"}
+
+------------------------------------------------------------------------
+
+Let's take a look at a scenario:
+
+We are part of a delivery company called Planet Express
+
+We have been tasked to deliver a package to Chapek 9
+
+Unfortunately, the planet is inhabited completely by robots and humans are not allowed
+
+In order to deliver the package, we have to go through the guard gate and prove that we are able to gain access
+
+------------------------------------------------------------------------
+
+### At the guard gate
+
+> *(Robot Voice)*
+>
+> WHICH OF THE FOLLOWING WOULD YOU MOST PREFER?
+>
+> A: A Puppy
+>
+> B: A pretty flower from your sweetie
+>
+> C: A large properly-formatted data file
+>
+> CHOOSE NOW!
+
+-   Clearly an ingenious test that will catch any imposters!
+-   ***But what if humans and robots have similar preferences?***
+
+------------------------------------------------------------------------
+
+Luckily, I have connections with Chapek 9 and we can see if there are any similarities between the responses.
+
+Let's work through how to do a $\chi^2$ test of independence (or association)
+
+First, we have to load in the data:
+
+```{r}
+chapek9 <- read.csv("https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/chapek9.csv") %>%    
+  mutate(choice = as.factor(choice),           
+         species = as.factor(species))
+```
+
+------------------------------------------------------------------------
+
+## Chapek 9 Data
+
+Take a peek at the data:
+
+```{r}
+head(chapek9) 
+# or  
+#glimpse(chapek9)
+```
+
+------------------------------------------------------------------------
+
+### Chapek 9 Data
+
+Look at the summary stats for the data:
+
+```{r}
+summary(chapek9) 
+```
+
+------------------------------------------------------------------------
+
+### Chapek 9 Data - Cross Tabs
+
+There are a few different ways to look at these tables. We can use `xtabs()`
+
+```{r}
+chapekFreq <- xtabs( ~ choice + species, data = chapek9) 
+chapekFreq
+```
+
+------------------------------------------------------------------------
+
+## Constructing Hypotheses
+
+Research hypothesis states that "humans and robots answer the question in different ways"
+
+Now our notation has two subscript values?? What torture is this??
+
+![](images/Greek_breakdown-01.PNG){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Constructing Hypotheses
+
+Once we have this established, we can take a look at the null
+
+![](images/Null_prob.PNG){fig-align="center"}
+
+-   Claiming now that the true choice probabilities don't depend on the species making the choice ( $P_i$ )
+
+-   However, we don't know what the ***expected*** probability would be for each answer choice
+
+    -   We have to calculate the totals of each row/column
+
+------------------------------------------------------------------------
+
+### Chapek 9 Data - Cross Tabs
+
+::::: columns
+::: {.column width="50%"}
+Let's use R to make the table look fancy and calculate the totals for us!
+
+We will use the library `sjPlot` ([link](https://strengejacke.github.io/sjPlot/reference/index.html#descriptive-statistics-tables))
+
+```{r, results='asis', message=FALSE, eval = FALSE}
+#| codefold: TRUE  
+
+tab_xtab(var.row = chapek9$choice,
+         var.col = chapek9$species, 
+         title = "Chapek 9 Frequencies") 
+```
+:::
+
+::: {.column width="50%"}
+```{r, results='asis', message=FALSE, echo=FALSE}
+library(sjPlot)  
+tab_xtab(var.row = chapek9$choice,
+         var.col = chapek9$species, 
+         title = "Chapek 9 Frequencies") 
+```
+:::
+:::::
+
+------------------------------------------------------------------------
+
+### Note about degrees of freedom
+
+Degrees of freedom comes from the number of data points that you have, minus the number of constraints
+
+-   Using contingency tables (or cross-tabs), the data points we have are $rows * columns$
+
+-   There will be two constraints and $df = (rows-1) * (columns-1)$
+
+------------------------------------------------------------------------
+
+We now have all the pieces for a $classic$ Null Hypothesis Significance Test
+
+But we have these computers, so why not use them?
+
+Using the `associationTest()` from the `lsr` library
+
+```{r}
+lsr::associationTest(formula = ~choice+species, 
+                     data = chapek9)
+```
+
+------------------------------------------------------------------------
+
+Maybe we want to keep it traditional and use `chisq.test()` will there be a difference?
+
+[Book Ch 12.6 - The most typical way to do a chi-square test in R](https://learningstatisticswithr.com/book/chisquare.html#chisq.test)
+
+```{r}
+chi <- chisq.test(table(chapek9$choice, chapek9$species)) 
+chi
+```
+
+------------------------------------------------------------------------
+
+But what if we want to visualize it? Use `sjPlot` again
+
+```{r}
+plot_xtab(chapek9$choice,
+          chapek9$species)
+```
+
+------------------------------------------------------------------------
+
+Let's clean that up a little bit more
+
+```{r}
+plot_xtab(chapek9$choice, chapek9$species, 
+          margin = "row", bar.pos = "stack", coord.flip = TRUE)
+```
+
+------------------------------------------------------------------------
+
+## Writing it up
+
+> Pearson's $\chi^2$ revealed a significant association between species and choice ( $\chi^2 (2) =$ 10.7, $p$ \< .01), such that robots appeared to be more likely to say that they prefer flowers, but the humans were more likely to say they prefer data.
+
+------------------------------------------------------------------------
+
+## Assumptions of the test
+
+-   The expected frequencies are rather large
+
+-   Data are independent of one another
+
+# Back to the Future
+
+![](/images/delorean.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Working with Data
+
+We are going to start from the beginning and walk through some of the components to work with data from the start
+
+This will prep everyone for the group based lab next class where similar types of questions will be asked.
+
+------------------------------------------------------------------------
+
+## Typical Steps
+
+1.  Import Data
+2.  Determine Hypothesis/Goal of Analyses
+3.  Compute Variables/Data Wrangling
+4.  Provide Descriptives & Correlations
+5.  Perform Statistical Test & Interpret
+
+------------------------------------------------------------------------
+
+## Let's Try it Out!
