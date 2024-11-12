@@ -393,3 +393,15 @@ This will prep everyone for the group based lab next class where similar types o
 ------------------------------------------------------------------------
 
 ## Let's Try it Out!
+
+We will use the data about Pokemon (<https://www.kaggle.com/datasets/abcsds/pokemon?resource=download>)
+
+```{r}
+pokemon <- read_csv("https://raw.githubusercontent.com/dharaden/psyc640/refs/heads/main/docs/data/Pokemon.csv")
+```
+
+Other possibilities:
+
+-   World Mental Health: <https://www.kaggle.com/datasets/imtkaggleteam/mental-health>
+
+-   Spotify Songs <https://www.kaggle.com/datasets/abdulszz/spotify-most-streamed-songs>
