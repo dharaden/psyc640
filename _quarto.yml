@@ -3,14 +3,14 @@ project:
   
 website: 
   page-navigation: true
-  title: "PSYC 641" 
-  site-url: "https://dharaden.github.io/website_template" 
-  repo-url: https://github.com/dharaden/website_template 
+  title: "PSYC 641 - Graduate Research Methods" 
+  site-url: "https://dharaden.github.io/psyc641-s25" 
+  repo-url: https://github.com/dharaden/psyc641-s25 
   repo-actions: [issue]
   
   page-footer:
     right: "This page is built with ☕ and [Quarto](https://quarto.org/)."
-    left: "&copy; CC-By Dustin Haraden, 2024"
+    left: "&copy; CC-By Dustin Haraden, 2025"
     
   sidebar:
     logo: "images/example_hex.png"
