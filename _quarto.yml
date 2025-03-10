@@ -1,0 +1,58 @@
+project: 
+  type: website
+  
+website: 
+  page-navigation: true
+  title: "Website Template" 
+  site-url: "https://dharaden.github.io/website_template" 
+  repo-url: https://github.com/dharaden/website_template 
+  repo-actions: [issue]
+  
+  page-footer:
+    right: "This page is built with ☕ and [Quarto](https://quarto.org/)."
+    left: "&copy; CC-By Dustin Haraden, 2024"
+    
+  sidebar:
+    logo: "images/example_hex.png"
+    pinned: true
+    align: center
+    tools: 
+      - icon: globe
+        href: https://google.com
+        text: "Your Website"
+      - icon: github
+        href: https://github.com/
+        text: "Your Github"
+      - icon: twitter
+        href: https://twitter.com/
+        text: "Your Twitter"         
+
+    style: "docked"
+    search: true
+    collapse-level: 1
+    contents:
+      - href: index.qmd
+        text: Home
+      - newpage.qmd
+      - section: subsection-files/index.qmd
+        contents: 
+          - subsection-files/sub_1.qmd
+          - subsection-files/sub_2.qmd 
+      - learning-more.qmd
+
+
+format:
+  html:
+    theme:
+      light: [cosmo, theme.scss] # from https://github.com/sta210-s22/website/blob/main/_quarto.yml
+      dark: [cosmo, theme-dark.scss]
+    code-copy: true
+    code-overflow: wrap
+    toc: true
+
+
+filters:
+  - include-files.lua
+  - quarto
+
+  
