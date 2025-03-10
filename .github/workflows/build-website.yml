@@ -18,6 +18,10 @@ jobs:
       - name: Install Quarto CLI
         uses: quarto-dev/quarto-actions/install-quarto@v1
 
+      - name: Install required packages
+        run: |
+          R -e 'install.packages(c("quarto", "yaml"))'
+
       - name: Install libcurl
         run: |
           sudo apt-get update
