@@ -1,13 +1,33 @@
 [
   {
-    "objectID": "subsection-files/sub_2.html",
-    "href": "subsection-files/sub_2.html",
-    "title": "From Subsection 2",
+    "objectID": "learning-more.html",
+    "href": "learning-more.html",
+    "title": "Learning more",
     "section": "",
-    "text": "And here is another subsection that you can include and update!",
+    "text": "There is no more to learn :)",
+    "crumbs": [
+      "Learning more"
+    ]
+  },
+  {
+    "objectID": "learning-more.html#learn-more",
+    "href": "learning-more.html#learn-more",
+    "title": "Learning more",
+    "section": "",
+    "text": "There is no more to learn :)",
+    "crumbs": [
+      "Learning more"
+    ]
+  },
+  {
+    "objectID": "subsection-files/sub_1.html",
+    "href": "subsection-files/sub_1.html",
+    "title": "From Subsection 1",
+    "section": "",
+    "text": "The first page of the subsection. You can do so much here!",
     "crumbs": [
       "Main Section Landing",
-      "From Subsection 2"
+      "From Subsection 1"
     ]
   },
   {
@@ -28,26 +48,6 @@
     "text": "Here is a landing page if you plan to have multiple subsections within! Cool huh?!",
     "crumbs": [
       "Main Section Landing"
-    ]
-  },
-  {
-    "objectID": "learning-more.html",
-    "href": "learning-more.html",
-    "title": "Learning more",
-    "section": "",
-    "text": "There is no more to learn :)",
-    "crumbs": [
-      "Learning more"
-    ]
-  },
-  {
-    "objectID": "learning-more.html#learn-more",
-    "href": "learning-more.html#learn-more",
-    "title": "Learning more",
-    "section": "",
-    "text": "There is no more to learn :)",
-    "crumbs": [
-      "Learning more"
     ]
   },
   {
@@ -81,6 +81,17 @@
     ]
   },
   {
+    "objectID": "subsection-files/sub_2.html",
+    "href": "subsection-files/sub_2.html",
+    "title": "From Subsection 2",
+    "section": "",
+    "text": "And here is another subsection that you can include and update!",
+    "crumbs": [
+      "Main Section Landing",
+      "From Subsection 2"
+    ]
+  },
+  {
     "objectID": "newpage.html",
     "href": "newpage.html",
     "title": "Another Page",
@@ -88,17 +99,6 @@
     "text": "A Second Page\nHere you have another page that you can add more and more things to!",
     "crumbs": [
       "Another Page"
-    ]
-  },
-  {
-    "objectID": "subsection-files/sub_1.html",
-    "href": "subsection-files/sub_1.html",
-    "title": "From Subsection 1",
-    "section": "",
-    "text": "The first page of the subsection. You can do so much here!",
-    "crumbs": [
-      "Main Section Landing",
-      "From Subsection 1"
     ]
   }
 ]
