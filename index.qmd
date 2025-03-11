@@ -1,12 +1,23 @@
 ---
-title: "PSYC 641 - Graduate Research Methods"
-subtitle: "Spring 2025"
+title: "PSYC 641: Graduate Research Methods"
+tbl-colwidths: [5,10,30,5,5,5,5,5,5,5]
 ---
 
-## Welcome {#welcome}
+This page contains an outline of the topics, content, and assignments for the semester.
 
-This is a template website that you can use for your own stuff! Hopefully this is easy to edit and adapt for anything you would like
+Note that this schedule will be updated as the semester progresses, with all changes documented here.
 
-## About
+::: column-screen-inset-right
+| Week | Date       | Topic                | Prepare | Slides | AE  | Lab | HW  | Exam | Project |
+|:------:|--------|--------|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
+|  1   | Wed, Jan 5 | Lab 0 - Meet + greet |         |   🖥️   |     | 💻  |     |      |         |
+|      | Thu, Jan 6 | Welcome to STA 210!  |   📖    |   🖥️   | 📋  |     |     |      |         |
+:::
 
-Dustin Haraden is a psychology professor and has a focus on transparency and equity when it comes to science and technology. Use this site however you can to increase your outreach! This is a template from [Openscapes](https://openscapes.org).
+```{r echo = FALSE}
+knitr::knit_exit()
+```
+
+|   |   |   | Prepare | Slides | AE | Labs | HW | Exam | Project |
+|--------|--------|--------|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
+| Week | Date | Topic | 📖 | 🖥️ | 📋 | [💻](https://sakai.duke.edu/samigo-app/servlet/Login?id=6fa7ebf3-01af-42a6-91ba-3e813d3901221641094171786) | ✍️ | ✅ | 📂 |
