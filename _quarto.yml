@@ -36,12 +36,15 @@ website:
           - href: index.qmd
             text: Schedule
       - section: "Weekly materials"
+        contents:
           - href: newpage.qmd
             text: NewPage
       - section: "Project" 
+        contents:
           - href: subsection-files/index.qmd
             text: Project Text
       - section: "Additional info"
+        contents:
           - href: learning-more.qmd
 
 format:
