@@ -5,50 +5,58 @@ website:
   page-navigation: true
   title: "PSYC 641 - Graduate Research Methods" 
   site-url: "https://dharaden.github.io/psyc641-s25" 
+  
   repo-url: https://github.com/dharaden/psyc641-s25 
-  repo-actions: [issue]
+  repo-actions: [edit, issue]
+
+  open-graph: true
   
   page-footer:
     right: "This page is built with ☕ and [Quarto](https://quarto.org/)."
     left: "&copy; CC-By Dustin Haraden, 2025"
+    background: "#D9E3E4"
     
   sidebar:
+    background: "#D9E3E4"
     logo: "images/example_hex.png"
     pinned: true
     align: center
-    tools: 
-      - icon: globe
-        href: https://google.com
-        text: "Your Website"
-      - icon: github
-        href: https://github.com/
-        text: "Your Github"
-      - icon: twitter
-        href: https://twitter.com/
-        text: "Your Twitter"         
+    tools:
+      - icon: chalkboard-user
+        href: https://mycourses.rit.edu/d2l/login
+        text: "myCourses"
+        
 
     style: "docked"
     search: true
     collapse-level: 1
     contents:
-      - href: index.qmd
-        text: Home
-      - newpage.qmd
-      - section: subsection-files/index.qmd
+      - section: "Course information"
         contents: 
-          - subsection-files/sub_1.qmd
-          - subsection-files/sub_2.qmd 
-      - learning-more.qmd
-
+          - href: index.qmd
+            text: Schedule
+      - section: "Weekly materials"
+          - href: newpage.qmd
+            text: NewPage
+      - section: "Project" 
+          - href: subsection-files/index.qmd
+            text: Project Text
+      - section: "Additional info"
+          - href: learning-more.qmd
 
 format:
   html:
     theme:
-      light: [cosmo, theme.scss] # from https://github.com/sta210-s22/website/blob/main/_quarto.yml
+      light: [cosmo, theme.scss]
       dark: [cosmo, theme-dark.scss]
+    mainfont: "Atkinson Hyperlegible"
     code-copy: true
     code-overflow: wrap
     toc: true
+
+freeze: auto
+
+editor: visual
 
 
 filters:
