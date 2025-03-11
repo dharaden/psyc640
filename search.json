@@ -6,6 +6,7 @@
     "section": "",
     "text": "There is no more to learn :)",
     "crumbs": [
+      "Additional info",
       "Learning more"
     ]
   },
@@ -16,6 +17,7 @@
     "section": "",
     "text": "There is no more to learn :)",
     "crumbs": [
+      "Additional info",
       "Learning more"
     ]
   },
@@ -24,11 +26,7 @@
     "href": "subsection-files/sub_1.html",
     "title": "From Subsection 1",
     "section": "",
-    "text": "The first page of the subsection. You can do so much here!",
-    "crumbs": [
-      "Main Section Landing",
-      "From Subsection 1"
-    ]
+    "text": "The first page of the subsection. You can do so much here!"
   },
   {
     "objectID": "subsection-files/index.html",
@@ -37,7 +35,8 @@
     "section": "",
     "text": "Here is a landing page if you plan to have multiple subsections within! Cool huh?!",
     "crumbs": [
-      "Main Section Landing"
+      "Project",
+      "Project Text"
     ]
   },
   {
@@ -47,7 +46,8 @@
     "section": "",
     "text": "Here is a landing page if you plan to have multiple subsections within! Cool huh?!",
     "crumbs": [
-      "Main Section Landing"
+      "Project",
+      "Project Text"
     ]
   },
   {
@@ -57,7 +57,8 @@
     "section": "",
     "text": "This is a template website that you can use for your own stuff! Hopefully this is easy to edit and adapt for anything you would like",
     "crumbs": [
-      "Home"
+      "Course information",
+      "Schedule"
     ]
   },
   {
@@ -67,7 +68,8 @@
     "section": "",
     "text": "This is a template website that you can use for your own stuff! Hopefully this is easy to edit and adapt for anything you would like",
     "crumbs": [
-      "Home"
+      "Course information",
+      "Schedule"
     ]
   },
   {
@@ -77,7 +79,8 @@
     "section": "About",
     "text": "About\nDustin Haraden is a psychology professor and has a focus on transparency and equity when it comes to science and technology. Use this site however you can to increase your outreach! This is a template from Openscapes.",
     "crumbs": [
-      "Home"
+      "Course information",
+      "Schedule"
     ]
   },
   {
@@ -85,11 +88,7 @@
     "href": "subsection-files/sub_2.html",
     "title": "From Subsection 2",
     "section": "",
-    "text": "And here is another subsection that you can include and update!",
-    "crumbs": [
-      "Main Section Landing",
-      "From Subsection 2"
-    ]
+    "text": "And here is another subsection that you can include and update!"
   },
   {
     "objectID": "newpage.html",
@@ -98,7 +97,8 @@
     "section": "",
     "text": "A Second Page\nHere you have another page that you can add more and more things to!",
     "crumbs": [
-      "Another Page"
+      "Weekly materials",
+      "NewPage"
     ]
   }
 ]
