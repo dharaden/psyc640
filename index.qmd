@@ -1,6 +1,6 @@
 ---
 title: "PSYC 641: Graduate Research Methods"
-tbl-colwidths: [5,10,30,5,5,5,5,5,5,5]
+tbl-colwidths: [15,30,25,5,5,5]
 ---
 
 This page contains an outline of the topics, content, and assignments for the semester.
@@ -8,16 +8,212 @@ This page contains an outline of the topics, content, and assignments for the se
 Note that this schedule will be updated as the semester progresses, with all changes documented here.
 
 ::: column-screen-inset-right
-| Week | Date       | Topic                | Prepare | Slides | AE  | Lab | HW  | Exam | Project |
-|:------:|--------|--------|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
-|  1   | Wed, Jan 5 | Lab 0 - Meet + greet |         |   🖥️   |     | 💻  |     |      |         |
-|      | Thu, Jan 6 | Welcome to STA 210!  |   📖    |   🖥️   | 📋  |     |     |      |         |
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 23%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><p>Date</p></th>
+<th><p>Topic</p></th>
+<th style="text-align: center;"><p>📖Prepare</p></th>
+<th style="text-align: center;"><p>Slides</p></th>
+<th style="text-align: center;"><p>HW</p></th>
+<th style="text-align: center;"><p>Project</p></th>
+<th><p></p></th>
+<th><p></p></th>
+<th><p></p></th>
+<th><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>Mon, Mar 17</p></td>
+<td><p>Experimental Research</p></td>
+<td style="text-align: center;"><p>P &amp; J - Ch. 6</p>
+<p>Brough - Sec. 2.10</p></td>
+<td style="text-align: center;"><p><a href="">💻</a></p></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><p>Wed, Mar 19</p></td>
+<td><p>Experimental Research</p></td>
+<td style="text-align: center;"><p>Review Studies: </p></td>
+<td style="text-align: center;"><p>Deep Dive into Designs</p></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><p>Mon, Mar 24</p></td>
+<td><p>Non-Experimental Research</p></td>
+<td style="text-align: center;"><p>P &amp; J - Ch. 7</p></td>
+<td style="text-align: center;"><p><a href="">💻</a></p></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><p>Wed, Mar 26</p></td>
+<td><p>Data Collection: Reviews &amp; Archival</p></td>
+<td style="text-align: center;"><p>Brough - Sec. 2.6 &amp; 2.7</p></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><p>Mon, Mar 31</p></td>
+<td><p>Qualitative Methods</p></td>
+<td style="text-align: center;"><p>Brough - Sec. 2.8 &amp; 2.9</p></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><p>Wed, Apr 2</p></td>
+<td><p>Survey Methods</p></td>
+<td style="text-align: center;"><p>P &amp; J - Ch. 9</p>
+<p>Brough - Sec. 2.11 - 2.14</p></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><p>Mon, Apr 7</p></td>
+<td><p>Data Organization</p></td>
+<td style="text-align: center;"><p>Brough - Sec 3.16 &amp; 3.17</p></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><p>Wed, Apr 9</p></td>
+<td></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><p>Mon, Apr 14</p></td>
+<td></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><p>Wed, Apr 16</p></td>
+<td></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><p>Mon, Apr 21</p></td>
+<td><p>GROUP WORK DAY (No Class)</p></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><p>Wed, Apr 23</p></td>
+<td><p>PRESENTATIONS</p></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><p>Mon, Apr 28</p></td>
+<td><p>PRESENTATIONS</p></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 :::
 
 ```{r echo = FALSE}
 knitr::knit_exit()
 ```
 
-|   |   |   | Prepare | Slides | AE | Labs | HW | Exam | Project |
-|--------|--------|--------|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
-| Week | Date | Topic | 📖 | 🖥️ | 📋 | [💻](https://sakai.duke.edu/samigo-app/servlet/Login?id=6fa7ebf3-01af-42a6-91ba-3e813d3901221641094171786) | ✍️ | ✅ | 📂 |
+|      |      |       | Prepare | Slides | AE  |  Labs  | HW  | Exam | Project |
+|------|------|-------|:-------:|:------:|:---:|:------:|:---:|:----:|:-------:|
+| Week | Date | Topic |   📖    |   🖥️   | 📋  | [💻]() | ✍️  |  ✅  |   📂    |
