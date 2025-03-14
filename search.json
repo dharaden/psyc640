@@ -26,18 +26,74 @@
     "href": "newpage.html",
     "title": "Another Page",
     "section": "",
-    "text": "A Second Page\nHere you have another page that you can add more and more things to!",
-    "crumbs": [
-      "Weekly materials",
-      "NewPage"
-    ]
+    "text": "A Second Page\nHere you have another page that you can add more and more things to!"
   },
   {
-    "objectID": "subsection-files/sub_2.html",
-    "href": "subsection-files/sub_2.html",
-    "title": "From Subsection 2",
+    "objectID": "subsection-files/sub_1.html",
+    "href": "subsection-files/sub_1.html",
+    "title": "From Subsection 1",
     "section": "",
-    "text": "And here is another subsection that you can include and update!"
+    "text": "The first page of the subsection. You can do so much here!"
+  },
+  {
+    "objectID": "subsection-files/index.html",
+    "href": "subsection-files/index.html",
+    "title": "Main Section Landing",
+    "section": "",
+    "text": "Here is a landing page if you plan to have multiple subsections within! Cool huh?!"
+  },
+  {
+    "objectID": "subsection-files/index.html#section",
+    "href": "subsection-files/index.html#section",
+    "title": "Main Section Landing",
+    "section": "",
+    "text": "Here is a landing page if you plan to have multiple subsections within! Cool huh?!"
+  },
+  {
+    "objectID": "slides/lec-10.html#meet-your-ta",
+    "href": "slides/lec-10.html#meet-your-ta",
+    "title": "Lab 0 - Meet + greet",
+    "section": "Meet your TA!",
+    "text": "Meet your TA!"
+  },
+  {
+    "objectID": "slides/lec-10.html#meet-each-other",
+    "href": "slides/lec-10.html#meet-each-other",
+    "title": "Lab 0 - Meet + greet",
+    "section": "Meet each other!",
+    "text": "Meet each other!\nIn breakout rooms:\n\nName, year, major, hometown\nWhat did you do over the winter break?\nWhat do you hope to get out of this course?\nAnything else you want to share/ask?\n\n\n\n\n−+\n08:00"
+  },
+  {
+    "objectID": "slides/lec-10.html#take-the-survey",
+    "href": "slides/lec-10.html#take-the-survey",
+    "title": "Lab 0 - Meet + greet",
+    "section": "Take the survey",
+    "text": "Take the survey\n\nGo to the course website:\nhttps://sta210-s22.github.io/website\nClick on the instructions for Lab 0 on the course schedule\nTake the Getting to know you survey"
+  },
+  {
+    "objectID": "slides/lec-10.html#what-to-expect-in-lab",
+    "href": "slides/lec-10.html#what-to-expect-in-lab",
+    "title": "Lab 0 - Meet + greet",
+    "section": "What to expect in lab",
+    "text": "What to expect in lab\n\nIntroduction to the lab assignment (~ 5 - 10 minutes)\nWork on the lab assignment (individual at first, but in teams for the rest of the semester)\nLab instructions posted on the course website.\nStart each lab by finding your assignment repo in the course GitHub organization\nMore on all of these tools in lecture tomorrow and in lab next week"
+  },
+  {
+    "objectID": "slides/lec-10.html#wrap-up",
+    "href": "slides/lec-10.html#wrap-up",
+    "title": "Lab 0 - Meet + greet",
+    "section": "Wrap up",
+    "text": "Wrap up\nAny questions about the course?"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PSYC 641: Graduate Research Methods",
+    "section": "",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester.\nNote that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\n📖Prepare\nSlides\n✍️ In-Class | 📋Due | |\n\n\n\n\n10\nMon, Mar 17\nExperimental Research\nP & J - Ch. 6\nBrough - Sec. 2.10\n💻\nReview Methods Expectations\n\n\n\nWed, Mar 19\nExperimental Research\nReview Studies:\n\nDeep Dive into Designs\n\n\n11\nMon, Mar 24\nNon-Experimental Research\nP & J - Ch. 7\n💻\n\n\n\n\nWed, Mar 26\nData Collection: Reviews & Archival\nBrough - Sec. 2.6 & 2.7\n\n\n\n\n12\nMon, Mar 31\nQualitative Methods\nBrough - Sec. 2.8 & 2.9\n\n\n\n\n\nWed, Apr 2\nSurvey Methods\nP & J - Ch. 9\nBrough - Sec. 2.11 - 2.14\n\n\n\n\n\n\n\n\n\n\n\n\n13\nMon, Apr 7\nData Organization\nBrough - Sec 3.16 & 3.17\n\n\n\n\n\nWed, Apr 9\n\n\n\n\n\n\n14\nMon, Apr 14\n\n\n\n\n\n\n\nWed, Apr 16\n\n\n\n\n\n\n15\nMon, Apr 21\nGROUP WORK DAY (No Class)\n\n\n\n\n\n\nWed, Apr 23\nPRESENTATIONS\n\n\n\n\n\n\nMon, Apr 28\nPRESENTATIONS",
+    "crumbs": [
+      "Course information",
+      "Schedule"
+    ]
   },
   {
     "objectID": "slides/template.html#meet-your-ta",
@@ -75,36 +131,44 @@
     "text": "Wrap up\nAny questions about the course?"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "PSYC 641: Graduate Research Methods",
+    "objectID": "subsection-files/sub_2.html",
+    "href": "subsection-files/sub_2.html",
+    "title": "From Subsection 2",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester.\nNote that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\n📖Prepare\nSlides\n✍️ In-Class | 📋Due |\n\n\n\n\n\n10\nMon, Mar 17\nExperimental Research\nP & J - Ch. 6\nBrough - Sec. 2.10\n💻\nReview Methods Expectations\n\n\n\n\nWed, Mar 19\nExperimental Research\nReview Studies:\n\nDeep Dive into Designs\n\n\n\n11\nMon, Mar 24\nNon-Experimental Research\nP & J - Ch. 7\n💻\n\n\n\n\n\nWed, Mar 26\nData Collection: Reviews & Archival\nBrough - Sec. 2.6 & 2.7\n\n\n\n\n\n12\nMon, Mar 31\nQualitative Methods\nBrough - Sec. 2.8 & 2.9\n\n\nMethods Draft\n(Sun, Mar 30)\n\n\n\nWed, Apr 2\nSurvey Methods\nP & J - Ch. 9\nBrough - Sec. 2.11 - 2.14\n\n\nPeer Review\n\n\n\n\n\n\n\n\n\n\n\n13\nMon, Apr 7\nData Organization\nBrough - Sec 3.16 & 3.17\n\n\n\n\n\n\nWed, Apr 9\n\n\n\n\n\n\n\n14\nMon, Apr 14\n\n\n\n\n\n\n\n\nWed, Apr 16\n\n\n\n\n\n\n\n15\nMon, Apr 21\nGROUP WORK DAY (No Class)\n\n\n\n\n\n\n\nWed, Apr 23\nPRESENTATIONS\n\n\n\n\n\n\n\nMon, Apr 28\nPRESENTATIONS",
+    "text": "And here is another subsection that you can include and update!"
+  },
+  {
+    "objectID": "weeks/week-10.html",
+    "href": "weeks/week-10.html",
+    "title": "Week 10",
+    "section": "",
+    "text": "Important\n\n\n\nClasses are virtual this week. Find Zoom links here.",
     "crumbs": [
-      "Course information",
-      "Schedule"
+      "Weekly materials",
+      "Week 10"
     ]
   },
   {
-    "objectID": "subsection-files/index.html",
-    "href": "subsection-files/index.html",
-    "title": "Main Section Landing",
-    "section": "",
-    "text": "Here is a landing page if you plan to have multiple subsections within! Cool huh?!"
+    "objectID": "weeks/week-10.html#prepare",
+    "href": "weeks/week-10.html#prepare",
+    "title": "Week 10",
+    "section": "Prepare",
+    "text": "Prepare\n📖 Read the syllabus\n📖 Read the support resources",
+    "crumbs": [
+      "Weekly materials",
+      "Week 10"
+    ]
   },
   {
-    "objectID": "subsection-files/index.html#section",
-    "href": "subsection-files/index.html#section",
-    "title": "Main Section Landing",
-    "section": "",
-    "text": "Here is a landing page if you plan to have multiple subsections within! Cool huh?!"
-  },
-  {
-    "objectID": "subsection-files/sub_1.html",
-    "href": "subsection-files/sub_1.html",
-    "title": "From Subsection 1",
-    "section": "",
-    "text": "The first page of the subsection. You can do so much here!"
+    "objectID": "weeks/week-10.html#slides",
+    "href": "weeks/week-10.html#slides",
+    "title": "Week 10",
+    "section": "Slides",
+    "text": "Slides\n🖥️ Experimental Design\n\n\nBack to course schedule ⏎",
+    "crumbs": [
+      "Weekly materials",
+      "Week 10"
+    ]
   },
   {
     "objectID": "project/index.html",
