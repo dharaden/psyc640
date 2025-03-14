@@ -35,13 +35,15 @@ website:
         contents: 
           - href: index.qmd
             text: Schedule
+          - href: readingqs.qmd
+            text: Reading Questions
       - section: "Weekly materials"
         contents:
           - href: weeks/week-10.qmd
             text: "Week 10"
       - section: "Project" 
         contents:
-          - href: project/index.qmd
+          - href: project/final-proj-desc.qmd
             text: Project Overview
       - section: "Additional info"
         contents:
