@@ -37,8 +37,8 @@ website:
             text: Schedule
       - section: "Weekly materials"
         contents:
-          - href: newpage.qmd
-            text: NewPage
+          - href: weeks/week-10.qmd
+            text: "Week 10"
       - section: "Project" 
         contents:
           - href: project/index.qmd
