@@ -22,78 +22,55 @@
     ]
   },
   {
-    "objectID": "newpage.html",
-    "href": "newpage.html",
-    "title": "Another Page",
+    "objectID": "readingqs.html",
+    "href": "readingqs.html",
+    "title": "Reading Questions",
     "section": "",
-    "text": "A Second Page\nHere you have another page that you can add more and more things to!"
-  },
-  {
-    "objectID": "subsection-files/sub_1.html",
-    "href": "subsection-files/sub_1.html",
-    "title": "From Subsection 1",
-    "section": "",
-    "text": "The first page of the subsection. You can do so much here!"
-  },
-  {
-    "objectID": "subsection-files/index.html",
-    "href": "subsection-files/index.html",
-    "title": "Main Section Landing",
-    "section": "",
-    "text": "Here is a landing page if you plan to have multiple subsections within! Cool huh?!"
-  },
-  {
-    "objectID": "subsection-files/index.html#section",
-    "href": "subsection-files/index.html#section",
-    "title": "Main Section Landing",
-    "section": "",
-    "text": "Here is a landing page if you plan to have multiple subsections within! Cool huh?!"
-  },
-  {
-    "objectID": "slides/lec-10.html#meet-your-ta",
-    "href": "slides/lec-10.html#meet-your-ta",
-    "title": "Lab 0 - Meet + greet",
-    "section": "Meet your TA!",
-    "text": "Meet your TA!"
-  },
-  {
-    "objectID": "slides/lec-10.html#meet-each-other",
-    "href": "slides/lec-10.html#meet-each-other",
-    "title": "Lab 0 - Meet + greet",
-    "section": "Meet each other!",
-    "text": "Meet each other!\nIn breakout rooms:\n\nName, year, major, hometown\nWhat did you do over the winter break?\nWhat do you hope to get out of this course?\nAnything else you want to share/ask?\n\n\n\n\n−+\n08:00"
-  },
-  {
-    "objectID": "slides/lec-10.html#take-the-survey",
-    "href": "slides/lec-10.html#take-the-survey",
-    "title": "Lab 0 - Meet + greet",
-    "section": "Take the survey",
-    "text": "Take the survey\n\nGo to the course website:\nhttps://sta210-s22.github.io/website\nClick on the instructions for Lab 0 on the course schedule\nTake the Getting to know you survey"
-  },
-  {
-    "objectID": "slides/lec-10.html#what-to-expect-in-lab",
-    "href": "slides/lec-10.html#what-to-expect-in-lab",
-    "title": "Lab 0 - Meet + greet",
-    "section": "What to expect in lab",
-    "text": "What to expect in lab\n\nIntroduction to the lab assignment (~ 5 - 10 minutes)\nWork on the lab assignment (individual at first, but in teams for the rest of the semester)\nLab instructions posted on the course website.\nStart each lab by finding your assignment repo in the course GitHub organization\nMore on all of these tools in lecture tomorrow and in lab next week"
-  },
-  {
-    "objectID": "slides/lec-10.html#wrap-up",
-    "href": "slides/lec-10.html#wrap-up",
-    "title": "Lab 0 - Meet + greet",
-    "section": "Wrap up",
-    "text": "Wrap up\nAny questions about the course?"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "PSYC 641: Graduate Research Methods",
-    "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester.\nNote that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\n📖Prepare\nSlides\n✍️ In-Class | 📋Due | |\n\n\n\n\n10\nMon, Mar 17\nExperimental Research\nP & J - Ch. 6\nBrough - Sec. 2.10\n💻\nReview Methods Expectations\n\n\n\nWed, Mar 19\nExperimental Research\nReview Studies:\n\nDeep Dive into Designs\n\n\n11\nMon, Mar 24\nNon-Experimental Research\nP & J - Ch. 7\n💻\n\n\n\n\nWed, Mar 26\nData Collection: Reviews & Archival\nBrough - Sec. 2.6 & 2.7\n\n\n\n\n12\nMon, Mar 31\nQualitative Methods\nBrough - Sec. 2.8 & 2.9\n\n\n\n\n\nWed, Apr 2\nSurvey Methods\nP & J - Ch. 9\nBrough - Sec. 2.11 - 2.14\n\n\n\n\n\n\n\n\n\n\n\n\n13\nMon, Apr 7\nData Organization\nBrough - Sec 3.16 & 3.17\n\n\n\n\n\nWed, Apr 9\n\n\n\n\n\n\n14\nMon, Apr 14\n\n\n\n\n\n\n\nWed, Apr 16\n\n\n\n\n\n\n15\nMon, Apr 21\nGROUP WORK DAY (No Class)\n\n\n\n\n\n\nWed, Apr 23\nPRESENTATIONS\n\n\n\n\n\n\nMon, Apr 28\nPRESENTATIONS",
+    "text": "Prior to each class, you will be required to submit at least 2 questions about what you have read. Please submit questions by 12:00 pm on the day that the readings will be discussed.\nSubmit Questions Here\nThe instructor will post the questions that you all created to help facilitate discussion during the course. Please do your best to review these items prior to, or right at the beginning of class. Highlight any questions that you would like to be answered in class.\nDocument with Questions",
     "crumbs": [
       "Course information",
-      "Schedule"
+      "Reading Questions"
     ]
+  },
+  {
+    "objectID": "weeks/week-10.html",
+    "href": "weeks/week-10.html",
+    "title": "Week 10",
+    "section": "",
+    "text": "Important\n\n\n\nClasses are virtual this week. Find Zoom links here.",
+    "crumbs": [
+      "Weekly materials",
+      "Week 10"
+    ]
+  },
+  {
+    "objectID": "weeks/week-10.html#prepare",
+    "href": "weeks/week-10.html#prepare",
+    "title": "Week 10",
+    "section": "Prepare",
+    "text": "Prepare\n📖 Read the syllabus\n📖 Read the support resources",
+    "crumbs": [
+      "Weekly materials",
+      "Week 10"
+    ]
+  },
+  {
+    "objectID": "weeks/week-10.html#slides",
+    "href": "weeks/week-10.html#slides",
+    "title": "Week 10",
+    "section": "Slides",
+    "text": "Slides\n🖥️ Experimental Design\n\n\nBack to course schedule ⏎",
+    "crumbs": [
+      "Weekly materials",
+      "Week 10"
+    ]
+  },
+  {
+    "objectID": "subsection-files/sub_2.html",
+    "href": "subsection-files/sub_2.html",
+    "title": "From Subsection 2",
+    "section": "",
+    "text": "And here is another subsection that you can include and update!"
   },
   {
     "objectID": "slides/template.html#meet-your-ta",
@@ -131,81 +108,126 @@
     "text": "Wrap up\nAny questions about the course?"
   },
   {
-    "objectID": "subsection-files/sub_2.html",
-    "href": "subsection-files/sub_2.html",
-    "title": "From Subsection 2",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PSYC 641: Graduate Research Methods",
     "section": "",
-    "text": "And here is another subsection that you can include and update!"
+    "text": "This page contains an outline of the topics, content, and assignments for the semester.\nNote that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\n📖Prepare\nSlides\n✍️ In-Class | 📋Due | |\n\n\n\n\n10\nMon, Mar 17\nExperimental Research\nP & J - Ch. 6\nBrough - Sec. 2.10\n💻\nReview Methods Expectations\n\n\n\nWed, Mar 19\nExperimental Research\nReview Studies:\n\nDeep Dive into Designs\n\n\n11\nMon, Mar 24\nNon-Experimental Research\nP & J - Ch. 7\n💻\n\n\n\n\nWed, Mar 26\nData Collection: Reviews & Archival\nBrough - Sec. 2.6 & 2.7\n\n\n\n\n12\nMon, Mar 31\nQualitative Methods\nBrough - Sec. 2.8 & 2.9\n\n\n\n\n\nWed, Apr 2\nSurvey Methods\nP & J - Ch. 9\nBrough - Sec. 2.11 - 2.14\n\n\n\n\n\n\n\n\n\n\n\n\n13\nMon, Apr 7\nData Organization\nBrough - Sec 3.16 & 3.17\n\n\n\n\n\nWed, Apr 9\n\n\n\n\n\n\n14\nMon, Apr 14\n\n\n\n\n\n\n\nWed, Apr 16\n\n\n\n\n\n\n15\nMon, Apr 21\nGROUP WORK DAY (No Class)\n\n\n\n\n\n\nWed, Apr 23\nPRESENTATIONS\n\n\n\n\n\n\nMon, Apr 28\nPRESENTATIONS",
+    "crumbs": [
+      "Course information",
+      "Schedule"
+    ]
   },
   {
-    "objectID": "weeks/week-10.html",
-    "href": "weeks/week-10.html",
-    "title": "Week 10",
+    "objectID": "slides/lec-10.html#meet-your-ta",
+    "href": "slides/lec-10.html#meet-your-ta",
+    "title": "Lab 0 - Meet + greet",
+    "section": "Meet your TA!",
+    "text": "Meet your TA!"
+  },
+  {
+    "objectID": "slides/lec-10.html#meet-each-other",
+    "href": "slides/lec-10.html#meet-each-other",
+    "title": "Lab 0 - Meet + greet",
+    "section": "Meet each other!",
+    "text": "Meet each other!\nIn breakout rooms:\n\nName, year, major, hometown\nWhat did you do over the winter break?\nWhat do you hope to get out of this course?\nAnything else you want to share/ask?\n\n\n\n\n−+\n08:00"
+  },
+  {
+    "objectID": "slides/lec-10.html#take-the-survey",
+    "href": "slides/lec-10.html#take-the-survey",
+    "title": "Lab 0 - Meet + greet",
+    "section": "Take the survey",
+    "text": "Take the survey\n\nGo to the course website:\nhttps://sta210-s22.github.io/website\nClick on the instructions for Lab 0 on the course schedule\nTake the Getting to know you survey"
+  },
+  {
+    "objectID": "slides/lec-10.html#what-to-expect-in-lab",
+    "href": "slides/lec-10.html#what-to-expect-in-lab",
+    "title": "Lab 0 - Meet + greet",
+    "section": "What to expect in lab",
+    "text": "What to expect in lab\n\nIntroduction to the lab assignment (~ 5 - 10 minutes)\nWork on the lab assignment (individual at first, but in teams for the rest of the semester)\nLab instructions posted on the course website.\nStart each lab by finding your assignment repo in the course GitHub organization\nMore on all of these tools in lecture tomorrow and in lab next week"
+  },
+  {
+    "objectID": "slides/lec-10.html#wrap-up",
+    "href": "slides/lec-10.html#wrap-up",
+    "title": "Lab 0 - Meet + greet",
+    "section": "Wrap up",
+    "text": "Wrap up\nAny questions about the course?"
+  },
+  {
+    "objectID": "subsection-files/index.html",
+    "href": "subsection-files/index.html",
+    "title": "Main Section Landing",
     "section": "",
-    "text": "Important\n\n\n\nClasses are virtual this week. Find Zoom links here.",
-    "crumbs": [
-      "Weekly materials",
-      "Week 10"
-    ]
+    "text": "Here is a landing page if you plan to have multiple subsections within! Cool huh?!"
   },
   {
-    "objectID": "weeks/week-10.html#prepare",
-    "href": "weeks/week-10.html#prepare",
-    "title": "Week 10",
-    "section": "Prepare",
-    "text": "Prepare\n📖 Read the syllabus\n📖 Read the support resources",
-    "crumbs": [
-      "Weekly materials",
-      "Week 10"
-    ]
+    "objectID": "subsection-files/index.html#section",
+    "href": "subsection-files/index.html#section",
+    "title": "Main Section Landing",
+    "section": "",
+    "text": "Here is a landing page if you plan to have multiple subsections within! Cool huh?!"
   },
   {
-    "objectID": "weeks/week-10.html#slides",
-    "href": "weeks/week-10.html#slides",
-    "title": "Week 10",
-    "section": "Slides",
-    "text": "Slides\n🖥️ Experimental Design\n\n\nBack to course schedule ⏎",
-    "crumbs": [
-      "Weekly materials",
-      "Week 10"
-    ]
+    "objectID": "subsection-files/sub_1.html",
+    "href": "subsection-files/sub_1.html",
+    "title": "From Subsection 1",
+    "section": "",
+    "text": "The first page of the subsection. You can do so much here!"
   },
   {
-    "objectID": "project/index.html",
-    "href": "project/index.html",
+    "objectID": "newpage.html",
+    "href": "newpage.html",
+    "title": "Another Page",
+    "section": "",
+    "text": "A Second Page\nHere you have another page that you can add more and more things to!"
+  },
+  {
+    "objectID": "project/final-proj-desc.html",
+    "href": "project/final-proj-desc.html",
     "title": "Main Project",
     "section": "",
-    "text": "The goal of the final project for PSYC 641 is to develop a research proposal similar to what you might see as a pre-registration. You will be placed into groups, which will be your “research lab group”. Your group will be tasked with developing a study to answer a central question (e.g., How does mood impact sleep in youth?). As a group, you will develop the Research Deign of a single study to accomplish the main research question. Your individual portion will then consist of using a subset of the data from the study to answer an even more specific question (e.g., What role does positive affect play in the relationship between stress and sleep?).\nThe best way to think about this is you and your team have been given a small grant to study a main focus. Since resources are limited, we want to collect as much data as reasonably possible to address as many different questions as possible. This project will mimic a real-world lab collaboration effort.\n\n\n\nGoal: To create a proposal for the final project.\nOverview: You and your group will define a broad theory/aim/research question. From there, each group member will identify a specific focus. Think of this as starting one set of data collection that will have a central focus, but each of you will have a specific component. It may make sense to think about the data collection technique (e.g., cross-sectional, longitudinal, experimental, etc.) as a group and then identify the component that you will focus on.\nThe goal of this assignment is to clearly identify the overarching theory of your group as well as the specific research question or aim that you seek to accomplish for your portion of the project.\nWork with your group members to identify a central theory or question that you are interested in examining. This can be an extension of a current research project, or something that is new and novel. You can build upon the theory that was started at the beginning of your group, but you don’t have to.\nStructure: 2+ pages double spaced. Calibri, Arial or Times New Roman font. 1-inch margins. Minimum of 3 citations. Begin with a brief introduction to the topic and identify the broad theory of your group. This will then lead into the rationale for your specific portion. Highlight the importance of your research question and be sure to have this stated clearly. It can be helpful to have these identified as “Aims” of the project.\nThis specific assignment is not set to be a complete evaluation of how you create a study. Instead, I want you to be able to communicate your thought process in a structured way resulting in a single focus or aim.",
+    "text": "Project Proposal due Fri, Feb 14\nDesign & Measures Section Draft due Sun, Mar 30\nPeer review due Sun, Apr 6\nFinal report due Mon, Apr 28\nGroup Presentation + slides due Mon, Apr 28",
     "crumbs": [
       "Project",
       "Project Overview"
     ]
   },
   {
-    "objectID": "project/index.html#final-group-project",
-    "href": "project/index.html#final-group-project",
+    "objectID": "project/final-proj-desc.html#research-question-hypothesis-individual",
+    "href": "project/final-proj-desc.html#research-question-hypothesis-individual",
     "title": "Main Project",
-    "section": "",
-    "text": "The goal of the final project for PSYC 641 is to develop a research proposal similar to what you might see as a pre-registration. You will be placed into groups, which will be your “research lab group”. Your group will be tasked with developing a study to answer a central question (e.g., How does mood impact sleep in youth?). As a group, you will develop the Research Deign of a single study to accomplish the main research question. Your individual portion will then consist of using a subset of the data from the study to answer an even more specific question (e.g., What role does positive affect play in the relationship between stress and sleep?).\nThe best way to think about this is you and your team have been given a small grant to study a main focus. Since resources are limited, we want to collect as much data as reasonably possible to address as many different questions as possible. This project will mimic a real-world lab collaboration effort.\n\n\n\nGoal: To create a proposal for the final project.\nOverview: You and your group will define a broad theory/aim/research question. From there, each group member will identify a specific focus. Think of this as starting one set of data collection that will have a central focus, but each of you will have a specific component. It may make sense to think about the data collection technique (e.g., cross-sectional, longitudinal, experimental, etc.) as a group and then identify the component that you will focus on.\nThe goal of this assignment is to clearly identify the overarching theory of your group as well as the specific research question or aim that you seek to accomplish for your portion of the project.\nWork with your group members to identify a central theory or question that you are interested in examining. This can be an extension of a current research project, or something that is new and novel. You can build upon the theory that was started at the beginning of your group, but you don’t have to.\nStructure: 2+ pages double spaced. Calibri, Arial or Times New Roman font. 1-inch margins. Minimum of 3 citations. Begin with a brief introduction to the topic and identify the broad theory of your group. This will then lead into the rationale for your specific portion. Highlight the importance of your research question and be sure to have this stated clearly. It can be helpful to have these identified as “Aims” of the project.\nThis specific assignment is not set to be a complete evaluation of how you create a study. Instead, I want you to be able to communicate your thought process in a structured way resulting in a single focus or aim.",
+    "section": "Research Question & Hypothesis (Individual)",
+    "text": "Research Question & Hypothesis (Individual)\nThis section is just a reminder of what you are doing. Shouldn’t be longer than a paragraph.\n\nProvide the overarching research question/aim that your group is focusing on (i.e., why are you doing this study)\nIdentify your specific research question within the larger study of your group",
     "crumbs": [
       "Project",
       "Project Overview"
     ]
   },
   {
-    "objectID": "project/index.html#design-measures-section-draft",
-    "href": "project/index.html#design-measures-section-draft",
+    "objectID": "project/final-proj-desc.html#study-proceduresdesign-group",
+    "href": "project/final-proj-desc.html#study-proceduresdesign-group",
     "title": "Main Project",
-    "section": "Design & Measures Section Draft",
-    "text": "Design & Measures Section Draft\n\nResearch Question & Hypothesis (Individual)\n\nProvide the overarching research question/aim that your group is focusing on (i.e., why are you doing this study)\nIdentify your specific research question within the larger study of your group\n\n\n\nStudy Procedures/Design (Group)\n\nSpecify whether your study will be experimental, quasi-experimental, or non-experimental and justify your choice. Also indicate the type of design that you are planning to use (e.g., cross-sectional, longitudinal, cohort design, etc.)\nDescribe your sampling method and justify why it is appropriate for your study\n\nProvide information on what the recruitment strategies are going to be\nDiscuss any potential sampling biases and how they will be addressed.\n\nWalk through what the participant will be experiencing during their visit or throughout their participation in the study\nWhat kind of space and physical materials will you need (computer, eye-tracker, EEG, etc.)\nBe sure to discuss any ethical issues that may arise in your study and how you will address them\n\n\n\nMeasurement - Operationalizing the Construct (Individual)\n\nClearly define and operationalize all constructs involved in your research\nExplain how you will measure or manipulate these constructs in your study\nIdentify the specific questionnaires or how you will be examining these constructs",
+    "section": "Study Procedures/Design (Group)",
+    "text": "Study Procedures/Design (Group)\nHere you will go through all the steps and the needed information. Make sure you are able to highlight the design of your project. This section will take approximately 1 - 2 pages.\n\nSpecify whether your study will be experimental, quasi-experimental, or non-experimental and justify your choice. Also indicate the type of design that you are planning to use (e.g., cross-sectional, longitudinal, cohort design, etc.)\nDescribe your sampling method and justify why it is appropriate for your study\n\nProvide information on what the recruitment strategies are going to be\nDiscuss any potential sampling biases and how they will be addressed.\n\nWalk through what the participant will be experiencing during their visit or throughout their participation in the study\nWhat kind of space and physical materials will you need (computer, eye-tracker, EEG, etc.)\nBe sure to discuss any ethical issues that may arise in your study and how you will address them",
     "crumbs": [
       "Project",
       "Project Overview"
     ]
   },
   {
-    "objectID": "project/index.html#diagram-of-proposed-analysis-individual",
-    "href": "project/index.html#diagram-of-proposed-analysis-individual",
+    "objectID": "project/final-proj-desc.html#measurement---operationalizing-the-construct-individual",
+    "href": "project/final-proj-desc.html#measurement---operationalizing-the-construct-individual",
+    "title": "Main Project",
+    "section": "Measurement - Operationalizing the Construct (Individual)",
+    "text": "Measurement - Operationalizing the Construct (Individual)\nWithin this space, you will be writing about the things that are unique to your own research question. Be sure to include the relevant measures and the appropriate citations. Look to existing literature to find how they can structure things. This section will take approximately 1 - 2 pages.\n\nClearly define and operationalize all constructs involved in your research\nExplain how you will measure or manipulate these constructs in your study\nIdentify the specific questionnaires or how you will be examining these constructs",
+    "crumbs": [
+      "Project",
+      "Project Overview"
+    ]
+  },
+  {
+    "objectID": "project/final-proj-desc.html#diagram-of-proposed-analysis-individual",
+    "href": "project/final-proj-desc.html#diagram-of-proposed-analysis-individual",
     "title": "Main Project",
     "section": "Diagram of Proposed Analysis (Individual)",
     "text": "Diagram of Proposed Analysis (Individual)\n\nUsing the DAG framework, identify the model that you want to examine. This can just be an image.",
