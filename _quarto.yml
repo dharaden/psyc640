@@ -22,7 +22,7 @@ website:
     pinned: true
     align: center
     tools:
-      - icon: chalkboard-user
+      - icon: chalkboard
         href: https://mycourses.rit.edu/d2l/login
         text: "myCourses"
         
@@ -41,8 +41,8 @@ website:
             text: NewPage
       - section: "Project" 
         contents:
-          - href: subsection-files/index.qmd
-            text: Project Text
+          - href: project/index.qmd
+            text: Project Overview
       - section: "Additional info"
         contents:
           - href: learning-more.qmd

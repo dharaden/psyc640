@@ -1,6 +1,6 @@
 ---
 title: "PSYC 641: Graduate Research Methods"
-tbl-colwidths: [15,30,25,5,5,5]
+tbl-colwidths: [5,15,25,25,5,5,5]
 ---
 
 This page contains an outline of the topics, content, and assignments for the semester.
@@ -8,206 +8,43 @@ This page contains an outline of the topics, content, and assignments for the se
 Note that this schedule will be updated as the semester progresses, with all changes documented here.
 
 ::: column-screen-inset-right
-<table>
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 23%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th><p>Date</p></th>
-<th><p>Topic</p></th>
-<th style="text-align: center;"><p>📖Prepare</p></th>
-<th style="text-align: center;"><p>Slides</p></th>
-<th style="text-align: center;"><p>HW</p></th>
-<th style="text-align: center;"><p>Project</p></th>
-<th><p></p></th>
-<th><p></p></th>
-<th><p></p></th>
-<th><p></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><p>Mon, Mar 17</p></td>
-<td><p>Experimental Research</p></td>
-<td style="text-align: center;"><p>P &amp; J - Ch. 6</p>
-<p>Brough - Sec. 2.10</p></td>
-<td style="text-align: center;"><p><a href="">💻</a></p></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><p>Wed, Mar 19</p></td>
-<td><p>Experimental Research</p></td>
-<td style="text-align: center;"><p>Review Studies: </p></td>
-<td style="text-align: center;"><p>Deep Dive into Designs</p></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><p>Mon, Mar 24</p></td>
-<td><p>Non-Experimental Research</p></td>
-<td style="text-align: center;"><p>P &amp; J - Ch. 7</p></td>
-<td style="text-align: center;"><p><a href="">💻</a></p></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><p>Wed, Mar 26</p></td>
-<td><p>Data Collection: Reviews &amp; Archival</p></td>
-<td style="text-align: center;"><p>Brough - Sec. 2.6 &amp; 2.7</p></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><p>Mon, Mar 31</p></td>
-<td><p>Qualitative Methods</p></td>
-<td style="text-align: center;"><p>Brough - Sec. 2.8 &amp; 2.9</p></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><p>Wed, Apr 2</p></td>
-<td><p>Survey Methods</p></td>
-<td style="text-align: center;"><p>P &amp; J - Ch. 9</p>
-<p>Brough - Sec. 2.11 - 2.14</p></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><p>Mon, Apr 7</p></td>
-<td><p>Data Organization</p></td>
-<td style="text-align: center;"><p>Brough - Sec 3.16 &amp; 3.17</p></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><p>Wed, Apr 9</p></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><p>Mon, Apr 14</p></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><p>Wed, Apr 16</p></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><p>Mon, Apr 21</p></td>
-<td><p>GROUP WORK DAY (No Class)</p></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><p>Wed, Apr 23</p></td>
-<td><p>PRESENTATIONS</p></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><p>Mon, Apr 28</p></td>
-<td><p>PRESENTATIONS</p></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
++-------+-------------+-------------------------------------+---------------------------+---------+-----------------------------+----------------+
+| Week  | Date        | Topic                               | 📖Prepare                 | Slides  | ✍️ In-Class                 | 📋Due          |
++=======+=============+=====================================+===========================+:=======:+:===========================:+:==============:+
+| 10    | Mon, Mar 17 | Experimental Research               | P & J - Ch. 6             | [💻]()  | Review Methods Expectations |                |
+|       |             |                                     |                           |         |                             |                |
+|       |             |                                     | Brough - Sec. 2.10        |         |                             |                |
++-------+-------------+-------------------------------------+---------------------------+---------+-----------------------------+----------------+
+|       | Wed, Mar 19 | Experimental Research               | Review Studies:           |         | Deep Dive into Designs      |                |
++-------+-------------+-------------------------------------+---------------------------+---------+-----------------------------+----------------+
+| 11    | Mon, Mar 24 | Non-Experimental Research           | P & J - Ch. 7             | [💻]()  |                             |                |
++-------+-------------+-------------------------------------+---------------------------+---------+-----------------------------+----------------+
+|       | Wed, Mar 26 | Data Collection: Reviews & Archival | Brough - Sec. 2.6 & 2.7   |         |                             |                |
++-------+-------------+-------------------------------------+---------------------------+---------+-----------------------------+----------------+
+| 12    | Mon, Mar 31 | Qualitative Methods                 | Brough - Sec. 2.8 & 2.9   |         |                             | Methods Draft  |
+|       |             |                                     |                           |         |                             |                |
+|       |             |                                     |                           |         |                             | (Sun, Mar 30)  |
++-------+-------------+-------------------------------------+---------------------------+---------+-----------------------------+----------------+
+|       | Wed, Apr 2  | Survey Methods                      | P & J - Ch. 9             |         |                             | Peer Review    |
+|       |             |                                     |                           |         |                             |                |
+|       |             |                                     | Brough - Sec. 2.11 - 2.14 |         |                             |                |
++-------+-------------+-------------------------------------+---------------------------+---------+-----------------------------+----------------+
+|       |             |                                     |                           |         |                             |                |
++-------+-------------+-------------------------------------+---------------------------+---------+-----------------------------+----------------+
+| 13    | Mon, Apr 7  | Data Organization                   | Brough - Sec 3.16 & 3.17  |         |                             |                |
++-------+-------------+-------------------------------------+---------------------------+---------+-----------------------------+----------------+
+|       | Wed, Apr 9  |                                     |                           |         |                             |                |
++-------+-------------+-------------------------------------+---------------------------+---------+-----------------------------+----------------+
+| 14    | Mon, Apr 14 |                                     |                           |         |                             |                |
++-------+-------------+-------------------------------------+---------------------------+---------+-----------------------------+----------------+
+|       | Wed, Apr 16 |                                     |                           |         |                             |                |
++-------+-------------+-------------------------------------+---------------------------+---------+-----------------------------+----------------+
+| 15    | Mon, Apr 21 | GROUP WORK DAY (No Class)           |                           |         |                             |                |
++-------+-------------+-------------------------------------+---------------------------+---------+-----------------------------+----------------+
+|       | Wed, Apr 23 | PRESENTATIONS                       |                           |         |                             |                |
++-------+-------------+-------------------------------------+---------------------------+---------+-----------------------------+----------------+
+|       | Mon, Apr 28 | PRESENTATIONS                       |                           |         |                             |                |
++-------+-------------+-------------------------------------+---------------------------+---------+-----------------------------+----------------+
 :::
 
 ```{r echo = FALSE}
