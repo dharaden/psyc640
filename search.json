@@ -73,85 +73,50 @@
     "text": "And here is another subsection that you can include and update!"
   },
   {
-    "objectID": "slides/template.html#meet-your-ta",
-    "href": "slides/template.html#meet-your-ta",
-    "title": "Lab 0 - Meet + greet",
-    "section": "Meet your TA!",
-    "text": "Meet your TA!"
+    "objectID": "slides/slide_template.html#announcements",
+    "href": "slides/slide_template.html#announcements",
+    "title": "Lecture Title",
+    "section": "Announcements",
+    "text": "Announcements\n\nThing:\n\n\nSub things"
   },
   {
-    "objectID": "slides/template.html#meet-each-other",
-    "href": "slides/template.html#meet-each-other",
-    "title": "Lab 0 - Meet + greet",
-    "section": "Meet each other!",
-    "text": "Meet each other!\nIn breakout rooms:\n\nName, year, major, hometown\nWhat did you do over the winter break?\nWhat do you hope to get out of this course?\nAnything else you want to share/ask?\n\n\n\n\n−+\n08:00"
-  },
-  {
-    "objectID": "slides/template.html#take-the-survey",
-    "href": "slides/template.html#take-the-survey",
-    "title": "Lab 0 - Meet + greet",
-    "section": "Take the survey",
-    "text": "Take the survey\n\nGo to the course website:\nhttps://sta210-s22.github.io/website\nClick on the instructions for Lab 0 on the course schedule\nTake the Getting to know you survey"
-  },
-  {
-    "objectID": "slides/template.html#what-to-expect-in-lab",
-    "href": "slides/template.html#what-to-expect-in-lab",
-    "title": "Lab 0 - Meet + greet",
-    "section": "What to expect in lab",
-    "text": "What to expect in lab\n\nIntroduction to the lab assignment (~ 5 - 10 minutes)\nWork on the lab assignment (individual at first, but in teams for the rest of the semester)\nLab instructions posted on the course website.\nStart each lab by finding your assignment repo in the course GitHub organization\nMore on all of these tools in lecture tomorrow and in lab next week"
-  },
-  {
-    "objectID": "slides/template.html#wrap-up",
-    "href": "slides/template.html#wrap-up",
-    "title": "Lab 0 - Meet + greet",
-    "section": "Wrap up",
-    "text": "Wrap up\nAny questions about the course?"
+    "objectID": "slides/slide_template.html#computational-setup",
+    "href": "slides/slide_template.html#computational-setup",
+    "title": "Lecture Title",
+    "section": "Computational setup",
+    "text": "Computational setup\n\n# load packages\nlibrary(tidyverse)   # for data wrangling and visualization\nlibrary(scales)      # for pretty axis labels\nlibrary(knitr)       # for pretty tables\nlibrary(patchwork)   # for laying out plots\n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 20))\n\n\n\n\n−+\n08:00"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "PSYC 641: Graduate Research Methods",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester.\nNote that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\n📖 Prepare\nSlides\n✍️ In-Class | 📋 Due |\n\n\n\n\n\n10\nMon, Mar 17\nExperimental Research\nP & J - Ch. 6\nBrough - Sec. 2.10\n💻\nReview Methods Expectations\n\n\n\n\nWed, Mar 19\nExperimental Research\nReview Studies:\n\nDeep Dive into Designs\n\n\n\n11\nMon, Mar 24\nNon-Experimental Research\nP & J - Ch. 7\n💻\n\n\n\n\n\nWed, Mar 26\nGroup Work Day\n\n\n\nMethods Section Draft Sun, Mar 30\n\n\n12\nMon, Mar 31\nQualitative Methods\nBrough - Sec. 2.8 & 2.9\n\n\n\n\n\n\nWed, Apr 2\nSurvey Methods\nP & J - Ch. 9\nBrough - Sec. 2.11 - 2.14\n\n\nPeer Review Sun, Apr 6\n\n\n13\nMon, Apr 7\nSurvey Methods\n\n\nStudy Critique\n\n\n\n\nWed, Apr 9\nData Collection: Reviews & Archival\nBrough - Sec. 2.6 & 2.7\n\n\n\n\n\n14\nMon, Apr 14\nData Organization\nBrough - Sec 3.16 & 3.17\n\n\n\n\n\n\nWed, Apr 16\n\n\n\n\n\n\n\n15\nMon, Apr 21\nGROUP WORK DAY (No Class)\n\n\n\n\n\n\n\nWed, Apr 23\nPRESENTATIONS\n\n\n\n\n\n\n16\nMon, Apr 28\nPRESENTATIONS\n\n\n\nFinal Report Mon, Apr 28",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester.\nNote that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nSlides\nIn-Class\nDue\n\n\n\n\n10\nMon, Mar 17\nExperimental Research\nP & J - Ch. 6\nBrough - Sec. 2.10\n💻\nReview Methods Expectations\n\n\n\n\nWed, Mar 19\nExperimental Research\nReview Studies:\n\nDeep Dive into Designs\n\n\n\n11\nMon, Mar 24\nNon-Experimental Research\nP & J - Ch. 7\nMaybe Shadish, Cook & Campbell\n💻\n\n\n\n\n\nWed, Mar 26\nGroup Work Day\n\n\n\nMethods Section Draft Sun, Mar 30\n\n\n12\nMon, Mar 31\nQualitative Methods\nBrough - Sec. 2.8 & 2.9\n\n\n\n\n\n\nWed, Apr 2\nSurvey Methods\nP & J - Ch. 9\nBrough - Sec. 2.11 - 2.14\n\n\nPeer Review Sun, Apr 6\n\n\n13\nMon, Apr 7\nSurvey Methods\n\n\nStudy Critique\n\n\n\n\nWed, Apr 9\nData Collection: Reviews & Archival\nBrough - Sec. 2.6 & 2.7\n\n\n\n\n\n14\nMon, Apr 14\nData Organization\nBrough - Sec 3.16 & 3.17\n\n\n\n\n\n\nWed, Apr 16\n\n\n\n\n\n\n\n15\nMon, Apr 21\nGROUP WORK DAY (No Class)\n\n\n\n\n\n\n\nWed, Apr 23\nPRESENTATIONS\n\n\n\n\n\n\n16\nMon, Apr 28\nPRESENTATIONS\n\n\n\nFinal Report Mon, Apr 28",
     "crumbs": [
       "Course information",
       "Schedule"
     ]
   },
   {
-    "objectID": "slides/lec-10.html#meet-your-ta",
-    "href": "slides/lec-10.html#meet-your-ta",
-    "title": "Lab 0 - Meet + greet",
-    "section": "Meet your TA!",
-    "text": "Meet your TA!"
+    "objectID": "slides/lec-10.html#updatescheck-in",
+    "href": "slides/lec-10.html#updatescheck-in",
+    "title": "Experimental Design",
+    "section": "Updates/Check-in",
+    "text": "Updates/Check-in\n\nUpcoming Schedule\nFinal Project:\n\n\nUp Next - Methods/Procedures draft\n\nLet’s Talk about it"
   },
   {
-    "objectID": "slides/lec-10.html#meet-each-other",
-    "href": "slides/lec-10.html#meet-each-other",
-    "title": "Lab 0 - Meet + greet",
-    "section": "Meet each other!",
-    "text": "Meet each other!\nIn breakout rooms:\n\nName, year, major, hometown\nWhat did you do over the winter break?\nWhat do you hope to get out of this course?\nAnything else you want to share/ask?\n\n\n\n\n−+\n08:00"
+    "objectID": "slides/lec-10.html#computational-setup-dont-think-well-need",
+    "href": "slides/lec-10.html#computational-setup-dont-think-well-need",
+    "title": "Experimental Design",
+    "section": "Computational setup (don’t think we’ll need)",
+    "text": "Computational setup (don’t think we’ll need)\n\n# load packages\nlibrary(tidyverse)   # for data wrangling and visualization\nlibrary(scales)      # for pretty axis labels\nlibrary(knitr)       # for pretty tables\nlibrary(patchwork)   # for laying out plots\n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 20))"
   },
   {
-    "objectID": "slides/lec-10.html#take-the-survey",
-    "href": "slides/lec-10.html#take-the-survey",
-    "title": "Lab 0 - Meet + greet",
-    "section": "Take the survey",
-    "text": "Take the survey\n\nGo to the course website:\nhttps://sta210-s22.github.io/website\nClick on the instructions for Lab 0 on the course schedule\nTake the Getting to know you survey"
-  },
-  {
-    "objectID": "slides/lec-10.html#what-to-expect-in-lab",
-    "href": "slides/lec-10.html#what-to-expect-in-lab",
-    "title": "Lab 0 - Meet + greet",
-    "section": "What to expect in lab",
-    "text": "What to expect in lab\n\nIntroduction to the lab assignment (~ 5 - 10 minutes)\nWork on the lab assignment (individual at first, but in teams for the rest of the semester)\nLab instructions posted on the course website.\nStart each lab by finding your assignment repo in the course GitHub organization\nMore on all of these tools in lecture tomorrow and in lab next week"
-  },
-  {
-    "objectID": "slides/lec-10.html#wrap-up",
-    "href": "slides/lec-10.html#wrap-up",
-    "title": "Lab 0 - Meet + greet",
-    "section": "Wrap up",
-    "text": "Wrap up\nAny questions about the course?"
+    "objectID": "slides/lec-10.html#shadish-cook-campbell-2002",
+    "href": "slides/lec-10.html#shadish-cook-campbell-2002",
+    "title": "Experimental Design",
+    "section": "Shadish, Cook & Campbell (2002)",
+    "text": "Shadish, Cook & Campbell (2002)\nDrawing from John Stuart Mill’s philosophy\nThree Criteria for Causal Relationships:\n\nTemporal precedence (cause precedes effect)\nCovariation (cause and effect are correlated)\nElimination of plausible alternative explanations (ruling out confounding variables)\n\nCounterfactual Reasoning\nIntro to Experimental Designs\nRandom Assignment being undesirable\nWhat is Causality (Shadish Cook & Campbell)\nRandomized Control Trials\n\nWhat are the expectations based on the groups that are being compared\n\nWhat is the control group (treatment as usual, placebo)\n\nPlacebo Effect\n\nDepression Symptoms\n\nWhen 9 is Larger than 221 (structure of the study)\nMundane Realism vs. Psychological Realism\n\n\n\n\n−+\n08:00"
   },
   {
     "objectID": "subsection-files/index.html",
