@@ -70,6 +70,30 @@ ggplot2::theme_set(ggplot2::theme_minimal(base_size = 20))
 
     -   e.g., Diffusion of Responsibility (Darley & Latane, 1968)
 
+# Stress Experiment
+
+On a scale of 1 (low levels) - 10 (high levels), take note of your current level of stress
+
+------------------------------------------------------------------------
+
+![](images/cuteanimals22.jpg)
+
+------------------------------------------------------------------------
+
+![](images/scale;webp=auto;jpeg_quality=60.webp)
+
+------------------------------------------------------------------------
+
+![](images/speckled-cape-tortoise.jpg)
+
+------------------------------------------------------------------------
+
+## Stress Experiment Follow-up
+
+On a scale of 1 (low levels) - 10 (high levels), take note of your current level of stress
+
+-   Did these cute animal pictures *cause* you to be more/less stressed?
+
 # Causation
 
 How can we determine causation? i.e., one variable **causes** another to change
@@ -106,26 +130,110 @@ Three Criteria for Causal Relationships:
 
 ------------------------------------------------------------------------
 
-Intro to Experimental Designs
+## Design
 
-Random Assignment being undesirable
+Random Assignment –\> IV –\> DV
 
-Randomized Control Trials
+Simple!
 
--   What are the expectations based on the groups that are being compared
+-   What if we can't randomly assign? What are things that we can't randomly assign?
 
-    -   What is the control group (treatment as usual, placebo)
+------------------------------------------------------------------------
 
--   Placebo Effect
+[**Quasi-experimental Design**]{.underline}
 
-    -   Depression Symptoms - <https://pmc.ncbi.nlm.nih.gov/articles/PMC4172306/#:~:text=To%20summarize%2C%20there%20is%20a,but%20the%20placebo%20effect%20is.>
+-   But that is next week. Stay on track and don't get distracted
 
--   When 9 is Larger than 221 (structure of the study)
+------------------------------------------------------------------------
 
--   Mundane Realism vs. Psychological Realism
+### Random Assignment
 
-```{r}
-countdown(minutes = 8)
-```
+Every participant has an equal likelihood of being in each of the groups
+
+-   Coin Flip
+
+-   Computer Algorithm
+
+Will need to check for group differences on variables of interest and other meaningful characteristics.
+
+-   What statistical test would we use?
+
+------------------------------------------------------------------------
+
+### Randomized Control Trial (RCT)
+
+-   We have a random sample ✅
+
+-   We have random assignment ✅
+
+-   But what are the groups that we are assigning?
+
+    -   What is the research question, and what do we want to compare it against?
+
+------------------------------------------------------------------------
+
+### RCT
+
+The comparison/control group means a lot when it comes to the conclusions that we can establish
+
+-   Treatment vs. ...
+
+    -   Waitlist Control?
+
+    -   Treatment as usual?
+
+    -   Other treatment?
+
+    -   Placebo?
+
+    -   Nothing?
+
+------------------------------------------------------------------------
+
+### Placebo Effect
+
+This has been an emerging area of research that is utterly fascinating
+
+On occasion, the placebo shows just as much of an effect as the actual treatment
+
+Example: Treating Depression ([link](https://pmc.ncbi.nlm.nih.gov/articles/PMC4172306/#:~:text=To%20summarize%2C%20there%20is%20a,but%20the%20placebo%20effect%20is.))
+
+# Example
+
+Investigate the bidirectional relationships between sleep patterns, social media use, and depressive symptoms in adolescents over a two-year period.
+
+-    **Measures:**
+
+    -   Sleep: Actigraphy (1 week per assessment) + Pittsburgh Sleep Quality Index
+
+    -   Social Media: Screen time logs + Social Media Addiction Scale
+
+    -   Depression: Beck Depression Inventory
+
+    -   Covariates: Pubertal status, SES, parental depression
+
+------------------------------------------------------------------------
+
+Draw it on the board
+
+-   What stats can we do?
+
+------------------------------------------------------------------------
+
+# Next Class...
+
+We will have a class activity where you will evaluate studies and provide additional input
+
+Please review the following studies:
+
+-   Bobo Doll Experiment
+
+-   Zimbardo Prison Study
+
+-   Milgram Obedience Study
+
+-   ["Monster" Study](https://en.wikipedia.org/wiki/Monster_Study)
+
+    Mundane Realism vs. Psychological Realism
 
 ## 
