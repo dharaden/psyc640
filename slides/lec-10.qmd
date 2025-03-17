@@ -64,11 +64,11 @@ ggplot2::theme_set(ggplot2::theme_minimal(base_size = 20))
 
 # Experimental Designs
 
-Identified as the "Gold Standard" within research. Why?
+-   Identified as the "Gold Standard" within research. Why is it considered the "gold standard"??
 
-The ability to draw *causal* connections between variables
+-   The ability to draw *causal* connections between variables
 
--   e.g., Diffusion of Responsibility (Darley & Latane, 1968)
+    -   e.g., Diffusion of Responsibility (Darley & Latane, 1968)
 
 # Causation
 
@@ -86,13 +86,29 @@ Three Criteria for Causal Relationships:
 
 3.  **Elimination of plausible alternative explanations** (ruling out confounding variables)
 
+    ------------------------------------------------------------------------
+
 ### Counterfactual Reasoning
+
+-   Hypothetical situation where manipulated outcomes are compared to the outcomes without a manipulation (i.e., time travel)
+
+-   How does this work?
+
+    -   Group of individuals get a treatment
+
+    -   We measure their outcomes
+
+    -   We rewind time and do not give the group the treatment
+
+    -   We measure these outcomes
+
+    -   Compare!
+
+------------------------------------------------------------------------
 
 Intro to Experimental Designs
 
 Random Assignment being undesirable
-
-What is Causality (Shadish Cook & Campbell)
 
 Randomized Control Trials
 
@@ -102,7 +118,7 @@ Randomized Control Trials
 
 -   Placebo Effect
 
-    -   Depression Symptoms
+    -   Depression Symptoms - <https://pmc.ncbi.nlm.nih.gov/articles/PMC4172306/#:~:text=To%20summarize%2C%20there%20is%20a,but%20the%20placebo%20effect%20is.>
 
 -   When 9 is Larger than 221 (structure of the study)
 
