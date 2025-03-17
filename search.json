@@ -112,11 +112,25 @@
     "text": "Computational setup (don’t think we’ll need)\n\n# load packages\nlibrary(tidyverse)   # for data wrangling and visualization\nlibrary(scales)      # for pretty axis labels\nlibrary(knitr)       # for pretty tables\nlibrary(patchwork)   # for laying out plots\n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 20))"
   },
   {
+    "objectID": "slides/lec-10.html#stress-experiment-follow-up",
+    "href": "slides/lec-10.html#stress-experiment-follow-up",
+    "title": "Experimental Design",
+    "section": "Stress Experiment Follow-up",
+    "text": "Stress Experiment Follow-up\nOn a scale of 1 (low levels) - 10 (high levels), take note of your current level of stress\n\nDid these cute animal pictures cause you to be more/less stressed?"
+  },
+  {
     "objectID": "slides/lec-10.html#shadish-cook-campbell-2002",
     "href": "slides/lec-10.html#shadish-cook-campbell-2002",
     "title": "Experimental Design",
     "section": "Shadish, Cook & Campbell (2002)",
     "text": "Shadish, Cook & Campbell (2002)\nDrawing from John Stuart Mill’s philosophy\nThree Criteria for Causal Relationships:\n\nTemporal precedence (cause precedes effect)\nCovariation (cause and effect are correlated)\nElimination of plausible alternative explanations (ruling out confounding variables)\n\n\nCounterfactual Reasoning\n\nHypothetical situation where manipulated outcomes are compared to the outcomes without a manipulation (i.e., time travel)\nHow does this work?\n\nGroup of individuals get a treatment\nWe measure their outcomes\nWe rewind time and do not give the group the treatment\nWe measure these outcomes\nCompare!"
+  },
+  {
+    "objectID": "slides/lec-10.html#design",
+    "href": "slides/lec-10.html#design",
+    "title": "Experimental Design",
+    "section": "Design",
+    "text": "Design\nRandom Assignment –&gt; IV –&gt; DV\nSimple!\n\nWhat if we can’t randomly assign? What are things that we can’t randomly assign?"
   },
   {
     "objectID": "subsection-files/index.html",
