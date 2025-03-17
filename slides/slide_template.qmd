@@ -1,0 +1,68 @@
+---
+title: "Lecture Title"
+subtitle: "PSYC 641 - Spring 2025"
+footer:  "[course-website](https://dharaden.github.io/psyc641-s25/)"
+logo: "images/641_hex.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    multiplex: true
+    transition: fade
+    slide-number: true
+    incremental: true 
+    chalkboard: true
+editor: visual
+execute:
+  freeze: auto
+---
+
+```{r setup}
+#| include: false
+
+library(countdown)
+
+knitr::opts_chunk$set(
+  fig.width = 8,
+  fig.asp = 0.618,
+  fig.retina = 3,
+  dpi = 300,
+  out.width = "80%",
+  fig.align = "center"
+)
+
+options(scipen = 100)
+```
+
+# Welcome Back! 
+
+# Welcome
+
+## Announcements {.smaller}
+
+-   Thing:
+
+    ::: nonincremental
+    -   Sub things
+    :::
+
+## Computational setup
+
+```{r packages}
+#| echo: true
+#| message: false
+
+# load packages
+library(tidyverse)   # for data wrangling and visualization
+library(scales)      # for pretty axis labels
+library(knitr)       # for pretty tables
+library(patchwork)   # for laying out plots
+
+# set default theme and larger font size for ggplot2
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 20))
+```
+
+```{r}
+countdown(minutes = 8)
+```
+
+## 
