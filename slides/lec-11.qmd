@@ -80,7 +80,7 @@ Take a moment and review the questions. Highlight those that you still find uncl
 
 ------------------------------------------------------------------------
 
-## What are they? 
+## What are they?
 
 ![](images/clipboard-681170183.png)
 
@@ -166,7 +166,7 @@ Take a moment and review the questions. Highlight those that you still find uncl
 
 ------------------------------------------------------------------------
 
-## Correlational 
+## Correlational
 
 **No independent variable is manipulated. Interested in the relationship between variables.**
 
@@ -178,7 +178,11 @@ Take a moment and review the questions. Highlight those that you still find uncl
 
     -   Using existing data sources to answer questions
 
-        -   Databases ([LDBase](https://ldbase.org/), [NHANES](https://www.cdc.gov/nchs/nhanes/index.html), [Add Health](https://addhealth.cpc.unc.edu/)) *Other Examples?*
+        -   Databases ([LDBase](https://ldbase.org/), [NHANES](https://www.cdc.gov/nchs/nhanes/index.html), [Add Health](https://addhealth.cpc.unc.edu/), [HDX](https://data.humdata.org/)) *Other Examples?*
+
+            -   Census Data, Pew Research Center, Social Determinants of Health (USDA)
+
+            -   Integrated Data Analysis
 
         -   Publicly Accessible (Reddit Posts, Tweets, Reviews)
 
@@ -204,13 +208,25 @@ Take a moment and review the questions. Highlight those that you still find uncl
 
 ------------------------------------------------------------------------
 
-## How to Start a Study? 
+## How to Start a Study?
 
 What are the steps that you take to design a study?
 
 Our area of focus will be on testing the placebo effect on sleep quality
 
 1.  Come up with a question!
+2.  Does the **placebo effect** impact an individual's **perceived sleep quality**
+    1.  Placebo Effect - We will lie and say that they slept well; We will say they slept worse too
+    2.  Ratings of perceived sleep quality
+3.  Consider Boundaries or limitations
+4.  Look at what has been used in the past
+    1.  Consider population and the sample we will be using
+5.  What resources do we have??
+6.  What do we do about hypotheses??
+7.  How do we measure these things (PSG vs. Fake Sensor)
+    1.  Make sure measures are valid and align
+    2.  Need to determine the "mismatch" and operationalize what this is
+8.  Considering Time
 
 ------------------------------------------------------------------------
 
