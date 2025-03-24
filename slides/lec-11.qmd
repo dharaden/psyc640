@@ -5,12 +5,12 @@ footer:  "[course-website](https://dharaden.github.io/psyc641-s25/)"
 logo: "images/641_hex.png"
 format: 
   revealjs:
- theme: slides.scss
- multiplex: true
- transition: fade
- slide-number: true
- incremental: true 
- chalkboard: true
+    theme: slides.scss
+    multiplex: true
+    transition: fade
+    slide-number: true
+    incremental: true 
+    chalkboard: true
 editor: visual
 execute:
   freeze: auto
