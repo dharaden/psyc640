@@ -76,10 +76,10 @@ options(scipen = 100)
 #| message: false
 
 # load packages
-library(tidyverse)   # for data wrangling and visualization
-library(scales)      # for pretty axis labels
-library(knitr)       # for pretty tables
-library(patchwork)   # for laying out plots
+library(RedditExtractor)   # for pulling reddit posts
+library(tidytext)      # for text investigation
+library(ggplot2)       # for pretty visualizations
+library(ggwordcloud)   # for wordclouds 
 
 # set default theme and larger font size for ggplot2
 ggplot2::theme_set(ggplot2::theme_minimal(base_size = 20))
@@ -163,18 +163,94 @@ In your previous group, you came up with a new design. Let's modify them to be a
 
 Let's walk through how to determine the stats methods being used
 
+<https://statsandr.com/blog/what-statistical-test-should-i-do/>
+
+<https://www.scribbr.com/wp-content/uploads//2020/01/flowchart-for-choosing-a-statistical-test.png>
+
+**Go back to your research question.**
+
 # Qualitative Methods
 
 Aims to gather and examine non-numeric data in an attempt to understand an individual's experience and their "social reality".
-
-------------------------------------------------------------------------
 
 # Ecological Systems Model
 
 ------------------------------------------------------------------------
 
-![](images/Bronfenbrenner-Ecological-Systems-Theory.jpeg)
+![](images/Bronfenbrenner-Ecological-Systems-Theory.jpeg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](images/6454e04b8455c474f0e6352d_Bronfenbrenners Ecological Model.jpg)
+![](images/6454e04b8455c474f0e6352d_Bronfenbrenners%20Ecological%20Model.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Approaches to Qualitative Research
+
+::::::: columns
+:::: {.column width="50%"}
+::: nonincremental
+-   Ethnography
+-   Phenomenology
+-   Discourse Analysis
+-   Narrative
+:::
+::::
+
+:::: {.column width="50%"}
+::: nonincremental
+-   Grounded Theory
+-   Action Research
+-   Historical Research
+-   Case Studies
+:::
+::::
+:::::::
+
+------------------------------------------------------------------------
+
+### Approaches to Qualitative Research
+
+Always consider *how* the information is being collected and *what* the research question is
+
+-   Grounded Theory
+
+    -   Using data to inform the research
+
+-   Participatory Action Research
+
+    -   Working with stakeholders to inform/guide research
+
+------------------------------------------------------------------------
+
+## What is the unit of analysis? 
+
+What is the information that we are collecting to investigate?
+
+-   Text Based (e.g., Narratives, written reports)
+
+-   Observational
+
+-   Audio
+
+**What is the GOAL of the project?**
+
+------------------------------------------------------------------------
+
+## Trying it out? - Text Based
+
+<https://github.com/ivan-rivera/RedditExtractor>
+
+<https://r4np.com/14_mixed_methods.html>
+
+<https://cran.r-project.org/web/packages/ggwordcloud/vignettes/ggwordcloud.html>
+
+------------------------------------------------------------------------
+
+## Trying it out? - Observational
+
+[Link to Guidelines](/weeks/week-12.html)(if we have time)
+
+------------------------------------------------------------------------
+
+\![\](<https://youtu.be/g5aBGapsxG8>)
