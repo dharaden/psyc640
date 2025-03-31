@@ -176,63 +176,63 @@
   {
     "objectID": "slides/lec-12.html#remindersupdates",
     "href": "slides/lec-12.html#remindersupdates",
-    "title": "Qaulaitative Methods",
+    "title": "Qaulitative Methods",
     "section": "Reminders/Updates",
     "text": "Reminders/Updates\n\n\nDesign & Measures Draft - Turned in!\nPeer Review of Drafts (2) - Due April 6\n\nWill be sending out the drafts for you to review\nSimilar a traditional peer review\n\nProvide feedback on areas of improvement\nRemains anonymous"
   },
   {
     "objectID": "slides/lec-12.html#overview",
     "href": "slides/lec-12.html#overview",
-    "title": "Qaulaitative Methods",
+    "title": "Qaulitative Methods",
     "section": "Overview",
     "text": "Overview\n\n\nQuasi-Experimental Revisit\n\nApplying to a study\nImplementing Stats\n\nReading Question Check-in\nDefining Qualitative Research\nExample"
   },
   {
     "objectID": "slides/lec-12.html#computational-setup",
     "href": "slides/lec-12.html#computational-setup",
-    "title": "Qaulaitative Methods",
+    "title": "Qaulitative Methods",
     "section": "Computational setup",
     "text": "Computational setup\n\n# load packages\nlibrary(RedditExtractoR)   # for pulling reddit posts\nlibrary(tidytext)      # for text investigation\nlibrary(ggplot2)       # for pretty visualizations\nlibrary(ggwordcloud)   # for wordclouds \n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 20))\n\n\n\n\n−+\n08:00"
   },
   {
     "objectID": "slides/lec-12.html#from-last-time-building-blocks-to-a-study",
     "href": "slides/lec-12.html#from-last-time-building-blocks-to-a-study",
-    "title": "Qaulaitative Methods",
+    "title": "Qaulitative Methods",
     "section": "From Last Time: Building Blocks to a study",
     "text": "From Last Time: Building Blocks to a study\nPick and choose the things that are going to most accurately assess your question"
   },
   {
     "objectID": "slides/lec-12.html#review-previous-studies",
     "href": "slides/lec-12.html#review-previous-studies",
-    "title": "Qaulaitative Methods",
+    "title": "Qaulitative Methods",
     "section": "Review Previous Studies",
     "text": "Review Previous Studies\nIn your previous group, you came up with a new design. Let’s modify them to be a quasi-experimental design.\n\n\nMilgram\nStanford Prison\nMonster\nBobo Doll"
   },
   {
     "objectID": "slides/lec-12.html#approaches-to-qualitative-research",
     "href": "slides/lec-12.html#approaches-to-qualitative-research",
-    "title": "Qaulaitative Methods",
+    "title": "Qaulitative Methods",
     "section": "Approaches to Qualitative Research",
     "text": "Approaches to Qualitative Research\n\n\n\n\nEthnography\nPhenomenology\nDiscourse Analysis\nNarrative\n\n\n\n\n\nGrounded Theory\nAction Research\nHistorical Research\nCase Studies"
   },
   {
     "objectID": "slides/lec-12.html#what-is-the-unit-of-analysis",
     "href": "slides/lec-12.html#what-is-the-unit-of-analysis",
-    "title": "Qaulaitative Methods",
+    "title": "Qaulitative Methods",
     "section": "What is the unit of analysis?",
     "text": "What is the unit of analysis?\nWhat is the information that we are collecting to investigate?\n\nText Based (e.g., Narratives, written reports)\nObservational\nAudio\n\nWhat is the GOAL of the project?"
   },
   {
     "objectID": "slides/lec-12.html#trying-it-out---text-based",
     "href": "slides/lec-12.html#trying-it-out---text-based",
-    "title": "Qaulaitative Methods",
+    "title": "Qaulitative Methods",
     "section": "Trying it out? - Text Based",
     "text": "Trying it out? - Text Based\nhttps://github.com/ivan-rivera/RedditExtractor\nhttps://r4np.com/14_mixed_methods.html\nhttps://cran.r-project.org/web/packages/ggwordcloud/vignettes/ggwordcloud.html"
   },
   {
     "objectID": "slides/lec-12.html#trying-it-out---observational",
     "href": "slides/lec-12.html#trying-it-out---observational",
-    "title": "Qaulaitative Methods",
+    "title": "Qaulitative Methods",
     "section": "Trying it out? - Observational",
     "text": "Trying it out? - Observational\nLink to Guidelines(if we have time)"
   },
