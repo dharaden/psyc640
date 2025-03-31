@@ -76,7 +76,7 @@ options(scipen = 100)
 #| message: false
 
 # load packages
-library(RedditExtractor)   # for pulling reddit posts
+library(RedditExtractoR)   # for pulling reddit posts
 library(tidytext)      # for text investigation
 library(ggplot2)       # for pretty visualizations
 library(ggwordcloud)   # for wordclouds 
@@ -223,7 +223,7 @@ Always consider *how* the information is being collected and *what* the research
 
 ------------------------------------------------------------------------
 
-## What is the unit of analysis? 
+## What is the unit of analysis?
 
 What is the information that we are collecting to investigate?
 
