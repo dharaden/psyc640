@@ -202,15 +202,17 @@ Example: Treating Depression ([link](https://pmc.ncbi.nlm.nih.gov/articles/PMC41
 
 Investigate the bidirectional relationships between sleep patterns, social media use, and depressive symptoms in adolescents over a two-year period.
 
--    **Measures:**
+-   **Measures:**
 
-    -   Sleep: Actigraphy (1 week per assessment) + Pittsburgh Sleep Quality Index
+```         
+-   Sleep: Actigraphy (1 week per assessment) + Pittsburgh Sleep Quality Index
 
-    -   Social Media: Screen time logs + Social Media Addiction Scale
+-   Social Media: Screen time logs + Social Media Addiction Scale
 
-    -   Depression: Beck Depression Inventory
+-   Depression: Beck Depression Inventory
 
-    -   Covariates: Pubertal status, SES, parental depression
+-   Covariates: Pubertal status, SES, parental depression
+```
 
 ------------------------------------------------------------------------
 
