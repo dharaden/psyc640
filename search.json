@@ -77,60 +77,175 @@
     ]
   },
   {
-    "objectID": "subsection-files/sub_1.html",
-    "href": "subsection-files/sub_1.html",
-    "title": "From Subsection 1",
+    "objectID": "weeks/week-12.html",
+    "href": "weeks/week-12.html",
+    "title": "Week 11",
     "section": "",
-    "text": "The first page of the subsection. You can do so much here!"
+    "text": "Important\n\n\n\nReview Final Project Expectations and dates here.",
+    "crumbs": [
+      "Weekly materials",
+      "Week 12"
+    ]
   },
   {
-    "objectID": "subsection-files/index.html",
-    "href": "subsection-files/index.html",
-    "title": "Main Section Landing",
+    "objectID": "weeks/week-12.html#prepare",
+    "href": "weeks/week-12.html#prepare",
+    "title": "Week 11",
+    "section": "Prepare",
+    "text": "Prepare\n📖 Brough - Sec. 2.8 & 2.9",
+    "crumbs": [
+      "Weekly materials",
+      "Week 12"
+    ]
+  },
+  {
+    "objectID": "weeks/week-12.html#slides",
+    "href": "weeks/week-12.html#slides",
+    "title": "Week 11",
+    "section": "Slides",
+    "text": "Slides\n🖥️ Qualitative Data",
+    "crumbs": [
+      "Weekly materials",
+      "Week 12"
+    ]
+  },
+  {
+    "objectID": "weeks/week-12.html#in-class",
+    "href": "weeks/week-12.html#in-class",
+    "title": "Week 11",
+    "section": "In-Class",
+    "text": "In-Class\nGroup 1 Observation\n\nFocus on the amount of times students initiates conversation with:\n\nThe teacher\nAnother student\n\n\nGroup 2 Observation\n\nFocus on the amount of times the conversations are positive, negative, neutral with:\n\nThe teacher\nAnother student",
+    "crumbs": [
+      "Weekly materials",
+      "Week 12"
+    ]
+  },
+  {
+    "objectID": "weeks/week-12.html#examples-of-qualitative-investigation",
+    "href": "weeks/week-12.html#examples-of-qualitative-investigation",
+    "title": "Week 11",
+    "section": "Examples of Qualitative Investigation",
+    "text": "Examples of Qualitative Investigation\n\nLevitt, H. M., Motulsky, S. L., Wertz, F. J., Morrow, S. L., & Ponterotto, J. G. (2017). Recommendations for designing and reviewing qualitative research in psychology: Promoting methodological integrity. Qualitative psychology, 4(1), 2.\nHolder, A., Jackson, M. A., & Ponterotto, J. G. (2015). Racial microaggression experiences and coping strategies of Black women in corporate leadership. Qualitative psychology, 2(2), 164.\nDutt, A., & Grabe, S. (2014). Lifetime activism, marginality, and psychology: Narratives of lifelong feminist activists committed to social change. Qualitative Psychology, 1(2), 107.\n\n\n\nBack to course schedule ⏎",
+    "crumbs": [
+      "Weekly materials",
+      "Week 12"
+    ]
+  },
+  {
+    "objectID": "subsection-files/sub_2.html",
+    "href": "subsection-files/sub_2.html",
+    "title": "From Subsection 2",
     "section": "",
-    "text": "Here is a landing page if you plan to have multiple subsections within! Cool huh?!"
+    "text": "And here is another subsection that you can include and update!"
   },
   {
-    "objectID": "subsection-files/index.html#section",
-    "href": "subsection-files/index.html#section",
-    "title": "Main Section Landing",
+    "objectID": "slides/research_deep_dive_activity.html",
+    "href": "slides/research_deep_dive_activity.html",
+    "title": "Research Redesign",
     "section": "",
-    "text": "Here is a landing page if you plan to have multiple subsections within! Cool huh?!"
+    "text": "Divide into groups to evaluate classic experimental studies. Define the focus of the experiment. Propose modern ethical redesigns using current standards.\nUse the following Google Docs with your group and answer the questions in the document. Be sure to provide any additional citations (either articles or websites) that you used to inform your understanding of the topic or the solutions you came up with:\n\nMilgram\nStanford Prison\nMonster\nBobo Doll"
   },
   {
-    "objectID": "slides/lec-10.html#updatescheck-in",
-    "href": "slides/lec-10.html#updatescheck-in",
-    "title": "Experimental Design",
-    "section": "Updates/Check-in",
-    "text": "Updates/Check-in\n\nUpcoming Schedule\nFinal Project:\n\n\nUp Next - Methods/Procedures draft\n\nLet’s Talk about it"
+    "objectID": "slides/research_deep_dive_activity.html#milgram-obedience-study-1961-1963",
+    "href": "slides/research_deep_dive_activity.html#milgram-obedience-study-1961-1963",
+    "title": "Research Redesign",
+    "section": "Milgram Obedience Study (1961-1963)",
+    "text": "Milgram Obedience Study (1961-1963)\n\nBackground & Historical Context\nStanley Milgram, a Yale University psychologist, designed his experiments shortly after the trial of Nazi war criminals, who claimed they were “just following orders.” Milgram sought to understand whether ordinary Americans would similarly follow destructive orders from authority figures.\n\n\nMethodology\n\nParticipants: 40 male participants aged 20-50 from diverse occupations, recruited through newspaper ads offering $4.50 for participation in a “study of memory”\nExperimental Setup:\n\nParticipants were assigned the role of “teacher” through a rigged drawing\nA confederate played the “learner” role\nAn experimenter in a lab coat supervised the procedure\nThe participant sat before a shock generator with 30 switches labeled from 15-450 volts with descriptive labels (e.g., “Slight Shock” to “Danger: Severe Shock” to “XXX”)\n\nProcedure:\n\nTeachers were instructed to administer increasingly powerful shocks for each incorrect answer\nWhen participants hesitated, the experimenter used four standardized verbal prods:\n\n“Please continue”\n“The experiment requires that you continue”\n“It is absolutely essential that you continue”\n“You have no other choice, you must go on”\n\nNo actual shocks were delivered, but participants heard pre-recorded audio of the learner’s responses (complaints, protests, screams, and eventually silence)\n\n\n\n\nResults\n\n65% of participants administered the maximum 450-volt shock\nAll participants continued to at least 300 volts\nMany participants showed signs of extreme stress (sweating, trembling, nervous laughter, etc.)"
   },
   {
-    "objectID": "slides/lec-10.html#computational-setup-dont-think-well-need",
-    "href": "slides/lec-10.html#computational-setup-dont-think-well-need",
-    "title": "Experimental Design",
-    "section": "Computational setup (don’t think we’ll need)",
-    "text": "Computational setup (don’t think we’ll need)\n\n# load packages\nlibrary(tidyverse)   # for data wrangling and visualization\nlibrary(scales)      # for pretty axis labels\nlibrary(knitr)       # for pretty tables\nlibrary(patchwork)   # for laying out plots\n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 20))"
+    "objectID": "slides/research_deep_dive_activity.html#stanford-prison-experiment-1971",
+    "href": "slides/research_deep_dive_activity.html#stanford-prison-experiment-1971",
+    "title": "Research Redesign",
+    "section": "Stanford Prison Experiment (1971)",
+    "text": "Stanford Prison Experiment (1971)\n\nBackground & Historical Context\nPhilip Zimbardo conducted this experiment at Stanford University to investigate how readily people would conform to the roles of guard and prisoner in a simulated prison environment. The study occurred during a period of prison reform activism and growing interest in situational influences on behavior.\n\n\nMethodology\n\nParticipants: 24 male college students deemed “normal” based on psychological tests, paid $15/day\nSetup:\n\nMock prison constructed in Stanford Psychology Department basement\nParticipants randomly assigned as prisoners or guards\nGuards given uniforms, mirrored sunglasses, and wooden batons\nPrisoners wore smocks, stocking caps, and chains on ankles\nCells contained only cots, no personal possessions allowed\n\nProcedure:\n\nPrisoners “arrested” at homes by real police officers\nGuards worked 8-hour shifts, prisoners remained in facility 24/7\nGuards received minimal instructions: maintain order without physical violence\nPlanned to run for 2 weeks but terminated after only 6 days\n\n\n\n\nEvolution of the Experiment\n\nDay 1: Relatively cooperative atmosphere\nDay 2: Prisoner rebellion occurred; guards implemented punitive measures\nDays 3-6: Increasing psychological abuse from guards:\n\nForced prisoners to clean toilets with bare hands\nRemoved mattresses, forcing some prisoners to sleep on concrete\nCreated “privilege cell” to divide prisoners\nImplemented physical punishment (push-ups, standing for long periods)\nVerbal humiliation and dehumanization tactics\n\n\n\n\nResults & Termination\n\nGuards increasingly displayed authoritarian and sadistic behavior\nPrisoners showed signs of extreme stress, emotional breakdown, and learned helplessness\n5 prisoners were released early due to severe negative reactions\nZimbardo terminated the study prematurely after consulting with Christina Maslach (later his wife), who objected to the conditions"
   },
   {
-    "objectID": "slides/lec-10.html#stress-experiment-follow-up",
-    "href": "slides/lec-10.html#stress-experiment-follow-up",
-    "title": "Experimental Design",
-    "section": "Stress Experiment Follow-up",
-    "text": "Stress Experiment Follow-up\nOn a scale of 1 (low levels) - 10 (high levels), take note of your current level of stress\n\nDid these cute animal pictures cause you to be more/less stressed?"
+    "objectID": "slides/research_deep_dive_activity.html#the-monster-study-1939",
+    "href": "slides/research_deep_dive_activity.html#the-monster-study-1939",
+    "title": "Research Redesign",
+    "section": "The “Monster” Study (1939)",
+    "text": "The “Monster” Study (1939)\n\nOverview\nThe Monster Study (1939) was a controversial experiment conducted by University of Iowa researchers Wendell Johnson and his graduate student Mary Tudor. It aimed to test Johnson’s diagnosogenic theory—the idea that labeling normal speech disfluencies as stuttering could induce the disorder. The study involved 22 orphaned children from the Iowa Soldiers’ Orphans’ Home and raised significant ethical concerns due to its harmful methods.\n\n\nMethodology\n\nParticipants: 22 orphans (ages 5–15) divided into four groups: - Group IA: 5 stuttering children given positive feedback (“Your speech is fine”)\n\nGroup IB: 5 stuttering children given no feedback\nGroup IIA: 6 fluent children falsely labeled as stutterers and criticized\nGroup IIB: 6 fluent children given no feedback\n\nIntervention:\n\nTudor visited the orphanage biweekly for 4 months, delivering scripted feedback\nTo falsely labeled children (IIA):\n\n“You have many of the symptoms of a child who is beginning to stutter. You must try to stop yourself immediately… Don’t ever speak unless you can do it right.”\n\nStaff instructions: Monitor speech constantly and correct perceived errors.\n\n\n\n\nEthical Violations\n\nLack of Informed Consent:\n\nOrphans, as minors, could not consent. Staff and guardians were also misled about the study’s purpose\n\nPsychological Harm:\n\nChildren in Group IIA developed anxiety, reduced speech output, and self-consciousness. Some exhibited lasting trauma.\nOne participant later described feeling “damaged for life”.\n\nExploitation of Vulnerable Populations\n\nOrphans were chosen due to their institutionalized status, limiting advocacy or recourse.\n\nDeception:\n\nResearchers concealed the study’s true purpose and manipulated children’s self-perception\n\n\n\n\nResults and Aftermath\n\nShort-Term Effects:\n\nGroup IIA children showed increased disfluencies, shorter responses, and reluctance to speak\nTudor later attempted “positive therapy” to reverse damage after orphanage staff reported worsening speech.\n\nLong-Term Consequences:\n\nMultiple participants developed lifelong speech anxiety and social withdrawal.\nIn 2001, a lawsuit awarded $925,000 to seven survivors for psychological harm.\n\nScientific Impact\n\nThe study was never published due to ethical concerns but later resurfaced in 2001 investigations.\nCritics argue its methodology (small sample, subjective labeling) weakened its validity."
   },
   {
-    "objectID": "slides/lec-10.html#shadish-cook-campbell-2002",
-    "href": "slides/lec-10.html#shadish-cook-campbell-2002",
-    "title": "Experimental Design",
-    "section": "Shadish, Cook & Campbell (2002)",
-    "text": "Shadish, Cook & Campbell (2002)\nDrawing from John Stuart Mill’s philosophy\nThree Criteria for Causal Relationships:\n\nTemporal precedence (cause precedes effect)\nCovariation (cause and effect are correlated)\nElimination of plausible alternative explanations (ruling out confounding variables)\n\n\nCounterfactual Reasoning\n\nHypothetical situation where manipulated outcomes are compared to the outcomes without a manipulation (i.e., time travel)\nHow does this work?\n\nGroup of individuals get a treatment\nWe measure their outcomes\nWe rewind time and do not give the group the treatment\nWe measure these outcomes\nCompare!"
+    "objectID": "slides/research_deep_dive_activity.html#the-bobo-doll-experiment-1961",
+    "href": "slides/research_deep_dive_activity.html#the-bobo-doll-experiment-1961",
+    "title": "Research Redesign",
+    "section": "The Bobo Doll Experiment (1961)",
+    "text": "The Bobo Doll Experiment (1961)\nThe Bobo Doll Experiment, conducted by Albert Bandura in 1961, was a pioneering study in social learning theory. It demonstrated that children can learn and imitate behaviors simply by observing others, challenging the behaviorist view that learning requires direct reinforcement. However, the study also raised significant ethical concerns, particularly regarding the exposure of children to aggressive behavior.\n\nMethodology\n\nParticipants: 72 children (36 boys and 36 girls) aged 3-6 years from Stanford University Nursery School.\nGroups: Children were divided into three groups:\n\nAggressive Model Group: Observed an adult physically and verbally attacking a Bobo doll (e.g., hitting it with a mallet, shouting “Sock him in the nose!”).\nNon-Aggressive Model Group: Observed an adult playing calmly with toys and ignoring the Bobo doll.\nControl Group: No exposure to any model.\n\nProcedure:\n\nEach child individually observed their assigned model for 10 minutes.\nAfterward, all children were subjected to a mild frustration task (e.g., being told they couldn’t play with certain toys).\nFinally, they were placed in a room with toys, including a Bobo doll, and observed for imitative aggressive behaviors (e.g., hitting or shouting at the doll).\n\n\n\n\nResults\n\nChildren exposed to the aggressive model were significantly more likely to imitate both physical and verbal aggression compared to the other two groups.\nBoys exhibited more physical aggression than girls, though verbal aggression rates were similar across genders.\nChildren not only imitated specific aggressive actions but also created novel forms of aggression, demonstrating the power of observational learning."
   },
   {
-    "objectID": "slides/lec-10.html#design",
-    "href": "slides/lec-10.html#design",
-    "title": "Experimental Design",
-    "section": "Design",
-    "text": "Design\nRandom Assignment –&gt; IV –&gt; DV\nSimple!\n\nWhat if we can’t randomly assign? What are things that we can’t randomly assign?"
+    "objectID": "slides/lec-12.html#remindersupdates",
+    "href": "slides/lec-12.html#remindersupdates",
+    "title": "Qaulaitative Methods",
+    "section": "Reminders/Updates",
+    "text": "Reminders/Updates\n\n\nDesign & Measures Draft - Turned in!\nPeer Review of Drafts (2) - Due April 6\n\nWill be sending out the drafts for you to review\nSimilar a traditional peer review\n\nProvide feedback on areas of improvement\nRemains anonymous"
+  },
+  {
+    "objectID": "slides/lec-12.html#overview",
+    "href": "slides/lec-12.html#overview",
+    "title": "Qaulaitative Methods",
+    "section": "Overview",
+    "text": "Overview\n\n\nQuasi-Experimental Revisit\n\nApplying to a study\nImplementing Stats\n\nReading Question Check-in\nDefining Qualitative Research\nExample"
+  },
+  {
+    "objectID": "slides/lec-12.html#computational-setup",
+    "href": "slides/lec-12.html#computational-setup",
+    "title": "Qaulaitative Methods",
+    "section": "Computational setup",
+    "text": "Computational setup\n\n# load packages\nlibrary(RedditExtractoR)   # for pulling reddit posts\nlibrary(tidytext)      # for text investigation\nlibrary(ggplot2)       # for pretty visualizations\nlibrary(ggwordcloud)   # for wordclouds \n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 20))\n\n\n\n\n−+\n08:00"
+  },
+  {
+    "objectID": "slides/lec-12.html#from-last-time-building-blocks-to-a-study",
+    "href": "slides/lec-12.html#from-last-time-building-blocks-to-a-study",
+    "title": "Qaulaitative Methods",
+    "section": "From Last Time: Building Blocks to a study",
+    "text": "From Last Time: Building Blocks to a study\nPick and choose the things that are going to most accurately assess your question"
+  },
+  {
+    "objectID": "slides/lec-12.html#review-previous-studies",
+    "href": "slides/lec-12.html#review-previous-studies",
+    "title": "Qaulaitative Methods",
+    "section": "Review Previous Studies",
+    "text": "Review Previous Studies\nIn your previous group, you came up with a new design. Let’s modify them to be a quasi-experimental design.\n\n\nMilgram\nStanford Prison\nMonster\nBobo Doll"
+  },
+  {
+    "objectID": "slides/lec-12.html#approaches-to-qualitative-research",
+    "href": "slides/lec-12.html#approaches-to-qualitative-research",
+    "title": "Qaulaitative Methods",
+    "section": "Approaches to Qualitative Research",
+    "text": "Approaches to Qualitative Research\n\n\n\n\nEthnography\nPhenomenology\nDiscourse Analysis\nNarrative\n\n\n\n\n\nGrounded Theory\nAction Research\nHistorical Research\nCase Studies"
+  },
+  {
+    "objectID": "slides/lec-12.html#what-is-the-unit-of-analysis",
+    "href": "slides/lec-12.html#what-is-the-unit-of-analysis",
+    "title": "Qaulaitative Methods",
+    "section": "What is the unit of analysis?",
+    "text": "What is the unit of analysis?\nWhat is the information that we are collecting to investigate?\n\nText Based (e.g., Narratives, written reports)\nObservational\nAudio\n\nWhat is the GOAL of the project?"
+  },
+  {
+    "objectID": "slides/lec-12.html#trying-it-out---text-based",
+    "href": "slides/lec-12.html#trying-it-out---text-based",
+    "title": "Qaulaitative Methods",
+    "section": "Trying it out? - Text Based",
+    "text": "Trying it out? - Text Based\nhttps://github.com/ivan-rivera/RedditExtractor\nhttps://r4np.com/14_mixed_methods.html\nhttps://cran.r-project.org/web/packages/ggwordcloud/vignettes/ggwordcloud.html"
+  },
+  {
+    "objectID": "slides/lec-12.html#trying-it-out---observational",
+    "href": "slides/lec-12.html#trying-it-out---observational",
+    "title": "Qaulaitative Methods",
+    "section": "Trying it out? - Observational",
+    "text": "Trying it out? - Observational\nLink to Guidelines(if we have time)"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PSYC 641: Graduate Research Methods",
+    "section": "",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester.\nNote that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nSlides\nIn-Class\nDue\n\n\n\n\n10\nMon, Mar 17\nExperimental Research\nP & J - Ch. 6\nBrough - Sec. 2.10\n💻\nReview Methods Expectations\n\n\n\n\nWed, Mar 19\nExperimental Research\nReview Studies:\nBobo Doll\nZimbardo Prison\nMilgram Obedience\n“Monster” study of Language\n\nResearch Redesigns\n\n\n\n11\nMon, Mar 24\nNon-Experimental Research\nP & J - Ch. 7\n💻\n\n\n\n\n\nWed, Mar 26\nGroup Work Day\nNo Question Submissions\n\n\nMethods Section Draft Sun, Mar 30\n\n\n12\nMon, Mar 31\nQualitative Methods\nBrough - Sec. 2.8 & 2.9\n🖥️ | Revisit Research Redesign | |\n\n\n\n\n\nWed, Apr 2\nSurvey Methods\nP & J - Ch. 9\nBrough - Sec. 2.11 - 2.14\n\n\nPeer Review Sun, Apr 6\n\n\n13\nMon, Apr 7\nSurvey Methods\nNo Question Submissions\n\nStudy Critique\n\n\n\n\nWed, Apr 9\nData Collection: Reviews & Archival\nBrough - Sec. 2.6 & 2.7\n\n\nData Analytic Draft Due Sun, April 13\n\n\n14\nMon, Apr 14\nData Organization\nBrough - Sec 3.16 & 3.17\n\n\n\n\n\n\nWed, Apr 16\n\n\n\n\n\n\n\n15\nMon, Apr 21\nGROUP WORK DAY (No Class)\n\n\n\n\n\n\n\nWed, Apr 23\nPRESENTATIONS\n\n\n\n\n\n\n16\nMon, Apr 28\nPRESENTATIONS\n\n\n\nFinal Report Mon, Apr 28",
+    "crumbs": [
+      "Course information",
+      "Schedule"
+    ]
   },
   {
     "objectID": "slides/lec-11.html#announcements",
@@ -224,92 +339,60 @@
     "text": "Building Blocks to a study\nPick and choose the things that are going to most accurately assess your question"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "PSYC 641: Graduate Research Methods",
+    "objectID": "slides/lec-10.html#updatescheck-in",
+    "href": "slides/lec-10.html#updatescheck-in",
+    "title": "Experimental Design",
+    "section": "Updates/Check-in",
+    "text": "Updates/Check-in\n\nUpcoming Schedule\nFinal Project:\n\n\nUp Next - Methods/Procedures draft\n\nLet’s Talk about it"
+  },
+  {
+    "objectID": "slides/lec-10.html#computational-setup-dont-think-well-need",
+    "href": "slides/lec-10.html#computational-setup-dont-think-well-need",
+    "title": "Experimental Design",
+    "section": "Computational setup (don’t think we’ll need)",
+    "text": "Computational setup (don’t think we’ll need)\n\n# load packages\nlibrary(tidyverse)   # for data wrangling and visualization\nlibrary(scales)      # for pretty axis labels\nlibrary(knitr)       # for pretty tables\nlibrary(patchwork)   # for laying out plots\n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 20))"
+  },
+  {
+    "objectID": "slides/lec-10.html#stress-experiment-follow-up",
+    "href": "slides/lec-10.html#stress-experiment-follow-up",
+    "title": "Experimental Design",
+    "section": "Stress Experiment Follow-up",
+    "text": "Stress Experiment Follow-up\nOn a scale of 1 (low levels) - 10 (high levels), take note of your current level of stress\n\nDid these cute animal pictures cause you to be more/less stressed?"
+  },
+  {
+    "objectID": "slides/lec-10.html#shadish-cook-campbell-2002",
+    "href": "slides/lec-10.html#shadish-cook-campbell-2002",
+    "title": "Experimental Design",
+    "section": "Shadish, Cook & Campbell (2002)",
+    "text": "Shadish, Cook & Campbell (2002)\nDrawing from John Stuart Mill’s philosophy\nThree Criteria for Causal Relationships:\n\nTemporal precedence (cause precedes effect)\nCovariation (cause and effect are correlated)\nElimination of plausible alternative explanations (ruling out confounding variables)\n\n\nCounterfactual Reasoning\n\nHypothetical situation where manipulated outcomes are compared to the outcomes without a manipulation (i.e., time travel)\nHow does this work?\n\nGroup of individuals get a treatment\nWe measure their outcomes\nWe rewind time and do not give the group the treatment\nWe measure these outcomes\nCompare!"
+  },
+  {
+    "objectID": "slides/lec-10.html#design",
+    "href": "slides/lec-10.html#design",
+    "title": "Experimental Design",
+    "section": "Design",
+    "text": "Design\nRandom Assignment –&gt; IV –&gt; DV\nSimple!\n\nWhat if we can’t randomly assign? What are things that we can’t randomly assign?"
+  },
+  {
+    "objectID": "subsection-files/index.html",
+    "href": "subsection-files/index.html",
+    "title": "Main Section Landing",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester.\nNote that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nSlides\nIn-Class\nDue\n\n\n\n\n10\nMon, Mar 17\nExperimental Research\nP & J - Ch. 6\nBrough - Sec. 2.10\n💻\nReview Methods Expectations\n\n\n\n\nWed, Mar 19\nExperimental Research\nReview Studies:\nBobo Doll\nZimbardo Prison\nMilgram Obedience\n“Monster” study of Language\n\nResearch Redesigns\n\n\n\n11\nMon, Mar 24\nNon-Experimental Research\nP & J - Ch. 7\n💻\n\n\n\n\n\nWed, Mar 26\nGroup Work Day\nNo Question Submissions\n\n\nMethods Section Draft Sun, Mar 30\n\n\n12\nMon, Mar 31\nQualitative Methods\nBrough - Sec. 2.8 & 2.9\n🖥️ | | | | | |\n\n\n\n\n\nWed, Apr 2\nSurvey Methods\nP & J - Ch. 9\nBrough - Sec. 2.11 - 2.14\n\n\nPeer Review Sun, Apr 6\n\n\n13\nMon, Apr 7\nSurvey Methods\nNo Question Submissions\n\nStudy Critique\n\n\n\n\nWed, Apr 9\nData Collection: Reviews & Archival\nBrough - Sec. 2.6 & 2.7\n\n\nData Analytic Draft Due Sun, April 13\n\n\n14\nMon, Apr 14\nData Organization\nBrough - Sec 3.16 & 3.17\n\n\n\n\n\n\nWed, Apr 16\n\n\n\n\n\n\n\n15\nMon, Apr 21\nGROUP WORK DAY (No Class)\n\n\n\n\n\n\n\nWed, Apr 23\nPRESENTATIONS\n\n\n\n\n\n\n16\nMon, Apr 28\nPRESENTATIONS\n\n\n\nFinal Report Mon, Apr 28",
-    "crumbs": [
-      "Course information",
-      "Schedule"
-    ]
+    "text": "Here is a landing page if you plan to have multiple subsections within! Cool huh?!"
   },
   {
-    "objectID": "slides/lec-12.html#remindersupdates",
-    "href": "slides/lec-12.html#remindersupdates",
-    "title": "Qaulaitative Methods",
-    "section": "Reminders/Updates",
-    "text": "Reminders/Updates\n\n\nDesign & Measures Draft - Turned in!\nPeer Review of Drafts (2) - Due April 6\n\nWill be sending out the drafts for you to review\nSimilar a traditional peer review\n\nProvide feedback on areas of improvement\nRemains anonymous"
-  },
-  {
-    "objectID": "slides/lec-12.html#overview",
-    "href": "slides/lec-12.html#overview",
-    "title": "Qaulaitative Methods",
-    "section": "Overview",
-    "text": "Overview\n\n\nQuasi-Experimental Revisit\n\nApplying to a study\nImplementing Stats\n\nReading Question Check-in\nDefining Qualitative Research\nExample"
-  },
-  {
-    "objectID": "slides/lec-12.html#computational-setup",
-    "href": "slides/lec-12.html#computational-setup",
-    "title": "Qaulaitative Methods",
-    "section": "Computational setup",
-    "text": "Computational setup\n\n# load packages\nlibrary(tidyverse)   # for data wrangling and visualization\nlibrary(scales)      # for pretty axis labels\nlibrary(knitr)       # for pretty tables\nlibrary(patchwork)   # for laying out plots\n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 20))\n\n\n\n\n−+\n08:00"
-  },
-  {
-    "objectID": "slides/lec-12.html#from-last-time-building-blocks-to-a-study",
-    "href": "slides/lec-12.html#from-last-time-building-blocks-to-a-study",
-    "title": "Qaulaitative Methods",
-    "section": "From Last Time: Building Blocks to a study",
-    "text": "From Last Time: Building Blocks to a study\nPick and choose the things that are going to most accurately assess your question"
-  },
-  {
-    "objectID": "slides/lec-12.html#review-previous-studies",
-    "href": "slides/lec-12.html#review-previous-studies",
-    "title": "Qaulaitative Methods",
-    "section": "Review Previous Studies",
-    "text": "Review Previous Studies\nIn your previous group, you came up with a new design. Let’s modify them to be a quasi-experimental design.\n\n\nMilgram\nStanford Prison\nMonster\nBobo Doll"
-  },
-  {
-    "objectID": "slides/research_deep_dive_activity.html",
-    "href": "slides/research_deep_dive_activity.html",
-    "title": "Research Redesign",
+    "objectID": "subsection-files/index.html#section",
+    "href": "subsection-files/index.html#section",
+    "title": "Main Section Landing",
     "section": "",
-    "text": "Divide into groups to evaluate classic experimental studies. Define the focus of the experiment. Propose modern ethical redesigns using current standards.\nUse the following Google Docs with your group and answer the questions in the document. Be sure to provide any additional citations (either articles or websites) that you used to inform your understanding of the topic or the solutions you came up with:\n\nMilgram\nStanford Prison\nMonster\nBobo Doll"
+    "text": "Here is a landing page if you plan to have multiple subsections within! Cool huh?!"
   },
   {
-    "objectID": "slides/research_deep_dive_activity.html#milgram-obedience-study-1961-1963",
-    "href": "slides/research_deep_dive_activity.html#milgram-obedience-study-1961-1963",
-    "title": "Research Redesign",
-    "section": "Milgram Obedience Study (1961-1963)",
-    "text": "Milgram Obedience Study (1961-1963)\n\nBackground & Historical Context\nStanley Milgram, a Yale University psychologist, designed his experiments shortly after the trial of Nazi war criminals, who claimed they were “just following orders.” Milgram sought to understand whether ordinary Americans would similarly follow destructive orders from authority figures.\n\n\nMethodology\n\nParticipants: 40 male participants aged 20-50 from diverse occupations, recruited through newspaper ads offering $4.50 for participation in a “study of memory”\nExperimental Setup:\n\nParticipants were assigned the role of “teacher” through a rigged drawing\nA confederate played the “learner” role\nAn experimenter in a lab coat supervised the procedure\nThe participant sat before a shock generator with 30 switches labeled from 15-450 volts with descriptive labels (e.g., “Slight Shock” to “Danger: Severe Shock” to “XXX”)\n\nProcedure:\n\nTeachers were instructed to administer increasingly powerful shocks for each incorrect answer\nWhen participants hesitated, the experimenter used four standardized verbal prods:\n\n“Please continue”\n“The experiment requires that you continue”\n“It is absolutely essential that you continue”\n“You have no other choice, you must go on”\n\nNo actual shocks were delivered, but participants heard pre-recorded audio of the learner’s responses (complaints, protests, screams, and eventually silence)\n\n\n\n\nResults\n\n65% of participants administered the maximum 450-volt shock\nAll participants continued to at least 300 volts\nMany participants showed signs of extreme stress (sweating, trembling, nervous laughter, etc.)"
-  },
-  {
-    "objectID": "slides/research_deep_dive_activity.html#stanford-prison-experiment-1971",
-    "href": "slides/research_deep_dive_activity.html#stanford-prison-experiment-1971",
-    "title": "Research Redesign",
-    "section": "Stanford Prison Experiment (1971)",
-    "text": "Stanford Prison Experiment (1971)\n\nBackground & Historical Context\nPhilip Zimbardo conducted this experiment at Stanford University to investigate how readily people would conform to the roles of guard and prisoner in a simulated prison environment. The study occurred during a period of prison reform activism and growing interest in situational influences on behavior.\n\n\nMethodology\n\nParticipants: 24 male college students deemed “normal” based on psychological tests, paid $15/day\nSetup:\n\nMock prison constructed in Stanford Psychology Department basement\nParticipants randomly assigned as prisoners or guards\nGuards given uniforms, mirrored sunglasses, and wooden batons\nPrisoners wore smocks, stocking caps, and chains on ankles\nCells contained only cots, no personal possessions allowed\n\nProcedure:\n\nPrisoners “arrested” at homes by real police officers\nGuards worked 8-hour shifts, prisoners remained in facility 24/7\nGuards received minimal instructions: maintain order without physical violence\nPlanned to run for 2 weeks but terminated after only 6 days\n\n\n\n\nEvolution of the Experiment\n\nDay 1: Relatively cooperative atmosphere\nDay 2: Prisoner rebellion occurred; guards implemented punitive measures\nDays 3-6: Increasing psychological abuse from guards:\n\nForced prisoners to clean toilets with bare hands\nRemoved mattresses, forcing some prisoners to sleep on concrete\nCreated “privilege cell” to divide prisoners\nImplemented physical punishment (push-ups, standing for long periods)\nVerbal humiliation and dehumanization tactics\n\n\n\n\nResults & Termination\n\nGuards increasingly displayed authoritarian and sadistic behavior\nPrisoners showed signs of extreme stress, emotional breakdown, and learned helplessness\n5 prisoners were released early due to severe negative reactions\nZimbardo terminated the study prematurely after consulting with Christina Maslach (later his wife), who objected to the conditions"
-  },
-  {
-    "objectID": "slides/research_deep_dive_activity.html#the-monster-study-1939",
-    "href": "slides/research_deep_dive_activity.html#the-monster-study-1939",
-    "title": "Research Redesign",
-    "section": "The “Monster” Study (1939)",
-    "text": "The “Monster” Study (1939)\n\nOverview\nThe Monster Study (1939) was a controversial experiment conducted by University of Iowa researchers Wendell Johnson and his graduate student Mary Tudor. It aimed to test Johnson’s diagnosogenic theory—the idea that labeling normal speech disfluencies as stuttering could induce the disorder. The study involved 22 orphaned children from the Iowa Soldiers’ Orphans’ Home and raised significant ethical concerns due to its harmful methods.\n\n\nMethodology\n\nParticipants: 22 orphans (ages 5–15) divided into four groups: - Group IA: 5 stuttering children given positive feedback (“Your speech is fine”)\n\nGroup IB: 5 stuttering children given no feedback\nGroup IIA: 6 fluent children falsely labeled as stutterers and criticized\nGroup IIB: 6 fluent children given no feedback\n\nIntervention:\n\nTudor visited the orphanage biweekly for 4 months, delivering scripted feedback\nTo falsely labeled children (IIA):\n\n“You have many of the symptoms of a child who is beginning to stutter. You must try to stop yourself immediately… Don’t ever speak unless you can do it right.”\n\nStaff instructions: Monitor speech constantly and correct perceived errors.\n\n\n\n\nEthical Violations\n\nLack of Informed Consent:\n\nOrphans, as minors, could not consent. Staff and guardians were also misled about the study’s purpose\n\nPsychological Harm:\n\nChildren in Group IIA developed anxiety, reduced speech output, and self-consciousness. Some exhibited lasting trauma.\nOne participant later described feeling “damaged for life”.\n\nExploitation of Vulnerable Populations\n\nOrphans were chosen due to their institutionalized status, limiting advocacy or recourse.\n\nDeception:\n\nResearchers concealed the study’s true purpose and manipulated children’s self-perception\n\n\n\n\nResults and Aftermath\n\nShort-Term Effects:\n\nGroup IIA children showed increased disfluencies, shorter responses, and reluctance to speak\nTudor later attempted “positive therapy” to reverse damage after orphanage staff reported worsening speech.\n\nLong-Term Consequences:\n\nMultiple participants developed lifelong speech anxiety and social withdrawal.\nIn 2001, a lawsuit awarded $925,000 to seven survivors for psychological harm.\n\nScientific Impact\n\nThe study was never published due to ethical concerns but later resurfaced in 2001 investigations.\nCritics argue its methodology (small sample, subjective labeling) weakened its validity."
-  },
-  {
-    "objectID": "slides/research_deep_dive_activity.html#the-bobo-doll-experiment-1961",
-    "href": "slides/research_deep_dive_activity.html#the-bobo-doll-experiment-1961",
-    "title": "Research Redesign",
-    "section": "The Bobo Doll Experiment (1961)",
-    "text": "The Bobo Doll Experiment (1961)\nThe Bobo Doll Experiment, conducted by Albert Bandura in 1961, was a pioneering study in social learning theory. It demonstrated that children can learn and imitate behaviors simply by observing others, challenging the behaviorist view that learning requires direct reinforcement. However, the study also raised significant ethical concerns, particularly regarding the exposure of children to aggressive behavior.\n\nMethodology\n\nParticipants: 72 children (36 boys and 36 girls) aged 3-6 years from Stanford University Nursery School.\nGroups: Children were divided into three groups:\n\nAggressive Model Group: Observed an adult physically and verbally attacking a Bobo doll (e.g., hitting it with a mallet, shouting “Sock him in the nose!”).\nNon-Aggressive Model Group: Observed an adult playing calmly with toys and ignoring the Bobo doll.\nControl Group: No exposure to any model.\n\nProcedure:\n\nEach child individually observed their assigned model for 10 minutes.\nAfterward, all children were subjected to a mild frustration task (e.g., being told they couldn’t play with certain toys).\nFinally, they were placed in a room with toys, including a Bobo doll, and observed for imitative aggressive behaviors (e.g., hitting or shouting at the doll).\n\n\n\n\nResults\n\nChildren exposed to the aggressive model were significantly more likely to imitate both physical and verbal aggression compared to the other two groups.\nBoys exhibited more physical aggression than girls, though verbal aggression rates were similar across genders.\nChildren not only imitated specific aggressive actions but also created novel forms of aggression, demonstrating the power of observational learning."
-  },
-  {
-    "objectID": "subsection-files/sub_2.html",
-    "href": "subsection-files/sub_2.html",
-    "title": "From Subsection 2",
+    "objectID": "subsection-files/sub_1.html",
+    "href": "subsection-files/sub_1.html",
+    "title": "From Subsection 1",
     "section": "",
-    "text": "And here is another subsection that you can include and update!"
+    "text": "The first page of the subsection. You can do so much here!"
   },
   {
     "objectID": "weeks/week-10.html",

@@ -241,17 +241,17 @@
 <h2>Computational setup</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># load packages</span></span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(tidyverse)   <span class="co"># for data wrangling and visualization</span></span>
-<span id="cb1-3"><a></a><span class="fu">library</span>(scales)      <span class="co"># for pretty axis labels</span></span>
-<span id="cb1-4"><a></a><span class="fu">library</span>(knitr)       <span class="co"># for pretty tables</span></span>
-<span id="cb1-5"><a></a><span class="fu">library</span>(patchwork)   <span class="co"># for laying out plots</span></span>
+<span id="cb1-2"><a></a><span class="fu">library</span>(RedditExtractoR)   <span class="co"># for pulling reddit posts</span></span>
+<span id="cb1-3"><a></a><span class="fu">library</span>(tidytext)      <span class="co"># for text investigation</span></span>
+<span id="cb1-4"><a></a><span class="fu">library</span>(ggplot2)       <span class="co"># for pretty visualizations</span></span>
+<span id="cb1-5"><a></a><span class="fu">library</span>(ggwordcloud)   <span class="co"># for wordclouds </span></span>
 <span id="cb1-6"><a></a></span>
 <span id="cb1-7"><a></a><span class="co"># set default theme and larger font size for ggplot2</span></span>
 <span id="cb1-8"><a></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">20</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_c6935ad0" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_0d692347" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -311,16 +311,16 @@
 <section id="but-what-about-statistics" class="title-slide slide level1 center">
 <h1>But what about statistics??</h1>
 <p>Let’s walk through how to determine the stats methods being used</p>
+<p><a href="https://statsandr.com/blog/what-statistical-test-should-i-do/" class="uri">https://statsandr.com/blog/what-statistical-test-should-i-do/</a></p>
+<p><a href="https://www.scribbr.com/wp-content/uploads//2020/01/flowchart-for-choosing-a-statistical-test.png" class="uri">https://www.scribbr.com/wp-content/uploads//2020/01/flowchart-for-choosing-a-statistical-test.png</a></p>
+<p><strong>Go back to your research question.</strong></p>
 </section>
 
-<section>
 <section id="qualitative-methods" class="title-slide slide level1 center">
 <h1>Qualitative Methods</h1>
 <p>Aims to gather and examine non-numeric data in an attempt to understand an individual’s experience and their “social reality”.</p>
 </section>
-<section class="slide level2">
 
-</section></section>
 <section>
 <section id="ecological-systems-model" class="title-slide slide level1 center">
 <h1>Ecological Systems Model</h1>
@@ -329,13 +329,75 @@
 <section class="slide level2">
 
 
-<img data-src="images/Bronfenbrenner-Ecological-Systems-Theory.jpeg" class="r-stretch"></section>
+<img data-src="images/Bronfenbrenner-Ecological-Systems-Theory.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section class="slide level2">
 
 
+<img data-src="images/6454e04b8455c474f0e6352d_Bronfenbrenners Ecological Model.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="approaches-to-qualitative-research" class="slide level2">
+<h2>Approaches to Qualitative Research</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div>
+<ul>
+<li>Ethnography</li>
+<li>Phenomenology</li>
+<li>Discourse Analysis</li>
+<li>Narrative</li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div>
+<ul>
+<li>Grounded Theory</li>
+<li>Action Research</li>
+<li>Historical Research</li>
+<li>Case Studies</li>
+</ul>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="approaches-to-qualitative-research-1">Approaches to Qualitative Research</h3>
+<p>Always consider <em>how</em> the information is being collected and <em>what</em> the research question is</p>
+<ul>
+<li class="fragment"><p>Grounded Theory</p>
+<ul>
+<li class="fragment">Using data to inform the research</li>
+</ul></li>
+<li class="fragment"><p>Participatory Action Research</p>
+<ul>
+<li class="fragment">Working with stakeholders to inform/guide research</li>
+</ul></li>
+</ul>
+</section>
+<section id="what-is-the-unit-of-analysis" class="slide level2">
+<h2>What is the unit of analysis?</h2>
+<p>What is the information that we are collecting to investigate?</p>
+<ul>
+<li class="fragment"><p>Text Based (e.g., Narratives, written reports)</p></li>
+<li class="fragment"><p>Observational</p></li>
+<li class="fragment"><p>Audio</p></li>
+</ul>
+<p><strong>What is the GOAL of the project?</strong></p>
+</section>
+<section id="trying-it-out---text-based" class="slide level2">
+<h2>Trying it out? - Text Based</h2>
+<p><a href="https://github.com/ivan-rivera/RedditExtractor" class="uri">https://github.com/ivan-rivera/RedditExtractor</a></p>
+<p><a href="https://r4np.com/14_mixed_methods.html" class="uri">https://r4np.com/14_mixed_methods.html</a></p>
+<p><a href="https://cran.r-project.org/web/packages/ggwordcloud/vignettes/ggwordcloud.html" class="uri">https://cran.r-project.org/web/packages/ggwordcloud/vignettes/ggwordcloud.html</a></p>
+</section>
+<section id="trying-it-out---observational" class="slide level2">
+<h2>Trying it out? - Observational</h2>
+<p><a href="../weeks/week-12.html">Link to Guidelines</a>(if we have time)</p>
+</section>
+<section class="slide level2">
+
+<p>![](<a href="https://youtu.be/g5aBGapsxG8" class="uri">https://youtu.be/g5aBGapsxG8</a>)</p>
 
 
-<img data-src="images/6454e04b8455c474f0e6352d_Bronfenbrenners Ecological Model.jpg" class="r-stretch"></section></section>
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="images/641_hex.png" class="slide-logo"></p>
@@ -377,7 +439,7 @@
 'jumpToSlide': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'chalkboard': {"buttons":true},
-'multiplex': {"secret":null,"id":"580cec758a1b1eb4","url":"https://reveal-multiplex.glitch.me/"},
+'multiplex': {"secret":null,"id":"139eff92870f3810","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
  
         // Display controls in the bottom right corner
