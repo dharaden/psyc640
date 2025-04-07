@@ -1,0 +1,100 @@
+---
+title: "Survey Methods"
+subtitle: "PSYC 641 - Spring 2025"
+footer:  "[course-website](https://dharaden.github.io/psyc641-s25/)"
+logo: "images/641_hex.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    multiplex: true
+    transition: fade
+    slide-number: true
+    incremental: true 
+    chalkboard: true
+editor: visual
+execute:
+  freeze: auto
+---
+
+```{r setup}
+#| include: false
+
+knitr::opts_chunk$set(
+  fig.width = 8,
+  fig.asp = 0.618,
+  fig.retina = 3,
+  dpi = 300,
+  out.width = "80%",
+  fig.align = "center"
+)
+
+options(scipen = 100)
+```
+
+## Reminders/Updates
+
+::: nonincremental
+-   Data Analytic Plan - Due April 13
+
+    -   [Check it out](/project/final-proj-desc.html)
+
+-   Final Reports and Presentations - Due on April 28
+:::
+
+------------------------------------------------------------------------
+
+## Translating Research to Policy
+
+Take a look at the handout
+
+Read the article
+
+You find out that, based in large part on the research done by Dr. Welsh, State Senator Smith is proposing a new state law **requiring** all freshmen at state-funded universities to engage in extracurricular activities (ECAs).
+
+------------------------------------------------------------------------
+
+### Research to Policy
+
+Flip the paper over and provide some bullet points to answer the following questions:
+
+::: nonincremental
+-   Reflect on this new policy and identify positives and negatives in how it relates to the research?
+
+-   Do you think this new policy should be enacted? Why or why not?
+:::
+
+------------------------------------------------------------------------
+
+### Groups
+
+Break up into groups of 2-3
+
+-   You notice that the research study discussed in the article does not provide enough evidence for the senator’s proposed law.
+
+-   Your task is to refute (argue against) the Senator’s argument for his proposed law
+
+------------------------------------------------------------------------
+
+### As a Class
+
+-   How *"good*" does science need to be to inform public policy?
+
+-   Statistical vs. Practical Significance
+
+------------------------------------------------------------------------
+
+### As a Class - Part 2
+
+-   What are some ways that we can improve the research to be able to make public policy decisions? Consider the following:
+
+    -   Experimental vs. Correlational
+
+    -   Class levels in the sample
+
+    -   Schools/communities used
+
+    -   Role of other variables
+
+    -   Replication
+
+    -   Other?
