@@ -34,10 +34,6 @@ jobs:
         with:
           use-public-rspm: true
 
-      - name: Install required packages
-        run: |
-          R -e 'install.packages(c("quarto", "yaml", "later"))'
-
       - name: Set up renv
         uses: r-lib/actions/setup-renv@v2
         with:
@@ -51,5 +47,5 @@ jobs:
         if: github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@4.1.7
         with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: _site # The folder the action should deploy.
+          branch: gh-pages
+          folder: _site
