@@ -77,13 +77,15 @@ A formalized process of examining a body of research and synthesizing the findin
 
 Can be organized in a number of different ways:
 
+::: nonincremental
 -   Scoping Review
 
 -   Systematic Review
 
 -   Meta-Analysis
+:::
 
-    ------------------------------------------------------------------------
+------------------------------------------------------------------------
 
 ### Class Activity
 
@@ -111,11 +113,21 @@ countdown(minutes = 10)
 
 **Scoping Review**
 
+::: nonincremental
 -   A broad qualitative overview of an area that reflects on methodologies and procedures
+:::
 
 **Systematic Review**
 
--   
+::: nonincremental
+-   More specific than scoring review. Focuses on a single question and qualitatively analyses research.
+:::
+
+**Meta-Analysis**
+
+-   Extension of systematic review that examines the information *quantitatively*
+
+------------------------------------------------------------------------
 
 ### Class Check-in
 
