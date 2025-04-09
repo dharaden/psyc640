@@ -103,36 +103,6 @@ You will receive two Methods drafts from members outside of your group to read a
 
 # Data Analytic Plan Draft
 
-After getting some feedback on your methods draft, you can hopefully incorporate this information into creating a robust data analytic plan. Information taken from the [OSF Pre-registration template](https://docs.google.com/document/d/1gkN0Jp6Gu7GIA4Ne4YCDZ61nCLQRgt32moRdUg9AnVg/edit?tab=t.0).
+After getting some feedback on your methods draft, you can hopefully incorporate this information into creating a robust data analytic plan.
 
-This will be a draft of your data analytic plan. Please be as detailed as possible. The goal of this portion is to be similar to what would be included as a pre-registration. Identify the variables, the scoring, and the statistical tests you will be performing. Indicate if you have any exploratory measures, and what steps those may be. If you feel bold enough, write some R code (not a requirement).
-
-[Use the sections below to continue to build your analytic plan.]{.underline}
-
-## Hypotheses/Aims (2 point)
-
-Reiterate your hypotheses or aims concisely.
-
-## Variables and Model (8 points)
-
-Identify the constructs that you are going to be using in your model and how they will be measured. This can be a list. Propose your model diagram (DAG). You should have already done this in the last piece, but here you can update it based on any feedback.
-
-[*Example*]{.underline}
-
--   *Depression – Mean scores on Beck Depression Inventory*
-
--   *Anxiety – Sum scores of Anxious Arousal subscale on MASQ*
-
-## Statistical Models (30 points)
-
-What statistical model will you use to test each hypothesis? Please include the type of model (e.g. ANOVA, RMANOVA, MANOVA, multiple regression, SEM, etc) and the specification of the model. This includes each variable that will be included, all interactions, subgroup analyses, pairwise or complex contrasts, and any follow-up tests from omnibus tests. If you plan on using any positive controls, negative controls, or manipulation checks you may mention that here. Provide enough detail so that another person could run the same analysis with the information provided.
-
-This is perhaps the most important and most complicated question within the preregistration. Ask yourself: is enough detail provided to run the same analysis again with the information provided by the user? Be aware for instances where the statistical models appear specific, but actually leave openings for the precise test.
-
-## Data exclusion (10 points)
-
-How will you determine what data or samples, if any, to exclude from your analyses? How will outliers be identified and handled?
-
-## Exploratory analyses (Optional)
-
-If you plan to explore your data to look for unspecified differences or relationships, you may include those plans here. If completed, the points for this section will be included under the “Statistical Model” section.
+Pair down the OSF plan to focus on the data analytic procedures and highlight all the decision points. <https://docs.google.com/document/d/1gkN0Jp6Gu7GIA4Ne4YCDZ61nCLQRgt32moRdUg9AnVg/edit?tab=t.0>
