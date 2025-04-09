@@ -1,0 +1,154 @@
+---
+title: "Reviews & Archival Data"
+subtitle: "PSYC 641 - Spring 2025"
+footer:  "[course-website](https://dharaden.github.io/psyc641-s25/)"
+logo: "images/641_hex.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    multiplex: true
+    transition: fade
+    slide-number: true
+    incremental: true 
+    chalkboard: true
+editor: visual
+execute:
+  freeze: auto
+---
+
+```{r setup}
+#| include: false
+
+knitr::opts_chunk$set(
+  fig.width = 8,
+  fig.asp = 0.618,
+  fig.retina = 3,
+  dpi = 300,
+  out.width = "80%",
+  fig.align = "center"
+)
+
+options(scipen = 100)
+```
+
+```{r packages}
+#| echo: false
+#| message: false
+
+# load packages
+library(countdown)  
+```
+
+## Reminders/Updates
+
+::: nonincremental
+-   Data Analytic Plan - Due April 13
+
+    -   [Check it out](/project/final-proj-desc.html)
+
+-   Final Reports and Presentations - Due on April 28
+
+    -   Updating and combining all that we've done!
+:::
+
+------------------------------------------------------------------------
+
+## Overview for Today
+
+::: nonincremental
+-   Review Articles
+
+    -   Systematic & Scoping Reviews
+
+    -   Meta-Analysis
+
+-   Archival Data
+
+    -   Where is it?
+
+    -   Integrated Data Analysis?
+:::
+
+------------------------------------------------------------------------
+
+## Review of the Literature
+
+A formalized process of examining a body of research and synthesizing the findings.
+
+Can be organized in a number of different ways:
+
+::: nonincremental
+-   Scoping Review
+
+-   Systematic Review
+
+-   Meta-Analysis
+:::
+
+------------------------------------------------------------------------
+
+### Class Activity
+
+Get onto groups of 2-3
+
+Identify a Review or Meta-analysis in one of the following areas. Modify the research question as needed.
+
+Fill out this [Google Sheet](https://docs.google.com/spreadsheets/d/1z9ic3cYilVNrLHqUqzUzJ1pHkzsjbKegcIR2Sigwt1g/edit?usp=sharing){target="_blank"}
+
+::: nonincremental
+-   **Clinical** - The impact of a treatment on a form of psychopathology (e.g., IPT on Depression)
+-   **Cognitive** - The role of executive function in task completion
+-   **Social** - The role of information source on attitude change
+-   **UX/IO** - The impact of light vs. dark mode on productivity
+-   **Other** - You choose!
+:::
+
+```{r}
+countdown(minutes = 10)
+```
+
+------------------------------------------------------------------------
+
+### Types of Reviews
+
+**Scoping Review**
+
+::: nonincremental
+-   A broad qualitative overview of an area that reflects on methodologies and procedures
+:::
+
+**Systematic Review**
+
+::: nonincremental
+-   More specific than scoring review. Focuses on a single question and qualitatively analyses research.
+:::
+
+**Meta-Analysis**
+
+-   Extension of systematic review that examines the information *quantitatively*
+
+------------------------------------------------------------------------
+
+### Class Check-in
+
+Look to the Procedures section and identify:
+
+-   Search Terms used
+
+-   Inclusion/Exclusion Criteria
+
+-   The [PRISMA](https://www.prisma-statement.org/){target="_blank"} flow-chart
+
+------------------------------------------------------------------------
+
+[A Beginners Guide to Systematic Reviews and Meta-Analyses](https://noah-schroeder.github.io/reviewbook/index.html){target="_blank"}
+
+[metafor package in R](https://www.metafor-project.org/doku.php/help){target="_blank"}
+
+[Doing Meta-Analysis in R](https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/){target="_blank"}
+
+------------------------------------------------------------------------
+
+## Archival Data
+
+Using existing datasets to examine a research question

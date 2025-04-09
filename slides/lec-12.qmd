@@ -79,7 +79,7 @@ options(scipen = 100)
 library(RedditExtractoR)   # for pulling reddit posts
 library(tidytext)      # for text investigation
 library(ggplot2)       # for pretty visualizations
-library(ggwordcloud)   # for wordclouds 
+library(ggwordcloud)   
 
 # set default theme and larger font size for ggplot2
 ggplot2::theme_set(ggplot2::theme_minimal(base_size = 20))
