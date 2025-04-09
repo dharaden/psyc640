@@ -36,7 +36,7 @@ jobs:
 
       - name: Install required packages
         run: |
-          R -e 'install.packages(c("quarto", "yaml"))'
+          R -e 'install.packages(c("quarto", "yaml", "later"))'
 
       - name: Set up renv
         uses: r-lib/actions/setup-renv@v2
