@@ -634,5 +634,60 @@
       "Project",
       "Project Overview"
     ]
+  },
+  {
+    "objectID": "project/final-proj-desc.html#hypothesesaims-2-point",
+    "href": "project/final-proj-desc.html#hypothesesaims-2-point",
+    "title": "Main Project",
+    "section": "Hypotheses/Aims (2 point)",
+    "text": "Hypotheses/Aims (2 point)\nReiterate your hypotheses or aims concisely.",
+    "crumbs": [
+      "Project",
+      "Project Overview"
+    ]
+  },
+  {
+    "objectID": "project/final-proj-desc.html#variables-and-model-8-points",
+    "href": "project/final-proj-desc.html#variables-and-model-8-points",
+    "title": "Main Project",
+    "section": "Variables and Model (8 points)",
+    "text": "Variables and Model (8 points)\nIdentify the constructs that you are going to be using in your model and how they will be measured. This can be a list. Propose your model diagram (DAG). You should have already done this in the last piece, but here you can update it based on any feedback.\nExample\n\nDepression – Mean scores on Beck Depression Inventory\nAnxiety – Sum scores of Anxious Arousal subscale on MASQ",
+    "crumbs": [
+      "Project",
+      "Project Overview"
+    ]
+  },
+  {
+    "objectID": "project/final-proj-desc.html#statistical-models-30-points",
+    "href": "project/final-proj-desc.html#statistical-models-30-points",
+    "title": "Main Project",
+    "section": "Statistical Models (30 points)",
+    "text": "Statistical Models (30 points)\nWhat statistical model will you use to test each hypothesis? Please include the type of model (e.g. ANOVA, RMANOVA, MANOVA, multiple regression, SEM, etc) and the specification of the model. This includes each variable that will be included, all interactions, subgroup analyses, pairwise or complex contrasts, and any follow-up tests from omnibus tests. If you plan on using any positive controls, negative controls, or manipulation checks you may mention that here. Provide enough detail so that another person could run the same analysis with the information provided.\nThis is perhaps the most important and most complicated question within the preregistration. Ask yourself: is enough detail provided to run the same analysis again with the information provided by the user? Be aware for instances where the statistical models appear specific, but actually leave openings for the precise test.",
+    "crumbs": [
+      "Project",
+      "Project Overview"
+    ]
+  },
+  {
+    "objectID": "project/final-proj-desc.html#data-exclusion-10-points",
+    "href": "project/final-proj-desc.html#data-exclusion-10-points",
+    "title": "Main Project",
+    "section": "Data exclusion (10 points)",
+    "text": "Data exclusion (10 points)\nHow will you determine what data or samples, if any, to exclude from your analyses? How will outliers be identified and handled?",
+    "crumbs": [
+      "Project",
+      "Project Overview"
+    ]
+  },
+  {
+    "objectID": "project/final-proj-desc.html#exploratory-analyses-optional",
+    "href": "project/final-proj-desc.html#exploratory-analyses-optional",
+    "title": "Main Project",
+    "section": "Exploratory analyses (Optional)",
+    "text": "Exploratory analyses (Optional)\nIf you plan to explore your data to look for unspecified differences or relationships, you may include those plans here. If completed, the points for this section will be included under the “Statistical Model” section.",
+    "crumbs": [
+      "Project",
+      "Project Overview"
+    ]
   }
 ]
