@@ -54,65 +54,17 @@ options(scipen = 100)
 
 -   Missing Data Types
 
--   What about when it doesn't work?
+-   What to do with Missing Data
 
--   Group Work
+-   Example
 :::
 
 ------------------------------------------------------------------------
 
-## Reading Questions
+## Missing Data Types
 
--   Provide an example of a panel study
+-   Missing Completely At Random - MCAR
 
--   What are survey platforms that you are familiar with?
+-   Missing At Random - MAR
 
-    -   What about crowd-sourcing methods?
-
--   Does order of questions matter?
-
--   How do we improve response rates?
-
-------------------------------------------------------------------------
-
-## Survey Methods
-
-Considerations include:
-
--   Question Wording & Scale development
-
--   Response Types
-
--   Sampling
-
-------------------------------------------------------------------------
-
-### Responses
-
-Selected Choice = True Value + Error (Measurement)
-
-------------------------------------------------------------------------
-
-## Planned Missing Data Designs
-
-<https://www.tandfonline.com/doi/full/10.1080/00461520.2016.1208094#d1e163>
-
-------------------------------------------------------------------------
-
-## Slider Scales
-
-![](images/clipboard-1398163068.png)
-
-<https://www.research.autodesk.com/app/uploads/2023/03/the-effect-of-visual.pdf_reczsXa6mza8VZBSN.pdf>
-
-------------------------------------------------------------------------
-
-### More on Slider Scales
-
-<https://journals.sagepub.com/doi/10.1177/0894439318755336?icid=int.sj-abstract.citing-articles.57#appendix-5>
-
-------------------------------------------------------------------------
-
-## Bot Detection
-
-<https://osf.io/preprints/psyarxiv/gtp6z_v1>
+-   Missing Not At Random - MNAR
