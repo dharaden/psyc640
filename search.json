@@ -81,33 +81,49 @@
     "href": "weeks/week-14.html",
     "title": "Week 14",
     "section": "",
-    "text": "Important\n\n\n\nReview Final Project Expectations and dates here."
+    "text": "Important\n\n\n\nReview Final Project Expectations and dates here.",
+    "crumbs": [
+      "Weekly materials",
+      "Week 14"
+    ]
   },
   {
     "objectID": "weeks/week-14.html#prepare",
     "href": "weeks/week-14.html#prepare",
     "title": "Week 14",
     "section": "Prepare",
-    "text": "Prepare\n📖 Brough - Sec. 3.16 & 3.17"
+    "text": "Prepare\n📖 Brough - Sec. 3.16 & 3.17",
+    "crumbs": [
+      "Weekly materials",
+      "Week 14"
+    ]
   },
   {
     "objectID": "weeks/week-14.html#slides",
     "href": "weeks/week-14.html#slides",
     "title": "Week 14",
     "section": "Slides",
-    "text": "Slides\n🖥️ Missing Data & Organization"
+    "text": "Slides\n🖥️ Missing Data & Organization",
+    "crumbs": [
+      "Weekly materials",
+      "Week 14"
+    ]
   },
   {
     "objectID": "weeks/week-14.html#in-class",
     "href": "weeks/week-14.html#in-class",
     "title": "Week 14",
     "section": "In-Class",
-    "text": "In-Class\nMissing Data Simulation\n\n\nBack to course schedule ⏎"
+    "text": "In-Class\n📋Missing Data Simulation\n\n\nBack to course schedule ⏎",
+    "crumbs": [
+      "Weekly materials",
+      "Week 14"
+    ]
   },
   {
     "objectID": "weeks/week-13.html",
     "href": "weeks/week-13.html",
-    "title": "Week 11",
+    "title": "Week 13",
     "section": "",
     "text": "Important\n\n\n\nReview Final Project Expectations and dates here.",
     "crumbs": [
@@ -118,7 +134,7 @@
   {
     "objectID": "weeks/week-13.html#prepare",
     "href": "weeks/week-13.html#prepare",
-    "title": "Week 11",
+    "title": "Week 13",
     "section": "Prepare",
     "text": "Prepare\n📖 Brough - Sec. 2.6 & 2.7",
     "crumbs": [
@@ -129,7 +145,7 @@
   {
     "objectID": "weeks/week-13.html#slides",
     "href": "weeks/week-13.html#slides",
-    "title": "Week 11",
+    "title": "Week 13",
     "section": "Slides",
     "text": "Slides\n🖥️ Survey Methods Review\n🖥️ Reviews & Archival Data",
     "crumbs": [
@@ -140,7 +156,7 @@
   {
     "objectID": "weeks/week-13.html#in-class",
     "href": "weeks/week-13.html#in-class",
-    "title": "Week 11",
+    "title": "Week 13",
     "section": "In-Class",
     "text": "In-Class\nExamine Research Methods to Policy pipeline\n\n\nBack to course schedule ⏎",
     "crumbs": [
@@ -272,42 +288,14 @@
     "href": "slides/lec-14.html#overview",
     "title": "Messy Data",
     "section": "Overview",
-    "text": "Overview\n\n\nReading Question Check-in\nMissing Data Types\nWhat about when it doesn’t work?\nGroup Work"
+    "text": "Overview\n\n\nReading Question Check-in\nMissing Data Types\nWhat to do with Missing Data\nExample"
   },
   {
-    "objectID": "slides/lec-14.html#reading-questions",
-    "href": "slides/lec-14.html#reading-questions",
+    "objectID": "slides/lec-14.html#missing-data-types",
+    "href": "slides/lec-14.html#missing-data-types",
     "title": "Messy Data",
-    "section": "Reading Questions",
-    "text": "Reading Questions\n\nProvide an example of a panel study\nWhat are survey platforms that you are familiar with?\n\nWhat about crowd-sourcing methods?\n\nDoes order of questions matter?\nHow do we improve response rates?"
-  },
-  {
-    "objectID": "slides/lec-14.html#survey-methods",
-    "href": "slides/lec-14.html#survey-methods",
-    "title": "Messy Data",
-    "section": "Survey Methods",
-    "text": "Survey Methods\nConsiderations include:\n\nQuestion Wording & Scale development\nResponse Types\nSampling"
-  },
-  {
-    "objectID": "slides/lec-14.html#planned-missing-data-designs",
-    "href": "slides/lec-14.html#planned-missing-data-designs",
-    "title": "Messy Data",
-    "section": "Planned Missing Data Designs",
-    "text": "Planned Missing Data Designs\nhttps://www.tandfonline.com/doi/full/10.1080/00461520.2016.1208094#d1e163"
-  },
-  {
-    "objectID": "slides/lec-14.html#slider-scales",
-    "href": "slides/lec-14.html#slider-scales",
-    "title": "Messy Data",
-    "section": "Slider Scales",
-    "text": "Slider Scales\n\nhttps://www.research.autodesk.com/app/uploads/2023/03/the-effect-of-visual.pdf_reczsXa6mza8VZBSN.pdf"
-  },
-  {
-    "objectID": "slides/lec-14.html#bot-detection",
-    "href": "slides/lec-14.html#bot-detection",
-    "title": "Messy Data",
-    "section": "Bot Detection",
-    "text": "Bot Detection\nhttps://osf.io/preprints/psyarxiv/gtp6z_v1"
+    "section": "Missing Data Types",
+    "text": "Missing Data Types\n\nMissing Completely At Random - MCAR\nMissing At Random - MAR\nMissing Not At Random - MNAR"
   },
   {
     "objectID": "slides/lec-11.html#announcements",
@@ -589,7 +577,7 @@
   {
     "objectID": "weeks/week-12.html",
     "href": "weeks/week-12.html",
-    "title": "Week 11",
+    "title": "Week 12",
     "section": "",
     "text": "Important\n\n\n\nReview Final Project Expectations and dates here.",
     "crumbs": [
@@ -600,7 +588,7 @@
   {
     "objectID": "weeks/week-12.html#prepare",
     "href": "weeks/week-12.html#prepare",
-    "title": "Week 11",
+    "title": "Week 12",
     "section": "Prepare",
     "text": "Prepare\n📖 Brough - Sec. 2.8 & 2.9",
     "crumbs": [
@@ -611,7 +599,7 @@
   {
     "objectID": "weeks/week-12.html#slides",
     "href": "weeks/week-12.html#slides",
-    "title": "Week 11",
+    "title": "Week 12",
     "section": "Slides",
     "text": "Slides\n🖥️ Qualitative Data\n🖥️ Survey Methods",
     "crumbs": [
@@ -622,7 +610,7 @@
   {
     "objectID": "weeks/week-12.html#in-class",
     "href": "weeks/week-12.html#in-class",
-    "title": "Week 11",
+    "title": "Week 12",
     "section": "In-Class",
     "text": "In-Class\nGroup 1 Observation\n\nFocus on the amount of times students initiates conversation with:\n\nThe teacher\nAnother student\n\n\nGroup 2 Observation\n\nFocus on the amount of times the conversations are positive, negative, neutral with:\n\nThe teacher\nAnother student",
     "crumbs": [
@@ -633,7 +621,7 @@
   {
     "objectID": "weeks/week-12.html#examples-of-qualitative-investigation",
     "href": "weeks/week-12.html#examples-of-qualitative-investigation",
-    "title": "Week 11",
+    "title": "Week 12",
     "section": "Examples of Qualitative Investigation",
     "text": "Examples of Qualitative Investigation\n\nLevitt, H. M., Motulsky, S. L., Wertz, F. J., Morrow, S. L., & Ponterotto, J. G. (2017). Recommendations for designing and reviewing qualitative research in psychology: Promoting methodological integrity. Qualitative psychology, 4(1), 2.\nHolder, A., Jackson, M. A., & Ponterotto, J. G. (2015). Racial microaggression experiences and coping strategies of Black women in corporate leadership. Qualitative psychology, 2(2), 164.\nDutt, A., & Grabe, S. (2014). Lifetime activism, marginality, and psychology: Narratives of lifelong feminist activists committed to social change. Qualitative Psychology, 1(2), 107.\n\n\n\nBack to course schedule ⏎",
     "crumbs": [
