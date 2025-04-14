@@ -77,80 +77,118 @@
     ]
   },
   {
-    "objectID": "weeks/week-12.html",
-    "href": "weeks/week-12.html",
+    "objectID": "weeks/week-14.html",
+    "href": "weeks/week-14.html",
+    "title": "Week 14",
+    "section": "",
+    "text": "Important\n\n\n\nReview Final Project Expectations and dates here."
+  },
+  {
+    "objectID": "weeks/week-14.html#prepare",
+    "href": "weeks/week-14.html#prepare",
+    "title": "Week 14",
+    "section": "Prepare",
+    "text": "Prepare\n📖 Brough - Sec. 3.16 & 3.17"
+  },
+  {
+    "objectID": "weeks/week-14.html#slides",
+    "href": "weeks/week-14.html#slides",
+    "title": "Week 14",
+    "section": "Slides",
+    "text": "Slides\n🖥️ Missing Data & Organization"
+  },
+  {
+    "objectID": "weeks/week-14.html#in-class",
+    "href": "weeks/week-14.html#in-class",
+    "title": "Week 14",
+    "section": "In-Class",
+    "text": "In-Class\nMissing Data Simulation\n\n\nBack to course schedule ⏎"
+  },
+  {
+    "objectID": "weeks/week-13.html",
+    "href": "weeks/week-13.html",
     "title": "Week 11",
     "section": "",
     "text": "Important\n\n\n\nReview Final Project Expectations and dates here.",
     "crumbs": [
       "Weekly materials",
-      "Week 12"
+      "Week 13"
     ]
   },
   {
-    "objectID": "weeks/week-12.html#prepare",
-    "href": "weeks/week-12.html#prepare",
+    "objectID": "weeks/week-13.html#prepare",
+    "href": "weeks/week-13.html#prepare",
     "title": "Week 11",
     "section": "Prepare",
-    "text": "Prepare\n📖 Brough - Sec. 2.8 & 2.9",
+    "text": "Prepare\n📖 Brough - Sec. 2.6 & 2.7",
     "crumbs": [
       "Weekly materials",
-      "Week 12"
+      "Week 13"
     ]
   },
   {
-    "objectID": "weeks/week-12.html#slides",
-    "href": "weeks/week-12.html#slides",
+    "objectID": "weeks/week-13.html#slides",
+    "href": "weeks/week-13.html#slides",
     "title": "Week 11",
     "section": "Slides",
-    "text": "Slides\n🖥️ Qualitative Data\n🖥️ Survey Methods",
+    "text": "Slides\n🖥️ Survey Methods Review\n🖥️ Reviews & Archival Data",
     "crumbs": [
       "Weekly materials",
-      "Week 12"
+      "Week 13"
     ]
   },
   {
-    "objectID": "weeks/week-12.html#in-class",
-    "href": "weeks/week-12.html#in-class",
+    "objectID": "weeks/week-13.html#in-class",
+    "href": "weeks/week-13.html#in-class",
     "title": "Week 11",
     "section": "In-Class",
-    "text": "In-Class\nGroup 1 Observation\n\nFocus on the amount of times students initiates conversation with:\n\nThe teacher\nAnother student\n\n\nGroup 2 Observation\n\nFocus on the amount of times the conversations are positive, negative, neutral with:\n\nThe teacher\nAnother student",
+    "text": "In-Class\nExamine Research Methods to Policy pipeline\n\n\nBack to course schedule ⏎",
     "crumbs": [
       "Weekly materials",
-      "Week 12"
+      "Week 13"
     ]
   },
   {
-    "objectID": "weeks/week-12.html#examples-of-qualitative-investigation",
-    "href": "weeks/week-12.html#examples-of-qualitative-investigation",
-    "title": "Week 11",
-    "section": "Examples of Qualitative Investigation",
-    "text": "Examples of Qualitative Investigation\n\nLevitt, H. M., Motulsky, S. L., Wertz, F. J., Morrow, S. L., & Ponterotto, J. G. (2017). Recommendations for designing and reviewing qualitative research in psychology: Promoting methodological integrity. Qualitative psychology, 4(1), 2.\nHolder, A., Jackson, M. A., & Ponterotto, J. G. (2015). Racial microaggression experiences and coping strategies of Black women in corporate leadership. Qualitative psychology, 2(2), 164.\nDutt, A., & Grabe, S. (2014). Lifetime activism, marginality, and psychology: Narratives of lifelong feminist activists committed to social change. Qualitative Psychology, 1(2), 107.\n\n\n\nBack to course schedule ⏎",
-    "crumbs": [
-      "Weekly materials",
-      "Week 12"
-    ]
+    "objectID": "subsection-files/sub_2.html",
+    "href": "subsection-files/sub_2.html",
+    "title": "From Subsection 2",
+    "section": "",
+    "text": "And here is another subsection that you can include and update!"
   },
   {
-    "objectID": "subsection-files/sub_1.html",
-    "href": "subsection-files/sub_1.html",
-    "title": "From Subsection 1",
+    "objectID": "slides/missing-data-sim.html",
+    "href": "slides/missing-data-sim.html",
+    "title": "missing-data-sim",
     "section": "",
-    "text": "The first page of the subsection. You can do so much here!"
+    "text": "https://stefvanbuuren.name/fimd/sec-MCAR.html"
   },
   {
-    "objectID": "subsection-files/index.html",
-    "href": "subsection-files/index.html",
-    "title": "Main Section Landing",
-    "section": "",
-    "text": "Here is a landing page if you plan to have multiple subsections within! Cool huh?!"
+    "objectID": "slides/missing-data-sim.html#load-required-packages",
+    "href": "slides/missing-data-sim.html#load-required-packages",
+    "title": "missing-data-sim",
+    "section": "Load Required Packages",
+    "text": "Load Required Packages\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.4     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(mice)\n\n\nAttaching package: 'mice'\n\nThe following object is masked from 'package:stats':\n\n    filter\n\nThe following objects are masked from 'package:base':\n\n    cbind, rbind\n\nlibrary(broom)\nlibrary(naniar) # For visualizing missingness"
   },
   {
-    "objectID": "subsection-files/index.html#section",
-    "href": "subsection-files/index.html#section",
-    "title": "Main Section Landing",
-    "section": "",
-    "text": "Here is a landing page if you plan to have multiple subsections within! Cool huh?!"
+    "objectID": "slides/missing-data-sim.html#missing-data-activity",
+    "href": "slides/missing-data-sim.html#missing-data-activity",
+    "title": "missing-data-sim",
+    "section": "Missing Data Activity",
+    "text": "Missing Data Activity\nBackground\nYou are analyzing data from a study investigating how sleep quality and stress influence academic performance (GPA) in high school students.\nVariables:\n\nSleep quality (actigraphy-based, continuous)\nStress level (self-report scale, continuous)\nGPA (end-of-semester)\n\nThree missing data scenarios were created:\n\nMCAR: Some sleep trackers were lost at random.\nMAR: Students with higher stress levels are less likely to wear the sleep tracker.\nMNAR: Students with low GPA are more likely to skip GPA reporting.\n\n\nPart 1: Explore the Missingness\n\nUse naniar::gg_miss_var() to visualize which variables have missingness and how much.\nWhich variables are most affected in each scenario?\nHow would this affect your analysis if you used listwise deletion?\n\n\n\nPart 2: Analyze Using Different Methods\nFor each dataset (MCAR, MAR, MNAR):\n\nFit a linear model (y ~ x1 + x2) using listwise deletion. Save the coefficients.\nUse mean imputation to replace missing values in x1 and x2, then refit the model. Save results.\nUse multiple imputation via mice, then pool and extract estimates. Save results.\nCompare your coefficients to the full (complete data) model. Which method is closest to the true values?\n\n\n\nPart 3: Reflect and Discuss\nWhich method performed best for each scenario? Why?\nWhich scenario would you feel most confident analyzing and reporting? Least confident? Explain.\nEthical question:\nMNAR Case: GPA missing due to low performance\nIs it ethical to impute GPA?\n\nCould it misrepresent actual student needs?\nHow would decisions based on imputed data affect interventions?"
+  },
+  {
+    "objectID": "slides/missing-data-sim.html#simulate-dataset",
+    "href": "slides/missing-data-sim.html#simulate-dataset",
+    "title": "missing-data-sim",
+    "section": "Simulate Dataset",
+    "text": "Simulate Dataset\nYou are conducting a study examining how sleep quality and stress levels predict academic performance in a sample of high school students.\n\nset.seed(42)\n\n#sample Size\nn &lt;- 500\n\nsim_data &lt;- tibble(\n  sleep_qual = rnorm(n),\n  stress = rnorm(n),\n  acad_perf  = 0.5 * sleep_qual + 0.3 * stress + rnorm(n)\n)\n\n\nMissing Data Scenarios\n\n# MCAR: Sleep Quality missing at random\ndata_mcar &lt;- sim_data %&gt;%\n  mutate(sleep_qual = if_else(row_number() %in% sample(1:n, 100), NA_real_, sleep_qual))\n\n# MAR: Stress missing based on Sleep Quality\ndata_mar &lt;- sim_data %&gt;%\n  mutate(prob_miss = plogis(sleep_qual),\n         stress = if_else(runif(n) &lt; prob_miss, NA_real_, stress)) %&gt;%\n  select(-prob_miss)\n\n# MNAR: Academic Performance missing based on Academic Performance itself\ndata_mnar &lt;- sim_data %&gt;%\n  mutate(prob_miss = plogis(acad_perf),\n         acad_perf = if_else(runif(n) &lt; prob_miss, NA_real_, acad_perf)) %&gt;%\n  select(-prob_miss)\n\n\n\nFit Models\n\n# Function to fit a model and extract coefficients\nfit_model &lt;- function(data, formula = acad_perf ~ sleep_qual + stress) {\n  lm(formula, data = data) %&gt;%\n    tidy()\n}\n\n\nFull Data\n\nfull_data &lt;- sim_data %&gt;% \n  fit_model()\n\n\n\nListwise Deletion\n\nlistwise_mcar &lt;- data_mcar %&gt;% \n  drop_na() %&gt;% \n  fit_model()\n\nlistwise_mar  &lt;- data_mar  %&gt;% \n  drop_na() %&gt;% \n  fit_model()\n\nlistwise_mnar &lt;- data_mnar %&gt;% \n  drop_na() %&gt;% \n  fit_model()\n\nRemove rows with missing values.\nSimple and easy\nReduces sample size and can introduce bias\n\n\nMean Imputation\nOnly doing this for Sleep Quality and Stress variables\n\n# Function for mean imputation\nmean_impute &lt;- function(data) {\n  data %&gt;%\n    mutate(sleep_qual = if_else(is.na(sleep_qual), \n                        mean(sleep_qual, na.rm = TRUE), \n                        sleep_qual),\n           stress = if_else(is.na(stress), \n                            mean(stress, na.rm = TRUE), \n                            stress))\n}\n\n## Fitting the models\nmean_mcar &lt;- data_mcar %&gt;% \n  mean_impute() %&gt;% \n  fit_model()\n\nmean_mar  &lt;- data_mar  %&gt;% \n  mean_impute() %&gt;% \n  fit_model()\n\nmean_mnar &lt;- data_mnar %&gt;% \n  mean_impute() %&gt;% \n  fit_model()\n\nReplace missing values with the mean.\nEasy to implement\nUnderestimates variability, can bias estimates\n\n\nMultiple Imputation (mice)\n\nmice_fit &lt;- function(data, m = 5) {\n  imp &lt;- mice(data, m = m, printFlag = FALSE)\n  pool(with(imp, lm(acad_perf ~ sleep_qual + stress))) %&gt;% tidy()\n}\n\nmi_mcar &lt;- mice_fit(data_mcar)\nmi_mar  &lt;- mice_fit(data_mar)\nmi_mnar &lt;- mice_fit(data_mnar)\n\nUse mice to create and pool multiple imputed datasets.\nPreserves variability and uncertainty\nMore accurate with MAR data\nAssumes correct imputation model\n\n\n\nCombine Results\n\nbind_rows(\n  full_data %&gt;% mutate(method = \"none\", scenario = \"Full\"),\n  listwise_mcar %&gt;% mutate(method = \"Listwise\", scenario = \"MCAR\"),\n  listwise_mar  %&gt;% mutate(method = \"Listwise\", scenario = \"MAR\"),\n  listwise_mnar %&gt;% mutate(method = \"Listwise\", scenario = \"MNAR\"),\n  mean_mcar     %&gt;% mutate(method = \"Mean\", scenario = \"MCAR\"),\n  mean_mar      %&gt;% mutate(method = \"Mean\", scenario = \"MAR\"),\n  mean_mnar     %&gt;% mutate(method = \"Mean\", scenario = \"MNAR\"),\n  mi_mcar       %&gt;% mutate(method = \"MI\", scenario = \"MCAR\"),\n  mi_mar        %&gt;% mutate(method = \"MI\", scenario = \"MAR\"),\n  mi_mnar       %&gt;% mutate(method = \"MI\", scenario = \"MNAR\")\n) %&gt;%\n  filter(term != \"(Intercept)\") %&gt;%\n  ggplot(aes(x = scenario, y = estimate, fill = method)) +\n  geom_col(position = \"dodge\") +\n  facet_wrap(~term) +\n  labs(title = \"Comparison of Coefficient Estimates\",\n       y = \"Estimate\", x = \"Missing Data Scenario\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "slides/missing-data-sim.html#realistic-missingness-scenarios",
+    "href": "slides/missing-data-sim.html#realistic-missingness-scenarios",
+    "title": "missing-data-sim",
+    "section": "Realistic Missingness Scenarios",
+    "text": "Realistic Missingness Scenarios\n\nMCAR (Missing Completely at Random)\nSome students accidentally lost their actigraphy devices, and their sleep data is missing. This happened randomly across the sample.\nImplication: No systematic bias, but listwise deletion reduces power.\n\n\nMAR (Missing at Random)\nStudents with higher stress were more likely to skip the sleep tracking part of the study because they felt overwhelmed. As a result, sleep data is more likely to be missing for students with high stress.\nImplication: Bias is introduced unless the stress variable is used during imputation.\n\n\nMNAR (Missing Not at Random)\nStudents who were failing classes were more likely to avoid reporting GPA due to embarrassment or fear of consequences. Thus, missingness in GPA is directly related to GPA itself.\nImplication: Hardest case—there’s no observed variable to “explain” the missingness, and imputations are highly assumption-dependent."
   },
   {
     "objectID": "slides/research_deep_dive_activity.html",
@@ -223,43 +261,53 @@
     "text": "Design\nRandom Assignment –&gt; IV –&gt; DV\nSimple!\n\nWhat if we can’t randomly assign? What are things that we can’t randomly assign?"
   },
   {
-    "objectID": "slides/lec-13-2.html#remindersupdates",
-    "href": "slides/lec-13-2.html#remindersupdates",
-    "title": "Reviews & Archival Data",
+    "objectID": "slides/lec-14.html#remindersupdates",
+    "href": "slides/lec-14.html#remindersupdates",
+    "title": "Messy Data",
     "section": "Reminders/Updates",
-    "text": "Reminders/Updates\n\n\nData Analytic Plan - Due April 13\n\nCheck it out\n\nFinal Reports and Presentations - Due on April 28\n\nUpdating and combining all that we’ve done!"
+    "text": "Reminders/Updates\n\n\nData Analytic Plan - DONE\nNext Class - Review Game Show!\nGroup Work days after\nFinal Reports and Presentations - Due on April 28\n\nWill be sending out sign-up sheet and structure/example"
   },
   {
-    "objectID": "slides/lec-13-2.html#overview-for-today",
-    "href": "slides/lec-13-2.html#overview-for-today",
-    "title": "Reviews & Archival Data",
-    "section": "Overview for Today",
-    "text": "Overview for Today\n\n\nReview Articles\n\nSystematic & Scoping Reviews\nMeta-Analysis\n\nArchival Data\n\nWhere is it?\nIntegrated Data Analysis?"
+    "objectID": "slides/lec-14.html#overview",
+    "href": "slides/lec-14.html#overview",
+    "title": "Messy Data",
+    "section": "Overview",
+    "text": "Overview\n\n\nReading Question Check-in\nMissing Data Types\nWhat about when it doesn’t work?\nGroup Work"
   },
   {
-    "objectID": "slides/lec-13-2.html#review-of-the-literature",
-    "href": "slides/lec-13-2.html#review-of-the-literature",
-    "title": "Reviews & Archival Data",
-    "section": "Review of the Literature",
-    "text": "Review of the Literature\nA formalized process of examining a body of research and synthesizing the findings.\nCan be organized in a number of different ways:\n\n\nScoping Review\nSystematic Review\nMeta-Analysis"
+    "objectID": "slides/lec-14.html#reading-questions",
+    "href": "slides/lec-14.html#reading-questions",
+    "title": "Messy Data",
+    "section": "Reading Questions",
+    "text": "Reading Questions\n\nProvide an example of a panel study\nWhat are survey platforms that you are familiar with?\n\nWhat about crowd-sourcing methods?\n\nDoes order of questions matter?\nHow do we improve response rates?"
   },
   {
-    "objectID": "slides/lec-13-2.html#archival-data",
-    "href": "slides/lec-13-2.html#archival-data",
-    "title": "Reviews & Archival Data",
-    "section": "Archival Data",
-    "text": "Archival Data\nUsing existing datasets to examine a research question"
+    "objectID": "slides/lec-14.html#survey-methods",
+    "href": "slides/lec-14.html#survey-methods",
+    "title": "Messy Data",
+    "section": "Survey Methods",
+    "text": "Survey Methods\nConsiderations include:\n\nQuestion Wording & Scale development\nResponse Types\nSampling"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "PSYC 641: Graduate Research Methods",
-    "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester.\nNote that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nSlides\nIn-Class\nDue\n\n\n\n\n10\nMon, Mar 17\nExperimental Research\nP & J - Ch. 6\nBrough - Sec. 2.10\n💻\nReview Methods Expectations\n\n\n\n\nWed, Mar 19\nExperimental Research\nReview Studies:\nBobo Doll\nZimbardo Prison\nMilgram Obedience\n“Monster” study of Language\n\nResearch Redesigns\n\n\n\n11\nMon, Mar 24\nNon-Experimental Research\nP & J - Ch. 7\n💻\n\n\n\n\n\nWed, Mar 26\nGroup Work Day\nNo Question Submissions\n\n\nMethods Section Draft Sun, Mar 30\n\n\n12\nMon, Mar 31\nQualitative Methods\nBrough - Sec. 2.8 & 2.9\n🖥️ Revisit Research Redesign | | | | | | | | | | | | | | |\n\n\n\n\n\nWed, Apr 2\nSurvey Methods\nP & J - Ch. 9\nBrough - Sec. 2.11 - 2.14\n💻\n\nPeer Review Sun, Apr 6\n\n\n13\nMon, Apr 7\nSurvey Methods\nNo Question Submissions\n💻\nStudy Critique Worksheet Data Analytic Plan\n\n\n\n\nWed, Apr 9\nData Collection: Reviews & Archival\nBrough - Sec. 2.6 & 2.7\n\n\nData Analytic Draft Due Sun, April 13\n\n\n14\nMon, Apr 14\nData Organization\nBrough - Sec 3.16 & 3.17\n\n\n\n\n\n\nWed, Apr 16\nGame Show Review\n\n\n\n\n\n\n15\nMon, Apr 21\nGROUP WORK DAY (No Class)\n\n\n\n\n\n\n\nWed, Apr 23\nGROUP WORK DAY\n\n\n\n\n\n\n16\nMon, Apr 28\nPRESENTATIONS\n\n\n\nFinal Report Mon, Apr 28",
-    "crumbs": [
-      "Course information",
-      "Schedule"
-    ]
+    "objectID": "slides/lec-14.html#planned-missing-data-designs",
+    "href": "slides/lec-14.html#planned-missing-data-designs",
+    "title": "Messy Data",
+    "section": "Planned Missing Data Designs",
+    "text": "Planned Missing Data Designs\nhttps://www.tandfonline.com/doi/full/10.1080/00461520.2016.1208094#d1e163"
+  },
+  {
+    "objectID": "slides/lec-14.html#slider-scales",
+    "href": "slides/lec-14.html#slider-scales",
+    "title": "Messy Data",
+    "section": "Slider Scales",
+    "text": "Slider Scales\n\nhttps://www.research.autodesk.com/app/uploads/2023/03/the-effect-of-visual.pdf_reczsXa6mza8VZBSN.pdf"
+  },
+  {
+    "objectID": "slides/lec-14.html#bot-detection",
+    "href": "slides/lec-14.html#bot-detection",
+    "title": "Messy Data",
+    "section": "Bot Detection",
+    "text": "Bot Detection\nhttps://osf.io/preprints/psyarxiv/gtp6z_v1"
   },
   {
     "objectID": "slides/lec-11.html#announcements",
@@ -351,6 +399,45 @@
     "title": "Non-Experimental Design",
     "section": "Building Blocks to a study",
     "text": "Building Blocks to a study\nPick and choose the things that are going to most accurately assess your question"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PSYC 641: Graduate Research Methods",
+    "section": "",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester.\nNote that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nSlides\nIn-Class\nDue\n\n\n\n\n10\nMon, Mar 17\nExperimental Research\nP & J - Ch. 6\nBrough - Sec. 2.10\n💻\nReview Methods Expectations\n\n\n\n\nWed, Mar 19\nExperimental Research\nReview Studies:\nBobo Doll\nZimbardo Prison\nMilgram Obedience\n“Monster” study of Language\n\nResearch Redesigns\n\n\n\n11\nMon, Mar 24\nNon-Experimental Research\nP & J - Ch. 7\n💻\n\n\n\n\n\nWed, Mar 26\nGroup Work Day\nNo Question Submissions\n\n\nMethods Section Draft Sun, Mar 30\n\n\n12\nMon, Mar 31\nQualitative Methods\nBrough - Sec. 2.8 & 2.9\n🖥️ | | | | | Revisit Research Redesign | | | | |\n\n\n\n\n\nWed, Apr 2\nSurvey Methods\nP & J - Ch. 9\nBrough - Sec. 2.11 - 2.14\n💻\n\nPeer Review Sun, Apr 6\n\n\n13\nMon, Apr 7\nSurvey Methods\nNo Question Submissions\n💻\nStudy Critique Worksheet Data Analytic Plan\n\n\n\n\nWed, Apr 9\nData Collection: Reviews & Archival\nBrough - Sec. 2.6 & 2.7\n\n\nData Analytic Draft Due Sun, April 13\n\n\n14\nMon, Apr 14\nData Organization\nBrough - Sec 3.16 & 3.17\n💻\n\n\n\n\n\nWed, Apr 16\nGame Show Review\n\n\n\n\n\n\n15\nMon, Apr 21\nGROUP WORK DAY (No Class)\n\n\n\n\n\n\n\nWed, Apr 23\nGROUP WORK DAY\n\n\n\n\n\n\n16\nMon, Apr 28\nPRESENTATIONS\n\n\n\nFinal Report Mon, Apr 28",
+    "crumbs": [
+      "Course information",
+      "Schedule"
+    ]
+  },
+  {
+    "objectID": "slides/lec-13-2.html#remindersupdates",
+    "href": "slides/lec-13-2.html#remindersupdates",
+    "title": "Reviews & Archival Data",
+    "section": "Reminders/Updates",
+    "text": "Reminders/Updates\n\n\nData Analytic Plan - Due April 13\n\nCheck it out\n\nFinal Reports and Presentations - Due on April 28\n\nUpdating and combining all that we’ve done!"
+  },
+  {
+    "objectID": "slides/lec-13-2.html#overview-for-today",
+    "href": "slides/lec-13-2.html#overview-for-today",
+    "title": "Reviews & Archival Data",
+    "section": "Overview for Today",
+    "text": "Overview for Today\n\n\nReview Articles\n\nSystematic & Scoping Reviews\nMeta-Analysis\n\nArchival Data\n\nWhere is it?\nIntegrated Data Analysis?"
+  },
+  {
+    "objectID": "slides/lec-13-2.html#review-of-the-literature",
+    "href": "slides/lec-13-2.html#review-of-the-literature",
+    "title": "Reviews & Archival Data",
+    "section": "Review of the Literature",
+    "text": "Review of the Literature\nA formalized process of examining a body of research and synthesizing the findings.\nCan be organized in a number of different ways:\n\n\nScoping Review\nSystematic Review\nMeta-Analysis"
+  },
+  {
+    "objectID": "slides/lec-13-2.html#archival-data",
+    "href": "slides/lec-13-2.html#archival-data",
+    "title": "Reviews & Archival Data",
+    "section": "Archival Data",
+    "text": "Archival Data\nUsing existing datasets to examine a research question"
   },
   {
     "objectID": "slides/lec-12.html#remindersupdates",
@@ -479,54 +566,79 @@
     "text": "Translating Research to Policy\nTake a look at the handout\nRead the article\nYou find out that, based in large part on the research done by Dr. Welsh, State Senator Smith is proposing a new state law requiring all freshmen at state-funded universities to engage in extracurricular activities (ECAs)."
   },
   {
-    "objectID": "subsection-files/sub_2.html",
-    "href": "subsection-files/sub_2.html",
-    "title": "From Subsection 2",
+    "objectID": "subsection-files/index.html",
+    "href": "subsection-files/index.html",
+    "title": "Main Section Landing",
     "section": "",
-    "text": "And here is another subsection that you can include and update!"
+    "text": "Here is a landing page if you plan to have multiple subsections within! Cool huh?!"
   },
   {
-    "objectID": "weeks/week-13.html",
-    "href": "weeks/week-13.html",
+    "objectID": "subsection-files/index.html#section",
+    "href": "subsection-files/index.html#section",
+    "title": "Main Section Landing",
+    "section": "",
+    "text": "Here is a landing page if you plan to have multiple subsections within! Cool huh?!"
+  },
+  {
+    "objectID": "subsection-files/sub_1.html",
+    "href": "subsection-files/sub_1.html",
+    "title": "From Subsection 1",
+    "section": "",
+    "text": "The first page of the subsection. You can do so much here!"
+  },
+  {
+    "objectID": "weeks/week-12.html",
+    "href": "weeks/week-12.html",
     "title": "Week 11",
     "section": "",
     "text": "Important\n\n\n\nReview Final Project Expectations and dates here.",
     "crumbs": [
       "Weekly materials",
-      "Week 13"
+      "Week 12"
     ]
   },
   {
-    "objectID": "weeks/week-13.html#prepare",
-    "href": "weeks/week-13.html#prepare",
+    "objectID": "weeks/week-12.html#prepare",
+    "href": "weeks/week-12.html#prepare",
     "title": "Week 11",
     "section": "Prepare",
-    "text": "Prepare\n📖 Brough - Sec. 2.6 & 2.7",
+    "text": "Prepare\n📖 Brough - Sec. 2.8 & 2.9",
     "crumbs": [
       "Weekly materials",
-      "Week 13"
+      "Week 12"
     ]
   },
   {
-    "objectID": "weeks/week-13.html#slides",
-    "href": "weeks/week-13.html#slides",
+    "objectID": "weeks/week-12.html#slides",
+    "href": "weeks/week-12.html#slides",
     "title": "Week 11",
     "section": "Slides",
-    "text": "Slides\n🖥️ Survey Methods Review\n🖥️ Reviews & Archival Data",
+    "text": "Slides\n🖥️ Qualitative Data\n🖥️ Survey Methods",
     "crumbs": [
       "Weekly materials",
-      "Week 13"
+      "Week 12"
     ]
   },
   {
-    "objectID": "weeks/week-13.html#in-class",
-    "href": "weeks/week-13.html#in-class",
+    "objectID": "weeks/week-12.html#in-class",
+    "href": "weeks/week-12.html#in-class",
     "title": "Week 11",
     "section": "In-Class",
-    "text": "In-Class\nExamine Research Methods to Policy pipeline\n\n\nBack to course schedule ⏎",
+    "text": "In-Class\nGroup 1 Observation\n\nFocus on the amount of times students initiates conversation with:\n\nThe teacher\nAnother student\n\n\nGroup 2 Observation\n\nFocus on the amount of times the conversations are positive, negative, neutral with:\n\nThe teacher\nAnother student",
     "crumbs": [
       "Weekly materials",
-      "Week 13"
+      "Week 12"
+    ]
+  },
+  {
+    "objectID": "weeks/week-12.html#examples-of-qualitative-investigation",
+    "href": "weeks/week-12.html#examples-of-qualitative-investigation",
+    "title": "Week 11",
+    "section": "Examples of Qualitative Investigation",
+    "text": "Examples of Qualitative Investigation\n\nLevitt, H. M., Motulsky, S. L., Wertz, F. J., Morrow, S. L., & Ponterotto, J. G. (2017). Recommendations for designing and reviewing qualitative research in psychology: Promoting methodological integrity. Qualitative psychology, 4(1), 2.\nHolder, A., Jackson, M. A., & Ponterotto, J. G. (2015). Racial microaggression experiences and coping strategies of Black women in corporate leadership. Qualitative psychology, 2(2), 164.\nDutt, A., & Grabe, S. (2014). Lifetime activism, marginality, and psychology: Narratives of lifelong feminist activists committed to social change. Qualitative Psychology, 1(2), 107.\n\n\n\nBack to course schedule ⏎",
+    "crumbs": [
+      "Weekly materials",
+      "Week 12"
     ]
   },
   {
