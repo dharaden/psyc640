@@ -685,9 +685,10 @@
     "href": "project/final-proj-desc.html",
     "title": "Main Project",
     "section": "",
-    "text": "Project Proposal due Fri, Feb 14\nDesign & Measures Section Draft due Sun, Mar 30\nPeer review due Sun, Apr 6\nData Analytic Plan Draft due Sun, Apr 13\nGroup Presentation + slides due Mon, Apr 28\nFinal report due Mon, Apr 28",
+    "text": "Project Proposal due Fri, Feb 14\nDesign & Measures Section Draft due Sun, Mar 30\nPeer review due Sun, Apr 6\nData Analytic Plan Draft due Sun, Apr 13\nGroup Presentation + slides due Mon, Apr 28\nFinal Paper due Mon, Apr 28",
     "crumbs": [
-      "Final Project"
+      "Project",
+      "Project Overview"
     ]
   },
   {
@@ -697,7 +698,8 @@
     "section": "Research Question & Hypothesis (Individual)",
     "text": "Research Question & Hypothesis (Individual)\nThis section is just a reminder of what you are doing. Shouldn’t be longer than a paragraph.\n\nProvide the overarching research question/aim that your group is focusing on (i.e., why are you doing this study)\nIdentify your specific research question within the larger study of your group",
     "crumbs": [
-      "Final Project"
+      "Project",
+      "Project Overview"
     ]
   },
   {
@@ -707,7 +709,8 @@
     "section": "Study Procedures/Design (Group)",
     "text": "Study Procedures/Design (Group)\nHere you will go through all the steps and the needed information. Make sure you are able to highlight the design of your project. This section will take approximately 1 - 2 pages.\n\nSpecify whether your study will be experimental, quasi-experimental, or non-experimental and justify your choice. Also indicate the type of design that you are planning to use (e.g., cross-sectional, longitudinal, cohort design, etc.)\nDescribe your sampling method and justify why it is appropriate for your study\n\nProvide information on what the recruitment strategies are going to be\nDiscuss any potential sampling biases and how they will be addressed.\n\nWalk through what the participant will be experiencing during their visit or throughout their participation in the study\nWhat kind of space and physical materials will you need (computer, eye-tracker, EEG, etc.)\nBe sure to discuss any ethical issues that may arise in your study and how you will address them",
     "crumbs": [
-      "Final Project"
+      "Project",
+      "Project Overview"
     ]
   },
   {
@@ -717,7 +720,8 @@
     "section": "Measurement - Operationalizing the Construct (Individual)",
     "text": "Measurement - Operationalizing the Construct (Individual)\nWithin this space, you will be writing about the things that are unique to your own research question. Be sure to include the relevant measures and the appropriate citations. Look to existing literature to find how they can structure things. This section will take approximately 1 - 2 pages.\n\nClearly define and operationalize all constructs involved in your research\nExplain how you will measure or manipulate these constructs in your study\nIdentify the specific questionnaires or how you will be examining these constructs",
     "crumbs": [
-      "Final Project"
+      "Project",
+      "Project Overview"
     ]
   },
   {
@@ -727,7 +731,8 @@
     "section": "Diagram of Proposed Analysis (Individual)",
     "text": "Diagram of Proposed Analysis (Individual)\n\nUsing the DAG framework, identify the model that you want to examine. This can just be an image.",
     "crumbs": [
-      "Final Project"
+      "Project",
+      "Project Overview"
     ]
   },
   {
@@ -737,7 +742,8 @@
     "section": "Hypotheses/Aims (2 point)",
     "text": "Hypotheses/Aims (2 point)\nReiterate your hypotheses or aims concisely.",
     "crumbs": [
-      "Final Project"
+      "Project",
+      "Project Overview"
     ]
   },
   {
@@ -747,7 +753,8 @@
     "section": "Variables and Model (8 points)",
     "text": "Variables and Model (8 points)\nIdentify the constructs that you are going to be using in your model and how they will be measured. This can be a list. Propose your model diagram (DAG). You should have already done this in the last piece, but here you can update it based on any feedback.\nExample\n\nDepression – Mean scores on Beck Depression Inventory\nAnxiety – Sum scores of Anxious Arousal subscale on MASQ",
     "crumbs": [
-      "Final Project"
+      "Project",
+      "Project Overview"
     ]
   },
   {
@@ -757,7 +764,8 @@
     "section": "Statistical Models (30 points)",
     "text": "Statistical Models (30 points)\nWhat statistical model will you use to test each hypothesis? Please include the type of model (e.g. ANOVA, RMANOVA, MANOVA, multiple regression, SEM, etc) and the specification of the model. This includes each variable that will be included, all interactions, subgroup analyses, pairwise or complex contrasts, and any follow-up tests from omnibus tests. If you plan on using any positive controls, negative controls, or manipulation checks you may mention that here. Provide enough detail so that another person could run the same analysis with the information provided.\nThis is perhaps the most important and most complicated question within the preregistration. Ask yourself: is enough detail provided to run the same analysis again with the information provided by the user? Be aware for instances where the statistical models appear specific, but actually leave openings for the precise test.",
     "crumbs": [
-      "Final Project"
+      "Project",
+      "Project Overview"
     ]
   },
   {
@@ -767,7 +775,8 @@
     "section": "Data exclusion (10 points)",
     "text": "Data exclusion (10 points)\nHow will you determine what data or samples, if any, to exclude from your analyses? How will outliers be identified and handled?",
     "crumbs": [
-      "Final Project"
+      "Project",
+      "Project Overview"
     ]
   },
   {
@@ -777,7 +786,19 @@
     "section": "Exploratory analyses (Optional)",
     "text": "Exploratory analyses (Optional)\nIf you plan to explore your data to look for unspecified differences or relationships, you may include those plans here. If completed, the points for this section will be included under the “Statistical Model” section.",
     "crumbs": [
-      "Final Project"
+      "Project",
+      "Project Overview"
+    ]
+  },
+  {
+    "objectID": "project/final-proj-desc.html#paper-sections",
+    "href": "project/final-proj-desc.html#paper-sections",
+    "title": "Main Project",
+    "section": "Paper Sections",
+    "text": "Paper Sections\nThe paper will follow what we have worked on throughout the semester. I try to highlight in the document where each section can go. You will likely need to update what you have written so that it can all work together. I have the expectation that this will look like a final draft of a pre-registration that follows the sections I have outlined in the template.\n\nIntroduction\nYou can pull just about everything from the Project Proposal. Update the organization so that it reflects any changes that you’ve made throughout this process. Show the reader why it is important to study this area. Each claim that you make should have some evidence to back it up. Provide information on gaps or limitations. This is where you give yourself an “alley-oop” (or some other non-sports term) to show the reader that your study is going to fill those gaps, or expand the literature in a meaningful way.  Integrate the feedback that has been provided. \n\nCurrent Work\nThis is the section where you are highlighting the goals of your study and providing the slam-dunk to your alley-oop (I have never typed that word and it just looks wrong…or something a Midwesterner would say when they pass by you too closely). Provide your specific hypotheses/aims and show how important they are and why you are making them.\n\n\n\nMethods\n\nParticipants & Procedures\nState that your work is part of a larger data collection procedure. Then walk through what sampling is going to look like to get the folks for your portion. Identify the steps and things that the participant will be doing as well. See the document for more comments.\n\n\nMeasures\nBe specific about the measures and have it mirror what I have in the template. I gave an example of a measure.\n\n\n\nData Analytic Plan\nUpdate what you have already put together based on my feedback.\n\n\nReflection/Discussion\nReflect on the process and rate your group members. See template for specifics.",
+    "crumbs": [
+      "Project",
+      "Project Overview"
     ]
   }
 ]
