@@ -11,7 +11,7 @@ title: Syllabus
 | *Office Hours* | By Appointment                       |
 | *Class Times*  | Asynchronous                         |
 
-For a PDF copy of the syllabus: [Download File](/files/PSYC101_Syllabus.pdf)
+For a PDF copy of the syllabus: [Download File](/files/Syllabus.pdf)
 
 ### **Course Overview**
 
@@ -29,145 +29,380 @@ Spielman, R. M., Jenkins, W., & Lovett, M. (2020). Psychology 2e. <https://opens
 
 ------------------------------------------------------------------------
 
-### **Weekly Schedule & Topics**
 
-***Note:*** *This is subject to change. Students will be notified immediately of any changes or updates.*
+**Course Goals**
 
-Below you will find an outline for the course, with a rough outline of dates for each of the units. For specific due dates, please refer to myCourses and/or the [schedule page](/index). All rubrics for assignments will be posted to myCourses as well as on this website.
+1. Build confidence in statistical reasoning & analysis.
+2. Apply regression-based methods to real-world research questions.
+3. Develop practical R skills for data wrangling, visualization, and reporting.
+4. Produce a portfolio-ready, reproducible final analysis.
 
-#### Module 1
+---
 
--   **Read**: OpenStax Ch. 1, 2 & 3 (Psychological Research, Biopsychology)
--   **Watch**:
-    -   Introductory lecture
-    -   What is Psychology Research?
-    -   Biopsychology
--   **Assignments**:
-    -   Introduction Video
-    -   Syllabus Quiz
-    -   Content Quiz 1
+### **Week 1 — Welcome & The Big Picture**
 
-#### Module 2
+**Lecture focus**
 
--   **Read**: OpenStax Ch. 4 & 5 (Consciousness, Sensation/Perception)
--   **Watch**:
-    -   Sleep & Circadian Rhythms
-    -   Sensation/Perception
--   **Assignments**:
-    -   Content Quiz 2
-    -   Sleep Journal (3 day minimum + Reflection)
+* The research cycle and where statistics fits
+* Reproducible workflows (R, RStudio, RMarkdown/Quarto)
+* Intro to tidyverse workflow
+* Stats anxiety & growth mindset
 
-#### Module 3
+**Lab**
 
--   **Read**: OpenStax Ch. 6, 7, 8 (Learning, Memory, Cognition)
--   **Watch**:
-    -   Classical Conditioning vs. Operant Conditioning
-    -   Memory
--   **Assignments**:
-    -   Content Quiz 3
-    -   Mini-Experiment Reflection (e.g., shape your behavior with reinforcement)
+* Install/load R packages
+* Load a dataset (built-in + open source)
+* Create a first plot with ggplot2
 
-#### Module 4
+**Readings**
 
--   **Read**: OpenStax Ch. 9 & 10 (Emotion, Motivation, Development)
--   **Watch**:
-    -   Emotions/Motivation
-    -   Development
--   **Assignments**:
-    -   Content Quiz 4
-    -   Development in the Media
+* *Is Statistics Hard?* — Wickham & Grolemund, R for Data Science (R4DS) Ch. 1–2
+* APA: *Principles for Translating Statistics to Psychology Students* (APA Guidelines)
 
-#### Module 5
+**Assignment**
 
--   **Read**: OpenStax Ch. 11 & 12 (Personality, Social Psychology)
--   **Watch**:
-    -   Personality - Classification
--   **Assignments**:
-    -   Content Quiz 5
-    -   Personality Test Drive
+* Mini data exploration report (import, summarize, plot)
 
-#### Module 6
+---
 
--   **Read**: OpenStax Ch. 15 & 16 (Psych Disorders, Therapy & Treatment) + science vs. pseudoscience resources
--   **Watch**:
-    -   Psych Disorders
-    -   Therapy
--   **Assignments**:
-    -   Content Quiz 6
+### **Week 2 — Visualizing Data & Thinking in Models**
 
-#### **Final Project Options (Choose One)**
+**Lecture focus**
 
-1.  **Podcast Episode:** Explain a psychological concept with examples.
-2.  **Infographic:** Visually explain a major topic (e.g., stages of sleep, types of memory).
-3.  **Short Paper:** Analyze a psychological issue or concept.
-4.  **Public Service Announcement:** Educate others on a disorder or mental health topic.
+* Why regression first?
+* Visualizing relationships (scatterplots, grouping)
+* Thinking in terms of variation & prediction
 
-------------------------------------------------------------------------
+**Lab**
 
-### **Evaluation & Grading**
+* ggplot2 layering: geom\_point, geom\_smooth
+* Faceting and grouping variables
 
-+---------------------------------+----------------+----------------+
-| Assignment Type                 | Points         | \% of Grade    |
-+=================================+================+================+
-| Intro Video & Syllabus Quiz     | 40             | 10%            |
-+---------------------------------+----------------+----------------+
-| Quizzes (6) - lowest dropped    | 125            | 35%            |
-+---------------------------------+----------------+----------------+
-| Unit Activities (4)             | 140            | 35%            |
-+---------------------------------+----------------+----------------+
-| Discussion Post & Reply         | 20             | 5%             |
-+---------------------------------+----------------+----------------+
-| Final Project                   | 60             | 15%            |
-+---------------------------------+----------------+----------------+
-| SONA Credits (8 credits)        | \-             | \-             |
-+---------------------------------+----------------+----------------+
-| **Total**                       | **385**        | **100%**       |
-+---------------------------------+----------------+----------------+
+**Readings**
 
-*Failure to complete all 8 SONA credits leads to a reduction of final grade by 3.3%*
+* R4DS Ch. 3, 5
+* Gelman & Hill (2007) Ch. 2 (Regression as a general method)
 
-#### Introduction Video & Syllabus Quiz
+**Assignment**
 
-With the online, asynchronous structure of the course it can be challenging to have a sense of connection. I will ask each student to create a brief video introducing themselves (rubric will be posted). These will only be seen by the instructor. This introduction is a requirement by RIT for online courses as we need to confirm you are who you say you are (but I also want to get to know my students).
+* Recreate 2 plots from lecture with a dataset of your choice
 
-During the first unit, you will also need to complete a brief quiz on the syllabus. You will be allowed to take the quiz as many times as you need to in order to receive the full credit. I want you to be aware of the policies in the course.
+---
 
-#### **Quizzes**
+### **Week 3 — Simple Linear Regression**
 
-To help solidify the material and identify areas that you can focus your study, there will be regular quizzes consisting of multiple choice and short answer questions. These will be posted to myCourses and can be taken at any point prior to the deadline. All quizzes will become available at the beginning of the semester. There will be 25 multiple choice questions that will be taken mainly from the readings. Each quiz time limit will be 30 minutes. The quizzes will only cover the information from that specific topic (i.e., non-cumulative). Quizzes will be open-note. Lowest quiz grade will automatically be dropped.
+**Lecture focus**
 
-#### **Unit Activities**
+* Model equation & interpretation of intercept, slope
+* Effect size & confidence intervals
+* Residuals & assumptions
 
-The assignments for this class will consist of utilizing your knowledge of the topic and applying it to various examples in the real world. Each assignment will be related to a topic in the course, but will also allow you to incorporate information across multiple topics. The assignments will have different structures with some consisting inf written responses and others to incorporate other creative components. The goal of the assignments is to move beyond the textbook and classroom to investigate the application of psychology and to think like a psychologist.
+**Lab**
 
-#### Discussions
+* Fit lm() models
+* Interpret coefficients & plot regression lines
+* Diagnostic plots
 
-To help bring the discussion beyond the class, there will be the expectation that you will create and engage with discussion posts (Minimum of 1 created & 1 response). The posts will focus on an area of psychology that is of interest to you. The goal of these posts is for you to share information that you have gathered from elsewhere and bring in to provide some additional information. Topics of these discussions may vary from examining the science behind pop-science articles, reflecting on reading a scientific study, identifying a popular myth in psychology and describing why it is a myth. More information will be available on myCourses/course site to highlight the specific content and expectations.
+**Readings**
 
-*Discussion posts and replies must be completed prior to deadline (7/25/25 at 11:59pm)*
+* R4DS Ch. 23 (Model basics)
+* Field, A. (2018) *Discovering Statistics Using R*, Ch. 7 (sections on simple regression)
 
-#### Final Project
+**Assignment**
 
-The course will culminate in a final project that will be completed individually. You have the ability to choose the type of project you would like to complete. I want this to be a time for you to bring in any other creative elements that you would like. If you have other ideas for a type of project, please let me know. I am happy to update to accommodate your ideas if they continue to fit the expectations of the project. More information will be provided.
+* Report a simple regression with APA-style results
 
-#### SONA Participation
+---
 
-+-----------------------------------------------------------------------------+
-| **Useful info**                                                             |
-|                                                                             |
-| SONA Director: Dr. Dustin Haraden                                           |
-|                                                                             |
-| Email: [sona\@rit.edu](mailto:sona@rit.edu)                                 |
-|                                                                             |
-| Information website (for more guidance): <https://ritpsych.github.io/sona/> |
-|                                                                             |
-| Sona website (for signing up for studies): <https://rit.sona-systems.com>   |
-+-----------------------------------------------------------------------------+
+### **Week 4 — Multiple Regression**
 
-Every PSYC101 student must earn **8 Sona credits**. You earn 1 credit per 15 minutes of participation, plus a bonus credit for face-to-face studies, so this will take you a maximum of 2 hours to complete. To earn Sona credits, you must sign up for studies through the psychology department’s Sona website. Other research will not qualify.
+**Lecture focus**
 
-\
-Your participation must be complete by **5pm on the last day of classes (i.e., the day before Reading Day)**. At that time, if you have NOT earned at least 8 credits, your final grade will be dropped by one “step” – that is, from A to A-, from B- to C+, or from D to F. There is no partial credit and there are no exceptions.
+* Adding predictors: partial slopes
+* Standardized coefficients
+* Categorical predictors (dummy coding)
+
+**Lab**
+
+* lm() with multiple predictors
+* Model interpretation with summary()
+* Compare models using anova()
+
+**Readings**
+
+* R4DS Ch. 24
+* Field Ch. 8 (multiple regression basics)
+
+**Assignment**
+
+* Multiple regression report on a dataset you choose
+
+---
+
+### **Week 5 — Interactions & Moderation**
+
+**Lecture focus**
+
+* Interaction terms
+* Centering predictors
+* Moderation interpretation
+
+**Lab**
+
+* Interaction plots with ggplot2
+* emmeans for marginal means
+
+**Readings**
+
+* Field Ch. 9 (interactions)
+* Hayes (2018) Ch. 1–2 (Intro to moderation)
+
+**Assignment**
+
+* Analyze a moderation model & interpret the interaction
+
+---
+
+### **Week 6 — Logistic Regression**
+
+**Lecture focus**
+
+* When outcomes are binary
+* Odds ratios & log odds
+* Model fit statistics
+
+**Lab**
+
+* glm() with family = binomial
+* Interpreting odds ratios
+* ROC curves
+
+**Readings**
+
+* Field Ch. 19 (logistic regression)
+* Peng, Lee, & Ingersoll (2002) *An Introduction to Logistic Regression Analysis*
+
+**Assignment**
+
+* Logistic regression report
+
+---
+
+### **Week 7 — ANOVA as Regression**
+
+**Lecture focus**
+
+* ANOVA = regression with categorical predictors
+* Dummy & effect coding
+* Post-hoc tests & contrasts
+
+**Lab**
+
+* Compare lm() & aov() outputs
+* emmeans for pairwise comparisons
+
+**Readings**
+
+* Field Ch. 10–11 (ANOVA & ANCOVA)
+* R4DS Ch. 25 (Categorical variables)
+
+**Assignment**
+
+* ANOVA with APA report
+
+---
+
+### **Week 8 — ANCOVA & Blocking Variables**
+
+**Lecture focus**
+
+* Adjusting for covariates
+* Assumptions & interpretation
+
+**Lab**
+
+* Fit ANCOVA models
+* Visualize adjusted means
+
+**Readings**
+
+* Field Ch. 12 (ANCOVA)
+* Gelman & Hill Ch. 9 (controlling for variables)
+
+**Assignment**
+
+* ANCOVA report
+
+---
+
+### **Week 9 — Assumptions, Diagnostics, & Robust Methods**
+
+**Lecture focus**
+
+* Residual plots
+* Normality, homoscedasticity
+* Robust regression options
+
+**Lab**
+
+* check\_model() from performance package
+* Handling outliers & transformations
+
+**Readings**
+
+* Field Ch. 4 (assumptions)
+* Wilcox (2012) Ch. 2 (robust methods intro)
+
+**Assignment**
+
+* Diagnostic report on your own dataset
+
+---
+
+### **Week 10 — Missing Data**
+
+**Lecture focus**
+
+* MCAR, MAR, MNAR
+* Multiple imputation
+* Complete case analysis & its dangers
+
+**Lab**
+
+* naniar package for missingness visualization
+* mice for imputation
+
+**Readings**
+
+* Enders (2010) Ch. 1–2 (missing data theory)
+* van Buuren (2018) Ch. 3 (practical imputation)
+
+**Assignment**
+
+* Missing data analysis & imputation
+
+---
+
+### **Week 11 — Mixed-Effects Models**
+
+**Lecture focus**
+
+* Why random effects?
+* Repeated measures within regression
+* Random intercepts & slopes
+
+**Lab**
+
+* lme4: lmer() basics
+* Interpretation & visualization with sjPlot
+
+**Readings**
+
+* Gelman & Hill Ch. 11–12
+* Winter (2013) *Linear Mixed Effects Models in R*
+
+**Assignment**
+
+* Mixed model analysis on a repeated measures dataset
+
+---
+
+### **Week 12 — Mediation & Path Models**
+
+**Lecture focus**
+
+* Direct & indirect effects
+* Bootstrapping mediation
+* Conceptual link to SEM
+
+**Lab**
+
+* mediation package
+* lavaan for path models
+
+**Readings**
+
+* Hayes (2018) Ch. 3–4 (mediation)
+* R4DS Ch. 26 (model building)
+
+**Assignment**
+
+* Mediation analysis report
+
+---
+
+### **Week 13 — Power Analysis & Planning**
+
+**Lecture focus**
+
+* Why power matters
+* Power for regression & ANOVA
+* Planning sample sizes
+
+**Lab**
+
+* pwr package
+* Simulation-based power
+
+**Readings**
+
+* Cohen (1988) Ch. 1–2 (effect sizes & power)
+* Lakens (2021) *Sample Size Justification*
+
+**Assignment**
+
+* Power analysis for your final project
+
+---
+
+### **Week 14 — Project Work Session**
+
+**Lecture focus**
+
+* Troubleshooting models
+* Refining visualizations & write-up
+
+**Lab**
+
+* Peer review final project drafts
+
+**Readings**
+
+* No new readings — review past materials
+
+**Assignment**
+
+* Submit draft project
+
+---
+
+### **Week 15 — Final Project Presentations**
+
+**Lecture focus**
+
+* Communicating results to non-statistical audiences
+* Translating skills to the workplace
+
+**Lab**
+
+* Student presentations
+* Class reflection: “What I’ll take forward”
+
+**Readings**
+
+* No new readings
+
+**Final Deliverable**
+
+* Fully reproducible RMarkdown/Quarto report with:
+
+  * Introduction & research question
+  * Methods
+  * Regression-based analysis
+  * APA-style results
+  * Visualizations
+  * References
+
 
 **Grade Scheme**
 
