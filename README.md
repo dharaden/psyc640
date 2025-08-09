@@ -1,6 +1,6 @@
-# Website for PSYC 641 at RIT (Spring 2025)
+# Website for PSYC 640 at RIT (Fall 2025)
 
-🔗 https://dharaden.github.io/psyc641-s25/
+🔗 https://dharaden.github.io/psyc640/
 
 ## Colors
 
