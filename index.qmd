@@ -9,7 +9,7 @@ Note that this schedule will be updated as the semester progresses, with all cha
 
 ::: column-screen-inset-right
 | Week | Date | Topic | Prepare | Slides | In-Class | Due |
-|:----------|:----------|:---------:|:---------:|:---------:|:---------:|:---------:|
+|:---|:---|:--:|:--:|:--:|:--:|:--:|
 | 1 | 08-25 | Getting set up + R foundations | Install R/RStudio; bring a laptop and raw .csv file if available | Session slides with screenshots; RStudio tour | 1\) Orientation and expectations; 2) RStudio projects, files, paths; 3) Basics: objects, vectors, data frames; 4) Importing .csv; 5) Saving a Quarto notebook; 6) Quick wins: compute means, counts, and a simple plot | Lab 0: Setup check (project + notebook) |
 | 2 | 09-01 | Data wrangling I: tidy data + dplyr | Skim a 1-page cheat sheet (provided) | Minimal slides with verbs/examples | 1\) Tidy data idea; 2) dplyr verbs: select, filter, mutate, arrange; 3) group_by + summarize for table-1 style summaries; 4) Write clean code chunks in Quarto | Lab 1: Recreate descriptive table from a dataset |
 | 3 | 09-08 | Visualization I: ggplot2 + EDA walkthrough | Bring a dataset with 1–2 numeric and 1 categorical variable | Plot templates | 1\) Grammar of graphics; 2) Histograms, density, boxplots, bar plots; 3) Scatter + smooth; 4) EDA checklist; 5) Read plots like results | Mini-report: EDA with 3–4 figures and captions |
