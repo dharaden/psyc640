@@ -3,10 +3,10 @@ project:
   
 website: 
   page-navigation: true
-  title: "PSYC 641 - Graduate Research Methods" 
-  site-url: "https://dharaden.github.io/psyc641-s25" 
+  title: "PSYC 640 - Graduate Statistics" 
+  site-url: "https://dharaden.github.io/psyc640" 
   
-  repo-url: https://github.com/dharaden/psyc641-s25 
+  repo-url: https://github.com/dharaden/psyc640 
   repo-actions: [edit, issue]
 
   open-graph: true
@@ -18,7 +18,7 @@ website:
     
   sidebar:
     background: "#D9E3E4"
-    logo: "images/641_hex.png"
+    logo: "images/640_hex.png"
     pinned: true
     align: center
     tools:
@@ -35,27 +35,11 @@ website:
         contents: 
           - href: index.qmd
             text: Schedule
-          - href: readingqs.qmd
-            text: Reading Questions
+          - href: syllabus.qmd
       - section: "Weekly materials"
         contents:
-          - href: weeks/week-10.qmd
-            text: "Week 10"
-          - href: weeks/week-11.qmd
-            text: "Week 11"
-          - href: weeks/week-12.qmd
-            text: "Week 12"
-          - href: weeks/week-13.qmd
-            text: "Week 13"
-          - href: weeks/week-14.qmd
-            text: "Week 14"
-      - section: "Project" 
-        contents:
-          - href: project/final-proj-desc.qmd
-            text: Project Overview
-      - section: "Additional info"
-        contents:
-          - href: learning-more.qmd
+          - href: weeks/week-1.qmd
+            text: "Week 1"
 
 format:
   html:
