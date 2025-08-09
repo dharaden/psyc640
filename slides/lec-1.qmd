@@ -1,6 +1,6 @@
 ---
-title: "Experimental Design"
-subtitle: "PSYC 641 - Spring 2025"
+title: "Week XX: TITLE"
+subtitle: "Date: MM-DD"
 footer:  "[course-website](https://dharaden.github.io/psyc640/)"
 logo: "images/640_hex.png"
 format: 
@@ -11,6 +11,8 @@ format:
     slide-number: true
     incremental: true 
     chalkboard: true
+    overview: true
+    code-line-numbers: true
 editor: visual
 execute:
   freeze: auto
@@ -33,209 +35,48 @@ knitr::opts_chunk$set(
 options(scipen = 100)
 ```
 
-# Welcome Back!
+# Today
 
-## Updates/Check-in {.smaller}
+- Goals
+- Why it matters (results-section lens)
+- What you’ll be able to do by the end
 
--   [Upcoming Schedule](https://dharaden.github.io/psyc641-s25/)
 
--   [Final Project](https://dharaden.github.io/psyc641-s25/project/final-proj-desc.html):
+# Warm-up
 
-    ::: nonincremental
-    -   Up Next - Methods/Procedures draft
-        -   Let's Talk about it
-    :::
+- 2-minute think-pair-share: interpret this figure/table snippet.
 
-## Computational setup (don't think we'll need)
 
-```{r packages}
-#| echo: true
-#| message: false
+# Concepts (brief)
 
-# load packages
-library(tidyverse)   # for data wrangling and visualization
-library(scales)      # for pretty axis labels
-library(knitr)       # for pretty tables
-library(patchwork)   # for laying out plots
+- Keep math minimal; emphasize assumptions, use-cases, effect sizes.
 
-# set default theme and larger font size for ggplot2
-ggplot2::theme_set(ggplot2::theme_minimal(base_size = 20))
+
+# Live demo (R)
+
+```{r}
+# setup
+library(rio)
+library(here)
+#dat <- import(here::here("data","sample.csv"))
 ```
 
-# Experimental Designs
 
--   Identified as the "Gold Standard" within research. Why is it considered the "gold standard"??
+# Guided practice
 
--   The ability to draw *causal* connections between variables
+- Students follow along: 3–5 tasks with immediate feedback.
 
-    -   e.g., Diffusion of Responsibility (Darley & Latane, 1968)
 
-# Stress Experiment
+# Interpretation
 
-On a scale of 1 (low levels) - 10 (high levels), take note of your current level of stress
+- Translate model output to 2–3 sentences as in a results section.
 
-------------------------------------------------------------------------
 
-![](images/cuteanimals22.jpg)
+# Exit ticket
 
-------------------------------------------------------------------------
+- One key takeaway, one question.
 
-![](images/scale;webp=auto;jpeg_quality=60.webp)
 
-------------------------------------------------------------------------
+# Next
 
-![](images/speckled-cape-tortoise.jpg)
-
-------------------------------------------------------------------------
-
-## Stress Experiment Follow-up
-
-On a scale of 1 (low levels) - 10 (high levels), take note of your current level of stress
-
--   Did these cute animal pictures *cause* you to be more/less stressed?
-
-# Causation
-
-How can we determine causation? i.e., one variable **causes** another to change
-
-## Shadish, Cook & Campbell (2002)
-
-Drawing from John Stuart Mill’s philosophy
-
-Three Criteria for Causal Relationships:
-
-1.  **Temporal precedence** (cause precedes effect)
-
-2.  **Covariation** (cause and effect are correlated)
-
-3.  **Elimination of plausible alternative explanations** (ruling out confounding variables)
-
-    ------------------------------------------------------------------------
-
-### Counterfactual Reasoning
-
--   Hypothetical situation where manipulated outcomes are compared to the outcomes without a manipulation (i.e., time travel)
-
--   How does this work?
-
-    -   Group of individuals get a treatment
-
-    -   We measure their outcomes
-
-    -   We rewind time and do not give the group the treatment
-
-    -   We measure these outcomes
-
-    -   Compare!
-
-------------------------------------------------------------------------
-
-## Design
-
-Random Assignment –\> IV –\> DV
-
-Simple!
-
--   What if we can't randomly assign? What are things that we can't randomly assign?
-
-------------------------------------------------------------------------
-
-[**Quasi-experimental Design**]{.underline}
-
--   But that is next week. Stay on track and don't get distracted
-
-------------------------------------------------------------------------
-
-### Random Assignment
-
-Every participant has an equal likelihood of being in each of the groups
-
--   Coin Flip
-
--   Computer Algorithm
-
-Will need to check for group differences on variables of interest and other meaningful characteristics.
-
--   What statistical test would we use?
-
-------------------------------------------------------------------------
-
-### Randomized Control Trial (RCT)
-
--   We have a random sample ✅
-
--   We have random assignment ✅
-
--   But what are the groups that we are assigning?
-
-    -   What is the research question, and what do we want to compare it against?
-
-------------------------------------------------------------------------
-
-### RCT
-
-The comparison/control group means a lot when it comes to the conclusions that we can establish
-
--   Treatment vs. ...
-
-    -   Waitlist Control?
-
-    -   Treatment as usual?
-
-    -   Other treatment?
-
-    -   Placebo?
-
-    -   Nothing?
-
-------------------------------------------------------------------------
-
-### Placebo Effect
-
-This has been an emerging area of research that is utterly fascinating
-
-On occasion, the placebo shows just as much of an effect as the actual treatment
-
-Example: Treating Depression ([link](https://pmc.ncbi.nlm.nih.gov/articles/PMC4172306/#:~:text=To%20summarize%2C%20there%20is%20a,but%20the%20placebo%20effect%20is.))
-
-# Example
-
-Investigate the bidirectional relationships between sleep patterns, social media use, and depressive symptoms in adolescents over a two-year period.
-
--   **Measures:**
-
-```         
--   Sleep: Actigraphy (1 week per assessment) + Pittsburgh Sleep Quality Index
-
--   Social Media: Screen time logs + Social Media Addiction Scale
-
--   Depression: Beck Depression Inventory
-
--   Covariates: Pubertal status, SES, parental depression
-```
-
-------------------------------------------------------------------------
-
-Draw it on the board
-
--   What stats can we do?
-
-------------------------------------------------------------------------
-
-# Next Class...
-
-We will have a class activity where you will evaluate studies and provide additional input
-
-Please review the following studies:
-
--   Bobo Doll Experiment
-
--   Zimbardo Prison Study
-
--   Milgram Obedience Study
-
--   ["Monster" Study](https://en.wikipedia.org/wiki/Monster_Study)
-
-    Mundane Realism vs. Psychological Realism
-
-## 
+- Prep and due items for next week.
