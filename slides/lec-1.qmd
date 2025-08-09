@@ -6,7 +6,7 @@ logo: "images/640_hex.png"
 format: 
   revealjs:
     theme: slides.scss
-    multiplex: true
+    multiplex: false
     transition: fade
     slide-number: true
     incremental: true 
