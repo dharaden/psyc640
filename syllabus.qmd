@@ -1,5 +1,6 @@
 ---
 title: Syllabus
+tbl-colwidths: [5, 20]
 ---
 
 ## **PSYC 640: Graduate Statistics**
@@ -24,17 +25,17 @@ This course is the introduction to statistics for graduate students. The goal of
 
 We will primarily be referring to chapters in the following textbooks:
 
--   [*Introduction to Modern Statistics (2e)*](https://openintro-ims.netlify.app/) (Cetinkaya-Rundel & Hardin, 2024)
+-   [*Introduction to Modern Statistics (2e)*](https://openintro-ims.netlify.app/){target="\"_blank"} (Cetinkaya-Rundel & Hardin, 2024)
 
 -   [*Learning Statistics with R*](https://learningstatisticswithr-bookdown.netlify.com/index.html){target="\"_blank"} (Navarro)
 
 -   [*R for Data Science (2e)*](https://r4ds.hadley.nz/){target="\"_blank"} (Wickham, Çetinkaya-Rundel, & Grolemund, 2023)
 
--   [*Modern Statistics with R (2e)*](https://www.modernstatisticswithr.com/)(Thullin, 2025)
+-   [*Modern Statistics with R (2e)*](https://www.modernstatisticswithr.com/){target="\"_blank"} (Thullin, 2025)
 
--   [*Statistical Thinking*](https://statsthinking21.github.io/statsthinking21-core-site/)(Poldrack, 2024)
+-   [*Statistical Thinking*](https://statsthinking21.github.io/statsthinking21-core-site/){target="\"_blank"} (Poldrack, 2024)
 
--   [*An Introduction to Statistical Learning (2e)*](https://www.statlearning.com/) (James, Witten, Hastie & Tibshirani, 2023)
+-   [*An Introduction to Statistical Learning (2e)*](https://www.statlearning.com/){target="\"_blank"} (James, Witten, Hastie & Tibshirani, 2023)
 
 These textbooks are available for free online and able to be downloaded. You may choose to purchase a paper copy if you wish, but it is not required.
 
@@ -51,369 +52,30 @@ These textbooks are available for free online and able to be downloaded. You may
 
 ------------------------------------------------------------------------
 
-### **Week 1 — Welcome & The Big Picture**
+### Plan
 
-**Lecture focus**
+This is a rough estimate of the progression of the course. I would like to be responsive to the needs of the students. Therefore, the course plan is subject to change.
 
--   The research cycle and where statistics fits
--   Reproducible workflows (R, RStudio, RMarkdown/Quarto)
--   Intro to tidyverse workflow
--   Stats anxiety & growth mindset
-
-**Lab**
-
--   Install/load R packages
--   Load a dataset (built-in + open source)
--   Create a first plot with ggplot2
-
-**Readings**
-
--   *Is Statistics Hard?* — Wickham & Grolemund, R for Data Science (R4DS) Ch. 1–2
--   APA: *Principles for Translating Statistics to Psychology Students* (APA Guidelines)
-
-**Assignment**
-
--   Mini data exploration report (import, summarize, plot)
-
-------------------------------------------------------------------------
-
-### **Week 2 — Visualizing Data & Thinking in Models**
-
-**Lecture focus**
-
--   Why regression first?
--   Visualizing relationships (scatterplots, grouping)
--   Thinking in terms of variation & prediction
-
-**Lab**
-
--   ggplot2 layering: geom_point, geom_smooth
--   Faceting and grouping variables
-
-**Readings**
-
--   R4DS Ch. 3, 5
--   Gelman & Hill (2007) Ch. 2 (Regression as a general method)
-
-**Assignment**
-
--   Recreate 2 plots from lecture with a dataset of your choice
+| Week | Topic                                  |
+|:----:|----------------------------------------|
+|  1   | Welcome & The Big Picture              |
+|  2   | Visualizing Data & Thinking in Models  |
+|  3   | The line (Correlation & Regression)    |
+|  4   | Simple Linear Regression               |
+|  5   | Multiple Regression                    |
+|  6   | Interactions & Moderation              |
+|  7   | Logistic Regression                    |
+|  8   | ANOVA as Regression                    |
+|  9   | Assumptions, Diagnostics & Methodology |
+|  10  | Missing Data                           |
+|  11  | Power Analysis & PLanning              |
+|  12  | Descriptives...again                   |
+|  13  | Putting it together                    |
+|  14  | Project Work                           |
+|  15  | Final Project Presentations            |
+|      |                                        |
 
 ------------------------------------------------------------------------
-
-### **Week 3 — Simple Linear Regression**
-
-**Lecture focus**
-
--   Model equation & interpretation of intercept, slope
--   Effect size & confidence intervals
--   Residuals & assumptions
-
-**Lab**
-
--   Fit lm() models
--   Interpret coefficients & plot regression lines
--   Diagnostic plots
-
-**Readings**
-
--   R4DS Ch. 23 (Model basics)
--   Field, A. (2018) *Discovering Statistics Using R*, Ch. 7 (sections on simple regression)
-
-**Assignment**
-
--   Report a simple regression with APA-style results
-
-------------------------------------------------------------------------
-
-### **Week 4 — Multiple Regression**
-
-**Lecture focus**
-
--   Adding predictors: partial slopes
--   Standardized coefficients
--   Categorical predictors (dummy coding)
-
-**Lab**
-
--   lm() with multiple predictors
--   Model interpretation with summary()
--   Compare models using anova()
-
-**Readings**
-
--   R4DS Ch. 24
--   Field Ch. 8 (multiple regression basics)
-
-**Assignment**
-
--   Multiple regression report on a dataset you choose
-
-------------------------------------------------------------------------
-
-### **Week 5 — Interactions & Moderation**
-
-**Lecture focus**
-
--   Interaction terms
--   Centering predictors
--   Moderation interpretation
-
-**Lab**
-
--   Interaction plots with ggplot2
--   emmeans for marginal means
-
-**Readings**
-
--   Field Ch. 9 (interactions)
--   Hayes (2018) Ch. 1–2 (Intro to moderation)
-
-**Assignment**
-
--   Analyze a moderation model & interpret the interaction
-
-------------------------------------------------------------------------
-
-### **Week 6 — Logistic Regression**
-
-**Lecture focus**
-
--   When outcomes are binary
--   Odds ratios & log odds
--   Model fit statistics
-
-**Lab**
-
--   glm() with family = binomial
--   Interpreting odds ratios
--   ROC curves
-
-**Readings**
-
--   Field Ch. 19 (logistic regression)
--   Peng, Lee, & Ingersoll (2002) *An Introduction to Logistic Regression Analysis*
-
-**Assignment**
-
--   Logistic regression report
-
-------------------------------------------------------------------------
-
-### **Week 7 — ANOVA as Regression**
-
-**Lecture focus**
-
--   ANOVA = regression with categorical predictors
--   Dummy & effect coding
--   Post-hoc tests & contrasts
-
-**Lab**
-
--   Compare lm() & aov() outputs
--   emmeans for pairwise comparisons
-
-**Readings**
-
--   Field Ch. 10–11 (ANOVA & ANCOVA)
--   R4DS Ch. 25 (Categorical variables)
-
-**Assignment**
-
--   ANOVA with APA report
-
-------------------------------------------------------------------------
-
-### **Week 8 — ANCOVA & Blocking Variables**
-
-**Lecture focus**
-
--   Adjusting for covariates
--   Assumptions & interpretation
-
-**Lab**
-
--   Fit ANCOVA models
--   Visualize adjusted means
-
-**Readings**
-
--   Field Ch. 12 (ANCOVA)
--   Gelman & Hill Ch. 9 (controlling for variables)
-
-**Assignment**
-
--   ANCOVA report
-
-------------------------------------------------------------------------
-
-### **Week 9 — Assumptions, Diagnostics, & Robust Methods**
-
-**Lecture focus**
-
--   Residual plots
--   Normality, homoscedasticity
--   Robust regression options
-
-**Lab**
-
--   check_model() from performance package
--   Handling outliers & transformations
-
-**Readings**
-
--   Field Ch. 4 (assumptions)
--   Wilcox (2012) Ch. 2 (robust methods intro)
-
-**Assignment**
-
--   Diagnostic report on your own dataset
-
-------------------------------------------------------------------------
-
-### **Week 10 — Missing Data**
-
-**Lecture focus**
-
--   MCAR, MAR, MNAR
--   Multiple imputation
--   Complete case analysis & its dangers
-
-**Lab**
-
--   naniar package for missingness visualization
--   mice for imputation
-
-**Readings**
-
--   Enders (2010) Ch. 1–2 (missing data theory)
--   van Buuren (2018) Ch. 3 (practical imputation)
-
-**Assignment**
-
--   Missing data analysis & imputation
-
-------------------------------------------------------------------------
-
-### **Week 11 — Mixed-Effects Models**
-
-**Lecture focus**
-
--   Why random effects?
--   Repeated measures within regression
--   Random intercepts & slopes
-
-**Lab**
-
--   lme4: lmer() basics
--   Interpretation & visualization with sjPlot
-
-**Readings**
-
--   Gelman & Hill Ch. 11–12
--   Winter (2013) *Linear Mixed Effects Models in R*
-
-**Assignment**
-
--   Mixed model analysis on a repeated measures dataset
-
-------------------------------------------------------------------------
-
-### **Week 12 — Mediation & Path Models**
-
-**Lecture focus**
-
--   Direct & indirect effects
--   Bootstrapping mediation
--   Conceptual link to SEM
-
-**Lab**
-
--   mediation package
--   lavaan for path models
-
-**Readings**
-
--   Hayes (2018) Ch. 3–4 (mediation)
--   R4DS Ch. 26 (model building)
-
-**Assignment**
-
--   Mediation analysis report
-
-------------------------------------------------------------------------
-
-### **Week 13 — Power Analysis & Planning**
-
-**Lecture focus**
-
--   Why power matters
--   Power for regression & ANOVA
--   Planning sample sizes
-
-**Lab**
-
--   pwr package
--   Simulation-based power
-
-**Readings**
-
--   Cohen (1988) Ch. 1–2 (effect sizes & power)
--   Lakens (2021) *Sample Size Justification*
-
-**Assignment**
-
--   Power analysis for your final project
-
-------------------------------------------------------------------------
-
-### **Week 14 — Project Work Session**
-
-**Lecture focus**
-
--   Troubleshooting models
--   Refining visualizations & write-up
-
-**Lab**
-
--   Peer review final project drafts
-
-**Readings**
-
--   No new readings — review past materials
-
-**Assignment**
-
--   Submit draft project
-
-------------------------------------------------------------------------
-
-### **Week 15 — Final Project Presentations**
-
-**Lecture focus**
-
--   Communicating results to non-statistical audiences
--   Translating skills to the workplace
-
-**Lab**
-
--   Student presentations
--   Class reflection: “What I’ll take forward”
-
-**Readings**
-
--   No new readings
-
-**Final Deliverable**
-
--   Fully reproducible RMarkdown/Quarto report with:
-
-    -   Introduction & research question
-    -   Methods
-    -   Regression-based analysis
-    -   APA-style results
-    -   Visualizations
-    -   References
 
 **Grade Scheme**
 
@@ -429,7 +91,7 @@ These textbooks are available for free online and able to be downloaded. You may
 
 > *“A Wizard is never late, nor are they early. They arrive precisely when they mean to.”* 🧙‍♂️
 
-Thanks Gandalf. Super helpful. Unfortunately, we are not wizards and late penalties will be applied to work that is not on time. Due to the accelerated nature of the course, the late penalty will be more severe. There will be a 50% deduction on the first day. Work will not be accepted beyond 24 hours after the deadline.
+Thanks Gandalf. Super helpful. Unfortunately, we are not wizards and late penalties will be applied to work that is not on time. There will be a 15% deduction on the first day. And a 5% increase for each day beyond the deadline. Work will not be accepted beyond 5 days after the deadline.
 
 #### Statement on Reasonable Accommodations
 
