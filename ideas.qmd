@@ -1,0 +1,472 @@
+---
+title: Syllabus
+---
+
+## **Intro to Psychology (Online Asynchronous)**
+
+|                |                                      |
+|----------------|--------------------------------------|
+| **Professor**  | Dustin Haraden, PhD                  |
+| *Email/Office* | dxhgsh\@rit.edu; Eastman Hall - 3378 |
+| *Office Hours* | By Appointment                       |
+| *Class Times*  | Asynchronous                         |
+
+For a PDF copy of the syllabus: [Download File](/files/Syllabus.pdf)
+
+### **Course Overview**
+
+This course offers a broad introduction to the field of Psychology, covering various sub-disciplines and emphasizing the scientific study of behavior and cognition. Students will gain a solid understanding of the scientific process, major psychological theories, and the correct usage of psychological terminology. The curriculum fosters critical evaluation skills for examining psychological research findings and highlights practical applications of psychological concepts in daily life. Emphasizing contemporary insights, the course focuses on the scientific method in measuring human behavior, with a student-centric approach that encourages active engagement and self-knowledge.
+
+------------------------------------------------------------------------
+
+### **Required Materials**
+
+**Textbook**: We will an open source (this means free) textbook throughout the semester. The link to the textbook is included below. A PDF version of the text is uploaded to myCourses.  
+
+Spielman, R. M., Jenkins, W., & Lovett, M. (2020). Psychology 2e. <https://openstax.org/details/books/psychology-2e>
+
+**Other Required Readings**: All additional readings (if necessary) will be posted to the course website.
+
+------------------------------------------------------------------------
+
+
+**Course Goals**
+
+1. Build confidence in statistical reasoning & analysis.
+2. Apply regression-based methods to real-world research questions.
+3. Develop practical R skills for data wrangling, visualization, and reporting.
+4. Produce a portfolio-ready, reproducible final analysis.
+
+---
+
+### **Week 1 — Welcome & The Big Picture**
+
+**Lecture focus**
+
+* The research cycle and where statistics fits
+* Reproducible workflows (R, RStudio, RMarkdown/Quarto)
+* Intro to tidyverse workflow
+* Stats anxiety & growth mindset
+
+**Lab**
+
+* Install/load R packages
+* Load a dataset (built-in + open source)
+* Create a first plot with ggplot2
+
+**Readings**
+
+* *Is Statistics Hard?* — Wickham & Grolemund, R for Data Science (R4DS) Ch. 1–2
+* APA: *Principles for Translating Statistics to Psychology Students* (APA Guidelines)
+
+**Assignment**
+
+* Mini data exploration report (import, summarize, plot)
+
+---
+
+### **Week 2 — Visualizing Data & Thinking in Models**
+
+**Lecture focus**
+
+* Why regression first?
+* Visualizing relationships (scatterplots, grouping)
+* Thinking in terms of variation & prediction
+
+**Lab**
+
+* ggplot2 layering: geom\_point, geom\_smooth
+* Faceting and grouping variables
+
+**Readings**
+
+* R4DS Ch. 3, 5
+* Gelman & Hill (2007) Ch. 2 (Regression as a general method)
+
+**Assignment**
+
+* Recreate 2 plots from lecture with a dataset of your choice
+
+---
+
+### **Week 3 — Simple Linear Regression**
+
+**Lecture focus**
+
+* Model equation & interpretation of intercept, slope
+* Effect size & confidence intervals
+* Residuals & assumptions
+
+**Lab**
+
+* Fit lm() models
+* Interpret coefficients & plot regression lines
+* Diagnostic plots
+
+**Readings**
+
+* R4DS Ch. 23 (Model basics)
+* Field, A. (2018) *Discovering Statistics Using R*, Ch. 7 (sections on simple regression)
+
+**Assignment**
+
+* Report a simple regression with APA-style results
+
+---
+
+### **Week 4 — Multiple Regression**
+
+**Lecture focus**
+
+* Adding predictors: partial slopes
+* Standardized coefficients
+* Categorical predictors (dummy coding)
+
+**Lab**
+
+* lm() with multiple predictors
+* Model interpretation with summary()
+* Compare models using anova()
+
+**Readings**
+
+* R4DS Ch. 24
+* Field Ch. 8 (multiple regression basics)
+
+**Assignment**
+
+* Multiple regression report on a dataset you choose
+
+---
+
+### **Week 5 — Interactions & Moderation**
+
+**Lecture focus**
+
+* Interaction terms
+* Centering predictors
+* Moderation interpretation
+
+**Lab**
+
+* Interaction plots with ggplot2
+* emmeans for marginal means
+
+**Readings**
+
+* Field Ch. 9 (interactions)
+* Hayes (2018) Ch. 1–2 (Intro to moderation)
+
+**Assignment**
+
+* Analyze a moderation model & interpret the interaction
+
+---
+
+### **Week 6 — Logistic Regression**
+
+**Lecture focus**
+
+* When outcomes are binary
+* Odds ratios & log odds
+* Model fit statistics
+
+**Lab**
+
+* glm() with family = binomial
+* Interpreting odds ratios
+* ROC curves
+
+**Readings**
+
+* Field Ch. 19 (logistic regression)
+* Peng, Lee, & Ingersoll (2002) *An Introduction to Logistic Regression Analysis*
+
+**Assignment**
+
+* Logistic regression report
+
+---
+
+### **Week 7 — ANOVA as Regression**
+
+**Lecture focus**
+
+* ANOVA = regression with categorical predictors
+* Dummy & effect coding
+* Post-hoc tests & contrasts
+
+**Lab**
+
+* Compare lm() & aov() outputs
+* emmeans for pairwise comparisons
+
+**Readings**
+
+* Field Ch. 10–11 (ANOVA & ANCOVA)
+* R4DS Ch. 25 (Categorical variables)
+
+**Assignment**
+
+* ANOVA with APA report
+
+---
+
+### **Week 8 — ANCOVA & Blocking Variables**
+
+**Lecture focus**
+
+* Adjusting for covariates
+* Assumptions & interpretation
+
+**Lab**
+
+* Fit ANCOVA models
+* Visualize adjusted means
+
+**Readings**
+
+* Field Ch. 12 (ANCOVA)
+* Gelman & Hill Ch. 9 (controlling for variables)
+
+**Assignment**
+
+* ANCOVA report
+
+---
+
+### **Week 9 — Assumptions, Diagnostics, & Robust Methods**
+
+**Lecture focus**
+
+* Residual plots
+* Normality, homoscedasticity
+* Robust regression options
+
+**Lab**
+
+* check\_model() from performance package
+* Handling outliers & transformations
+
+**Readings**
+
+* Field Ch. 4 (assumptions)
+* Wilcox (2012) Ch. 2 (robust methods intro)
+
+**Assignment**
+
+* Diagnostic report on your own dataset
+
+---
+
+### **Week 10 — Missing Data**
+
+**Lecture focus**
+
+* MCAR, MAR, MNAR
+* Multiple imputation
+* Complete case analysis & its dangers
+
+**Lab**
+
+* naniar package for missingness visualization
+* mice for imputation
+
+**Readings**
+
+* Enders (2010) Ch. 1–2 (missing data theory)
+* van Buuren (2018) Ch. 3 (practical imputation)
+
+**Assignment**
+
+* Missing data analysis & imputation
+
+---
+
+### **Week 11 — Mixed-Effects Models**
+
+**Lecture focus**
+
+* Why random effects?
+* Repeated measures within regression
+* Random intercepts & slopes
+
+**Lab**
+
+* lme4: lmer() basics
+* Interpretation & visualization with sjPlot
+
+**Readings**
+
+* Gelman & Hill Ch. 11–12
+* Winter (2013) *Linear Mixed Effects Models in R*
+
+**Assignment**
+
+* Mixed model analysis on a repeated measures dataset
+
+---
+
+### **Week 12 — Mediation & Path Models**
+
+**Lecture focus**
+
+* Direct & indirect effects
+* Bootstrapping mediation
+* Conceptual link to SEM
+
+**Lab**
+
+* mediation package
+* lavaan for path models
+
+**Readings**
+
+* Hayes (2018) Ch. 3–4 (mediation)
+* R4DS Ch. 26 (model building)
+
+**Assignment**
+
+* Mediation analysis report
+
+---
+
+### **Week 13 — Power Analysis & Planning**
+
+**Lecture focus**
+
+* Why power matters
+* Power for regression & ANOVA
+* Planning sample sizes
+
+**Lab**
+
+* pwr package
+* Simulation-based power
+
+**Readings**
+
+* Cohen (1988) Ch. 1–2 (effect sizes & power)
+* Lakens (2021) *Sample Size Justification*
+
+**Assignment**
+
+* Power analysis for your final project
+
+---
+
+### **Week 14 — Project Work Session**
+
+**Lecture focus**
+
+* Troubleshooting models
+* Refining visualizations & write-up
+
+**Lab**
+
+* Peer review final project drafts
+
+**Readings**
+
+* No new readings — review past materials
+
+**Assignment**
+
+* Submit draft project
+
+---
+
+### **Week 15 — Final Project Presentations**
+
+**Lecture focus**
+
+* Communicating results to non-statistical audiences
+* Translating skills to the workplace
+
+**Lab**
+
+* Student presentations
+* Class reflection: “What I’ll take forward”
+
+**Readings**
+
+* No new readings
+
+**Final Deliverable**
+
+* Fully reproducible RMarkdown/Quarto report with:
+
+  * Introduction & research question
+  * Methods
+  * Regression-based analysis
+  * APA-style results
+  * Visualizations
+  * References
+
+
+**Grade Scheme**
+
+|   Grade    |  A  |  A-   |  B+   |   B   |  B-   |  C+   |   C   |  C-   |   D   |  F   |
+|:----------:|:---:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:----:|
+| Percentage | 93+ | 90-92 | 87-89 | 83-86 | 80-82 | 77-79 | 73-76 | 70-72 | 60-69 | \<60 |
+
+------------------------------------------------------------------------
+
+### **Course Policies**
+
+#### Late Policy
+
+> *“A Wizard is never late, nor are they early. They arrive precisely when they mean to.”* 🧙‍♂️
+
+Thanks Gandalf. Super helpful. Unfortunately, we are not wizards and late penalties will be applied to work that is not on time. Due to the accelerated nature of the course, the late penalty will be more severe. There will be a 50% deduction on the first day. Work will not be accepted beyond 24 hours after the deadline.
+
+#### Statement on Reasonable Accommodations
+
+RIT is committed to providing academic adjustments to students with disabilities. If you would like to request academic adjustments such as testing modifications due to a disability, please contact the Disability Services Office. Contact information for the DSO and information about how to request adjustments can be found at [www.rit.edu/dso](http://www.rit.edu/dso). After you receive academic adjustment approval, it is imperative that you contact me as early as possible so that we can work out whatever arrangement is necessary.
+
+#### **Mandatory Reporting**
+
+As an instructor, I have a mandatory reporting responsibility as a part of my role. It is my goal that you feel comfortable sharing information related to your life experiences in classroom discussions, in your written work, and in our one-on-one meetings. I will seek to keep the information you share private to the greatest extent possible. However, I am required to report information I receive regarding sexual misconduct or information about a crime that may have occurred during your time at RIT. 
+
+#### Statement on Title IX
+
+RIT is committed to providing a safe learning environment, free of harassment and discrimination as articulated in our university policies located on our governance website. RIT’s policies require faculty to share information about incidents of gender-based discrimination and harassment with RIT’s Title IX coordinator or deputy coordinators when incidents are stated to them directly. The information you provide to a non-confidential resource which includes faculty will be relayed only as necessary for the Title IX Coordinator to investigate and/or seek resolution. Even RIT Offices and employees who cannot guarantee confidentiality will maintain your privacy to the greatest extent possible.
+
+If an individual discloses information during a public awareness event, a protest, during a class project, or advocacy event, RIT is not obligated to investigate based on this public disclosure. RIT may however use this information to further educate faculty, staff and students about prevention efforts and available resources.
+
+If you would like to report an incident of gender based discrimination or harassment directly you may do so by using the online Sexual Harassment, Discrimination and Sexual Misconduct Reporting or anonymously by using the Compliance and Ethics Hotline. If you have a concern related to gender-based discrimination and/or harassment and prefer to have a confidential discussion, assistance is available from any of RIT’s confidential resources (listed below).
+
+-   RIT Counseling and Psychological Services
+    -   585-475-2261 (V)
+    -   585-475-6897 (TTY)
+    -   www.rit.edu/counseling
+-   NTID Counseling and Academic Advising
+    -   585-475-6400
+    -   www.ntid.rit.edu/counselingdept
+-   RIT Student Health Center
+    -   585-475-2255 (V)
+    -   www.rit.edu/studentaffairs/studenthealth
+-   Center for Religious Life
+    -   585-475-2137
+    -   www.rit.edu/studentaffairs/religion
+-   RIT Ombuds Office
+    -   585-475-7357
+    -   585-475-6424
+    -   585-286-4677 (VP)
+    -   www.rit.edu/ombuds/contact-us
+
+#### Academic Integrity Statement
+
+As an institution of higher learning, RIT expects students to behave honestly and ethically at all times, especially when submitting work for evaluation in conjunction with any course or degree requirement. The Department of Psychology encourages all students to become familiar with the [RIT Honor Code](https://www.rit.edu/academicaffairs/policiesmanual/p030) and with [RIT's Academic Integrity Policy](https://www.rit.edu/academicaffairs/policiesmanual/d080). RIT’s policy on academic integrity requires the instructor to investigate of any suspected breach of academic integrity. If the preponderance of evidence indicates a breach of academic integrity, the student who did so may incur a consequence up to and including failure for the entire course.
+
+*About Generative AI*
+
+Each course that you are involved in will have differing opinions and goals regarding generative AI (i.e., ChatGPT, Gemini, Perplexity, Claude, etc.). In this course you are allowed to use these as a tool. You can use prompts such as “Teach me about (insert psych topic here) and give me an example that might apply to me.” If you do use generative AI, I would like for you to disclose that information just so I can have a sense of how it is being used. If I suspect that the work that you have turned in is using AI, we will have to have a conversation to determine the next steps. Turning in AI work is considered plagiarism, and you may be asked to re-do the assignment, or possibly receive a 0 on the assignment.
+
+#### RIT COVID-19 Safety Plans
+
+RIT is committed to the safety of the RIT community and beyond. Because the situation is still in a rapid state of change, checking the RIT Ready website, and specifically the RIT Safety Plan for the most up to date information is recommended: <https://www.rit.edu/ready/rit-safety-plan>.
+
+#### Changes to the Syllabus
+
+I have provided this syllabus as a guide to our course and have made every attempt to provide an accurate overview of the course. However, as instructor, I reserve the right to modify this document during the semester, if necessary, to ensure that we achieve course learning objectives. You will receive advance notice of any changes to the syllabus through myCourses/email.
