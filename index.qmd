@@ -10,22 +10,22 @@ Note that this schedule will be updated as the semester progresses, with all cha
 ::: column-screen-inset-right
 | Week | Date | Topic | Prepare | Slides | In-Class | Due |
 |:----------|:----------|:---------:|:---------:|:---------:|:---------:|:---------:|
-| 1 | 08-25 | Getting set up + R foundations | Install R/RStudio; bring a laptop and raw .csv file if available | Session slides with screenshots; RStudio tour | 1\) Orientation and expectations; 2) RStudio projects, files, paths; 3) Basics: objects, vectors, data frames; 4) Importing .csv; 5) Saving a Quarto notebook; 6) Quick wins: compute means, counts, and a simple plot | Lab 0: Setup check (project + notebook) |
-| 2 | 09-01 | Data wrangling I: tidy data + dplyr | Skim a 1-page cheat sheet (provided) | Minimal slides with verbs/examples | 1\) Tidy data idea; 2) dplyr verbs: select, filter, mutate, arrange; 3) group_by + summarize for table-1 style summaries; 4) Write clean code chunks in Quarto | Lab 1: Recreate descriptive table from a dataset |
-| 3 | 09-08 | Visualization I: ggplot2 + EDA walkthrough | Bring a dataset with 1–2 numeric and 1 categorical variable | Plot templates | 1\) Grammar of graphics; 2) Histograms, density, boxplots, bar plots; 3) Scatter + smooth; 4) EDA checklist; 5) Read plots like results | Mini-report: EDA with 3–4 figures and captions |
-| 4 | 09-15 | Core inference: sampling, CIs, p-values (practical) | Read a short “CIs vs p-values” handout | Concept slides with visual demos | 1\) What CI/p-value means in practice; 2) Bootstrap CI demo in R; 3) Interpreting reported CIs/p-values in papers; 4) When to use which test | Quiz 1: Interpret 3 results excerpts |
-| 5 | 09-22 | Comparing means: t-tests (one/two/paired) | Identify a question with a group comparison | Slide flow with decision tree | 1\) Choosing one/two/paired; 2) Assumptions: independence, distribution, variance; 3) Effect sizes (Cohen’s d); 4) Reporting: estimate+CI; 5) R demo with tidy output | Lab 2: t-test analysis + short write-up |
-| 6 | 09-29 | Associations: correlation + simple linear regression | None | Key formulas minimally; focus on interpretation | 1\) Correlation vs regression; 2) Fit simple regression in R; 3) Interpret slope, CI, R²; 4) Predictions and prediction intervals; 5) Plot with regression line and residuals | Problem set: correlation + SLR interpretation |
-| 7 | 10-06 | Multiple regression I: adding predictors + categorical predictors | Bring 2–3 candidate predictors | Slides with examples and checklists | 1\) Model specification; 2) Dummy/contrast coding basics; 3) Interpreting partial effects; 4) Visualizing adjusted relationships; 5) Reporting tables | Lab 3: MLR with 2–3 predictors |
-| 8 | 10-13 | Model checks: diagnostics and robustness | None | Checklist slide: linearity, influence, variance | 1\) Residual plots and Q–Q; 2) Multicollinearity intuition (VIF); 3) Influence (Cook’s D); 4) Heteroskedasticity and robust SE; 5) Edit a model based on diagnostics | One-pager: Diagnostic findings + revisions |
-| 9 | 10-20 | Nonlinearity: transforms, polynomials, splines (practical) | Skim examples | Minimal slides; live coding | 1\) When linearity fails; 2) Log/√ transforms and interpret back on original scale; 3) Poly terms; 4) Spline demo; 5) Compare fits by CV/AIC conceptually | Lab 4: Improve fit with a nonlinear term |
-| 10 | 10-27 | Logistic regression: binary outcomes | Identify a binary outcome in your data | Slides with odds/OR interpretation examples | 1\) Link idea; 2) Fit logistic; 3) Odds ratios + CI; 4) Marginal effects/predicted probs; 5) Assess discrimination (ROC/AUC) and calibration | Short memo: Communicate logistic findings |
-| 11 | 11-03 | Counts: Poisson vs Negative Binomial (applied) | None | Slides with “when to use which” | 1\) Overdispersion intuition; 2) Fit Poisson and NB; 3) Interpret incident rate ratios; 4) Quick model comparison; 5) Practical reporting | Lab 5: Count model + interpretation |
-| 12 | 11-10 | Repeated/clustered data (conceptual + practical tools) | None | Concept map slide | 1\) When independence fails; 2) Cluster-robust SE; 3) GEE vs mixed-model idea; 4) Do a clustered SE demo; 5) How to read mixed-model results in papers | Quiz 2: Read and explain 3 model outputs |
-| 13 | 11-17 | Mediation and moderation (regression-based) | Bring a mediation/moderation question | Slides with diagrams | 1\) Interaction probing for moderation; 2) Mediation concept + bootstrap CI; 3) Practical interpretation; 4) Sensible claims and caveats | Lab 6: Med/Mod analysis + figure |
-| 14 | 11-24 | Reproducible reporting: Quarto + tables + project hygiene | Have a project folder ready | Slides with workflow diagrams | 1\) Project structure; 2) Version control intro; 3) Dynamic tables (modelsummary/gt); 4) APA-style reporting; 5) Export a polished report | Methods section draft (with analytic plan) |
-| 15 | 12-01 | Open lab: analysis decisions + clear reporting | Bring questions and draft results | None (live support) | 1\) One-on-one consults; 2) Peer feedback rounds; 3) Checklists: assumptions, effect sizes, clarity | Results tables/figures draft |
-| 16 | 12-08 | Final presentations: interpret and defend | Finalize slide deck and report | Title/outline slide only | 1\) 8–10min presentations; 2) Q&A focused on interpretation/assumptions; 3) Reflection on limitations and next steps | Final report + reproducible repo |
+| 1 | 08-25 | Getting set up + R foundations | Install R/RStudio; bring a laptop |  |  |  |
+| 2 | 09-01 | LABOR DAY |  |  |  |  |
+| 3 | 09-08 | Descriptives, Visualizations + Communication |  |  |  |  |
+| 4 | 09-15 | Design, Sampling + Inference |  |  |  |  |
+| 5 | 09-22 | Correlation + Effect Sizes |  |  |  |  |
+| 6 | 09-29 | Comparing Groups: t-tests + Beyond |  |  |  |  |
+| 7 | 10-06 | Building to Regression: Variability & Model Fit |  |  |  |  |
+| 8 | 10-13 | FALL BREAK |  |  |  |  |
+| 9 | 10-20 | Simple Linear Regression |  |  |  |  |
+| 10 | 10-27 | Multiple Regression I: Adding Predictors |  |  |  |  |
+| 11 | 11-03 | Multiple Regression II: Categorical Predictors |  |  |  |  |
+| 12 | 11-10 | Assumptions + Model Diagnostics |  |  |  |  |
+| 13 | 11-17 | Expanding Regression |  |  |  |  |
+| 14 | 11-24 | Model Building + Comparison |  |  |  |  |
+| 15 | 12-01 | Mediation + Moderation |  |  |  |  |
+| 16 | 12-08 | Wrapping Up + Workshop |  |  |  |  |
 :::
 
 ```{r echo = FALSE}
