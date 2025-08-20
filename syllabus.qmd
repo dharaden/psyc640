@@ -5,13 +5,13 @@ tbl-colwidths: [5, 20]
 
 ## **PSYC 640: Graduate Statistics**
 
-|                |                                      |
-|----------------|--------------------------------------|
-| **Professor**  | Dustin Haraden, PhD                  |
-| *Email/Office* | dxhgsh\@rit.edu; Eastman Hall - 3378 |
-| *Office Hours* | By Appointment                       |
-| *Class Times*  | Mondays 8:00 - 10:50am               |
-| Class Location | Wallace - 3140                       |
+|                |                                       |
+|----------------|---------------------------------------|
+| **Professor**  | Dustin Haraden, PhD                   |
+| *Email/Office* | dxhgsh\@rit.edu; Eastman Hall - 3378  |
+| *Office Hours* | Wednesdays 9 - 11am or By Appointment |
+| *Class Times*  | Mondays 8:00 - 10:50am                |
+| Class Location | Wallace - 3140                        |
 
 For a PDF copy of the syllabus: [Download File](/files/Syllabus.pdf)
 
@@ -21,7 +21,9 @@ This course is the introduction to statistics for graduate students. The goal of
 
 ------------------------------------------------------------------------
 
-### **Required Materials**
+### **Course Materials**
+
+We will be using R for all data wrangling, visualization, and analysis. You may use another statistical program in this course, but I will only be providing examples in R. Students must have the latest version of R and it is strongly recommended that students also download the RStudio GUI, both can be found [here](https://posit.co/download/rstudio-desktop/#download). Both types of software are free.
 
 We will primarily be referring to chapters in the following textbooks:
 
@@ -35,7 +37,9 @@ We will primarily be referring to chapters in the following textbooks:
 
 -   [*Statistical Thinking*](https://statsthinking21.github.io/statsthinking21-core-site/){target="\"_blank"} (Poldrack, 2024)
 
--   [*An Introduction to Statistical Learning (2e)*](https://www.statlearning.com/){target="\"_blank"} (James, Witten, Hastie & Tibshirani, 2023)
+-   [*An Introduction to Statistical Learning (2e)*](https://www.statlearning.com/){target="_blank"} (James, Witten, Hastie & Tibshirani, 2023)
+
+-   [*Data Analysis: A Model Comparison Approach to Regression, ANOVA, and Beyond (3rd ed.)*](https://sadbhavnapublications.org/research-enrichment-material/2-Statistical-Books/Data-Analysis-A-Model-Comparison-Approach-To-Regression,-ANOVA,-and-Beyond.pdf){target="_blank"} (Judd, McClelland, & Ryan, 2017)
 
 These textbooks are available for free online and able to be downloaded. You may choose to purchase a paper copy if you wish, but it is not required.
 
@@ -51,6 +55,46 @@ These textbooks are available for free online and able to be downloaded. You may
 4.  Produce a portfolio-ready, reproducible final analysis.
 
 ------------------------------------------------------------------------
+
+**Evaluation and Grading**
+
+Your grade is a reflection of your consistent effort, active engagement with the material, and ability to apply new concepts. The components are designed to build on one another, leading to a comprehensive understanding of data analysis.
+
++----------------------------+------------+
+| **Component**              | **Weight** |
++----------------------------+------------+
+| Weekly Labs                | 30%        |
++----------------------------+------------+
+| Journal Entries            | 10%        |
++----------------------------+------------+
+| Participation & Engagement | 15%        |
++----------------------------+------------+
+| Midterm Project            | 20%        |
++----------------------------+------------+
+| Final Project              | 25%        |
++----------------------------+------------+
+
+***Weekly Labs***
+
+These are hands-on R assignments that directly reinforce the concepts from the week's class. They are your primary opportunity to practice coding, build models, and interpret results. Labs will be submitted as R Markdown files, and your lowest score will be dropped.
+
+***Journal Entries***
+
+Each week, you will submit a short, reflective journal entry. This is a space for metacognition—thinking about your own learning. Prompts will include questions like, "What was the clearest concept this week, and why did it click?" or "What was the 'muddiest' point for you, and what question would you ask about it?". They can also take the form of just a general reflection. I want to get to know you and your learning throughout this process. This can also include anything related to your personal life or mental health that you would like for me to know, such as whether you are struggling to balance classes and research, having trouble creating a workspace at home, or whether you can balance time spent on campus and off. This can also be completely random things, like a news article you can't stop thinking about, or a favorite TV show, movie or book that you just love (especially if it is LOTR or Cosmere related). The content of what you write has *no impact* on your grade. In addition, what you write will be kept confidential.
+
+The purpose of this “assignment” is to help facilitate communication between you and me. I have found other instructors using this and I would like to be able to develop supportive relationships with students, so I decided to implement this. Other instructors reported that they found that many students were more comfortable discussing questions and concerns in their journal assignments rather than through email.
+
+***In-Class Engagement & Activities***
+
+Our class is a workshop, and your active participation is key. This portion of your grade is earned by being present and engaged. This includes participating in group discussions, engaging with the readings, working with peers on problems, and completing the small, hands-on coding exercises we'll do together or in small groups in class. This is a low-stress grade based on your consistent effort and collaboration during our classes.
+
+***Midterm Project***
+
+ This is a comprehensive analysis of a dataset I will provide. You will be asked to clean and visualize the data, formulate a research question, build an appropriate regression model, check its assumptions, and write a concise report of your findings. This project assesses your mastery of the first half of the course.
+
+***Final Project***
+
+For your final project, you will choose a dataset (either your own research data or from a list of options), develop your own research questions, and conduct a full analysis from start to finish. You will present your work in a short, manuscript-style report and a brief "lightning talk" to the class in our final meeting. This is your capstone assignment to demonstrate your independent data analysis skills.
 
 **Grade Scheme**
 
@@ -109,7 +153,17 @@ As an institution of higher learning, RIT expects students to behave honestly an
 
 *About Generative AI*
 
-Each course that you are involved in will have differing opinions and goals regarding generative AI (i.e., ChatGPT, Gemini, Perplexity, Claude, etc.). In this course you are allowed to use these as a tool. You can use prompts such as “Teach me about (insert psych topic here) and give me an example that might apply to me.” If you do use generative AI, I would like for you to disclose that information just so I can have a sense of how it is being used. If I suspect that the work that you have turned in is using AI, we will have to have a conversation to determine the next steps. Turning in AI work is considered plagiarism, and you may be asked to re-do the assignment, or possibly receive a 0 on the assignment.
+You may use generative AI tools (such as ChatGPT, Grammarly, or CoPilot) as a [**support**]{.underline} for your work in this course. However:
+
+-   You must **personally review, edit, and take ownership** of all submitted work.
+
+-   Any use of AI must be **acknowledged in a brief note** at the end of the assignment (e.g., *“I used ChatGPT to generate initial bullet points for my resume, which I then revised and expanded.”*) as well as being properly cited ([RIT Library Citation Infoguide](https://infoguides.rit.edu/c.php?g=1207799&p=10293622))
+
+-   AI tools may **not** be used to generate entire assignments without your input or to misrepresent your work. Submitting unedited or minimally edited AI output as your own is considered academic dishonesty.
+
+-   In professional contexts, you will be expected to present work authentically your own — this course is practice for that.
+
+If I suspect that the work that you have turned in is using AI, we will have to have a conversation to determine the next steps. Turning in AI work is considered plagiarism, and you may be asked to re-do the assignment, or possibly receive a 0 on the assignment. Your information may also be submitted to the university as a Breach of Academic Integrity.
 
 #### RIT COVID-19 Safety Plans
 
@@ -118,3 +172,79 @@ RIT is committed to the safety of the RIT community and beyond. Because the situ
 #### Changes to the Syllabus
 
 I have provided this syllabus as a guide to our course and have made every attempt to provide an accurate overview of the course. However, as instructor, I reserve the right to modify this document during the semester, if necessary, to ensure that we achieve course learning objectives. You will receive advance notice of any changes to the syllabus through myCourses/email.
+
+------------------------------------------------------------------------
+
+## Course Plan
+
+*This is subject to change and instructor will inform the students as soon as possible.*
+
+### **Part I: Foundations of Data & R (The "On-Ramp")**
+
+-   **Week 1 (Aug. 25) — Getting Started with R & Tidy Data**
+
+    -   **Topics:** We'll focus entirely on our tools. We'll cover the course philosophy, getting R/RStudio running, and the core logic of the `tidyverse`. The main skill will be learning to wrangle data with `dplyr` verbs (`select`, `filter`, `mutate`, `arrange`).
+
+-   **Week 2 (Sep. 1) — LABOR DAY (NO CLASS)**
+
+    -   Continue to develop skills and comfort in R. You will be provided with readings and other practice problems, and maybe a video lecture.
+
+-   **Week 3 (Sep. 8) — Describing, Visualizing & Communicating**
+
+    -   **Topics:** Now that we can handle data, what's in it? We'll cover descriptive statistics (central tendency, variability) and focus heavily on creating powerful, publication-quality visualizations with `ggplot2`.
+
+### **Part II: Building the Model from the Ground Up**
+
+-   **Week 4 (Sep. 15) — Modeling Relationships with Correlation**
+
+    -   **Topics:** How do variables relate? We'll discuss covariance and correlation as a way to quantify the direction and strength of a linear relationship.
+
+-   **Week 5 (Sep. 22) — The Model is a Line: Simple Linear Regression**
+
+    -   **Topics:** We officially introduce the simple regression model: Yi​=β0​+β1​Xi​+ϵi​. We'll cover parameter estimation (slope, intercept), using the `lm()` function, and interpreting model fit (R2).
+
+-   **Week 6 (Sep. 29) — Inference for the Model**
+
+    -   **Topics:** How confident are we in our slope? We'll cover standard errors, confidence intervals, and hypothesis testing for regression coefficients (t-tests) and the overall model (F-test).
+
+-   **Week 7 (Oct. 6) — Adding Predictors: Multiple Regression**
+
+    -   **Topics:** Most outcomes have more than one cause. We'll expand our model to include multiple predictors, focusing on interpreting partial slopes and understanding adjusted R2.
+
+-   **Week 8 (Oct. 13) — FALL BREAK (NO CLASS)** Enjoy the break!
+
+### **Part III: Expanding the Model's Power**
+
+-   **Week 9 (Oct. 20) — Adding Groups: Categorical Predictors**
+
+    -   **Topics:** How do we model experimental groups? We'll cover dummy coding to include categorical variables. This is where we have the **"Aha!" moment**, demonstrating how t-tests and ANOVA are just special cases of the regression model they already know.
+
+-   **Week 10 (Oct. 27) — When Variables Collide: Interactions**
+
+    -   **Topics:** Exploring moderation. We will add interaction terms to the model to ask questions like, "Does the effect of X on Y *depend on* the level of Z?" We'll focus on plotting and probing interactions to understand them.
+
+-   **Week 11 (Nov. 3) — Is My Model Okay? Assumptions & Diagnostics**
+
+    -   **Topics:** A critical look at our models. We'll cover the core OLS assumptions (linearity, normality, etc.), how to test them visually in R, and what to do when they are violated.
+
+-   **Week 12 (Nov. 10) — Midterm Project Workshop**
+
+    -   **Topics:** No new material. This is a dedicated session for students to work on their midterm projects with direct support from you and their peers.
+
+### **Part IV: Advanced Topics & Application**
+
+-   **Week 13 (Nov. 17) — Power, Effect Size & Planning Research**
+
+    -   **Topics:** Moving beyond the p-value. We'll discuss how to quantify the magnitude of an effect and conduct *a priori* power analyses to design better studies.
+
+-   **Week 14 (Nov. 24) — Building & Comparing Models**
+
+    -   **Topics:** How do we choose the "best" model? We'll cover strategies for model building (hierarchical, stepwise) and techniques for comparing non-nested models (AIC, BIC).
+
+-   **Week 15 (Dec. 1) — Expanding the Framework: Logistic Regression**
+
+    -   **Topics:** What if the outcome is binary (yes/no)? We'll introduce the Generalized Linear Model via logistic regression, focusing on interpreting log-odds and odds ratios.
+
+-   **Week 16 (Dec. 8) — Final Presentations & Wrap Up**
+
+    -   **Topics:** Students give "lightning talks" on their final project results. We'll review the journey from plotting points to building sophisticated models and celebrate their progress.
