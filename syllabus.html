@@ -332,8 +332,15 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#psyc-640-graduate-statistics" id="toc-psyc-640-graduate-statistics" class="nav-link active" data-scroll-target="#psyc-640-graduate-statistics"><strong>PSYC 640: Graduate Statistics</strong></a>
   <ul class="collapse">
   <li><a href="#course-overview" id="toc-course-overview" class="nav-link" data-scroll-target="#course-overview"><strong>Course Overview</strong></a></li>
-  <li><a href="#required-materials" id="toc-required-materials" class="nav-link" data-scroll-target="#required-materials"><strong>Required Materials</strong></a></li>
+  <li><a href="#course-materials" id="toc-course-materials" class="nav-link" data-scroll-target="#course-materials"><strong>Course Materials</strong></a></li>
   <li><a href="#course-policies" id="toc-course-policies" class="nav-link" data-scroll-target="#course-policies"><strong>Course Policies</strong></a></li>
+  </ul></li>
+  <li><a href="#course-plan" id="toc-course-plan" class="nav-link" data-scroll-target="#course-plan">Course Plan</a>
+  <ul class="collapse">
+  <li><a href="#part-i-foundations-of-data-r-the-on-ramp" id="toc-part-i-foundations-of-data-r-the-on-ramp" class="nav-link" data-scroll-target="#part-i-foundations-of-data-r-the-on-ramp"><strong>Part I: Foundations of Data &amp; R (The “On-Ramp”)</strong></a></li>
+  <li><a href="#part-ii-building-the-model-from-the-ground-up" id="toc-part-ii-building-the-model-from-the-ground-up" class="nav-link" data-scroll-target="#part-ii-building-the-model-from-the-ground-up"><strong>Part II: Building the Model from the Ground Up</strong></a></li>
+  <li><a href="#part-iii-expanding-the-models-power" id="toc-part-iii-expanding-the-models-power" class="nav-link" data-scroll-target="#part-iii-expanding-the-models-power"><strong>Part III: Expanding the Model’s Power</strong></a></li>
+  <li><a href="#part-iv-advanced-topics-application" id="toc-part-iv-advanced-topics-application" class="nav-link" data-scroll-target="#part-iv-advanced-topics-application"><strong>Part IV: Advanced Topics &amp; Application</strong></a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/syllabus.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -379,7 +386,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <td><em>Office Hours</em></td>
-<td>By Appointment</td>
+<td>Wednesdays 9 - 11am or By Appointment</td>
 </tr>
 <tr class="even">
 <td><em>Class Times</em></td>
@@ -397,8 +404,9 @@ ul.task-list li input[type="checkbox"] {
 <p>This course is the introduction to statistics for graduate students. The goal of the course is to provide a grounding in statistical concepts, methods and application to research. I aim to increase student’s confidence in using these techniques and introducing them to R. Topics will range from including mathematical conceptualizations to practical application with various techniques ranging from descriptive statistics to regression.</p>
 <hr>
 </section>
-<section id="required-materials" class="level3">
-<h3 class="anchored" data-anchor-id="required-materials"><strong>Required Materials</strong></h3>
+<section id="course-materials" class="level3">
+<h3 class="anchored" data-anchor-id="course-materials"><strong>Course Materials</strong></h3>
+<p>We will be using R for all data wrangling, visualization, and analysis. You may use another statistical program in this course, but I will only be providing examples in R. Students must have the latest version of R and it is strongly recommended that students also download the RStudio GUI, both can be found <a href="https://posit.co/download/rstudio-desktop/#download">here</a>. Both types of software are free.</p>
 <p>We will primarily be referring to chapters in the following textbooks:</p>
 <ul>
 <li><p><a href="https://openintro-ims.netlify.app/" target="&quot;_blank"><em>Introduction to Modern Statistics (2e)</em></a> (Cetinkaya-Rundel &amp; Hardin, 2024)</p></li>
@@ -406,7 +414,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p><a href="https://r4ds.hadley.nz/" target="&quot;_blank"><em>R for Data Science (2e)</em></a> (Wickham, Çetinkaya-Rundel, &amp; Grolemund, 2023)</p></li>
 <li><p><a href="https://www.modernstatisticswithr.com/" target="&quot;_blank"><em>Modern Statistics with R (2e)</em></a> (Thullin, 2025)</p></li>
 <li><p><a href="https://statsthinking21.github.io/statsthinking21-core-site/" target="&quot;_blank"><em>Statistical Thinking</em></a> (Poldrack, 2024)</p></li>
-<li><p><a href="https://www.statlearning.com/" target="&quot;_blank"><em>An Introduction to Statistical Learning (2e)</em></a> (James, Witten, Hastie &amp; Tibshirani, 2023)</p></li>
+<li><p><a href="https://www.statlearning.com/" target="_blank"><em>An Introduction to Statistical Learning (2e)</em></a> (James, Witten, Hastie &amp; Tibshirani, 2023)</p></li>
+<li><p><a href="https://sadbhavnapublications.org/research-enrichment-material/2-Statistical-Books/Data-Analysis-A-Model-Comparison-Approach-To-Regression,-ANOVA,-and-Beyond.pdf" target="_blank"><em>Data Analysis: A Model Comparison Approach to Regression, ANOVA, and Beyond (3rd ed.)</em></a> (Judd, McClelland, &amp; Ryan, 2017)</p></li>
 </ul>
 <p>These textbooks are available for free online and able to be downloaded. You may choose to purchase a paper copy if you wish, but it is not required.</p>
 <p><em>All additional readings will be provided by the instructor</em></p>
@@ -419,6 +428,51 @@ ul.task-list li input[type="checkbox"] {
 <li>Produce a portfolio-ready, reproducible final analysis.</li>
 </ol>
 <hr>
+<p><strong>Evaluation and Grading</strong></p>
+<p>Your grade is a reflection of your consistent effort, active engagement with the material, and ability to apply new concepts. The components are designed to build on one another, leading to a comprehensive understanding of data analysis.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 20%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Component</strong></td>
+<td><strong>Weight</strong></td>
+</tr>
+<tr class="even">
+<td>Weekly Labs</td>
+<td>30%</td>
+</tr>
+<tr class="odd">
+<td>Journal Entries</td>
+<td>10%</td>
+</tr>
+<tr class="even">
+<td>Participation &amp; Engagement</td>
+<td>15%</td>
+</tr>
+<tr class="odd">
+<td>Midterm Project</td>
+<td>20%</td>
+</tr>
+<tr class="even">
+<td>Final Project</td>
+<td>25%</td>
+</tr>
+</tbody>
+</table>
+<p><strong><em>Weekly Labs</em></strong></p>
+<p>These are hands-on R assignments that directly reinforce the concepts from the week’s class. They are your primary opportunity to practice coding, build models, and interpret results. Labs will be submitted as R Markdown files, and your lowest score will be dropped.</p>
+<p><strong><em>Journal Entries</em></strong></p>
+<p>Each week, you will submit a short, reflective journal entry. This is a space for metacognition—thinking about your own learning. Prompts will include questions like, “What was the clearest concept this week, and why did it click?” or “What was the ‘muddiest’ point for you, and what question would you ask about it?”. They can also take the form of just a general reflection. I want to get to know you and your learning throughout this process. This can also include anything related to your personal life or mental health that you would like for me to know, such as whether you are struggling to balance classes and research, having trouble creating a workspace at home, or whether you can balance time spent on campus and off. This can also be completely random things, like a news article you can’t stop thinking about, or a favorite TV show, movie or book that you just love (especially if it is LOTR or Cosmere related). The content of what you write has <em>no impact</em> on your grade. In addition, what you write will be kept confidential.</p>
+<p>The purpose of this “assignment” is to help facilitate communication between you and me. I have found other instructors using this and I would like to be able to develop supportive relationships with students, so I decided to implement this. Other instructors reported that they found that many students were more comfortable discussing questions and concerns in their journal assignments rather than through email.</p>
+<p><strong><em>In-Class Engagement &amp; Activities</em></strong></p>
+<p>Our class is a workshop, and your active participation is key. This portion of your grade is earned by being present and engaged. This includes participating in group discussions, engaging with the readings, working with peers on problems, and completing the small, hands-on coding exercises we’ll do together or in small groups in class. This is a low-stress grade based on your consistent effort and collaboration during our classes.</p>
+<p><strong><em>Midterm Project</em></strong></p>
+<p>&nbsp;This is a comprehensive analysis of a dataset I will provide. You will be asked to clean and visualize the data, formulate a research question, build an appropriate regression model, check its assumptions, and write a concise report of your findings. This project assesses your mastery of the first half of the course.</p>
+<p><strong><em>Final Project</em></strong></p>
+<p>For your final project, you will choose a dataset (either your own research data or from a list of options), develop your own research questions, and conduct a full analysis from start to finish. You will present your work in a short, manuscript-style report and a brief “lightning talk” to the class in our final meeting. This is your capstone assignment to demonstrate your independent data analysis skills.</p>
 <p><strong>Grade Scheme</strong></p>
 <table class="caption-top table">
 <colgroup>
@@ -524,7 +578,14 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored" data-anchor-id="academic-integrity-statement">Academic Integrity Statement</h4>
 <p>As an institution of higher learning, RIT expects students to behave honestly and ethically at all times, especially when submitting work for evaluation in conjunction with any course or degree requirement. The Department of Psychology encourages all students to become familiar with the <a href="https://www.rit.edu/academicaffairs/policiesmanual/p030">RIT Honor Code</a> and with <a href="https://www.rit.edu/academicaffairs/policiesmanual/d080">RIT’s Academic Integrity Policy</a>. RIT’s policy on academic integrity requires the instructor to investigate of any suspected breach of academic integrity. If the preponderance of evidence indicates a breach of academic integrity, the student who did so may incur a consequence up to and including failure for the entire course.</p>
 <p><em>About Generative AI</em></p>
-<p>Each course that you are involved in will have differing opinions and goals regarding generative AI (i.e., ChatGPT, Gemini, Perplexity, Claude, etc.). In this course you are allowed to use these as a tool. You can use prompts such as “Teach me about (insert psych topic here) and give me an example that might apply to me.” If you do use generative AI, I would like for you to disclose that information just so I can have a sense of how it is being used. If I suspect that the work that you have turned in is using AI, we will have to have a conversation to determine the next steps. Turning in AI work is considered plagiarism, and you may be asked to re-do the assignment, or possibly receive a 0 on the assignment.</p>
+<p>You may use generative AI tools (such as ChatGPT, Grammarly, or CoPilot) as a <u><strong>support</strong></u> for your work in this course. However:</p>
+<ul>
+<li><p>You must <strong>personally review, edit, and take ownership</strong> of all submitted work.</p></li>
+<li><p>Any use of AI must be <strong>acknowledged in a brief note</strong> at the end of the assignment (e.g., <em>“I used ChatGPT to generate initial bullet points for my resume, which I then revised and expanded.”</em>) as well as being properly cited (<a href="https://infoguides.rit.edu/c.php?g=1207799&amp;p=10293622">RIT Library Citation Infoguide</a>)</p></li>
+<li><p>AI tools may <strong>not</strong> be used to generate entire assignments without your input or to misrepresent your work. Submitting unedited or minimally edited AI output as your own is considered academic dishonesty.</p></li>
+<li><p>In professional contexts, you will be expected to present work authentically your own — this course is practice for that.</p></li>
+</ul>
+<p>If I suspect that the work that you have turned in is using AI, we will have to have a conversation to determine the next steps. Turning in AI work is considered plagiarism, and you may be asked to re-do the assignment, or possibly receive a 0 on the assignment. Your information may also be submitted to the university as a Breach of Academic Integrity.</p>
 </section>
 <section id="rit-covid-19-safety-plans" class="level4">
 <h4 class="anchored" data-anchor-id="rit-covid-19-safety-plans">RIT COVID-19 Safety Plans</h4>
@@ -533,9 +594,95 @@ ul.task-list li input[type="checkbox"] {
 <section id="changes-to-the-syllabus" class="level4">
 <h4 class="anchored" data-anchor-id="changes-to-the-syllabus">Changes to the Syllabus</h4>
 <p>I have provided this syllabus as a guide to our course and have made every attempt to provide an accurate overview of the course. However, as instructor, I reserve the right to modify this document during the semester, if necessary, to ensure that we achieve course learning objectives. You will receive advance notice of any changes to the syllabus through myCourses/email.</p>
-
-
+<hr>
 </section>
+</section>
+</section>
+<section id="course-plan" class="level2">
+<h2 class="anchored" data-anchor-id="course-plan">Course Plan</h2>
+<p><em>This is subject to change and instructor will inform the students as soon as possible.</em></p>
+<section id="part-i-foundations-of-data-r-the-on-ramp" class="level3">
+<h3 class="anchored" data-anchor-id="part-i-foundations-of-data-r-the-on-ramp"><strong>Part I: Foundations of Data &amp; R (The “On-Ramp”)</strong></h3>
+<ul>
+<li><p><strong>Week 1 (Aug.&nbsp;25) — Getting Started with R &amp; Tidy Data</strong></p>
+<ul>
+<li><strong>Topics:</strong> We’ll focus entirely on our tools. We’ll cover the course philosophy, getting R/RStudio running, and the core logic of the <code>tidyverse</code>. The main skill will be learning to wrangle data with <code>dplyr</code> verbs (<code>select</code>, <code>filter</code>, <code>mutate</code>, <code>arrange</code>).</li>
+</ul></li>
+<li><p><strong>Week 2 (Sep.&nbsp;1) — LABOR DAY (NO CLASS)</strong></p>
+<ul>
+<li>Continue to develop skills and comfort in R. You will be provided with readings and other practice problems, and maybe a video lecture.</li>
+</ul></li>
+<li><p><strong>Week 3 (Sep.&nbsp;8) — Describing, Visualizing &amp; Communicating</strong></p>
+<ul>
+<li><strong>Topics:</strong> Now that we can handle data, what’s in it? We’ll cover descriptive statistics (central tendency, variability) and focus heavily on creating powerful, publication-quality visualizations with <code>ggplot2</code>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="part-ii-building-the-model-from-the-ground-up" class="level3">
+<h3 class="anchored" data-anchor-id="part-ii-building-the-model-from-the-ground-up"><strong>Part II: Building the Model from the Ground Up</strong></h3>
+<ul>
+<li><p><strong>Week 4 (Sep.&nbsp;15) — Modeling Relationships with Correlation</strong></p>
+<ul>
+<li><strong>Topics:</strong> How do variables relate? We’ll discuss covariance and correlation as a way to quantify the direction and strength of a linear relationship.</li>
+</ul></li>
+<li><p><strong>Week 5 (Sep.&nbsp;22) — The Model is a Line: Simple Linear Regression</strong></p>
+<ul>
+<li><strong>Topics:</strong> We officially introduce the simple regression model: Yi​=β0​+β1​Xi​+ϵi​. We’ll cover parameter estimation (slope, intercept), using the <code>lm()</code> function, and interpreting model fit (R2).</li>
+</ul></li>
+<li><p><strong>Week 6 (Sep.&nbsp;29) — Inference for the Model</strong></p>
+<ul>
+<li><strong>Topics:</strong> How confident are we in our slope? We’ll cover standard errors, confidence intervals, and hypothesis testing for regression coefficients (t-tests) and the overall model (F-test).</li>
+</ul></li>
+<li><p><strong>Week 7 (Oct.&nbsp;6) — Adding Predictors: Multiple Regression</strong></p>
+<ul>
+<li><strong>Topics:</strong> Most outcomes have more than one cause. We’ll expand our model to include multiple predictors, focusing on interpreting partial slopes and understanding adjusted R2.</li>
+</ul></li>
+<li><p><strong>Week 8 (Oct.&nbsp;13) — FALL BREAK (NO CLASS)</strong> Enjoy the break!</p></li>
+</ul>
+</section>
+<section id="part-iii-expanding-the-models-power" class="level3">
+<h3 class="anchored" data-anchor-id="part-iii-expanding-the-models-power"><strong>Part III: Expanding the Model’s Power</strong></h3>
+<ul>
+<li><p><strong>Week 9 (Oct.&nbsp;20) — Adding Groups: Categorical Predictors</strong></p>
+<ul>
+<li><strong>Topics:</strong> How do we model experimental groups? We’ll cover dummy coding to include categorical variables. This is where we have the <strong>“Aha!” moment</strong>, demonstrating how t-tests and ANOVA are just special cases of the regression model they already know.</li>
+</ul></li>
+<li><p><strong>Week 10 (Oct.&nbsp;27) — When Variables Collide: Interactions</strong></p>
+<ul>
+<li><strong>Topics:</strong> Exploring moderation. We will add interaction terms to the model to ask questions like, “Does the effect of X on Y <em>depend on</em> the level of Z?” We’ll focus on plotting and probing interactions to understand them.</li>
+</ul></li>
+<li><p><strong>Week 11 (Nov.&nbsp;3) — Is My Model Okay? Assumptions &amp; Diagnostics</strong></p>
+<ul>
+<li><strong>Topics:</strong> A critical look at our models. We’ll cover the core OLS assumptions (linearity, normality, etc.), how to test them visually in R, and what to do when they are violated.</li>
+</ul></li>
+<li><p><strong>Week 12 (Nov.&nbsp;10) — Midterm Project Workshop</strong></p>
+<ul>
+<li><strong>Topics:</strong> No new material. This is a dedicated session for students to work on their midterm projects with direct support from you and their peers.</li>
+</ul></li>
+</ul>
+</section>
+<section id="part-iv-advanced-topics-application" class="level3">
+<h3 class="anchored" data-anchor-id="part-iv-advanced-topics-application"><strong>Part IV: Advanced Topics &amp; Application</strong></h3>
+<ul>
+<li><p><strong>Week 13 (Nov.&nbsp;17) — Power, Effect Size &amp; Planning Research</strong></p>
+<ul>
+<li><strong>Topics:</strong> Moving beyond the p-value. We’ll discuss how to quantify the magnitude of an effect and conduct <em>a priori</em> power analyses to design better studies.</li>
+</ul></li>
+<li><p><strong>Week 14 (Nov.&nbsp;24) — Building &amp; Comparing Models</strong></p>
+<ul>
+<li><strong>Topics:</strong> How do we choose the “best” model? We’ll cover strategies for model building (hierarchical, stepwise) and techniques for comparing non-nested models (AIC, BIC).</li>
+</ul></li>
+<li><p><strong>Week 15 (Dec.&nbsp;1) — Expanding the Framework: Logistic Regression</strong></p>
+<ul>
+<li><strong>Topics:</strong> What if the outcome is binary (yes/no)? We’ll introduce the Generalized Linear Model via logistic regression, focusing on interpreting log-odds and odds ratios.</li>
+</ul></li>
+<li><p><strong>Week 16 (Dec.&nbsp;8) — Final Presentations &amp; Wrap Up</strong></p>
+<ul>
+<li><strong>Topics:</strong> Students give “lightning talks” on their final project results. We’ll review the journey from plotting points to building sophisticated models and celebrate their progress.</li>
+</ul></li>
+</ul>
+
+
 </section>
 </section>
 
