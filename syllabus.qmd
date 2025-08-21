@@ -43,7 +43,11 @@ We will primarily be referring to chapters in the following textbooks:
 
 These textbooks are available for free online and able to be downloaded. You may choose to purchase a paper copy if you wish, but it is not required.
 
-*All additional readings will be provided by the instructor*
+*All additional readings will be provided by the instructor.*
+
+::: callout-important
+***Note:*** Readings on the schedule will need to be completed prior to the course they are listed for. We will build on the concepts you read about in that specific class period, so it is important that you have read.
+:::
 
 ------------------------------------------------------------------------
 
@@ -60,23 +64,18 @@ These textbooks are available for free online and able to be downloaded. You may
 
 Your grade is a reflection of your consistent effort, active engagement with the material, and ability to apply new concepts. The components are designed to build on one another, leading to a comprehensive understanding of data analysis.
 
-+----------------------------+------------+
+|                            |            |
+|----------------------------|------------|
 | **Component**              | **Weight** |
-+----------------------------+------------+
 | Weekly Labs                | 30%        |
-+----------------------------+------------+
 | Journal Entries            | 10%        |
-+----------------------------+------------+
 | Participation & Engagement | 15%        |
-+----------------------------+------------+
 | Midterm Project            | 20%        |
-+----------------------------+------------+
 | Final Project              | 25%        |
-+----------------------------+------------+
 
 ***Weekly Labs***
 
-These are hands-on R assignments that directly reinforce the concepts from the week's class. They are your primary opportunity to practice coding, build models, and interpret results. Labs will be submitted as R Markdown files, and your lowest score will be dropped.
+These are hands-on R assignments that directly reinforce the concepts from the week's class. They are your primary opportunity to practice coding, build models, and interpret results. Labs will be submitted as R Markdown files, and your lowest score will be dropped. Labs will be due the Sunday night (11:59pm) before the next class.
 
 ***Journal Entries***
 
@@ -90,7 +89,7 @@ Our class is a workshop, and your active participation is key. This portion of y
 
 ***Midterm Project***
 
- This is a comprehensive analysis of a dataset I will provide. You will be asked to clean and visualize the data, formulate a research question, build an appropriate regression model, check its assumptions, and write a concise report of your findings. This project assesses your mastery of the first half of the course.
+This is a comprehensive analysis of a dataset I will provide. You will be asked to clean and visualize the data, formulate a research question, build an appropriate regression model, check its assumptions, and write a concise report of your findings. This project assesses your mastery of the first half of the course and will be due before the first class after Fall Break.
 
 ***Final Project***
 
@@ -161,7 +160,7 @@ You may use generative AI tools (such as ChatGPT, Grammarly, or CoPilot) as a [*
 
 -   AI tools may **not** be used to generate entire assignments without your input or to misrepresent your work. Submitting unedited or minimally edited AI output as your own is considered academic dishonesty.
 
--   In professional contexts, you will be expected to present work authentically your own — this course is practice for that.
+-   In professional contexts, you will be expected to present work that is authentically your own — this course is practice for that.
 
 If I suspect that the work that you have turned in is using AI, we will have to have a conversation to determine the next steps. Turning in AI work is considered plagiarism, and you may be asked to re-do the assignment, or possibly receive a 0 on the assignment. Your information may also be submitted to the university as a Breach of Academic Integrity.
 
@@ -179,72 +178,82 @@ I have provided this syllabus as a guide to our course and have made every attem
 
 *This is subject to change and instructor will inform the students as soon as possible.*
 
-### **Part I: Foundations of Data & R (The "On-Ramp")**
+-   **Week 1 — Getting Started with R & Tidy Data**
 
--   **Week 1 (Aug. 25) — Getting Started with R & Tidy Data**
+    -   We'll dive right into our primary tool, R. This session covers installing R and RStudio, navigating the interface, understanding R projects, and learning the foundational syntax of the R language and the `tidyverse`, including data types and basic functions.
 
-    -   **Topics:** We'll focus entirely on our tools. We'll cover the course philosophy, getting R/RStudio running, and the core logic of the `tidyverse`. The main skill will be learning to wrangle data with `dplyr` verbs (`select`, `filter`, `mutate`, `arrange`).
-
--   **Week 2 (Sep. 1) — LABOR DAY (NO CLASS)**
+-   **Week 2 — LABOR DAY (NO CLASS)**
 
     -   Continue to develop skills and comfort in R. You will be provided with readings and other practice problems, and maybe a video lecture.
 
--   **Week 3 (Sep. 8) — Describing, Visualizing & Communicating**
+-   **Week 3 — Describing, Visualizing & Communicating**
 
-    -   **Topics:** Now that we can handle data, what's in it? We'll cover descriptive statistics (central tendency, variability) and focus heavily on creating powerful, publication-quality visualizations with `ggplot2`.
+    -   What is in our data? We'll learn how to calculate descriptive statistics (e.g., mean, median, standard deviation) and master the "grammar of graphics" to create compelling, publication-quality plots with `ggplot2`. We will also introduce R Markdown for creating reproducible reports.
 
-### **Part II: Building the Model from the Ground Up**
+-   **Week 4 — Designing Studies & Sampling**
 
--   **Week 4 (Sep. 15) — Modeling Relationships with Correlation**
+    -   This is a conceptual week focusing on the foundations of research. We'll discuss different research designs (experimental, correlational), sampling methods, the distinction between a sample and a population, and the fundamental logic of null hypothesis significance testing (NHST).
 
-    -   **Topics:** How do variables relate? We'll discuss covariance and correlation as a way to quantify the direction and strength of a linear relationship.
+-   **Week 5 — Correlations & Effect Sizes**
 
--   **Week 5 (Sep. 22) — The Model is a Line: Simple Linear Regression**
+    -   We'll quantify the relationship between two continuous variables using covariance and correlation. We will also introduce the concept of effect sizes as a standardized way to describe the magnitude of a relationship, moving beyond a simple "yes/no" significance test. *"How strong is the association?"*
 
-    -   **Topics:** We officially introduce the simple regression model: Yi​=β0​+β1​Xi​+ϵi​. We'll cover parameter estimation (slope, intercept), using the `lm()` function, and interpreting model fit (R2).
+-   **Week 6 — Comparing Groups**
 
--   **Week 6 (Sep. 29) — Inference for the Model**
+    -   We'll explore classic methods for comparing group means, including independent and paired-samples t-tests. We'll conduct these tests in R and learn how to interpret their output. This will serve as our first formal hypothesis-testing tool.
 
-    -   **Topics:** How confident are we in our slope? We'll cover standard errors, confidence intervals, and hypothesis testing for regression coefficients (t-tests) and the overall model (F-test).
+-   **Week 7 — Building to Regression: Variability & Model Fit**
 
--   **Week 7 (Oct. 6) — Adding Predictors: Multiple Regression**
+    -   We'll introduce the core logic of the General Linear Model by partitioning variance. Concepts like sums of squares will be introduced to help us understand how a model "explains" variance in an outcome variable. We will introduce R2 as a fundamental measure of model fit. *"How much of the outcome can we explain?"*
 
-    -   **Topics:** Most outcomes have more than one cause. We'll expand our model to include multiple predictors, focusing on interpreting partial slopes and understanding adjusted R2.
+<!-- -->
 
--   **Week 8 (Oct. 13) — FALL BREAK (NO CLASS)** Enjoy the break!
+-   **Week 8 — FALL BREAK (NO CLASS)** 🍂
 
-### **Part III: Expanding the Model's Power**
+<!-- -->
 
--   **Week 9 (Oct. 20) — Adding Groups: Categorical Predictors**
+-   **Week 9 — Simple Linear Regression**
 
-    -   **Topics:** How do we model experimental groups? We'll cover dummy coding to include categorical variables. This is where we have the **"Aha!" moment**, demonstrating how t-tests and ANOVA are just special cases of the regression model they already know.
+    -   The formal introduction to the regression model: Yi​=β0​+β1​Xi​+ϵi​. We will learn how to estimate the model's parameters (intercept and slope), interpret their meaning, and assess overall model fit using the `lm()` function in R. *"What is the exact formula for prediction?"*
 
--   **Week 10 (Oct. 27) — When Variables Collide: Interactions**
+<!-- -->
 
-    -   **Topics:** Exploring moderation. We will add interaction terms to the model to ask questions like, "Does the effect of X on Y *depend on* the level of Z?" We'll focus on plotting and probing interactions to understand them.
+-   **Week 10 — Multiple Regression I: Adding Predictors**
 
--   **Week 11 (Nov. 3) — Is My Model Okay? Assumptions & Diagnostics**
+    -   We'll expand our model to include multiple continuous predictors. Key topics include interpreting partial slopes (the effect of one predictor while controlling for others), understanding adjusted R2, and identifying issues like multicollinearity.
 
-    -   **Topics:** A critical look at our models. We'll cover the core OLS assumptions (linearity, normality, etc.), how to test them visually in R, and what to do when they are violated.
+<!-- -->
 
--   **Week 12 (Nov. 10) — Midterm Project Workshop**
+-   **Week 11 — Multiple Regression II: Categorical Predictors**
 
-    -   **Topics:** No new material. This is a dedicated session for students to work on their midterm projects with direct support from you and their peers.
+    -   How do we include groups (e.g., experimental conditions) in our regression model? We'll learn about dummy coding and indicator variables. This is where we will explicitly demonstrate that t-tests and ANOVA are simply special cases of regression.
 
-### **Part IV: Advanced Topics & Application**
+<!-- -->
 
--   **Week 13 (Nov. 17) — Power, Effect Size & Planning Research**
+-   **Week 12 — Assumptions + Model Diagnostics**
 
-    -   **Topics:** Moving beyond the p-value. We'll discuss how to quantify the magnitude of an effect and conduct *a priori* power analyses to design better studies.
+    -   Is our model trustworthy? We will learn how to check the assumptions of ordinary least squares (OLS) regression, including linearity, normality of residuals, and homoscedasticity. We will use graphical methods in R to diagnose problems and discuss potential remedies.
 
--   **Week 14 (Nov. 24) — Building & Comparing Models**
+<!-- -->
 
-    -   **Topics:** How do we choose the "best" model? We'll cover strategies for model building (hierarchical, stepwise) and techniques for comparing non-nested models (AIC, BIC).
+-   **Week 13 — Expanding Regression**
 
--   **Week 15 (Dec. 1) — Expanding the Framework: Logistic Regression**
+    -   **Topics:** We will explore ways to capture more complex relationships in our data. The primary focus will be on adding interaction terms to the model to test for moderation, but we may also touch on including non-linear relationships (e.g., quadratic terms) or talk about some mediation!
 
-    -   **Topics:** What if the outcome is binary (yes/no)? We'll introduce the Generalized Linear Model via logistic regression, focusing on interpreting log-odds and odds ratios.
+<!-- -->
 
--   **Week 16 (Dec. 8) — Final Presentations & Wrap Up**
+-   **Week 14 — Model Building + Comparison**
 
-    -   **Topics:** Students give "lightning talks" on their final project results. We'll review the journey from plotting points to building sophisticated models and celebrate their progress.
+    -   How do we choose the best model? We will discuss practical strategies for building models, such as hierarchical regression, and learn how to use information criteria (like AIC and BIC) to compare different competing models.
+
+<!-- -->
+
+-   **Week 15 — Making R work for you**
+
+    -   We've worked a whole lot with R, but what are some of the cool things that it can do. We will explore and organize what we have learned so far to solidify the use of R for reproducible workflows!
+
+<!-- -->
+
+-   **Week 16 — Wrapping Up + Workshop**
+
+    -   This final session will serve two purposes. First, it will be a dedicated workshop for you to get help and ask questions about your final projects. Second, we will have a course wrap-up, reviewing the major themes and discussing next steps for your statistical journey.
