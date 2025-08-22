@@ -34,8 +34,8 @@ website:
       - section: "Course information"
         contents: 
           - href: index.qmd
-            text: Schedule
-          - href: syllabus.qmd
+          - href: schedule.qmd
+            text: "Schedule"
       - section: "Weekly materials"
         contents:
           - href: weeks/week-1.qmd
