@@ -54,6 +54,27 @@
     ]
   },
   {
+    "objectID": "slides/lec-1.html#scheduleplan",
+    "href": "slides/lec-1.html#scheduleplan",
+    "title": "Week 01: Getting Started!",
+    "section": "Schedule/Plan",
+    "text": "Schedule/Plan\n\n\n\n\n\n\n\n8 - 8:45\nGet oriented. Go over syllabus. Explain course structure. Do all that fun stuff.\n\n\n8:45 - 9ish\nBreak\n\n\n9ish - 10:00\nLive Demo in R\n\n\n10 - 10:50\nGet comfortable with R"
+  },
+  {
+    "objectID": "slides/lec-1.html#when-the-teaching-happens",
+    "href": "slides/lec-1.html#when-the-teaching-happens",
+    "title": "Week 01: Getting Started!",
+    "section": "When the Teaching Happens",
+    "text": "When the Teaching Happens\n💾 Meeting Times: Monday’s 8:00 - 10:50am\n🧑‍🏫 Drop in Office Hours: Wednesdays 9 - 11:00 am\n📧 Best way to contact me? Email me. I will usually respond within 24 hours. If it has been longer, then you can send me a follow-up"
+  },
+  {
+    "objectID": "slides/lec-1.html#communication",
+    "href": "slides/lec-1.html#communication",
+    "title": "Week 01: Getting Started!",
+    "section": "Communication",
+    "text": "Communication\nPlease ask questions! 🙋‍♀️\nIf you are having trouble, just ask!!\nBe open and honest with me and I will do what I can to support you.\n\n8:00 to 8:45\n\nIntroductions and Getting used to things\n\n8:45 to 9:05ish\n\nBreak ☕\n\n9:05ish to 10:00\n\nGetting familiar with R. Live coding\n\n10 to 10:50\n\nIn Class working. You trying things out."
+  },
+  {
     "objectID": "schedule.html",
     "href": "schedule.html",
     "title": "PSYC 640: Graduate Statistics",
@@ -65,141 +86,141 @@
     ]
   },
   {
-    "objectID": "slides/template.html#quarto",
-    "href": "slides/template.html#quarto",
+    "objectID": "slides/template-seasons.html#quarto",
+    "href": "slides/template-seasons.html#quarto",
     "title": "PSYC 640 - Graduate Statistics",
     "section": "Quarto",
     "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
   },
   {
-    "objectID": "slides/template.html#bullets",
-    "href": "slides/template.html#bullets",
+    "objectID": "slides/template-seasons.html#bullets",
+    "href": "slides/template-seasons.html#bullets",
     "title": "PSYC 640 - Graduate Statistics",
     "section": "Bullets",
     "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code\n\n\nlm(mpg ~ disp, data = mtcars)\n\n\nCall:\nlm(formula = mpg ~ disp, data = mtcars)\n\nCoefficients:\n(Intercept)         disp  \n   29.59985     -0.04122"
   },
   {
-    "objectID": "slides/template.html#latex-equations",
-    "href": "slides/template.html#latex-equations",
+    "objectID": "slides/template-seasons.html#latex-equations",
+    "href": "slides/template-seasons.html#latex-equations",
     "title": "PSYC 640 - Graduate Statistics",
     "section": "LaTeX Equations",
     "text": "LaTeX Equations\nMathJax rendering of equations to HTML\n\\[\\begin{gather*}\na_1=b_1+c_1\\\\\na_2=b_2+c_2-d_2+e_2\n\\end{gather*}\\]\n\\[\\begin{align}\na_{11}& =b_{11}&\n  a_{12}& =b_{12}\\\\\na_{21}& =b_{21}&\n  a_{22}& =b_{22}+c_{22}\n\\end{align}\\]"
   },
   {
-    "objectID": "slides/template.html#tables",
-    "href": "slides/template.html#tables",
+    "objectID": "slides/template-seasons.html#tables",
+    "href": "slides/template-seasons.html#tables",
     "title": "PSYC 640 - Graduate Statistics",
     "section": "Tables",
     "text": "Tables\n\n\n\nSyntax\nDescription\n\n\n\n\nHeader\nTitle\n\n\nParagraph\nText"
   },
   {
-    "objectID": "slides/template.html#callout-blocks",
-    "href": "slides/template.html#callout-blocks",
+    "objectID": "slides/template-seasons.html#callout-blocks",
+    "href": "slides/template-seasons.html#callout-blocks",
     "title": "PSYC 640 - Graduate Statistics",
     "section": "Callout Blocks",
     "text": "Callout Blocks\n\n\n\n\n\n\nNote\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDanger, callouts will really improve your writing.\n\n\n\n\n\n\n\n\n\nTip With Caption\n\n\nThis is an example of a callout with a caption."
   },
   {
-    "objectID": "slides/template.html#quarto-1",
-    "href": "slides/template.html#quarto-1",
+    "objectID": "slides/template-seasons.html#quarto-1",
+    "href": "slides/template-seasons.html#quarto-1",
     "title": "PSYC 640 - Graduate Statistics",
     "section": "Quarto",
     "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
   },
   {
-    "objectID": "slides/template.html#bullets-1",
-    "href": "slides/template.html#bullets-1",
+    "objectID": "slides/template-seasons.html#bullets-1",
+    "href": "slides/template-seasons.html#bullets-1",
     "title": "PSYC 640 - Graduate Statistics",
     "section": "Bullets",
     "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code\n\n\nlm(mpg ~ disp, data = mtcars)\n\n\nCall:\nlm(formula = mpg ~ disp, data = mtcars)\n\nCoefficients:\n(Intercept)         disp  \n   29.59985     -0.04122"
   },
   {
-    "objectID": "slides/template.html#latex-equations-1",
-    "href": "slides/template.html#latex-equations-1",
+    "objectID": "slides/template-seasons.html#latex-equations-1",
+    "href": "slides/template-seasons.html#latex-equations-1",
     "title": "PSYC 640 - Graduate Statistics",
     "section": "LaTeX Equations",
     "text": "LaTeX Equations\nMathJax rendering of equations to HTML\n\\[\\begin{gather*}\na_1=b_1+c_1\\\\\na_2=b_2+c_2-d_2+e_2\n\\end{gather*}\\]\n\\[\\begin{align}\na_{11}& =b_{11}&\n  a_{12}& =b_{12}\\\\\na_{21}& =b_{21}&\n  a_{22}& =b_{22}+c_{22}\n\\end{align}\\]"
   },
   {
-    "objectID": "slides/template.html#tables-1",
-    "href": "slides/template.html#tables-1",
+    "objectID": "slides/template-seasons.html#tables-1",
+    "href": "slides/template-seasons.html#tables-1",
     "title": "PSYC 640 - Graduate Statistics",
     "section": "Tables",
     "text": "Tables\n\n\n\nSyntax\nDescription\n\n\n\n\nHeader\nTitle\n\n\nParagraph\nText"
   },
   {
-    "objectID": "slides/template.html#callout-blocks-1",
-    "href": "slides/template.html#callout-blocks-1",
+    "objectID": "slides/template-seasons.html#callout-blocks-1",
+    "href": "slides/template-seasons.html#callout-blocks-1",
     "title": "PSYC 640 - Graduate Statistics",
     "section": "Callout Blocks",
     "text": "Callout Blocks\n\n\n\n\n\n\nNote\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDanger, callouts will really improve your writing.\n\n\n\n\n\n\n\n\n\nTip With Caption\n\n\nThis is an example of a callout with a caption."
   },
   {
-    "objectID": "slides/template.html#quarto-2",
-    "href": "slides/template.html#quarto-2",
+    "objectID": "slides/template-seasons.html#quarto-2",
+    "href": "slides/template-seasons.html#quarto-2",
     "title": "PSYC 640 - Graduate Statistics",
     "section": "Quarto",
     "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
   },
   {
-    "objectID": "slides/template.html#bullets-2",
-    "href": "slides/template.html#bullets-2",
+    "objectID": "slides/template-seasons.html#bullets-2",
+    "href": "slides/template-seasons.html#bullets-2",
     "title": "PSYC 640 - Graduate Statistics",
     "section": "Bullets",
     "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code\n\n\nlm(mpg ~ disp, data = mtcars)\n\n\nCall:\nlm(formula = mpg ~ disp, data = mtcars)\n\nCoefficients:\n(Intercept)         disp  \n   29.59985     -0.04122"
   },
   {
-    "objectID": "slides/template.html#latex-equations-2",
-    "href": "slides/template.html#latex-equations-2",
+    "objectID": "slides/template-seasons.html#latex-equations-2",
+    "href": "slides/template-seasons.html#latex-equations-2",
     "title": "PSYC 640 - Graduate Statistics",
     "section": "LaTeX Equations",
     "text": "LaTeX Equations\nMathJax rendering of equations to HTML\n\\[\\begin{gather*}\na_1=b_1+c_1\\\\\na_2=b_2+c_2-d_2+e_2\n\\end{gather*}\\]\n\\[\\begin{align}\na_{11}& =b_{11}&\n  a_{12}& =b_{12}\\\\\na_{21}& =b_{21}&\n  a_{22}& =b_{22}+c_{22}\n\\end{align}\\]"
   },
   {
-    "objectID": "slides/template.html#tables-2",
-    "href": "slides/template.html#tables-2",
+    "objectID": "slides/template-seasons.html#tables-2",
+    "href": "slides/template-seasons.html#tables-2",
     "title": "PSYC 640 - Graduate Statistics",
     "section": "Tables",
     "text": "Tables\n\n\n\nSyntax\nDescription\n\n\n\n\nHeader\nTitle\n\n\nParagraph\nText"
   },
   {
-    "objectID": "slides/template.html#callout-blocks-2",
-    "href": "slides/template.html#callout-blocks-2",
+    "objectID": "slides/template-seasons.html#callout-blocks-2",
+    "href": "slides/template-seasons.html#callout-blocks-2",
     "title": "PSYC 640 - Graduate Statistics",
     "section": "Callout Blocks",
     "text": "Callout Blocks\n\n\n\n\n\n\nNote\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDanger, callouts will really improve your writing.\n\n\n\n\n\n\n\n\n\nTip With Caption\n\n\nThis is an example of a callout with a caption."
   },
   {
-    "objectID": "slides/template.html#quarto-3",
-    "href": "slides/template.html#quarto-3",
+    "objectID": "slides/template-seasons.html#quarto-3",
+    "href": "slides/template-seasons.html#quarto-3",
     "title": "PSYC 640 - Graduate Statistics",
     "section": "Quarto",
     "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
   },
   {
-    "objectID": "slides/template.html#bullets-3",
-    "href": "slides/template.html#bullets-3",
+    "objectID": "slides/template-seasons.html#bullets-3",
+    "href": "slides/template-seasons.html#bullets-3",
     "title": "PSYC 640 - Graduate Statistics",
     "section": "Bullets",
     "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code\n\n\nlm(mpg ~ disp, data = mtcars)\n\n\nCall:\nlm(formula = mpg ~ disp, data = mtcars)\n\nCoefficients:\n(Intercept)         disp  \n   29.59985     -0.04122"
   },
   {
-    "objectID": "slides/template.html#latex-equations-3",
-    "href": "slides/template.html#latex-equations-3",
+    "objectID": "slides/template-seasons.html#latex-equations-3",
+    "href": "slides/template-seasons.html#latex-equations-3",
     "title": "PSYC 640 - Graduate Statistics",
     "section": "LaTeX Equations",
     "text": "LaTeX Equations\nMathJax rendering of equations to HTML\n\\[\\begin{gather*}\na_1=b_1+c_1\\\\\na_2=b_2+c_2-d_2+e_2\n\\end{gather*}\\]\n\\[\\begin{align}\na_{11}& =b_{11}&\n  a_{12}& =b_{12}\\\\\na_{21}& =b_{21}&\n  a_{22}& =b_{22}+c_{22}\n\\end{align}\\]"
   },
   {
-    "objectID": "slides/template.html#tables-3",
-    "href": "slides/template.html#tables-3",
+    "objectID": "slides/template-seasons.html#tables-3",
+    "href": "slides/template-seasons.html#tables-3",
     "title": "PSYC 640 - Graduate Statistics",
     "section": "Tables",
     "text": "Tables\n\n\n\nSyntax\nDescription\n\n\n\n\nHeader\nTitle\n\n\nParagraph\nText"
   },
   {
-    "objectID": "slides/template.html#callout-blocks-3",
-    "href": "slides/template.html#callout-blocks-3",
+    "objectID": "slides/template-seasons.html#callout-blocks-3",
+    "href": "slides/template-seasons.html#callout-blocks-3",
     "title": "PSYC 640 - Graduate Statistics",
     "section": "Callout Blocks",
     "text": "Callout Blocks\n\n\n\n\n\n\nNote\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDanger, callouts will really improve your writing.\n\n\n\n\n\n\n\n\n\nTip With Caption\n\n\nThis is an example of a callout with a caption."
