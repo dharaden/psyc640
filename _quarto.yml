@@ -36,7 +36,7 @@ website:
           - href: index.qmd
           - href: schedule.qmd
             text: "Schedule"
-      - section: "Weekly materials"
+      - section: "Weekly Materials"
         contents:
           - href: weeks/week-1.qmd
             text: "Week 1"

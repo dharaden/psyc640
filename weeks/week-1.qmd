@@ -3,6 +3,15 @@ title: "Week 1"
 editor: visual
 ---
 
+# Getting Started with R & Tidy Data
+
+Welcome to the course!
+
+We’ll dive right into our primary tool, R. This session covers
+installing R and RStudio, navigating the interface, understanding R
+projects, and learning the foundational syntax of the R language and the
+`tidyverse`, including data types and basic functions.
+
 ## Prepare
 
 Install R and R-Studio (<https://posit.co/download/rstudio-desktop/>)
@@ -13,10 +22,10 @@ Bring Laptop
 
 ## Slides
 
-[💻 Getting Started](. ./slides/lec-1.html){target="_blank"}
+[💻 Getting Started](../slides/lec-1.html){target="_blank"}
 
 ```{=html}
-<iframe class="slide-deck" src=". ./slides/lec-1.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+<iframe class="slide-deck" src="../slides/lec-1.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
 ```
 
 ## In-Class Activity
