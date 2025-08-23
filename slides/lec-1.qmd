@@ -35,21 +35,21 @@ knitr::opts_chunk$set(
 options(scipen = 100)
 ```
 
-# Today
+# Today {.fall}
 
 -   Goals
 -   Why it matters (results-section lens)
 -   What you’ll be able to do by the end
 
-# Warm-up
+# Warm-up {.fall}
 
 -   2-minute think-pair-share: interpret this figure/table snippet.
 
-# Concepts (brief)
+# Concepts (brief) {.fall}
 
 -   Keep math minimal; emphasize assumptions, use-cases, effect sizes.
 
-# Live demo (R)
+# Live demo (R) {.fall}
 
 ```{r}
 # setup
@@ -58,18 +58,18 @@ library(here)
 #dat <- import(here::here("data","sample.csv"))
 ```
 
-# Guided practice
+# Guided practice {.fall}
 
 -   Students follow along: 3–5 tasks with immediate feedback.
 
-# Interpretation
+# Interpretation {.fall}
 
 -   Translate model output to 2–3 sentences as in a results section.
 
-# Exit ticket
+# Exit ticket {.fall}
 
 -   One key takeaway, one question.
 
-# Next
+# Next {.fall}
 
 -   Prep and due items for next week.
