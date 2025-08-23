@@ -65,14 +65,28 @@
     "href": "slides/lec-1.html#when-the-teaching-happens",
     "title": "Week 01: Getting Started!",
     "section": "When the Teaching Happens",
-    "text": "When the Teaching Happens\n💾 Meeting Times: Monday’s 8:00 - 10:50am\n🧑‍🏫 Drop in Office Hours: Wednesdays 9 - 11:00 am\n📧 Best way to contact me? Email me. I will usually respond within 24 hours. If it has been longer, then you can send me a follow-up"
+    "text": "When the Teaching Happens\n💾 Meeting Times: Monday’s 8:00 - 10:50am\n🧑‍🏫 Drop in Office Hours: Wednesdays 9 - 11:00 am\n📧 Best way to contact me? Email me. I will usually respond within 24 hours. If it has been longer, then you can send me a follow-up\n\n\n\n\n\n\nNote\n\n\nI just figured out how to easily put emojis into the presentation. I’m sorry that you will have to witness that."
   },
   {
     "objectID": "slides/lec-1.html#communication",
     "href": "slides/lec-1.html#communication",
     "title": "Week 01: Getting Started!",
     "section": "Communication",
-    "text": "Communication\nPlease ask questions! 🙋‍♀️\nIf you are having trouble, just ask!!\nBe open and honest with me and I will do what I can to support you.\n\n8:00 to 8:45\n\nIntroductions and Getting used to things\n\n8:45 to 9:05ish\n\nBreak ☕\n\n9:05ish to 10:00\n\nGetting familiar with R. Live coding\n\n10 to 10:50\n\nIn Class working. You trying things out."
+    "text": "Communication\nPlease ask questions! 🙋‍♀️\nIf you are having trouble, just ask!!\nBe open and honest with me and I will do what I can to support you."
+  },
+  {
+    "objectID": "slides/lec-1.html#who-the-heck-am-i",
+    "href": "slides/lec-1.html#who-the-heck-am-i",
+    "title": "Week 01: Getting Started!",
+    "section": "Who the heck am I? 🤷",
+    "text": "Who the heck am I? 🤷\n\nUndergraduate degree at University of Denver\n\nPsychology & Philosophy\nHated Statistics\n\nGraduate degree at University of Illinois at Urbana-Champaign\n\nAdvisor: Dr. Benjamin Hankin\nClinical/Community PhD 🎓\n\nPre-Doctoral Internship & Postdoc at Rochester Institute of Technology"
+  },
+  {
+    "objectID": "slides/lec-1.html#a-little-more-about-me",
+    "href": "slides/lec-1.html#a-little-more-about-me",
+    "title": "Week 01: Getting Started!",
+    "section": "A little more about me",
+    "text": "A little more about me\n\nPronouns: he/him/his\n2 amazing kids, 2 dogs (Dachshund and Shepherd Mix), 1 wife\nCurrently Reading: Dungeon Crawler Carl\nCurrently Listening: The Lonely Island & Seth Meyers Podcast\nCurrently Watching: Wednesday, Twisted Metal,"
   },
   {
     "objectID": "schedule.html",
@@ -263,7 +277,7 @@
     "href": "weeks/week-1.html",
     "title": "Week 1",
     "section": "",
-    "text": "Welcome to the course! I am very excited to get to work with you this semester on our journey into statistics. During our first class, we will review the syllabus and the plan for the course, followed by walking through the structure of each of the classes.\nWe’ll then dive right into our primary tool, R. This session will go over installing R and RStudio, navigating the interface, understanding R projects, and learning the foundational syntax of the R language and the tidyverse, including data types and basic functions.\n\n\n\nInstall R and R-Studio (https://posit.co/download/rstudio-desktop/)\nBring Laptop\n\n📖\n\n\n\n💻 Getting Started\n\n\n\n\n\n\n\n\n\nBack to course schedule ⏎",
+    "text": "Welcome to the course! I am very excited to get to work with you this semester on our journey into statistics. During our first class, we will review the syllabus and the plan for the course, followed by walking through the structure of each of the classes.\nWe’ll then dive right into our primary tool, R. This session will go over installing R and RStudio, navigating the interface, understanding R projects, and learning the foundational syntax of the R language and the tidyverse, including data types and basic functions.\n\n\n\nInstall R and R-Studio (https://posit.co/download/rstudio-desktop/)\nBring Laptop\n\n📖\n\n\n\n💻 Getting Started\n{{&lt; iframe ../slides/lec-1.html width=\"747\" height=\"420\" &gt;}}\n\n\n\n\n\n\n\n\nBack to course schedule ⏎",
     "crumbs": [
       "Weekly Materials",
       "Week 1"
@@ -285,7 +299,7 @@
     "href": "weeks/week-1.html#slides",
     "title": "Week 1",
     "section": "",
-    "text": "💻 Getting Started",
+    "text": "💻 Getting Started\n{{&lt; iframe ../slides/lec-1.html width=\"747\" height=\"420\" &gt;}}",
     "crumbs": [
       "Weekly Materials",
       "Week 1"
