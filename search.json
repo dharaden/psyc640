@@ -242,7 +242,7 @@
     "href": "weeks/week-1.html",
     "title": "Week 1",
     "section": "",
-    "text": "Welcome to the course!\nWe’ll dive right into our primary tool, R. This session covers installing R and RStudio, navigating the interface, understanding R projects, and learning the foundational syntax of the R language and the tidyverse, including data types and basic functions.\n\n\nInstall R and R-Studio (https://posit.co/download/rstudio-desktop/)\nBring Laptop\n📖\n\n\n\n💻 Getting Started\n\n\n\n\n\n\nBack to course schedule ⏎",
+    "text": "Welcome to the course! I am very excited to get to work with you this semester on our journey into statistics. During our first class, we will review the syllabus and the plan for the course, followed by walking through the structure of each of the classes.\nWe’ll then dive right into our primary tool, R. This session will go over installing R and RStudio, navigating the interface, understanding R projects, and learning the foundational syntax of the R language and the tidyverse, including data types and basic functions.\nIt will be a mix of lecture and hands on experiences.\n\n\n\nInstall R and R-Studio (https://posit.co/download/rstudio-desktop/)\nBring Laptop\n\n📖\n\n\n\n💻 Getting Started\n{{&lt; iframe ../slides/lec-1.html width=\"747\" height=\"420\" &gt;}}\n\n\n\n\n\n\n\n\nBack to course schedule ⏎",
     "crumbs": [
       "Weekly Materials",
       "Week 1"
@@ -253,7 +253,7 @@
     "href": "weeks/week-1.html#prepare",
     "title": "Week 1",
     "section": "",
-    "text": "Install R and R-Studio (https://posit.co/download/rstudio-desktop/)\nBring Laptop\n📖",
+    "text": "Install R and R-Studio (https://posit.co/download/rstudio-desktop/)\nBring Laptop\n\n📖",
     "crumbs": [
       "Weekly Materials",
       "Week 1"
@@ -264,15 +264,15 @@
     "href": "weeks/week-1.html#slides",
     "title": "Week 1",
     "section": "",
-    "text": "💻 Getting Started",
+    "text": "💻 Getting Started\n{{&lt; iframe ../slides/lec-1.html width=\"747\" height=\"420\" &gt;}}",
     "crumbs": [
       "Weekly Materials",
       "Week 1"
     ]
   },
   {
-    "objectID": "weeks/week-1.html#in-class-activity",
-    "href": "weeks/week-1.html#in-class-activity",
+    "objectID": "weeks/week-1.html#for-next-time",
+    "href": "weeks/week-1.html#for-next-time",
     "title": "Week 1",
     "section": "",
     "text": "Back to course schedule ⏎",
