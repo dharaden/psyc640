@@ -35,19 +35,62 @@ knitr::opts_chunk$set(
 options(scipen = 100)
 ```
 
-# Today - Syllabus Time {.fall}
+# Today - Syllabus Time!
 
-# 
+I hope you grabbed one.
 
-# Warm-up {.fall}
+## Schedule/Plan
+
+|  |  |
+|----|----|
+| 8 - 8:45 | Get oriented. Go over syllabus. Explain course structure. Do all that fun stuff. |
+| 8:45 - 9ish | Break |
+| 9ish - 10:00 | Live Demo in R |
+| 10 - 10:50 | Get comfortable with R |
+
+------------------------------------------------------------------------
+
+## When the Teaching Happens
+
+**💾 Meeting Times:** Monday's 8:00 - 10:50am
+
+**🧑‍🏫 Drop in Office Hours:** Wednesdays 9 - 11:00 am
+
+**📧 Best way to contact me?** Email me. I will usually respond within 24 hours. If it has been longer, then you can send me a follow-up
+
+## Communication
+
+Please ask questions! 🙋‍♀️
+
+If you are having trouble, just ask!!
+
+Be open and honest with me and I will do what I can to support you.
+
+8:00 to 8:45
+
+:   Introductions and Getting used to things
+
+8:45 to 9:05ish
+
+:   Break ☕
+
+9:05ish to 10:00
+
+:   Getting familiar with R. Live coding
+
+10 to 10:50
+
+:   In Class working. You trying things out.
+
+# Warm-up
 
 -   2-minute think-pair-share: interpret this figure/table snippet.
 
-# Concepts (brief) {.fall}
+# Concepts (brief)
 
 -   Keep math minimal; emphasize assumptions, use-cases, effect sizes.
 
-# Live demo (R) {.fall}
+# Live demo (R)
 
 ```{r}
 # setup
@@ -56,18 +99,18 @@ library(here)
 #dat <- import(here::here("data","sample.csv"))
 ```
 
-# Guided practice {.fall}
+# Guided practice
 
 -   Students follow along: 3–5 tasks with immediate feedback.
 
-# Interpretation {.fall}
+# Interpretation
 
 -   Translate model output to 2–3 sentences as in a results section.
 
-# Exit ticket {.fall}
+# Exit ticket
 
 -   One key takeaway, one question.
 
-# Next {.fall}
+# Next
 
 -   Prep and due items for next week.
