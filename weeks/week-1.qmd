@@ -9,8 +9,6 @@ Welcome to the course! I am very excited to get to work with you this semester o
 
 We’ll then dive right into our primary tool, R. This session will go over installing R and RStudio, navigating the interface, understanding R projects, and learning the foundational syntax of the R language and the `tidyverse`, including data types and basic functions.
 
-It will be a mix of lecture and hands on experiences.
-
 ## Prepare
 
 -   Install R and R-Studio (<https://posit.co/download/rstudio-desktop/>)
@@ -23,7 +21,9 @@ It will be a mix of lecture and hands on experiences.
 
 [💻 Getting Started](../slides/lec-1.html){target="_blank"}
 
-{{< iframe ../slides/lec-1.html width="747" height="420" >}}
+```{=html}
+<iframe class="slide-deck" src="../slides/lec-1.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+```
 
 ## In-Class Activity
 

@@ -5,7 +5,7 @@ footer:  "[course-website](https://dharaden.github.io/psyc640/)"
 logo: "images/640_hex.png"
 format: 
   revealjs:
-    theme: [default, seasons.scss]
+    theme: clean.scss
     multiplex: false
     transition: fade
     slide-number: true
@@ -35,11 +35,9 @@ knitr::opts_chunk$set(
 options(scipen = 100)
 ```
 
-# Today {.fall}
+# Today - Syllabus Time {.fall}
 
--   Goals
--   Why it matters (results-section lens)
--   What you’ll be able to do by the end
+# 
 
 # Warm-up {.fall}
 
