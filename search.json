@@ -86,7 +86,21 @@
     "href": "slides/lec-1.html#a-little-more-about-me",
     "title": "Week 01: Getting Started!",
     "section": "A little more about me",
-    "text": "A little more about me\n\nPronouns: he/him/his\n2 amazing kids, 2 dogs (Dachshund and Shepherd Mix), 1 wife\nCurrently Reading: Dungeon Crawler Carl\nCurrently Listening: The Lonely Island & Seth Meyers Podcast\nCurrently Watching: Wednesday, Twisted Metal,"
+    "text": "A little more about me\n\nPronouns: he/him/his\n2 amazing kids, 2 dogs (Dachshund and Shepherd Mix), 1 wife\nCurrently Reading: Dungeon Crawler Carl\nCurrently Listening: The Lonely Island & Seth Meyers Podcast\nCurrently Watching: Wednesday, Twisted Metal"
+  },
+  {
+    "objectID": "slides/lec-1.html#teaching-philosophy",
+    "href": "slides/lec-1.html#teaching-philosophy",
+    "title": "Week 01: Getting Started!",
+    "section": "Teaching Philosophy",
+    "text": "Teaching Philosophy\n\nI’m here for you and to support you however I can\nMy job is to create a supportive, low-stakes environment where you can crash test ideas and develop new skills\nYour responsibility is to come to class prepared, ready to have fun, take some risks, and actively participate!\n\nAsk questions, share relevant funny stories, seek clarification, question the status quo where applicable\n\nScience is a team sport & failures/mistakes will happen, but it is okay! That’s what science and discovery is!"
+  },
+  {
+    "objectID": "slides/lec-1.html#class-materials",
+    "href": "slides/lec-1.html#class-materials",
+    "title": "Week 01: Getting Started!",
+    "section": "Class Materials",
+    "text": "Class Materials\nI’ve pulled from a lot of different textbooks. Good thing is, they are all free!"
   },
   {
     "objectID": "schedule.html",
@@ -277,7 +291,7 @@
     "href": "weeks/week-1.html",
     "title": "Week 1",
     "section": "",
-    "text": "Welcome to the course! I am very excited to get to work with you this semester on our journey into statistics. During our first class, we will review the syllabus and the plan for the course, followed by walking through the structure of each of the classes.\nWe’ll then dive right into our primary tool, R. This session will go over installing R and RStudio, navigating the interface, understanding R projects, and learning the foundational syntax of the R language and the tidyverse, including data types and basic functions.\n\n\n\nInstall R and R-Studio (https://posit.co/download/rstudio-desktop/)\nBring Laptop\n\n📖\n\n\n\n💻 Getting Started\n{{&lt; iframe ../slides/lec-1.html width=\"747\" height=\"420\" &gt;}}\n\n\n\n\n\n\n\n\nBack to course schedule ⏎",
+    "text": "Welcome to the course! I am very excited to get to work with you this semester on our journey into statistics. During our first class, we will review the syllabus and the plan for the course, followed by walking through the structure of each of the classes.\nWe’ll then dive right into our primary tool, R. This session will go over installing R and RStudio, navigating the interface, understanding R projects, and learning the foundational syntax of the R language and the tidyverse, including data types and basic functions.\n\n\n\nInstall R and R-Studio (https://posit.co/download/rstudio-desktop/)\nBring Laptop\n\n\n\n\n💻 Getting Started\n\n\n\n\n\n\n\n\nBack to course schedule ⏎",
     "crumbs": [
       "Weekly Materials",
       "Week 1"
@@ -288,7 +302,7 @@
     "href": "weeks/week-1.html#prepare",
     "title": "Week 1",
     "section": "",
-    "text": "Install R and R-Studio (https://posit.co/download/rstudio-desktop/)\nBring Laptop\n\n📖",
+    "text": "Install R and R-Studio (https://posit.co/download/rstudio-desktop/)\nBring Laptop",
     "crumbs": [
       "Weekly Materials",
       "Week 1"
@@ -299,7 +313,7 @@
     "href": "weeks/week-1.html#slides",
     "title": "Week 1",
     "section": "",
-    "text": "💻 Getting Started\n{{&lt; iframe ../slides/lec-1.html width=\"747\" height=\"420\" &gt;}}",
+    "text": "💻 Getting Started",
     "crumbs": [
       "Weekly Materials",
       "Week 1"
