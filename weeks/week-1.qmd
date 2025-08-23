@@ -21,9 +21,7 @@ We’ll then dive right into our primary tool, R. This session will go over inst
 
 [💻 Getting Started](../slides/lec-1.html){target="_blank"}
 
-```{=html}
-<iframe class="slide-deck" src="../slides/lec-1.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
-```
+{{< iframe ../slides/lec-1.html width="747" height="420" >}}
 
 ## In-Class Activity
 
