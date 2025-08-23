@@ -14,6 +14,197 @@
     "text": "Professor\nDustin Haraden, PhD\n\n\nEmail/Office\ndxhgsh@rit.edu; Eastman Hall - 3378\n\n\nOffice Hours\nBy Appointment\n\n\nClass Times\nAsynchronous\n\n\n\nFor a PDF copy of the syllabus: Download File\n\n\nThis course offers a broad introduction to the field of Psychology, covering various sub-disciplines and emphasizing the scientific study of behavior and cognition. Students will gain a solid understanding of the scientific process, major psychological theories, and the correct usage of psychological terminology. The curriculum fosters critical evaluation skills for examining psychological research findings and highlights practical applications of psychological concepts in daily life. Emphasizing contemporary insights, the course focuses on the scientific method in measuring human behavior, with a student-centric approach that encourages active engagement and self-knowledge.\n\n\n\n\nTextbook: We will an open source (this means free) textbook throughout the semester. The link to the textbook is included below. A PDF version of the text is uploaded to myCourses.  \nSpielman, R. M., Jenkins, W., & Lovett, M. (2020). Psychology 2e. https://openstax.org/details/books/psychology-2e\nOther Required Readings: All additional readings (if necessary) will be posted to the course website.\n\nCourse Goals\n\nBuild confidence in statistical reasoning & analysis.\nApply regression-based methods to real-world research questions.\nDevelop practical R skills for data wrangling, visualization, and reporting.\nProduce a portfolio-ready, reproducible final analysis.\n\n\n\n\n\nLecture focus\n\nThe research cycle and where statistics fits\nReproducible workflows (R, RStudio, RMarkdown/Quarto)\nIntro to tidyverse workflow\nStats anxiety & growth mindset\n\nLab\n\nInstall/load R packages\nLoad a dataset (built-in + open source)\nCreate a first plot with ggplot2\n\nReadings\n\nIs Statistics Hard? — Wickham & Grolemund, R for Data Science (R4DS) Ch. 1–2\nAPA: Principles for Translating Statistics to Psychology Students (APA Guidelines)\n\nAssignment\n\nMini data exploration report (import, summarize, plot)\n\n\n\n\n\nLecture focus\n\nWhy regression first?\nVisualizing relationships (scatterplots, grouping)\nThinking in terms of variation & prediction\n\nLab\n\nggplot2 layering: geom_point, geom_smooth\nFaceting and grouping variables\n\nReadings\n\nR4DS Ch. 3, 5\nGelman & Hill (2007) Ch. 2 (Regression as a general method)\n\nAssignment\n\nRecreate 2 plots from lecture with a dataset of your choice\n\n\n\n\n\nLecture focus\n\nModel equation & interpretation of intercept, slope\nEffect size & confidence intervals\nResiduals & assumptions\n\nLab\n\nFit lm() models\nInterpret coefficients & plot regression lines\nDiagnostic plots\n\nReadings\n\nR4DS Ch. 23 (Model basics)\nField, A. (2018) Discovering Statistics Using R, Ch. 7 (sections on simple regression)\n\nAssignment\n\nReport a simple regression with APA-style results\n\n\n\n\n\nLecture focus\n\nAdding predictors: partial slopes\nStandardized coefficients\nCategorical predictors (dummy coding)\n\nLab\n\nlm() with multiple predictors\nModel interpretation with summary()\nCompare models using anova()\n\nReadings\n\nR4DS Ch. 24\nField Ch. 8 (multiple regression basics)\n\nAssignment\n\nMultiple regression report on a dataset you choose\n\n\n\n\n\nLecture focus\n\nInteraction terms\nCentering predictors\nModeration interpretation\n\nLab\n\nInteraction plots with ggplot2\nemmeans for marginal means\n\nReadings\n\nField Ch. 9 (interactions)\nHayes (2018) Ch. 1–2 (Intro to moderation)\n\nAssignment\n\nAnalyze a moderation model & interpret the interaction\n\n\n\n\n\nLecture focus\n\nWhen outcomes are binary\nOdds ratios & log odds\nModel fit statistics\n\nLab\n\nglm() with family = binomial\nInterpreting odds ratios\nROC curves\n\nReadings\n\nField Ch. 19 (logistic regression)\nPeng, Lee, & Ingersoll (2002) An Introduction to Logistic Regression Analysis\n\nAssignment\n\nLogistic regression report\n\n\n\n\n\nLecture focus\n\nANOVA = regression with categorical predictors\nDummy & effect coding\nPost-hoc tests & contrasts\n\nLab\n\nCompare lm() & aov() outputs\nemmeans for pairwise comparisons\n\nReadings\n\nField Ch. 10–11 (ANOVA & ANCOVA)\nR4DS Ch. 25 (Categorical variables)\n\nAssignment\n\nANOVA with APA report\n\n\n\n\n\nLecture focus\n\nAdjusting for covariates\nAssumptions & interpretation\n\nLab\n\nFit ANCOVA models\nVisualize adjusted means\n\nReadings\n\nField Ch. 12 (ANCOVA)\nGelman & Hill Ch. 9 (controlling for variables)\n\nAssignment\n\nANCOVA report\n\n\n\n\n\nLecture focus\n\nResidual plots\nNormality, homoscedasticity\nRobust regression options\n\nLab\n\ncheck_model() from performance package\nHandling outliers & transformations\n\nReadings\n\nField Ch. 4 (assumptions)\nWilcox (2012) Ch. 2 (robust methods intro)\n\nAssignment\n\nDiagnostic report on your own dataset\n\n\n\n\n\nLecture focus\n\nMCAR, MAR, MNAR\nMultiple imputation\nComplete case analysis & its dangers\n\nLab\n\nnaniar package for missingness visualization\nmice for imputation\n\nReadings\n\nEnders (2010) Ch. 1–2 (missing data theory)\nvan Buuren (2018) Ch. 3 (practical imputation)\n\nAssignment\n\nMissing data analysis & imputation\n\n\n\n\n\nLecture focus\n\nWhy random effects?\nRepeated measures within regression\nRandom intercepts & slopes\n\nLab\n\nlme4: lmer() basics\nInterpretation & visualization with sjPlot\n\nReadings\n\nGelman & Hill Ch. 11–12\nWinter (2013) Linear Mixed Effects Models in R\n\nAssignment\n\nMixed model analysis on a repeated measures dataset\n\n\n\n\n\nLecture focus\n\nDirect & indirect effects\nBootstrapping mediation\nConceptual link to SEM\n\nLab\n\nmediation package\nlavaan for path models\n\nReadings\n\nHayes (2018) Ch. 3–4 (mediation)\nR4DS Ch. 26 (model building)\n\nAssignment\n\nMediation analysis report\n\n\n\n\n\nLecture focus\n\nWhy power matters\nPower for regression & ANOVA\nPlanning sample sizes\n\nLab\n\npwr package\nSimulation-based power\n\nReadings\n\nCohen (1988) Ch. 1–2 (effect sizes & power)\nLakens (2021) Sample Size Justification\n\nAssignment\n\nPower analysis for your final project\n\n\n\n\n\nLecture focus\n\nTroubleshooting models\nRefining visualizations & write-up\n\nLab\n\nPeer review final project drafts\n\nReadings\n\nNo new readings — review past materials\n\nAssignment\n\nSubmit draft project\n\n\n\n\n\nLecture focus\n\nCommunicating results to non-statistical audiences\nTranslating skills to the workplace\n\nLab\n\nStudent presentations\nClass reflection: “What I’ll take forward”\n\nReadings\n\nNo new readings\n\nFinal Deliverable\n\nFully reproducible RMarkdown/Quarto report with:\n\nIntroduction & research question\nMethods\nRegression-based analysis\nAPA-style results\nVisualizations\nReferences\n\n\nGrade Scheme\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGrade\nA\nA-\nB+\nB\nB-\nC+\nC\nC-\nD\nF\n\n\n\n\nPercentage\n93+\n90-92\n87-89\n83-86\n80-82\n77-79\n73-76\n70-72\n60-69\n&lt;60\n\n\n\n\n\n\n\n\n\n\n“A Wizard is never late, nor are they early. They arrive precisely when they mean to.” 🧙‍♂️\n\nThanks Gandalf. Super helpful. Unfortunately, we are not wizards and late penalties will be applied to work that is not on time. Due to the accelerated nature of the course, the late penalty will be more severe. There will be a 50% deduction on the first day. Work will not be accepted beyond 24 hours after the deadline.\n\n\n\nRIT is committed to providing academic adjustments to students with disabilities. If you would like to request academic adjustments such as testing modifications due to a disability, please contact the Disability Services Office. Contact information for the DSO and information about how to request adjustments can be found at www.rit.edu/dso. After you receive academic adjustment approval, it is imperative that you contact me as early as possible so that we can work out whatever arrangement is necessary.\n\n\n\nAs an instructor, I have a mandatory reporting responsibility as a part of my role. It is my goal that you feel comfortable sharing information related to your life experiences in classroom discussions, in your written work, and in our one-on-one meetings. I will seek to keep the information you share private to the greatest extent possible. However, I am required to report information I receive regarding sexual misconduct or information about a crime that may have occurred during your time at RIT. \n\n\n\nRIT is committed to providing a safe learning environment, free of harassment and discrimination as articulated in our university policies located on our governance website. RIT’s policies require faculty to share information about incidents of gender-based discrimination and harassment with RIT’s Title IX coordinator or deputy coordinators when incidents are stated to them directly. The information you provide to a non-confidential resource which includes faculty will be relayed only as necessary for the Title IX Coordinator to investigate and/or seek resolution. Even RIT Offices and employees who cannot guarantee confidentiality will maintain your privacy to the greatest extent possible.\nIf an individual discloses information during a public awareness event, a protest, during a class project, or advocacy event, RIT is not obligated to investigate based on this public disclosure. RIT may however use this information to further educate faculty, staff and students about prevention efforts and available resources.\nIf you would like to report an incident of gender based discrimination or harassment directly you may do so by using the online Sexual Harassment, Discrimination and Sexual Misconduct Reporting or anonymously by using the Compliance and Ethics Hotline. If you have a concern related to gender-based discrimination and/or harassment and prefer to have a confidential discussion, assistance is available from any of RIT’s confidential resources (listed below).\n\nRIT Counseling and Psychological Services\n\n585-475-2261 (V)\n585-475-6897 (TTY)\nwww.rit.edu/counseling\n\nNTID Counseling and Academic Advising\n\n585-475-6400\nwww.ntid.rit.edu/counselingdept\n\nRIT Student Health Center\n\n585-475-2255 (V)\nwww.rit.edu/studentaffairs/studenthealth\n\nCenter for Religious Life\n\n585-475-2137\nwww.rit.edu/studentaffairs/religion\n\nRIT Ombuds Office\n\n585-475-7357\n585-475-6424\n585-286-4677 (VP)\nwww.rit.edu/ombuds/contact-us\n\n\n\n\n\nAs an institution of higher learning, RIT expects students to behave honestly and ethically at all times, especially when submitting work for evaluation in conjunction with any course or degree requirement. The Department of Psychology encourages all students to become familiar with the RIT Honor Code and with RIT’s Academic Integrity Policy. RIT’s policy on academic integrity requires the instructor to investigate of any suspected breach of academic integrity. If the preponderance of evidence indicates a breach of academic integrity, the student who did so may incur a consequence up to and including failure for the entire course.\nAbout Generative AI\nEach course that you are involved in will have differing opinions and goals regarding generative AI (i.e., ChatGPT, Gemini, Perplexity, Claude, etc.). In this course you are allowed to use these as a tool. You can use prompts such as “Teach me about (insert psych topic here) and give me an example that might apply to me.” If you do use generative AI, I would like for you to disclose that information just so I can have a sense of how it is being used. If I suspect that the work that you have turned in is using AI, we will have to have a conversation to determine the next steps. Turning in AI work is considered plagiarism, and you may be asked to re-do the assignment, or possibly receive a 0 on the assignment.\n\n\n\nRIT is committed to the safety of the RIT community and beyond. Because the situation is still in a rapid state of change, checking the RIT Ready website, and specifically the RIT Safety Plan for the most up to date information is recommended: https://www.rit.edu/ready/rit-safety-plan.\n\n\n\nI have provided this syllabus as a guide to our course and have made every attempt to provide an accurate overview of the course. However, as instructor, I reserve the right to modify this document during the semester, if necessary, to ensure that we achieve course learning objectives. You will receive advance notice of any changes to the syllabus through myCourses/email."
   },
   {
+    "objectID": "previous-years.html",
+    "href": "previous-years.html",
+    "title": "Previous Years",
+    "section": "",
+    "text": "This course has been taught for a number of years, but this instructor has only started teaching it in Fall 2023. Below are previous iterations of the course in case you would like to check out how it has progressed!",
+    "crumbs": [
+      "Previous Years"
+    ]
+  },
+  {
+    "objectID": "previous-years.html#overview",
+    "href": "previous-years.html#overview",
+    "title": "Previous Years",
+    "section": "",
+    "text": "This course has been taught for a number of years, but this instructor has only started teaching it in Fall 2023. Below are previous iterations of the course in case you would like to check out how it has progressed!",
+    "crumbs": [
+      "Previous Years"
+    ]
+  },
+  {
+    "objectID": "previous-years.html#fall-2023",
+    "href": "previous-years.html#fall-2023",
+    "title": "Previous Years",
+    "section": "Fall 2023",
+    "text": "Fall 2023\nWebsite",
+    "crumbs": [
+      "Previous Years"
+    ]
+  },
+  {
+    "objectID": "previous-years.html#fall-2024",
+    "href": "previous-years.html#fall-2024",
+    "title": "Previous Years",
+    "section": "Fall 2024",
+    "text": "Fall 2024\nWebsite",
+    "crumbs": [
+      "Previous Years"
+    ]
+  },
+  {
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "PSYC 640: Graduate Statistics",
+    "section": "",
+    "text": "This page contains an outline of the topics, content, and preparation for the semester. This schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\nImportant\n\n\n\nReadings on the schedule will need to be completed prior to the course they are listed for. We will build on the concepts you read about in that specific class period, so it is important that you have read.\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\n\n\n\n\n1\n08-25\nGetting set up + R foundations\nInstall R/RStudio; Bring a laptop\n\n\n2\n09-01\nLABOR DAY\nChapter 1 & 2 - ST\nChapter 2 - MSR\n\n\n3\n09-08\nDescriptives, Visualizations + Communication\nChapter 5 - LSR\nChapter 1 & 3 - R4DS\n\n\n4\n09-15\nDesign, Sampling + Inference\nChapter 2 - IMS\nChapter 3 - MSR\nChapter 7 - ST\n\n\n5\n09-22\nCorrelation + Effect Sizes\nChapter 5.1 & 13 - ST\nChapter 11 - LSR\n\n\n6\n09-29\nComparing Groups\nChapter 9 & 10 - ST\nChapter 13 - LSR\n\n\n7\n10-06\nSimple Linear Regression\nChapter 14.1.1 - 14.1.4 - ST\nChapter 7.1 - 7.2.4 - IMS\nChapter 8.1.1 & 8.1.2 - MSR\n\n\n8\n10-13\nFALL BREAK\nWork on your midterm project\n\n\n9\n10-20\nVariability & Model Fit\nChapter 5 & 14- ST\nChapter 7.2.5 - IMS\n\n\n10\n10-27\nMultiple Regression I: Adding Predictors\nChapter 15.3 - 15.5 - LSR\nChapter 8 - IMS\n\n\n11\n11-03\nMultiple Regression II: Categorical Predictors\nChapter 9 - IMS\nChapter 8.3\n\n\n12\n11-10\nAssumptions + Model Diagnostics\nChapter 7.3 - IMS\nChapter 14.5 - ST\nChapter 8.1.4 - MSR\nChapter 15.8 - LSR\n\n\n13\n11-17\nExpanding Regression\nChapter 14.2 & 14.3 - ST\n\n\n14\n11-24\nModel Building + Comparison\nChapter 15.8 - 15.10 - LSR\n\n\n15\n12-01\nMaking R Work for You\nChapter 17 & 18 - ST\n\n\n16\n12-08\nWrapping Up + Workshop\n\n\n\n\n\nIntroduction to Modern Statistics (2e) –&gt; IMS\nLearning Statistics with R –&gt; LSR\nR for Data Science (2e) –&gt; R4DS\nModern Statistics with R (2e) –&gt; MSR\nStatistical Thinking –&gt; ST\nAn Introduction to Statistical Learning (2e) –&gt; ISL\nData Analysis: A Model Comparison Approach to Regression, ANOVA, and Beyond (3rd ed.) –&gt; DA",
+    "crumbs": [
+      "Course information",
+      "Schedule"
+    ]
+  },
+  {
+    "objectID": "slides/template.html#quarto",
+    "href": "slides/template.html#quarto",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Quarto",
+    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
+  },
+  {
+    "objectID": "slides/template.html#bullets",
+    "href": "slides/template.html#bullets",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Bullets",
+    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code\n\n\nlm(mpg ~ disp, data = mtcars)\n\n\nCall:\nlm(formula = mpg ~ disp, data = mtcars)\n\nCoefficients:\n(Intercept)         disp  \n   29.59985     -0.04122"
+  },
+  {
+    "objectID": "slides/template.html#latex-equations",
+    "href": "slides/template.html#latex-equations",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "LaTeX Equations",
+    "text": "LaTeX Equations\nMathJax rendering of equations to HTML\n\\[\\begin{gather*}\na_1=b_1+c_1\\\\\na_2=b_2+c_2-d_2+e_2\n\\end{gather*}\\]\n\\[\\begin{align}\na_{11}& =b_{11}&\n  a_{12}& =b_{12}\\\\\na_{21}& =b_{21}&\n  a_{22}& =b_{22}+c_{22}\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/template.html#tables",
+    "href": "slides/template.html#tables",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Tables",
+    "text": "Tables\n\n\n\nSyntax\nDescription\n\n\n\n\nHeader\nTitle\n\n\nParagraph\nText"
+  },
+  {
+    "objectID": "slides/template.html#callout-blocks",
+    "href": "slides/template.html#callout-blocks",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Callout Blocks",
+    "text": "Callout Blocks\n\n\n\n\n\n\nNote\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDanger, callouts will really improve your writing.\n\n\n\n\n\n\n\n\n\nTip With Caption\n\n\nThis is an example of a callout with a caption."
+  },
+  {
+    "objectID": "slides/template.html#quarto-1",
+    "href": "slides/template.html#quarto-1",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Quarto",
+    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
+  },
+  {
+    "objectID": "slides/template.html#bullets-1",
+    "href": "slides/template.html#bullets-1",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Bullets",
+    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code\n\n\nlm(mpg ~ disp, data = mtcars)\n\n\nCall:\nlm(formula = mpg ~ disp, data = mtcars)\n\nCoefficients:\n(Intercept)         disp  \n   29.59985     -0.04122"
+  },
+  {
+    "objectID": "slides/template.html#latex-equations-1",
+    "href": "slides/template.html#latex-equations-1",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "LaTeX Equations",
+    "text": "LaTeX Equations\nMathJax rendering of equations to HTML\n\\[\\begin{gather*}\na_1=b_1+c_1\\\\\na_2=b_2+c_2-d_2+e_2\n\\end{gather*}\\]\n\\[\\begin{align}\na_{11}& =b_{11}&\n  a_{12}& =b_{12}\\\\\na_{21}& =b_{21}&\n  a_{22}& =b_{22}+c_{22}\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/template.html#tables-1",
+    "href": "slides/template.html#tables-1",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Tables",
+    "text": "Tables\n\n\n\nSyntax\nDescription\n\n\n\n\nHeader\nTitle\n\n\nParagraph\nText"
+  },
+  {
+    "objectID": "slides/template.html#callout-blocks-1",
+    "href": "slides/template.html#callout-blocks-1",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Callout Blocks",
+    "text": "Callout Blocks\n\n\n\n\n\n\nNote\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDanger, callouts will really improve your writing.\n\n\n\n\n\n\n\n\n\nTip With Caption\n\n\nThis is an example of a callout with a caption."
+  },
+  {
+    "objectID": "slides/template.html#quarto-2",
+    "href": "slides/template.html#quarto-2",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Quarto",
+    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
+  },
+  {
+    "objectID": "slides/template.html#bullets-2",
+    "href": "slides/template.html#bullets-2",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Bullets",
+    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code\n\n\nlm(mpg ~ disp, data = mtcars)\n\n\nCall:\nlm(formula = mpg ~ disp, data = mtcars)\n\nCoefficients:\n(Intercept)         disp  \n   29.59985     -0.04122"
+  },
+  {
+    "objectID": "slides/template.html#latex-equations-2",
+    "href": "slides/template.html#latex-equations-2",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "LaTeX Equations",
+    "text": "LaTeX Equations\nMathJax rendering of equations to HTML\n\\[\\begin{gather*}\na_1=b_1+c_1\\\\\na_2=b_2+c_2-d_2+e_2\n\\end{gather*}\\]\n\\[\\begin{align}\na_{11}& =b_{11}&\n  a_{12}& =b_{12}\\\\\na_{21}& =b_{21}&\n  a_{22}& =b_{22}+c_{22}\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/template.html#tables-2",
+    "href": "slides/template.html#tables-2",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Tables",
+    "text": "Tables\n\n\n\nSyntax\nDescription\n\n\n\n\nHeader\nTitle\n\n\nParagraph\nText"
+  },
+  {
+    "objectID": "slides/template.html#callout-blocks-2",
+    "href": "slides/template.html#callout-blocks-2",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Callout Blocks",
+    "text": "Callout Blocks\n\n\n\n\n\n\nNote\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDanger, callouts will really improve your writing.\n\n\n\n\n\n\n\n\n\nTip With Caption\n\n\nThis is an example of a callout with a caption."
+  },
+  {
+    "objectID": "slides/template.html#quarto-3",
+    "href": "slides/template.html#quarto-3",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Quarto",
+    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
+  },
+  {
+    "objectID": "slides/template.html#bullets-3",
+    "href": "slides/template.html#bullets-3",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Bullets",
+    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code\n\n\nlm(mpg ~ disp, data = mtcars)\n\n\nCall:\nlm(formula = mpg ~ disp, data = mtcars)\n\nCoefficients:\n(Intercept)         disp  \n   29.59985     -0.04122"
+  },
+  {
+    "objectID": "slides/template.html#latex-equations-3",
+    "href": "slides/template.html#latex-equations-3",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "LaTeX Equations",
+    "text": "LaTeX Equations\nMathJax rendering of equations to HTML\n\\[\\begin{gather*}\na_1=b_1+c_1\\\\\na_2=b_2+c_2-d_2+e_2\n\\end{gather*}\\]\n\\[\\begin{align}\na_{11}& =b_{11}&\n  a_{12}& =b_{12}\\\\\na_{21}& =b_{21}&\n  a_{22}& =b_{22}+c_{22}\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/template.html#tables-3",
+    "href": "slides/template.html#tables-3",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Tables",
+    "text": "Tables\n\n\n\nSyntax\nDescription\n\n\n\n\nHeader\nTitle\n\n\nParagraph\nText"
+  },
+  {
+    "objectID": "slides/template.html#callout-blocks-3",
+    "href": "slides/template.html#callout-blocks-3",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Callout Blocks",
+    "text": "Callout Blocks\n\n\n\n\n\n\nNote\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDanger, callouts will really improve your writing.\n\n\n\n\n\n\n\n\n\nTip With Caption\n\n\nThis is an example of a callout with a caption."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Syllabus",
@@ -47,17 +238,6 @@
     ]
   },
   {
-    "objectID": "schedule.html",
-    "href": "schedule.html",
-    "title": "PSYC 640: Graduate Statistics",
-    "section": "",
-    "text": "This page contains an outline of the topics, content, and preparation for the semester. This schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\nImportant\n\n\n\nReadings on the schedule will need to be completed prior to the course they are listed for. We will build on the concepts you read about in that specific class period, so it is important that you have read.\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\n\n\n\n\n1\n08-25\nGetting set up + R foundations\nInstall R/RStudio; Bring a laptop\n\n\n2\n09-01\nLABOR DAY\nChapter 1 & 2 - ST\nChapter 2 - MSR\n\n\n3\n09-08\nDescriptives, Visualizations + Communication\nChapter 5 - LSR\nChapter 1 & 3 - R4DS\n\n\n4\n09-15\nDesign, Sampling + Inference\nChapter 2 - IMS\nChapter 3 - MSR\nChapter 7 - ST\n\n\n5\n09-22\nCorrelation + Effect Sizes\nChapter 5.1 & 13 - ST\nChapter 11 - LSR\n\n\n6\n09-29\nComparing Groups\nChapter 9 & 10 - ST\nChapter 13 - LSR\n\n\n7\n10-06\nSimple Linear Regression\nChapter 14.1.1 - 14.1.4 - ST\nChapter 7.1 - 7.2.4 - IMS\nChapter 8.1.1 & 8.1.2 - MSR\n\n\n8\n10-13\nFALL BREAK\nWork on your midterm project\n\n\n9\n10-20\nVariability & Model Fit\nChapter 5 & 14- ST\nChapter 7.2.5 - IMS\n\n\n10\n10-27\nMultiple Regression I: Adding Predictors\nChapter 15.3 - 15.5 - LSR\nChapter 8 - IMS\n\n\n11\n11-03\nMultiple Regression II: Categorical Predictors\nChapter 9 - IMS\nChapter 8.3\n\n\n12\n11-10\nAssumptions + Model Diagnostics\nChapter 7.3 - IMS\nChapter 14.5 - ST\nChapter 8.1.4 - MSR\nChapter 15.8 - LSR\n\n\n13\n11-17\nExpanding Regression\nChapter 14.2 & 14.3 - ST\n\n\n14\n11-24\nModel Building + Comparison\nChapter 15.8 - 15.10 - LSR\n\n\n15\n12-01\nMaking R Work for You\nChapter 17 & 18 - ST\n\n\n16\n12-08\nWrapping Up + Workshop\n\n\n\n\n\nIntroduction to Modern Statistics (2e) –&gt; IMS\nLearning Statistics with R –&gt; LSR\nR for Data Science (2e) –&gt; R4DS\nModern Statistics with R (2e) –&gt; MSR\nStatistical Thinking –&gt; ST\nAn Introduction to Statistical Learning (2e) –&gt; ISL\nData Analysis: A Model Comparison Approach to Regression, ANOVA, and Beyond (3rd ed.) –&gt; DA",
-    "crumbs": [
-      "Course information",
-      "Schedule"
-    ]
-  },
-  {
     "objectID": "weeks/week-1.html",
     "href": "weeks/week-1.html",
     "title": "Week 1",
@@ -84,7 +264,7 @@
     "href": "weeks/week-1.html#slides",
     "title": "Week 1",
     "section": "Slides",
-    "text": "Slides",
+    "text": "Slides\n💻 Getting Started",
     "crumbs": [
       "Weekly materials",
       "Week 1"

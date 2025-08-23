@@ -9,7 +9,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.33">
 
-  <title>PSYC 640 - Graduate Statistics – Week 01: Getting Started!</title>
+  <title>PSYC 640 - Graduate Statistics – template</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -27,13 +27,77 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-ff09f2c33b9ba19d88cb40e8681b1cfd.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
@@ -122,84 +186,452 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="Week 01: Getting Started! – PSYC 640 - Graduate Statistics">
-<meta property="og:description" content="Date: 08-25">
+<meta property="og:title" content="PSYC 640 - Graduate Statistics">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Week 01: Getting Started!</h1>
-  <p class="subtitle">Date: 08-25</p>
 
-<div class="quarto-title-authors">
+<section id="section" class="title-slide slide level1 title-colors center">
+<h1></h1>
+<div class="r-fit-text">
+<p>SEASONS</p>
+</div>
+<p><a href="https://github.com/EmilHvitfeldt/quarto-revealjs-seasons" class="uri">https://github.com/EmilHvitfeldt/quarto-revealjs-seasons</a></p>
+</section>
+
+<section>
+<section id="spring-theme" class="title-slide slide level1 spring center">
+<h1>Spring Theme</h1>
+
+</section>
+<section id="quarto" class="slide level2 spring">
+<h2>Quarto</h2>
+<p>Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <a href="https://quarto.org/docs/presentations/" class="uri">https://quarto.org/docs/presentations/</a>.</p>
+</section>
+<section id="bullets" class="slide level2 spring">
+<h2>Bullets</h2>
+<p>When you click the <strong>Render</strong> button a document will be generated that includes:</p>
+<ul>
+<li>Content authored with markdown</li>
+<li>Output from executable code</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">lm</span>(mpg <span class="sc">~</span> disp, <span class="at">data =</span> mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mpg ~ disp, data = mtcars)
+
+Coefficients:
+(Intercept)         disp  
+   29.59985     -0.04122  </code></pre>
+</div>
+</div>
+</section>
+<section id="latex-equations" class="slide level2 spring">
+<h2>LaTeX Equations</h2>
+<p><a href="https://www.mathjax.org/">MathJax</a> rendering of equations to HTML</p>
+<span class="math display">\[\begin{gather*}
+a_1=b_1+c_1\\
+a_2=b_2+c_2-d_2+e_2
+\end{gather*}\]</span>
+<span class="math display">\[\begin{align}
+a_{11}&amp; =b_{11}&amp;
+  a_{12}&amp; =b_{12}\\
+a_{21}&amp; =b_{21}&amp;
+  a_{22}&amp; =b_{22}+c_{22}
+\end{align}\]</span>
+</section>
+<section id="tables" class="slide level2 spring">
+<h2>Tables</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Syntax</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Header</td>
+<td>Title</td>
+</tr>
+<tr class="even">
+<td>Paragraph</td>
+<td>Text</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="callout-blocks" class="slide level2 spring">
+<h2>Callout Blocks</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Note that there are five types of callouts, including: <code>note</code>, <code>warning</code>, <code>important</code>, <code>tip</code>, and <code>caution</code>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Danger, callouts will really improve your writing.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip With Caption</strong></p>
+</div>
+<div class="callout-content">
+<p>This is an example of a callout with a caption.</p>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="summer-theme" class="title-slide slide level1 summer center">
+<h1>Summer Theme</h1>
+
+</section>
+<section id="quarto-1" class="slide level2 summer">
+<h2>Quarto</h2>
+<p>Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <a href="https://quarto.org/docs/presentations/" class="uri">https://quarto.org/docs/presentations/</a>.</p>
+</section>
+<section id="bullets-1" class="slide level2 summer">
+<h2>Bullets</h2>
+<p>When you click the <strong>Render</strong> button a document will be generated that includes:</p>
+<ul>
+<li>Content authored with markdown</li>
+<li>Output from executable code</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">lm</span>(mpg <span class="sc">~</span> disp, <span class="at">data =</span> mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mpg ~ disp, data = mtcars)
+
+Coefficients:
+(Intercept)         disp  
+   29.59985     -0.04122  </code></pre>
+</div>
+</div>
+</section>
+<section id="latex-equations-1" class="slide level2 summer">
+<h2>LaTeX Equations</h2>
+<p><a href="https://www.mathjax.org/">MathJax</a> rendering of equations to HTML</p>
+<span class="math display">\[\begin{gather*}
+a_1=b_1+c_1\\
+a_2=b_2+c_2-d_2+e_2
+\end{gather*}\]</span>
+<span class="math display">\[\begin{align}
+a_{11}&amp; =b_{11}&amp;
+  a_{12}&amp; =b_{12}\\
+a_{21}&amp; =b_{21}&amp;
+  a_{22}&amp; =b_{22}+c_{22}
+\end{align}\]</span>
+</section>
+<section id="tables-1" class="slide level2 summer">
+<h2>Tables</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Syntax</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Header</td>
+<td>Title</td>
+</tr>
+<tr class="even">
+<td>Paragraph</td>
+<td>Text</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="callout-blocks-1" class="slide level2 summer">
+<h2>Callout Blocks</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Note that there are five types of callouts, including: <code>note</code>, <code>warning</code>, <code>important</code>, <code>tip</code>, and <code>caution</code>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Danger, callouts will really improve your writing.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip With Caption</strong></p>
+</div>
+<div class="callout-content">
+<p>This is an example of a callout with a caption.</p>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="fall-theme" class="title-slide slide level1 fall center">
+<h1>Fall Theme</h1>
+
+</section>
+<section id="quarto-2" class="slide level2 fall">
+<h2>Quarto</h2>
+<p>Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <a href="https://quarto.org/docs/presentations/" class="uri">https://quarto.org/docs/presentations/</a>.</p>
+</section>
+<section id="bullets-2" class="slide level2 fall">
+<h2>Bullets</h2>
+<p>When you click the <strong>Render</strong> button a document will be generated that includes:</p>
+<ul>
+<li>Content authored with markdown</li>
+<li>Output from executable code</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">lm</span>(mpg <span class="sc">~</span> disp, <span class="at">data =</span> mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mpg ~ disp, data = mtcars)
+
+Coefficients:
+(Intercept)         disp  
+   29.59985     -0.04122  </code></pre>
+</div>
+</div>
+</section>
+<section id="latex-equations-2" class="slide level2 fall">
+<h2>LaTeX Equations</h2>
+<p><a href="https://www.mathjax.org/">MathJax</a> rendering of equations to HTML</p>
+<span class="math display">\[\begin{gather*}
+a_1=b_1+c_1\\
+a_2=b_2+c_2-d_2+e_2
+\end{gather*}\]</span>
+<span class="math display">\[\begin{align}
+a_{11}&amp; =b_{11}&amp;
+  a_{12}&amp; =b_{12}\\
+a_{21}&amp; =b_{21}&amp;
+  a_{22}&amp; =b_{22}+c_{22}
+\end{align}\]</span>
+</section>
+<section id="tables-2" class="slide level2 fall">
+<h2>Tables</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Syntax</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Header</td>
+<td>Title</td>
+</tr>
+<tr class="even">
+<td>Paragraph</td>
+<td>Text</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="callout-blocks-2" class="slide level2 fall">
+<h2>Callout Blocks</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Note that there are five types of callouts, including: <code>note</code>, <code>warning</code>, <code>important</code>, <code>tip</code>, and <code>caution</code>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Danger, callouts will really improve your writing.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip With Caption</strong></p>
+</div>
+<div class="callout-content">
+<p>This is an example of a callout with a caption.</p>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="winter-theme" class="title-slide slide level1 winter center">
+<h1>Winter Theme</h1>
+
+</section>
+<section id="quarto-3" class="slide level2 winter">
+<h2>Quarto</h2>
+<p>Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <a href="https://quarto.org/docs/presentations/" class="uri">https://quarto.org/docs/presentations/</a>.</p>
+</section>
+<section id="bullets-3" class="slide level2 winter">
+<h2>Bullets</h2>
+<p>When you click the <strong>Render</strong> button a document will be generated that includes:</p>
+<ul>
+<li>Content authored with markdown</li>
+<li>Output from executable code</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">lm</span>(mpg <span class="sc">~</span> disp, <span class="at">data =</span> mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mpg ~ disp, data = mtcars)
+
+Coefficients:
+(Intercept)         disp  
+   29.59985     -0.04122  </code></pre>
+</div>
+</div>
+</section>
+<section id="latex-equations-3" class="slide level2 winter">
+<h2>LaTeX Equations</h2>
+<p><a href="https://www.mathjax.org/">MathJax</a> rendering of equations to HTML</p>
+<span class="math display">\[\begin{gather*}
+a_1=b_1+c_1\\
+a_2=b_2+c_2-d_2+e_2
+\end{gather*}\]</span>
+<span class="math display">\[\begin{align}
+a_{11}&amp; =b_{11}&amp;
+  a_{12}&amp; =b_{12}\\
+a_{21}&amp; =b_{21}&amp;
+  a_{22}&amp; =b_{22}+c_{22}
+\end{align}\]</span>
+</section>
+<section id="tables-3" class="slide level2 winter">
+<h2>Tables</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Syntax</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Header</td>
+<td>Title</td>
+</tr>
+<tr class="even">
+<td>Paragraph</td>
+<td>Text</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="callout-blocks-3" class="slide level2 winter">
+<h2>Callout Blocks</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Note that there are five types of callouts, including: <code>note</code>, <code>warning</code>, <code>important</code>, <code>tip</code>, and <code>caution</code>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Danger, callouts will really improve your writing.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip With Caption</strong></p>
+</div>
+<div class="callout-content">
+<p>This is an example of a callout with a caption.</p>
+</div>
+</div>
 </div>
 
-</section>
-<section id="today" class="title-slide slide level1 center">
-<h1>Today</h1>
-<ul>
-<li class="fragment">Goals</li>
-<li class="fragment">Why it matters (results-section lens)</li>
-<li class="fragment">What you’ll be able to do by the end</li>
-</ul>
-</section>
 
-<section id="warm-up" class="title-slide slide level1 center">
-<h1>Warm-up</h1>
-<ul>
-<li class="fragment">2-minute think-pair-share: interpret this figure/table snippet.</li>
-</ul>
-</section>
-
-<section id="concepts-brief" class="title-slide slide level1 center">
-<h1>Concepts (brief)</h1>
-<ul>
-<li class="fragment">Keep math minimal; emphasize assumptions, use-cases, effect sizes.</li>
-</ul>
-</section>
-
-<section id="live-demo-r" class="title-slide slide level1 center">
-<h1>Live demo (R)</h1>
-
-</section>
-
-<section id="guided-practice" class="title-slide slide level1 center">
-<h1>Guided practice</h1>
-<ul>
-<li class="fragment">Students follow along: 3–5 tasks with immediate feedback.</li>
-</ul>
-</section>
-
-<section id="interpretation" class="title-slide slide level1 center">
-<h1>Interpretation</h1>
-<ul>
-<li class="fragment">Translate model output to 2–3 sentences as in a results section.</li>
-</ul>
-</section>
-
-<section id="exit-ticket" class="title-slide slide level1 center">
-<h1>Exit ticket</h1>
-<ul>
-<li class="fragment">One key takeaway, one question.</li>
-</ul>
-</section>
-
-<section id="next" class="title-slide slide level1 center">
-<h1>Next</h1>
-<ul>
-<li class="fragment">Prep and due items for next week.</li>
-</ul>
-
-
-</section>
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
-<p><img src="images/640_hex.png" class="slide-logo"></p>
 <div class="footer footer-default">
-<p><a href="https://dharaden.github.io/psyc640/">course-website</a></p>
+
 </div>
 </div></div>
 
@@ -210,7 +642,6 @@
   <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
   <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -232,8 +663,7 @@
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'chalkboard': {"buttons":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -254,7 +684,7 @@
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: 'c/t',
+        slideNumber: false,
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
@@ -359,7 +789,7 @@
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'fade',
+        transition: 'none',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
@@ -404,7 +834,7 @@
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
           RevealNotes,
