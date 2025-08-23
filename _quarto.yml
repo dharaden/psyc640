@@ -40,6 +40,8 @@ website:
         contents:
           - href: weeks/week-1.qmd
             text: "Week 1"
+      - href: previous-years.qmd
+        text: Previous Years
 
 format:
   html:

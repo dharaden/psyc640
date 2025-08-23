@@ -1,11 +1,11 @@
 ---
-title: "Week 01: Getting Started!"
-subtitle: "Date: 08-25"
+title: "Week XX: TITLE"
+subtitle: "Date: MM-DD"
 footer:  "[course-website](https://dharaden.github.io/psyc640/)"
 logo: "images/640_hex.png"
 format: 
   revealjs:
-    theme: [default, seasons.scss]
+    theme: slides.scss
     multiplex: false
     transition: fade
     slide-number: true
