@@ -1,0 +1,157 @@
+---
+title: "Lab 1: Foundations of a Data Workflow"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+  markdown: 
+    wrap: 72
+---
+
+## Instructions
+
+Welcome to your first lab! The goal of this assignment is to move beyond
+basic syntax and begin practicing a reproducible data analysis workflow.
+
+Please complete the exercises below. Create a new `.Rmd` file and
+include the following at the top:
+
+``` r
+---
+title: "Lab 1: Foundations of a Data Workflow"
+author: "Your Name Here"
+date: "`r Sys.Date()`"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+  markdown: 
+    wrap: 72
+---
+```
+
+You should then be able to copy/paste everything below into your
+document.
+
+When you are finished, click the **Knit** button to turn your work into
+an HTML document. You will submit both this `.Rmd` file and the final
+`.html` file.
+
+------------------------------------------------------------------------
+
+### Exercise 1: Loading Packages & Exploring Data
+
+A major strength of R is its ecosystem of packages that add new
+functionality. We will use the `tidyverse` package in almost every
+analysis we do. The `ggplot2` package, which is part of the `tidyverse`,
+contains a dataset called `msleep` about mammal sleep patterns.
+
+``` r
+# Task 1: Load the tidyverse package.
+# Write your code here:
+
+
+# Task 2: The `msleep` dataset is available after loading the tidyverse.
+# Use the `glimpse()` function to get a quick overview of the `msleep` dataset.
+# Write your code here:
+
+
+# Task 3: Now use the `summary()` function on the `msleep` dataset.
+# Write your code here:
+```
+
+**❓Question 1:** Based on the output of `glimpse()`, how many rows
+(observations) and columns (variables) are in the `msleep` dataset?
+
+**Your Answer:** \[Type your answer here\]
+
+**❓Question 2:** What is one key difference between the information
+provided by `glimpse()` and the information provided by `summary()` for
+a variable like `sleep_total`?
+
+**Your Answer:** \[Type your answer here\]
+
+------------------------------------------------------------------------
+
+### Exercise 2: Data Wrangling
+
+Let's say we are only interested in herbivores. We can use functions
+from the `dplyr` package (part of the `tidyverse`) to create a new,
+sorted dataset.
+
+``` r
+# Task 1: Create a new object called `herbivores` that contains only the animals
+# from the `msleep` dataset where the `vore` column is equal to "herbi".
+# Hint: The syntax for filtering is: new_object <- old_object %>% filter(column_name == "value")
+# Write your code here:
+
+
+# Task 2: Now, sort this new `herbivores` dataset by total sleep time, from highest to lowest.
+# You can overwrite the `herbivores` object with the newly sorted version.
+# Hint: Use the `arrange()` function with `desc()` for descending order.
+# The syntax is: object <- object %>% arrange(desc(column_to_sort_by))
+# Write your code here:
+
+
+# Now, print the new, sorted `herbivores` object to see the result.
+
+```
+
+**❓Question:** After sorting, which herbivore sleeps the most? How many
+hours does it sleep?
+
+**Your Answer:** \[Type your answer here\]
+
+------------------------------------------------------------------------
+
+### Exercise 3: First Data Visualization
+
+Data visualization is a critical part of understanding data. Let's
+create a scatterplot to see if there is a relationship between how long
+a herbivore sleeps and how much time it spends dreaming.
+
+``` r
+# Task: Create a scatterplot using ggplot().
+# We want to plot the `sleep_rem` (dreaming sleep) on the y-axis and `sleep_total` on the x-axis,
+# using only our `herbivores` dataset.
+# Fill in the blanks in the code below.
+
+ggplot(data = ________, aes(x = _______, y = _________)) +
+  geom_????? +
+  labs(title = "Total Sleep vs. REM Sleep in Herbivores",
+       x = "Total Sleep (hours)",
+       y = "REM Sleep (hours)")
+```
+
+**❓Question 1:** Look at the plot you created. In one or two sentences,
+describe the relationship you see between total sleep and REM sleep for
+these animals. Is the relationship positive, negative, or is there no
+clear relationship?
+
+**Your Answer:** \[Type your answer here\]
+
+**❓Question 2:** Are there any animals that seem unusual or stand out
+from the general pattern? Briefly describe one.
+
+**Your Answer:** \[Type your answer here\]
+
+------------------------------------------------------------------------
+
+### Exercise 4: Calculating Summary Statistics
+
+Often, we want to calculate a single value to summarize our data. The
+`summarise()` function is perfect for this.
+
+``` r
+# Task: Calculate the average (mean) total sleep time for ALL mammals in the original `msleep` dataset.
+# Hint: The syntax is: dataset %>% summarise(new_variable_name = mean(column_name, na.rm = TRUE))
+# The `na.rm = TRUE` part is important because it tells R to ignore any missing values.
+# Write your code here:
+```
+
+**❓Question:** What is the mean total sleep time for all mammals in the
+dataset?
+
+**Your Answer:** \[Type your answer here\]
+
+------------------------------------------------------------------------
+
+*End of Lab 1. Don't forget to Knit! 🧶*

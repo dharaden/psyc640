@@ -1,9 +1,5 @@
 project: 
   type: website
-  exclude: # Exclude Labs from rendering
-    - "labs/"
-  resources: # but keep them as a resource to download
-    - "labs/"
   
 website: 
   page-navigation: true
@@ -28,6 +24,9 @@ website:
     pinned: true
     align: center
     tools:
+      - icon: github
+        href: https://github.com/dharaden/psyc640
+        text: "GitHub"
       - icon: chalkboard
         href: https://mycourses.rit.edu/d2l/login
         text: "myCourses"
@@ -35,17 +34,24 @@ website:
 
     style: "docked"
     search: true
-    collapse-level: 2
+    collapse-level: 1
     contents:
       - section: "Course information"
         contents: 
+          - href: course-overview.qmd
+            href: "Overview"
+          - href: syllabus.qmd
+            href: "Syllabus"
           - href: index.qmd
-          - href: schedule.qmd
             text: "Schedule"
       - section: "Weekly Materials"
         contents:
           - href: weeks/week-1.qmd
             text: "Week 1"
+      - section: "Labs"
+        contents:
+          - href: labs/lab-1.qmd
+            text: "Lab 1 - Data Intro"
       - href: previous-years.qmd
         text: Previous Years
 
