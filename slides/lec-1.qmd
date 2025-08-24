@@ -124,30 +124,134 @@ Dr. Haraden will be extra
 
 I've pulled from a lot of different textbooks. Good thing is, they are all free!
 
-# Warm-up
+-   [*Introduction to Modern Statistics (2e)*](https://openintro-ims.netlify.app/){target="\"_blank"} (Cetinkaya-Rundel & Hardin, 2024)
 
--   2-minute think-pair-share: interpret this figure/table snippet.
+-   [*Learning Statistics with R*](https://learningstatisticswithr-bookdown.netlify.com/index.html){target="\"_blank"} (Navarro)
 
-# Concepts (brief)
+-   [*R for Data Science (2e)*](https://r4ds.hadley.nz/){target="\"_blank"} (Wickham, Çetinkaya-Rundel, & Grolemund, 2023)
 
--   Keep math minimal; emphasize assumptions, use-cases, effect sizes.
+-   [*Modern Statistics with R (2e)*](https://www.modernstatisticswithr.com/){target="\"_blank"} (Thullin, 2025)
 
-# Live demo (R)
+-   [*Statistical Thinking*](https://statsthinking21.github.io/statsthinking21-core-site/){target="\"_blank"} (Poldrack, 2024)
 
-```{r}
-# setup
-library(rio)
-library(here)
-#dat <- import(here::here("data","sample.csv"))
-```
+-   [*An Introduction to Statistical Learning (2e)*](https://www.statlearning.com/){target="_blank"} (James, Witten, Hastie & Tibshirani, 2023)
 
-# Guided practice
+-   [*Data Analysis: A Model Comparison Approach to Regression, ANOVA, and Beyond (3rd ed.)*](https://sadbhavnapublications.org/research-enrichment-material/2-Statistical-Books/Data-Analysis-A-Model-Comparison-Approach-To-Regression,-ANOVA,-and-Beyond.pdf){target="_blank"} (Judd, McClelland, & Ryan, 2017)
 
--   Students follow along: 3–5 tasks with immediate feedback.
+## Evaluation & Grading
 
-# Interpretation
+|                            |            |
+|----------------------------|------------|
+| **Component**              | **Weight** |
+| Weekly Labs                | 30%        |
+| Journal Entries            | 10%        |
+| Participation & Engagement | 15%        |
+| Midterm Project            | 20%        |
+| Final Project              | 25%        |
 
--   Translate model output to 2–3 sentences as in a results section.
+### Weekly Labs (30%)
+
+Each week, you will take what we worked on in class and apply it to a series of questions
+
+This will typically be done completely in R, and will require the submission of a .Rmd file, and sometimes the .html file.
+
+Lowest score will be dropped
+
+::: callout-important
+***Each lab will be due the Sunday @ 11:59pm before the next class***
+:::
+
+### Journal Entries (10%)
+
+Each week, you will submit a short, reflective journal entry (at least 200 words)
+
+You can write about anything, but would like to at least have some be related to the course. Things like "What was the 'muddiest' point for you, and what question would you ask about it?".
+
+They can also take the form of just a general reflection. I want to get to know you and your learning throughout this process.
+
+The content of what you write has *no impact* on your grade. In addition, what you write will be kept confidential.
+
+::: notes
+The purpose of this “assignment” is to help facilitate communication between you and me. I have found other instructors using this and I would like to be able to develop supportive relationships with students, so I decided to implement this. Other instructors reported that they found that many students were more comfortable discussing questions and concerns in their journal assignments rather than through email.
+:::
+
+### Participation & Engagement (15%)
+
+Come to Class. Work with the material.
+
+Basically just be here, be present and try. This will be very low stakes and there will be plenty of mistakes by myself and others.
+
+### Midterm Project (20%) 
+
+Examining a dataset that I provide
+
+You will be given an initial research idea, but it will be up to you to formulate an appropriate research question
+
+Clean & Visualize the data, then build an appropriate model to answer your question
+
+This project assesses your mastery of the first half of the course and will be due before the first class after Fall Break (October 19th @ 11:59pm).
+
+### Final Project (25%)
+
+Examine a dataset that you have (or from a list of things that I provide
+
+This will be an expanded version of the midterm
+
+Develop your own research question, conduct analysis from start to finish
+
+📋Write up your work - Brief Abstract/methods, Data analytic plan & Results section
+
+Give a "lightening talk" about your findings on last day of class
+
+## Course Policies
+
+-   Accommodations
+
+-   Safety
+
+-   Academic Integrity
+
+### Accommodations
+
+I want you to succeed in this course!
+
+There are formal channels that you can go through to get structured accommodations, but I am always available to help however I can
+
+If you do have formal accommodations, please reach out to me to see how you would like to have them applied to this course. I know you submit the formal request, but I want to make sure it works for you however we are implementing it
+
+::: callout-tip
+Office hours are a good way to get support. *Can't make office hours?* Send me an email!
+:::
+
+### Safety
+
+I want you to feel safe and supported both in and outside of the class
+
+I can provide references to services and do all that I can to get you connected
+
+### Academic Integrity
+
+You know we are talking about AI here 🤖
+
+Use AI as a really nice TA who can help you when I'm not around! *But this TA sometimes gets things wrong, or codes in a different way*
+
+I want you to learn and understand these things. If you are going to AI to solve your problems, then I am doing something wrong (or maybe you are...)
+
+### Academic Integrity
+
+If you do use an AI as a supportive tool, you must:
+
+-   **Review, edit, and take ownership** of all submitted work.
+
+-   **Acknowledge** that it was used in a brief note at the end of the assignment (e.g., *“I used ChatGPT to help me make sense of the error message I was getting.”*) as well as being properly cited ([RIT Library Citation Infoguide](https://infoguides.rit.edu/c.php?g=1207799&p=10293622))
+
+::: callout-important
+If I suspect AI usage beyond "support" or major portions of an assignment, you will likely receive a 0, and we will have a meeting. Turning in AI work is considered plagiarism. You *may* have the opportunity to revise at the discretion of the instructor.
+:::
+
+# Any Questions?? 🎃
+
+#  
 
 # Exit ticket
 
