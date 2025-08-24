@@ -1,5 +1,5 @@
 ---
-title: "Week 01: Getting Started!"
+title: "Week 01: Getting Started - DATA!"
 subtitle: "Date: 08-25"
 footer:  "[course-website](https://dharaden.github.io/psyc640/)"
 logo: "images/640_hex.png"
@@ -51,16 +51,44 @@ options(scipen = 100)
 
 I want to bake a cake!
 
+::: incremental
 1.  Find a recipe online (try ignoring their life story narrative)
 2.  Get ingredients (Wegmans if you 💰)
-3.  Follow recipe and bake
-4.  Enjoy the delicious cake
+3.  Follow recipe and bake 🧑‍🍳
+4.  Enjoy the delicious cake 🍽️
+:::
 
 . . .
 
 **Replication**
 
-# ![](images/clipboard-3815937357.png) 
+------------------------------------------------------------------------
+
+## Replication & Reproducibility 🍰
+
+I want to bake a cake!
+
+**Reproduction**
+
+::: incremental
+1.  Find a recipe online –\> **Find their kitchen**
+2.  Get ingredients –\> **Use their ingredients**
+3.  Follow recipe and bake –\> **Watch what they do and follow**
+4.  Enjoy the delicious cake –\> **Enjoy cake (and jail for B&E)**
+:::
+
+------------------------------------------------------------------------
+
+## Replication & Reproducibility 📊
+
+| Replication | Reproducibility |
+|----|----|
+| Have a similar research question | Use the same research question |
+| Collect your own data | Use their data |
+| Follow their steps with **your** resources | Follow their steps with **their** resources |
+| Outcome: Similar results (depending on other factors | Outcome: Identical results |
+
+# ![](images/clipboard-3815937357.png)
 
 # Exit ticket
 
