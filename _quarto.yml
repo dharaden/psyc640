@@ -16,10 +16,10 @@ website:
   page-footer:
     right: "This page is built with ☕ and [Quarto](https://quarto.org/)."
     left: "&copy; CC-By Dustin Haraden, 2025"
-    background: "#D9E3E4"
+    background: "#ADE0C0"
     
   sidebar:
-    background: "#D9E3E4"
+    background: "#ADE0C0"
     logo: "images/640_hex.png"
     pinned: true
     align: center
@@ -39,9 +39,9 @@ website:
       - section: "Course information"
         contents: 
           - href: course-overview.qmd
-            href: "Overview"
+            text: "Overview"
           - href: syllabus.qmd
-            href: "Syllabus"
+            text: "Syllabus"
           - href: index.qmd
             text: "Schedule"
       - section: "Weekly Materials"
