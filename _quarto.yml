@@ -1,5 +1,9 @@
 project: 
   type: website
+  exclude: # Exclude Labs from rendering
+    - "labs/"
+  resources: # but keep them as a resource to download
+    - "labs/"
   
 website: 
   page-navigation: true
@@ -8,6 +12,8 @@ website:
   
   repo-url: https://github.com/dharaden/psyc640 
   repo-actions: [edit, issue]
+
+
 
   open-graph: true
   
