@@ -1,0 +1,52 @@
+---
+title: "Week 01: Getting Started!"
+subtitle: "Date: 08-25"
+footer:  "[course-website](https://dharaden.github.io/psyc640/)"
+logo: "images/640_hex.png"
+format: 
+  revealjs:
+    theme: clean.scss
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+    overview: true
+    code-line-numbers: true
+editor: visual
+execute:
+  freeze: auto
+---
+
+```{r setup}
+#| include: false
+
+library(countdown)
+
+knitr::opts_chunk$set(
+  fig.width = 8,
+  fig.asp = 0.618,
+  fig.retina = 3,
+  dpi = 300,
+  out.width = "80%",
+  fig.align = "center"
+)
+
+options(scipen = 100)
+```
+
+# Now- Science Stuff!
+
+🧑‍🔬 💾 📎 📊
+
+# Replication & Reproducibility
+
+# ![](images/clipboard-3815937357.png) 
+
+# Exit ticket
+
+-   One key takeaway, one question.
+
+# Next
+
+-   Prep and due items for next week.

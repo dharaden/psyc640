@@ -50,7 +50,7 @@ website:
             text: "Week 1"
       - section: "Labs"
         contents:
-          - href: labs/lab-1.qmd
+          - href: labs/lab-1_data-workflow.qmd
             text: "Lab 1 - Data Intro"
       - href: previous-years.qmd
         text: Previous Years
