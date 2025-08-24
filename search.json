@@ -87,80 +87,6 @@
     ]
   },
   {
-    "objectID": "slides/lec-1.html#scheduleplan",
-    "href": "slides/lec-1.html#scheduleplan",
-    "title": "Week 01: Getting Started!",
-    "section": "Schedule/Plan",
-    "text": "Schedule/Plan\n\n\n\n\n\n\n\n8 - 8:45\nGet oriented. Go over syllabus. Explain course structure. Do all that fun stuff.\n\n\n8:45 - 9ish\nBreak\n\n\n9ish - 10:00\nLive Demo in R\n\n\n10 - 10:50\nGet comfortable with R"
-  },
-  {
-    "objectID": "slides/lec-1.html#when-the-teaching-happens",
-    "href": "slides/lec-1.html#when-the-teaching-happens",
-    "title": "Week 01: Getting Started!",
-    "section": "When the Teaching Happens",
-    "text": "When the Teaching Happens\n💾 Meeting Times: Monday’s 8:00 - 10:50am\n🧑‍🏫 Drop in Office Hours: Wednesdays 9 - 11:00 am\n📧 Best way to contact me? Email me. I will usually respond within 24 hours. If it has been longer, then you can send me a follow-up\n\n\n\n\n\n\nNote\n\n\nI just figured out how to easily put emojis into the presentation. I’m sorry that you will have to witness that."
-  },
-  {
-    "objectID": "slides/lec-1.html#communication",
-    "href": "slides/lec-1.html#communication",
-    "title": "Week 01: Getting Started!",
-    "section": "Communication",
-    "text": "Communication\nPlease ask questions! 🙋‍♀️\nIf you are having trouble, just ask!!\nBe open and honest with me and I will do what I can to support you."
-  },
-  {
-    "objectID": "slides/lec-1.html#who-the-heck-am-i",
-    "href": "slides/lec-1.html#who-the-heck-am-i",
-    "title": "Week 01: Getting Started!",
-    "section": "Who the heck am I? 🤷",
-    "text": "Who the heck am I? 🤷\n\nUndergraduate degree at University of Denver\n\nPsychology & Philosophy\nHated Statistics\n\nGraduate degree at University of Illinois at Urbana-Champaign\n\nAdvisor: Dr. Benjamin Hankin\nClinical/Community PhD 🎓\n\nPre-Doctoral Internship & Postdoc at Rochester Institute of Technology"
-  },
-  {
-    "objectID": "slides/lec-1.html#a-little-more-about-me",
-    "href": "slides/lec-1.html#a-little-more-about-me",
-    "title": "Week 01: Getting Started!",
-    "section": "A little more about me",
-    "text": "A little more about me\n\nPronouns: he/him/his\n2 amazing kids, 2 dogs (Dachshund and Shepherd Mix), 1 wife\nCurrently Reading: Dungeon Crawler Carl\nCurrently Listening: The Lonely Island & Seth Meyers Podcast\nCurrently Watching: Wednesday, Twisted Metal"
-  },
-  {
-    "objectID": "slides/lec-1.html#teaching-philosophy",
-    "href": "slides/lec-1.html#teaching-philosophy",
-    "title": "Week 01: Getting Started!",
-    "section": "Teaching Philosophy",
-    "text": "Teaching Philosophy\n\nI’m here for you and to support you however I can\nMy job is to create a supportive, low-stakes environment where you can crash test ideas and develop new skills\nYour responsibility is to come to class prepared, ready to have fun, take some risks, and actively participate!\n\nAsk questions, share relevant funny stories, seek clarification, question the status quo where applicable\n\nScience is a team sport & failures/mistakes will happen, but it is okay! That’s what science and discovery is!"
-  },
-  {
-    "objectID": "slides/lec-1.html#class-materials",
-    "href": "slides/lec-1.html#class-materials",
-    "title": "Week 01: Getting Started!",
-    "section": "Class Materials",
-    "text": "Class Materials\nI’ve pulled from a lot of different textbooks. Good thing is, they are all free!\n\nIntroduction to Modern Statistics (2e) (Cetinkaya-Rundel & Hardin, 2024)\nLearning Statistics with R (Navarro)\nR for Data Science (2e) (Wickham, Çetinkaya-Rundel, & Grolemund, 2023)\nModern Statistics with R (2e) (Thullin, 2025)\nStatistical Thinking (Poldrack, 2024)\nAn Introduction to Statistical Learning (2e) (James, Witten, Hastie & Tibshirani, 2023)\nData Analysis: A Model Comparison Approach to Regression, ANOVA, and Beyond (3rd ed.) (Judd, McClelland, & Ryan, 2017)"
-  },
-  {
-    "objectID": "slides/lec-1.html#evaluation-grading",
-    "href": "slides/lec-1.html#evaluation-grading",
-    "title": "Week 01: Getting Started!",
-    "section": "Evaluation & Grading",
-    "text": "Evaluation & Grading\n\n\n\nComponent\nWeight\n\n\nWeekly Labs\n30%\n\n\nJournal Entries\n10%\n\n\nParticipation & Engagement\n15%\n\n\nMidterm Project\n20%\n\n\nFinal Project\n25%\n\n\n\nWeekly Labs (30%)\nEach week, you will take what we worked on in class and apply it to a series of questions\nThis will typically be done completely in R, and will require the submission of a .Rmd file, and sometimes the .html file.\nLowest score will be dropped\n\n\n\n\n\n\nImportant\n\n\nEach lab will be due the Sunday @ 11:59pm before the next class\n\n\n\nJournal Entries (10%)\nEach week, you will submit a short, reflective journal entry (at least 200 words)\nYou can write about anything, but would like to at least have some be related to the course. Things like “What was the ‘muddiest’ point for you, and what question would you ask about it?”.\nThey can also take the form of just a general reflection. I want to get to know you and your learning throughout this process.\nThe content of what you write has no impact on your grade. In addition, what you write will be kept confidential.\n\nThe purpose of this “assignment” is to help facilitate communication between you and me. I have found other instructors using this and I would like to be able to develop supportive relationships with students, so I decided to implement this. Other instructors reported that they found that many students were more comfortable discussing questions and concerns in their journal assignments rather than through email.\n\nParticipation & Engagement (15%)\nCome to Class. Work with the material.\nBasically just be here, be present and try. This will be very low stakes and there will be plenty of mistakes by myself and others.\nMidterm Project (20%)\nExamining a dataset that I provide\nYou will be given an initial research idea, but it will be up to you to formulate an appropriate research question\nClean & Visualize the data, then build an appropriate model to answer your question\nThis project assesses your mastery of the first half of the course and will be due before the first class after Fall Break (October 19th @ 11:59pm).\nFinal Project (25%)\nExamine a dataset that you have (or from a list of things that I provide\nThis will be an expanded version of the midterm\nDevelop your own research question, conduct analysis from start to finish\n📋Write up your work - Brief Abstract/methods, Data analytic plan & Results section\nGive a “lightening talk” about your findings on last day of class"
-  },
-  {
-    "objectID": "slides/lec-1.html#course-policies",
-    "href": "slides/lec-1.html#course-policies",
-    "title": "Week 01: Getting Started!",
-    "section": "Course Policies",
-    "text": "Course Policies\n\nAccommodations\nSafety\nAcademic Integrity\n\nAccommodations\nI want you to succeed in this course!\nThere are formal channels that you can go through to get structured accommodations, but I am always available to help however I can\nIf you do have formal accommodations, please reach out to me to see how you would like to have them applied to this course. I know you submit the formal request, but I want to make sure it works for you however we are implementing it\n\n\n\n\n\n\nTip\n\n\nOffice hours are a good way to get support. Can’t make office hours? Send me an email!\n\n\n\nSafety\nI want you to feel safe and supported both in and outside of the class\nI can provide references to services and do all that I can to get you connected\nAcademic Integrity\nYou know we are talking about AI here 🤖\nUse AI as a really nice TA who can help you when I’m not around! But this TA sometimes gets things wrong, or codes in a different way\nI want you to learn and understand these things. If you are going to AI to solve your problems, then I am doing something wrong (or maybe you are…)\nAcademic Integrity\nIf you do use an AI as a supportive tool, you must:\n\nReview, edit, and take ownership of all submitted work.\nAcknowledge that it was used in a brief note at the end of the assignment (e.g., “I used ChatGPT to help me make sense of the error message I was getting.”) as well as being properly cited (RIT Library Citation Infoguide)\n\n\n\n\n\n\n\nImportant\n\n\nIf I suspect AI usage beyond “support” or major portions of an assignment, you will likely receive a 0, and we will have a meeting. Turning in AI work is considered plagiarism. You may have the opportunity to revise at the discretion of the instructor."
-  },
-  {
-    "objectID": "course-overview.html",
-    "href": "course-overview.html",
-    "title": "PSYC 640: Graduate Statistics",
-    "section": "",
-    "text": "This course is the introduction to statistics for graduate students. The goal of the course is to provide a grounding in statistical concepts, methods and application to research. I aim to increase student’s confidence in using these techniques and introducing them to R. Topics will range from including mathematical conceptualizations to practical application with various techniques ranging from descriptive statistics to regression.\n\nWhat it feels like when you read you are going to learn R:\n\n\n\nWhat it is actually like:\n\nIllustration credit: Allison Horst (https://allisonhorst.com/allison-horst)",
-    "crumbs": [
-      "Course information",
-      "Overview"
-    ]
-  },
-  {
     "objectID": "slides/template-seasons.html#quarto",
     "href": "slides/template-seasons.html#quarto",
     "title": "PSYC 640 - Graduate Statistics",
@@ -301,18 +227,100 @@
     "text": "Callout Blocks\n\n\n\n\n\n\nNote\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDanger, callouts will really improve your writing.\n\n\n\n\n\n\n\n\n\nTip With Caption\n\n\nThis is an example of a callout with a caption."
   },
   {
+    "objectID": "course-overview.html",
+    "href": "course-overview.html",
+    "title": "PSYC 640: Graduate Statistics",
+    "section": "",
+    "text": "This course is the introduction to statistics for graduate students. The goal of the course is to provide a grounding in statistical concepts, methods and application to research. I aim to increase student’s confidence in using these techniques and introducing them to R. Topics will range from including mathematical conceptualizations to practical application with various techniques ranging from descriptive statistics to regression.\n\nWhat it feels like when you read you are going to learn R:\n\n\n\nWhat it is actually like:\n\nIllustration credit: Allison Horst (https://allisonhorst.com/allison-horst)",
+    "crumbs": [
+      "Course information",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "slides/lec-1_syl.html#scheduleplan",
+    "href": "slides/lec-1_syl.html#scheduleplan",
+    "title": "Week 01: Getting Started!",
+    "section": "Schedule/Plan",
+    "text": "Schedule/Plan\n\n\n\n\n\n\n\n8 - 8:45\nGet oriented. Go over syllabus. Explain course structure. Do all that fun stuff.\n\n\n8:45 - 9ish\nBreak\n\n\n9ish - 10:00\nLive Demo in R\n\n\n10 - 10:50\nGet comfortable with R"
+  },
+  {
+    "objectID": "slides/lec-1_syl.html#when-the-teaching-happens",
+    "href": "slides/lec-1_syl.html#when-the-teaching-happens",
+    "title": "Week 01: Getting Started!",
+    "section": "When the Teaching Happens",
+    "text": "When the Teaching Happens\n💾 Meeting Times: Monday’s 8:00 - 10:50am\n🧑‍🏫 Drop in Office Hours: Wednesdays 9 - 11:00 am\n📧 Best way to contact me? Email me. I will usually respond within 24 hours. If it has been longer, then you can send me a follow-up\n\n\n\n\n\n\nNote\n\n\nI just figured out how to easily put emojis into the presentation. I’m sorry that you will have to witness that."
+  },
+  {
+    "objectID": "slides/lec-1_syl.html#communication",
+    "href": "slides/lec-1_syl.html#communication",
+    "title": "Week 01: Getting Started!",
+    "section": "Communication",
+    "text": "Communication\nPlease ask questions! 🙋‍♀️\nIf you are having trouble, just ask!!\nBe open and honest with me and I will do what I can to support you."
+  },
+  {
+    "objectID": "slides/lec-1_syl.html#who-the-heck-am-i",
+    "href": "slides/lec-1_syl.html#who-the-heck-am-i",
+    "title": "Week 01: Getting Started!",
+    "section": "Who the heck am I? 🤷",
+    "text": "Who the heck am I? 🤷\n\nUndergraduate degree at University of Denver\n\nPsychology & Philosophy\nHated Statistics\n\nGraduate degree at University of Illinois at Urbana-Champaign\n\nAdvisor: Dr. Benjamin Hankin\nClinical/Community PhD 🎓\n\nPre-Doctoral Internship & Postdoc at Rochester Institute of Technology"
+  },
+  {
+    "objectID": "slides/lec-1_syl.html#a-little-more-about-me",
+    "href": "slides/lec-1_syl.html#a-little-more-about-me",
+    "title": "Week 01: Getting Started!",
+    "section": "A little more about me",
+    "text": "A little more about me\n\nPronouns: he/him/his\n2 amazing kids, 2 dogs (Dachshund and Shepherd Mix), 1 wife\nCurrently Reading: Dungeon Crawler Carl\nCurrently Listening: The Lonely Island & Seth Meyers Podcast\nCurrently Watching: Wednesday, Bluey, Hot Wheels - Let’s Race"
+  },
+  {
+    "objectID": "slides/lec-1_syl.html#teaching-philosophy",
+    "href": "slides/lec-1_syl.html#teaching-philosophy",
+    "title": "Week 01: Getting Started!",
+    "section": "Teaching Philosophy",
+    "text": "Teaching Philosophy\n\nI’m here for you and to support you however I can\nMy job is to create a supportive, low-stakes environment where you can crash test ideas and develop new skills\nYour responsibility is to come to class prepared, ready to have fun, take some risks, and actively participate!\n\nAsk questions, share relevant funny stories, seek clarification, question the status quo where applicable\n\nScience is a team sport & failures/mistakes will happen, but it is okay! That’s what science and discovery is!"
+  },
+  {
+    "objectID": "slides/lec-1_syl.html#class-materials",
+    "href": "slides/lec-1_syl.html#class-materials",
+    "title": "Week 01: Getting Started!",
+    "section": "Class Materials",
+    "text": "Class Materials\nI’ve pulled from a lot of different textbooks. Good thing is, they are all free!\n\nIntroduction to Modern Statistics (2e) (Cetinkaya-Rundel & Hardin, 2024)\nLearning Statistics with R (Navarro)\nR for Data Science (2e) (Wickham, Çetinkaya-Rundel, & Grolemund, 2023)\nModern Statistics with R (2e) (Thullin, 2025)\nStatistical Thinking (Poldrack, 2024)\nAn Introduction to Statistical Learning (2e) (James, Witten, Hastie & Tibshirani, 2023)\nData Analysis: A Model Comparison Approach to Regression, ANOVA, and Beyond (3rd ed.) (Judd, McClelland, & Ryan, 2017)"
+  },
+  {
+    "objectID": "slides/lec-1_syl.html#evaluation-grading",
+    "href": "slides/lec-1_syl.html#evaluation-grading",
+    "title": "Week 01: Getting Started!",
+    "section": "Evaluation & Grading",
+    "text": "Evaluation & Grading\n\n\n\nComponent\nWeight\n\n\nWeekly Labs\n30%\n\n\nJournal Entries\n10%\n\n\nParticipation & Engagement\n15%\n\n\nMidterm Project\n20%\n\n\nFinal Project\n25%"
+  },
+  {
+    "objectID": "slides/lec-1_syl.html#course-policies",
+    "href": "slides/lec-1_syl.html#course-policies",
+    "title": "Week 01: Getting Started!",
+    "section": "Course Policies",
+    "text": "Course Policies\n\nAccommodations\nSafety\nAcademic Integrity"
+  },
+  {
     "objectID": "labs/lab-1_data-workflow.html",
     "href": "labs/lab-1_data-workflow.html",
     "title": "Lab 1: Foundations of a Data Workflow",
     "section": "",
-    "text": "Welcome to your first lab! The goal of this assignment is to move beyond basic syntax and begin practicing a reproducible data analysis workflow.\nPlease complete the exercises below. Create a new .Rmd file and include the following at the top:\n---\ntitle: \"Lab 1: Foundations of a Data Workflow\"\nauthor: \"Your Name Here\"\ndate: \"`r Sys.Date()`\"\noutput: html_document\neditor_options: \n  chunk_output_type: console\n  markdown: \n    wrap: 72\n---\nYou should then be able to copy/paste everything below into your document.\nWhen you are finished, click the Knit button to turn your work into an HTML document. You will submit both this .Rmd file and the final .html file.\n\n\n\nA major strength of R is its ecosystem of packages that add new functionality. We will use the tidyverse package in almost every analysis we do. The ggplot2 package, which is part of the tidyverse, contains a dataset called msleep about mammal sleep patterns.\n# Task 1: Load the tidyverse package.\n# Write your code here:\n\n\n# Task 2: The `msleep` dataset is available after loading the tidyverse.\n# Use the `glimpse()` function to get a quick overview of the `msleep` dataset.\n# Write your code here:\n\n\n# Task 3: Now use the `summary()` function on the `msleep` dataset.\n# Write your code here:\n❓Question 1: Based on the output of glimpse(), how many rows (observations) and columns (variables) are in the msleep dataset?\nYour Answer: [Type your answer here]\n❓Question 2: What is one key difference between the information provided by glimpse() and the information provided by summary() for a variable like sleep_total?\nYour Answer: [Type your answer here]\n\n\n\n\nLet’s say we are only interested in herbivores. We can use functions from the dplyr package (part of the tidyverse) to create a new, sorted dataset.\n# Task 1: Create a new object called `herbivores` that contains only the animals\n# from the `msleep` dataset where the `vore` column is equal to \"herbi\".\n# Hint: The syntax for filtering is: new_object &lt;- old_object %&gt;% filter(column_name == \"value\")\n# Write your code here:\n\n\n# Task 2: Now, sort this new `herbivores` dataset by total sleep time, from highest to lowest.\n# You can overwrite the `herbivores` object with the newly sorted version.\n# Hint: Use the `arrange()` function with `desc()` for descending order.\n# The syntax is: object &lt;- object %&gt;% arrange(desc(column_to_sort_by))\n# Write your code here:\n\n\n# Now, print the new, sorted `herbivores` object to see the result.\n❓Question: After sorting, which herbivore sleeps the most? How many hours does it sleep?\nYour Answer: [Type your answer here]\n\n\n\n\nData visualization is a critical part of understanding data. Let’s create a scatterplot to see if there is a relationship between how long a herbivore sleeps and how much time it spends dreaming.\n# Task: Create a scatterplot using ggplot().\n# We want to plot the `sleep_rem` (dreaming sleep) on the y-axis and `sleep_total` on the x-axis,\n# using only our `herbivores` dataset.\n# Fill in the blanks in the code below.\n\nggplot(data = ________, aes(x = _______, y = _________)) +\n  geom_????? +\n  labs(title = \"Total Sleep vs. REM Sleep in Herbivores\",\n       x = \"Total Sleep (hours)\",\n       y = \"REM Sleep (hours)\")\n❓Question 1: Look at the plot you created. In one or two sentences, describe the relationship you see between total sleep and REM sleep for these animals. Is the relationship positive, negative, or is there no clear relationship?\nYour Answer: [Type your answer here]\n❓Question 2: Are there any animals that seem unusual or stand out from the general pattern? Briefly describe one.\nYour Answer: [Type your answer here]\n\n\n\n\nOften, we want to calculate a single value to summarize our data. The summarise() function is perfect for this.\n# Task: Calculate the average (mean) total sleep time for ALL mammals in the original `msleep` dataset.\n# Hint: The syntax is: dataset %&gt;% summarise(new_variable_name = mean(column_name, na.rm = TRUE))\n# The `na.rm = TRUE` part is important because it tells R to ignore any missing values.\n# Write your code here:\n❓Question: What is the mean total sleep time for all mammals in the dataset?\nYour Answer: [Type your answer here]\n\nEnd of Lab 1. Don’t forget to Knit! 🧶"
+    "text": "Welcome to your first lab! The goal of this assignment is to move beyond basic syntax and begin practicing a reproducible data analysis workflow.\nPlease complete the exercises below. Create a new .Rmd file and include the following at the top:\n---\ntitle: \"Lab 1: Foundations of a Data Workflow\"\nauthor: \"Your Name Here\"\ndate: \"`r Sys.Date()`\"\noutput: html_document\neditor_options: \n  chunk_output_type: console\n  markdown: \n    wrap: 72\n---\nYou should then be able to copy/paste everything below into your document.\nWhen you are finished, click the Knit button to turn your work into an HTML document. You will submit both this .Rmd file and the final .html file.\n\n\n\nA major strength of R is its ecosystem of packages that add new functionality. We will use the tidyverse package in almost every analysis we do. The ggplot2 package, which is part of the tidyverse, contains a dataset called msleep about mammal sleep patterns.\n# Task 1: Load the tidyverse package.\n# Write your code here:\n\n\n# Task 2: The `msleep` dataset is available after loading the tidyverse.\n# Use the `glimpse()` function to get a quick overview of the `msleep` dataset.\n# Write your code here:\n\n\n# Task 3: Now use the `summary()` function on the `msleep` dataset.\n# Write your code here:\n❓Question 1: Based on the output of glimpse(), how many rows (observations) and columns (variables) are in the msleep dataset?\nYour Answer: [Type your answer here]\n❓Question 2: What is one key difference between the information provided by glimpse() and the information provided by summary() for a variable like sleep_total?\nYour Answer: [Type your answer here]\n\n\n\n\nLet’s say we are only interested in herbivores. We can use functions from the dplyr package (part of the tidyverse) to create a new, sorted dataset.\n# Task 1: Create a new object called `herbivores` that contains only the animals\n# from the `msleep` dataset where the `vore` column is equal to \"herbi\".\n# Hint: The syntax for filtering is: new_object &lt;- old_object %&gt;% filter(column_name == \"value\")\n# Write your code here:\n\n\n# Task 2: Now, sort this new `herbivores` dataset by total sleep time, from highest to lowest.\n# You can overwrite the `herbivores` object with the newly sorted version.\n# Hint: Use the `arrange()` function with `desc()` for descending order.\n# The syntax is: object &lt;- object %&gt;% arrange(desc(column_to_sort_by))\n# Write your code here:\n\n\n# Now, print the new, sorted `herbivores` object to see the result.\n❓Question: After sorting, which herbivore sleeps the most? How many hours does it sleep?\nYour Answer: [Type your answer here]\n\n\n\n\nData visualization is a critical part of understanding data. Let’s create a scatterplot to see if there is a relationship between how long a herbivore sleeps and how much time it spends dreaming.\n# Task: Create a scatterplot using ggplot().\n# We want to plot the `sleep_rem` (dreaming sleep) on the y-axis and `sleep_total` on the x-axis,\n# using only our `herbivores` dataset.\n# Fill in the blanks in the code below.\n\nggplot(data = ________, aes(x = _______, y = _________)) +\n  geom_????? +\n  labs(title = \"Total Sleep vs. REM Sleep in Herbivores\",\n       x = \"Total Sleep (hours)\",\n       y = \"REM Sleep (hours)\")\n❓Question 1: Look at the plot you created. In one or two sentences, describe the relationship you see between total sleep and REM sleep for these animals. Is the relationship positive, negative, or is there no clear relationship?\nYour Answer: [Type your answer here]\n❓Question 2: Are there any animals that seem unusual or stand out from the general pattern? Briefly describe one.\nYour Answer: [Type your answer here]\n\n\n\n\nOften, we want to calculate a single value to summarize our data. The summarise() function is perfect for this.\n# Task: Calculate the average (mean) total sleep time for ALL mammals in the original `msleep` dataset.\n# Hint: The syntax is: dataset %&gt;% summarise(new_variable_name = mean(column_name, na.rm = TRUE))\n# The `na.rm = TRUE` part is important because it tells R to ignore any missing values.\n# Write your code here:\n❓Question: What is the mean total sleep time for all mammals in the dataset?\nYour Answer: [Type your answer here]\n\nEnd of Lab 1. Don’t forget to Knit! 🧶",
+    "crumbs": [
+      "Labs",
+      "Lab 1 - Data Intro"
+    ]
   },
   {
     "objectID": "labs/lab-1_data-workflow.html#instructions",
     "href": "labs/lab-1_data-workflow.html#instructions",
     "title": "Lab 1: Foundations of a Data Workflow",
     "section": "",
-    "text": "Welcome to your first lab! The goal of this assignment is to move beyond basic syntax and begin practicing a reproducible data analysis workflow.\nPlease complete the exercises below. Create a new .Rmd file and include the following at the top:\n---\ntitle: \"Lab 1: Foundations of a Data Workflow\"\nauthor: \"Your Name Here\"\ndate: \"`r Sys.Date()`\"\noutput: html_document\neditor_options: \n  chunk_output_type: console\n  markdown: \n    wrap: 72\n---\nYou should then be able to copy/paste everything below into your document.\nWhen you are finished, click the Knit button to turn your work into an HTML document. You will submit both this .Rmd file and the final .html file.\n\n\n\nA major strength of R is its ecosystem of packages that add new functionality. We will use the tidyverse package in almost every analysis we do. The ggplot2 package, which is part of the tidyverse, contains a dataset called msleep about mammal sleep patterns.\n# Task 1: Load the tidyverse package.\n# Write your code here:\n\n\n# Task 2: The `msleep` dataset is available after loading the tidyverse.\n# Use the `glimpse()` function to get a quick overview of the `msleep` dataset.\n# Write your code here:\n\n\n# Task 3: Now use the `summary()` function on the `msleep` dataset.\n# Write your code here:\n❓Question 1: Based on the output of glimpse(), how many rows (observations) and columns (variables) are in the msleep dataset?\nYour Answer: [Type your answer here]\n❓Question 2: What is one key difference between the information provided by glimpse() and the information provided by summary() for a variable like sleep_total?\nYour Answer: [Type your answer here]\n\n\n\n\nLet’s say we are only interested in herbivores. We can use functions from the dplyr package (part of the tidyverse) to create a new, sorted dataset.\n# Task 1: Create a new object called `herbivores` that contains only the animals\n# from the `msleep` dataset where the `vore` column is equal to \"herbi\".\n# Hint: The syntax for filtering is: new_object &lt;- old_object %&gt;% filter(column_name == \"value\")\n# Write your code here:\n\n\n# Task 2: Now, sort this new `herbivores` dataset by total sleep time, from highest to lowest.\n# You can overwrite the `herbivores` object with the newly sorted version.\n# Hint: Use the `arrange()` function with `desc()` for descending order.\n# The syntax is: object &lt;- object %&gt;% arrange(desc(column_to_sort_by))\n# Write your code here:\n\n\n# Now, print the new, sorted `herbivores` object to see the result.\n❓Question: After sorting, which herbivore sleeps the most? How many hours does it sleep?\nYour Answer: [Type your answer here]\n\n\n\n\nData visualization is a critical part of understanding data. Let’s create a scatterplot to see if there is a relationship between how long a herbivore sleeps and how much time it spends dreaming.\n# Task: Create a scatterplot using ggplot().\n# We want to plot the `sleep_rem` (dreaming sleep) on the y-axis and `sleep_total` on the x-axis,\n# using only our `herbivores` dataset.\n# Fill in the blanks in the code below.\n\nggplot(data = ________, aes(x = _______, y = _________)) +\n  geom_????? +\n  labs(title = \"Total Sleep vs. REM Sleep in Herbivores\",\n       x = \"Total Sleep (hours)\",\n       y = \"REM Sleep (hours)\")\n❓Question 1: Look at the plot you created. In one or two sentences, describe the relationship you see between total sleep and REM sleep for these animals. Is the relationship positive, negative, or is there no clear relationship?\nYour Answer: [Type your answer here]\n❓Question 2: Are there any animals that seem unusual or stand out from the general pattern? Briefly describe one.\nYour Answer: [Type your answer here]\n\n\n\n\nOften, we want to calculate a single value to summarize our data. The summarise() function is perfect for this.\n# Task: Calculate the average (mean) total sleep time for ALL mammals in the original `msleep` dataset.\n# Hint: The syntax is: dataset %&gt;% summarise(new_variable_name = mean(column_name, na.rm = TRUE))\n# The `na.rm = TRUE` part is important because it tells R to ignore any missing values.\n# Write your code here:\n❓Question: What is the mean total sleep time for all mammals in the dataset?\nYour Answer: [Type your answer here]\n\nEnd of Lab 1. Don’t forget to Knit! 🧶"
+    "text": "Welcome to your first lab! The goal of this assignment is to move beyond basic syntax and begin practicing a reproducible data analysis workflow.\nPlease complete the exercises below. Create a new .Rmd file and include the following at the top:\n---\ntitle: \"Lab 1: Foundations of a Data Workflow\"\nauthor: \"Your Name Here\"\ndate: \"`r Sys.Date()`\"\noutput: html_document\neditor_options: \n  chunk_output_type: console\n  markdown: \n    wrap: 72\n---\nYou should then be able to copy/paste everything below into your document.\nWhen you are finished, click the Knit button to turn your work into an HTML document. You will submit both this .Rmd file and the final .html file.\n\n\n\nA major strength of R is its ecosystem of packages that add new functionality. We will use the tidyverse package in almost every analysis we do. The ggplot2 package, which is part of the tidyverse, contains a dataset called msleep about mammal sleep patterns.\n# Task 1: Load the tidyverse package.\n# Write your code here:\n\n\n# Task 2: The `msleep` dataset is available after loading the tidyverse.\n# Use the `glimpse()` function to get a quick overview of the `msleep` dataset.\n# Write your code here:\n\n\n# Task 3: Now use the `summary()` function on the `msleep` dataset.\n# Write your code here:\n❓Question 1: Based on the output of glimpse(), how many rows (observations) and columns (variables) are in the msleep dataset?\nYour Answer: [Type your answer here]\n❓Question 2: What is one key difference between the information provided by glimpse() and the information provided by summary() for a variable like sleep_total?\nYour Answer: [Type your answer here]\n\n\n\n\nLet’s say we are only interested in herbivores. We can use functions from the dplyr package (part of the tidyverse) to create a new, sorted dataset.\n# Task 1: Create a new object called `herbivores` that contains only the animals\n# from the `msleep` dataset where the `vore` column is equal to \"herbi\".\n# Hint: The syntax for filtering is: new_object &lt;- old_object %&gt;% filter(column_name == \"value\")\n# Write your code here:\n\n\n# Task 2: Now, sort this new `herbivores` dataset by total sleep time, from highest to lowest.\n# You can overwrite the `herbivores` object with the newly sorted version.\n# Hint: Use the `arrange()` function with `desc()` for descending order.\n# The syntax is: object &lt;- object %&gt;% arrange(desc(column_to_sort_by))\n# Write your code here:\n\n\n# Now, print the new, sorted `herbivores` object to see the result.\n❓Question: After sorting, which herbivore sleeps the most? How many hours does it sleep?\nYour Answer: [Type your answer here]\n\n\n\n\nData visualization is a critical part of understanding data. Let’s create a scatterplot to see if there is a relationship between how long a herbivore sleeps and how much time it spends dreaming.\n# Task: Create a scatterplot using ggplot().\n# We want to plot the `sleep_rem` (dreaming sleep) on the y-axis and `sleep_total` on the x-axis,\n# using only our `herbivores` dataset.\n# Fill in the blanks in the code below.\n\nggplot(data = ________, aes(x = _______, y = _________)) +\n  geom_????? +\n  labs(title = \"Total Sleep vs. REM Sleep in Herbivores\",\n       x = \"Total Sleep (hours)\",\n       y = \"REM Sleep (hours)\")\n❓Question 1: Look at the plot you created. In one or two sentences, describe the relationship you see between total sleep and REM sleep for these animals. Is the relationship positive, negative, or is there no clear relationship?\nYour Answer: [Type your answer here]\n❓Question 2: Are there any animals that seem unusual or stand out from the general pattern? Briefly describe one.\nYour Answer: [Type your answer here]\n\n\n\n\nOften, we want to calculate a single value to summarize our data. The summarise() function is perfect for this.\n# Task: Calculate the average (mean) total sleep time for ALL mammals in the original `msleep` dataset.\n# Hint: The syntax is: dataset %&gt;% summarise(new_variable_name = mean(column_name, na.rm = TRUE))\n# The `na.rm = TRUE` part is important because it tells R to ignore any missing values.\n# Write your code here:\n❓Question: What is the mean total sleep time for all mammals in the dataset?\nYour Answer: [Type your answer here]\n\nEnd of Lab 1. Don’t forget to Knit! 🧶",
+    "crumbs": [
+      "Labs",
+      "Lab 1 - Data Intro"
+    ]
   },
   {
     "objectID": "index.html",
@@ -330,7 +338,7 @@
     "href": "weeks/week-1.html",
     "title": "Week 1",
     "section": "",
-    "text": "Welcome to the course! I am very excited to get to work with you this semester on our journey into statistics. During our first class, we will review the syllabus and the plan for the course, followed by walking through the structure of each of the classes.\nWe’ll then dive right into our primary tool, R. This session will go over installing R and RStudio, navigating the interface, understanding R projects, and learning the foundational syntax of the R language and the tidyverse, including data types and basic functions.\n\n\n\nInstall R and R-Studio (https://posit.co/download/rstudio-desktop/)\nBring Laptop\n\n\n\n\n💻 Getting Started\n\n\n\n\n\n\n📋Lab 1 - Foundations of a Data Workflow\n📖Read Chapter 1 & 2 - ST\n📖Read Chapter 2 - MSR\n\n\nBack to course schedule ⏎",
+    "text": "Welcome to the course! I am very excited to get to work with you this semester on our journey into statistics. During our first class, we will review the syllabus and the plan for the course, followed by walking through the structure of each of the classes.\nWe’ll then dive right into our primary tool, R. This session will go over installing R and RStudio, navigating the interface, understanding R projects, and learning the foundational syntax of the R language and the tidyverse, including data types and basic functions.\n\n\n\nInstall R and R-Studio (https://posit.co/download/rstudio-desktop/)\nBring Laptop\n\n\n\n\n💻 Getting Started - Syllabus\n\n\n\n\n\n\n📋Lab 1 - Foundations of a Data Workflow\n📖Read Chapter 1 & 2 - ST\n📖Read Chapter 2 - MSR\n\n\nBack to course schedule ⏎",
     "crumbs": [
       "Weekly Materials",
       "Week 1"
@@ -352,7 +360,7 @@
     "href": "weeks/week-1.html#slides",
     "title": "Week 1",
     "section": "",
-    "text": "💻 Getting Started",
+    "text": "💻 Getting Started - Syllabus",
     "crumbs": [
       "Weekly Materials",
       "Week 1"
