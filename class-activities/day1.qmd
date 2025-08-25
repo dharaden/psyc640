@@ -1,0 +1,104 @@
+---
+title: "Day 1 Exercise - Getting Comfy with R"
+editor: visual
+---
+
+### **In-Class Activity: Your First R Session**
+
+**Goal**: To become familiar with the RStudio interface and perform a basic data exploration workflow.
+
+### Create a new Markdown Document
+
+1.  Go to `File > New File > R Markdown`
+
+2.  Provide the title "Day 1" and input your name as the author
+
+3.  A script will open in the **Source** pane. Remove unnecessary code.
+
+4.  Go to `File > Save` and name it `introduction.Rmd`. Make sure this saves in the same folder as all of your other stuff. Stay Organized!
+
+    1.  I'm not going to tell you how to organize your folders, but I will give a suggestion. Have 1 folder for the whole class. This will have the Project that we created. Inside there, have a folder for "Class Activities". This is where you can save this file. Then, have other folders for the labs and what not.
+
+### Starting the document
+
+In the text field of the markdown file, introduce yourself! Answer these questions below:
+
+> -   Name:
+>
+> -   Pronouns
+>
+> -   Year in school
+>
+> -   College Major
+>
+> -   Comfort with R (1-10 with 10 being "Expert")
+>
+> -   Overall feelings toward Statistics
+>
+> -   Anything else you want to share
+
+### **Your First "Analysis"**
+
+1.  Create a Code Chunk
+
+2.  Load the `tidyverse` library
+
+3.  Create the object `datawars` and assign dataset called `starwars` to it (hint: `data <- cars`)
+
+4.  Use `View()`, `head()` and `glimpse()` to look at `datawars`
+
+5.  In the text below, answer these questions:
+
+    1.  What do each of these do?
+
+    2.  Which do you like more?
+
+6.  Create another code chunk and use `summary()` to get descriptives of all variables in the dataset.
+
+    1.  Look at the output of your `summary()` command. For the `mass` and `height` variables, you'll see a value for `NA's`. In your own words, what do you think `NA` means in this context?
+
+#### Visualize your data
+
+Now we want to investigate the relationship between `mass` and `height` in this dataset.
+
+-   Create a scatterplot using `ggplot()`.
+
+-   The plot should show `height` on the x-axis and `mass` on the y-axis.
+
+-   Add some labels to make your plot clear and professional.
+
+    -   **Hint:** Use the code below as a template and fill in the blanks.
+
+``` r
+ggplot(data = __, aes(x = __, y = __)) +
+  geom_point() +
+  labs(title = "__",
+       x = "__",
+       y = "__")
+```
+
+-   Look at your plot. Do you notice any characters that seem unusually heavy for their height? Briefly describe one.
+
+#### Wrangle your Data
+
+Since we have some outliers that seem to be related to non-human species, let's just look at Humans.
+
+1.  Create a new object called `rebels`.
+
+2.  This new object should contain only the characters from the `starwars` dataset where the `species` is "Human".
+
+    -   **Hint:** Use the `filter()` function. The syntax is `new_object <- old_object %>% filter(column_name == "value")`. Remember that "Human" needs to be in quotes.
+
+3.  Print your new `rebels` object to the console to make sure your filter worked correctly. Once confirmed, calculate the average (hint: use `mean()`) for the height and weight of the `rebels`.
+
+-   How many rows are in your new `rebels` dataset?
+
+-   What is the average height and weight?
+
+4.  Create another scatterplot with your new dataset. Copy and update the code we used previously.
+
+### Closing out the Document
+
+What is 1 thing you are looking forward to this semester and 1 thing that you are worried about (can be in or outside of this class)?
+
+***End of the document. Remember to Knit and upload to myCourses.***

@@ -51,9 +51,11 @@ website:
       - section: "Labs"
         contents:
           - href: labs/lab-1_data-workflow.qmd
-            text: "Lab 1 - Data Intro"
+            text: "Lab 1 - Data Intro" 
+      - href: resources.qmd
+        text: "Resources" 
       - href: previous-years.qmd
-        text: Previous Years
+        text: "Previous Years"
 
 format:
   html:

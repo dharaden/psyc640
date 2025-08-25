@@ -1,0 +1,19 @@
+{
+  "hash": "d434ef7d8973fad33b287160b9adae5c",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week XX: TITLE\"\nsubtitle: \"Date: MM-DD\"\nfooter:  \"[course-website](https://dharaden.github.io/psyc640/)\"\nlogo: \"images/640_hex.png\"\nformat: \n  revealjs:\n    theme: slides.scss\n    multiplex: false\n    transition: fade\n    slide-number: true\n    incremental: true \n    chalkboard: true\n    overview: true\n    code-line-numbers: true\neditor: visual\nexecute:\n  freeze: auto\n---\n\n\n\n# Today\n\n-   Goals\n-   Why it matters (results-section lens)\n-   What you’ll be able to do by the end\n\n# Warm-up\n\n-   2-minute think-pair-share: interpret this figure/table snippet.\n\n# Concepts (brief)\n\n-   Keep math minimal; emphasize assumptions, use-cases, effect sizes.\n\n# Live demo (R)\n\n\n::: {.cell layout-align=\"center\"}\n\n:::\n\n\n# Guided practice\n\n-   Students follow along: 3–5 tasks with immediate feedback.\n\n# Interpretation\n\n-   Translate model output to 2–3 sentences as in a results section.\n\n# Exit ticket\n\n-   One key takeaway, one question.\n\n# Next\n\n-   Prep and due items for next week.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-after-body": [
+        "\n<script>\n  // htmlwidgets need to know to resize themselves when slides are shown/hidden.\n  // Fire the \"slideenter\" event (handled by htmlwidgets.js) when the current\n  // slide changes (different for each slide format).\n  (function () {\n    // dispatch for htmlwidgets\n    function fireSlideEnter() {\n      const event = window.document.createEvent(\"Event\");\n      event.initEvent(\"slideenter\", true, true);\n      window.document.dispatchEvent(event);\n    }\n\n    function fireSlideChanged(previousSlide, currentSlide) {\n      fireSlideEnter();\n\n      // dispatch for shiny\n      if (window.jQuery) {\n        if (previousSlide) {\n          window.jQuery(previousSlide).trigger(\"hidden\");\n        }\n        if (currentSlide) {\n          window.jQuery(currentSlide).trigger(\"shown\");\n        }\n      }\n    }\n\n    // hookup for slidy\n    if (window.w3c_slidy) {\n      window.w3c_slidy.add_observer(function (slide_num) {\n        // slide_num starts at position 1\n        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);\n      });\n    }\n\n  })();\n</script>\n\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
