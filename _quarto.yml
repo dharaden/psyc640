@@ -58,7 +58,7 @@ website:
         contents:
           - href: labs/lab-1_data-workflow.qmd
             text: "Lab 1 - Data Intro" 
-          - href: labs/lab-1_data-wrangling.qmd
+          - href: labs/lab-2_data-wrangling.qmd
             text: "Lab 2 - Wrangling Intro" 
       - href: resources.qmd
         text: "Resources" 
