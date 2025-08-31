@@ -48,10 +48,18 @@ website:
         contents:
           - href: weeks/week-1.qmd
             text: "Week 1"
+          - href: weeks/week-2.qmd
+            text: "Week 2"
+          - href: weeks/week-3.qmd
+            text: "Week 3"
+          - href: weeks/week-4.qmd
+            text: "Week 4"
       - section: "Labs"
         contents:
           - href: labs/lab-1_data-workflow.qmd
             text: "Lab 1 - Data Intro" 
+          - href: labs/lab-2_data-wrangling.qmd
+            text: "Lab 2 - Wrangling Intro" 
       - href: resources.qmd
         text: "Resources" 
       - href: previous-years.qmd
