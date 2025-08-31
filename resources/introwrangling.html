@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.34">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Intro to Data Wrangling – PSYC 640 - Graduate Statistics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-befe23ebd2f54d8af2c8a89d1a1611f1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-d12c82b49163338658d6db673d9f30b3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-2938a8597f5624a231ad1722bf243c43.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-d12c82b49163338658d6db673d9f30b3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<meta property="og:title" content="Intro to Data Wrangling – PSYC 640 - Graduate Statistics">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://dharaden.github.io/psyc640/resources/images/clipboard-1232490217.png">
+<meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
+<meta property="og:image:height" content="1458">
+<meta property="og:image:width" content="1207">
+</head>
+
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Intro to Data Wrangling</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/640_hex.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/dharaden/psyc640" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://mycourses.rit.edu/d2l/login" title="myCourses" class="quarto-navigation-tool px-1" aria-label="myCourses"><i class="bi bi-chalkboard"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Course information</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Weekly Materials</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 4</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Labs</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-1_data-workflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 1 - Data Intro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-2_data-wrangling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 2 - Wrangling Intro</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Resources</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../previous-years.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Previous Years</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#goal" id="toc-goal" class="nav-link active" data-scroll-target="#goal">Goal</a></li>
+  <li><a href="#recap-directory---wheres-my-file" id="toc-recap-directory---wheres-my-file" class="nav-link" data-scroll-target="#recap-directory---wheres-my-file">Recap: Directory - Where’s my file??</a>
+  <ul class="collapse">
+  <li><a href="#r-project" id="toc-r-project" class="nav-link" data-scroll-target="#r-project">R Project</a></li>
+  </ul></li>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a>
+  <ul class="collapse">
+  <li><a href="#create-a-reproducible-lab-report" id="toc-create-a-reproducible-lab-report" class="nav-link" data-scroll-target="#create-a-reproducible-lab-report">Create a reproducible lab report</a></li>
+  <li><a href="#put-the-data-where-it-needs-to-be" id="toc-put-the-data-where-it-needs-to-be" class="nav-link" data-scroll-target="#put-the-data-where-it-needs-to-be">Put the Data where it needs to be</a></li>
+  <li><a href="#load-the-libraries" id="toc-load-the-libraries" class="nav-link" data-scroll-target="#load-the-libraries">Load the Libraries</a></li>
+  <li><a href="#import-the-data" id="toc-import-the-data" class="nav-link" data-scroll-target="#import-the-data">Import the data</a></li>
+  </ul></li>
+  <li><a href="#visualizing-distributions" id="toc-visualizing-distributions" class="nav-link" data-scroll-target="#visualizing-distributions">Visualizing Distributions</a>
+  <ul class="collapse">
+  <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram">Histogram</a></li>
+  <li><a href="#boxplot" id="toc-boxplot" class="nav-link" data-scroll-target="#boxplot">Boxplot</a></li>
+  <li><a href="#looking-into-the-future" id="toc-looking-into-the-future" class="nav-link" data-scroll-target="#looking-into-the-future">Looking into the future…</a></li>
+  </ul></li>
+  <li><a href="#basic-descriptives" id="toc-basic-descriptives" class="nav-link" data-scroll-target="#basic-descriptives">Basic Descriptives</a>
+  <ul class="collapse">
+  <li><a href="#measures-of-central-tendency" id="toc-measures-of-central-tendency" class="nav-link" data-scroll-target="#measures-of-central-tendency">Measures of Central Tendency</a>
+  <ul class="collapse">
+  <li><a href="#mean" id="toc-mean" class="nav-link" data-scroll-target="#mean">Mean</a></li>
+  <li><a href="#median" id="toc-median" class="nav-link" data-scroll-target="#median">Median</a></li>
+  </ul></li>
+  <li><a href="#measures-of-variability" id="toc-measures-of-variability" class="nav-link" data-scroll-target="#measures-of-variability">Measures of Variability</a>
+  <ul class="collapse">
+  <li><a href="#range" id="toc-range" class="nav-link" data-scroll-target="#range">Range</a></li>
+  <li><a href="#variance-and-standard-deviation" id="toc-variance-and-standard-deviation" class="nav-link" data-scroll-target="#variance-and-standard-deviation">Variance and Standard Deviation</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#summarizing-data" id="toc-summarizing-data" class="nav-link" data-scroll-target="#summarizing-data">Summarizing Data</a>
+  <ul class="collapse">
+  <li><a href="#describe" id="toc-describe" class="nav-link" data-scroll-target="#describe">describe()</a></li>
+  </ul></li>
+  <li><a href="#intro-to-the-tidyverse" id="toc-intro-to-the-tidyverse" class="nav-link" data-scroll-target="#intro-to-the-tidyverse">Intro to the tidyverse</a>
+  <ul class="collapse">
+  <li><a href="#what-is-data-wrangling" id="toc-what-is-data-wrangling" class="nav-link" data-scroll-target="#what-is-data-wrangling">What is data wrangling?</a></li>
+  <li><a href="#what-is-tidy-data" id="toc-what-is-tidy-data" class="nav-link" data-scroll-target="#what-is-tidy-data">What is “tidy data”?</a></li>
+  </ul></li>
+  <li><a href="#todays-focus-dplyr" id="toc-todays-focus-dplyr" class="nav-link" data-scroll-target="#todays-focus-dplyr">Today’s focus: <strong>{dplyr}</strong></a>
+  <ul class="collapse">
+  <li><a href="#pipes" id="toc-pipes" class="nav-link" data-scroll-target="#pipes">Pipes</a>
+  <ul class="collapse">
+  <li><a href="#why-use-pipes" id="toc-why-use-pipes" class="nav-link" data-scroll-target="#why-use-pipes">Why use pipes?</a></li>
+  </ul></li>
+  <li><a href="#manipulating-observations" id="toc-manipulating-observations" class="nav-link" data-scroll-target="#manipulating-observations">Manipulating Observations</a>
+  <ul class="collapse">
+  <li><a href="#extract-rows-with-filter" id="toc-extract-rows-with-filter" class="nav-link" data-scroll-target="#extract-rows-with-filter">Extract rows with <strong>filter()</strong></a></li>
+  <li><a href="#logical-operators" id="toc-logical-operators" class="nav-link" data-scroll-target="#logical-operators">Logical Operators</a></li>
+  <li><a href="#try-it-out-yourself" id="toc-try-it-out-yourself" class="nav-link" data-scroll-target="#try-it-out-yourself">Try it out yourself:&nbsp;</a></li>
+  </ul></li>
+  <li><a href="#manipulating-variables" id="toc-manipulating-variables" class="nav-link" data-scroll-target="#manipulating-variables">Manipulating Variables</a>
+  <ul class="collapse">
+  <li><a href="#extract-columns-with-select" id="toc-extract-columns-with-select" class="nav-link" data-scroll-target="#extract-columns-with-select">Extract columns with <strong>select()</strong></a></li>
+  <li><a href="#helper-functions-for-select" id="toc-helper-functions-for-select" class="nav-link" data-scroll-target="#helper-functions-for-select"><strong>Helper functions for select()</strong></a></li>
+  <li><a href="#make-new-variables-with-mutate" id="toc-make-new-variables-with-mutate" class="nav-link" data-scroll-target="#make-new-variables-with-mutate">Make new variables with <strong>mutate()</strong></a></li>
+  </ul></li>
+  <li><a href="#epworth-sleepiness-scale-30-points" id="toc-epworth-sleepiness-scale-30-points" class="nav-link" data-scroll-target="#epworth-sleepiness-scale-30-points">Epworth Sleepiness Scale (30 points)</a></li>
+  <li><a href="#are-folks-paying-attention-30-points" id="toc-are-folks-paying-attention-30-points" class="nav-link" data-scroll-target="#are-folks-paying-attention-30-points">Are folks paying attention? (30 points)</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/resources/introwrangling.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Intro to Data Wrangling</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Special thanks to Sara J. Weston and the work done with their class at Oregon.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is currently under development and is being adapted from a previous assignment. To view things in it’s entirety, navigate to <a href="https://docs.google.com/document/d/188JrtiKyjGGu57rKtEyzPF7EhKeRwqBkB7lqhQw4daQ/edit?usp=sharing" class="uri">https://docs.google.com/document/d/188JrtiKyjGGu57rKtEyzPF7EhKeRwqBkB7lqhQw4daQ/edit?usp=sharing</a></p>
+</div>
+</div>
+<section id="goal" class="level1">
+<h1>Goal</h1>
+<p>The focus of this section is to introduce you to some simple tools that will allow you to calculate, visualize and manipulate the data in R. We will use some of the skills we worked through during our class on introducing R, such as creating objects, working with and loading in data, installing packages as well as learning how to use some new functions.</p>
+</section>
+<section id="recap-directory---wheres-my-file" class="level1">
+<h1>Recap: Directory - Where’s my file??</h1>
+<section id="r-project" class="level3">
+<h3 class="anchored" data-anchor-id="r-project">R Project</h3>
+<p>We will be going over using the R Project in class, but in case there are still some lingering questions, these resources are extremely helpful.</p>
+<pre><code>&lt;https://uopsych.github.io/psy611/labs/lab-1.html#projects&gt;&nbsp;
+
+&lt;https://martinctc.github.io/blog/rstudio-projects-and-working-directories-a-beginner%27s-guide/&gt;&nbsp;</code></pre>
+<p>A directory refers to a file path (location on your computer). A <strong>working directory</strong> in R is the default file path where R will read and save files. You can check your current working directory by typing <strong>getwd()</strong> in the console.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"C:/Users/Dustin_Haraden/Documents"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Because I am working on a PC, subfolders are separated by <strong>\</strong>. Alternatively, if you use a Mac, subfolders will be separated by <strong>/</strong>.</p>
+<p>Since we are going to be using the <strong>here()</strong> package, this will update the default file path from what you get above to where you have opened your R-Notebook. Basically you are telling R, “Hey! Look right here where I opened this file. I want you to stay right here and not wander off to another part of my computer. If you do, I will be very sad. Please don’t do that to me.”&nbsp;</p>
+<p>Whenever starting a new project/analysis, it will be helpful to create a different folder to include all of the information. This folder will also have your R Project file to again, inform A sample of this could be something like this:&nbsp;</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1232490217.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="getting-started" class="level1">
+<h1>Getting Started</h1>
+<section id="create-a-reproducible-lab-report" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-reproducible-lab-report">Create a reproducible lab report</h2>
+<p>To create your new lab report, in RStudio, go to New File -&gt; R Markdown. Then delete everything after Line 5 and save it in the folder you will be using for the current lab. Remember, make a single folder on your computer that holds everything necessary for the project you are working on.&nbsp;</p>
+</section>
+<section id="put-the-data-where-it-needs-to-be" class="level2">
+<h2 class="anchored" data-anchor-id="put-the-data-where-it-needs-to-be">Put the Data where it needs to be</h2>
+<p>Download your data that you will be using and place this data file in the folder you are using.&nbsp;I always encourage a “Data” Folder that holds all raw data.</p>
+</section>
+<section id="load-the-libraries" class="level2">
+<h2 class="anchored" data-anchor-id="load-the-libraries">Load the Libraries</h2>
+<p>Get the libraries loaded in their own code chunk. We will be using <strong>here</strong>, <strong>psych</strong> and <strong>rio</strong>. Remember that if you haven’t already installed these libraries (i.e., bought the book from the book store for your own personal library), you will need to run the command <strong>install.packages()</strong> in the console with the appropriate packages name in the parentheses surrounded by quotation marks.</p>
+<p><strong><em>In the console:</em></strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"here"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"rio"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong><em>In the first code chunk of your Rmd file</em></strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="import-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="import-the-data">Import the data</h2>
+<p>Import the data using the <strong>rio</strong> package and save it to an object called <strong>sleep_data</strong>. You will be able to use the <strong>import()</strong> function as well as the <strong>here()</strong> function.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>sleep_data &lt;- import(here(“Labs”, “Data”, “SleepFile”, “SleepData.sav”))</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="visualizing-distributions" class="level1">
+<h1>Visualizing Distributions</h1>
+<p>Recall from lecture that a <strong>distribution</strong> often refers to a description of the (relative) number of times a given variable will take each of its unique values.</p>
+<section id="histogram" class="level2">
+<h2 class="anchored" data-anchor-id="histogram">Histogram</h2>
+<p>One common way of visualizing distributions is using a <strong>histogram</strong>, which plots the frequencies of different values for a given variable.</p>
+<p>For example, let’s take a look at a distribution of the <strong>age</strong> variable. We do this using the <strong>hist()</strong> function. (Remember, you can check out the help documentation using <strong>?hist</strong>).</p>
+<p><strong>Create a histogram using the age variable with the title “Histogram of Age” and the x-axis labeled as “Age”.</strong></p>
+<p>You can also change the number of bins (i.e.&nbsp;bars) in your histogram using the breaks argument. Try 5, 10, and 20 breaks. What do you notice as the number of breaks increases?</p>
+</section>
+<section id="boxplot" class="level2">
+<h2 class="anchored" data-anchor-id="boxplot">Boxplot</h2>
+<p>Another way to visualize distribution and to better examine the outliers is to use a <strong>boxplot</strong>. For a short guide on how to read boxplots, see<a href="https://flowingdata.com/2008/02/15/how-to-read-and-use-a-box-and-whisker-plot/">here</a> or refer to<a href="https://learningstatisticswithr-bookdown.netlify.com/graphics.html#boxplots">this section</a> of the textbook.</p>
+<p><strong>Create a boxplot using the age variable with the title “Boxplot of Age” and the x-axis labeled as “Age”. What do you notice??</strong></p>
+<p>Investigate the distribution more with <strong>boxplot.stats(x = sleep_data$age)$out</strong></p>
+</section>
+<section id="looking-into-the-future" class="level2">
+<h2 class="anchored" data-anchor-id="looking-into-the-future">Looking into the future…</h2>
+<p>So far we have been plotting in base R. However, the<a href="https://www.rdocumentation.org/packages/ggplot2/versions/3.2.1">ggplot2 package</a> is generally a much better tool for plotting. For now we’ll stick with base plotting to keep things simple, but in a future class you will learn how to use <strong>ggplot</strong> to make better-looking plots, such as this:</p>
+<p>Ok, so now that we know how to visualize a basic distribution, let’s think about how we commonly characterize distributions with descriptive statistics…</p>
+</section>
+</section>
+<section id="basic-descriptives" class="level1">
+<h1>Basic Descriptives</h1>
+<section id="measures-of-central-tendency" class="level2">
+<h2 class="anchored" data-anchor-id="measures-of-central-tendency">Measures of Central Tendency</h2>
+<p>For a given set of observations, measures of central tendency allow us to get the “gist” of the data. They tell us about where the “average” or the “mid-point” of the data lies. Let’s take a look at the data that we have already loaded in, and complete some of these tasks (which we may already have done in previous classes).&nbsp;</p>
+<section id="mean" class="level3">
+<h3 class="anchored" data-anchor-id="mean">Mean</h3>
+<p>A quick way to find the mean is to use the aptly named mean() function from base R. Use this function on the age variable in the sleep_data dataset.</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><strong>mean(sleep_data$age)</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Oh no! We forgot to account for the missing variables in our variable! We got NA! The reason for this is that the mean is calculated by using every value for a given variable, so if you don’t remove (or impute) the missing values before getting the mean, it won’t work.</p>
+<p>Let’s try that again, but using the additional argument to eliminate (or remove) the NA’s from the variable prior to computing the mean.&nbsp;</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><strong>mean(sleep_data$age, na.rm = TRUE)</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="median" class="level3">
+<h3 class="anchored" data-anchor-id="median">Median</h3>
+<p>The median is the middle value of a set of observations: 50% of the data points fall below the median, and 50% fall above.</p>
+<p>To find the median, we can use the median() function. Use it on the age variable.</p>
+</section>
+</section>
+<section id="measures-of-variability" class="level2">
+<h2 class="anchored" data-anchor-id="measures-of-variability">Measures of Variability</h2>
+<section id="range" class="level3">
+<h3 class="anchored" data-anchor-id="range">Range</h3>
+<p>The range gives us the distance between the smallest and largest value in a dataset. You can find the range using the range() function, which will output the minimum and maximum values. Find the range of the age variable.</p>
+</section>
+<section id="variance-and-standard-deviation" class="level3">
+<h3 class="anchored" data-anchor-id="variance-and-standard-deviation">Variance and Standard Deviation</h3>
+<p>To find the variance and standard deviation, we use var() and sd(), respectively. Find the variance and standard deviation of the age variable.</p>
+</section>
+</section>
+</section>
+<section id="summarizing-data" class="level1">
+<h1>Summarizing Data</h1>
+<p>So far we have been calculating various descriptive statistics (somewhat painstakingly) using an assortment of different functions. So what if we have a dataset with a bunch of variables we want descriptive statistics for? Surely we don’t want to calculate descriptives for each variable by hand…</p>
+<p>Fortunately for us, there is a function called describe() from the {psych} package, which we can use to quickly summarize a whole set of variables in a dataset.</p>
+<p>Be sure to first install the package prior to putting it into your library code chunk. Reminder: anytime you add a library, be sure you actually run the code line <strong>library(psych)</strong>. Otherwise, you will have a hard time trying to use the next functions.&nbsp;</p>
+<p>Let’s use it with our sleep dataset!</p>
+<section id="describe" class="level2">
+<h2 class="anchored" data-anchor-id="describe">describe()</h2>
+<p>This function automatically calculates all of the descriptives we reviewed above (and more!). Use the describe() function from the <strong>psych</strong> package on the entire sleep_data dataset.</p>
+<p><strong>Notes:</strong> If you load a library at the beginning, you can directly call any function from it. Instead, you can call a function by library_name::function_name without loading the entire library.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 70%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p><strong>psych::describe(sleep_data)</strong></p>
+<p><strong># or if you have already loaded the library</strong></p>
+<p><strong>describe(sleep_data)</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>NOTE: Some variables are not numeric and are <strong>categorical</strong> variables of type character. By default, the describe() function forces non-numeric variables to be numeric and attempts to calculate descriptives for them. These variables are marked with an asterisk (*). In this case, it doesn’t make sense to calculate descriptive statistics for these variables, so we get a warning message and a bunch of NaN’s and NA’s for these variables.</p>
+<p>A better approach would be to remove non-numeric variables before you attempt to run numerical calculations on your dataset.</p>
+<p>Now let’s take a closer look at trying to update the age variable in this dataset.&nbsp;</p>
+</section>
+</section>
+<section id="intro-to-the-tidyverse" class="level1">
+<h1>Intro to the tidyverse</h1>
+<p>The tidyverse, according to its creators, is<a href="https://www.tidyverse.org/">“an opinionated collection of R packages designed for data science.”</a> It’s a suite of packages designed with a consistent philosophy and aesthetic. This is nice because all of the packages are designed to work well together, providing a consistent framework to do many of the most common tasks in R, including, but not limited to…</p>
+<ul>
+<li><p>data manipulation (dplyr) <strong>= our focus today</strong></p></li>
+<li><p>reshaping data (tidyr)</p></li>
+<li><p>data visualization (ggplot2)</p></li>
+<li><p>working with strings (stringr)</p></li>
+<li><p>working with factors (forcats)</p></li>
+</ul>
+<p>To load all the packages included in the tidyverse, use:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 93%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p><strong># if you need to install, use install.packages(‘tidyverse’)</strong></p>
+<p><strong>library(tidyverse)</strong></p>
+<p><br>
+</p>
+<p><strong>library(dplyr)</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Three qualities of the tidyverse are worth mentioning at the outset:</p>
+<ol type="1">
+<li><p>Packages are designed to be like grammars for their task, so we’ll be using functions that are named as verbs to discuss the tidyverse. The idea is that you can string these grammatical elements together to form more complex statements, just like with language.</p></li>
+<li><p>The first argument of (basically) every function we’ll review today is data (in the form of a data frame). This is very handy, especially when it comes to piping (discussed below).</p></li>
+<li><p>Variable names are usually not quoted.</p></li>
+</ol>
+<section id="what-is-data-wrangling" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-data-wrangling">What is data wrangling?</h2>
+<p>Data wrangling, broadly speaking, means getting your data into a useful form for visualizing and modeling it. Hadley Wickham, who has developed a lot of the tidyverse, conceptualizes the main steps involved in data wrangling as follows:</p>
+<ol type="1">
+<li><p>Importing your data&nbsp;</p></li>
+<li><p>Tidying your data (see brief overview below)</p></li>
+<li><p>Transforming your data (what we’ll cover today)</p></li>
+</ol>
+<p>The figure below highlights the steps in data wrangling in relation to the broader scope of a typical data science workflow:</p>
+</section>
+<section id="what-is-tidy-data" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-tidy-data">What is “tidy data”?</h2>
+<p>Data is considered “tidy” when:&nbsp;</p>
+<ol type="1">
+<li><p>Each variable has its own column</p></li>
+<li><p>Each observation has its own row</p></li>
+<li><p>Each value has its own cell</p></li>
+</ol>
+<p>The following figure is from R for Data Science and visualizes tidy data.&nbsp;</p>
+<p>If your data is not already in tidy format when you import it, you can use functions from the {tidyR} package, e.g.&nbsp;pivot_longer() and pivot_wider(), that allow you to “reshape” your data to get it into tidy format.</p>
+<p>However, this term we are mostly going to work with simpler datasets that are already tidy, so we are not going to focus on these functions today. These functions will become especially useful in the future when we work with repeated measures data that has multiple observations for each subject. If you are interested in learning more about reshaping your data with {tidyR}, check out<a href="https://r4ds.had.co.nz/tidy-data.html#introduction-6">this chapter</a> from R for Data Science.</p>
+</section>
+</section>
+<section id="todays-focus-dplyr" class="level1">
+<h1>Today’s focus: <strong>{dplyr}</strong></h1>
+<p>Most of the functions we’ll go over today come from the {dplyr} package. Essentially, you can think of this package as a set of “pliers” that you can use to tweak data frames, hence its name (and hex sticker).</p>
+<p>{dplyr} is a “grammar” of data manipulation. As such, its functions are verbs:</p>
+<ul>
+<li><p>mutate() adds new variables that are functions of existing variables</p></li>
+<li><p>select() picks variables based on their names.</p></li>
+<li><p>filter() picks cases based on their values.</p></li>
+<li><p>summarize() reduces multiple values down to a single summary.</p></li>
+<li><p>arrange() changes the ordering of the rows.</p></li>
+</ul>
+<p>Note that {dplyr} functions always take a data frame as the first argument and return a modified data frame back to you. The fact that you always get a data frame back is useful down the road when you are modeling and visualizing data.</p>
+<section id="pipes" class="level2">
+<h2 class="anchored" data-anchor-id="pipes">Pipes</h2>
+<p>Pipes come from the {magrittr} package are available when you load the tidyverse. (Technically, the pipe is imported with {dplyr}.) Pipes are a way to write strings of functions more easily, creating pipelines. They are extremely powerful and useful. A pipe looks like this:</p>
+<p>You can enter a pipe with the shortcut CTRL+Shift+M for PC or CMD+Shift+M for Mac.</p>
+<p>A pipe passes an object on the left-hand side as the first argument (or . argument) of whatever function is on the right-hand side.</p>
+<ul>
+<li><p>x %&gt;% f(y) is the same as f(x, y)</p></li>
+<li><p>y %&gt;% f(x, ., z) is the same as f(x, y, z )</p></li>
+</ul>
+<p>Example: I want to calculate the mean of the mpg variable from the mtcars data set and round our answer to 2 decimal places. I can accomplish this by nesting:</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><strong>round(mean(mtcars$mpg, na.rm = TRUE), 2)</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Or, we could use pipes. Grammatically, you can think of a pipe as “then.” I have a variable, the mile per gallon of cars, THEN I want to take the mean of that variable, and THEN I want to round that answer to two decimal places.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 101%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p><strong>mtcars$mpg %&gt;% # select the `mpg` variable from the `mtcars` dataset</strong></p>
+<p><strong>mean(na.rm = TRUE) %&gt;% # calculate the mean</strong></p>
+<p><strong>round(2) # round to 2 decimal places</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Now try rewriting the following code using pipes:</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><strong>round(sqrt(sum(mtcars$cyl)), 1)</strong></td>
+</tr>
+</tbody>
+</table>
+<section id="why-use-pipes" class="level3">
+<h3 class="anchored" data-anchor-id="why-use-pipes">Why use pipes?</h3>
+<ol type="1">
+<li><p>Cleaner code</p>
+<ul>
+<li>This is nice, because it helps make your code more readable by other humans (including your future self).</li>
+</ul></li>
+</ol>
+<!-- -->
+<ol start="2" type="1">
+<li><p>Cleaner environment</p>
+<ul>
+<li><p>When you use pipes, you have basically no reason to save objects from intermediary steps in your data wrangling / analysis workflow, because you can just pass output from function to function without saving it.</p></li>
+<li><p>Finding objects you’re looking for is easier.</p></li>
+</ul></li>
+</ol>
+<!-- -->
+<ol start="3" type="1">
+<li><p>Efficiency in writing code</p>
+<ul>
+<li>Naming objects is hard; piping means coming up with fewer names.</li>
+</ul></li>
+</ol>
+<!-- -->
+<ol start="4" type="1">
+<li><p>More error-proof</p>
+<ul>
+<li>Because naming is hard, you might accidentally re-use a name and make an error.</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="manipulating-observations" class="level2">
+<h2 class="anchored" data-anchor-id="manipulating-observations">Manipulating Observations</h2>
+<section id="extract-rows-with-filter" class="level3">
+<h3 class="anchored" data-anchor-id="extract-rows-with-filter">Extract rows with <strong>filter()</strong></h3>
+<p>The filter() function is used to subset observations based on their values. The result of filtering is a data frame with the same number of columns as before but fewer rows, as illustrated below…</p>
+<p>The first argument is data and subsequent arguments are logical expressions that tell you which observations to retain in the data frame.</p>
+<p>For example, we can filter rows to retain data only for the students who do not have a roommate.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p><strong>sleep_data %&gt;%</strong></p>
+<p><strong>filter(roommate == 2)</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>But we may want to save this as a new datafile. Can assign this to a new object.</p>
+</section>
+<section id="logical-operators" class="level3">
+<h3 class="anchored" data-anchor-id="logical-operators">Logical Operators</h3>
+<p>The == we just used is an example of a comparison operator that tests for equality. The other comparison operators available are :</p>
+<ul>
+<li><p>&gt; (greater than)</p></li>
+<li><p>&gt;= (greater than or equal to)</p></li>
+<li><p>&lt; (less than)</p></li>
+<li><p>&lt;= (less than or equal to)</p></li>
+<li><p>!= (not equal to)</p></li>
+</ul>
+<p>You can combine multiple arguments to filter() with Boolean operators. The figure below from<a href="https://r4ds.had.co.nz/transform.html#logical-operators">R for Data Science</a> shows the complete set of Boolean operators.</p>
+</section>
+<section id="try-it-out-yourself" class="level3">
+<h3 class="anchored" data-anchor-id="try-it-out-yourself">Try it out yourself:&nbsp;</h3>
+<p>First, let’s filter for observations that are greater than the mean of <strong>age</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 62%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p><strong>sleep_data %&gt;%</strong></p>
+<p><strong>filter(age &gt; mean(age, na.rm = TRUE)</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Now, you try filtering observations that are greater than the mean of happiness, but the participant does have a roommate:&nbsp;</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><strong># Put your code here</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Filter out the age variable that are out of bounds</strong></p>
+</section>
+</section>
+<section id="manipulating-variables" class="level2">
+<h2 class="anchored" data-anchor-id="manipulating-variables">Manipulating Variables</h2>
+<section id="extract-columns-with-select" class="level3">
+<h3 class="anchored" data-anchor-id="extract-columns-with-select">Extract columns with <strong>select()</strong></h3>
+<p>The select() function subsets columns in your data frame. This is particularly useful when you have a data set with a huge number of variables and you want to narrow down to the variables that are relevant for your analysis.</p>
+<p>The first argument is data, followed by the name(s) of the column(s) you want to subset. Note that you can use variable positions rather than their names, but this is usually not as useful. Let’s go through some simple examples of common uses of select().</p>
+<p><strong>Select one variable</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p><strong>sleep_data %&gt;%</strong></p>
+<p><strong>select(bed_study)</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Select multiple variables</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 66%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p><strong>sleep_data %&gt;%</strong></p>
+<p><strong>select(bed_study, bed_read, bed_friends)</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Select a range of variables</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 62%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p><strong>sleep_data %&gt;%</strong></p>
+<p><strong>select(bed_study:bed_videogames) %&gt;%</strong></p>
+<p><strong>names()</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>De-select variables with a minus sign (-)</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p><strong>sleep_data %&gt;%</strong></p>
+<p><strong>select(-age)</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>De-select range of variables</strong></p>
+<p>Note: everything() is a helper function that gives us all the remaining variables in the data frame (see more on<a href="https://uopsych.github.io/psy611/labs/lab-5_instructor.html#helper"></a>helper functions below)</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 48%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p><strong>sleep_data %&gt;%</strong></p>
+<p><strong>select(-(ESS1:everything())</strong></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="helper-functions-for-select" class="level3">
+<h3 class="anchored" data-anchor-id="helper-functions-for-select"><strong>Helper functions for select()</strong></h3>
+<p>There are some “helper” functions that you can use along with select() that can sometimes be more efficient than selecting your variables explicitly by name.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>function</strong></td>
+<td><strong>what it does</strong></td>
+</tr>
+<tr class="even">
+<td>starts_with()</td>
+<td>selects columns starting with a string</td>
+</tr>
+<tr class="odd">
+<td>ends_with()</td>
+<td>selects columns that end with a string</td>
+</tr>
+<tr class="even">
+<td>contains()</td>
+<td>selects columns that contain a string</td>
+</tr>
+<tr class="odd">
+<td>matches()</td>
+<td>selects columns that match a regular expression</td>
+</tr>
+<tr class="even">
+<td>num_ranges()</td>
+<td>selects columns that match a numerical range</td>
+</tr>
+<tr class="odd">
+<td>one_of()</td>
+<td>selects columns whose names match entries in a character vector</td>
+</tr>
+<tr class="even">
+<td>everything()</td>
+<td>selects all columns</td>
+</tr>
+<tr class="odd">
+<td>last_col()</td>
+<td>selects last column; can include an offset.</td>
+</tr>
+</tbody>
+</table>
+<p>Quick example:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 43%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p><strong>sleep_data %&gt;%</strong></p>
+<p><strong>select(starts_with(“a”)</strong></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="make-new-variables-with-mutate" class="level3">
+<h3 class="anchored" data-anchor-id="make-new-variables-with-mutate">Make new variables with <strong>mutate()</strong></h3>
+<p>The mutate() function is most commonly used to add new columns to your data frame that are functions of existing columns.</p>
+<p>mutate() requires data as its first argument, followed by a set of expressions defining new columns. Let’s take a couple examples…</p>
+<p>Create new variables</p>
+<ul>
+<li><strong>Note</strong>: New variables are automatically added at the end of the data frame (scroll to the right to see them)</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 73%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p><strong>sleep_data &lt;- sleep_data %&gt;%</strong></p>
+<p><strong>mutate(ess_sum = ESS1 + ESS2 + ESS3 + ESS4 +</strong></p>
+<p><strong>ESS5 + ESS6 + ESS7 + ESS8)</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Lab Q’s (60 Points)</p>
+<p>NOTE: Use the dataset that you prepared above (put this all in the same R-Notebook).</p>
+</section>
+</section>
+<section id="epworth-sleepiness-scale-30-points" class="level2">
+<h2 class="anchored" data-anchor-id="epworth-sleepiness-scale-30-points">Epworth Sleepiness Scale (30 points)</h2>
+<ul>
+<li><p>Calculate the mean, median and standard deviation of the ESS Total score. (6 points)</p></li>
+<li><p>Create a histogram of the total scores. (3 points)</p></li>
+<li><p>Create a boxplot of the total scores. Are there any outliers? (5 points)</p></li>
+<li><p>Using the scale cutoff points below, how many individuals would be categorized as: (16 points)</p>
+<ul>
+<li><p>Lower Normal Daytime Sleepiness</p></li>
+<li><p>Moderate or above for Daytime Sleepiness (Moderate and Severe)</p></li>
+</ul></li>
+</ul>
+<!-- -->
+<ul>
+<li>How did you identify the groups above?</li>
+</ul>
+</section>
+<section id="are-folks-paying-attention-30-points" class="level2">
+<h2 class="anchored" data-anchor-id="are-folks-paying-attention-30-points">Are folks paying attention? (30 points)</h2>
+<ul>
+<li><p>Aggregate the “attention” variables (attention 1 to attention5) in a sum score. (3 points)</p></li>
+<li><p>What is the distribution (hint hint do a histogram) of the scores? (3 points)</p></li>
+<li><p>What is the mean, median, minimum &amp; maximum of the aggregate “attention” variable? (6 points)</p></li>
+<li><p>Create two new datasets labeled (1) “data_attend” and (2) “data_distract”. In each dataset have those who were paying attention in the “data_attend” and those who were not in the “data_distract”. Paying attention is operationalized as having a score of less than 4 on the aggregated variable. (18 points)</p>
+<ul>
+<li><p>What are the sample sizes of each of the datasets?</p></li>
+<li><p>What is the mean age and gender breakdown of each of the datasets?</p></li>
+<li><p>From the two that you just created, which dataset do you think we should use?</p></li>
+</ul></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/dharaden\.github\.io\/psyc640");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© CC-By Dustin Haraden, 2025</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/resources/introwrangling.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This page is built with ☕ and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
