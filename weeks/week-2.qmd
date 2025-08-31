@@ -7,7 +7,7 @@ editor: visual
 
 You survived the first week! I hope your classes are off to a good start. Although we don't have class this week (Labor Day), we will still have readings and an assignment. Please view this page to make sure you have all the information you need to get going.
 
-We are going to work on expanding our comfort with the syntax in R and using the tidyverse for some more data wrangling.
+We are going to work on expanding our comfort with the syntax in R and using the tidyverse for some more data wrangling. We will import some new data, and compute some new values. This will be a skill that will be useful no matter what data you are working with. There will be plenty of practice with this!
 
 ![](images/clipboard-2598929654.jpeg){fig-alt="Stylized text providing an overview of Tidy Data. The top reads “Tidy data is a standard way of mapping the meaning of a dataset to its structure. - Hadley Wickham.” On the left reads “In tidy data: each variable forms a column; each observation forms a row; each cell is a single measurement.” There is an example table on the lower right with columns ‘id’, ‘name’ and ‘color’ with observations for different cats, illustrating tidy data structure." fig-align="center"}
 
@@ -21,9 +21,9 @@ We are going to work on expanding our comfort with the syntax in R and using the
 
 ## Prepare
 
--   Install R and R-Studio (<https://posit.co/download/rstudio-desktop/>)
+-   Be sure to have read the chapters!
 
--   Bring Laptop
+-   Download the data for this week
 
 ## Slides
 
@@ -33,15 +33,15 @@ We are going to work on expanding our comfort with the syntax in R and using the
 
 ## In-Class Activity
 
-[Getting Comfy with R](../class-activities/day1.html){target="_blank"}
+No Class this week (Labor Day)
 
 ## For Next Time
 
-📋[Lab 1 - Foundations of a Data Workflow](../labs/lab-1_data-workflow.html)
+📋[Lab 2 - Getting Comfy with Data Wrangling](../labs/lab-2_data-wrangling.html)
 
-📖Read Chapter 1 & 2 - ST
+📖Read [Chapter 5 - LSR](https://learningstatisticswithr.com/book/){target="_blank"}
 
-📖Read Chapter 2 - MSR
+📖Read [Chapter 1 & 3 - R4DS](https://r4ds.hadley.nz/){target="_blank"}
 
 <br><br>
 
