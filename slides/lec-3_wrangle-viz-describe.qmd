@@ -1,0 +1,230 @@
+---
+title: "Week 03: Wrangling, Describing & Visualizing"
+subtitle: "Date: September 8, 2025"
+footer:  "[course-website](https://dharaden.github.io/psyc640/)"
+logo: "images/640_hex.png"
+format: 
+  revealjs:
+    theme: clean.scss
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+    overview: false
+    scrollable: true
+    code-line-numbers: true
+editor: visual
+execute:
+  echo: true
+  freeze: auto
+---
+
+# Today
+
+![](images/clipboard-4156918685.png)
+
+------------------------------------------------------------------------
+
+```{r, results = 'hide', message = F, warning = F}
+# File management
+library(here)
+# for dplyr, ggplot2
+library(tidyverse)
+#Loading data
+library(rio)
+
+#Remove Scientific Notation 
+options(scipen=999)
+```
+
+![](images/tidyprocess.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## But first...
+
+We need to revisit how to read the [ggplot2 cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf){target="_blank"}!
+
+A lot of cheatsheets will have something that looks like this:
+
+```{r}
+c <- ggplot(mpg, aes(hwy))
+
+## Then later on it will say
+
+c + geom_histogram(binwidth = 5)
+```
+
+------------------------------------------------------------------------
+
+## WHAT IS `c`?!
+
+`c` is just an object that is referring to the first line that we have in a ggplot function
+
+```{r eval=FALSE}
+c <- ggplot(mpg, aes(hwy))
+
+## So this...
+c + geom_histogram(binwidth = 5)
+
+## Is the same as this...
+mpg %>% 
+  ggplot(aes(hwy)) + 
+  geom_histogram(binwidth = 5)
+```
+
+# Back to regular scheduled programming
+
+Let's first start by opening our **`Project`**
+
+Then, create a new Notebook/Markdown Document that we will use for today
+
+Setup the libraries and bring in the data
+
+-   We will use the TIPI data from the last lab
+
+```{r}
+#import sleep data - Your path may be different
+tipi <- import(here("files", "data", "TIPI_Data.csv"))
+names(tipi)
+```
+
+------------------------------------------------------------------------
+
+## Naming Conventions
+
+Remember in the lab when things were named all funky? We used the `rename()` function to do that last time. This can be helpful if you want to change it to something specific, but we may just want to make these names a little cleaner.
+
+**Introducing `janitor`** <https://sfirke.github.io/janitor/index.html>
+
+```{r}
+#same code as before
+tipi <- import(here("files", "data", "TIPI_Data.csv")) %>% 
+  # from the janitor package
+  janitor::clean_names()
+names(tipi)
+```
+
+# select()
+
+![](images/select().png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Using `select()`
+
+You used this in lab, so you are all experts. Let's review by looking at the [cheatsheet](https://rstudio.github.io/cheatsheets/data-transformation.pdf){target="_blank"} for `dplyr`.
+
+The `dplyr` package makes data wrangling and transformation much easier. `select()` allows you to...well...select the columns that you want to keep.
+
+-   Use `select()` to remove the following variables: 
+
+    ```{r}
+    tipi <- tipi %>% 
+      select(-c())
+    ```
+
+# filter()
+
+![](images/filter().png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Extract Rows
+
+The 'filter()' function is used to subset observations based on their values.
+
+The result of filtering is a data frame with the same number of columns as before but fewer rows.
+
+The first argument is data and subsequent arguments are logical expressions that tell you which observations to retain in the data frame.
+
+```{r}
+filter(starwars, hair_color == "none" | eye_color == "black")
+```
+
+------------------------------------------------------------------------
+
+## Filter Observations
+
+We can now generate a subset of observations based on a particular value
+
+There may be some data checks that you perform when wrangling data. One that I would suggest is to look at the overall completion percentages and the amount of time that it took for participants to complete the questionnaire.
+
+This is exactly what `filter()` is set to do.
+
+```{r}
+# Assigning it to a new variable
+clean_tipi_data <- tipi %>% 
+  filter(progress == 100 & 
+         duration_in_seconds > 600)
+
+max(clean_tipi_data$duration_in_seconds)
+```
+
+------------------------------------------------------------------------
+
+## Filter Obs. - Check
+
+Generating a bar chart to see if it worked out!
+
+```{r}
+clean_tipi_data %>% 
+  ggplot(aes(duration_in_seconds)) + 
+  geom_bar()
+```
+
+# mutate()
+
+![](/images/mutate().png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Compute new variable
+
+We often need to make a sum/mean score for a variable of interest
+
+The `mutate()` function is most commonly used to add new columns to your data frame that are functions of existing columns.
+
+`mutate()` requires data as its first argument, followed by a set of expressions defining new columns.
+
+-   **Note**: New variables are automatically added at the end of the data frame (scroll to the right to see them)
+
+For example, in the `mod_sleep_data`, we have the [Epworth Sleepiness Scale](https://nasemso.org/wp-content/uploads/neuro-epworthsleepscale.pdf){target="_blank"}
+
+Take a look at the scoring of the ESS and compute the total score labelled `ess_total`
+
+------------------------------------------------------------------------
+
+
+
+------------------------------------------------------------------------
+
+## Visualize
+
+```{r}
+clean_tipi_data %>% 
+  ggplot(aes(genderid)) + 
+  geom_bar() + 
+  geom_text(stat = "count", #Tells it to calculate the statistic
+            aes(label=after_stat(count))) + #Puts label of the count
+  theme_minimal() #or theme_bw
+```
+
+# Your turn!
+
+------------------------------------------------------------------------
+
+## Steps to do if we have time
+
+Create two new datasets labeled (1) “data_attend” and (2) “data_distract”. In each dataset have those who were paying attention in the “data_attend” and those who were not in the “data_distract”. Paying attention is operationalized as having a score of 5 on the aggregated variable.
+
+Get the sample size of each of these datasets (use Google to search for things like number of rows)
+
+What is the mean/average of `ess_total` in each of the samples?
+
+# Next Class
+
+Starting to look at descriptive statistics and how to make these nice tables
+
+Will begin Lab 1 (as long as we have time to do so)
