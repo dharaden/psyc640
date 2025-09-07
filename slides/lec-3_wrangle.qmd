@@ -104,7 +104,7 @@ The `dplyr` package makes data wrangling and transformation much easier. `select
 tipi <- tipi %>% 
   select(c(id, progress, duration_in_seconds, tipi_1, 
            tipi_2, tipi_3, tipi_4, tipi_5, tipi_6, tipi_7, 
-           tipi8, tipi_9, tipi_10))
+           tipi_8, tipi_9, tipi_10))
 ```
 
 ``` r
