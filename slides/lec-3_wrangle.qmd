@@ -94,12 +94,28 @@ You used this in lab, so you are all experts. Let's review by looking at the [ch
 
 The `dplyr` package makes data wrangling and transformation much easier. `select()` allows you to...well...select the columns that you want to keep.
 
--   Use `select()` to remove the following variables: 
+> Create a dataset that only includes: id, progress, duration, TIPI items
 
-    ```{r}
-    tipi <- tipi %>% 
-      select(-c())
-    ```
+------------------------------------------------------------------------
+
+## Using `select()`
+
+```{r}
+tipi <- tipi %>% 
+  select(c(id, progress, duration_in_seconds, tipi_1, 
+           tipi_2, tipi_3, tipi_4, tipi_5, tipi_6, tipi_7, 
+           tipi8, tipi_9, tipi_10))
+```
+
+``` r
+tipi <- tipi %>% 
+  select(c(id:duration_in_seconds, contains("tipi_")))
+
+## OR
+
+tipi <- tipi %>% 
+  select(-c(consent:q85_6_text, sleep_quality, hours_of_sleep))
+```
 
 # filter()
 
@@ -137,8 +153,6 @@ clean_tipi_data <- tipi %>%
   filter(progress == 100 & 
          duration_in_seconds > 600)
 ```
-
-------------------------------------------------------------------------
 
 # mutate()
 
