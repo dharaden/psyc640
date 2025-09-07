@@ -1,0 +1,47 @@
+---
+title: "Week 3 Exercise - Describing & Visualizing"
+editor: visual
+---
+
+# **In-Class Activity: Using `psych`** and `ggplot2`
+
+**Goal**: Work on importing data as well as being able to build a pipeline from descriptives to
+
+## Create a new Markdown Document
+
+1.  Go to `File > New File > R Markdown`
+
+2.  Provide the title "Describe & Visualize" and input your name as the author
+
+3.  A script will open in the **Source** pane. Remove unnecessary code.
+
+4.  Go to `File > Save` and name it `week3.Rmd`. Make sure this saves in the same folder as all of your other stuff. Stay Organized!
+
+## **Setting it up**
+
+1.  Create a Code Chunk
+
+2.  Load the `tidyverse`, `psych` and `sjPlot` libraries (Install them if you need to)
+
+## Getting the data
+
+Break up into groups and work to visualize your assigned dataset. Focus on using a scatterplot for these two variables
+
+|        |      |      |
+|--------|------|------|
+| Col1   | Col2 | Col3 |
+| Data 1 |      |      |
+| Data 2 |      |      |
+| Data 3 |      |      |
+
+## Giving it a try
+
+Use the [ggplot cheatsheet](https://rstudio.github.io/cheatsheets/data-visualization.pdf){target="_blank"} to identify an appropriate way to visualize the data
+
+-   Add some color
+
+-   Update the title and axes
+
+When you are done, [**post your creation here!**](https://docs.google.com/document/d/10fVTcIyTo-TQskKOgvL-BVCiN6vaGb2B96krBDaGQ2g/edit?usp=sharing){target="_blank"}
+
+***End of the document. Remember to Knit and upload to myCourses.***
