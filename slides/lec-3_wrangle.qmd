@@ -61,7 +61,7 @@ Setup the libraries and bring in the data
 -   We will use the TIPI data from the last lab
 
 ```{r}
-#import sleep data - Your path may be different
+#import  data - Your path may be different
 tipi <- import(here("files", "data", "TIPI_Data.csv"))
 names(tipi)
 ```
@@ -252,5 +252,23 @@ final_tipi <- wizard_tipi_data %>%
     open = (tipi_5 + tipi_10r)/2
   )
 ```
+
+# Exporting Data
+
+------------------------------------------------------------------------
+
+## `export()`
+
+Now that we have a scored dataset, we will want to save that.
+
+You can do this by re-running all of your steps above, or by exporting your dataset.
+
+``` r
+export(final_tipi, here("files", "data", "final_tipi.csv"))
+```
+
+::: callout-note
+Be careful when exporting and knitting docs. Each time you knit, it will run the export code. After I export, I usually will comment out that line of code.
+:::
 
 # Questions, Comments, Concerns?
