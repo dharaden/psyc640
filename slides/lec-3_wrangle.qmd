@@ -1,0 +1,274 @@
+---
+title: "Week 03: Wrangling"
+subtitle: "Date: September 8, 2025"
+footer:  "[course-website](https://dharaden.github.io/psyc640/)"
+logo: "images/640_hex.png"
+format: 
+  revealjs:
+    theme: clean.scss
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+    overview: false
+    scrollable: true
+    code-line-numbers: true
+editor: visual
+execute:
+  echo: true
+  freeze: auto
+---
+
+# Today
+
+![](images/clipboard-4156918685.png)
+
+# Introduce: Library Tracker
+
+There are so many things to remember. Let's try to make it easier.
+
+[Group Library Tracker](https://docs.google.com/document/d/1s5HqvebeLKwuXAaudsp_TjzN9_khCPohqXlaYalMMug/edit?usp=sharing){target="_blank"}
+
+Use this page to document the different libraries that we are using in class and for the labs. Share any other libraries that you find a long the way!
+
+Remember, this is for future you! Let's try to be nice to them.
+
+------------------------------------------------------------------------
+
+```{r, results = 'hide', message = F, warning = F}
+# File management
+library(here)
+# for dplyr, ggplot2
+library(tidyverse)
+#Loading data
+library(rio)
+
+#Remove Scientific Notation 
+options(scipen=999)
+```
+
+![](images/tidyprocess.png){fig-align="center"}
+
+# Starting Up
+
+Let's first start by opening our **`Project`**
+
+Then, create a new Notebook/Markdown Document that we will use for today
+
+Setup the libraries and bring in the data
+
+-   We will use the TIPI data from the last lab
+
+```{r}
+#import  data - Your path may be different
+tipi <- import(here("files", "data", "TIPI_Data.csv"))
+names(tipi)
+```
+
+------------------------------------------------------------------------
+
+## Naming Conventions
+
+Remember in the lab when things were named all funky? We used the `rename()` function to do that last time. This can be helpful if you want to change it to something specific, but we may just want to make these names a little cleaner.
+
+**Introducing `janitor`** <https://sfirke.github.io/janitor/index.html>
+
+```{r}
+#same code as before
+tipi <- import(here("files", "data", "TIPI_Data.csv")) %>% 
+  # from the janitor package
+  janitor::clean_names()
+names(tipi)
+```
+
+# select()
+
+![](images/select().png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Using `select()`
+
+You used this in lab, so you are all experts. Let's review by looking at the [cheatsheet](https://rstudio.github.io/cheatsheets/data-transformation.pdf){target="_blank"} for `dplyr`.
+
+The `dplyr` package makes data wrangling and transformation much easier. `select()` allows you to...well...select the columns that you want to keep.
+
+> Create a dataset that only includes: id, progress, duration, TIPI items
+
+------------------------------------------------------------------------
+
+## Using `select()`
+
+```{r}
+tipi <- tipi %>% 
+  select(c(id, progress, duration_in_seconds, tipi_1, 
+           tipi_2, tipi_3, tipi_4, tipi_5, tipi_6, tipi_7, 
+           tipi_8, tipi_9, tipi_10))
+```
+
+``` r
+tipi <- tipi %>% 
+  select(c(id:duration_in_seconds, contains("tipi_")))
+
+## OR
+
+tipi <- tipi %>% 
+  select(-c(consent:q85_6_text, sleep_quality, hours_of_sleep))
+```
+
+# filter()
+
+![](images/filter().png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Extract Rows
+
+The 'filter()' function is used to subset observations based on their values.
+
+The result of filtering is a data frame with the same number of columns as before but fewer rows.
+
+The first argument is data and subsequent arguments are logical expressions that tell you which observations to retain in the data frame.
+
+**Note:** You are stating which types of rows you want to keep. If a variable can answer TRUE to your condition, then it will stay in the data.
+
+```{r}
+filter(starwars, hair_color == "none")
+```
+
+------------------------------------------------------------------------
+
+## Filter Observations
+
+We can now generate a subset of observations based on a particular value
+
+There may be some data checks that you perform when wrangling data. One that I would suggest is to look at the overall completion percentages and the amount of time that it took for participants to complete the questionnaire.
+
+This is exactly what `filter()` is set to do.
+
+```{r}
+# Assigning it to a new variable
+clean_tipi_data <- tipi %>% 
+  filter(progress == 100 & 
+         duration_in_seconds > 600)
+```
+
+# mutate()
+
+![](images/mutate().png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Compute new variable
+
+We often need to make a sum/mean score for a variable of interest, or transform it in some way.
+
+The `mutate()` function is most commonly used to add new columns to your data frame that are functions of existing columns.
+
+`mutate()` requires data as its first argument, followed by a set of expressions defining new columns.
+
+-   **Note**: New variables are automatically added at the end of the data frame (scroll to the right to see them)
+
+For example, in the lab, we had the [Ten Item Personality Inventory](https://gosling.psy.utexas.edu/scales-weve-developed/ten-item-personality-measure-tipi/){target="_blank"}
+
+Take a look at the scoring of the TIPI and compute the necessary variables for all subscales
+
+------------------------------------------------------------------------
+
+### Reverse Coding
+
+There are some items in questionnaire data that are rated in the opposite direction from the other items. These need to be "reverse coded" or "reverse scored"
+
+The TIPI documentions highlights certain variables that need this done
+
+We can take the max value, add 1, then subtract the Item
+
+```{r}
+coded_tipi_data <- clean_tipi_data %>% 
+  mutate(tipi_2r = 8 - tipi_2, 
+         tipi_4r = 8 - tipi_4,
+         tipi_6r = 8 - tipi_6,
+         tipi_8r = 8 - tipi_8, 
+         tipi_10r = 8 - tipi_10)
+
+coded_tipi_data %>% select(tipi_2, tipi_2r, tipi_4, tipi_4r) %>% head()
+```
+
+------------------------------------------------------------------------
+
+### Reverse Coding 2.0
+
+With R, if there is something that is tedious, then that probably means that someone has made a library for it to make it easier.
+
+Here comes `reverse()` from [datawizard](https://easystats.github.io/datawizard/reference/reverse.html?q=revers#null){target="_blank"}
+
+``` r
+reverse(
+  x,
+  select = NULL, #Variables you want reversed
+  exclude = NULL,
+  range = NULL,
+  append = FALSE, #what you want at the end of your new variable
+  ignore_case = FALSE,
+  regex = FALSE,
+  verbose = FALSE,
+  ...
+)
+```
+
+------------------------------------------------------------------------
+
+#### datawizard::reverse()
+
+We can try out this function with our TIPI data to see if we get something similar to before.
+
+```{r}
+# renaming it something different in case we want to compare
+wizard_tipi_data <- clean_tipi_data %>%
+  datawizard::reverse(
+    select = c("tipi_2", "tipi_4", "tipi_6", "tipi_8", "tipi_10"), 
+    append = "r"
+  )
+
+wizard_tipi_data %>% select(tipi_2, tipi_2r, tipi_4, tipi_4r) %>% head()
+```
+
+------------------------------------------------------------------------
+
+## Sum Scores
+
+And finally, we can use `mutate()` to create total scores (or really any type of computation)
+
+For the TIPI data, we need to compute each of the 5 pieces of the Big Five (Extraversion, Agreeableness, Conscientiousness, Emotional Stability and Openness to Experience)
+
+```{r}
+final_tipi <- wizard_tipi_data %>% 
+  mutate(
+    extra = (tipi_1 + tipi_6r)/2,
+    agree = (tipi_2r + tipi_7)/2,
+    consc = (tipi_3 + tipi_8r)/2,
+    emo = (tipi_4r + tipi_9)/2,
+    open = (tipi_5 + tipi_10r)/2
+  )
+```
+
+# Exporting Data
+
+------------------------------------------------------------------------
+
+## `export()`
+
+Now that we have a scored dataset, we will want to save that.
+
+You can do this by re-running all of your steps above, or by exporting your dataset.
+
+``` r
+export(final_tipi, here("files", "data", "final_tipi.csv"))
+```
+
+::: callout-note
+Be careful when exporting and knitting docs. Each time you knit, it will run the export code. After I export, I usually will comment out that line of code.
+:::
+
+# Questions, Comments, Concerns?

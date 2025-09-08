@@ -1,0 +1,522 @@
+---
+title: "Week 03: Describe & Vizualize"
+subtitle: "Date: September 8, 2025"
+footer:  "[course-website](https://dharaden.github.io/psyc640/)"
+logo: "images/640_hex.png"
+format: 
+  revealjs:
+    theme: clean.scss
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+    overview: false
+    scrollable: true
+    code-line-numbers: true
+editor: visual
+execute:
+  echo: true
+  freeze: auto
+---
+
+# Today
+
+![](images/ggplot2.png){fig-alt="A fuzzy monster in a beret and scarf, critiquing their own column graph on a canvas in front of them while other assistant monsters (also in berets) carry over boxes full of elements that can be used to customize a graph (like themes and geometric shapes). In the background is a wall with framed data visualizations. Stylized text reads “ggplot2: build a data masterpiece.” Learn more about ggplot2." fig-align="center"}
+
+```{r, results = 'hide', message = F, warning = F}
+# File management
+library(here)
+# for dplyr, ggplot2
+library(tidyverse)
+#Loading data
+library(rio)
+# for descriptives
+library(psych)
+
+#Remove Scientific Notation 
+options(scipen=999)
+```
+
+![](images/tidyprocess.png){fig-align="center"}
+
+# Starting Up
+
+Let's first start by opening our **`Project`**
+
+Then, create a new Notebook/Markdown Document that we will use for today
+
+Setup the libraries and bring in the data
+
+-   We will use the TIPI data from the last lecture that has already been scored
+
+```{r}
+#import data - Your path may be different
+tipi <- import(here("files", "data", "final_tipi.csv")) %>% 
+  # from the janitor package
+  janitor::clean_names()
+```
+
+# Descriptive Statistics
+
+*How old is Dr. Haraden?*
+
+------------------------------------------------------------------------
+
+## Some Terminology
+
+| Population | Sample |
+|------------------------------------|------------------------------------|
+| $\mu$ (mu) = Population Mean | $\bar{X}$ (x bar) = Sample Mean |
+| $\sigma$ (sigma) = Population Standard Deviation | $s$ = $\hat{\sigma}$ = Sample Standard Deviation |
+| $\sigma^2$ (sigma squared) = Population Variance | $s^2$ = $\hat{\sigma^2}$ = Sample Variance |
+
+------------------------------------------------------------------------
+
+## Measures of Central Tendency
+
+For a given set of observations, measures of central tendency allow us to get the “gist” of the data.
+
+They tell us about where the “average” or the “mid-point” of the data lies or how much deviation there is from a central point.
+
+Let’s take a look at the data that we have already loaded in, and complete some of these tasks.
+
+------------------------------------------------------------------------
+
+### Mean/Average
+
+$$
+\bar{X} = \frac{X_1+X_2+...+X\_{N-1}X_N}{N}
+$$
+
+OR
+
+$$
+\bar{X} = \frac{1}{N}\sum_{i=1}^{N} X_i
+$$
+
+------------------------------------------------------------------------
+
+### Mean in R
+
+A quick way to find the mean is to use the aptly named `mean()` function from base R. Use this function to get the average `age` and `ess total` in our dataset.
+
+```{r}
+mean(tipi$age)
+
+mean(tipi$hours_of_sleep)
+```
+
+------------------------------------------------------------------------
+
+A mean of `NA` makes no sense...
+
+Sometimes we forgot to account for the missing variables in our variable! We got `NA`! The reason for this is that the mean is calculated by using every value for a given variable, so if you don’t remove (or impute) the missing values before getting the mean, it won’t work.
+
+Here is how you would account for that:
+
+```{r}
+mean(tipi$hours_of_sleep, na.rm = TRUE)
+```
+
+------------------------------------------------------------------------
+
+### Median
+
+The median is the middle value of a set of observations: 50% of the data points fall below the median, and 50% fall above.
+
+To find the median, we can use the `median()` function. Use it on the age variable.
+
+------------------------------------------------------------------------
+
+![](images/mean_median.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Measures of Variability
+
+The overall spread of the data; How far from the middle?
+
+![](images/variance.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Range
+
+The range gives us the distance between the smallest and largest value in a dataset.
+
+You can find the range using the `range()` function, which will output the minimum and maximum values.
+
+Find the range of the `duration_in_seconds` variable.
+
+------------------------------------------------------------------------
+
+### Variance and Standard Deviation
+
+#### 68-95-99.7 Rule
+
+For nearly normally distributed data:
+
+-   about 68% falls within 1 SD of the mean,
+
+-   about 95% falls within 2 SD of the mean,
+
+-   about 99.7% falls within 3 SD of the mean.
+
+It is possible for observations to fall 4, 5, or more standard deviations away from the mean, but these occurrences are very rare if the data are nearly normal.
+
+------------------------------------------------------------------------
+
+![](images/var2.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Variance
+
+The sum of squared deviations
+
+$$\sigma^2 = \frac{1}{N}\sum_{i=1}^N(X-\bar{X})^2$$
+
+$$\hat{\sigma}^2 = s^2 = \frac{1}{N-1}\sum_{i=1}^N(X-\bar{X})^2$$
+
+------------------------------------------------------------------------
+
+| $i$ (observation) | $X_i$ (value) | $\bar{X}$ (sample mean) | $X_i - \bar{X}$ (deviation from mean) | $(X_i - \bar{X})^2$ (squared deviation) |
+|---------------|---------------|---------------|---------------|---------------|
+| 1 | 56 | 36.6 | 19.4 | 376.36 |
+| 2 | 31 | 36.6 | -5.6 | 31.36 |
+| 3 | 56 | 36.6 | 19.4 | 376.36 |
+| 4 | 8 | 36.6 | -28.6 | 817.96 |
+| 5 | 32 | 36.6 | -4.6 | 21.16 |
+
+------------------------------------------------------------------------
+
+***Why do we use the squared deviation in the calculation of variance?***
+
+::: incremental
+-   To get rid of negative values so that observations equally distant from the mean are weighted equally
+
+-   To weigh larger deviations from the mean
+:::
+
+------------------------------------------------------------------------
+
+## In-Class Activity: Variance
+
+Open up Instagram (that is still a thing right?)
+
+Identify a celebrity and look at their most recent Instagram posts.
+
+Let's calculate the variance of their likes.
+
+[Google Form](https://forms.gle/ojrzADJ9o35tM2gY9){target="_blank"}
+
+![](images/clipboard-2553485530.png)
+
+------------------------------------------------------------------------
+
+## Variance in R
+
+To find the variance and standard deviation, we use var() and sd(), respectively. Find the variance and standard deviation of the age variable.
+
+```{r}
+var(tipi$age)
+sd(tipi$age)
+```
+
+------------------------------------------------------------------------
+
+# Summarizing Data
+
+So far we have been calculating various descriptive statistics (somewhat painstakingly) using an assortment of different functions. So what if we have a dataset with a bunch of variables we want descriptive statistics for? Surely we don’t want to calculate descriptives for each variable by hand…
+
+Fortunately for us, there is a function called `describe()` from the `{psych}` package, which we can use to quickly summarize a whole set of variables in a dataset.
+
+Be sure to first install the package prior to putting it into your library code chunk. Reminder: anytime you add a library, be sure you actually run the code line **`library(psych)`**. Otherwise, you will have a hard time trying to use the next functions. 
+
+Let’s use it with our sleep dataset!
+
+## describe()
+
+This function automatically calculates all of the descriptives we reviewed above (and more!). Use the describe() function from the **psych** package on the entire sleep_data dataset.
+
+**Notes:** If you load a library at the beginning, you can directly call any function from it. Instead, you can call a function by library_name::function_name without loading the entire library.
+
+```{r}
+psych::describe(tipi)
+
+# or if you have already loaded the library
+
+describe(tipi)
+```
+
+**NOTE**: Some variables are not numeric and are **categorical** variables of type character. By default, the describe() function forces non-numeric variables to be numeric and attempts to calculate descriptives for them. These variables are marked with an asterisk (\*). In this case, it doesn’t make sense to calculate descriptive statistics for these variables, so we get a warning message and a bunch of NaN’s and NA’s for these variables.
+
+A better approach would be to remove non-numeric variables before you attempt to run numerical calculations on your dataset.
+
+------------------------------------------------------------------------
+
+## Make it Pretty
+
+Using `sjPlot` (<https://strengejacke.github.io/sjPlot/index.html>) we can make things a little more publishable! You can use `select()` to also keep particular variables (maybe you don't care about the skew)
+
+```{r}
+tipi %>% 
+  psych::describe() %>% 
+  sjPlot::tab_df()
+```
+
+------------------------------------------------------------------------
+
+# `ggplot2`
+
+------------------------------------------------------------------------
+
+## `ggplot2` from the `tidyverse`
+
+Since we have already installed and loaded the library, we don't have to do anything else at this point!
+
+`ggplot2` follows the "grammar of graphics"
+
+-   Theoretical framework for creating data visualizations
+-   Breaks the process down into separate components:
+
+::::: columns
+::: {.column width="50%"}
+Data
+
+Aesthetics (`aes`)
+
+Geometric Objects (`geoms`)
+:::
+
+::: {.column width="50%"}
+Faceting
+
+Themes
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## Grammar of Graphics
+
+[![](images/grammargraphics.webp){fig-align="center"}](https://gkesari.medium.com/my-talk-on-grammar-of-graphics-the-secret-sauce-of-powerful-data-stories-3da618cf1bbf)
+
+# `ggplot2` [cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf)
+
+------------------------------------------------------------------------
+
+## `ggplot2` syntax {.smaller}
+
+There is a basic structure to create a plot within `ggplot2`, and consists of at least these three things:
+
+1.  A Data Set
+2.  Coordinate System
+3.  Geoms - visual marks to represent the data points
+
+In R it looks like this:
+
+```{r, eval=FALSE}
+ggplot(data = <DATA>) + 
+  <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
+
+#or how I like to do it
+<DATA> %>% 
+  ggplot(aes(<MAPPINGS>)) + 
+  <GEOM_FUNCTION>()
+```
+
+------------------------------------------------------------------------
+
+## `ggplot2` syntax
+
+Let's start with a basic figure with our TIPI data
+
+**First** we will define the data that we are using and the variables we are visualizing
+
+```{r, eval = FALSE}
+#the dataset is called penguins
+
+tipi %>% 
+  #including the variables we want to visualize
+  ggplot(aes(x = emo, 
+             y = extra))
+```
+
+What happens?
+
+------------------------------------------------------------------------
+
+We forgot to tell it what to do with the data!
+
+![](images/data-aes.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+Need to add the appropriate `geom` to have it plot points for each observation
+
+```{r, eval = FALSE}
+tipi %>% 
+  ggplot(aes(x = emo, 
+             y = extra)) + 
+  geom_point()
+```
+
+***\
+Note:*** the `geom_point()` layer will "inherit" what is in the `aes()` in the previous layer
+
+------------------------------------------------------------------------
+
+## Adding in Color
+
+Maybe we would like to have each of the points colored by their respective `sex`
+
+This information will be added to the `aes()` within the `geom_point()` layer
+
+```{r, eval = FALSE}
+tipi %>% 
+  ggplot(aes(x = emo, 
+             y = extra)) + 
+  geom_point(aes(color=sex))
+```
+
+------------------------------------------------------------------------
+
+## Including a fit line
+
+Why don't we put in a line that represents the relationship between these variables?
+
+We will want to add another layer/geom
+
+```{r, eval = FALSE}
+tipi %>% 
+  ggplot(aes(x = emo, 
+             y = extra)) + 
+  geom_point(aes(color=sex)) + 
+  geom_smooth()
+```
+
+\
+That looks a little wonky...why is that? Did you get a note in the console?
+
+------------------------------------------------------------------------
+
+## Including a fit line
+
+The `geom_smooth()` defaults to using a loess line to fit to the data
+
+In order to update that, we need to change some of the defaults for that layer and specify that we want a "linear model" or `lm` function to the data
+
+```{r, eval = FALSE}
+tipi %>% 
+  ggplot(aes(x = emo, 
+             y = extra)) + 
+  geom_point(aes(color=sex)) + 
+  geom_smooth(method = 'lm')
+```
+
+\
+Did that look a little better?
+
+------------------------------------------------------------------------
+
+## Individual fit lines
+
+It might make more sense to have individual lines for each of the species instead of something that is across all
+
+```{r, eval = FALSE}
+tipi %>% 
+  ggplot(aes(x = emo, 
+             y = extra, 
+             color = sex)) + 
+  geom_point(aes(color=sex)) + 
+  geom_smooth(method = 'lm')
+```
+
+\
+What did we move around from the last set of code?
+
+What was the error you got?
+
+------------------------------------------------------------------------
+
+## Data Types
+
+It looks like R is looking at our binary variable as a continuous number
+
+We want to be able to tell our code that these are categories/factors
+
+*If we want to change or compute a new variable, what do we use?*
+
+. . .
+
+```{r}
+tipi <- tipi %>% 
+  mutate(sex = as.factor(sex))
+```
+
+------------------------------------------------------------------------
+
+### Let's try that again:
+
+```{r}
+tipi %>% 
+  ggplot(aes(x = emo, 
+             y = extra, 
+             color = sex)) + 
+  geom_point(aes(color=sex)) + 
+  geom_smooth(method = 'lm')
+```
+
+------------------------------------------------------------------------
+
+## Updating Labels/Title
+
+It will default to including the variable names as the `x` and `y` labels, but that isn't something that makes sense. Also would be good to have a title!
+
+We add on another layer called `labs()` for our labels ([link](https://ggplot2.tidyverse.org/reference/labs.html))
+
+```{r, eval = FALSE}
+tipi %>% 
+  ggplot(aes(x = emo, 
+             y = extra, 
+             color = sex)) + 
+  geom_point(aes(color=sex)) + 
+  geom_smooth(method = 'lm') + 
+  labs(
+    title = "TIPI Data",
+    subtitle = "Extraversion by Emotional Stability", 
+    x = "motional Stability", 
+    y = "Extraversion", 
+    color = "Sex at Birth"
+  )
+```
+
+------------------------------------------------------------------------
+
+## Other Graphs
+
+Take another look at the [ggplot cheatsheet](https://rstudio.github.io/cheatsheets/data-visualization.pdf){target="_blank"}
+
+What else is a useful chart?
+
+------------------------------------------------------------------------
+
+### Bar Charts
+
+```{r}
+tipi %>% 
+  ggplot(aes(x = duration_in_seconds)) + 
+  geom_bar()
+
+tipi %>% 
+  ggplot(aes(x = age)) + 
+  geom_bar(aes(fill = sex), 
+                 alpha = 0.5, 
+                 position = "identity")
+```
+
+# Now you try! 🎉
+
+[Week 3 - InClass Activity](../class-activities/wk3_desc-viz.html){target="_blank"}

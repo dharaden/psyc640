@@ -1,0 +1,143 @@
+---
+title: "Week 3 Exercise - Describing & Visualizing"
+subtitle: "Using psych and ggplot2"
+editor: visual
+---
+
+**Goal**: Work on importing data as well as being able to build a pipeline from descriptives to reporting to visualizing.
+
+## Create a new Markdown Document
+
+1.  Go to `File > New File > R Markdown`
+
+2.  Provide the title "Describe & Visualize" and input your name as the author
+
+3.  A script will open in the **Source** pane. Remove unnecessary code.
+
+4.  Go to `File > Save` and name it `week3.Rmd`. Make sure this saves in the same folder as all of your other stuff. Stay Organized!
+
+## **Setting it up**
+
+1.  Create a Code Chunk
+
+2.  Load the `tidyverse`, `psych` and `sjPlot` libraries (Install them if you need to)
+
+```{r}
+
+```
+
+## The Data
+
+<a href="/files/data/wk3-viz.csv" download="wk3-viz.csv">Download Week 3 InClass Data (.csv)</a>
+
+Download the data and move it to the correct folder so that you can access it in this lab.
+
+Your dataset is from a larger study that was examining the overall impact of sleep on energy (and vice versa). Students in different areas across the country completed various questionnaires. The current data is a selection of overall sleep quality rating (0-100) and overall energy level (0-100) across all cities. You will be asked to examine these variables in a descriptive and visual way for your specific city.
+
+Break up into your groups and work to visualize your assigned cities dataset.
+
+|                  |         |            |
+|------------------|---------|------------|
+| Albuquerque      | Chicago | Pittsburgh |
+| Atlanta          | Denver  | Rochester  |
+| Boston           | Ithaca  | Sacramento |
+| Champaign-Urbana | Madison | Seattle    |
+
+Import the data into your R file. I would suggest putting this line within the code chunk that you have your libraries in.
+
+Focus on having reproducible code! You may need to share your file with someone else. They should be able to run it.
+
+```{r}
+
+```
+
+## Questions
+
+With the data that you have imported, follow the following steps and answer the questions along the way.
+
+### Number of Observations
+
+```{r}
+
+```
+
+❓After importing, how many total observations are there?
+
+✅Answer:
+
+------------------------------------------------------------------------
+
+The dataset has all cities involved in the study. You only want to keep the data from your city. Create a new dataset that has only your city in it.
+
+::: callout-tip
+We've used `dplyr` a lot to move our data around. Maybe it has something to do with `select()` or `filter()` or `mutate()`
+:::
+
+```{r}
+
+```
+
+❓How many total observations are there in your new dataset (for your city)?
+
+✅Answer:
+
+------------------------------------------------------------------------
+
+### Calculating Descriptives
+
+You should now have 2 datasets (1 for the entire sample, and 1 for your city). Calculate and report the mean and standard deviation for **your city**. Then calcullate and report the mean and standard deviation for the **whole sample**.
+
+```{r}
+
+```
+
+| Your City    | Total Sample  |
+|--------------|---------------|
+| Sleep Mean:  | Sleep Mean:   |
+| Sleep SD:    | Sleep SD:     |
+| Energy Mean: | Energy Mean:  |
+| Energy SD:   | Energy SD:    |
+
+❓How are the mean and standard deviations similar/different?
+
+✅Answer:
+
+------------------------------------------------------------------------
+
+### Reporting Descriptive Statistics
+
+Now that you have each of the pieces of information calculated for the entire sample and your specific city, you can report it in text. It is important to be able to report these basic descriptive statistics in a meaningful way, so we will practice it as often as possible. Here is an example:
+
+> The sample as a whole was relatively young (*M* = 19.22, *SD* = 3.45).
+>
+> The average amount of drinks consumed was 3.37 (SD = 0.92).
+
+❓Report the means and standard deviations in text for the two variables in your city sample.
+
+✅Answer:
+
+------------------------------------------------------------------------
+
+### Visualizing
+
+We have two variables and we would like to examine the relationship between them. Use a scatterplot to highlight the relationship between these two variables for your city.
+
+Be sure that your plot has a clear main title and clear labels for each axis.
+
+::: callout-tip
+Look back to the lecture or past labs and pull in some of the `ggplot` code that you have! You can always re-use code.
+:::
+
+```{r}
+
+```
+
+❓Describe the overall look of the data for your city.
+
+✅Answer:
+
+------------------------------------------------------------------------
+
+As a class, we will review the different cities to see if we would be able to come to some broad conclusion.
+
+***End of the document. Remember to Knit and upload the html and .Rmd to myCourses.***
