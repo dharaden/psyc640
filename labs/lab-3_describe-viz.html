@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Week 4 – PSYC 640 - Graduate Statistics</title>
+<title>Lab 3: Describing and Visualizing Data – PSYC 640 - Graduate Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,8 +29,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../labs/lab-1_data-workflow.html" rel="next">
-<link href="../weeks/week-3.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -74,7 +72,8 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Week 4 – PSYC 640 - Graduate Statistics">
+<meta property="og:title" content="Lab 3: Describing and Visualizing Data – PSYC 640 - Graduate Statistics">
+<meta property="og:description" content="">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
 
@@ -249,7 +248,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-4.html">Week 4</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lab 3: Describing and Visualizing Data</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -310,13 +309,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Weekly Materials</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../weeks/week-1.html" class="sidebar-item-text sidebar-link">
@@ -337,7 +336,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-4.html" class="sidebar-item-text sidebar-link active">
+  <a href="../weeks/week-4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 4</span></a>
   </div>
 </li>
@@ -388,23 +387,27 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#r-tidy-data" id="toc-r-tidy-data" class="nav-link active" data-scroll-target="#r-tidy-data">R &amp; Tidy Data</a>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#scenario-and-goal" id="toc-scenario-and-goal" class="nav-link" data-scroll-target="#scenario-and-goal">Scenario and Goal</a></li>
+  <li><a href="#variables-of-interest" id="toc-variables-of-interest" class="nav-link" data-scroll-target="#variables-of-interest">Variables of Interest</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
   <ul class="collapse">
-  <li><a href="#prepare" id="toc-prepare" class="nav-link" data-scroll-target="#prepare">Prepare</a></li>
-  <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
-  <li><a href="#in-class-activity" id="toc-in-class-activity" class="nav-link" data-scroll-target="#in-class-activity">In-Class Activity</a></li>
-  <li><a href="#for-next-time" id="toc-for-next-time" class="nav-link" data-scroll-target="#for-next-time">For Next Time</a></li>
+  <li><a href="#exercise-1-importing-and-inspecting" id="toc-exercise-1-importing-and-inspecting" class="nav-link" data-scroll-target="#exercise-1-importing-and-inspecting">Exercise 1: Importing and Inspecting</a></li>
+  <li><a href="#exercise-2-grouped-descriptive-statistics" id="toc-exercise-2-grouped-descriptive-statistics" class="nav-link" data-scroll-target="#exercise-2-grouped-descriptive-statistics">Exercise 2: Grouped Descriptive Statistics</a></li>
+  <li><a href="#exercise-3-visualizing-a-distribution-histogram" id="toc-exercise-3-visualizing-a-distribution-histogram" class="nav-link" data-scroll-target="#exercise-3-visualizing-a-distribution-histogram">Exercise 3: Visualizing a Distribution (Histogram)</a></li>
+  <li><a href="#exercise-4-examining-the-bechdel-test-distribution" id="toc-exercise-4-examining-the-bechdel-test-distribution" class="nav-link" data-scroll-target="#exercise-4-examining-the-bechdel-test-distribution">Exercise 4: Examining the Bechdel Test distribution</a></li>
+  <li><a href="#exercise-5-comparing-groups-with-a-boxplot" id="toc-exercise-5-comparing-groups-with-a-boxplot" class="nav-link" data-scroll-target="#exercise-5-comparing-groups-with-a-boxplot">Exercise 5: Comparing Groups with a Boxplot</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/weeks/week-4.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/lab-3_describe-viz.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-4.html">Week 4</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 4</h1>
+<h1 class="title">Lab 3: Describing and Visualizing Data</h1>
 </div>
 
 
@@ -421,32 +424,84 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="r-tidy-data" class="level1">
-<h1>R &amp; Tidy Data</h1>
-<section id="prepare" class="level2">
-<h2 class="anchored" data-anchor-id="prepare">Prepare</h2>
+<section id="instructions" class="level2">
+<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<p>Can’t believe we’re at Lab #3! Keep it going! We are going to continue to practice importing data and making a reproducible workflow. In this lab, you will be expanding the types of plots you are able to use.</p>
+<p>We will be using data from the <a href="https://en.wikipedia.org/wiki/Bechdel_test">Bechdel test</a>, a measure of the representation of women in fiction. You will be asked to do some Exploratory Data Analysis.</p>
+<p>Here are the things that you will need for this lab:</p>
 <ul>
-<li></li>
+<li><a href="../files/_lab-rmd/lab-3_describe-viz.Rmd" download="lab-3_describe-viz.Rmd">Download Lab 3 (.Rmd)</a></li>
+<li><a href="../files/data/bechdel.csv" download="bechdel.csv">Download Bechdel Data (.csv)</a></li>
 </ul>
+<p>When you are finished, click the <strong>Knit</strong> button to turn your work into an HTML document. You will submit both this <code>.Rmd</code> file and the 🧶knitted <code>.html</code> file.</p>
 </section>
-<section id="slides" class="level2">
-<h2 class="anchored" data-anchor-id="slides">Slides</h2>
-<p><a href="../slides/lec-1_syl.html" target="_blank">💻 Getting Started - Syllabus</a></p>
-<p><a href="../slides/lec-1_background.html" target="_blank">💻Getting Started - Data</a></p>
+<section id="scenario-and-goal" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-and-goal">Scenario and Goal</h2>
+<p>In this lab, you will act as a data journalist exploring a dataset on movies. We will use the data from the FiveThirtyEight story “The Dollar-And-Cents Case Against Hollywood’s Exclusion of Women.”</p>
+<p>This analysis is about the <a href="https://en.wikipedia.org/wiki/Bechdel_test">Bechdel test</a>, a measure of the representation of women in fiction.</p>
+<p>Your goal is to <strong>import, describe, and visualize</strong> this data to understand the characteristics of movies in the dataset and see if there are relationships between a movie’s budget, its box office gross, and its Bechdel Test rating. This is the critical first step in any analysis, known as <strong>Exploratory Data Analysis (EDA)</strong>.</p>
 </section>
-<section id="in-class-activity" class="level2">
-<h2 class="anchored" data-anchor-id="in-class-activity">In-Class Activity</h2>
-<p><a href="../class-activities/day1.html" target="_blank">Getting Comfy with R</a></p>
+<section id="variables-of-interest" class="level2">
+<h2 class="anchored" data-anchor-id="variables-of-interest">Variables of Interest</h2>
+<ul>
+<li><p><code>year</code>: The year of movie release</p></li>
+<li><p><code>clean_test</code>: Bechdel test result:</p>
+<ul>
+<li><p><code>ok</code> = passes test</p></li>
+<li><p><code>dubious</code></p></li>
+<li><p><code>men</code> = women only talk about men</p></li>
+<li><p><code>notalk</code> = women don’t talk to each other</p></li>
+<li><p><code>nowomen</code> = fewer than two women</p></li>
+</ul></li>
+</ul>
+<!-- -->
+<ul>
+<li><p><code>binary</code>: Bechdel Test PASS vs FAIL binary</p></li>
+<li><p><code>budget_2013</code>: Total movie budget</p></li>
+</ul>
+<hr>
 </section>
-<section id="for-next-time" class="level2">
-<h2 class="anchored" data-anchor-id="for-next-time">For Next Time</h2>
-<p>📋<a href="../labs/lab-1_data-workflow.html">Lab 1 - Foundations of a Data Workflow</a></p>
-<p>📖Read Chapter 1 &amp; 2 - ST</p>
-<p>📖Read Chapter 2 - MSR</p>
-<p><br><br></p>
-<div style="font-size: 0.875em;">
-<p>Back to <a href=".." title="Course schedule">course schedule</a> ⏎</p>
-</div>
+<section id="exercises" class="level2">
+<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
+<section id="exercise-1-importing-and-inspecting" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-importing-and-inspecting">Exercise 1: Importing and Inspecting</h3>
+<p>First, you need to set up your RMarkdown to get it ready for importing the data and using the appropriate libraries. Be sure to have all libraries listed here in the first code chunk along with importing the data. I should not see any lines that say <code>install.packages()</code>.</p>
+<p>I will attempt to reproduce your output in my own computer, so be sure that your code is reproducible.</p>
+<p><strong>Question 1:</strong> Look at the output from your overview. How many total movies are in this database? And what year is the latest movie?</p>
+<p><strong>Your Answer:</strong></p>
+<p><strong>Question 2:</strong> Calculate the Average budget of the whole dataset. Then, calculate the average for only movies in the year 2000.</p>
+<p><strong>Your Answer:</strong></p>
+<hr>
+</section>
+<section id="exercise-2-grouped-descriptive-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-grouped-descriptive-statistics">Exercise 2: Grouped Descriptive Statistics</h3>
+<p>Averages for the whole dataset are useful, but we are often more interested in comparing averages <em>between groups</em>. Let’s see if the average budget differs for movies that pass the Bechdel Test versus those that fail. The <code>binary</code> variable tells us this (“PASS” or “FAIL”).</p>
+<p><strong>Question 3:</strong> Based on your summary table, do movies that pass or fail the Bechdel test have a higher average (mean) budget?</p>
+<p><strong>Your Answer:</strong></p>
+<hr>
+</section>
+<section id="exercise-3-visualizing-a-distribution-histogram" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3-visualizing-a-distribution-histogram">Exercise 3: Visualizing a Distribution (Histogram)</h3>
+<p>Let’s visualize the distribution of domestic gross earnings (adjusted for 2013) across all the movies.</p>
+<p><strong>Question 4:</strong> Describe the shape of the distribution you see in the histogram. Is it symmetric (like a bell curve), or is it skewed in one direction? Where do most movies’ earnings seem to be clustered?</p>
+<p><strong>Your Answer:</strong></p>
+<hr>
+</section>
+<section id="exercise-4-examining-the-bechdel-test-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-4-examining-the-bechdel-test-distribution">Exercise 4: Examining the Bechdel Test distribution</h3>
+<p>Now we want to see how many movies fall into each of the Bechdel categories. Generate a barplot of the <code>clean_test</code> variable to see what the distribution of the test is.</p>
+<p>Then choose a year in the dataset, create a similar plot (but only for that year). Therefore you should have 2 plots below:</p>
+<p><strong>Question 5:</strong> Examine both charts and describe the similarities and differences that you are noticing.</p>
+<p><strong>Answer:</strong></p>
+<hr>
+</section>
+<section id="exercise-5-comparing-groups-with-a-boxplot" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-5-comparing-groups-with-a-boxplot">Exercise 5: Comparing Groups with a Boxplot</h3>
+<p>Now let’s visually compare the inflation-adjusted international gross (<code>intgross_2013</code>) for movies that pass the Bechdel test versus those that fail. A boxplot is an excellent way to see differences in the median and spread between groups.</p>
+<p><strong>Question 6:</strong> Look at the boxplot. The thick horizontal line in the middle of each box represents the median. Does there appear to be a large difference in the median domestic gross between movies that pass and fail the test?</p>
+<p><strong>Your Answer:</strong></p>
+<hr>
+<p><em>End of Lab 3. You’ve now practiced exploratory data analysis! It is always important to visualize your data to get a good sense of what you are working with. Don’t forget to Knit! 🧶</em></p>
 
 
 </section>
@@ -865,18 +920,6 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../weeks/week-3.html" class="pagination-link" aria-label="Week 3">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 3</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../labs/lab-1_data-workflow.html" class="pagination-link" aria-label="Lab 1 - Data Intro">
-        <span class="nav-page-text">Lab 1 - Data Intro</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -885,7 +928,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/weeks/week-4.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/lab-3_describe-viz.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with ☕ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

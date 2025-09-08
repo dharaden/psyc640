@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Week 4 – PSYC 640 - Graduate Statistics</title>
+<title>Week 3 Exercise - Describing &amp; Visualizing – PSYC 640 - Graduate Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,8 +29,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../labs/lab-1_data-workflow.html" rel="next">
-<link href="../weeks/week-3.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -74,7 +72,8 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Week 4 – PSYC 640 - Graduate Statistics">
+<meta property="og:title" content="Week 3 Exercise - Describing &amp; Visualizing – PSYC 640 - Graduate Statistics">
+<meta property="og:description" content="Using psych and ggplot2">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
 
@@ -249,7 +248,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-4.html">Week 4</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Week 3 Exercise - Describing &amp; Visualizing</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -310,13 +309,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Weekly Materials</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../weeks/week-1.html" class="sidebar-item-text sidebar-link">
@@ -337,7 +336,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-4.html" class="sidebar-item-text sidebar-link active">
+  <a href="../weeks/week-4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 4</span></a>
   </div>
 </li>
@@ -388,23 +387,27 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#r-tidy-data" id="toc-r-tidy-data" class="nav-link active" data-scroll-target="#r-tidy-data">R &amp; Tidy Data</a>
+  <li><a href="#create-a-new-markdown-document" id="toc-create-a-new-markdown-document" class="nav-link active" data-scroll-target="#create-a-new-markdown-document">Create a new Markdown Document</a></li>
+  <li><a href="#setting-it-up" id="toc-setting-it-up" class="nav-link" data-scroll-target="#setting-it-up"><strong>Setting it up</strong></a></li>
+  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">The Data</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a>
   <ul class="collapse">
-  <li><a href="#prepare" id="toc-prepare" class="nav-link" data-scroll-target="#prepare">Prepare</a></li>
-  <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
-  <li><a href="#in-class-activity" id="toc-in-class-activity" class="nav-link" data-scroll-target="#in-class-activity">In-Class Activity</a></li>
-  <li><a href="#for-next-time" id="toc-for-next-time" class="nav-link" data-scroll-target="#for-next-time">For Next Time</a></li>
+  <li><a href="#number-of-observations" id="toc-number-of-observations" class="nav-link" data-scroll-target="#number-of-observations">Number of Observations</a></li>
+  <li><a href="#calculating-descriptives" id="toc-calculating-descriptives" class="nav-link" data-scroll-target="#calculating-descriptives">Calculating Descriptives</a></li>
+  <li><a href="#reporting-descriptive-statistics" id="toc-reporting-descriptive-statistics" class="nav-link" data-scroll-target="#reporting-descriptive-statistics">Reporting Descriptive Statistics</a></li>
+  <li><a href="#visualizing" id="toc-visualizing" class="nav-link" data-scroll-target="#visualizing">Visualizing</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/weeks/week-4.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/class-activities/wk3_desc-viz.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-4.html">Week 4</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 4</h1>
+<h1 class="title">Week 3 Exercise - Describing &amp; Visualizing</h1>
+<p class="subtitle lead">Using psych and ggplot2</p>
 </div>
 
 
@@ -421,32 +424,148 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="r-tidy-data" class="level1">
-<h1>R &amp; Tidy Data</h1>
-<section id="prepare" class="level2">
-<h2 class="anchored" data-anchor-id="prepare">Prepare</h2>
-<ul>
-<li></li>
-</ul>
+<p><strong>Goal</strong>: Work on importing data as well as being able to build a pipeline from descriptives to reporting to visualizing.</p>
+<section id="create-a-new-markdown-document" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-new-markdown-document">Create a new Markdown Document</h2>
+<ol type="1">
+<li><p>Go to <code>File &gt; New File &gt; R Markdown</code></p></li>
+<li><p>Provide the title “Describe &amp; Visualize” and input your name as the author</p></li>
+<li><p>A script will open in the <strong>Source</strong> pane. Remove unnecessary code.</p></li>
+<li><p>Go to <code>File &gt; Save</code> and name it <code>week3.Rmd</code>. Make sure this saves in the same folder as all of your other stuff. Stay Organized!</p></li>
+</ol>
 </section>
-<section id="slides" class="level2">
-<h2 class="anchored" data-anchor-id="slides">Slides</h2>
-<p><a href="../slides/lec-1_syl.html" target="_blank">💻 Getting Started - Syllabus</a></p>
-<p><a href="../slides/lec-1_background.html" target="_blank">💻Getting Started - Data</a></p>
+<section id="setting-it-up" class="level2">
+<h2 class="anchored" data-anchor-id="setting-it-up"><strong>Setting it up</strong></h2>
+<ol type="1">
+<li><p>Create a Code Chunk</p></li>
+<li><p>Load the <code>tidyverse</code>, <code>psych</code> and <code>sjPlot</code> libraries (Install them if you need to)</p></li>
+</ol>
 </section>
-<section id="in-class-activity" class="level2">
-<h2 class="anchored" data-anchor-id="in-class-activity">In-Class Activity</h2>
-<p><a href="../class-activities/day1.html" target="_blank">Getting Comfy with R</a></p>
+<section id="the-data" class="level2">
+<h2 class="anchored" data-anchor-id="the-data">The Data</h2>
+<p><a href="../files/data/wk3-viz.csv" download="wk3-viz.csv">Download Week 3 InClass Data (.csv)</a></p>
+<p>Download the data and move it to the correct folder so that you can access it in this lab.</p>
+<p>Your dataset is from a larger study that was examining the overall impact of sleep on energy (and vice versa). Students in different areas across the country completed various questionnaires. The current data is a selection of overall sleep quality rating (0-100) and overall energy level (0-100) across all cities. You will be asked to examine these variables in a descriptive and visual way for your specific city.</p>
+<p>Break up into your groups and work to visualize your assigned cities dataset.</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td>Albuquerque</td>
+<td>Chicago</td>
+<td>Pittsburgh</td>
+</tr>
+<tr class="even">
+<td>Atlanta</td>
+<td>Denver</td>
+<td>Rochester</td>
+</tr>
+<tr class="odd">
+<td>Boston</td>
+<td>Ithaca</td>
+<td>Sacramento</td>
+</tr>
+<tr class="even">
+<td>Champaign-Urbana</td>
+<td>Madison</td>
+<td>Seattle</td>
+</tr>
+</tbody>
+</table>
+<p>Import the data into your R file. I would suggest putting this line within the code chunk that you have your libraries in.</p>
+<p>Focus on having reproducible code! You may need to share your file with someone else. They should be able to run it.</p>
 </section>
-<section id="for-next-time" class="level2">
-<h2 class="anchored" data-anchor-id="for-next-time">For Next Time</h2>
-<p>📋<a href="../labs/lab-1_data-workflow.html">Lab 1 - Foundations of a Data Workflow</a></p>
-<p>📖Read Chapter 1 &amp; 2 - ST</p>
-<p>📖Read Chapter 2 - MSR</p>
-<p><br><br></p>
-<div style="font-size: 0.875em;">
-<p>Back to <a href=".." title="Course schedule">course schedule</a> ⏎</p>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">Questions</h2>
+<p>With the data that you have imported, follow the following steps and answer the questions along the way.</p>
+<section id="number-of-observations" class="level3">
+<h3 class="anchored" data-anchor-id="number-of-observations">Number of Observations</h3>
+<p>❓After importing, how many total observations are there?</p>
+<p>✅Answer:</p>
+<hr>
+<p>The dataset has all cities involved in the study. You only want to keep the data from your city. Create a new dataset that has only your city in it.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We’ve used <code>dplyr</code> a lot to move our data around. Maybe it has something to do with <code>select()</code> or <code>filter()</code> or <code>mutate()</code></p>
+</div>
+</div>
+<p>❓How many total observations are there in your new dataset (for your city)?</p>
+<p>✅Answer:</p>
+<hr>
+</section>
+<section id="calculating-descriptives" class="level3">
+<h3 class="anchored" data-anchor-id="calculating-descriptives">Calculating Descriptives</h3>
+<p>You should now have 2 datasets (1 for the entire sample, and 1 for your city). Calculate and report the mean and standard deviation for <strong>your city</strong>. Then calcullate and report the mean and standard deviation for the <strong>whole sample</strong>.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Your City</th>
+<th>Total Sample</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sleep Mean:</td>
+<td>Sleep Mean:</td>
+</tr>
+<tr class="even">
+<td>Sleep SD:</td>
+<td>Sleep SD:</td>
+</tr>
+<tr class="odd">
+<td>Energy Mean:</td>
+<td>Energy Mean:</td>
+</tr>
+<tr class="even">
+<td>Energy SD:</td>
+<td>Energy SD:</td>
+</tr>
+</tbody>
+</table>
+<p>❓How are the mean and standard deviations similar/different?</p>
+<p>✅Answer:</p>
+<hr>
+</section>
+<section id="reporting-descriptive-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="reporting-descriptive-statistics">Reporting Descriptive Statistics</h3>
+<p>Now that you have each of the pieces of information calculated for the entire sample and your specific city, you can report it in text. It is important to be able to report these basic descriptive statistics in a meaningful way, so we will practice it as often as possible. Here is an example:</p>
+<blockquote class="blockquote">
+<p>The sample as a whole was relatively young (<em>M</em> = 19.22, <em>SD</em> = 3.45).</p>
+<p>The average amount of drinks consumed was 3.37 (SD = 0.92).</p>
+</blockquote>
+<p>❓Report the means and standard deviations in text for the two variables in your city sample.</p>
+<p>✅Answer:</p>
+<hr>
+</section>
+<section id="visualizing" class="level3">
+<h3 class="anchored" data-anchor-id="visualizing">Visualizing</h3>
+<p>We have two variables and we would like to examine the relationship between them. Use a scatterplot to highlight the relationship between these two variables for your city.</p>
+<p>Be sure that your plot has a clear main title and clear labels for each axis.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Look back to the lecture or past labs and pull in some of the <code>ggplot</code> code that you have! You can always re-use code.</p>
+</div>
+</div>
+<p>❓Describe the overall look of the data for your city.</p>
+<p>✅Answer:</p>
+<hr>
+<p>As a class, we will review the different cities to see if we would be able to come to some broad conclusion.</p>
+<p><strong><em>End of the document. Remember to Knit and upload the html and .Rmd to myCourses.</em></strong></p>
 
 
 </section>
@@ -865,18 +984,6 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../weeks/week-3.html" class="pagination-link" aria-label="Week 3">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 3</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../labs/lab-1_data-workflow.html" class="pagination-link" aria-label="Lab 1 - Data Intro">
-        <span class="nav-page-text">Lab 1 - Data Intro</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -885,7 +992,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/weeks/week-4.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/class-activities/wk3_desc-viz.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with ☕ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
