@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.34">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.24">
 
   <title>PSYC 640 - Graduate Statistics – Week 03: Describe &amp; Vizualize</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -94,7 +94,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-12873a65cf666e61daa4b3cf91a98e13.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-5ae9c59b2727fcd5357d4f034d95f9e0.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -213,7 +213,7 @@
 </figure>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># File management</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># File management</span></span>
 <span id="cb1-2"><a></a><span class="fu">library</span>(here)</span>
 <span id="cb1-3"><a></a><span class="co"># for dplyr, ggplot2</span></span>
 <span id="cb1-4"><a></a><span class="fu">library</span>(tidyverse)</span>
@@ -223,7 +223,7 @@
 <span id="cb1-8"><a></a><span class="fu">library</span>(psych)</span>
 <span id="cb1-9"><a></a></span>
 <span id="cb1-10"><a></a><span class="co">#Remove Scientific Notation </span></span>
-<span id="cb1-11"><a></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-11"><a></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -241,10 +241,10 @@
 <li>We will use the TIPI data from the last lecture that has already been scored</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co">#import data - Your path may be different</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co">#import data - Your path may be different</span></span>
 <span id="cb2-2"><a></a>tipi <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"files"</span>, <span class="st">"data"</span>, <span class="st">"final_tipi.csv"</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb2-3"><a></a>  <span class="co"># from the janitor package</span></span>
-<span id="cb2-4"><a></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 
@@ -304,11 +304,11 @@
 <h3 id="mean-in-r">Mean in R</h3>
 <p>A quick way to find the mean is to use the aptly named <code>mean()</code> function from base R. Use this function to get the average <code>age</code> and <code>ess total</code> in our dataset.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">mean</span>(tipi<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">mean</span>(tipi<span class="sc">$</span>age)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 19.77778</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">mean</span>(tipi<span class="sc">$</span>hours_of_sleep)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">mean</span>(tipi<span class="sc">$</span>hours_of_sleep)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6.505051</code></pre>
 </div>
@@ -320,7 +320,7 @@
 <p>Sometimes we forgot to account for the missing variables in our variable! We got <code>NA</code>! The reason for this is that the mean is calculated by using every value for a given variable, so if you don’t remove (or impute) the missing values before getting the mean, it won’t work.</p>
 <p>Here is how you would account for that:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">mean</span>(tipi<span class="sc">$</span>hours_of_sleep, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">mean</span>(tipi<span class="sc">$</span>hours_of_sleep, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6.505051</code></pre>
 </div>
@@ -448,11 +448,11 @@
 <h2>Variance in R</h2>
 <p>To find the variance and standard deviation, we use var() and sd(), respectively. Find the variance and standard deviation of the age variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">var</span>(tipi<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">var</span>(tipi<span class="sc">$</span>age)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.399093</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">sd</span>(tipi<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">sd</span>(tipi<span class="sc">$</span>age)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.843663</code></pre>
 </div>
@@ -474,7 +474,7 @@
 <p>This function automatically calculates all of the descriptives we reviewed above (and more!). Use the describe() function from the <strong>psych</strong> package on the entire sleep_data dataset.</p>
 <p><strong>Notes:</strong> If you load a library at the beginning, you can directly call any function from it. Instead, you can call a function by library_name::function_name without loading the entire library.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>psych<span class="sc">::</span><span class="fu">describe</span>(tipi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>psych<span class="sc">::</span><span class="fu">describe</span>(tipi)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                    vars  n    mean       sd median trimmed    mad    min
 id                     1 99 1058.12    31.05 1059.0 1057.93  38.55 1006.0
@@ -545,9 +545,9 @@ consc                    7      5.0 -0.32    -0.70    0.12
 emo                      7      5.5 -0.10    -0.54    0.13
 open                     7      4.5 -0.48     0.13    0.10</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="co"># or if you have already loaded the library</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="co"># or if you have already loaded the library</span></span>
 <span id="cb15-2"><a></a></span>
-<span id="cb15-3"><a></a><span class="fu">describe</span>(tipi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-3"><a></a><span class="fu">describe</span>(tipi)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                    vars  n    mean       sd median trimmed    mad    min
 id                     1 99 1058.12    31.05 1059.0 1057.93  38.55 1006.0
@@ -626,26 +626,26 @@ open                     7      4.5 -0.48     0.13    0.10</code></pre>
 <h2>Make it Pretty</h2>
 <p>Using <code>sjPlot</code> (<a href="https://strengejacke.github.io/sjPlot/index.html" class="uri">https://strengejacke.github.io/sjPlot/index.html</a>) we can make things a little more publishable! You can use <code>select()</code> to also keep particular variables (maybe you don’t care about the skew)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>tipi <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>tipi <span class="sc">%&gt;%</span> </span>
 <span id="cb17-2"><a></a>  psych<span class="sc">::</span><span class="fu">describe</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb17-3"><a></a>  sjPlot<span class="sc">::</span><span class="fu">tab_df</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-3"><a></a>  sjPlot<span class="sc">::</span><span class="fu">tab_df</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<table class="caption-top" data-quarto-postprocess="true" style="border-collapse:collapse; border:none;">
+<table class="caption-top" style="border-collapse:collapse; border:none;">
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; padding: 0.2cm; border-bottom: 1px solid black;">vars</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; padding: 0.2cm; border-bottom: 1px solid black;">n</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; padding: 0.2cm; border-bottom: 1px solid black;">mean</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; padding: 0.2cm; border-bottom: 1px solid black;">sd</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; padding: 0.2cm; border-bottom: 1px solid black;">median</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; padding: 0.2cm; border-bottom: 1px solid black;">trimmed</td>
-<td data-quarto-table-cell-role="th">mad</td>
-<td data-quarto-table-cell-role="th">min</td>
-<td data-quarto-table-cell-role="th">max</td>
-<td data-quarto-table-cell-role="th">range</td>
-<td data-quarto-table-cell-role="th">skew</td>
-<td data-quarto-table-cell-role="th">kurtosis</td>
-<td data-quarto-table-cell-role="th">se</td>
+<th data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; padding: 0.2cm; border-bottom: 1px solid black;">vars</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; padding: 0.2cm; border-bottom: 1px solid black;">n</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; padding: 0.2cm; border-bottom: 1px solid black;">mean</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; padding: 0.2cm; border-bottom: 1px solid black;">sd</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; padding: 0.2cm; border-bottom: 1px solid black;">median</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; padding: 0.2cm; border-bottom: 1px solid black;">trimmed</th>
+<th data-quarto-table-cell-role="th">mad</th>
+<th data-quarto-table-cell-role="th">min</th>
+<th data-quarto-table-cell-role="th">max</th>
+<th data-quarto-table-cell-role="th">range</th>
+<th data-quarto-table-cell-role="th">skew</th>
+<th data-quarto-table-cell-role="th">kurtosis</th>
+<th data-quarto-table-cell-role="th">se</th>
 </tr>
 <tr class="even">
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">1</td>
@@ -1196,13 +1196,13 @@ open                     7      4.5 -0.48     0.13    0.10</code></pre>
 </ol>
 <p>In R it looks like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="sc">&lt;</span>DATA<span class="sc">&gt;</span>) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="sc">&lt;</span>DATA<span class="sc">&gt;</span>) <span class="sc">+</span> </span>
 <span id="cb18-2"><a></a>  <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>))</span>
 <span id="cb18-3"><a></a></span>
 <span id="cb18-4"><a></a><span class="co">#or how I like to do it</span></span>
 <span id="cb18-5"><a></a><span class="sc">&lt;</span>DATA<span class="sc">&gt;</span> <span class="sc">%&gt;%</span> </span>
 <span id="cb18-6"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>)) <span class="sc">+</span> </span>
-<span id="cb18-7"><a></a>  <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-7"><a></a>  <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="ggplot2-syntax-1" class="slide level2">
@@ -1210,12 +1210,12 @@ open                     7      4.5 -0.48     0.13    0.10</code></pre>
 <p>Let’s start with a basic figure with our TIPI data</p>
 <p><strong>First</strong> we will define the data that we are using and the variables we are visualizing</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="co">#the dataset is called penguins</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="co">#the dataset is called penguins</span></span>
 <span id="cb19-2"><a></a></span>
 <span id="cb19-3"><a></a>tipi <span class="sc">%&gt;%</span> </span>
 <span id="cb19-4"><a></a>  <span class="co">#including the variables we want to visualize</span></span>
 <span id="cb19-5"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> emo, </span>
-<span id="cb19-6"><a></a>             <span class="at">y =</span> extra))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-6"><a></a>             <span class="at">y =</span> extra))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>What happens?</p>
 </section>
@@ -1228,10 +1228,10 @@ open                     7      4.5 -0.48     0.13    0.10</code></pre>
 
 <p>Need to add the appropriate <code>geom</code> to have it plot points for each observation</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>tipi <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>tipi <span class="sc">%&gt;%</span> </span>
 <span id="cb20-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> emo, </span>
 <span id="cb20-3"><a></a>             <span class="at">y =</span> extra)) <span class="sc">+</span> </span>
-<span id="cb20-4"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-4"><a></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong><em><br>
 Note:</em></strong> the <code>geom_point()</code> layer will “inherit” what is in the <code>aes()</code> in the previous layer</p>
@@ -1241,10 +1241,10 @@ Note:</em></strong> the <code>geom_point()</code> layer will “inherit” what 
 <p>Maybe we would like to have each of the points colored by their respective <code>sex</code></p>
 <p>This information will be added to the <code>aes()</code> within the <code>geom_point()</code> layer</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>tipi <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>tipi <span class="sc">%&gt;%</span> </span>
 <span id="cb21-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> emo, </span>
 <span id="cb21-3"><a></a>             <span class="at">y =</span> extra)) <span class="sc">+</span> </span>
-<span id="cb21-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>sex))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>sex))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="including-a-fit-line" class="slide level2">
@@ -1252,11 +1252,11 @@ Note:</em></strong> the <code>geom_point()</code> layer will “inherit” what 
 <p>Why don’t we put in a line that represents the relationship between these variables?</p>
 <p>We will want to add another layer/geom</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>tipi <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>tipi <span class="sc">%&gt;%</span> </span>
 <span id="cb22-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> emo, </span>
 <span id="cb22-3"><a></a>             <span class="at">y =</span> extra)) <span class="sc">+</span> </span>
 <span id="cb22-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>sex)) <span class="sc">+</span> </span>
-<span id="cb22-5"><a></a>  <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-5"><a></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br>
 That looks a little wonky…why is that? Did you get a note in the console?</p>
@@ -1266,11 +1266,11 @@ That looks a little wonky…why is that? Did you get a note in the console?</p>
 <p>The <code>geom_smooth()</code> defaults to using a loess line to fit to the data</p>
 <p>In order to update that, we need to change some of the defaults for that layer and specify that we want a “linear model” or <code>lm</code> function to the data</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>tipi <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>tipi <span class="sc">%&gt;%</span> </span>
 <span id="cb23-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> emo, </span>
 <span id="cb23-3"><a></a>             <span class="at">y =</span> extra)) <span class="sc">+</span> </span>
 <span id="cb23-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>sex)) <span class="sc">+</span> </span>
-<span id="cb23-5"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">'lm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-5"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">'lm'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br>
 Did that look a little better?</p>
@@ -1279,12 +1279,12 @@ Did that look a little better?</p>
 <h2>Individual fit lines</h2>
 <p>It might make more sense to have individual lines for each of the species instead of something that is across all</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>tipi <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>tipi <span class="sc">%&gt;%</span> </span>
 <span id="cb24-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> emo, </span>
 <span id="cb24-3"><a></a>             <span class="at">y =</span> extra, </span>
 <span id="cb24-4"><a></a>             <span class="at">color =</span> sex)) <span class="sc">+</span> </span>
 <span id="cb24-5"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>sex)) <span class="sc">+</span> </span>
-<span id="cb24-6"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">'lm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-6"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">'lm'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br>
 What did we move around from the last set of code?</p>
@@ -1297,8 +1297,8 @@ What did we move around from the last set of code?</p>
 <p><em>If we want to change or compute a new variable, what do we use?</em></p>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>tipi <span class="ot">&lt;-</span> tipi <span class="sc">%&gt;%</span> </span>
-<span id="cb25-2"><a></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">as.factor</span>(sex))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>tipi <span class="ot">&lt;-</span> tipi <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">as.factor</span>(sex))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -1306,12 +1306,12 @@ What did we move around from the last set of code?</p>
 
 <h3 id="lets-try-that-again">Let’s try that again:</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>tipi <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>tipi <span class="sc">%&gt;%</span> </span>
 <span id="cb26-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> emo, </span>
 <span id="cb26-3"><a></a>             <span class="at">y =</span> extra, </span>
 <span id="cb26-4"><a></a>             <span class="at">color =</span> sex)) <span class="sc">+</span> </span>
 <span id="cb26-5"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>sex)) <span class="sc">+</span> </span>
-<span id="cb26-6"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">'lm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-6"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">'lm'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="lec-3_desc-viz_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch"></section>
@@ -1320,7 +1320,7 @@ What did we move around from the last set of code?</p>
 <p>It will default to including the variable names as the <code>x</code> and <code>y</code> labels, but that isn’t something that makes sense. Also would be good to have a title!</p>
 <p>We add on another layer called <code>labs()</code> for our labels (<a href="https://ggplot2.tidyverse.org/reference/labs.html">link</a>)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>tipi <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>tipi <span class="sc">%&gt;%</span> </span>
 <span id="cb27-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> emo, </span>
 <span id="cb27-3"><a></a>             <span class="at">y =</span> extra, </span>
 <span id="cb27-4"><a></a>             <span class="at">color =</span> sex)) <span class="sc">+</span> </span>
@@ -1332,7 +1332,7 @@ What did we move around from the last set of code?</p>
 <span id="cb27-10"><a></a>    <span class="at">x =</span> <span class="st">"motional Stability"</span>, </span>
 <span id="cb27-11"><a></a>    <span class="at">y =</span> <span class="st">"Extraversion"</span>, </span>
 <span id="cb27-12"><a></a>    <span class="at">color =</span> <span class="st">"Sex at Birth"</span></span>
-<span id="cb27-13"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-13"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="other-graphs" class="slide level2">
@@ -1344,9 +1344,9 @@ What did we move around from the last set of code?</p>
 
 <h3 id="bar-charts">Bar Charts</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>tipi <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>tipi <span class="sc">%&gt;%</span> </span>
 <span id="cb28-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> duration_in_seconds)) <span class="sc">+</span> </span>
-<span id="cb28-3"><a></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-3"><a></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -1354,11 +1354,11 @@ What did we move around from the last set of code?</p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>tipi <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>tipi <span class="sc">%&gt;%</span> </span>
 <span id="cb29-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age)) <span class="sc">+</span> </span>
 <span id="cb29-3"><a></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill =</span> sex), </span>
 <span id="cb29-4"><a></a>                 <span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
-<span id="cb29-5"><a></a>                 <span class="at">position =</span> <span class="st">"identity"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-5"><a></a>                 <span class="at">position =</span> <span class="st">"identity"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -1566,7 +1566,7 @@ What did we move around from the last set of code?</p>
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1678,13 +1678,14 @@ What did we move around from the last set of code?</p>
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy
