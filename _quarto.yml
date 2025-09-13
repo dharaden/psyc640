@@ -60,6 +60,14 @@ website:
             text: "Lab 1 - Data Intro" 
           - href: labs/lab-2_data-wrangling.qmd
             text: "Lab 2 - Wrangling Intro" 
+          - href: labs/lab-3_describe-viz.qmd
+            text: "Lab 3 - Describe/Visualize" 
+          - href: labs/lab-4.qmd
+            text: "Lab 4" 
+          - href: labs/lab-5.qmd
+            text: "Lab 5" 
+          - href: labs/lab-6.qmd
+            text: "Lab 6" 
       - href: resources.qmd
         text: "Resources" 
       - href: previous-years.qmd
