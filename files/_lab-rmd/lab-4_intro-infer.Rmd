@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 
 A researcher at the university's sleep center is interested in the factors that affect daytime sleepiness and attention in college students. They collected survey data from a sample of students.
 
-The data highlighted above contains the following variables:
+The data highlighted above contains the following variables (and more):
 
 -   **`ESS1 - ESS8`**: (Continuous) The student's responses to each item on the Epworth Sleepiness Scale, a measure of general daytime sleepiness. Higher scores indicate greater sleepiness. **NOTE:** You will need to calculate a total score which is a sum of all 8 items.
 
@@ -22,8 +22,6 @@ The data highlighted above contains the following variables:
 -   **`attention1 - attention5`**: (Categorical) An indication of whether they passed (1) or failed (0) the attention check item. A proxy for their attention during the survey. **NOTE:** Calculate a total attention score as a sum of all 5 items.
 
 -   **`age`**: (Continuous) The student's age in years.
-
--   **`gender`**: (Categorical) The student's self-reported gender ("Man", "Woman").
 
 -   **`roommate`**: (Categorical) Whether the student has a roommate or not ("Yes", "No").
 
@@ -112,7 +110,9 @@ Once completed, only include students who have "passed" the attention check (i.e
 
     -   **Critical Thinking:** This is an observational study. Can you conclude that having a roommate *causes* a change in sleepiness? Why or why not?
 
-## Task 3: Sleep Habits and Age (An Association)
+## Bonus: Sleep Habits and Age (An Association)
+
+This question is not required. But you will get some bonus points if you decide to do it!
 
 **The Research Question:** "Is there an association between a student's sleep habits and their age?"
 
