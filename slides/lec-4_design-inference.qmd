@@ -176,25 +176,29 @@ A **True Experiment** is the most powerful tool for establishing causality. It h
 
 #### **The Key Distinction in Sampling**
 
--   For now, you only need to know one major distinction. This choice determines how much you can generalize.
+**Random Sampling (The Ideal)**
 
--   **Random Sampling (The Ideal)**
+-   Every single member of the target population has an equal chance of being selected for the study.
 
-    -   Every single member of the target population has an equal chance of being selected for the study.
+-   **Why it's the gold standard:** It minimizes systematic bias. In the long run, it produces samples that are highly representative of the population.
 
-    -   **Why it's the gold standard:** It minimizes systematic bias. In the long run, it produces samples that are highly representative of the population.
+**Convenience Sampling (The Reality)**
 
--   **Convenience Sampling (The Reality)**
+-   The researcher includes people who are easy to reach (e.g., Using undergraduate students, posting a flier in the clinic, etc.)
 
-    -   The researcher includes people who are easy to reach (e.g., Using undergraduate students, posting a flier in the clinic, etc.)
-
-    -   **The Limitation:** Our convenience sample may differ from the population in systematic ways (e.g., younger, wealthier, college educated, etc.). Must be thoughtful when generalizing from these samples.
+-   **The Limitation:** Our convenience sample may differ from the population in systematic ways (e.g., younger, wealthier, college educated, etc.). Must be thoughtful when generalizing from these samples.
 
 # Checkpoint
 
 We have our perfectly designed study to collect stress data from our observations on being on the squirrel hunt (let's ignore the ethics around knowing squirrels might attack and not interfering).
 
-We have collected our data...how do we know if these differences are "real" or that it is just due to random chance?
+We've moved beyond just *describing* our sample with means and standard deviations.
+
+Now we have to make an **inference**. We see a difference in stress between the groups... but how do we know if it's "real" or just random chance?
+
+To answer this, we need to understand the logic of randomness itself. We need to understand **probability**.
+
+------------------------------------------------------------------------
 
 ## Descriptives vs. Inference
 
@@ -286,9 +290,19 @@ The common misunderstanding of the LLN is that random processes are supposed to 
 
 ## Probability - The 2 main realms
 
-| Frequentist | Bayesian |
-|:----------------------------------:|:----------------------------------:|
-| Probability is a **long-run frequency** of an event | Probability of an event as the **degree of belief** |
+::::: columns
+::: {.column width="50%"}
+### Frequentist
+
+Probability is a **long-run frequency** of an event
+:::
+
+::: {.column width="50%"}
+### Bayesian
+
+Probability of an event as the **degree of belief**
+:::
+:::::
 
 ------------------------------------------------------------------------
 
@@ -296,8 +310,12 @@ The common misunderstanding of the LLN is that random processes are supposed to 
 
 [**Pros**]{.underline}
 
--   Objective: the probability of an event is grounded in the world & exist in the physical universe
--   Unambiguous: two people can watch the same sequence of events and will come up with the same answer
+-   **Objective**: the probability of an event is grounded in the world & exist in the physical universe
+-   **Unambiguous**: two people can watch the same sequence of events and will come up with the same answer
+
+------------------------------------------------------------------------
+
+### Frequentist Approach
 
 [**Cons**]{.underline}
 
@@ -311,6 +329,12 @@ The common misunderstanding of the LLN is that random processes are supposed to 
 
 # Probability Theory as part of the solution 
 
+**So, How Does This Help Us?**
+
+The Frequentist approach gives us a powerful framework: We can test our research hypothesis by asking, "How surprising would our sample data be if there were truly no effect in the long run?"
+
+This question is the foundation for the rest of our journey today.
+
 # Part 3: From Design to Model (The Decision Tree)
 
 ------------------------------------------------------------------------
@@ -321,7 +345,7 @@ The common misunderstanding of the LLN is that random processes are supposed to 
 
 -   All models we learn this semester can be expressed in R with a simple formula:
 
-`Outcome` \~ Predictor
+`Outcome ~ Predictor`
 
 ------------------------------------------------------------------------
 
