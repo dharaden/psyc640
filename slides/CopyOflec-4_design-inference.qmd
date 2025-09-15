@@ -1,0 +1,187 @@
+---
+title: "Week 04: Design & Inference"
+subtitle: "Date: September 15, 2025"
+footer:  "[course-website](https://dharaden.github.io/psyc640/)"
+logo: "images/640_hex.png"
+format: 
+  revealjs:
+    theme: clean.scss
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+    overview: false
+    scrollable: true
+    code-line-numbers: true
+editor: visual
+execute:
+  echo: true
+  freeze: auto
+---
+
+## From Squirrels to Significance: A Guide to Research Design & Inference
+
+### Week 4
+
+------------------------------------------------------------------------
+
+## The Journey of a Research Question
+
+-   All research starts with a question about the world.
+
+-   But how do we get from a messy, real-world question to a clean, statistical answer?
+
+**Our Journey Today:**
+
+1.  **Part 1: From Concept to Data** (How do we measure what we care about?)
+
+2.  **Part 2: The Blueprint for Claims** (How do we structure our study?)
+
+3.  **Part 3: From Design to Model** (How do we analyze our data?)
+
+# Part 1: From Concept to Data (Operationalization)
+
+------------------------------------------------------------------------
+
+## The First & Most Important Choice
+
+-   Before we can analyze anything, we need data. This means turning an abstract concept into a concrete, measurable variable.
+
+-   This process is called **operationalization**.
+
+-   Your operationalization is your argument for what a concept *means* in the context of your study.
+
+## An Outrageous Research Question
+
+Let's imagine a new study. Our research question is:
+
+***Does being aggressively attacked by a campus squirrel for your sandwich increase a student's acute stress?***
+
+-   **Predictor:** `squirrel_incident` (Attacked vs. Not Attacked).
+
+-   **Outcome:** `acute_stress`.
+
+But what *is* "acute stress"? As the researcher, how do you measure it?
+
+# Slide 5: How Would You Measure "Stress"?
+
+Your choice of measurement fundamentally changes the question you are asking.
+
+|  |  |  |  |
+|----|----|----|----|
+| **Method of Measurement** | **How It Works** | **Data Generated** | **What It Really Measures** |
+| **Subjective Self-Report** | "On a scale of 0-100, how stressed do you feel *right now*?" | **Continuous** (0-100) | The **feeling** of stress. |
+| **Autonomic Arousal** | Measure heart rate in beats per minute (BPM). | **Continuous** (e.g., 115 BPM) | The **body's alarm** for stress. |
+| **Cognitive Impairment** | "Count backward from 1,084 by 7s." Measure speed & accuracy. | **Continuous** (# of errors) | The **brain's processing** under stress. |
+| **Coded Facial Expression** | Analyze video for micro-expressions of fear or anger. | **Categorical** or **Ordinal** | The **face's expression** of stress. |
+
+## Part 2: The Blueprint for Claims (Study Design)
+
+# Slide 6: The Two Big Claims
+
+Now that we know *what* we're measuring, let's talk about *how* we structure the study. Your design determines the kind of claim you can make.
+
+1.  **An Associational Claim:** Two variables are related.
+
+    -   *"People who experience squirrel attacks tend to report higher stress."*
+
+2.  **A Causal Claim:** A change in one variable *causes* a change in another.
+
+    -   *"The experience of a squirrel attack causes an increase in stress."*
+
+# Slide 7: The 3 Rules of Causality
+
+To earn the right to say "X causes Y," you must demonstrate three things:
+
+1.  **Covariance:** X and Y are related.
+
+2.  **Temporal Precedence:** The cause (X) must happen *before* the effect (Y).
+
+3.  **Internal Validity:** There are no other plausible explanations (we've ruled out **confounds**).
+
+# Slide 8: The Confounding Variable Problem
+
+A **confound** is a "third variable" that creates a spurious relationship between your two variables. This is the #1 threat to causal claims.
+
+-   **Classic Example:** Ice cream sales are positively correlated with drowning deaths.
+
+-   **The Confound:** Summer heat! Hot weather causes both more ice cream sales and more swimming.
+
+# Slide 9: The Gold Standard for Defeating Confounds: The Experiment
+
+A **True Experiment** is the most powerful tool for establishing causality. It has two magic ingredients:
+
+1.  **Manipulation:** The researcher actively manipulates the Independent Variable (IV).
+
+2.  **Random Assignment:** Every participant has an equal chance of being in any condition. This breaks the links to potential confounds by distributing them evenly across groups.
+
+# Slide 10: Key Design Dimensions
+
+-   **Between-Subjects:** Different groups of people get different conditions. We compare Group A vs. Group B.
+
+-   **Within-Subjects:** The same group of people experiences all conditions. We compare people to themselves.
+
+-   **Cross-Sectional:** All data is collected at a single point in time. (Fails temporal precedence).
+
+-   **Longitudinal:** Data is collected from the same people over multiple time points. (Establishes temporal precedence).
+
+## Part 3: From Design to Model (The Decision Tree)
+
+# Slide 11: The Universal Language of Models
+
+-   Your measurement and design choices create the blueprint for your analysis. They lead you directly to the correct statistical model.
+
+-   All models we learn this semester can be expressed in R with a simple formula:
+
+`Outcome` \~ Predictor
+
+# Slide 12: A Decision Tree for Your Model 🌳
+
+**If your goal is to... COMPARE GROUPS:**
+
+-   Predictor (IV) is **Categorical**
+
+-   Outcome (DV) is **Continuous**
+
+-   👉 You are in the **t-test / ANOVA** family of models.
+
+-   Model: `Continuous_Outcome ~ Categorical_Predictor`
+
+**If your goal is to... ASSESS AN ASSOCIATION:**
+
+-   Predictor (IV) is **Continuous**
+
+-   Outcome (DV) is **Continuous**
+
+-   👉 You are in the **Correlation / Regression** family of models.
+
+-   Model: `Continuous_Outcome ~ Continuous_Predictor`
+
+# Slide 13: Connecting Models to Inference (NHST)
+
+We use our model to test our hypothesis against the backdrop of randomness.
+
+-   **The Null Hypothesis (**H0​**):** The "no relationship" model. It states that your predictor has no relationship with your outcome in the population.
+
+    -   *e.g., "In the population, there is no difference in stress between those who were attacked by squirrels and those who were not."*
+
+-   **The Alternative Hypothesis (**HA​**):** Your research hypothesis. It states that there *is* a relationship.
+
+# Slide 14: The p-value, Revisited
+
+-   The **p-value** is a measure of surprise. It's the probability of seeing our sample data (or more extreme data) *if the null model were true*.
+
+-   A **small p-value** (p<.05) means our data are very surprising under the null model. This surprise gives us evidence to **reject the null model** in favor of our research hypothesis.
+
+# Slide 15: The Grand Synthesis
+
+This is the most important slide of the day.
+
+-   Your **Statistical Model** (and its p-value) tells you if a relationship is **statistically significant** (i.e., unlikely to be due to random chance).
+
+But...
+
+-   Your **Study Design** tells you if you can call that relationship **causal** (requires random assignment).
+
+-   Your **Sampling Method** tells you if you can **generalize** that relationship to a broader population (requires

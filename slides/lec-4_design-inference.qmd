@@ -1,0 +1,288 @@
+---
+title: "Week 04: Design & Inference"
+subtitle: "Date: September 15, 2025"
+footer:  "[course-website](https://dharaden.github.io/psyc640/)"
+logo: "images/640_hex.png"
+format: 
+  revealjs:
+    theme: clean.scss
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+    overview: false
+    scrollable: true
+    code-line-numbers: true
+editor: visual
+execute:
+  echo: true
+  freeze: auto
+---
+
+## Design, Sampling, and Inference: From Questions to Models
+
+### Week 4
+
+------------------------------------------------------------------------
+
+## The Core Challenge
+
+-   **Last week:** We learned to *describe* and *visualize* patterns in our **sample**.
+
+-   **The Rest of the Course:** We want to make claims about the **population**.
+
+-   **The Problem:** How do we know if a pattern we see in our sample (e.g., a difference between groups) is a **"real" effect** or just random **sampling error**?
+
+-   **The Solution:** We build a **statistical model** to test our question against the backdrop of randomness.
+
+------------------------------------------------------------------------
+
+## The Blueprint for Analysis
+
+Your research question and design are the blueprint for your statistical model.
+
+**Statistical Model**
+
+-   A formal, mathematical way of representing a relationship between variables.
+
+-   At its heart, a model has a simple, powerful structure that we will use all semester in R:
+
+    ```         
+    Outcome ~ Predictor(s)  
+    ```
+
+    -   This is read as: "**The Outcome is predicted by the Predictor(s).**"
+
+------------------------------------------------------------------------
+
+![](images/clipboard-79713571.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### What are the data? - Measurement
+
+We know we need an *outcome* and a *predictor*. How do we take an abstract construct and transfer it into our data?
+
+**Data**: information gained from observation or experimentation
+
+Data must be ***measurable***
+
+-   Researchers must be able to assign a number, a label, a category or another kind of description to the "stuff"
+
+This is the process of **operationalization**
+
+------------------------------------------------------------------------
+
+### Measurement
+
+Let's give an example:
+
+Maybe you want to measure age in your study.
+
+| How Old Are You? | \_\_\_\_\_ |
+|------------------|------------|
+
+***What might be some responses?***
+
+------------------------------------------------------------------------
+
+### How to Operationalize?
+
+Let's say we are interested in examining stress as an outcome variable.
+
+***Research Question**: Does being aggressively attacked by campus squirrels for your snack increase stress levels?*
+
+> ***You observe someone getting brutally attacked for their snack by a gang of squirrels. Being the researcher that you are, you approach them within 30 minutes after the incident and want to measure their stress levels.***
+
+**How could you measure stress?**
+
+------------------------------------------------------------------------
+
+#### Turn to the person/people next to you and identify one way that you could define and measure stress.
+
+------------------------------------------------------------------------
+
++----------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
+| **Method of Measurement**  | **How It Works**                                                                                                                                                                                   | **Data Generated**                       | **Pros & Cons**                                                                                                        |
++============================+====================================================================================================================================================================================================+==========================================+========================================================================================================================+
+| **Subjective Self-Report** | "On a scale from 0 to 100, where 0 is 'totally calm' and 100 is 'the most stressed I've ever been,' how stressed do you feel *right now*?" This is a "Subjective Units of Distress" (SUDs) rating. | **Continuous** (a single number, 0-100). | **Pro:** The most direct way to measure the person's internal, subjective feeling of distress.                         |
+|                            |                                                                                                                                                                                                    |                                          |                                                                                                                        |
+|                            |                                                                                                                                                                                                    |                                          | **Con:** Highly subjective; one person's "80" is another's "50".                                                       |
++----------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
+| **Autonomic Arousal**      | Quickly attach a portable heart rate monitor to the participant's finger or wrist and measure their beats per minute (BPM).                                                                        | **Continuous** (e.g., 115 BPM).          | **Pro:** An objective, biological measure of the body's immediate "fight-or-flight" alarm response.                    |
+|                            |                                                                                                                                                                                                    |                                          |                                                                                                                        |
+|                            |                                                                                                                                                                                                    |                                          | **Con:** Heart rate can be influenced by other factors (e.g., did they run to the bench? did they just drink coffee?). |
++----------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
+
+------------------------------------------------------------------------
+
++-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| **Method of Measurement**   | **How It Works**                                                                                                                                                                                                        | **Data Generated**                                                                     | **Pros & Cons**                                                                                                       |
++=============================+=========================================================================================================================================================================================================================+========================================================================================+=======================================================================================================================+
+| **Cognitive Impairment**    | "I need you to do a simple mental task for me. Please count backward from 1,084 by 7s as fast as you can. Go." Measure their speed and accuracy.                                                                        | **Continuous** (e.g., number of correct subtractions in 30 seconds) or **Error Rate**. | **Pro:** An objective, performance-based measure of how an acute stressor can temporarily disrupt cognitive function. |
+|                             |                                                                                                                                                                                                                         |                                                                                        |                                                                                                                       |
+|                             |                                                                                                                                                                                                                         |                                                                                        | **Con:** Performance can be influenced by baseline math ability; the task itself might be stress-inducing.            |
++-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| **Coded Facial Expression** | Use a concealed video camera to record the person's facial expression in the moments after the attack. Later, have trained coders analyze it for micro-expressions of fear, anger, or disgust using a system like FACS. | **Categorical** (e.g., "Fear," "Anger") or **Ordinal** intensity ratings.              | **Pro:** Captures an unfiltered, immediate emotional reaction that the person may not even be aware of.               |
+|                             |                                                                                                                                                                                                                         |                                                                                        |                                                                                                                       |
+|                             |                                                                                                                                                                                                                         |                                                                                        | **Con:** Incredibly labor-intensive and expensive; requires specialized training to do reliably.                      |
++-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+
+------------------------------------------------------------------------
+
+### Measurement & Operationalization
+
+As a researcher, you are often needed to make decisions about what to focus on
+
+-   All examples of stress are not just four different ways, but various ways to measure the complex system of stress
+
+**We will never be able to measure things perfectly** [^1]
+
+[^1]: This is field dependent though...sometimes you might be able to be more accurate.
+
+The measure you choose fundamentally defines what you mean by "stress."
+
+Your operationalization is your theory made manifest
+
+-   You are deciding what matters most
+
+------------------------------------------------------------------------
+
+## Step 1 - What is Your Research Question's Goal?
+
+Most research questions in psychology can be simplified into two fundamental goals:
+
+1.  **Comparing Groups:** Are two or more groups different on some continuous outcome?
+
+    -   *Example:* Does our new sleep therapy **group** have **lower** depression scores than the control group?
+
+2.  **Assessing Associations:** Is there a relationship between two continuous variables?
+
+    -   *Example:* Is **more** screen time associated with **higher** ADHD symptoms?
+
+------------------------------------------------------------------------
+
+## Step 2 - What Are Your Variables?
+
+The *type* of variables in your question determines the *family* of statistical models you will use.
+
+### Predictor Variable (Independent Variable - IV)
+
+-   **Categorical:** Divides individuals into distinct groups.
+
+    -   e.g., `therapy` vs. `control`; `first_year` vs. `senior`
+
+-   **Continuous:** A variable on a meaningful numeric scale.
+
+    -   e.g., `hours of sleep`, `age in years`, `years in school`
+
+### Outcome Variable (Dependent Variable - DV)
+
+-   For the first half of this course, our DV will almost always be **continuous**.
+
+    -   e.g., `depression score`, `reaction time`
+
+------------------------------------------------------------------------
+
+## A Decision Tree for Your Model 🌳
+
+::::: columns
+::: {.column width="50%"}
+**If your goal is to... COMPARE GROUPS:**
+
+-   Predictor (IV) is **Categorical**
+
+-   Outcome (DV) is **Continuous**
+
+-   👉 You are in the **t-test / ANOVA** family of models.
+
+-   The model looks like: `Continuous_Outcome ~ Categorical_Predictor`
+:::
+
+::: {.column width="50%"}
+**If your goal is to... ASSESS AN ASSOCIATION:**
+
+-   Predictor (IV) is **Continuous**
+
+-   Outcome (DV) is **Continuous**
+
+-   👉 You are in the **Correlation / Regression** family of models.
+
+-   The model looks like: `Continuous_Outcome ~ Continuous_Predictor`
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## Data to Models to Inference (NHST)
+
+So we have a model, like: `depression_score ~ therapy_group`. How do we test it?
+
+We use the Null Hypothesis Significance Testing (NHST) framework:
+
+-   **The Null Hypothesis** $H_0$ : A statement that the predictor has **no relationship** with the outcome in the population. It is the "null model."
+
+    -   $H_0$ : In the population, there is no difference in depression scores between the therapy and control groups. `therapy_group` does **not** predict `depression_score`.
+
+-   **The Alternative Hypothesis** $H_A$ : Our research hypothesis. The predictor **does** have a relationship with the outcome.
+
+    -   $H_A$ : In the population, there **is** a difference. `therapy_group` **does** predict `depression_score`.
+
+------------------------------------------------------------------------
+
+## The p-value
+
+The **p-value** tells us how surprising our sample data would be *if the null hypothesis (the "no relationship" model) were true for the population.*
+
+It's a measure of the incompatibility between our data and the null model.
+
+-   A **small p-value** (p\<.05) suggests that our data are incompatible with the null model. We have evidence to **reject the null model** and conclude that our predictor is likely related to the outcome.
+
+The statistical test you run (`t.test`, `cor.test`, `lm`) is just the engine that calculates the p-value for your specific model. The logic is always the same.
+
+------------------------------------------------------------------------
+
+# ⏸️ and ⏪
+
+## Descriptives vs. Inference
+
+::::: columns
+::: {.column width="50%"}
+Moving from simply describing our data
+
+*With means and standard deviations*
+:::
+
+::: {.column width="50%"}
+To drawing conclusions about the population
+
+*Using inferential statistics*
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## Probability - Understanding Randomness
+
+There are several possible interpretations of probability but they (almost) completely agree on the mathematical rules probability must follow:
+
+$P(A)$ = Probablity of event A
+
+0 ≤ $P(A)$ ≤ 1
+
+## The Final Word
+
+Your model tells you if a relationship is *statistically significant*.
+
+But...
+
+-   Your **Design** tells you if you can call that relationship **causal**.
+
+    -   (Requires *random assignment*)
+
+-   Your **Sampling Method** tells you if you can **generalize** that relationship to the population.
+
+    -   (Requires *random sampling*)
+
+### A p-value cannot fix a flawed design!
