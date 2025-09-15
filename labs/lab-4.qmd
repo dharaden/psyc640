@@ -11,8 +11,8 @@ editor_options:
 
 Here are the things that you will need for this lab:
 
--   <a href="/files/_lab-rmd/lab-3_describe-viz.Rmd" download="lab-3_describe-viz.Rmd">Download
-    Lab 3 (.Rmd)</a>
+-   <a href="/files/_lab-rmd/lab-4_intro-infer.Rmd" download="lab-4_intro-infer.Rmd">Download
+    Lab 4 (.Rmd)</a>
 -   <a href="/files/data/Sleep_Data.csv" download="Sleep_Data.csv">Download
     Sleep Data (.csv)</a>
 
@@ -116,7 +116,7 @@ have a roommate?"
         conclude that having a roommate *causes* a change in sleepiness?
         Why or why not?
 
-### Task 2: Sleep Habits and Age (An Association)
+## Task 3: Sleep Habits and Age (An Association)
 
 **The Research Question:** "Is there an association between a student's
 sleep habits and their age?"
