@@ -20,7 +20,7 @@ execute:
   freeze: auto
 ---
 
-## Design, Sampling, and Inference: From Questions to Models
+## From Squirrels to Significance: A Guide to Research Design & Inference
 
 ### Week 4
 
@@ -38,150 +38,290 @@ execute:
 
 ------------------------------------------------------------------------
 
-## The Blueprint for Analysis
+## The Journey of a Research Question
 
-Your research question and design are the blueprint for your statistical model.
+-   All research starts with a question about the world.
 
-**Statistical Model**
+-   But how do we get from a messy, real-world question to a clean, statistical answer?
 
--   A formal, mathematical way of representing a relationship between variables.
+**Our Journey Today:**
 
--   At its heart, a model has a simple, powerful structure that we will use all semester in R:
+1.  **Part 1: From Concept to Data** (How do we measure what we care about?)
 
-    ```         
-    Outcome ~ Predictor(s)  
-    ```
+2.  **Part 2: The Blueprint for Claims** (How do we structure our study?)
 
-    -   This is read as: "**The Outcome is predicted by the Predictor(s).**"
+3.  **Part 3: From Design to Model** (How do we analyze our data?)
 
-------------------------------------------------------------------------
-
-![](images/clipboard-79713571.png){fig-align="center"}
+# Part 1: From Concept to Data (Operationalization)
 
 ------------------------------------------------------------------------
 
-### What are the data? - Measurement
+## The First & Most Important Choice
 
-We know we need an *outcome* and a *predictor*. How do we take an abstract construct and transfer it into our data?
+-   Before we can analyze anything, we need data. This means turning an abstract concept into a concrete, measurable variable.
 
-**Data**: information gained from observation or experimentation
+-   This process is called **operationalization**.
 
-Data must be ***measurable***
-
--   Researchers must be able to assign a number, a label, a category or another kind of description to the "stuff"
-
-This is the process of **operationalization**
+-   Your operationalization is your argument for what a concept *means* in the context of your study.
 
 ------------------------------------------------------------------------
 
-### Measurement
+## The Squirrel Gang
 
-Let's give an example:
+Let's imagine a new study. Our research question is:
 
-Maybe you want to measure age in your study.
+***Does being aggressively attacked by a campus squirrel for your sandwich increase a student's acute stress?***
 
-| How Old Are You? | \_\_\_\_\_ |
-|------------------|------------|
+-   **Predictor:** `squirrel_incident` (Attacked vs. Not Attacked).
 
-***What might be some responses?***
+-   **Outcome:** `acute_stress`.
 
-------------------------------------------------------------------------
+But what *is* "acute stress"? As the researcher, how do you measure it?
 
-### How to Operationalize?
-
-Let's say we are interested in examining stress as an outcome variable.
-
-***Research Question**: Does being aggressively attacked by campus squirrels for your snack increase stress levels?*
-
-> ***You observe someone getting brutally attacked for their snack by a gang of squirrels. Being the researcher that you are, you approach them within 30 minutes after the incident and want to measure their stress levels.***
-
-**How could you measure stress?**
+::: {.callout-note appearance="minimal" icon="false"}
+Turn to the person/people next to you and identify how you would define and measure "stress".
+:::
 
 ------------------------------------------------------------------------
 
-#### Turn to the person/people next to you and identify one way that you could define and measure stress.
+## How Would You Measure "Stress"?
+
+|  |  |  |  |
+|------------------|------------------|------------------|------------------|
+| **Method of Measurement** | **How It Works** | **Data Generated** | **What It Really Measures** |
+| **Subjective Self-Report** | "On a scale of 0-100, how stressed do you feel *right now*?" | **Continuous** (0-100) | The **feeling** of stress. |
+| **Autonomic Arousal** | Measure heart rate in beats per minute (BPM). | **Continuous** (e.g., 115 BPM) | The **body's alarm** for stress. |
+| **Cognitive Impairment** | "Count backward from 1,084 by 7s." Measure speed & accuracy. | **Continuous** (# of errors) | The **brain's processing** under stress. |
+| **Coded Facial Expression** | Analyze video for micro-expressions of fear or anger. | **Categorical** or **Ordinal** | The **face's expression** of stress. |
+
+# Part 2: The Blueprint for Claims (Study Design)
 
 ------------------------------------------------------------------------
 
-+----------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
-| **Method of Measurement**  | **How It Works**                                                                                                                                                                                   | **Data Generated**                       | **Pros & Cons**                                                                                                        |
-+============================+====================================================================================================================================================================================================+==========================================+========================================================================================================================+
-| **Subjective Self-Report** | "On a scale from 0 to 100, where 0 is 'totally calm' and 100 is 'the most stressed I've ever been,' how stressed do you feel *right now*?" This is a "Subjective Units of Distress" (SUDs) rating. | **Continuous** (a single number, 0-100). | **Pro:** The most direct way to measure the person's internal, subjective feeling of distress.                         |
-|                            |                                                                                                                                                                                                    |                                          |                                                                                                                        |
-|                            |                                                                                                                                                                                                    |                                          | **Con:** Highly subjective; one person's "80" is another's "50".                                                       |
-+----------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
-| **Autonomic Arousal**      | Quickly attach a portable heart rate monitor to the participant's finger or wrist and measure their beats per minute (BPM).                                                                        | **Continuous** (e.g., 115 BPM).          | **Pro:** An objective, biological measure of the body's immediate "fight-or-flight" alarm response.                    |
-|                            |                                                                                                                                                                                                    |                                          |                                                                                                                        |
-|                            |                                                                                                                                                                                                    |                                          | **Con:** Heart rate can be influenced by other factors (e.g., did they run to the bench? did they just drink coffee?). |
-+----------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
+## The Two Big Claims
+
+Now that we know *what* we're measuring, let's talk about *how* we structure the study. Your design determines the kind of claim you can make.
+
+1.  **An Associational Claim:** Two variables are related.
+
+    -   *"People who experience squirrel attacks tend to report higher stress."*
+
+2.  **A Causal Claim:** A change in one variable *causes* a change in another.
+
+    -   *"The experience of a squirrel attack causes an increase in stress."*
 
 ------------------------------------------------------------------------
 
-+-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
-| **Method of Measurement**   | **How It Works**                                                                                                                                                                                                        | **Data Generated**                                                                     | **Pros & Cons**                                                                                                       |
-+=============================+=========================================================================================================================================================================================================================+========================================================================================+=======================================================================================================================+
-| **Cognitive Impairment**    | "I need you to do a simple mental task for me. Please count backward from 1,084 by 7s as fast as you can. Go." Measure their speed and accuracy.                                                                        | **Continuous** (e.g., number of correct subtractions in 30 seconds) or **Error Rate**. | **Pro:** An objective, performance-based measure of how an acute stressor can temporarily disrupt cognitive function. |
-|                             |                                                                                                                                                                                                                         |                                                                                        |                                                                                                                       |
-|                             |                                                                                                                                                                                                                         |                                                                                        | **Con:** Performance can be influenced by baseline math ability; the task itself might be stress-inducing.            |
-+-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
-| **Coded Facial Expression** | Use a concealed video camera to record the person's facial expression in the moments after the attack. Later, have trained coders analyze it for micro-expressions of fear, anger, or disgust using a system like FACS. | **Categorical** (e.g., "Fear," "Anger") or **Ordinal** intensity ratings.              | **Pro:** Captures an unfiltered, immediate emotional reaction that the person may not even be aware of.               |
-|                             |                                                                                                                                                                                                                         |                                                                                        |                                                                                                                       |
-|                             |                                                                                                                                                                                                                         |                                                                                        | **Con:** Incredibly labor-intensive and expensive; requires specialized training to do reliably.                      |
-+-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+## The 3 Rules of Causality
+
+To earn the right to say "X causes Y," you must demonstrate three things:
+
+1.  **Covariance:** X and Y are related.
+
+2.  **Temporal Precedence:** The cause (X) must happen *before* the effect (Y).
+
+3.  **Internal Validity:** There are no other plausible explanations (we've ruled out **confounds**).
 
 ------------------------------------------------------------------------
 
-### Measurement & Operationalization
+## The Confounding Variable Problem
 
-As a researcher, you are often needed to make decisions about what to focus on
+A **confound** is a "third variable" that creates a spurious relationship between your two variables. This is the #1 threat to causal claims.
 
--   All examples of stress are not just four different ways, but various ways to measure the complex system of stress
+-   **Classic Example:** Ice cream sales are positively correlated with drowning deaths.
 
-**We will never be able to measure things perfectly** [^1]
-
-[^1]: This is field dependent though...sometimes you might be able to be more accurate.
-
-The measure you choose fundamentally defines what you mean by "stress."
-
-Your operationalization is your theory made manifest
-
--   You are deciding what matters most
+-   **The Confound:** Summer heat! Hot weather causes both more ice cream sales and more swimming.
 
 ------------------------------------------------------------------------
 
-## Step 1 - What is Your Research Question's Goal?
+## The Gold Standard for Defeating Confounds: The Experiment
 
-Most research questions in psychology can be simplified into two fundamental goals:
+A **True Experiment** is the most powerful tool for establishing causality. It has two magic ingredients:
 
-1.  **Comparing Groups:** Are two or more groups different on some continuous outcome?
+1.  **Manipulation:** The researcher actively manipulates the Independent Variable (IV).
 
-    -   *Example:* Does our new sleep therapy **group** have **lower** depression scores than the control group?
-
-2.  **Assessing Associations:** Is there a relationship between two continuous variables?
-
-    -   *Example:* Is **more** screen time associated with **higher** ADHD symptoms?
+2.  **Random Assignment:** Every participant has an equal chance of being in any condition. This breaks the links to potential confounds by distributing them evenly across groups.
 
 ------------------------------------------------------------------------
 
-## Step 2 - What Are Your Variables?
+## Key Design Dimensions
 
-The *type* of variables in your question determines the *family* of statistical models you will use.
+-   **Between-Subjects:** Different groups of people get different conditions. We compare Group A vs. Group B.
 
-### Predictor Variable (Independent Variable - IV)
+-   **Within-Subjects:** The same group of people experiences all conditions. We compare people to themselves.
 
--   **Categorical:** Divides individuals into distinct groups.
+-   **Cross-Sectional:** All data is collected at a single point in time. (Fails temporal precedence).
 
-    -   e.g., `therapy` vs. `control`; `first_year` vs. `senior`
+-   **Longitudinal:** Data is collected from the same people over multiple time points. (Establishes temporal precedence).
 
--   **Continuous:** A variable on a meaningful numeric scale.
+------------------------------------------------------------------------
 
-    -   e.g., `hours of sleep`, `age in years`, `years in school`
+#### **A New Dimension - Who Are You Studying?**
 
-### Outcome Variable (Dependent Variable - DV)
+-   So far, we've focused on what we *do* with our participants (the design).
 
--   For the first half of this course, our DV will almost always be **continuous**.
+-   But there's another crucial question: *Who are our participants and who do they represent?*
 
-    -   e.g., `depression score`, `reaction time`
+-   **Population:** The entire group we want to draw conclusions about.
+
+    -   *e.g., All college students in the United States.*
+
+-   **Sample:** The specific subset of the population that we actually collect data from.
+
+    -   *e.g., 150 undergraduates from our university's psychology subject pool.*
+
+-   The central question of sampling is **generalizability**: How well do the findings from our sample apply to the broader population?
+
+------------------------------------------------------------------------
+
+#### **The Key Distinction in Sampling**
+
+-   For now, you only need to know one major distinction. This choice determines how much you can generalize.
+
+-   **Random Sampling (The Ideal)**
+
+    -   Every single member of the target population has an equal chance of being selected for the study.
+
+    -   **Why it's the gold standard:** It minimizes systematic bias. In the long run, it produces samples that are highly representative of the population.
+
+-   **Convenience Sampling (The Reality)**
+
+    -   The researcher includes people who are easy to reach (e.g., Using undergraduate students, posting a flier in the clinic, etc.)
+
+    -   **The Limitation:** Our convenience sample may differ from the population in systematic ways (e.g., younger, wealthier, college educated, etc.). Must be thoughtful when generalizing from these samples.
+
+# Checkpoint
+
+We have our perfectly designed study to collect stress data from our observations on being on the squirrel hunt (let's ignore the ethics around knowing squirrels might attack and not interfering).
+
+We have collected our data...how do we know if these differences are "real" or that it is just due to random chance?
+
+## Descriptives vs. Inference
+
+::::: columns
+::: {.column width="50%"}
+Moving from simply describing our data
+
+*With means and standard deviations*
+:::
+
+::: {.column width="50%"}
+To drawing conclusions about the population
+
+*Using inferential statistics*
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## Probability - Understanding Randomness
+
+There are several possible interpretations of probability but they (almost) completely agree on the mathematical rules probability must follow:
+
+$P(A)$ = Probablity of event A
+
+0 ≤ $P(A)$ ≤ 1
+
+------------------------------------------------------------------------
+
+## The Law of Large Numbers
+
+As more observations are collected, the proportion of occurrences with a particular outcome, $p̂_n$, converges to the probability of that outcome, $p$.
+
+*Example:*
+
+-   As the sample size increases, the sample mean tends to get closer to the population mean
+
+-   And as the sample size approaches infinity ♾️, the sample mean approaches the population mean
+
+------------------------------------------------------------------------
+
+### Law of Large Numbers
+
+> *When tossing a fair coin, if heads comes up on each of the first 10 tosses, what do you think the chance is that another head will come up on the next toss? 0.5, less than 0.5, or more than 0.5?*
+
+|                                     |
+|-------------------------------------|
+| H H H H H H H H H H [?]{.underline} |
+
+------------------------------------------------------------------------
+
+### Law of Large Numbers
+
+> *When tossing a fair coin, if heads comes up on each of the first 10 tosses, what do you think the chance is that another head will come up on the next toss? 0.5, less than 0.5, or more than 0.5?*
+
+|                                     |
+|-------------------------------------|
+| H H H H H H H H H H [?]{.underline} |
+
+-   Probability is still 0.5
+
+-   Coin is not "due" for a tail
+
+::: callout-important
+The common misunderstanding of the LLN is that random processes are supposed to compensate for whatever happened in the past; this is just not true and is also called gambler’s fallacy (or law of averages)
+:::
+
+------------------------------------------------------------------------
+
+## Statistics, Probability & Inference
+
+-   Think about seeing statistics posted on the news
+
+    -   Often times polling companies survey a large sample to then make a statement about the population
+
+-   We assume the sample is representative of the larger population, but how representative?
+
+    -   This is where probability theory comes in
+
+-   Probability theory provides tools to assess how likely sample results are if they differ from the true population parameter
+
+------------------------------------------------------------------------
+
+## Role of Probability Theory
+
+![](images/clipboard-183365158.png)
+
+------------------------------------------------------------------------
+
+## Probability - The 2 main realms
+
+| Frequentist | Bayesian |
+|:----------------------------------:|:----------------------------------:|
+| Probability is a **long-run frequency** of an event | Probability of an event as the **degree of belief** |
+
+------------------------------------------------------------------------
+
+### Frequentist Approach
+
+[**Pros**]{.underline}
+
+-   Objective: the probability of an event is grounded in the world & exist in the physical universe
+-   Unambiguous: two people can watch the same sequence of events and will come up with the same answer
+
+[**Cons**]{.underline}
+
+-   Infinity: not possible in the physical world
+
+    -   What would happen if we flipped a coin an infinite amount of times?
+
+-   Narrow in scope: although we want to make statements about a single event, we typically are forbidden (see above point about infinity)
+
+    -   Example: There is a 60% chance that it will rain on Wednesday in Rochester. “There is a category of days for which I predict a 60% chance of rain, and if we look only across those days for which I make this prediction, then on 60% of those days it will actually rain”
+
+# Probability Theory as part of the solution 
+
+# Part 3: From Design to Model (The Decision Tree)
+
+------------------------------------------------------------------------
+
+## The Universal Language of Models
+
+-   Your measurement and design choices create the blueprint for your analysis. They lead you directly to the correct statistical model.
+
+-   All models we learn this semester can be expressed in R with a simple formula:
+
+`Outcome` \~ Predictor
 
 ------------------------------------------------------------------------
 
@@ -241,48 +381,16 @@ It's a measure of the incompatibility between our data and the null model.
 
 The statistical test you run (`t.test`, `cor.test`, `lm`) is just the engine that calculates the p-value for your specific model. The logic is always the same.
 
-------------------------------------------------------------------------
+# Synthesis
 
-# ⏸️ and ⏪
-
-## Descriptives vs. Inference
-
-::::: columns
-::: {.column width="50%"}
-Moving from simply describing our data
-
-*With means and standard deviations*
-:::
-
-::: {.column width="50%"}
-To drawing conclusions about the population
-
-*Using inferential statistics*
-:::
-:::::
-
-------------------------------------------------------------------------
-
-## Probability - Understanding Randomness
-
-There are several possible interpretations of probability but they (almost) completely agree on the mathematical rules probability must follow:
-
-$P(A)$ = Probablity of event A
-
-0 ≤ $P(A)$ ≤ 1
-
-## The Final Word
-
-Your model tells you if a relationship is *statistically significant*.
+-   Your **Statistical Model** (and its p-value) tells you if a relationship is **statistically significant** (i.e., unlikely to be due to random chance).
 
 But...
 
--   Your **Design** tells you if you can call that relationship **causal**.
+-   Your **Study Design** tells you if you can call that relationship **causal** (requires random assignment, temporal precedence).
 
-    -   (Requires *random assignment*)
+-   Your **Sampling Method** tells you if you can **generalize** that relationship to a broader population.
 
--   Your **Sampling Method** tells you if you can **generalize** that relationship to the population.
-
-    -   (Requires *random sampling*)
-
-### A p-value cannot fix a flawed design!
+::: callout-important
+### A p-value or statistical test cannot fix a flawed design!
+:::

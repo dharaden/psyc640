@@ -47,13 +47,13 @@ website:
       - section: "Weekly Materials"
         contents:
           - href: weeks/week-1.qmd
-            text: "Week 1"
+            text: "Week 1 - Getting Comfy w/ R"
           - href: weeks/week-2.qmd
             text: "Week 2"
           - href: weeks/week-3.qmd
-            text: "Week 3"
+            text: "Week 3 - Describe & Viz"
           - href: weeks/week-4.qmd
-            text: "Week 4"
+            text: "Week 4 - Design & Inference"
           - href: weeks/week-5.qmd
             text: "Week 5"
           - href: weeks/week-6.qmd
