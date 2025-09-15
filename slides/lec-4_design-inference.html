@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.24">
+
+  <title>PSYC 640 - Graduate Statistics – Week 04: Design &amp; Inference</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-5ae9c59b2727fcd5357d4f034d95f9e0.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+<meta property="og:title" content="Week 04: Design &amp; Inference – PSYC 640 - Graduate Statistics">
+<meta property="og:description" content="Date: September 15, 2025">
+<meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Week 04: Design &amp; Inference</h1>
+  <p class="subtitle">Date: September 15, 2025</p>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section id="from-squirrels-to-significance-a-guide-to-research-design-inference" class="slide level2">
+<h2>From Squirrels to Significance: A Guide to Research Design &amp; Inference</h2>
+<h3 id="week-4">Week 4</h3>
+</section>
+<section id="the-core-challenge" class="slide level2">
+<h2>The Core Challenge</h2>
+<ul>
+<li><p><strong>Last week:</strong> We learned to <em>describe</em> and <em>visualize</em> patterns in our <strong>sample</strong>.</p></li>
+<li><p><strong>The Rest of the Course:</strong> We want to make claims about the <strong>population</strong>.</p></li>
+<li><p><strong>The Problem:</strong> How do we know if a pattern we see in our sample (e.g., a difference between groups) is a <strong>“real” effect</strong> or just random <strong>sampling error</strong>?</p></li>
+<li><p><strong>The Solution:</strong> We build a <strong>statistical model</strong> to test our question against the backdrop of randomness.</p></li>
+</ul>
+</section>
+<section id="the-journey-of-a-research-question" class="slide level2 scrollable">
+<h2>The Journey of a Research Question</h2>
+<ul>
+<li><p>All research starts with a question about the world.</p></li>
+<li><p>But how do we get from a messy, real-world question to a clean, statistical answer?</p></li>
+</ul>
+<p><strong>Our Journey Today:</strong></p>
+<ol type="1">
+<li><p><strong>Part 1: From Concept to Data</strong> (How do we measure what we care about?)</p></li>
+<li><p><strong>Part 2: The Blueprint for Claims</strong> (How do we structure our study?)</p></li>
+<li><p><strong>Part 3: From Design to Model</strong> (How do we analyze our data?)</p></li>
+</ol>
+</section>
+<section>
+<section id="part-1-from-concept-to-data-operationalization" class="title-slide slide level1 center">
+<h1>Part 1: From Concept to Data (Operationalization)</h1>
+
+</section>
+<section id="the-first-most-important-choice" class="slide level2">
+<h2>The First &amp; Most Important Choice</h2>
+<ul>
+<li><p>Before we can analyze anything, we need data. This means turning an abstract concept into a concrete, measurable variable.</p></li>
+<li><p>This process is called <strong>operationalization</strong>.</p></li>
+<li><p>Your operationalization is your argument for what a concept <em>means</em> in the context of your study.</p></li>
+</ul>
+</section>
+<section id="the-squirrel-gang" class="slide level2">
+<h2>The Squirrel Gang</h2>
+<p>Let’s imagine a new study. Our research question is:</p>
+<p><strong><em>Does being aggressively attacked by a campus squirrel for your sandwich increase a student’s acute stress?</em></strong></p>
+<ul>
+<li><p><strong>Predictor:</strong> <code>squirrel_incident</code> (Attacked vs.&nbsp;Not Attacked).</p></li>
+<li><p><strong>Outcome:</strong> <code>acute_stress</code>.</p></li>
+</ul>
+<p>But what <em>is</em> “acute stress”? As the researcher, how do you measure it?</p>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Turn to the person/people next to you and identify how you would define and measure “stress”.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="how-would-you-measure-stress" class="slide level2">
+<h2>How Would You Measure “Stress”?</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Method of Measurement</strong></td>
+<td><strong>How It Works</strong></td>
+<td><strong>Data Generated</strong></td>
+<td><strong>What It Really Measures</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Subjective Self-Report</strong></td>
+<td>“On a scale of 0-100, how stressed do you feel <em>right now</em>?”</td>
+<td><strong>Continuous</strong> (0-100)</td>
+<td>The <strong>feeling</strong> of stress.</td>
+</tr>
+<tr class="odd">
+<td><strong>Autonomic Arousal</strong></td>
+<td>Measure heart rate in beats per minute (BPM).</td>
+<td><strong>Continuous</strong> (e.g., 115 BPM)</td>
+<td>The <strong>body’s alarm</strong> for stress.</td>
+</tr>
+<tr class="even">
+<td><strong>Cognitive Impairment</strong></td>
+<td>“Count backward from 1,084 by 7s.” Measure speed &amp; accuracy.</td>
+<td><strong>Continuous</strong> (# of errors)</td>
+<td>The <strong>brain’s processing</strong> under stress.</td>
+</tr>
+<tr class="odd">
+<td><strong>Coded Facial Expression</strong></td>
+<td>Analyze video for micro-expressions of fear or anger.</td>
+<td><strong>Categorical</strong> or <strong>Ordinal</strong></td>
+<td>The <strong>face’s expression</strong> of stress.</td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section>
+<section id="part-2-the-blueprint-for-claims-study-design" class="title-slide slide level1 center">
+<h1>Part 2: The Blueprint for Claims (Study Design)</h1>
+
+</section>
+<section id="the-two-big-claims" class="slide level2 scrollable">
+<h2>The Two Big Claims</h2>
+<p>Now that we know <em>what</em> we’re measuring, let’s talk about <em>how</em> we structure the study. Your design determines the kind of claim you can make.</p>
+<ol type="1">
+<li><p><strong>An Associational Claim:</strong> Two variables are related.</p>
+<ul>
+<li><em>“People who experience squirrel attacks tend to report higher stress.”</em></li>
+</ul></li>
+<li><p><strong>A Causal Claim:</strong> A change in one variable <em>causes</em> a change in another.</p>
+<ul>
+<li><em>“The experience of a squirrel attack causes an increase in stress.”</em></li>
+</ul></li>
+</ol>
+</section>
+<section id="the-3-rules-of-causality" class="slide level2 scrollable">
+<h2>The 3 Rules of Causality</h2>
+<p>To earn the right to say “X causes Y,” you must demonstrate three things:</p>
+<ol type="1">
+<li><p><strong>Covariance:</strong> X and Y are related.</p></li>
+<li><p><strong>Temporal Precedence:</strong> The cause (X) must happen <em>before</em> the effect (Y).</p></li>
+<li><p><strong>Internal Validity:</strong> There are no other plausible explanations (we’ve ruled out <strong>confounds</strong>).</p></li>
+</ol>
+</section>
+<section id="the-confounding-variable-problem" class="slide level2">
+<h2>The Confounding Variable Problem</h2>
+<p>A <strong>confound</strong> is a “third variable” that creates a spurious relationship between your two variables. This is the #1 threat to causal claims.</p>
+<ul>
+<li><p><strong>Classic Example:</strong> Ice cream sales are positively correlated with drowning deaths.</p></li>
+<li><p><strong>The Confound:</strong> Summer heat! Hot weather causes both more ice cream sales and more swimming.</p></li>
+</ul>
+</section>
+<section id="the-gold-standard-for-defeating-confounds-the-experiment" class="slide level2 scrollable">
+<h2>The Gold Standard for Defeating Confounds: The Experiment</h2>
+<p>A <strong>True Experiment</strong> is the most powerful tool for establishing causality. It has two magic ingredients:</p>
+<ol type="1">
+<li><p><strong>Manipulation:</strong> The researcher actively manipulates the Independent Variable (IV).</p></li>
+<li><p><strong>Random Assignment:</strong> Every participant has an equal chance of being in any condition. This breaks the links to potential confounds by distributing them evenly across groups.</p></li>
+</ol>
+</section>
+<section id="key-design-dimensions" class="slide level2">
+<h2>Key Design Dimensions</h2>
+<ul>
+<li><p><strong>Between-Subjects:</strong> Different groups of people get different conditions. We compare Group A vs.&nbsp;Group B.</p></li>
+<li><p><strong>Within-Subjects:</strong> The same group of people experiences all conditions. We compare people to themselves.</p></li>
+<li><p><strong>Cross-Sectional:</strong> All data is collected at a single point in time. (Fails temporal precedence).</p></li>
+<li><p><strong>Longitudinal:</strong> Data is collected from the same people over multiple time points. (Establishes temporal precedence).</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h4 id="a-new-dimension---who-are-you-studying"><strong>A New Dimension - Who Are You Studying?</strong></h4>
+<ul>
+<li><p>So far, we’ve focused on what we <em>do</em> with our participants (the design).</p></li>
+<li><p>But there’s another crucial question: <em>Who are our participants and who do they represent?</em></p></li>
+<li><p><strong>Population:</strong> The entire group we want to draw conclusions about.</p>
+<ul>
+<li><em>e.g., All college students in the United States.</em></li>
+</ul></li>
+<li><p><strong>Sample:</strong> The specific subset of the population that we actually collect data from.</p>
+<ul>
+<li><em>e.g., 150 undergraduates from our university’s psychology subject pool.</em></li>
+</ul></li>
+<li><p>The central question of sampling is <strong>generalizability</strong>: How well do the findings from our sample apply to the broader population?</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h4 id="the-key-distinction-in-sampling"><strong>The Key Distinction in Sampling</strong></h4>
+<p><strong>Random Sampling (The Ideal)</strong></p>
+<ul>
+<li><p>Every single member of the target population has an equal chance of being selected for the study.</p></li>
+<li><p><strong>Why it’s the gold standard:</strong> It minimizes systematic bias. In the long run, it produces samples that are highly representative of the population.</p></li>
+</ul>
+<p><strong>Convenience Sampling (The Reality)</strong></p>
+<ul>
+<li><p>The researcher includes people who are easy to reach (e.g., Using undergraduate students, posting a flier in the clinic, etc.)</p></li>
+<li><p><strong>The Limitation:</strong> Our convenience sample may differ from the population in systematic ways (e.g., younger, wealthier, college educated, etc.). Must be thoughtful when generalizing from these samples.</p></li>
+</ul>
+</section></section>
+<section>
+<section id="checkpoint" class="title-slide slide level1 center">
+<h1>Checkpoint</h1>
+<p>We have our perfectly designed study to collect stress data from our observations on being on the squirrel hunt (let’s ignore the ethics around knowing squirrels might attack and not interfering).</p>
+<p>We’ve moved beyond just <em>describing</em> our sample with means and standard deviations.</p>
+<p>Now we have to make an <strong>inference</strong>. We see a difference in stress between the groups… but how do we know if it’s “real” or just random chance?</p>
+<p>To answer this, we need to understand the logic of randomness itself. We need to understand <strong>probability</strong>.</p>
+</section>
+<section id="descriptives-vs.-inference" class="slide level2">
+<h2>Descriptives vs.&nbsp;Inference</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Moving from simply describing our data</p>
+<p><em>With means and standard deviations</em></p>
+</div><div class="column" style="width:50%;">
+<p>To drawing conclusions about the population</p>
+<p><em>Using inferential statistics</em></p>
+</div></div>
+</section>
+<section id="probability---understanding-randomness" class="slide level2">
+<h2>Probability - Understanding Randomness</h2>
+<p>There are several possible interpretations of probability but they (almost) completely agree on the mathematical rules probability must follow:</p>
+<p><span class="math inline">\(P(A)\)</span> = Probablity of event A</p>
+<p>0 ≤ <span class="math inline">\(P(A)\)</span> ≤ 1</p>
+</section>
+<section id="the-law-of-large-numbers" class="slide level2">
+<h2>The Law of Large Numbers</h2>
+<p>As more observations are collected, the proportion of occurrences with a particular outcome, <span class="math inline">\(p̂_n\)</span>, converges to the probability of that outcome, <span class="math inline">\(p\)</span>.</p>
+<p><em>Example:</em></p>
+<ul>
+<li><p>As the sample size increases, the sample mean tends to get closer to the population mean</p></li>
+<li><p>And as the sample size approaches infinity ♾️, the sample mean approaches the population mean</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="law-of-large-numbers">Law of Large Numbers</h3>
+<blockquote>
+<p><em>When tossing a fair coin, if heads comes up on each of the first 10 tosses, what do you think the chance is that another head will come up on the next toss? 0.5, less than 0.5, or more than 0.5?</em></p>
+</blockquote>
+<table class="caption-top">
+<tbody>
+<tr class="odd">
+<td>H H H H H H H H H H <u>?</u></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="slide level2">
+
+<h3 id="law-of-large-numbers-1">Law of Large Numbers</h3>
+<blockquote>
+<p><em>When tossing a fair coin, if heads comes up on each of the first 10 tosses, what do you think the chance is that another head will come up on the next toss? 0.5, less than 0.5, or more than 0.5?</em></p>
+</blockquote>
+<table class="caption-top">
+<tbody>
+<tr class="odd">
+<td>H H H H H H H H H H <u>?</u></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Probability is still 0.5</p></li>
+<li><p>Coin is not “due” for a tail</p></li>
+</ul>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>The common misunderstanding of the LLN is that random processes are supposed to compensate for whatever happened in the past; this is just not true and is also called gambler’s fallacy (or law of averages)</p>
+</div>
+</div>
+</div>
+</section>
+<section id="statistics-probability-inference" class="slide level2">
+<h2>Statistics, Probability &amp; Inference</h2>
+<ul>
+<li><p>Think about seeing statistics posted on the news</p>
+<ul>
+<li>Often times polling companies survey a large sample to then make a statement about the population</li>
+</ul></li>
+<li><p>We assume the sample is representative of the larger population, but how representative?</p>
+<ul>
+<li>This is where probability theory comes in</li>
+</ul></li>
+<li><p>Probability theory provides tools to assess how likely sample results are if they differ from the true population parameter</p></li>
+</ul>
+</section>
+<section id="role-of-probability-theory" class="slide level2">
+<h2>Role of Probability Theory</h2>
+
+<img data-src="images/clipboard-183365158.png" class="r-stretch"></section>
+<section id="probability---the-2-main-realms" class="slide level2">
+<h2>Probability - The 2 main realms</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="frequentist">Frequentist</h3>
+<p>Probability is a <strong>long-run frequency</strong> of an event</p>
+</div><div class="column" style="width:50%;">
+<h3 id="bayesian">Bayesian</h3>
+<p>Probability of an event as the <strong>degree of belief</strong></p>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="frequentist-approach">Frequentist Approach</h3>
+<p><u><strong>Pros</strong></u></p>
+<ul>
+<li><strong>Objective</strong>: the probability of an event is grounded in the world &amp; exist in the physical universe</li>
+<li><strong>Unambiguous</strong>: two people can watch the same sequence of events and will come up with the same answer</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="frequentist-approach-1">Frequentist Approach</h3>
+<p><u><strong>Cons</strong></u></p>
+<ul>
+<li><p>Infinity: not possible in the physical world</p>
+<ul>
+<li>What would happen if we flipped a coin an infinite amount of times?</li>
+</ul></li>
+<li><p>Narrow in scope: although we want to make statements about a single event, we typically are forbidden (see above point about infinity)</p>
+<ul>
+<li>Example: There is a 60% chance that it will rain on Wednesday in Rochester. “There is a category of days for which I predict a 60% chance of rain, and if we look only across those days for which I make this prediction, then on 60% of those days it will actually rain”</li>
+</ul></li>
+</ul>
+</section></section>
+<section id="probability-theory-as-part-of-the-solution" class="title-slide slide level1 center">
+<h1>Probability Theory as part of the solution</h1>
+<p><strong>So, How Does This Help Us?</strong></p>
+<p>The Frequentist approach gives us a powerful framework: We can test our research hypothesis by asking, “How surprising would our sample data be if there were truly no effect in the long run?”</p>
+<p>This question is the foundation for the rest of our journey today.</p>
+</section>
+
+<section>
+<section id="part-3-from-design-to-model-the-decision-tree" class="title-slide slide level1 center">
+<h1>Part 3: From Design to Model (The Decision Tree)</h1>
+
+</section>
+<section id="the-universal-language-of-models" class="slide level2">
+<h2>The Universal Language of Models</h2>
+<ul>
+<li><p>Your measurement and design choices create the blueprint for your analysis. They lead you directly to the correct statistical model.</p></li>
+<li><p>All models we learn this semester can be expressed in R with a simple formula:</p></li>
+</ul>
+<p><code>Outcome ~ Predictor</code></p>
+</section>
+<section id="a-decision-tree-for-your-model" class="slide level2">
+<h2>A Decision Tree for Your Model 🌳</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>If your goal is to… COMPARE GROUPS:</strong></p>
+<ul>
+<li><p>Predictor (IV) is <strong>Categorical</strong></p></li>
+<li><p>Outcome (DV) is <strong>Continuous</strong></p></li>
+<li><p>👉 You are in the <strong>t-test / ANOVA</strong> family of models.</p></li>
+<li><p>The model looks like: <code>Continuous_Outcome ~ Categorical_Predictor</code></p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>If your goal is to… ASSESS AN ASSOCIATION:</strong></p>
+<ul>
+<li><p>Predictor (IV) is <strong>Continuous</strong></p></li>
+<li><p>Outcome (DV) is <strong>Continuous</strong></p></li>
+<li><p>👉 You are in the <strong>Correlation / Regression</strong> family of models.</p></li>
+<li><p>The model looks like: <code>Continuous_Outcome ~ Continuous_Predictor</code></p></li>
+</ul>
+</div></div>
+</section>
+<section id="data-to-models-to-inference-nhst" class="slide level2">
+<h2>Data to Models to Inference (NHST)</h2>
+<p>So we have a model, like: <code>depression_score ~ therapy_group</code>. How do we test it?</p>
+<p>We use the Null Hypothesis Significance Testing (NHST) framework:</p>
+<ul>
+<li><p><strong>The Null Hypothesis</strong> <span class="math inline">\(H_0\)</span> : A statement that the predictor has <strong>no relationship</strong> with the outcome in the population. It is the “null model.”</p>
+<ul>
+<li><span class="math inline">\(H_0\)</span> : In the population, there is no difference in depression scores between the therapy and control groups. <code>therapy_group</code> does <strong>not</strong> predict <code>depression_score</code>.</li>
+</ul></li>
+<li><p><strong>The Alternative Hypothesis</strong> <span class="math inline">\(H_A\)</span> : Our research hypothesis. The predictor <strong>does</strong> have a relationship with the outcome.</p>
+<ul>
+<li><span class="math inline">\(H_A\)</span> : In the population, there <strong>is</strong> a difference. <code>therapy_group</code> <strong>does</strong> predict <code>depression_score</code>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-p-value" class="slide level2">
+<h2>The p-value</h2>
+<p>The <strong>p-value</strong> tells us how surprising our sample data would be <em>if the null hypothesis (the “no relationship” model) were true for the population.</em></p>
+<p>It’s a measure of the incompatibility between our data and the null model.</p>
+<ul>
+<li>A <strong>small p-value</strong> (p&lt;.05) suggests that our data are incompatible with the null model. We have evidence to <strong>reject the null model</strong> and conclude that our predictor is likely related to the outcome.</li>
+</ul>
+<p>The statistical test you run (<code>t.test</code>, <code>cor.test</code>, <code>lm</code>) is just the engine that calculates the p-value for your specific model. The logic is always the same.</p>
+</section></section>
+<section id="synthesis" class="title-slide slide level1 center">
+<h1>Synthesis</h1>
+<ul>
+<li>Your <strong>Statistical Model</strong> (and its p-value) tells you if a relationship is <strong>statistically significant</strong> (i.e., unlikely to be due to random chance).</li>
+</ul>
+<p>But…</p>
+<ul>
+<li><p>Your <strong>Study Design</strong> tells you if you can call that relationship <strong>causal</strong> (requires random assignment, temporal precedence).</p></li>
+<li><p>Your <strong>Sampling Method</strong> tells you if you can <strong>generalize</strong> that relationship to a broader population.</p></li>
+</ul>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>A p-value or statistical test cannot fix a flawed design!</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="images/640_hex.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p><a href="https://dharaden.github.io/psyc640/">course-website</a></p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: false,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/dharaden\.github\.io\/psyc640");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

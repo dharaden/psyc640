@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lab 4: – PSYC 640 - Graduate Statistics</title>
+<title>Lab 4: Inferential Stats Basics – PSYC 640 - Graduate Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Lab 4: – PSYC 640 - Graduate Statistics">
+<meta property="og:title" content="Lab 4: Inferential Stats Basics – PSYC 640 - Graduate Statistics">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
@@ -323,7 +323,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../weeks/week-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1</span></a>
+ <span class="menu-text">Week 1 - Getting Comfy w/ R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -335,13 +335,37 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../weeks/week-3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3</span></a>
+ <span class="menu-text">Week 3 - Describe &amp; Viz</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../weeks/week-4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4</span></a>
+ <span class="menu-text">Week 4 - Design &amp; Inference</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 5</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 6</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 7</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 8</span></a>
   </div>
 </li>
       </ul>
@@ -391,6 +415,18 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Lab 6</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 7</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 8</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -416,10 +452,12 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
-  <li><a href="#scenario-and-goal" id="toc-scenario-and-goal" class="nav-link" data-scroll-target="#scenario-and-goal">Scenario and Goal</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
+  <li><a href="#scenario-and-data" id="toc-scenario-and-data" class="nav-link" data-scroll-target="#scenario-and-data">Scenario and Data</a></li>
+  <li><a href="#instructions-1" id="toc-instructions-1" class="nav-link" data-scroll-target="#instructions-1">Instructions</a>
   <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#task-1-compute-scores-for-scales" id="toc-task-1-compute-scores-for-scales" class="nav-link" data-scroll-target="#task-1-compute-scores-for-scales">Task 1: Compute scores for scales</a></li>
+  <li><a href="#task-2-roommates-and-daytime-sleepiness-a-group-comparison" id="toc-task-2-roommates-and-daytime-sleepiness-a-group-comparison" class="nav-link" data-scroll-target="#task-2-roommates-and-daytime-sleepiness-a-group-comparison">Task 2: Roommates and Daytime Sleepiness (A Group Comparison)</a></li>
+  <li><a href="#task-3-sleep-habits-and-age-an-association" id="toc-task-3-sleep-habits-and-age-an-association" class="nav-link" data-scroll-target="#task-3-sleep-habits-and-age-an-association">Task 3: Sleep Habits and Age (An Association)</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/lab-4.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -430,7 +468,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/lab-1_data-workflow.html">Labs</a></li><li class="breadcrumb-item"><a href="../labs/lab-4.html">Lab 4</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Lab 4:</h1>
+<h1 class="title">Lab 4: Inferential Stats Basics</h1>
 </div>
 
 
@@ -451,19 +489,92 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
 <p>Here are the things that you will need for this lab:</p>
 <ul>
-<li><a href="../files/_lab-rmd/lab-3_describe-viz.Rmd" download="lab-3_describe-viz.Rmd">Download Lab 3 (.Rmd)</a></li>
-<li><a href="../files/data/bechdel.csv" download="bechdel.csv">Download Bechdel Data (.csv)</a></li>
+<li><a href="../files/_lab-rmd/lab-4_intro-infer.Rmd" download="lab-4_intro-infer.Rmd">Download Lab 4 (.Rmd)</a></li>
+<li><a href="../files/data/Sleep_Data.csv" download="Sleep_Data.csv">Download Sleep Data (.csv)</a></li>
 </ul>
 <p>When you are finished, click the <strong>Knit</strong> button to turn your work into an HTML document. You will submit both this <code>.Rmd</code> file and the 🧶knitted <code>.html</code> file.</p>
 </section>
-<section id="scenario-and-goal" class="level2">
-<h2 class="anchored" data-anchor-id="scenario-and-goal">Scenario and Goal</h2>
+<section id="scenario-and-data" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-and-data">Scenario and Data</h2>
+<p>A researcher at the university’s sleep center is interested in the factors that affect daytime sleepiness and attention in college students. They collected survey data from a sample of students.</p>
+<p>The data highlighted above contains the following variables:</p>
+<ul>
+<li><p><strong><code>ESS1 - ESS8</code></strong>: (Continuous) The student’s responses to each item on the Epworth Sleepiness Scale, a measure of general daytime sleepiness. Higher scores indicate greater sleepiness. <strong>NOTE:</strong> You will need to calculate a total score which is a sum of all 8 items.</p></li>
+<li><p><strong><code>ashs1 - ashs33</code></strong>: (Continuous) The student’s responses to each item on the Adolescent Sleep Hygiene Scale. Higher scores indicate better sleep habits (e.g., consistent bedtime, quiet environment). <strong>NOTE:</strong> You will need to reverse score all items <em>except</em>&nbsp;#27. You will also need to calculate a total mean score with these items.</p></li>
+<li><p><strong><code>attention1 - attention5</code></strong>: (Categorical) An indication of whether they passed (1) or failed (0) the attention check item. A proxy for their attention during the survey. <strong>NOTE:</strong> Calculate a total attention score as a sum of all 5 items.</p></li>
+<li><p><strong><code>age</code></strong>: (Continuous) The student’s age in years.</p></li>
+<li><p><strong><code>gender</code></strong>: (Categorical) The student’s self-reported gender (“Man”, “Woman”).</p></li>
+<li><p><strong><code>roommate</code></strong>: (Categorical) Whether the student has a roommate or not (“Yes”, “No”).</p></li>
+</ul>
 <hr>
 </section>
-<section id="exercises" class="level2">
-<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
-<section id="section" class="level3">
-<h3 class="anchored" data-anchor-id="section"></h3>
+<section id="instructions-1" class="level1">
+<h1>Instructions</h1>
+<ol type="1">
+<li><p>Create a new R Markdown file for your submission. Make sure it is well-organized and includes your code, output, and written answers.</p></li>
+<li><p>Load the appropriate libraries and the <code>student_sleep_data.csv</code> dataset.</p></li>
+<li><p>Complete the tasks below.</p></li>
+</ol>
+<section id="task-1-compute-scores-for-scales" class="level2">
+<h2 class="anchored" data-anchor-id="task-1-compute-scores-for-scales">Task 1: Compute scores for scales</h2>
+<p>Be sure to compute the appropriate total scores for the ESS, ASHS and Attention variables.</p>
+<p>Once completed, only include students who have “passed” the attention check (i.e., having a score of 4 or higher on the attention sum total).</p>
+<p><em>hint: use dplyr and filter</em></p>
+</section>
+<section id="task-2-roommates-and-daytime-sleepiness-a-group-comparison" class="level2">
+<h2 class="anchored" data-anchor-id="task-2-roommates-and-daytime-sleepiness-a-group-comparison">Task 2: Roommates and Daytime Sleepiness (A Group Comparison)</h2>
+<p><strong>The Research Question:</strong> “Do students who have a roommate report different levels of daytime sleepiness compared to students who do not have a roommate?”</p>
+<p><strong>Your Steps:</strong></p>
+<ol type="1">
+<li><p><strong>Identify &amp; Model:</strong></p>
+<ul>
+<li><p>What is the predictor (IV) and what is the outcome (DV)?</p></li>
+<li><p>Are they categorical or continuous?</p></li>
+<li><p>Based on this, what is the appropriate model family? Write out the model in R formula syntax (<code>outcome ~ predictor</code>).</p></li>
+</ul></li>
+<li><p><strong>Describe &amp; Visualize:</strong></p>
+<ul>
+<li><p>Calculate the mean and standard deviation of <code>ess_score</code> for both groups (those with and without a roommate).</p></li>
+<li><p>Create a boxplot to visualize the distribution of <code>ess_score</code> for each group. Make sure your plot is clearly labeled.</p></li>
+</ul></li>
+<li><p><strong>Analyze:</strong></p>
+<ul>
+<li>Run the appropriate statistical test in R to determine if there is a significant difference between the groups.</li>
+</ul></li>
+<li><p><strong>Interpret &amp; Conclude:</strong></p>
+<ul>
+<li><p>What is the p-value from your test?</p></li>
+<li><p>Based on the test and your descriptive statistics, write a one-sentence conclusion that directly answers the research question.</p></li>
+<li><p><strong>Critical Thinking:</strong> This is an observational study. Can you conclude that having a roommate <em>causes</em> a change in sleepiness? Why or why not?</p></li>
+</ul></li>
+</ol>
+</section>
+<section id="task-3-sleep-habits-and-age-an-association" class="level2">
+<h2 class="anchored" data-anchor-id="task-3-sleep-habits-and-age-an-association">Task 3: Sleep Habits and Age (An Association)</h2>
+<p><strong>The Research Question:</strong> “Is there an association between a student’s sleep habits and their age?”</p>
+<p><strong>Your Steps:</strong></p>
+<ol type="1">
+<li><p><strong>Identify &amp; Model:</strong></p>
+<ul>
+<li><p>What is the predictor (IV) and what is the outcome (DV)?</p></li>
+<li><p>Are they categorical or continuous?</p></li>
+<li><p>Based on this, what is the appropriate model family? Write out the model in R formula syntax.</p></li>
+</ul></li>
+<li><p><strong>Visualize:</strong></p>
+<ul>
+<li><p>Create a scatterplot to visualize the relationship between <code>ashs_score</code> (sleep habits) and <code>age</code>.</p></li>
+<li><p>Add a line of best fit to the plot. Make sure your plot is clearly labeled.</p></li>
+</ul></li>
+<li><p><strong>Analyze:</strong></p>
+<ul>
+<li>Run the appropriate statistical test in R to determine if there is a significant association between the two variables.</li>
+</ul></li>
+<li><p><strong>Interpret &amp; Conclude:</strong></p>
+<ul>
+<li><p>What is the correlation coefficient (<code>r</code>) and the p-value from your test?</p></li>
+<li><p>Based on these results, write a one-sentence conclusion that describes the nature and significance of the relationship.</p></li>
+</ul></li>
+</ol>
 <p><em>End of Lab. Don’t forget to Knit! 🧶</em></p>
 
 
