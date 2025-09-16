@@ -39,7 +39,7 @@ The data highlighted above contains the following variables (and more):
     **NOTE:** You will need to reverse score all items *except* #27. You
     will also need to calculate a total mean score with these items.
 
--   **`attention1 - attention5`**: (Categorical) An indication of
+-   **`attention1r - attention5r`**: (Categorical) An indication of
     whether they passed (1) or failed (0) the attention check item. A
     proxy for their attention during the survey. **NOTE:** Calculate a
     total attention score as a sum of all 5 items.
