@@ -26,7 +26,7 @@ A researcher at the university's sleep center is interested in the
 factors that affect daytime sleepiness and attention in college
 students. They collected survey data from a sample of students.
 
-The data highlighted above contains the following variables:
+The data highlighted above contains the following variables (and more):
 
 -   **`ESS1 - ESS8`**: (Continuous) The student's responses to each item
     on the Epworth Sleepiness Scale, a measure of general daytime
@@ -39,15 +39,12 @@ The data highlighted above contains the following variables:
     **NOTE:** You will need to reverse score all items *except* #27. You
     will also need to calculate a total mean score with these items.
 
--   **`attention1 - attention5`**: (Categorical) An indication of
+-   **`attention1r - attention5r`**: (Categorical) An indication of
     whether they passed (1) or failed (0) the attention check item. A
     proxy for their attention during the survey. **NOTE:** Calculate a
     total attention score as a sum of all 5 items.
 
 -   **`age`**: (Continuous) The student's age in years.
-
--   **`gender`**: (Categorical) The student's self-reported gender
-    ("Man", "Woman").
 
 -   **`roommate`**: (Categorical) Whether the student has a roommate or
     not ("Yes", "No").
@@ -116,7 +113,10 @@ have a roommate?"
         conclude that having a roommate *causes* a change in sleepiness?
         Why or why not?
 
-## Task 3: Sleep Habits and Age (An Association)
+## Bonus: Sleep Habits and Age (An Association)
+
+This question is not required. But you will get some bonus points if you
+decide to do it!
 
 **The Research Question:** "Is there an association between a student's
 sleep habits and their age?"
