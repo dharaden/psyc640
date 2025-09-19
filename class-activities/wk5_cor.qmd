@@ -1,0 +1,100 @@
+---
+title: "Week 4 Exercises - Intro to Inference"
+editor: visual
+---
+
+# Following Along with Professor
+
+<a href="/files/data/wk4-inf.csv" download="wk4-inf.csv">Download Week 4 Follow Along Data (.csv)</a>
+
+Download the data and move it to the correct folder so that you can access it in this activity.
+
+We've been hired as consultants for the university's graduate school. They are concerned about student burnout and have given us some anonymous pilot data to explore potential factors. Our job is to be the data detectives.
+
+Import the data into your R file. I would suggest putting this line within the code chunk that you have your libraries in.
+
+Focus on having reproducible code! You may need to share your file with someone else. They should be able to run it.
+
+------------------------------------------------------------------------
+
+# On Your Own
+
+**Goal**: Work individually or in small groups to apply the concepts from today's lecture and demo to a new dataset.
+
+### Objectives:
+
+-   Identify predictor and outcome variables from a research question.
+
+-   Use the "decision tree" to select the correct family of statistical models.
+
+-   Create an appropriate visualization (`ggplot`).
+
+-   Run the correct statistical test (`t.test` or `cor.test`).
+
+-   Write a one-sentence conclusion synthesizing the results.
+
+### The Scenario & Dataset
+
+A developmental psychology lab is exploring factors related to children's well-being. They have collected pilot data from 100 children.
+
+<a href="/files/data/child_wellbeing.csv" download="child_wellbeing.csv">Download Child Well-Being Data (.csv)</a>
+
+Please download the `child_wellbeing.csv` file (above). It contains the following variables:
+
+-   `child_id`: A unique identifier for each child.
+
+-   `parenting_style`: The primary parenting style observed in the home (Categorical: "Authoritative" or "Permissive").
+
+-   `sleep_hours`: The average number of hours the child sleeps per night (Continuous).
+
+-   `anxiety_score`: A score from 0-50 on a parent-report measure of the child's anxiety (Continuous).
+
+### Instructions:
+
+1.  Create a new R Markdown file titled `week4_inclass.Rmd`.
+
+2.  Load the appropriate libraries.
+
+3.  Load the `child_wellbeing.csv` dataset.
+
+4.  For each task below, write the R code and answer the questions.
+
+### Task 1: Parenting Style and Anxiety
+
+**The Research Question:** "Do children raised in homes with an authoritative parenting style have different anxiety levels than children in homes with a permissive style?"
+
+**Your Steps:**
+
+1.  **Identify:** What is the predictor (IV)? What is the outcome (DV)? Are they categorical or continuous?
+
+2.  **Model:** Based on your answer, what is the correct model *family* (t-test/ANOVA or Correlation/Regression)? Write out the specific model using R formula syntax (`outcome ~ predictor`).
+
+3.  **Visualize:** Create a boxplot to visualize the relationship between `parenting_style` and `anxiety_score`.
+
+4.  **Analyze:** Run the appropriate statistical test in R to test your model.
+
+5.  **Conclude:** Look at the p-value and the group means from your analysis. Write one clear sentence summarizing your finding (e.g., "We found that children with authoritative parents had significantly higher/lower anxiety scores than children with permissive parents, p = ...").
+
+### Task 2: Sleep and Anxiety
+
+**The Research Question:** "Is there an association between the average number of hours a child sleeps per night and their anxiety level?"
+
+**Your Steps:**
+
+1.  **Identify:** What is the predictor (IV)? What is the outcome (DV)? Are they categorical or continuous?
+
+2.  **Model:** What is the correct model *family*? Write out the specific model using R formula syntax.
+
+3.  **Visualize:** Create a scatterplot to visualize the relationship between `sleep_hours` and `anxiety_score`. Add a line of best fit.
+
+4.  **Analyze:** Run the appropriate statistical test in R.
+
+5.  **Conclude:** Look at the p-value and the correlation coefficient (`r`). Write one clear sentence summarizing your finding (e.g., "We found a significant positive/negative association between hours of sleep and anxiety scores, r = ..., p = ...").
+
+### 🤔 Challenge Question (If you finish early)
+
+Based on the *design* of this study (it is observational), can the researcher conclude that permissive parenting *causes* higher anxiety? In one or two sentences, explain why or why not, and propose one possible **confounding variable** that could be influencing both parenting style and a child's anxiety
+
+------------------------------------------------------------------------
+
+***End of the document. Remember to Knit and upload the html and .Rmd to myCourses.***
