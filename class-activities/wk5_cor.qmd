@@ -3,98 +3,90 @@ title: "Week 5 Exercises - Correlation"
 editor: visual
 ---
 
-# Following Along with Professor
+# On Your Own
 
-<a href="/files/data/wk4-inf.csv" download="wk4-inf.csv">Download Week 4 Follow Along Data (.csv)</a>
+**Goal**: Work individually or in small groups to apply the concepts from today's lecture and demo to a new dataset.
+
+## Objectives:
+
+-   Identify predictor and outcome variables from a research question.
+
+-   Create an appropriate visualization (`ggplot`).
+
+-   Run the correct statistical test and report the appropriate results.
+
+## The Scenario & Dataset
+
+We have data of personality traits, as measured by the Ten Item Personality Inventory, and self-reported aspects of sleep (# of hours slept on average & overall sleep quality), as well as some demographic variables. The administration is asking how different personality traits are related to sleep quality.
+
+<a href="/files/data/TIPI_Data.csv" download="TIPI_Data.csv">Download Week 5 Class Activity (.csv)</a>
+
+Please download the `TIPI_Data.csv` file (above). It contains the following variables of interest:
+
+-   `ID`: A unique identifier for each participant.
+
+-   `age`: The participants reported age in years
+
+-   `TIPI_1 - TIPI_10`: The ratings on each item of the Ten Item Personality inventory. Even items need to be reverse scored (scale goes from 1 to 7). Scores for each personality index are from the mean of their respective items.
+
+    -   Extraversion: 1 & 6; Agreeableness: 2 & 7; Conscientiousness: 3 & 8; Emotional Stability: 4 & 9; Openness to Experiences: 5 & 10
+
+-   `Sleep Quality`: Scale from 1-5 with higher scores indicating better sleep quality
+
+-   `Hours of Sleep`: Score that represents a range.
+
+    -   0-3 hours = 1; 3-6 hours = 5; 6-9 hours = 7; 9+ hours = 8
+
+## Instructions:
+
+1.  Create a new R Markdown file titled `week5_inclass.Rmd`.
+
+2.  Load the appropriate libraries.
+
+3.  Load the `TIPI_Data.csv` dataset.
+
+4.  For each task below, write the R code and answer the questions.
+
+### Task 1: Wrangling & Scoring
+
+1.  How might you identify "valid" responses? Based on the information in the dataset, what may be variables that you may want to examine more closely? (You don't have to do the coding for this, just answer conceptually).
+2.  Reverse code items of the TIPI
+3.  Create the total scores for each subscale of the TIPI
+
+### Task 2: Correlation Table
+
+Create a correlation table of the subscales of the TIPI, Sleep Quality and Sleep hours. Be sure to have it include associated p-values.
+
+How are you handling missing values and why?
+
+### Task 3: Closer Investigation
+
+Select one pair of variables to further examine the correlation. You must include only one subscale of the TIPI. Why did you decide these variables? (due to significance? Or effect size?)
+
+Generate a scatterplot with your variables and add a fit line. Be sure to include a title, and legible axes.
+
+Using APA style, write up your report of this relationship between your selected variables. Be sure to include *r, df,* & *p-values*.
+
+***End of the document. Remember to Knit and upload the html and .Rmd to myCourses.***
+
+------------------------------------------------------------------------
+
+# Following Along 
+
+Let's walk through the steps that you worked through as a group above!
+
+<a href="/files/data/TIPI_Data.csv" download="TIPI_Data.csv">Download Week 5 Class Activity (.csv)</a>
 
 Download the data and move it to the correct folder so that you can access it in this activity.
-
-We've been hired as consultants for the university's graduate school. They are concerned about student burnout and have given us some anonymous pilot data to explore potential factors. Our job is to be the data detectives.
 
 Import the data into your R file. I would suggest putting this line within the code chunk that you have your libraries in.
 
 Focus on having reproducible code! You may need to share your file with someone else. They should be able to run it.
 
-------------------------------------------------------------------------
+## Steps: 
 
-# On Your Own
-
-**Goal**: Work individually or in small groups to apply the concepts from today's lecture and demo to a new dataset.
-
-### Objectives:
-
--   Identify predictor and outcome variables from a research question.
-
--   Use the "decision tree" to select the correct family of statistical models.
-
--   Create an appropriate visualization (`ggplot`).
-
--   Run the correct statistical test (`t.test` or `cor.test`).
-
--   Write a one-sentence conclusion synthesizing the results.
-
-### The Scenario & Dataset
-
-A developmental psychology lab is exploring factors related to children's well-being. They have collected pilot data from 100 children.
-
-<a href="/files/data/child_wellbeing.csv" download="child_wellbeing.csv">Download Child Well-Being Data (.csv)</a>
-
-Please download the `child_wellbeing.csv` file (above). It contains the following variables:
-
--   `child_id`: A unique identifier for each child.
-
--   `parenting_style`: The primary parenting style observed in the home (Categorical: "Authoritative" or "Permissive").
-
--   `sleep_hours`: The average number of hours the child sleeps per night (Continuous).
-
--   `anxiety_score`: A score from 0-50 on a parent-report measure of the child's anxiety (Continuous).
-
-### Instructions:
-
-1.  Create a new R Markdown file titled `week4_inclass.Rmd`.
-
-2.  Load the appropriate libraries.
-
-3.  Load the `child_wellbeing.csv` dataset.
-
-4.  For each task below, write the R code and answer the questions.
-
-### Task 1: Parenting Style and Anxiety
-
-**The Research Question:** "Do children raised in homes with an authoritative parenting style have different anxiety levels than children in homes with a permissive style?"
-
-**Your Steps:**
-
-1.  **Identify:** What is the predictor (IV)? What is the outcome (DV)? Are they categorical or continuous?
-
-2.  **Model:** Based on your answer, what is the correct model *family* (t-test/ANOVA or Correlation/Regression)? Write out the specific model using R formula syntax (`outcome ~ predictor`).
-
-3.  **Visualize:** Create a boxplot to visualize the relationship between `parenting_style` and `anxiety_score`.
-
-4.  **Analyze:** Run the appropriate statistical test in R to test your model.
-
-5.  **Conclude:** Look at the p-value and the group means from your analysis. Write one clear sentence summarizing your finding (e.g., "We found that children with authoritative parents had significantly higher/lower anxiety scores than children with permissive parents, p = ...").
-
-### Task 2: Sleep and Anxiety
-
-**The Research Question:** "Is there an association between the average number of hours a child sleeps per night and their anxiety level?"
-
-**Your Steps:**
-
-1.  **Identify:** What is the predictor (IV)? What is the outcome (DV)? Are they categorical or continuous?
-
-2.  **Model:** What is the correct model *family*? Write out the specific model using R formula syntax.
-
-3.  **Visualize:** Create a scatterplot to visualize the relationship between `sleep_hours` and `anxiety_score`. Add a line of best fit.
-
-4.  **Analyze:** Run the appropriate statistical test in R.
-
-5.  **Conclude:** Look at the p-value and the correlation coefficient (`r`). Write one clear sentence summarizing your finding (e.g., "We found a significant positive/negative association between hours of sleep and anxiety scores, r = ..., p = ...").
-
-### 🤔 Challenge Question (If you finish early)
-
-Based on the *design* of this study (it is observational), can the researcher conclude that permissive parenting *causes* higher anxiety? In one or two sentences, explain why or why not, and propose one possible **confounding variable** that could be influencing both parenting style and a child's anxiety
-
-------------------------------------------------------------------------
-
-***End of the document. Remember to Knit and upload the html and .Rmd to myCourses.***
+1.  Import Data
+2.  Score the Data
+3.  Visualize the Data (select 1 pairing of personality variables)
+4.  Test the Relationship
+5.  Create Correlation Matrix
