@@ -34,6 +34,7 @@ library(rio)
 # Pretty tables
 library(sjPlot)
 library(kableExtra)
+library(ggstatsplot)
 
 #Remove Scientific Notation 
 options(scipen=999)
@@ -195,33 +196,42 @@ What if you ran the same study and analyses, but found that your p-value was *p 
 
 [Sampling Distributions & p-values](https://rpsychologist.com/pvalue/){target="_blank"}
 
-# Break ☕stopped here at the break
+# Break ☕
+
+# The "How" - Pearson's Correlation ($r$)
 
 ------------------------------------------------------------------------
 
-## Import cleaned up file
+## What is a Correlation? 
 
-Last class we created a new .csv file named `named_Sleep_Data`. We will continue to use that! Let's make sure to import that data.
+A statistical expression that quantifies the extent to which two continuous variables are linearly related
 
-```{r}
-# Remember that your path will probably be different
-#sleep_data <- read.csv(here("lectures", 
-#                            "data", 
-#                            "named_Sleep_Data.csv"))
+**Association - Correlation**
 
-```
+Will tell us 2 key pieces of information about the relationship:
 
-# Relationships between variables
-
-## Association - Correlation
-
-Examine the relationship between two continuous variables
-
-Similar to the mean and standard deviation, but it is *between* two variables
-
-Typically displayed as a `scatterplot`
+1.  Direction (Positive vs. Negative)
+2.  Strength (Magnitude from 0 to 1)
 
 ------------------------------------------------------------------------
+
+## Example: Candy & \# of Houses
+
+**Research Question:** Is there a relationship between the amount of candy we receive on Halloween and the \# of houses that we go to?
+
+-   **Variables:**
+
+    -   `house_n`: Number of houses approached
+
+    -   `candy`: Amount of candy (# of pieces)
+
+-   **Hypothesis** $H_A$ : There will be a **positive correlation**. As a trick-or-treater goes to more houses, their amount of candy will increase ( $r \neq 0$ .
+
+-   **Null Hypothesis** $H_0$: There is **no correlation** ( $r = 0$ ).
+
+------------------------------------------------------------------------
+
+### Step 1: ALWAYS visualize data
 
 ```{r}
 #| code-fold: true
@@ -229,19 +239,23 @@ Typically displayed as a `scatterplot`
 set.seed(42)
 
 n <- 200
-x <- rnorm(n, mean = 10, sd = 2)
-y <- 2 * x + rnorm(n, mean = 0, sd = 2) 
-corr_data <- data.frame(x,y)
+house_n <- rnorm(n, mean = 10, sd = 2)
+candy <- 2 * house_n + rnorm(n, mean = 0, sd = 2) 
+corr_data <- data.frame(house_n, candy)
 
 corr_data %>% 
-  ggplot(aes(x,y)) + 
-  geom_point() + 
+  ggplot(aes(house_n, candy)) + 
+  geom_point(alpha = 0.7, size = 2, color = "purple") + 
   geom_smooth(method="lm", 
-              se = FALSE) + 
+              se = FALSE, 
+              color = "orange") + 
   labs(
+    title = "Relationship Between Num. of Houses and Amount of Candy on Halloween",
     x = "Number of Houses", 
     y = "Amount of Candy"
-  )
+  ) + 
+  theme_grey(paper = "black",
+        ink = "white",)
 
 
 ```
@@ -278,15 +292,17 @@ $$
 
 ------------------------------------------------------------------------
 
-## Correlations
+## Pearson's $r$ 
 
--   Tells us: How much 2 variables are *linearly* related
+**Range:** Varies from -1 (perfect negative correlation) and +1 (perfect positive correlation)
 
--   Range: -1 to +1
+**Assumptions:**
 
--   Most common and basic effect size measure
+1.  **Continuous Variables:** Both variables are measured on an interval or ratio scale.
 
--   Is used to build the regression model
+2.  **Linearity:** The relationship between the variables is linear. (This is why you **must** visualize your data!)
+
+3.  **Bivariate Normality:** Data points are normally distributed for both variables. (Pearson's $r$ is fairly robust to minor violations).
 
 ------------------------------------------------------------------------
 
@@ -312,7 +328,7 @@ $$
 Now how do we get a correlation value in R?
 
 ```{r}
-cor(corr_data$x, corr_data$y)
+cor(corr_data$house_n, corr_data$candy)
 
 ```
 
@@ -325,25 +341,141 @@ That will give us the correlation, but we also want to know how to get our p-val
 To get the test of a single pair of variables, we will use the `cor.test()` function:
 
 ```{r}
-cor.test(x, y, data = corr_data)
+cor.test(corr_data$house_n, corr_data$candy)
+
 ```
 
 ------------------------------------------------------------------------
 
-## Using real data - Epworth Sleepiness Scale
+### Components of `cor.test()`
 
-So far we have been looking at single variables, but we often care about the relationships between multiple variables in a dataset
+-   **`p-value`**: The probability of getting a correlation this strong if the null were true is virtually zero ( $p < .001$ ) . We **reject the null hypothesis**.
+
+-   **`95 percent confidence interval`**: We are 95% confident that the true population correlation is between 0.86 and 0.92. Importantly, this interval **does not contain 0**.
+
+    -   We cannot say "There is a 95% chance that the population correlation falls in this range"
+
+    -   CI's are based on the infinite running of the test (<https://rpsychologist.com/d3/ci/>)
+
+-   **`sample estimates: cor`**: This is our sample correlation coefficient, $r = 0.89$. This is our **effect size**.
+
+# The "So What?" - Effect Sizes & Practical Significance
+
+------------------------------------------------------------------------
+
+## Significance
+
+The $p-value$ gives us the *statistical significance*. It will tell us that the effect we identified is **likely not to be 0**
+
+It does not tell us *anything* about how large or meaningful the effect actually is. This is where the **effect size** comes in!
+
+::: callout-important
+With a large enough sample size, even a tiny, trivial correlation (e.g., r \< 0.1) can become statistically significant. [Think about what happens to sampling distribution when sample size increases.](https://onlinestatbook.com/stat_sim/sampling_dist/){target="_blank"}
+:::
+
+**Statistical Significance** $\neq$ **Practical Significance**
+
+------------------------------------------------------------------------
+
+## Effect Sizes: Correlation
+
+For correlation, we have two related measures of effect size:
+
+1.  **Pearson's** $r$: The correlation coefficient itself. A standardized measure of the strength and direction of the linear association.
+
+    -   Cohen's Conventions (a rough guide): Small (∣.10∣), Medium (∣.30∣), Large (∣.50∣).
+
+    -   Our finding of $r = 0.89$ is a **large effect**.
+
+2.  **Coefficient of Determination** ($R^2$): This is simply r squared. It represents the **proportion of variance** in one variable that is "explained" or "accounted for" by the other.
+
+------------------------------------------------------------------------
+
+### Putting it Together
+
+For our candy and housese data:
+
+-   Our correlation was $r = 0.89$
+
+-   The coefficient of determination is $R^2 = 0.89^2 = 0.792$
+
+**Interpretation:**
+
+> **"Approximately 79% of the variance in the amount of candy that one gets on Halloween can be accounted for by the number of houses they go to."**
+
+This is a powerful and practical statement about the strength of the association.
+
+# Correlations: Using real data
+
+```{r}
+sleep_data <- import(here("files", "data", "Sleep_Data.csv")) %>% 
+  #create an ESS Sum Score
+  rowwise() %>% 
+  mutate(ess_tot = sum(c_across(ESS1:ESS8), na.rm = TRUE))
+```
+
+------------------------------------------------------------------------
+
+## Age x ESS_total: Visualize
+
+Let's examine the overall correlation between Age and overall sleepiness
+
+**First: Visualize**
 
 ```{r}
 #| code-fold: true
 
-#sleep_data %>% 
-#  select(ESS1m1:ESS8m1) %>% 
-#  cor() %>% 
-#  kable()
+sleep_data %>% 
+  ggplot(aes(age, ess_tot)) + 
+  geom_point() + 
+  geom_smooth(method="lm", se=FALSE)
 ```
 
-# Missing Values - `na.rm = TRUE`?
+It doesn't seem like there is much of a relationship here...
+
+------------------------------------------------------------------------
+
+## Age x ESS_total: Test
+
+Let's check the overall correlation just to see what we are finding
+
+```{r}
+cor.test(sleep_data$age, sleep_data$ess_tot)
+```
+
+------------------------------------------------------------------------
+
+### Writing up a Correlation
+
+Template: *r*(degress of freedom) = the *r* statistic, *p* = *p* value.
+
+Imagine we have conducted a study of 40 students that looked at whether IQ scores and GPA are correlated. We might report the results like this:
+
+> IQ and GPA were found to be moderately positively correlated, *r*(38) = .34, *p* = .032.
+
+Other example:
+
+> Among the students of Hogwarts University, the number of hours playing Fortnite per week and midterm exam results were negatively correlated, *r*(78) = -.45, *p* \< .001.
+
+And another:
+
+> Table 1 reports descriptive statistics and correlations among variables of interest. Knowledge of Weird Al Songs was positively correlated with perceptions of humor for Dr. Haraden (*r*(49) = .79, *p \<*.001), such that the more Weird Al songs a student knew, the more they thought Dr. Haraden was funny.
+
+------------------------------------------------------------------------
+
+## Writing up: Example 
+
+We have all of the pieces for writing up our correlation between age and sleepiness.
+
+Template: *r*(degress of freedom) = the *r* statistic, *p* = *p* value.
+
+> Among the students in the sample, age was negatively related to overall levels of sleepiness (*r*(1450) = -0.06, *p* = .024).
+
+What about our $R^2$ value?
+
+$R^2 = -0.06^2 = 0.0034$. Therefore, approximately 0.34% of the variability in the sleepiness scale (`ess_tot`) is explained by age. Is this meaningful?
+
+# Missing Values in Correlation
 
 ------------------------------------------------------------------------
 
@@ -368,22 +500,88 @@ So far we have been looking at single variables, but we often care about the rel
 ------------------------------------------------------------------------
 
 ```{r}
-#sleep_data %>% 
-#  select(ESS1m1:ESS8m1) %>% 
-#  cor(use = "complete") %>% 
-#  kable()
+sleep_data %>% 
+  select(age, ESS1:ESS8, ess_tot) %>% 
+  cor(use = "complete") %>% 
+  kable()
 ```
 
 ------------------------------------------------------------------------
 
 ```{r}
-#sleep_data %>% 
-#  select(ESS1m1:ESS8m1) %>% 
-#  cor(use = "pairwise") %>% 
-#  kable()
+sleep_data %>% 
+  select(age, ESS1:ESS8, ess_tot) %>% 
+  cor(use = "pairwise") %>% 
+  kable()
 ```
 
-# Spearman's Rank Correaltion
+------------------------------------------------------------------------
+
+### Example: Handling Missing Data
+
+Imagine we've collected data from 5 students on their levels of **anxiety**, **depression**, and **sleep quality** (where a lower score means better sleep).
+
+Our goal is to run a correlation matrix to see how these three variables relate to each other. But notice, we have some missing data (`NA`).
+
+|        |         |            |               |
+|--------|---------|------------|---------------|
+| **ID** | Anxiety | Depression | Sleep Quality |
+| **1**  | 10      | 12         | 5             |
+| **2**  | 12      | 14         | 4             |
+| **3**  | 15      | `NA`       | 3             |
+| **4**  | 18      | 20         | 2             |
+| **5**  | 11      | 13         | `NA`          |
+
+------------------------------------------------------------------------
+
+### Listwise Deletion
+
+**The Rule:** "All or nothing." If a participant is missing data on **any** variable in our list, their entire row is removed from the analysis.
+
+**Applying the Rule:**
+
+-   Participant 3 is missing `Depression`. They're out.
+
+-   Participant 5 is missing `Sleep Quality`. They're out.
+
+**The Resulting Data for Analysis:** This leaves us with only the participants who have complete data on all three variables. We lose 40% of our data
+
+|        |             |                |                   |
+|--------|-------------|----------------|-------------------|
+| **ID** | **Anxiety** | **Depression** | **Sleep Quality** |
+| **1**  | 10          | 12             | 5                 |
+| **2**  | 12          | 14             | 4                 |
+| **4**  | 18          | 20             | 2                 |
+
+------------------------------------------------------------------------
+
+### Pairwise Deletion
+
+**The Rule:** "Case by case." For each individual correlation, we use all participants who have data for **that specific pair** of variables.
+
+Look at each pair to determine the sample sizes
+
+|        |             |                |                   |
+|--------|-------------|----------------|-------------------|
+| **ID** | **Anxiety** | **Depression** | **Sleep Quality** |
+| **1**  | 10          | 12             | 5                 |
+| **2**  | 12          | 14             | 4                 |
+| **3**  | 15          | `NA`           | 3                 |
+| **4**  | 18          | 20             | 2                 |
+| **5**  | 11          | 13             | `NA`              |
+
+------------------------------------------------------------------------
+
+### Summary
+
+|  |  |  |
+|----|----|----|
+| **Correlation Pair** | **N with Listwise Deletion** | **N with Pairwise Deletion** |
+| Anxiety & Depression | 3 | 4 |
+| Anxiety & Sleep Quality | 3 | 4 |
+| Depression & Sleep Quality | 3 | 3 |
+
+# Spearman's Rank Correlation
 
 ------------------------------------------------------------------------
 
@@ -450,19 +648,18 @@ Before we used the `cor()` function to create a correlation matrix of our variab
 ***But what is missing?***
 
 ```{r}
-#sleep_data %>% 
-#  select(ESS1m1:ESS8m1) %>% 
-#  cor(use = "complete") %>% 
-#  kable()
+sleep_data %>% 
+  select(age, ESS1:ESS8, ess_tot) %>% 
+  cor(use = "complete") %>% 
+  kable()
 ```
 
 ## Correlation Tables - [sjPlot](https://strengejacke.github.io/sjPlot/reference/tab_corr.html)
 
 ```{r}
-#sleep_data %>% 
-#  select(ESS1m1:ESS8m1) %>% 
-#  cor(use = "complete") %>% 
-#  tab_corr(na.deletion = "listwise", triangle = "lower")
+sleep_data %>% 
+  select(ESS1:ESS8) %>% 
+  tab_corr(na.deletion = "listwise", triangle = "lower")
 ```
 
 ------------------------------------------------------------------------
@@ -475,20 +672,39 @@ Can add titles, indicate what missingness and method
 
 Saves you a TON of time when putting it into a manuscript
 
+# Fancy Visuals
+
 ------------------------------------------------------------------------
 
-## Writing up a Correlation
+## Scatterplot
 
-Template: *r*(degress of freedom) = the *r* statistic, *p* = *p* value.
+Before we had a scatterplot that looked like this:
 
-Imagine we have conducted a study of 40 students that looked at whether IQ scores and GPA are correlated. We might report the results like this:
+```{r}
+sleep_data %>% 
+  ggplot(aes(age, ess_tot)) + 
+  geom_point() + 
+  geom_smooth(method="lm", se=FALSE) + 
+  labs(
+    x = "Age", 
+    y = "ESS Total", 
+    title = "Relationship between Age and Sleepiness" 
+  )
+```
 
-> IQ and GPA were found to be moderately positively correlated, *r*(38) = .34, *p* = .032.
+------------------------------------------------------------------------
 
-Other example:
+## Fancier Scatterplot
 
-> Among the students of Hogwarts University, the number of hours playing Fortnite per week and midterm exam results were negatively correlated, *r*(78) = -.45, *p* \< .001.
+Take a look at `ggstatsplot` <https://indrajeetpatil.github.io/ggstatsplot/>
 
-And another:
-
-> Table 1 reports descriptive statistics and correlations among variables of interest. Knowledge of Weird Al Songs was positively correlated with perceptions of humor for Dr. Haraden (*r*(49) = .79, *p \<*.001), such that the more Weird Al songs a student knew, the more they thought Dr. Haraden was funny.
+```{r}
+ggscatterstats(
+  data = sleep_data, 
+  x = age, 
+  y = ess_tot, 
+  xlab = "Age", 
+  ylab = "ESS Total", 
+  title = "Relationship between Age and Sleepiness"
+)
+```
