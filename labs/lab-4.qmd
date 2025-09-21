@@ -36,8 +36,12 @@ The data highlighted above contains the following variables (and more):
 -   **`ashs1 - ashs33`**: (Continuous) The student's responses to each
     item on the Adolescent Sleep Hygiene Scale. Higher scores indicate
     better sleep habits (e.g., consistent bedtime, quiet environment).
-    **NOTE:** You will need to reverse score all items *except* #27. You
-    will also need to calculate a total mean score with these items.
+    The original data collection did not have an item 25 (so you won't
+    see one in your data).
+
+    -   **NOTE:** You will need to reverse score all items *except* #27.
+        You will also need to calculate a total mean score with these
+        items.
 
 -   **`attention1r - attention5r`**: (Categorical) An indication of
     whether they passed (1) or failed (0) the attention check item. A
@@ -48,6 +52,8 @@ The data highlighted above contains the following variables (and more):
 
 -   **`roommate`**: (Categorical) Whether the student has a roommate or
     not ("Yes", "No").
+
+    -   1 = "Yes" and 2 = "No"
 
 ------------------------------------------------------------------------
 
@@ -65,6 +71,12 @@ The data highlighted above contains the following variables (and more):
 
 Be sure to compute the appropriate total scores for the ESS, ASHS and
 Attention variables.
+
+::: callout-important
+There are a couple attention items that are in the ASHS section which
+can get a little confusing when trying to reverse code and getting total
+scores.
+:::
 
 Once completed, only include students who have "passed" the attention
 check (i.e., having a score of 4 or higher on the attention sum total).
