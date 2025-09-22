@@ -1,0 +1,71 @@
+---
+title: "Lab 5: Correlations"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+  markdown: 
+    wrap: 72
+---
+
+## Instructions
+
+We are going to investigate what is most highly related to the number of
+Spotify streams in this Popular Music dataset. This data was taken from:
+<https://www.kaggle.com/datasets/ahmadrazakashif/spotify-popularity-songs>
+
+Here are the things that you will need for this lab:
+
+-   <a href="/files/data/popular_spotify.csv" download="popular_spotify.csv">Download
+    Spotify Data (.csv)</a>
+-   <a href="/files/_lab-rmd/lab-5.Rmd" download="lab-5.Rmd">Download
+    Lab 5 (.Rmd)</a>
+
+When you are finished, click the **Knit** button to turn your work into
+an HTML document. You will submit both this `.Rmd` file and the
+🧶knitted `.html` file.
+
+## Scenario and Goal
+
+We have been asked by an up and coming music artist to use our advanced
+data analytic skills to see what has been related to the most popular
+songs. They have provided us with all of this data for recent popular
+songs that have been streamed the most.
+
+Our goal is to identify which variable is most related to higher
+streams. These variables that they are looking at are things like
+danceability, instrumentalness, etc.
+
+### Variables of Interest
+
+-   `streams`: The number of streams for the individual song
+
+-   Percentage Variables: These variables reflect a rating from 0-100 on
+    the intensity related to that variable
+
+    -   `danceability_%`
+    -   `valence_%`
+    -   `energy_%`
+    -   `acousticness_%`
+    -   `instrumentalness_%`
+    -   `liveness_%`
+    -   `speechiness_%`
+
+------------------------------------------------------------------------
+
+## Lab Exercises
+
+Import your data and use the `clean_names()` function to make the
+variables a little nicer looking
+
+Start by creating a correlation table (make sure it looks nice and not
+just an output from R using `cor()`).
+
+Examine the correlation table and identify the two largest effects with
+the outcome (`streams`).
+
+Visualize the two correlations that you have identified.
+
+Choose one of the relationships that you visualized and write the
+results in APA format.
+
+*End of Lab. Don't forget to Knit! 🧶*

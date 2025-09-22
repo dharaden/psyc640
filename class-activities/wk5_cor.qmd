@@ -1,0 +1,92 @@
+---
+title: "Week 5 Exercises - Correlation"
+editor: visual
+---
+
+# On Your Own
+
+**Goal**: Work individually or in small groups to apply the concepts from today's lecture and demo to a new dataset.
+
+## Objectives:
+
+-   Identify predictor and outcome variables from a research question.
+
+-   Create an appropriate visualization (`ggplot`).
+
+-   Run the correct statistical test and report the appropriate results.
+
+## The Scenario & Dataset
+
+We have data of personality traits, as measured by the Ten Item Personality Inventory, and self-reported aspects of sleep (# of hours slept on average & overall sleep quality), as well as some demographic variables. The administration is asking how different personality traits are related to sleep quality.
+
+<a href="/files/data/TIPI_Data.csv" download="TIPI_Data.csv">Download Week 5 Class Activity (.csv)</a>
+
+Please download the `TIPI_Data.csv` file (above). It contains the following variables of interest:
+
+-   `ID`: A unique identifier for each participant.
+
+-   `age`: The participants reported age in years
+
+-   `TIPI_1 - TIPI_10`: The ratings on each item of the Ten Item Personality inventory. Even items need to be reverse scored (scale goes from 1 to 7). Scores for each personality index are from the mean of their respective items.
+
+    -   Extraversion: 1 & 6; Agreeableness: 2 & 7; Conscientiousness: 3 & 8; Emotional Stability: 4 & 9; Openness to Experiences: 5 & 10
+
+-   `Sleep Quality`: Scale from 1-5 with higher scores indicating better sleep quality
+
+-   `Hours of Sleep`: Score that represents a range.
+
+    -   0-3 hours = 1; 3-6 hours = 5; 6-9 hours = 7; 9+ hours = 8
+
+## Instructions:
+
+1.  Create a new R Markdown file titled `week5_inclass.Rmd`.
+
+2.  Load the appropriate libraries.
+
+3.  Load the `TIPI_Data.csv` dataset.
+
+4.  For each task below, write the R code and answer the questions.
+
+### Task 1: Wrangling & Scoring
+
+1.  How might you identify "valid" responses? Based on the information in the dataset, what may be variables that you may want to examine more closely? (You don't have to do the coding for this, just answer conceptually).
+2.  Reverse code items of the TIPI
+3.  Create the total scores for each subscale of the TIPI
+
+### Task 2: Correlation Table
+
+Create a correlation table of the subscales of the TIPI, Sleep Quality and Sleep hours. Be sure to have it include associated p-values.
+
+How are you handling missing values and why?
+
+### Task 3: Closer Investigation
+
+Select one pair of variables to further examine the correlation. You must include only one subscale of the TIPI. Why did you decide these variables? (due to significance? Or effect size?)
+
+Generate a scatterplot with your variables and add a fit line. Be sure to include a title, and legible axes.
+
+Using APA style, write up your report of this relationship between your selected variables. Be sure to include *r, df,* & *p-values*.
+
+***End of the document. Remember to Knit and upload the html and .Rmd to myCourses.***
+
+------------------------------------------------------------------------
+
+# Following Along
+
+Let's walk through the steps that you worked through as a group above!
+
+<a href="/files/data/TIPI_Data.csv" download="TIPI_Data.csv">Download Week 5 Class Activity (.csv)</a>
+
+Download the data and move it to the correct folder so that you can access it in this activity.
+
+Import the data into your R file. I would suggest putting this line within the code chunk that you have your libraries in.
+
+Focus on having reproducible code! You may need to share your file with someone else. They should be able to run it.
+
+## Steps:
+
+1.  Import Data
+2.  Score the Data
+3.  Visualize the Data (select 1 pairing of personality variables)
+4.  Test the Relationship
+5.  Create Correlation Matrix

@@ -1,0 +1,115 @@
+---
+title: "Lab 5: Relationships in Bechdel"
+author: "Your Name Here"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r}
+#Include all libraries here
+
+
+
+#Import your data here 
+
+
+
+```
+
+## Task 1: Compute scores for scales
+
+Be sure to compute the appropriate total scores for the ESS, ASHS and Attention variables.
+
+Once completed, only include students who have "passed" the attention check (i.e., having a score of 4 or higher on the attention sum total).
+
+*hint: use dplyr and filter*
+
+```{r}
+## Task 1: Computing scales
+
+
+
+```
+
+## Task 2: Roommates and Daytime Sleepiness (A Group Comparison)
+
+**The Research Question:** "Do students who have a roommate report different levels of daytime sleepiness compared to students who do not have a roommate?"
+
+**Your Steps:**
+
+1.  **Identify & Model:**
+
+    -   What is the predictor (IV) and what is the outcome (DV)?
+
+    -   Are they categorical or continuous?
+
+    -   Based on this, what is the appropriate model family? Write out the model in R formula syntax (`outcome ~ predictor`).
+
+2.  **Describe & Visualize:**
+
+    -   Calculate the mean and standard deviation of `ess_score` for both groups (those with and without a roommate).
+
+    -   Create a boxplot to visualize the distribution of `ess_score` for each group. Make sure your plot is clearly labeled.
+
+```{r}
+## Describe your data. Look back to past labs where there was a group_by() and then summarize() type of function
+
+
+
+
+## We also created some boxplots before
+
+
+```
+
+3.  **Analyze:**
+
+    -   Run the appropriate statistical test in R to determine if there is a significant difference between the groups.
+
+    ```{r}
+    ## Conduct your analysis
+
+
+    ```
+
+4.  **Interpret & Conclude:**
+
+    -   What is the p-value from your test?
+
+    -   Based on the test and your descriptive statistics, write a one-sentence conclusion that directly answers the research question.
+
+    -   **Critical Thinking:** This is an observational study. Can you conclude that having a roommate *causes* a change in sleepiness? Why or why not?
+
+## Bonus: Sleep Habits and Age (An Association)
+
+This question is not required. But you will get some bonus points if you decide to do it!
+
+**The Research Question:** "Is there an association between a student's sleep habits and their age?"
+
+**Your Steps:**
+
+1.  **Identify & Model:**
+
+    -   What is the predictor (IV) and what is the outcome (DV)?
+
+    -   Are they categorical or continuous?
+
+    -   Based on this, what is the appropriate model family? Write out the model in R formula syntax.
+
+2.  **Visualize:**
+
+    -   Create a scatterplot to visualize the relationship between `ashs_score` (sleep habits) and `age`.
+
+    -   Add a line of best fit to the plot. Make sure your plot is clearly labeled.
+
+3.  **Analyze:**
+
+    -   Run the appropriate statistical test in R to determine if there is a significant association between the two variables.
+
+4.  **Interpret & Conclude:**
+
+    -   What is the correlation coefficient (`r`) and the p-value from your test?
+
+    -   Based on these results, write a one-sentence conclusion that describes the nature and significance of the relationship.
+
+*End of Lab. Don't forget to Knit! 🧶*
