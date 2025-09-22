@@ -1165,7 +1165,7 @@
     "href": "class-activities/wk5_cor.html#steps",
     "title": "Week 5 Exercises - Correlation",
     "section": "Steps:",
-    "text": "Steps:\n\nImport Data\nScore the Data\nVisualize the Data (select 1 pairing of personality variables)\nTest the Relationship\nCreate Correlation Matrix"
+    "text": "Steps:\n\nImport Data\nVisualize the Data (select 1 pairing of personality variables)\nTest the Relationship\nCreate Correlation Matrix\nCheck Group Differences\n\n\nItems in the Data:\n\n\n\n\n\n\n\nVar Name\nInfo\n\n\n\n\nid\nStudy ID\n\n\nIncome\nOverall income\n\n\nSex\nSex\n\n\nAge\nAge\n\n\nAge Range\nAge given in ranges\n\n\nPolitical Affiliation\nPolitical Affiliation\n\n\nEducation\nWhat is your highest level of education? \n\n\nethnicity\nWhat is your race?\n\n\nmarrital status\nWhat is your marital status?\n\n\nclimate change\nDo you believe that climate change is real and caused by people, real but not caused by people, or not real at all?\n\n\nTransformers\nHow many Transformers movies have you seen? \n\n\nbooks\nHow many books, if any, have you read in the past year?\n\n\nghosts\nDo you believe in ghosts?\n\n\nspending\nIs federal funding of scientific research too high, too low, or about right?\n\n\nchoice\nIf you had to choose: would you rather be smart and sad, or dumb and happy?\n\n\nshower_pee\nDo you think it is acceptable or unacceptable to urinate in the shower?"
   },
   {
     "objectID": "course-overview.html",
