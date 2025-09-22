@@ -1,0 +1,106 @@
+---
+title: "Reverse Results"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+  markdown: 
+    wrap: 72
+---
+
+### **From Reader to Writer**
+
+One of the most challenging parts of writing a research paper is
+crafting a clear and compelling results section. How do you go from a
+folder full of statistical output to a coherent narrative? The best way
+to learn is to see how experts do it.
+
+In this assignment, you will "reverse-engineer" the results section of a
+published paper. Think of yourself as an apprentice studying a master's
+work. Your goal is to uncover the underlying architecture—the deliberate
+choices the author made to guide the reader through their findings. This
+process will help you build a mental toolkit of effective strategies for
+your own writing.
+
+### **Instructions**
+
+#### **Step 1: Select a Research Article**
+
+-   Find a **peer-reviewed, quantitative research article** in a topic
+    area that interests you. The article should be a strong example of
+    clear scientific writing.
+
+-   The article should test one or more specific hypotheses using
+    statistical methods we have discussed or will be discussing (e.g.,
+    t-tests, ANOVA, correlation, regression).
+
+-   **Do not** choose a meta-analysis, literature review, or qualitative
+    study.
+
+#### **Step 2: Create Your Writer's Blueprint**
+
+Read the results section with a writer's eye. Your task is to outline
+the author's "moves." For each paragraph or distinct analytical block,
+your outline should explain the **narrative strategy**. Instead of just
+summarizing, analyze *how* and *why* the paragraph is constructed the
+way it is.
+
+For each section of your outline, describe:
+
+-   **The Narrative Goal:** What is the author's primary goal for this
+    paragraph? What key question is it answering for the reader? (e.g.,
+    "Here, the author is setting the stage by confirming the
+    randomization worked," or "This is the crucial paragraph where they
+    test their main hypothesis.").
+
+-   **The Writing Strategy:** How did they structure the paragraph to
+    achieve that goal? Notice the flow. Do they lead with a
+    plain-language summary? How do they present the statistical evidence
+    in support of their claim? (e.g., "The author uses a 'Claim-First'
+    structure: they state the finding in words, then provide the stats
+    to back it up.").
+
+### **Example**
+
+Consider this fictional paragraph from a results section:
+
+> *To test our primary hypothesis that the CBT intervention would reduce
+> social anxiety symptoms more than the waitlist control condition, we
+> conducted an independent-samples t-test on post-treatment SAQ scores.
+> The analysis revealed a significant difference between the groups,
+> t(72) = 3.88, p \< .001. The mean SAQ score for the CBT group (M =
+> 24.5, SD = 5.1) was significantly lower than the mean score for the
+> waitlist control group (M = 35.2, SD = 6.3), indicating a strong
+> treatment effect.*
+
+Your blueprint entry for this paragraph might look like this:
+
+> **Paragraph 3: Testing the Main Hypothesis.**
+>
+> -   **Narrative Goal:** To present the findings for the study's
+>     primary research question.
+>
+> -   **Writing Strategy:**
+>
+>     -   **State the Why:** They begin by explicitly stating which
+>         hypothesis they are testing and what analysis they used
+>         (independent-samples t-test).
+>
+>         1.  **Deliver the Punchline:** They immediately present the
+>             finding (t(72)=3.88,p<.001).
+>
+>         2.  **Explain in Context**: Translate the statistic back into
+>             meaningful terms by presenting the group means, making the
+>             result easy to understand.
+>
+>             This "Purpose -\> Evidence -\> Interpretation" flow is a
+>             powerful and clear way to structure a finding.
+
+### **What to Submit**
+
+Please submit a single document to myCourses with:
+
+1.  A full APA-style citation of the article you selected
+
+2.  Your complete "Writer's Blueprint" of the article's results section.
+
+3.  
