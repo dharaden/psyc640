@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lab 4: – PSYC 640 - Graduate Statistics</title>
+<title>Lab 5: Correlations – PSYC 640 - Graduate Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,8 +29,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../labs/lab-6.html" rel="next">
-<link href="../labs/lab-4.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -75,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Lab 4: – PSYC 640 - Graduate Statistics">
+<meta property="og:title" content="Lab 5: Correlations – PSYC 640 - Graduate Statistics">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
@@ -251,7 +249,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/lab-1_data-workflow.html">Labs</a></li><li class="breadcrumb-item"><a href="../labs/lab-5.html">Lab 5</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lab 5: Correlations</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -372,13 +370,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Labs</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../labs/lab-1_data-workflow.html" class="sidebar-item-text sidebar-link">
@@ -405,7 +403,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-5.html" class="sidebar-item-text sidebar-link active">
+  <a href="../labs/lab-5.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 5</span></a>
   </div>
 </li>
@@ -452,21 +450,21 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
-  <li><a href="#scenario-and-goal" id="toc-scenario-and-goal" class="nav-link" data-scroll-target="#scenario-and-goal">Scenario and Goal</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
+  <li><a href="#scenario-and-goal" id="toc-scenario-and-goal" class="nav-link" data-scroll-target="#scenario-and-goal">Scenario and Goal</a>
   <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#variables-of-interest" id="toc-variables-of-interest" class="nav-link" data-scroll-target="#variables-of-interest">Variables of Interest</a></li>
   </ul></li>
+  <li><a href="#lab-exercises" id="toc-lab-exercises" class="nav-link" data-scroll-target="#lab-exercises">Lab Exercises</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/lab-5.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/lab-5_cor.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/lab-1_data-workflow.html">Labs</a></li><li class="breadcrumb-item"><a href="../labs/lab-5.html">Lab 5</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 4:</h1>
+<h1 class="title">Lab 5: Correlations</h1>
 </div>
 
 
@@ -485,25 +483,46 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="instructions" class="level2">
 <h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<p>We are going to investigate what is most highly related to the number of Spotify streams in this Popular Music dataset. This data was taken from: <a href="https://www.kaggle.com/datasets/ahmadrazakashif/spotify-popularity-songs" class="uri">https://www.kaggle.com/datasets/ahmadrazakashif/spotify-popularity-songs</a></p>
 <p>Here are the things that you will need for this lab:</p>
 <ul>
-<li><a href="../files/_lab-rmd/lab-3_describe-viz.Rmd" download="lab-3_describe-viz.Rmd">Download Lab 3 (.Rmd)</a></li>
-<li><a href="../files/data/bechdel.csv" download="bechdel.csv">Download Bechdel Data (.csv)</a></li>
+<li><a href="../files/data/popular_spotify.csv" download="popular_spotify.csv">Download Spotify Data (.csv)</a></li>
+<li><a href="../files/_lab-rmd/lab-5.Rmd" download="lab-5.Rmd">Download Lab 5 (.Rmd)</a></li>
 </ul>
 <p>When you are finished, click the <strong>Knit</strong> button to turn your work into an HTML document. You will submit both this <code>.Rmd</code> file and the 🧶knitted <code>.html</code> file.</p>
 </section>
 <section id="scenario-and-goal" class="level2">
 <h2 class="anchored" data-anchor-id="scenario-and-goal">Scenario and Goal</h2>
+<p>We have been asked by an up and coming music artist to use our advanced data analytic skills to see what has been related to the most popular songs. They have provided us with all of this data for recent popular songs that have been streamed the most.</p>
+<p>Our goal is to identify which variable is most related to higher streams. These variables that they are looking at are things like danceability, instrumentalness, etc.</p>
+<section id="variables-of-interest" class="level3">
+<h3 class="anchored" data-anchor-id="variables-of-interest">Variables of Interest</h3>
+<ul>
+<li><p><code>streams</code>: The number of streams for the individual song</p></li>
+<li><p>Percentage Variables: These variables reflect a rating from 0-100 on the intensity related to that variable</p>
+<ul>
+<li><code>danceability_%</code></li>
+<li><code>valence_%</code></li>
+<li><code>energy_%</code></li>
+<li><code>acousticness_%</code></li>
+<li><code>instrumentalness_%</code></li>
+<li><code>liveness_%</code></li>
+<li><code>speechiness_%</code></li>
+</ul></li>
+</ul>
 <hr>
 </section>
-<section id="exercises" class="level2">
-<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
-<section id="section" class="level3">
-<h3 class="anchored" data-anchor-id="section"></h3>
+</section>
+<section id="lab-exercises" class="level2">
+<h2 class="anchored" data-anchor-id="lab-exercises">Lab Exercises</h2>
+<p>Import your data and use the <code>clean_names()</code> function to make the variables a little nicer looking</p>
+<p>Start by creating a correlation table (make sure it looks nice and not just an output from R using <code>cor()</code>).</p>
+<p>Examine the correlation table and identify the two largest effects with the outcome (<code>streams</code>).</p>
+<p>Visualize the two correlations that you have identified.</p>
+<p>Choose one of the relationships that you visualized and write the results in APA format.</p>
 <p><em>End of Lab. Don’t forget to Knit! 🧶</em></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -920,18 +939,6 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../labs/lab-4.html" class="pagination-link" aria-label="Lab 4">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 4</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../labs/lab-6.html" class="pagination-link" aria-label="Lab 6">
-        <span class="nav-page-text">Lab 6</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -940,7 +947,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/lab-5.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/lab-5_cor.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with ☕ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

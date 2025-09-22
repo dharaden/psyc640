@@ -29,7 +29,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../labs/lab-5.html" rel="next">
+<link href="../labs/lab-5.qmd" rel="next">
 <link href="../labs/lab-3_describe-viz.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -405,7 +405,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-5.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-5.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 5</span></a>
   </div>
 </li>
@@ -500,10 +500,16 @@ ul.task-list li input[type="checkbox"] {
 <p>The data highlighted above contains the following variables (and more):</p>
 <ul>
 <li><p><strong><code>ESS1 - ESS8</code></strong>: (Continuous) The student’s responses to each item on the Epworth Sleepiness Scale, a measure of general daytime sleepiness. Higher scores indicate greater sleepiness. <strong>NOTE:</strong> You will need to calculate a total score which is a sum of all 8 items.</p></li>
-<li><p><strong><code>ashs1 - ashs33</code></strong>: (Continuous) The student’s responses to each item on the Adolescent Sleep Hygiene Scale. Higher scores indicate better sleep habits (e.g., consistent bedtime, quiet environment). <strong>NOTE:</strong> You will need to reverse score all items <em>except</em>&nbsp;#27. You will also need to calculate a total mean score with these items.</p></li>
+<li><p><strong><code>ashs1 - ashs33</code></strong>: (Continuous) The student’s responses to each item on the Adolescent Sleep Hygiene Scale. Higher scores indicate better sleep habits (e.g., consistent bedtime, quiet environment). The original data collection did not have an item 25 (so you won’t see one in your data).</p>
+<ul>
+<li><strong>NOTE:</strong> You will need to reverse score all items <em>except</em>&nbsp;#27. You will also need to calculate a total mean score with these items.</li>
+</ul></li>
 <li><p><strong><code>attention1r - attention5r</code></strong>: (Categorical) An indication of whether they passed (1) or failed (0) the attention check item. A proxy for their attention during the survey. <strong>NOTE:</strong> Calculate a total attention score as a sum of all 5 items.</p></li>
 <li><p><strong><code>age</code></strong>: (Continuous) The student’s age in years.</p></li>
-<li><p><strong><code>roommate</code></strong>: (Categorical) Whether the student has a roommate or not (“Yes”, “No”).</p></li>
+<li><p><strong><code>roommate</code></strong>: (Categorical) Whether the student has a roommate or not (“Yes”, “No”).</p>
+<ul>
+<li>1 = “Yes” and 2 = “No”</li>
+</ul></li>
 </ul>
 <hr>
 </section>
@@ -517,6 +523,19 @@ ul.task-list li input[type="checkbox"] {
 <section id="task-1-compute-scores-for-scales" class="level2">
 <h2 class="anchored" data-anchor-id="task-1-compute-scores-for-scales">Task 1: Compute scores for scales</h2>
 <p>Be sure to compute the appropriate total scores for the ESS, ASHS and Attention variables.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>There are a couple attention items that are in the ASHS section which can get a little confusing when trying to reverse code and getting total scores.</p>
+</div>
+</div>
 <p>Once completed, only include students who have “passed” the attention check (i.e., having a score of 4 or higher on the attention sum total).</p>
 <p><em>hint: use dplyr and filter</em></p>
 </section>
@@ -1002,7 +1021,7 @@ ul.task-list li input[type="checkbox"] {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../labs/lab-5.html" class="pagination-link" aria-label="Lab 5">
+      <a href="../labs/lab-5.qmd" class="pagination-link" aria-label="Lab 5">
         <span class="nav-page-text">Lab 5</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
