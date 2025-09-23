@@ -1,5 +1,5 @@
 ---
-title: "Lab 5: Relationships in Bechdel"
+title: "Lab 5: Spotify Songs"
 author: "Your Name Here"
 date: "`r Sys.Date()`"
 output: html_document
@@ -16,100 +16,52 @@ output: html_document
 
 ```
 
-## Task 1: Compute scores for scales
+## Scenario and Goal
 
-Be sure to compute the appropriate total scores for the ESS, ASHS and Attention variables.
+We have been asked by an up and coming music artist to use our advanced data analytic skills to see what has been related to the most popular songs. They have provided us with all of this data for recent popular songs that have been streamed the most.
 
-Once completed, only include students who have "passed" the attention check (i.e., having a score of 4 or higher on the attention sum total).
+Our goal is to identify which variable is most related to higher streams. These variables that they are looking at are things like danceability, instrumentalness, etc.
 
-*hint: use dplyr and filter*
+### Variables of Interest
+
+-   `streams`: The number of streams for the individual song
+
+-   Percentage Variables: These variables reflect a rating from 0-100 on the intensity related to that variable
+
+    -   `danceability_%`
+    -   `valence_%`
+    -   `energy_%`
+    -   `acousticness_%`
+    -   `instrumentalness_%`
+    -   `liveness_%`
+    -   `speechiness_%`
+
+------------------------------------------------------------------------
+
+## Lab Exercises
+
+Import your data and use the `clean_names()` function to make the variables a little nicer looking
+
+## Task 1 - Correlation table
+
+Start by creating a correlation table (make sure it looks nice and not just an output from R using `cor()`).
 
 ```{r}
-## Task 1: Computing scales
-
-
 
 ```
 
-## Task 2: Roommates and Daytime Sleepiness (A Group Comparison)
+Examine the correlation table and identify the two largest effects with the outcome (`streams`).
 
-**The Research Question:** "Do students who have a roommate report different levels of daytime sleepiness compared to students who do not have a roommate?"
+## Task 2 - Visualize Relationships
 
-**Your Steps:**
-
-1.  **Identify & Model:**
-
-    -   What is the predictor (IV) and what is the outcome (DV)?
-
-    -   Are they categorical or continuous?
-
-    -   Based on this, what is the appropriate model family? Write out the model in R formula syntax (`outcome ~ predictor`).
-
-2.  **Describe & Visualize:**
-
-    -   Calculate the mean and standard deviation of `ess_score` for both groups (those with and without a roommate).
-
-    -   Create a boxplot to visualize the distribution of `ess_score` for each group. Make sure your plot is clearly labeled.
+Visualize the two correlations that you have identified.
 
 ```{r}
-## Describe your data. Look back to past labs where there was a group_by() and then summarize() type of function
-
-
-
-
-## We also created some boxplots before
-
 
 ```
 
-3.  **Analyze:**
+## Task 3 - APA Writeup
 
-    -   Run the appropriate statistical test in R to determine if there is a significant difference between the groups.
-
-    ```{r}
-    ## Conduct your analysis
-
-
-    ```
-
-4.  **Interpret & Conclude:**
-
-    -   What is the p-value from your test?
-
-    -   Based on the test and your descriptive statistics, write a one-sentence conclusion that directly answers the research question.
-
-    -   **Critical Thinking:** This is an observational study. Can you conclude that having a roommate *causes* a change in sleepiness? Why or why not?
-
-## Bonus: Sleep Habits and Age (An Association)
-
-This question is not required. But you will get some bonus points if you decide to do it!
-
-**The Research Question:** "Is there an association between a student's sleep habits and their age?"
-
-**Your Steps:**
-
-1.  **Identify & Model:**
-
-    -   What is the predictor (IV) and what is the outcome (DV)?
-
-    -   Are they categorical or continuous?
-
-    -   Based on this, what is the appropriate model family? Write out the model in R formula syntax.
-
-2.  **Visualize:**
-
-    -   Create a scatterplot to visualize the relationship between `ashs_score` (sleep habits) and `age`.
-
-    -   Add a line of best fit to the plot. Make sure your plot is clearly labeled.
-
-3.  **Analyze:**
-
-    -   Run the appropriate statistical test in R to determine if there is a significant association between the two variables.
-
-4.  **Interpret & Conclude:**
-
-    -   What is the correlation coefficient (`r`) and the p-value from your test?
-
-    -   Based on these results, write a one-sentence conclusion that describes the nature and significance of the relationship.
+Choose one of the relationships that you visualized and write the results in APA format.
 
 *End of Lab. Don't forget to Knit! 🧶*
