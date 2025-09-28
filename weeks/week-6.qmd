@@ -1,31 +1,37 @@
 ---
-title: "Week XX"
+title: "Week 06"
 editor: visual
 ---
 
-# R & Tidy Data
+# Comparing Means 
+
+## Materials/Data
+
+-   <a href="/files/data/CAH.csv" download="CAH.csv">Cards Against Humanity Data (.csv)</a>
 
 ## Prepare
 
--   
+-   [Chapter 9 & 10 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}
+
+-   [Chapter 13 - LSR](https://learningstatisticswithr.com/book/){target="_blank"}
 
 ## Slides
 
-[💻 Getting Started - Syllabus](../slides/lec-1_syl.html){target="_blank"}
-
-[💻Getting Started - Data](../slides/lec-1_background.html){target="_blank"}
+[💻 Comparing Means](../slides/lec-6_mean.html){target="_blank"}
 
 ## In-Class Activity
 
-[Getting Comfy with R](../class-activities/day1.html){target="_blank"}
+[Correlations](../class-activities/wk5_cor.html){target="_blank"}
 
 ## For Next Time
 
-📋[Lab 1 - Foundations of a Data Workflow](../labs/lab-1_data-workflow.html)
+📋[Lab 5 - More Correlations](../labs/lab-5_cor.html)
 
-📖Read Chapter 1 & 2 - ST
+📋[Reverse Results](../labs/reverse_results.html){target="_blank"}
 
-📖Read Chapter 2 - MSR
+📖[Chapter 9 & 10 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}
+
+📖[Chapter 13 - LSR](https://learningstatisticswithr.com/book/){target="_blank"}
 
 <br><br>
 

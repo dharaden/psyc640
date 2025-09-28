@@ -1,6 +1,6 @@
 ---
 title: "Week 06: Comparing Means"
-subtitle: "Date: September 22, 2025"
+subtitle: "Date: September 29, 2025"
 footer:  "[course-website](https://dharaden.github.io/psyc640/)"
 logo: "images/640_hex.png"
 format: 
@@ -29,694 +29,957 @@ HIGHLIGHT THE USE OF THE `rm()` FUNCTION TO GET RID OF THINGS IN YOUR ENVIRONMEN
 library(here)
 # for dplyr, ggplot2
 library(tidyverse)
-# Loading data
-library(rio)
 # Pretty tables
 library(sjPlot)
-library(kableExtra)
 library(ggstatsplot)
+# making tests easier
+library(lsr) ## NEW
 
 #Remove Scientific Notation 
 options(scipen=999)
 ```
 
-------------------------------------------------------------------------
+# Comparing Means
 
-## Today's Roadmap 🗺️
+Converting to a t-score and checking against the t-distribution
 
--   Explain the counterintuitive logic of Null Hypothesis Significance Testing (NHST)
+-   One-Sample
 
--   Define and correctly interpret a p-value
+-   Independent Sample
 
--   Distinguish what a p-value *is* from what it is *not*
-
--   Apply the steps of NHST to a research question
-
-# The Lady Tasting Tea 🍵
-
-How A Simple Experiment Paved the Way for Modern Experimental Design 📊
-
-Taken from [Tweet](https://x.com/selcukorkmaz/status/1690348343363334144){target="_blank"} by Selçuk Korkmaz
+-   Paired Sample
 
 ------------------------------------------------------------------------
 
-## Setting:
+## but first...Degrees of Freedom
 
-In 1925, during a summer afternoon on campus, a lady, Dr. Muriel Bristol ([who has an algae species named after her](https://en.wikipedia.org/wiki/Chlamydomonas)), was handed a cup of tea by Ronald Fisher. She declined saying:
+**Degrees of Freedom:** *the number of values in the final calculation of a statistic that are free to vary*
 
-*"I prefer the flavor when the milk is poured first. I can tell when there is a difference"*
+**Example**: Drawing a triangle
 
-Fisher, being a statistician and a white man:
-
-*"Prove it"*
-
-::: callout-note
-*Sometimes, groundbreaking insights arise from everyday claims!*
-:::
+**❓Question:** If you have a sample of 5 scores and you know the mean is 3, how many of those scores can you *freely* change?
 
 ------------------------------------------------------------------------
 
-## Designing the Test:
+## One Sample t-test
 
-Fisher prepared 8 cups of tea; 4 with milk first & 4 with tea first
+*t*-tests were developed by William Sealy Gosset, who was a chemist studying the grains used in making beer. (He worked for Guinness.)
 
-Dr. Muriel Bristol *correctly* identified 3 out of 4 of each! (some reports claim she identified all correctly)
+-   Specifically, he wanted to know whether particular strains of grain made better or worse beer than the standard.
 
-*Was it just chance or genuine ability?*
+-   He developed the *t*-test, to test small samples of beer against a population with an unknown standard deviation.
 
-::: callout-note
-Always consider both outcomes. In hypothesis testing, this means setting up null and alternative hypotheses.
-:::
+    -   Probably had input from Karl Pearson and Ronald Fisher
 
-------------------------------------------------------------------------
-
-## Birth of Hypothesis Testing:
-
-Fisher framed it as a combinatorial problem
-
-If it was mere luck/chance, the *probability* of getting all 8 correct was low
-
-This way of thinking is the groundwork for the concept of the p-value
-
-::: callout-important
-The p-value gives the probability of observing data (or something more extreme) given that the null hypothesis is true.
-:::
-
-# NHST
-
-The core idea of Null Hypothesis Significance Testing (NHST) is a bit backward, but powerful:
-
-> We can't prove our research hypothesis is true. Instead, we gather evidence to show that the alternative explanation (the null hypothesis) is incredibly unlikely
-
-It's a process of elimination and inference
+-   Published this as "Student" because Guinness didn't want these tests tied to the production of beer.
 
 ------------------------------------------------------------------------
 
-## The Tortured Logic of NHST
+***One-sample tests compare your given sample with a "known" population***
 
-We create two hypotheses, $H_0$ and $H_1$. Usually, we care about $H_1$, not $H_0$. In fact, what we really want to know is how likely $H_1$, given our data.
+Research question: does this sample come from this population?
 
-$$P(H_1|Data)$$ Instead, we're going to test our null hypothesis. Well, not really. We're going to assume our null hypothesis is true, and test how likely we would be to get these data.
+**Hypotheses**
 
-$$P(Data|H_0)$$
+-   $H_0$: Yes, this sample comes from this population.
 
-------------------------------------------------------------------------
-
-## NHST Analogy: The Legal System
-
--   The **Null Hypothesis (** $H_0$ **)** is the starting assumption: "**presumed innocent**." In research, this means assuming there is *no effect*, *no relationship*, or *no difference*.
-
--   **You, the researcher**, are the prosecution, gathering evidence (data) to challenge this presumption.
-
--   Your **p-value** reflects the strength of your evidence. A small p-value *likely* means your evidence is strong.
-
--   **Rejecting the null** is like a "guilty" verdict. You have enough evidence to say the initial presumption of innocence (no effect) is unlikely to be true.
+-   $H_1$: No, this sample comes from a different population.
 
 ------------------------------------------------------------------------
 
-## p-value: Formal Definition
+To calculate the t-statistic, we generally use this formula:
 
-This is one of the most important—and misunderstood—concepts in statistics.
+$$t_{df=N-1} = \frac{\bar{X}-\mu}{\frac{\hat{\sigma}}{\sqrt{N}}}$$
 
-The **p-value** is:
-
-> The probability of observing a result **as extreme as, or more extreme than**, the one we actually observed, **assuming the null hypothesis is true.**
+The heavier tails of the t-distribution, especially for small N, are the penalty we pay for having to estimate the population standard deviation from the sample.
 
 ------------------------------------------------------------------------
 
-## p-value: Formal Definition
-
-This is one of the most important—and misunderstood—concepts in statistics.
-
-**It is NOT:**
-
--   The probability that the null hypothesis is true
-
--   The probability that our research hypothesis is true
-
--   A measure of the size or importance of an effect
+![](/images/t-to-z.png){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-## What are the steps of NHST?
+## Example
+
+For examples today, we will use a dataset from Cards Against Humanity's Pulse of the Nation survey (<https://thepulseofthenation.com/>)
+
+-   <a href="/files/data/CAH.csv" download="CAH.csv">Cards Against Humanity Data (.csv)</a>
+
+```{r}
+## We are using read_csv() this time
+## import() was doing something strange with missing values
+cah <- read_csv(here("files", "data", "CAH.csv")) %>% 
+  janitor::clean_names() 
+
+head(cah)
+```
+
+------------------------------------------------------------------------
+
+### **Assumptions of the one-sample *t*-test**
+
+**Normality.** We assume the sampling distribution of the mean is normally distributed. Under what two conditions can we be assured that this is true?
+
+**Independence.** Observations in the dataset are not associated with one another. Put another way, collecting a score from Participant A doesn't tell me anything about what Participant B will say. How can we be safe in this assumption?
+
+------------------------------------------------------------------------
+
+### A brief example
+
+Using the Cards Against Humanity data, we find that participants identified having approximately 22.33 ( $sd = 75.87$ ) books in their home. We know that the average household has approximately 50 books. How does this sample represent the larger united states?
+
+**Hypotheses**
+
+$H_0: \mu = 50$
+
+$H_1: \mu \neq 50$
+
+------------------------------------------------------------------------
 
 ::::: columns
 ::: {.column width="50%"}
-1.  Define null and alternative hypothesis.
+$$\mu = 50$$
 
-2.  Set and justify alpha level (usually $\alpha$ = .05)
+$$N = 1000$$
 
-3.  Determine which sampling distribution ( $z$, $t$, or $\chi^2$ for now)
+$$ \bar{X} = 22.33 $$
 
-4.  Calculate parameters of your sampling distribution under the null.
-
--   If $z$, calculate $\mu$ and $\sigma_M$
+$$ s = 75.87 $$
 :::
 
 ::: {.column width="50%"}
-5.  Calculate test statistic under the null.
-
--   If $z$, $\frac{\bar{X} - \mu}{\sigma_M}$
-
-6.  Calculate probability of that test statistic or more extreme under the null, and compare to alpha.
+```{r}
+t.test(x = cah$books, mu = 50,        
+       alternative = "two.sided")
+```
 :::
 :::::
 
 ------------------------------------------------------------------------
 
-## 🧠 Think about...
-
-> You run a correlational analysis to see if levels of anxiety are related to caffeine consumption. You get a correlation of 0.38 and a p-value of *p =* .045.
-
-Turn to someone next to you and in your own words, explain what the p-value is telling you.
-
--   Looking at the p-value, what can you conclude?
-
--   Looking at the p-value, what can't you conclude?
+```{r}
+lsr::oneSampleTTest(x = cah$books, mu = 50, 
+                    one.sided = FALSE)
+```
 
 ------------------------------------------------------------------------
 
-## 🧠More thinking...
+## Cohen's D
 
-What if you ran the same study and analyses, but found that your p-value was *p =* .052?
+Cohen suggested one of the most common effect size estimates---the standardized mean difference---useful when comparing a group mean to a population mean or two group means to each other.
 
-# Visualizations of Concepts
+$$\delta = \frac{\mu_1 - \mu_0}{\sigma} \approx d = \frac{\bar{X}-\mu}{\hat{\sigma}}$$
 
-[NHST Visualizations](https://rpsychologist.com/d3/nhst/){target="_blank"}
-
-[Sampling Distributions - OG](https://onlinestatbook.com/stat_sim/sampling_dist/){target="_blank"}
-
-[Sampling Distributions & p-values](https://rpsychologist.com/pvalue/){target="_blank"}
-
-# Break ☕
-
-# The "How" - Pearson's Correlation ($r$)
+Cohen's d is in the standard deviation (Z) metric.
 
 ------------------------------------------------------------------------
 
-## What is a Correlation?
+Cohens's d for these data is $0.365$. In other words, the sample mean differs from the population mean by $0.365$ standard deviation units.
 
-A statistical expression that quantifies the extent to which two continuous variables are linearly related
+Cohen (1988) suggests the following guidelines for interpreting the size of d:
 
-**Association - Correlation**
+::: nonincremental
+-   .2 = Small
 
-Will tell us 2 key pieces of information about the relationship:
+-   .5 = Medium
 
-1.  Direction (Positive vs. Negative)
-2.  Strength (Magnitude from 0 to 1)
+-   .8 = Large
+:::
 
-------------------------------------------------------------------------
-
-## Example: Candy & \# of Houses
-
-**Research Question:** Is there a relationship between the amount of candy we receive on Halloween and the \# of houses that we go to?
-
--   **Variables:**
-
-    -   `house_n`: Number of houses approached
-
-    -   `candy`: Amount of candy (# of pieces)
-
--   **Hypothesis** $H_A$ : There will be a **positive correlation**. As a trick-or-treater goes to more houses, their amount of candy will increase ( $r \neq 0$ .
-
--   **Null Hypothesis** $H_0$: There is **no correlation** ( $r = 0$ ).
+[Cohen, J. (1988), Statistical power analysis for the behavioral sciences (2nd Ed.). Hillsdale: Lawrence Erlbaum.]{style="font-size:30px;"}
 
 ------------------------------------------------------------------------
 
-### Step 1: ALWAYS visualize data
+### The usefulness of the one-sample *t*-test
+
+How often will you conducted a one-sample *t*-test on raw data?
+
+-   (Probably) never
+
+How often will you come across one-sample *t*-tests?
+
+-   (Probably) a lot!
+
+The one-sample *t*-test is used to test coefficients in a model.
+
+# YOUR TURN 💻
+
+# Independent Samples t-test
+
+Two different types: Student's & Welch's
+
+-   Start with Student's t-test which assumes equal variances between the groups
+
+$$ t = \frac{\bar{X_1} - \bar{X_2}}{SE(\bar{X_1} - \bar{X_2})} $$
+
+------------------------------------------------------------------------
+
+## Student's t-test
+
+$$ H_0 : \mu_1 = \mu_2  \ \  H_1 : \mu_1 \neq \mu_2 $$
+
+![](/images/student_H.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Student's t-test: Calculate SE
+
+Are able to use a pooled variance estimate
+
+Both variances/standard deviations are assumed to be equal
+
+Therefore:
+
+$$ SE(\bar{X_1} - \bar{X_2}) = \hat{\sigma} \sqrt{\frac{1}{N_1} + \frac{1}{N_2}} $$
+
+We are calculating the **Standard Error of the Difference between means**
+
+Degrees of Freedom: Total N - 2
+
+------------------------------------------------------------------------
+
+### Student's t-test
+
+Let's try it out using the traditional `t.test()` function
+
+Difference in Books by Belief in Ghosts
+
+```{r}
+t.test(formula = books ~ ghosts,
+       data = cah, var.equal = TRUE )
+```
+
+------------------------------------------------------------------------
+
+## Welch's t-test
+
+$$ H_0 : \mu_1 = \mu_2  \ \  H_1 : \mu_1 \neq \mu_2 $$
+
+![](/images/welch_H.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Welch's t-test: Calculate SE
+
+Since the variances are not equal, we have to estimate the SE differently
+
+$$ SE(\bar{X_1} - \bar{X_2}) = \sqrt{\frac{\hat{\sigma_1^2}}{N_1} + \frac{\hat{\sigma_2^2}}{N_2}} $$
+
+Degrees of Freedom is also very different:
+
+![](/images/welch_df.png){fig-align="center" width="380"}
+
+------------------------------------------------------------------------
+
+### Welch's t-test: In R (classic)
+
+Let's try it out using the traditional `t.test()` function...turns out it is pretty straightforward
+
+```{r}
+t.test(formula = books ~ ghosts,
+       data = cah, var.equal = FALSE )
+```
+
+------------------------------------------------------------------------
+
+## Cool Visualizations
+
+The library [ggstatsplot](https://indrajeetpatil.github.io/ggstatsplot/) has some wonderful visualizations of various tests
 
 ```{r}
 #| code-fold: true
 
-set.seed(42)
-
-n <- 200
-house_n <- rnorm(n, mean = 10, sd = 2)
-candy <- 2 * house_n + rnorm(n, mean = 0, sd = 2) 
-corr_data <- data.frame(house_n, candy)
-
-corr_data %>% 
-  ggplot(aes(house_n, candy)) + 
-  geom_point(alpha = 0.7, size = 2, color = "purple") + 
-  geom_smooth(method="lm", 
-              se = FALSE, 
-              color = "orange") + 
-  labs(
-    title = "Relationship Between Num. of Houses and Amount of Candy on Halloween",
-    x = "Number of Houses", 
-    y = "Amount of Candy"
-  ) + 
-  theme_grey(paper = "black",
-        ink = "white",)
-
+ggstatsplot::ggbetweenstats(   
+  data  = cah,   
+  x     = ghosts,   
+  y     = books,   
+  title = "Distribution of books by belief in ghosts" )
 
 ```
 
 ------------------------------------------------------------------------
 
-## Association - Covariance
+### Interpreting and writing up an independent samples t-test
 
-Before we talk about correlation, we need to take a look at covariance
-
-$$
-cov_{xy} = \frac{\sum(x-\bar{x})(y-\bar{y})}{N-1}
-$$
-
-::: incremental
--   Covariance can be thought of as the "average cross product" between two variables
-
--   It captures the *raw/unstandardized* relationship between two variables
-
--   Covariance matrix is the basis for many statistical analyses
+::: {style="font-size: 30px"}
+The first sentence usually conveys some descriptive information about the two groups you were comparing. Then you identify the type of test you conducted and what was determined (be sure to include the "stat block" here as well with the t-statistic, df, p-value, CI and Effect size). Finish it up by putting that into person words and saying what that means.
 :::
 
-------------------------------------------------------------------------
+> ::: {style="font-size: 30px"}
+> The mean amount of books in the household for the group who did not believe in ghosts was 19.9 (SD = 61.2), while the mean for those who believed in ghosts was 26.8 (SD = 96.4). A Student's independent samples t-test showed that there was not a significant mean difference (*t*(951)=-1.364, *p*=.17, $CI_{95}$=\[-16.98, 3.05\]). This suggests that there is no difference in amount of books in their household as a function of belief in ghosts.
+> :::
 
-## Covariance to Correlation
-
-The Pearson correlation coefficient $r$ addresses this by standardizing the covariance
-
-It is done in the same way that we would create a $z-score$...by dividing by the standard deviation
-
-$$
-r_{xy} = \frac{Cov(x,y)}{sd_x sd_y}
-$$
+# YOUR TURN 💻
 
 ------------------------------------------------------------------------
 
-## Pearson's $r$
+## Paired Samples $t$-Test
 
-**Range:** Varies from -1 (perfect negative correlation) and +1 (perfect positive correlation)
+[Chapter 13.5 - Learning Stats with R](https://learningstatisticswithr.com/book/ttest.html#pairedsamplesttest)
 
-**Assumptions:**
+Also called "Dependent Samples t-test"
 
-1.  **Continuous Variables:** Both variables are measured on an interval or ratio scale.
+-   We have been testing means between two *independent* samples. Participants may be randomly assigned to the separate groups
 
-2.  **Linearity:** The relationship between the variables is linear. (This is why you **must** visualize your data!)
+    -   This is limited to those types of study designs, but what if we have repeated measures?
 
-3.  **Bivariate Normality:** Data points are normally distributed for both variables. (Pearson's $r$ is fairly robust to minor violations).
+-   We will then need to compare scores across people...the samples we are comparing now *depend* on one another and are *paired*
 
 ------------------------------------------------------------------------
 
-### Interpreting Correlations ([5.7.5](https://learningstatisticswithr.com/book/descriptives.html#interpretingcorrelations))
+### Paired Samples $t$-test
 
-| Correlation  |  Strength   | Direction |
-|:------------:|:-----------:|:---------:|
-| -1.0 to -0.9 | Very Strong | Negative  |
-| -0.9 to -0.7 |   Strong    | Negative  |
-| -0.7 to -0.4 |  Moderate   | Negative  |
-| -0.4 to -0.2 |    Weak     | Negative  |
-|  -0.2 to 0   | Negligible  | Negative  |
-|   0 to 0.2   | Negligible  | Positive  |
-|  0.2 to 0.4  |    Weak     | Positive  |
-|  0.4 to 0.7  |  Moderate   | Positive  |
-|  0.7 to 0.9  |   Strong    | Positive  |
-|  0.9 to 1.0  | Very Strong | Positive  |
+Each of the repeated measures (or pairs) can be viewed as a *difference score*
 
-# Pearson Correlations in R
+This reduces the analysis to a one-sample t-test of the *difference score*
 
-## Calculating Correlation in R
+-   We are comparing the sample (i.e., difference scores) to a population $\mu$ = 0
 
-Now how do we get a correlation value in R?
+------------------------------------------------------------------------
+
+### Assumptions: Paired Samples
+
+The variable of interest (*difference scores*):
+
+-   Continuous (Interval/Ratio)
+
+-   Have 2 groups (and only two groups) that are matched
+
+-   Normally Distributed
+
+------------------------------------------------------------------------
+
+### Why paired samples??
+
+Previously, we looked at independent samples $t$-tests, which we *could* do here as well (nobody will yell at you)
+
+-   However, this would violate the assumption that the data points are independent of one another!
+
+-   Within vs. Between-subjects
+
+------------------------------------------------------------------------
+
+### Within vs. Between Subjects
+
+![](/images/between-subjects-design.avif){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Paired Samples: Single Sample
+
+Instead of focusing on these variables as being separate/independent, we need to be able to account for their dependency on one another
+
+This is done by calculating a *difference* or *change* score for each participant
+
+$$ D_i = X_{i1} - X_{i2} $$
+
+Notice: The equation is set up as `variable1` minus `variable2`. This will be important when we interpret the results
+
+------------------------------------------------------------------------
+
+### Paired Samples: Hypotheses & $t$-statistic
+
+The hypotheses would then be:
+
+$$ H_0:  \mu_D = 0; H_1: \mu_D \neq 0 $$
+
+And to calculate our t-statistic:       $t_{df=n-1} = \frac{\bar{D}}{SE(D)}$
+
+where the Standard Error of the difference score is:        $\frac{\hat{\sigma_D}}{\sqrt{N}}$
+
+------------------------------------------------------------------------
+
+## Review of the t-test process
+
+1.  Collect Sample and define hypotheses
+
+2.  Set alpha level
+
+3.  Determine the sampling distribution ($t$ distribution for now)
+
+4.  Identify the critical value that corresponds to alpha and *df*
+
+5.  Calculate test statistic for sample collected
+
+6.  Inspect & compare statistic to critical value; Calculate probability
+
+# Example 1: Simple (by hand)
+
+Participants are placed in two differently colored rooms (counterbalanced) and are asked to rate overall happiness levels after spending 5 minutes inside the rooms. There are no windows, but there is a nice lamp and chair.
+
+Hypotheses:
+
+-   $H_0:$ There is no difference in ratings of happiness between the rooms ( $\mu = 0$ )
+
+-   $H_1:$ There is a difference in ratings of happiness between the rooms ( $\mu \neq 0$ )
+
+------------------------------------------------------------------------
+
+| Participant | Blue Room Score | Orange Room Score | Difference ($X_{iB} - X_{iO}$) |
+|:----------------:|:----------------:|:----------------:|:------------------:|
+| 1 | 3 | 6 | -3 |
+| 2 | 9 | 9 | 0 |
+| 3 | 2 | 10 | -8 |
+| 4 | 9 | 6 | 3 |
+| 5 | 5 | 2 | 3 |
+| 6 | 5 | 7 | -2 |
 
 ```{r}
-cor(corr_data$house_n, corr_data$candy)
+#| code-fold: true 
 
+ex1 <- data.frame(id = c(1,2,3,4,5,6),
+                  blue = c(3,9,2,9,5,5),    
+                  orange = c(6,9,10,6,2,7),   
+                  diff_score = c(-3, 0, -8, 3, 3, -2))
+  head(ex1)
 ```
-
-That will give us the correlation, but we also want to know how to get our p-value
 
 ------------------------------------------------------------------------
 
-### Correlation Test
+## Determining $t$-crit
 
-To get the test of a single pair of variables, we will use the `cor.test()` function:
+Can look things up using a [t-table](https://www.tdistributiontable.com/) where you need the degrees of freedom and the alpha
+
+But we have R to do those things for us:
 
 ```{r}
-cor.test(corr_data$house_n, corr_data$candy)
+#the qt() function is for a 1 tailed test, so we are having to divide it in half to get both tails 
 
+alpha <- 0.05 
+n <- nrow(ex1) 
+t_crit <- qt(alpha/2, n-1) 
+t_crit
 ```
 
-------------------------------------------------------------------------
+## Calculating t
 
-### Components of `cor.test()`
+Let's get all of the information for the sample we are focusing on (difference scores):
 
--   **`p-value`**: The probability of getting a correlation this strong if the null were true is virtually zero ( $p < .001$ ) . We **reject the null hypothesis**.
+```{r}
+d <- mean(ex1$diff_score) 
+d 
+sd_diff <- sd(ex1$diff_score) 
+sd_diff
+```
 
--   **`95 percent confidence interval`**: We are 95% confident that the true population correlation is between 0.86 and 0.92. Importantly, this interval **does not contain 0**.
+## Calculating t
 
-    -   We cannot say "There is a 95% chance that the population correlation falls in this range"
+Now we can calculate our $t$-statistic: $$t_{df=n-1} = \frac{\bar{D}}{\frac{sd_{diff}}{\sqrt{n}}}$$
 
-    -   CI's are based on the infinite running of the test (<https://rpsychologist.com/d3/ci/>)
+```{r}
+t_stat <- d/(sd_diff/(sqrt(n))) 
+t_stat  
 
--   **`sample estimates: cor`**: This is our sample correlation coefficient, $r = 0.89$. This is our **effect size**.
+#Probability of this t-statistic  
+p_val <- pt(t_stat, n-1)*2 
+p_val
+```
 
-# The "So What?" - Effect Sizes & Practical Significance
+## Make a decision
 
-------------------------------------------------------------------------
+Hypotheses:
 
-## Significance
+::: nonincremental
+-   $H_0:$ There is no difference in ratings of happiness between the rooms ( $\mu = 0$ )
 
-The $p-value$ gives us the *statistical significance*. It will tell us that the effect we identified is **likely not to be 0**
-
-It does not tell us *anything* about how large or meaningful the effect actually is. This is where the **effect size** comes in!
-
-::: callout-important
-With a large enough sample size, even a tiny, trivial correlation (e.g., r \< 0.1) can become statistically significant. [Think about what happens to sampling distribution when sample size increases.](https://onlinestatbook.com/stat_sim/sampling_dist/){target="_blank"}
+-   $H_1:$ There is a difference in ratings of happiness between the rooms ( $\mu \neq 0$ )
 :::
 
-**Statistical Significance** $\neq$ **Practical Significance**
+| $alpha$ |          $t-crit$          |    $t-statistic$     |      $p-value$      |
+|:----------------:|:-----------------:|:----------------:|:----------------:|
+|  0.05   | $\pm$ `r round(t_crit, 2)` | `r round(t_stat, 2)` | `r round(p_val, 2)` |
 
-------------------------------------------------------------------------
+**What can we conclude??**
 
-## Effect Sizes: Correlation
-
-For correlation, we have two related measures of effect size:
-
-1.  **Pearson's** $r$: The correlation coefficient itself. A standardized measure of the strength and direction of the linear association.
-
-    -   Cohen's Conventions (a rough guide): Small (∣.10∣), Medium (∣.30∣), Large (∣.50∣).
-
-    -   Our finding of $r = 0.89$ is a **large effect**.
-
-2.  **Coefficient of Determination** ($R^2$): This is simply r squared. It represents the **proportion of variance** in one variable that is "explained" or "accounted for" by the other.
-
-------------------------------------------------------------------------
-
-### Putting it Together
-
-For our candy and housese data:
-
--   Our correlation was $r = 0.89$
-
--   The coefficient of determination is $R^2 = 0.89^2 = 0.792$
-
-**Interpretation:**
-
-> **"Approximately 79% of the variance in the amount of candy that one gets on Halloween can be accounted for by the number of houses they go to."**
-
-This is a powerful and practical statement about the strength of the association.
-
-# Correlations: Using real data
+# Example 2: Data in R
 
 ```{r}
-sleep_data <- import(here("files", "data", "Sleep_Data.csv")) %>% 
-  #create an ESS Sum Score
-  rowwise() %>% 
-  mutate(ess_tot = sum(c_across(ESS1:ESS8), na.rm = TRUE))
+
+state_school <- read_csv("https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/NM-NY_CAS.csv") %>% 
+  #create an ID variable
+  rowid_to_column("id")
 ```
 
 ------------------------------------------------------------------------
 
-## Age x ESS_total: Visualize
+## Let's Look at the data
 
-Let's examine the overall correlation between Age and overall sleepiness
+Research Question: Is there a difference between school nights and weekend nights for amount of time slept?
 
-**First: Visualize**
-
-```{r}
-#| code-fold: true
-
-sleep_data %>% 
-  ggplot(aes(age, ess_tot)) + 
-  geom_point() + 
-  geom_smooth(method="lm", se=FALSE)
-```
-
-It doesn't seem like there is much of a relationship here...
-
-------------------------------------------------------------------------
-
-## Age x ESS_total: Test
-
-Let's check the overall correlation just to see what we are finding
+Only looking at the variables that we are potentially interested in:
 
 ```{r}
-cor.test(sleep_data$age, sleep_data$ess_tot)
+state_school %>%    
+  select(id, Gender, Ageyears, Sleep_Hours_Schoolnight, Sleep_Hours_Non_Schoolnight) %>%    
+  head() #look at first few observations
 ```
 
 ------------------------------------------------------------------------
 
-### Writing up a Correlation
+### Difference Score
 
-Template: *r*(degress of freedom) = the *r* statistic, *p* = *p* value.
-
-Imagine we have conducted a study of 40 students that looked at whether IQ scores and GPA are correlated. We might report the results like this:
-
-> IQ and GPA were found to be moderately positively correlated, *r*(38) = .34, *p* = .032.
-
-Other example:
-
-> Among the students of Hogwarts University, the number of hours playing Fortnite per week and midterm exam results were negatively correlated, *r*(78) = -.45, *p* \< .001.
-
-And another:
-
-> Table 1 reports descriptive statistics and correlations among variables of interest. Knowledge of Weird Al Songs was positively correlated with perceptions of humor for Dr. Haraden (*r*(49) = .79, *p \<*.001), such that the more Weird Al songs a student knew, the more they thought Dr. Haraden was funny.
-
-------------------------------------------------------------------------
-
-## Writing up: Example
-
-We have all of the pieces for writing up our correlation between age and sleepiness.
-
-Template: *r*(degress of freedom) = the *r* statistic, *p* = *p* value.
-
-> Among the students in the sample, age was negatively related to overall levels of sleepiness (*r*(1450) = -0.06, *p* = .024).
-
-What about our $R^2$ value?
-
-$R^2 = -0.06^2 = 0.0034$. Therefore, approximately 0.34% of the variability in the sleepiness scale (`ess_tot`) is explained by age. Is this meaningful?
-
-# Missing Values in Correlation
-
-------------------------------------------------------------------------
-
-## Handling Missing - Correlation
-
--   Listwise Deletion (complete cases)
-
-    ::: incremental
-    -   Removes participants completely if they are missing a value being compared
-    -   Smaller Sample Sizes
-    -   Doesn't bias correlation estimate
-    :::
-
--   Pairwise Deletion
-
-    ::: incremental
-    -   Removes participants for that single pair, but leaves information in when there are complete information
-    -   Larger Sample Sizes
-    -   Could bias estimates if there is a systematic reason things are missing
-    :::
-
-------------------------------------------------------------------------
-
-```{r}
-sleep_data %>% 
-  select(age, ESS1:ESS8, ess_tot) %>% 
-  cor(use = "complete") %>% 
-  kable()
-```
-
-------------------------------------------------------------------------
-
-```{r}
-sleep_data %>% 
-  select(age, ESS1:ESS8, ess_tot) %>% 
-  cor(use = "pairwise") %>% 
-  kable()
-```
-
-------------------------------------------------------------------------
-
-### Example: Handling Missing Data
-
-Imagine we've collected data from 5 students on their levels of **anxiety**, **depression**, and **sleep quality** (where a lower score means better sleep).
-
-Our goal is to run a correlation matrix to see how these three variables relate to each other. But notice, we have some missing data (`NA`).
-
-|        |         |            |               |
-|--------|---------|------------|---------------|
-| **ID** | Anxiety | Depression | Sleep Quality |
-| **1**  | 10      | 12         | 5             |
-| **2**  | 12      | 14         | 4             |
-| **3**  | 15      | `NA`       | 3             |
-| **4**  | 18      | 20         | 2             |
-| **5**  | 11      | 13         | `NA`          |
-
-------------------------------------------------------------------------
-
-### Listwise Deletion
-
-**The Rule:** "All or nothing." If a participant is missing data on **any** variable in our list, their entire row is removed from the analysis.
-
-**Applying the Rule:**
-
--   Participant 3 is missing `Depression`. They're out.
-
--   Participant 5 is missing `Sleep Quality`. They're out.
-
-**The Resulting Data for Analysis:** This leaves us with only the participants who have complete data on all three variables. We lose 40% of our data
-
-|        |             |                |                   |
-|--------|-------------|----------------|-------------------|
-| **ID** | **Anxiety** | **Depression** | **Sleep Quality** |
-| **1**  | 10          | 12             | 5                 |
-| **2**  | 12          | 14             | 4                 |
-| **4**  | 18          | 20             | 2                 |
-
-------------------------------------------------------------------------
-
-### Pairwise Deletion
-
-**The Rule:** "Case by case." For each individual correlation, we use all participants who have data for **that specific pair** of variables.
-
-Look at each pair to determine the sample sizes
-
-|        |             |                |                   |
-|--------|-------------|----------------|-------------------|
-| **ID** | **Anxiety** | **Depression** | **Sleep Quality** |
-| **1**  | 10          | 12             | 5                 |
-| **2**  | 12          | 14             | 4                 |
-| **3**  | 15          | `NA`           | 3                 |
-| **4**  | 18          | 20             | 2                 |
-| **5**  | 11          | 13             | `NA`              |
-
-------------------------------------------------------------------------
-
-### Summary
-
-|  |  |  |
-|------------------------|------------------------|------------------------|
-| **Correlation Pair** | **N with Listwise Deletion** | **N with Pairwise Deletion** |
-| Anxiety & Depression | 3 | 4 |
-| Anxiety & Sleep Quality | 3 | 4 |
-| Depression & Sleep Quality | 3 | 3 |
-
-# Spearman's Rank Correlation
-
-------------------------------------------------------------------------
-
-## Spearman's Rank Correlation
-
-We need to be able to capture this different (ordinal) "relationship"
-
--   If student 1 works more hours than student 2, then we can guarantee that student 1 will get a better grade
-
-Instead of using the amount given by the variables ("hours studied"), we rank the variables based on least (rank = 1) to most (rank = 10)
-
-Then we correlate the rankings with one another
-
-# Foundations of Statistics
-
-Who were those white dudes that started this?
-
-------------------------------------------------------------------------
-
-## Statistics and Eugenics
-
-The concept of the correlation is primarily attributed to Sir Frances Galton
-
--   He was also the founder of the [concept of eugenics](https://www.theguardian.com/commentisfree/2019/oct/03/eugenics-francis-galton-science-ideas)
-
-The correlation coefficient was developed by his student, [Karl Pearson](https://www.britannica.com/biography/Karl-Pearson), and adapted into the ANOVA framework by [Sir Ronald Fisher](https://statmodeling.stat.columbia.edu/2020/08/01/ra-fisher-and-the-science-of-hatred/)
-
--   Both were prominent advocates for the eugenics movement
-
-------------------------------------------------------------------------
-
-## What do we do with this info?
-
-::: incremental
--   Never use the correlation or the later techniques developed on it? Of course not.
-
--   Acknowledge this history? Certainly.
-
--   [Understand how the perspectives](https://medium.com/swlh/is-statistics-racist-59cd4ddb5fa9) of Galton, Fisher, Pearson and others [shaped our practices](http://gppreview.com/2019/12/16/eugenics-ethics-statistical-analysis/)? We must! -- these are not set in stone, [nor are they necessarily the best way](https://www.forbes.com/sites/jerrybowyer/2016/01/06/beer-vs-eugenics-the-good-and-the-bad-uses-of-statistics/?sh=3114a0c82a14) to move forward.
+::: {style="font-size: 30px"}
+This can be done in a couple different ways and sometimes you will see things computed this way:
 :::
 
-------------------------------------------------------------------------
+```{r, eval = FALSE}
 
-## Be aware of the assumptions
+state_school$sleep_diff <- state_school$Sleep_Hours_Schoolnight - state_school$Sleep_Hours_Non_Schoolnight
+```
 
-::: incremental
--   Statistics are often thought of as being absent of bias...they are just numbers
+::: {style="font-size: 30px"}
+However, we like the `tidyverse` so why don't we use the `mutate()` function
 
--   Statistical significance was a way to avoid talking about nuance or degree.
-
--   "Correlation does not imply causation" was a refutation of work demonstrating associations between environment and poverty.
-
--   Need to be particularly mindful of our goals as scientists and how they can influence the way we interpret the findings
+And I always overdo things, so I am going to make a new dataset that only has the variables that I'm interested in (`sleep_state_school`)
 :::
 
-# Fancy Tables
-
-------------------------------------------------------------------------
-
-## Correlation Tables
-
-Before we used the `cor()` function to create a correlation matrix of our variables
-
-***But what is missing?***
-
 ```{r}
-sleep_data %>% 
-  select(age, ESS1:ESS8, ess_tot) %>% 
-  cor(use = "complete") %>% 
-  kable()
-```
+#| code-fold: true 
 
-## Correlation Tables - [sjPlot](https://strengejacke.github.io/sjPlot/reference/tab_corr.html)
+sleep_state_school <- state_school %>%    
+  mutate(sleep_diff = Sleep_Hours_Schoolnight - Sleep_Hours_Non_Schoolnight) %>%   
+  select(id, Gender, Ageyears, Sleep_Hours_Schoolnight,          Sleep_Hours_Non_Schoolnight, sleep_diff)  
 
-```{r}
-sleep_data %>% 
-  select(ESS1:ESS8) %>% 
-  tab_corr(na.deletion = "listwise", triangle = "lower")
+head(sleep_state_school)
 ```
 
 ------------------------------------------------------------------------
 
-## Correlation Tables - [sjPlot](https://strengejacke.github.io/sjPlot/reference/tab_corr.html)
+### Visualizing
 
-So many different cusomizations for this type of plot
-
-Can add titles, indicate what missingness and method
-
-Saves you a TON of time when putting it into a manuscript
-
-# Fancy Visuals
-
-------------------------------------------------------------------------
-
-## Scatterplot
-
-Before we had a scatterplot that looked like this:
+Now that we have our variable of interest, let's take a look at it!
 
 ```{r}
-sleep_data %>% 
-  ggplot(aes(age, ess_tot)) + 
-  geom_point() + 
-  geom_smooth(method="lm", se=FALSE) + 
-  labs(
-    x = "Age", 
-    y = "ESS Total", 
-    title = "Relationship between Age and Sleepiness" 
-  )
+sleep_state_school %>%   
+  ggplot(aes(sleep_diff)) +    
+  geom_histogram()
 ```
 
-------------------------------------------------------------------------
+## Doing the test in R: One Sample
 
-## Fancier Scatterplot
-
-Take a look at `ggstatsplot` <https://indrajeetpatil.github.io/ggstatsplot/>
+Since we have calculated the difference scores, we can basically just do a one-sample t-test with the `lsr` library
 
 ```{r}
-ggscatterstats(
-  data = sleep_data, 
-  x = age, 
-  y = ess_tot, 
-  xlab = "Age", 
-  ylab = "ESS Total", 
-  title = "Relationship between Age and Sleepiness"
+oneSampleTTest(sleep_state_school$sleep_diff, mu = 0)
+```
+
+## Doing the test in R: Paired Sample
+
+Maybe we want to keep things separate and don't want to calculate separate values. We can use `pairedSamplesTTest()` instead! 
+
+But this isn't working and is making me mad...
+
+```{r, eval= FALSE}
+lsr::pairedSamplesTTest(
+  formula = ~ Sleep_Hours_Schoolnight + Sleep_Hours_Non_Schoolnight,
+  data = sleep_state_school
 )
 ```
+
+
+## Doing the test in R: Classic Edition
+
+As you Google around to figure things out, you will likely see folks using `t.test()`
+
+```{r}
+t.test(x = sleep_state_school$Sleep_Hours_Schoolnight,    
+       y = sleep_state_school$Sleep_Hours_Non_Schoolnight,
+       paired = TRUE )
+```
+
+## Reporting $t$-test
+
+The first sentence usually conveys some descriptive information about the sample you were comparing (e.g., pre & post test).
+
+Then you identify the type of test you conducted and what was determined (be sure to include the "stat block" here as well with the t-statistic, df, p-value, CI and Effect size).
+
+Finish it up by putting that into person words and saying what that means.
+
+# YOUR TURN 💻
+
+# ANOVA (Analysis of Variance)
+
+## What is ANOVA? ([LSR Ch. 14](https://learningstatisticswithr.com/book/anova.html))
+
+::: incremental
+-   ANOVA stands for [***An***]{.underline}alysis [***o***]{.underline}f [***Va***]{.underline}riance
+-   Comparing means between two or more groups (usually 3 or more)
+    -   Continuous outcome and grouping variable with 2 or more levels
+-   Under the larger umbrella of general linear models
+    -   ANOVA is basically a regression with only categorical predictors
+-   Likely the most widely used tool in Psychology
+:::
+
+## Different Types of ANOVA
+
+-   ::: {.fragment .highlight-green}
+    One-Way ANOVA
+    :::
+
+-   Two-Way ANOVA
+
+-   Repeated Measures ANOVA
+
+-   ANCOVA
+
+-   MANOVA
+
+## One-Way ANOVA
+
+Goal: Inform of differences among the levels of our variable of interest (Omnibus Test)
+
+-   But cannot tell us more than that...
+
+Hypotheses:
+
+$$ H_0: it\: is\: true\: that\: \mu_1 = \mu_2 = \mu_3 =\: ...\mu_k  \\  H_1: it\: is\: \boldsymbol{not}\: true\: that\: \mu_1 = \mu_2 = \mu_3 =\: ...\mu_k $$
+
+## Wait...Means or Variance?
+
+We are using the variance to create a ratio (within group versus between group variance) to determine differences in means
+
+-   We are not directly investigating variance, but operationalize variance to create the ratio:
+
+$$ F_{df_b, \: df_w} = \frac{MS_{between}}{MS_{within}} $$
+
+------------------------------------------------------------------------
+
+![](/images/ANOVA.png){width="729"}
+
+------------------------------------------------------------------------
+
+![](/images/ANOVA.png){width="729"}
+
+::::: columns
+::: {.column width="50%"}
+$F = \frac{MS_{between}}{MS_{within}} = \frac{small}{large} < 1$
+:::
+
+::: {.column width="50%"}
+$F = \frac{MS_{between}}{MS_{within}} = \frac{large}{small} > 1$
+:::
+:::::
+
+## ANOVA: Assumptions
+
+::: {style="font-size: 30px"}
+**Independence**
+
+-   Observations between and within groups should be independent. No autocorrelation
+
+**Homogeneity of Variance**
+
+-   The variances within each group should be roughly equal
+    -   Levene's test --\> Welch's ANOVA for unequal variances
+
+**Normality**
+
+-   The data within each group should follow a normal distribution
+    -   Shapiro-Wilk test --\> can transform the data or use non-parametric tests
+:::
+
+# NHST with ANOVA
+
+## Review of the NHST process
+
+::: incremental
+1.  Collect Sample and define hypotheses
+
+2.  Set alpha level
+
+3.  Determine the sampling distribution (will be using $F$-distribution now)
+
+4.  Identify the critical value
+
+5.  Calculate test statistic for sample collected
+
+6.  Inspect & compare statistic to critical value; Calculate probability
+:::
+
+## Steps to calculating F-ratio
+
+1.  Capture variance both between and within groups
+2.  Variance to Sum of Squares
+3.  Degrees of Freedom
+4.  Mean squares values
+5.  F-Statistic
+
+## Capturing Variance
+
+We have calculated variance before!
+
+$$ Var = \frac{1}{N}\sum(x_i - \bar{x})^2 $$
+
+Now we have to take into account the variance between and within the groups:
+
+$$ Var(Y) = \frac{1}{N} \sum^G_{k=1}\sum^{N_k}_{i=i}(Y_{ik} - \bar{Y})^2 $$
+
+::: {style="font-size: 20px; text-align: center"}
+Notice that we have the summation across each group ( $G$ ) and the person in the group ( $N_k$ )
+:::
+
+------------------------------------------------------------------------
+
+## Variance to Sum of Squares
+
+**Total Sum of Squares -** Adding up the sum of squares instead of getting the average (notice the removal of $\frac{1}{N}$)
+
+$$ SS_{total} = \sum^G_{k=1}\sum^{N_k}_{i=i}(Y_{ik} - \bar{Y})^2 $$
+
+Can be broken up to see what is the variation ***between*** the groups AND the variation ***within*** the groups
+
+$$ SS_{total}=SS_{between}+SS_{within} $$
+
+::: {style="font-size: 20px; text-align: center"}
+This gets us closer to understanding the difference between means
+:::
+
+# Sum of Squares
+
+------------------------------------------------------------------------
+
+### Sum of Squares
+
+$$ SS_{total}=SS_{between}+SS_{within} $$
+
+![](/images/var_ss.PNG){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Example Data
+
+![](/images/table1.PNG){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Example Data
+
+![](/images/table2.PNG){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Example Data
+
+![](/images/table3.PNG){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Example Data
+
+![](/images/table4.PNG){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Sum of Squares - Between
+
+The difference between the *group mean* and *grand mean*
+
+$$ SS_{between} = \sum^G_{k=1}N_k(\bar{Y_k} - \bar{Y})^2 $$
+
+| Group  | Group Mean $\bar{Y_k}$ | Grand Mean $\bar{Y}$ |
+|:------:|:----------------------:|:--------------------:|
+|  Cool  |           32           |         41.8         |
+| Uncool |          56.5          |         41.8         |
+
+------------------------------------------------------------------------
+
+## Sum of Squares - Between
+
+The difference between the *group mean* and *grand mean*
+
+$$ SS_{between} = \sum^G_{k=1}N_k(\bar{Y_k} - \bar{Y})^2 $$
+
+| Group | Group Mean $\bar{Y_k}$ | Grand Mean $\bar{Y}$ | Sq. Dev. | N | Weighted Sq. Dev. |
+|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
+| Cool | 32 | 41.8 | 96.04 | 3 | 288.12 |
+| Uncool | 56.5 | 41.8 | 216.09 | 2 | 432.18 |
+
+------------------------------------------------------------------------
+
+## Sum of Squares - Between
+
+The difference between the *group mean* and *grand mean*
+
+$$ SS_{between} = \sum^G_{k=1}N_k(\bar{Y_k} - \bar{Y})^2 $$
+
+Now we can sum the Weighted Squared Deviations together to get our Sum of Squares Between:
+
+```{r}
+ssb <- 288.12 + 432.18 
+ssb
+```
+
+------------------------------------------------------------------------
+
+## Sum of Squares - Within
+
+The difference between the [*individual*]{.underline} and their [*group mean*]{.underline}
+
+$$ SS_{within} = \sum^G_{k=1}\sum^{N_k}_{i=i}(Y_{ik} - \bar{Y_k})^2 $$
+
+|    Name    | Grumpiness $Y_{ik}$ | Group Mean $\bar{Y_K}$ |
+|:----------:|:-------------------:|:----------------------:|
+|   Frodo    |         20          |           32           |
+|    Sam     |         55          |           32           |
+|   Bandit   |         21          |           32           |
+| Dolores U. |         91          |          56.5          |
+|   Dustin   |         22          |          56.5          |
+
+------------------------------------------------------------------------
+
+## Sum of Squares - Within
+
+The difference between the [*individual*]{.underline} and their [*group mean*]{.underline}
+
+$$ SS_{within} = \sum^G_{k=1}\sum^{N_k}_{i=i}(Y_{ik} - \bar{Y_k})^2 $$
+
+|    Name    | Grumpiness $Y_{ik}$ | Group Mean $\bar{Y_K}$ | Sq. Dev |
+|:----------:|:-------------------:|:----------------------:|---------|
+|   Frodo    |         20          |           32           | 144     |
+|    Sam     |         55          |           32           | 529     |
+|   Bandit   |         21          |           32           | 121     |
+| Dolores U. |         91          |          56.5          | 1190.25 |
+|   Dustin   |         22          |          56.5          | 1190.25 |
+
+```{r}
+#| code-fold: true 
+
+score <- c(20, 55, 21, 91, 22) 
+group_m <- c(32, 32, 32, 56.5, 56.5) 
+sq_dev <- (score - group_m)^2
+```
+
+------------------------------------------------------------------------
+
+## Sum of Squares - Within
+
+The difference between the [*individual*]{.underline} and their [*group mean*]{.underline}
+
+$$ SS_{within} = \sum^G_{k=1}\sum^{N_k}_{i=i}(Y_{ik} - \bar{Y_k})^2 $$ Now we can sum the Squared Deviations together to get our Sum of Squares Within:
+
+```{r}
+sum(sq_dev)
+```
+
+## Sum of Squares
+
+Can start to have an idea of what this looks like
+
+$$ SS_{between} = \sum^G_{k=1}N_k(\bar{Y_k} - \bar{Y})^2 = 720.3 $$
+
+$$ SS_{within} = \sum^G_{k=1}\sum^{N_k}_{i=i}(Y_{ik} - \bar{Y_k})^2 = 3174.5 $$
+
+Next we have to take into account the degrees of freedom
+
+# Degrees of Freedom - ANOVA
+
+------------------------------------------------------------------------
+
+## Degrees of Freedom
+
+Since we have 2 types of variations that we are examining, this needs to be reflected in the degrees of freedom
+
+1.  Take the number of groups and subtract 1\
+    $df_{between} = G - 1$
+
+2.  Take the total number of observations and subtract the number of groups
+
+    $df_{within} = N - G$
+
+# Mean Squares
+
+------------------------------------------------------------------------
+
+## Calculating Mean Squares
+
+Next we convert our summed squares value into a "mean squares"
+
+This is done by dividing by the respective degrees of freedom
+
+$$ MS_b = \frac{SS_b}{df_b} $$
+
+$$ MS_W = \frac{SS_w}{df_w} $$
+
+------------------------------------------------------------------------
+
+## Calculating Mean Squares - Example
+
+Let's take a look at how this applies to our example: $$ MS_b = \frac{SS_b}{G-1} = \frac{720.3}{2-1} = 720.3 $$
+
+$$ MS_W = \frac{SS_w}{N-G} = \frac{3174.5}{5-2} = 1058.167  $$
+
+# $F$-Statistic
+
+------------------------------------------------------------------------
+
+## Calculating the F-Statistic
+
+$$F = \frac{MS_b}{MS_w}$$
+
+If the null hypothesis is true, $F$ has an expected value close to 1 (numerator and denominator are estimates of the same variability)
+
+If it is false, the numerator will likely be larger, because systematic, between-group differences contribute to the variance of the means, but not to variance within group.
+
+------------------------------------------------------------------------
+
+```{r, fig.width = 10, fig.height = 6}
+#| code-fold: true 
+
+data.frame(F = c(0,8)) %>%   
+  ggplot(aes(x = F)) +   
+  stat_function(fun = function(x) df(x, df1 = 3, df2 = 196),                  geom = "line") +   
+  stat_function(fun = function(x) df(x, df1 = 3, df2 = 196),                  geom = "area", xlim = c(2.65, 8), fill = "purple") +   geom_vline(aes(xintercept = 2.65), color = "purple") +   scale_y_continuous("Density") + scale_x_continuous("F statistic", breaks = NULL) +   theme_bw(base_size = 20)
+```
+
+If data are normally distributed, then the variance is $\chi^2$ distributed
+
+$F$-distributions are one-tailed tests. Recall that we're interested in how far away our test statistic from the null $(F = 1).$
+
+------------------------------------------------------------------------
+
+## Calculating F-statistic: Example
+
+$$F = \frac{MS_b}{MS_w} = \frac{720.3}{1058.167} = 0.68$$
+
+[Link](http://courses.atlas.illinois.edu/spring2016/STAT/STAT200/pf.html) to probability calculator
+
+------------------------------------------------------------------------
+
+```{r fig.width = 10, fig.height = 6}
+#| code-fold: true #|  
+
+data.frame(F = c(0,8)) %>%   ggplot(aes(x = F)) +   stat_function(fun = function(x) df(x, df1 = 3, df2 = 196),                  geom = "line") +   stat_function(fun = function(x) df(x, df1 = 3, df2 = 196),                  geom = "area", xlim = c(2.65, 8), fill = "purple") +   geom_vline(aes(xintercept = 2.65), color = "purple") +    geom_vline(aes(xintercept = 0.68), color = "red") +    annotate("text",            label = "F=0.68",             x = 1.1, y = 0.65, size = 8, color = "red") +    scale_y_continuous("Density") + scale_x_continuous("F statistic", breaks = NULL) +   theme_bw(base_size = 20)
+```
+
+What can we conclude?
+
+------------------------------------------------------------------------
+
+## Contrasts/Post-Hoc Tests
+
+Performed when there is a significant difference among the groups to examine which groups are different
+
+1.  **Contrasts**: When we have *a priori* hypotheses
+2.  **Post-hoc Tests**: When we want to test everything
+
+# Reporting Results
+
+------------------------------------------------------------------------
+
+## Tables
+
+Often times the output will be in the form of a table and then it is often reported this way in the manuscript
+
+| Source of Variation | df | Sum of Squares | Mean Squares | F-statistic | p-value |
+|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
+| Group | $G-1$ | $SS_b$ | $MS_b = \frac{SS_b}{df_b}$ | $F = \frac{MS_b}{MS_w}$ | $p$ |
+| Residual | $N-G$ | $SS_w$ | $MS_w = \frac{SS_w}{df_w}$ |  |  |
+| Total | $N-1$ | $SS_{total}$ |  |  |  |
+
+------------------------------------------------------------------------
+
+## In-Text
+
+> A one-way analysis of variance was used to test for differences in the \[variable of interest/outcome variable\] as a function of \[whatever the factor is\]. Specifically, differences in \[variable of interest\] were assessed for the \[list different levels and be sure to include (M= , SD= )\] . The one-way ANOVA revealed a significant/nonsignificant effect of \[factor\] on scores on the \[variable of interest\] (F(dfb, dfw) = f-ratio, p = p-value, η2 = effect size).
+>
+> Planned comparisons were conducted to compare expected differences among the \[however many groups\] means. Planned contrasts revealed that participants in the \[one of the conditions\] had a greater/fewer \[variable of interest\] and then include the p-value. This same type of sentence is repeated for whichever contrasts you completed. Descriptive statistics were reported in Table 1.

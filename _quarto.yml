@@ -55,9 +55,9 @@ website:
           - href: weeks/week-4.qmd
             text: "Week 4 - Design & Inference"
           - href: weeks/week-5_cor.qmd
-            text: "Week 5"
+            text: "Week 5 - Correlation"
           - href: weeks/week-6.qmd
-            text: "Week 6"
+            text: "Week 6 - Comparing"
           - href: weeks/week-7.qmd
             text: "Week 7"
           - href: weeks/week-8.qmd
@@ -72,7 +72,7 @@ website:
             text: "Lab 3 - Describe/Visualize" 
           - href: labs/lab-4.qmd
             text: "Lab 4" 
-          - href: labs/lab-5.qmd
+          - href: labs/lab-5_cor.qmd
             text: "Lab 5" 
           - href: labs/lab-6.qmd
             text: "Lab 6" 
