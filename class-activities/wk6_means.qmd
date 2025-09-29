@@ -1,0 +1,115 @@
+---
+title: "Week 6 Exercises - Comparing Means"
+editor: visual
+---
+
+# On Your Own
+
+**Goal**: Work individually or in small groups to apply the concepts from today's lecture to a new dataset. There will be breaks throughout the lecture today where you will be able to try out each of these tests!
+
+## The Scenario & Dataset
+
+For this activity, we are going to be using data that has stats for the majority of Pokemon (8 generations). We want to look at the differences among these various Pokemon. We want to be the very best. Like no one ever was.
+
+Please download the data file:
+
+<a href="/files/data/pokemon.csv" download="pokemon.csv">Download Week 6 Class Activity (.csv)</a>
+
+------------------------------------------------------------------------
+
+# Getting Started
+
+1.  Create a new R Markdown file titled `week6_inclass.Rmd`.
+
+2.  Load the appropriate libraries and data in the first chunk.
+
+3.  Take a look at the data and get comfortable with the information from these pocket monsters.
+
+4.  Calculate and save the mean values among all Pokemon for the following variables:
+
+    -   attack, defense, hp, speed, height_m and weight_kg
+
+# One Sample t-test
+
+-   Select one of the eight generations and create a dataset that only contains the Pokemon from that generation
+
+-   Conduct a one-sample t-test for the variables below, and compare them to the overall mean values you calculated previously.
+
+    -   attack, defense, hp, speed, height_m and weight_kg
+
+-   Select one of the t-tests and write up the results in APA format
+
+------------------------------------------------------------------------
+
+# Independent Samples t-test
+
+-   Create a new dataset that only contain Pokemon with `type1`as `psychic` or `water`
+
+-   Conduct an independent samples t-test to determine if these types are different on `attack`
+
+-   Visualize the different group means to emphasize the findings in your t-test
+
+------------------------------------------------------------------------
+
+# Paired Sample
+
+We want to look to see if their special attack is stronger than their special defense. Since these two are likely not going to be independent of one another, we will need to use a paired samples t-test
+
+-   Conduct an paired samples t-test to determine differences between `sp_attack` and `sp_defense`
+
+------------------------------------------------------------------------
+
+# ANOVA
+
+We now want to see if there are differences in `height_m` and `weight_kg` among the different types and between the different generations.
+
+-   Conduct 2 ANOVA's with height and weight being the separate outcomes. You may choose to have your predictor to be type1 or generation
+
+-   Determine if post-hoc analyses are necessary (for one of the two analyses). If appropriate, conduct the post-hoc analysis with a TukeyHSD correction.
+
+***End of the document. Remember to Knit and upload the html and .Rmd to myCourses.***
+
+------------------------------------------------------------------------
+
+# Following Along (with time)
+
+Let's walk through the steps that you worked through as a group above!
+
+<a href="/files/data/CAH.csv" download="CAH.csv">Download Week 6 Follow Along (.csv)</a>
+
+Data is taken from [Cards Against Humanity - Pulse of the Nation](https://thepulseofthenation.com/#future){target="_blank"}
+
+Download the data and move it to the correct folder so that you can access it in this activity.
+
+Import the data into your R file. I would suggest putting this line within the code chunk that you have your libraries in.
+
+Focus on having reproducible code! You may need to share your file with someone else. They should be able to run it.
+
+## Steps:
+
+1.  Import Data
+2.  Visualize the Data (select 1 pairing of personality variables)
+3.  Test the Relationship
+4.  Create Correlation Matrix
+5.  Check Group Differences
+
+### Items in the Data:
+
+| Var Name | Info |
+|----|----|
+| id | Study ID |
+| Income | Overall income |
+| Sex | Sex |
+| Age | Age |
+| Age Range | Age given in ranges |
+| Political Affiliation | Political Affiliation |
+| Education | What is your highest level of education?  |
+| ethnicity | What is your race? |
+| marrital status | What is your marital status? |
+| climate change | Do you believe that climate change is real and caused by people, real but not caused by people, or not real at all? |
+| Transformers | How many Transformers movies have you seen?  |
+| books | How many books, if any, have you read in the past year? |
+| ghosts | Do you believe in ghosts? |
+| spending | Is federal funding of scientific research too high, too low, or about right? |
+| choice | If you had to choose: would you rather be smart and sad, or dumb and happy? |
+| shower_pee | Do you think it is acceptable or unacceptable to urinate in the shower? |

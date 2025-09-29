@@ -1,61 +1,62 @@
-id,income,gender,age,age_range,political_affiliation,education,ethnicity,marital_status,climate_change,transformers,books,ghosts,spending,choice,shower_pee
+id,Income,Gender,Age,Age Range,Political Affiliation,Education,ethnicity,marrital status,climate change,Transformers,books,ghosts,spending,choice,shower_pee
+ID,Income,Gender,Age,Age Range,Political Affiliation,What is your highest level of education? ,What is your race?,What is your marital status?,"Do you believe that climate change is real and caused by people, real but not caused by people, or not real at all?",How many Transformers movies have you seen? ,"How many books, if any, have you read in the past year?",Do you believe in ghosts?,"Is federal funding of scientific research too high, too low, or about right?","If you had to choose: would you rather be smart and sad, or dumb and happy?",Do you think it is acceptable or unacceptable to urinate in the shower?
 1,8000,Female,64,55-64,Democrat,College degree,White,Divorced,Real and Caused by People,1,20,Yes,Too Low,Smart and Sad,Unacceptable
-2,68000,Female,56,55-64,Democrat,High school,Black,Single,,0,6,No,Too High,Smart and Sad,Unacceptable
+2,68000,Female,56,55-64,Democrat,High school,Black,Single,DK/REF,0,6,No,Too High,Smart and Sad,Unacceptable
 3,46000,Male,63,55-64,Independent,Some college,White,Married,Real but not Caused by People,0,0,No,About Right,Dumb and happy,Acceptable
 4,51000,Male,48,45-54,Republican,High school,White,Divorced,Not Real At All,0,1,No,About Right,Dumb and happy,Unacceptable
 5,100000,Female,32,25-34,Democrat,Some college,White,Married,Real and Caused by People,1,30,Yes,Too Low,Smart and Sad,Acceptable
 6,54000,Female,64,55-64,Democrat,Some college,White,Married,Real and Caused by People,0,15,No,Too Low,Smart and Sad,Unacceptable
 7,83000,Male,61,55-64,Independent,College degree,White,Divorced,Real but not Caused by People,0,0,Yes,About Right,Dumb and happy,Unacceptable
-8,114000,Female,64,55-64,Republican,College degree,White,Married,Real and Caused by People,2,40,No,,Smart and Sad,Unacceptable
+8,114000,Female,64,55-64,Republican,College degree,White,Married,Real and Caused by People,2,40,No,DK/REF,Smart and Sad,Unacceptable
 9,90000,Female,64,55-64,Republican,High school,White,Married,Real and Caused by People,0,0,No,About Right,Dumb and happy,Unacceptable
 10,5000,Female,68,65+,Democrat,Some college,White,Widowed,Real and Caused by People,0,1,No,Too Low,Smart and Sad,Unacceptable
 11,57000,Female,63,55-64,Democrat,College degree,White,Widowed,Real and Caused by People,0,0,No,Too Low,Smart and Sad,Acceptable
 12,47000,Female,44,35-44,Independent,High school,White,Married,Real and Caused by People,1,2,Yes,Too High,Dumb and happy,Unacceptable
 13,39000,Female,57,55-64,Democrat,College degree,White,Married,Real and Caused by People,0,12,Yes,Too High,Dumb and happy,Unacceptable
-14,5000,Female,62,55-64,Democrat,College degree,White,Single,,0,6,No,Too Low,Smart and Sad,Unacceptable
+14,5000,Female,62,55-64,Democrat,College degree,White,Single,DK/REF,0,6,No,Too Low,Smart and Sad,Unacceptable
 15,84000,Male,62,55-64,Republican,College degree,White,Divorced,Real and Caused by People,1,6,No,Too Low,Dumb and happy,Unacceptable
-16,104000,Male,46,45-54,Independent,Graduate degree,White,Married,Real and Caused by People,1,24,No,Too Low,,Unacceptable
-17,8000,Female,60,55-64,,Some college,White,Divorced,Real and Caused by People,5,0,Yes,Too Low,Dumb and happy,Unacceptable
+16,104000,Male,46,45-54,Independent,Graduate degree,White,Married,Real and Caused by People,1,24,No,Too Low,DK/REF,Unacceptable
+17,8000,Female,60,55-64,DK/REF,Some college,White,Divorced,Real and Caused by People,5,0,Yes,Too Low,Dumb and happy,Unacceptable
 18,23000,Female,62,55-64,Democrat,High school,Other,Married,Real but not Caused by People,1,40,No,Too High,Dumb and happy,Acceptable
 19,55000,Female,40,35-44,Republican,College degree,White,Married,Not Real At All,0,15,No,Too High,Smart and Sad,Unacceptable
 20,80000,Female,48,45-54,Independent,College degree,Latino,Married,Real and Caused by People,2,5,Yes,Too Low,Dumb and happy,Unacceptable
 21,194000,Female,54,45-54,Democrat,College degree,White,Married,Real and Caused by People,4,4,Yes,Too Low,Dumb and happy,Unacceptable
 22,82000,Male,62,55-64,Republican,College degree,White,Married,Not Real At All,0,0,No,About Right,Dumb and happy,Unacceptable
 23,22000,Female,50,45-54,Democrat,High school,White,Married,Real and Caused by People,1,6,Yes,Too Low,Dumb and happy,Acceptable
-24,54000,Female,59,55-64,Democrat,Some college,White,Married,Real and Caused by People,1,25,Yes,,Smart and Sad,Unacceptable
-25,79000,Female,30,25-34,Independent,College degree,White,Married,Not Real At All,1,5,Yes,,Dumb and happy,Unacceptable
-26,5000,Female,60,55-64,Democrat,Some college,Black,Single,Real and Caused by People,3,2,No,,,
-27,60000,Male,70,65+,Democrat,College degree,Black,Single,Real but not Caused by People,5,6,No,About Right,,Unacceptable
+24,54000,Female,59,55-64,Democrat,Some college,White,Married,Real and Caused by People,1,25,Yes,DK/REF,Smart and Sad,Unacceptable
+25,79000,Female,30,25-34,Independent,College degree,White,Married,Not Real At All,1,5,Yes,DK/REF,Dumb and happy,Unacceptable
+26,5000,Female,60,55-64,Democrat,Some college,Black,Single,Real and Caused by People,3,2,No,DK/REF,DK/REF,DK/REF
+27,60000,Male,70,65+,Democrat,College degree,Black,Single,Real but not Caused by People,5,6,No,About Right,DK/REF,Unacceptable
 28,39000,Male,19,18-24,Independent,High school,White,In a relationship,Real and Caused by People,2,3,Yes,Too Low,Dumb and happy,Acceptable
-29,58000,Male,61,55-64,Independent,College degree,Black,Separated,Real but not Caused by People,0,0,Yes,About Right,,Unacceptable
+29,58000,Male,61,55-64,Independent,College degree,Black,Separated,Real but not Caused by People,0,0,Yes,About Right,DK/REF,Unacceptable
 30,54000,Female,57,55-64,Democrat,High school,White,Married,Not Real At All,0,0,No,About Right,Smart and Sad,Unacceptable
-31,73000,Male,36,35-44,,College degree,White,Married,Real and Caused by People,0,12,No,About Right,,Unacceptable
+31,73000,Male,36,35-44,DK/REF,College degree,White,Married,Real and Caused by People,0,12,No,About Right,DK/REF,Unacceptable
 32,26000,Female,63,55-64,Democrat,High school,White,Widowed,Real and Caused by People,0,5,Yes,Too Low,Smart and Sad,Unacceptable
-33,48000,Female,63,55-64,Republican,College degree,White,Married,Not Real At All,0,30,No,,Dumb and happy,
+33,48000,Female,63,55-64,Republican,College degree,White,Married,Not Real At All,0,30,No,DK/REF,Dumb and happy,DK/REF
 34,61000,Female,55,55-64,Independent,High school,White,Separated,Real and Caused by People,0,1,No,About Right,Dumb and happy,Unacceptable
 35,67000,Female,56,55-64,Republican,College degree,White,Single,Real and Caused by People,0,1,Yes,Too Low,Smart and Sad,Unacceptable
-36,58000,Male,54,45-54,,,White,,Real and Caused by People,0,0,Yes,,Dumb and happy,Unacceptable
+36,58000,Male,54,45-54,DK/REF,DK/REF,White,DK/REF,Real and Caused by People,0,0,Yes,DK/REF,Dumb and happy,Unacceptable
 37,,Female,50,45-54,Independent,College degree,Other,Married,Real but not Caused by People,0,30,Yes,Too High,Dumb and happy,Unacceptable
 38,,Male,65,65+,Independent,Graduate degree,White,Married,Real but not Caused by People,5,10,No,Too Low,Dumb and happy,Unacceptable
 39,,Female,73,65+,Democrat,College degree,Black,Widowed,Real but not Caused by People,2,200,Yes,Too Low,Smart and Sad,Unacceptable
 40,,Male,44,35-44,Independent,Some college,Black,Married,Real but not Caused by People,3,6,No,About Right,Smart and Sad,Unacceptable
-41,,Male,65,65+,Republican,Graduate degree,White,In a relationship,Real and Caused by People,0,7,No,Too Low,Dumb and happy,
+41,,Male,65,65+,Republican,Graduate degree,White,In a relationship,Real and Caused by People,0,7,No,Too Low,Dumb and happy,DK/REF
 42,,Female,25,25-34,Independent,Some college,White,Single,Real and Caused by People,4,124,Yes,About Right,Dumb and happy,Unacceptable
-43,,Male,53,45-54,Republican,College degree,Black,Separated,Real but not Caused by People,0,1,No,Too High,,Unacceptable
+43,,Male,53,45-54,Republican,College degree,Black,Separated,Real but not Caused by People,0,1,No,Too High,DK/REF,Unacceptable
 44,,Male,30,25-34,Independent,College degree,Black,Married,Real and Caused by People,0,15,No,About Right,Smart and Sad,Unacceptable
 45,,Male,73,65+,Independent,Some college,Black,Widowed,Not Real At All,0,8,No,About Right,Dumb and happy,Unacceptable
 46,,Female,56,55-64,Democrat,College degree,White,Married,Real and Caused by People,0,10,No,Too Low,Smart and Sad,Acceptable
-47,,Female,54,45-54,Independent,Graduate degree,,Married,Real but not Caused by People,0,5,No,Too High,Dumb and happy,
-48,,Female,60,55-64,,Other,White,Separated,Real but not Caused by People,2,0,Yes,About Right,Smart and Sad,Unacceptable
+47,,Female,54,45-54,Independent,Graduate degree,DK/REF,Married,Real but not Caused by People,0,5,No,Too High,Dumb and happy,DK/REF
+48,,Female,60,55-64,DK/REF,Other,White,Separated,Real but not Caused by People,2,0,Yes,About Right,Smart and Sad,Unacceptable
 49,,Female,19,18-24,Independent,Some college,White,Single,Real and Caused by People,1,5,Yes,Too Low,Smart and Sad,Acceptable
 50,,Other,35,35-44,Democrat,Graduate degree,Asian,Married,Real and Caused by People,0,50,Yes,Too Low,Smart and Sad,Acceptable
-51,,Female,31,25-34,,College degree,Black,Single,Real but not Caused by People,1,10,No,Too High,,Acceptable
+51,,Female,31,25-34,DK/REF,College degree,Black,Single,Real but not Caused by People,1,10,No,Too High,DK/REF,Acceptable
 52,,Female,31,25-34,Independent,College degree,White,Single,Real and Caused by People,0,5,Yes,Too Low,Dumb and happy,Acceptable
 53,,Male,62,55-64,Independent,High school,White,Single,Real and Caused by People,3,1,Yes,Too High,Smart and Sad,Unacceptable
 54,,Male,75,65+,Republican,High school,White,Married,Real but not Caused by People,,20,No,About Right,Smart and Sad,Acceptable
 55,,Female,66,65+,Democrat,College degree,White,Widowed,Real and Caused by People,0,30,No,About Right,Smart and Sad,Unacceptable
 56,,Male,58,55-64,Independent,Graduate degree,White,Single,Real and Caused by People,0,4,No,About Right,Dumb and happy,Acceptable
-57,,Female,47,45-54,,Some college,White,In a relationship,Real and Caused by People,4,20,Yes,Too Low,Dumb and happy,Acceptable
+57,,Female,47,45-54,DK/REF,Some college,White,In a relationship,Real and Caused by People,4,20,Yes,Too Low,Dumb and happy,Acceptable
 58,,Male,18,18-24,Republican,High school,White,Single,Not Real At All,2,4,Yes,About Right,Dumb and happy,Acceptable
 59,,Male,34,25-34,Republican,High school,White,Widowed,Not Real At All,5,1,Yes,Too High,Smart and Sad,Acceptable
 60,,Female,63,55-64,Democrat,College degree,Black,Married,Real and Caused by People,4,6,No,About Right,Smart and Sad,Acceptable
@@ -66,71 +67,71 @@ id,income,gender,age,age_range,political_affiliation,education,ethnicity,marital
 65,,Male,72,65+,Republican,College degree,White,Married,Real and Caused by People,0,6,Yes,About Right,Smart and Sad,Acceptable
 66,,Male,31,25-34,Democrat,College degree,White,Single,Real and Caused by People,2,20,No,Too Low,Smart and Sad,Acceptable
 67,,Female,41,35-44,Democrat,High school,Latino,Married,Real and Caused by People,2,0,No,Too Low,Dumb and happy,Unacceptable
-68,,Male,48,45-54,,High school,White,In a relationship,Not Real At All,2,2,Yes,About Right,Dumb and happy,Unacceptable
-69,,Female,86,65+,Independent,College degree,White,Married,,,2,No,,Dumb and happy,Acceptable
+68,,Male,48,45-54,DK/REF,High school,White,In a relationship,Not Real At All,2,2,Yes,About Right,Dumb and happy,Unacceptable
+69,,Female,86,65+,Independent,College degree,White,Married,DK/REF,,2,No,DK/REF,Dumb and happy,Acceptable
 70,,Female,53,45-54,Democrat,College degree,White,Married,Real and Caused by People,0,50,No,Too Low,Smart and Sad,Acceptable
 71,30000,Female,74,65+,Independent,High school,White,Divorced,Real and Caused by People,0,50,No,About Right,Dumb and happy,Unacceptable
-72,52000,Female,33,25-34,,College degree,White,Married,Not Real At All,2,1000,Yes,Too High,Dumb and happy,Unacceptable
+72,52000,Female,33,25-34,DK/REF,College degree,White,Married,Not Real At All,2,1000,Yes,Too High,Dumb and happy,Unacceptable
 73,41000,Female,78,65+,Republican,Some college,White,Widowed,Not Real At All,0,0,No,About Right,Dumb and happy,Acceptable
-74,106000,Male,45,45-54,,College degree,White,Married,Not Real At All,2,20,No,Too Low,Dumb and happy,Unacceptable
+74,106000,Male,45,45-54,DK/REF,College degree,White,Married,Not Real At All,2,20,No,Too Low,Dumb and happy,Unacceptable
 75,21000,Male,41,35-44,Democrat,High school,White,Divorced,Real and Caused by People,0,1,No,About Right,Dumb and happy,Unacceptable
 76,107000,Male,76,65+,Independent,College degree,White,Married,Real and Caused by People,2,3,No,Too Low,Smart and Sad,Acceptable
 77,53000,Female,65,65+,Republican,College degree,White,Married,Real and Caused by People,0,3,No,About Right,Smart and Sad,Unacceptable
 78,26000,Male,48,45-54,Independent,Graduate degree,White,Married,Real and Caused by People,2,15,Yes,Too Low,Dumb and happy,Unacceptable
-79,126000,Male,46,45-54,Independent,Some college,White,Married,Real but not Caused by People,3,1,No,Too Low,Smart and Sad,
+79,126000,Male,46,45-54,Independent,Some college,White,Married,Real but not Caused by People,3,1,No,Too Low,Smart and Sad,DK/REF
 80,179000,Male,50,45-54,Republican,Graduate degree,Latino,Married,Not Real At All,5,10,No,Too Low,Dumb and happy,Acceptable
 81,122000,Female,48,45-54,Republican,College degree,White,Married,Not Real At All,2,20,No,Too High,Dumb and happy,Acceptable
 82,113000,Female,54,45-54,Independent,Graduate degree,White,Divorced,Real and Caused by People,0,65,Yes,Too Low,Smart and Sad,Unacceptable
 83,140000,Male,21,18-24,Independent,Some college,Black,Single,Real and Caused by People,3,3,No,Too Low,Dumb and happy,Unacceptable
 84,207000,Female,48,45-54,Independent,Graduate degree,White,Married,Real and Caused by People,1,150,No,About Right,Dumb and happy,Unacceptable
 85,182000,Female,42,35-44,Independent,Graduate degree,White,Married,Real and Caused by People,1,12,Yes,Too Low,Smart and Sad,Unacceptable
-86,128000,Female,50,45-54,Independent,Some college,White,Married,Real and Caused by People,3,5,Yes,,Smart and Sad,Unacceptable
+86,128000,Female,50,45-54,Independent,Some college,White,Married,Real and Caused by People,3,5,Yes,DK/REF,Smart and Sad,Unacceptable
 87,71000,Female,40,35-44,Independent,Graduate degree,White,Married,Real and Caused by People,0,60,No,Too Low,Smart and Sad,Acceptable
-88,70000,Male,52,45-54,Republican,Some college,White,Married,,0,0,No,,Smart and Sad,
+88,70000,Male,52,45-54,Republican,Some college,White,Married,DK/REF,0,0,No,DK/REF,Smart and Sad,DK/REF
 89,,Male,37,35-44,Independent,College degree,White,Divorced,Real and Caused by People,2,15,No,Too Low,Smart and Sad,Unacceptable
 90,,Female,45,45-54,Independent,College degree,White,Married,Real and Caused by People,2,1,Yes,Too Low,Dumb and happy,Acceptable
-91,,Female,27,25-34,,High school,White,In a relationship,Real and Caused by People,,3,No,About Right,Dumb and happy,Unacceptable
+91,,Female,27,25-34,DK/REF,High school,White,In a relationship,Real and Caused by People,,3,No,About Right,Dumb and happy,Unacceptable
 92,,Female,43,35-44,Independent,Some college,White,Married,Real and Caused by People,0,12,Yes,Too Low,Smart and Sad,Acceptable
 93,,Male,28,25-34,Republican,Graduate degree,White,Single,Real but not Caused by People,1,16,No,Too Low,Smart and Sad,Acceptable
-94,,Female,80,65+,Democrat,,White,Separated,Not Real At All,,25,No,About Right,Dumb and happy,Unacceptable
+94,,Female,80,65+,Democrat,DK/REF,White,Separated,Not Real At All,,25,No,About Right,Dumb and happy,Unacceptable
 95,,Male,68,65+,Republican,Graduate degree,White,Married,Real but not Caused by People,0,3,No,Too High,Dumb and happy,Unacceptable
-96,,Male,36,35-44,,Graduate degree,White,Married,Real and Caused by People,4,12,No,,Dumb and happy,Acceptable
+96,,Male,36,35-44,DK/REF,Graduate degree,White,Married,Real and Caused by People,4,12,No,DK/REF,Dumb and happy,Acceptable
 97,,Female,53,45-54,Republican,Graduate degree,White,Married,Real and Caused by People,0,35,Yes,About Right,Dumb and happy,Acceptable
-98,,Male,38,35-44,,Other,White,Married,,,10,Yes,Too High,Smart and Sad,Acceptable
-99,,Female,37,35-44,Republican,College degree,White,Married,Real but not Caused by People,1,10,No,About Right,,
+98,,Male,38,35-44,DK/REF,Other,White,Married,DK/REF,,10,Yes,Too High,Smart and Sad,Acceptable
+99,,Female,37,35-44,Republican,College degree,White,Married,Real but not Caused by People,1,10,No,About Right,DK/REF,DK/REF
 100,,Female,42,35-44,Independent,Some college,White,Divorced,Real and Caused by People,4,20,Yes,Too Low,Dumb and happy,Acceptable
-101,,Male,24,18-24,,Some college,Other,Single,Real and Caused by People,2,,No,,,Unacceptable
+101,,Male,24,18-24,DK/REF,Some college,Other,Single,Real and Caused by People,2,,No,DK/REF,DK/REF,Unacceptable
 102,,Female,50,45-54,Democrat,College degree,Other,Married,Not Real At All,,2,Yes,Too Low,Dumb and happy,Acceptable
-103,,Male,53,45-54,Republican,Graduate degree,White,Married,Real and Caused by People,0,7,No,About Right,Dumb and happy,
-104,,Female,30,25-34,Independent,Other,Asian,In a relationship,,1,20,No,About Right,Dumb and happy,Acceptable
+103,,Male,53,45-54,Republican,Graduate degree,White,Married,Real and Caused by People,0,7,No,About Right,Dumb and happy,DK/REF
+104,,Female,30,25-34,Independent,Other,Asian,In a relationship,DK/REF,1,20,No,About Right,Dumb and happy,Acceptable
 105,,Female,20,18-24,Democrat,Some college,Black,Single,Real and Caused by People,0,10,Yes,About Right,Dumb and happy,Acceptable
 106,,Male,67,65+,Republican,Some college,White,In a relationship,Not Real At All,0,4,No,About Right,Smart and Sad,Acceptable
 107,77000,Male,18,18-24,Republican,High school,White,In a relationship,Real but not Caused by People,1,3,Yes,About Right,Smart and Sad,Unacceptable
 108,,Female,34,25-34,Democrat,Graduate degree,Asian,Married,Real and Caused by People,0,60,No,Too Low,Smart and Sad,Unacceptable
 109,,Male,60,55-64,Democrat,High school,Black,Single,Real and Caused by People,1,20,No,About Right,Dumb and happy,Unacceptable
-110,,Male,25,25-34,,Some college,Latino,Married,Real and Caused by People,3,5,No,,,
+110,,Male,25,25-34,DK/REF,Some college,Latino,Married,Real and Caused by People,3,5,No,DK/REF,DK/REF,DK/REF
 111,,Male,56,55-64,Republican,Graduate degree,White,Married,Real but not Caused by People,2,4,Yes,Too High,Smart and Sad,Unacceptable
 112,,Male,50,45-54,Republican,High school,White,In a relationship,Not Real At All,0,1,No,Too High,Dumb and happy,Unacceptable
-113,96000,Female,61,55-64,Democrat,College degree,White,Married,Real and Caused by People,2,2,Yes,,Smart and Sad,Unacceptable
-114,,Female,34,25-34,Independent,Some college,White,Divorced,Real and Caused by People,3,0,Yes,,Smart and Sad,Acceptable
-115,,Female,55,55-64,Republican,Graduate degree,White,Widowed,Not Real At All,0,5,No,,,
-116,,Male,25,25-34,Independent,High school,White,Married,Real and Caused by People,0,0,Yes,,Smart and Sad,Unacceptable
-117,,Female,19,18-24,,Some college,White,Single,Real and Caused by People,2,2,Yes,About Right,Dumb and happy,Unacceptable
-118,,Male,70,65+,Independent,,White,Married,Not Real At All,1,1,No,Too High,,
+113,96000,Female,61,55-64,Democrat,College degree,White,Married,Real and Caused by People,2,2,Yes,DK/REF,Smart and Sad,Unacceptable
+114,,Female,34,25-34,Independent,Some college,White,Divorced,Real and Caused by People,3,0,Yes,DK/REF,Smart and Sad,Acceptable
+115,,Female,55,55-64,Republican,Graduate degree,White,Widowed,Not Real At All,0,5,No,DK/REF,DK/REF,DK/REF
+116,,Male,25,25-34,Independent,High school,White,Married,Real and Caused by People,0,0,Yes,DK/REF,Smart and Sad,Unacceptable
+117,,Female,19,18-24,DK/REF,Some college,White,Single,Real and Caused by People,2,2,Yes,About Right,Dumb and happy,Unacceptable
+118,,Male,70,65+,Independent,DK/REF,White,Married,Not Real At All,1,1,No,Too High,DK/REF,DK/REF
 119,,Male,28,25-34,Independent,Some college,White,Married,Real and Caused by People,0,1,Yes,About Right,Dumb and happy,Acceptable
 120,,Male,35,35-44,Independent,Graduate degree,White,Married,Real but not Caused by People,1,10,Yes,Too Low,Dumb and happy,Acceptable
 121,,Other,27,25-34,Independent,College degree,White,In a relationship,Real and Caused by People,0,8,No,Too High,Dumb and happy,Acceptable
-122,,Female,48,45-54,Independent,Some college,White,Single,Not Real At All,0,,Yes,,Dumb and happy,
-123,,Female,50,45-54,,College degree,Other,In a relationship,Real and Caused by People,0,50,Yes,Too Low,Smart and Sad,Unacceptable
+122,,Female,48,45-54,Independent,Some college,White,Single,Not Real At All,0,,Yes,DK/REF,Dumb and happy,DK/REF
+123,,Female,50,45-54,DK/REF,College degree,Other,In a relationship,Real and Caused by People,0,50,Yes,Too Low,Smart and Sad,Unacceptable
 124,,Male,30,25-34,Independent,Graduate degree,Black,Married,Real and Caused by People,1,50,No,About Right,Smart and Sad,Unacceptable
 125,,Female,35,35-44,Democrat,Other,Black,Separated,Real and Caused by People,5,8,Yes,Too Low,Dumb and happy,Acceptable
 126,,Female,22,18-24,Democrat,College degree,White,In a relationship,Real and Caused by People,4,6,Yes,About Right,Dumb and happy,Acceptable
 127,,Female,40,35-44,Democrat,College degree,White,Married,Real and Caused by People,0,20,Yes,Too Low,Dumb and happy,Unacceptable
-128,,Female,70,65+,,High school,White,Widowed,Real but not Caused by People,0,10,No,Too High,Dumb and happy,Unacceptable
+128,,Female,70,65+,DK/REF,High school,White,Widowed,Real but not Caused by People,0,10,No,Too High,Dumb and happy,Unacceptable
 129,,Male,46,45-54,Independent,College degree,White,Married,Real and Caused by People,3,24,Yes,Too Low,Smart and Sad,Acceptable
-130,,Male,42,35-44,Independent,Some college,Black,Divorced,Real and Caused by People,1,6,No,,Smart and Sad,Unacceptable
-131,,Male,36,35-44,,College degree,White,Married,Real but not Caused by People,4,15,,Too Low,Dumb and happy,Acceptable
-132,,Female,66,65+,,College degree,Asian,Married,Real and Caused by People,0,,,,,Unacceptable
+130,,Male,42,35-44,Independent,Some college,Black,Divorced,Real and Caused by People,1,6,No,DK/REF,Smart and Sad,Unacceptable
+131,,Male,36,35-44,DK/REF,College degree,White,Married,Real but not Caused by People,4,15,DK/REF,Too Low,Dumb and happy,Acceptable
+132,,Female,66,65+,DK/REF,College degree,Asian,Married,Real and Caused by People,0,,DK/REF,DK/REF,DK/REF,Unacceptable
 133,,Female,71,65+,Democrat,Some college,White,Divorced,Real and Caused by People,,100,Yes,Too High,Smart and Sad,Unacceptable
 134,,Male,25,25-34,Independent,Graduate degree,Asian,In a relationship,Real and Caused by People,0,5,No,Too High,Dumb and happy,Unacceptable
 135,,Male,69,65+,Republican,Some college,White,Married,Real but not Caused by People,0,2,No,About Right,Dumb and happy,Acceptable
@@ -143,65 +144,65 @@ id,income,gender,age,age_range,political_affiliation,education,ethnicity,marital
 142,109000,Male,51,45-54,Democrat,College degree,White,Married,Real and Caused by People,0,3,No,Too Low,Smart and Sad,Acceptable
 143,87000,Male,56,55-64,Republican,High school,White,Married,Real and Caused by People,0,3,No,About Right,Dumb and happy,Unacceptable
 144,79000,Female,62,55-64,Democrat,Graduate degree,White,Married,Real and Caused by People,0,5,Yes,Too Low,Dumb and happy,Unacceptable
-145,73000,Female,46,45-54,Democrat,Some college,White,Married,,0,0,Yes,,Dumb and happy,Unacceptable
-146,89000,Female,83,65+,,High school,White,Widowed,Not Real At All,0,12,No,,,Unacceptable
+145,73000,Female,46,45-54,Democrat,Some college,White,Married,DK/REF,0,0,Yes,DK/REF,Dumb and happy,Unacceptable
+146,89000,Female,83,65+,DK/REF,High school,White,Widowed,Not Real At All,0,12,No,DK/REF,DK/REF,Unacceptable
 147,250000,Male,48,45-54,Democrat,College degree,White,Married,Real and Caused by People,3,3,No,Too Low,Dumb and happy,Acceptable
-148,93000,Female,54,45-54,Independent,Some college,Latino,Married,Real and Caused by People,2,15,Yes,Too Low,,Acceptable
-149,21000,Female,64,55-64,Democrat,College degree,White,Single,Real but not Caused by People,3,0,No,About Right,,Unacceptable
+148,93000,Female,54,45-54,Independent,Some college,Latino,Married,Real and Caused by People,2,15,Yes,Too Low,DK/REF,Acceptable
+149,21000,Female,64,55-64,Democrat,College degree,White,Single,Real but not Caused by People,3,0,No,About Right,DK/REF,Unacceptable
 150,80000,Female,62,55-64,Republican,College degree,White,Married,Real and Caused by People,0,125,No,Too Low,Smart and Sad,Acceptable
-151,30000,Male,68,65+,,Some college,,Widowed,,0,,No,Too Low,Smart and Sad,
-152,73000,Male,40,35-44,,College degree,,Single,Real but not Caused by People,,10,No,Too Low,Smart and Sad,Acceptable
-153,133000,Male,53,45-54,Independent,College degree,White,Married,,1,3,No,Too Low,Smart and Sad,Unacceptable
+151,30000,Male,68,65+,DK/REF,Some college,DK/REF,Widowed,DK/REF,0,,No,Too Low,Smart and Sad,DK/REF
+152,73000,Male,40,35-44,DK/REF,College degree,DK/REF,Single,Real but not Caused by People,,10,No,Too Low,Smart and Sad,Acceptable
+153,133000,Male,53,45-54,Independent,College degree,White,Married,DK/REF,1,3,No,Too Low,Smart and Sad,Unacceptable
 154,74000,Female,85,65+,Democrat,Graduate degree,White,Widowed,Not Real At All,0,5,No,Too High,Dumb and happy,Unacceptable
 155,67000,Male,55,55-64,Democrat,Some college,White,Married,Real but not Caused by People,2,0,No,Too Low,Dumb and happy,Acceptable
 156,,Female,52,45-54,Democrat,College degree,White,Single,Real and Caused by People,0,3,Yes,Too Low,Dumb and happy,Unacceptable
-157,,Male,68,65+,Republican,College degree,White,Married,Real but not Caused by People,2,5,No,Too Low,Dumb and happy,
+157,,Male,68,65+,Republican,College degree,White,Married,Real but not Caused by People,2,5,No,Too Low,Dumb and happy,DK/REF
 158,,Female,59,55-64,Democrat,College degree,White,Married,Real and Caused by People,0,20,No,Too Low,Smart and Sad,Unacceptable
-159,,Female,25,25-34,,High school,,Single,Real and Caused by People,3,50,Yes,About Right,Smart and Sad,Unacceptable
+159,,Female,25,25-34,DK/REF,High school,DK/REF,Single,Real and Caused by People,3,50,Yes,About Right,Smart and Sad,Unacceptable
 160,,Female,57,55-64,Republican,Some college,White,Married,Real and Caused by People,0,60,Yes,Too Low,Dumb and happy,Unacceptable
 161,,Male,72,65+,Independent,High school,White,Widowed,Real and Caused by People,0,20,No,About Right,Dumb and happy,Unacceptable
-162,,Male,66,65+,,College degree,Black,Married,Real and Caused by People,2,3,Yes,About Right,,Acceptable
+162,,Male,66,65+,DK/REF,College degree,Black,Married,Real and Caused by People,2,3,Yes,About Right,DK/REF,Acceptable
 163,,Male,49,45-54,Independent,Some college,White,Divorced,Real and Caused by People,1,20,No,Too Low,Smart and Sad,Unacceptable
-164,,Male,44,35-44,,High school,White,Single,,5,,No,Too Low,Smart and Sad,Acceptable
+164,,Male,44,35-44,DK/REF,High school,White,Single,DK/REF,5,,No,Too Low,Smart and Sad,Acceptable
 165,,Male,58,55-64,Republican,High school,White,Married,Not Real At All,0,0,No,About Right,Dumb and happy,Unacceptable
 166,,Male,55,55-64,Democrat,High school,Black,Single,Real and Caused by People,3,15,No,Too Low,Dumb and happy,Unacceptable
 167,,Male,42,35-44,Republican,High school,White,In a relationship,Not Real At All,2,2,Yes,About Right,Dumb and happy,Unacceptable
-168,,Other,34,25-34,Independent,Graduate degree,,,Real and Caused by People,1,30,No,,Dumb and happy,Acceptable
-169,,Female,47,45-54,Independent,High school,White,In a relationship,,3,0,No,Too High,Dumb and happy,Acceptable
+168,,Other,34,25-34,Independent,Graduate degree,DK/REF,DK/REF,Real and Caused by People,1,30,No,DK/REF,Dumb and happy,Acceptable
+169,,Female,47,45-54,Independent,High school,White,In a relationship,DK/REF,3,0,No,Too High,Dumb and happy,Acceptable
 170,,Female,38,35-44,Democrat,College degree,White,Single,Real and Caused by People,2,0,Yes,About Right,Smart and Sad,Acceptable
 171,,Male,31,25-34,Democrat,High school,Black,Single,Real but not Caused by People,3,2,Yes,Too Low,Dumb and happy,Unacceptable
 172,,Male,49,45-54,Democrat,Some college,White,Married,Real but not Caused by People,0,10,No,About Right,Smart and Sad,Unacceptable
-173,,Male,52,45-54,,Some college,Other,Single,Not Real At All,5,2,No,Too High,Dumb and happy,Unacceptable
-174,,Female,63,55-64,Independent,Graduate degree,White,Single,,0,50,No,Too Low,Smart and Sad,Acceptable
+173,,Male,52,45-54,DK/REF,Some college,Other,Single,Not Real At All,5,2,No,Too High,Dumb and happy,Unacceptable
+174,,Female,63,55-64,Independent,Graduate degree,White,Single,DK/REF,0,50,No,Too Low,Smart and Sad,Acceptable
 175,,Male,26,25-34,Democrat,High school,Latino,In a relationship,Real and Caused by People,2,50,Yes,About Right,Dumb and happy,Unacceptable
 176,,Male,43,35-44,Independent,College degree,White,Married,Real and Caused by People,0,20,No,Too Low,Dumb and happy,Unacceptable
 177,,Male,19,18-24,Independent,Some college,Black,Single,Real and Caused by People,1,5,No,Too Low,Smart and Sad,Acceptable
-178,,Male,22,18-24,,,White,Single,Not Real At All,,0,No,,Smart and Sad,Acceptable
+178,,Male,22,18-24,DK/REF,DK/REF,White,Single,Not Real At All,,0,No,DK/REF,Smart and Sad,Acceptable
 179,,Male,39,35-44,Independent,College degree,Black,Married,Real and Caused by People,3,5,No,About Right,Smart and Sad,Unacceptable
 180,,Male,65,65+,Independent,Some college,White,Married,Not Real At All,0,0,Yes,About Right,Smart and Sad,Acceptable
-181,,Male,35,35-44,,Graduate degree,White,Married,,,8,Yes,,,
-182,,Male,40,35-44,,College degree,Black,Married,Real and Caused by People,,10,No,Too High,Dumb and happy,Unacceptable
-183,77000,Female,18,18-24,,Some college,White,Single,Real but not Caused by People,2,25,No,About Right,Smart and Sad,Unacceptable
-184,112000,Female,59,55-64,Democrat,Graduate degree,Asian,Married,Real and Caused by People,0,2,No,,Dumb and happy,Unacceptable
-185,71000,Female,58,55-64,,Some college,Asian,Single,Real and Caused by People,0,3,No,,Smart and Sad,Unacceptable
-186,52000,Female,61,55-64,Independent,Some college,White,Widowed,Real and Caused by People,0,2,Yes,,Smart and Sad,Unacceptable
-187,22000,Female,64,55-64,Independent,Some college,White,Divorced,Real and Caused by People,0,2,,About Right,Smart and Sad,Acceptable
-188,136000,Female,64,55-64,Republican,College degree,White,Married,Real and Caused by People,0,5,No,,,Unacceptable
-189,167000,Male,65,65+,Independent,College degree,White,Married,Real and Caused by People,0,12,No,Too Low,,
-190,76000,Male,60,55-64,Independent,Graduate degree,,Divorced,Not Real At All,0,150,Yes,Too High,,Unacceptable
+181,,Male,35,35-44,DK/REF,Graduate degree,White,Married,DK/REF,,8,Yes,DK/REF,DK/REF,DK/REF
+182,,Male,40,35-44,DK/REF,College degree,Black,Married,Real and Caused by People,,10,No,Too High,Dumb and happy,Unacceptable
+183,77000,Female,18,18-24,DK/REF,Some college,White,Single,Real but not Caused by People,2,25,No,About Right,Smart and Sad,Unacceptable
+184,112000,Female,59,55-64,Democrat,Graduate degree,Asian,Married,Real and Caused by People,0,2,No,DK/REF,Dumb and happy,Unacceptable
+185,71000,Female,58,55-64,DK/REF,Some college,Asian,Single,Real and Caused by People,0,3,No,DK/REF,Smart and Sad,Unacceptable
+186,52000,Female,61,55-64,Independent,Some college,White,Widowed,Real and Caused by People,0,2,Yes,DK/REF,Smart and Sad,Unacceptable
+187,22000,Female,64,55-64,Independent,Some college,White,Divorced,Real and Caused by People,0,2,DK/REF,About Right,Smart and Sad,Acceptable
+188,136000,Female,64,55-64,Republican,College degree,White,Married,Real and Caused by People,0,5,No,DK/REF,DK/REF,Unacceptable
+189,167000,Male,65,65+,Independent,College degree,White,Married,Real and Caused by People,0,12,No,Too Low,DK/REF,DK/REF
+190,76000,Male,60,55-64,Independent,Graduate degree,DK/REF,Divorced,Not Real At All,0,150,Yes,Too High,DK/REF,Unacceptable
 191,32000,Female,60,55-64,Democrat,College degree,Black,In a relationship,Real and Caused by People,0,6,No,About Right,Smart and Sad,Unacceptable
 192,110000,Female,44,35-44,Republican,College degree,White,Married,Real and Caused by People,0,3,No,About Right,Dumb and happy,Acceptable
-193,80000,Female,22,18-24,,College degree,White,In a relationship,,0,20,Yes,About Right,,Unacceptable
+193,80000,Female,22,18-24,DK/REF,College degree,White,In a relationship,DK/REF,0,20,Yes,About Right,DK/REF,Unacceptable
 194,114000,Male,56,55-64,Independent,Graduate degree,White,Married,Real but not Caused by People,1,2,No,About Right,Smart and Sad,Acceptable
-195,236000,Male,52,45-54,Independent,Graduate degree,White,Married,Real and Caused by People,1,6,,Too Low,Smart and Sad,Acceptable
+195,236000,Male,52,45-54,Independent,Graduate degree,White,Married,Real and Caused by People,1,6,DK/REF,Too Low,Smart and Sad,Acceptable
 196,48000,Male,64,55-64,Democrat,High school,Black,Married,Real and Caused by People,,,No,About Right,Smart and Sad,Unacceptable
-197,25000,Female,45,45-54,Democrat,High school,Latino,Single,Real and Caused by People,0,2,Yes,,,Acceptable
-198,143000,Male,52,45-54,,Graduate degree,,,,5,20,No,Too Low,Smart and Sad,Acceptable
-199,17000,Female,63,55-64,Independent,Some college,Black,Divorced,,0,10,No,,Dumb and happy,Unacceptable
+197,25000,Female,45,45-54,Democrat,High school,Latino,Single,Real and Caused by People,0,2,Yes,DK/REF,DK/REF,Acceptable
+198,143000,Male,52,45-54,DK/REF,Graduate degree,DK/REF,DK/REF,DK/REF,5,20,No,Too Low,Smart and Sad,Acceptable
+199,17000,Female,63,55-64,Independent,Some college,Black,Divorced,DK/REF,0,10,No,DK/REF,Dumb and happy,Unacceptable
 200,138000,Male,49,45-54,Democrat,College degree,White,Married,Real but not Caused by People,0,3,No,Too Low,Smart and Sad,Acceptable
-201,100000,Male,19,18-24,Independent,Some college,White,Single,Real and Caused by People,0,4,No,,Smart and Sad,Acceptable
+201,100000,Male,19,18-24,Independent,Some college,White,Single,Real and Caused by People,0,4,No,DK/REF,Smart and Sad,Acceptable
 202,104000,Female,70,65+,Democrat,College degree,White,Single,Real and Caused by People,5,60,Yes,Too Low,Smart and Sad,Acceptable
-203,85000,Female,60,55-64,Democrat,Graduate degree,Black,Single,Real but not Caused by People,0,50,No,Too High,,Unacceptable
+203,85000,Female,60,55-64,Democrat,Graduate degree,Black,Single,Real but not Caused by People,0,50,No,Too High,DK/REF,Unacceptable
 204,202000,Male,40,35-44,Independent,Graduate degree,White,Married,Real and Caused by People,0,15,No,Too Low,Smart and Sad,Acceptable
 205,41000,Female,41,35-44,Independent,College degree,White,Married,Real and Caused by People,5,7,Yes,Too Low,Smart and Sad,Unacceptable
 206,65000,Female,50,45-54,Independent,Some college,Black,Married,Real and Caused by People,2,0,No,Too Low,Dumb and happy,Unacceptable
@@ -209,70 +210,70 @@ id,income,gender,age,age_range,political_affiliation,education,ethnicity,marital
 208,19000,Male,83,65+,Republican,High school,White,Widowed,Real and Caused by People,,3,Yes,Too Low,Dumb and happy,Unacceptable
 209,97000,Female,53,45-54,Independent,College degree,Asian,Married,Real and Caused by People,5,1,Yes,About Right,Dumb and happy,Unacceptable
 210,105000,Male,68,65+,Independent,Graduate degree,White,Single,Real but not Caused by People,3,4,Yes,About Right,Smart and Sad,Unacceptable
-211,132000,Male,60,55-64,Independent,Some college,,Married,Real and Caused by People,0,6,No,About Right,Smart and Sad,Unacceptable
+211,132000,Male,60,55-64,Independent,Some college,DK/REF,Married,Real and Caused by People,0,6,No,About Right,Smart and Sad,Unacceptable
 212,153000,Female,58,55-64,Republican,Graduate degree,White,Married,Real and Caused by People,0,10,Yes,About Right,Dumb and happy,Unacceptable
 213,17000,Female,53,45-54,Democrat,Some college,Black,Married,Real and Caused by People,2,2,No,Too Low,Dumb and happy,Unacceptable
 214,45000,Female,26,25-34,Independent,High school,Latino,In a relationship,Not Real At All,3,3,No,About Right,Dumb and happy,Unacceptable
 215,35000,Male,58,55-64,Democrat,High school,Black,In a relationship,Not Real At All,0,0,Yes,Too High,Smart and Sad,Acceptable
 216,90000,Female,37,35-44,Independent,College degree,White,Married,Real but not Caused by People,0,120,No,Too Low,Dumb and happy,Acceptable
 217,62000,Male,52,45-54,Independent,Graduate degree,White,Married,Not Real At All,1,4,No,About Right,Smart and Sad,Unacceptable
-218,71000,Female,56,55-64,,High school,White,Married,Real and Caused by People,2,3,No,Too Low,Dumb and happy,Acceptable
-219,118000,Male,50,45-54,Republican,Some college,White,Married,Not Real At All,4,0,No,,Dumb and happy,Acceptable
+218,71000,Female,56,55-64,DK/REF,High school,White,Married,Real and Caused by People,2,3,No,Too Low,Dumb and happy,Acceptable
+219,118000,Male,50,45-54,Republican,Some college,White,Married,Not Real At All,4,0,No,DK/REF,Dumb and happy,Acceptable
 220,159000,Female,47,45-54,Democrat,College degree,White,Married,Real and Caused by People,2,4,Yes,Too Low,Dumb and happy,Unacceptable
 221,5000,Female,55,55-64,Republican,High school,White,In a relationship,Real but not Caused by People,4,5,Yes,Too Low,Dumb and happy,Acceptable
 222,436000,Male,55,55-64,Independent,College degree,Asian,Married,Real and Caused by People,2,3,Yes,Too Low,Dumb and happy,Acceptable
 223,97000,Female,61,55-64,Republican,College degree,White,Married,Real and Caused by People,0,10,No,Too Low,Dumb and happy,Unacceptable
-224,22000,Male,64,55-64,,,Other,Widowed,Real and Caused by People,,4,,Too Low,Dumb and happy,Acceptable
-225,19000,Female,54,45-54,Republican,Some college,White,In a relationship,Real and Caused by People,1,15,Yes,,Dumb and happy,Unacceptable
-226,200000,Female,52,45-54,,Some college,White,Married,Real but not Caused by People,2,200,,Too Low,Smart and Sad,Unacceptable
+224,22000,Male,64,55-64,DK/REF,DK/REF,Other,Widowed,Real and Caused by People,,4,DK/REF,Too Low,Dumb and happy,Acceptable
+225,19000,Female,54,45-54,Republican,Some college,White,In a relationship,Real and Caused by People,1,15,Yes,DK/REF,Dumb and happy,Unacceptable
+226,200000,Female,52,45-54,DK/REF,Some college,White,Married,Real but not Caused by People,2,200,DK/REF,Too Low,Smart and Sad,Unacceptable
 227,51000,Female,71,65+,Republican,Some college,White,Married,Real but not Caused by People,0,16,Yes,Too High,Smart and Sad,Unacceptable
 228,7000,Female,58,55-64,Republican,High school,White,Single,Real but not Caused by People,0,3,No,Too High,Smart and Sad,Unacceptable
 229,18000,Female,40,35-44,Democrat,Some college,White,Divorced,Not Real At All,,100,No,Too High,Dumb and happy,Unacceptable
 230,56000,Female,59,55-64,Democrat,High school,White,Married,Real and Caused by People,0,0,No,Too Low,Smart and Sad,Unacceptable
-231,140000,Female,42,35-44,Democrat,Graduate degree,White,Married,Real and Caused by People,0,225,No,Too Low,Smart and Sad,
+231,140000,Female,42,35-44,Democrat,Graduate degree,White,Married,Real and Caused by People,0,225,No,Too Low,Smart and Sad,DK/REF
 232,31000,Female,38,35-44,Independent,College degree,White,Single,Real and Caused by People,1,20,Yes,Too Low,Smart and Sad,Unacceptable
-233,93000,Female,64,55-64,Democrat,Some college,White,Married,Real and Caused by People,0,5,,About Right,Dumb and happy,Unacceptable
+233,93000,Female,64,55-64,Democrat,Some college,White,Married,Real and Caused by People,0,5,DK/REF,About Right,Dumb and happy,Unacceptable
 234,32000,Female,59,55-64,Democrat,Graduate degree,Latino,Widowed,Real and Caused by People,1,6,No,Too Low,Smart and Sad,Acceptable
-235,59000,Female,29,25-34,Democrat,Some college,White,Single,Real and Caused by People,0,3,Yes,,Dumb and happy,Unacceptable
+235,59000,Female,29,25-34,Democrat,Some college,White,Single,Real and Caused by People,0,3,Yes,DK/REF,Dumb and happy,Unacceptable
 236,150000,Male,65,65+,Republican,High school,White,Married,Not Real At All,0,2,No,Too High,Dumb and happy,Acceptable
 237,132000,Male,52,45-54,Republican,Some college,White,Married,Not Real At All,0,2,Yes,Too Low,Dumb and happy,Acceptable
-238,172000,Male,40,35-44,,High school,White,Married,Not Real At All,2,13,No,Too High,Smart and Sad,Unacceptable
+238,172000,Male,40,35-44,DK/REF,High school,White,Married,Not Real At All,2,13,No,Too High,Smart and Sad,Unacceptable
 239,25000,Female,52,45-54,Independent,High school,White,Divorced,Not Real At All,0,0,No,Too Low,Dumb and happy,Unacceptable
 240,31000,Male,56,55-64,Democrat,Some college,White,In a relationship,Real and Caused by People,,,Yes,Too Low,Dumb and happy,Unacceptable
-241,54000,Male,60,55-64,Republican,High school,White,Married,,0,0,No,About Right,Dumb and happy,Unacceptable
+241,54000,Male,60,55-64,Republican,High school,White,Married,DK/REF,0,0,No,About Right,Dumb and happy,Unacceptable
 242,199000,Male,63,55-64,Democrat,Graduate degree,White,Married,Real but not Caused by People,,12,No,Too Low,Smart and Sad,Unacceptable
 243,55000,Female,59,55-64,Democrat,College degree,White,Single,Real and Caused by People,0,3,Yes,Too Low,Smart and Sad,Unacceptable
-244,44000,Male,56,55-64,,Graduate degree,,Married,Not Real At All,0,20,No,Too High,Smart and Sad,Acceptable
-245,51000,Male,61,55-64,Republican,Some college,White,Married,Real but not Caused by People,2,17,No,About Right,,Unacceptable
+244,44000,Male,56,55-64,DK/REF,Graduate degree,DK/REF,Married,Not Real At All,0,20,No,Too High,Smart and Sad,Acceptable
+245,51000,Male,61,55-64,Republican,Some college,White,Married,Real but not Caused by People,2,17,No,About Right,DK/REF,Unacceptable
 246,98000,Male,57,55-64,Independent,Some college,White,Married,Real and Caused by People,,2,No,Too Low,Smart and Sad,Unacceptable
 247,39000,Female,57,55-64,Independent,Graduate degree,White,In a relationship,Real and Caused by People,1,15,No,Too Low,Smart and Sad,Acceptable
-248,26000,Male,49,45-54,Independent,College degree,,Married,Not Real At All,0,0,No,About Right,Dumb and happy,Acceptable
-249,70000,Female,72,65+,Republican,High school,White,Widowed,Not Real At All,0,2,,About Right,,Unacceptable
+248,26000,Male,49,45-54,Independent,College degree,DK/REF,Married,Not Real At All,0,0,No,About Right,Dumb and happy,Acceptable
+249,70000,Female,72,65+,Republican,High school,White,Widowed,Not Real At All,0,2,DK/REF,About Right,DK/REF,Unacceptable
 250,174000,Female,68,65+,Democrat,Graduate degree,White,Married,Real and Caused by People,0,0,No,About Right,Dumb and happy,Acceptable
 251,,Female,60,55-64,Republican,Graduate degree,White,Married,Not Real At All,0,10,No,Too Low,Dumb and happy,Acceptable
 252,,Female,63,55-64,Independent,College degree,White,Married,Real and Caused by People,,30,No,About Right,Dumb and happy,Acceptable
-253,,Male,46,45-54,,Some college,White,Married,Not Real At All,1,25,No,Too High,,
+253,,Male,46,45-54,DK/REF,Some college,White,Married,Not Real At All,1,25,No,Too High,DK/REF,DK/REF
 254,,Male,39,35-44,Independent,Graduate degree,Other,Single,Real and Caused by People,,1000,Yes,Too High,Smart and Sad,Unacceptable
-255,,Male,50,45-54,,High school,White,Married,Real and Caused by People,0,0,No,Too High,Smart and Sad,Unacceptable
+255,,Male,50,45-54,DK/REF,High school,White,Married,Real and Caused by People,0,0,No,Too High,Smart and Sad,Unacceptable
 256,,Male,88,65+,Independent,College degree,White,Married,Real but not Caused by People,0,0,No,About Right,Smart and Sad,Unacceptable
 257,,Male,31,25-34,Republican,College degree,Asian,In a relationship,Real but not Caused by People,1,4,No,Too Low,Dumb and happy,Acceptable
-258,,Male,45,45-54,,High school,Black,Single,,0,0,No,Too Low,Smart and Sad,Unacceptable
-259,,Other,30,25-34,Democrat,High school,Black,Single,,,2,Yes,Too High,Dumb and happy,Unacceptable
-260,,Female,64,55-64,,High school,White,Married,,0,20,No,,Smart and Sad,Unacceptable
-261,,Female,32,25-34,,Some college,White,Single,,,30,No,,Smart and Sad,Acceptable
+258,,Male,45,45-54,DK/REF,High school,Black,Single,DK/REF,0,0,No,Too Low,Smart and Sad,Unacceptable
+259,,Other,30,25-34,Democrat,High school,Black,Single,DK/REF,,2,Yes,Too High,Dumb and happy,Unacceptable
+260,,Female,64,55-64,DK/REF,High school,White,Married,DK/REF,0,20,No,DK/REF,Smart and Sad,Unacceptable
+261,,Female,32,25-34,DK/REF,Some college,White,Single,DK/REF,,30,No,DK/REF,Smart and Sad,Acceptable
 262,,Female,42,35-44,Independent,College degree,White,In a relationship,Real but not Caused by People,0,3,No,About Right,Dumb and happy,Unacceptable
 263,,Male,70,65+,Independent,Some college,White,Married,Not Real At All,0,4,No,About Right,Dumb and happy,Unacceptable
 264,,Female,69,65+,Democrat,Graduate degree,White,Married,Real and Caused by People,0,0,No,Too Low,Smart and Sad,Unacceptable
 265,,Male,51,45-54,Independent,Some college,White,Married,Real but not Caused by People,4,0,Yes,About Right,Smart and Sad,Acceptable
 266,,Male,64,55-64,Independent,Some college,White,Married,Not Real At All,0,3,Yes,Too High,Smart and Sad,Acceptable
-267,,Female,49,45-54,,Graduate degree,Black,Divorced,Real but not Caused by People,0,3,No,About Right,Dumb and happy,Unacceptable
+267,,Female,49,45-54,DK/REF,Graduate degree,Black,Divorced,Real but not Caused by People,0,3,No,About Right,Dumb and happy,Unacceptable
 268,,Female,34,25-34,Democrat,College degree,Black,Single,Real and Caused by People,3,8,Yes,Too High,Dumb and happy,Unacceptable
-269,,Female,50,45-54,Republican,College degree,White,Married,Not Real At All,,50,No,,Smart and Sad,Acceptable
+269,,Female,50,45-54,Republican,College degree,White,Married,Not Real At All,,50,No,DK/REF,Smart and Sad,Acceptable
 270,,Female,65,65+,Independent,Graduate degree,White,Widowed,Real and Caused by People,0,5,No,Too Low,Smart and Sad,Acceptable
 271,,Male,74,65+,Independent,Graduate degree,White,Married,Real and Caused by People,0,20,No,Too Low,Smart and Sad,Acceptable
 272,,Male,49,45-54,Republican,Some college,White,Married,Real but not Caused by People,0,1,No,About Right,Dumb and happy,Acceptable
 273,,Female,25,25-34,Republican,Some college,Latino,Single,Not Real At All,5,0,Yes,Too High,Dumb and happy,Acceptable
-274,,Female,22,18-24,,Graduate degree,Latino,Single,Real and Caused by People,0,40,No,About Right,Smart and Sad,Unacceptable
+274,,Female,22,18-24,DK/REF,Graduate degree,Latino,Single,Real and Caused by People,0,40,No,About Right,Smart and Sad,Unacceptable
 275,,Female,67,65+,Democrat,High school,Black,Widowed,Real and Caused by People,3,50,No,About Right,Dumb and happy,Unacceptable
 276,,Male,25,25-34,Democrat,College degree,White,Single,Real and Caused by People,1,5,No,Too Low,Smart and Sad,Acceptable
 277,,Male,76,65+,Independent,Other,White,Married,Real and Caused by People,0,0,No,Too Low,Smart and Sad,Unacceptable
@@ -288,10 +289,10 @@ id,income,gender,age,age_range,political_affiliation,education,ethnicity,marital
 287,,Male,45,45-54,Independent,Some college,White,Single,Not Real At All,0,28,No,Too High,Dumb and happy,Unacceptable
 288,,Female,40,35-44,Democrat,Graduate degree,White,Married,Real and Caused by People,0,5,No,Too Low,Dumb and happy,Unacceptable
 289,,Male,70,65+,Independent,College degree,Black,Married,Real and Caused by People,3,1,No,About Right,Smart and Sad,Unacceptable
-290,,Male,58,55-64,Democrat,Graduate degree,White,Single,Real and Caused by People,1,3,No,Too Low,Smart and Sad,
-291,,Female,42,35-44,Independent,College degree,White,Married,Real and Caused by People,1,5,No,Too Low,Dumb and happy,
+290,,Male,58,55-64,Democrat,Graduate degree,White,Single,Real and Caused by People,1,3,No,Too Low,Smart and Sad,DK/REF
+291,,Female,42,35-44,Independent,College degree,White,Married,Real and Caused by People,1,5,No,Too Low,Dumb and happy,DK/REF
 292,,Female,36,35-44,Democrat,Graduate degree,Latino,In a relationship,Real and Caused by People,1,3,Yes,Too High,Smart and Sad,Acceptable
-293,,Female,40,35-44,Independent,College degree,White,Married,Real and Caused by People,0,100,No,,Dumb and happy,Unacceptable
+293,,Female,40,35-44,Independent,College degree,White,Married,Real and Caused by People,0,100,No,DK/REF,Dumb and happy,Unacceptable
 294,,Female,24,18-24,Independent,College degree,White,In a relationship,Real and Caused by People,2,10,Yes,Too Low,Dumb and happy,Unacceptable
 295,,Male,75,65+,Democrat,College degree,Black,Widowed,Real and Caused by People,0,6,No,Too Low,Smart and Sad,Unacceptable
 296,,Female,68,65+,Republican,Some college,White,Widowed,Real but not Caused by People,0,250,No,About Right,Dumb and happy,Unacceptable
@@ -299,51 +300,51 @@ id,income,gender,age,age_range,political_affiliation,education,ethnicity,marital
 298,48000,Male,64,55-64,Republican,Graduate degree,Asian,Married,Not Real At All,3,0,Yes,About Right,Smart and Sad,Acceptable
 299,92000,Female,56,55-64,Independent,Graduate degree,White,Married,Real and Caused by People,0,12,Yes,Too Low,Smart and Sad,Unacceptable
 300,25000,Female,33,25-34,Democrat,Graduate degree,Black,Single,Real but not Caused by People,1,12,No,About Right,Dumb and happy,Acceptable
-301,22000,Female,40,35-44,,Some college,White,Married,,5,5,Yes,Too Low,Dumb and happy,Acceptable
+301,22000,Female,40,35-44,DK/REF,Some college,White,Married,DK/REF,5,5,Yes,Too Low,Dumb and happy,Acceptable
 302,57000,Female,57,55-64,Republican,Some college,White,Married,Real but not Caused by People,1,56,Yes,Too High,Dumb and happy,Acceptable
 303,170000,Male,63,55-64,Independent,College degree,White,Married,Real but not Caused by People,0,3,No,About Right,Smart and Sad,Acceptable
 304,92000,Female,57,55-64,Independent,Some college,White,Married,Real and Caused by People,0,52,No,Too Low,Dumb and happy,Unacceptable
 305,91000,Female,48,45-54,Independent,College degree,White,Divorced,Real and Caused by People,0,12,Yes,About Right,Smart and Sad,Acceptable
-306,10000,Female,55,55-64,Independent,College degree,,Married,Real and Caused by People,4,6,No,Too Low,,Unacceptable
+306,10000,Female,55,55-64,Independent,College degree,DK/REF,Married,Real and Caused by People,4,6,No,Too Low,DK/REF,Unacceptable
 307,48000,Female,60,55-64,Independent,Some college,White,Married,Not Real At All,0,40,Yes,Too High,Smart and Sad,Unacceptable
 308,105000,Female,59,55-64,Independent,High school,White,Divorced,Real and Caused by People,0,0,Yes,About Right,Dumb and happy,Unacceptable
-309,52000,Male,51,45-54,Democrat,Graduate degree,White,Married,Real and Caused by People,1,4,Yes,Too Low,Smart and Sad,
+309,52000,Male,51,45-54,Democrat,Graduate degree,White,Married,Real and Caused by People,1,4,Yes,Too Low,Smart and Sad,DK/REF
 310,90000,Female,64,55-64,Republican,College degree,White,Married,Real and Caused by People,0,3,Yes,Too Low,Smart and Sad,Unacceptable
 311,39000,Female,75,65+,Democrat,High school,Black,Divorced,Real and Caused by People,0,0,No,Too High,Dumb and happy,Unacceptable
 312,120000,Male,53,45-54,Democrat,High school,White,Married,Real and Caused by People,0,2,Yes,About Right,Dumb and happy,Acceptable
-313,34000,Female,65,65+,,High school,White,Single,Real but not Caused by People,1,0,No,Too High,Dumb and happy,Unacceptable
+313,34000,Female,65,65+,DK/REF,High school,White,Single,Real but not Caused by People,1,0,No,Too High,Dumb and happy,Unacceptable
 314,180000,Female,40,35-44,Republican,College degree,White,Married,Not Real At All,0,0,No,Too High,Smart and Sad,Unacceptable
-315,150000,Male,45,45-54,Republican,College degree,Black,Married,Not Real At All,0,0,No,,Dumb and happy,Acceptable
+315,150000,Male,45,45-54,Republican,College degree,Black,Married,Not Real At All,0,0,No,DK/REF,Dumb and happy,Acceptable
 316,164000,Female,26,25-34,Democrat,High school,White,Single,Real and Caused by People,1,15,No,Too Low,Smart and Sad,Acceptable
 317,83000,Male,64,55-64,Independent,College degree,White,Married,Real and Caused by People,0,4,No,About Right,Dumb and happy,Unacceptable
-318,386000,Other,36,35-44,Independent,Graduate degree,Black,Married,Not Real At All,0,5,,,Dumb and happy,Unacceptable
+318,386000,Other,36,35-44,Independent,Graduate degree,Black,Married,Not Real At All,0,5,DK/REF,DK/REF,Dumb and happy,Unacceptable
 319,79000,Male,60,55-64,Independent,Some college,White,Married,Real and Caused by People,5,3,Yes,About Right,Dumb and happy,Unacceptable
-320,32000,Male,64,55-64,Independent,College degree,White,Separated,Real and Caused by People,0,6,No,Too Low,,
+320,32000,Male,64,55-64,Independent,College degree,White,Separated,Real and Caused by People,0,6,No,Too Low,DK/REF,DK/REF
 321,327000,Female,55,55-64,Independent,College degree,White,Married,Real and Caused by People,0,2,No,Too Low,Smart and Sad,Unacceptable
 322,62000,Female,62,55-64,Republican,College degree,White,Married,Real but not Caused by People,0,5,No,Too Low,Smart and Sad,Unacceptable
 323,180000,Female,64,55-64,Republican,Some college,White,Widowed,Real but not Caused by People,0,1,Yes,About Right,Dumb and happy,Acceptable
 324,70000,Female,49,45-54,Independent,Some college,Black,In a relationship,Real but not Caused by People,4,0,Yes,About Right,Dumb and happy,Acceptable
 325,103000,Female,58,55-64,Republican,Some college,White,Married,Not Real At All,0,50,Yes,About Right,Smart and Sad,Acceptable
-326,20000,Female,60,55-64,,High school,Other,Married,Real and Caused by People,4,0,Yes,About Right,Dumb and happy,
+326,20000,Female,60,55-64,DK/REF,High school,Other,Married,Real and Caused by People,4,0,Yes,About Right,Dumb and happy,DK/REF
 327,57000,Male,47,45-54,Independent,Graduate degree,White,Single,Real and Caused by People,1,5,No,Too Low,Dumb and happy,Unacceptable
-328,90000,Female,55,55-64,,,White,Married,,2,8,No,,Dumb and happy,
-329,78000,Female,58,55-64,,Other,,Married,Real and Caused by People,3,120,No,Too Low,Smart and Sad,Acceptable
-330,132000,Female,61,55-64,Democrat,College degree,White,Married,Real and Caused by People,0,6,No,Too Low,,
+328,90000,Female,55,55-64,DK/REF,DK/REF,White,Married,DK/REF,2,8,No,DK/REF,Dumb and happy,DK/REF
+329,78000,Female,58,55-64,DK/REF,Other,DK/REF,Married,Real and Caused by People,3,120,No,Too Low,Smart and Sad,Acceptable
+330,132000,Female,61,55-64,Democrat,College degree,White,Married,Real and Caused by People,0,6,No,Too Low,DK/REF,DK/REF
 331,73000,Male,61,55-64,Republican,Graduate degree,White,Married,Real and Caused by People,3,20,No,Too High,Smart and Sad,Unacceptable
-332,42000,Female,57,55-64,Republican,Graduate degree,White,Married,Not Real At All,0,30,Yes,About Right,Dumb and happy,
+332,42000,Female,57,55-64,Republican,Graduate degree,White,Married,Not Real At All,0,30,Yes,About Right,Dumb and happy,DK/REF
 333,21000,Female,69,65+,Democrat,High school,Black,Separated,Real but not Caused by People,0,2,No,About Right,Dumb and happy,Unacceptable
 334,163000,Male,58,55-64,Independent,College degree,White,Married,Real and Caused by People,0,12,No,Too Low,Smart and Sad,Unacceptable
-335,25000,Female,63,55-64,Independent,High school,White,Divorced,,2,4,Yes,,Smart and Sad,Acceptable
+335,25000,Female,63,55-64,Independent,High school,White,Divorced,DK/REF,2,4,Yes,DK/REF,Smart and Sad,Acceptable
 336,92000,Female,66,65+,Republican,High school,White,In a relationship,Not Real At All,,2,Yes,Too High,Dumb and happy,Unacceptable
 337,88000,Female,44,35-44,Independent,High school,White,Married,Real but not Caused by People,5,0,Yes,Too Low,Dumb and happy,Unacceptable
 338,22000,Male,70,65+,Independent,Graduate degree,White,In a relationship,Not Real At All,0,6,No,About Right,Smart and Sad,Unacceptable
 339,43000,Male,63,55-64,Democrat,College degree,White,Married,Real and Caused by People,0,5,No,About Right,Dumb and happy,Unacceptable
-340,90000,Male,60,55-64,Republican,College degree,,Married,Not Real At All,2,15,No,About Right,Smart and Sad,
+340,90000,Male,60,55-64,Republican,College degree,DK/REF,Married,Not Real At All,2,15,No,About Right,Smart and Sad,DK/REF
 341,47000,Female,60,55-64,Independent,High school,White,Single,Real and Caused by People,2,6,Yes,Too Low,Dumb and happy,Unacceptable
-342,120000,Male,52,45-54,Independent,Graduate degree,,Married,Real but not Caused by People,3,8,No,,Smart and Sad,Unacceptable
+342,120000,Male,52,45-54,Independent,Graduate degree,DK/REF,Married,Real but not Caused by People,3,8,No,DK/REF,Smart and Sad,Unacceptable
 343,10000,Female,38,35-44,Independent,High school,Other,Married,Real and Caused by People,0,4,Yes,Too Low,Dumb and happy,Unacceptable
 344,10000,Female,61,55-64,Independent,Some college,White,In a relationship,Real and Caused by People,4,10,Yes,Too High,Dumb and happy,Unacceptable
-345,55000,Female,62,55-64,Independent,High school,White,Married,Real and Caused by People,4,10,,About Right,,Unacceptable
+345,55000,Female,62,55-64,Independent,High school,White,Married,Real and Caused by People,4,10,DK/REF,About Right,DK/REF,Unacceptable
 346,113000,Male,40,35-44,Independent,Graduate degree,White,Married,Real and Caused by People,0,0,No,About Right,Dumb and happy,Unacceptable
 347,137000,Female,40,35-44,Republican,College degree,White,Married,Real and Caused by People,0,15,Yes,About Right,Smart and Sad,Unacceptable
 348,9000,Female,61,55-64,Republican,College degree,White,Married,Real but not Caused by People,3,25,Yes,Too Low,Smart and Sad,Acceptable
@@ -351,30 +352,30 @@ id,income,gender,age,age_range,political_affiliation,education,ethnicity,marital
 350,39000,Female,32,25-34,Democrat,Some college,White,Married,Real and Caused by People,1,30,No,Too Low,Dumb and happy,Unacceptable
 351,13000,Female,55,55-64,Republican,Some college,White,Married,Real but not Caused by People,2,0,Yes,About Right,Dumb and happy,Unacceptable
 352,47000,Female,58,55-64,Republican,High school,Black,Married,Real and Caused by People,0,0,No,About Right,Dumb and happy,Unacceptable
-353,72000,Male,60,55-64,Independent,Some college,White,Married,Not Real At All,1,40,No,About Right,Smart and Sad,
+353,72000,Male,60,55-64,Independent,Some college,White,Married,Not Real At All,1,40,No,About Right,Smart and Sad,DK/REF
 354,37000,Male,58,55-64,Independent,College degree,White,Married,Not Real At All,3,60,Yes,About Right,Dumb and happy,Unacceptable
 355,69000,Male,55,55-64,Independent,Some college,Other,Widowed,Not Real At All,4,7,No,Too High,Smart and Sad,Acceptable
 356,208000,Male,55,55-64,Independent,Graduate degree,Latino,Single,Not Real At All,4,10,No,About Right,Dumb and happy,Acceptable
 357,75000,Female,59,55-64,Republican,Some college,White,Married,Real and Caused by People,4,5,Yes,About Right,Smart and Sad,Unacceptable
-358,30000,Female,57,55-64,,College degree,White,Divorced,Real and Caused by People,0,17,No,Too Low,Smart and Sad,Acceptable
+358,30000,Female,57,55-64,DK/REF,College degree,White,Divorced,Real and Caused by People,0,17,No,Too Low,Smart and Sad,Acceptable
 359,23000,Male,62,55-64,Democrat,High school,Black,Divorced,Real and Caused by People,3,5,No,About Right,Dumb and happy,Unacceptable
 360,8000,Male,34,25-34,Independent,Some college,White,Single,Real and Caused by People,0,3,No,Too Low,Dumb and happy,Acceptable
 361,114000,Male,40,35-44,Republican,Graduate degree,White,Married,Real but not Caused by People,0,150,No,About Right,Smart and Sad,Unacceptable
-362,112000,Female,33,25-34,Democrat,High school,Black,Single,,,0,Yes,,Dumb and happy,Unacceptable
-363,129000,Female,45,45-54,Democrat,Some college,Latino,Married,Real and Caused by People,0,6,Yes,About Right,,Unacceptable
+362,112000,Female,33,25-34,Democrat,High school,Black,Single,DK/REF,,0,Yes,DK/REF,Dumb and happy,Unacceptable
+363,129000,Female,45,45-54,Democrat,Some college,Latino,Married,Real and Caused by People,0,6,Yes,About Right,DK/REF,Unacceptable
 364,94000,Male,51,45-54,Democrat,High school,White,Married,Real and Caused by People,1,10,No,Too Low,Smart and Sad,Acceptable
-365,129000,Male,63,55-64,Republican,Graduate degree,White,Widowed,,0,10,No,,Dumb and happy,Acceptable
+365,129000,Male,63,55-64,Republican,Graduate degree,White,Widowed,DK/REF,0,10,No,DK/REF,Dumb and happy,Acceptable
 366,177000,Male,63,55-64,Republican,Some college,White,Divorced,Not Real At All,0,2,Yes,About Right,Dumb and happy,Unacceptable
-367,30000,Female,62,55-64,,Some college,White,Married,Real and Caused by People,0,100,Yes,Too High,Smart and Sad,Acceptable
-368,12000,Male,35,35-44,,College degree,White,Divorced,Real and Caused by People,2,4,No,Too Low,Dumb and happy,Unacceptable
-369,135000,Male,57,55-64,Democrat,College degree,White,Married,Real and Caused by People,0,3,No,Too Low,Smart and Sad,
+367,30000,Female,62,55-64,DK/REF,Some college,White,Married,Real and Caused by People,0,100,Yes,Too High,Smart and Sad,Acceptable
+368,12000,Male,35,35-44,DK/REF,College degree,White,Divorced,Real and Caused by People,2,4,No,Too Low,Dumb and happy,Unacceptable
+369,135000,Male,57,55-64,Democrat,College degree,White,Married,Real and Caused by People,0,3,No,Too Low,Smart and Sad,DK/REF
 370,87000,Male,50,45-54,Independent,High school,Black,Married,Not Real At All,1,6,Yes,Too Low,Dumb and happy,Acceptable
 371,52000,Male,65,65+,Independent,College degree,White,Widowed,Real and Caused by People,0,2,No,Too Low,Smart and Sad,Unacceptable
-372,86000,Male,55,55-64,,High school,White,Single,Real and Caused by People,3,10,No,Too Low,Smart and Sad,Acceptable
+372,86000,Male,55,55-64,DK/REF,High school,White,Single,Real and Caused by People,3,10,No,Too Low,Smart and Sad,Acceptable
 373,93000,Female,51,45-54,Independent,Graduate degree,White,Married,Real and Caused by People,5,3,Yes,Too Low,Dumb and happy,Unacceptable
 374,183000,Female,80,65+,Democrat,College degree,White,Widowed,Real and Caused by People,0,10,No,About Right,Smart and Sad,Unacceptable
-375,169000,Female,61,55-64,Independent,College degree,White,Married,Real and Caused by People,0,5,No,About Right,,Acceptable
-376,13000,Other,22,18-24,,College degree,,Married,Real and Caused by People,5,6,Yes,About Right,Dumb and happy,Acceptable
+375,169000,Female,61,55-64,Independent,College degree,White,Married,Real and Caused by People,0,5,No,About Right,DK/REF,Acceptable
+376,13000,Other,22,18-24,DK/REF,College degree,DK/REF,Married,Real and Caused by People,5,6,Yes,About Right,Dumb and happy,Acceptable
 377,102000,Female,61,55-64,Democrat,Graduate degree,White,Single,Real and Caused by People,0,8,Yes,About Right,Smart and Sad,Unacceptable
 378,71000,Male,60,55-64,Independent,Some college,White,Married,Real and Caused by People,0,4,No,Too Low,Dumb and happy,Acceptable
 379,101000,Male,54,45-54,Republican,College degree,White,Married,Not Real At All,0,12,No,Too Low,Dumb and happy,Acceptable
@@ -384,250 +385,250 @@ id,income,gender,age,age_range,political_affiliation,education,ethnicity,marital
 383,5000,Male,64,55-64,Democrat,High school,White,Single,Not Real At All,2,6,No,About Right,Dumb and happy,Unacceptable
 384,61000,Female,29,25-34,Democrat,College degree,Latino,Single,Real and Caused by People,0,0,No,Too High,Smart and Sad,Acceptable
 385,42000,Female,20,18-24,Democrat,Some college,White,Single,Real and Caused by People,4,15,Yes,Too High,Smart and Sad,Acceptable
-386,65000,Male,28,25-34,Democrat,Some college,Asian,Married,Real but not Caused by People,0,100,Yes,,Dumb and happy,
+386,65000,Male,28,25-34,Democrat,Some college,Asian,Married,Real but not Caused by People,0,100,Yes,DK/REF,Dumb and happy,DK/REF
 387,203000,Male,50,45-54,Republican,Graduate degree,White,Married,Real but not Caused by People,0,70,No,Too High,Dumb and happy,Unacceptable
 388,168000,Female,58,55-64,Independent,Other,Latino,In a relationship,Real and Caused by People,0,4,Yes,About Right,Dumb and happy,Acceptable
-389,130000,Female,36,35-44,Independent,Graduate degree,White,Married,Real and Caused by People,4,20,Yes,Too Low,Dumb and happy,
+389,130000,Female,36,35-44,Independent,Graduate degree,White,Married,Real and Caused by People,4,20,Yes,Too Low,Dumb and happy,DK/REF
 390,,Male,43,35-44,Democrat,High school,Asian,Single,Not Real At All,5,0,No,About Right,Dumb and happy,Unacceptable
 391,,Female,63,55-64,Republican,College degree,White,Widowed,Real and Caused by People,2,,Yes,About Right,Smart and Sad,Unacceptable
 392,,Male,45,45-54,Independent,College degree,White,Single,Real and Caused by People,,2,Yes,Too Low,Smart and Sad,Acceptable
 393,,Female,78,65+,Independent,Some college,White,Widowed,Real and Caused by People,0,100,Yes,Too Low,Smart and Sad,Acceptable
 394,,Male,18,18-24,Independent,High school,Latino,Single,Real and Caused by People,3,3,No,About Right,Smart and Sad,Acceptable
-395,,Female,68,65+,Independent,Graduate degree,Other,Widowed,Not Real At All,2,30,No,,Dumb and happy,Acceptable
-396,105000,Female,64,55-64,Republican,Graduate degree,White,Married,Real but not Caused by People,3,15,No,,,
+395,,Female,68,65+,Independent,Graduate degree,Other,Widowed,Not Real At All,2,30,No,DK/REF,Dumb and happy,Acceptable
+396,105000,Female,64,55-64,Republican,Graduate degree,White,Married,Real but not Caused by People,3,15,No,DK/REF,DK/REF,DK/REF
 397,,Male,71,65+,Republican,College degree,White,Single,Not Real At All,4,4,No,Too High,Dumb and happy,Unacceptable
 398,,Female,66,65+,Democrat,Some college,White,Divorced,Real and Caused by People,0,5,Yes,Too Low,Smart and Sad,Unacceptable
 399,,Male,31,25-34,Independent,High school,Latino,Single,Not Real At All,3,1,Yes,Too High,Smart and Sad,Unacceptable
 400,,Male,60,55-64,Republican,College degree,White,Married,Real but not Caused by People,0,5,No,About Right,Smart and Sad,Acceptable
 401,,Male,39,35-44,Independent,Graduate degree,White,Married,Not Real At All,1,1,Yes,About Right,Dumb and happy,Acceptable
 402,,Male,67,65+,Independent,College degree,White,Widowed,Real and Caused by People,2,2,No,Too Low,Dumb and happy,Unacceptable
-403,,Male,20,18-24,Independent,Some college,Latino,Single,Real but not Caused by People,1,25,No,,Smart and Sad,Unacceptable
+403,,Male,20,18-24,Independent,Some college,Latino,Single,Real but not Caused by People,1,25,No,DK/REF,Smart and Sad,Unacceptable
 404,,Female,57,55-64,Democrat,College degree,White,Divorced,Real and Caused by People,0,5,No,Too Low,Smart and Sad,Unacceptable
 405,,Male,29,25-34,Independent,High school,White,Married,Real but not Caused by People,0,0,Yes,About Right,Dumb and happy,Acceptable
-406,,Male,61,55-64,Independent,Some college,White,Married,Real but not Caused by People,0,7,Yes,,Smart and Sad,Unacceptable
-407,,Female,66,65+,Democrat,College degree,White,Single,Real and Caused by People,0,3,No,,Dumb and happy,Unacceptable
+406,,Male,61,55-64,Independent,Some college,White,Married,Real but not Caused by People,0,7,Yes,DK/REF,Smart and Sad,Unacceptable
+407,,Female,66,65+,Democrat,College degree,White,Single,Real and Caused by People,0,3,No,DK/REF,Dumb and happy,Unacceptable
 408,,Male,63,55-64,Independent,College degree,White,Married,Real and Caused by People,2,700,No,Too Low,Smart and Sad,Unacceptable
 409,,Female,62,55-64,Democrat,College degree,White,Married,Real and Caused by People,2,4,Yes,Too Low,Smart and Sad,Acceptable
 410,,Female,60,55-64,Independent,High school,White,Divorced,Not Real At All,0,50,Yes,Too Low,Dumb and happy,Unacceptable
-411,,Male,21,18-24,Democrat,Graduate degree,Asian,Single,Real and Caused by People,3,17,No,Too Low,Dumb and happy,
-412,,Female,61,55-64,Republican,College degree,White,Married,Real but not Caused by People,5,15,Yes,Too Low,Smart and Sad,
-413,,Female,72,65+,Independent,College degree,White,In a relationship,Real and Caused by People,0,4,No,Too Low,,
+411,,Male,21,18-24,Democrat,Graduate degree,Asian,Single,Real and Caused by People,3,17,No,Too Low,Dumb and happy,DK/REF
+412,,Female,61,55-64,Republican,College degree,White,Married,Real but not Caused by People,5,15,Yes,Too Low,Smart and Sad,DK/REF
+413,,Female,72,65+,Independent,College degree,White,In a relationship,Real and Caused by People,0,4,No,Too Low,DK/REF,DK/REF
 414,,Female,28,25-34,Republican,College degree,White,Married,Real but not Caused by People,5,15,Yes,Too Low,Dumb and happy,Acceptable
 415,,Male,29,25-34,Independent,College degree,White,Single,Real and Caused by People,0,2,No,About Right,Dumb and happy,Unacceptable
 416,,Male,33,25-34,Democrat,Graduate degree,White,Married,Real and Caused by People,0,4,No,Too Low,Smart and Sad,Unacceptable
 417,,Female,32,25-34,Independent,College degree,White,Married,Real and Caused by People,0,7,Yes,Too Low,Dumb and happy,Unacceptable
-418,,Female,51,45-54,Independent,High school,White,Single,Real and Caused by People,1,0,No,,Dumb and happy,Unacceptable
+418,,Female,51,45-54,Independent,High school,White,Single,Real and Caused by People,1,0,No,DK/REF,Dumb and happy,Unacceptable
 419,,Male,41,35-44,Independent,High school,White,In a relationship,Not Real At All,4,0,Yes,About Right,Dumb and happy,Unacceptable
 420,,Male,59,55-64,Republican,High school,White,Married,Not Real At All,0,1,No,Too High,Dumb and happy,Unacceptable
-421,,Male,70,65+,Republican,Graduate degree,,Divorced,Real but not Caused by People,1,5,Yes,About Right,Smart and Sad,
-422,,Female,65,65+,Independent,Graduate degree,White,Married,Not Real At All,2,9,,,Smart and Sad,Unacceptable
+421,,Male,70,65+,Republican,Graduate degree,DK/REF,Divorced,Real but not Caused by People,1,5,Yes,About Right,Smart and Sad,DK/REF
+422,,Female,65,65+,Independent,Graduate degree,White,Married,Not Real At All,2,9,DK/REF,DK/REF,Smart and Sad,Unacceptable
 423,,Female,60,55-64,Independent,Some college,Asian,Married,Not Real At All,2,14,Yes,Too High,Dumb and happy,Unacceptable
-424,,Male,32,25-34,Independent,High school,Black,Married,Real and Caused by People,5,5,Yes,,Smart and Sad,Unacceptable
+424,,Male,32,25-34,Independent,High school,Black,Married,Real and Caused by People,5,5,Yes,DK/REF,Smart and Sad,Unacceptable
 425,,Male,36,35-44,Democrat,High school,White,Single,Real and Caused by People,3,3,No,Too Low,Smart and Sad,Unacceptable
-426,,Other,60,55-64,Independent,Other,White,Single,Real and Caused by People,,0,Yes,About Right,,
-427,,Female,61,55-64,Democrat,College degree,White,Married,Real and Caused by People,0,5,Yes,About Right,Smart and Sad,
+426,,Other,60,55-64,Independent,Other,White,Single,Real and Caused by People,,0,Yes,About Right,DK/REF,DK/REF
+427,,Female,61,55-64,Democrat,College degree,White,Married,Real and Caused by People,0,5,Yes,About Right,Smart and Sad,DK/REF
 428,,Male,23,18-24,Independent,High school,White,Single,Real and Caused by People,4,70,Yes,Too Low,Dumb and happy,Acceptable
 429,,Female,55,55-64,Democrat,College degree,Black,Separated,Real and Caused by People,1,3,Yes,Too High,Dumb and happy,Acceptable
 430,,Female,58,55-64,Democrat,Some college,White,Widowed,Real and Caused by People,4,20,Yes,About Right,Dumb and happy,Unacceptable
 431,,Male,24,18-24,Republican,Graduate degree,Latino,Single,Not Real At All,0,5,No,About Right,Smart and Sad,Acceptable
-432,,Female,34,25-34,,College degree,Black,Married,Not Real At All,1,3,Yes,Too Low,Dumb and happy,Acceptable
-433,,Female,77,65+,,College degree,White,Married,Real and Caused by People,0,2,No,,Dumb and happy,Acceptable
+432,,Female,34,25-34,DK/REF,College degree,Black,Married,Not Real At All,1,3,Yes,Too Low,Dumb and happy,Acceptable
+433,,Female,77,65+,DK/REF,College degree,White,Married,Real and Caused by People,0,2,No,DK/REF,Dumb and happy,Acceptable
 434,,Male,36,35-44,Independent,Some college,Black,Married,Real and Caused by People,,5,Yes,Too Low,Smart and Sad,Unacceptable
 435,,Male,19,18-24,Republican,Graduate degree,White,Single,Real and Caused by People,0,5,Yes,About Right,Smart and Sad,Acceptable
 436,,Female,54,45-54,Democrat,Some college,White,Divorced,Real but not Caused by People,0,5,Yes,Too Low,Dumb and happy,Unacceptable
 437,,Female,23,18-24,Republican,Some college,White,In a relationship,Real and Caused by People,5,30,Yes,Too Low,Dumb and happy,Acceptable
 438,,Female,19,18-24,Independent,Some college,Latino,In a relationship,Real and Caused by People,1,7,Yes,Too High,Dumb and happy,Acceptable
-439,,Male,67,65+,Independent,College degree,Asian,Married,Real but not Caused by People,0,0,,Too Low,Dumb and happy,Acceptable
+439,,Male,67,65+,Independent,College degree,Asian,Married,Real but not Caused by People,0,0,DK/REF,Too Low,Dumb and happy,Acceptable
 440,,Female,38,35-44,Independent,Some college,White,Married,Real and Caused by People,1,12,No,Too Low,Smart and Sad,Acceptable
-441,,Female,99,65+,,College degree,,Single,Not Real At All,4,25,No,Too Low,,
+441,,Female,99,65+,DK/REF,College degree,DK/REF,Single,Not Real At All,4,25,No,Too Low,DK/REF,DK/REF
 442,,Male,25,25-34,Democrat,Graduate degree,White,In a relationship,Real and Caused by People,2,23,No,Too Low,Smart and Sad,Acceptable
 443,,Female,42,35-44,Republican,College degree,White,Married,Real and Caused by People,3,6,Yes,Too Low,Smart and Sad,Unacceptable
 444,,Female,71,65+,Democrat,Graduate degree,White,Widowed,Real and Caused by People,0,13,No,Too Low,Smart and Sad,Unacceptable
-445,,Male,48,45-54,,Some college,White,Divorced,Real and Caused by People,3,1,No,Too Low,Smart and Sad,Unacceptable
-446,69000,Male,62,55-64,Democrat,High school,White,Married,Real and Caused by People,0,4,No,,Smart and Sad,Unacceptable
-447,,Other,82,65+,Independent,High school,,Single,Real and Caused by People,,,Yes,,,
-448,,Other,26,25-34,,Graduate degree,Asian,Separated,Not Real At All,5,55,Yes,,Smart and Sad,Acceptable
+445,,Male,48,45-54,DK/REF,Some college,White,Divorced,Real and Caused by People,3,1,No,Too Low,Smart and Sad,Unacceptable
+446,69000,Male,62,55-64,Democrat,High school,White,Married,Real and Caused by People,0,4,No,DK/REF,Smart and Sad,Unacceptable
+447,,Other,82,65+,Independent,High school,DK/REF,Single,Real and Caused by People,,,Yes,DK/REF,DK/REF,DK/REF
+448,,Other,26,25-34,DK/REF,Graduate degree,Asian,Separated,Not Real At All,5,55,Yes,DK/REF,Smart and Sad,Acceptable
 449,,Female,65,65+,Democrat,College degree,White,Divorced,Real and Caused by People,0,70,Yes,Too Low,Smart and Sad,Unacceptable
-450,,Male,58,55-64,,Graduate degree,White,Single,Not Real At All,0,12,No,,,
+450,,Male,58,55-64,DK/REF,Graduate degree,White,Single,Not Real At All,0,12,No,DK/REF,DK/REF,DK/REF
 451,,Male,72,65+,Independent,Some college,White,Single,Real and Caused by People,2,2,No,Too Low,Smart and Sad,Acceptable
-452,,Male,40,35-44,,Graduate degree,Latino,In a relationship,Real but not Caused by People,0,3,No,Too Low,,
-453,,Male,42,35-44,Independent,Graduate degree,Asian,Single,Real but not Caused by People,1,4,No,About Right,,Acceptable
-454,,Male,22,18-24,,High school,White,Single,Real and Caused by People,2,10,Yes,Too Low,Smart and Sad,Acceptable
+452,,Male,40,35-44,DK/REF,Graduate degree,Latino,In a relationship,Real but not Caused by People,0,3,No,Too Low,DK/REF,DK/REF
+453,,Male,42,35-44,Independent,Graduate degree,Asian,Single,Real but not Caused by People,1,4,No,About Right,DK/REF,Acceptable
+454,,Male,22,18-24,DK/REF,High school,White,Single,Real and Caused by People,2,10,Yes,Too Low,Smart and Sad,Acceptable
 455,,Male,58,55-64,Independent,College degree,White,Separated,Real but not Caused by People,0,0,Yes,Too Low,Smart and Sad,Acceptable
 456,,Female,20,18-24,Independent,Some college,Latino,Single,Real and Caused by People,1,5,Yes,Too Low,Dumb and happy,Acceptable
 457,,Male,42,35-44,Democrat,College degree,White,Single,Real and Caused by People,4,20,No,Too Low,Dumb and happy,Unacceptable
 458,,Male,23,18-24,Independent,Some college,White,Married,Real and Caused by People,2,0,No,Too Low,Smart and Sad,Acceptable
-459,,,62,55-64,Republican,Graduate degree,White,Married,Not Real At All,0,50,No,Too High,Dumb and happy,Acceptable
+459,,DK/REF,62,55-64,Republican,Graduate degree,White,Married,Not Real At All,0,50,No,Too High,Dumb and happy,Acceptable
 460,41000,Female,53,45-54,Independent,Some college,White,Married,Real but not Caused by People,3,25,Yes,Too Low,Smart and Sad,Unacceptable
 461,18000,Female,83,65+,Republican,Some college,White,Widowed,Not Real At All,0,0,No,About Right,Smart and Sad,Acceptable
 462,152000,Male,35,35-44,Independent,College degree,White,Married,Real and Caused by People,1,10,No,About Right,Dumb and happy,Unacceptable
 463,73000,Female,53,45-54,Independent,Some college,White,Married,Real but not Caused by People,0,5,No,About Right,Dumb and happy,Unacceptable
-464,42000,Female,40,35-44,Independent,College degree,White,Single,Not Real At All,3,0,Yes,,Dumb and happy,Acceptable
+464,42000,Female,40,35-44,Independent,College degree,White,Single,Not Real At All,3,0,Yes,DK/REF,Dumb and happy,Acceptable
 465,68000,Female,48,45-54,Democrat,Some college,Latino,Married,Not Real At All,2,4,No,About Right,Smart and Sad,Acceptable
 466,162000,Other,48,45-54,Independent,Graduate degree,White,In a relationship,Not Real At All,2,3,Yes,About Right,Dumb and happy,Unacceptable
 467,36000,Female,65,65+,Republican,College degree,White,Divorced,Not Real At All,,10,Yes,About Right,Smart and Sad,Unacceptable
 468,10000,Female,43,35-44,Democrat,College degree,Black,Married,Real and Caused by People,0,20,No,About Right,Smart and Sad,Unacceptable
-469,48000,Female,23,18-24,Democrat,Some college,Latino,Single,,0,20,Yes,,Smart and Sad,Acceptable
+469,48000,Female,23,18-24,Democrat,Some college,Latino,Single,DK/REF,0,20,Yes,DK/REF,Smart and Sad,Acceptable
 470,126000,Other,42,35-44,Independent,Graduate degree,Black,Single,Not Real At All,2,7,Yes,Too Low,Smart and Sad,Acceptable
 471,9000,Female,70,65+,Democrat,Other,White,Married,Real and Caused by People,0,40,No,Too High,Dumb and happy,Unacceptable
-472,122000,Male,65,65+,,Some college,White,Widowed,,0,3,No,Too Low,Smart and Sad,
+472,122000,Male,65,65+,DK/REF,Some college,White,Widowed,DK/REF,0,3,No,Too Low,Smart and Sad,DK/REF
 473,163000,Female,47,45-54,Independent,College degree,White,Married,Real and Caused by People,0,3,No,Too Low,Dumb and happy,Unacceptable
-474,38000,Male,45,45-54,Republican,College degree,White,Married,Real but not Caused by People,2,7,No,,Dumb and happy,Acceptable
+474,38000,Male,45,45-54,Republican,College degree,White,Married,Real but not Caused by People,2,7,No,DK/REF,Dumb and happy,Acceptable
 475,78000,Female,38,35-44,Independent,High school,White,Married,Not Real At All,1,0,Yes,Too Low,Smart and Sad,Acceptable
 476,500000,Male,46,45-54,Independent,College degree,White,Married,Real and Caused by People,1,2,Yes,Too Low,Smart and Sad,Unacceptable
-477,77000,Female,51,45-54,Republican,Graduate degree,Latino,In a relationship,,1,,Yes,Too High,,Unacceptable
+477,77000,Female,51,45-54,Republican,Graduate degree,Latino,In a relationship,DK/REF,1,,Yes,Too High,DK/REF,Unacceptable
 478,103000,Male,51,45-54,Independent,College degree,White,Married,Real and Caused by People,0,4,No,Too Low,Smart and Sad,Unacceptable
 479,64000,Male,28,25-34,Democrat,College degree,White,Married,Real and Caused by People,5,2,Yes,Too Low,Smart and Sad,Unacceptable
-480,166000,Male,28,25-34,Independent,Some college,White,,Real but not Caused by People,3,5,No,About Right,Smart and Sad,Acceptable
+480,166000,Male,28,25-34,Independent,Some college,White,DK/REF,Real but not Caused by People,3,5,No,About Right,Smart and Sad,Acceptable
 481,102000,Male,49,45-54,Republican,High school,White,Married,Not Real At All,3,1,Yes,Too High,Dumb and happy,Acceptable
-482,86000,Male,69,65+,Democrat,Some college,White,Single,Real and Caused by People,0,5,No,Too Low,,
-483,74000,Male,38,35-44,Independent,College degree,White,Married,Real and Caused by People,1,4,Yes,Too Low,,Acceptable
+482,86000,Male,69,65+,Democrat,Some college,White,Single,Real and Caused by People,0,5,No,Too Low,DK/REF,DK/REF
+483,74000,Male,38,35-44,Independent,College degree,White,Married,Real and Caused by People,1,4,Yes,Too Low,DK/REF,Acceptable
 484,146000,Female,46,45-54,Independent,Graduate degree,White,Married,Real and Caused by People,2,5,Yes,Too High,Dumb and happy,Acceptable
 485,,Female,49,45-54,Democrat,High school,Black,Widowed,Real but not Caused by People,4,10,Yes,Too Low,Smart and Sad,Unacceptable
-486,74000,Female,45,45-54,Republican,Graduate degree,White,Married,Real but not Caused by People,1,26,No,Too High,Smart and Sad,
+486,74000,Female,45,45-54,Republican,Graduate degree,White,Married,Real but not Caused by People,1,26,No,Too High,Smart and Sad,DK/REF
 487,,Female,27,25-34,Independent,College degree,Asian,Single,Real and Caused by People,4,30,No,About Right,Smart and Sad,Acceptable
-488,,Female,41,35-44,,Graduate degree,Latino,Divorced,Real and Caused by People,2,20,Yes,About Right,Smart and Sad,Acceptable
+488,,Female,41,35-44,DK/REF,Graduate degree,Latino,Divorced,Real and Caused by People,2,20,Yes,About Right,Smart and Sad,Acceptable
 489,,Female,24,18-24,Democrat,College degree,Asian,Single,Real and Caused by People,2,20,Yes,Too Low,Smart and Sad,Acceptable
 490,,Male,32,25-34,Democrat,College degree,White,Single,Real and Caused by People,0,3,No,Too Low,Smart and Sad,Unacceptable
-491,,Male,54,45-54,,High school,White,Divorced,Real but not Caused by People,0,400,No,Too High,Smart and Sad,Unacceptable
+491,,Male,54,45-54,DK/REF,High school,White,Divorced,Real but not Caused by People,0,400,No,Too High,Smart and Sad,Unacceptable
 492,,Male,51,45-54,Democrat,Graduate degree,Asian,Married,Real and Caused by People,0,5,No,Too Low,Smart and Sad,Unacceptable
 493,,Female,44,35-44,Republican,Some college,White,Married,Real and Caused by People,,10,No,Too Low,Smart and Sad,Unacceptable
-494,,Female,45,45-54,,College degree,Black,Divorced,Real but not Caused by People,,10,Yes,,,
+494,,Female,45,45-54,DK/REF,College degree,Black,Divorced,Real but not Caused by People,,10,Yes,DK/REF,DK/REF,DK/REF
 495,,Female,49,45-54,Democrat,Graduate degree,Asian,Married,Real and Caused by People,2,25,No,Too Low,Smart and Sad,Acceptable
-496,,Female,18,18-24,,High school,Black,Single,Real and Caused by People,0,40,No,About Right,Dumb and happy,
+496,,Female,18,18-24,DK/REF,High school,Black,Single,Real and Caused by People,0,40,No,About Right,Dumb and happy,DK/REF
 497,,Female,30,25-34,Independent,Some college,Black,Married,Real but not Caused by People,3,5,Yes,Too High,Smart and Sad,Acceptable
 498,,Female,29,25-34,Independent,College degree,White,Single,Real and Caused by People,0,2,No,Too Low,Smart and Sad,Unacceptable
 499,,Female,21,18-24,Republican,Some college,White,Single,Real but not Caused by People,3,5,No,About Right,Dumb and happy,Unacceptable
 500,,Male,75,65+,Independent,College degree,White,Divorced,Real but not Caused by People,3,4,Yes,Too Low,Smart and Sad,Acceptable
 501,,Female,50,45-54,Democrat,Some college,White,In a relationship,Real and Caused by People,1,2,Yes,Too Low,Dumb and happy,Unacceptable
-502,36000,Female,87,65+,,Some college,White,Widowed,Real but not Caused by People,0,20,No,,Smart and Sad,Unacceptable
-503,,Male,72,65+,Democrat,College degree,White,Widowed,Real and Caused by People,1,12,,Too Low,Smart and Sad,Unacceptable
+502,36000,Female,87,65+,DK/REF,Some college,White,Widowed,Real but not Caused by People,0,20,No,DK/REF,Smart and Sad,Unacceptable
+503,,Male,72,65+,Democrat,College degree,White,Widowed,Real and Caused by People,1,12,DK/REF,Too Low,Smart and Sad,Unacceptable
 504,,Female,54,45-54,Independent,College degree,White,Widowed,Real and Caused by People,,100,Yes,Too Low,Smart and Sad,Acceptable
 505,,Female,18,18-24,Democrat,College degree,Latino,Single,Real and Caused by People,2,30,No,Too High,Smart and Sad,Unacceptable
-506,,Male,41,35-44,,Some college,Asian,Single,Real and Caused by People,3,2,,Too Low,Smart and Sad,Unacceptable
+506,,Male,41,35-44,DK/REF,Some college,Asian,Single,Real and Caused by People,3,2,DK/REF,Too Low,Smart and Sad,Unacceptable
 507,,Male,21,18-24,Independent,Some college,Asian,In a relationship,Real and Caused by People,3,2,No,About Right,Dumb and happy,Acceptable
-508,,Male,70,65+,Democrat,Some college,White,Widowed,Real but not Caused by People,1,0,No,,Dumb and happy,Acceptable
+508,,Male,70,65+,Democrat,Some college,White,Widowed,Real but not Caused by People,1,0,No,DK/REF,Dumb and happy,Acceptable
 509,,Female,22,18-24,Independent,College degree,Latino,Single,Real and Caused by People,0,5,No,Too Low,Smart and Sad,Unacceptable
-510,,Female,97,65+,Independent,College degree,White,Widowed,,,5,No,,,Unacceptable
-511,,Female,35,35-44,,College degree,Asian,Single,Real and Caused by People,2,7,No,About Right,Dumb and happy,Acceptable
+510,,Female,97,65+,Independent,College degree,White,Widowed,DK/REF,,5,No,DK/REF,DK/REF,Unacceptable
+511,,Female,35,35-44,DK/REF,College degree,Asian,Single,Real and Caused by People,2,7,No,About Right,Dumb and happy,Acceptable
 512,,Female,40,35-44,Democrat,Some college,Asian,Married,Real and Caused by People,4,0,Yes,About Right,Smart and Sad,Unacceptable
 513,,Male,28,25-34,Independent,Some college,Other,In a relationship,Real and Caused by People,5,30,No,About Right,Dumb and happy,Unacceptable
-514,,Male,50,45-54,,College degree,,Single,Real and Caused by People,3,7,No,Too High,Smart and Sad,
-515,,Male,29,25-34,,Some college,Latino,Single,Real and Caused by People,1,3,No,Too Low,Smart and Sad,Acceptable
+514,,Male,50,45-54,DK/REF,College degree,DK/REF,Single,Real and Caused by People,3,7,No,Too High,Smart and Sad,DK/REF
+515,,Male,29,25-34,DK/REF,Some college,Latino,Single,Real and Caused by People,1,3,No,Too Low,Smart and Sad,Acceptable
 516,,Male,27,25-34,Independent,College degree,Other,Married,Real and Caused by People,3,3,No,Too Low,Smart and Sad,Unacceptable
-517,106000,Male,50,45-54,Independent,Graduate degree,White,Married,Real and Caused by People,0,4,,Too Low,Dumb and happy,
+517,106000,Male,50,45-54,Independent,Graduate degree,White,Married,Real and Caused by People,0,4,DK/REF,Too Low,Dumb and happy,DK/REF
 518,,Male,20,18-24,Democrat,Some college,White,Single,Real and Caused by People,3,7,No,Too Low,Smart and Sad,Acceptable
 519,,Male,34,25-34,Democrat,Some college,Black,In a relationship,Real and Caused by People,3,60,Yes,About Right,Dumb and happy,Unacceptable
-520,,Other,34,25-34,Independent,College degree,White,,Real but not Caused by People,2,18,No,Too High,Smart and Sad,Acceptable
+520,,Other,34,25-34,Independent,College degree,White,DK/REF,Real but not Caused by People,2,18,No,Too High,Smart and Sad,Acceptable
 521,,Male,34,25-34,Democrat,High school,White,Single,Real and Caused by People,1,1,Yes,Too Low,Smart and Sad,Acceptable
-522,,Male,33,25-34,,Graduate degree,Black,Single,,3,4,No,Too Low,Dumb and happy,Acceptable
-523,,Female,36,35-44,,College degree,White,Married,,2,50,Yes,About Right,Smart and Sad,Unacceptable
-524,,Male,74,65+,,High school,White,Married,Real but not Caused by People,,,No,Too High,Dumb and happy,
-525,,Other,21,18-24,,Other,Black,Single,Real and Caused by People,3,,No,Too High,Dumb and happy,Acceptable
+522,,Male,33,25-34,DK/REF,Graduate degree,Black,Single,DK/REF,3,4,No,Too Low,Dumb and happy,Acceptable
+523,,Female,36,35-44,DK/REF,College degree,White,Married,DK/REF,2,50,Yes,About Right,Smart and Sad,Unacceptable
+524,,Male,74,65+,DK/REF,High school,White,Married,Real but not Caused by People,,,No,Too High,Dumb and happy,DK/REF
+525,,Other,21,18-24,DK/REF,Other,Black,Single,Real and Caused by People,3,,No,Too High,Dumb and happy,Acceptable
 526,,Male,29,25-34,Republican,College degree,White,Married,Real and Caused by People,2,0,Yes,Too Low,Dumb and happy,Acceptable
 527,,Female,37,35-44,Independent,High school,White,Married,Real but not Caused by People,0,0,No,Too High,Dumb and happy,Acceptable
-528,,Female,79,65+,Independent,High school,White,Married,Real and Caused by People,0,35,No,,,
+528,,Female,79,65+,Independent,High school,White,Married,Real and Caused by People,0,35,No,DK/REF,DK/REF,DK/REF
 529,,Male,23,18-24,Independent,Graduate degree,Latino,Single,Real and Caused by People,0,5,No,Too Low,Dumb and happy,Acceptable
 530,,Male,77,65+,Democrat,College degree,Black,Married,Real and Caused by People,0,10,Yes,Too Low,Smart and Sad,Unacceptable
-531,,Male,36,35-44,Republican,Some college,Latino,Married,Real but not Caused by People,4,10,No,About Right,,Acceptable
-532,,Male,69,65+,Republican,Some college,White,Married,Not Real At All,0,3,,About Right,Dumb and happy,Acceptable
+531,,Male,36,35-44,Republican,Some college,Latino,Married,Real but not Caused by People,4,10,No,About Right,DK/REF,Acceptable
+532,,Male,69,65+,Republican,Some college,White,Married,Not Real At All,0,3,DK/REF,About Right,Dumb and happy,Acceptable
 533,,Female,20,18-24,Democrat,High school,White,Single,Real and Caused by People,4,100,No,Too Low,Smart and Sad,Unacceptable
 534,,Male,34,25-34,Independent,Some college,Black,Married,Real and Caused by People,2,0,No,Too Low,Dumb and happy,Acceptable
 535,,Male,23,18-24,Independent,Some college,White,Single,Real but not Caused by People,0,9,No,About Right,Dumb and happy,Unacceptable
 536,,Male,51,45-54,Independent,College degree,White,Married,Real and Caused by People,2,6,No,About Right,Smart and Sad,Acceptable
-537,,Female,68,65+,Republican,High school,White,Married,,0,4,Yes,Too High,Dumb and happy,Unacceptable
-538,,Female,68,65+,Democrat,College degree,White,Divorced,Real and Caused by People,1,300,No,Too Low,Smart and Sad,
+537,,Female,68,65+,Republican,High school,White,Married,DK/REF,0,4,Yes,Too High,Dumb and happy,Unacceptable
+538,,Female,68,65+,Democrat,College degree,White,Divorced,Real and Caused by People,1,300,No,Too Low,Smart and Sad,DK/REF
 539,,Female,44,35-44,Democrat,High school,Black,Single,Real and Caused by People,4,12,Yes,About Right,Dumb and happy,Unacceptable
-540,,Female,19,18-24,,College degree,White,Single,,0,9,No,,Dumb and happy,
+540,,Female,19,18-24,DK/REF,College degree,White,Single,DK/REF,0,9,No,DK/REF,Dumb and happy,DK/REF
 541,,Male,20,18-24,Republican,Some college,White,Single,Real and Caused by People,2,12,No,Too Low,Smart and Sad,Unacceptable
-542,,Female,31,25-34,,Some college,Black,In a relationship,Real but not Caused by People,,0,Yes,,,
-543,,Female,67,65+,Republican,Graduate degree,White,Married,Real and Caused by People,0,150,No,,Smart and Sad,
-544,127000,Female,85,65+,,,White,Married,,0,0,Yes,About Right,,Unacceptable
+542,,Female,31,25-34,DK/REF,Some college,Black,In a relationship,Real but not Caused by People,,0,Yes,DK/REF,DK/REF,DK/REF
+543,,Female,67,65+,Republican,Graduate degree,White,Married,Real and Caused by People,0,150,No,DK/REF,Smart and Sad,DK/REF
+544,127000,Female,85,65+,DK/REF,DK/REF,White,Married,DK/REF,0,0,Yes,About Right,DK/REF,Unacceptable
 545,24000,Female,28,25-34,Independent,College degree,White,Single,Real and Caused by People,2,0,Yes,About Right,Dumb and happy,Unacceptable
-546,8000,Female,50,45-54,Republican,High school,White,Married,Real and Caused by People,0,6,Yes,About Right,Dumb and happy,
-547,60000,Male,39,35-44,Democrat,Graduate degree,White,Married,Real and Caused by People,0,25,No,Too Low,Smart and Sad,
-548,167000,Female,34,25-34,Independent,Some college,White,Married,,1,36,No,Too Low,Dumb and happy,Acceptable
-549,43000,Male,50,45-54,Independent,High school,White,Married,Real and Caused by People,5,2,No,,Dumb and happy,Acceptable
-550,121000,Female,49,45-54,Democrat,Graduate degree,White,Married,Real and Caused by People,0,12,Yes,,Dumb and happy,Unacceptable
+546,8000,Female,50,45-54,Republican,High school,White,Married,Real and Caused by People,0,6,Yes,About Right,Dumb and happy,DK/REF
+547,60000,Male,39,35-44,Democrat,Graduate degree,White,Married,Real and Caused by People,0,25,No,Too Low,Smart and Sad,DK/REF
+548,167000,Female,34,25-34,Independent,Some college,White,Married,DK/REF,1,36,No,Too Low,Dumb and happy,Acceptable
+549,43000,Male,50,45-54,Independent,High school,White,Married,Real and Caused by People,5,2,No,DK/REF,Dumb and happy,Acceptable
+550,121000,Female,49,45-54,Democrat,Graduate degree,White,Married,Real and Caused by People,0,12,Yes,DK/REF,Dumb and happy,Unacceptable
 551,74000,Female,42,35-44,Democrat,Some college,White,Married,Real and Caused by People,2,3,No,Too Low,Smart and Sad,Acceptable
-552,101000,Female,42,35-44,Democrat,Graduate degree,,Married,Real and Caused by People,0,2,Yes,About Right,Smart and Sad,Unacceptable
-553,360000,Female,65,65+,Independent,Graduate degree,White,Married,Real and Caused by People,0,12,,Too Low,Smart and Sad,Acceptable
+552,101000,Female,42,35-44,Democrat,Graduate degree,DK/REF,Married,Real and Caused by People,0,2,Yes,About Right,Smart and Sad,Unacceptable
+553,360000,Female,65,65+,Independent,Graduate degree,White,Married,Real and Caused by People,0,12,DK/REF,Too Low,Smart and Sad,Acceptable
 554,30000,Female,49,45-54,Democrat,College degree,White,Widowed,Real and Caused by People,0,50,Yes,Too Low,Smart and Sad,Unacceptable
 555,80000,Male,50,45-54,Republican,College degree,White,Married,Real and Caused by People,5,4,No,About Right,Dumb and happy,Acceptable
-556,72000,Other,70,65+,Independent,Graduate degree,,,Not Real At All,0,25,Yes,About Right,Smart and Sad,Unacceptable
-557,81000,Female,27,25-34,,Graduate degree,Latino,In a relationship,Real and Caused by People,0,27,Yes,Too Low,Dumb and happy,Unacceptable
-558,54000,Female,54,45-54,Republican,Some college,White,Married,Real but not Caused by People,0,20,No,,Dumb and happy,Unacceptable
+556,72000,Other,70,65+,Independent,Graduate degree,DK/REF,DK/REF,Not Real At All,0,25,Yes,About Right,Smart and Sad,Unacceptable
+557,81000,Female,27,25-34,DK/REF,Graduate degree,Latino,In a relationship,Real and Caused by People,0,27,Yes,Too Low,Dumb and happy,Unacceptable
+558,54000,Female,54,45-54,Republican,Some college,White,Married,Real but not Caused by People,0,20,No,DK/REF,Dumb and happy,Unacceptable
 559,23000,Male,73,65+,Independent,High school,Asian,Married,Not Real At All,0,3,No,Too High,Smart and Sad,Unacceptable
-560,44000,Female,44,35-44,,Some college,White,Widowed,Real and Caused by People,4,6,Yes,Too Low,Smart and Sad,Acceptable
+560,44000,Female,44,35-44,DK/REF,Some college,White,Widowed,Real and Caused by People,4,6,Yes,Too Low,Smart and Sad,Acceptable
 561,159000,Female,45,45-54,Democrat,College degree,White,Married,Real and Caused by People,0,18,No,Too Low,Smart and Sad,Unacceptable
-562,163000,Male,45,45-54,,Graduate degree,White,Married,Real and Caused by People,2,12,No,Too Low,Dumb and happy,
+562,163000,Male,45,45-54,DK/REF,Graduate degree,White,Married,Real and Caused by People,2,12,No,Too Low,Dumb and happy,DK/REF
 563,44000,Female,80,65+,Democrat,High school,White,Married,Real and Caused by People,0,20,Yes,Too Low,Smart and Sad,Acceptable
 564,47000,Female,45,45-54,Democrat,Other,White,Married,Real and Caused by People,1,20,Yes,Too Low,Smart and Sad,Acceptable
 565,124000,Female,80,65+,Independent,College degree,White,Widowed,Real and Caused by People,0,20,No,About Right,Smart and Sad,Unacceptable
-566,97000,Other,32,25-34,Independent,High school,Latino,Single,Real and Caused by People,0,3,No,,Dumb and happy,Acceptable
+566,97000,Other,32,25-34,Independent,High school,Latino,Single,Real and Caused by People,0,3,No,DK/REF,Dumb and happy,Acceptable
 567,220000,Male,45,45-54,Democrat,College degree,Latino,In a relationship,Real and Caused by People,0,6,Yes,Too Low,Smart and Sad,Acceptable
-568,,Female,24,18-24,Independent,Some college,White,In a relationship,Real but not Caused by People,0,30,Yes,,Smart and Sad,Acceptable
-569,,Male,54,45-54,Republican,Graduate degree,White,Single,Real but not Caused by People,5,3,Yes,,Dumb and happy,Acceptable
+568,,Female,24,18-24,Independent,Some college,White,In a relationship,Real but not Caused by People,0,30,Yes,DK/REF,Smart and Sad,Acceptable
+569,,Male,54,45-54,Republican,Graduate degree,White,Single,Real but not Caused by People,5,3,Yes,DK/REF,Dumb and happy,Acceptable
 570,,Female,43,35-44,Independent,High school,White,Widowed,Real and Caused by People,2,0,No,Too Low,Smart and Sad,Acceptable
 571,,Female,43,35-44,Democrat,College degree,White,Single,Real and Caused by People,,7,No,About Right,Smart and Sad,Acceptable
 572,,Female,31,25-34,Democrat,College degree,Black,Married,Real and Caused by People,5,4,No,Too High,Smart and Sad,Acceptable
-573,,Male,31,25-34,,College degree,Latino,Married,Real and Caused by People,4,20,No,Too Low,,Unacceptable
+573,,Male,31,25-34,DK/REF,College degree,Latino,Married,Real and Caused by People,4,20,No,Too Low,DK/REF,Unacceptable
 574,,Female,71,65+,Republican,College degree,White,Married,Real but not Caused by People,1,10,No,About Right,Dumb and happy,Acceptable
 575,,Male,40,35-44,Independent,Graduate degree,White,Married,Real but not Caused by People,4,6,No,Too Low,Smart and Sad,Acceptable
 576,,Male,28,25-34,Republican,College degree,White,Married,Real but not Caused by People,2,1,No,Too Low,Dumb and happy,Acceptable
-577,,Male,47,45-54,Independent,High school,Black,Single,Real and Caused by People,1,3,No,Too High,,Unacceptable
+577,,Male,47,45-54,Independent,High school,Black,Single,Real and Caused by People,1,3,No,Too High,DK/REF,Unacceptable
 578,,Male,22,18-24,Democrat,Graduate degree,Black,In a relationship,Real and Caused by People,1,20,No,Too Low,Dumb and happy,Unacceptable
 579,,Male,71,65+,Democrat,High school,Black,Single,Real and Caused by People,2,9,No,Too High,Dumb and happy,Acceptable
-580,,Male,77,65+,Republican,Some college,White,Divorced,,1,30,No,Too Low,Smart and Sad,Acceptable
-581,16000,Female,68,65+,Democrat,College degree,Latino,Married,Real and Caused by People,0,2,No,,Dumb and happy,Unacceptable
+580,,Male,77,65+,Republican,Some college,White,Divorced,DK/REF,1,30,No,Too Low,Smart and Sad,Acceptable
+581,16000,Female,68,65+,Democrat,College degree,Latino,Married,Real and Caused by People,0,2,No,DK/REF,Dumb and happy,Unacceptable
 582,,Female,46,45-54,Democrat,College degree,White,Married,Real and Caused by People,1,0,No,About Right,Dumb and happy,Unacceptable
-583,,Female,25,25-34,Democrat,Graduate degree,,Single,Real and Caused by People,1,8,Yes,Too Low,Dumb and happy,Acceptable
-584,,Female,46,45-54,Independent,Graduate degree,White,Married,,3,4,Yes,Too Low,Dumb and happy,Acceptable
+583,,Female,25,25-34,Democrat,Graduate degree,DK/REF,Single,Real and Caused by People,1,8,Yes,Too Low,Dumb and happy,Acceptable
+584,,Female,46,45-54,Independent,Graduate degree,White,Married,DK/REF,3,4,Yes,Too Low,Dumb and happy,Acceptable
 585,,Male,50,45-54,Independent,Graduate degree,Black,Married,Real and Caused by People,0,10,No,About Right,Dumb and happy,Acceptable
-586,,Female,25,25-34,Independent,College degree,Black,Single,Real and Caused by People,0,10,Yes,,Smart and Sad,Acceptable
+586,,Female,25,25-34,Independent,College degree,Black,Single,Real and Caused by People,0,10,Yes,DK/REF,Smart and Sad,Acceptable
 587,,Female,29,25-34,Democrat,High school,White,In a relationship,Real and Caused by People,,25,Yes,Too High,Smart and Sad,Unacceptable
 588,,Male,20,18-24,Republican,Some college,White,Single,Real but not Caused by People,4,20,No,Too High,Smart and Sad,Acceptable
-589,,Male,40,35-44,,Some college,Latino,Married,Real and Caused by People,2,,Yes,Too Low,Smart and Sad,Acceptable
+589,,Male,40,35-44,DK/REF,Some college,Latino,Married,Real and Caused by People,2,,Yes,Too Low,Smart and Sad,Acceptable
 590,,Male,32,25-34,Independent,College degree,White,Single,Real and Caused by People,0,20,No,Too Low,Dumb and happy,Acceptable
-591,,Female,54,45-54,Republican,Some college,White,Married,Real but not Caused by People,0,10,Yes,,Smart and Sad,Unacceptable
-592,,Male,35,35-44,Republican,High school,,In a relationship,Real and Caused by People,2,2,No,About Right,Dumb and happy,Unacceptable
+591,,Female,54,45-54,Republican,Some college,White,Married,Real but not Caused by People,0,10,Yes,DK/REF,Smart and Sad,Unacceptable
+592,,Male,35,35-44,Republican,High school,DK/REF,In a relationship,Real and Caused by People,2,2,No,About Right,Dumb and happy,Unacceptable
 593,,Female,19,18-24,Democrat,Some college,White,Single,Real and Caused by People,0,4,No,Too Low,Dumb and happy,Acceptable
-594,,Female,67,65+,Democrat,Some college,White,Married,Real and Caused by People,0,20,Yes,Too Low,,
+594,,Female,67,65+,Democrat,Some college,White,Married,Real and Caused by People,0,20,Yes,Too Low,DK/REF,DK/REF
 595,,Male,35,35-44,Independent,College degree,White,Married,Real and Caused by People,1,10,No,Too Low,Smart and Sad,Unacceptable
 596,,Female,42,35-44,Republican,Some college,White,Married,Real and Caused by People,0,3,Yes,Too Low,Dumb and happy,Unacceptable
-597,,Male,91,65+,Democrat,High school,Black,Widowed,Real but not Caused by People,,1,No,,,
+597,,Male,91,65+,Democrat,High school,Black,Widowed,Real but not Caused by People,,1,No,DK/REF,DK/REF,DK/REF
 598,,Female,21,18-24,Republican,Some college,White,In a relationship,Not Real At All,5,4,Yes,Too Low,Dumb and happy,Acceptable
 599,,Female,67,65+,Republican,High school,White,Widowed,Real and Caused by People,2,15,Yes,Too Low,Dumb and happy,Acceptable
-600,,Male,32,25-34,,Some college,Black,Single,Real and Caused by People,5,5,No,Too Low,Dumb and happy,Unacceptable
+600,,Male,32,25-34,DK/REF,Some college,Black,Single,Real and Caused by People,5,5,No,Too Low,Dumb and happy,Unacceptable
 601,,Male,30,25-34,Independent,College degree,White,Married,Real and Caused by People,0,10,No,Too Low,Dumb and happy,Unacceptable
 602,,Female,71,65+,Democrat,Graduate degree,White,Married,Real and Caused by People,3,40,No,Too Low,Smart and Sad,Unacceptable
 603,,Male,73,65+,Independent,Graduate degree,White,Married,Real but not Caused by People,0,3,No,Too Low,Dumb and happy,Unacceptable
 604,,Female,38,35-44,Republican,College degree,White,Divorced,Real and Caused by People,0,20,No,About Right,Dumb and happy,Unacceptable
 605,,Female,30,25-34,Democrat,Some college,White,Married,Not Real At All,3,15,No,About Right,Dumb and happy,Unacceptable
-606,,Male,20,18-24,,Some college,White,In a relationship,Real but not Caused by People,5,5,No,About Right,Dumb and happy,Acceptable
-607,,Female,45,45-54,Independent,Graduate degree,White,Married,Real and Caused by People,0,10,,,,Unacceptable
+606,,Male,20,18-24,DK/REF,Some college,White,In a relationship,Real but not Caused by People,5,5,No,About Right,Dumb and happy,Acceptable
+607,,Female,45,45-54,Independent,Graduate degree,White,Married,Real and Caused by People,0,10,DK/REF,DK/REF,DK/REF,Unacceptable
 608,,Female,75,65+,Republican,High school,White,Widowed,Real and Caused by People,0,100,Yes,Too High,Dumb and happy,Unacceptable
-609,,Female,48,45-54,Democrat,Other,White,Married,Real and Caused by People,0,15,No,Too Low,Smart and Sad,
-610,,Male,21,18-24,,Some college,White,In a relationship,Real and Caused by People,4,0,No,Too Low,Dumb and happy,Acceptable
-611,,Male,46,45-54,Independent,High school,Latino,Other,Real and Caused by People,4,,Yes,,Dumb and happy,Unacceptable
+609,,Female,48,45-54,Democrat,Other,White,Married,Real and Caused by People,0,15,No,Too Low,Smart and Sad,DK/REF
+610,,Male,21,18-24,DK/REF,Some college,White,In a relationship,Real and Caused by People,4,0,No,Too Low,Dumb and happy,Acceptable
+611,,Male,46,45-54,Independent,High school,Latino,Other,Real and Caused by People,4,,Yes,DK/REF,Dumb and happy,Unacceptable
 612,,Other,92,65+,Independent,High school,Asian,Divorced,Real and Caused by People,3,0,Yes,Too Low,Dumb and happy,Acceptable
-613,,Male,71,65+,Republican,College degree,White,Widowed,Real and Caused by People,,2,Yes,Too High,,Unacceptable
-614,,Female,36,35-44,,High school,White,Divorced,Real and Caused by People,1,200,Yes,Too Low,Smart and Sad,Unacceptable
+613,,Male,71,65+,Republican,College degree,White,Widowed,Real and Caused by People,,2,Yes,Too High,DK/REF,Unacceptable
+614,,Female,36,35-44,DK/REF,High school,White,Divorced,Real and Caused by People,1,200,Yes,Too Low,Smart and Sad,Unacceptable
 615,,Female,30,25-34,Democrat,High school,White,Single,Real and Caused by People,2,15,Yes,Too Low,Smart and Sad,Unacceptable
 616,,Male,36,35-44,Republican,College degree,White,Married,Real but not Caused by People,2,6,No,About Right,Dumb and happy,Acceptable
-617,,Male,48,45-54,,College degree,,Single,Real and Caused by People,0,90,No,Too High,Smart and Sad,Unacceptable
+617,,Male,48,45-54,DK/REF,College degree,DK/REF,Single,Real and Caused by People,0,90,No,Too High,Smart and Sad,Unacceptable
 618,,Male,43,35-44,Independent,High school,White,Married,Real and Caused by People,5,0,Yes,Too Low,Dumb and happy,Acceptable
 619,,Male,27,25-34,Republican,High school,White,Married,Real and Caused by People,4,4,Yes,Too High,Dumb and happy,Acceptable
 620,,Female,36,35-44,Democrat,Graduate degree,White,Divorced,Real and Caused by People,0,40,Yes,Too Low,Smart and Sad,Acceptable
 621,390000,Male,48,45-54,Democrat,College degree,White,Married,Real and Caused by People,1,5,Yes,Too Low,Smart and Sad,Unacceptable
 622,170000,Male,46,45-54,Democrat,Graduate degree,White,Married,Real and Caused by People,1,6,No,Too Low,Dumb and happy,Acceptable
-623,92000,Male,99,65+,Republican,College degree,,Married,Real and Caused by People,3,15,No,About Right,Dumb and happy,
-624,223000,Female,84,65+,Independent,Graduate degree,Black,Married,,0,10,No,About Right,Smart and Sad,
-625,102000,Male,37,35-44,Independent,High school,Other,Married,Real and Caused by People,3,0,Yes,,Dumb and happy,Unacceptable
-626,68000,Male,44,35-44,Republican,Some college,White,Single,Real and Caused by People,0,10,No,,Dumb and happy,Unacceptable
-627,160000,Male,65,65+,Democrat,College degree,White,Married,Real and Caused by People,0,0,No,About Right,,Unacceptable
+623,92000,Male,99,65+,Republican,College degree,DK/REF,Married,Real and Caused by People,3,15,No,About Right,Dumb and happy,DK/REF
+624,223000,Female,84,65+,Independent,Graduate degree,Black,Married,DK/REF,0,10,No,About Right,Smart and Sad,DK/REF
+625,102000,Male,37,35-44,Independent,High school,Other,Married,Real and Caused by People,3,0,Yes,DK/REF,Dumb and happy,Unacceptable
+626,68000,Male,44,35-44,Republican,Some college,White,Single,Real and Caused by People,0,10,No,DK/REF,Dumb and happy,Unacceptable
+627,160000,Male,65,65+,Democrat,College degree,White,Married,Real and Caused by People,0,0,No,About Right,DK/REF,Unacceptable
 628,70000,Female,38,35-44,Independent,High school,White,Married,Real and Caused by People,0,30,No,Too Low,Dumb and happy,Unacceptable
-629,56000,Male,68,65+,Independent,College degree,,In a relationship,Real and Caused by People,2,15,,Too Low,,
+629,56000,Male,68,65+,Independent,College degree,DK/REF,In a relationship,Real and Caused by People,2,15,DK/REF,Too Low,DK/REF,DK/REF
 630,38000,Male,51,45-54,Republican,College degree,White,Married,Not Real At All,0,8,No,Too Low,Dumb and happy,Unacceptable
 631,64000,Male,54,45-54,Democrat,Some college,White,Married,Not Real At All,0,0,No,Too High,Dumb and happy,Acceptable
 632,124000,Female,37,35-44,Republican,Graduate degree,White,In a relationship,Real but not Caused by People,1,16,Yes,About Right,Smart and Sad,Unacceptable
@@ -635,104 +636,104 @@ id,income,gender,age,age_range,political_affiliation,education,ethnicity,marital
 634,43000,Female,65,65+,Independent,Some college,Black,Widowed,Real and Caused by People,0,100,No,About Right,Dumb and happy,Acceptable
 635,12000,Other,72,65+,Republican,Some college,White,Married,Real and Caused by People,0,52,Yes,Too Low,Dumb and happy,Acceptable
 636,34000,Male,65,65+,Democrat,Some college,White,Divorced,Real and Caused by People,0,10,Yes,Too High,Dumb and happy,Unacceptable
-637,87000,Male,22,18-24,,Some college,White,Divorced,Real and Caused by People,5,0,Yes,,Dumb and happy,
+637,87000,Male,22,18-24,DK/REF,Some college,White,Divorced,Real and Caused by People,5,0,Yes,DK/REF,Dumb and happy,DK/REF
 638,58000,Male,51,45-54,Republican,High school,White,Single,Not Real At All,0,0,No,Too High,Dumb and happy,Unacceptable
-639,260000,Female,43,35-44,Independent,Some college,White,Single,Real and Caused by People,1,18,Yes,,Dumb and happy,Unacceptable
+639,260000,Female,43,35-44,Independent,Some college,White,Single,Real and Caused by People,1,18,Yes,DK/REF,Dumb and happy,Unacceptable
 640,139000,Male,32,25-34,Democrat,College degree,White,Married,Real and Caused by People,2,2,No,About Right,Dumb and happy,Acceptable
-641,211000,Female,65,65+,Independent,College degree,White,Married,Real and Caused by People,0,12,Yes,,,Unacceptable
-642,73000,Female,71,65+,,Some college,Asian,Widowed,Real but not Caused by People,0,1,No,About Right,Dumb and happy,Unacceptable
-643,72000,Male,65,65+,Independent,High school,White,Married,Real but not Caused by People,2,6,,About Right,Smart and Sad,Unacceptable
+641,211000,Female,65,65+,Independent,College degree,White,Married,Real and Caused by People,0,12,Yes,DK/REF,DK/REF,Unacceptable
+642,73000,Female,71,65+,DK/REF,Some college,Asian,Widowed,Real but not Caused by People,0,1,No,About Right,Dumb and happy,Unacceptable
+643,72000,Male,65,65+,Independent,High school,White,Married,Real but not Caused by People,2,6,DK/REF,About Right,Smart and Sad,Unacceptable
 644,9000,Female,40,35-44,Democrat,Graduate degree,Black,Married,Real but not Caused by People,1,20,No,Too High,Dumb and happy,Unacceptable
 645,56000,Male,79,65+,Democrat,Some college,Black,Married,Real and Caused by People,,20,No,Too Low,Smart and Sad,Unacceptable
 646,30000,Female,68,65+,Republican,High school,White,Married,Real but not Caused by People,0,3,No,About Right,Dumb and happy,Unacceptable
-647,101000,Female,51,45-54,Democrat,College degree,White,Married,Real and Caused by People,2,12,Yes,Too Low,,
-648,32000,Male,39,35-44,Republican,College degree,White,Married,Not Real At All,0,12,Yes,Too High,,
+647,101000,Female,51,45-54,Democrat,College degree,White,Married,Real and Caused by People,2,12,Yes,Too Low,DK/REF,DK/REF
+648,32000,Male,39,35-44,Republican,College degree,White,Married,Not Real At All,0,12,Yes,Too High,DK/REF,DK/REF
 649,168000,Female,51,45-54,Independent,College degree,White,Married,Real but not Caused by People,0,24,No,About Right,Dumb and happy,Unacceptable
-650,75000,Male,83,65+,Democrat,Some college,White,Divorced,,0,0,,Too Low,,Unacceptable
-651,27000,Male,52,45-54,Republican,College degree,White,Married,Not Real At All,0,1,No,,Dumb and happy,Acceptable
-652,32000,Male,53,45-54,,Some college,White,Single,Real but not Caused by People,0,2,No,About Right,Dumb and happy,Acceptable
+650,75000,Male,83,65+,Democrat,Some college,White,Divorced,DK/REF,0,0,DK/REF,Too Low,DK/REF,Unacceptable
+651,27000,Male,52,45-54,Republican,College degree,White,Married,Not Real At All,0,1,No,DK/REF,Dumb and happy,Acceptable
+652,32000,Male,53,45-54,DK/REF,Some college,White,Single,Real but not Caused by People,0,2,No,About Right,Dumb and happy,Acceptable
 653,93000,Female,66,65+,Democrat,Graduate degree,White,Married,Real and Caused by People,3,20,No,Too Low,Smart and Sad,Unacceptable
-654,29000,Female,37,35-44,Independent,College degree,White,Single,Not Real At All,2,2,Yes,,Dumb and happy,Acceptable
-655,131000,Male,53,45-54,,High school,White,Married,,0,0,No,,Dumb and happy,Acceptable
+654,29000,Female,37,35-44,Independent,College degree,White,Single,Not Real At All,2,2,Yes,DK/REF,Dumb and happy,Acceptable
+655,131000,Male,53,45-54,DK/REF,High school,White,Married,DK/REF,0,0,No,DK/REF,Dumb and happy,Acceptable
 656,168000,Female,65,65+,Independent,Some college,White,Married,Real and Caused by People,3,,Yes,Too Low,Dumb and happy,Acceptable
 657,62000,Female,18,18-24,Democrat,High school,Black,Single,Real and Caused by People,5,50,No,Too Low,Smart and Sad,Acceptable
-658,10000,Male,43,35-44,Independent,College degree,White,Divorced,Not Real At All,0,50,No,Too High,Dumb and happy,
-659,24000,Female,65,65+,Independent,Some college,White,Married,Real and Caused by People,2,20,No,About Right,,Unacceptable
-660,15000,Female,86,65+,Independent,High school,White,Widowed,Real but not Caused by People,0,,No,,Dumb and happy,Acceptable
-661,107000,Male,76,65+,Democrat,Graduate degree,White,Married,,0,25,No,Too Low,Dumb and happy,
+658,10000,Male,43,35-44,Independent,College degree,White,Divorced,Not Real At All,0,50,No,Too High,Dumb and happy,DK/REF
+659,24000,Female,65,65+,Independent,Some college,White,Married,Real and Caused by People,2,20,No,About Right,DK/REF,Unacceptable
+660,15000,Female,86,65+,Independent,High school,White,Widowed,Real but not Caused by People,0,,No,DK/REF,Dumb and happy,Acceptable
+661,107000,Male,76,65+,Democrat,Graduate degree,White,Married,DK/REF,0,25,No,Too Low,Dumb and happy,DK/REF
 662,204000,Female,35,35-44,Independent,Graduate degree,White,Married,Real and Caused by People,0,45,No,Too Low,Smart and Sad,Unacceptable
-663,75000,Male,40,35-44,Independent,College degree,White,Married,,0,20,Yes,Too Low,Smart and Sad,Acceptable
-664,12000,Female,48,45-54,Democrat,Graduate degree,Black,Divorced,Real and Caused by People,4,15,No,,Smart and Sad,Unacceptable
+663,75000,Male,40,35-44,Independent,College degree,White,Married,DK/REF,0,20,Yes,Too Low,Smart and Sad,Acceptable
+664,12000,Female,48,45-54,Democrat,Graduate degree,Black,Divorced,Real and Caused by People,4,15,No,DK/REF,Smart and Sad,Unacceptable
 665,144000,Male,36,35-44,Independent,College degree,White,Single,Real and Caused by People,0,7,No,Too Low,Smart and Sad,Unacceptable
 666,79000,Female,48,45-54,Democrat,College degree,Black,Single,Real and Caused by People,4,3,No,Too Low,Smart and Sad,Unacceptable
-667,28000,Female,68,65+,Independent,Graduate degree,White,Married,Real and Caused by People,0,50,No,Too Low,Smart and Sad,
+667,28000,Female,68,65+,Independent,Graduate degree,White,Married,Real and Caused by People,0,50,No,Too Low,Smart and Sad,DK/REF
 668,129000,Female,51,45-54,Republican,Some college,White,Married,Real but not Caused by People,,3,Yes,Too High,Dumb and happy,Unacceptable
 669,25000,Male,53,45-54,Independent,Some college,Black,Single,Real and Caused by People,4,10,No,About Right,Smart and Sad,Acceptable
-670,5000,Female,43,35-44,Democrat,Some college,Black,Single,Real and Caused by People,1,2,No,,Smart and Sad,Acceptable
-671,10000,Female,76,65+,Independent,,Latino,Widowed,Real and Caused by People,0,0,Yes,,,
+670,5000,Female,43,35-44,Democrat,Some college,Black,Single,Real and Caused by People,1,2,No,DK/REF,Smart and Sad,Acceptable
+671,10000,Female,76,65+,Independent,DK/REF,Latino,Widowed,Real and Caused by People,0,0,Yes,DK/REF,DK/REF,DK/REF
 672,,Male,44,35-44,Independent,College degree,White,Divorced,Real and Caused by People,0,20,No,Too Low,Dumb and happy,Unacceptable
-673,,Female,75,65+,Republican,Some college,White,Married,Real but not Caused by People,0,4,No,About Right,,Unacceptable
+673,,Female,75,65+,Republican,Some college,White,Married,Real but not Caused by People,0,4,No,About Right,DK/REF,Unacceptable
 674,,Female,35,35-44,Democrat,Some college,Black,In a relationship,Real and Caused by People,0,20,No,Too Low,Smart and Sad,Unacceptable
-675,,Female,43,35-44,Independent,Some college,,Married,Real but not Caused by People,4,3,No,About Right,Smart and Sad,Unacceptable
-676,,Male,30,25-34,,Some college,Latino,Married,Real but not Caused by People,3,7,No,Too Low,Smart and Sad,Acceptable
+675,,Female,43,35-44,Independent,Some college,DK/REF,Married,Real but not Caused by People,4,3,No,About Right,Smart and Sad,Unacceptable
+676,,Male,30,25-34,DK/REF,Some college,Latino,Married,Real but not Caused by People,3,7,No,Too Low,Smart and Sad,Acceptable
 677,,Male,21,18-24,Democrat,High school,Black,Divorced,Not Real At All,0,0,No,About Right,Dumb and happy,Unacceptable
 678,,Male,34,25-34,Independent,College degree,White,Married,Real but not Caused by People,0,5,No,About Right,Dumb and happy,Acceptable
 679,,Male,43,35-44,Independent,Some college,White,Married,Real and Caused by People,3,3,No,Too Low,Smart and Sad,Unacceptable
 680,,Female,45,45-54,Democrat,High school,Latino,Single,Real but not Caused by People,0,0,No,Too High,Smart and Sad,Acceptable
 681,,Male,20,18-24,Democrat,Some college,Latino,Single,Real and Caused by People,0,3,No,About Right,Smart and Sad,Unacceptable
-682,,Female,47,45-54,,Graduate degree,White,Divorced,Real and Caused by People,1,6,Yes,Too Low,Dumb and happy,Unacceptable
-683,,Male,28,25-34,,Some college,Latino,In a relationship,Real and Caused by People,0,5,No,About Right,Smart and Sad,Unacceptable
+682,,Female,47,45-54,DK/REF,Graduate degree,White,Divorced,Real and Caused by People,1,6,Yes,Too Low,Dumb and happy,Unacceptable
+683,,Male,28,25-34,DK/REF,Some college,Latino,In a relationship,Real and Caused by People,0,5,No,About Right,Smart and Sad,Unacceptable
 684,,Female,22,18-24,Democrat,College degree,White,In a relationship,Real and Caused by People,2,40,No,Too Low,Smart and Sad,Acceptable
 685,,Female,42,35-44,Independent,Some college,White,Married,Real and Caused by People,1,10,No,About Right,Smart and Sad,Unacceptable
-686,,Male,37,35-44,,Graduate degree,Asian,Married,,0,5,No,,Smart and Sad,
+686,,Male,37,35-44,DK/REF,Graduate degree,Asian,Married,DK/REF,0,5,No,DK/REF,Smart and Sad,DK/REF
 687,,Female,50,45-54,Independent,Graduate degree,White,Married,Real and Caused by People,2,20,No,Too Low,Smart and Sad,Acceptable
 688,,Female,33,25-34,Democrat,College degree,Black,In a relationship,Real and Caused by People,3,15,Yes,About Right,Smart and Sad,Unacceptable
 689,,Male,47,45-54,Democrat,Graduate degree,White,Married,Real and Caused by People,0,80,No,Too Low,Smart and Sad,Acceptable
 690,,Male,46,45-54,Democrat,Some college,Black,In a relationship,Real and Caused by People,2,0,Yes,Too Low,Dumb and happy,Unacceptable
 691,,Male,27,25-34,Republican,College degree,White,Single,Real and Caused by People,4,150,Yes,Too Low,Dumb and happy,Acceptable
-692,,Male,21,18-24,Democrat,Some college,Black,Single,Real and Caused by People,0,0,Yes,,Smart and Sad,Unacceptable
-693,,Female,75,65+,Republican,College degree,White,Married,Real and Caused by People,0,7,Yes,Too Low,Smart and Sad,
+692,,Male,21,18-24,Democrat,Some college,Black,Single,Real and Caused by People,0,0,Yes,DK/REF,Smart and Sad,Unacceptable
+693,,Female,75,65+,Republican,College degree,White,Married,Real and Caused by People,0,7,Yes,Too Low,Smart and Sad,DK/REF
 694,,Male,24,18-24,Independent,College degree,White,In a relationship,Real and Caused by People,3,15,Yes,Too Low,Dumb and happy,Unacceptable
 695,,Female,24,18-24,Republican,Some college,Latino,Single,Real and Caused by People,1,10,No,Too Low,Smart and Sad,Acceptable
-696,42000,Male,30,25-34,Independent,,Latino,Divorced,Real and Caused by People,2,10,No,Too Low,Dumb and happy,Unacceptable
-697,63000,Male,23,18-24,,High school,White,Single,Real and Caused by People,1,200,No,About Right,Smart and Sad,Unacceptable
+696,42000,Male,30,25-34,Independent,DK/REF,Latino,Divorced,Real and Caused by People,2,10,No,Too Low,Dumb and happy,Unacceptable
+697,63000,Male,23,18-24,DK/REF,High school,White,Single,Real and Caused by People,1,200,No,About Right,Smart and Sad,Unacceptable
 698,32000,Male,51,45-54,Democrat,High school,Latino,Married,Real and Caused by People,5,1,Yes,Too Low,Smart and Sad,Acceptable
 699,58000,Female,53,45-54,Independent,High school,White,In a relationship,Real but not Caused by People,0,0,Yes,Too High,Dumb and happy,Acceptable
 700,135000,Female,51,45-54,Independent,Graduate degree,White,Married,Real and Caused by People,1,3,Yes,Too Low,Smart and Sad,Unacceptable
-701,81000,Female,66,65+,Independent,High school,White,Divorced,,0,100,No,Too High,Dumb and happy,Unacceptable
-702,46000,Male,50,45-54,Democrat,Graduate degree,,Married,Real but not Caused by People,0,5,No,,,
-703,76000,Female,24,18-24,,Graduate degree,Latino,Single,,2,,No,,Smart and Sad,Unacceptable
-704,95000,Female,47,45-54,Republican,Graduate degree,White,Married,,0,100,No,,Dumb and happy,Unacceptable
-705,23000,Female,50,45-54,,Graduate degree,Black,Married,Not Real At All,5,50,No,Too Low,,Acceptable
+701,81000,Female,66,65+,Independent,High school,White,Divorced,DK/REF,0,100,No,Too High,Dumb and happy,Unacceptable
+702,46000,Male,50,45-54,Democrat,Graduate degree,DK/REF,Married,Real but not Caused by People,0,5,No,DK/REF,DK/REF,DK/REF
+703,76000,Female,24,18-24,DK/REF,Graduate degree,Latino,Single,DK/REF,2,,No,DK/REF,Smart and Sad,Unacceptable
+704,95000,Female,47,45-54,Republican,Graduate degree,White,Married,DK/REF,0,100,No,DK/REF,Dumb and happy,Unacceptable
+705,23000,Female,50,45-54,DK/REF,Graduate degree,Black,Married,Not Real At All,5,50,No,Too Low,DK/REF,Acceptable
 706,38000,Male,41,35-44,Republican,College degree,White,Married,Real and Caused by People,0,5,No,About Right,Dumb and happy,Unacceptable
-707,68000,Other,86,65+,Republican,Graduate degree,Latino,Married,,0,25,No,About Right,Dumb and happy,Unacceptable
-708,177000,Female,54,45-54,Republican,Graduate degree,White,Married,,3,6,No,About Right,Dumb and happy,Unacceptable
+707,68000,Other,86,65+,Republican,Graduate degree,Latino,Married,DK/REF,0,25,No,About Right,Dumb and happy,Unacceptable
+708,177000,Female,54,45-54,Republican,Graduate degree,White,Married,DK/REF,3,6,No,About Right,Dumb and happy,Unacceptable
 709,79000,Male,69,65+,Democrat,Some college,White,Married,Real and Caused by People,0,4,Yes,Too High,Dumb and happy,Unacceptable
-710,46000,Female,47,45-54,,High school,Latino,Married,Real and Caused by People,0,5,Yes,,Dumb and happy,
-711,106000,Male,37,35-44,,Some college,,Married,Real but not Caused by People,4,1,Yes,,Smart and Sad,Acceptable
+710,46000,Female,47,45-54,DK/REF,High school,Latino,Married,Real and Caused by People,0,5,Yes,DK/REF,Dumb and happy,DK/REF
+711,106000,Male,37,35-44,DK/REF,Some college,DK/REF,Married,Real but not Caused by People,4,1,Yes,DK/REF,Smart and Sad,Acceptable
 712,73000,Female,38,35-44,Democrat,College degree,White,Married,Real and Caused by People,1,15,No,Too Low,Smart and Sad,Acceptable
 713,18000,Male,46,45-54,Republican,College degree,White,Married,Not Real At All,3,1,No,About Right,Dumb and happy,Acceptable
-714,17000,Female,52,45-54,,High school,White,Married,Real but not Caused by People,0,5,No,,Smart and Sad,Unacceptable
-715,135000,Male,65,65+,,College degree,White,Widowed,Not Real At All,0,0,No,Too High,Dumb and happy,Unacceptable
-716,61000,Male,35,35-44,,College degree,White,Married,Not Real At All,5,2,No,About Right,Dumb and happy,Acceptable
-717,57000,Female,50,45-54,Republican,College degree,White,Married,Not Real At All,3,0,No,,,Unacceptable
+714,17000,Female,52,45-54,DK/REF,High school,White,Married,Real but not Caused by People,0,5,No,DK/REF,Smart and Sad,Unacceptable
+715,135000,Male,65,65+,DK/REF,College degree,White,Widowed,Not Real At All,0,0,No,Too High,Dumb and happy,Unacceptable
+716,61000,Male,35,35-44,DK/REF,College degree,White,Married,Not Real At All,5,2,No,About Right,Dumb and happy,Acceptable
+717,57000,Female,50,45-54,Republican,College degree,White,Married,Not Real At All,3,0,No,DK/REF,DK/REF,Unacceptable
 718,56000,Female,51,45-54,Democrat,Some college,White,Married,Real and Caused by People,1,200,Yes,Too Low,Smart and Sad,Acceptable
 719,14000,Other,96,65+,Independent,Graduate degree,Asian,Divorced,Real and Caused by People,5,1000,Yes,About Right,Dumb and happy,Acceptable
 720,98000,Male,47,45-54,Democrat,Graduate degree,White,Married,Real and Caused by People,0,7,No,Too Low,Dumb and happy,Unacceptable
-721,,Male,30,25-34,Independent,College degree,White,Married,Real but not Caused by People,2,5,No,About Right,,Unacceptable
+721,,Male,30,25-34,Independent,College degree,White,Married,Real but not Caused by People,2,5,No,About Right,DK/REF,Unacceptable
 722,142000,Female,53,45-54,Independent,College degree,White,Married,Real and Caused by People,0,5,No,Too Low,Smart and Sad,Unacceptable
-723,10000,Male,86,65+,Democrat,Graduate degree,White,Widowed,Real and Caused by People,,150,No,Too Low,,Unacceptable
+723,10000,Male,86,65+,Democrat,Graduate degree,White,Widowed,Real and Caused by People,,150,No,Too Low,DK/REF,Unacceptable
 724,211000,Female,48,45-54,Republican,Some college,White,Married,Real and Caused by People,2,1,Yes,About Right,Dumb and happy,Acceptable
 725,47000,Male,51,45-54,Independent,High school,White,Married,Not Real At All,5,0,No,Too High,Dumb and happy,Unacceptable
-726,72000,Female,65,65+,,High school,White,Married,Real and Caused by People,3,50,Yes,Too Low,Dumb and happy,Unacceptable
+726,72000,Female,65,65+,DK/REF,High school,White,Married,Real and Caused by People,3,50,Yes,Too Low,Dumb and happy,Unacceptable
 727,39000,Male,45,45-54,Independent,Some college,Latino,Single,Real and Caused by People,,0,Yes,Too Low,Dumb and happy,Unacceptable
-728,55000,Other,47,45-54,Republican,Some college,Asian,Married,,0,1,Yes,Too High,Dumb and happy,Unacceptable
+728,55000,Other,47,45-54,Republican,Some college,Asian,Married,DK/REF,0,1,Yes,Too High,Dumb and happy,Unacceptable
 729,116000,Male,48,45-54,Independent,Graduate degree,Asian,Married,Real and Caused by People,1,5,No,Too Low,Dumb and happy,Acceptable
 730,9000,Other,48,45-54,Democrat,High school,White,Single,Not Real At All,0,0,Yes,About Right,Dumb and happy,Unacceptable
 731,35000,Male,30,25-34,Republican,High school,White,Single,Not Real At All,4,0,No,About Right,Dumb and happy,Unacceptable
-732,5000,Female,48,45-54,,Other,White,Single,Real and Caused by People,1,30,Yes,Too Low,,Unacceptable
+732,5000,Female,48,45-54,DK/REF,Other,White,Single,Real and Caused by People,1,30,Yes,Too Low,DK/REF,Unacceptable
 733,23000,Female,51,45-54,Democrat,Some college,Black,In a relationship,Real but not Caused by People,2,0,No,About Right,Smart and Sad,Unacceptable
-734,164000,Male,35,35-44,Independent,Graduate degree,Asian,Married,Real and Caused by People,,10,No,Too Low,,Unacceptable
+734,164000,Male,35,35-44,Independent,Graduate degree,Asian,Married,Real and Caused by People,,10,No,Too Low,DK/REF,Unacceptable
 735,90000,Female,48,45-54,Democrat,Some college,White,Single,Real and Caused by People,0,1,Yes,Too Low,Dumb and happy,Acceptable
 736,9000,Male,22,18-24,Independent,High school,White,In a relationship,Not Real At All,3,200,No,About Right,Dumb and happy,Unacceptable
 737,131000,Female,51,45-54,Independent,Some college,White,Married,Real and Caused by People,0,40,No,Too Low,Smart and Sad,Unacceptable
@@ -741,8 +742,8 @@ id,income,gender,age,age_range,political_affiliation,education,ethnicity,marital
 740,,Female,51,45-54,Republican,Some college,White,Divorced,Not Real At All,5,15,Yes,Too High,Smart and Sad,Acceptable
 741,,Male,42,35-44,Republican,High school,Latino,Single,Real and Caused by People,4,1,Yes,Too Low,Smart and Sad,Unacceptable
 742,,Male,84,65+,Democrat,Graduate degree,White,Married,Real and Caused by People,0,30,No,Too Low,Smart and Sad,Acceptable
-743,,Female,77,65+,Republican,,White,Widowed,,0,260,No,Too High,Dumb and happy,Acceptable
-744,,Female,37,35-44,,College degree,White,Married,Real but not Caused by People,0,4,Yes,Too Low,Dumb and happy,Unacceptable
+743,,Female,77,65+,Republican,DK/REF,White,Widowed,DK/REF,0,260,No,Too High,Dumb and happy,Acceptable
+744,,Female,37,35-44,DK/REF,College degree,White,Married,Real but not Caused by People,0,4,Yes,Too Low,Dumb and happy,Unacceptable
 745,,Male,50,45-54,Democrat,Some college,Black,Married,Real and Caused by People,0,0,Yes,Too Low,Smart and Sad,Acceptable
 746,,Male,30,25-34,Republican,Graduate degree,White,Married,Real and Caused by People,3,4,Yes,About Right,Dumb and happy,Unacceptable
 747,,Female,31,25-34,Democrat,Graduate degree,White,Single,Real and Caused by People,0,10,Yes,About Right,Dumb and happy,Acceptable
@@ -751,17 +752,17 @@ id,income,gender,age,age_range,political_affiliation,education,ethnicity,marital
 750,,Male,35,35-44,Republican,Graduate degree,White,Married,Real and Caused by People,2,10,No,About Right,Smart and Sad,Unacceptable
 751,,Female,18,18-24,Republican,Some college,White,In a relationship,Real but not Caused by People,4,9,No,Too High,Dumb and happy,Unacceptable
 752,,Female,77,65+,Independent,College degree,White,Widowed,Real and Caused by People,0,250,Yes,Too Low,Dumb and happy,Unacceptable
-753,,Male,60,55-64,Democrat,College degree,Latino,Single,Real and Caused by People,1,6,No,Too Low,,
-754,,Male,58,55-64,Republican,Some college,White,Divorced,,2,30,No,About Right,Dumb and happy,Acceptable
+753,,Male,60,55-64,Democrat,College degree,Latino,Single,Real and Caused by People,1,6,No,Too Low,DK/REF,DK/REF
+754,,Male,58,55-64,Republican,Some college,White,Divorced,DK/REF,2,30,No,About Right,Dumb and happy,Acceptable
 755,,Male,41,35-44,Independent,Some college,Asian,Divorced,Real but not Caused by People,3,0,Yes,About Right,Dumb and happy,Acceptable
-756,,Male,71,65+,Independent,Graduate degree,Latino,Married,Not Real At All,3,0,Yes,About Right,,Unacceptable
+756,,Male,71,65+,Independent,Graduate degree,Latino,Married,Not Real At All,3,0,Yes,About Right,DK/REF,Unacceptable
 757,,Female,61,55-64,Democrat,Some college,Black,Married,Real but not Caused by People,0,0,Yes,Too High,Smart and Sad,Unacceptable
 758,,Female,34,25-34,Democrat,Some college,White,Married,Real and Caused by People,,10,No,Too Low,Smart and Sad,Unacceptable
 759,,Male,61,55-64,Republican,College degree,White,Married,Not Real At All,2,3,No,Too High,Smart and Sad,Unacceptable
-760,,Male,24,18-24,,Graduate degree,Asian,Single,Real and Caused by People,4,12,No,Too Low,Smart and Sad,Unacceptable
-761,,Male,70,65+,Independent,High school,White,Married,Real and Caused by People,3,2,Yes,,Dumb and happy,Unacceptable
+760,,Male,24,18-24,DK/REF,Graduate degree,Asian,Single,Real and Caused by People,4,12,No,Too Low,Smart and Sad,Unacceptable
+761,,Male,70,65+,Independent,High school,White,Married,Real and Caused by People,3,2,Yes,DK/REF,Dumb and happy,Unacceptable
 762,,Female,21,18-24,Democrat,Some college,Asian,Single,Real and Caused by People,1,25,No,Too Low,Smart and Sad,Unacceptable
-763,,Female,67,65+,,Some college,White,Married,Real and Caused by People,5,0,No,About Right,Dumb and happy,Acceptable
+763,,Female,67,65+,DK/REF,Some college,White,Married,Real and Caused by People,5,0,No,About Right,Dumb and happy,Acceptable
 764,,Female,70,65+,Independent,College degree,White,Married,Real but not Caused by People,2,5,No,About Right,Smart and Sad,Unacceptable
 765,,Male,80,65+,Independent,Graduate degree,White,Married,Real and Caused by People,0,30,No,Too Low,Smart and Sad,Acceptable
 766,,Male,41,35-44,Independent,High school,White,Divorced,Real and Caused by People,0,5,No,Too Low,Smart and Sad,Unacceptable
@@ -769,8 +770,8 @@ id,income,gender,age,age_range,political_affiliation,education,ethnicity,marital
 768,,Female,54,45-54,Democrat,Graduate degree,White,Married,Real and Caused by People,0,5,No,Too Low,Smart and Sad,Unacceptable
 769,,Male,36,35-44,Independent,Some college,White,Married,Real and Caused by People,1,10,No,Too Low,Smart and Sad,Acceptable
 770,,Female,38,35-44,Independent,Some college,Black,Single,Not Real At All,1,5,Yes,Too Low,Dumb and happy,Unacceptable
-771,,Male,42,35-44,Independent,College degree,,,,,0,No,,Smart and Sad,
-772,,Male,23,18-24,Democrat,Some college,,Single,Real and Caused by People,4,0,Yes,Too Low,Smart and Sad,Acceptable
+771,,Male,42,35-44,Independent,College degree,DK/REF,DK/REF,DK/REF,,0,No,DK/REF,Smart and Sad,DK/REF
+772,,Male,23,18-24,Democrat,Some college,DK/REF,Single,Real and Caused by People,4,0,Yes,Too Low,Smart and Sad,Acceptable
 773,,Male,63,55-64,Republican,College degree,White,Married,Real and Caused by People,0,0,Yes,Too Low,Dumb and happy,Unacceptable
 774,,Male,32,25-34,Independent,College degree,White,Single,Real and Caused by People,3,10,No,Too High,Smart and Sad,Unacceptable
 775,,Female,62,55-64,Independent,College degree,White,Married,Real but not Caused by People,3,10,No,Too Low,Dumb and happy,Acceptable
@@ -785,93 +786,93 @@ id,income,gender,age,age_range,political_affiliation,education,ethnicity,marital
 784,,Male,54,45-54,Independent,Graduate degree,Black,In a relationship,Real and Caused by People,0,4,No,Too Low,Smart and Sad,Acceptable
 785,,Female,45,45-54,Democrat,Some college,Black,Single,Real and Caused by People,0,60,Yes,About Right,Dumb and happy,Unacceptable
 786,,Female,50,45-54,Democrat,College degree,Latino,Married,Real and Caused by People,0,20,No,Too Low,Smart and Sad,Unacceptable
-787,,Female,35,35-44,,College degree,White,Single,,2,3,Yes,About Right,Smart and Sad,Unacceptable
+787,,Female,35,35-44,DK/REF,College degree,White,Single,DK/REF,2,3,Yes,About Right,Smart and Sad,Unacceptable
 788,,Male,48,45-54,Independent,High school,White,Separated,Real and Caused by People,2,1,No,Too High,Dumb and happy,Unacceptable
-789,,Male,50,45-54,Independent,High school,White,Single,Real and Caused by People,,,Yes,Too High,,Acceptable
+789,,Male,50,45-54,Independent,High school,White,Single,Real and Caused by People,,,Yes,Too High,DK/REF,Acceptable
 790,,Male,38,35-44,Independent,Some college,Asian,Single,Real and Caused by People,0,10,No,Too Low,Dumb and happy,Unacceptable
 791,,Male,36,35-44,Independent,Graduate degree,Latino,Single,Real and Caused by People,2,7,No,About Right,Dumb and happy,Acceptable
 792,,Female,67,65+,Democrat,Graduate degree,White,Widowed,Real and Caused by People,2,70,Yes,Too Low,Smart and Sad,Unacceptable
-793,176000,Male,38,35-44,,Graduate degree,White,Single,,3,3,No,Too Low,Smart and Sad,Acceptable
-794,92000,Male,58,55-64,,Graduate degree,White,Married,Not Real At All,0,20,No,Too High,Dumb and happy,Acceptable
-795,117000,Male,42,35-44,Republican,Some college,White,In a relationship,Real but not Caused by People,,4,No,,Dumb and happy,Acceptable
+793,176000,Male,38,35-44,DK/REF,Graduate degree,White,Single,DK/REF,3,3,No,Too Low,Smart and Sad,Acceptable
+794,92000,Male,58,55-64,DK/REF,Graduate degree,White,Married,Not Real At All,0,20,No,Too High,Dumb and happy,Acceptable
+795,117000,Male,42,35-44,Republican,Some college,White,In a relationship,Real but not Caused by People,,4,No,DK/REF,Dumb and happy,Acceptable
 796,137000,Male,51,45-54,Independent,College degree,White,Widowed,Not Real At All,0,2,No,Too Low,Dumb and happy,Unacceptable
 797,39000,Female,48,45-54,Independent,Some college,White,Married,Not Real At All,4,40,Yes,Too Low,Dumb and happy,Unacceptable
-798,80000,Female,37,35-44,Independent,High school,White,In a relationship,Real but not Caused by People,0,100,No,,Dumb and happy,Unacceptable
+798,80000,Female,37,35-44,Independent,High school,White,In a relationship,Real but not Caused by People,0,100,No,DK/REF,Dumb and happy,Unacceptable
 799,60000,Male,50,45-54,Democrat,High school,Black,Married,Real and Caused by People,1,5,No,About Right,Smart and Sad,Unacceptable
 800,114000,Female,45,45-54,Independent,Some college,White,Married,Real and Caused by People,0,30,Yes,Too Low,Dumb and happy,Acceptable
 801,89000,Male,52,45-54,Republican,Some college,White,Married,Real but not Caused by People,2,50,No,About Right,Dumb and happy,Unacceptable
-802,11000,Female,41,35-44,,Some college,White,Divorced,Real and Caused by People,5,200,No,,Dumb and happy,Acceptable
+802,11000,Female,41,35-44,DK/REF,Some college,White,Divorced,Real and Caused by People,5,200,No,DK/REF,Dumb and happy,Acceptable
 803,16000,Female,65,65+,Democrat,Some college,Latino,Married,Real and Caused by People,1,2,No,About Right,Smart and Sad,Unacceptable
 804,125000,Male,53,45-54,Republican,College degree,White,Married,Real and Caused by People,0,0,No,Too Low,Dumb and happy,Acceptable
-805,92000,Male,43,35-44,Independent,High school,White,Widowed,Real and Caused by People,4,0,No,,Dumb and happy,Unacceptable
+805,92000,Male,43,35-44,Independent,High school,White,Widowed,Real and Caused by People,4,0,No,DK/REF,Dumb and happy,Unacceptable
 806,161000,Male,28,25-34,Independent,College degree,White,Single,Real and Caused by People,0,1,No,About Right,Dumb and happy,Acceptable
 807,74000,Other,22,18-24,Independent,College degree,Latino,Married,Real and Caused by People,2,6,No,Too Low,Dumb and happy,Unacceptable
 808,148000,Female,58,55-64,Independent,Graduate degree,White,Married,Real and Caused by People,0,40,No,Too Low,Dumb and happy,Acceptable
 809,85000,Female,58,55-64,Republican,High school,White,Widowed,Real and Caused by People,0,0,Yes,Too Low,Dumb and happy,Unacceptable
 810,44000,Male,54,45-54,Democrat,Some college,White,Divorced,Real and Caused by People,0,0,No,Too Low,Smart and Sad,Unacceptable
 811,165000,Male,65,65+,Independent,Graduate degree,White,Married,Real but not Caused by People,0,5,No,About Right,Dumb and happy,Acceptable
-812,175000,Other,92,65+,,Graduate degree,,Married,Real and Caused by People,,100,Yes,Too Low,,Acceptable
+812,175000,Other,92,65+,DK/REF,Graduate degree,DK/REF,Married,Real and Caused by People,,100,Yes,Too Low,DK/REF,Acceptable
 813,14000,Male,65,65+,Independent,Graduate degree,White,In a relationship,Not Real At All,0,6,No,Too High,Dumb and happy,Acceptable
-814,179000,Male,51,45-54,,College degree,White,Married,Not Real At All,1,5,No,,,Acceptable
+814,179000,Male,51,45-54,DK/REF,College degree,White,Married,Not Real At All,1,5,No,DK/REF,DK/REF,Acceptable
 815,62000,Other,56,55-64,Democrat,High school,White,Married,Real and Caused by People,3,16,Yes,Too High,Dumb and happy,Acceptable
 816,179000,Female,49,45-54,Independent,College degree,Latino,Married,Real and Caused by People,0,15,Yes,Too Low,Dumb and happy,Unacceptable
 817,39000,Female,49,45-54,Republican,High school,White,Divorced,Real but not Caused by People,1,3,Yes,Too Low,Dumb and happy,Unacceptable
-818,85000,Female,63,55-64,Independent,High school,,Single,,0,0,Yes,,Smart and Sad,Acceptable
+818,85000,Female,63,55-64,Independent,High school,DK/REF,Single,DK/REF,0,0,Yes,DK/REF,Smart and Sad,Acceptable
 819,45000,Female,58,55-64,Independent,High school,White,Single,Real and Caused by People,1,3,No,About Right,Smart and Sad,Unacceptable
-820,37000,Female,59,55-64,,Graduate degree,Black,Divorced,Real and Caused by People,1,1,Yes,Too Low,Smart and Sad,Acceptable
+820,37000,Female,59,55-64,DK/REF,Graduate degree,Black,Divorced,Real and Caused by People,1,1,Yes,Too Low,Smart and Sad,Acceptable
 821,148000,Female,60,55-64,Republican,College degree,White,Married,Real but not Caused by People,0,20,No,About Right,Dumb and happy,Unacceptable
 822,80000,Female,55,55-64,Republican,College degree,White,Married,Real but not Caused by People,3,20,Yes,About Right,Dumb and happy,Acceptable
 823,40000,Female,61,55-64,Democrat,Some college,Black,Single,Real but not Caused by People,2,100,No,About Right,Smart and Sad,Unacceptable
 824,181000,Male,53,45-54,Republican,High school,White,Married,Real and Caused by People,1,2,Yes,About Right,Dumb and happy,Acceptable
-825,65000,Female,55,55-64,Independent,College degree,White,Married,Real and Caused by People,2,10,No,,Dumb and happy,Acceptable
+825,65000,Female,55,55-64,Independent,College degree,White,Married,Real and Caused by People,2,10,No,DK/REF,Dumb and happy,Acceptable
 826,76000,Female,57,55-64,Democrat,Some college,White,Married,Real and Caused by People,1,8,Yes,Too Low,Dumb and happy,Unacceptable
-827,90000,,56,55-64,Democrat,College degree,White,Married,Real and Caused by People,,4,No,About Right,Dumb and happy,Unacceptable
+827,90000,DK/REF,56,55-64,Democrat,College degree,White,Married,Real and Caused by People,,4,No,About Right,Dumb and happy,Unacceptable
 828,74000,Male,49,45-54,Republican,Some college,White,Married,Not Real At All,2,12,No,About Right,Smart and Sad,Unacceptable
 829,162000,Male,50,45-54,Republican,College degree,White,Married,Real but not Caused by People,1,20,No,Too High,Dumb and happy,Unacceptable
-830,45000,Male,83,65+,,High school,White,Widowed,Not Real At All,0,12,Yes,Too High,,Acceptable
+830,45000,Male,83,65+,DK/REF,High school,White,Widowed,Not Real At All,0,12,Yes,Too High,DK/REF,Acceptable
 831,,Male,45,45-54,Independent,College degree,White,Married,Real and Caused by People,1,25,No,Too Low,Dumb and happy,Unacceptable
 832,,Female,57,55-64,Democrat,Some college,White,Single,Real and Caused by People,1,20,Yes,Too Low,Smart and Sad,Acceptable
-833,,Male,80,65+,Republican,Some college,White,Married,Not Real At All,0,0,No,,Dumb and happy,Unacceptable
-834,,Male,70,65+,Independent,Graduate degree,White,Married,Real but not Caused by People,0,30,Yes,,,
-835,,Female,50,45-54,,High school,Latino,Married,Real and Caused by People,4,1,No,,Dumb and happy,Acceptable
+833,,Male,80,65+,Republican,Some college,White,Married,Not Real At All,0,0,No,DK/REF,Dumb and happy,Unacceptable
+834,,Male,70,65+,Independent,Graduate degree,White,Married,Real but not Caused by People,0,30,Yes,DK/REF,DK/REF,DK/REF
+835,,Female,50,45-54,DK/REF,High school,Latino,Married,Real and Caused by People,4,1,No,DK/REF,Dumb and happy,Acceptable
 836,,Male,42,35-44,Democrat,College degree,White,Married,Real and Caused by People,1,12,No,Too Low,Smart and Sad,Unacceptable
-837,,Male,54,45-54,Independent,Some college,White,Divorced,Real but not Caused by People,0,12,Yes,,Dumb and happy,Unacceptable
-838,,Male,72,65+,,Graduate degree,White,Married,Not Real At All,,5,No,,Dumb and happy,
+837,,Male,54,45-54,Independent,Some college,White,Divorced,Real but not Caused by People,0,12,Yes,DK/REF,Dumb and happy,Unacceptable
+838,,Male,72,65+,DK/REF,Graduate degree,White,Married,Not Real At All,,5,No,DK/REF,Dumb and happy,DK/REF
 839,,Female,49,45-54,Republican,Graduate degree,White,Married,Real and Caused by People,2,12,No,About Right,Dumb and happy,Unacceptable
-840,,Male,60,55-64,,Some college,White,Single,Real and Caused by People,3,6,No,Too Low,Dumb and happy,Unacceptable
-841,,Male,54,45-54,Democrat,High school,White,Single,,,2,,,Dumb and happy,Unacceptable
-842,,Male,54,45-54,Republican,Some college,White,Divorced,Real and Caused by People,0,1,No,Too High,,Acceptable
-843,,Female,49,45-54,,High school,White,Separated,Real and Caused by People,0,0,Yes,,Smart and Sad,Acceptable
+840,,Male,60,55-64,DK/REF,Some college,White,Single,Real and Caused by People,3,6,No,Too Low,Dumb and happy,Unacceptable
+841,,Male,54,45-54,Democrat,High school,White,Single,DK/REF,,2,DK/REF,DK/REF,Dumb and happy,Unacceptable
+842,,Male,54,45-54,Republican,Some college,White,Divorced,Real and Caused by People,0,1,No,Too High,DK/REF,Acceptable
+843,,Female,49,45-54,DK/REF,High school,White,Separated,Real and Caused by People,0,0,Yes,DK/REF,Smart and Sad,Acceptable
 844,,Male,27,25-34,Independent,Some college,White,Married,Real and Caused by People,,2,No,Too Low,Dumb and happy,Unacceptable
-845,,Male,30,25-34,,High school,White,Married,Real but not Caused by People,2,20,No,,Smart and Sad,Unacceptable
+845,,Male,30,25-34,DK/REF,High school,White,Married,Real but not Caused by People,2,20,No,DK/REF,Smart and Sad,Unacceptable
 846,,Male,25,25-34,Independent,Other,White,In a relationship,Real but not Caused by People,2,3,No,Too High,Smart and Sad,Acceptable
-847,,Male,60,55-64,,Some college,,Married,Real but not Caused by People,3,4,Yes,About Right,Dumb and happy,Unacceptable
+847,,Male,60,55-64,DK/REF,Some college,DK/REF,Married,Real but not Caused by People,3,4,Yes,About Right,Dumb and happy,Unacceptable
 848,157000,Female,46,45-54,Republican,College degree,Asian,Married,Real and Caused by People,3,6,Yes,About Right,Smart and Sad,Acceptable
 849,161000,Male,35,35-44,Democrat,College degree,White,Married,Real but not Caused by People,4,30,Yes,Too High,Smart and Sad,Acceptable
-850,41000,Female,62,55-64,Republican,Graduate degree,White,Widowed,Not Real At All,0,20,,About Right,Dumb and happy,Acceptable
-851,103000,Male,60,55-64,Republican,College degree,White,Married,Not Real At All,0,4,No,,,
+850,41000,Female,62,55-64,Republican,Graduate degree,White,Widowed,Not Real At All,0,20,DK/REF,About Right,Dumb and happy,Acceptable
+851,103000,Male,60,55-64,Republican,College degree,White,Married,Not Real At All,0,4,No,DK/REF,DK/REF,DK/REF
 852,91000,Male,65,65+,Republican,College degree,White,Married,Real but not Caused by People,0,0,No,About Right,Smart and Sad,Acceptable
-853,188000,Male,47,45-54,,College degree,White,Married,,1,8,No,Too Low,Dumb and happy,
+853,188000,Male,47,45-54,DK/REF,College degree,White,Married,DK/REF,1,8,No,Too Low,Dumb and happy,DK/REF
 854,21000,Female,43,35-44,Independent,High school,White,In a relationship,Not Real At All,4,4,No,About Right,Dumb and happy,Unacceptable
 855,103000,Male,58,55-64,Independent,Some college,White,Married,Real but not Caused by People,0,5,No,Too High,Dumb and happy,Unacceptable
-856,27000,Male,59,55-64,Independent,Graduate degree,White,Married,Real but not Caused by People,0,16,No,,Smart and Sad,
+856,27000,Male,59,55-64,Independent,Graduate degree,White,Married,Real but not Caused by People,0,16,No,DK/REF,Smart and Sad,DK/REF
 857,326000,Female,58,55-64,Democrat,Graduate degree,White,Married,Real and Caused by People,1,40,Yes,Too Low,Smart and Sad,Unacceptable
 858,74000,Female,66,65+,Democrat,Some college,White,Married,Real and Caused by People,0,12,Yes,Too Low,Dumb and happy,Acceptable
 859,500000,Male,42,35-44,Democrat,Graduate degree,White,Married,Real and Caused by People,0,15,No,Too Low,Smart and Sad,Unacceptable
-860,86000,Male,60,55-64,Democrat,,,Married,Real and Caused by People,0,10,No,Too High,Dumb and happy,Unacceptable
-861,77000,Other,55,55-64,Independent,Graduate degree,Black,Married,Real but not Caused by People,5,25,Yes,,Dumb and happy,Unacceptable
-862,500000,Female,70,65+,Independent,Graduate degree,White,Married,Real and Caused by People,0,10,No,About Right,Smart and Sad,
+860,86000,Male,60,55-64,Democrat,DK/REF,DK/REF,Married,Real and Caused by People,0,10,No,Too High,Dumb and happy,Unacceptable
+861,77000,Other,55,55-64,Independent,Graduate degree,Black,Married,Real but not Caused by People,5,25,Yes,DK/REF,Dumb and happy,Unacceptable
+862,500000,Female,70,65+,Independent,Graduate degree,White,Married,Real and Caused by People,0,10,No,About Right,Smart and Sad,DK/REF
 863,47000,Male,47,45-54,Democrat,College degree,White,Married,Real and Caused by People,5,2,No,Too Low,Dumb and happy,Unacceptable
-864,88000,Female,62,55-64,,High school,Black,Separated,Real and Caused by People,3,,No,About Right,,
-865,56000,Female,53,45-54,Independent,Other,White,Married,Real and Caused by People,0,30,Yes,About Right,Dumb and happy,
-866,68000,Male,72,65+,Republican,Graduate degree,White,Single,Real and Caused by People,0,10,No,Too Low,Dumb and happy,
-867,153000,Female,60,55-64,Republican,Some college,White,Married,Real and Caused by People,0,5,Yes,,,
+864,88000,Female,62,55-64,DK/REF,High school,Black,Separated,Real and Caused by People,3,,No,About Right,DK/REF,DK/REF
+865,56000,Female,53,45-54,Independent,Other,White,Married,Real and Caused by People,0,30,Yes,About Right,Dumb and happy,DK/REF
+866,68000,Male,72,65+,Republican,Graduate degree,White,Single,Real and Caused by People,0,10,No,Too Low,Dumb and happy,DK/REF
+867,153000,Female,60,55-64,Republican,Some college,White,Married,Real and Caused by People,0,5,Yes,DK/REF,DK/REF,DK/REF
 868,64000,Female,51,45-54,Republican,Some college,Other,Married,Real and Caused by People,3,100,No,About Right,Smart and Sad,Unacceptable
 869,138000,Male,51,45-54,Republican,High school,White,Married,Real but not Caused by People,1,6,No,About Right,Smart and Sad,Unacceptable
-870,79000,Female,50,45-54,,College degree,White,Married,Real but not Caused by People,0,20,Yes,Too Low,Smart and Sad,Acceptable
+870,79000,Female,50,45-54,DK/REF,College degree,White,Married,Real but not Caused by People,0,20,Yes,Too Low,Smart and Sad,Acceptable
 871,64000,Male,60,55-64,Republican,College degree,White,Married,Real but not Caused by People,0,3,No,About Right,Smart and Sad,Acceptable
 872,124000,Female,50,45-54,Democrat,Graduate degree,White,Married,Real and Caused by People,0,50,No,Too Low,Smart and Sad,Acceptable
-873,113000,Female,58,55-64,,Some college,Other,In a relationship,Real and Caused by People,0,2,No,,Smart and Sad,Unacceptable
+873,113000,Female,58,55-64,DK/REF,Some college,Other,In a relationship,Real and Caused by People,0,2,No,DK/REF,Smart and Sad,Unacceptable
 874,155000,Male,55,55-64,Independent,College degree,White,In a relationship,Real but not Caused by People,0,6,No,Too Low,Smart and Sad,Acceptable
 875,,Male,47,45-54,Independent,Graduate degree,White,Married,Real and Caused by People,2,22,No,Too Low,Smart and Sad,Unacceptable
 876,,Male,61,55-64,Independent,Some college,White,Married,Real and Caused by People,0,0,No,Too High,Dumb and happy,Acceptable
@@ -879,123 +880,123 @@ id,income,gender,age,age_range,political_affiliation,education,ethnicity,marital
 878,,Male,56,55-64,Independent,College degree,Black,Widowed,Real and Caused by People,0,50,Yes,About Right,Smart and Sad,Unacceptable
 879,,Female,69,65+,Independent,High school,White,Widowed,Real and Caused by People,0,40,No,About Right,Dumb and happy,Acceptable
 880,,Female,50,45-54,Independent,College degree,White,Separated,Real and Caused by People,0,12,No,Too Low,Smart and Sad,Acceptable
-881,,Male,52,45-54,Republican,Graduate degree,Asian,Married,Not Real At All,,4,,Too High,Dumb and happy,Unacceptable
-882,,Female,18,18-24,,High school,Black,In a relationship,Real and Caused by People,4,2,No,Too High,Dumb and happy,Acceptable
+881,,Male,52,45-54,Republican,Graduate degree,Asian,Married,Not Real At All,,4,DK/REF,Too High,Dumb and happy,Unacceptable
+882,,Female,18,18-24,DK/REF,High school,Black,In a relationship,Real and Caused by People,4,2,No,Too High,Dumb and happy,Acceptable
 883,,Female,63,55-64,Independent,Some college,White,Married,Real but not Caused by People,2,2,No,Too Low,Dumb and happy,Unacceptable
 884,,Female,55,55-64,Republican,Some college,White,Married,Not Real At All,0,60,No,Too High,Smart and Sad,Acceptable
-885,13000,Male,45,45-54,Democrat,College degree,,Married,Real and Caused by People,0,12,No,Too Low,Dumb and happy,Acceptable
-886,100000,Male,50,45-54,,Graduate degree,,In a relationship,Real but not Caused by People,0,12,No,About Right,Smart and Sad,Acceptable
-887,,Female,56,55-64,Democrat,Other,Other,Married,Real and Caused by People,2,1,Yes,Too High,,Acceptable
+885,13000,Male,45,45-54,Democrat,College degree,DK/REF,Married,Real and Caused by People,0,12,No,Too Low,Dumb and happy,Acceptable
+886,100000,Male,50,45-54,DK/REF,Graduate degree,DK/REF,In a relationship,Real but not Caused by People,0,12,No,About Right,Smart and Sad,Acceptable
+887,,Female,56,55-64,Democrat,Other,Other,Married,Real and Caused by People,2,1,Yes,Too High,DK/REF,Acceptable
 888,,Female,66,65+,Democrat,Graduate degree,White,Married,Real and Caused by People,3,20,No,Too Low,Smart and Sad,Unacceptable
-889,,Male,55,55-64,Independent,High school,White,Married,Real and Caused by People,5,3,No,,Dumb and happy,Acceptable
-890,,Female,27,25-34,,Some college,,Single,Real and Caused by People,1,17,Yes,Too Low,Smart and Sad,Acceptable
+889,,Male,55,55-64,Independent,High school,White,Married,Real and Caused by People,5,3,No,DK/REF,Dumb and happy,Acceptable
+890,,Female,27,25-34,DK/REF,Some college,DK/REF,Single,Real and Caused by People,1,17,Yes,Too Low,Smart and Sad,Acceptable
 891,,Female,21,18-24,Independent,Some college,Latino,Single,Real and Caused by People,3,13,No,Too Low,Smart and Sad,Unacceptable
-892,,Female,58,55-64,Democrat,College degree,White,Divorced,,0,200,Yes,Too Low,,Acceptable
+892,,Female,58,55-64,Democrat,College degree,White,Divorced,DK/REF,0,200,Yes,Too Low,DK/REF,Acceptable
 893,,Female,46,45-54,Independent,College degree,White,Divorced,Real and Caused by People,1,5,Yes,About Right,Dumb and happy,Acceptable
-894,,Male,37,35-44,,High school,,Single,Real and Caused by People,5,7,Yes,About Right,Dumb and happy,Acceptable
-895,,Male,21,18-24,Republican,Some college,Latino,Single,,0,0,No,About Right,Dumb and happy,Acceptable
+894,,Male,37,35-44,DK/REF,High school,DK/REF,Single,Real and Caused by People,5,7,Yes,About Right,Dumb and happy,Acceptable
+895,,Male,21,18-24,Republican,Some college,Latino,Single,DK/REF,0,0,No,About Right,Dumb and happy,Acceptable
 896,,Female,33,25-34,Independent,College degree,Black,Other,Real and Caused by People,5,50,Yes,About Right,Smart and Sad,Unacceptable
-897,,Male,50,45-54,Republican,Graduate degree,White,Married,Not Real At All,0,12,No,About Right,,Acceptable
-898,,Female,22,18-24,,College degree,White,Single,Real and Caused by People,2,6,Yes,Too Low,Smart and Sad,Acceptable
-899,,Male,45,45-54,,Some college,Black,Divorced,Real and Caused by People,3,2,Yes,Too Low,Smart and Sad,Acceptable
-900,,Male,33,25-34,Republican,Graduate degree,White,Married,,1,10,No,About Right,Smart and Sad,Acceptable
+897,,Male,50,45-54,Republican,Graduate degree,White,Married,Not Real At All,0,12,No,About Right,DK/REF,Acceptable
+898,,Female,22,18-24,DK/REF,College degree,White,Single,Real and Caused by People,2,6,Yes,Too Low,Smart and Sad,Acceptable
+899,,Male,45,45-54,DK/REF,Some college,Black,Divorced,Real and Caused by People,3,2,Yes,Too Low,Smart and Sad,Acceptable
+900,,Male,33,25-34,Republican,Graduate degree,White,Married,DK/REF,1,10,No,About Right,Smart and Sad,Acceptable
 901,,Female,29,25-34,Democrat,College degree,Asian,Single,Real and Caused by People,2,100,Yes,Too Low,Smart and Sad,Acceptable
 902,,Male,30,25-34,Democrat,College degree,Latino,In a relationship,Real and Caused by People,3,5,No,Too High,Smart and Sad,Unacceptable
 903,,Male,67,65+,Democrat,Some college,White,Married,Real and Caused by People,3,4,Yes,Too Low,Dumb and happy,Unacceptable
-904,,Male,57,55-64,Independent,Some college,Black,Divorced,Real and Caused by People,0,3,No,,,
+904,,Male,57,55-64,Independent,Some college,Black,Divorced,Real and Caused by People,0,3,No,DK/REF,DK/REF,DK/REF
 905,,Male,20,18-24,Democrat,High school,Black,Married,Real and Caused by People,1,1,No,Too Low,Smart and Sad,Unacceptable
-906,,Female,51,45-54,,Graduate degree,Asian,Married,Real and Caused by People,0,1,No,About Right,Smart and Sad,Acceptable
-907,,Female,48,45-54,,Some college,White,Divorced,Real but not Caused by People,0,3,No,,Smart and Sad,
-908,,Male,63,55-64,Republican,College degree,White,Married,Real but not Caused by People,0,80,No,About Right,Dumb and happy,
-909,,Male,72,65+,,Graduate degree,White,Married,Real and Caused by People,0,5,No,Too Low,Dumb and happy,Acceptable
-910,,Female,61,55-64,Democrat,High school,White,Single,Real and Caused by People,1,100,Yes,,Smart and Sad,Acceptable
-911,,Male,59,55-64,Democrat,Graduate degree,White,Married,Real and Caused by People,1,5,No,Too Low,Dumb and happy,
+906,,Female,51,45-54,DK/REF,Graduate degree,Asian,Married,Real and Caused by People,0,1,No,About Right,Smart and Sad,Acceptable
+907,,Female,48,45-54,DK/REF,Some college,White,Divorced,Real but not Caused by People,0,3,No,DK/REF,Smart and Sad,DK/REF
+908,,Male,63,55-64,Republican,College degree,White,Married,Real but not Caused by People,0,80,No,About Right,Dumb and happy,DK/REF
+909,,Male,72,65+,DK/REF,Graduate degree,White,Married,Real and Caused by People,0,5,No,Too Low,Dumb and happy,Acceptable
+910,,Female,61,55-64,Democrat,High school,White,Single,Real and Caused by People,1,100,Yes,DK/REF,Smart and Sad,Acceptable
+911,,Male,59,55-64,Democrat,Graduate degree,White,Married,Real and Caused by People,1,5,No,Too Low,Dumb and happy,DK/REF
 912,,Male,57,55-64,Independent,College degree,Latino,Married,Not Real At All,0,3,No,About Right,Dumb and happy,Acceptable
-913,,Male,50,45-54,,College degree,White,Single,Real and Caused by People,5,2,No,Too High,,Acceptable
+913,,Male,50,45-54,DK/REF,College degree,White,Single,Real and Caused by People,5,2,No,Too High,DK/REF,Acceptable
 914,,Female,27,25-34,Democrat,Graduate degree,White,Married,Real and Caused by People,0,25,No,Too Low,Smart and Sad,Unacceptable
-915,,Male,80,65+,Democrat,College degree,,Married,Real but not Caused by People,,20,No,Too Low,,Unacceptable
+915,,Male,80,65+,Democrat,College degree,DK/REF,Married,Real but not Caused by People,,20,No,Too Low,DK/REF,Unacceptable
 916,,Male,83,65+,Republican,College degree,White,Widowed,Not Real At All,0,0,No,About Right,Smart and Sad,Unacceptable
-917,,Male,90,65+,Democrat,College degree,Black,Widowed,Real and Caused by People,3,15,No,Too Low,,
+917,,Male,90,65+,Democrat,College degree,Black,Widowed,Real and Caused by People,3,15,No,Too Low,DK/REF,DK/REF
 918,,Male,24,18-24,Democrat,College degree,Asian,Single,Real and Caused by People,0,1,No,Too Low,Smart and Sad,Acceptable
 919,,Male,70,65+,Independent,High school,White,Single,Real and Caused by People,1,1,Yes,About Right,Smart and Sad,Unacceptable
-920,,Male,22,18-24,,College degree,White,Single,Real and Caused by People,4,4,No,About Right,,
+920,,Male,22,18-24,DK/REF,College degree,White,Single,Real and Caused by People,4,4,No,About Right,DK/REF,DK/REF
 921,,Male,49,45-54,Independent,College degree,White,Divorced,Real and Caused by People,0,12,Yes,Too Low,Dumb and happy,Acceptable
 922,,Female,23,18-24,Democrat,Some college,Asian,In a relationship,Real and Caused by People,2,10,No,Too Low,Smart and Sad,Acceptable
 923,,Male,24,18-24,Democrat,Some college,White,Single,Real and Caused by People,2,6,Yes,About Right,Dumb and happy,Acceptable
-924,,Female,50,45-54,,Some college,White,Married,Real and Caused by People,1,0,Yes,,,Acceptable
-925,,Male,51,45-54,Independent,College degree,White,Single,,0,2,Yes,Too Low,Smart and Sad,Unacceptable
-926,,Female,68,65+,Independent,Some college,Latino,Widowed,Real but not Caused by People,0,2,No,Too High,,Unacceptable
+924,,Female,50,45-54,DK/REF,Some college,White,Married,Real and Caused by People,1,0,Yes,DK/REF,DK/REF,Acceptable
+925,,Male,51,45-54,Independent,College degree,White,Single,DK/REF,0,2,Yes,Too Low,Smart and Sad,Unacceptable
+926,,Female,68,65+,Independent,Some college,Latino,Widowed,Real but not Caused by People,0,2,No,Too High,DK/REF,Unacceptable
 927,,Male,21,18-24,Independent,Some college,Black,Single,Real but not Caused by People,4,6,No,About Right,Dumb and happy,Acceptable
-928,,Female,34,25-34,Democrat,Other,Black,Married,Real and Caused by People,3,6,No,Too Low,Smart and Sad,
-929,,Male,24,18-24,Independent,Some college,Asian,Single,Real and Caused by People,1,56,Yes,,Smart and Sad,
+928,,Female,34,25-34,Democrat,Other,Black,Married,Real and Caused by People,3,6,No,Too Low,Smart and Sad,DK/REF
+929,,Male,24,18-24,Independent,Some college,Asian,Single,Real and Caused by People,1,56,Yes,DK/REF,Smart and Sad,DK/REF
 930,422000,Male,46,45-54,Independent,Graduate degree,Black,Married,Real and Caused by People,1,10,No,About Right,Smart and Sad,Unacceptable
-931,,Male,75,65+,Democrat,Some college,White,Married,Not Real At All,,2,No,Too Low,,
+931,,Male,75,65+,Democrat,Some college,White,Married,Not Real At All,,2,No,Too Low,DK/REF,DK/REF
 932,,Male,18,18-24,Independent,Some college,White,In a relationship,Real and Caused by People,1,15,No,About Right,Smart and Sad,Acceptable
 933,,Female,55,55-64,Democrat,Some college,White,Married,Real and Caused by People,0,0,Yes,Too Low,Dumb and happy,Acceptable
 934,,Male,45,45-54,Independent,High school,White,Married,Not Real At All,0,5,No,About Right,Dumb and happy,Unacceptable
 935,,Male,27,25-34,Independent,High school,Other,In a relationship,Real but not Caused by People,2,4,Yes,Too Low,Smart and Sad,Acceptable
 936,,Female,89,65+,Republican,Some college,White,Married,Not Real At All,0,5,No,Too High,Dumb and happy,Acceptable
-937,,Female,50,45-54,,Graduate degree,,Divorced,Real and Caused by People,0,10,,,,
+937,,Female,50,45-54,DK/REF,Graduate degree,DK/REF,Divorced,Real and Caused by People,0,10,DK/REF,DK/REF,DK/REF,DK/REF
 938,,Female,26,25-34,Independent,Some college,Asian,Married,Not Real At All,3,2,No,About Right,Smart and Sad,Acceptable
-939,,Female,34,25-34,Independent,High school,Latino,Married,Real and Caused by People,2,0,Yes,,Dumb and happy,Acceptable
+939,,Female,34,25-34,Independent,High school,Latino,Married,Real and Caused by People,2,0,Yes,DK/REF,Dumb and happy,Acceptable
 940,,Female,26,25-34,Independent,College degree,White,Single,Real and Caused by People,2,5,Yes,Too Low,Smart and Sad,Acceptable
-941,,Male,36,35-44,,Graduate degree,Asian,Married,,3,,Yes,Too Low,,
+941,,Male,36,35-44,DK/REF,Graduate degree,Asian,Married,DK/REF,3,,Yes,Too Low,DK/REF,DK/REF
 942,,Male,75,65+,Independent,Graduate degree,White,Widowed,Real and Caused by People,0,62,Yes,Too Low,Dumb and happy,Unacceptable
 943,,Male,44,35-44,Independent,Some college,Other,Married,Real and Caused by People,0,0,No,Too High,Dumb and happy,Acceptable
 944,,Female,70,65+,Independent,Graduate degree,White,Single,Real and Caused by People,1,3,Yes,About Right,Dumb and happy,Acceptable
 945,,Male,79,65+,Independent,Some college,White,Widowed,Real and Caused by People,1,25,No,Too Low,Dumb and happy,Acceptable
-946,,Male,40,35-44,,Graduate degree,Black,Single,Real and Caused by People,4,59,No,Too Low,Smart and Sad,Unacceptable
-947,,Female,66,65+,Republican,Graduate degree,Asian,Married,Real and Caused by People,0,2,No,,Smart and Sad,Unacceptable
-948,,Female,53,45-54,Independent,High school,White,Married,Real but not Caused by People,2,2,Yes,Too High,Dumb and happy,
+946,,Male,40,35-44,DK/REF,Graduate degree,Black,Single,Real and Caused by People,4,59,No,Too Low,Smart and Sad,Unacceptable
+947,,Female,66,65+,Republican,Graduate degree,Asian,Married,Real and Caused by People,0,2,No,DK/REF,Smart and Sad,Unacceptable
+948,,Female,53,45-54,Independent,High school,White,Married,Real but not Caused by People,2,2,Yes,Too High,Dumb and happy,DK/REF
 949,,Male,23,18-24,Independent,College degree,White,In a relationship,Real and Caused by People,1,2,No,Too Low,Dumb and happy,Acceptable
 950,,Male,80,65+,Democrat,College degree,Latino,Divorced,Real and Caused by People,1,1000,No,Too Low,Smart and Sad,Unacceptable
-951,,Male,26,25-34,,College degree,Latino,Single,Real and Caused by People,0,7,No,Too Low,Smart and Sad,Unacceptable
-952,,Male,45,45-54,Independent,Some college,Latino,Divorced,Real and Caused by People,,5,No,,Smart and Sad,Unacceptable
+951,,Male,26,25-34,DK/REF,College degree,Latino,Single,Real and Caused by People,0,7,No,Too Low,Smart and Sad,Unacceptable
+952,,Male,45,45-54,Independent,Some college,Latino,Divorced,Real and Caused by People,,5,No,DK/REF,Smart and Sad,Unacceptable
 953,140000,Female,62,55-64,Democrat,Some college,White,Married,Real and Caused by People,2,4,No,Too High,Dumb and happy,Unacceptable
 954,105000,Male,75,65+,Democrat,Some college,Asian,Married,Real and Caused by People,2,1,Yes,About Right,Smart and Sad,Acceptable
 955,,Male,32,25-34,Independent,High school,Latino,In a relationship,Real and Caused by People,4,0,Yes,Too Low,Dumb and happy,Unacceptable
 956,,Female,46,45-54,Independent,College degree,White,Married,Real and Caused by People,0,1,No,About Right,Dumb and happy,Acceptable
 957,,Female,55,55-64,Democrat,College degree,White,Single,Real and Caused by People,1,300,Yes,Too Low,Smart and Sad,Unacceptable
-958,,Female,51,45-54,Republican,Some college,White,In a relationship,Real but not Caused by People,0,3,No,,,Unacceptable
+958,,Female,51,45-54,Republican,Some college,White,In a relationship,Real but not Caused by People,0,3,No,DK/REF,DK/REF,Unacceptable
 959,,Male,39,35-44,Democrat,College degree,White,Married,Real and Caused by People,3,4,No,Too Low,Dumb and happy,Acceptable
-960,127000,Female,50,45-54,,Some college,Latino,Married,Real and Caused by People,0,12,No,Too Low,Dumb and happy,Acceptable
+960,127000,Female,50,45-54,DK/REF,Some college,Latino,Married,Real and Caused by People,0,12,No,Too Low,Dumb and happy,Acceptable
 961,84000,Female,45,45-54,Independent,Graduate degree,White,Married,Real but not Caused by People,3,15,Yes,Too Low,Dumb and happy,Unacceptable
-962,104000,Male,59,55-64,Independent,Graduate degree,,Married,Real but not Caused by People,0,30,No,,Dumb and happy,Acceptable
-963,,Female,50,45-54,,College degree,Asian,Single,Not Real At All,,,Yes,,Dumb and happy,Unacceptable
+962,104000,Male,59,55-64,Independent,Graduate degree,DK/REF,Married,Real but not Caused by People,0,30,No,DK/REF,Dumb and happy,Acceptable
+963,,Female,50,45-54,DK/REF,College degree,Asian,Single,Not Real At All,,,Yes,DK/REF,Dumb and happy,Unacceptable
 964,,Male,29,25-34,Democrat,College degree,White,Married,Real and Caused by People,0,5,Yes,About Right,Dumb and happy,Acceptable
 965,,Male,87,65+,Democrat,Other,Black,Married,Real and Caused by People,0,3,No,Too High,Dumb and happy,Acceptable
 966,,Male,29,25-34,Independent,College degree,Asian,Single,Real and Caused by People,1,3,No,Too Low,Dumb and happy,Acceptable
 967,,Female,25,25-34,Independent,High school,Black,Single,Real and Caused by People,3,0,Yes,Too Low,Smart and Sad,Acceptable
-968,,Female,39,35-44,,Graduate degree,Latino,Married,,0,,No,Too Low,Dumb and happy,Unacceptable
+968,,Female,39,35-44,DK/REF,Graduate degree,Latino,Married,DK/REF,0,,No,Too Low,Dumb and happy,Unacceptable
 969,,Female,40,35-44,Independent,College degree,White,Married,Real and Caused by People,0,4,No,About Right,Dumb and happy,Acceptable
-970,,Male,40,35-44,Republican,High school,Black,Married,,3,0,No,About Right,,Unacceptable
-971,,Female,57,55-64,Republican,High school,White,Divorced,Real and Caused by People,0,4,Yes,,Dumb and happy,Acceptable
+970,,Male,40,35-44,Republican,High school,Black,Married,DK/REF,3,0,No,About Right,DK/REF,Unacceptable
+971,,Female,57,55-64,Republican,High school,White,Divorced,Real and Caused by People,0,4,Yes,DK/REF,Dumb and happy,Acceptable
 972,,Male,19,18-24,Independent,Some college,White,Single,Real and Caused by People,2,5,Yes,About Right,Dumb and happy,Unacceptable
 973,,Female,54,45-54,Democrat,Graduate degree,White,Married,Real and Caused by People,0,7,No,Too Low,Smart and Sad,Acceptable
 974,,Female,18,18-24,Democrat,High school,Latino,Single,Real and Caused by People,0,4,Yes,Too Low,Smart and Sad,Unacceptable
-975,,Female,65,65+,Independent,Graduate degree,White,Married,Real and Caused by People,0,40,No,Too Low,,Unacceptable
-976,,Female,89,65+,Democrat,Some college,White,Widowed,Real and Caused by People,0,5,No,,Smart and Sad,Unacceptable
+975,,Female,65,65+,Independent,Graduate degree,White,Married,Real and Caused by People,0,40,No,Too Low,DK/REF,Unacceptable
+976,,Female,89,65+,Democrat,Some college,White,Widowed,Real and Caused by People,0,5,No,DK/REF,Smart and Sad,Unacceptable
 977,,Male,70,65+,Independent,Some college,Black,Single,Not Real At All,,,No,Too Low,Dumb and happy,Acceptable
 978,,Male,41,35-44,Independent,Some college,White,Married,Real and Caused by People,0,0,No,About Right,Dumb and happy,Acceptable
-979,,Male,65,65+,Democrat,High school,White,Separated,Real but not Caused by People,0,0,Yes,,,Unacceptable
+979,,Male,65,65+,Democrat,High school,White,Separated,Real but not Caused by People,0,0,Yes,DK/REF,DK/REF,Unacceptable
 980,,Male,64,55-64,Democrat,High school,White,Single,Real and Caused by People,3,0,No,About Right,Dumb and happy,Unacceptable
 981,,Female,38,35-44,Independent,College degree,Black,Married,Real and Caused by People,3,3,Yes,Too Low,Smart and Sad,Acceptable
 982,,Male,78,65+,Independent,Some college,White,Married,Real and Caused by People,0,3,No,Too Low,Dumb and happy,Unacceptable
 983,,Female,26,25-34,Independent,College degree,White,In a relationship,Real but not Caused by People,3,1,Yes,Too Low,Dumb and happy,Acceptable
 984,,Male,59,55-64,Republican,Some college,White,Divorced,Real but not Caused by People,0,0,Yes,About Right,Dumb and happy,Acceptable
 985,,Male,18,18-24,Independent,High school,Latino,Single,Real and Caused by People,3,15,No,Too Low,Dumb and happy,Acceptable
-986,,Other,41,35-44,,College degree,White,Married,Real but not Caused by People,0,4,No,Too Low,Smart and Sad,Unacceptable
-987,,Male,49,45-54,Republican,Some college,,Single,Real and Caused by People,,10,Yes,Too Low,Smart and Sad,Acceptable
+986,,Other,41,35-44,DK/REF,College degree,White,Married,Real but not Caused by People,0,4,No,Too Low,Smart and Sad,Unacceptable
+987,,Male,49,45-54,Republican,Some college,DK/REF,Single,Real and Caused by People,,10,Yes,Too Low,Smart and Sad,Acceptable
 988,,Other,30,25-34,Democrat,Some college,White,Divorced,Real and Caused by People,2,9.5,No,Too Low,Smart and Sad,Acceptable
 989,,Male,52,45-54,Independent,Graduate degree,Latino,Married,Real and Caused by People,1,20,No,Too Low,Smart and Sad,Acceptable
 990,,Female,66,65+,Republican,High school,White,Married,Real but not Caused by People,0,10,No,Too High,Dumb and happy,Unacceptable
-991,,Male,44,35-44,Independent,College degree,White,Married,Real but not Caused by People,0,3,No,Too High,Smart and Sad,
+991,,Male,44,35-44,Independent,College degree,White,Married,Real but not Caused by People,0,3,No,Too High,Smart and Sad,DK/REF
 992,,Male,65,65+,Democrat,Some college,White,Widowed,Real and Caused by People,0,0,No,Too Low,Dumb and happy,Unacceptable
-993,,Female,81,65+,Republican,Some college,White,Widowed,Not Real At All,,5,No,About Right,,
+993,,Female,81,65+,Republican,Some college,White,Widowed,Not Real At All,,5,No,About Right,DK/REF,DK/REF
 994,,Female,59,55-64,Republican,College degree,White,Married,Real but not Caused by People,0,10,No,About Right,Dumb and happy,Unacceptable
 995,,Male,25,25-34,Independent,College degree,White,Married,Real but not Caused by People,2,20,No,Too High,Dumb and happy,Unacceptable
 996,,Female,22,18-24,Independent,College degree,White,Single,Not Real At All,2,10,No,Too Low,Smart and Sad,Unacceptable
 997,,Other,34,25-34,Republican,College degree,White,Single,Real and Caused by People,4,10,No,Too High,Smart and Sad,Acceptable
 998,,Male,74,65+,Republican,Some college,White,Married,Real and Caused by People,0,3,No,Too High,Smart and Sad,Unacceptable
-999,,Male,60,55-64,Independent,Graduate degree,White,Married,Real but not Caused by People,0,4,Yes,Too Low,Dumb and happy,
-1000,,Male,46,45-54,,High school,Asian,Married,Not Real At All,3,0,No,About Right,Dumb and happy,Acceptable
+999,,Male,60,55-64,Independent,Graduate degree,White,Married,Real but not Caused by People,0,4,Yes,Too Low,Dumb and happy,DK/REF
+1000,,Male,46,45-54,DK/REF,High school,Asian,Married,Not Real At All,3,0,No,About Right,Dumb and happy,Acceptable

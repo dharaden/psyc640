@@ -2547,16 +2547,16 @@
     },
     "forcats": {
       "Package": "forcats",
-      "Version": "1.0.0",
+      "Version": "1.0.1",
       "Source": "Repository",
       "Title": "Tools for Working with Categorical Variables (Factors)",
-      "Authors@R": "c( person(\"Hadley\", \"Wickham\", , \"hadley@rstudio.com\", role = c(\"aut\", \"cre\")), person(\"RStudio\", role = c(\"cph\", \"fnd\")) )",
+      "Authors@R": "c( person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = c(\"aut\", \"cre\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")) )",
       "Description": "Helpers for reordering factor levels (including moving specified levels to front, ordering by first appearance, reversing, and randomly shuffling), and tools for modifying factor levels (including collapsing rare levels into other, 'anonymising', and manually 'recoding').",
       "License": "MIT + file LICENSE",
       "URL": "https://forcats.tidyverse.org/, https://github.com/tidyverse/forcats",
       "BugReports": "https://github.com/tidyverse/forcats/issues",
       "Depends": [
-        "R (>= 3.4)"
+        "R (>= 4.1)"
       ],
       "Imports": [
         "cli (>= 3.4.0)",
@@ -2581,10 +2581,10 @@
       "Config/testthat/edition": "3",
       "Encoding": "UTF-8",
       "LazyData": "true",
-      "RoxygenNote": "7.2.3",
+      "RoxygenNote": "7.3.3",
       "NeedsCompilation": "no",
-      "Author": "Hadley Wickham [aut, cre], RStudio [cph, fnd]",
-      "Maintainer": "Hadley Wickham <hadley@rstudio.com>",
+      "Author": "Hadley Wickham [aut, cre], Posit Software, PBC [cph, fnd] (ROR: <https://ror.org/03wc8by49>)",
+      "Maintainer": "Hadley Wickham <hadley@posit.co>",
       "Repository": "CRAN"
     },
     "foreign": {
@@ -4281,6 +4281,34 @@
       "NeedsCompilation": "no",
       "Author": "Alexandra Kuznetsova [aut], Per Bruun Brockhoff [aut, ths], Rune Haubo Bojesen Christensen [aut, cre], Sofie Pødenphant Jensen [ctb]",
       "Maintainer": "Rune Haubo Bojesen Christensen <Rune.Haubo@gmail.com>",
+      "Repository": "CRAN"
+    },
+    "lsr": {
+      "Package": "lsr",
+      "Version": "0.5.2",
+      "Source": "Repository",
+      "Title": "Companion to \"Learning Statistics with R\"",
+      "Authors@R": "person(given = \"Danielle\", family = \"Navarro\", role = c(\"aut\", \"cre\"), email = \"djnavarro@protonmail.com\", comment = c(ORCID = \"0000-0001-7648-6578\"))",
+      "Description": "A collection of tools intended to make introductory  statistics easier to teach, including wrappers for common  hypothesis tests and basic data manipulation. It accompanies  Navarro, D. J. (2015). Learning Statistics with R: A Tutorial  for Psychology Students and Other Beginners, Version 0.6.",
+      "License": "MIT + file LICENSE",
+      "URL": "https://github.com/djnavarro/lsr",
+      "BugReports": "https://github.com/djnavarro/lsr/issues",
+      "Encoding": "UTF-8",
+      "LazyLoad": "yes",
+      "Imports": [
+        "graphics",
+        "grDevices",
+        "methods",
+        "stats"
+      ],
+      "RoxygenNote": "7.1.1",
+      "Suggests": [
+        "testthat (>= 3.0.0)"
+      ],
+      "Config/testthat/edition": "3",
+      "NeedsCompilation": "no",
+      "Author": "Danielle Navarro [aut, cre] (<https://orcid.org/0000-0001-7648-6578>)",
+      "Maintainer": "Danielle Navarro <djnavarro@protonmail.com>",
       "Repository": "CRAN"
     },
     "lubridate": {
@@ -6021,11 +6049,11 @@
     },
     "rio": {
       "Package": "rio",
-      "Version": "1.2.3",
+      "Version": "1.2.4",
       "Source": "Repository",
       "Type": "Package",
       "Title": "A Swiss-Army Knife for Data I/O",
-      "Authors@R": "c(person(\"Jason\", \"Becker\", role = \"aut\", email = \"jason@jbecker.co\"), person(\"Chung-hong\", \"Chan\", role = c(\"aut\", \"cre\"), email = \"chainsawtiney@gmail.com\", comment = c(ORCID = \"0000-0002-6232-7530\")), person(\"David\", \"Schoch\", email = \"david@schochastics.net\", role = c(\"aut\"), comment = c(ORCID = \"0000-0003-2952-4812\")), person(\"Geoffrey CH\", \"Chan\", role = \"ctb\", email = \"gefchchan@gmail.com\"), person(\"Thomas J.\", \"Leeper\", role = \"aut\",  email = \"thosjleeper@gmail.com\", comment = c(ORCID = \"0000-0003-4097-6326\")), person(\"Christopher\", \"Gandrud\", role = \"ctb\"), person(\"Andrew\", \"MacDonald\", role = \"ctb\"), person(\"Ista\", \"Zahn\", role = \"ctb\"), person(\"Stanislaus\", \"Stadlmann\", role = \"ctb\"), person(\"Ruaridh\", \"Williamson\", role = \"ctb\", email = \"ruaridh.williamson@gmail.com\"), person(\"Patrick\", \"Kennedy\", role = \"ctb\"), person(\"Ryan\", \"Price\", email = \"ryapric@gmail.com\", role = \"ctb\"), person(\"Trevor L\", \"Davis\", email = \"trevor.l.davis@gmail.com\", role = \"ctb\"), person(\"Nathan\", \"Day\", email = \"nathancday@gmail.com\", role = \"ctb\"), person(\"Bill\", \"Denney\", email=\"wdenney@humanpredictions.com\", role=\"ctb\", comment=c(ORCID=\"0000-0002-5759-428X\")), person(\"Alex\", \"Bokov\", email = \"alex.bokov@gmail.com\", role = \"ctb\", comment=c(ORCID=\"0000-0002-0511-9815\")), person(\"Hugo\", \"Gruson\", role = \"ctb\", comment = c(ORCID = \"0000-0002-4094-1476\")) )",
+      "Authors@R": "c(person(\"Jason\", \"Becker\", role = \"aut\", email = \"jason@jbecker.co\"), person(\"Chung-hong\", \"Chan\", role = c(\"aut\", \"cre\"), email = \"chainsawtiney@gmail.com\", comment = c(ORCID = \"0000-0002-6232-7530\")), person(\"David\", \"Schoch\", email = \"david@schochastics.net\", role = c(\"aut\"), comment = c(ORCID = \"0000-0003-2952-4812\")), person(\"Geoffrey CH\", \"Chan\", role = \"ctb\", email = \"gefchchan@gmail.com\"), person(\"Thomas J.\", \"Leeper\", role = \"aut\",  email = \"thosjleeper@gmail.com\", comment = c(ORCID = \"0000-0003-4097-6326\")), person(\"Christopher\", \"Gandrud\", role = \"ctb\"), person(\"Andrew\", \"MacDonald\", role = \"ctb\"), person(\"Ista\", \"Zahn\", role = \"ctb\"), person(\"Stanislaus\", \"Stadlmann\", role = \"ctb\"), person(\"Ruaridh\", \"Williamson\", role = \"ctb\", email = \"ruaridh.williamson@gmail.com\"), person(\"Patrick\", \"Kennedy\", role = \"ctb\"), person(\"Ryan\", \"Price\", email = \"ryapric@gmail.com\", role = \"ctb\"), person(\"Trevor L\", \"Davis\", email = \"trevor.l.davis@gmail.com\", role = \"ctb\"), person(\"Nathan\", \"Day\", email = \"nathancday@gmail.com\", role = \"ctb\"), person(\"Bill\", \"Denney\", email=\"wdenney@humanpredictions.com\", role=\"ctb\", comment=c(ORCID=\"0000-0002-5759-428X\")), person(\"Alex\", \"Bokov\", email = \"alex.bokov@gmail.com\", role = \"ctb\", comment=c(ORCID=\"0000-0002-0511-9815\")), person(\"Hugo\", \"Gruson\", role = \"ctb\", comment = c(ORCID = \"0000-0002-4094-1476\")), person(\"Jacob\", \"Mears\", role = \"ctb\"))",
       "Description": "Streamlined data import and export by making assumptions that the user is probably willing to make: 'import()' and 'export()' determine the data format from the file extension, reasonable defaults are used for data import and export, web-based import is natively supported (including from SSL/HTTPS), compressed files can be read directly, and fast import packages are used where appropriate. An additional convenience function, 'convert()', provides a simple method for converting between file types.",
       "URL": "https://gesistsa.github.io/rio/, https://github.com/gesistsa/rio",
       "BugReports": "https://github.com/gesistsa/rio/issues",
@@ -6067,15 +6095,16 @@
         "arrow (>= 0.17.0)",
         "stringi",
         "withr",
-        "nanoparquet"
+        "nanoparquet",
+        "qs2 (>= 0.1.5)"
       ],
       "License": "GPL-2",
       "VignetteBuilder": "knitr",
       "Encoding": "UTF-8",
-      "RoxygenNote": "7.3.1",
+      "RoxygenNote": "7.3.2",
       "Config/Needs/website": "gesistsa/tsatemplate",
       "NeedsCompilation": "no",
-      "Author": "Jason Becker [aut], Chung-hong Chan [aut, cre] (<https://orcid.org/0000-0002-6232-7530>), David Schoch [aut] (<https://orcid.org/0000-0003-2952-4812>), Geoffrey CH Chan [ctb], Thomas J. Leeper [aut] (<https://orcid.org/0000-0003-4097-6326>), Christopher Gandrud [ctb], Andrew MacDonald [ctb], Ista Zahn [ctb], Stanislaus Stadlmann [ctb], Ruaridh Williamson [ctb], Patrick Kennedy [ctb], Ryan Price [ctb], Trevor L Davis [ctb], Nathan Day [ctb], Bill Denney [ctb] (<https://orcid.org/0000-0002-5759-428X>), Alex Bokov [ctb] (<https://orcid.org/0000-0002-0511-9815>), Hugo Gruson [ctb] (<https://orcid.org/0000-0002-4094-1476>)",
+      "Author": "Jason Becker [aut], Chung-hong Chan [aut, cre] (ORCID: <https://orcid.org/0000-0002-6232-7530>), David Schoch [aut] (ORCID: <https://orcid.org/0000-0003-2952-4812>), Geoffrey CH Chan [ctb], Thomas J. Leeper [aut] (ORCID: <https://orcid.org/0000-0003-4097-6326>), Christopher Gandrud [ctb], Andrew MacDonald [ctb], Ista Zahn [ctb], Stanislaus Stadlmann [ctb], Ruaridh Williamson [ctb], Patrick Kennedy [ctb], Ryan Price [ctb], Trevor L Davis [ctb], Nathan Day [ctb], Bill Denney [ctb] (ORCID: <https://orcid.org/0000-0002-5759-428X>), Alex Bokov [ctb] (ORCID: <https://orcid.org/0000-0002-0511-9815>), Hugo Gruson [ctb] (ORCID: <https://orcid.org/0000-0002-4094-1476>), Jacob Mears [ctb]",
       "Maintainer": "Chung-hong Chan <chainsawtiney@gmail.com>",
       "Repository": "CRAN"
     },
