@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lab 4: – PSYC 640 - Graduate Statistics</title>
+<title>Lab 6: Comparing Means – PSYC 640 - Graduate Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../labs/lab-7.html" rel="next">
-<link href="../labs/lab-5.qmd" rel="prev">
+<link href="../labs/lab-5_cor.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -43,9 +43,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-9c3ff5669333e2297fff9a69aa8ce992.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-2bf97e7eb6ada2ff52b3f6e72fcd9a6d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-9c3ff5669333e2297fff9a69aa8ce992.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-5fa042a522516c5f035cc39caa38a149.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-10cb5d13bda20044d798bfa7515f162b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-5fa042a522516c5f035cc39caa38a149.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -75,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Lab 4: – PSYC 640 - Graduate Statistics">
+<meta property="og:title" content="Lab 6: Comparing Means – PSYC 640 - Graduate Statistics">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
@@ -347,13 +347,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../weeks/week-5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5</span></a>
+ <span class="menu-text">Week 5 - Correlation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../weeks/week-6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6</span></a>
+ <span class="menu-text">Week 6 - Comparing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -405,7 +405,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-5.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-5_cor.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 5</span></a>
   </div>
 </li>
@@ -455,7 +455,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#scenario-and-goal" id="toc-scenario-and-goal" class="nav-link" data-scroll-target="#scenario-and-goal">Scenario and Goal</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
   <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#task-1-setup-data-inspection-10-points" id="toc-task-1-setup-data-inspection-10-points" class="nav-link" data-scroll-target="#task-1-setup-data-inspection-10-points"><strong>Task 1: Setup &amp; Data Inspection (10 points)</strong></a></li>
+  <li><a href="#task-2-paired-samples-t-test---did-the-individual-cbt-work" id="toc-task-2-paired-samples-t-test---did-the-individual-cbt-work" class="nav-link" data-scroll-target="#task-2-paired-samples-t-test---did-the-individual-cbt-work"><strong>Task 2: Paired-Samples t-test - Did the Individual CBT Work?</strong></a></li>
+  <li><a href="#task-3-one-sample-t-test---achieving-clinical-remission" id="toc-task-3-one-sample-t-test---achieving-clinical-remission" class="nav-link" data-scroll-target="#task-3-one-sample-t-test---achieving-clinical-remission"><strong>Task 3: One-Sample t-test - Achieving Clinical Remission</strong></a></li>
+  <li><a href="#task-4-one-way-anova" id="toc-task-4-one-way-anova" class="nav-link" data-scroll-target="#task-4-one-way-anova"><strong>Task 4: One-Way ANOVA</strong></a></li>
+  <li><a href="#task-5-independent-samples-t-test---exploring-sex-as-a-moderator" id="toc-task-5-independent-samples-t-test---exploring-sex-as-a-moderator" class="nav-link" data-scroll-target="#task-5-independent-samples-t-test---exploring-sex-as-a-moderator"><strong>Task 5: Independent-Samples t-test - Exploring Sex as a Moderator</strong></a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/lab-6.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -466,7 +470,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/lab-1_data-workflow.html">Labs</a></li><li class="breadcrumb-item"><a href="../labs/lab-6.html">Lab 6</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Lab 4:</h1>
+<h1 class="title">Lab 6: Comparing Means</h1>
 </div>
 
 
@@ -487,19 +491,94 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
 <p>Here are the things that you will need for this lab:</p>
 <ul>
-<li><a href="../files/_lab-rmd/lab-3_describe-viz.Rmd" download="lab-3_describe-viz.Rmd">Download Lab 3 (.Rmd)</a></li>
-<li><a href="../files/data/bechdel.csv" download="bechdel.csv">Download Bechdel Data (.csv)</a></li>
+<li><a href="../files/_lab-rmd/lab-6_means.Rmd" download="lab-6_means.Rmd">Download Lab 6 (.Rmd)</a></li>
+<li><a href="../files/data/cbt_data_f25.csv" download="cbt_data_f25.csv">Download Treatment Data (.csv)</a></li>
 </ul>
 <p>When you are finished, click the <strong>Knit</strong> button to turn your work into an HTML document. You will submit both this <code>.Rmd</code> file and the 🧶knitted <code>.html</code> file.</p>
 </section>
 <section id="scenario-and-goal" class="level2">
 <h2 class="anchored" data-anchor-id="scenario-and-goal">Scenario and Goal</h2>
+<p>Welcome back! For this lab you’ll step into the role of a data analyst for a clinical psychology lab. Your team has just completed a pilot randomized controlled trial (RCT) for a new, brief CBT (Cognitive Behavioral Therapy) intervention designed to reduce symptoms of depression (<code>group</code> variable). You’ve been given the initial dataset and tasked with running the primary analyses to see if the intervention shows promise.</p>
+<p>This dataset includes participant demographics (<code>sex</code>, <code>age</code>) and depression scores from before (<code>bdi_pre</code>) and after (<code>bdi_post</code>) the trial. As is common in clinical research, some participants dropped out before the final assessment, resulting in <strong>missing data</strong>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The BDI is a common measure to assess for symptoms of depression. It stands for the Beck Depression Inventory and higher scores indicate a higher level of depression.</p>
+</div>
+</div>
 <hr>
 </section>
 <section id="exercises" class="level2">
 <h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
-<section id="section" class="level3">
-<h3 class="anchored" data-anchor-id="section"></h3>
+<section id="task-1-setup-data-inspection-10-points" class="level3">
+<h3 class="anchored" data-anchor-id="task-1-setup-data-inspection-10-points"><strong>Task 1: Setup &amp; Data Inspection (10 points)</strong></h3>
+<p>Your first and most important task is always to understand and inspect your data before running any analyses.</p>
+<p><strong>Tasks:</strong></p>
+<ol type="1">
+<li><p><strong>Create a new R Markdown file</strong> named <code>Week6_Lab.Rmd</code>.</p></li>
+<li><p><strong>Load Libraries and Data</strong></p></li>
+<li><p><strong>Initial Inspection:</strong></p>
+<ul>
+<li><p>Use <code>glimpse()</code> to see the structure of your data.</p></li>
+<li><p>Use <code>summary()</code> to get a quick overview of each variable. <strong>Pay close attention to the <code>bdi_post</code> variable.</strong> What do you notice?</p></li>
+</ul></li>
+<li><p><strong>Visualization:</strong></p>
+<ul>
+<li><p>Generate a visualization of the distribution for bdi_pre and bdi_post</p>
+<ul>
+<li>These can be two separate figures</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Summary Stats (2 tables)</strong>:</p>
+<ul>
+<li>Provide descriptive statistics (Means &amp; SD) in a nice looking table for age, bdi_pre, bdi_post. Include a correlation table with those variables as well.</li>
+</ul></li>
+</ol>
+</section>
+<section id="task-2-paired-samples-t-test---did-the-individual-cbt-work" class="level3">
+<h3 class="anchored" data-anchor-id="task-2-paired-samples-t-test---did-the-individual-cbt-work"><strong>Task 2: Paired-Samples t-test - Did the Individual CBT Work?</strong></h3>
+<p>For participants who received one-on-one therapy (<code>group == "Individual CBT"</code>), did their depression scores significantly decrease?</p>
+<ol type="1">
+<li><p><strong>Filter the data:</strong> Create a new data frame called <code>individual_tx</code> that contains <em>only</em> the participants from the <code>Individual CBT</code> group.</p></li>
+<li><p><strong>Run the test:</strong> Conduct a <strong>paired-samples t-test</strong> on the <code>bdi_pre</code> and <code>bdi_post</code> scores within the <code>individual_tx</code> data.</p></li>
+<li><p><strong>Interpret the results:</strong> Based on the results, was there a statistically significant change in BDI scores? Describe the direction and magnitude of the change.</p></li>
+</ol>
+</section>
+<section id="task-3-one-sample-t-test---achieving-clinical-remission" class="level3">
+<h3 class="anchored" data-anchor-id="task-3-one-sample-t-test---achieving-clinical-remission"><strong>Task 3: One-Sample t-test - Achieving Clinical Remission</strong></h3>
+<p>A BDI score below 10 is often considered the cutoff for clinical remission. Did our individual CBT group, on average, get below this threshold?</p>
+<ol type="1">
+<li><p><strong>Run the test:</strong> Using the <code>individual_tx</code> data, conduct a <strong>one-sample t-test</strong> on the <code>bdi_post</code> scores, testing against a population mean (<code>mu</code>) of 10.</p></li>
+<li><p><strong>APA Write-up:</strong> Report your results in a full APA-formatted sentence. You will need to calculate the mean and standard deviation for the <code>bdi_post</code> scores separately to include in your write-up.</p></li>
+</ol>
+</section>
+<section id="task-4-one-way-anova" class="level3">
+<h3 class="anchored" data-anchor-id="task-4-one-way-anova"><strong>Task 4: One-Way ANOVA</strong></h3>
+<p>Now we’ll compare the final outcomes (<code>bdi_post</code>) across all three groups: Individual CBT, Group CBT, and the Waitlist Control.</p>
+<ol type="1">
+<li><p><strong>Run the ANOVA:</strong> Using the full <code>cbt_data</code>, conduct a one-way ANOVA to test for differences in <code>bdi_post</code> among the three <code>group</code> conditions.</p></li>
+<li><p><strong>Interpret the ANOVA:</strong> Look at the <code>summary()</code> of your ANOVA object. Is the overall F-test significant? What does this tell us? Note the degrees of freedom—does the sample size make sense given the data?</p></li>
+<li><p><strong>Run Post-Hoc Tests:</strong> A significant ANOVA requires a post-hoc test. Run a <strong>Tukey HSD</strong> test to see which specific groups differ.</p></li>
+<li><p><strong>Write a conclusion:</strong> In 2-3 sentences, summarize the findings from the post-hoc test. Which treatment(s) were effective compared to the control group?</p></li>
+</ol>
+</section>
+<section id="task-5-independent-samples-t-test---exploring-sex-as-a-moderator" class="level3">
+<h3 class="anchored" data-anchor-id="task-5-independent-samples-t-test---exploring-sex-as-a-moderator"><strong>Task 5: Independent-Samples t-test - Exploring Sex as a Moderator</strong></h3>
+<p>We were also interested to use exploratory analyses to further understand the impact of the treatment. For instance, did the therapy work equally well for males and females? Let’s investigate this.</p>
+<p><strong>Tasks:</strong></p>
+<ol type="1">
+<li><p><strong>Calculate change scores:</strong> Create a new data frame called <code>cbt_active_tx</code> that contains only the two <strong>active therapy groups</strong> (Individual and Group CBT). Add a new column to it called <code>bdi_change</code>, calculated as <code>bdi_pre - bdi_post</code>.</p></li>
+<li><p><strong>Run the test:</strong> In this <code>cbt_active_tx</code> data, conduct an <strong>independent-samples t-test</strong> to see if there is a significant difference in the <code>bdi_change</code> scores between participants identified as <code>Male</code> and <code>Female</code>.</p></li>
+<li><p><strong>Visualize and Interpret:</strong> Create a <code>ggplot</code> boxplot to visualize the <code>bdi_change</code> scores by <code>sex</code>. Based on your test and your plot, is there any evidence that the treatment effect was different for males versus females in this pilot study?</p></li>
+</ol>
+<hr>
 <p><em>End of Lab. Don’t forget to Knit! 🧶</em></p>
 
 
@@ -922,7 +1001,7 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../labs/lab-5.qmd" class="pagination-link" aria-label="Lab 5">
+      <a href="../labs/lab-5_cor.html" class="pagination-link" aria-label="Lab 5">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 5</span>
       </a>          
   </div>
