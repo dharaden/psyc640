@@ -13,7 +13,7 @@ For this activity, we are going to be using data that has stats for the majority
 
 Please download the data file:
 
-<a href="/files/data/pokemon.csv" download="pokemon.csv">Download Week 6 Class Activity (.csv)</a>
+<a href="/files/data/Pokemon.csv" download="Pokemon.csv">Download Week 6 Class Activity (.csv)</a>
 
 ------------------------------------------------------------------------
 
@@ -96,7 +96,7 @@ Focus on having reproducible code! You may need to share your file with someone 
 ### Items in the Data:
 
 | Var Name | Info |
-|----|----|
+|------------------------------------|------------------------------------|
 | id | Study ID |
 | Income | Overall income |
 | Sex | Sex |
