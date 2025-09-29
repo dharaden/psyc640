@@ -86,7 +86,7 @@ Your blueprint entry for this paragraph might look like this:
 >         (independent-samples t-test).
 >
 >         1.  **Deliver the Punchline:** They immediately present the
->             finding (t(72)=3.88,p<.001).
+>             finding (t(72)=3.88,p\<.001).
 >
 >         2.  **Explain in Context**: Translate the statistic back into
 >             meaningful terms by presenting the group means, making the
@@ -102,5 +102,3 @@ Please submit a single document to myCourses with:
 1.  A full APA-style citation of the article you selected
 
 2.  Your complete "Writer's Blueprint" of the article's results section.
-
-3.  

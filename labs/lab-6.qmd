@@ -11,10 +11,10 @@ editor_options:
 
 Here are the things that you will need for this lab:
 
--   <a href="/files/_lab-rmd/lab-3_describe-viz.Rmd" download="lab-3_describe-viz.Rmd">Download
-    Lab 3 (.Rmd)</a>
--   <a href="/files/data/bechdel.csv" download="bechdel.csv">Download
-    Bechdel Data (.csv)</a>
+-   <a href="/files/_lab-rmd/lab-6_means.Rmd" download="lab-6_means.Rmd">Download
+    Lab 6 (.Rmd)</a>
+-   <a href="/files/data/cbt_data_f25.csv" download="cbt_data_f25.csv">Download
+    Treatment Data (.csv)</a>
 
 When you are finished, click the **Knit** button to turn your work into
 an HTML document. You will submit both this `.Rmd` file and the
@@ -22,10 +22,136 @@ an HTML document. You will submit both this `.Rmd` file and the
 
 ## Scenario and Goal
 
+Welcome back! For this lab you'll step into the role of a data analyst
+for a clinical psychology lab. Your team has just completed a pilot
+randomized controlled trial (RCT) for a new, brief CBT (Cognitive
+Behavioral Therapy) intervention designed to reduce symptoms of
+depression (`group` variable). You've been given the initial dataset and
+tasked with running the primary analyses to see if the intervention
+shows promise.
+
+This dataset includes participant demographics (`sex`, `age`) and
+depression scores from before (`bdi_pre`) and after (`bdi_post`) the
+trial. As is common in clinical research, some participants dropped out
+before the final assessment, resulting in **missing data**.
+
+::: callout-note
+The BDI is a common measure to assess for symptoms of depression. It
+stands for the Beck Depression Inventory and higher scores indicate a
+higher level of depression.
+:::
+
 ------------------------------------------------------------------------
 
 ## Exercises
 
-### 
+### **Task 1: Setup & Data Inspection (10 points)**
+
+Your first and most important task is always to understand and inspect
+your data before running any analyses.
+
+**Tasks:**
+
+1.  **Create a new R Markdown file** named `Week6_Lab.Rmd`.
+
+2.  **Load Libraries and Data**
+
+3.  **Initial Inspection:**
+
+    -   Use `glimpse()` to see the structure of your data.
+
+    -   Use `summary()` to get a quick overview of each variable. **Pay
+        close attention to the `bdi_post` variable.** What do you
+        notice?
+
+4.  **Visualization:**
+
+    -   Generate a visualization of the distribution for bdi_pre and
+        bdi_post
+
+        -   These can be two separate figures
+
+5.  **Summary Stats (2 tables)**:
+
+    -   Provide descriptive statistics (Means & SD) in a nice looking
+        table for age, bdi_pre, bdi_post. Include a correlation table
+        with those variables as well.
+
+### **Task 2: Paired-Samples t-test - Did the Individual CBT Work?** 
+
+For participants who received one-on-one therapy
+(`group == "Individual CBT"`), did their depression scores significantly
+decrease?
+
+1.  **Filter the data:** Create a new data frame called `individual_tx`
+    that contains *only* the participants from the `Individual CBT`
+    group.
+
+2.  **Run the test:** Conduct a **paired-samples t-test** on the
+    `bdi_pre` and `bdi_post` scores within the `individual_tx` data.
+
+3.  **Interpret the results:** Based on the results, was there a
+    statistically significant change in BDI scores? Describe the
+    direction and magnitude of the change.
+
+### **Task 3: One-Sample t-test - Achieving Clinical Remission**
+
+A BDI score below 10 is often considered the cutoff for clinical
+remission. Did our individual CBT group, on average, get below this
+threshold?
+
+1.  **Run the test:** Using the `individual_tx` data, conduct a
+    **one-sample t-test** on the `bdi_post` scores, testing against a
+    population mean (`mu`) of 10.
+
+2.  **APA Write-up:** Report your results in a full APA-formatted
+    sentence. You will need to calculate the mean and standard deviation
+    for the `bdi_post` scores separately to include in your write-up.
+
+### **Task 4: One-Way ANOVA**
+
+Now we'll compare the final outcomes (`bdi_post`) across all three
+groups: Individual CBT, Group CBT, and the Waitlist Control.
+
+1.  **Run the ANOVA:** Using the full `cbt_data`, conduct a one-way
+    ANOVA to test for differences in `bdi_post` among the three `group`
+    conditions.
+
+2.  **Interpret the ANOVA:** Look at the `summary()` of your ANOVA
+    object. Is the overall F-test significant? What does this tell us?
+    Note the degrees of freedom—does the sample size make sense given
+    the data?
+
+3.  **Run Post-Hoc Tests:** A significant ANOVA requires a post-hoc
+    test. Run a **Tukey HSD** test to see which specific groups differ.
+
+4.  **Write a conclusion:** In 2-3 sentences, summarize the findings
+    from the post-hoc test. Which treatment(s) were effective compared
+    to the control group?
+
+### **Task 5: Independent-Samples t-test - Exploring Sex as a Moderator** 
+
+We were also interested to use exploratory analyses to further
+understand the impact of the treatment. For instance, did the therapy
+work equally well for males and females? Let's investigate this.
+
+**Tasks:**
+
+1.  **Calculate change scores:** Create a new data frame called
+    `cbt_active_tx` that contains only the two **active therapy groups**
+    (Individual and Group CBT). Add a new column to it called
+    `bdi_change`, calculated as `bdi_pre - bdi_post`.
+
+2.  **Run the test:** In this `cbt_active_tx` data, conduct an
+    **independent-samples t-test** to see if there is a significant
+    difference in the `bdi_change` scores between participants
+    identified as `Male` and `Female`.
+
+3.  **Visualize and Interpret:** Create a `ggplot` boxplot to visualize
+    the `bdi_change` scores by `sex`. Based on your test and your plot,
+    is there any evidence that the treatment effect was different for
+    males versus females in this pilot study?
+
+------------------------------------------------------------------------
 
 *End of Lab. Don't forget to Knit! 🧶*
