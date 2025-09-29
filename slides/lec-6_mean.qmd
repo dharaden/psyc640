@@ -418,7 +418,7 @@ Hypotheses:
 ------------------------------------------------------------------------
 
 | Participant | Blue Room Score | Orange Room Score | Difference ($X_{iB} - X_{iO}$) |
-|:----------------:|:----------------:|:----------------:|:-----------------:|
+|:--:|:--:|:--:|:--:|
 | 1 | 3 | 6 | -3 |
 | 2 | 9 | 9 | 0 |
 | 3 | 2 | 10 | -8 |
@@ -488,7 +488,7 @@ Hypotheses:
 :::
 
 | $alpha$ |          $t-crit$          |    $t-statistic$     |      $p-value$      |
-|:----------------:|:-----------------:|:----------------:|:----------------:|
+|:-------:|:--------------------------:|:--------------------:|:-------------------:|
 |  0.05   | $\pm$ `r round(t_crit, 2)` | `r round(t_stat, 2)` | `r round(p_val, 2)` |
 
 **What can we conclude??**
@@ -791,7 +791,7 @@ The difference between the *group mean* and *grand mean*
 $$ SS_{between} = \sum^G_{k=1}N_k(\bar{Y_k} - \bar{Y})^2 $$
 
 | Group | Group Mean $\bar{Y_k}$ | Grand Mean $\bar{Y}$ | Sq. Dev. | N | Weighted Sq. Dev. |
-|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
+|:--:|:--:|:--:|:--:|:--:|:--:|
 | Cool | 32 | 41.8 | 96.04 | 3 | 288.12 |
 | Uncool | 56.5 | 41.8 | 216.09 | 2 | 432.18 |
 
@@ -982,7 +982,7 @@ Performed when there is a significant difference among the groups to examine whi
 Often times the output will be in the form of a table and then it is often reported this way in the manuscript
 
 | Source of Variation | df | Sum of Squares | Mean Squares | F-statistic | p-value |
-|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
+|:--:|:--:|:--:|:--:|:--:|:--:|
 | Group | $G-1$ | $SS_b$ | $MS_b = \frac{SS_b}{df_b}$ | $F = \frac{MS_b}{MS_w}$ | $p$ |
 | Residual | $N-G$ | $SS_w$ | $MS_w = \frac{SS_w}{df_w}$ |  |  |
 | Total | $N-1$ | $SS_{total}$ |  |  |  |
