@@ -1,0 +1,745 @@
+---
+title: "Week 07: Simple Regression"
+subtitle: "Date: October 5, 2025"
+footer:  "[course-website](https://dharaden.github.io/psyc640/)"
+logo: "images/640_hex.png"
+format: 
+  revealjs:
+    theme: clean.scss
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+    overview: false
+    scrollable: true
+    code-line-numbers: true
+editor: visual
+execute:
+  echo: true
+  freeze: auto
+---
+
+## Today...
+
+Regression
+
+-   Why use regression?
+
+-   One equation to rule them all
+
+![](/images/reg_precious.gif){fig-align="center"}
+
+------------------------------------------------------------------------
+
+```{r, results = 'hide', message = F, warning = F}
+
+#Don't know if I'm using all of these, but including theme here anyways
+library(tidyverse)
+library(rio)
+library(broom)
+library(psych)
+library(gapminder)
+library(psychTools)
+
+
+#Remove Scientific Notation 
+options(scipen=999)
+```
+
+------------------------------------------------------------------------
+
+## Overview of Regression
+
+Regression is a general data analytic system
+
+-   Lots of things fall under the umbrella of regression
+
+-   This system can handle a variety of forms of relations and types of variables
+
+The output of regression includes both effect sizes and statistical significance
+
+We can also incorporate multiple influences (IVs) and account for their intercorrelations
+
+------------------------------------------------------------------------
+
+### Uses for regression
+
+::: incremental
+-   **Adjustment**: Take into account (*control*) known effects in a relationship
+
+-   **Prediction**: Develop a model based on what has happened previously to predict what will happen in the future
+
+-   **Explanation**: examining the influence of one or more variable on some outcome
+:::
+
+------------------------------------------------------------------------
+
+## Study Design & Collection
+
+::::: columns
+::: {.column width="50%"}
+Design - *When* data are collected
+
+-   Retrospective/Prospective
+
+-   Longitudinal
+
+-   Cross-Sectional
+:::
+
+::: {.column width="50%"}
+Collection - *How* data are collected
+
+-   Experimental
+
+-   Field
+
+-   Observational
+
+-   Meta-analysis
+
+-   Neuroimaging/Psychophysiology
+
+-   Survey
+
+-   Quasi-Experimental
+:::
+:::::
+
+------------------------------------------------------------------------
+
+### Regression Equation
+
+With regression, we are ***building a model*** that we think best represents the data, and the broader world
+
+$$
+Data = Model + error
+$$
+
+------------------------------------------------------------------------
+
+At the most simple form we are drawing a line to characterize the linear relationship between the variables so that for any value of `x` we can have an estimate of `y`
+
+$$
+Y = mX + b
+$$
+
+::::::: columns
+:::: {.column width="50%"}
+::: incremental
+-   Y = Outcome Variable (DV)
+
+-   m = Slope Term
+:::
+::::
+
+:::: {.column width="50%"}
+::: incremental
+-   X = Predictor (IV)
+
+-   b = Intercept
+:::
+::::
+:::::::
+
+------------------------------------------------------------------------
+
+### Regression Equation
+
+Overall, we are providing a model to give us a "best guess" on predicting
+
+Let's "science up" the equation a little bit:
+
+$$
+Y_i = b_0 + b_1X_i + e_i
+$$
+
+This equation is capturing how we are able to calculate each observation ( $Y_i$ )
+
+$$
+\hat{Y_i} = b_0 + b_1X_i
+$$
+
+This one will give us the "best guess" or *expected* value of $Y$ given $X$
+
+------------------------------------------------------------------------
+
+### Regression Equation
+
+There are two ways to think about our regression equation. They're similar to each other, but they produce different outputs.\
+$$Y_i = b_{0} + b_{1}X_i +e_i$$\
+$$\hat{Y_i} = b_{0} + b_{1}X_i$$\
+The model we are building by including new variables is to ***explain variance*** in our outcome
+
+::: callout-note
+$\hat{Y}$ signifies the fitted score -- no errorThe difference between the fitted and observed score is the residual ($e_i$)There is a different e value for each observation in the dataset
+:::
+
+------------------------------------------------------------------------
+
+### Expected vs. Actual
+
+$$Y_i = b_{0} + b_{1}X_i + e_i$$
+
+$$\hat{Y_i} = b_{0} + b_{1}X_i$$
+
+$\hat{Y}$ signifies that there is no error. Our line is predicting that exact value. We interpret it as being "on average"
+
+Important to identify that that $Y_i - \hat{Y_i} = e_i$.
+
+::: notes
+$\hat{Y}$ signifies the fitted score -- no error
+
+The difference between the fitted and observed score is the residual ($e_i$)
+
+There is a different e value for each observation in the dataset
+:::
+
+------------------------------------------------------------------------
+
+## OLS
+
+::: incremental
+-   How do we find the regression estimates?
+
+-   Ordinary Least Squares (OLS) estimation
+
+-   Minimizes deviations
+
+    -   $$ min\sum(Y_{i} - \hat{Y} ) ^{2} $$
+
+-   Other estimation procedures possible (and necessary in some cases)
+:::
+
+------------------------------------------------------------------------
+
+```{r plot1}
+#| code-fold: true
+
+set.seed(142)
+x.1 <- rnorm(10, 0, 1)
+e.1 <- rnorm(10, 0, 2)
+y.1 <- .5 + .55 * x.1 + e.1
+d.1 <- data.frame(x.1,y.1)
+m.1 <- lm(y.1 ~ x.1, data = d.1)
+d1.f<- augment(m.1)
+
+
+ggplot(d1.f , aes(x=x.1, y=y.1)) +
+    geom_point(size = 2) +
+  geom_smooth(method = lm, se = FALSE) +
+  theme_bw(base_size = 20)
+```
+
+------------------------------------------------------------------------
+
+```{r}
+#| code-fold: true
+
+ggplot(d1.f , aes(x=x.1, y=y.1)) +
+    geom_point(size = 2) +
+  geom_point(aes(y = .fitted), shape = 1, size = 2) +
+  theme_bw(base_size = 20)
+```
+
+------------------------------------------------------------------------
+
+```{r}
+#| code-fold: true
+
+ggplot(d1.f , aes(x=x.1, y=y.1)) +
+    geom_point(size = 2) +
+  geom_point(aes(y = .fitted), shape = 1, size = 2) +
+  geom_segment(aes( xend = x.1, yend = .fitted))+
+  theme_bw(base_size = 20)
+```
+
+------------------------------------------------------------------------
+
+```{r, message = F}
+#| code-fold: true
+
+ggplot(d1.f , aes(x=x.1, y=y.1)) +
+    geom_point(size = 2) +
+  geom_smooth(method = lm, se = FALSE) +
+  geom_point(aes(y = .fitted), shape = 1, size = 2) +
+  geom_segment(aes( xend = x.1, yend = .fitted))+
+  theme_bw(base_size = 20)
+```
+
+------------------------------------------------------------------------
+
+## compare to bad fit
+
+::::: columns
+::: {.column width="50%"}
+```{r, echo=FALSE, message = F}
+ggplot(d1.f , aes(x=x.1, y=y.1)) +
+    geom_point(size = 2) +
+  geom_smooth(method = lm, se = FALSE) +
+  geom_point(aes(y = .fitted), shape = 1, size = 2) +
+  geom_segment(aes( xend = x.1, yend = .fitted))+
+  theme_bw(base_size = 20)
+```
+:::
+
+::: {.column width="50%"}
+```{r, echo = F, message = F}
+new.i = 1.1
+new.slope = -0.7
+d1.f$new.fitted = 1.1 -0.7*d1.f$x.1
+
+ggplot(d1.f , aes(x=x.1, y=y.1)) +
+    geom_point(size = 2) +
+  geom_abline(intercept = new.i, slope = new.slope, color = "blue", size = 1) +
+  geom_point(aes(y = new.fitted), shape = 1, size = 2) +
+  geom_segment(aes( xend = x.1, yend = new.fitted))+
+  theme_bw(base_size = 20)
+```
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## OLS
+
+The line that yields the smallest sum of squared deviations
+
+$$\Sigma(Y_i - \hat{Y_i})^2$$ $$= \Sigma(Y_i - (b_0+b_{1}X_i))^2$$ $$= \Sigma(e_i)^2$$
+
+. . .
+
+In order to find the OLS solution, you could try many different coefficients $(b_0 \text{ and } b_{1})$ until you find the one with the smallest sum squared deviation. Luckily, there are simple calculations that will yield the OLS solution every time.
+
+------------------------------------------------------------------------
+
+## Regression coefficient, $b_{1}$
+
+$$b_{1} = \frac{cov_{XY}}{s_{x}^{2}} = r_{xy} \frac{s_{y}}{s_{x}}$$
+
+What units is the regression coefficient in?
+
+. . .
+
+The regression coefficient (slope) equals the estimated change in Y for a 1-unit change in X
+
+------------------------------------------------------------------------
+
+$$\Large b_{1} = r_{xy} \frac{s_{y}}{s_{x}}$$
+
+If the standard deviation of both X and Y is equal to 1:
+
+$$\Large b_1 = r_{xy} \frac{s_{y}}{s_{x}} = r_{xy} \frac{1}{1} = r_{xy} = \beta_{yx} = b_{yx}^*$$
+
+------------------------------------------------------------------------
+
+## Standardized regression equation
+
+$$\Large Z_{y_i} = b_{yx}^*Z_{x_i}+e_i$$
+
+$$\Large b_{yx}^* = b_{yx}\frac{s_x}{s_y} = r_{xy}$$
+
+. . .
+
+According to this regression equation, when $X = 0, Y = 0$. Our interpretation of the coefficient is that a one-standard deviation increase in X is associated with a $b_{yx}^*$ standard deviation increase in Y. Our regression coefficient is equivalent to the correlation coefficient *when we have only one predictor in our model.*
+
+------------------------------------------------------------------------
+
+## Estimating the intercept, $b_0$
+
+-   intercept serves to adjust for differences in means between X and Y
+
+$$\hat{Y_i} = \bar{Y} + r_{xy} \frac{s_{y}}{s_{x}}(X_i-\bar{X})$$
+
+-   if standardized, intercept drops out
+
+-   otherwise, intercept is where regression line crosses the y-axis at X = 0
+
+::: notes
+-   Also, notice that when $X = \bar{X}$ the regression line goes through $\bar{Y}$
+
+$$b_0 = \bar{Y} - b_1\bar{X}$$
+:::
+
+------------------------------------------------------------------------
+
+The intercept adjusts the location of the regression line to ensure that it runs through the point $\large (\bar{X}, \bar{Y}).$ We can calculate this value using the equation:
+
+$$\Large b_0 = \bar{Y} - b_1\bar{X}$$
+
+# Visuals of OLS Regression
+
+<https://setosa.io/ev/ordinary-least-squares-regression/>
+
+[https://observablehq.com/\@yizhe-ang/interactive-visualization-of-linear-regression](https://observablehq.com/@yizhe-ang/interactive-visualization-of-linear-regression)
+
+------------------------------------------------------------------------
+
+## Example (by hand)
+
+```{r, message = F, warning = F}
+library(gapminder)
+gapminder %<>% filter(year == 2007 & continent == "Asia") %>% 
+  mutate(log_gdp = log(gdpPercap))
+
+gapminder %>% 
+  select(log_gdp, lifeExp) %>% 
+  describe()
+
+cor(gapminder$log_gdp, gapminder$lifeExp)
+```
+
+------------------------------------------------------------------------
+
+If we regress lifeExp onto log_gdp:
+
+```{r, echo = c(1:7, 9)}
+r = cor(gapminder$log_gdp, gapminder$lifeExp)
+m_log_gdp = mean(gapminder$log_gdp)
+m_lifeExp = mean(gapminder$lifeExp)
+s_log_gdp = sd(gapminder$log_gdp)
+s_lifeExp = sd(gapminder$lifeExp)
+
+b1 = r*(s_lifeExp/s_log_gdp)
+b1
+b0 = m_lifeExp - b1*m_log_gdp
+b0
+```
+
+------------------------------------------------------------------------
+
+## In `R`
+
+```{r}
+fit.1 <- lm(lifeExp ~ log_gdp, data = gapminder)
+summary(fit.1)
+```
+
+::: notes
+**Things to discuss**
+
+-   Coefficient estimates
+-   Statistical tests (covered in more detail soon)
+:::
+
+------------------------------------------------------------------------
+
+```{r, echo=FALSE, cache=TRUE, message = F}
+ggplot(gapminder, aes(x=log_gdp, y=lifeExp)) +
+    geom_point() +    
+    geom_smooth(method=lm,   # Add linear regression line
+                se=FALSE) +
+  theme_bw(base_size = 20)
+```
+
+------------------------------------------------------------------------
+
+### Data, fitted, and residuals
+
+```{r}
+library(broom)
+model_info = augment(fit.1)
+head(model_info)
+```
+
+```{r}
+describe(model_info, fast = T)
+```
+
+::: notes
+Point out the average of the residuals is 0, just like average deviation from the mean is 0.
+:::
+
+------------------------------------------------------------------------
+
+### The relationship between $X_i$ and $\hat{Y_i}$
+
+```{r, fig.width=8, fig.height = 6}
+#| code-fold: true
+#| 
+model_info %>% ggplot(aes(x = log_gdp, y = .fitted)) +
+  geom_point() + geom_smooth(se = F, method = "lm") +
+  scale_x_continuous("X") + scale_y_continuous(expression(hat(Y))) + theme_bw(base_size = 30)
+```
+
+------------------------------------------------------------------------
+
+### The relationship between $X_i$ and $e_i$
+
+```{r, fig.width=8, fig.height = 6}
+#| code-fold: true
+model_info %>% ggplot(aes(x = log_gdp, y = .resid)) +
+  geom_point() + geom_smooth(se = F, method = "lm") + 
+  scale_x_continuous("X") + scale_y_continuous("e") + theme_bw(base_size = 30)
+```
+
+------------------------------------------------------------------------
+
+### The relationship between $Y_i$ and $\hat{Y_i}$
+
+```{r, fig.width=8, fig.height = 6}
+#| code-fold: true
+model_info %>% ggplot(aes(x = lifeExp, y = .fitted)) +
+  geom_point() + geom_smooth(se = F, method = "lm") + 
+  scale_x_continuous("Y") + scale_y_continuous(expression(hat(Y))) + theme_bw(base_size = 30)
+```
+
+------------------------------------------------------------------------
+
+### The relationship between $Y_i$ and $e_i$
+
+```{r, fig.width=8, fig.height = 6}
+#| code-fold: true
+model_info %>% ggplot(aes(x = lifeExp, y = .resid)) +
+  geom_point() + geom_smooth(se = F, method = "lm") + 
+  scale_x_continuous("Y") + scale_y_continuous("e") + theme_bw(base_size = 25)
+```
+
+------------------------------------------------------------------------
+
+### The relationship between $\hat{Y_i}$ and $e_i$
+
+```{r, fig.width=8, fig.height = 6}
+#| code-fold: true
+model_info %>% ggplot(aes(x = .fitted, y = .resid)) +
+  geom_point() + geom_smooth(se = F, method = "lm") + 
+  scale_y_continuous("e") + scale_x_continuous(expression(hat(Y))) + theme_bw(base_size = 30)
+```
+
+------------------------------------------------------------------------
+
+## Using `easystats`
+
+```{r}
+performance::check_model(fit.1)
+```
+
+------------------------------------------------------------------------
+
+## Using `sjPlot`
+
+```{r}
+sjPlot::tab_model(fit.1)
+```
+
+------------------------------------------------------------------------
+
+## Regression to the mean
+
+An observation about heights was part of the motivation to develop the regression equation: If you selected a parent who was exceptionally tall (or short), their child was almost always not as tall (or as short).
+
+```{r,  warning = F, message = F, fig.height = 4}
+#| code-fold: true
+#| 
+library(psychTools)
+library(tidyverse)
+heights = psychTools::galton
+mod = lm(child~parent, data = heights)
+point = 902
+heights = broom::augment(mod)
+
+
+heights %>%
+  ggplot(aes(x = parent, y = child)) +
+  geom_jitter(alpha = .3) +
+  geom_hline(aes(yintercept = 72), color = "red") +
+  geom_vline(aes(xintercept = 72), color = "red") +
+  theme_bw(base_size = 20)
+```
+
+------------------------------------------------------------------------
+
+## Regression to the mean
+
+This phenomenon is known as **regression to the mean.** This describes the phenomenon in which an random variable produces an extreme score on a first measurement, but a lower score on a second measurement.
+
+------------------------------------------------------------------------
+
+## Regression to the mean
+
+This can be a threat to internal validity if interventions are applied based on first measurement scores.
+
+::::: columns
+::: {.column width="50%"}
+```{r, echo = F, message = F, warning =F}
+set.seed(011620)
+true_score = rnorm(m = 75, sd = 7, n = 35)
+midterm = true_score + rnorm(sd = 4, n = 35)
+final = true_score + rnorm(sd = 4, n = 35)
+grades = data.frame(midterm = midterm, final = final, 
+                    tutor = ifelse(midterm < 70, "yes", "no")) 
+
+grades$change = final-midterm
+library(ggpubr)
+ggpubr::ggerrorplot(data = grades, 
+                    x = "tutor", 
+                    y = "change", 
+                    desc_stat = "mean_ci", 
+                    color = "tutor", 
+                    ylab = "Change in grade between final and midterm", size = 2) + 
+  theme_minimal(base_size = 20)
+```
+:::
+
+::: {.column width="50%"}
+```{r, echo = F}
+ggpubr::ggscatter(data = grades, 
+                  x = "midterm", 
+                  y = "final", 
+                  color = "tutor",
+                  size = 3) + theme_minimal(base_size = 20)
+```
+:::
+:::::
+
+------------------------------------------------------------------------
+
+![](/images/what.gif){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Another Dataset
+
+```{r}
+school <- read_csv("https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/example2-chisq.csv") %>% 
+  mutate(Sleep_Hours_Non_Schoolnight = as.numeric(Sleep_Hours_Non_Schoolnight)) %>% 
+  filter(Sleep_Hours_Non_Schoolnight < 24) #removing impossible values
+```
+
+------------------------------------------------------------------------
+
+## Statistical Inference
+
+-   The way the world is = our model + error
+
+-   How good is our model? Does it "fit" the data well?
+
+. . .
+
+To assess how well our model fits the data, we will examine the proportion of variance in our outcome variable that can be "explained" by our model.
+
+To do so, we need to partition the variance into different categories. For now, we will partition it into two categories: the variability that is captured by (explained by) our model, and variability that is not.
+
+------------------------------------------------------------------------
+
+## Partitioning variation
+
+Let's start with the formula defining the relationship between observed $Y$ and fitted $\hat{Y}$:
+
+$$Y_i = \hat{Y}_i + e_i$$
+
+. . .
+
+One of the properties that we love about variance is that variances are additive when two variables are independent. In other words, if we create some variable, C, by adding together two other variables, A and B, then the variance of C is equal to the sum of the variances of A and B.
+
+. . .
+
+Why can we use that rule in this case?
+
+::: notes
+Students must recognize that Y-hat and e are uncorrelated, they must be the way that we've built the OLS function.
+:::
+
+------------------------------------------------------------------------
+
+## Partitioning variation
+
+::::: columns
+::: {.column width="50%"}
+[$\hat{Y}_i$ and $e_i$ must be independent from each other. Thus, the variance of $Y$ is equal to the sum of the variance of $\hat{Y}$ and $e$.]{style="font-size:80%"}
+
+$$\large s^2_Y = s^2_{\hat{Y}} + s^2_{e}$$
+:::
+
+::: {.column width="50%"}
+[Recall that variances are sums of squares divided by N-1. Thus, all variances have the same sample size, so we can also note the following:]{style="font-size:80%"}
+
+$$\large SS_Y = SS_{\hat{Y}} + SS_{\text{e}}$$
+:::
+:::::
+
+------------------------------------------------------------------------
+
+[A quick note about terminology: I demonstrated these calculations using $Y$, $\hat{Y}$ and $e$. However, you may also see the same terms written differently, to more clearly indicate the source of the variance...]{style="font-size:80%"}
+
+$$ SS_Y = SS_{\hat{Y}} + SS_{\text{e}}$$ $$ SS_Y = SS_{\text{Model}} + SS_{\text{Residual}}$$
+
+[The relative magnitudes of sums of squares provides a way of identifying particularly large and important sources of variability.]{style="font-size:80%"}
+
+------------------------------------------------------------------------
+
+## Coefficient of Determination
+
+$$\Large \frac{SS_{Model}}{SS_{Y}} = \frac{s_{Model}^2}{s_{y}^2} = R^2$$
+
+$R^2$ represents the proportion of variance in Y that is explained by the model.
+
+. . .
+
+$\sqrt{R^2} = R$ is the correlation between the predicted values of Y from the model and the actual values of Y
+
+$$\large \sqrt{R^2} = r_{Y\hat{Y}}$$
+
+------------------------------------------------------------------------
+
+### Example
+
+```{r}
+#| highlight-output: "10"
+
+fit.1 <- lm(Sleep_Hours_Non_Schoolnight ~ Ageyears, 
+           data = school)
+summary(fit.1) 
+model_info <- augment(fit.1)
+summary(fit.1)$r.squared
+
+```
+
+------------------------------------------------------------------------
+
+### Example
+
+```{r}
+school %>% 
+  ggplot(aes(x = Ageyears, y = Sleep_Hours_Non_Schoolnight)) + 
+  geom_point() + geom_smooth(method = "lm", se = F)
+```
+
+------------------------------------------------------------------------
+
+### Example
+
+The correlation between X and Y is:
+
+```{r}
+cor(school$Sleep_Hours_Non_Schoolnight, school$Ageyears, use = "pairwise")
+```
+
+. . .
+
+If we square the correlation, we get:
+
+```{r}
+cor(school$Sleep_Hours_Non_Schoolnight, school$Ageyears, use = "pairwise")^2
+```
+
+. . .
+
+Ta da!
+
+```{r}
+summary(fit.1)$r.squared
+```
+
+# Example in `R`
+
+Try some live coding! Also known as "Another opportunity for Dr. Haraden to potentially embarrass himself"
+
+<https://archive.ics.uci.edu/dataset/320/student+performance>
+
+<https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success>
+
+<https://datahub.io/collections>
+
+<https://www.kaggle.com/datasets>

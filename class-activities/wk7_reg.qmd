@@ -1,0 +1,81 @@
+---
+title: "Week 7 Exercises - Regressions"
+editor: visual
+---
+
+# Following Along
+
+**Objective:** To introduce the fundamentals of simple linear regression by collecting, visualizing, and modeling data. The core question we will explore is: **Can we predict the price of a LEGO set from its number of pieces?**
+
+## Collect the Data
+
+**First**, go to the LEGO website and identify a set that you like. Navigate to this [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSfR3myKgXz7yoi-S6ro1wLIpdh8F5n2BB_l627eDnVx7tTiwQ/viewform?usp=header){target="_blank"} and submit the following information:
+
+-   Name of the Set
+
+-   Set Number
+
+-   \# of Pieces
+
+-   Price
+
+## Inspect Data
+
+Next, we inspect the data and check the descriptives.
+
+## Visualize
+
+Now we can create a scatterplot between our variables of interest.
+
+## Run the Model
+
+Finally, we create the model and interpret the output.
+
+## ❓Questions
+
+1.  Given our model, how much would a set with 1,031 pieces cost?
+2.  Next year, a new set is expected to be released that has 250 pieces and cost \$99. Where would this fit into our figure? What could explain this deviation from our model?
+
+------------------------------------------------------------------------
+
+# On Your Own
+
+<a href="/files/data/CAH.csv" download="CAH.csv">Download Week 7 Class ActivityFollow Along (.csv)</a>
+
+Data is taken from [Cards Against Humanity - Pulse of the Nation](https://thepulseofthenation.com/#future){target="_blank"}
+
+Download the data and move it to the correct folder so that you can access it in this activity.
+
+Import the data into your R file.
+
+Focus on having reproducible code! You may need to share your file with someone else. They should be able to run it.
+
+## Steps:
+
+1.  Import Data
+2.  Check descriptive statistics
+3.  Create a correlation plot for the continuous variables
+4.  Visualize the relationship between \# of Transformers Movies and Books
+5.  Conduct a linear regression
+6.  Report the results
+
+### Items in the Data:
+
+| Var Name | Info |
+|------------------------------------|------------------------------------|
+| id | Study ID |
+| Income | Overall income |
+| Sex | Sex |
+| Age | Age |
+| Age Range | Age given in ranges |
+| Political Affiliation | Political Affiliation |
+| Education | What is your highest level of education?  |
+| ethnicity | What is your race? |
+| marrital status | What is your marital status? |
+| climate change | Do you believe that climate change is real and caused by people, real but not caused by people, or not real at all? |
+| Transformers | How many Transformers movies have you seen?  |
+| books | How many books, if any, have you read in the past year? |
+| ghosts | Do you believe in ghosts? |
+| spending | Is federal funding of scientific research too high, too low, or about right? |
+| choice | If you had to choose: would you rather be smart and sad, or dumb and happy? |
+| shower_pee | Do you think it is acceptable or unacceptable to urinate in the shower? |

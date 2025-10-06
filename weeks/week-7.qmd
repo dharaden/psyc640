@@ -1,31 +1,37 @@
 ---
-title: "Week XX"
+title: "Week 07 - Regression"
 editor: visual
 ---
 
-# R & Tidy Data
+# Intro & Overview to Regression
 
 ## Prepare
 
--   
+-   Chapter 14.1.1 - 14.1.4 - ST
+
+-   Chapter 7.1 - 7.2.4 - IMS
+
+-   Chapter 8.1.1 & 8.1.2 - MSR
 
 ## Slides
 
-[💻 Getting Started - Syllabus](../slides/lec-1_syl.html){target="_blank"}
-
-[💻Getting Started - Data](../slides/lec-1_background.html){target="_blank"}
+[💻 Intro to Regression](../slides/lec-7_regression.html){target="_blank"}
 
 ## In-Class Activity
 
-[Getting Comfy with R](../class-activities/day1.html){target="_blank"}
+[Predicting Stuff with Regression](../class-activities/wk7_reg.html){target="_blank"}
+
+![](images/clipboard-2550073227.jpeg)
 
 ## For Next Time
 
-📋[Lab 1 - Foundations of a Data Workflow](../labs/lab-1_data-workflow.html)
+**NO CLASS 10/13/25**
 
-📖Read Chapter 1 & 2 - ST
+📋[Midterm Project](../labs/midterm-proj.html)
 
-📖Read Chapter 2 - MSR
+📖Read Chapter 5 & 14- ST
+
+📖Read Chapter 7.2.5 - IMS
 
 <br><br>
 
