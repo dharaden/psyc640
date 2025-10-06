@@ -76,8 +76,8 @@ website:
             text: "Lab 5 - Correlation" 
           - href: labs/lab-6.qmd
             text: "Lab 6 - Comparing Means" 
-          - href: labs/lab-7.qmd
-            text: "Lab 7 - Regression" 
+          - href: labs/midterm-proj.qmd
+            text: "Midterm Project" 
           - href: labs/lab-8.qmd
             text: "Lab 8" 
       - href: resources.qmd
