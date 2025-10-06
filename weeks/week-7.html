@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Week XX – PSYC 640 - Graduate Statistics</title>
+<title>Week 07 - Regression – PSYC 640 - Graduate Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -38,9 +38,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-5fa042a522516c5f035cc39caa38a149.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -75,7 +75,8 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Week XX – PSYC 640 - Graduate Statistics">
+<meta property="og:title" content="Week 07 - Regression – PSYC 640 - Graduate Statistics">
+<meta property="og:image" content="https://dharaden.github.io/psyc640/weeks/images/clipboard-2550073227.jpeg">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
 
@@ -250,7 +251,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-7.html">Week 7</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-7.html">Week 7 - Regression</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -358,7 +359,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../weeks/week-7.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Week 7</span></a>
+ <span class="menu-text">Week 7 - Regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -405,19 +406,19 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../labs/lab-5_cor.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 5</span></a>
+ <span class="menu-text">Lab 5 - Correlation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../labs/lab-6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 6</span></a>
+ <span class="menu-text">Lab 6 - Comparing Means</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 7</span></a>
+  <a href="../labs/midterm-proj.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Midterm Project</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -450,7 +451,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#r-tidy-data" id="toc-r-tidy-data" class="nav-link active" data-scroll-target="#r-tidy-data">R &amp; Tidy Data</a>
+  <li><a href="#intro-overview-to-regression" id="toc-intro-overview-to-regression" class="nav-link active" data-scroll-target="#intro-overview-to-regression">Intro &amp; Overview to Regression</a>
   <ul class="collapse">
   <li><a href="#prepare" id="toc-prepare" class="nav-link" data-scroll-target="#prepare">Prepare</a></li>
   <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
@@ -464,9 +465,9 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-7.html">Week 7</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-7.html">Week 7 - Regression</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Week XX</h1>
+<h1 class="title">Week 07 - Regression</h1>
 </div>
 
 
@@ -483,28 +484,31 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="r-tidy-data" class="level1">
-<h1>R &amp; Tidy Data</h1>
+<section id="intro-overview-to-regression" class="level1">
+<h1>Intro &amp; Overview to Regression</h1>
 <section id="prepare" class="level2">
 <h2 class="anchored" data-anchor-id="prepare">Prepare</h2>
 <ul>
-<li></li>
+<li><p>Chapter 14.1.1 - 14.1.4 - ST</p></li>
+<li><p>Chapter 7.1 - 7.2.4 - IMS</p></li>
+<li><p>Chapter 8.1.1 &amp; 8.1.2 - MSR</p></li>
 </ul>
 </section>
 <section id="slides" class="level2">
 <h2 class="anchored" data-anchor-id="slides">Slides</h2>
-<p><a href="../slides/lec-1_syl.html" target="_blank">💻 Getting Started - Syllabus</a></p>
-<p><a href="../slides/lec-1_background.html" target="_blank">💻Getting Started - Data</a></p>
+<p><a href="../slides/lec-7_regression.html" target="_blank">💻 Intro to Regression</a></p>
 </section>
 <section id="in-class-activity" class="level2">
 <h2 class="anchored" data-anchor-id="in-class-activity">In-Class Activity</h2>
-<p><a href="../class-activities/day1.html" target="_blank">Getting Comfy with R</a></p>
+<p><a href="../class-activities/wk7_reg.html" target="_blank">Predicting Stuff with Regression</a></p>
+<p><img src="images/clipboard-2550073227.jpeg" class="img-fluid"></p>
 </section>
 <section id="for-next-time" class="level2">
 <h2 class="anchored" data-anchor-id="for-next-time">For Next Time</h2>
-<p>📋<a href="../labs/lab-1_data-workflow.html">Lab 1 - Foundations of a Data Workflow</a></p>
-<p>📖Read Chapter 1 &amp; 2 - ST</p>
-<p>📖Read Chapter 2 - MSR</p>
+<p><strong>NO CLASS 10/13/25</strong></p>
+<p>📋<a href="../labs/midterm-proj.html">Midterm Project</a></p>
+<p>📖Read Chapter 5 &amp; 14- ST</p>
+<p>📖Read Chapter 7.2.5 - IMS</p>
 <p><br><br></p>
 <div style="font-size: 0.875em;">
 <p>Back to <a href=".." title="Course schedule">course schedule</a> ⏎</p>

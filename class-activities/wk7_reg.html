@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lab 4: – PSYC 640 - Graduate Statistics</title>
+<title>Week 7 Exercises - Regressions – PSYC 640 - Graduate Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,8 +29,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../labs/lab-8.html" rel="next">
-<link href="../labs/lab-6.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -38,9 +36,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-5fa042a522516c5f035cc39caa38a149.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -75,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Lab 4: – PSYC 640 - Graduate Statistics">
+<meta property="og:title" content="Week 7 Exercises - Regressions – PSYC 640 - Graduate Statistics">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
@@ -251,7 +249,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/lab-1_data-workflow.html">Labs</a></li><li class="breadcrumb-item"><a href="../labs/lab-7.html">Lab 7</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Week 7 Exercises - Regressions</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -359,7 +357,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../weeks/week-7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7</span></a>
+ <span class="menu-text">Week 7 - Regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -372,13 +370,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Labs</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../labs/lab-1_data-workflow.html" class="sidebar-item-text sidebar-link">
@@ -406,19 +404,19 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../labs/lab-5_cor.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 5</span></a>
+ <span class="menu-text">Lab 5 - Correlation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../labs/lab-6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 6</span></a>
+ <span class="menu-text">Lab 6 - Comparing Means</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-7.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Lab 7</span></a>
+  <a href="../labs/midterm-proj.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Midterm Project</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -451,22 +449,31 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
-  <li><a href="#scenario-and-goal" id="toc-scenario-and-goal" class="nav-link" data-scroll-target="#scenario-and-goal">Scenario and Goal</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
+  <li><a href="#following-along" id="toc-following-along" class="nav-link active" data-scroll-target="#following-along">Following Along</a>
   <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#collect-the-data" id="toc-collect-the-data" class="nav-link" data-scroll-target="#collect-the-data">Collect the Data</a></li>
+  <li><a href="#inspect-data" id="toc-inspect-data" class="nav-link" data-scroll-target="#inspect-data">Inspect Data</a></li>
+  <li><a href="#visualize" id="toc-visualize" class="nav-link" data-scroll-target="#visualize">Visualize</a></li>
+  <li><a href="#run-the-model" id="toc-run-the-model" class="nav-link" data-scroll-target="#run-the-model">Run the Model</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">❓Questions</a></li>
+  </ul></li>
+  <li><a href="#on-your-own" id="toc-on-your-own" class="nav-link" data-scroll-target="#on-your-own">On Your Own</a>
+  <ul class="collapse">
+  <li><a href="#steps" id="toc-steps" class="nav-link" data-scroll-target="#steps">Steps:</a>
+  <ul class="collapse">
+  <li><a href="#items-in-the-data" id="toc-items-in-the-data" class="nav-link" data-scroll-target="#items-in-the-data">Items in the Data:</a></li>
+  </ul></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/lab-7.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/class-activities/wk7_reg.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/lab-1_data-workflow.html">Labs</a></li><li class="breadcrumb-item"><a href="../labs/lab-7.html">Lab 7</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 4:</h1>
+<h1 class="title">Week 7 Exercises - Regressions</h1>
 </div>
 
 
@@ -483,26 +490,140 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="instructions" class="level2">
-<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
-<p>Here are the things that you will need for this lab:</p>
+<section id="following-along" class="level1">
+<h1>Following Along</h1>
+<p><strong>Objective:</strong> To introduce the fundamentals of simple linear regression by collecting, visualizing, and modeling data. The core question we will explore is: <strong>Can we predict the price of a LEGO set from its number of pieces?</strong></p>
+<section id="collect-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="collect-the-data">Collect the Data</h2>
+<p><strong>First</strong>, go to the LEGO website and identify a set that you like. Navigate to this <a href="https://docs.google.com/forms/d/e/1FAIpQLSfR3myKgXz7yoi-S6ro1wLIpdh8F5n2BB_l627eDnVx7tTiwQ/viewform?usp=header" target="_blank">Google Form</a> and submit the following information:</p>
 <ul>
-<li><a href="../files/_lab-rmd/lab-3_describe-viz.Rmd" download="lab-3_describe-viz.Rmd">Download Lab 3 (.Rmd)</a></li>
-<li><a href="../files/data/bechdel.csv" download="bechdel.csv">Download Bechdel Data (.csv)</a></li>
+<li><p>Name of the Set</p></li>
+<li><p>Set Number</p></li>
+<li><p># of Pieces</p></li>
+<li><p>Price</p></li>
 </ul>
-<p>When you are finished, click the <strong>Knit</strong> button to turn your work into an HTML document. You will submit both this <code>.Rmd</code> file and the 🧶knitted <code>.html</code> file.</p>
 </section>
-<section id="scenario-and-goal" class="level2">
-<h2 class="anchored" data-anchor-id="scenario-and-goal">Scenario and Goal</h2>
+<section id="inspect-data" class="level2">
+<h2 class="anchored" data-anchor-id="inspect-data">Inspect Data</h2>
+<p>Next, we inspect the data and check the descriptives.</p>
+</section>
+<section id="visualize" class="level2">
+<h2 class="anchored" data-anchor-id="visualize">Visualize</h2>
+<p>Now we can create a scatterplot between our variables of interest.</p>
+</section>
+<section id="run-the-model" class="level2">
+<h2 class="anchored" data-anchor-id="run-the-model">Run the Model</h2>
+<p>Finally, we create the model and interpret the output.</p>
+</section>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">❓Questions</h2>
+<ol type="1">
+<li>Given our model, how much would a set with 1,031 pieces cost?</li>
+<li>Next year, a new set is expected to be released that has 250 pieces and cost $99. Where would this fit into our figure? What could explain this deviation from our model?</li>
+</ol>
 <hr>
 </section>
-<section id="exercises" class="level2">
-<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
-<section id="section" class="level3">
-<h3 class="anchored" data-anchor-id="section"></h3>
-<p><em>End of Lab. Don’t forget to Knit! 🧶</em></p>
+</section>
+<section id="on-your-own" class="level1">
+<h1>On Your Own</h1>
+<p><a href="../files/data/CAH.csv" download="CAH.csv">Download Week 7 Class ActivityFollow Along (.csv)</a></p>
+<p>Data is taken from <a href="https://thepulseofthenation.com/#future" target="_blank">Cards Against Humanity - Pulse of the Nation</a></p>
+<p>Download the data and move it to the correct folder so that you can access it in this activity.</p>
+<p>Import the data into your R file.</p>
+<p>Focus on having reproducible code! You may need to share your file with someone else. They should be able to run it.</p>
+<section id="steps" class="level2">
+<h2 class="anchored" data-anchor-id="steps">Steps:</h2>
+<ol type="1">
+<li>Import Data</li>
+<li>Check descriptive statistics</li>
+<li>Create a correlation plot for the continuous variables</li>
+<li>Visualize the relationship between # of Transformers Movies and Books</li>
+<li>Conduct a linear regression</li>
+<li>Report the results</li>
+</ol>
+<section id="items-in-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="items-in-the-data">Items in the Data:</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Var Name</th>
+<th>Info</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id</td>
+<td>Study ID</td>
+</tr>
+<tr class="even">
+<td>Income</td>
+<td>Overall income</td>
+</tr>
+<tr class="odd">
+<td>Sex</td>
+<td>Sex</td>
+</tr>
+<tr class="even">
+<td>Age</td>
+<td>Age</td>
+</tr>
+<tr class="odd">
+<td>Age Range</td>
+<td>Age given in ranges</td>
+</tr>
+<tr class="even">
+<td>Political Affiliation</td>
+<td>Political Affiliation</td>
+</tr>
+<tr class="odd">
+<td>Education</td>
+<td>What is your highest level of education?&nbsp;</td>
+</tr>
+<tr class="even">
+<td>ethnicity</td>
+<td>What is your race?</td>
+</tr>
+<tr class="odd">
+<td>marrital status</td>
+<td>What is your marital status?</td>
+</tr>
+<tr class="even">
+<td>climate change</td>
+<td>Do you believe that climate change is real and caused by people, real but not caused by people, or not real at all?</td>
+</tr>
+<tr class="odd">
+<td>Transformers</td>
+<td>How many Transformers movies have you seen?&nbsp;</td>
+</tr>
+<tr class="even">
+<td>books</td>
+<td>How many books, if any, have you read in the past year?</td>
+</tr>
+<tr class="odd">
+<td>ghosts</td>
+<td>Do you believe in ghosts?</td>
+</tr>
+<tr class="even">
+<td>spending</td>
+<td>Is federal funding of scientific research too high, too low, or about right?</td>
+</tr>
+<tr class="odd">
+<td>choice</td>
+<td>If you had to choose: would you rather be smart and sad, or dumb and happy?</td>
+</tr>
+<tr class="even">
+<td>shower_pee</td>
+<td>Do you think it is acceptable or unacceptable to urinate in the shower?</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 </section>
 </section>
 
@@ -920,18 +1041,6 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../labs/lab-6.html" class="pagination-link" aria-label="Lab 6">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 6</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../labs/lab-8.html" class="pagination-link" aria-label="Lab 8">
-        <span class="nav-page-text">Lab 8</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -940,7 +1049,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/lab-7.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/class-activities/wk7_reg.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with ☕ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
