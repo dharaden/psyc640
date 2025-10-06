@@ -1,6 +1,6 @@
 ---
-title: "Week 07: Comparing Means"
-subtitle: "Date: September 29, 2025"
+title: "Week 07: Simple Regression"
+subtitle: "Date: October 5, 2025"
 footer:  "[course-website](https://dharaden.github.io/psyc640/)"
 logo: "images/640_hex.png"
 format: 
@@ -22,1236 +22,724 @@ execute:
 
 ## Today...
 
-HIGHLIGHT THE USE OF THE `rm()` FUNCTION TO GET RID OF THINGS IN YOUR ENVIRONMENT
+Regression
+
+-   Why use regression?
+
+-   One equation to rule them all
+
+![](/images/reg_precious.gif){fig-align="center"}
+
+------------------------------------------------------------------------
 
 ```{r, results = 'hide', message = F, warning = F}
-# File management
-library(here)
-# for dplyr, ggplot2
+
+#Don't know if I'm using all of these, but including theme here anyways
 library(tidyverse)
-# Pretty tables
-library(sjPlot)
-library(ggstatsplot)
-# making tests easier
-library(lsr) ## NEW
-# Getting marginal means
-library(emmeans)
+library(rio)
+library(broom)
+library(psych)
+library(gapminder)
+library(psychTools)
+
 
 #Remove Scientific Notation 
 options(scipen=999)
 ```
 
-# Comparing Means
+------------------------------------------------------------------------
 
-Converting to a t-score and checking against the t-distribution
+## Overview of Regression
 
--   One-Sample
+Regression is a general data analytic system
 
--   Independent Sample
+-   Lots of things fall under the umbrella of regression
 
--   Paired Sample
+-   This system can handle a variety of forms of relations and types of variables
+
+The output of regression includes both effect sizes and statistical significance
+
+We can also incorporate multiple influences (IVs) and account for their intercorrelations
 
 ------------------------------------------------------------------------
 
-## but first...Degrees of Freedom
+### Uses for regression
 
-**Degrees of Freedom:** *the number of values in the final calculation of a statistic that are free to vary*
+::: incremental
+-   **Adjustment**: Take into account (*control*) known effects in a relationship
 
-**Example**: Drawing a triangle
+-   **Prediction**: Develop a model based on what has happened previously to predict what will happen in the future
 
-**❓Question:** If you have a sample of 5 scores and you know the mean is 3, how many of those scores can you *freely* change?
-
-------------------------------------------------------------------------
-
-## One Sample t-test
-
-*t*-tests were developed by William Sealy Gosset, who was a chemist studying the grains used in making beer. (He worked for Guinness.)
-
--   Specifically, he wanted to know whether particular strains of grain made better or worse beer than the standard.
-
--   He developed the *t*-test, to test small samples of beer against a population with an unknown standard deviation.
-
-    -   Probably had input from Karl Pearson and Ronald Fisher
-
--   Published this as "Student" because Guinness didn't want these tests tied to the production of beer.
+-   **Explanation**: examining the influence of one or more variable on some outcome
+:::
 
 ------------------------------------------------------------------------
 
-***One-sample tests compare your given sample with a "known" population***
-
-Research question: does this sample come from this population?
-
-**Hypotheses**
-
--   $H_0$: Yes, this sample comes from this population.
-
--   $H_1$: No, this sample comes from a different population.
-
-------------------------------------------------------------------------
-
-To calculate the t-statistic, we generally use this formula:
-
-$$t_{df=N-1} = \frac{\bar{X}-\mu}{\frac{\hat{\sigma}}{\sqrt{N}}}$$
-
-The heavier tails of the t-distribution, especially for small N, are the penalty we pay for having to estimate the population standard deviation from the sample.
-
-------------------------------------------------------------------------
-
-![](/images/t-to-z.png){fig-align="center"}
-
-------------------------------------------------------------------------
-
-## Example
-
-For examples today, we will use a dataset from Cards Against Humanity's Pulse of the Nation survey (<https://thepulseofthenation.com/>)
-
--   <a href="/files/data/CAH.csv" download="CAH.csv">Cards Against Humanity Data (.csv)</a>
-
-```{r}
-## We are using read_csv() this time
-## import() was doing something strange with missing values
-cah <- read_csv(here("files", "data", "CAH.csv")) %>% 
-  janitor::clean_names() 
-
-head(cah)
-```
-
-------------------------------------------------------------------------
-
-### **Assumptions of the one-sample *t*-test**
-
-**Normality.** We assume the sampling distribution of the mean is normally distributed. Under what two conditions can we be assured that this is true?
-
-**Independence.** Observations in the dataset are not associated with one another. Put another way, collecting a score from Participant A doesn't tell me anything about what Participant B will say. How can we be safe in this assumption?
-
-------------------------------------------------------------------------
-
-### A brief example
-
-Using the Cards Against Humanity data, we find that participants identified having approximately 22.33 ( $sd = 75.87$ ) books in their home. We know that the average household has approximately 50 books. How does this sample represent the larger united states?
-
-**Hypotheses**
-
-$H_0: \mu = 50$
-
-$H_1: \mu \neq 50$
-
-------------------------------------------------------------------------
+## Study Design & Collection
 
 ::::: columns
 ::: {.column width="50%"}
-$$\mu = 50$$
+Design - *When* data are collected
 
-$$N = 1000$$
+-   Retrospective/Prospective
 
-$$ \bar{X} = 22.33 $$
+-   Longitudinal
 
-$$ s = 75.87 $$
+-   Cross-Sectional
 :::
 
 ::: {.column width="50%"}
-```{r}
-t.test(x = cah$books, mu = 50,        
-       alternative = "two.sided")
-```
+Collection - *How* data are collected
+
+-   Experimental
+
+-   Field
+
+-   Observational
+
+-   Meta-analysis
+
+-   Neuroimaging/Psychophysiology
+
+-   Survey
+
+-   Quasi-Experimental
 :::
 :::::
 
 ------------------------------------------------------------------------
 
-```{r}
-lsr::oneSampleTTest(x = cah$books, mu = 50, 
-                    one.sided = FALSE)
-```
+### Regression Equation
+
+With regression, we are ***building a model*** that we think best represents the data, and the broader world
+
+$$
+Data = Model + error
+$$
 
 ------------------------------------------------------------------------
 
-## Cohen's D
+At the most simple form we are drawing a line to characterize the linear relationship between the variables so that for any value of `x` we can have an estimate of `y`
 
-Cohen suggested one of the most common effect size estimates---the standardized mean difference---useful when comparing a group mean to a population mean or two group means to each other.
+$$
+Y = mX + b
+$$
 
-$$\delta = \frac{\mu_1 - \mu_0}{\sigma} \approx d = \frac{\bar{X}-\mu}{\hat{\sigma}}$$
+::::::: columns
+:::: {.column width="50%"}
+::: incremental
+-   Y = Outcome Variable (DV)
 
-Cohen's d is in the standard deviation (Z) metric.
+-   m = Slope Term
+:::
+::::
+
+:::: {.column width="50%"}
+::: incremental
+-   X = Predictor (IV)
+
+-   b = Intercept
+:::
+::::
+:::::::
 
 ------------------------------------------------------------------------
 
-Cohens's d for these data is $0.365$. In other words, the sample mean differs from the population mean by $0.365$ standard deviation units.
+### Regression Equation
 
-Cohen (1988) suggests the following guidelines for interpreting the size of d:
+Overall, we are providing a model to give us a "best guess" on predicting
 
-::: nonincremental
--   .2 = Small
+Let's "science up" the equation a little bit:
 
--   .5 = Medium
+$$
+Y_i = b_0 + b_1X_i + e_i
+$$
 
--   .8 = Large
+This equation is capturing how we are able to calculate each observation ( $Y_i$ )
+
+$$
+\hat{Y_i} = b_0 + b_1X_i
+$$
+
+This one will give us the "best guess" or *expected* value of $Y$ given $X$
+
+------------------------------------------------------------------------
+
+### Regression Equation
+
+There are two ways to think about our regression equation. They're similar to each other, but they produce different outputs.\
+$$Y_i = b_{0} + b_{1}X_i +e_i$$\
+$$\hat{Y_i} = b_{0} + b_{1}X_i$$\
+The model we are building by including new variables is to ***explain variance*** in our outcome
+
+::: callout-note
+$\hat{Y}$ signifies the fitted score -- no errorThe difference between the fitted and observed score is the residual ($e_i$)There is a different e value for each observation in the dataset
 :::
 
-[Cohen, J. (1988), Statistical power analysis for the behavioral sciences (2nd Ed.). Hillsdale: Lawrence Erlbaum.]{style="font-size:30px;"}
+------------------------------------------------------------------------
+
+### Expected vs. Actual
+
+$$Y_i = b_{0} + b_{1}X_i + e_i$$
+
+$$\hat{Y_i} = b_{0} + b_{1}X_i$$
+
+$\hat{Y}$ signifies that there is no error. Our line is predicting that exact value. We interpret it as being "on average"
+
+Important to identify that that $Y_i - \hat{Y_i} = e_i$.
+
+::: notes
+$\hat{Y}$ signifies the fitted score -- no error
+
+The difference between the fitted and observed score is the residual ($e_i$)
+
+There is a different e value for each observation in the dataset
+:::
 
 ------------------------------------------------------------------------
 
-### The usefulness of the one-sample *t*-test
+## OLS
 
-How often will you conducted a one-sample *t*-test on raw data?
+::: incremental
+-   How do we find the regression estimates?
 
--   (Probably) never
+-   Ordinary Least Squares (OLS) estimation
 
-How often will you come across one-sample *t*-tests?
+-   Minimizes deviations
 
--   (Probably) a lot!
+    -   $$ min\sum(Y_{i} - \hat{Y} ) ^{2} $$
 
-The one-sample *t*-test is used to test coefficients in a model.
-
-# YOUR TURN 💻
-
-# Independent Samples t-test
-
-Two different types: Student's & Welch's
-
--   Start with Student's t-test which assumes equal variances between the groups
-
-$$ t = \frac{\bar{X_1} - \bar{X_2}}{SE(\bar{X_1} - \bar{X_2})} $$
+-   Other estimation procedures possible (and necessary in some cases)
+:::
 
 ------------------------------------------------------------------------
 
-## Student's t-test
+```{r plot1}
+#| code-fold: true
 
-$$ H_0 : \mu_1 = \mu_2  \ \  H_1 : \mu_1 \neq \mu_2 $$
+set.seed(142)
+x.1 <- rnorm(10, 0, 1)
+e.1 <- rnorm(10, 0, 2)
+y.1 <- .5 + .55 * x.1 + e.1
+d.1 <- data.frame(x.1,y.1)
+m.1 <- lm(y.1 ~ x.1, data = d.1)
+d1.f<- augment(m.1)
 
-![](/images/student_H.png){fig-align="center"}
 
-------------------------------------------------------------------------
-
-### Student's t-test: Calculate SE
-
-Are able to use a pooled variance estimate
-
-Both variances/standard deviations are assumed to be equal
-
-Therefore:
-
-$$ SE(\bar{X_1} - \bar{X_2}) = \hat{\sigma} \sqrt{\frac{1}{N_1} + \frac{1}{N_2}} $$
-
-We are calculating the **Standard Error of the Difference between means**
-
-Degrees of Freedom: Total N - 2
-
-------------------------------------------------------------------------
-
-### Student's t-test
-
-Let's try it out using the traditional `t.test()` function
-
-Difference in Books by Belief in Ghosts
-
-```{r}
-t.test(formula = books ~ ghosts,
-       data = cah, var.equal = TRUE )
+ggplot(d1.f , aes(x=x.1, y=y.1)) +
+    geom_point(size = 2) +
+  geom_smooth(method = lm, se = FALSE) +
+  theme_bw(base_size = 20)
 ```
 
 ------------------------------------------------------------------------
-
-## Welch's t-test
-
-$$ H_0 : \mu_1 = \mu_2  \ \  H_1 : \mu_1 \neq \mu_2 $$
-
-![](/images/welch_H.png){fig-align="center"}
-
-------------------------------------------------------------------------
-
-### Welch's t-test: Calculate SE
-
-Since the variances are not equal, we have to estimate the SE differently
-
-$$ SE(\bar{X_1} - \bar{X_2}) = \sqrt{\frac{\hat{\sigma_1^2}}{N_1} + \frac{\hat{\sigma_2^2}}{N_2}} $$
-
-Degrees of Freedom is also very different:
-
-![](/images/welch_df.png){fig-align="center" width="380"}
-
-------------------------------------------------------------------------
-
-### Welch's t-test: In R (classic)
-
-Let's try it out using the traditional `t.test()` function...turns out it is pretty straightforward
-
-```{r}
-t.test(formula = books ~ ghosts,
-       data = cah, var.equal = FALSE )
-```
-
-------------------------------------------------------------------------
-
-## Cool Visualizations
-
-The library [ggstatsplot](https://indrajeetpatil.github.io/ggstatsplot/) has some wonderful visualizations of various tests
 
 ```{r}
 #| code-fold: true
 
-ggstatsplot::ggbetweenstats(   
-  data  = cah,   
-  x     = ghosts,   
-  y     = books,   
-  title = "Distribution of books by belief in ghosts" )
-
-```
-
-------------------------------------------------------------------------
-
-### Interpreting and writing up an independent samples t-test
-
-::: {style="font-size: 30px"}
-The first sentence usually conveys some descriptive information about the two groups you were comparing. Then you identify the type of test you conducted and what was determined (be sure to include the "stat block" here as well with the t-statistic, df, p-value, CI and Effect size). Finish it up by putting that into person words and saying what that means.
-:::
-
-> ::: {style="font-size: 30px"}
-> The mean amount of books in the household for the group who did not believe in ghosts was 19.9 (SD = 61.2), while the mean for those who believed in ghosts was 26.8 (SD = 96.4). A Student's independent samples t-test showed that there was not a significant mean difference (*t*(951)=-1.364, *p*=.17, $CI_{95}$=\[-16.98, 3.05\]). This suggests that there is no difference in amount of books in their household as a function of belief in ghosts.
-> :::
-
-# YOUR TURN 💻
-
-------------------------------------------------------------------------
-
-## Paired Samples $t$-Test
-
-[Chapter 13.5 - Learning Stats with R](https://learningstatisticswithr.com/book/ttest.html#pairedsamplesttest)
-
-Also called "Dependent Samples t-test"
-
--   We have been testing means between two *independent* samples. Participants may be randomly assigned to the separate groups
-
-    -   This is limited to those types of study designs, but what if we have repeated measures?
-
--   We will then need to compare scores across people...the samples we are comparing now *depend* on one another and are *paired*
-
-------------------------------------------------------------------------
-
-### Paired Samples $t$-test
-
-Each of the repeated measures (or pairs) can be viewed as a *difference score*
-
-This reduces the analysis to a one-sample t-test of the *difference score*
-
--   We are comparing the sample (i.e., difference scores) to a population $\mu$ = 0
-
-------------------------------------------------------------------------
-
-### Assumptions: Paired Samples
-
-The variable of interest (*difference scores*):
-
--   Continuous (Interval/Ratio)
-
--   Have 2 groups (and only two groups) that are matched
-
--   Normally Distributed
-
-------------------------------------------------------------------------
-
-### Why paired samples??
-
-Previously, we looked at independent samples $t$-tests, which we *could* do here as well (nobody will yell at you)
-
--   However, this would violate the assumption that the data points are independent of one another!
-
--   Within vs. Between-subjects
-
-------------------------------------------------------------------------
-
-### Within vs. Between Subjects
-
-![](/images/between-subjects-design.avif){fig-align="center"}
-
-------------------------------------------------------------------------
-
-### Paired Samples: Single Sample
-
-Instead of focusing on these variables as being separate/independent, we need to be able to account for their dependency on one another
-
-This is done by calculating a *difference* or *change* score for each participant
-
-$$ D_i = X_{i1} - X_{i2} $$
-
-Notice: The equation is set up as `variable1` minus `variable2`. This will be important when we interpret the results
-
-------------------------------------------------------------------------
-
-### Paired Samples: Hypotheses & $t$-statistic
-
-The hypotheses would then be:
-
-$$ H_0:  \mu_D = 0; H_1: \mu_D \neq 0 $$
-
-And to calculate our t-statistic:       $t_{df=n-1} = \frac{\bar{D}}{SE(D)}$
-
-where the Standard Error of the difference score is:        $\frac{\hat{\sigma_D}}{\sqrt{N}}$
-
-------------------------------------------------------------------------
-
-## Review of the t-test process
-
-1.  Collect Sample and define hypotheses
-
-2.  Set alpha level
-
-3.  Determine the sampling distribution ($t$ distribution for now)
-
-4.  Identify the critical value that corresponds to alpha and *df*
-
-5.  Calculate test statistic for sample collected
-
-6.  Inspect & compare statistic to critical value; Calculate probability
-
-# Example 1: Simple (by hand)
-
-Participants are placed in two differently colored rooms (counterbalanced) and are asked to rate overall happiness levels after spending 5 minutes inside the rooms. There are no windows, but there is a nice lamp and chair.
-
-Hypotheses:
-
--   $H_0:$ There is no difference in ratings of happiness between the rooms ( $\mu = 0$ )
-
--   $H_1:$ There is a difference in ratings of happiness between the rooms ( $\mu \neq 0$ )
-
-------------------------------------------------------------------------
-
-| Participant | Blue Room Score | Orange Room Score | Difference ($X_{iB} - X_{iO}$) |
-|:----------------:|:----------------:|:----------------:|:----------------:|
-| 1 | 3 | 6 | -3 |
-| 2 | 9 | 9 | 0 |
-| 3 | 2 | 10 | -8 |
-| 4 | 9 | 6 | 3 |
-| 5 | 5 | 2 | 3 |
-| 6 | 5 | 7 | -2 |
-
-```{r}
-#| code-fold: true 
-
-ex1 <- data.frame(id = c(1,2,3,4,5,6),
-                  blue = c(3,9,2,9,5,5),    
-                  orange = c(6,9,10,6,2,7),   
-                  diff_score = c(-3, 0, -8, 3, 3, -2))
-  head(ex1)
-```
-
-------------------------------------------------------------------------
-
-## Determining $t$-crit
-
-Can look things up using a [t-table](https://www.tdistributiontable.com/) where you need the degrees of freedom and the alpha
-
-But we have R to do those things for us:
-
-```{r}
-#the qt() function is for a 1 tailed test, so we are having to divide it in half to get both tails 
-
-alpha <- 0.05 
-n <- nrow(ex1) 
-t_crit <- qt(alpha/2, n-1) 
-t_crit
-```
-
-## Calculating t
-
-Let's get all of the information for the sample we are focusing on (difference scores):
-
-```{r}
-d <- mean(ex1$diff_score) 
-d 
-sd_diff <- sd(ex1$diff_score) 
-sd_diff
-```
-
-## Calculating t
-
-Now we can calculate our $t$-statistic: $$t_{df=n-1} = \frac{\bar{D}}{\frac{sd_{diff}}{\sqrt{n}}}$$
-
-```{r}
-t_stat <- d/(sd_diff/(sqrt(n))) 
-t_stat  
-
-#Probability of this t-statistic  
-p_val <- pt(t_stat, n-1)*2 
-p_val
-```
-
-## Make a decision
-
-Hypotheses:
-
-::: nonincremental
--   $H_0:$ There is no difference in ratings of happiness between the rooms ( $\mu = 0$ )
-
--   $H_1:$ There is a difference in ratings of happiness between the rooms ( $\mu \neq 0$ )
-:::
-
-| $alpha$ |          $t-crit$          |    $t-statistic$     |      $p-value$      |
-|:--------------:|:---------------------:|:----------------:|:---------------:|
-|  0.05   | $\pm$ `r round(t_crit, 2)` | `r round(t_stat, 2)` | `r round(p_val, 2)` |
-
-**What can we conclude??**
-
-# Example 2: Data in R
-
-```{r}
-
-state_school <- read_csv("https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/NM-NY_CAS.csv") %>% 
-  #create an ID variable
-  rowid_to_column("id")
-```
-
-------------------------------------------------------------------------
-
-## Let's Look at the data
-
-Research Question: Is there a difference between school nights and weekend nights for amount of time slept?
-
-Only looking at the variables that we are potentially interested in:
-
-```{r}
-state_school %>%    
-  select(id, Gender, Ageyears, Sleep_Hours_Schoolnight, Sleep_Hours_Non_Schoolnight) %>%    
-  head() #look at first few observations
-```
-
-------------------------------------------------------------------------
-
-### Difference Score
-
-::: {style="font-size: 30px"}
-This can be done in a couple different ways and sometimes you will see things computed this way:
-:::
-
-```{r, eval = FALSE}
-
-state_school$sleep_diff <- state_school$Sleep_Hours_Schoolnight - state_school$Sleep_Hours_Non_Schoolnight
-```
-
-::: {style="font-size: 30px"}
-However, we like the `tidyverse` so why don't we use the `mutate()` function
-
-And I always overdo things, so I am going to make a new dataset that only has the variables that I'm interested in (`sleep_state_school`)
-:::
-
-```{r}
-#| code-fold: true 
-
-sleep_state_school <- state_school %>%    
-  mutate(sleep_diff = Sleep_Hours_Schoolnight - Sleep_Hours_Non_Schoolnight) %>%   
-  select(id, Gender, Ageyears, Sleep_Hours_Schoolnight,          Sleep_Hours_Non_Schoolnight, sleep_diff)  
-
-head(sleep_state_school)
-```
-
-------------------------------------------------------------------------
-
-### Visualizing
-
-Now that we have our variable of interest, let's take a look at it!
-
-```{r}
-sleep_state_school %>%   
-  ggplot(aes(sleep_diff)) +    
-  geom_histogram()
-```
-
-## Doing the test in R: One Sample
-
-Since we have calculated the difference scores, we can basically just do a one-sample t-test with the `lsr` library
-
-```{r}
-oneSampleTTest(sleep_state_school$sleep_diff, mu = 0)
-```
-
-## Doing the test in R: Paired Sample
-
-Maybe we want to keep things separate and don't want to calculate separate values. We can use `pairedSamplesTTest()` instead!
-
-But this isn't working and is making me mad...
-
-```{r, eval= FALSE}
-lsr::pairedSamplesTTest(
-  formula = ~ Sleep_Hours_Schoolnight + Sleep_Hours_Non_Schoolnight,
-  data = sleep_state_school
-)
-```
-
-## Doing the test in R: Classic Edition
-
-As you Google around to figure things out, you will likely see folks using `t.test()`
-
-```{r}
-t.test(x = sleep_state_school$Sleep_Hours_Schoolnight,    
-       y = sleep_state_school$Sleep_Hours_Non_Schoolnight,
-       paired = TRUE )
-```
-
-## Reporting $t$-test
-
-The first sentence usually conveys some descriptive information about the sample you were comparing (e.g., pre & post test).
-
-Then you identify the type of test you conducted and what was determined (be sure to include the "stat block" here as well with the t-statistic, df, p-value, CI and Effect size).
-
-Finish it up by putting that into person words and saying what that means.
-
-# YOUR TURN 💻
-
-# ANOVA (Analysis of Variance)
-
-## What is ANOVA? ([LSR Ch. 14](https://learningstatisticswithr.com/book/anova.html))
-
-::: incremental
--   ANOVA stands for [***An***]{.underline}alysis [***o***]{.underline}f [***Va***]{.underline}riance
--   Comparing means between two or more groups (usually 3 or more)
-    -   Continuous outcome and grouping variable with 2 or more levels
--   Under the larger umbrella of general linear models
-    -   ANOVA is basically a regression with only categorical predictors
--   Likely the most widely used tool in Psychology
-:::
-
-## Different Types of ANOVA
-
--   ::: {.fragment .highlight-green}
-    One-Way ANOVA
-    :::
-
--   Two-Way ANOVA
-
--   Repeated Measures ANOVA
-
--   ANCOVA
-
--   MANOVA
-
-## One-Way ANOVA
-
-Goal: Inform of differences among the levels of our variable of interest (Omnibus Test)
-
--   But cannot tell us more than that...
-
-Hypotheses:
-
-$$ H_0: it\: is\: true\: that\: \mu_1 = \mu_2 = \mu_3 =\: ...\mu_k  \\  H_1: it\: is\: \boldsymbol{not}\: true\: that\: \mu_1 = \mu_2 = \mu_3 =\: ...\mu_k $$
-
-## Wait...Means or Variance?
-
-We are using the variance to create a ratio (within group versus between group variance) to determine differences in means
-
--   We are not directly investigating variance, but operationalize variance to create the ratio:
-
-$$ F_{df_b, \: df_w} = \frac{MS_{between}}{MS_{within}} $$
-
-------------------------------------------------------------------------
-
-![](/images/ANOVA.png){width="729"}
-
-------------------------------------------------------------------------
-
-![](/images/ANOVA.png){width="729"}
-
-::::: columns
-::: {.column width="50%"}
-$F = \frac{MS_{between}}{MS_{within}} = \frac{small}{large} < 1$
-:::
-
-::: {.column width="50%"}
-$F = \frac{MS_{between}}{MS_{within}} = \frac{large}{small} > 1$
-:::
-:::::
-
-## ANOVA: Assumptions
-
-::: {style="font-size: 30px"}
-**Independence**
-
--   Observations between and within groups should be independent. No autocorrelation
-
-**Homogeneity of Variance**
-
--   The variances within each group should be roughly equal
-    -   Levene's test --\> Welch's ANOVA for unequal variances
-
-**Normality**
-
--   The data within each group should follow a normal distribution
-    -   Shapiro-Wilk test --\> can transform the data or use non-parametric tests
-:::
-
-# NHST with ANOVA
-
-## Review of the NHST process
-
-::: incremental
-1.  Collect Sample and define hypotheses
-
-2.  Set alpha level
-
-3.  Determine the sampling distribution (will be using $F$-distribution now)
-
-4.  Identify the critical value
-
-5.  Calculate test statistic for sample collected
-
-6.  Inspect & compare statistic to critical value; Calculate probability
-:::
-
-## Steps to calculating F-ratio
-
-1.  Capture variance both between and within groups
-2.  Variance to Sum of Squares
-3.  Degrees of Freedom
-4.  Mean squares values
-5.  F-Statistic
-
-## Capturing Variance
-
-We have calculated variance before!
-
-$$ Var = \frac{1}{N}\sum(x_i - \bar{x})^2 $$
-
-Now we have to take into account the variance between and within the groups:
-
-$$ Var(Y) = \frac{1}{N} \sum^G_{k=1}\sum^{N_k}_{i=i}(Y_{ik} - \bar{Y})^2 $$
-
-::: {style="font-size: 20px; text-align: center"}
-Notice that we have the summation across each group ( $G$ ) and the person in the group ( $N_k$ )
-:::
-
-------------------------------------------------------------------------
-
-## Variance to Sum of Squares
-
-**Total Sum of Squares -** Adding up the sum of squares instead of getting the average (notice the removal of $\frac{1}{N}$)
-
-$$ SS_{total} = \sum^G_{k=1}\sum^{N_k}_{i=i}(Y_{ik} - \bar{Y})^2 $$
-
-Can be broken up to see what is the variation ***between*** the groups AND the variation ***within*** the groups
-
-$$ SS_{total}=SS_{between}+SS_{within} $$
-
-::: {style="font-size: 20px; text-align: center"}
-This gets us closer to understanding the difference between means
-:::
-
-# Sum of Squares
-
-------------------------------------------------------------------------
-
-### Sum of Squares
-
-$$ SS_{total}=SS_{between}+SS_{within} $$
-
-![](/images/var_ss.PNG){fig-align="center"}
-
-------------------------------------------------------------------------
-
-### Example Data
-
-![](/images/table1.PNG){fig-align="center"}
-
-------------------------------------------------------------------------
-
-### Example Data
-
-![](/images/table2.PNG){fig-align="center"}
-
-------------------------------------------------------------------------
-
-### Example Data
-
-![](/images/table3.PNG){fig-align="center"}
-
-------------------------------------------------------------------------
-
-### Example Data
-
-![](/images/table4.PNG){fig-align="center"}
-
-------------------------------------------------------------------------
-
-## Sum of Squares - Between
-
-The difference between the *group mean* and *grand mean*
-
-$$ SS_{between} = \sum^G_{k=1}N_k(\bar{Y_k} - \bar{Y})^2 $$
-
-| Group  | Group Mean $\bar{Y_k}$ | Grand Mean $\bar{Y}$ |
-|:------:|:----------------------:|:--------------------:|
-|  Cool  |           32           |         41.8         |
-| Uncool |          56.5          |         41.8         |
-
-------------------------------------------------------------------------
-
-## Sum of Squares - Between
-
-The difference between the *group mean* and *grand mean*
-
-$$ SS_{between} = \sum^G_{k=1}N_k(\bar{Y_k} - \bar{Y})^2 $$
-
-| Group | Group Mean $\bar{Y_k}$ | Grand Mean $\bar{Y}$ | Sq. Dev. | N | Weighted Sq. Dev. |
-|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
-| Cool | 32 | 41.8 | 96.04 | 3 | 288.12 |
-| Uncool | 56.5 | 41.8 | 216.09 | 2 | 432.18 |
-
-------------------------------------------------------------------------
-
-## Sum of Squares - Between
-
-The difference between the *group mean* and *grand mean*
-
-$$ SS_{between} = \sum^G_{k=1}N_k(\bar{Y_k} - \bar{Y})^2 $$
-
-Now we can sum the Weighted Squared Deviations together to get our Sum of Squares Between:
-
-```{r}
-ssb <- 288.12 + 432.18 
-ssb
-```
-
-------------------------------------------------------------------------
-
-## Sum of Squares - Within
-
-The difference between the [*individual*]{.underline} and their [*group mean*]{.underline}
-
-$$ SS_{within} = \sum^G_{k=1}\sum^{N_k}_{i=i}(Y_{ik} - \bar{Y_k})^2 $$
-
-|    Name    | Grumpiness $Y_{ik}$ | Group Mean $\bar{Y_K}$ |
-|:----------:|:-------------------:|:----------------------:|
-|   Frodo    |         20          |           32           |
-|    Sam     |         55          |           32           |
-|   Bandit   |         21          |           32           |
-| Dolores U. |         91          |          56.5          |
-|   Dustin   |         22          |          56.5          |
-
-------------------------------------------------------------------------
-
-## Sum of Squares - Within
-
-The difference between the [*individual*]{.underline} and their [*group mean*]{.underline}
-
-$$ SS_{within} = \sum^G_{k=1}\sum^{N_k}_{i=i}(Y_{ik} - \bar{Y_k})^2 $$
-
-|    Name    | Grumpiness $Y_{ik}$ | Group Mean $\bar{Y_K}$ | Sq. Dev |
-|:----------:|:-------------------:|:----------------------:|---------|
-|   Frodo    |         20          |           32           | 144     |
-|    Sam     |         55          |           32           | 529     |
-|   Bandit   |         21          |           32           | 121     |
-| Dolores U. |         91          |          56.5          | 1190.25 |
-|   Dustin   |         22          |          56.5          | 1190.25 |
-
-```{r}
-#| code-fold: true 
-
-score <- c(20, 55, 21, 91, 22) 
-group_m <- c(32, 32, 32, 56.5, 56.5) 
-sq_dev <- (score - group_m)^2
-```
-
-------------------------------------------------------------------------
-
-## Sum of Squares - Within
-
-The difference between the [*individual*]{.underline} and their [*group mean*]{.underline}
-
-$$ SS_{within} = \sum^G_{k=1}\sum^{N_k}_{i=i}(Y_{ik} - \bar{Y_k})^2 $$ Now we can sum the Squared Deviations together to get our Sum of Squares Within:
-
-```{r}
-sum(sq_dev)
-```
-
-## Sum of Squares
-
-Can start to have an idea of what this looks like
-
-$$ SS_{between} = \sum^G_{k=1}N_k(\bar{Y_k} - \bar{Y})^2 = 720.3 $$
-
-$$ SS_{within} = \sum^G_{k=1}\sum^{N_k}_{i=i}(Y_{ik} - \bar{Y_k})^2 = 3174.5 $$
-
-Next we have to take into account the degrees of freedom
-
-# Degrees of Freedom - ANOVA
-
-------------------------------------------------------------------------
-
-## Degrees of Freedom
-
-Since we have 2 types of variations that we are examining, this needs to be reflected in the degrees of freedom
-
-1.  Take the number of groups and subtract 1\
-    $df_{between} = G - 1$
-
-2.  Take the total number of observations and subtract the number of groups
-
-    $df_{within} = N - G$
-
-# Mean Squares
-
-------------------------------------------------------------------------
-
-## Calculating Mean Squares
-
-Next we convert our summed squares value into a "mean squares"
-
-This is done by dividing by the respective degrees of freedom
-
-$$ MS_b = \frac{SS_b}{df_b} $$
-
-$$ MS_W = \frac{SS_w}{df_w} $$
-
-------------------------------------------------------------------------
-
-## Calculating Mean Squares - Example
-
-Let's take a look at how this applies to our example: $$ MS_b = \frac{SS_b}{G-1} = \frac{720.3}{2-1} = 720.3 $$
-
-$$ MS_W = \frac{SS_w}{N-G} = \frac{3174.5}{5-2} = 1058.167  $$
-
-# $F$-Statistic
-
-------------------------------------------------------------------------
-
-## Calculating the F-Statistic
-
-$$F = \frac{MS_b}{MS_w}$$
-
-If the null hypothesis is true, $F$ has an expected value close to 1 (numerator and denominator are estimates of the same variability)
-
-If it is false, the numerator will likely be larger, because systematic, between-group differences contribute to the variance of the means, but not to variance within group.
-
-------------------------------------------------------------------------
-
-```{r, fig.width = 10, fig.height = 6}
-#| code-fold: true 
-
-data.frame(F = c(0,8)) %>%   
-  ggplot(aes(x = F)) +   
-  stat_function(fun = function(x) df(x, df1 = 3, df2 = 196),                  geom = "line") +   
-  stat_function(fun = function(x) df(x, df1 = 3, df2 = 196),                  geom = "area", xlim = c(2.65, 8), fill = "purple") +   geom_vline(aes(xintercept = 2.65), color = "purple") +   scale_y_continuous("Density") + scale_x_continuous("F statistic", breaks = NULL) +   theme_bw(base_size = 20)
-```
-
-If data are normally distributed, then the variance is $\chi^2$ distributed
-
-$F$-distributions are one-tailed tests. Recall that we're interested in how far away our test statistic from the null $(F = 1).$
-
-------------------------------------------------------------------------
-
-## Calculating F-statistic: Example
-
-$$F = \frac{MS_b}{MS_w} = \frac{720.3}{1058.167} = 0.68$$
-
-[Link](http://courses.atlas.illinois.edu/spring2016/STAT/STAT200/pf.html) to probability calculator
-
-------------------------------------------------------------------------
-
-```{r fig.width = 10, fig.height = 6}
-#| code-fold: true #|  
-
-data.frame(F = c(0,8)) %>%   
-  ggplot(aes(x = F)) +   
-  stat_function(fun = function(x) df(x, df1 = 3, df2 = 196),                  geom = "line") +   
-  stat_function(fun = function(x) df(x, df1 = 3, df2 = 196),                  geom = "area", xlim = c(2.65, 8), fill = "purple") +   geom_vline(aes(xintercept = 2.65), color = "purple") +
-  geom_vline(aes(xintercept = 0.68), color = "red") +    
-  annotate("text",            
-           label = "F=0.68",             
-           x = 1.1, y = 0.65, size = 8, color = "red") +
-  scale_y_continuous("Density") + 
-  scale_x_continuous("F statistic", breaks = NULL) +   
+ggplot(d1.f , aes(x=x.1, y=y.1)) +
+    geom_point(size = 2) +
+  geom_point(aes(y = .fitted), shape = 1, size = 2) +
   theme_bw(base_size = 20)
 ```
 
-What can we conclude?
-
-------------------------------------------------------------------------
-
-## Contrasts/Post-Hoc Tests
-
-Performed when there is a significant difference among the groups to examine which groups are different
-
-1.  **Contrasts**: When we have *a priori* hypotheses
-2.  **Post-hoc Tests**: When we want to test everything
-
-# Reporting Results
-
-------------------------------------------------------------------------
-
-## Tables
-
-Often times the output will be in the form of a table and then it is often reported this way in the manuscript
-
-| Source of Variation | df | Sum of Squares | Mean Squares | F-statistic | p-value |
-|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
-| Group | $G-1$ | $SS_b$ | $MS_b = \frac{SS_b}{df_b}$ | $F = \frac{MS_b}{MS_w}$ | $p$ |
-| Residual | $N-G$ | $SS_w$ | $MS_w = \frac{SS_w}{df_w}$ |  |  |
-| Total | $N-1$ | $SS_{total}$ |  |  |  |
-
-------------------------------------------------------------------------
-
-## In-Text
-
-> A one-way analysis of variance was used to test for differences in the \[variable of interest/outcome variable\] as a function of \[whatever the factor is\]. Specifically, differences in \[variable of interest\] were assessed for the \[list different levels and be sure to include (M= , SD= )\] . The one-way ANOVA revealed a significant/nonsignificant effect of \[factor\] on scores on the \[variable of interest\] (F(dfb, dfw) = f-ratio, p = p-value, η2 = effect size).
->
-> Planned comparisons were conducted to compare expected differences among the \[however many groups\] means. Planned contrasts revealed that participants in the \[one of the conditions\] had a greater/fewer \[variable of interest\] and then include the p-value. This same type of sentence is repeated for whichever contrasts you completed. Descriptive statistics were reported in Table 1.
-
-# One-Way ANOVA in R
-
-`Continuous_Variable ~ Group_Variable`
-
-------------------------------------------------------------------------
-
-## Books by Marital Status
-
-We can examine how many books (continuous) by marital status (7 categories: Married, Divorced, In a relationship, Other, Separated, Widowed, Single)
-
-VISUALIZE!
-
-```{r}
-ggbetweenstats(
-  data  = cah,
-  x     = marital_status,
-  y     = books,
-  title = "Distribution of books across marital status"
-)
-```
-
-------------------------------------------------------------------------
-
-### Running the ANOVA
-
-Use the same way we build a model and then get the summary of that model
-
-```{r}
-aov_mar <- aov(books ~ marital_status, 
-               data = cah)
-
-summary(aov_mar)
-
-```
-
-------------------------------------------------------------------------
-
-### Post-hoc Tests
-
-1.  Examine the basic summary statistics
-2.  Do pairwise comparisons between each of the groups, based on the model we created
-
-```{r}
-#get basic summary stats
-cah %>% 
-  group_by(marital_status) %>% 
-  summarise(mean = mean(books, na.rm = TRUE), 
-            sd = sd(books, na.rm = TRUE))
-
-
-# conduct the comparisons
-emmeans(aov_mar, pairwise ~ marital_status, 
-        adjust = "none") 
-```
-
-------------------------------------------------------------------------
-
-## Family-wise error
-
-These pairwise comparisons can quickly grow in number as the number of Groups increases. With 3 (k) Groups, we have k(k-1)/2 = 3 possible pairwise comparisons.
-
-As the number of groups in the ANOVA grows, the number of possible pairwise comparisons increases dramatically.
-
-```{r,echo = F, fig.width = 10, fig.height = 5.5}
-
-data.frame(g = 2:15) %>%   
-  mutate(num = (g*(g-1))/2) %>%   
-  ggplot(aes(x = g, y = num)) +   
-  geom_line(size = 1.5) +   
-  geom_point(size = 3)+   
-  scale_x_continuous("Number of Groups in the ANOVA") +   
-  scale_y_continuous("Number of Pairwise Comparisons") +   
-  theme_bw()
-```
-
-------------------------------------------------------------------------
-
-As the number of tests grows, and assuming the null hypothesis is true, the probability that we will make one or more Type I errors increases. To approximate the magnitude of the problem, we can assume that the multiple pairwise comparisons are independent. The probability that we **don't** make a Type I error for [**one**]{.underline} test is:
-
-$$P(\text{No Type I}, 1 \text{ test}) = 1-\alpha$$
-
-------------------------------------------------------------------------
-
-The probability that we don't make a Type I error for [**two**]{.underline} tests is:
-
-$$P(\text{No Type I}, 2 \text{ test}) = (1-\alpha)(1-\alpha)$$
-
-For C tests, the probability that we make **no** Type I errors is
-
-$$P(\text{No Type I}, C \text{ tests}) = (1-\alpha)^C$$
-
-We can then use the following to calculate the probability that we make one or more Type I errors in a collection of C independent tests.
-
-$$P(\text{At least one Type I}, C \text{ tests}) = 1-(1-\alpha)^C$$
-
-------------------------------------------------------------------------
-
-The Type I error inflation that accompanies multiple comparisons motivates the large number of "correction" procedures that have been developed.
-
-```{r,echo = F, fig.width = 10, fight.height = 6}
-
-data.frame(g = 2:15) %>%   
-  mutate(num = (g*(g-1))/2,          
-         p_notype1 = (1-.05)^num,          
-         p_type1 = 1-p_notype1) %>%   
-  ggplot(aes(x = g, y = p_type1)) +   
-  geom_line(size = 1.5) +   
-  geom_point(size = 3)+   
-  scale_x_continuous("Number of Groups in the ANOVA") +   
-  scale_y_continuous("Probability of a Type I Error") +   
-  theme_bw()
-```
-
-------------------------------------------------------------------------
-
-Multiple comparisons, each tested with $\alpha_{per-test}$, increases the family-wise $\alpha$ level.
-
-$$\large \alpha_{family-wise} = 1 - (1-\alpha_{per-test})^C$$ Šidák showed that the family-wise a could be controlled to a desired level (e.g., .05) by changing the $\alpha_{per-test}$ to:
-
-$$\large \alpha_{per-wise} = 1 - (1-\alpha_{family-wise})^{\frac{1}{C}}$$
-
-------------------------------------------------------------------------
-
-### Bonferroni
-
-Bonferroni (and Dunn, and others) suggested this simple approximation:
-
-$$\large \alpha_{per-test} = \frac{\alpha_{family-wise}}{C}$$
-
-This is typically called the Bonferroni correction and is very often used even though better alternatives are available.
-
 ------------------------------------------------------------------------
 
 ```{r}
-emmeans(aov_mar, pairwise ~ marital_status,          adjust = "bonferroni")
+#| code-fold: true
+
+ggplot(d1.f , aes(x=x.1, y=y.1)) +
+    geom_point(size = 2) +
+  geom_point(aes(y = .fitted), shape = 1, size = 2) +
+  geom_segment(aes( xend = x.1, yend = .fitted))+
+  theme_bw(base_size = 20)
 ```
 
 ------------------------------------------------------------------------
 
-The Bonferroni procedure is conservative. Other correction procedures have been developed that control family-wise Type I error at .05 but that are more powerful than the Bonferroni procedure. The most common one is the Holm procedure.
+```{r, message = F}
+#| code-fold: true
 
-The Holm procedure does not make a constant adjustment to each per-test $\alpha$. Instead it makes adjustments in stages depending on the relative size of each pairwise p-value.
-
-------------------------------------------------------------------------
-
-### Holm correction
-
-1.  Rank order the p-values from largest to smallest.
-2.  Start with the smallest p-value. Multiply it by its rank.
-3.  Go to the next smallest p-value. Multiply it by its rank. If the result is larger than the adjusted p-value of next smallest rank, keep it. Otherwise replace with the previous step adjusted p-value.
-4.  Repeat Step 3 for the remaining p-values.
-5.  Judge significance of each new p-value against $\alpha = .05$.
-
-------------------------------------------------------------------------
-
-```{r, echo = F, results = 'asis'}
-
-data.frame(or = c(.0012, .0023, .0450, .0470, .0530, .2100),            
-           rank = c(6:1)) %>%   
-  mutate(rankp = or*rank,          
-         holm = p.adjust(or, method = "holm"),
-         bon = p.adjust(or, method = "bonferroni")) %>%   
-  kableExtra::kable(., col.names = c("Original p value",
-                         "Rank", "Rank x p",
-                         "Holm", "Bonferroni")) 
+ggplot(d1.f , aes(x=x.1, y=y.1)) +
+    geom_point(size = 2) +
+  geom_smooth(method = lm, se = FALSE) +
+  geom_point(aes(y = .fitted), shape = 1, size = 2) +
+  geom_segment(aes( xend = x.1, yend = .fitted))+
+  theme_bw(base_size = 20)
 ```
 
 ------------------------------------------------------------------------
 
-```{r}
-emmeans(aov_mar, pairwise ~ marital_status,          adjust = "holm")
-```
-
-------------------------------------------------------------------------
-
-### Tukey HSD
-
-Used to compare **all groups** to each other (so all possible comparisons of 2 groups)
-
-Typically the most common
-
-```{r}
-emmeans(aov_mar, pairwise ~ marital_status,          adjust = "tukey")
-```
-
-------------------------------------------------------------------------
-
-### Tukey HSD another way
-
-```{r}
-TukeyHSD(aov_mar)
-```
-
-# ANOVA is regression
-
-In regression, we can accommodate categorical predictors. How does this compare to ANOVA?
-
--   Same omnibus test of the model!
-
-\*(Really the same model, but packaged differently.)
-
--   When would you use one versus the other?
-
-------------------------------------------------------------------------
+## compare to bad fit
 
 ::::: columns
 ::: {.column width="50%"}
-**ANOVA**
-
--   More traditional for 3+ groups
-
--   Comparing/controlling multiple categorical variables
+```{r, echo=FALSE, message = F}
+ggplot(d1.f , aes(x=x.1, y=y.1)) +
+    geom_point(size = 2) +
+  geom_smooth(method = lm, se = FALSE) +
+  geom_point(aes(y = .fitted), shape = 1, size = 2) +
+  geom_segment(aes( xend = x.1, yend = .fitted))+
+  theme_bw(base_size = 20)
+```
 :::
 
 ::: {.column width="50%"}
-**Regression**
+```{r, echo = F, message = F}
+new.i = 1.1
+new.slope = -0.7
+d1.f$new.fitted = 1.1 -0.7*d1.f$x.1
 
--   Best for two groups
-
--   Incorporating continuous predictors too
-
--   Good for 3+ groups when you have more specific hypotheses (contrasts)
+ggplot(d1.f , aes(x=x.1, y=y.1)) +
+    geom_point(size = 2) +
+  geom_abline(intercept = new.i, slope = new.slope, color = "blue", size = 1) +
+  geom_point(aes(y = new.fitted), shape = 1, size = 2) +
+  geom_segment(aes( xend = x.1, yend = new.fitted))+
+  theme_bw(base_size = 20)
+```
 :::
 :::::
 
-# Two-Way ANOVA
+------------------------------------------------------------------------
+
+## OLS
+
+The line that yields the smallest sum of squared deviations
+
+$$\Sigma(Y_i - \hat{Y_i})^2$$ $$= \Sigma(Y_i - (b_0+b_{1}X_i))^2$$ $$= \Sigma(e_i)^2$$
+
+. . .
+
+In order to find the OLS solution, you could try many different coefficients $(b_0 \text{ and } b_{1})$ until you find the one with the smallest sum squared deviation. Luckily, there are simple calculations that will yield the OLS solution every time.
 
 ------------------------------------------------------------------------
 
-## What is a Two-Way ANOVA?
+## Regression coefficient, $b_{1}$
 
-Examines the impact of ***2*** nominal/categorical variables on a continuous outcome
+$$b_{1} = \frac{cov_{XY}}{s_{x}^{2}} = r_{xy} \frac{s_{y}}{s_{x}}$$
 
-We can now examine:
+What units is the regression coefficient in?
 
--   The impact of variable 1 on the outcome (Main Effect)
+. . .
 
--   The impact of variable 2 on the outcome (Main Effect)
-
--   The *interaction* of variable 1 & 2 on the outcome (Interaction Effect)
-
-    ::: incremental
-    -   The effect of variable 1 ***depends*** on the level of variable 2
-    :::
+The regression coefficient (slope) equals the estimated change in Y for a 1-unit change in X
 
 ------------------------------------------------------------------------
 
+$$\Large b_{1} = r_{xy} \frac{s_{y}}{s_{x}}$$
+
+If the standard deviation of both X and Y is equal to 1:
+
+$$\Large b_1 = r_{xy} \frac{s_{y}}{s_{x}} = r_{xy} \frac{1}{1} = r_{xy} = \beta_{yx} = b_{yx}^*$$
+
 ------------------------------------------------------------------------
 
-## Main Effect & Interactions
+## Standardized regression equation
 
-Main Effect: Basically a one-way ANOVA
+$$\Large Z_{y_i} = b_{yx}^*Z_{x_i}+e_i$$
 
--   The effect of variable 1 is the same across all levels of variable 2
+$$\Large b_{yx}^* = b_{yx}\frac{s_x}{s_y} = r_{xy}$$
 
-Interaction:
+. . .
 
--   Able to examine the effect of variable 1 across different levels of variable 2
+According to this regression equation, when $X = 0, Y = 0$. Our interpretation of the coefficient is that a one-standard deviation increase in X is associated with a $b_{yx}^*$ standard deviation increase in Y. Our regression coefficient is equivalent to the correlation coefficient *when we have only one predictor in our model.*
 
--   Basically speaking, **the effect of variable 1 on our outcome *DEPENDS on the levels of variable 2***
+------------------------------------------------------------------------
+
+## Estimating the intercept, $b_0$
+
+-   intercept serves to adjust for differences in means between X and Y
+
+$$\hat{Y_i} = \bar{Y} + r_{xy} \frac{s_{y}}{s_{x}}(X_i-\bar{X})$$
+
+-   if standardized, intercept drops out
+
+-   otherwise, intercept is where regression line crosses the y-axis at X = 0
+
+::: notes
+-   Also, notice that when $X = \bar{X}$ the regression line goes through $\bar{Y}$
+
+$$b_0 = \bar{Y} - b_1\bar{X}$$
+:::
+
+------------------------------------------------------------------------
+
+The intercept adjusts the location of the regression line to ensure that it runs through the point $\large (\bar{X}, \bar{Y}).$ We can calculate this value using the equation:
+
+$$\Large b_0 = \bar{Y} - b_1\bar{X}$$
+
+# Visuals of OLS Regression
+
+<https://setosa.io/ev/ordinary-least-squares-regression/>
+
+[https://observablehq.com/\@yizhe-ang/interactive-visualization-of-linear-regression](https://observablehq.com/@yizhe-ang/interactive-visualization-of-linear-regression)
+
+------------------------------------------------------------------------
+
+## Example (by hand)
+
+```{r, message = F, warning = F}
+library(gapminder)
+gapminder %<>% filter(year == 2007 & continent == "Asia") %>% 
+  mutate(log_gdp = log(gdpPercap))
+
+gapminder %>% 
+  select(log_gdp, lifeExp) %>% 
+  describe()
+
+cor(gapminder$log_gdp, gapminder$lifeExp)
+```
+
+------------------------------------------------------------------------
+
+If we regress lifeExp onto log_gdp:
+
+```{r, echo = c(1:7, 9)}
+r = cor(gapminder$log_gdp, gapminder$lifeExp)
+m_log_gdp = mean(gapminder$log_gdp)
+m_lifeExp = mean(gapminder$lifeExp)
+s_log_gdp = sd(gapminder$log_gdp)
+s_lifeExp = sd(gapminder$lifeExp)
+
+b1 = r*(s_lifeExp/s_log_gdp)
+b1
+b0 = m_lifeExp - b1*m_log_gdp
+b0
+```
+
+------------------------------------------------------------------------
+
+## In `R`
+
+```{r}
+fit.1 <- lm(lifeExp ~ log_gdp, data = gapminder)
+summary(fit.1)
+```
+
+::: notes
+**Things to discuss**
+
+-   Coefficient estimates
+-   Statistical tests (covered in more detail soon)
+:::
+
+------------------------------------------------------------------------
+
+```{r, echo=FALSE, cache=TRUE, message = F}
+ggplot(gapminder, aes(x=log_gdp, y=lifeExp)) +
+    geom_point() +    
+    geom_smooth(method=lm,   # Add linear regression line
+                se=FALSE) +
+  theme_bw(base_size = 20)
+```
+
+------------------------------------------------------------------------
+
+### Data, fitted, and residuals
+
+```{r}
+library(broom)
+model_info = augment(fit.1)
+head(model_info)
+```
+
+```{r}
+describe(model_info, fast = T)
+```
+
+::: notes
+Point out the average of the residuals is 0, just like average deviation from the mean is 0.
+:::
+
+------------------------------------------------------------------------
+
+### The relationship between $X_i$ and $\hat{Y_i}$
+
+```{r, fig.width=8, fig.height = 6}
+#| code-fold: true
+#| 
+model_info %>% ggplot(aes(x = log_gdp, y = .fitted)) +
+  geom_point() + geom_smooth(se = F, method = "lm") +
+  scale_x_continuous("X") + scale_y_continuous(expression(hat(Y))) + theme_bw(base_size = 30)
+```
+
+------------------------------------------------------------------------
+
+### The relationship between $X_i$ and $e_i$
+
+```{r, fig.width=8, fig.height = 6}
+#| code-fold: true
+model_info %>% ggplot(aes(x = log_gdp, y = .resid)) +
+  geom_point() + geom_smooth(se = F, method = "lm") + 
+  scale_x_continuous("X") + scale_y_continuous("e") + theme_bw(base_size = 30)
+```
+
+------------------------------------------------------------------------
+
+### The relationship between $Y_i$ and $\hat{Y_i}$
+
+```{r, fig.width=8, fig.height = 6}
+#| code-fold: true
+model_info %>% ggplot(aes(x = lifeExp, y = .fitted)) +
+  geom_point() + geom_smooth(se = F, method = "lm") + 
+  scale_x_continuous("Y") + scale_y_continuous(expression(hat(Y))) + theme_bw(base_size = 30)
+```
+
+------------------------------------------------------------------------
+
+### The relationship between $Y_i$ and $e_i$
+
+```{r, fig.width=8, fig.height = 6}
+#| code-fold: true
+model_info %>% ggplot(aes(x = lifeExp, y = .resid)) +
+  geom_point() + geom_smooth(se = F, method = "lm") + 
+  scale_x_continuous("Y") + scale_y_continuous("e") + theme_bw(base_size = 25)
+```
+
+------------------------------------------------------------------------
+
+### The relationship between $\hat{Y_i}$ and $e_i$
+
+```{r, fig.width=8, fig.height = 6}
+#| code-fold: true
+model_info %>% ggplot(aes(x = .fitted, y = .resid)) +
+  geom_point() + geom_smooth(se = F, method = "lm") + 
+  scale_y_continuous("e") + scale_x_continuous(expression(hat(Y))) + theme_bw(base_size = 30)
+```
+
+------------------------------------------------------------------------
+
+## Using `easystats`
+
+```{r}
+performance::check_model(fit.1)
+```
+
+------------------------------------------------------------------------
+
+## Using `sjPlot`
+
+```{r}
+sjPlot::tab_model(fit.1)
+```
+
+------------------------------------------------------------------------
+
+## Regression to the mean
+
+An observation about heights was part of the motivation to develop the regression equation: If you selected a parent who was exceptionally tall (or short), their child was almost always not as tall (or as short).
+
+```{r,  warning = F, message = F, fig.height = 4}
+#| code-fold: true
+#| 
+library(psychTools)
+library(tidyverse)
+heights = psychTools::galton
+mod = lm(child~parent, data = heights)
+point = 902
+heights = broom::augment(mod)
+
+
+heights %>%
+  ggplot(aes(x = parent, y = child)) +
+  geom_jitter(alpha = .3) +
+  geom_hline(aes(yintercept = 72), color = "red") +
+  geom_vline(aes(xintercept = 72), color = "red") +
+  theme_bw(base_size = 20)
+```
+
+------------------------------------------------------------------------
+
+## Regression to the mean
+
+This phenomenon is known as **regression to the mean.** This describes the phenomenon in which an random variable produces an extreme score on a first measurement, but a lower score on a second measurement.
+
+------------------------------------------------------------------------
+
+## Regression to the mean
+
+This can be a threat to internal validity if interventions are applied based on first measurement scores.
+
+::::: columns
+::: {.column width="50%"}
+```{r, echo = F, message = F, warning =F}
+set.seed(011620)
+true_score = rnorm(m = 75, sd = 7, n = 35)
+midterm = true_score + rnorm(sd = 4, n = 35)
+final = true_score + rnorm(sd = 4, n = 35)
+grades = data.frame(midterm = midterm, final = final, 
+                    tutor = ifelse(midterm < 70, "yes", "no")) 
+
+grades$change = final-midterm
+library(ggpubr)
+ggpubr::ggerrorplot(data = grades, 
+                    x = "tutor", 
+                    y = "change", 
+                    desc_stat = "mean_ci", 
+                    color = "tutor", 
+                    ylab = "Change in grade between final and midterm", size = 2) + 
+  theme_minimal(base_size = 20)
+```
+:::
+
+::: {.column width="50%"}
+```{r, echo = F}
+ggpubr::ggscatter(data = grades, 
+                  x = "midterm", 
+                  y = "final", 
+                  color = "tutor",
+                  size = 3) + theme_minimal(base_size = 20)
+```
+:::
+:::::
+
+------------------------------------------------------------------------
+
+![](/images/what.gif){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Another Dataset
+
+```{r}
+school <- read_csv("https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/example2-chisq.csv") %>% 
+  mutate(Sleep_Hours_Non_Schoolnight = as.numeric(Sleep_Hours_Non_Schoolnight)) %>% 
+  filter(Sleep_Hours_Non_Schoolnight < 24) #removing impossible values
+```
+
+------------------------------------------------------------------------
+
+## Statistical Inference
+
+-   The way the world is = our model + error
+
+-   How good is our model? Does it "fit" the data well?
+
+. . .
+
+To assess how well our model fits the data, we will examine the proportion of variance in our outcome variable that can be "explained" by our model.
+
+To do so, we need to partition the variance into different categories. For now, we will partition it into two categories: the variability that is captured by (explained by) our model, and variability that is not.
+
+------------------------------------------------------------------------
+
+## Partitioning variation
+
+Let's start with the formula defining the relationship between observed $Y$ and fitted $\hat{Y}$:
+
+$$Y_i = \hat{Y}_i + e_i$$
+
+. . .
+
+One of the properties that we love about variance is that variances are additive when two variables are independent. In other words, if we create some variable, C, by adding together two other variables, A and B, then the variance of C is equal to the sum of the variances of A and B.
+
+. . .
+
+Why can we use that rule in this case?
+
+::: notes
+Students must recognize that Y-hat and e are uncorrelated, they must be the way that we've built the OLS function.
+:::
+
+------------------------------------------------------------------------
+
+## Partitioning variation
+
+::::: columns
+::: {.column width="50%"}
+[$\hat{Y}_i$ and $e_i$ must be independent from each other. Thus, the variance of $Y$ is equal to the sum of the variance of $\hat{Y}$ and $e$.]{style="font-size:80%"}
+
+$$\large s^2_Y = s^2_{\hat{Y}} + s^2_{e}$$
+:::
+
+::: {.column width="50%"}
+[Recall that variances are sums of squares divided by N-1. Thus, all variances have the same sample size, so we can also note the following:]{style="font-size:80%"}
+
+$$\large SS_Y = SS_{\hat{Y}} + SS_{\text{e}}$$
+:::
+:::::
+
+------------------------------------------------------------------------
+
+[A quick note about terminology: I demonstrated these calculations using $Y$, $\hat{Y}$ and $e$. However, you may also see the same terms written differently, to more clearly indicate the source of the variance...]{style="font-size:80%"}
+
+$$ SS_Y = SS_{\hat{Y}} + SS_{\text{e}}$$ $$ SS_Y = SS_{\text{Model}} + SS_{\text{Residual}}$$
+
+[The relative magnitudes of sums of squares provides a way of identifying particularly large and important sources of variability.]{style="font-size:80%"}
+
+------------------------------------------------------------------------
+
+## Coefficient of Determination
+
+$$\Large \frac{SS_{Model}}{SS_{Y}} = \frac{s_{Model}^2}{s_{y}^2} = R^2$$
+
+$R^2$ represents the proportion of variance in Y that is explained by the model.
+
+. . .
+
+$\sqrt{R^2} = R$ is the correlation between the predicted values of Y from the model and the actual values of Y
+
+$$\large \sqrt{R^2} = r_{Y\hat{Y}}$$
+
+------------------------------------------------------------------------
+
+### Example
+
+```{r}
+#| highlight-output: "10"
+
+fit.1 <- lm(Sleep_Hours_Non_Schoolnight ~ Ageyears, 
+           data = school)
+summary(fit.1) 
+model_info <- augment(fit.1)
+summary(fit.1)$r.squared
+
+```
+
+------------------------------------------------------------------------
+
+### Example
+
+```{r}
+school %>% 
+  ggplot(aes(x = Ageyears, y = Sleep_Hours_Non_Schoolnight)) + 
+  geom_point() + geom_smooth(method = "lm", se = F)
+```
+
+------------------------------------------------------------------------
+
+### Example
+
+The correlation between X and Y is:
+
+```{r}
+cor(school$Sleep_Hours_Non_Schoolnight, school$Ageyears, use = "pairwise")
+```
+
+. . .
+
+If we square the correlation, we get:
+
+```{r}
+cor(school$Sleep_Hours_Non_Schoolnight, school$Ageyears, use = "pairwise")^2
+```
+
+. . .
+
+Ta da!
+
+```{r}
+summary(fit.1)$r.squared
+```
+
+# Example in `R`
+
+Try some live coding! Also known as "Another opportunity for Dr. Haraden to potentially embarrass himself"
+
+<https://archive.ics.uci.edu/dataset/320/student+performance>
+
+<https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success>
+
+<https://datahub.io/collections>
+
+<https://www.kaggle.com/datasets>
