@@ -9,23 +9,153 @@ editor_options:
 
 ## Instructions
 
-Here are the things that you will need for this lab:
+Here are the things that you will need for this project:
 
--   <a href="/files/_lab-rmd/lab-3_describe-viz.Rmd" download="lab-3_describe-viz.Rmd">Download
-    Lab 3 (.Rmd)</a>
--   <a href="/files/data/bechdel.csv" download="bechdel.csv">Download
-    Bechdel Data (.csv)</a>
+-   <a href="/files/data/midterm_dataset.csv" download="midterm_dataset.csv">Download
+    Project Data (.csv)</a>
 
-When you are finished, click the **Knit** button to turn your work into
-an HTML document. You will submit both this `.Rmd` file and the
-🧶knitted `.html` file.
-
-## Scenario and Goal
+**Objective:** The goal of this midterm project is to apply the
+foundational data analysis skills we have learned in this course. You
+will be given a real-world dataset and tasked with importing it,
+preparing it for analysis, conducting descriptive and inferential
+statistics, and reporting your findings in a clear, professional manner.
 
 ------------------------------------------------------------------------
 
-## Exercises
+### **General**
 
-### 
+-   **Create an R Markdown File:** All your work should be done in a
+    single R Markdown (`.Rmd`) file. Name your file
+    `LastName_FirstName_Midterm.Rmd`.
+    -   This file will include your code as well as your written
+        responses. This should look close to a results section with the
+        code in between.
+    -   Provide comments within the code chunks to highlight the main
+        goal of each of the functions or set of information that you are
+        doing. This helps with organization since the reset of the text
+        outside of the code chunks will be for writing the results.
+-   **Submission:** You will submit both your `.Rmd` file and the
+    knitted PDF or HTML document.
 
-*End of Lab. Don't forget to Knit! 🧶*
+------------------------------------------------------------------------
+
+## **Project Steps**
+
+#### **Part 1: Setup and Data Import**
+
+Your first step is to set up your R Markdown document and load the data.
+
+1.  **Load Libraries:** At the top of your R Markdown script, load all
+    the necessary libraries. You don't have to know every single library
+    to use here. Just be sure to add them to this section as you are
+    going through your code.
+2.  **Load the Data:** Use the appropriate function (e.g.,
+    `read_csv()`). Be sure that this is easily reproducible on another
+    computer.
+
+#### **Part 2: Data Cleaning and Scoring**
+
+Real-world data is often messy. In this part, you will wrangle the data
+and create new variables needed for your analysis.
+
+1.  **Scoring the ARS-SF (Anxiety Resilience Scale - Short Form):** We
+    need to first reverse score Item #6. Then we can create two
+    subscales:
+    1.  Anxiety Subscale - Calculate the mean of Items 1, 2 & 3.
+    2.  Resilience Subscale - Calculate the mean of Items 4, 5 &
+        6(reversed).
+2.  **Recoding Variables:** Create a new, cleanly labeled factor
+    variable for any grouping variable (see example code below on how to
+    do this). Recode the numeric values (e.g., 1s and 2s) to meaningful
+    labels (e.g., "Male" and "Female").
+
+``` r
+# Recode the grouping variable into a factor with clear labels
+analytic_data <- analytic_data %>%
+  mutate(
+    [FACTOR_VARIABLE_NAME] = factor([ORIGINAL_VARIABLE],
+                                  levels = c(1, 2),
+                                  labels = c("Group 1 Label", "Group 2 Label"))
+  )
+```
+
+#### **Part 3: Descriptive Statistics**
+
+Now that you have clean data, let's describe it.
+
+1.  **Continuous variabels:** Get descriptive statistics (mean, sd,
+    median, range) for the continuous variables (Note: when reporting
+    the ARS-SF, just use the subscale scores).
+2.  **Frequencies:** Use `table()` or `count()` to get the frequency
+    distribution for the categorical variables.
+3.  **Write-up:** Write a brief paragraph summarizing the descriptive
+    statistics. Report the mean and standard deviation for continuous
+    variables and the counts and percentages for categorical variables.
+    1.  For this write-up, focus on the age, sex, group and well-being
+        variables. Include all variables in a table.
+
+*Example: "The sample consisted of N = 143 participants (22% female)
+with an average age of 102.3 (SD = .03). 45% of the sample were
+students..."*
+
+#### **Part 4: Correlation Analysis**
+
+Next, examine the associations between the continuous variables.
+
+1.  **Create a Correlation Matrix:** Generate a table of the
+    correlations (hint: use sjPlot). Be sure to include a title and have
+    the labels make sense.
+2.  **Write-up:** Report the results in APA style. Describe the
+    direction, strength, and statistical significance of the correlation
+    between the Anxiety score and General Well Being.
+
+#### **Part 5: Group Differences**
+
+Test for differences in your outcome variable across the three groups.
+
+1.  **Run the t-test or ANOVA:** Test if the General Well-being score
+    differs significantly across the levels of group. Conduct any
+    follow-up/post-hoc analyses if necessary.
+
+2.  **Visualize the Difference:** Create a plot showing the distribution
+    of outcome for each of the groups.
+
+3.  **Write-up:** Report the results in APA style. State whether there
+    was a significant effect of the grouping variable on the outcome.
+    Report follow-up/post-hoc analyses if necessary.
+
+#### **Part 6: Regression Analysis**
+
+Finally, build a simple linear regression model to predict the General
+Well-being outcome. Select one predictor variable that you want to
+investigate.
+
+1.  **Fit the Model:** Use the `lm()` function to fit a regression
+    model.
+2.  **View the Summary:** Use `summary()` to get the detailed results of
+    your model.
+3.  **Visualize the Model:** Create a scatter plot (`ggplot`) showing
+    the relationship between the variables (be sure to include a fit
+    line, titles and nice axis labels)
+4.  **Write-up:** Write a paragraph summarizing the regression results
+    in APA style. Report the overall model fit (R-squared and
+    F-statistic) and the coefficients for the predictor, noting the
+    statistical significance.
+
+***Nice work! Don't forget to 🧶knit the document to submit!***
+
+------------------------------------------------------------------------
+
+## Additional Data Information
+
+| Variable Name | Description | Type & Values |
+|--------------|-------------------------|--------------------------|
+| ID | Participant ID Number | Continuous |
+| age | Participant's age in years. | Continuous |
+| sex | Participant's self-reported sex. | Numeric (1 = Male, 2 = Female) |
+| ARS 1, ASRS 2, ASR 3 | Items for the "Anxiety" subscale. | Numeric (0-3) |
+| ASR 4, ASR 5, ASR 6 | Positive-worded items for the "Resilience" subscale. | Numeric (1-5) |
+| Weekday Sleep | Average hours of sleep on a school/work night. | Continuous |
+| Weekend Sleep | Average hours of sleep on a non-work night. | Continuous |
+| Employment | Participant's primary employment status. | Numeric (1="Student", 2="Employed", 3="Not Employed") |
+| outcome | A score on a "General Well-Being Index." | Continuous |

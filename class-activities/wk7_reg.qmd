@@ -1,102 +1,68 @@
 ---
-title: "Week 6 Exercises - Comparing Means"
+title: "Week 7 Exercises - Regressions"
 editor: visual
 ---
 
+# Following Along
+
+**Objective:** To introduce the fundamentals of simple linear regression by collecting, visualizing, and modeling data. The core question we will explore is: **Can we predict the price of a LEGO set from its number of pieces?**
+
+## Collect the Data
+
+**First**, go to the LEGO website and identify a set that you like. Navigate to this [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSfR3myKgXz7yoi-S6ro1wLIpdh8F5n2BB_l627eDnVx7tTiwQ/viewform?usp=header){target="_blank"} and submit the following information:
+
+-   Name of the Set
+
+-   Set Number
+
+-   \# of Pieces
+
+-   Price
+
+## Inspect Data
+
+Next, we inspect the data and check the descriptives.
+
+## Visualize
+
+Now we can create a scatterplot between our variables of interest.
+
+## Run the Model
+
+Finally, we create the model and interpret the output.
+
+## ❓Questions
+
+1.  Given our model, how much would a set with 1,031 pieces cost?
+2.  Next year, a new set is expected to be released that has 250 pieces and cost \$99. Where would this fit into our figure? What could explain this deviation from our model?
+
+------------------------------------------------------------------------
+
 # On Your Own
 
-**Goal**: Work individually or in small groups to apply the concepts from today's lecture to a new dataset. There will be breaks throughout the lecture today where you will be able to try out each of these tests!
-
-## The Scenario & Dataset
-
-For this activity, we are going to be using data that has stats for the majority of Pokemon (8 generations). We want to look at the differences among these various Pokemon. We want to be the very best. Like no one ever was.
-
-Please download the data file:
-
-<a href="/files/data/Pokemon.csv" download="Pokemon.csv">Download Week 6 Class Activity (.csv)</a>
-
-------------------------------------------------------------------------
-
-# Getting Started
-
-1.  Create a new R Markdown file titled `week6_inclass.Rmd`.
-
-2.  Load the appropriate libraries and data in the first chunk.
-
-3.  Take a look at the data and get comfortable with the information from these pocket monsters.
-
-4.  Calculate and save the mean values among all Pokemon for the following variables:
-
-    -   attack, defense, hp, speed, height_m and weight_kg
-
-# One Sample t-test
-
--   Select one of the eight generations and create a dataset that only contains the Pokemon from that generation
-
--   Conduct a one-sample t-test for the variables below, and compare them to the overall mean values you calculated previously.
-
-    -   attack, defense, hp, speed, height_m and weight_kg
-
--   Select one of the t-tests and write up the results in APA format
-
-------------------------------------------------------------------------
-
-# Independent Samples t-test
-
--   Create a new dataset that only contain Pokemon with `type1`as `psychic` or `water`
-
--   Conduct an independent samples t-test to determine if these types are different on `attack`
-
--   Visualize the different group means to emphasize the findings in your t-test
-
-------------------------------------------------------------------------
-
-# Paired Sample
-
-We want to look to see if their special attack is stronger than their special defense. Since these two are likely not going to be independent of one another, we will need to use a paired samples t-test
-
--   Conduct an paired samples t-test to determine differences between `sp_attack` and `sp_defense`
-
-------------------------------------------------------------------------
-
-# ANOVA
-
-We now want to see if there are differences in `height_m` and `weight_kg` among the different types and between the different generations.
-
--   Conduct 2 ANOVA's with height and weight being the separate outcomes. You may choose to have your predictor to be type1 or generation
-
--   Determine if post-hoc analyses are necessary (for one of the two analyses). If appropriate, conduct the post-hoc analysis with a TukeyHSD correction.
-
-***End of the document. Remember to Knit and upload the html and .Rmd to myCourses.***
-
-------------------------------------------------------------------------
-
-# Following Along (with time)
-
-Let's walk through the steps that you worked through as a group above!
-
-<a href="/files/data/CAH.csv" download="CAH.csv">Download Week 6 Follow Along (.csv)</a>
+<a href="/files/data/CAH.csv" download="CAH.csv">Download Week 7 Class ActivityFollow Along (.csv)</a>
 
 Data is taken from [Cards Against Humanity - Pulse of the Nation](https://thepulseofthenation.com/#future){target="_blank"}
 
 Download the data and move it to the correct folder so that you can access it in this activity.
 
-Import the data into your R file. I would suggest putting this line within the code chunk that you have your libraries in.
+Import the data into your R file.
 
 Focus on having reproducible code! You may need to share your file with someone else. They should be able to run it.
 
 ## Steps:
 
 1.  Import Data
-2.  Visualize the Data (select 1 pairing of personality variables)
-3.  Test the Relationship
-4.  Create Correlation Matrix
-5.  Check Group Differences
+2.  Check descriptive statistics
+3.  Create a correlation plot for the continuous variables
+4.  Visualize the relationship between \# of Transformers Movies and Books
+5.  Conduct a linear regression
+6.  Report the results
 
 ### Items in the Data:
 
 | Var Name | Info |
-|----|----|
+|------------------------------------|------------------------------------|
 | id | Study ID |
 | Income | Overall income |
 | Sex | Sex |
