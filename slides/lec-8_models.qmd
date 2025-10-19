@@ -1,0 +1,301 @@
+---
+title: "Week 08: Model Selection & Variability"
+subtitle: "Date: October 19, 2025"
+footer:  "[course-website](https://dharaden.github.io/psyc640/)"
+logo: "images/640_hex.png"
+format: 
+  revealjs:
+    theme: clean.scss
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+    overview: false
+    scrollable: true
+    code-line-numbers: true
+editor: visual
+execute:
+  echo: true
+  freeze: auto
+---
+
+## Today...
+
+Regression & Model Selection
+
+![](/images/linear_regression_2x.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+```{r, results = 'hide', message = F, warning = F}
+
+#Don't know if I'm using all of these, but including theme here anyways
+library(tidyverse)
+library(rio)
+library(broom)
+library(psych)
+
+
+#Remove Scientific Notation 
+options(scipen=999)
+```
+
+------------------------------------------------------------------------
+
+### Regressions
+
+With regression, we are ***building a model*** that we think best represents the data, and the broader world
+
+$$
+Data = Model + error
+$$
+
+------------------------------------------------------------------------
+
+### Regression Equation
+
+Overall, we are providing a model to give us a "best guess" on predicting our outcome
+
+$$
+Y_i = b_0 + b_1X_i + e_i
+$$
+
+This equation is capturing how we are able to calculate each observation ( $Y_i$ )
+
+| Term | Meaning |
+|:-----------------------:|-----------------------------------------------|
+| $b_0$ | **Intercept** - when X = 0 |
+| $b_1$ | **Slope** - for every 1 unit change in X, there are $b_1$ unit change in Y |
+| $X_i$ | Predictor Variable |
+| $e_i$ | Error/Residuals |
+
+------------------------------------------------------------------------
+
+### Unstandardized vs. Standardized
+
+::: r-stack
+***What is the Difference?*** (other than the runes)
+:::
+
+Unstandardized:
+
+$$
+Y_i = b_0 + b_1X_i + e_i
+$$
+
+Standardized:
+
+$$
+Y_i = \beta_0 + \beta_1X_i + \epsilon_i
+$$
+
+$$
+Z_y = \beta_0 + \beta_1Z_x + \epsilon_i
+$$
+
+------------------------------------------------------------------------
+
+## Example (by hand)
+
+```{r, message = F, warning = F}
+#library(gapminder)
+#gapminder %<>% filter(year == 2007 & continent == #"Asia") %>% 
+#  mutate(log_gdp = log(gdpPercap))
+#
+#gapminder %>% 
+#  select(log_gdp, lifeExp) %>% 
+#  describe()
+#
+#cor(gapminder$log_gdp, gapminder$lifeExp)
+```
+
+------------------------------------------------------------------------
+
+If we regress lifeExp onto log_gdp:
+
+```{r, echo = c(1:7, 9)}
+#r = cor(gapminder$log_gdp, gapminder$lifeExp)
+#m_log_gdp = mean(gapminder$log_gdp)
+#m_lifeExp = mean(gapminder$lifeExp)
+#s_log_gdp = sd(gapminder$log_gdp)
+#s_lifeExp = sd(gapminder$lifeExp)
+#
+#b1 = r*(s_lifeExp/s_log_gdp)
+#b1
+#b0 = m_lifeExp - b1*m_log_gdp
+#b0
+```
+
+------------------------------------------------------------------------
+
+## In `R`
+
+```{r}
+#fit.1 <- lm(lifeExp ~ log_gdp, data = gapminder)
+#summary(fit.1)
+```
+
+::: notes
+**Things to discuss**
+
+-   Coefficient estimates
+-   Statistical tests (covered in more detail soon)
+:::
+
+------------------------------------------------------------------------
+
+```{r, echo=FALSE, cache=TRUE, message = F}
+#ggplot(gapminder, aes(x=log_gdp, y=lifeExp)) +
+#    geom_point() +    
+#    geom_smooth(method=lm,   # Add linear regression line
+#                se=FALSE) +
+#  theme_bw(base_size = 20)
+```
+
+------------------------------------------------------------------------
+
+## Another Dataset
+
+```{r}
+school <- read_csv("https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/example2-chisq.csv") %>% 
+  mutate(Sleep_Hours_Non_Schoolnight = as.numeric(Sleep_Hours_Non_Schoolnight)) %>% 
+  filter(Sleep_Hours_Non_Schoolnight < 24) #removing impossible values
+```
+
+------------------------------------------------------------------------
+
+## Statistical Inference
+
+-   The way the world is = our model + error
+
+-   How good is our model? Does it "fit" the data well?
+
+. . .
+
+To assess how well our model fits the data, we will examine the proportion of variance in our outcome variable that can be "explained" by our model.
+
+To do so, we need to partition the variance into different categories. For now, we will partition it into two categories: the variability that is captured by (explained by) our model, and variability that is not.
+
+------------------------------------------------------------------------
+
+## Partitioning variation
+
+Let's start with the formula defining the relationship between observed $Y$ and fitted $\hat{Y}$:
+
+$$Y_i = \hat{Y}_i + e_i$$
+
+. . .
+
+One of the properties that we love about variance is that variances are additive when two variables are independent. In other words, if we create some variable, C, by adding together two other variables, A and B, then the variance of C is equal to the sum of the variances of A and B.
+
+. . .
+
+Why can we use that rule in this case?
+
+::: notes
+Students must recognize that Y-hat and e are uncorrelated, they must be the way that we've built the OLS function.
+:::
+
+------------------------------------------------------------------------
+
+## Partitioning variation
+
+::::: columns
+::: {.column width="50%"}
+[$\hat{Y}_i$ and $e_i$ must be independent from each other. Thus, the variance of $Y$ is equal to the sum of the variance of $\hat{Y}$ and $e$.]{style="font-size:80%"}
+
+$$\large s^2_Y = s^2_{\hat{Y}} + s^2_{e}$$
+:::
+
+::: {.column width="50%"}
+[Recall that variances are sums of squares divided by N-1. Thus, all variances have the same sample size, so we can also note the following:]{style="font-size:80%"}
+
+$$\large SS_Y = SS_{\hat{Y}} + SS_{\text{e}}$$
+:::
+:::::
+
+------------------------------------------------------------------------
+
+[A quick note about terminology: I demonstrated these calculations using $Y$, $\hat{Y}$ and $e$. However, you may also see the same terms written differently, to more clearly indicate the source of the variance...]{style="font-size:80%"}
+
+$$ SS_Y = SS_{\hat{Y}} + SS_{\text{e}}$$ $$ SS_Y = SS_{\text{Model}} + SS_{\text{Residual}}$$
+
+[The relative magnitudes of sums of squares provides a way of identifying particularly large and important sources of variability.]{style="font-size:80%"}
+
+------------------------------------------------------------------------
+
+## Coefficient of Determination
+
+$$\Large \frac{SS_{Model}}{SS_{Y}} = \frac{s_{Model}^2}{s_{y}^2} = R^2$$
+
+$R^2$ represents the proportion of variance in Y that is explained by the model.
+
+. . .
+
+$\sqrt{R^2} = R$ is the correlation between the predicted values of Y from the model and the actual values of Y
+
+$$\large \sqrt{R^2} = r_{Y\hat{Y}}$$
+
+------------------------------------------------------------------------
+
+### Example
+
+```{r}
+#| highlight-output: "10"
+
+fit.1 <- lm(Sleep_Hours_Non_Schoolnight ~ Ageyears, 
+           data = school)
+summary(fit.1) 
+model_info <- augment(fit.1)
+summary(fit.1)$r.squared
+
+```
+
+------------------------------------------------------------------------
+
+### Example
+
+```{r}
+school %>% 
+  ggplot(aes(x = Ageyears, y = Sleep_Hours_Non_Schoolnight)) + 
+  geom_point() + geom_smooth(method = "lm", se = F)
+```
+
+------------------------------------------------------------------------
+
+### Example
+
+The correlation between X and Y is:
+
+```{r}
+cor(school$Sleep_Hours_Non_Schoolnight, school$Ageyears, use = "pairwise")
+```
+
+. . .
+
+If we square the correlation, we get:
+
+```{r}
+cor(school$Sleep_Hours_Non_Schoolnight, school$Ageyears, use = "pairwise")^2
+```
+
+. . .
+
+Ta da!
+
+```{r}
+summary(fit.1)$r.squared
+```
+
+# Example in `R`
+
+Try some live coding! Also known as "Another opportunity for Dr. Haraden to potentially embarrass himself"
+
+<https://archive.ics.uci.edu/dataset/320/student+performance>
+
+<https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success>
+
+<https://datahub.io/collections>
+
+<https://www.kaggle.com/datasets>

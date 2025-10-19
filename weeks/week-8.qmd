@@ -1,9 +1,15 @@
 ---
-title: "Week XX"
+title: "Week 8 - Model Creation"
 editor: visual
 ---
 
-# R & Tidy Data
+# Model Fitting & Variability
+
+We will focus on refamiliarizing ourselves with the process of regression (and maybe a little bit of ANOVA). Activities will include collecting some data, building regression models from the ground up, looking at the LEGO dataset (maybe), and further connecting our research questions to the types of analyses that we are going to be doing.
+
+## Data for Today
+
+-   <a href="/files/data/LEGO_data.csv" download="LEGO_data.csv">Download LEGO data (.csv)</a>
 
 ## Prepare
 
@@ -11,9 +17,7 @@ editor: visual
 
 ## Slides
 
-[💻 Getting Started - Syllabus](../slides/lec-1_syl.html){target="_blank"}
-
-[💻Getting Started - Data](../slides/lec-1_background.html){target="_blank"}
+[💻 Models & Variability](../slides/lec-8_models.html){target="_blank"}
 
 ## In-Class Activity
 
