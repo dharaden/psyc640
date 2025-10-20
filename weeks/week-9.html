@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Week XX – PSYC 640 - Graduate Statistics</title>
+<title>Week 9 - Model Creation – PSYC 640 - Graduate Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,6 +29,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../labs/lab-1_data-workflow.html" rel="next">
+<link href="../weeks/week-7.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -41,9 +43,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-5fa042a522516c5f035cc39caa38a149.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-10cb5d13bda20044d798bfa7515f162b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-5fa042a522516c5f035cc39caa38a149.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-e1117be94226972503908a480f927762.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-771b478fc6dd93f1c67e51de692d5537.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-e1117be94226972503908a480f927762.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -73,7 +75,8 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Week XX – PSYC 640 - Graduate Statistics">
+<meta property="og:title" content="Week 9 - Model Creation – PSYC 640 - Graduate Statistics">
+<meta property="og:description" content="">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
 
@@ -248,7 +251,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Week XX</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-9.html">Week 9</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -310,13 +313,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Weekly Materials</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../weeks/week-1.html" class="sidebar-item-text sidebar-link">
@@ -361,8 +364,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8</span></a>
+  <a href="../weeks/week-9.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Week 9</span></a>
   </div>
 </li>
       </ul>
@@ -420,8 +423,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 8</span></a>
+  <a href="../labs/lab-9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 9</span></a>
   </div>
 </li>
       </ul>
@@ -448,9 +451,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#r-tidy-data" id="toc-r-tidy-data" class="nav-link active" data-scroll-target="#r-tidy-data">R &amp; Tidy Data</a>
+  <li><a href="#model-fitting-variability" id="toc-model-fitting-variability" class="nav-link active" data-scroll-target="#model-fitting-variability">Model Fitting &amp; Variability</a>
   <ul class="collapse">
-  <li><a href="#prepare" id="toc-prepare" class="nav-link" data-scroll-target="#prepare">Prepare</a></li>
+  <li><a href="#stuff-for-today" id="toc-stuff-for-today" class="nav-link" data-scroll-target="#stuff-for-today">Stuff for Today</a></li>
   <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
   <li><a href="#in-class-activity" id="toc-in-class-activity" class="nav-link" data-scroll-target="#in-class-activity">In-Class Activity</a></li>
   <li><a href="#for-next-time" id="toc-for-next-time" class="nav-link" data-scroll-target="#for-next-time">For Next Time</a></li>
@@ -462,9 +465,9 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-9.html">Week 9</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Week XX</h1>
+<h1 class="title">Week 9 - Model Creation</h1>
 </div>
 
 
@@ -481,28 +484,32 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="r-tidy-data" class="level1">
-<h1>R &amp; Tidy Data</h1>
-<section id="prepare" class="level2">
-<h2 class="anchored" data-anchor-id="prepare">Prepare</h2>
+<section id="model-fitting-variability" class="level1">
+<h1>Model Fitting &amp; Variability</h1>
+<p>We will focus on refamiliarizing ourselves with the process of regression (and maybe a little bit of ANOVA). Activities will include collecting some data, building regression models from the ground up, looking at the LEGO dataset (maybe), and further connecting our research questions to the types of analyses that we are going to be doing.</p>
+<section id="stuff-for-today" class="level2">
+<h2 class="anchored" data-anchor-id="stuff-for-today">Stuff for Today</h2>
 <ul>
-<li></li>
+<li><a href="../files/data/LEGO_data.csv" download="LEGO_data.csv">Download LEGO data (.csv)</a></li>
+<li><a href="https://www.psytoolkit.org/experiment-library/experiment_stroop.html" target="_blank">Stroop Task</a></li>
+<li><a href="https://docs.google.com/spreadsheets/d/1VSWDBci5MlMmXnFDq-rau3GzlqJEZAeIrEb3fD1ye9g/edit?usp=sharing">Stroop Task Data</a></li>
 </ul>
 </section>
 <section id="slides" class="level2">
 <h2 class="anchored" data-anchor-id="slides">Slides</h2>
-<p><a href="../slides/lec-1_syl.html" target="_blank">💻 Getting Started - Syllabus</a></p>
-<p><a href="../slides/lec-1_background.html" target="_blank">💻Getting Started - Data</a></p>
+<p><a href="../slides/lec-9_models.html" target="_blank">💻 Models &amp; Variability</a></p>
 </section>
 <section id="in-class-activity" class="level2">
 <h2 class="anchored" data-anchor-id="in-class-activity">In-Class Activity</h2>
-<p><a href="../class-activities/day1.html" target="_blank">Getting Comfy with R</a></p>
+<ul>
+<li>It’s in the slides this time</li>
+</ul>
 </section>
 <section id="for-next-time" class="level2">
 <h2 class="anchored" data-anchor-id="for-next-time">For Next Time</h2>
 <p>📋<a href="../labs/lab-1_data-workflow.html">Lab 1 - Foundations of a Data Workflow</a></p>
-<p>📖Read Chapter 1 &amp; 2 - ST</p>
-<p>📖Read Chapter 2 - MSR</p>
+<p>📖<a href="https://learningstatisticswithr.com/book/" target="_blank">Chapter 15.3 - 15.5 - LSR</a></p>
+<p>📖<a href="https://openintro-ims.netlify.app/" target="_blank">Chapter 8 - IMS</a></p>
 <p><br><br></p>
 <div style="font-size: 0.875em;">
 <p>Back to <a href=".." title="Course schedule">course schedule</a> ⏎</p>
@@ -926,6 +933,18 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../weeks/week-7.html" class="pagination-link" aria-label="Week 7 - Regression">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 7 - Regression</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../labs/lab-1_data-workflow.html" class="pagination-link" aria-label="Lab 1 - Data Intro">
+        <span class="nav-page-text">Lab 1 - Data Intro</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

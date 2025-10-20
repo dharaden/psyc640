@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lab 4: – PSYC 640 - Graduate Statistics</title>
+<title>Lab 9: Model Selection &amp; Variability – PSYC 640 - Graduate Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -29,6 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../resources.html" rel="next">
+<link href="../labs/midterm-proj.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -41,9 +78,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-5fa042a522516c5f035cc39caa38a149.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-10cb5d13bda20044d798bfa7515f162b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-5fa042a522516c5f035cc39caa38a149.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-e1117be94226972503908a480f927762.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-771b478fc6dd93f1c67e51de692d5537.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-e1117be94226972503908a480f927762.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -73,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Lab 4: – PSYC 640 - Graduate Statistics">
+<meta property="og:title" content="Lab 9: Model Selection &amp; Variability – PSYC 640 - Graduate Statistics">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
@@ -249,7 +286,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lab 4:</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/lab-1_data-workflow.html">Labs</a></li><li class="breadcrumb-item"><a href="../labs/lab-9.html">Lab 9</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -362,21 +399,21 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8</span></a>
+  <a href="../weeks/week-9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 9</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Labs</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../labs/lab-1_data-workflow.html" class="sidebar-item-text sidebar-link">
@@ -421,8 +458,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 8</span></a>
+  <a href="../labs/lab-9.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Lab 9</span></a>
   </div>
 </li>
       </ul>
@@ -449,11 +486,22 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
-  <li><a href="#scenario-and-goal" id="toc-scenario-and-goal" class="nav-link" data-scroll-target="#scenario-and-goal">Scenario and Goal</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
+  <li><a href="#part-1-from-research-question-to-statistical-model" id="toc-part-1-from-research-question-to-statistical-model" class="nav-link active" data-scroll-target="#part-1-from-research-question-to-statistical-model"><strong>Part 1: From Research Question to Statistical Model</strong></a>
   <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#scenario-a" id="toc-scenario-a" class="nav-link" data-scroll-target="#scenario-a"><strong>Scenario A</strong></a></li>
+  <li><a href="#scenario-b" id="toc-scenario-b" class="nav-link" data-scroll-target="#scenario-b"><strong>Scenario B</strong></a></li>
+  <li><a href="#scenario-c" id="toc-scenario-c" class="nav-link" data-scroll-target="#scenario-c"><strong>Scenario C</strong></a></li>
+  <li><a href="#scenario-d" id="toc-scenario-d" class="nav-link" data-scroll-target="#scenario-d"><strong>Scenario D</strong></a></li>
+  <li><a href="#scenario-e" id="toc-scenario-e" class="nav-link" data-scroll-target="#scenario-e"><strong>Scenario E</strong></a></li>
+  <li><a href="#scenario-f" id="toc-scenario-f" class="nav-link" data-scroll-target="#scenario-f"><strong>Scenario F</strong></a></li>
+  </ul></li>
+  <li><a href="#part-2-from-statistical-model-to-research-question" id="toc-part-2-from-statistical-model-to-research-question" class="nav-link" data-scroll-target="#part-2-from-statistical-model-to-research-question"><strong>Part 2: From Statistical Model to Research Question</strong></a>
+  <ul class="collapse">
+  <li><a href="#scenario-g" id="toc-scenario-g" class="nav-link" data-scroll-target="#scenario-g"><strong>Scenario G</strong></a></li>
+  <li><a href="#scenario-h" id="toc-scenario-h" class="nav-link" data-scroll-target="#scenario-h"><strong>Scenario H</strong></a></li>
+  <li><a href="#scenario-i" id="toc-scenario-i" class="nav-link" data-scroll-target="#scenario-i"><strong>Scenario I</strong></a></li>
+  <li><a href="#scenario-j" id="toc-scenario-j" class="nav-link" data-scroll-target="#scenario-j"><strong>Scenario J</strong></a></li>
+  <li><a href="#scenario-k" id="toc-scenario-k" class="nav-link" data-scroll-target="#scenario-k"><strong>Scenario K</strong></a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/lab-9.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -462,9 +510,9 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/lab-1_data-workflow.html">Labs</a></li><li class="breadcrumb-item"><a href="../labs/lab-9.html">Lab 9</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Lab 4:</h1>
+<h1 class="title">Lab 9: Model Selection &amp; Variability</h1>
 </div>
 
 
@@ -481,24 +529,178 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="instructions" class="level2">
-<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
-<p>Here are the things that you will need for this lab:</p>
+<p>We are going to try a lab that doesn’t involve writing/running any code in R! But you can still use R to answer the questions (or put things into word if you prefer). <u><strong>Remember to knit and turn in a Word Doc.</strong></u></p>
 <ul>
-<li><a href="../files/_lab-rmd/lab-3_describe-viz.Rmd" download="lab-3_describe-viz.Rmd">Download Lab 3 (.Rmd)</a></li>
-<li><a href="../files/data/bechdel.csv" download="bechdel.csv">Download Bechdel Data (.csv)</a></li>
+<li><a href="../files/_lab-rmd/lab-9_model-select.Rmd" download="lab-9_model-select.Rmd">Download Lab 9 (.Rmd)</a></li>
 </ul>
-<p>When you are finished, click the <strong>Knit</strong> button to turn your work into an HTML document. You will submit both this <code>.Rmd</code> file and the 🧶knitted <code>.html</code> file.</p>
+<p><strong>Objective:</strong> This lab is designed to develop the crucial skill of translating a behavioral science research question into an appropriate statistical model, and vice-versa. Instead of relying on a fixed decision tree, we will practice linking the <em>substance</em> of a question and the <em>structure</em> of the data to the choice of an analytic method. The goal is to foster statistical reasoning, where the model serves the scientific inquiry.</p>
+<p><strong>Instructions:</strong> This lab has two parts. For each scenario, provide the requested information, focusing on clear and concise justifications. Please submit your completed lab as a single document.</p>
+<hr>
+<section id="part-1-from-research-question-to-statistical-model" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-from-research-question-to-statistical-model"><strong>Part 1: From Research Question to Statistical Model</strong></h2>
+<p>For each of the following scenarios, you are given a description of a research goal, similar to what might be in an intro.</p>
+<ol type="1">
+<li>Identify the most appropriate statistical model from the options we have covered so far (<strong>T-test (i.e., Independent, Dependent, Single Sample)</strong>, <strong>One-Way ANOVA</strong>, or <strong>Simple Linear Regression</strong>).</li>
+<li>Write a brief (2-3 sentences) justification for your choice. Your justification must reference:
+<ul>
+<li>The nature of the predictor variable (e.g., categorical with two levels, continuous).</li>
+<li>The nature of the outcome variable.</li>
+<li>What the key research question is asking for (e.g., a mean difference, a predictive relationship, a linear trend).</li>
+</ul></li>
+</ol>
+<hr>
+<section id="scenario-a" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-a"><strong>Scenario A</strong></h3>
+<blockquote class="blockquote">
+<p>“Previous research suggests that individuals with major depressive disorder (MDD) show deficits in cognitive control. However, it is unclear if this deficit is present in those with sub-threshold depressive symptoms. To address this, we recruited two independent groups of young adults: one group meeting formal criteria for MDD (n=50) and a control group with no history of psychiatric disorders (n=50). We hypothesized that the MDD group would show lower performance on the Stroop task, a measure of cognitive control, compared to the control group.”</p>
+</blockquote>
+<ul>
+<li><strong>1. Statistical Model:</strong></li>
+<li><strong>2. Justification:</strong></li>
+</ul>
 </section>
-<section id="scenario-and-goal" class="level2">
-<h2 class="anchored" data-anchor-id="scenario-and-goal">Scenario and Goal</h2>
+<section id="scenario-b" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-b"><strong>Scenario B</strong></h3>
+<blockquote class="blockquote">
+<p>“Sleep continuity is vital for well-being, yet its direct relationship with daily mood in non-clinical populations is not well-characterized. We conducted a study to examine whether the number of times a person wakes up during the night predicts their self-reported mood the following morning. We collected data from 100 university students, measuring their number of nocturnal awakenings via a wrist-worn device and their morning mood on a 100-point scale. We expect that a higher number of awakenings will be associated with a lower mood score.”</p>
+</blockquote>
+<ul>
+<li><strong>1. Statistical Model:</strong></li>
+<li><strong>2. Justification:</strong></li>
+</ul>
+</section>
+<section id="scenario-c" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-c"><strong>Scenario C</strong></h3>
+<blockquote class="blockquote">
+<p>“Parental expressed emotion is a key factor in the home environment. We are interested in whether there are differences in academic achievement among adolescents from three distinct home environments, characterized by low, moderate, or high levels of expressed parental criticism. We categorized 150 adolescents into one of these three groups based on a structured family interview and obtained their grade point average (GPA) for the academic year.”</p>
+</blockquote>
+<ul>
+<li><strong>1. Statistical Model:</strong></li>
+<li><strong>2. Justification:</strong></li>
+</ul>
+</section>
+<section id="scenario-d" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-d"><strong>Scenario D</strong></h3>
+<blockquote class="blockquote">
+<p>“A core symptom of social anxiety disorder is the avoidance of social situations. To test a new intervention, we conducted a randomized controlled trial where participants were assigned to either a 12-week mindfulness-based therapy group or a psychoeducation control group. At the end of the trial, we measured the number of social events each participant attended in the final week. We hypothesize that the mindfulness group will attend a greater number of social events on average than the control group.”</p>
+</blockquote>
+<ul>
+<li><strong>1. Statistical Model:</strong></li>
+<li><strong>2. Justification:</strong></li>
+</ul>
+</section>
+<section id="scenario-e" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-e"><strong>Scenario E</strong></h3>
+<blockquote class="blockquote">
+<p>“It is well-established that age is related to cognitive function, but the specific trajectory is of interest. To explore this, we gathered a cross-sectional sample of 200 adults ranging from age 20 to 80. Each participant completed a standardized test of working memory. Our primary goal is to model the linear relationship between a person’s age and their working memory score to understand the rate of change across the lifespan.”</p>
+</blockquote>
+<ul>
+<li><strong>1. Statistical Model:</strong></li>
+<li><strong>2. Justification:</strong></li>
+</ul>
+</section>
+<section id="scenario-f" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-f"><strong>Scenario F</strong></h3>
+<blockquote class="blockquote">
+<p>“Chronic stress during adolescence can impact physiological regulation. We are interested in whether adolescents who report experiencing high, medium, or low levels of chronic life stress show differences in their morning cortisol levels, a key biomarker of the stress response system. We collected saliva samples from 90 adolescents who were categorized into one of the three stress groups based on a validated questionnaire.”</p>
+</blockquote>
+<ul>
+<li><strong>1. Statistical Model:</strong></li>
+<li><strong>2. Justification:</strong></li>
+</ul>
 <hr>
 </section>
-<section id="exercises" class="level2">
-<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
-<section id="section" class="level3">
-<h3 class="anchored" data-anchor-id="section"></h3>
-<p><em>End of Lab. Don’t forget to Knit! 🧶</em></p>
+</section>
+<section id="part-2-from-statistical-model-to-research-question" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-from-statistical-model-to-research-question"><strong>Part 2: From Statistical Model to Research Question</strong></h2>
+<p>For each of the following scenarios, you are given the statistical output and a brief description of the variables.</p>
+<ol type="1">
+<li>Infer and write out the specific research question that this analysis was likely designed to answer.</li>
+<li>Explain which parts of the output led you to your conclusion.</li>
+</ol>
+<hr>
+<section id="scenario-g" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-g"><strong>Scenario G</strong></h3>
+<ul>
+<li><strong>Data Description:</strong> A dataset includes <code>bdi_score</code> (Beck Depression Inventory score, continuous) and <code>sleep_hours</code> (average hours of sleep per night, continuous).</li>
+<li><strong>Statistical Output:</strong></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Call<span class="sc">:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(<span class="at">formula =</span> bdi_score <span class="sc">~</span> sleep_hours, <span class="at">data =</span> df)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Coefficients<span class="sc">:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>(Intercept)  sleep_hours</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>     <span class="fl">35.50</span>        <span class="sc">-</span><span class="fl">2.50</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong>1. Inferred Research Question:</strong></li>
+<li><strong>2. Explanation:</strong></li>
+</ul>
+</section>
+<section id="scenario-h" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-h"><strong>Scenario H</strong></h3>
+<ul>
+<li><strong>Data Description:</strong> A dataset includes <code>anxiety_score</code> (a continuous measure of anxiety) and <code>treatment_group</code> (a categorical variable with two levels: “CBT” and “Waitlist”).</li>
+<li><strong>Statistical Output:</strong></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Two Sample t<span class="sc">-</span>test</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">:</span>  anxiety_score by treatment_group</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>t <span class="ot">=</span> <span class="sc">-</span><span class="fl">4.5</span>, df <span class="ot">=</span> <span class="dv">98</span>, p<span class="sc">-</span>value <span class="sc">&lt;</span> <span class="fl">0.001</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>alternative hypothesis<span class="sc">:</span> true difference <span class="cf">in</span> means is not equal to <span class="dv">0</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>mean <span class="cf">in</span> group CBT    mean <span class="cf">in</span> group Waitlist</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>             <span class="fl">15.2</span>                      <span class="fl">25.8</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong>1. Inferred Research Question:</strong></li>
+<li><strong>2. Explanation:</strong></li>
+</ul>
+</section>
+<section id="scenario-i" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-i"><strong>Scenario I</strong></h3>
+<ul>
+<li><strong>Data Description:</strong> A dataset includes <code>perfectionism_score</code> (a continuous measure from a personality questionnaire) and <code>procrastination_index</code> (a continuous score based on a behavioral task).</li>
+<li><strong>Statistical Output:</strong></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Call<span class="sc">:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(<span class="at">formula =</span> procrastination_index <span class="sc">~</span> perfectionism_score, <span class="at">data =</span> df)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>Coefficients<span class="sc">:</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      (Intercept)  perfectionism_score</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>            <span class="sc">-</span><span class="fl">5.22</span>                 <span class="fl">0.85</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong>1. Inferred Research Question:</strong></li>
+<li><strong>2. Explanation:</strong></li>
+</ul>
+</section>
+<section id="scenario-j" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-j"><strong>Scenario J</strong></h3>
+<ul>
+<li><strong>Data Description:</strong> A dataset includes <code>adhd_symptoms</code> (a continuous symptom count) and <code>school_type</code> (a categorical variable: “Public,” “Private,” or “Charter”).</li>
+<li><strong>Statistical Output:</strong></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>One<span class="sc">-</span>way analysis of means</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">:</span>  adhd_symptoms by school_type</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>F <span class="ot">=</span> <span class="fl">5.67</span>, num df <span class="ot">=</span> <span class="dv">2</span>, denom df <span class="ot">=</span> <span class="dv">147</span>, p<span class="sc">-</span>value <span class="ot">=</span> <span class="fl">0.004</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong>1. Inferred Research Question:</strong></li>
+<li><strong>2. Explanation:</strong></li>
+</ul>
+</section>
+<section id="scenario-k" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-k"><strong>Scenario K</strong></h3>
+<ul>
+<li><strong>Data Description:</strong> A dataset includes <code>pain_rating</code> (a patient’s self-reported pain on a 0-10 scale) and <code>condition</code> (a categorical variable: “Acupuncture” or “Sham Procedure”).</li>
+<li><strong>Statistical Output:</strong></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Two Sample t<span class="sc">-</span>test</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">:</span>  pain_rating by condition</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>t <span class="ot">=</span> <span class="fl">2.8</span>, df <span class="ot">=</span> <span class="dv">78</span>, p<span class="sc">-</span>value <span class="ot">=</span> <span class="fl">0.006</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>alternative hypothesis<span class="sc">:</span> true difference <span class="cf">in</span> means is not equal to <span class="dv">0</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>mean <span class="cf">in</span> group Acupuncture  mean <span class="cf">in</span> group Sham Procedure</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                    <span class="fl">4.1</span>                       <span class="fl">6.2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong>1. Inferred Research Question:</strong></li>
+<li><strong>2. Explanation:</strong></li>
+</ul>
 
 
 </section>
@@ -918,6 +1120,18 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../labs/midterm-proj.html" class="pagination-link" aria-label="Midterm Project">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Midterm Project</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../resources.html" class="pagination-link" aria-label="Resources">
+        <span class="nav-page-text">Resources</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

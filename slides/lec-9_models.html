@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
+
+  <title>PSYC 640 - Graduate Statistics – Week 09: Model Selection &amp; Variability</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-5ae9c59b2727fcd5357d4f034d95f9e0.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+<meta property="og:title" content="Week 09: Model Selection &amp; Variability – PSYC 640 - Graduate Statistics">
+<meta property="og:description" content="Date: October 19, 2025">
+<meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Week 09: Model Selection &amp; Variability</h1>
+  <p class="subtitle">Date: October 19, 2025</p>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section id="today" class="slide level2">
+<h2>Today…</h2>
+<p>Regression &amp; Model Selection</p>
+
+<img data-src="../images/linear_regression_2x.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co">#Don't know if I'm using all of these, but including theme here anyways</span></span>
+<span id="cb1-2"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-4"><a></a><span class="fu">library</span>(broom)</span>
+<span id="cb1-5"><a></a><span class="fu">library</span>(psych)</span>
+<span id="cb1-6"><a></a><span class="fu">library</span>(here)</span>
+<span id="cb1-7"><a></a></span>
+<span id="cb1-8"><a></a></span>
+<span id="cb1-9"><a></a><span class="co">#Remove Scientific Notation </span></span>
+<span id="cb1-10"><a></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="regressions">Regressions</h3>
+<p>With regression, we are <strong><em>building a model</em></strong> that we think best represents the data, and the broader world</p>
+<p><span class="math display">\[
+Data = Model + error
+\]</span></p>
+</section>
+<section class="slide level2">
+
+<h3 id="regression-equation">Regression Equation</h3>
+<p>Overall, we are providing a model to give us a “best guess” on predicting our outcome</p>
+<p><span class="math display">\[
+Y_i = b_0 + b_1X_i + e_i
+\]</span></p>
+<p>This equation is capturing how we are able to calculate each observation ( <span class="math inline">\(Y_i\)</span> )</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(b_0\)</span></td>
+<td><strong>Intercept</strong> - when X = 0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(b_1\)</span></td>
+<td><strong>Slope</strong> - for every 1 unit change in X, there are <span class="math inline">\(b_1\)</span> unit change in Y</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(X_i\)</span></td>
+<td>Predictor Variable</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(e_i\)</span></td>
+<td>Error/Residuals</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="slide level2">
+
+<h3 id="unstandardized-vs.-standardized">Unstandardized vs.&nbsp;Standardized</h3>
+<div class="r-stack">
+<p><strong><em>What is the Difference?</em></strong> (other than the runes)</p>
+</div>
+<p><strong>Unstandardized</strong>:</p>
+<p><span class="math display">\[
+Y_i = b_0 + b_1X_i + e_i
+\]</span></p>
+<p><strong>Standardized</strong>:</p>
+<p><span class="math display">\[
+Y_i = \beta_0 + \beta_1X_i + \epsilon_i
+\]</span></p>
+<p><span class="math display">\[
+Z_y = \beta_0 + \beta_1Z_x + \epsilon_i
+\]</span></p>
+</section>
+<section id="example---lego-data" class="slide level2">
+<h2>Example - LEGO Data</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>lego <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"files"</span>, <span class="st">"data"</span>, <span class="st">"LEGO_data.csv"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a><span class="fu">describe</span>(lego)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 vars  n     mean       sd   median  trimmed      mad      min
+set_name*           1 59    30.00    17.18    30.00    30.00    22.24     1.00
+set_number          2 59 37023.29 25089.50 31167.00 35693.88 30827.70 10294.00
+number_of_pieces    3 59  2416.58  2384.39  1503.00  2073.37  1906.62   104.00
+price               4 59   218.19   214.72   129.99   189.81   163.09     9.99
+                      max range skew kurtosis      se
+set_name*           59.00    58 0.00    -1.26    2.24
+set_number       76974.00 66680 0.55    -1.21 3266.37
+number_of_pieces 10001.00  9897 1.32     1.37  310.42
+price              999.99   990 1.28     1.48   27.95</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="visualization">Visualization</h3>
+<p>Good to see the scatterplots of this relationship</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>lego <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(number_of_pieces, price)) <span class="sc">+</span> </span>
+<span id="cb4-3"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb4-4"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="lec-9_models_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="estimating-coefficients">Estimating Coefficients</h3>
+<ul>
+<li><p>We are bringing in 2 sources of data (information we don’t need to estimate)</p>
+<ul>
+<li><p># of Pieces (Mean = 2416.5762712, SD = 2384.3877997)</p></li>
+<li><p>Set Price (Mean = 218.1935593, SD = 214.7204998)</p></li>
+</ul></li>
+<li><p>Need to estimate <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span></p></li>
+</ul>
+</section>
+<section id="regression-coefficient-b_1" class="slide level2">
+<h2>Regression coefficient, <span class="math inline">\(b_{1}\)</span></h2>
+<p>Calculating the <strong>slope</strong></p>
+<p><span class="math display">\[\Large b_{1} = \frac{cov_{XY}}{s_{x}^{2}}\]</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># Covariance</span></span>
+<span id="cb5-2"><a></a><span class="fu">cov</span>(lego<span class="sc">$</span>number_of_pieces, lego<span class="sc">$</span>price)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 469162.5</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># Variance of # of Pieces</span></span>
+<span id="cb7-2"><a></a><span class="fu">var</span>(lego<span class="sc">$</span>number_of_pieces)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5685305</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="brief-detour---calculating-covariances">🚧 Brief Detour - Calculating (Co)Variances</h3>
+<p><strong>Variance:</strong> The average squared difference between each data point and the mean; <em>How far each observation is from the mean, on average, in squared units</em></p>
+<p><span class="math display">\[
+Var(X) = \frac1{N-1} \sum (X_i - \bar X)^2
+\]</span></p>
+<p><strong>Covariance</strong>: Average cross product of deviations; <em>How related are the</em> <em>deviations of two different variables across observations</em></p>
+<p><span class="math display">\[
+Cov(X, Y) = \frac 1{N-1} \sum (X_i - \bar{X}) (Y_i - \bar{Y})
+\]</span></p>
+</section>
+<section class="slide level2">
+
+<p><strong>Example on the board</strong> <em>(reminder to Dr.&nbsp;Haraden to do something here)</em></p>
+<ul>
+<li><p>Note where the regression line passes through</p></li>
+<li><p>Look at deviations (variance) to covariance</p></li>
+</ul>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>mprice <span class="ot">&lt;-</span> <span class="fu">mean</span>(lego<span class="sc">$</span>price)</span>
+<span id="cb9-2"><a></a>mnum <span class="ot">&lt;-</span> <span class="fu">mean</span>(lego<span class="sc">$</span>number_of_pieces)</span>
+<span id="cb9-3"><a></a></span>
+<span id="cb9-4"><a></a>lego <span class="sc">%&gt;%</span> </span>
+<span id="cb9-5"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(number_of_pieces, price)) <span class="sc">+</span> </span>
+<span id="cb9-6"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb9-7"><a></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> mprice, </span>
+<span id="cb9-8"><a></a>             <span class="at">color =</span> <span class="st">"orange"</span>, </span>
+<span id="cb9-9"><a></a>             <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span> </span>
+<span id="cb9-10"><a></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> mnum, </span>
+<span id="cb9-11"><a></a>             <span class="at">color =</span> <span class="st">"purple"</span>, </span>
+<span id="cb9-12"><a></a>             <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span> </span>
+<span id="cb9-13"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb9-14"><a></a>              <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+
+</div>
+<img data-src="lec-9_models_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
+<section id="regression-coefficient-b_1-1" class="slide level2">
+<h2>Regression coefficient, <span class="math inline">\(b_{1}\)</span></h2>
+<p><span class="math display">\[\Large b_{1} = \frac{cov_{XY}}{s_{x}^{2}} = r_{xy} \frac{s_{y}}{s_{x}}\]</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co">#SD of # of Pieces</span></span>
+<span id="cb10-2"><a></a><span class="fu">sd</span>(lego<span class="sc">$</span>number_of_pieces) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2384.388</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># SD of Price</span></span>
+<span id="cb12-2"><a></a><span class="fu">sd</span>(lego<span class="sc">$</span>price) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 214.7205</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="co"># Correlation</span></span>
+<span id="cb14-2"><a></a><span class="fu">cor</span>(lego<span class="sc">$</span>number_of_pieces, lego<span class="sc">$</span>price)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9163742</code></pre>
+</div>
+</div>
+</section>
+<section id="regression-coefficient-b_0" class="slide level2">
+<h2>Regression Coefficient, <span class="math inline">\(b_0\)</span></h2>
+<p>Calculating the Intercept:</p>
+<p><span class="math display">\[\Large b_0 = \bar{Y} - b_1\bar{X}\]</span></p>
+<p>The intercept adjusts the location of the regression line to ensure that it runs through the point <span class="math inline">\(\large (\bar{X}, \bar{Y}).\)</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">mean</span>(lego<span class="sc">$</span>number_of_pieces)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2416.576</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">mean</span>(lego<span class="sc">$</span>price)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 218.1936</code></pre>
+</div>
+</div>
+</section>
+<section id="what-is-the-regression-model" class="slide level2">
+<h2>What is the Regression Model?</h2>
+<p>Using the calculations, identify what the linear model would be.</p>
+</section>
+<section id="what-is-the-regression-model-1" class="slide level2">
+<h2>What is the Regression Model?</h2>
+<p>Using the calculations, identify what the linear model would be.</p>
+<p>You hear about 3 new sets coming out that you are interested in. Since you have this regression model, you can calculate the total price for each. How much money do you need to save (excluding taxes) to buy all 3 sets?</p>
+<table class="caption-top">
+<tbody>
+<tr class="odd">
+<td>Set 1: 1031 pieces</td>
+<td>Set 2: 357</td>
+<td>Set 3: 4154</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="before-the-break" class="title-slide slide level1 center">
+<h1>Before the Break</h1>
+<p>Take the <a href="https://www.psytoolkit.org/experiment-library/experiment_stroop.html" target="_blank">Stroop Task</a> and record your incongruent, congruent and stroop effect on your worksheet</p>
+</section>
+
+<section>
+<section id="back-to-the-show" class="title-slide slide level1 center">
+<h1>Back to the Show</h1>
+<p>Last time on “Stats Island”, Dr.&nbsp;Haraden asked everyone to look at colors and words. Plus, Rupert was voted off the island. Who could be next??</p>
+</section>
+<section id="explaining-variance" class="slide level2">
+<h2>Explaining Variance</h2>
+
+<img data-src="../images/predict_var.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="../images/varianceexplained.gif" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="stroop-data-modeling" class="slide level2">
+<h2>Stroop Data Modeling</h2>
+<p><strong>Research Question</strong>: Sleep Quality is negatively related to the Stroop Effect. Lower sleep quality will predict a greater Stroop effect.</p>
+<p><a href="https://docs.google.com/spreadsheets/d/1VSWDBci5MlMmXnFDq-rau3GzlqJEZAeIrEb3fD1ye9g/edit?usp=sharing" target="_blank">Data Set (I hope I entered all the data in appropriately)</a></p>
+</section>
+<section class="slide level2">
+
+<h3 id="explaining-variance-1">Explaining Variance</h3>
+<p>Visualize the Stroop Effect data</p>
+<ul>
+<li>What is the best “model” to explain this data? If you had no information, what would be your best guess for someone’s score?</li>
+</ul>
+<p>. . .</p>
+<p>We are looking to explain variance in our outcome (Stroop Performance)</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>The total distance from the mean to each point is the Total Sum of Squares - The total amount of “error” we are trying to explain</p>
+</div>
+</div>
+</div>
+<p>The mean can be considered the “null model” in that it is the most basic</p>
+</section>
+<section class="slide level2">
+
+<h3 id="null-to-sleep-model">Null to Sleep model</h3>
+<p>We can then introduce another variable to try explain more of the variance in the Stroop Effect</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>There should be some visualizations on the board with mean and regression lines</p>
+</div>
+</div>
+</div>
+<p>The distance from each point down to the original ‘mean’ is the total deviation.</p>
+<p>The portion from the ‘mean’ up to our new ‘sleep model’ is the explained deviation (<strong>SSM</strong>). This is the improvement we gained by considering sleep!</p>
+<p>The leftover bit from our ‘sleep model’ to the actual data point is the unexplained residual (<strong>SSE</strong>). This is the error our model couldn’t account for.</p>
+</section>
+<section id="linear-regression" class="slide level2">
+<h2>Linear Regression</h2>
+<p>Use the information and let’s do it in R instead of on the board</p>
+<p>Visualize the relationship</p>
+<p>Run a linear regression</p>
+</section>
+<section id="model-fit" class="slide level2">
+<h2>Model Fit</h2>
+<p>Take a look at the <span class="math inline">\(R^2\)</span> value</p>
+<p>Is there any other data that we have that could impact overall Stroop Effects?</p>
+<p>After including it in the model, we can examine the change in <span class="math inline">\(R^2\)</span></p>
+<p>What would happen if we put the <code>random number</code> variable in there?</p>
+</section>
+<section class="slide level2">
+
+<h3 id="comparing-models">Comparing Models</h3>
+<p>Can compare models using an ANOVA when one model is <strong>nested</strong> within another</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Nested Models</strong>: where one model (Model 0) contains a subset of the predictors from the other one (Model 1). Model 1 contains <em>all</em> of the predictors included in Model 0, plus one or more additional predictors. When this happens we say that Model 0 is nested within Model 1.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="model-diagnostics">Model Diagnostics</h3>
+<p>As we get more complex, we want to be sure to check how our model is functioning. One way is to use <span class="math inline">\(adjusted \ R^2\)</span> to get a sense of the amount of variance each predictor is bringing.</p>
+<p>Need to be careful of <strong>overfitting</strong> the model to the data</p>
+<p><strong>Multicollinearity</strong> - when predictors are highly related to one another</p>
+<ul>
+<li>Checked with the <strong>Variance Inflation Factor</strong> (VIF)</li>
+</ul>
+<p><strong>Homogeneity of Variance</strong> - the variance of the residuals is assumed to be constant</p>
+</section>
+<section class="slide level2">
+
+<h3 id="check_models"><code>check_models</code></h3>
+<p>This will check everything for you in regressions, let’s try it out</p>
+<p><a href="https://easystats.github.io/performance/reference/check_model.html" class="uri">https://easystats.github.io/performance/reference/check_model.html</a></p>
+</section>
+<section id="selecting-a-model" class="slide level2">
+<h2>Selecting a Model</h2>
+<p>One of the most daunting tasks can be identifying the “right” statistical model for the data you have</p>
+<p>You may see flowcharts like this:</p>
+
+<img data-src="../images/flow.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="selecting-a-model-1">Selecting a Model</h3>
+<p>If you are asking which model is “right”, you are doing it backwards</p>
+<blockquote>
+<p>“All models are wrong, some models are useful.” -George Box</p>
+</blockquote>
+<p>Remember: <span class="math inline">\(Data (The\ Truth) = Model + Error\)</span></p>
+<p>Instead, think about identifying a model as <em>“Model Based Reasoning”</em> in which you will need to defend the choices you made</p>
+</section>
+<section id="example-t-test-vs.-anova-vs.-regression" class="slide level2">
+<h2>Example: t-test vs.&nbsp;ANOVA vs.&nbsp;Regression</h2>
+<p>This might be something that we are considering between. How do we pick the “right” one?</p>
+<p>Start with some data where we have 2 groups and we identify a 2 point difference in the groups scores</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">set.seed</span>(<span class="dv">2025</span>)</span>
+<span id="cb20-2"><a></a></span>
+<span id="cb20-3"><a></a><span class="co"># Two independent groups with equal variances</span></span>
+<span id="cb20-4"><a></a>n0 <span class="ot">&lt;-</span> <span class="dv">80</span>; n1 <span class="ot">&lt;-</span> <span class="dv">80</span></span>
+<span id="cb20-5"><a></a>mu0 <span class="ot">&lt;-</span> <span class="dv">12</span>; mu1 <span class="ot">&lt;-</span> <span class="dv">10</span>      <span class="co"># true mean difference = -2</span></span>
+<span id="cb20-6"><a></a>sigma <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb20-7"><a></a>y0 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n0, mu0, sigma)</span>
+<span id="cb20-8"><a></a>y1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n1, mu1, sigma)</span>
+<span id="cb20-9"><a></a></span>
+<span id="cb20-10"><a></a><span class="co"># Put that in a data frame</span></span>
+<span id="cb20-11"><a></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb20-12"><a></a>  <span class="at">dep =</span> <span class="fu">c</span>(y0, y1),</span>
+<span id="cb20-13"><a></a>  <span class="at">group01 =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span>, n0), <span class="fu">rep</span>(<span class="dv">1</span>, n1))</span>
+<span id="cb20-14"><a></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-15"><a></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">factor</span>(group01, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"control"</span>,<span class="st">"treatment"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="t-test">t-test</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>tt_fit <span class="ot">&lt;-</span> <span class="fu">t.test</span>(dep <span class="sc">~</span> group, <span class="at">data =</span> dat, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb21-2"><a></a>tt_tidy <span class="ot">&lt;-</span> <span class="fu">tidy</span>(tt_fit)</span>
+<span id="cb21-3"><a></a>tt_tidy</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 10
+  estimate estimate1 estimate2 statistic    p.value parameter conf.low conf.high
+     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+1     2.68      12.1      9.46      5.75    4.48e-8       158     1.76      3.60
+# ℹ 2 more variables: method &lt;chr&gt;, alternative &lt;chr&gt;</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="anova">ANOVA</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>fit_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(dep <span class="sc">~</span> group, <span class="at">data =</span> dat)</span>
+<span id="cb23-2"><a></a><span class="fu">summary</span>(fit_aov)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Df Sum Sq Mean Sq F value       Pr(&gt;F)    
+group         1  286.6  286.64   33.07 0.0000000448 ***
+Residuals   158 1369.6    8.67                         
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>aov_tidy <span class="ot">&lt;-</span> <span class="fu">tidy</span>(fit_aov)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="regression">Regression</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>reg_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(dep <span class="sc">~</span> group01, <span class="at">data =</span> dat)</span>
+<span id="cb26-2"><a></a>reg_tidy <span class="ot">&lt;-</span> <span class="fu">tidy</span>(reg_fit)</span>
+<span id="cb26-3"><a></a>reg_tidy</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 5
+  term        estimate std.error statistic  p.value
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 (Intercept)    12.1      0.329     36.9  1.65e-79
+2 group01        -2.68     0.466     -5.75 4.48e- 8</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>reg_glance <span class="ot">&lt;-</span> <span class="fu">glance</span>(reg_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="comparing-methods">Comparing Methods</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="co"># Equivalence 1: The regression slope for the dummy variable equals the difference in group means.</span></span>
+<span id="cb29-2"><a></a>mean_diff <span class="ot">&lt;-</span> tt_tidy<span class="sc">$</span>estimate2 <span class="sc">-</span> tt_tidy<span class="sc">$</span>estimate1</span>
+<span id="cb29-3"><a></a>beta1 <span class="ot">&lt;-</span> reg_tidy <span class="sc">%&gt;%</span> </span>
+<span id="cb29-4"><a></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"group01"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-5"><a></a>  <span class="fu">pull</span>(estimate)</span>
+<span id="cb29-6"><a></a></span>
+<span id="cb29-7"><a></a>mean_diff</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.676943</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>beta1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.676943</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="co"># Equivalence 2: The F-statistic from the ANOVA is the regression square of the t-statistic.</span></span>
+<span id="cb33-2"><a></a>t_stat_reg <span class="ot">&lt;-</span> reg_tidy <span class="sc">%&gt;%</span> </span>
+<span id="cb33-3"><a></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"group01"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb33-4"><a></a>  <span class="fu">pull</span>(statistic)</span>
+<span id="cb33-5"><a></a></span>
+<span id="cb33-6"><a></a>t_stat_t <span class="ot">&lt;-</span> tt_tidy <span class="sc">%&gt;%</span> </span>
+<span id="cb33-7"><a></a>  <span class="fu">pull</span>(statistic)</span>
+<span id="cb33-8"><a></a></span>
+<span id="cb33-9"><a></a>f_stat <span class="ot">&lt;-</span> reg_glance<span class="sc">$</span>statistic</span>
+<span id="cb33-10"><a></a></span>
+<span id="cb33-11"><a></a></span>
+<span id="cb33-12"><a></a>t_stat_reg<span class="sc">^</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 33.06772</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>t_stat_t<span class="sc">^</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       t 
+33.06772 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>f_stat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   value 
+33.06772 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="co"># Equivalence 3: The p-values are identical.</span></span>
+<span id="cb39-2"><a></a>tt_tidy<span class="sc">$</span>p.value</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.00000004475048</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>reg_tidy <span class="sc">%&gt;%</span> </span>
+<span id="cb41-2"><a></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"group01"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb41-3"><a></a>  <span class="fu">pull</span>(p.value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.00000004475048</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>aov_tidy <span class="sc">%&gt;%</span> </span>
+<span id="cb43-2"><a></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"group"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb43-3"><a></a>  <span class="fu">pull</span>(p.value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.00000004475048</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section id="examples-in-r" class="title-slide slide level1 center">
+<h1>Examples in <code>R</code></h1>
+<p>Try some live coding! Also known as “Another opportunity for Dr.&nbsp;Haraden to potentially embarrass himself”</p>
+<p><a href="https://archive.ics.uci.edu/dataset/320/student+performance" class="uri">https://archive.ics.uci.edu/dataset/320/student+performance</a></p>
+<p><a href="https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success" class="uri">https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success</a></p>
+<p><a href="https://datahub.io/collections" class="uri">https://datahub.io/collections</a></p>
+<p><a href="https://www.kaggle.com/datasets" class="uri">https://www.kaggle.com/datasets</a></p>
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="images/640_hex.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p><a href="https://dharaden.github.io/psyc640/">course-website</a></p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: false,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/dharaden\.github\.io\/psyc640");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
