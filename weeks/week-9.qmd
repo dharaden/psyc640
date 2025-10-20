@@ -1,31 +1,33 @@
 ---
-title: "Week XX"
+title: "Week 9 - Model Creation"
 editor: visual
 ---
 
-# R & Tidy Data
+# Model Fitting & Variability
 
-## Prepare
+We will focus on refamiliarizing ourselves with the process of regression (and maybe a little bit of ANOVA). Activities will include collecting some data, building regression models from the ground up, looking at the LEGO dataset (maybe), and further connecting our research questions to the types of analyses that we are going to be doing.
 
--   
+## Stuff for Today
+
+-   <a href="/files/data/LEGO_data.csv" download="LEGO_data.csv">Download LEGO data (.csv)</a>
+-   [Stroop Task](https://www.psytoolkit.org/experiment-library/experiment_stroop.html){target="_blank"}
+-   [Stroop Task Data](https://docs.google.com/spreadsheets/d/1VSWDBci5MlMmXnFDq-rau3GzlqJEZAeIrEb3fD1ye9g/edit?usp=sharing)
 
 ## Slides
 
-[💻 Getting Started - Syllabus](../slides/lec-1_syl.html){target="_blank"}
-
-[💻Getting Started - Data](../slides/lec-1_background.html){target="_blank"}
+[💻 Models & Variability](../slides/lec-9_models.html){target="_blank"}
 
 ## In-Class Activity
 
-[Getting Comfy with R](../class-activities/day1.html){target="_blank"}
+-   It's in the slides this time
 
 ## For Next Time
 
 📋[Lab 1 - Foundations of a Data Workflow](../labs/lab-1_data-workflow.html)
 
-📖Read Chapter 1 & 2 - ST
+📖[Chapter 15.3 - 15.5 - LSR](https://learningstatisticswithr.com/book/){target="_blank"}
 
-📖Read Chapter 2 - MSR
+📖[Chapter 8 - IMS](https://openintro-ims.netlify.app/){target="_blank"}
 
 <br><br>
 

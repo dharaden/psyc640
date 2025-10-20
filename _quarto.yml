@@ -60,8 +60,8 @@ website:
             text: "Week 6 - Comparing"
           - href: weeks/week-7.qmd
             text: "Week 7 - Regression"
-          - href: weeks/week-8.qmd
-            text: "Week 8"
+          - href: weeks/week-9.qmd
+            text: "Week 9"
       - section: "Labs"
         contents:
           - href: labs/lab-1_data-workflow.qmd
@@ -78,8 +78,8 @@ website:
             text: "Lab 6 - Comparing Means" 
           - href: labs/midterm-proj.qmd
             text: "Midterm Project" 
-          - href: labs/lab-8.qmd
-            text: "Lab 8" 
+          - href: labs/lab-9.qmd
+            text: "Lab 9" 
       - href: resources.qmd
         text: "Resources" 
       - href: previous-years.qmd
