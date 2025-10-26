@@ -1,0 +1,237 @@
+---
+title: "Lab 9: Model Selection & Variability"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+  markdown: 
+    wrap: 72
+---
+
+We are going to try a lab that doesn't involve writing/running any code
+in R! But you can still use R to answer the questions (or put things
+into word if you prefer). [**Remember to knit and turn in a Word Doc.
+YOU WILL JUST NEED TO SUBMIT A WORD DOC OR GOOGLE DOC.**]{.underline}
+
+-   <a href="/files/_lab-rmd/lab-9_model-select.Rmd" download="lab-9_model-select.Rmd">Download
+    Lab 9 (.Rmd)</a>
+
+**Objective:** This lab is designed to develop the crucial skill of
+translating a behavioral science research question into an appropriate
+statistical model, and vice-versa. Instead of relying on a fixed
+decision tree, we will practice linking the *substance* of a question
+and the *structure* of the data to the choice of an analytic method. The
+goal is to foster statistical reasoning, where the model serves the
+scientific inquiry.
+
+**Instructions:** This lab has two parts. For each scenario, provide the
+requested information, focusing on clear and concise justifications.
+Please submit your completed lab as a single document.
+
+------------------------------------------------------------------------
+
+## **Part 1: From Research Question to Statistical Model**
+
+For each of the following scenarios, you are given a description of a
+research goal, similar to what might be in an intro.
+
+1.  Identify the most appropriate statistical model from the options we
+    have covered so far (**T-test (i.e., Independent, Dependent, Single
+    Sample)**, **One-Way ANOVA**, or **Simple Linear Regression**).
+2.  Write a brief (2-3 sentences) justification for your choice. Your
+    justification must reference:
+    -   The nature of the predictor variable (e.g., categorical with two
+        levels, continuous).
+    -   The nature of the outcome variable.
+    -   What the key research question is asking for (e.g., a mean
+        difference, a predictive relationship, a linear trend).
+
+------------------------------------------------------------------------
+
+### **Scenario A**
+
+> "Previous research suggests that individuals with major depressive
+> disorder (MDD) show deficits in cognitive control. However, it is
+> unclear if this deficit is present in those with sub-threshold
+> depressive symptoms. To address this, we recruited two independent
+> groups of young adults: one group meeting formal criteria for MDD
+> (n=50) and a control group with no history of psychiatric disorders
+> (n=50). We hypothesized that the MDD group would show lower
+> performance on the Stroop task, a measure of cognitive control,
+> compared to the control group."
+
+-   **1. Statistical Model:**
+-   **2. Justification:**
+
+### **Scenario B**
+
+> "Sleep continuity is vital for well-being, yet its direct relationship
+> with daily mood in non-clinical populations is not well-characterized.
+> We conducted a study to examine whether the number of times a person
+> wakes up during the night predicts their self-reported mood the
+> following morning. We collected data from 100 university students,
+> measuring their number of nocturnal awakenings via a wrist-worn device
+> and their morning mood on a 100-point scale. We expect that a higher
+> number of awakenings will be associated with a lower mood score."
+
+-   **1. Statistical Model:**
+-   **2. Justification:**
+
+### **Scenario C**
+
+> "Parental expressed emotion is a key factor in the home environment.
+> We are interested in whether there are differences in academic
+> achievement among adolescents from three distinct home environments,
+> characterized by low, moderate, or high levels of expressed parental
+> criticism. We categorized 150 adolescents into one of these three
+> groups based on a structured family interview and obtained their grade
+> point average (GPA) for the academic year."
+
+-   **1. Statistical Model:**
+-   **2. Justification:**
+
+### **Scenario D**
+
+> "A core symptom of social anxiety disorder is the avoidance of social
+> situations. To test a new intervention, we conducted a randomized
+> controlled trial where participants were assigned to either a 12-week
+> mindfulness-based therapy group or a psychoeducation control group. At
+> the end of the trial, we measured the number of social events each
+> participant attended in the final week. We hypothesize that the
+> mindfulness group will attend a greater number of social events on
+> average than the control group."
+
+-   **1. Statistical Model:**
+-   **2. Justification:**
+
+### **Scenario E**
+
+> "It is well-established that age is related to cognitive function, but
+> the specific trajectory is of interest. To explore this, we gathered a
+> cross-sectional sample of 200 adults ranging from age 20 to 80. Each
+> participant completed a standardized test of working memory. Our
+> primary goal is to model the linear relationship between a person's
+> age and their working memory score to understand the rate of change
+> across the lifespan."
+
+-   **1. Statistical Model:**
+-   **2. Justification:**
+
+### **Scenario F**
+
+> "Chronic stress during adolescence can impact physiological
+> regulation. We are interested in whether adolescents who report
+> experiencing high, medium, or low levels of chronic life stress show
+> differences in their morning cortisol levels, a key biomarker of the
+> stress response system. We collected saliva samples from 90
+> adolescents who were categorized into one of the three stress groups
+> based on a validated questionnaire."
+
+-   **1. Statistical Model:**
+-   **2. Justification:**
+
+------------------------------------------------------------------------
+
+## **Part 2: From Statistical Model to Research Question**
+
+For each of the following scenarios, you are given the statistical
+output and a brief description of the variables.
+
+1.  Infer and write out the specific research question that this
+    analysis was likely designed to answer.
+2.  Explain which parts of the output led you to your conclusion.
+
+------------------------------------------------------------------------
+
+### **Scenario G**
+
+-   **Data Description:** A dataset includes `bdi_score` (Beck
+    Depression Inventory score, continuous) and `sleep_hours` (average
+    hours of sleep per night, continuous).
+-   **Statistical Output:**
+
+``` r
+Call:
+lm(formula = bdi_score ~ sleep_hours, data = df)
+
+Coefficients:
+(Intercept)  sleep_hours
+     35.50        -2.50
+```
+
+-   **1. Inferred Research Question:**
+-   **2. Explanation:**
+
+### **Scenario H**
+
+-   **Data Description:** A dataset includes `anxiety_score` (a
+    continuous measure of anxiety) and `treatment_group` (a categorical
+    variable with two levels: "CBT" and "Waitlist").
+-   **Statistical Output:**
+
+``` r
+Two Sample t-test
+data:  anxiety_score by treatment_group
+t = -4.5, df = 98, p-value < 0.001
+alternative hypothesis: true difference in means is not equal to 0
+mean in group CBT    mean in group Waitlist
+             15.2                      25.8
+```
+
+-   **1. Inferred Research Question:**
+-   **2. Explanation:**
+
+### **Scenario I**
+
+-   **Data Description:** A dataset includes `perfectionism_score` (a
+    continuous measure from a personality questionnaire) and
+    `procrastination_index` (a continuous score based on a behavioral
+    task).
+-   **Statistical Output:**
+
+``` r
+Call:
+lm(formula = procrastination_index ~ perfectionism_score, data = df)
+
+Coefficients:
+      (Intercept)  perfectionism_score
+            -5.22                 0.85
+```
+
+-   **1. Inferred Research Question:**
+-   **2. Explanation:**
+
+### **Scenario J**
+
+-   **Data Description:** A dataset includes `adhd_symptoms` (a
+    continuous symptom count) and `school_type` (a categorical variable:
+    "Public," "Private," or "Charter").
+-   **Statistical Output:**
+
+``` r
+One-way analysis of means
+data:  adhd_symptoms by school_type
+
+F = 5.67, num df = 2, denom df = 147, p-value = 0.004
+```
+
+-   **1. Inferred Research Question:**
+-   **2. Explanation:**
+
+### **Scenario K**
+
+-   **Data Description:** A dataset includes `pain_rating` (a patient's
+    self-reported pain on a 0-10 scale) and `condition` (a categorical
+    variable: "Acupuncture" or "Sham Procedure").
+-   **Statistical Output:**
+
+``` r
+Two Sample t-test
+data:  pain_rating by condition
+t = 2.8, df = 78, p-value = 0.006
+alternative hypothesis: true difference in means is not equal to 0
+mean in group Acupuncture  mean in group Sham Procedure
+                    4.1                       6.2
+```
+
+-   **1. Inferred Research Question:**
+-   **2. Explanation:**
