@@ -1,11 +1,11 @@
 ---
-title: "Week 7 Exercises - Regressions"
+title: "Week 10 Exercises - Multiple Regressions"
 editor: visual
 ---
 
 # Following Along
 
-**Objective:** To introduce the fundamentals of simple linear regression by collecting, visualizing, and modeling data. The core question we will explore is: **Can we predict the price of a LEGO set from its number of pieces?**
+**Objective:** To examine the process of multiple linear regression. To produce a reproducible workflow.
 
 ## Collect the Data
 
@@ -40,7 +40,7 @@ Finally, we create the model and interpret the output.
 
 # On Your Own
 
-<a href="/files/data/CAH.csv" download="CAH.csv">Download Week 7 Class ActivityFollow Along (.csv)</a>
+<a href="/files/data/CAH.csv" download="CAH.csv">Download Week 10 Class ActivityFollow Along (.csv)</a>
 
 Data is taken from [Cards Against Humanity - Pulse of the Nation](https://thepulseofthenation.com/#future){target="_blank"}
 
@@ -48,7 +48,7 @@ Download the data and move it to the correct folder so that you can access it in
 
 Import the data into your R file.
 
-Focus on having reproducible code! You may need to share your file with someone else. They should be able to run it.
+Focus on having reproducible code! You will share your file with someone else. They should be able to run it.
 
 ## Steps:
 
@@ -56,13 +56,13 @@ Focus on having reproducible code! You may need to share your file with someone 
 2.  Check descriptive statistics
 3.  Create a correlation plot for the continuous variables
 4.  Visualize the relationship between \# of Transformers Movies and Books
-5.  Conduct a linear regression
-6.  Report the results
+5.  Conduct a multiple linear regression with 2 variables that you've chosen (and why you might have chosen them) to predict \# of Transformers Movies.
+6.  Briefly report the results
 
 ### Items in the Data:
 
 | Var Name | Info |
-|----|----|
+|------------------------------------|------------------------------------|
 | id | Study ID |
 | Income | Overall income |
 | Sex | Sex |

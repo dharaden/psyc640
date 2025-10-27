@@ -33,9 +33,9 @@ execute:
 #Don't know if I'm using all of these, but including theme here anyways
 library(tidyverse)
 library(rio)
-library(broom)
-library(psych)
 library(here)
+library(easystats)
+library(patchwork)
 
 
 #Remove Scientific Notation 
@@ -44,210 +44,21 @@ options(scipen=999)
 
 ------------------------------------------------------------------------
 
-### Regressions
+## Regression
 
-With regression, we are ***building a model*** that we think best represents the data, and the broader world
+**3 main reasons for using regression:**
 
-$$
-Data = Model + error
-$$
+1.  As a description (what is the average salary for men and women?)
+2.  As part of causal inference (Does being a woman result in a lower salary?)
+3.  For prediction ("What happens if..." questions)
 
 ------------------------------------------------------------------------
 
-### Regression Equation
+### Regression
 
 Overall, we are providing a model to give us a "best guess" on predicting our outcome
 
-$$
-Y_i = b_0 + b_1X_i + e_i
-$$
-
-This equation is capturing how we are able to calculate each observation ( $Y_i$ )
-
-| Term | Meaning |
-|:----------------------------------:|------------------------------------|
-| $b_0$ | **Intercept** - when X = 0 |
-| $b_1$ | **Slope** - for every 1 unit change in X, there are $b_1$ unit change in Y |
-| $X_i$ | Predictor Variable |
-| $e_i$ | Error/Residuals |
-
-------------------------------------------------------------------------
-
-### Unstandardized vs. Standardized
-
-::: r-stack
-***What is the Difference?*** (other than the runes)
-:::
-
-**Unstandardized**:
-
-$$
-Y_i = b_0 + b_1X_i + e_i
-$$
-
-**Standardized**:
-
-$$
-Y_i = \beta_0 + \beta_1X_i + \epsilon_i
-$$
-
-$$
-Z_y = \beta_0 + \beta_1Z_x + \epsilon_i
-$$
-
-------------------------------------------------------------------------
-
-## Example - LEGO Data
-
-```{r, message = F, warning = F}
-
-lego <- import(here("files", "data", "LEGO_data.csv")) %>% 
-  janitor::clean_names()
-
-describe(lego)
-```
-
-------------------------------------------------------------------------
-
-### Visualization
-
-Good to see the scatterplots of this relationship
-
-```{r}
-lego %>% 
-  ggplot(aes(number_of_pieces, price)) + 
-  geom_point() + 
-  geom_smooth(method = "lm")
-```
-
-------------------------------------------------------------------------
-
-### Estimating Coefficients
-
--   We are bringing in 2 sources of data (information we don't need to estimate)
-
-    -   \# of Pieces (Mean = `r mean(lego$number_of_pieces, na.rm = T)`, SD = `r sd(lego$number_of_pieces, na.rm = T)`)
-
-    -   Set Price (Mean = `r mean(lego$price, na.rm = T)`, SD = `r sd(lego$price, na.rm = T)`)
-
--   Need to estimate $b_0$ and $b_1$
-
-------------------------------------------------------------------------
-
-## Regression coefficient, $b_{1}$
-
-Calculating the **slope**
-
-$$\Large b_{1} = \frac{cov_{XY}}{s_{x}^{2}}$$
-
-```{r}
-# Covariance
-cov(lego$number_of_pieces, lego$price)
-
-# Variance of # of Pieces
-var(lego$number_of_pieces)
-```
-
-------------------------------------------------------------------------
-
-### 🚧 Brief Detour - Calculating (Co)Variances
-
-**Variance:** The average squared difference between each data point and the mean; *How far each observation is from the mean, on average, in squared units*
-
-$$
-Var(X) = \frac1{N-1} \sum (X_i - \bar X)^2 
-$$
-
-**Covariance**: Average cross product of deviations; *How related are the* *deviations of two different variables across observations*
-
-$$
-Cov(X, Y) = \frac 1{N-1} \sum (X_i - \bar{X}) (Y_i - \bar{Y}) 
-$$
-
-------------------------------------------------------------------------
-
-**Example on the board** *(reminder to Dr. Haraden to do something here)*
-
--   Note where the regression line passes through
-
--   Look at deviations (variance) to covariance
-
-```{r}
-#| code-fold: true
-#| 
-mprice <- mean(lego$price)
-mnum <- mean(lego$number_of_pieces)
-
-lego %>% 
-  ggplot(aes(number_of_pieces, price)) + 
-  geom_point() + 
-  geom_hline(yintercept = mprice, 
-             color = "orange", 
-             linewidth = 1.5) + 
-  geom_vline(xintercept = mnum, 
-             color = "purple", 
-             linewidth = 1.5) + 
-  geom_smooth(method = "lm", se = FALSE, 
-              color = "black", linewidth = 1.5)
-```
-
-------------------------------------------------------------------------
-
-## Regression coefficient, $b_{1}$
-
-$$\Large b_{1} = \frac{cov_{XY}}{s_{x}^{2}} = r_{xy} \frac{s_{y}}{s_{x}}$$
-
-```{r}
-#SD of # of Pieces
-sd(lego$number_of_pieces) 
-
-# SD of Price
-sd(lego$price) 
-
-# Correlation
-cor(lego$number_of_pieces, lego$price)
-```
-
-------------------------------------------------------------------------
-
-## Regression Coefficient, $b_0$
-
-Calculating the Intercept:
-
-$$\Large b_0 = \bar{Y} - b_1\bar{X}$$
-
-The intercept adjusts the location of the regression line to ensure that it runs through the point $\large (\bar{X}, \bar{Y}).$
-
-```{r}
-mean(lego$number_of_pieces)
-mean(lego$price)
-```
-
-------------------------------------------------------------------------
-
-## What is the Regression Model?
-
-Using the calculations, identify what the linear model would be.
-
-------------------------------------------------------------------------
-
-## What is the Regression Model?
-
-Using the calculations, identify what the linear model would be.
-
-You hear about 3 new sets coming out that you are interested in. Since you have this regression model, you can calculate the total price for each. How much money do you need to save (excluding taxes) to buy all 3 sets?
-
-|                    |            |             |
-|--------------------|------------|-------------|
-| Set 1: 1031 pieces | Set 2: 357 | Set 3: 4154 |
-
-# Before the Break
-
-Take the [Stroop Task](https://www.psytoolkit.org/experiment-library/experiment_stroop.html){target="_blank"} and record your incongruent, congruent and stroop effect on your worksheet
-
-# Back to the Show
-
-Last time on "Stats Island", Dr. Haraden asked everyone to look at colors and words. Plus, Rupert was voted off the island. Who could be next??
+$$ Y_i = b_0 + b_1X_i + e_i $$
 
 ------------------------------------------------------------------------
 
@@ -257,239 +68,451 @@ Last time on "Stats Island", Dr. Haraden asked everyone to look at colors and wo
 
 ------------------------------------------------------------------------
 
-![](/images/varianceexplained.gif){fig-align="center"}
+### Explaining Variance
 
-------------------------------------------------------------------------
-
-## Stroop Data Modeling
-
-**Research Question**: Sleep Quality is negatively related to the Stroop Effect. Lower sleep quality will predict a greater Stroop effect.
-
-[Data Set (I hope I entered all the data in appropriately)](https://docs.google.com/spreadsheets/d/1VSWDBci5MlMmXnFDq-rau3GzlqJEZAeIrEb3fD1ye9g/edit?usp=sharing){target="_blank"}
+![](images/clipboard-2717803324.png)
 
 ------------------------------------------------------------------------
 
 ### Explaining Variance
 
-Visualize the Stroop Effect data
-
--   What is the best "model" to explain this data? If you had no information, what would be your best guess for someone's score?
-
-. . .
-
-We are looking to explain variance in our outcome (Stroop Performance)
-
-::: callout-note
-The total distance from the mean to each point is the Total Sum of Squares - The total amount of "error" we are trying to explain
-:::
-
-The mean can be considered the "null model" in that it is the most basic
+![](images/clipboard-3448148790.png)
 
 ------------------------------------------------------------------------
 
-### Null to Sleep model
+## Model Interpretation
 
-We can then introduce another variable to try explain more of the variance in the Stroop Effect
+Once we have a model, we will be able to interpret the coefficients. For a bivariate regression, this was fairly straightforward
 
-::: callout-note
-There should be some visualizations on the board with mean and regression lines
-:::
-
-The distance from each point down to the original 'mean' is the total deviation.
-
-The portion from the 'mean' up to our new 'sleep model' is the explained deviation (**SSM**). This is the improvement we gained by considering sleep!
-
-The leftover bit from our 'sleep model' to the actual data point is the unexplained residual (**SSE**). This is the error our model couldn't account for.
+We would look to the beta (effect size) and interpret it as: ***for every 1 unit increase in our X variable, there will be beta units increase in our Y variable.***
 
 ------------------------------------------------------------------------
 
-## Linear Regression
+## Regressions
 
-Use the information and let's do it in R instead of on the board
+We may want to include additional predictors into our model to best explain the variance in an outcome:
 
-Visualize the relationship
-
-Run a linear regression
+$$ Y_i = b_0 + b_1X_{1i} + b_2X_{2i} + ... + b_nX_{ni}+ e_i $$
 
 ------------------------------------------------------------------------
 
-## Model Fit
+### Explaining Variance
 
-Take a look at the $R^2$ value
+![](images/clipboard-4102854469.png)
 
-Is there any other data that we have that could impact overall Stroop Effects?
+------------------------------------------------------------------------
 
-After including it in the model, we can examine the change in $R^2$
+## Fire Data Example
 
-What would happen if we put the `random number` variable in there?
+We have been contracted by the county to examine their Fire Department. We have been provided with the data below, and asked to examine what may be related to how expensive a fire costs.
+
+```{r}
+#| code-fold: true
+
+# --- Step 1: Simulate the Data ---
+set.seed(123) # for reproducibility
+n <- 300 # number of fires
+
+# Create three distinct groups for fire size
+fire_sizes <- sample(c("Small", "Medium", "Large"), n, replace = TRUE, prob = c(0.4, 0.3, 0.3))
+
+# Simulate our variables based on fire size
+fire_data <- tibble(size = factor(fire_sizes, levels = c("Small", "Medium", "Large"))) %>%
+  mutate(
+    # The bigger the fire, the more trucks are sent.
+    num_trucks = case_when(
+      size == "Small"  ~ round(rnorm(n(), 2, 0.5)),
+      size == "Medium" ~ round(rnorm(n(), 5, 1)),
+      size == "Large"  ~ round(rnorm(n(), 9, 1.5))
+    ),
+    # For a given size, more trucks -> less damage (the true effect)
+    # But bigger size -> more damage (the confounding effect)
+    damage_amount = case_when(
+      size == "Small"  ~ 20 - 2 * num_trucks + rnorm(n(), 0, 5),
+      size == "Medium" ~ 80 - 3 * num_trucks + rnorm(n(), 0, 8),
+      size == "Large"  ~ 150 - 4 * num_trucks + rnorm(n(), 0, 12)
+    )
+  ) %>%
+  # ensure no negative values
+  filter(num_trucks > 0, damage_amount > 0)
+
+```
+
+```{r}
+glimpse(fire_data)
+```
+
+------------------------------------------------------------------------
+
+### Fire Data: Relationship
+
+Let's start by examining the relationship between \# of firetrucks and the damage of the fire
+
+```{r}
+#| code-fold: true
+#| 
+ggplot(fire_data, aes(x = num_trucks, y = damage_amount)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = FALSE, color = "black", linetype = "dashed") +
+  labs(
+    title = "Plot 1: Fire Trucks and Damage",
+    x = "Number of Fire Trucks",
+    y = "Damage Amount (in $1000s)"
+  ) +
+  theme_bw()
+```
+
+------------------------------------------------------------------------
+
+#### Bivariate relationship
+
+This relationship can also be represented by a correlation, or a regression
+
+```{r}
+cor.test(fire_data$num_trucks, fire_data$damage_amount)
+## OR
+fire.lm1 <- lm(damage_amount ~ num_trucks, data = fire_data)
+summary(fire.lm1)
+```
+
+------------------------------------------------------------------------
+
+#### Bivariate relationship
+
+Based on the visualization, the correlation and the regression, what would we conclude from this analysis?
+
+------------------------------------------------------------------------
+
+#### Bivariate relationship
+
+Based on the visualization, the correlation and the regression, what would we conclude from this analysis?
+
+> A linear regression was used to examine the impact of number of trucks on the scene and the amount of damage that was done by a fire. The number of trucks positively impacted the damage done by the fire (*b* = 11.67, *p* \< .001), suggesting that as more trucks are present, the fire does more damage.
+
+Would we be able to say that \# trucks *causes* the damage? Therefore, our suggestion to the county would be to send less trucks to each of the fires. Case closed
+
+------------------------------------------------------------------------
+
+### Fire Data: Multivariate Relationship
+
+There is a third variable that we haven't incorporated. Let's take that information into account when we are looking at the visualization:
+
+```{r}
+#| code-fold: true
+# Plot 2
+fire_data %>% 
+  ggplot(aes(x = num_trucks, y = damage_amount, color = size)) +
+    geom_point(alpha = 0.7) +
+    scale_color_manual(values = c("Small" = "green", 
+                                  "Medium" =   "orange", 
+                                  "Large" = "red")) +
+    labs(
+      title = "Plot 2: Firetrucks & Damage by Size",
+      x = "Number of Fire Trucks",
+      y = "Damage Amount (in $1000s)",
+      color = "Fire Size"
+    ) +
+    theme_bw()
+```
+
+------------------------------------------------------------------------
+
+#### Fire Data: Multivariate Relationship
+
+That seems to make more sense. Let's add in the lines of best fit too
+
+```{r}
+#| code-fold: true
+
+# Plot 3: The "Controlled" Relationship (Simpson's Paradox)
+fire_data %>% 
+  ggplot(aes(x = num_trucks, y = damage_amount, color = size)) +
+    geom_point(alpha = 0.5) +
+    # Fit a line FOR EACH GROUP to show the true relationship
+    geom_smooth(method = "lm", se = FALSE) +
+    labs(
+      title = "Plot 3: The Controlled Relationship",
+      x = "Number of Fire Trucks",
+      y = "Damage Amount (in $1000s)",
+      color = "Fire Size"
+    ) +
+    theme_bw()
+```
+
+------------------------------------------------------------------------
+
+#### Fire Data: Multivariate Relationship
+
+Let's see what the multiple regression brings us
+
+```{r}
+fire.lm2 <- lm(damage_amount ~ num_trucks + size,
+               data = fire_data)
+summary(fire.lm2)
+```
+
+Now we can write it up
+
+------------------------------------------------------------------------
+
+### Fire Data: Formal Writeup
+
+"The current set of analyses sought to examine the influence of the number of firetrucks on the scene and the amount of damage that a fire caused, controlling for the size of the fire. The number of firetrucks present were regressed on the damage amount (in \\\$1,000s) and the size of the fire. The overall multiple regression was statistically significant ( $R^2$ = .96, *p* \< .001), and the two variables (Number of Trucks and Size of the Fire) accounted for 96% of the variance in damage done. Each of the two independent variables also had a statistically significant effect on damage (*p's* \< .001). The number of trucks was negatively related to the amount of damage done (*b* = -3.41), meaning that for each additional truck that was on the scene, there was a \$3,410 reduction in damage, controlling for the size of the fire. Additionally, the size of the fire increased the amount of damage at Medium (*b =* 59.51) and Large (*b =*122.35)."
+
+------------------------------------------------------------------------
+
+## Reporting Standardized or Unstandardized?
+
+**INTERPRET *b***:
+
+-   When the variables are measured in a meaningful metric
+
+-   To develop intervention or policy implications
+
+-   To compare effects across samples or studies
+
+**INTERPRET *β***:
+
+-   When the variables are not measured in a meaningful metric
+
+-   To compare the relative effects of different predictors in the same sample
+
+------------------------------------------------------------------------
+
+## Goldilocks Problem
+
+Models that are underfit, overfit or just-right
+
+![](images/clipboard-699917906.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Another Example: Computer time & Frustration
+
+```{r}
+#| code-fold: true
+#| 
+# Step 1: Simulate the Data 
+n <- 150 # Number of students
+
+# Simulate total daily computer use in hours
+computer_use <- rnorm(n, mean = 6, sd = 1.5)
+
+# Simulate hours spent on stats homework, now as a whole number
+stats_homework <- round(0.7 * computer_use + rnorm(n, 0, 1))
+# Ensure no negative values after rounding
+stats_homework[stats_homework < 0] <- 0
+stats_homework[stats_homework > computer_use] <- 1
+
+# Simulate frustration level (driven mostly by stats homework)
+# Scale of 1-100
+frustration <- 10 + (2 * computer_use) + (8 * stats_homework) + rnorm(n, 0, 10)
+
+# Create a dataframe and clean up any impossible values
+student_data <- tibble(
+  frustration = frustration,
+  computer_use = computer_use,
+  stats_homework = stats_homework
+) %>%
+  filter(frustration > 0, computer_use > 0)
+
+# Bin the 'stats_homework' variable
+student_data <- student_data %>%
+  mutate(
+    stats_homework_bin = cut(stats_homework,
+                           breaks = quantile(stats_homework, probs = seq(0, 1, by = 1/3)),
+                           include.lowest = TRUE,
+                           labels = c("Low", "Medium", "High"))
+  )
+```
+
+We have collected data on graduate students and their weekly frustration levels. Data that were also collected included the amount of time they were spending on their computer as well as the amount of statistics homework that they had.
+
+------------------------------------------------------------------------
+
+### Frustration Model
+
+Taking a bivariate look at things, we might have an initial model like this:
+
+$$
+Frustration=b_0 + b_1Comp.Hours + e_i
+$$
+
+------------------------------------------------------------------------
+
+### Frustration Model
+
+```{r}
+#| code-fold: true
+
+p1 <- student_data %>%
+  ggplot(aes(x = computer_use, y = frustration)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm",
+              se = FALSE,
+              color = "darkorange") +
+  labs(
+    title = "Frustration & Computer Use",
+    subtitle = "Linear Fit",
+    x = "Daily Computer Use (Hours)",
+    y = "Frustration Level (1-100)"
+  ) +
+  theme_minimal()
+
+p2 <- student_data %>%
+  ggplot(aes(x = computer_use, y = frustration)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "loess",
+              se = FALSE,
+              color = "darkorange") +
+  labs(
+    title = "Frustration & Computer Use",
+    subtitle = "Loess Fit",
+    x = "Daily Computer Use (Hours)",
+    y = "Frustration Level (1-100)"
+  ) +
+  theme_minimal()
+
+p1 + p2
+```
+
+------------------------------------------------------------------------
+
+### Side Quest: Model Assumptions
+
+1.  **Linearity** - A linear relationship exists between predictors and outcome
+2.  **Multicollinearity** - The variables are minimally related to one another (VIF)
+3.  **Independence of Observations** - Each observation in the model is independent of one another
+4.  **Homoscedasticity of Residuals** - Residuals have constant variance across all points of the model
+5.  **Multivariate Normality** - Residuals of the model are normally distributed (QQ Plots)
+
+All of these are checked when using `check_model()` within the `easystats` library
+
+------------------------------------------------------------------------
+
+### Frustration Model: lm()
+
+```{r}
+frus.lm1 <- lm(frustration ~ computer_use, data = student_data)
+summary(frus.lm1)
+```
+
+------------------------------------------------------------------------
+
+### Frustration Model: Multivariate
+
+```{r}
+#| code-fold: true
+#| 
+ggplot(student_data, aes(x = computer_use, y = frustration, color = stats_homework_bin)) +
+  geom_point(alpha = 0.8, size = 2) +
+  labs(
+    title = "Frustration & Computer Use by Stats",
+    x = "Daily Computer Use (Hours)",
+    y = "Frustration Level (1-100)",
+    color = "Stats HW (Hours)"
+  ) +
+  theme_minimal()
+```
+
+------------------------------------------------------------------------
+
+### Frustration Model: Multivariate
+
+```{r}
+#| code-fold: true
+#| 
+student_data %>% 
+  ggplot(aes(x = computer_use, y = frustration, 
+             color = stats_homework_bin)) +
+    geom_point(alpha = 0.5) +
+    # Fit a line FOR EACH GROUP to show the true relationship
+    geom_smooth(method = "lm", se = FALSE) +
+    labs(
+      title = "Frustration & Computer Use by Stats",
+      x = "Daily Computer Use (Hours)",
+      y = "Frustration Level (1-100)",
+      color = "Stats HW (Hours)"
+    ) +
+    theme_bw()
+```
+
+------------------------------------------------------------------------
+
+### Frustration Model
+
+```{r}
+frus.lm2 <- lm(frustration ~ computer_use + stats_homework,
+               data = student_data)
+summary(frus.lm2)
+```
 
 ------------------------------------------------------------------------
 
 ### Comparing Models
 
-Can compare models using an ANOVA when one model is **nested** within another
+Maybe we would like to test to see if including the Stats Homework variable improved the model
 
-::: callout-note
-**Nested Models**: where one model (Model 0) contains a subset of the predictors from the other one (Model 1). Model 1 contains *all* of the predictors included in Model 0, plus one or more additional predictors. When this happens we say that Model 0 is nested within Model 1.
-:::
-
-------------------------------------------------------------------------
-
-### Model Diagnostics
-
-As we get more complex, we want to be sure to check how our model is functioning. One way is to use $adjusted \ R^2$ to get a sense of the amount of variance each predictor is bringing.
-
-Need to be careful of **overfitting** the model to the data
-
-**Multicollinearity** - when predictors are highly related to one another
-
--   Checked with the **Variance Inflation Factor** (VIF)
-
-**Homogeneity of Variance** - the variance of the residuals is assumed to be constant
-
-------------------------------------------------------------------------
-
-### `check_models`
-
-This will check everything for you in regressions, let's try it out
-
-<https://easystats.github.io/performance/reference/check_model.html>
-
-------------------------------------------------------------------------
-
-## Selecting a Model
-
-One of the most daunting tasks can be identifying the "right" statistical model for the data you have
-
-You may see flowcharts like this:
-
-![](/images/flow.png){fig-align="center"}
-
-------------------------------------------------------------------------
-
-### Selecting a Model
-
-If you are asking which model is "right", you are doing it backwards
-
-> "All models are wrong, some models are useful." -George Box
-
-Remember: $Data (The\ Truth) = Model + Error$
-
-Instead, think about identifying a model as *"Model Based Reasoning"* in which you will need to defend the choices you made
-
-------------------------------------------------------------------------
-
-## Example: t-test vs. ANOVA vs. Regression
-
-This might be something that we are considering between. How do we pick the "right" one?
-
-Start with some data where we have 2 groups and we identify a 2 point difference in the groups scores
+Since the first regression is *nested* within the second, we can run an ANOVA
 
 ```{r}
-set.seed(2025)
-
-# Two independent groups with equal variances
-n0 <- 80; n1 <- 80
-mu0 <- 12; mu1 <- 10      # true mean difference = -2
-sigma <- 3
-y0 <- rnorm(n0, mu0, sigma)
-y1 <- rnorm(n1, mu1, sigma)
-
-# Put that in a data frame
-dat <- data.frame(
-  dep = c(y0, y1),
-  group01 = c(rep(0, n0), rep(1, n1))
-) %>% 
-  mutate(group = factor(group01, levels = c(0,1), labels = c("control","treatment")))
+anova(frus.lm1, frus.lm2)
 ```
 
 ------------------------------------------------------------------------
 
-### t-test
+| Statistic | Meaning | Interpretation |
+|------------------------|------------------------|------------------------|
+| `Res.Df` (Residual Degrees of Freedom) | Remaining degrees of freedom after estimating parameters | 148 for Model 1, 147 for Model 2 (one more parameter estimated) |
+| `RSS` (Residual Sum of Squares) | Total unexplained variance by the model | Decreases substantially from 24,468 → 13,620 with the new predictor, showing improved fit |
+| `Df` (Difference in df) | Number of parameters added | 1 (adding `stats_homework`) |
+| `Sum of Sq` (Difference in RSS) | Variance explained by the added predictor | 10,848 units of variance explained by `stats_homework` |
+| `F` | F-statistic testing whether this variance reduction is significant | 117.07 — very large, meaning substantial improvement |
+| `Pr(>F)` | p-value associated with F |  |
+
+------------------------------------------------------------------------
+
+## Model Assumptions: Frustration
 
 ```{r}
-
-tt_fit <- t.test(dep ~ group, data = dat, var.equal = TRUE)
-tt_tidy <- tidy(tt_fit)
-tt_tidy
+check_model(frus.lm2)
 ```
 
 ------------------------------------------------------------------------
 
-### ANOVA
+### Model Assumptions
 
-```{r}
-fit_aov <- aov(dep ~ group, data = dat)
-summary(fit_aov)
-
-aov_tidy <- tidy(fit_aov)
-```
-
-------------------------------------------------------------------------
-
-### Regression
-
-```{r}
-
-reg_fit <- lm(dep ~ group01, data = dat)
-reg_tidy <- tidy(reg_fit)
-reg_tidy
-
-reg_glance <- glance(reg_fit)
-```
+1.  **Linearity** - A linear relationship exists between predictors and outcome
+    1.  Apply Transformation (square root or log); Drop the variable
+2.  **Multicollinearity** - The variables are minimally related to one another (VIF)
+    1.  Remove variable; different type of regression (lasso, partial least squares)
+3.  **Independence of Observations** - Each observation in the model is independent of one another
+    1.  Dummy coding, lags; Use MLM
+4.  **Homoscedasticity of Residuals** - Residuals have constant variance across all points of the model
+    1.  Apply Transformation (square root or log);
+5.  **Multivariate Normality** - Residuals of the model are normally distributed (QQ Plots)
+    1.  Check for outliers; Apply Transformation (square root or log)
 
 ------------------------------------------------------------------------
 
-### Comparing Methods
+## Model Selection - Stepwise
 
-```{r}
-# Equivalence 1: The regression slope for the dummy variable equals the difference in group means.
-mean_diff <- tt_tidy$estimate2 - tt_tidy$estimate1
-beta1 <- reg_tidy %>% 
-  filter(term == "group01") %>% 
-  pull(estimate)
+-   *Backward elimination*
 
-mean_diff
-beta1
+    -   Start with the full model (all potential predictors)
 
+    -   Predictors eliminated one-at-a-time from the model until we cannot improve the model any further
 
-# Equivalence 2: The F-statistic from the ANOVA is the regression square of the t-statistic.
-t_stat_reg <- reg_tidy %>% 
-  filter(term == "group01") %>% 
-  pull(statistic)
+-   *Forward selection*
 
-t_stat_t <- tt_tidy %>% 
-  pull(statistic)
+    -   Start with nothing in the model
 
-f_stat <- reg_glance$statistic
-
-
-t_stat_reg^2
-t_stat_t^2
-f_stat
-
-# Equivalence 3: The p-values are identical.
-tt_tidy$p.value
-reg_tidy %>% 
-  filter(term == "group01") %>% 
-  pull(p.value)
-aov_tidy %>% 
-  filter(term == "group") %>% 
-  pull(p.value)
-
-
-```
+    -   Continue to add predictors one-at-a-time until we cannot find any predictors that improve the model any further
 
 ------------------------------------------------------------------------
 
-# Examples in `R`
+## Model Selection
 
-Try some live coding! Also known as "Another opportunity for Dr. Haraden to potentially embarrass himself"
+**ALWAYS** start with theory and previous work
 
-<https://archive.ics.uci.edu/dataset/320/student+performance>
-
-<https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success>
-
-<https://datahub.io/collections>
-
-<https://www.kaggle.com/datasets>
+You should NEVER just go into data with just a lot of predictors and backward selection in mind. 🧨
