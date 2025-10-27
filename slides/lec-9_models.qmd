@@ -65,7 +65,7 @@ $$
 This equation is capturing how we are able to calculate each observation ( $Y_i$ )
 
 | Term | Meaning |
-|:-----------------------:|-----------------------------------------------|
+|:--:|----|
 | $b_0$ | **Intercept** - when X = 0 |
 | $b_1$ | **Slope** - for every 1 unit change in X, there are $b_1$ unit change in Y |
 | $X_i$ | Predictor Variable |
@@ -210,7 +210,7 @@ cor(lego$number_of_pieces, lego$price)
 
 ------------------------------------------------------------------------
 
-## Regression Coefficient, $b_0$ 
+## Regression Coefficient, $b_0$
 
 Calculating the Intercept:
 

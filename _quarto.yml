@@ -62,6 +62,8 @@ website:
             text: "Week 7 - Regression"
           - href: weeks/week-9.qmd
             text: "Week 9"
+          - href: weeks/week-10.qmd
+            text: "Week 10 - Multiple Reg."
       - section: "Labs"
         contents:
           - href: labs/lab-1_data-workflow.qmd
@@ -80,6 +82,8 @@ website:
             text: "Midterm Project" 
           - href: labs/lab-9.qmd
             text: "Lab 9" 
+          - href: labs/lab-10.qmd
+            text: "Lab 10"
       - href: resources.qmd
         text: "Resources" 
       - href: previous-years.qmd
