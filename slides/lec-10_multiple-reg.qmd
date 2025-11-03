@@ -1,0 +1,524 @@
+---
+title: "Week 10: Multiple Regression"
+subtitle: "Date: October 27, 2025"
+footer:  "[course-website](https://dharaden.github.io/psyc640/)"
+logo: "images/640_hex.png"
+format: 
+  revealjs:
+    theme: clean.scss
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+    overview: false
+    scrollable: true
+    code-line-numbers: true
+editor: visual
+execute:
+  echo: true
+  freeze: auto
+---
+
+## Today...
+
+<https://bsky.app/profile/andrew.heiss.phd/post/3ly6hqr3mtk2z>
+
+![](/images/p-values.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+```{r, results = 'hide', message = F, warning = F}
+
+#Don't know if I'm using all of these, but including theme here anyways
+library(tidyverse)
+library(rio)
+library(here)
+library(easystats)
+library(patchwork)
+
+
+#Remove Scientific Notation 
+options(scipen=999)
+```
+
+------------------------------------------------------------------------
+
+## Regression
+
+**3 main reasons for using regression:**
+
+1.  As a description (what is the average salary for men and women?)
+2.  As part of causal inference (Does being a woman result in a lower salary?)
+3.  For prediction ("What happens if..." questions)
+
+------------------------------------------------------------------------
+
+### Regression
+
+Overall, we are providing a model to give us a "best guess" on predicting our outcome
+
+$$ Y_i = b_0 + b_1X_i + e_i $$
+
+------------------------------------------------------------------------
+
+## Explaining Variance
+
+![](/images/predict_var.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Explaining Variance
+
+![](images/clipboard-2717803324.png)
+
+------------------------------------------------------------------------
+
+### Explaining Variance
+
+![](images/clipboard-3448148790.png)
+
+------------------------------------------------------------------------
+
+## Model Interpretation
+
+Once we have a model, we will be able to interpret the coefficients. For a bivariate regression, this was fairly straightforward
+
+We would look to the beta (effect size) and interpret it as: ***for every 1 unit increase in our X variable, there will be beta units increase in our Y variable.***
+
+------------------------------------------------------------------------
+
+## Regressions
+
+We may want to include additional predictors into our model to best explain the variance in an outcome:
+
+$$ Y_i = b_0 + b_1X_{1i} + b_2X_{2i} + ... + b_nX_{ni}+ e_i $$
+
+------------------------------------------------------------------------
+
+### Explaining Variance
+
+![](images/clipboard-4102854469.png)
+
+------------------------------------------------------------------------
+
+## Fire Data Example
+
+We have been contracted by the county to examine their Fire Department. We have been provided with the data below, and asked to examine what may be related to how expensive a fire costs.
+
+```{r}
+#| code-fold: true
+
+# --- Step 1: Simulate the Data ---
+set.seed(123) # for reproducibility
+n <- 300 # number of fires
+
+# Create three distinct groups for fire size
+fire_sizes <- sample(c("Small", "Medium", "Large"), n, replace = TRUE, prob = c(0.4, 0.3, 0.3))
+
+# Simulate our variables based on fire size
+fire_data <- tibble(size = factor(fire_sizes, levels = c("Small", "Medium", "Large"))) %>%
+  mutate(
+    # The bigger the fire, the more trucks are sent.
+    num_trucks = case_when(
+      size == "Small"  ~ round(rnorm(n(), 2, 0.5)),
+      size == "Medium" ~ round(rnorm(n(), 5, 1)),
+      size == "Large"  ~ round(rnorm(n(), 9, 1.5))
+    ),
+    # For a given size, more trucks -> less damage (the true effect)
+    # But bigger size -> more damage (the confounding effect)
+    damage_amount = case_when(
+      size == "Small"  ~ 20 - 2 * num_trucks + rnorm(n(), 0, 5),
+      size == "Medium" ~ 80 - 3 * num_trucks + rnorm(n(), 0, 8),
+      size == "Large"  ~ 150 - 4 * num_trucks + rnorm(n(), 0, 12)
+    )
+  ) %>%
+  # ensure no negative values
+  filter(num_trucks > 0, damage_amount > 0)
+
+```
+
+```{r}
+glimpse(fire_data)
+```
+
+------------------------------------------------------------------------
+
+### Fire Data: Relationship
+
+Let's start by examining the relationship between \# of firetrucks and the damage of the fire
+
+```{r}
+#| code-fold: true
+#| 
+ggplot(fire_data, aes(x = num_trucks, y = damage_amount)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = FALSE, color = "black", linetype = "dashed") +
+  labs(
+    title = "Plot 1: Fire Trucks and Damage",
+    x = "Number of Fire Trucks",
+    y = "Damage Amount (in $1000s)"
+  ) +
+  theme_bw()
+```
+
+------------------------------------------------------------------------
+
+#### Bivariate relationship
+
+This relationship can also be represented by a correlation, or a regression
+
+```{r}
+cor.test(fire_data$num_trucks, fire_data$damage_amount)
+## OR
+fire.lm1 <- lm(damage_amount ~ num_trucks, data = fire_data)
+summary(fire.lm1)
+```
+
+------------------------------------------------------------------------
+
+#### Bivariate relationship
+
+Based on the visualization, the correlation and the regression, what would we conclude from this analysis?
+
+------------------------------------------------------------------------
+
+#### Bivariate relationship
+
+Based on the visualization, the correlation and the regression, what would we conclude from this analysis?
+
+> A linear regression was used to examine the impact of number of trucks on the scene and the amount of damage that was done by a fire. The number of trucks positively impacted the damage done by the fire (*b* = 11.67, *p* \< .001), suggesting that as more trucks are present, the fire does more damage.
+
+Would we be able to say that \# trucks *causes* the damage? Therefore, our suggestion to the county would be to send less trucks to each of the fires. Case closed
+
+------------------------------------------------------------------------
+
+### Another Side Quest: Directed Acyclic Graphs (DAGs)
+
+Drawing your statistical models and theory can always be beneficial. Dr Haraden should be drawing things on the board
+
+![](images/clipboard-3557664801.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Fire Data: Multivariate Relationship
+
+There is a third variable that we haven't incorporated. Let's take that information into account when we are looking at the visualization:
+
+```{r}
+#| code-fold: true
+# Plot 2
+fire_data %>% 
+  ggplot(aes(x = num_trucks, y = damage_amount, color = size)) +
+    geom_point(alpha = 0.7) +
+    scale_color_manual(values = c("Small" = "green", 
+                                  "Medium" =   "orange", 
+                                  "Large" = "red")) +
+    labs(
+      title = "Plot 2: Firetrucks & Damage by Size",
+      x = "Number of Fire Trucks",
+      y = "Damage Amount (in $1000s)",
+      color = "Fire Size"
+    ) +
+    theme_bw()
+```
+
+------------------------------------------------------------------------
+
+#### Fire Data: Multivariate Relationship
+
+That seems to make more sense. Let's add in the lines of best fit too
+
+```{r}
+#| code-fold: true
+
+# Plot 3: The "Controlled" Relationship (Simpson's Paradox)
+fire_data %>% 
+  ggplot(aes(x = num_trucks, y = damage_amount, color = size)) +
+    geom_point(alpha = 0.5) +
+    # Fit a line FOR EACH GROUP to show the true relationship
+    geom_smooth(method = "lm", se = FALSE) +
+    labs(
+      title = "Plot 3: The Controlled Relationship",
+      x = "Number of Fire Trucks",
+      y = "Damage Amount (in $1000s)",
+      color = "Fire Size"
+    ) +
+    theme_bw()
+```
+
+------------------------------------------------------------------------
+
+#### Fire Data: Multivariate Relationship
+
+Let's see what the multiple regression brings us
+
+```{r}
+fire.lm2 <- lm(damage_amount ~ num_trucks + size,
+               data = fire_data)
+summary(fire.lm2)
+```
+
+Now we can write it up
+
+------------------------------------------------------------------------
+
+### Fire Data: Formal Writeup
+
+"The current set of analyses sought to examine the influence of the number of firetrucks on the scene and the amount of damage that a fire caused, controlling for the size of the fire. The number of firetrucks present were regressed on the damage amount (in \\\$1,000s) and the size of the fire. The overall multiple regression was statistically significant ( $R^2$ = .96, *p* \< .001), and the two variables (Number of Trucks and Size of the Fire) accounted for 96% of the variance in damage done. Each of the two independent variables also had a statistically significant effect on damage (*p's* \< .001). The number of trucks was negatively related to the amount of damage done (*b* = -3.41), meaning that for each additional truck that was on the scene, there was a \$3,410 reduction in damage, controlling for the size of the fire. Additionally, the size of the fire increased the amount of damage at Medium (*b =* 59.51) and Large (*b =*122.35)."
+
+------------------------------------------------------------------------
+
+## Reporting Standardized or Unstandardized?
+
+**INTERPRET *b***:
+
+-   When the variables are measured in a meaningful metric
+
+-   To compare the relative effects of different predictors in the same sample
+
+**INTERPRET *β***:
+
+-   When the variables are not measured in a meaningful metric
+
+-   To compare effects across samples or studies
+
+------------------------------------------------------------------------
+
+## Goldilocks Problem
+
+Models that are underfit, overfit or just-right
+
+![](images/clipboard-699917906.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Another Example: Computer time & Frustration
+
+```{r}
+#| code-fold: true
+#| 
+# Step 1: Simulate the Data 
+n <- 150 # Number of students
+
+# Simulate total daily computer use in hours
+computer_use <- rnorm(n, mean = 6, sd = 1.5)
+
+# Simulate hours spent on stats homework, now as a whole number
+stats_homework <- round(0.7 * computer_use + rnorm(n, 0, 1))
+# Ensure no negative values after rounding
+stats_homework[stats_homework < 0] <- 0
+stats_homework[stats_homework > computer_use] <- 1
+
+# Simulate frustration level (driven mostly by stats homework)
+# Scale of 1-100
+frustration <- 10 + (2 * computer_use) + (8 * stats_homework) + rnorm(n, 0, 10)
+
+# Create a dataframe and clean up any impossible values
+student_data <- tibble(
+  frustration = frustration,
+  computer_use = computer_use,
+  stats_homework = stats_homework
+) %>%
+  filter(frustration > 0, computer_use > 0)
+
+# Bin the 'stats_homework' variable
+student_data <- student_data %>%
+  mutate(
+    stats_homework_bin = cut(stats_homework,
+                           breaks = quantile(stats_homework, probs = seq(0, 1, by = 1/3)),
+                           include.lowest = TRUE,
+                           labels = c("Low", "Medium", "High"))
+  )
+```
+
+We have collected data on graduate students and their weekly frustration levels. Data that were also collected included the amount of time they were spending on their computer as well as the amount of statistics homework that they had.
+
+------------------------------------------------------------------------
+
+### Frustration Model
+
+Taking a bivariate look at things, we might have an initial model like this:
+
+$$
+Frustration=b_0 + b_1Comp.Hours + e_i
+$$
+
+------------------------------------------------------------------------
+
+### Frustration Model
+
+```{r}
+#| code-fold: true
+
+p1 <- student_data %>%
+  ggplot(aes(x = computer_use, y = frustration)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm",
+              se = FALSE,
+              color = "darkorange") +
+  labs(
+    title = "Frustration & Computer Use",
+    subtitle = "Linear Fit",
+    x = "Daily Computer Use (Hours)",
+    y = "Frustration Level (1-100)"
+  ) +
+  theme_minimal()
+
+p2 <- student_data %>%
+  ggplot(aes(x = computer_use, y = frustration)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "loess",
+              se = FALSE,
+              color = "darkorange") +
+  labs(
+    title = "Frustration & Computer Use",
+    subtitle = "Loess Fit",
+    x = "Daily Computer Use (Hours)",
+    y = "Frustration Level (1-100)"
+  ) +
+  theme_minimal()
+
+p1 + p2
+```
+
+------------------------------------------------------------------------
+
+### Side Quest: Model Assumptions
+
+1.  **Linearity** - A linear relationship exists between predictors and outcome
+2.  **Multicollinearity** - The variables are minimally related to one another (VIF)
+3.  **Independence of Observations** - Each observation in the model is independent of one another
+4.  **Homoscedasticity of Residuals** - Residuals have constant variance across all points of the model
+5.  **Multivariate Normality** - Residuals of the model are normally distributed (QQ Plots)
+
+All of these are checked when using `check_model()` within the `easystats` library
+
+------------------------------------------------------------------------
+
+### Frustration Model: lm()
+
+```{r}
+frus.lm1 <- lm(frustration ~ computer_use, data = student_data)
+summary(frus.lm1)
+```
+
+------------------------------------------------------------------------
+
+### Frustration Model: Multivariate
+
+```{r}
+#| code-fold: true
+#| 
+ggplot(student_data, aes(x = computer_use, y = frustration, color = stats_homework_bin)) +
+  geom_point(alpha = 0.8, size = 2) +
+  labs(
+    title = "Frustration & Computer Use by Stats",
+    x = "Daily Computer Use (Hours)",
+    y = "Frustration Level (1-100)",
+    color = "Stats HW (Hours)"
+  ) +
+  theme_minimal()
+```
+
+------------------------------------------------------------------------
+
+### Frustration Model: Multivariate
+
+```{r}
+#| code-fold: true
+#| 
+student_data %>% 
+  ggplot(aes(x = computer_use, y = frustration, 
+             color = stats_homework_bin)) +
+    geom_point(alpha = 0.5) +
+    # Fit a line FOR EACH GROUP to show the true relationship
+    geom_smooth(method = "lm", se = FALSE) +
+    labs(
+      title = "Frustration & Computer Use by Stats",
+      x = "Daily Computer Use (Hours)",
+      y = "Frustration Level (1-100)",
+      color = "Stats HW (Hours)"
+    ) +
+    theme_bw()
+```
+
+------------------------------------------------------------------------
+
+### Frustration Model
+
+```{r}
+frus.lm2 <- lm(frustration ~ computer_use + stats_homework,
+               data = student_data)
+summary(frus.lm2)
+```
+
+------------------------------------------------------------------------
+
+### Comparing Models
+
+Maybe we would like to test to see if including the Stats Homework variable improved the model
+
+Since the first regression is *nested* within the second, we can run an ANOVA
+
+```{r}
+anova(frus.lm1, frus.lm2)
+```
+
+------------------------------------------------------------------------
+
+| Statistic | Meaning | Interpretation |
+|------------------------|------------------------|------------------------|
+| `Res.Df` (Residual Degrees of Freedom) | Remaining degrees of freedom after estimating parameters | 148 for Model 1, 147 for Model 2 (one more parameter estimated) |
+| `RSS` (Residual Sum of Squares) | Total unexplained variance by the model | Decreases substantially from 24,468 → 13,620 with the new predictor, showing improved fit |
+| `Df` (Difference in df) | Number of parameters added | 1 (adding `stats_homework`) |
+| `Sum of Sq` (Difference in RSS) | Variance explained by the added predictor | 10,848 units of variance explained by `stats_homework` |
+| `F` | F-statistic testing whether this variance reduction is significant | 117.07 — very large, meaning substantial improvement |
+| `Pr(>F)` | p-value associated with F |  |
+
+------------------------------------------------------------------------
+
+## Model Assumptions: Frustration
+
+```{r}
+check_model(frus.lm2)
+```
+
+------------------------------------------------------------------------
+
+### Model Assumptions
+
+1.  **Linearity** - A linear relationship exists between predictors and outcome
+    1.  Apply Transformation (square root or log); Drop the variable
+2.  **Multicollinearity** - The variables are minimally related to one another (VIF)
+    1.  Remove variable; different type of regression (lasso, partial least squares)
+3.  **Independence of Observations** - Each observation in the model is independent of one another
+    1.  Dummy coding, lags; Use MLM
+4.  **Homoscedasticity of Residuals** - Residuals have constant variance across all points of the model
+    1.  Apply Transformation (square root or log);
+5.  **Multivariate Normality** - Residuals of the model are normally distributed (QQ Plots)
+    1.  Check for outliers; Apply Transformation (square root or log)
+
+------------------------------------------------------------------------
+
+## Model Selection - Stepwise
+
+-   *Backward elimination*
+
+    -   Start with the full model (all potential predictors)
+
+    -   Predictors eliminated one-at-a-time from the model until we cannot improve the model any further
+
+-   *Forward selection*
+
+    -   Start with nothing in the model
+
+    -   Continue to add predictors one-at-a-time until we cannot find any predictors that improve the model any further
+
+------------------------------------------------------------------------
+
+## Model Selection
+
+**ALWAYS** start with theory and previous work
+
+You should NEVER just go into data with just a lot of predictors and backward selection in mind. 🧨

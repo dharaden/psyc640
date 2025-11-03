@@ -1,0 +1,630 @@
+---
+title: "Week 11: Categorical Predictors & Logistic Regression"
+subtitle: "Date: November 3, 2025"
+footer:  "[course-website](https://dharaden.github.io/psyc640/)"
+logo: "images/640_hex.png"
+format: 
+  revealjs:
+    theme: clean.scss
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+    overview: false
+    scrollable: true
+    code-line-numbers: true
+editor: visual
+execute:
+  echo: true
+  freeze: auto
+---
+
+## Today...
+
+------------------------------------------------------------------------
+
+```{r, results = 'hide', message = F, warning = F}
+
+library(tidyverse)
+library(rio)
+library(here)
+library(lm.beta)
+library(easystats)
+library(sjPlot)
+
+
+#Remove Scientific Notation 
+options(scipen=999)
+```
+
+------------------------------------------------------------------------
+
+## Regression
+
+**3 main reasons for using regression:**
+
+1.  As a description (what is the average salary for men and women?)
+2.  As part of causal inference (Does being a woman result in a lower salary?)
+3.  For prediction ("What happens if..." questions)
+
+------------------------------------------------------------------------
+
+### Explaining Variance
+
+![](images/clipboard-3448148790.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Model Interpretation
+
+Once we have a model, we will be able to interpret the coefficients. For a bivariate regression, this was fairly straightforward
+
+We would look to the beta (effect size) and interpret it as: ***for every 1 unit increase in our X variable, there will be beta units increase in our Y variable.***
+
+------------------------------------------------------------------------
+
+## Multiple Regression
+
+We may want to include additional predictors into our model to best explain the variance in an outcome:
+
+$$ Y_i = b_0 + b_1X_{1i} + b_2X_{2i} + ... + b_nX_{ni}+ e_i $$
+
+------------------------------------------------------------------------
+
+### Explaining Variance
+
+![](images/clipboard-4102854469.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Model Interpretation
+
+Since we have multiple predictors in the model, we have to interpret each predictor estimate while considering the other variables.
+
+We would look to the beta (effect size) and interpret it as: ***for every 1 unit increase in our*** $X_1$ ***variable, there will be beta units increase in our Y (outcome) variable, [holding all other variables constant]{.underline}.***
+
+------------------------------------------------------------------------
+
+## Reporting Standardized or Unstandardized?
+
+**INTERPRET *b***:
+
+-   When the variables are measured in a meaningful metric
+
+-   To compare the relative effects of different predictors in the same sample
+
+**INTERPRET *β***:
+
+-   When the variables are not measured in a meaningful metric
+
+-   To compare effects across samples or studies
+
+------------------------------------------------------------------------
+
+## Multiple Regression: Example
+
+Previously, we predicted the \# of Transformers movies someone watched by their age, income and \# of books read
+
+```{r}
+cah_data <- import(here("files", "data", 
+                        "CAH.csv")) %>% 
+  mutate(across(where(is.character), ~na_if(., "")))
+```
+
+The regression equation would look something like this:
+
+$$
+Y = b_0 + b_1X_1 + b_2X_2 + b_3X_3 + e
+$$
+
+------------------------------------------------------------------------
+
+### Transformers Regression: $b$
+
+```{r}
+reg1 <- lm(transformers ~ age + income + books,
+           data = cah_data)
+```
+
+**Interpret**:
+
+```{r}
+summary(reg1)
+```
+
+------------------------------------------------------------------------
+
+### Transformers Regression: $\beta$
+
+`scale()`
+
+```{r}
+reg1.std <- lm(scale(transformers) ~ scale(age) + scale(income) + scale(books),
+           data = cah_data)
+
+summary(reg1.std)
+```
+
+------------------------------------------------------------------------
+
+### Transformers Regression: $\beta$
+
+`lm.beta()`
+
+```{r}
+## Same as before
+reg1 <- lm(transformers ~ age + income + books,
+           data = cah_data)
+
+beta1.std <- lm.beta(reg1)
+summary(beta1.std)
+```
+
+------------------------------------------------------------------------
+
+### How would we write up the results?
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+summary(beta1.std)
+```
+
+------------------------------------------------------------------------
+
+### How would we write up the results?
+
+```{r}
+#| code-fold: true
+
+tab_model(reg1, show.std = TRUE,
+          pred.labels = c("Intercept", "Age", 
+                          "Income", "# of Books"), 
+          dv.labels = "# of Transformers Movies")
+```
+
+> A linear regression model was fit to the data to predict \# of Transformers movies watched with participant age, income and reported \# of books read. The model explains a significant, but small portion of variance in the outcome (*F(3, 427)* = 9.81, *p* \< .001, adj. $R^2$ = .06). Participant age ( $\beta$ = -0.22, *p* \< .001) and income ( $\beta$ = -0.10, *p* = .028) were significantly related to the number of transformers movies, while the number of books was not (*p* = .508). These findings suggest that as individuals age, they tend to watch fewer transformers movies, controlling for income and \# of books. Additionally, as income increases, we see a decrease in \# of transformer movies while taking into account participant age and \# of books.
+
+# But what about categorical variables as predictors?
+
+![](images/clipboard-1169136778.jpeg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Categorical Predictors
+
+Typically identified by a grouping variable that may be a `character`
+
+```{r}
+glimpse(cah_data$political_affiliation)
+```
+
+Need to change the variable from `character` to `factor` which will assign a number to each group
+
+```{r}
+cah_data <- cah_data %>%
+  mutate(
+    pol = as.factor(political_affiliation),
+    ghosts = as.factor(ghosts)
+    )
+
+glimpse(cah_data$pol)
+
+```
+
+------------------------------------------------------------------------
+
+### Categorical Data
+
+**Nominal** - the numbers have no relation to the category it represents (Biological Sex)
+
+-   *Biological Sex* - Male (1), Female (2), Intersex (3)
+
+**Ordinal** - the order of the numbers matters
+
+-   *Education Levels* - High school (1), Bachelor's (2), Master's (3), Doctorate (4)
+
+------------------------------------------------------------------------
+
+### Categorical Data - Regression
+
+***Can we use the numeric values that each category represents in a regression?*** I mean we can do just about anything. But, we should [**not**]{.underline} use the numeric values as they are
+
+**Why can't we do this?**
+
+::: callout-tip
+Consider how we interpret the beta coefficients for slope
+:::
+
+------------------------------------------------------------------------
+
+### Categorical Data - Regression
+
+Regressions assume that there are equal spacing between each of the values and that the spacing is meaningful
+
+-   Going from High School to Bachelor's is considered equal to Master's to Doctorate?
+
+-   What does it mean to interpret Male to Female to Intersex?
+
+To properly investigate the differences between the groups, we have to "trick" our regression equation - *Enter Dummy Variables/Coding*
+
+------------------------------------------------------------------------
+
+## Dummy Coding
+
+Numerical placeholders used to represent categorical variables
+
+Taking a categorical variable with $k$ levels (e.g., `Democratic`, `Independent`, `Republican`) into $k-1$ binary variables.
+
+| political_affiliation | *becomes* | Ind (binary1) | Rep (binary2) |
+|-----------------------|-----------|---------------|---------------|
+| Democrat              | --\>      | 0             | 0             |
+| Independent           | --\>      | 1             | 0             |
+| Republican            | --\>      | 0             | 1             |
+| ...                   |           | ...           | ...           |
+
+------------------------------------------------------------------------
+
+### Dummy Coding
+
+For the variable with $k$ levels, we use $k-1$ binary variables...why not use all of them?
+
+::: incremental
+-   Including all three variables would result in perfect multicollinearity. All Democrats would be related to other Democrats and unrelated to everything else
+
+-   By including 2 binary variables, we are able to obtain all information about group membership
+:::
+
+------------------------------------------------------------------------
+
+### Dummy Coding
+
+The group that has 0's for all the binary variables is the **reference group**
+
+For interpretation, we will make our statements in reference to this group
+
+| political_affiliation | *becomes* | Ind (binary1) | Rep (binary2) |
+|-----------------------|-----------|---------------|---------------|
+| Democrat              | --\>      | 0             | 0             |
+| Independent           | --\>      | 1             | 0             |
+| Republican            | --\>      | 0             | 1             |
+| ...                   |           | ...           | ...           |
+
+------------------------------------------------------------------------
+
+## Categorical Regression
+
+Going back to our Transformers dataset, let's see how our political affiliation variable can predict \# of transformers movies
+
+Usually you have to create the separate dummy variables, but not in R
+
+```{r}
+cat1 <- lm(transformers ~ pol,
+           data = cah_data)
+```
+
+You can also double check the dummy/contrast coding
+
+```{r}
+contrasts(cah_data$pol)
+```
+
+------------------------------------------------------------------------
+
+### Interpretation
+
+We are shown the different levels of our predictor variable, but you will not see a predictor for the reference group
+
+::: callout-tip
+Think about how we interpret the intercept of a regression model. What are all values of our predictors set to be when looking at the intercept estimate?
+:::
+
+```{r}
+summary(cat1)
+```
+
+------------------------------------------------------------------------
+
+### Refactor Reference Group
+
+Maybe we want to compare to a specific group
+
+We need to then update the reference group
+
+```{r}
+cah_data$pol2 <- relevel(cah_data$pol, ref = "Independent")
+cat2 <- lm(transformers ~ pol2,
+           data = cah_data)
+summary(cat2)
+```
+
+------------------------------------------------------------------------
+
+### `lm()` or `aov()`
+
+Didn't this look similar to something we've done before?
+
+We are examining group differences in Transformer Movies (continuous) by Political Affiliation (group/categorical)
+
+IT IS JUST AN ANOVA
+
+```{r}
+aov1 <- aov(transformers ~ pol2,
+           data = cah_data)
+summary(aov1)
+```
+
+------------------------------------------------------------------------
+
+### Everything is a linear model
+
+We are able to come to the same conclusions that there are no significant differences between groups
+
+```{r}
+# Regression F-value
+summary(cat2)$fstatistic[[1]]
+
+# ANOVA F-value
+summary(aov1)[[1]][1, 4]
+```
+
+# ![](images/clipboard-1177388101.webp)
+
+# Break ☕🍵🥐
+
+# Activity Time 🎨
+
+------------------------------------------------------------------------
+
+## Categories in Action
+
+**Goal:** Gain greater familiarity with dummy coding and categorical predictors
+
+**Scenario:** We are researchers examining the impact of a new intervention on reducing the vocalization "6️⃣7️⃣" in the youths. We have done classroom observations to collect data on how many times students say "6️⃣7️⃣" after receiving the intervention. This is the data you have in front of you. Youths have been randomly assigned to one of 3 groups, and we need to determine which had the biggest impact.
+
+::: callout-note
+You will submit **one** Rmd file for the whole group. Be sure to include all group member's names.
+:::
+
+------------------------------------------------------------------------
+
+### Part 1
+
+1.  Get into groups of 4
+2.  Download the data <a href="/files/data/cat_reg.csv" download="categorical_reg.csv">\[Download Categorical data (.csv)\]</a>
+3.  Enter the data into the spreadsheet with the chips that you have
+    1.  Each chip has an ID number (three digits) and a score (between 5 - 20)
+    2.  These are the scores for the "post"
+    3.  Be sure to identify their Group (the color of the chip)
+
+------------------------------------------------------------------------
+
+### Part 2
+
+1.  Import the data into R
+
+    1.  You will only have data for one school (be sure to `filter()` to include your data)
+
+2.  On the board, put a portion of your data in a table along with your Dummy Code Scheme
+
+    1.  Dr. Haraden should have different sections designated, if not, please remind him nicely (he's doing his best)
+
+------------------------------------------------------------------------
+
+### Part 3
+
+1.  Calculate the average 6️⃣7️⃣ Score for your reference group:\
+    Average Score for Group 1 (Reference) = \_\_\_\_\_\_\_\_\_\_\_\_\_\_ = $\beta_0$
+
+2.  Calculate the average 6️⃣7️⃣ Score for your other two groups:\
+    Average Score for Group 2 = \_\_\_\_\_\_\_\_\_\_\_\_\_\_\
+    Average Score for Group 3 = \_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+3.  Calculate the "Coefficients" by finding the mean difference from the reference group:\
+    $\beta_1$ = (Avg. Group 2 Score) - (Avg. Group 1 Score) = \_\_\_\_\_\_\_\_\_\_\
+    $\beta_2$ = (Avg. Group 3 Score) - (Avg. Group 1 Score) = \_\_\_\_\_\_\_\_\_\_
+
+------------------------------------------------------------------------
+
+### Part 4
+
+Write out the regression equation for the model in which we are predicting 6️⃣7️⃣ Scores with our Dummy Variables. It should follow a format that we've used before ( $Y = b_0 + b_1X_1 + b_2X_2 + e$ ), but replacing your estimates in the correct places with the appropriate variables.
+
+Once your group agrees on the equation, write it on the board for your group
+
+------------------------------------------------------------------------
+
+## Categories in Action: Using R
+
+Now that we have the data entered appropriately, let's double check, and include some additional variables!
+
+Import dataset, confirm predictions, include pre-scores to see how that changes interpretation
+
+::: callout-warning
+Dr. Haraden is going to start opening up R and doing a follow-along thing. You have been warned
+:::
+
+# Everything is a linear model
+
+![](/images/reg_precious.gif)
+
+# Maybe another break?
+
+# Introducing Generalized Linear Model
+
+------------------------------------------------------------------------
+
+## 6️⃣7️⃣ Status
+
+In our last example, we were able to see how these categorical variables could predict a continuous variable. This is perfect for linear regression.
+
+*What if we want to see if students have "recovered" from* 6️⃣7️⃣?
+
+We would then ask: "“Which participants dropped below the clinical threshold for 6️⃣7️⃣ at follow-up? Now, our outcome is either recovered or not recovered.”
+
+------------------------------------------------------------------------
+
+## Recovery Status
+
+Now we have a binary outcome; Yes/No recovery
+
+What happens when we fit a linear regression? What are the chances of someone with a pre-score of 12 recovering by the follow-up?
+
+```{r}
+#| code-fold: true
+
+cat_reg <- import(here("files", "data", 
+                       "cat_reg_complete.xlsx")) %>% 
+  janitor::clean_names() %>% 
+  # 1 = recovered; 0 = not recovered
+  mutate(recover = if_else(post_score > 12, 0, 1))
+
+cat_reg %>% 
+  ggplot(aes(pre_score, recover)) +
+  geom_jitter(width = 0, height = 0.05, alpha = 0.5) + 
+  geom_smooth(method = "lm", se = FALSE) + 
+  labs(
+    title = "Pre-Score predicting Recovery"
+  )
+```
+
+------------------------------------------------------------------------
+
+## Probability to Odds to Log-Odds
+
+**Probability (*p*)**: The chance of an event happening. Ranges from 0 to 1
+
+**Odds**: The ratio of the probability of an event happening to it *not* happening.
+
+-   $Odds = \frac{p}{1-p}$
+
+-   Ranges from 0 to ∞. An odds of 4 means the event is 4 times more likely to happen than not.
+
+**Log-Odds (logit)**: The natural log of the odds
+
+-   $Logit(p) = ln(\frac{p}{1-p})$
+
+-   Ranges from -∞ to +∞
+
+::: callout-important
+This step transforms our bounded outcome variable (0/1) to an unbound one!
+:::
+
+------------------------------------------------------------------------
+
+## Generalized Linear Model (GLM)
+
+A generalization of a linear model (duh) that is used when the response variable has a non-normal error distribution
+
+Most commonly used when there is a binary (0-1) or count variable as the outcome (we will focus on the binary)
+
+Ultimately, we are trying to identify the ***probability*** of the outcome taking the value 1 ("success") that is being modeled in relation to the predictor variables
+
+------------------------------------------------------------------------
+
+### GLM: Logistic Regression
+
+$$
+transformation(p_i)=\beta_0+\beta_1x_{1,i} + \beta_2x_{2,i} + \cdots+\beta_lx_{k,i}
+$$
+
+We have to apply a transformation to the left side so that it can take variables beyond just 0 & 1
+
+A common transformation is the $logit\ transformation$
+
+$$
+\log_{e}\left( \frac{p_i}{1-p_i} \right) = \beta_0 + \beta_1 x_{1,i} + \beta_2 x_{2,i} + \cdots + \beta_k x_{k,i}
+$$
+
+------------------------------------------------------------------------
+
+### GLM - CAH data 👻
+
+Research Question: *Does age, the number of books and the number of transformer movies predict the belief in ghosts?*
+
+```{r}
+## Using glm() instead of lm()
+ln1 <- glm(ghosts ~ age + books + transformers, 
+           data = cah_data, 
+           ## This is new
+           ##Tells the model we are doing logistic regression with a binary outcome
+           family = "binomial")
+```
+
+------------------------------------------------------------------------
+
+### GLM - CAH data Interpretation
+
+::: callout-note
+Interpretation is still the same as linear regression, ***except*** we are dealing with [**log-odds** of the outcome.]{.underline} What does that mean??
+:::
+
+```{r}
+summary(ln1)
+```
+
+------------------------------------------------------------------------
+
+### GLM - CAH data Interpretation (tables)
+
+::: callout-note
+We want to be able to interpret these coefficients more easily so we put them into **Odds Ratios**
+:::
+
+`sjPlot` is always coming in with the good tables
+
+```{r}
+tab_model(ln1)
+```
+
+------------------------------------------------------------------------
+
+## Odds Ratios (OR)
+
+**OR \> 1:** The predictor increases the odds of the outcome. (e.g., OR of 2.5 means the odds of believing in ghosts are 2.5 times higher).
+
+**OR \< 1:** The predictor decreases the odds of the outcome. (e.g., OR of 0.4 means the odds of believing in ghosts are 60% lower).
+
+**OR = 1:** The predictor has no effect on the odds of the outcome.
+
+------------------------------------------------------------------------
+
+## Visualization
+
+Extract the model implied probabilities for each individual
+
+```{r}
+probs <- broom::augment(ln1, type.predict = "response")
+```
+
+Plotting the predicted probabilities
+
+```{r}
+probs %>% 
+ggplot(aes(age, .fitted)) +
+  geom_line(color = "blue", linewidth = 1.5) +
+  labs(
+    title = "Predicted Probability of Believing in Ghosts by Age",
+    subtitle = "Holding # of Books and Transformers Movies at their mean",
+    x = "Age (years)",
+    y = "Predicted Probability of Believing in Ghosts"
+  ) +
+  ylim(0, 1) + # Keep the y-axis bounded at 0 and 1
+  theme_minimal()
+```
+
+------------------------------------------------------------------------
+
+## Logistic Regression: Summary
+
+| **Feature** | **Linear Regression** | **Logistic Regression** |
+|:-----------------------|:-----------------------|:-----------------------|
+| Outcome Variable | Continuous | Categorical (Binary) |
+| Equation | $Y=β_0+β_1X$ | $ln⁡(\frac{p}{1-p})=β_0+β_1X$ |
+| Key Interpretation | $\beta_1$ is the change in the mean of Y | $\exp(\beta_1)$ is theodds ratio |
+| R Function | `lm()` | `glm(..., family="binomial")` |
+
+------------------------------------------------------------------------
