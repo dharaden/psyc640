@@ -64,6 +64,8 @@ website:
             text: "Week 9"
           - href: weeks/week-10.qmd
             text: "Week 10 - Multiple Reg."
+          - href: weeks/week-11.qmd
+            text: "Week 11 - Categorical Reg."
       - section: "Labs"
         contents:
           - href: labs/lab-1_data-workflow.qmd
@@ -84,6 +86,8 @@ website:
             text: "Lab 9" 
           - href: labs/lab-10.qmd
             text: "Lab 10"
+          - href: labs/lab-11.qmd
+            text: "Lab 11"
       - href: resources.qmd
         text: "Resources" 
       - href: previous-years.qmd

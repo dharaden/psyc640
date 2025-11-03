@@ -1,19 +1,17 @@
 ---
-title: "Week XX"
+title: "Week 11 - Regression with Categories"
 editor: visual
 ---
 
-# R & Tidy Data
+# Categorical Data in Regression
 
-## Prepare
+## Stuff for Today
 
--   
+-   <a href="/files/data/cat_reg.csv" download="categorical_reg.csv">Download Categorical data (.csv)</a>
 
 ## Slides
 
-[💻 Getting Started - Syllabus](../slides/lec-1_syl.html){target="_blank"}
-
-[💻Getting Started - Data](../slides/lec-1_background.html){target="_blank"}
+[💻 Categorical Data - Regression](../slides/lec-11_categor.html){target="_blank"}
 
 ## In-Class Activity
 
