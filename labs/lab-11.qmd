@@ -90,9 +90,8 @@ variables.
             country variable with 3 levels. Then a table and write up
             for 1 of the regressions.
 
-<!-- -->
-
 2.  **Regression by Time:**
+
     -   Using all countries, include 4 different years and perform 2
         regressions to predict depression and anxiety variables. Similar
         to above, select one of the regressions, provide a formatted
@@ -110,7 +109,7 @@ categorical predictors
     regressions, report an overarching conclusion about mental health
     rates over time/countries.
 
-3.   A researcher is studying the effect of a student's undergraduate
+3.  A researcher is studying the effect of a student's undergraduate
     major on their starting salary after graduation. The `major`
     variable has four levels: "Psychology", "Biology", "Engineering",
     and "English".
@@ -120,7 +119,9 @@ categorical predictors
     If you set "Psychology" as the reference group, what values would
     each dummy variable have for a student who majored in "Engineering"?
 
-4.   In a linear regression model predicting students' self-reported
+<!-- -->
+
+4.  In a linear regression model predicting students' self-reported
     `well_being` scores from their `year_in_school` (a categorical
     variable with levels: "First-year", "Sophomore", "Junior",
     "Senior"), "First-year" is the reference group.
@@ -129,7 +130,9 @@ categorical predictors
     `year_in_schoolSenior` dummy variable. In one clear sentence, what
     is the correct interpretation of this coefficient?
 
-5.   Imagine you refit the model from the previous question, but this
+<!-- -->
+
+5.  Imagine you refit the model from the previous question, but this
     time you set `"Senior"` as the reference group instead of
     `"First-year"`.
 
