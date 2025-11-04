@@ -475,9 +475,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#objective" id="toc-objective" class="nav-link active" data-scroll-target="#objective"><strong>Objective:</strong></a></li>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link" data-scroll-target="#instructions"><strong>Instructions:</strong></a></li>
-  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission:</a></li>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#scenario-goal" id="toc-scenario-goal" class="nav-link" data-scroll-target="#scenario-goal">Scenario &amp; Goal</a>
+  <ul class="collapse">
+  <li><a href="#task-1-setup-data-inspection-15-points" id="toc-task-1-setup-data-inspection-15-points" class="nav-link" data-scroll-target="#task-1-setup-data-inspection-15-points"><strong>Task 1: Setup &amp; Data Inspection (15 points)</strong></a></li>
+  <li><a href="#task-2-categorical-regression-20-points" id="toc-task-2-categorical-regression-20-points" class="nav-link" data-scroll-target="#task-2-categorical-regression-20-points">Task 2: Categorical Regression (20 points)</a></li>
+  <li><a href="#task-3-follow-up-questions-10-points" id="toc-task-3-follow-up-questions-10-points" class="nav-link" data-scroll-target="#task-3-follow-up-questions-10-points">Task 3: Follow-up questions (10 points)</a></li>
+  <li><a href="#formatting-5-points" id="toc-formatting-5-points" class="nav-link" data-scroll-target="#formatting-5-points">Formatting (5 points)</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/lab-11.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -504,41 +509,98 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Caution
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>IF YOU ARE SEEING THIS, THEN DR. HARADEN HASN’T UPDATED/POSTED THE LAB YET -from: past dr. haraden</p>
-</div>
-</div>
-<section id="objective" class="level2">
-<h2 class="anchored" data-anchor-id="objective"><strong>Objective:</strong></h2>
-<p>This lab focuses on connecting what we have learned in class to the peer reviewed articles that you may be reading.</p>
-</section>
 <section id="instructions" class="level2">
-<h2 class="anchored" data-anchor-id="instructions"><strong>Instructions:</strong></h2>
-<p>Identify articles in the scientific literature that perform quantitative analyses (no reviews or meta-analyses).</p>
-<p>Find <u>2 articles</u>: one that includes a <strong><em>t-test</em></strong> and another that includes <strong><em>multiple regression</em></strong>.</p>
-<p>In your document, I would like to see:</p>
+<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<p>Here is the data you will need for this lab:</p>
 <ul>
-<li><p>The article citations and a designation of whether it is the t-test or multiple regression</p></li>
-<li><p>The extracted text from the article that describes the test they are performing (not necessarily just the results, but their justification).</p></li>
-<li><p>The articles main research question</p></li>
-<li><p>How the analysis (t-test or multiple regression) adds to the “answer” for the main research question</p></li>
-<li><p>Reflection on how challenging/easy finding each test was</p></li>
+<li><a href="../files/data/mental_health_cat-reg.xlsx" download="mental_health_cat-reg.xlsx">Download Mental Health Data (.csv)</a></li>
 </ul>
+<p>Data is pulled from <a href="https://www.kaggle.com/code/imtkaggleteam/mental-health-eda-prediction/input?select=1-+mental-illnesses-prevalence.csv">Kaggle</a>.</p>
+<p>When you are finished, click the <strong>Knit</strong> button to turn your work into an HTML document. You will submit both this <code>.Rmd</code> file and the 🧶knitted <code>.html</code> file.</p>
 </section>
-<section id="submission" class="level2">
-<h2 class="anchored" data-anchor-id="submission">Submission:</h2>
-<p>Please submit a document (Word or Google Doc) that includes the information above, as well as the PDFs of the 2 research papers that you identified.</p>
+<section id="scenario-goal" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-goal">Scenario &amp; Goal</h2>
+<p>We are getting back to using R! 🥳 This lab will focus on examining categorical predictors. Similar to what we did in class this week.</p>
+<p>The data for the lab contains information by country (<code>Entity</code>) and year for the overall prevalence of various forms of mental health/psychopathology. We are seeking to examine differences that may arise as a result of country and year.</p>
+<hr>
+<section id="task-1-setup-data-inspection-15-points" class="level3">
+<h3 class="anchored" data-anchor-id="task-1-setup-data-inspection-15-points"><strong>Task 1: Setup &amp; Data Inspection (15 points)</strong></h3>
+<p>Your first and most important task is always to understand and inspect your data before running any analyses.</p>
+<p><strong>Tasks:</strong></p>
+<ol type="1">
+<li><p><strong>Create a new R Markdown file</strong> named <code>Week11_Lab.Rmd</code>.</p></li>
+<li><p><strong>Load Libraries and Data</strong></p></li>
+<li><p><strong>Initial Inspection:</strong></p>
+<ul>
+<li><p>Use <code>glimpse()</code> or <code>summary()</code> to see the structure of your data.</p></li>
+<li><p><strong>What are all the countries included in this dataset? What is the year range?</strong></p></li>
+</ul></li>
+<li><p><strong>Visualization:</strong></p>
+<ul>
+<li><p>Generate a visualization of the distribution (histogram or bar plot) across all years for each of the mental health variables (5 total plots)</p>
+<ul>
+<li>This will not be separated by country. We want to see what the overall distribution for these variables are for the whole dataset.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Summary Stats (2 tables)</strong>:</p>
+<ul>
+<li>Provide descriptive statistics (Means &amp; SD) in a formatted table (not just using <code>describe()</code>) that is separated by country that includes the mental health variables. This will be collapsed across all years.</li>
+<li>Include a correlation table examining the relationship among all mental health variables for the year 2015. Be sure to include a title and update the labels.</li>
+</ul></li>
+</ol>
+</section>
+<section id="task-2-categorical-regression-20-points" class="level3">
+<h3 class="anchored" data-anchor-id="task-2-categorical-regression-20-points">Task 2: Categorical Regression (20 points)</h3>
+<p>We are now interested in seeing if there are differences among the years and countries when it comes to the prevalence of these mental health variables.</p>
+<ol type="1">
+<li><p><strong>Regression by country:</strong></p>
+<ul>
+<li><p>Include 3 different countries and perform 2 regressions to separately predict depression and anxiety (ignoring the year variable; meaning you don’t have to filter by year). For 1 of the regressions, provide a formatted table and write up the results in APA format.</p>
+<ul>
+<li>We should be seeing two regressions that each have the country variable with 3 levels. Then a table and write up for 1 of the regressions.</li>
+</ul></li>
+</ul></li>
+</ol>
+<!-- -->
+<ol start="2" type="1">
+<li><strong>Regression by Time:</strong>
+<ul>
+<li>Using all countries, include 4 different years and perform 2 regressions to predict depression and anxiety variables. Similar to above, select one of the regressions, provide a formatted table and write up the results in APA.</li>
+</ul></li>
+</ol>
+</section>
+<section id="task-3-follow-up-questions-10-points" class="level3">
+<h3 class="anchored" data-anchor-id="task-3-follow-up-questions-10-points">Task 3: Follow-up questions (10 points)</h3>
+<p>Please answer the following information about this dataset and categorical predictors</p>
+<ol type="1">
+<li><p>For each of your regressions, which group was your reference group? How do you know?</p></li>
+<li><p>Based on the results that you have identified in with your regressions, report an overarching conclusion about mental health rates over time/countries.</p></li>
+<li><p>A researcher is studying the effect of a student’s undergraduate major on their starting salary after graduation. The <code>major</code> variable has four levels: “Psychology”, “Biology”, “Engineering”, and “English”.</p></li>
+</ol>
+<pre><code>If you were to include this variable in a regression model using
+dummy coding, how many new dummy variables would you need to create?
+If you set "Psychology" as the reference group, what values would
+each dummy variable have for a student who majored in "Engineering"?</code></pre>
+<ol start="4" type="1">
+<li>In a linear regression model predicting students’ self-reported <code>well_being</code> scores from their <code>year_in_school</code> (a categorical variable with levels: “First-year”, “Sophomore”, “Junior”, “Senior”), “First-year” is the reference group.</li>
+</ol>
+<pre><code>The model output shows a coefficient of **-2.5** for the
+`year_in_schoolSenior` dummy variable. In one clear sentence, what
+is the correct interpretation of this coefficient?</code></pre>
+<ol start="5" type="1">
+<li>Imagine you refit the model from the previous question, but this time you set <code>"Senior"</code> as the reference group instead of <code>"First-year"</code>.</li>
+</ol>
+<pre><code>Would you expect the coefficient for the `year_in_schoolFirst-year`
+dummy variable in this *new* model to be positive, negative, or
+zero? Explain your reasoning in one sentence.</code></pre>
+</section>
+<section id="formatting-5-points" class="level3">
+<h3 class="anchored" data-anchor-id="formatting-5-points">Formatting (5 points)</h3>
+<p>Formatting includes having clear code and statements in your documents. Avoid including unnecessary information.</p>
+<p>Be sure to submit both an .Rmd file and an HTML file that is complete. Failure to include both will result in an automatic 10 point deduction.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
