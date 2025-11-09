@@ -1,5 +1,5 @@
 ---
-title: "Lab 11: Categories & Regression"
+title: "Lab 12: Categories & Regression"
 output: html_document
 editor_options: 
   chunk_output_type: console
@@ -8,6 +8,11 @@ editor_options:
 ---
 
 ## Instructions
+
+::: callout-caution
+If you are reading this, everything below here has not been updated and
+does not apply to the current assignment. -Dr H
+:::
 
 Here is the data you will need for this lab:
 

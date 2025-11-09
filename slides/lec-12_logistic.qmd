@@ -1,6 +1,6 @@
 ---
-title: "Week 11: Categorical Predictors & Logistic Regression"
-subtitle: "Date: November 3, 2025"
+title: "Week 12: Categorical & Logistic Regression"
+subtitle: "Date: November 10, 2025"
 footer:  "[course-website](https://dharaden.github.io/psyc640/)"
 logo: "images/640_hex.png"
 format: 
@@ -22,6 +22,16 @@ execute:
 
 ## Today...
 
+-   Some helpful tools (autosave & new library)
+
+-   Regression Review
+
+-   Categorical Predictors Review
+
+-   Logistic Regression
+
+-   Model Diagnostics
+
 ------------------------------------------------------------------------
 
 ```{r, results = 'hide', message = F, warning = F}
@@ -36,39 +46,44 @@ library(sjPlot)
 
 #Remove Scientific Notation 
 options(scipen=999)
+
+#Cards Against Humanity Data
+cah_data <- import(here("files", "data", 
+                        "CAH.csv")) %>% 
+  mutate(across(where(is.character), ~na_if(., "")))
 ```
+
+------------------------------------------------------------------------
+
+## Regression  {.center}
+
+***What is the equation for a regression??***
+
+------------------------------------------------------------------------
+
+## Regression 
+
+$$ Y_i = b_0 + b_1X_{1i} + b_2X_{2i} + ... + b_nX_{ni}+ e_i $$
 
 ------------------------------------------------------------------------
 
 ## Regression
 
-**3 main reasons for using regression:**
+***How do we interpret the regression coefficients (Intercepts & slopes)?***
 
-1.  As a description (what is the average salary for men and women?)
-2.  As part of causal inference (Does being a woman result in a lower salary?)
-3.  For prediction ("What happens if..." questions)
+------------------------------------------------------------------------
+
+## Regression
+
+[**INTERCEPT**]{.underline}: When all predictor variables are set to 0, our expected value (predicted $\hat{Y}$) will be this value.
+
+[**SLOPES:**]{.underline}For every 1 unit change in our $X_n$ variable, there will be beta (b or $\beta$) units increase in our Y (outcome) variable, *[**holding all other variables constant**]{.underline}**.***
 
 ------------------------------------------------------------------------
 
 ### Explaining Variance
 
 ![](images/clipboard-3448148790.png){fig-align="center"}
-
-------------------------------------------------------------------------
-
-### Model Interpretation
-
-Once we have a model, we will be able to interpret the coefficients. For a bivariate regression, this was fairly straightforward
-
-We would look to the beta (effect size) and interpret it as: ***for every 1 unit increase in our X variable, there will be beta units increase in our Y variable.***
-
-------------------------------------------------------------------------
-
-## Multiple Regression
-
-We may want to include additional predictors into our model to best explain the variance in an outcome:
-
-$$ Y_i = b_0 + b_1X_{1i} + b_2X_{2i} + ... + b_nX_{ni}+ e_i $$
 
 ------------------------------------------------------------------------
 
@@ -86,115 +101,13 @@ We would look to the beta (effect size) and interpret it as: ***for every 1 unit
 
 ------------------------------------------------------------------------
 
-## Reporting Standardized or Unstandardized?
-
-**INTERPRET *b***:
-
--   When the variables are measured in a meaningful metric
-
--   To compare the relative effects of different predictors in the same sample
-
-**INTERPRET *β***:
-
--   When the variables are not measured in a meaningful metric
-
--   To compare effects across samples or studies
-
-------------------------------------------------------------------------
-
-## Multiple Regression: Example
-
-Previously, we predicted the \# of Transformers movies someone watched by their age, income and \# of books read
-
-```{r}
-cah_data <- import(here("files", "data", 
-                        "CAH.csv")) %>% 
-  mutate(across(where(is.character), ~na_if(., "")))
-```
-
-The regression equation would look something like this:
-
-$$
-Y = b_0 + b_1X_1 + b_2X_2 + b_3X_3 + e
-$$
-
-------------------------------------------------------------------------
-
-### Transformers Regression: $b$
-
-```{r}
-reg1 <- lm(transformers ~ age + income + books,
-           data = cah_data)
-```
-
-**Interpret**:
-
-```{r}
-summary(reg1)
-```
-
-------------------------------------------------------------------------
-
-### Transformers Regression: $\beta$
-
-`scale()`
-
-```{r}
-reg1.std <- lm(scale(transformers) ~ scale(age) + scale(income) + scale(books),
-           data = cah_data)
-
-summary(reg1.std)
-```
-
-------------------------------------------------------------------------
-
-### Transformers Regression: $\beta$
-
-`lm.beta()`
-
-```{r}
-## Same as before
-reg1 <- lm(transformers ~ age + income + books,
-           data = cah_data)
-
-beta1.std <- lm.beta(reg1)
-summary(beta1.std)
-```
-
-------------------------------------------------------------------------
-
-### How would we write up the results?
-
-```{r}
-#| echo: false
-#| message: false
-#| warning: false
-
-summary(beta1.std)
-```
-
-------------------------------------------------------------------------
-
-### How would we write up the results?
-
-```{r}
-#| code-fold: true
-
-tab_model(reg1, show.std = TRUE,
-          pred.labels = c("Intercept", "Age", 
-                          "Income", "# of Books"), 
-          dv.labels = "# of Transformers Movies")
-```
-
-> A linear regression model was fit to the data to predict \# of Transformers movies watched with participant age, income and reported \# of books read. The model explains a significant, but small portion of variance in the outcome (*F(3, 427)* = 9.81, *p* \< .001, adj. $R^2$ = .06). Participant age ( $\beta$ = -0.22, *p* \< .001) and income ( $\beta$ = -0.10, *p* = .028) were significantly related to the number of transformers movies, while the number of books was not (*p* = .508). These findings suggest that as individuals age, they tend to watch fewer transformers movies, controlling for income and \# of books. Additionally, as income increases, we see a decrease in \# of transformer movies while taking into account participant age and \# of books.
-
 # But what about categorical variables as predictors?
 
 ![](images/clipboard-1169136778.jpeg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-## Categorical Predictors
+## Categorical Predictors = factors
 
 Typically identified by a grouping variable that may be a `character`
 
@@ -214,42 +127,6 @@ cah_data <- cah_data %>%
 glimpse(cah_data$pol)
 
 ```
-
-------------------------------------------------------------------------
-
-### Categorical Data
-
-**Nominal** - the numbers have no relation to the category it represents (Biological Sex)
-
--   *Biological Sex* - Male (1), Female (2), Intersex (3)
-
-**Ordinal** - the order of the numbers matters
-
--   *Education Levels* - High school (1), Bachelor's (2), Master's (3), Doctorate (4)
-
-------------------------------------------------------------------------
-
-### Categorical Data - Regression
-
-***Can we use the numeric values that each category represents in a regression?*** I mean we can do just about anything. But, we should [**not**]{.underline} use the numeric values as they are
-
-**Why can't we do this?**
-
-::: callout-tip
-Consider how we interpret the beta coefficients for slope
-:::
-
-------------------------------------------------------------------------
-
-### Categorical Data - Regression
-
-Regressions assume that there are equal spacing between each of the values and that the spacing is meaningful
-
--   Going from High School to Bachelor's is considered equal to Master's to Doctorate?
-
--   What does it mean to interpret Male to Female to Intersex?
-
-To properly investigate the differences between the groups, we have to "trick" our regression equation - *Enter Dummy Variables/Coding*
 
 ------------------------------------------------------------------------
 
@@ -621,7 +498,7 @@ ggplot(aes(age, .fitted)) +
 ## Logistic Regression: Summary
 
 | **Feature** | **Linear Regression** | **Logistic Regression** |
-|:---|:---|:---|
+|:-----------------------|:-----------------------|:-----------------------|
 | Outcome Variable | Continuous | Categorical (Binary) |
 | Equation | $Y=β_0+β_1X$ | $ln⁡(\frac{p}{1-p})=β_0+β_1X$ |
 | Key Interpretation | $\beta_1$ is the change in the mean of Y | $\exp(\beta_1)$ is theodds ratio |

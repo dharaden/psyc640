@@ -88,6 +88,14 @@ website:
             text: "Lab 10"
           - href: labs/lab-11.qmd
             text: "Lab 11"
+          - href: labs/lab-12.qmd
+            text: "Lab 12"
+      - section: "Projects"
+        contents: 
+          - href: labs/midterm-proj.qmd
+            text: "Midterm Project" 
+          - href: labs/final-proj.qmd
+            text: "Final Project"
       - href: resources.qmd
         text: "Resources" 
       - href: previous-years.qmd
