@@ -55,6 +55,26 @@ cah_data <- import(here("files", "data",
 
 ------------------------------------------------------------------------
 
+## Autosave
+
+**Tools \>\> Global Options \>\> Code \>\> Saving**
+
+![](images/clipboard-747997202.png)
+
+------------------------------------------------------------------------
+
+## New Library: `genzplyr`
+
+![](images/clipboard-1232526481.png)
+
+> dplyr but make it bussin fr fr no cap
+
+[genzplyr 💅](https://hadley.github.io/genzplyr/){target="_blank"}
+
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
 ## Regression  {.center}
 
 ***What is the equation for a regression??***
@@ -67,7 +87,7 @@ $$ Y_i = b_0 + b_1X_{1i} + b_2X_{2i} + ... + b_nX_{ni}+ e_i $$
 
 ------------------------------------------------------------------------
 
-## Regression
+## Regression  {.center}
 
 ***How do we interpret the regression coefficients (Intercepts & slopes)?***
 
@@ -93,15 +113,7 @@ $$ Y_i = b_0 + b_1X_{1i} + b_2X_{2i} + ... + b_nX_{ni}+ e_i $$
 
 ------------------------------------------------------------------------
 
-### Model Interpretation
-
-Since we have multiple predictors in the model, we have to interpret each predictor estimate while considering the other variables.
-
-We would look to the beta (effect size) and interpret it as: ***for every 1 unit increase in our*** $X_1$ ***variable, there will be beta units increase in our Y (outcome) variable, [holding all other variables constant]{.underline}.***
-
-------------------------------------------------------------------------
-
-# But what about categorical variables as predictors?
+# What do we do with categorical variables as predictors?
 
 ![](images/clipboard-1169136778.jpeg){fig-align="center"}
 
@@ -130,7 +142,7 @@ glimpse(cah_data$pol)
 
 ------------------------------------------------------------------------
 
-## Dummy Coding
+## Dummy Coding (replacing factors)
 
 Numerical placeholders used to represent categorical variables
 
