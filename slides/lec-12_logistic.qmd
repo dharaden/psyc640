@@ -188,7 +188,7 @@ For interpretation, we will make our statements in reference to this group
 
 Going back to our Transformers dataset, let's see how our political affiliation variable can predict \# of transformers movies
 
-Usually you have to create the separate dummy variables, but not in R
+Usually you have to create the separate dummy variables, but not in R. As long as your predictor is set as a `factor`, R will automatically dummy code the variable.
 
 ```{r}
 cat1 <- lm(transformers ~ pol,
@@ -205,17 +205,17 @@ contrasts(cah_data$pol)
 
 ### Interpretation
 
-We are shown the different levels of our predictor variable, but you will not see a predictor for the reference group
+We are shown the different levels of our predictor variable, but you will not see a predictor for the reference group...this is the intercept!
 
-::: callout-tip
-Think about how we interpret the intercept of a regression model. What are all values of our predictors set to be when looking at the intercept estimate?
-:::
+Every interpretation is ALWAYS in reference to the reference group
 
 ```{r}
 summary(cat1)
 ```
 
 ------------------------------------------------------------------------
+
+# stopped here. need to keep this going to highlight more of the interpretation in the slides
 
 ### Refactor Reference Group
 
