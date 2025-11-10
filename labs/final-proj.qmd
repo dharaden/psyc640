@@ -45,149 +45,137 @@ presentation to the group
 
 # Project Steps
 
-## Part 1 Due 11/17
+## Part 1 (Due 11/16)
 
-------------------------------------------------------------------------
+For the first part of your final project, you will need to identify five
+potential datasets that you could use to answer a research question.
+These datasets cannot be ones that we have used in class previously.
+While you may use data from your mentor or lab, the project you submit
+for this course cannot be a direct copy of your thesis work.
 
-::: callout-caution
-If you are reading this, everything below here has not been updated and
-does not apply to the current assignment. -Dr H
+​When searching for datasets, consider the following resources:
+
+-   **Open Access Repositories**: There are several online repositories
+    that house freely accessible datasets. Some of these that are
+    specific to psychology include PsychArchives and PsyArXiv. The Open
+    Science Framework (OSF) is another excellent resource for finding
+    datasets across various disciplines, including psychology.​
+
+<!-- -->
+
+-   **University and Government-Funded Collections**: Many universities
+    and government agencies maintain data repositories. The
+    Inter-university Consortium for Political and Social Research
+    (ICPSR), sponsored by the University of Michigan, is a large archive
+    of social and behavioral science data. The U.S. government also has
+    many open datasets on topics like education and substance abuse that
+    can be useful for psychological research.
+
+-   <https://datasetsearch.research.google.com/>
+
+-   <https://github.com/awesomedata/awesome-public-datasets>
+
+-   <https://guides.library.unt.edu/health-data-analytics/open-datasets>
+
+**Document Submission:** Please submit a document that has the following
+information for each dataset:
+
+-   Source of data (include links)
+
+-   Brief description (2-3 sentences) of the data (i.e., what is it
+    measuring)
+
+-   Sample Size
+
+-   Brief rationale for why you think it would be a good choice for this
+    project (3-5 sentences)
+
+## Part 2 (Due 11/23)
+
+For the second part of the project, you will select one of the five
+datasets you identified in Part 1 and develop a testable research
+question/hypothesis. Your research question should be specific and able
+to be answered using the data in your chosen dataset.
+
+​Your proposal for Part 2 should include the following sections:
+
+-   **Introduction**: Briefly introduce the dataset you have chosen and
+    the general topic you will be investigating. Be sure to include 3+
+    citations to support your investigation
+
+<!-- -->
+
+-   **Research Question and Hypothesis**: State your research question
+    clearly and concisely. If applicable, formulate a specific, testable
+    hypothesis that you will evaluate with your data analysis.
+
+-   **Proposed Analyses**: Describe the statistical analyses you plan to
+    use to test your hypothesis/research question
+
+::: callout-note
+If your selected dataset has greater than 400 participants, you will
+need to create a random subset that has N = 400 for your analyses
 :::
 
-### **General**
+## Part 3 (Due 12/8 - In Class)​ 
 
--   **Create an R Markdown File:** All your work should be done in a
-    single R Markdown (`.Rmd`) file. Name your file
-    `LastName_FirstName_Midterm.Rmd`.
-    -   This file will include your code as well as your written
-        responses. This should look close to a results section with the
-        code in between.
-    -   Provide comments within the code chunks to highlight the main
-        goal of each of the functions or set of information that you are
-        doing. This helps with organization since the reset of the text
-        outside of the code chunks will be for writing the results.
--   **Submission:** You will submit both your `.Rmd` file and the
-    knitted PDF or HTML document.
+The final part of the project consists of a brief presentation to the
+class and a written report of your data analysis plan and results.
 
-------------------------------------------------------------------------
+### **Presentation**​
 
-## **Project Steps**
+Your presentation should be a brief overview of your project. It should
+be well-organized and engaging. This can take the form of a slideshow (5
+slides maximum), or any other way that you would like to convey your
+message. Be sure to include the following:
 
-#### **Part 1: Setup and Data Import**
+-   **Introduction**: Briefly introduce your research question and why
+    it is important.
 
-Your first step is to set up your R Markdown document and load the data.
+<!-- -->
 
-1.  **Load Libraries:** At the top of your R Markdown script, load all
-    the necessary libraries. You don't have to know every single library
-    to use here. Just be sure to add them to this section as you are
-    going through your code.
-2.  **Load the Data:** Use the appropriate function (e.g.,
-    `read_csv()`). Be sure that this is easily reproducible on another
-    computer.
+-   **Methods**: Describe the dataset you used and the statistical
+    analyses you performed.
 
-#### **Part 2: Data Cleaning and Scoring**
+-   **Results**: Present your main findings, using graphs and tables to
+    help illustrate your results.
 
-Real-world data is often messy. In this part, you will wrangle the data
-and create new variables needed for your analysis.
+-   **Discussion**: Interpret your results and discuss their
+    implications.
 
-1.  **Scoring the ARS-SF (Anxiety Resilience Scale - Short Form):** We
-    need to first reverse score Item #6. Then we can create two
-    subscales:
-    1.  Anxiety Subscale - Calculate the mean of Items 1, 2 & 3.
-    2.  Resilience Subscale - Calculate the mean of Items 4, 5 &
-        6(reversed).
-2.  **Recoding Variables:** Create a new, cleanly labeled factor
-    variable for any grouping variable (see example code below on how to
-    do this). Recode the numeric values (e.g., 1s and 2s) to meaningful
-    labels (e.g., "Male" and "Female").
+### **Written Report**
 
-``` r
-# Recode the grouping variable into a factor with clear labels
-analytic_data <- analytic_data %>%
-  mutate(
-    [FACTOR_VARIABLE_NAME] = factor([ORIGINAL_VARIABLE],
-                                  levels = c(1, 2),
-                                  labels = c("Group 1 Label", "Group 2 Label"))
-  )
-```
+::: callout-important
+12 point font, 1 inch margins, double-spaced, XX page minimum (excluding
+tables, figures, references and anything else that isn't your writing),
+XX page maximum
+:::
 
-#### **Part 3: Descriptive Statistics**
+Your written report should be a comprehensive summary of your project.
+It should be well-structured and include the following sections:
 
-Now that you have clean data, let's describe it.
+-   ​**Introduction**: Provide an overview of your research problem and
+    state your research question and hypothesis. Include 3+ citations
 
-1.  **Continuous variabels:** Get descriptive statistics (mean, sd,
-    median, range) for the continuous variables (Note: when reporting
-    the ARS-SF, just use the subscale scores).
-2.  **Frequencies:** Use `table()` or `count()` to get the frequency
-    distribution for the categorical variables.
-3.  **Write-up:** Write a brief paragraph summarizing the descriptive
-    statistics. Report the mean and standard deviation for continuous
-    variables and the counts and percentages for categorical variables.
-    1.  For this write-up, focus on the age, sex, group and well-being
-        variables. Include all variables in a table.
+-   ​**Methods**: Detail the data you used, including its source and any
+    cleaning or preparation steps you took. You should also describe the
+    statistical methods you used in enough detail that another
+    researcher could replicate your analyses.
 
-*Example: "The sample consisted of N = 143 participants (22% female)
-with an average age of 102.3 (SD = .03). 45% of the sample were
-students..."*
+-   ​**Results**: Present the results of your analyses in a clear and
+    organized manner. Use tables and figures (APA formatting or whatever
+    field is relevant) to display your results, and be sure to include
+    relevant statistical information (e.g., p-values, confidence
+    intervals, effect sizes).
 
-#### **Part 4: Correlation Analysis**
+-   **Discussion**: Interpret your findings in the context of your
+    research question. Discuss the limitations of your study and suggest
+    directions for future research.
 
-Next, examine the associations between the continuous variables.
+-   ​**Conclusion**: Briefly summarize your main findings and their
+    significance.
 
-1.  **Create a Correlation Matrix:** Generate a table of the
-    correlations (hint: use sjPlot). Be sure to include a title and have
-    the labels make sense.
-2.  **Write-up:** Report the results in APA style. Describe the
-    direction, strength, and statistical significance of the correlation
-    between the Anxiety score and General Well Being.
-
-#### **Part 5: Group Differences**
-
-Test for differences in your outcome variable across the three groups.
-
-1.  **Run the t-test or ANOVA:** Test if the General Well-being score
-    differs significantly across the levels of group. Conduct any
-    follow-up/post-hoc analyses if necessary.
-
-2.  **Visualize the Difference:** Create a plot showing the distribution
-    of outcome for each of the groups.
-
-3.  **Write-up:** Report the results in APA style. State whether there
-    was a significant effect of the grouping variable on the outcome.
-    Report follow-up/post-hoc analyses if necessary.
-
-#### **Part 6: Regression Analysis**
-
-Finally, build a simple linear regression model to predict the General
-Well-being outcome. Select one predictor variable that you want to
-investigate.
-
-1.  **Fit the Model:** Use the `lm()` function to fit a regression
-    model.
-2.  **View the Summary:** Use `summary()` to get the detailed results of
-    your model.
-3.  **Visualize the Model:** Create a scatter plot (`ggplot`) showing
-    the relationship between the variables (be sure to include a fit
-    line, titles and nice axis labels)
-4.  **Write-up:** Write a paragraph summarizing the regression results
-    in APA style. Report the overall model fit (R-squared and
-    F-statistic) and the coefficients for the predictor, noting the
-    statistical significance.
-
-***Nice work! Don't forget to 🧶knit the document to submit!***
-
-------------------------------------------------------------------------
-
-## Additional Data Information
-
-| Variable Name | Description | Type & Values |
-|------------------|---------------------------|----------------------------|
-| ID | Participant ID Number | Continuous |
-| age | Participant's age in years. | Continuous |
-| sex | Participant's self-reported sex. | Numeric (1 = Male, 2 = Female) |
-| ARS 1, ASRS 2, ASR 3 | Items for the "Anxiety" subscale. | Numeric (0-3) |
-| ASR 4, ASR 5, ASR 6 | Positive-worded items for the "Resilience" subscale. | Numeric (1-5) |
-| Weekday Sleep | Average hours of sleep on a school/work night. | Continuous |
-| Weekend Sleep | Average hours of sleep on a non-work night. | Continuous |
-| Employment | Participant's primary employment status. | Numeric (1="Student", 2="Employed", 3="Not Employed") |
-| outcome | A score on a "General Well-Being Index." | Continuous |
+Your final submission should be a single folder that is 100%
+reproducible, meaning that all of your data and code should be included
+and organized in a way that someone else could easily re-run your
+analyses.
