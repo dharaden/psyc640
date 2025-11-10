@@ -5,19 +5,22 @@ editor: visual
 
 # Categorical Data in Regression
 
-## Stuff for Today
+## Data for Today
 
--   <a href="/files/data/cat_reg.csv" download="categorical_reg.csv">Download Categorical data (.csv)</a>
+-   <a href="/files/data/CAH.csv" download="cards_CAH.csv">Download Cards Against Humanity Data (.csv)</a>
+-   <a href="/files/data/cat_reg_complete.xlsx" download="cat_reg_complete.xlsx">Download Categorical data (.xlsx)</a>
 
 ## Slides
 
-[💻 Categorical Data - Regression](../slides/lec-11_categor.html){target="_blank"}
+[💻 Categorical & Logistic Regression](../slides/lec-12_logistic.html){target="_blank"}
 
 ## In-Class Activity
 
-[Getting Comfy with R](../class-activities/day1.html){target="_blank"}
+Lego Logistic Regression
 
 ## For Next Time
+
+[Part 1 of Final Project](../labs/final_project.html)
 
 📋[Lab 11 - Categories & Regression](../labs/lab-11.html)
 

@@ -22,6 +22,8 @@ execute:
 
 ## Today...
 
+-   Final Project Prep
+
 -   Some helpful tools (autosave & new library)
 
 -   Regression Review
@@ -30,7 +32,7 @@ execute:
 
 -   Logistic Regression
 
--   Model Diagnostics
+-   Model Diagnostics 🤷
 
 ------------------------------------------------------------------------
 
@@ -47,7 +49,7 @@ library(sjPlot)
 #Remove Scientific Notation 
 options(scipen=999)
 
-#Cards Against Humanity Data
+#Import CAH Data
 cah_data <- import(here("files", "data", 
                         "CAH.csv")) %>% 
   mutate(across(where(is.character), ~na_if(., "")))
@@ -73,21 +75,23 @@ cah_data <- import(here("files", "data",
 
 ------------------------------------------------------------------------
 
+Regression does a vibe check on the data. lowkey draw a line through the points.
+
 ------------------------------------------------------------------------
 
-## Regression  {.center}
+## Regression
 
 ***What is the equation for a regression??***
 
 ------------------------------------------------------------------------
 
-## Regression 
+## Regression
 
 $$ Y_i = b_0 + b_1X_{1i} + b_2X_{2i} + ... + b_nX_{ni}+ e_i $$
 
 ------------------------------------------------------------------------
 
-## Regression  {.center}
+## Regression
 
 ***How do we interpret the regression coefficients (Intercepts & slopes)?***
 
@@ -95,9 +99,9 @@ $$ Y_i = b_0 + b_1X_{1i} + b_2X_{2i} + ... + b_nX_{ni}+ e_i $$
 
 ## Regression
 
-[**INTERCEPT**]{.underline}: When all predictor variables are set to 0, our expected value (predicted $\hat{Y}$) will be this value.
+[**INTERCEPT:**]{.underline} When all predictor variables are set to 0, our expected value (predicted $\hat{Y}$) will be this value.
 
-[**SLOPES:**]{.underline}For every 1 unit change in our $X_n$ variable, there will be beta (b or $\beta$) units increase in our Y (outcome) variable, *[**holding all other variables constant**]{.underline}**.***
+[**SLOPES:**]{.underline} For every 1 unit change in our $X_n$ variable, there will be beta (b or $\beta$) units increase in our Y (outcome) variable, [***holding all other variables constant***]{.underline}***.***
 
 ------------------------------------------------------------------------
 
@@ -110,8 +114,6 @@ $$ Y_i = b_0 + b_1X_{1i} + b_2X_{2i} + ... + b_nX_{ni}+ e_i $$
 ### Explaining Variance
 
 ![](images/clipboard-4102854469.png){fig-align="center"}
-
-------------------------------------------------------------------------
 
 # What do we do with categorical variables as predictors?
 
@@ -209,15 +211,33 @@ We are shown the different levels of our predictor variable, but you will not se
 
 Every interpretation is ALWAYS in reference to the reference group
 
+Go to next slide for a pretty table
+
 ```{r}
 summary(cat1)
 ```
 
 ------------------------------------------------------------------------
 
-# stopped here. need to keep this going to highlight more of the interpretation in the slides
+### Interpretation
 
-### Refactor Reference Group
+```{r}
+tab_model(cat1)
+```
+
+------------------------------------------------------------------------
+
+### Interpretation (text)
+
+A linear regression investigated the relationship between political affiliation and number of transformers movies watched. Democrats showed a significant difference from 0 (b = 1.18, *p* \< .001), but there was not a significant difference between Democrats and Independents (*p* = .18) or Democrats and Republicans (*p* = .90). The findings suggest that there are no significant differences between groups.
+
+::: callout-note
+How does this sound?
+:::
+
+------------------------------------------------------------------------
+
+### Changing the Reference Group
 
 Maybe we want to compare to a specific group
 
@@ -232,105 +252,88 @@ summary(cat2)
 
 ------------------------------------------------------------------------
 
-### `lm()` or `aov()`
+### `lm()` or `aov()` ?
 
-Didn't this look similar to something we've done before?
+We have the same setup between a linear model and a one-way ANOVA.
 
-We are examining group differences in Transformer Movies (continuous) by Political Affiliation (group/categorical)
+$$
+Outcome_{continuous} = Predictor_{categorical} + error
+$$
 
-IT IS JUST AN ANOVA
+Why would we pick one over another?
 
-```{r}
-aov1 <- aov(transformers ~ pol2,
-           data = cah_data)
-summary(aov1)
-```
+-   If we have a reason to have a reference group –\> **Regression**
+
+    -   Maybe we have a control group
+
+-   If we just expect a difference somewhere –\> **ANOVA**
+
+    -   When you are predicting \# movies from political affiliation
 
 ------------------------------------------------------------------------
 
-### Everything is a linear model
+# Everything is a linear model {.center}
 
-We are able to come to the same conclusions that there are no significant differences between groups
-
-```{r}
-# Regression F-value
-summary(cat2)$fstatistic[[1]]
-
-# ANOVA F-value
-summary(aov1)[[1]][1, 4]
-```
-
-# ![](images/clipboard-1177388101.webp)
+![](images/clipboard-3428257228.gif)
 
 # Break ☕🍵🥐
 
-# Activity Time 🎨
-
 ------------------------------------------------------------------------
 
-## Categories in Action
+## Categories in Action (last time)
 
 **Goal:** Gain greater familiarity with dummy coding and categorical predictors
 
-**Scenario:** We are researchers examining the impact of a new intervention on reducing the vocalization "6️⃣7️⃣" in the youths. We have done classroom observations to collect data on how many times students say "6️⃣7️⃣" after receiving the intervention. This is the data you have in front of you. Youths have been randomly assigned to one of 3 groups, and we need to determine which had the biggest impact.
+**Scenario:** We are researchers examining the impact of a new intervention on reducing the vocalization "6️⃣7️⃣" in the youths. We have done classroom observations to collect data on how many times students say "6️⃣7️⃣" after receiving the intervention. Youths have been randomly assigned to one of 3 groups, and we need to determine which had the biggest impact.
+
+------------------------------------------------------------------------
+
+```{r}
+#| code-fold: true
+
+six_seven <- import(here("files", "data", 
+                         "cat_reg_complete.xlsx")) %>% 
+  janitor::clean_names()
+
+six_seven %>% 
+  slice_sample(n=5) %>% 
+  tab_df()
+```
+
+------------------------------------------------------------------------
+
+### Run the Regression with complete data
 
 ::: callout-note
-You will submit **one** Rmd file for the whole group. Be sure to include all group member's names.
+Dr. Haraden needs to write the equation on the board 🧑‍🏫 Calculate the expected value for each group
 :::
 
-------------------------------------------------------------------------
-
-### Part 1
-
-1.  Get into groups of 4
-2.  Download the data <a href="/files/data/cat_reg.csv" download="categorical_reg.csv">\[Download Categorical data (.csv)\]</a>
-3.  Enter the data into the spreadsheet with the chips that you have
-    1.  Each chip has an ID number (three digits) and a score (between 5 - 20)
-    2.  These are the scores for the "post"
-    3.  Be sure to identify their Group (the color of the chip)
+```{r}
+lm1 <- lm(post_score ~ group, data = six_seven)
+summary(lm1)
+```
 
 ------------------------------------------------------------------------
 
-### Part 2
-
-1.  Import the data into R
-
-    1.  You will only have data for one school (be sure to `filter()` to include your data)
-
-2.  On the board, put a portion of your data in a table along with your Dummy Code Scheme
-
-    1.  Dr. Haraden should have different sections designated, if not, please remind him nicely (he's doing his best)
+### Now what are the means for each group?
 
 ------------------------------------------------------------------------
 
-### Part 3
+### Now what are the means for each group?
 
-1.  Calculate the average 6️⃣7️⃣ Score for your reference group:\
-    Average Score for Group 1 (Reference) = \_\_\_\_\_\_\_\_\_\_\_\_\_\_ = $\beta_0$
-
-2.  Calculate the average 6️⃣7️⃣ Score for your other two groups:\
-    Average Score for Group 2 = \_\_\_\_\_\_\_\_\_\_\_\_\_\_\
-    Average Score for Group 3 = \_\_\_\_\_\_\_\_\_\_\_\_\_\_
-
-3.  Calculate the "Coefficients" by finding the mean difference from the reference group:\
-    $\beta_1$ = (Avg. Group 2 Score) - (Avg. Group 1 Score) = \_\_\_\_\_\_\_\_\_\_\
-    $\beta_2$ = (Avg. Group 3 Score) - (Avg. Group 1 Score) = \_\_\_\_\_\_\_\_\_\_
+```{r}
+six_seven %>% 
+  group_by(group) %>% 
+  summarize(
+    post_avg = mean(post_score)
+  )
+```
 
 ------------------------------------------------------------------------
 
-### Part 4
+## Using R
 
-Write out the regression equation for the model in which we are predicting 6️⃣7️⃣ Scores with our Dummy Variables. It should follow a format that we've used before ( $Y = b_0 + b_1X_1 + b_2X_2 + e$ ), but replacing your estimates in the correct places with the appropriate variables.
-
-Once your group agrees on the equation, write it on the board for your group
-
-------------------------------------------------------------------------
-
-## Categories in Action: Using R
-
-Now that we have the data entered appropriately, let's double check, and include some additional variables!
-
-Import dataset, confirm predictions, include pre-scores to see how that changes interpretation
+Import dataset, include age and pre-scores to see how that changes interpretation
 
 ::: callout-warning
 Dr. Haraden is going to start opening up R and doing a follow-along thing. You have been warned
@@ -339,8 +342,6 @@ Dr. Haraden is going to start opening up R and doing a follow-along thing. You h
 # Everything is a linear model
 
 ![](/images/reg_precious.gif)
-
-# Maybe another break?
 
 # Introducing Generalized Linear Model
 
@@ -352,7 +353,7 @@ In our last example, we were able to see how these categorical variables could p
 
 *What if we want to see if students have "recovered" from* 6️⃣7️⃣?
 
-We would then ask: "“Which participants dropped below the clinical threshold for 6️⃣7️⃣ at follow-up? Now, our outcome is either recovered or not recovered.”
+We would then ask: "Which participants dropped below the clinical threshold for 6️⃣7️⃣ at follow-up? Now, our outcome is either recovered or not recovered.”
 
 ------------------------------------------------------------------------
 
@@ -365,20 +366,50 @@ What happens when we fit a linear regression? What are the chances of someone wi
 ```{r}
 #| code-fold: true
 
-cat_reg <- import(here("files", "data", 
+six_seven <- import(here("files", "data", 
                        "cat_reg_complete.xlsx")) %>% 
   janitor::clean_names() %>% 
   # 1 = recovered; 0 = not recovered
-  mutate(recover = if_else(post_score > 12, 0, 1))
+  mutate(recover = if_else(post_score > 14, 0, 1))
+```
 
-cat_reg %>% 
+------------------------------------------------------------------------
+
+### Recovery Status
+
+::::: columns
+::: {.column width="40%"}
+That doesn't look right... 😑
+:::
+
+::: {.column width="60%"}
+```{r}
+#| code-fold: true
+
+
+six_seven %>% 
   ggplot(aes(pre_score, recover)) +
-  geom_jitter(width = 0, height = 0.05, alpha = 0.5) + 
+  geom_jitter(width = 0, height = 0.05, 
+              alpha = 0.5) + 
   geom_smooth(method = "lm", se = FALSE) + 
   labs(
-    title = "Pre-Score predicting Recovery"
+    title = "Pre-Score Predicting Recovery"
   )
 ```
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## Binary Outcomes in Regression
+
+-   A simple line is not going to appropriately capture the data
+
+    -   Plus, it definitely doesn't make it a normal distribution! We only have 2 scores in our predictor variable...
+
+**Introducing Logistic Regression 🌟**
+
+-   Using a logistic function we are able to better capture the data and get a "likelihood" or "probability" of an outcome
 
 ------------------------------------------------------------------------
 
@@ -430,14 +461,14 @@ $$
 
 ------------------------------------------------------------------------
 
-### GLM - CAH data 👻
+## Recovering from 6️⃣7️⃣
 
-Research Question: *Does age, the number of books and the number of transformer movies predict the belief in ghosts?*
+Now we have a tool to figure this out, let's see if the pre-score can predict recovery!
 
 ```{r}
 ## Using glm() instead of lm()
-ln1 <- glm(ghosts ~ age + books + transformers, 
-           data = cah_data, 
+rec_glm <- glm(recover ~ pre_score, 
+           data = six_seven, 
            ## This is new
            ##Tells the model we are doing logistic regression with a binary outcome
            family = "binomial")
@@ -445,28 +476,26 @@ ln1 <- glm(ghosts ~ age + books + transformers,
 
 ------------------------------------------------------------------------
 
-### GLM - CAH data Interpretation
+### GLM - 6️⃣7️⃣ Data Interpretation
 
 ::: callout-note
 Interpretation is still the same as linear regression, ***except*** we are dealing with [**log-odds** of the outcome.]{.underline} What does that mean??
 :::
 
 ```{r}
-summary(ln1)
+summary(rec_glm)
 ```
 
 ------------------------------------------------------------------------
 
-### GLM - CAH data Interpretation (tables)
+### GLM - 6️⃣7️⃣ Data Interpretation (tables)
 
-::: callout-note
 We want to be able to interpret these coefficients more easily so we put them into **Odds Ratios**
-:::
 
 `sjPlot` is always coming in with the good tables
 
 ```{r}
-tab_model(ln1)
+tab_model(rec_glm)
 ```
 
 ------------------------------------------------------------------------
@@ -486,20 +515,20 @@ tab_model(ln1)
 Extract the model implied probabilities for each individual
 
 ```{r}
-probs <- broom::augment(ln1, type.predict = "response")
+probs <- broom::augment(rec_glm, type.predict = "response")
 ```
 
 Plotting the predicted probabilities
 
 ```{r}
 probs %>% 
-ggplot(aes(age, .fitted)) +
-  geom_line(color = "blue", linewidth = 1.5) +
+ggplot(aes(pre_score, .fitted)) +
+  geom_line(color = "blue", linewidth = 0.5) +
+  geom_jitter(width = 0.2, alpha = 0.5) +
   labs(
-    title = "Predicted Probability of Believing in Ghosts by Age",
-    subtitle = "Holding # of Books and Transformers Movies at their mean",
-    x = "Age (years)",
-    y = "Predicted Probability of Believing in Ghosts"
+    title = "Predicted Probability of Recovery from 6-7 by Pre-Score",
+    x = "Pre-Score",
+    y = "Predicted Probability of Recovery"
   ) +
   ylim(0, 1) + # Keep the y-axis bounded at 0 and 1
   theme_minimal()
@@ -513,7 +542,15 @@ ggplot(aes(age, .fitted)) +
 |:-----------------------|:-----------------------|:-----------------------|
 | Outcome Variable | Continuous | Categorical (Binary) |
 | Equation | $Y=β_0+β_1X$ | $ln⁡(\frac{p}{1-p})=β_0+β_1X$ |
-| Key Interpretation | $\beta_1$ is the change in the mean of Y | $\exp(\beta_1)$ is theodds ratio |
+| Key Interpretation | $\beta_1$ is the change in the mean of Y | $\exp(\beta_1)$ is the odds ratio |
 | R Function | `lm()` | `glm(..., family="binomial")` |
 
+# Break ☕🍵🥐
+
 ------------------------------------------------------------------------
+
+## Next Up...
+
+**Follow along to apply these methods to a new dataset!**
+
+Predicting the probability of believing in ghosts. Hopefully we have time to go through this example 👻
