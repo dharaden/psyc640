@@ -29,7 +29,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../resources.html" rel="next">
+<link href="../labs/lab-12.html" rel="next">
 <link href="../labs/lab-10.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -380,6 +380,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Week 11 - Categorical Reg.</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 12 - Logistic Reg.</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -451,6 +457,35 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Lab 11</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 12</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Projects</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/midterm-proj.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Midterm Project</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/final-proj.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Final Project</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -513,7 +548,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
 <p>Here is the data you will need for this lab:</p>
 <ul>
-<li><a href="../files/data/mental_health_cat-reg.csv" download="mental_health_cat-reg.csv">Download Mental Health Data (.csv)</a></li>
+<li><a href="../files/data/mental_health_cat-reg.xlsx" download="mental_health_cat-reg.xlsx">Download Mental Health Data (.csv)</a></li>
 </ul>
 <p>Data is pulled from <a href="https://www.kaggle.com/code/imtkaggleteam/mental-health-eda-prediction/input?select=1-+mental-illnesses-prevalence.csv">Kaggle</a>.</p>
 <p>When you are finished, click the <strong>Knit</strong> button to turn your work into an HTML document. You will submit both this <code>.Rmd</code> file and the 🧶knitted <code>.html</code> file.</p>
@@ -560,7 +595,10 @@ ul.task-list li input[type="checkbox"] {
 <li>We should be seeing two regressions that each have the country variable with 3 levels. Then a table and write up for 1 of the regressions.</li>
 </ul></li>
 </ul></li>
-<li><p><strong>Regression by Time:</strong></p>
+</ol>
+<!-- -->
+<ol start="2" type="1">
+<li><strong>Regression by Time:</strong>
 <ul>
 <li>Using all countries, include 4 different years and perform 2 regressions to predict depression and anxiety variables. Similar to above, select one of the regressions, provide a formatted table and write up the results in APA.</li>
 </ul></li>
@@ -572,19 +610,24 @@ ul.task-list li input[type="checkbox"] {
 <ol type="1">
 <li><p>For each of your regressions, which group was your reference group? How do you know?</p></li>
 <li><p>Based on the results that you have identified in with your regressions, report an overarching conclusion about mental health rates over time/countries.</p></li>
-<li><p>A researcher is studying the effect of a student’s undergraduate major on their starting salary after graduation. The <code>major</code> variable has four levels: “Psychology”, “Biology”, “Engineering”, and “English”.</p>
-<p>If you were to include this variable in a regression model using dummy coding, how many new dummy variables would you need to create? If you set “Psychology” as the reference group, what values would each dummy variable have for a student who majored in “Engineering”?</p></li>
+<li><p>A researcher is studying the effect of a student’s undergraduate major on their starting salary after graduation. The <code>major</code> variable has four levels: “Psychology”, “Biology”, “Engineering”, and “English”.</p></li>
 </ol>
-<!-- -->
+<pre><code>If you were to include this variable in a regression model using
+dummy coding, how many new dummy variables would you need to create?
+If you set "Psychology" as the reference group, what values would
+each dummy variable have for a student who majored in "Engineering"?</code></pre>
 <ol start="4" type="1">
-<li><p>In a linear regression model predicting students’ self-reported <code>well_being</code> scores from their <code>year_in_school</code> (a categorical variable with levels: “First-year”, “Sophomore”, “Junior”, “Senior”), “First-year” is the reference group.</p>
-<p>The model output shows a coefficient of <strong>-2.5</strong> for the <code>year_in_schoolSenior</code> dummy variable. In one clear sentence, what is the correct interpretation of this coefficient?</p></li>
+<li>In a linear regression model predicting students’ self-reported <code>well_being</code> scores from their <code>year_in_school</code> (a categorical variable with levels: “First-year”, “Sophomore”, “Junior”, “Senior”), “First-year” is the reference group.</li>
 </ol>
-<!-- -->
+<pre><code>The model output shows a coefficient of **-2.5** for the
+`year_in_schoolSenior` dummy variable. In one clear sentence, what
+is the correct interpretation of this coefficient?</code></pre>
 <ol start="5" type="1">
-<li><p>Imagine you refit the model from the previous question, but this time you set <code>"Senior"</code> as the reference group instead of <code>"First-year"</code>.</p>
-<p>Would you expect the coefficient for the <code>year_in_schoolFirst-year</code> dummy variable in this <em>new</em> model to be positive, negative, or zero? Explain your reasoning in one sentence.</p></li>
+<li>Imagine you refit the model from the previous question, but this time you set <code>"Senior"</code> as the reference group instead of <code>"First-year"</code>.</li>
 </ol>
+<pre><code>Would you expect the coefficient for the `year_in_schoolFirst-year`
+dummy variable in this *new* model to be positive, negative, or
+zero? Explain your reasoning in one sentence.</code></pre>
 </section>
 <section id="formatting-5-points" class="level3">
 <h3 class="anchored" data-anchor-id="formatting-5-points">Formatting (5 points)</h3>
@@ -1016,8 +1059,8 @@ ul.task-list li input[type="checkbox"] {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../resources.html" class="pagination-link" aria-label="Resources">
-        <span class="nav-page-text">Resources</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../labs/lab-12.html" class="pagination-link" aria-label="Lab 12">
+        <span class="nav-page-text">Lab 12</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
