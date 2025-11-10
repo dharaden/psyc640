@@ -621,7 +621,7 @@ ggplot(aes(age, .fitted)) +
 ## Logistic Regression: Summary
 
 | **Feature** | **Linear Regression** | **Logistic Regression** |
-|:-----------------------|:-----------------------|:-----------------------|
+|:---|:---|:---|
 | Outcome Variable | Continuous | Categorical (Binary) |
 | Equation | $Y=β_0+β_1X$ | $ln⁡(\frac{p}{1-p})=β_0+β_1X$ |
 | Key Interpretation | $\beta_1$ is the change in the mean of Y | $\exp(\beta_1)$ is theodds ratio |

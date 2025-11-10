@@ -1,0 +1,181 @@
+---
+title: "Final Project"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+  markdown: 
+    wrap: 72
+---
+
+## Instructions
+
+The goal of the final project is to apply your knowledge of data
+analysis skills that we have learned in this course. You will begin by
+having a research question that you will attempt to answer with an open
+dataset. Then you will highlight the process, and report the appropriate
+analyses. All information should be self-contained and 100% reproducible
+with the file/folder that you have uploaded.
+
+### General Overview
+
+We will be breaking the final project up into sections to help structure
+the data analytic process.
+
+**Part 1 (Due 11/16):** Identify 5 datasets that you could work with for
+the final project
+
+-   These *cannot* be data that we have used in class before
+
+-   Data can be from your mentor/lab, but *cannot* be directly used for
+    your thesis (I just don't want a 1 to 1 copy from this to your
+    thesis)
+
+**Part 2 (Due 11/23):** Narrow down the datasets and generate a testable
+research question/hypothesis
+
+-   This should also include the analyses that you would like to perform
+
+**Part 3 (Due 12/08):** Share your data and analyses in a brief
+presentation to the group
+
+-   You will also submit a written report that includes your data
+    analytic plan and the results.
+
+------------------------------------------------------------------------
+
+# Project Steps
+
+## Part 1 (Due 11/16)
+
+For the first part of your final project, you will need to identify five
+potential datasets that you could use to answer a research question.
+These datasets cannot be ones that we have used in class previously.
+While you may use data from your mentor or lab, the project you submit
+for this course cannot be a direct copy of your thesis work.
+
+​When searching for datasets, consider the following resources:
+
+-   **Open Access Repositories**: There are several online repositories
+    that house freely accessible datasets. Some of these that are
+    specific to psychology include PsychArchives and PsyArXiv. The Open
+    Science Framework (OSF) is another excellent resource for finding
+    datasets across various disciplines, including psychology.​
+
+<!-- -->
+
+-   **University and Government-Funded Collections**: Many universities
+    and government agencies maintain data repositories. The
+    Inter-university Consortium for Political and Social Research
+    (ICPSR), sponsored by the University of Michigan, is a large archive
+    of social and behavioral science data. The U.S. government also has
+    many open datasets on topics like education and substance abuse that
+    can be useful for psychological research.
+
+-   <https://datasetsearch.research.google.com/>
+
+-   <https://github.com/awesomedata/awesome-public-datasets>
+
+-   <https://guides.library.unt.edu/health-data-analytics/open-datasets>
+
+**Document Submission:** Please submit a document that has the following
+information for each dataset:
+
+-   Source of data (include links)
+
+-   Brief description (2-3 sentences) of the data (i.e., what is it
+    measuring)
+
+-   Sample Size
+
+-   Brief rationale for why you think it would be a good choice for this
+    project (3-5 sentences)
+
+## Part 2 (Due 11/23)
+
+For the second part of the project, you will select one of the five
+datasets you identified in Part 1 and develop a testable research
+question/hypothesis. Your research question should be specific and able
+to be answered using the data in your chosen dataset.
+
+​Your proposal for Part 2 should include the following sections:
+
+-   **Introduction**: Briefly introduce the dataset you have chosen and
+    the general topic you will be investigating. Be sure to include 3+
+    citations to support your investigation
+
+<!-- -->
+
+-   **Research Question and Hypothesis**: State your research question
+    clearly and concisely. If applicable, formulate a specific, testable
+    hypothesis that you will evaluate with your data analysis.
+
+-   **Proposed Analyses**: Describe the statistical analyses you plan to
+    use to test your hypothesis/research question
+
+::: callout-note
+If your selected dataset has greater than 400 participants, you will
+need to create a random subset that has N = 400 for your analyses
+:::
+
+## Part 3 (Due 12/8 - In Class)​ 
+
+The final part of the project consists of a brief presentation to the
+class and a written report of your data analysis plan and results.
+
+### **Presentation**​
+
+Your presentation should be a brief overview of your project. It should
+be well-organized and engaging. This can take the form of a slideshow (5
+slides maximum), or any other way that you would like to convey your
+message. Be sure to include the following:
+
+-   **Introduction**: Briefly introduce your research question and why
+    it is important.
+
+<!-- -->
+
+-   **Methods**: Describe the dataset you used and the statistical
+    analyses you performed.
+
+-   **Results**: Present your main findings, using graphs and tables to
+    help illustrate your results.
+
+-   **Discussion**: Interpret your results and discuss their
+    implications.
+
+### **Written Report**
+
+::: callout-important
+12 point font, 1 inch margins, double-spaced, XX page minimum (excluding
+tables, figures, references and anything else that isn't your writing),
+XX page maximum
+:::
+
+Your written report should be a comprehensive summary of your project.
+It should be well-structured and include the following sections:
+
+-   ​**Introduction**: Provide an overview of your research problem and
+    state your research question and hypothesis. Include 3+ citations
+
+-   ​**Methods**: Detail the data you used, including its source and any
+    cleaning or preparation steps you took. You should also describe the
+    statistical methods you used in enough detail that another
+    researcher could replicate your analyses.
+
+-   ​**Results**: Present the results of your analyses in a clear and
+    organized manner. Use tables and figures (APA formatting or whatever
+    field is relevant) to display your results, and be sure to include
+    relevant statistical information (e.g., p-values, confidence
+    intervals, effect sizes).
+
+-   **Discussion**: Interpret your findings in the context of your
+    research question. Discuss the limitations of your study and suggest
+    directions for future research.
+
+-   ​**Conclusion**: Briefly summarize your main findings and their
+    significance.
+
+Your final submission should be a single folder that is 100%
+reproducible, meaning that all of your data and code should be included
+and organized in a way that someone else could easily re-run your
+analyses.
