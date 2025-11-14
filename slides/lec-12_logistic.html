@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.25">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.26">
 
   <title>PSYC 640 - Graduate Statistics – Week 12: Categorical &amp; Logistic Regression</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -614,44 +614,44 @@ Outcome_{continuous} = Predictor_{categorical} + error
 <th data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; padding: 0.2cm; border-bottom: 1px solid black;">age</th>
 </tr>
 <tr class="even">
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">108</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">B</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Green</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">15</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">12</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">214</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">A</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Orange</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">14</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">11</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">13</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">109</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">B</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Orange</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">19</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">15</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">10</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">207</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">A</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Yellow</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">20</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">20</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">16</td>
 </tr>
 <tr class="even">
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">210</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">211</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">A</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Green</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Yellow</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">17</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">15</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">12</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">9</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">13</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">208</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">204</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">A</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">Orange</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">15</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">12</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">15</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">11</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">9</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">14</td>
 </tr>
 <tr class="even">
-<td style="text-align: left; padding: 0.2cm; vertical-align: top; border-bottom: double;">213</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; border-bottom: double;">202</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top; border-bottom: double;">A</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top; border-bottom: double;">Green</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top; border-bottom: double;">15</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top; border-bottom: double;">12</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top; border-bottom: double;">17</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; border-bottom: double;">14</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; border-bottom: double;">11</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; border-bottom: double;">11</td>
 </tr>
 </tbody>
 </table>
