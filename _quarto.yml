@@ -68,6 +68,8 @@ website:
             text: "Week 11 - Categorical Reg."
           - href: weeks/week-12.qmd
             text: "Week 12 - Logistic Reg."
+          - href: weeks/week-13.qmd
+            text: "Week 13 - Moderation"
       - section: "Labs"
         contents:
           - href: labs/lab-1_data-workflow.qmd
