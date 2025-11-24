@@ -15,119 +15,13 @@ From: Principal Investigator, ASAP Study
 
 Re: Data Analysis Request
 
-Our research team has collected longitudinal data on 400 adolescents (Variables described in the **Data Dictionary** at the end of this brief). We have cleaned the data, but we are unsure which relationships are significant.
+Our research team has collected longitudinal data on 400 adolescents (Variables described in the **Data Dictionary** ). We have cleaned the data, but we are unsure which relationships are significant. Since you haven't looked at the data, please think about what may be a relevant question to investigate. Once you have that question, we will approve it and then you can perform your data analysis followed by a "report" back to us.
 
-**Your Task:**
+Thank you,
 
-1.  Form a "Consulting Firm" of 2-3 members.
+Dr. E. Brown
 
-2.  Review the **Menu of Research Questions** below.
-
-3.  **Select TWO (2)** questions to analyze. (Or propose your own custom question).
-
-4.  Use the **Technical Reference Manual** (Section 3) to adapt the code for your specific questions.
-
-5.  Submit your final report (Section 4).
-
-# 2. Menu of Client Questions (Choose 2)
-
-**Difficulty Level 1: Regression Basics**
-
--   **Q1 (The "Socio-Economic Sleep Gap"):** Does Socioeconomic Status (SES) predict better objective sleep duration (`SleepDur`) at Baseline (T1)?
-
--   **Q2 (The "Stress Source" Debate):** At Age 10 (T2), which is the stronger predictor of Anxiety: `PeerStress` or `AcadStress`?
-
--   **Q3 (The "Puberty Effect"):** Does advanced Puberty status (`T1_Puberty`) predict lower sleep duration (`T1_SleepDur`), even when controlling for `T1_Age`?
-
-**Difficulty Level 2: Mediation (The "Why")**
-
--   **Q4 (The "Anxiety Trap"):** Does Academic Stress (`AcadStress`) lead to Depression (`Dep`) because it increases Anxiety (`Anx`)? (Analyze at T1 or T2).
-
--   **Q5 (The Original Hypothesis):** Does Poor Sleep Duration at T1 lead to Depression at T3 via the mechanism of Peer Stress at T2?
-
-**Difficulty Level 3: Moderation (The "Who")**
-
--   **Q6 (The "Gendered Buffer"):** Does the relationship between Academic Stress (`T2_AcadStress`) and Depression (`T3_Dep`) depend on the child's Sex? (e.g., Are girls more affected by academic stress?)
-
--   **Q7 (The "Biological Sensitizer"):** Does Puberty (`T2_Puberty`) amplify the effect of Peer Stress (`T2_PeerStress`) on Depression (`T3_Dep`)?
-
-# 3. Technical Reference Manual (The "How-To")
-
-*Use these templates to build your analysis. You must replace the generic variable names (e.g., `outcome`, `predictor`) with the actual column names from the dataset.*
-
-### **Step 0: Setup & Diagnostics**
-
-```         
-library(tidyverse) library(psych)    library(naniar)   library(lavaan)    # LOAD DATA  # asap_data_final <- read.csv("asap_data_final.csv")  # DIAGNOSTICS: Check for missing data in your specific variables! # vis_miss(asap_data_final)  
-```
-
-### **Template A: Linear Regression (For Q1, Q2, Q3)**
-
-Use this for simple prediction questions.
-
-```         
-# Replace 'OutcomeVariable' and 'PredictorVariable' my_model <- lm(OutcomeVariable ~ Predictor1 + Predictor2, data = asap_data_final)  summary(my_model) # Look at 'Estimate' (Slope) and 'Pr(>|t|)' (P-value)  
-```
-
-### **Template B: Mediation (For Q4, Q5)**
-
-Use this when testing a chain of events (\$X \\rightarrow M \\rightarrow Y\$).
-
-```         
-# DEFINING THE MODEL # a = path from predictor (X) to mediator (M) # b = path from mediator (M) to outcome (Y) # c_prime = direct path from X to Y  med_syntax <- '   MediatorVariable ~ a * PredictorVariable   OutcomeVariable  ~ b * MediatorVariable   OutcomeVariable  ~ c_prime * PredictorVariable      indirect := a * b   total    := c_prime + (a * b) '  # RUNNING THE MODEL (Using FIML for missing data) fit <- sem(med_syntax, data = asap_data_final, missing = "fiml") summary(fit, standardized = TRUE, rsquare = TRUE)  
-```
-
-### **Template C: Moderation/Interaction (For Q6, Q7)**
-
-Use this when asking "Does X depend on Z?"
-
-```         
-# 1. CENTER YOUR PREDICTORS (Crucial for interaction interpretation) data_centered <- asap_data_final %>%   mutate(     Pred_C = scale(PredictorVariable, center=TRUE, scale=FALSE),     Mod_C  = scale(ModeratorVariable, center=TRUE, scale=FALSE)   )  # 2. RUN MODEL inter_model <- lm(OutcomeVariable ~ Pred_C * Mod_C, data = data_centered) summary(inter_model)  # 3. VISUALIZE (If Significant) # Note: If Moderator is categorical (Sex), don't center it. ggplot(data_centered, aes(x = PredictorVariable, y = OutcomeVariable, color = ModeratorVariable)) +   geom_point(alpha=0.3) +   geom_smooth(method="lm")  
-```
-
-# 4. Consultant Deliverables
-
-### **Analysis 1**
-
--   **Selected Question:** \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
-
--   **Method Used (A, B, or C):** \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
-
--   **Variables Selected:**
-
-    -   IV: \_\_\_\_\_\_\_\_\_\_\_\_
-
-    -   DV: \_\_\_\_\_\_\_\_\_\_\_\_
-
-    -   (Optional) Med/Mod: \_\_\_\_\_\_\_\_\_\_\_\_
-
-```         
-# INSERT YOUR ADAPTED CODE HERE   
-```
-
--   **Interpretation:** (One sentence summary of the result)
-
-### **Analysis 2**
-
--   **Selected Question:** \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
-
--   **Method Used (A, B, or C):** \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
-
--   **Variables Selected:**
-
-    -   IV: \_\_\_\_\_\_\_\_\_\_\_\_
-
-    -   DV: \_\_\_\_\_\_\_\_\_\_\_\_
-
-    -   (Optional) Med/Mod: \_\_\_\_\_\_\_\_\_\_\_\_
-
-```         
-# INSERT YOUR ADAPTED CODE HERE   
-```
-
--   **Interpretation:** (One sentence summary of the result)
-
-# Appendix: Data Dictionary
+## Data Dictionary
 
 |                     |                             |
 |---------------------|-----------------------------|
@@ -150,3 +44,21 @@ Use this when asking "Does X depend on Z?"
 | `AcadStress`      | School Stress            | 0-20 (High = Stressed)      |
 | `Dep`             | Depression Symptoms      | 0-60 (High = Depressed)     |
 | `Anx`             | Anxiety Symptoms         | 0-21 (High = Anxious)       |
+
+## Potential Questions 
+
+Below are some questions that we may explore if we have time.
+
+-   **Q1 (The "Socio-Economic Sleep Gap"):** Does Socioeconomic Status (SES) predict better objective sleep duration (`SleepDur`) at Baseline (T1)?
+
+-   **Q2 (The "Stress Source" Debate):** At Age 10 (T2), which is the stronger predictor of Anxiety: `PeerStress` or `AcadStress`?
+
+-   **Q3 (The "Puberty Effect"):** Does advanced Puberty status (`T1_Puberty`) predict lower sleep duration (`T1_SleepDur`), even when controlling for `T1_Age`?
+
+-   **Q4 (The "Anxiety Trap"):** Does Academic Stress (`AcadStress`) lead to Depression (`Dep`) because it increases Anxiety (`Anx`)? (Analyze at T1 or T2).
+
+-   **Q5 (The Original Hypothesis):** Does Poor Sleep Duration at T1 lead to Depression at T3 via the mechanism of Peer Stress at T2?
+
+-   **Q6 (The "Gendered Buffer"):** Does the relationship between Academic Stress (`T2_AcadStress`) and Depression (`T3_Dep`) depend on the child's Sex? (e.g., Are girls more affected by academic stress?)
+
+-   **Q7 (The "Biological Sensitizer"):** Does Puberty (`T2_Puberty`) amplify the effect of Peer Stress (`T2_PeerStress`) on Depression (`T3_Dep`)?

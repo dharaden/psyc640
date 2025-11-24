@@ -80,16 +80,120 @@ glimpse(asap)
 
 ------------------------------------------------------------------------
 
-## Step 1a: Define Research Question
+### Part 1a: Define Research Question
 
 These variables are fairly intuitive, so you don't have to be an expert in this area to think about a research question. Take a moment and review the data dictionary ([Week 14 page](../week/week-14.html){target="_parent"}) and think about what questions seem interesting to you.
 
 If you have any empirical questions about the data or this area, please ask Dr. Haraden (he is an "expert") for clarification.
 
-Record your research question on the handout that has been provided.
+Record your research question on the handout that has been provided. Include the variables that you think you can use to answer your question.
 
 ------------------------------------------------------------------------
 
-## Step 1b: Refine Research Question
+### Part 1b: Refine Research Question
 
-Turn to those next to you and share
+Share your research question with your partner. Identify your variables of interest. Work together to identify a potential analytic model that you can use.
+
+As the consultant, be sure to ask about the model and how it is going to be answering their question as well as seeing if there are alternative explanations for their "narrative".
+
+------------------------------------------------------------------------
+
+### Part 2: Method Selection
+
+You will now need to identify the specific statistical model that you are planning on using to address your question
+
+Start by drawing your model (remember the boxes and arrows) to get an idea of how you are thinking about it. Ask yourself *"Which variable influences this one?"*
+
+Specify your variables from the dataset and align them with the model you have.
+
+------------------------------------------------------------------------
+
+### Part 3: Analysis Plan
+
+Write out some pseudo-code to help you out when we move to using R
+
+------------------------------------------------------------------------
+
+## ✨Congratulations ✨
+
+You just made your data analytic plan!
+
+Every paper should have a section that goes into detail about the steps they are going to go through. This helps to give readers a framework on what to expect.
+
+------------------------------------------------------------------------
+
+![](/images/Data Process Visualization-transparent.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Building the Results Section
+
+Now that we have a clearly defined our research question, we can begin the process of working with the data!
+
+Here are the steps that I tend to follow:
+
+1.  Wrangle 🤠 and tidy the data
+2.  Describe my data (Cronbach $\alpha$, correlations, means & sds)
+3.  Visualize 📈
+4.  Building my Model 🚧
+5.  Interpreting and Reporting 📓
+
+------------------------------------------------------------------------
+
+## Building the Results Section
+
+From our data analytic plan, we have a general idea on how to build our model 👷‍♀️
+
+But that is all the way at step #4
+
+We need to construct the foundation and provide the reader with the necessary information to be able to properly interpret your results
+
+------------------------------------------------------------------------
+
+## *Baking* the Results Section 🧑‍🍳
+
+Data Analytic Plan = Recipe
+
+-   Giving the overview of the plan and what to expect
+
+Descriptives & "Table 1" = Your specific ingredients
+
+-   The reader is able to see your ingredients and know they can "trust" your results
+
+Building the Models = Putting everything together and baking
+
+-   You go through the steps in order and put it in the oven
+
+Discussion = Icing and Finishing touches
+
+-   Comparing to the other cakes and highlight where you can improve when you bake it again
+
+------------------------------------------------------------------------
+
+## *Constructing* the Results Section
+
+Getting away from baking, let's say you are building something (LEGO?), or remodeling.
+
+**Results Part 1 (Descriptives) is the "Inventory & Site Survey"**
+
+-   Before you build a house, you must check the materials. Do you have enough bricks (N)? Are any bricks broken (missing data)? Is the land/foundation flat or weirdly shaped (normality/outliers)?
+
+::: callout-note
+We cannot build a stable house if we don't admit that 10% of our wood is rotten. Descriptives are just us checking the pile of lumber to make sure it's safe to build with.
+:::
+
+**Results Part 2 (Inference) is the "Construction & Stress Test"**
+
+-   Now that we know the wood is good, we nail it together to see if it holds together
+
+------------------------------------------------------------------------
+
+## ASAP and Results
+
+Now let's use R to finish the steps and put together a results section!
+
+1.  Wrangle 🤠 and tidy the data
+2.  Describe my data (Cronbach $\alpha$, correlations, means & sds)
+3.  Visualize 📈
+4.  Building my Model 🚧
+5.  Interpreting and Reporting 📓
