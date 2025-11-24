@@ -7,6 +7,8 @@ editor: visual
 
 <a href="/files/data/asap_data.csv" download="asap_data.csv">Download ASAP Sleep & Mood Data (.csv)</a>
 
+------------------------------------------------------------------------
+
 ## The Consultancy Brief
 
 To: Junior Statistical Consultants
@@ -20,6 +22,8 @@ Our research team has collected longitudinal data on 400 adolescents (Variables 
 Thank you,
 
 Dr. E. Brown
+
+------------------------------------------------------------------------
 
 ## Data Dictionary
 
@@ -45,7 +49,9 @@ Dr. E. Brown
 | `Dep`             | Depression Symptoms      | 0-60 (High = Depressed)     |
 | `Anx`             | Anxiety Symptoms         | 0-21 (High = Anxious)       |
 
-## Potential Questions 
+------------------------------------------------------------------------
+
+## Potential Questions
 
 Below are some questions that we may explore if we have time.
 
