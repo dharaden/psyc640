@@ -1,0 +1,64 @@
+---
+title: "Week 14 Class Activity"
+editor: visual
+---
+
+## Data
+
+<a href="/files/data/asap_data.csv" download="asap_data.csv">Download ASAP Sleep & Mood Data (.csv)</a>
+
+## The Consultancy Brief
+
+To: Junior Statistical Consultants
+
+From: Principal Investigator, ASAP Study
+
+Re: Data Analysis Request
+
+Our research team has collected longitudinal data on 400 adolescents (Variables described in the **Data Dictionary** ). We have cleaned the data, but we are unsure which relationships are significant. Since you haven't looked at the data, please think about what may be a relevant question to investigate. Once you have that question, we will approve it and then you can perform your data analysis followed by a "report" back to us.
+
+Thank you,
+
+Dr. E. Brown
+
+## Data Dictionary
+
+|                     |                             |
+|---------------------|-----------------------------|
+| **Variable Prefix** | **Meaning**                 |
+| **T1\_**            | Time 1 (Baseline, Ages 7-9) |
+| **T2\_**            | Time 2 (1 Year Later)       |
+| **T3\_**            | Time 3 (2 Years Later)      |
+
+|                   |                          |                             |
+|-------------------|--------------------------|-----------------------------|
+| **Variable Name** | **Description**          | **Scale**                   |
+| `ID`              | Participant ID           | 1-400                       |
+| `Sex`             | Biological Sex           | 0=Male, 1=Female            |
+| `SES`             | Socioeconomic Status     | Z-score (0=Avg, High=Rich)  |
+| `Age`             | Age in years             | Continuous                  |
+| `Puberty`         | Pubertal Development     | 0-8 (0=Child, 8=Adult)      |
+| `SleepDur`        | Objective Sleep Duration | Hours (e.g., 9.5)           |
+| `SleepQual`       | Subjective Sleep Quality | 0-20 (**High = BAD sleep**) |
+| `PeerStress`      | Social Stress            | 0-20 (High = Stressed)      |
+| `AcadStress`      | School Stress            | 0-20 (High = Stressed)      |
+| `Dep`             | Depression Symptoms      | 0-60 (High = Depressed)     |
+| `Anx`             | Anxiety Symptoms         | 0-21 (High = Anxious)       |
+
+## Potential Questions 
+
+Below are some questions that we may explore if we have time.
+
+-   **Q1 (The "Socio-Economic Sleep Gap"):** Does Socioeconomic Status (SES) predict better objective sleep duration (`SleepDur`) at Baseline (T1)?
+
+-   **Q2 (The "Stress Source" Debate):** At Age 10 (T2), which is the stronger predictor of Anxiety: `PeerStress` or `AcadStress`?
+
+-   **Q3 (The "Puberty Effect"):** Does advanced Puberty status (`T1_Puberty`) predict lower sleep duration (`T1_SleepDur`), even when controlling for `T1_Age`?
+
+-   **Q4 (The "Anxiety Trap"):** Does Academic Stress (`AcadStress`) lead to Depression (`Dep`) because it increases Anxiety (`Anx`)? (Analyze at T1 or T2).
+
+-   **Q5 (The Original Hypothesis):** Does Poor Sleep Duration at T1 lead to Depression at T3 via the mechanism of Peer Stress at T2?
+
+-   **Q6 (The "Gendered Buffer"):** Does the relationship between Academic Stress (`T2_AcadStress`) and Depression (`T3_Dep`) depend on the child's Sex? (e.g., Are girls more affected by academic stress?)
+
+-   **Q7 (The "Biological Sensitizer"):** Does Puberty (`T2_Puberty`) amplify the effect of Peer Stress (`T2_PeerStress`) on Depression (`T3_Dep`)?

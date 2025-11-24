@@ -1,0 +1,54 @@
+---
+title: "Week 14 - Model Building & Mediation"
+editor: visual
+---
+
+# Model Building & Mediation
+
+The goal for this week will be to start at the beginning with a dataset and then build from there. I want to demonstrate starting at the beginning and going from there. This will highlight the generation of a research question all the way to writing up the results.
+
+## Data for Today
+
+-   <a href="/files/data/asap_data.csv" download="asap_data.csv">Download ASAP Sleep & Mood Data (.csv)</a>
+
+|                     |                             |
+|---------------------|-----------------------------|
+| **Variable Prefix** | **Meaning**                 |
+| **T1\_**            | Time 1 (Baseline, Ages 7-9) |
+| **T2\_**            | Time 2 (1 Year Later)       |
+| **T3\_**            | Time 3 (2 Years Later)      |
+
+|                   |                          |                             |
+|-------------------|--------------------------|-----------------------------|
+| **Variable Name** | **Description**          | **Scale**                   |
+| `ID`              | Participant ID           | 1-400                       |
+| `Sex`             | Biological Sex           | 0=Male, 1=Female            |
+| `SES`             | Socioeconomic Status     | Z-score (0=Avg, High=Rich)  |
+| `Age`             | Age in years             | Continuous                  |
+| `Puberty`         | Pubertal Development     | 0-8 (0=Child, 8=Adult)      |
+| `SleepDur`        | Objective Sleep Duration | Hours (e.g., 9.5)           |
+| `SleepQual`       | Subjective Sleep Quality | 0-20 (**High = BAD sleep**) |
+| `PeerStress`      | Social Stress            | 0-20 (High = Stressed)      |
+| `AcadStress`      | School Stress            | 0-20 (High = Stressed)      |
+| `Dep`             | Depression Symptoms      | 0-60 (High = Depressed)     |
+| `Anx`             | Anxiety Symptoms         | 0-21 (High = Anxious)       |
+
+## Slides
+
+[💻 Model Building](../slides/lec-14.html){target="_blank"}
+
+## In-Class Activity
+
+📎[Statistical Consulting](../class-activities/wk14_model.html){target="_blank"}
+
+## For Next Time
+
+Continue working on your final project!
+
+📖[Chapter 17 & 18 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}
+
+<br><br>
+
+::: {style="font-size: 0.875em;"}
+Back to [course schedule](/ "Course schedule") ⏎
+:::
