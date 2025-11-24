@@ -1483,9 +1483,9 @@
   {
     "objectID": "weeks/week-14.html",
     "href": "weeks/week-14.html",
-    "title": "Week 14 - Model Building & Mediation",
+    "title": "Week 14 - Model Building",
     "section": "",
-    "text": "The goal for this week will be to start at the beginning with a dataset and then build from there. I want to demonstrate starting at the beginning and going from there. This will highlight the generation of a research question all the way to writing up the results.\n\n\n\nDownload ASAP Sleep & Mood Data (.csv)\n\n\n\n\nVariable Prefix\nMeaning\n\n\nT1_\nTime 1 (Baseline, Ages 7-9)\n\n\nT2_\nTime 2 (1 Year Later)\n\n\nT3_\nTime 3 (2 Years Later)\n\n\n\n\n\n\n\n\n\n\n\nVariable Name\nDescription\nScale\n\n\nID\nParticipant ID\n1-400\n\n\nSex\nBiological Sex\n0=Male, 1=Female\n\n\nSES\nSocioeconomic Status\nZ-score (0=Avg, High=Rich)\n\n\nAge\nAge in years\nContinuous\n\n\nPuberty\nPubertal Development\n0-8 (0=Child, 8=Adult)\n\n\nSleepDur\nObjective Sleep Duration\nHours (e.g., 9.5)\n\n\nSleepQual\nSubjective Sleep Quality\n0-20 (High = BAD sleep)\n\n\nPeerStress\nSocial Stress\n0-20 (High = Stressed)\n\n\nAcadStress\nSchool Stress\n0-20 (High = Stressed)\n\n\nDep\nDepression Symptoms\n0-60 (High = Depressed)\n\n\nAnx\nAnxiety Symptoms\n0-21 (High = Anxious)\n\n\n\n\n\n\n💻 Model Building\n\n\n\n📎Statistical Consulting\n\n\n\nContinue working on your final project!\n📖Chapter 17 & 18 - ST\n\n\nBack to course schedule ⏎",
+    "text": "The goal for this week will be to start at the beginning with a dataset and then build from there. I want to demonstrate starting at the beginning and going from there. This will highlight the generation of a research question all the way to writing up the results.",
     "crumbs": [
       "Weekly Materials",
       "Week 14 - Model Building & Mediation"
@@ -1494,9 +1494,9 @@
   {
     "objectID": "weeks/week-14.html#data-for-today",
     "href": "weeks/week-14.html#data-for-today",
-    "title": "Week 14 - Model Building & Mediation",
-    "section": "",
-    "text": "Download ASAP Sleep & Mood Data (.csv)\n\n\n\n\nVariable Prefix\nMeaning\n\n\nT1_\nTime 1 (Baseline, Ages 7-9)\n\n\nT2_\nTime 2 (1 Year Later)\n\n\nT3_\nTime 3 (2 Years Later)\n\n\n\n\n\n\n\n\n\n\n\nVariable Name\nDescription\nScale\n\n\nID\nParticipant ID\n1-400\n\n\nSex\nBiological Sex\n0=Male, 1=Female\n\n\nSES\nSocioeconomic Status\nZ-score (0=Avg, High=Rich)\n\n\nAge\nAge in years\nContinuous\n\n\nPuberty\nPubertal Development\n0-8 (0=Child, 8=Adult)\n\n\nSleepDur\nObjective Sleep Duration\nHours (e.g., 9.5)\n\n\nSleepQual\nSubjective Sleep Quality\n0-20 (High = BAD sleep)\n\n\nPeerStress\nSocial Stress\n0-20 (High = Stressed)\n\n\nAcadStress\nSchool Stress\n0-20 (High = Stressed)\n\n\nDep\nDepression Symptoms\n0-60 (High = Depressed)\n\n\nAnx\nAnxiety Symptoms\n0-21 (High = Anxious)",
+    "title": "Week 14 - Model Building",
+    "section": "Data for Today",
+    "text": "Data for Today\n\nDownload ASAP Sleep & Mood Data (.csv)",
     "crumbs": [
       "Weekly Materials",
       "Week 14 - Model Building & Mediation"
@@ -1505,9 +1505,9 @@
   {
     "objectID": "weeks/week-14.html#slides",
     "href": "weeks/week-14.html#slides",
-    "title": "Week 14 - Model Building & Mediation",
-    "section": "",
-    "text": "💻 Model Building",
+    "title": "Week 14 - Model Building",
+    "section": "Slides",
+    "text": "Slides\n💻 Model Building",
     "crumbs": [
       "Weekly Materials",
       "Week 14 - Model Building & Mediation"
@@ -1516,9 +1516,9 @@
   {
     "objectID": "weeks/week-14.html#in-class-activity",
     "href": "weeks/week-14.html#in-class-activity",
-    "title": "Week 14 - Model Building & Mediation",
-    "section": "",
-    "text": "📎Statistical Consulting",
+    "title": "Week 14 - Model Building",
+    "section": "In-Class Activity",
+    "text": "In-Class Activity\n📎Statistical Consulting",
     "crumbs": [
       "Weekly Materials",
       "Week 14 - Model Building & Mediation"
@@ -1527,9 +1527,9 @@
   {
     "objectID": "weeks/week-14.html#for-next-time",
     "href": "weeks/week-14.html#for-next-time",
-    "title": "Week 14 - Model Building & Mediation",
-    "section": "",
-    "text": "Continue working on your final project!\n📖Chapter 17 & 18 - ST\n\n\nBack to course schedule ⏎",
+    "title": "Week 14 - Model Building",
+    "section": "For Next Time",
+    "text": "For Next Time\nContinue working on your final project!\n📖Chapter 17 & 18 - ST\n\n\nBack to course schedule ⏎",
     "crumbs": [
       "Weekly Materials",
       "Week 14 - Model Building & Mediation"
@@ -2595,7 +2595,7 @@
     "href": "index.html",
     "title": "PSYC 640: Graduate Statistics",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and preparation for the semester. This schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\nImportant\n\n\n\nReadings on the schedule will need to be completed prior to the course they are listed for. We will build on the concepts you read about in that specific class period, so it is important that you have read.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nSlides\nLabs\n\n\n\n\n1\n08-25\nGetting set up + R foundations\nInstall R/RStudio; Bring a laptop\n💻 Getting Started - Syllabus\n💻Getting Started - Data\nLab 1 - Intro to Data Workflow\n\n\n2\n09-01\nLABOR DAY\nChapter 1 & 2 - ST\nChapter 2 - MSR\nLABOR DAY\nLab 2 - Data Wrangling\n\n\n3\n09-08\nDescriptives, Visualizations + Communication\nChapter 5 - LSR\nChapter 1 & 3 - R4DS\n💻 Data Wrangling\n💻 Describe & Visualize\nLab 3\n\n\n4\n09-15\nDesign, Sampling + Inference\nChapter 2 - IMS\nChapter 3 - MSR\nChapter 7 - ST\n💻 Design & Inference\nLab 4 - Intro to Inference\nStatistical Check\n\n\n5\n09-22\nCorrelation + Effect Sizes\nChapter 5.1 & 13 - ST\nChapter 11 - LSR\n💻 Correlation & ES\nLab 5 - Correlation & ES\n\n\n6\n09-29\nComparing Groups\nChapter 9 & 10 - ST\nChapter 13 - LSR\n💻Comparing Means\nLab 6 - Compare Means\n\n\n7\n10-06\nSimple Linear Regression\nChapter 14.1.1 - 14.1.4 - ST\nChapter 7.1 - 7.2.4 - IMS\nChapter 8.1.1 & 8.1.2 - MSR\n💻Intro to Regression\nMIDTERM PROJECT\n\n\n8\n10-13\nFALL BREAK\nWork on your midterm project\n\n\n\n\n9\n10-20\nVariability & Model Fit\nChapter 5 & 14- ST\nChapter 7.2.5 - IMS\n💻 Models & Variability\nLab 9 - Models & Research Questions\n\n\n10\n10-27\nMultiple Regression I: Adding Predictors\nChapter 15.3 - 15.5 - LSR\nChapter 8 - IMS\n💻 Multiple Regression\nLab 10 - Multiple Regression\n\n\n11\n11-03\nMultiple Regression II: Categorical Predictors\nChapter 9 - IMS\nChapter 8.3 - MSR\n💻 Regression with Categories\nLab 11 - Categories & Regression\n\n\n12\n11-10\nAssumptions + Model Diagnostics\nChapter 7.3 - IMS\nChapter 14.5 - ST\nChapter 8.1.4 - MSR\nChapter 15.8 - LSR\n💻Categories,Logistic & Diagnostic\nLab 12\nFinal Project Part 1\n\n\n13\n11-17\nExpanding Regression\nChapter 14.2 & 14.3 - ST\n💻 Moderation\nFinal Project Part 2\n\n\n14\n11-24\nModel Building + Mediation\nChapter 15.8 - 15.10 - LSR\n\nContinue Working on Final!\n\n\n15\n12-01\nMaking R Work for You\nChapter 17 & 18 - ST\n\n\n\n\n16\n12-08\nWrapping Up + Presentations\n\n\n\n\n\n\n\nIntroduction to Modern Statistics (2e) –&gt; IMS\nLearning Statistics with R –&gt; LSR\nR for Data Science (2e) –&gt; R4DS\nModern Statistics with R (2e) –&gt; MSR\nStatistical Thinking –&gt; ST\nAn Introduction to Statistical Learning (2e) –&gt; ISL\nData Analysis: A Model Comparison Approach to Regression, ANOVA, and Beyond (3rd ed.) –&gt; DA",
+    "text": "This page contains an outline of the topics, content, and preparation for the semester. This schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\nImportant\n\n\n\nReadings on the schedule will need to be completed prior to the course they are listed for. We will build on the concepts you read about in that specific class period, so it is important that you have read.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nSlides\nLabs\n\n\n\n\n1\n08-25\nGetting set up + R foundations\nInstall R/RStudio; Bring a laptop\n💻 Getting Started - Syllabus\n💻Getting Started - Data\nLab 1 - Intro to Data Workflow\n\n\n2\n09-01\nLABOR DAY\nChapter 1 & 2 - ST\nChapter 2 - MSR\nLABOR DAY\nLab 2 - Data Wrangling\n\n\n3\n09-08\nDescriptives, Visualizations + Communication\nChapter 5 - LSR\nChapter 1 & 3 - R4DS\n💻 Data Wrangling\n💻 Describe & Visualize\nLab 3\n\n\n4\n09-15\nDesign, Sampling + Inference\nChapter 2 - IMS\nChapter 3 - MSR\nChapter 7 - ST\n💻 Design & Inference\nLab 4 - Intro to Inference\nStatistical Check\n\n\n5\n09-22\nCorrelation + Effect Sizes\nChapter 5.1 & 13 - ST\nChapter 11 - LSR\n💻 Correlation & ES\nLab 5 - Correlation & ES\n\n\n6\n09-29\nComparing Groups\nChapter 9 & 10 - ST\nChapter 13 - LSR\n💻Comparing Means\nLab 6 - Compare Means\n\n\n7\n10-06\nSimple Linear Regression\nChapter 14.1.1 - 14.1.4 - ST\nChapter 7.1 - 7.2.4 - IMS\nChapter 8.1.1 & 8.1.2 - MSR\n💻Intro to Regression\nMIDTERM PROJECT\n\n\n8\n10-13\nFALL BREAK\nWork on your midterm project\n\n\n\n\n9\n10-20\nVariability & Model Fit\nChapter 5 & 14- ST\nChapter 7.2.5 - IMS\n💻 Models & Variability\nLab 9 - Models & Research Questions\n\n\n10\n10-27\nMultiple Regression I: Adding Predictors\nChapter 15.3 - 15.5 - LSR\nChapter 8 - IMS\n💻 Multiple Regression\nLab 10 - Multiple Regression\n\n\n11\n11-03\nMultiple Regression II: Categorical Predictors\nChapter 9 - IMS\nChapter 8.3 - MSR\n💻 Regression with Categories\nLab 11 - Categories & Regression\n\n\n12\n11-10\nAssumptions + Model Diagnostics\nChapter 7.3 - IMS\nChapter 14.5 - ST\nChapter 8.1.4 - MSR\nChapter 15.8 - LSR\n💻Categories,Logistic & Diagnostic\nLab 12\nFinal Project Part 1\n\n\n13\n11-17\nExpanding Regression\nChapter 14.2 & 14.3 - ST\n💻 Moderation\nFinal Project Part 2\n\n\n14\n11-24\nModel Building + Mediation\nChapter 15.8 - 15.10 - LSR\n💻 Model Building\nContinue Working on Final!\n\n\n15\n12-01\nMaking R Work for You\nChapter 17 & 18 - ST\n\n\n\n\n16\n12-08\nWrapping Up + Presentations\n\n\n\n\n\n\n\nIntroduction to Modern Statistics (2e) –&gt; IMS\nLearning Statistics with R –&gt; LSR\nR for Data Science (2e) –&gt; R4DS\nModern Statistics with R (2e) –&gt; MSR\nStatistical Thinking –&gt; ST\nAn Introduction to Statistical Learning (2e) –&gt; ISL\nData Analysis: A Model Comparison Approach to Regression, ANOVA, and Beyond (3rd ed.) –&gt; DA",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -2632,63 +2632,63 @@
   {
     "objectID": "slides/lec-14.html#today",
     "href": "slides/lec-14.html#today",
-    "title": "Week 14: Mediation & Model Building",
+    "title": "Week 14: Model Building",
     "section": "Today…",
-    "text": "Today…\n\nStarting from scratch & building your results\nMaking things complicated with mediation\nFinal Project Check in"
+    "text": "Today…\n\nStarting from scratch & building your results\nFinal Project Check in"
   },
   {
     "objectID": "slides/lec-14.html#research-process-overview",
     "href": "slides/lec-14.html#research-process-overview",
-    "title": "Week 14: Mediation & Model Building",
+    "title": "Week 14: Model Building",
     "section": "Research Process Overview",
     "text": "Research Process Overview"
   },
   {
     "objectID": "slides/lec-14.html#the-adolescent-sleep-affect-project-asap",
     "href": "slides/lec-14.html#the-adolescent-sleep-affect-project-asap",
-    "title": "Week 14: Mediation & Model Building",
+    "title": "Week 14: Model Building",
     "section": "The Adolescent Sleep & Affect Project (ASAP)",
     "text": "The Adolescent Sleep & Affect Project (ASAP)\nFirst, we need to familiarize ourselves with the variables that are present in the data\nThe Dataset:\n\nN = 400 children followed annually for 3 years.\n3 Timepoints: Baseline (ages 7-9), T2 (8-10), and T3 (9-11)\nKey Measures:\n\nPsychopathology: Depression (Dep), Anxiety (Anx)\nSleep: Sleep Duration (SleepDur), Sleep Quality (SleepQual)\nStress: Peer Stress (PeerStress), Academic Stress (AcadStress)\nDevelopment: Puberty (Puberty on 0-8 scale), Age (Age)"
   },
   {
     "objectID": "slides/lec-14.html#congratulations",
     "href": "slides/lec-14.html#congratulations",
-    "title": "Week 14: Mediation & Model Building",
+    "title": "Week 14: Model Building",
     "section": "✨Congratulations ✨",
     "text": "✨Congratulations ✨\nYou just made your data analytic plan!\nEvery paper should have a section that goes into detail about the steps they are going to go through. This helps to give readers a framework on what to expect."
   },
   {
     "objectID": "slides/lec-14.html#building-the-results-section",
     "href": "slides/lec-14.html#building-the-results-section",
-    "title": "Week 14: Mediation & Model Building",
+    "title": "Week 14: Model Building",
     "section": "Building the Results Section",
     "text": "Building the Results Section\nNow that we have a clearly defined our research question, we can begin the process of working with the data!\nHere are the steps that I tend to follow:\n\nWrangle 🤠 and tidy the data\nDescribe my data (Cronbach \\(\\alpha\\), correlations, means & sds)\nVisualize 📈\nBuilding my Model 🚧\nInterpreting and Reporting 📓"
   },
   {
     "objectID": "slides/lec-14.html#building-the-results-section-1",
     "href": "slides/lec-14.html#building-the-results-section-1",
-    "title": "Week 14: Mediation & Model Building",
+    "title": "Week 14: Model Building",
     "section": "Building the Results Section",
     "text": "Building the Results Section\nFrom our data analytic plan, we have a general idea on how to build our model 👷‍♀️\nBut that is all the way at step #4\nWe need to construct the foundation and provide the reader with the necessary information to be able to properly interpret your results"
   },
   {
     "objectID": "slides/lec-14.html#baking-the-results-section",
     "href": "slides/lec-14.html#baking-the-results-section",
-    "title": "Week 14: Mediation & Model Building",
+    "title": "Week 14: Model Building",
     "section": "Baking the Results Section 🧑‍🍳",
     "text": "Baking the Results Section 🧑‍🍳\nData Analytic Plan = Recipe\n\nGiving the overview of the plan and what to expect\n\nDescriptives & “Table 1” = Your specific ingredients\n\nThe reader is able to see your ingredients and know they can “trust” your results\n\nBuilding the Models = Putting everything together and baking\n\nYou go through the steps in order and put it in the oven\n\nDiscussion = Icing and Finishing touches\n\nComparing to the other cakes and highlight where you can improve when you bake it again"
   },
   {
     "objectID": "slides/lec-14.html#constructing-the-results-section",
     "href": "slides/lec-14.html#constructing-the-results-section",
-    "title": "Week 14: Mediation & Model Building",
+    "title": "Week 14: Model Building",
     "section": "Constructing the Results Section",
     "text": "Constructing the Results Section\nGetting away from baking, let’s say you are building something (LEGO?), or remodeling.\nResults Part 1 (Descriptives) is the “Inventory & Site Survey”\n\nBefore you build a house, you must check the materials. Do you have enough bricks (N)? Are any bricks broken (missing data)? Is the land/foundation flat or weirdly shaped (normality/outliers)?\n\n\n\n\n\n\n\nNote\n\n\nWe cannot build a stable house if we don’t admit that 10% of our wood is rotten. Descriptives are just us checking the pile of lumber to make sure it’s safe to build with.\n\n\n\nResults Part 2 (Inference) is the “Construction & Stress Test”\n\nNow that we know the wood is good, we nail it together to see if it holds together"
   },
   {
     "objectID": "slides/lec-14.html#asap-and-results",
     "href": "slides/lec-14.html#asap-and-results",
-    "title": "Week 14: Mediation & Model Building",
+    "title": "Week 14: Model Building",
     "section": "ASAP and Results",
     "text": "ASAP and Results\nNow let’s use R to finish the steps and put together a results section!\n\nWrangle 🤠 and tidy the data\nDescribe my data (Cronbach \\(\\alpha\\), correlations, means & sds)\nVisualize 📈\nBuilding my Model 🚧\nInterpreting and Reporting 📓"
   },

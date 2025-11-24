@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Week 14 - Model Building &amp; Mediation – PSYC 640 - Graduate Statistics</title>
+<title>Week 14 - Model Building – PSYC 640 - Graduate Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Week 14 - Model Building &amp; Mediation – PSYC 640 - Graduate Statistics">
+<meta property="og:title" content="Week 14 - Model Building – PSYC 640 - Graduate Statistics">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
@@ -522,13 +522,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#model-building-mediation" id="toc-model-building-mediation" class="nav-link active" data-scroll-target="#model-building-mediation">Model Building &amp; Mediation</a>
-  <ul class="collapse">
-  <li><a href="#data-for-today" id="toc-data-for-today" class="nav-link" data-scroll-target="#data-for-today">Data for Today</a></li>
+  <li><a href="#data-for-today" id="toc-data-for-today" class="nav-link active" data-scroll-target="#data-for-today">Data for Today</a></li>
   <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
   <li><a href="#in-class-activity" id="toc-in-class-activity" class="nav-link" data-scroll-target="#in-class-activity">In-Class Activity</a></li>
   <li><a href="#for-next-time" id="toc-for-next-time" class="nav-link" data-scroll-target="#for-next-time">For Next Time</a></li>
-  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/weeks/week-14.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -538,7 +535,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-14.html">Week 14 - Model Building &amp; Mediation</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Week 14 - Model Building &amp; Mediation</h1>
+<h1 class="title">Week 14 - Model Building</h1>
 </div>
 
 
@@ -555,103 +552,12 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="model-building-mediation" class="level1">
-<h1>Model Building &amp; Mediation</h1>
 <p>The goal for this week will be to start at the beginning with a dataset and then build from there. I want to demonstrate starting at the beginning and going from there. This will highlight the generation of a research question all the way to writing up the results.</p>
 <section id="data-for-today" class="level2">
 <h2 class="anchored" data-anchor-id="data-for-today">Data for Today</h2>
 <ul>
 <li><a href="../files/data/asap_data.csv" download="asap_data.csv">Download ASAP Sleep &amp; Mood Data (.csv)</a></li>
 </ul>
-<table class="caption-top table">
-<tbody>
-<tr class="odd">
-<td><strong>Variable Prefix</strong></td>
-<td><strong>Meaning</strong></td>
-</tr>
-<tr class="even">
-<td><strong>T1_</strong></td>
-<td>Time 1 (Baseline, Ages 7-9)</td>
-</tr>
-<tr class="odd">
-<td><strong>T2_</strong></td>
-<td>Time 2 (1 Year Later)</td>
-</tr>
-<tr class="even">
-<td><strong>T3_</strong></td>
-<td>Time 3 (2 Years Later)</td>
-</tr>
-</tbody>
-</table>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 35%">
-<col style="width: 39%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><strong>Variable Name</strong></td>
-<td><strong>Description</strong></td>
-<td><strong>Scale</strong></td>
-</tr>
-<tr class="even">
-<td><code>ID</code></td>
-<td>Participant ID</td>
-<td>1-400</td>
-</tr>
-<tr class="odd">
-<td><code>Sex</code></td>
-<td>Biological Sex</td>
-<td>0=Male, 1=Female</td>
-</tr>
-<tr class="even">
-<td><code>SES</code></td>
-<td>Socioeconomic Status</td>
-<td>Z-score (0=Avg, High=Rich)</td>
-</tr>
-<tr class="odd">
-<td><code>Age</code></td>
-<td>Age in years</td>
-<td>Continuous</td>
-</tr>
-<tr class="even">
-<td><code>Puberty</code></td>
-<td>Pubertal Development</td>
-<td>0-8 (0=Child, 8=Adult)</td>
-</tr>
-<tr class="odd">
-<td><code>SleepDur</code></td>
-<td>Objective Sleep Duration</td>
-<td>Hours (e.g., 9.5)</td>
-</tr>
-<tr class="even">
-<td><code>SleepQual</code></td>
-<td>Subjective Sleep Quality</td>
-<td>0-20 (<strong>High = BAD sleep</strong>)</td>
-</tr>
-<tr class="odd">
-<td><code>PeerStress</code></td>
-<td>Social Stress</td>
-<td>0-20 (High = Stressed)</td>
-</tr>
-<tr class="even">
-<td><code>AcadStress</code></td>
-<td>School Stress</td>
-<td>0-20 (High = Stressed)</td>
-</tr>
-<tr class="odd">
-<td><code>Dep</code></td>
-<td>Depression Symptoms</td>
-<td>0-60 (High = Depressed)</td>
-</tr>
-<tr class="even">
-<td><code>Anx</code></td>
-<td>Anxiety Symptoms</td>
-<td>0-21 (High = Anxious)</td>
-</tr>
-</tbody>
-</table>
 </section>
 <section id="slides" class="level2">
 <h2 class="anchored" data-anchor-id="slides">Slides</h2>
@@ -671,7 +577,6 @@ ul.task-list li input[type="checkbox"] {
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
