@@ -72,6 +72,8 @@ website:
             text: "Week 13 - Moderation"
           - href: weeks/week-14.qmd
             text: "Week 14 - Model Building & Mediation"
+          - href: weeks/week-15.qmd
+            text: "Week 15 - Wrapping Up"
       - section: "Labs"
         contents:
           - href: labs/lab-1_data-workflow.qmd
