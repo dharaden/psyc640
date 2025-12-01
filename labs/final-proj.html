@@ -398,6 +398,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Week 14 - Model Building &amp; Mediation</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-15.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 15 - Wrapping Up</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -532,9 +538,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#part-2-due-1123" id="toc-part-2-due-1123" class="nav-link" data-scroll-target="#part-2-due-1123">Part 2 (Due 11/23)</a></li>
   <li><a href="#part-3-due-128---in-class" id="toc-part-3-due-128---in-class" class="nav-link" data-scroll-target="#part-3-due-128---in-class">Part 3 (Due 12/8 - In Class)​</a>
   <ul class="collapse">
-  <li><a href="#presentation" id="toc-presentation" class="nav-link" data-scroll-target="#presentation"><strong>Presentation</strong>​</a></li>
+  <li><a href="#presentation-5-mins-1-2-mins-of-q-a" id="toc-presentation-5-mins-1-2-mins-of-q-a" class="nav-link" data-scroll-target="#presentation-5-mins-1-2-mins-of-q-a"><strong>Presentation (5 mins &amp; 1-2 mins of Q &amp; A)</strong>​</a></li>
   <li><a href="#written-report" id="toc-written-report" class="nav-link" data-scroll-target="#written-report"><strong>Written Report</strong></a></li>
+  <li><a href="#helpful-tips" id="toc-helpful-tips" class="nav-link" data-scroll-target="#helpful-tips">Helpful Tips</a></li>
   </ul></li>
+  <li><a href="#rubric" id="toc-rubric" class="nav-link" data-scroll-target="#rubric">Rubric</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/final-proj.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -635,9 +643,9 @@ Note
 </section>
 <section id="part-3-due-128---in-class" class="level2">
 <h2 class="anchored" data-anchor-id="part-3-due-128---in-class">Part 3 (Due 12/8 - In Class)​</h2>
-<p>The final part of the project consists of a brief presentation to the class and a written report of your data analysis plan and results.</p>
-<section id="presentation" class="level3">
-<h3 class="anchored" data-anchor-id="presentation"><strong>Presentation</strong>​</h3>
+<p>The final part of the project consists of a brief presentation to the class and a written report of your data analysis plan and results. This should be completely reproducible and be a <a href="https://letmegooglethat.com/?q=how+to+zip+a+folder" target="_blank">zipped folder</a> with all relevant materials.</p>
+<section id="presentation-5-mins-1-2-mins-of-q-a" class="level3">
+<h3 class="anchored" data-anchor-id="presentation-5-mins-1-2-mins-of-q-a"><strong>Presentation (5 mins &amp; 1-2 mins of Q &amp; A)</strong>​</h3>
 <p>Your presentation should be a brief overview of your project. It should be well-organized and engaging. This can take the form of a slideshow (5 slides maximum), or any other way that you would like to convey your message. Be sure to include the following:</p>
 <ul>
 <li><strong>Introduction</strong>: Briefly introduce your research question and why it is important.</li>
@@ -645,6 +653,7 @@ Note
 <li><strong>Results</strong>: Present your main findings, using graphs and tables to help illustrate your results.</li>
 <li><strong>Discussion</strong>: Interpret your results and discuss their implications.</li>
 </ul>
+<p>Do not put walls of text on your slides. Your slides/materials should focus on the <strong>visualizations</strong> of your data (e.g., scatterplots with regression lines, interaction plots). You should narrate the methods and interpretation, rather than reading them off the slide.</p>
 </section>
 <section id="written-report" class="level3">
 <h3 class="anchored" data-anchor-id="written-report"><strong>Written Report</strong></h3>
@@ -669,7 +678,194 @@ Important
 <li><p><strong>Discussion</strong>: Interpret your findings in the context of your research question. Discuss the limitations of your study and suggest directions for future research.</p></li>
 <li><p>​<strong>Conclusion</strong>: Briefly summarize your main findings and their significance.</p></li>
 </ul>
+<p>In the <strong>Methods</strong> or <strong>Results</strong> section, provide information on how you checked the assumptions for your regression (e.g., linearity, homoscedasticity, normality of residuals) and what the results of those checks were. If assumptions were violated, explain how you addressed them. (use <code>check_model()</code> from easystats)</p>
+<p><strong>APA Style:</strong> “APA Formatting” for results is strict.</p>
+<ul>
+<li><p>Do not copy-paste raw software output (like <code>summary()</code>) directly into the text.</p></li>
+<li><p>You must generate a clean Table (using packages like <code>sjPlot</code>, <code>apaTables</code>, <code>stargazer</code>, or <code>gt</code>) that reports b, SE, t, p, and R2.</p></li>
+</ul>
 <p>Your final submission should be a single folder that is 100% reproducible, meaning that all of your data and code should be included and organized in a way that someone else could easily re-run your analyses.</p>
+</section>
+<section id="helpful-tips" class="level3">
+<h3 class="anchored" data-anchor-id="helpful-tips">Helpful Tips</h3>
+<ul>
+<li><p><strong>The “Run-All” Test:</strong> Before zipping your folder, test your code on a fresh R session (close everything and re-open the project). If your code references a file path like <code>C:/Users/YourName/Downloads/Project</code>, it <strong>will not work</strong> on anyone else’s computer.</p>
+<ul>
+<li><em>Tip:</em> Use <strong>relative paths</strong> (e.g., <code>import(here(("data", myDataFile.csv")</code>) and a project based workflow</li>
+</ul></li>
+<li><p><strong>Folder Structure:</strong> Here is a suggested file structure:</p>
+<ul>
+<li><p><code>/Data</code> (Raw data files)</p></li>
+<li><p><code>/Scripts</code> (Analysis code, e.g., .R, .Rmd, .qmd)</p></li>
+<li><p><code>/Output</code> (The final report in PDF or Word)</p></li>
+</ul></li>
+<li><p><strong>Code Quality:</strong> Annotate your code. Comments should explain <em>why</em> a step is being taken (e.g., <code># Log transforming income to correct for skewness</code>) rather than just <em>what</em> the code is doing.</p></li>
+<li><p><strong>Page Count Clarification:</strong> The 5-7 page requirement refers to <strong>prose text</strong>. Large figures, massive tables, and bibliography do not count toward the minimum.</p></li>
+</ul>
+</section>
+</section>
+<section id="rubric" class="level2">
+<h2 class="anchored" data-anchor-id="rubric">Rubric</h2>
+<p><strong>Total Points: 200</strong></p>
+<section id="reproducibility-code-quality-40-points" class="level4">
+<h4 class="anchored" data-anchor-id="reproducibility-code-quality-40-points">Reproducibility &amp; Code Quality (40 Points)</h4>
+<p><em>Focus: Can the instructor download the folder and run the analysis without editing a single line of code?</em></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Criteria</strong></td>
+<td><strong>Proficient (34–40 pts)</strong></td>
+<td><strong>Competent (26–33 pts)</strong></td>
+<td><strong>Needs Improvement (0–25 pts)</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Functionality &amp; Organization</strong></td>
+<td>Code runs immediately upon download without error on a fresh environment. Uses relative paths or <code>here()</code> correctly.</td>
+<td>Code runs but requires minor troubleshooting (e.g., installing a missing package, fixing a hard-coded path like <code>C:/Users/...</code>).</td>
+<td>Code breaks significantly, references local hard drives, or necessary files are missing from the folder.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="data-preparation-20-points" class="level4">
+<h4 class="anchored" data-anchor-id="data-preparation-20-points">Data Preparation (20 Points)</h4>
+<p><em>Focus: Did you prepare the data correctly before analyzing?</em></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Criteria</strong></td>
+<td><strong>Proficient (18–20 pts)</strong></td>
+<td><strong>Competent (14–17 pts)</strong></td>
+<td><strong>Needs Improvement (0–13 pts)</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Cleaning &amp; Sampling</strong></td>
+<td>Random subset (N=400) created correctly (if applicable). Cleaning steps (handling NAs, recoding variables) are justified and executed efficiently.</td>
+<td>Subset created but method is unclear/not reproducible. Minor errors in data cleaning (e.g., missed an obvious outlier).</td>
+<td>No subsetting performed on large data. Data is “dirty” (e.g., typos in factor levels) affecting the analysis results.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="statistical-rigor-50-points" class="level4">
+<h4 class="anchored" data-anchor-id="statistical-rigor-50-points">Statistical Rigor (50 Points)</h4>
+<p><em>Focus: Does the logic follow and build a cohesive statistical argument?</em></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Criteria</strong></td>
+<td><strong>Proficient (44–50 pts)</strong></td>
+<td><strong>Competent (34–43 pts)</strong></td>
+<td><strong>Needs Improvement (0–33 pts)</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Analysis Selection</strong></td>
+<td>Chosen analyses (must include regression) are perfectly aligned with the research question and data type.</td>
+<td>Analyses are generally appropriate, but a better model existed (e.g., used standard linear regression on a binary outcome).</td>
+<td>Analysis does not address the hypothesis or is statistically invalid for the data type.</td>
+</tr>
+<tr class="odd">
+<td><strong>Assumption Checks</strong></td>
+<td>All relevant assumptions (normality, linearity, homoscedasticity, etc.) are explicitly tested, reported, and handled if violated.</td>
+<td>Assumptions are mentioned but not thoroughly tested, or violations are noted but ignored in the final model.</td>
+<td>Assumptions are completely ignored or misunderstood.</td>
+</tr>
+<tr class="even">
+<td><strong>Interpretation</strong></td>
+<td>Interpretation of coefficients, p-values, confidence intervals, and effect sizes is accurate and nuanced.</td>
+<td>Interpretation is generally correct but relies too heavily on “significance” (p&lt;.05) rather than effect size or practical significance.</td>
+<td>Fundamental misunderstanding of statistical output (e.g., interpreting p&gt;.05 as “proof” of no effect).</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="presentation-30-points" class="level4">
+<h4 class="anchored" data-anchor-id="presentation-30-points">Presentation (30 Points)</h4>
+<p><em>Focus: Can you synthesize the project in a concise way to an audience?</em></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Criteria</strong></td>
+<td><strong>Proficient (26–30 pts)</strong></td>
+<td><strong>Competent (20–25 pts)</strong></td>
+<td><strong>Needs Improvement (0–19 pts)</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Communication</strong></td>
+<td>Engaging, clear, and well-paced (within 7 min). Speaker demonstrates mastery of the material during Q&amp;A.</td>
+<td>Clear but relies heavily on reading notes. Slightly over or under the time limit.</td>
+<td>Reading directly from slides (wall of text). Unable to answer basic questions about their own study.</td>
+</tr>
+<tr class="odd">
+<td><strong>Visual Aids</strong></td>
+<td>Slides are visual-heavy and support the narrative. Graphs are clean, large, and legible.</td>
+<td>Slides are text-heavy. Graphs are present but small, pixelated, or unformatted default outputs.</td>
+<td>Slides are disorganized, confusing, or missing.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="written-report-content-60-points" class="level4">
+<h4 class="anchored" data-anchor-id="written-report-content-60-points">Written Report Content (60 Points)</h4>
+<p><em>Focus: Can you communicate the findings in a written format?</em></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Criteria</td>
+<td>Proficient (52–60 pts)</td>
+<td>Competent (40–51 pts)</td>
+<td>Needs Improvement (0–39 pts)</td>
+</tr>
+<tr class="even">
+<td><strong>Introduction &amp; Logic</strong></td>
+<td>Clear narrative arc from problem identification to hypothesis. Citations (3+) are highly relevant and integrated well.</td>
+<td>Hypothesis is stated, but the background justification is weak, disjointed, or citations are loosely related.</td>
+<td>Hypothesis is missing or unclear. Introduction is disorganized or lacks citations.</td>
+</tr>
+<tr class="odd">
+<td><strong>Formatting (APA)</strong></td>
+<td>Tables and Figures are perfect APA style. <strong>No raw code output</strong> (e.g., R console text) in the document. Prose is professional and academic.</td>
+<td>Minor APA errors in tables/figures. Some raw software output included in the text.</td>
+<td>Major formatting errors. Figures are unreadable, missing labels, or screen-capped from software.</td>
+</tr>
+<tr class="even">
+<td><strong>Discussion</strong></td>
+<td>Deeply contextualizes results within the field. Discusses limitations honestly and provides insightful future directions.</td>
+<td>Summarizes results well but lacks depth in “implications.” Limitations are generic (e.g., “sample size could be bigger”).</td>
+<td>Discussion just repeats the results section in words. No limitations mentioned.</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>
