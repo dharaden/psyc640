@@ -58,7 +58,7 @@ Navigate to **Tools \> Global Options**
 
 By default, R Studio saves all of the objects in your environment. In general, this is not ideal, because it means that you may have taken steps interactively that are not documented in your code.
 
-![](images/clipboard-146329409.png){width="572"}
+![](images/RDataRestore.png){width="572"}
 
 This would be like when you are baking, and you follow the recipe, but then you add in some cinnamon and nutmeg which the recipe doesn't call for. You also measure out some extra chocolate chips and brown sugar, but you end up not using that. The cookies come out fantastic and you want to make them again. You open up your kitchen and the cinnamon, nutmeg, chocolate chips and brown sugar are all there, but nothing says that you need them in your recipe. We don't want to keep all the old information. We only want what is in the recipe (after we update it to include the extra spices).
 
@@ -68,6 +68,6 @@ Navigate to **Tools \> Global Options \> Appearance**
 
 This is all yours! Take ownership and find a cool theme that you like. Make it look nice and how you want it.
 
-![](images/clipboard-2197577021.png){width="572"}
+![](images/theme.png){width="572"}
 
 Right now I am rocking the "Chaos" theme with my fonts a little larger because apparently I am getting older.
