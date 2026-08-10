@@ -19,7 +19,7 @@ website:
     background: "#C9ADE0"
     
   sidebar:
-    background: "#ADE0C0"
+    background: "#C9ADE0"
     logo: "images/640_hex.png"
     pinned: true
     align: center
@@ -47,31 +47,32 @@ website:
       - section: "Weekly Materials"
         contents:
           - href: weeks/week-1.qmd
-            text: "Week 1 - Getting Comfy w/ R"
+            text: "Week 1 - Set up and Foundations"
           - href: weeks/week-2.qmd
-            text: "Week 2"
+            text: "Week 2 - Data Wrangling"
           - href: weeks/week-3.qmd
             text: "Week 3 - Describe & Viz"
           - href: weeks/week-4.qmd
             text: "Week 4 - Design & Inference"
           - href: weeks/week-5.qmd
-            text: "Week 5 - Correlation"
+            text: "Week 5 - Linear Model"
           - href: weeks/week-6.qmd
-            text: "Week 6 - Comparing"
+            text: "Week 6 - Linear Model: Part Deux"
           - href: weeks/week-7.qmd
-            text: "Week 7 - Regression"
+            text: "Week 7 - Variability & Model Fit"
+          - href: weeks/week-8.qmd
+            text: "Week 8 - Intro Multiple Reg."
           - href: weeks/week-9.qmd
-            text: "Week 9"
+            text: "Week 9 - Multiple Reg."
           - href: weeks/week-10.qmd
-            text: "Week 10 - Multiple Reg."
+            text: "Week 10 - Assumptions & Diagnostic"
           - href: weeks/week-11.qmd
-            text: "Week 11 - Categorical Reg."
+            text: "Week 11 - Missing Data & Building"
           - href: weeks/week-12.qmd
             text: "Week 12 - Logistic Reg."
           - href: weeks/week-13.qmd
-            text: "Week 13 - Moderation"
-          - href: weeks/week-14.qmd
-            text: "Week 14 - Model Building & Mediation"
+            text: "Week 13 - Mixed/Mulilevel Models"
+          - text: "Week 14 - NO CLASS"
           - href: weeks/week-15.qmd
             text: "Week 15 - Wrapping Up"
       - section: "Labs"
