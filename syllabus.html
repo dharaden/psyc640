@@ -2,17 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Syllabus – PSYC 640 - Graduate Statistics</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -33,19 +39,18 @@ ul.task-list li input[type="checkbox"] {
 <link href="./course-overview.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5fa042a522516c5f035cc39caa38a149.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-10cb5d13bda20044d798bfa7515f162b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-5fa042a522516c5f035cc39caa38a149.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d6beb973d7cdf9eeceb517bf97d89e18.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-02a0cf4b03161b8e6f91b0593371cd23.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-d6beb973d7cdf9eeceb517bf97d89e18.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -323,13 +328,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./weeks/week-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 - Getting Comfy w/ R</span></a>
+ <span class="menu-text">Week 1 - Set up and Foundations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./weeks/week-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2</span></a>
+ <span class="menu-text">Week 2 - Data Wrangling</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -347,37 +352,43 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./weeks/week-5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 - Correlation</span></a>
+ <span class="menu-text">Week 5 - Linear Model</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./weeks/week-6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 - Comparing</span></a>
+ <span class="menu-text">Week 6 - Linear Model: Part Deux</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./weeks/week-7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7 - Regression</span></a>
+ <span class="menu-text">Week 7 - Variability &amp; Model Fit</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./weeks/week-8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 8 - Intro Multiple Reg.</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./weeks/week-9.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 9</span></a>
+ <span class="menu-text">Week 9 - Multiple Reg.</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./weeks/week-10.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 10 - Multiple Reg.</span></a>
+ <span class="menu-text">Week 10 - Assumptions &amp; Diagnostic</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./weeks/week-11.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 11 - Categorical Reg.</span></a>
+ <span class="menu-text">Week 11 - Missing Data &amp; Building</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -389,15 +400,12 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./weeks/week-13.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 13 - Moderation</span></a>
+ <span class="menu-text">Week 13 - Mixed/Mulilevel Models</span></a>
   </div>
 </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./weeks/week-14.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 14 - Model Building &amp; Mediation</span></a>
-  </div>
-</li>
+ <span class="menu-text">Week 14 - NO CLASS</span>
+  </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./weeks/week-15.html" class="sidebar-item-text sidebar-link">
@@ -534,7 +542,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#course-materials" id="toc-course-materials" class="nav-link" data-scroll-target="#course-materials"><strong>Course Materials</strong></a></li>
   <li><a href="#course-policies" id="toc-course-policies" class="nav-link" data-scroll-target="#course-policies"><strong>Course Policies</strong></a></li>
   </ul></li>
-  <li><a href="#course-plan" id="toc-course-plan" class="nav-link" data-scroll-target="#course-plan">Course Plan</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/syllabus.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -579,15 +586,15 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <td><em>Office Hours</em></td>
-<td>Wednesdays 9 - 11am or By Appointment</td>
+<td>Tuesdays 10am - 12pm or By Appointment</td>
 </tr>
 <tr class="even">
 <td><em>Class Times</em></td>
-<td>Mondays 8:00 - 10:50am</td>
+<td>Thursdays 9:30am - 12:20pm</td>
 </tr>
 <tr class="odd">
 <td>Class Location</td>
-<td>Wallace - 4640</td>
+<td>Eastman 3379</td>
 </tr>
 </tbody>
 </table>
@@ -599,7 +606,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="course-materials" class="level3">
 <h3 class="anchored" data-anchor-id="course-materials"><strong>Course Materials</strong></h3>
-<p>We will be using R for all data wrangling, visualization, and analysis. You may use another statistical program in this course, but I will only be providing examples in R. Students must have the latest version of R and it is strongly recommended that students also download the RStudio GUI, both can be found <a href="https://posit.co/download/rstudio-desktop/#download">here</a>. Both types of software are free.</p>
+<p>We will be using R for all data wrangling, visualization, and analysis. I will also be using JAMOVI to show how to mirror things in a different software. Students must have the latest version of R and it is strongly recommended that students also download the RStudio GUI, both can be found <a href="https://posit.co/download/rstudio-desktop/#download">here</a>. JAMOVI is also available <a href="https://www.jamovi.org/index.html">here</a>. All are free.</p>
 <p>We will primarily be referring to chapters in the following textbooks:</p>
 <ul>
 <li><p><a href="https://openintro-ims.netlify.app/" target="&quot;_blank"><em>Introduction to Modern Statistics (2e)</em></a> (Cetinkaya-Rundel &amp; Hardin, 2024)</p></li>
@@ -669,16 +676,16 @@ Important
 </tbody>
 </table>
 <p><strong><em>Weekly Labs</em></strong></p>
-<p>These are hands-on R assignments that directly reinforce the concepts from the week’s class. They are your primary opportunity to practice coding, build models, and interpret results. Labs will be submitted as R Markdown files, and your lowest score will be dropped. Labs will be due the Sunday night (11:59pm) before the next class.</p>
+<p>These are your primary opportunity to build models and, more importantly, to interpret what they tell you. Each lab is built around interpretation and judgment, not just producing code that runs: I will often give you output (a model summary, a set of residual plots, a JAMOVI result) and ask you to explain what it means, decide whether you would trust it, identify which assumption a diagnostic plot implicates, and justify the next analysis. You will also write and modify R to reproduce and extend these results. The interpretation questions are often answered by the assigned readings, in the authors’ own framing, so the readings (not an AI chatbot) are your fastest and most reliable path through the lab. Labs are submitted as Quarto/R Markdown files, and your lowest score will be dropped. Labs are due Wednesday night (11:59pm) before the next class.</p>
 <p><strong><em>Journal Entries</em></strong></p>
-<p>Each week, you will submit a short, reflective journal entry. This is a space for metacognition—thinking about your own learning. Prompts will include questions like, “What was the clearest concept this week, and why did it click?” or “What was the ‘muddiest’ point for you, and what question would you ask about it?”. They can also take the form of just a general reflection. I want to get to know you and your learning throughout this process. This can also include anything related to your personal life or mental health that you would like for me to know, such as whether you are struggling to balance classes and research, having trouble creating a workspace at home, or whether you can balance time spent on campus and off. This can also be completely random things, like a news article you can’t stop thinking about, or a favorite TV show, movie or book that you just love (especially if it is LOTR or Cosmere related). The content of what you write has <em>no impact</em> on your grade. In addition, what you write will be kept confidential.</p>
+<p>Each week, you will submit a short, reflective journal entry. This is a space for metacognition (i.e., thinking about your own learning). Prompts can include questions like, “What was the clearest concept this week, and why did it click?” or “What was the ‘muddiest’ point for you, and what question would you ask about it?”. They can also take the form of just a general reflection. I want to get to know you and your learning throughout this process. This can also include anything related to your personal life or mental health that you would like for me to know, such as whether you are struggling to balance classes and research, having trouble creating a workspace at home, or whether you can balance time spent on campus and off. This can also be completely random things, like a news article you can’t stop thinking about, or a favorite TV show, movie or book that you just love (especially if it is LOTR, Cosmere or Dungeon Crawler Carl related). The content of what you write has <em>no impact</em> on your grade. In addition, what you write will be kept confidential.</p>
 <p>The purpose of this “assignment” is to help facilitate communication between you and me. I have found other instructors using this and I would like to be able to develop supportive relationships with students, so I decided to implement this. Other instructors reported that they found that many students were more comfortable discussing questions and concerns in their journal assignments rather than through email.</p>
 <p><strong><em>In-Class Engagement &amp; Activities</em></strong></p>
-<p>Our class is a workshop, and your active participation is key. This portion of your grade is earned by being present and engaged. This includes participating in group discussions, engaging with the readings, working with peers on problems, and completing the small, hands-on coding exercises we’ll do together or in small groups in class. This is a low-stress grade based on your consistent effort and collaboration during our classes.</p>
+<p>Our class is a workshop, and your active participation is key. This portion of your grade is earned by being present and engaged. This includes participating in group discussions, engaging with the readings, working with peers on problems, and completing the small, hands-on exercises we’ll do together or in small groups in class. Roughly every two to three weeks this also includes a short (about 20-minute) in-class check at the start of our meeting involving interpreting a piece of output, fixing a small bug in a scaffolded script, and/or choosing and justifying a test. These are open-notes, open-readings, open-past-labs, and done in class rather than at home. Their purpose is not to trick you or be a huge challenge; it is to give you (and me) an honest read on where your understanding actually is, and to make the readings pay off. This is a low-stress grade based on your consistent effort and collaboration.</p>
 <p><strong><em>Midterm Project</em></strong></p>
-<p>This is a comprehensive analysis of a dataset I will provide. You will be asked to clean and visualize the data, formulate a research question, build an appropriate regression model, check its assumptions, and write a concise report of your findings. This project assesses your mastery of the first half of the course and will be due before the first class after Fall Break.</p>
+<p>This is a comprehensive analysis of a dataset I will provide. You will be asked to clean and visualize the data, formulate a research question, build an appropriate regression model, check its assumptions, and write a concise report of your findings. This project assesses your mastery of the first half of the course.</p>
 <p><strong><em>Final Project</em></strong></p>
-<p>For your final project, you will choose a dataset (either your own research data or from a list of options), develop your own research questions, and conduct a full analysis from start to finish. You will present your work in a short, manuscript-style report and a brief “lightning talk” to the class in our final meeting. This is your capstone assignment to demonstrate your independent data analysis skills.</p>
+<p>For your final project, you will choose a dataset (either your own research data that is not your thesis or from a list of options), develop your own research questions, and conduct a full analysis from start to finish. You will present your work in a short, manuscript-style report and a brief “lightning talk” to the class in our final meeting. This is your capstone assignment to demonstrate your independent data analysis skills.</p>
 <p><strong>Grade Scheme</strong></p>
 <table class="caption-top table">
 <colgroup>
@@ -734,7 +741,7 @@ Important
 <blockquote class="blockquote">
 <p><em>“A Wizard is never late, nor are they early. They arrive precisely when they mean to.”</em> 🧙‍♂️</p>
 </blockquote>
-<p>Thanks Gandalf. Super helpful. Unfortunately, we are not wizards and late penalties will be applied to work that is not on time. There will be a 15% deduction on the first day. And a 5% increase for each day beyond the deadline. Work will not be accepted beyond 5 days after the deadline.</p>
+<p>Thanks Gandalf. Super helpful. Unfortunately, we are not wizards and late penalties will be applied to work that is not on time. There will be a 10% deduction for each day. Work will not be accepted beyond 5 days after the deadline.</p>
 </section>
 <section id="statement-on-reasonable-accommodations" class="level4">
 <h4 class="anchored" data-anchor-id="statement-on-reasonable-accommodations">Statement on Reasonable Accommodations</h4>
@@ -783,122 +790,24 @@ Important
 <section id="academic-integrity-statement" class="level4">
 <h4 class="anchored" data-anchor-id="academic-integrity-statement">Academic Integrity Statement</h4>
 <p>As an institution of higher learning, RIT expects students to behave honestly and ethically at all times, especially when submitting work for evaluation in conjunction with any course or degree requirement. The Department of Psychology encourages all students to become familiar with the <a href="https://www.rit.edu/academicaffairs/policiesmanual/p030">RIT Honor Code</a> and with <a href="https://www.rit.edu/academicaffairs/policiesmanual/d080">RIT’s Academic Integrity Policy</a>. RIT’s policy on academic integrity requires the instructor to investigate of any suspected breach of academic integrity. If the preponderance of evidence indicates a breach of academic integrity, the student who did so may incur a consequence up to and including failure for the entire course.</p>
-<p><em>About Generative AI</em></p>
+<section id="about-generative-ai" class="level5">
+<h5 class="anchored" data-anchor-id="about-generative-ai"><em>About Generative AI</em></h5>
 <p>You may use generative AI tools (such as ChatGPT, Grammarly, or CoPilot) as a <u><strong>support</strong></u> for your work in this course. However:</p>
 <ul>
-<li><p>You must <strong>personally review, edit, and take ownership</strong> of all submitted work.</p></li>
-<li><p>Any use of AI must be <strong>acknowledged in a brief note</strong> at the end of the assignment (e.g., <em>“I used ChatGPT to generate initial bullet points for my resume, which I then revised and expanded.”</em>) as well as being properly cited (<a href="https://infoguides.rit.edu/c.php?g=1207799&amp;p=10293622">RIT Library Citation Infoguide</a>)</p></li>
-<li><p>AI tools may <strong>not</strong> be used to generate entire assignments without your input or to misrepresent your work. Submitting unedited or minimally edited AI output as your own is considered academic dishonesty.</p></li>
-<li><p>In professional contexts, you will be expected to present work that is authentically your own — this course is practice for that.</p></li>
+<li><p>Any use of AI must be <strong>acknowledged in a brief note</strong> at the end of the assignment (e.g., <em>“I used ChatGPT to generate initial bullet points for my introduction, which I then revised and expanded.”</em>) as well as being properly cited (<a href="https://infoguides.rit.edu/c.php?g=1207799&amp;p=10293622">RIT Library Citation Infoguide</a>). Be detailed in how it is used.</p></li>
+<li><p>AI tools may <strong>not</strong> be used to generate assignments with minimal input from you (or without your input) without your input or to misrepresent your work. Submitting edited AI output as your own is considered academic dishonesty.</p></li>
 </ul>
-<p>If I suspect that the work that you have turned in is using AI, we will have to have a conversation to determine the next steps. Turning in AI work is considered plagiarism, and you may be asked to re-do the assignment, or possibly receive a 0 on the assignment. Your information may also be submitted to the university as a Breach of Academic Integrity.</p>
+<p>If I suspect that the work that you have turned in is using AI, you will receive a preliminary 0 on the project and we will have to have a conversation to determine the next steps. Turning in AI work is considered plagiarism, and you may be asked to re-do the assignment, or possibly receive a 0 on the assignment. Your information may also be submitted to the university as a Breach of Academic Integrity.</p>
 </section>
-<section id="rit-covid-19-safety-plans" class="level4">
-<h4 class="anchored" data-anchor-id="rit-covid-19-safety-plans">RIT COVID-19 Safety Plans</h4>
-<p>RIT is committed to the safety of the RIT community and beyond. Because the situation is still in a rapid state of change, checking the RIT Ready website, and specifically the RIT Safety Plan for the most up to date information is recommended: <a href="https://www.rit.edu/ready/rit-safety-plan" class="uri">https://www.rit.edu/ready/rit-safety-plan</a>.</p>
 </section>
 <section id="changes-to-the-syllabus" class="level4">
 <h4 class="anchored" data-anchor-id="changes-to-the-syllabus">Changes to the Syllabus</h4>
 <p>I have provided this syllabus as a guide to our course and have made every attempt to provide an accurate overview of the course. However, as instructor, I reserve the right to modify this document during the semester, if necessary, to ensure that we achieve course learning objectives. You will receive advance notice of any changes to the syllabus through myCourses/email.</p>
 <hr>
-</section>
-</section>
-</section>
-<section id="course-plan" class="level2">
-<h2 class="anchored" data-anchor-id="course-plan">Course Plan</h2>
-<p><em>This is subject to change and instructor will inform the students as soon as possible.</em></p>
-<ul>
-<li><p><strong>Week 1 — Getting Started with R &amp; Tidy Data</strong></p>
-<ul>
-<li>We’ll dive right into our primary tool, R. This session covers installing R and RStudio, navigating the interface, understanding R projects, and learning the foundational syntax of the R language and the <code>tidyverse</code>, including data types and basic functions.</li>
-</ul></li>
-<li><p><strong>Week 2 — LABOR DAY (NO CLASS)</strong></p>
-<ul>
-<li>Continue to develop skills and comfort in R. You will be provided with readings and other practice problems, and maybe a video lecture.</li>
-</ul></li>
-<li><p><strong>Week 3 — Describing, Visualizing &amp; Communicating</strong></p>
-<ul>
-<li>What is in our data? We’ll learn how to calculate descriptive statistics (e.g., mean, median, standard deviation) and master the “grammar of graphics” to create compelling, publication-quality plots with <code>ggplot2</code>. We will also introduce R Markdown for creating reproducible reports.</li>
-</ul></li>
-<li><p><strong>Week 4 — Designing Studies &amp; Sampling</strong></p>
-<ul>
-<li>This is a conceptual week focusing on the foundations of research. We’ll discuss different research designs (experimental, correlational), sampling methods, the distinction between a sample and a population, and the fundamental logic of null hypothesis significance testing (NHST).</li>
-</ul></li>
-<li><p><strong>Week 5 — Correlations &amp; Effect Sizes</strong></p>
-<ul>
-<li>We’ll quantify the relationship between two continuous variables using covariance and correlation. We will also introduce the concept of effect sizes as a standardized way to describe the magnitude of a relationship, moving beyond a simple “yes/no” significance test. <em>“How strong is the association?”</em></li>
-</ul></li>
-<li><p><strong>Week 6 — Comparing Groups</strong></p>
-<ul>
-<li>We’ll explore classic methods for comparing group means, including independent and paired-samples t-tests. We’ll conduct these tests in R and learn how to interpret their output. This will serve as our first formal hypothesis-testing tool.</li>
-</ul></li>
-<li><p><strong>Week 7 — Building to Regression: Variability &amp; Model Fit</strong></p>
-<ul>
-<li>We’ll introduce the core logic of the General Linear Model by partitioning variance. Concepts like sums of squares will be introduced to help us understand how a model “explains” variance in an outcome variable. We will introduce R2 as a fundamental measure of model fit. <em>“How much of the outcome can we explain?”</em></li>
-</ul></li>
-</ul>
-<!-- -->
-<ul>
-<li><strong>Week 8 — FALL BREAK (NO CLASS)</strong> 🍂</li>
-</ul>
-<!-- -->
-<ul>
-<li><p><strong>Week 9 — Simple Linear Regression</strong></p>
-<ul>
-<li>The formal introduction to the regression model: Yi​=β0​+β1​Xi​+ϵi​. We will learn how to estimate the model’s parameters (intercept and slope), interpret their meaning, and assess overall model fit using the <code>lm()</code> function in R. <em>“What is the exact formula for prediction?”</em></li>
-</ul></li>
-</ul>
-<!-- -->
-<ul>
-<li><p><strong>Week 10 — Multiple Regression I: Adding Predictors</strong></p>
-<ul>
-<li>We’ll expand our model to include multiple continuous predictors. Key topics include interpreting partial slopes (the effect of one predictor while controlling for others), understanding adjusted R2, and identifying issues like multicollinearity.</li>
-</ul></li>
-</ul>
-<!-- -->
-<ul>
-<li><p><strong>Week 11 — Multiple Regression II: Categorical Predictors</strong></p>
-<ul>
-<li>How do we include groups (e.g., experimental conditions) in our regression model? We’ll learn about dummy coding and indicator variables. This is where we will explicitly demonstrate that t-tests and ANOVA are simply special cases of regression.</li>
-</ul></li>
-</ul>
-<!-- -->
-<ul>
-<li><p><strong>Week 12 — Assumptions + Model Diagnostics</strong></p>
-<ul>
-<li>Is our model trustworthy? We will learn how to check the assumptions of ordinary least squares (OLS) regression, including linearity, normality of residuals, and homoscedasticity. We will use graphical methods in R to diagnose problems and discuss potential remedies.</li>
-</ul></li>
-</ul>
-<!-- -->
-<ul>
-<li><p><strong>Week 13 — Expanding Regression</strong></p>
-<ul>
-<li><strong>Topics:</strong> We will explore ways to capture more complex relationships in our data. The primary focus will be on adding interaction terms to the model to test for moderation, but we may also touch on including non-linear relationships (e.g., quadratic terms) or talk about some mediation!</li>
-</ul></li>
-</ul>
-<!-- -->
-<ul>
-<li><p><strong>Week 14 — Model Building + Comparison</strong></p>
-<ul>
-<li>How do we choose the best model? We will discuss practical strategies for building models, such as hierarchical regression, and learn how to use information criteria (like AIC and BIC) to compare different competing models.</li>
-</ul></li>
-</ul>
-<!-- -->
-<ul>
-<li><p><strong>Week 15 — Making R work for you</strong></p>
-<ul>
-<li>We’ve worked a whole lot with R, but what are some of the cool things that it can do. We will explore and organize what we have learned so far to solidify the use of R for reproducible workflows!</li>
-</ul></li>
-</ul>
-<!-- -->
-<ul>
-<li><p><strong>Week 16 — Wrapping Up + Workshop</strong></p>
-<ul>
-<li>This final session will serve two purposes. First, it will be a dedicated workshop for you to get help and ask questions about your final projects. Second, we will have a course wrap-up, reviewing the major themes and discussing next steps for your statistical journey.</li>
-</ul></li>
-</ul>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1331,7 +1240,7 @@ Important
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© CC-By Dustin Haraden, 2025</p>
+<p>© CC-By Dustin Haraden, 2026</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;

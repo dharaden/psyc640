@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.26">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <title>PSYC 640 - Graduate Statistics – Week 12: Categorical &amp; Logistic Regression</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -16,10 +16,16 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -94,7 +100,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-5ae9c59b2727fcd5357d4f034d95f9e0.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-b2736e9fcda83c748fd63b6e579550ef.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -219,21 +225,21 @@
 <section class="slide level2">
 
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-3"><a></a><span class="fu">library</span>(here)</span>
-<span id="cb1-4"><a></a><span class="fu">library</span>(lm.beta)</span>
-<span id="cb1-5"><a></a><span class="fu">library</span>(easystats)</span>
-<span id="cb1-6"><a></a><span class="fu">library</span>(sjPlot)</span>
-<span id="cb1-7"><a></a></span>
-<span id="cb1-8"><a></a></span>
-<span id="cb1-9"><a></a><span class="co">#Remove Scientific Notation </span></span>
-<span id="cb1-10"><a></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span>
-<span id="cb1-11"><a></a></span>
-<span id="cb1-12"><a></a><span class="co">#Import CAH Data</span></span>
-<span id="cb1-13"><a></a>cah_data <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"files"</span>, <span class="st">"data"</span>, </span>
-<span id="cb1-14"><a></a>                        <span class="st">"CAH.csv"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-15"><a></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.character), <span class="sc">~</span><span class="fu">na_if</span>(., <span class="st">""</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a aria-label="2"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-3"><a aria-label="3"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-4"><a aria-label="4"></a><span class="fu">library</span>(lm.beta)</span>
+<span id="cb1-5"><a aria-label="5"></a><span class="fu">library</span>(easystats)</span>
+<span id="cb1-6"><a aria-label="6"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb1-7"><a aria-label="7"></a></span>
+<span id="cb1-8"><a aria-label="8"></a></span>
+<span id="cb1-9"><a aria-label="9"></a><span class="co">#Remove Scientific Notation </span></span>
+<span id="cb1-10"><a aria-label="10"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span>
+<span id="cb1-11"><a aria-label="11"></a></span>
+<span id="cb1-12"><a aria-label="12"></a><span class="co">#Import CAH Data</span></span>
+<span id="cb1-13"><a aria-label="13"></a>cah_data <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"files"</span>, <span class="st">"data"</span>, </span>
+<span id="cb1-14"><a aria-label="14"></a>                        <span class="st">"CAH.csv"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-15"><a aria-label="15"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.character), <span class="sc">~</span><span class="fu">na_if</span>(., <span class="st">""</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="autosave" class="slide level2">
@@ -289,20 +295,20 @@
 <h2>Categorical Predictors = factors</h2>
 <p>Typically identified by a grouping variable that may be a <code>character</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">glimpse</span>(cah_data<span class="sc">$</span>political_affiliation)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a><span class="fu">glimpse</span>(cah_data<span class="sc">$</span>political_affiliation)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> chr [1:1000] "Democrat" "Democrat" "Independent" "Republican" "Democrat" ...</code></pre>
 </div>
 </div>
 <p>Need to change the variable from <code>character</code> to <code>factor</code> which will assign a number to each group</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>cah_data <span class="ot">&lt;-</span> cah_data <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a></a>  <span class="fu">mutate</span>(</span>
-<span id="cb4-3"><a></a>    <span class="at">pol =</span> <span class="fu">as.factor</span>(political_affiliation),</span>
-<span id="cb4-4"><a></a>    <span class="at">ghosts =</span> <span class="fu">as.factor</span>(ghosts)</span>
-<span id="cb4-5"><a></a>    )</span>
-<span id="cb4-6"><a></a></span>
-<span id="cb4-7"><a></a><span class="fu">glimpse</span>(cah_data<span class="sc">$</span>pol)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a>cah_data <span class="ot">&lt;-</span> cah_data <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb4-3"><a aria-label="3"></a>    <span class="at">pol =</span> <span class="fu">as.factor</span>(political_affiliation),</span>
+<span id="cb4-4"><a aria-label="4"></a>    <span class="at">ghosts =</span> <span class="fu">as.factor</span>(ghosts)</span>
+<span id="cb4-5"><a aria-label="5"></a>    )</span>
+<span id="cb4-6"><a aria-label="6"></a></span>
+<span id="cb4-7"><a aria-label="7"></a><span class="fu">glimpse</span>(cah_data<span class="sc">$</span>pol)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Factor w/ 3 levels "Democrat","Independent",..: 1 1 2 3 1 1 2 3 3 1 ...</code></pre>
 </div>
@@ -405,12 +411,12 @@
 <p>Going back to our Transformers dataset, let’s see how our political affiliation variable can predict # of transformers movies</p>
 <p>Usually you have to create the separate dummy variables, but not in R. As long as your predictor is set as a <code>factor</code>, R will automatically dummy code the variable.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>cat1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(transformers <span class="sc">~</span> pol,</span>
-<span id="cb6-2"><a></a>           <span class="at">data =</span> cah_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a>cat1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(transformers <span class="sc">~</span> pol,</span>
+<span id="cb6-2"><a aria-label="2"></a>           <span class="at">data =</span> cah_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>You can also double check the dummy/contrast coding</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">contrasts</span>(cah_data<span class="sc">$</span>pol)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a><span class="fu">contrasts</span>(cah_data<span class="sc">$</span>pol)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            Independent Republican
 Democrat              0          0
@@ -426,7 +432,7 @@ Republican            0          1</code></pre>
 <p>Every interpretation is ALWAYS in reference to the reference group</p>
 <p>Go to next slide for a pretty table</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">summary</span>(cat1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a><span class="fu">summary</span>(cat1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -455,7 +461,7 @@ F-statistic:   1.3 on 2 and 799 DF,  p-value: 0.2731</code></pre>
 
 <h3 id="interpretation-1">Interpretation</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">tab_model</span>(cat1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a><span class="fu">tab_model</span>(cat1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top" style="border-collapse:collapse; border:none;">
 <tbody>
@@ -524,10 +530,10 @@ F-statistic:   1.3 on 2 and 799 DF,  p-value: 0.2731</code></pre>
 <p>Maybe we want to compare to a specific group</p>
 <p>We need to then update the reference group</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>cah_data<span class="sc">$</span>pol2 <span class="ot">&lt;-</span> <span class="fu">relevel</span>(cah_data<span class="sc">$</span>pol, <span class="at">ref =</span> <span class="st">"Independent"</span>)</span>
-<span id="cb12-2"><a></a>cat2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(transformers <span class="sc">~</span> pol2,</span>
-<span id="cb12-3"><a></a>           <span class="at">data =</span> cah_data)</span>
-<span id="cb12-4"><a></a><span class="fu">summary</span>(cat2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-label="1"></a>cah_data<span class="sc">$</span>pol2 <span class="ot">&lt;-</span> <span class="fu">relevel</span>(cah_data<span class="sc">$</span>pol, <span class="at">ref =</span> <span class="st">"Independent"</span>)</span>
+<span id="cb12-2"><a aria-label="2"></a>cat2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(transformers <span class="sc">~</span> pol2,</span>
+<span id="cb12-3"><a aria-label="3"></a>           <span class="at">data =</span> cah_data)</span>
+<span id="cb12-4"><a aria-label="4"></a><span class="fu">summary</span>(cat2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -594,13 +600,13 @@ Outcome_{continuous} = Predictor_{categorical} + error
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>six_seven <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"files"</span>, <span class="st">"data"</span>, </span>
-<span id="cb14-2"><a></a>                         <span class="st">"cat_reg_complete.xlsx"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb14-3"><a></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
-<span id="cb14-4"><a></a></span>
-<span id="cb14-5"><a></a>six_seven <span class="sc">%&gt;%</span> </span>
-<span id="cb14-6"><a></a>  <span class="fu">slice_sample</span>(<span class="at">n=</span><span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb14-7"><a></a>  <span class="fu">tab_df</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a>six_seven <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"files"</span>, <span class="st">"data"</span>, </span>
+<span id="cb14-2"><a aria-label="2"></a>                         <span class="st">"cat_reg_complete.xlsx"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a aria-label="3"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb14-4"><a aria-label="4"></a></span>
+<span id="cb14-5"><a aria-label="5"></a>six_seven <span class="sc">%&gt;%</span> </span>
+<span id="cb14-6"><a aria-label="6"></a>  <span class="fu">slice_sample</span>(<span class="at">n=</span><span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-7"><a aria-label="7"></a>  <span class="fu">tab_df</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <table class="caption-top" style="border-collapse:collapse; border:none;">
@@ -614,43 +620,43 @@ Outcome_{continuous} = Predictor_{categorical} + error
 <th data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; padding: 0.2cm; border-bottom: 1px solid black;">age</th>
 </tr>
 <tr class="even">
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">111</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">104</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">B</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Orange</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Green</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">11</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">9</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">17</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">15</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">10</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">201</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">A</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Orange</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">12</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">8</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">11</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">214</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">A</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Orange</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">14</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">11</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">13</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">209</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">205</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">A</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">Yellow</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">19</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">16</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">16</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">15</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">11</td>
 </tr>
 <tr class="even">
-<td style="text-align: left; padding: 0.2cm; vertical-align: top; border-bottom: double;">104</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top; border-bottom: double;">B</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">103</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">B</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Yellow</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">18</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">17</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">11</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">101</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">B</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Green</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">12</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">8</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">12</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; border-bottom: double;">213</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; border-bottom: double;">A</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top; border-bottom: double;">Green</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top; border-bottom: double;">11</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top; border-bottom: double;">9</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; border-bottom: double;">15</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; border-bottom: double;">12</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top; border-bottom: double;">17</td>
 </tr>
 </tbody>
@@ -675,8 +681,8 @@ Outcome_{continuous} = Predictor_{categorical} + error
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(post_score <span class="sc">~</span> group, <span class="at">data =</span> six_seven)</span>
-<span id="cb15-2"><a></a><span class="fu">summary</span>(lm1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(post_score <span class="sc">~</span> group, <span class="at">data =</span> six_seven)</span>
+<span id="cb15-2"><a aria-label="2"></a><span class="fu">summary</span>(lm1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -708,11 +714,11 @@ F-statistic:   2.5 on 2 and 27 DF,  p-value: 0.1009</code></pre>
 
 <h3 id="now-what-are-the-means-for-each-group-1">Now what are the means for each group?</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>six_seven <span class="sc">%&gt;%</span> </span>
-<span id="cb17-2"><a></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
-<span id="cb17-3"><a></a>  <span class="fu">summarize</span>(</span>
-<span id="cb17-4"><a></a>    <span class="at">post_avg =</span> <span class="fu">mean</span>(post_score)</span>
-<span id="cb17-5"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-label="1"></a>six_seven <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a aria-label="2"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-3"><a aria-label="3"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb17-4"><a aria-label="4"></a>    <span class="at">post_avg =</span> <span class="fu">mean</span>(post_score)</span>
+<span id="cb17-5"><a aria-label="5"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   group  post_avg
@@ -763,11 +769,11 @@ F-statistic:   2.5 on 2 and 27 DF,  p-value: 0.1009</code></pre>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>six_seven <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"files"</span>, <span class="st">"data"</span>, </span>
-<span id="cb19-2"><a></a>                       <span class="st">"cat_reg_complete.xlsx"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-3"><a></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb19-4"><a></a>  <span class="co"># 1 = recovered; 0 = not recovered</span></span>
-<span id="cb19-5"><a></a>  <span class="fu">mutate</span>(<span class="at">recover =</span> <span class="fu">if_else</span>(post_score <span class="sc">&gt;</span> <span class="dv">14</span>, <span class="dv">0</span>, <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-label="1"></a>six_seven <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"files"</span>, <span class="st">"data"</span>, </span>
+<span id="cb19-2"><a aria-label="2"></a>                       <span class="st">"cat_reg_complete.xlsx"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-3"><a aria-label="3"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb19-4"><a aria-label="4"></a>  <span class="co"># 1 = recovered; 0 = not recovered</span></span>
+<span id="cb19-5"><a aria-label="5"></a>  <span class="fu">mutate</span>(<span class="at">recover =</span> <span class="fu">if_else</span>(post_score <span class="sc">&gt;</span> <span class="dv">14</span>, <span class="dv">0</span>, <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -781,14 +787,14 @@ F-statistic:   2.5 on 2 and 27 DF,  p-value: 0.1009</code></pre>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>six_seven <span class="sc">%&gt;%</span> </span>
-<span id="cb20-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(pre_score, recover)) <span class="sc">+</span></span>
-<span id="cb20-3"><a></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="dv">0</span>, <span class="at">height =</span> <span class="fl">0.05</span>, </span>
-<span id="cb20-4"><a></a>              <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb20-5"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
-<span id="cb20-6"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb20-7"><a></a>    <span class="at">title =</span> <span class="st">"Pre-Score Predicting Recovery"</span></span>
-<span id="cb20-8"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-label="1"></a>six_seven <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(pre_score, recover)) <span class="sc">+</span></span>
+<span id="cb20-3"><a aria-label="3"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="dv">0</span>, <span class="at">height =</span> <span class="fl">0.05</span>, </span>
+<span id="cb20-4"><a aria-label="4"></a>              <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb20-5"><a aria-label="5"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb20-6"><a aria-label="6"></a>  <span class="fu">labs</span>(</span>
+<span id="cb20-7"><a aria-label="7"></a>    <span class="at">title =</span> <span class="st">"Pre-Score Predicting Recovery"</span></span>
+<span id="cb20-8"><a aria-label="8"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -862,12 +868,12 @@ transformation(p_i)=\beta_0+\beta_1x_{1,i} + \beta_2x_{2,i} + \cdots+\beta_lx_{k
 <h2>Recovering from 6️⃣7️⃣</h2>
 <p>Now we have a tool to figure this out, let’s see if the pre-score can predict recovery!</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="do">## Using glm() instead of lm()</span></span>
-<span id="cb21-2"><a></a>rec_glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(recover <span class="sc">~</span> pre_score, </span>
-<span id="cb21-3"><a></a>           <span class="at">data =</span> six_seven, </span>
-<span id="cb21-4"><a></a>           <span class="do">## This is new</span></span>
-<span id="cb21-5"><a></a>           <span class="do">##Tells the model we are doing logistic regression with a binary outcome</span></span>
-<span id="cb21-6"><a></a>           <span class="at">family =</span> <span class="st">"binomial"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-label="1"></a><span class="do">## Using glm() instead of lm()</span></span>
+<span id="cb21-2"><a aria-label="2"></a>rec_glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(recover <span class="sc">~</span> pre_score, </span>
+<span id="cb21-3"><a aria-label="3"></a>           <span class="at">data =</span> six_seven, </span>
+<span id="cb21-4"><a aria-label="4"></a>           <span class="do">## This is new</span></span>
+<span id="cb21-5"><a aria-label="5"></a>           <span class="do">##Tells the model we are doing logistic regression with a binary outcome</span></span>
+<span id="cb21-6"><a aria-label="6"></a>           <span class="at">family =</span> <span class="st">"binomial"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -887,7 +893,7 @@ transformation(p_i)=\beta_0+\beta_1x_{1,i} + \beta_2x_{2,i} + \cdots+\beta_lx_{k
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">summary</span>(rec_glm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-label="1"></a><span class="fu">summary</span>(rec_glm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -916,7 +922,7 @@ Number of Fisher Scoring iterations: 6</code></pre>
 <p>We want to be able to interpret these coefficients more easily so we put them into <strong>Odds Ratios</strong></p>
 <p><code>sjPlot</code> is always coming in with the good tables</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">tab_model</span>(rec_glm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-label="1"></a><span class="fu">tab_model</span>(rec_glm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top" style="border-collapse:collapse; border:none;">
 <tbody>
@@ -965,21 +971,21 @@ Number of Fisher Scoring iterations: 6</code></pre>
 <h2>Visualization</h2>
 <p>Extract the model implied probabilities for each individual</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>probs <span class="ot">&lt;-</span> broom<span class="sc">::</span><span class="fu">augment</span>(rec_glm, <span class="at">type.predict =</span> <span class="st">"response"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-label="1"></a>probs <span class="ot">&lt;-</span> broom<span class="sc">::</span><span class="fu">augment</span>(rec_glm, <span class="at">type.predict =</span> <span class="st">"response"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Plotting the predicted probabilities</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>probs <span class="sc">%&gt;%</span> </span>
-<span id="cb26-2"><a></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(pre_score, .fitted)) <span class="sc">+</span></span>
-<span id="cb26-3"><a></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb26-4"><a></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb26-5"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb26-6"><a></a>    <span class="at">title =</span> <span class="st">"Predicted Probability of Recovery from 6-7 by Pre-Score"</span>,</span>
-<span id="cb26-7"><a></a>    <span class="at">x =</span> <span class="st">"Pre-Score"</span>,</span>
-<span id="cb26-8"><a></a>    <span class="at">y =</span> <span class="st">"Predicted Probability of Recovery"</span></span>
-<span id="cb26-9"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb26-10"><a></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># Keep the y-axis bounded at 0 and 1</span></span>
-<span id="cb26-11"><a></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-label="1"></a>probs <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2"><a aria-label="2"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(pre_score, .fitted)) <span class="sc">+</span></span>
+<span id="cb26-3"><a aria-label="3"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb26-4"><a aria-label="4"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb26-5"><a aria-label="5"></a>  <span class="fu">labs</span>(</span>
+<span id="cb26-6"><a aria-label="6"></a>    <span class="at">title =</span> <span class="st">"Predicted Probability of Recovery from 6-7 by Pre-Score"</span>,</span>
+<span id="cb26-7"><a aria-label="7"></a>    <span class="at">x =</span> <span class="st">"Pre-Score"</span>,</span>
+<span id="cb26-8"><a aria-label="8"></a>    <span class="at">y =</span> <span class="st">"Predicted Probability of Recovery"</span></span>
+<span id="cb26-9"><a aria-label="9"></a>  ) <span class="sc">+</span></span>
+<span id="cb26-10"><a aria-label="10"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># Keep the y-axis bounded at 0 and 1</span></span>
+<span id="cb26-11"><a aria-label="11"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="lec-12_logistic_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch"></section>

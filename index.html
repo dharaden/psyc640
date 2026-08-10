@@ -2,17 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>PSYC 640: Graduate Statistics – PSYC 640 - Graduate Statistics</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -33,19 +39,18 @@ ul.task-list li input[type="checkbox"] {
 <link href="./syllabus.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5fa042a522516c5f035cc39caa38a149.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-10cb5d13bda20044d798bfa7515f162b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-5fa042a522516c5f035cc39caa38a149.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d6beb973d7cdf9eeceb517bf97d89e18.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-02a0cf4b03161b8e6f91b0593371cd23.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-d6beb973d7cdf9eeceb517bf97d89e18.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -323,13 +328,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./weeks/week-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 - Getting Comfy w/ R</span></a>
+ <span class="menu-text">Week 1 - Set up and Foundations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./weeks/week-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2</span></a>
+ <span class="menu-text">Week 2 - Data Wrangling</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -347,37 +352,43 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./weeks/week-5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 - Correlation</span></a>
+ <span class="menu-text">Week 5 - Linear Model</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./weeks/week-6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 - Comparing</span></a>
+ <span class="menu-text">Week 6 - Linear Model: Part Deux</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./weeks/week-7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7 - Regression</span></a>
+ <span class="menu-text">Week 7 - Variability &amp; Model Fit</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./weeks/week-8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 8 - Intro Multiple Reg.</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./weeks/week-9.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 9</span></a>
+ <span class="menu-text">Week 9 - Multiple Reg.</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./weeks/week-10.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 10 - Multiple Reg.</span></a>
+ <span class="menu-text">Week 10 - Assumptions &amp; Diagnostic</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./weeks/week-11.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 11 - Categorical Reg.</span></a>
+ <span class="menu-text">Week 11 - Missing Data &amp; Building</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -389,15 +400,12 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./weeks/week-13.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 13 - Moderation</span></a>
+ <span class="menu-text">Week 13 - Mixed/Mulilevel Models</span></a>
   </div>
 </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./weeks/week-14.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 14 - Model Building &amp; Mediation</span></a>
-  </div>
-</li>
+ <span class="menu-text">Week 14 - NO CLASS</span>
+  </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./weeks/week-15.html" class="sidebar-item-text sidebar-link">
@@ -566,12 +574,10 @@ Important
 <div>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 5%">
-<col style="width: 5%">
+<col style="width: 7%">
 <col style="width: 15%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 17%">
+<col style="width: 25%">
+<col style="width: 30%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -579,19 +585,14 @@ Important
 <th style="text-align: center;">Date</th>
 <th style="text-align: center;">Topic</th>
 <th style="text-align: center;">Prepare</th>
-<th style="text-align: center;">Slides</th>
-<th style="text-align: center;">Labs</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><a href="./weeks/week-1.html">1</a></td>
 <td style="text-align: center;">08-25</td>
-<td style="text-align: center;">Getting set up + R foundations</td>
+<td style="text-align: center;">Getting set up + R foundations - VIRTUAL</td>
 <td style="text-align: center;">Install R/RStudio; Bring a laptop</td>
-<td style="text-align: center;"><p><a href="../slides/lec-1_syl.html" target="_blank">💻 Getting Started - Syllabus</a></p>
-<p><a href="../slides/lec-1_background.html" target="_blank">💻Getting Started - Data</a></p></td>
-<td style="text-align: center;"><a href="./labs/lab-1_data-workflow.html">Lab 1 - Intro to Data Workflow</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><a href="weeks/week-2.html">2</a></td>
@@ -599,8 +600,6 @@ Important
 <td style="text-align: center;">LABOR DAY</td>
 <td style="text-align: center;"><p><a href="https://statsthinking21.github.io/statsthinking21-core-site/" target="_blank">Chapter 1 &amp; 2 - ST</a></p>
 <p><a href="https://www.modernstatisticswithr.com/" target="_blank">Chapter 2 - MSR</a></p></td>
-<td style="text-align: center;">LABOR DAY</td>
-<td style="text-align: center;"><a href="./labs/lab-2_data-wrangling.html">Lab 2 - Data Wrangling</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><a href="weeks/week-3.html">3</a></td>
@@ -608,9 +607,6 @@ Important
 <td style="text-align: center;">Descriptives, Visualizations + Communication</td>
 <td style="text-align: center;"><p><a href="https://learningstatisticswithr.com/book/" target="_blank">Chapter 5 - LSR</a></p>
 <p><a href="https://r4ds.hadley.nz/" target="_blank">Chapter 1 &amp; 3 - R4DS</a></p></td>
-<td style="text-align: center;"><p><a href="../slides/lec-3_wrangle.html" target="_blank">💻 Data Wrangling</a></p>
-<p><a href="../slides/lec-3_desc-viz.html" target="_blank">💻 Describe &amp; Visualize</a></p></td>
-<td style="text-align: center;"><a href="./labs/lab-3_describe-viz.html">Lab 3</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><a href="weeks/week-4.html">4</a></td>
@@ -619,9 +615,6 @@ Important
 <td style="text-align: center;"><p><a href="https://openintro-ims.netlify.app/" target="_blank">Chapter 2 - IMS</a></p>
 <p><a href="https://www.modernstatisticswithr.com/" target="_blank">Chapter 3 - MSR</a></p>
 <p><a href="https://statsthinking21.github.io/statsthinking21-core-site/" target="_blank">Chapter 7 - ST</a></p></td>
-<td style="text-align: center;"><a href="./slides/lec-4_design-inference.html" target="_blank">💻 Design &amp; Inference</a></td>
-<td style="text-align: center;"><p><a href="./labs/lab-4.html" target="_blank">Lab 4 - Intro to Inference</a></p>
-<p>Statistical Check</p></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><a href="weeks/week-5.html">5</a></td>
@@ -629,8 +622,6 @@ Important
 <td style="text-align: center;">Correlation + Effect Sizes</td>
 <td style="text-align: center;"><p><a href="https://statsthinking21.github.io/statsthinking21-core-site/" target="_blank">Chapter 5.1 &amp; 13 - ST</a></p>
 <p><a href="https://learningstatisticswithr.com/book/" target="_blank">Chapter 11 - LSR</a></p></td>
-<td style="text-align: center;"><a href="./slides/lec-5_correlation.html" target="_blank">💻 Correlation &amp; ES</a></td>
-<td style="text-align: center;"><a href="./labs/lab-5_cor.html" target="_blank">Lab 5 - Correlation &amp; ES</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><a href="weeks/week-6.html">6</a></td>
@@ -638,8 +629,6 @@ Important
 <td style="text-align: center;">Comparing Groups</td>
 <td style="text-align: center;"><p><a href="https://statsthinking21.github.io/statsthinking21-core-site/" target="_blank">Chapter 9 &amp; 10 - ST</a></p>
 <p><a href="https://learningstatisticswithr.com/book/" target="_blank">Chapter 13 - LSR</a></p></td>
-<td style="text-align: center;"><a href="slides/lec-6_mean.html" target="_blank">💻Comparing Means</a></td>
-<td style="text-align: center;"><a href="./labs/lab-6.html" target="_blank">Lab 6 - Compare Means</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><a href="weeks/week-7.html">7</a></td>
@@ -648,16 +637,12 @@ Important
 <td style="text-align: center;"><p><a href="https://statsthinking21.github.io/statsthinking21-core-site/" target="_blank">Chapter 14.1.1 - 14.1.4 - ST</a></p>
 <p><a href="https://openintro-ims.netlify.app/" target="_blank">Chapter 7.1 - 7.2.4 - IMS</a></p>
 <p><a href="https://www.modernstatisticswithr.com/" target="_blank">Chapter 8.1.1 &amp; 8.1.2 - MSR</a></p></td>
-<td style="text-align: center;"><a href="slides/lec-7_regression.html">💻Intro to Regression</a></td>
-<td style="text-align: center;"><a href="labs/midterm-proj.html">MIDTERM PROJECT</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">8</td>
 <td style="text-align: center;">10-13</td>
 <td style="text-align: center;">FALL BREAK</td>
 <td style="text-align: center;">Work on your midterm project</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><a href="weeks/week-9.html">9</a></td>
@@ -665,8 +650,6 @@ Important
 <td style="text-align: center;">Variability &amp; Model Fit</td>
 <td style="text-align: center;"><p><a href="https://statsthinking21.github.io/statsthinking21-core-site/" target="_blank">Chapter 5 &amp; 14- ST</a></p>
 <p><a href="https://openintro-ims.netlify.app/" target="_blank">Chapter 7.2.5 - IMS</a></p></td>
-<td style="text-align: center;"><a href="./slides/lec-9_models.html">💻 Models &amp; Variability</a></td>
-<td style="text-align: center;"><a href="./labs/lab-9.html" target="_blank">Lab 9 - Models &amp; Research Questions</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><a href="weeks/week-10.html">10</a></td>
@@ -674,8 +657,6 @@ Important
 <td style="text-align: center;">Multiple Regression I: Adding Predictors</td>
 <td style="text-align: center;"><p><a href="https://learningstatisticswithr.com/book/" target="_blank">Chapter 15.3 - 15.5 - LSR</a></p>
 <p><a href="https://openintro-ims.netlify.app/" target="_blank">Chapter 8 - IMS</a></p></td>
-<td style="text-align: center;"><a href="./slides/lec-10_multiple-reg.html">💻 Multiple Regression</a></td>
-<td style="text-align: center;"><a href="./labs/lab-10.html" target="_blank">Lab 10 - Multiple Regression</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><a href="weeks/week-11.html">11</a></td>
@@ -683,8 +664,6 @@ Important
 <td style="text-align: center;">Multiple Regression II: Categorical Predictors</td>
 <td style="text-align: center;"><p><a href="https://openintro-ims.netlify.app/" target="_blank">Chapter 9 - IMS</a></p>
 <p><a href="https://www.modernstatisticswithr.com/" target="_blank">Chapter 8.3 - MSR</a></p></td>
-<td style="text-align: center;"><a href="./slides/lec-11_categor.html">💻 Regression with Categories</a></td>
-<td style="text-align: center;"><a href="./labs/lab-11.html">Lab 11 - Categories &amp; Regression</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><a href="weeks/week-12.html">12</a></td>
@@ -694,40 +673,29 @@ Important
 <p><a href="https://statsthinking21.github.io/statsthinking21-core-site/" target="_blank">Chapter 14.5 - ST</a></p>
 <p><a href="https://www.modernstatisticswithr.com/" target="_blank">Chapter 8.1.4 - MSR</a></p>
 <p><a href="https://learningstatisticswithr.com/book/" target="_blank">Chapter 15.8 - LSR</a></p></td>
-<td style="text-align: center;"><a href="./slides/lec-12_logistic.html">💻Categories,Logistic &amp; Diagnostic</a></td>
-<td style="text-align: center;"><p><a href="./labs/lab-12.html">Lab 12</a></p>
-<p>Final Project Part 1</p></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><a href="weeks/week-13.html">13</a></td>
 <td style="text-align: center;">11-17</td>
 <td style="text-align: center;">Expanding Regression</td>
 <td style="text-align: center;"><a href="https://statsthinking21.github.io/statsthinking21-core-site/" target="_blank">Chapter 14.2 &amp; 14.3 - ST</a></td>
-<td style="text-align: center;"><a href="./slides/lec-13_mod.html">💻 Moderation</a></td>
-<td style="text-align: center;">Final Project Part 2</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><a href="weeks/week-14.html">14</a></td>
 <td style="text-align: center;">11-24</td>
 <td style="text-align: center;">Model Building + Mediation</td>
 <td style="text-align: center;"><a href="https://learningstatisticswithr.com/book/" target="_blank">Chapter 15.8 - 15.10 - LSR</a></td>
-<td style="text-align: center;"><a href="./slides/lec-14.html">💻 Model Building</a></td>
-<td style="text-align: center;">Continue Working on Final!</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><a href="weeks/week-15.html">15</a></td>
 <td style="text-align: center;">12-01</td>
 <td style="text-align: center;">Making R Work for You</td>
 <td style="text-align: center;"><a href="https://statsthinking21.github.io/statsthinking21-core-site/" target="_blank">Chapter 17 &amp; 18 - ST</a></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">Finish your Final Project</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">16</td>
 <td style="text-align: center;">12-08</td>
 <td style="text-align: center;">Wrapping Up + Presentations</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -1164,8 +1132,8 @@ Important
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./weeks/week-1.html" class="pagination-link" aria-label="Week 1 - Getting Comfy w/ R">
-        <span class="nav-page-text">Week 1 - Getting Comfy w/ R</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./weeks/week-1.html" class="pagination-link" aria-label="Week 1 - Set up and Foundations">
+        <span class="nav-page-text">Week 1 - Set up and Foundations</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1173,7 +1141,7 @@ Important
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© CC-By Dustin Haraden, 2025</p>
+<p>© CC-By Dustin Haraden, 2026</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;

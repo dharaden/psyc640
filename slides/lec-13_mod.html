@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.26">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <title>PSYC 640 - Graduate Statistics – Week 13: Intro to Moderation</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -16,10 +16,16 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -94,7 +100,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-5ae9c59b2727fcd5357d4f034d95f9e0.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-b2736e9fcda83c748fd63b6e579550ef.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -216,25 +222,25 @@
 <section class="slide level2">
 
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-3"><a></a><span class="fu">library</span>(here)</span>
-<span id="cb1-4"><a></a><span class="fu">library</span>(lm.beta)</span>
-<span id="cb1-5"><a></a><span class="fu">library</span>(easystats) <span class="co">#https://easystats.github.io/modelbased/articles/introduction_comparisons_3.html?q=simple%20slo#contrasts-and-comparisons-for-slopes-of-numeric-predictors</span></span>
-<span id="cb1-6"><a></a><span class="fu">library</span>(sjPlot)</span>
-<span id="cb1-7"><a></a></span>
-<span id="cb1-8"><a></a></span>
-<span id="cb1-9"><a></a><span class="co">#Remove Scientific Notation </span></span>
-<span id="cb1-10"><a></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span>
-<span id="cb1-11"><a></a></span>
-<span id="cb1-12"><a></a><span class="co">#Import Example Data</span></span>
-<span id="cb1-13"><a></a>t_data <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"files"</span>, <span class="st">"data"</span>, <span class="st">"tutor.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a aria-label="2"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-3"><a aria-label="3"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-4"><a aria-label="4"></a><span class="fu">library</span>(lm.beta)</span>
+<span id="cb1-5"><a aria-label="5"></a><span class="fu">library</span>(easystats) <span class="co">#https://easystats.github.io/modelbased/articles/introduction_comparisons_3.html?q=simple%20slo#contrasts-and-comparisons-for-slopes-of-numeric-predictors</span></span>
+<span id="cb1-6"><a aria-label="6"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb1-7"><a aria-label="7"></a></span>
+<span id="cb1-8"><a aria-label="8"></a></span>
+<span id="cb1-9"><a aria-label="9"></a><span class="co">#Remove Scientific Notation </span></span>
+<span id="cb1-10"><a aria-label="10"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span>
+<span id="cb1-11"><a aria-label="11"></a></span>
+<span id="cb1-12"><a aria-label="12"></a><span class="co">#Import Example Data</span></span>
+<span id="cb1-13"><a aria-label="13"></a>t_data <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"files"</span>, <span class="st">"data"</span>, <span class="st">"tutor.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="motivating-example" class="slide level2">
 <h2>Motivating example</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">glimpse</span>(t_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a><span class="fu">glimpse</span>(t_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 20
 Columns: 4
@@ -243,17 +249,17 @@ $ study &lt;dbl&gt; 1.62, 0.54, 0.86, 0.80, 0.36, 2.14, 1.13, 1.66, 1.23, 1.92, 
 $ grade &lt;dbl&gt; 9.0, 7.8, 8.5, 6.2, 6.9, 9.0, 6.6, 8.7, 6.6, 8.8, 9.7, 5.9, 9.5,…
 $ tutor &lt;int&gt; 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>t_data <span class="ot">=</span> t_data <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a></a>  <span class="fu">mutate</span>(<span class="at">tutor_lab =</span> <span class="fu">factor</span>(tutor, </span>
-<span id="cb4-3"><a></a>                            <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),</span>
-<span id="cb4-4"><a></a>                            <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No tutor"</span>, <span class="st">"Tutor"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a>t_data <span class="ot">=</span> t_data <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">tutor_lab =</span> <span class="fu">factor</span>(tutor, </span>
+<span id="cb4-3"><a aria-label="3"></a>                            <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),</span>
+<span id="cb4-4"><a aria-label="4"></a>                            <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No tutor"</span>, <span class="st">"Tutor"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
 
 <div class="cell" data-output.lines="[9,10,11,12]">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(grade <span class="sc">~</span> tutor, <span class="at">data =</span> t_data)</span>
-<span id="cb5-2"><a></a><span class="fu">summary</span>(mod1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(grade <span class="sc">~</span> tutor, <span class="at">data =</span> t_data)</span>
+<span id="cb5-2"><a aria-label="2"></a><span class="fu">summary</span>(mod1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>...
 Coefficients:
@@ -275,27 +281,27 @@ tutor         2.1300     0.3966   5.371 0.00004186706304119 ***
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>means <span class="ot">&lt;-</span> t_data <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a></a>  <span class="fu">group_by</span>(tutor_lab) <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a></a>  <span class="fu">summarize</span>(<span class="at">M =</span> <span class="fu">mean</span>(grade))</span>
-<span id="cb7-4"><a></a>no_tutor <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(means[<span class="dv">1</span>,<span class="dv">2</span>])</span>
-<span id="cb7-5"><a></a>tutor <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(means[<span class="dv">2</span>,<span class="dv">2</span>])</span>
-<span id="cb7-6"><a></a></span>
-<span id="cb7-7"><a></a></span>
-<span id="cb7-8"><a></a>t_data <span class="sc">%&gt;%</span> </span>
-<span id="cb7-9"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(tutor, grade, <span class="at">color =</span> tutor_lab)) <span class="sc">+</span></span>
-<span id="cb7-10"><a></a>    <span class="fu">geom_jitter</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">width =</span> .<span class="dv">05</span>) <span class="sc">+</span></span>
-<span id="cb7-11"><a></a>    <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> M, <span class="at">color =</span> tutor_lab), </span>
-<span id="cb7-12"><a></a>              <span class="at">data =</span> means, <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span> </span>
-<span id="cb7-13"><a></a>    <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> <span class="fl">0.5</span>, <span class="at">xend =</span> <span class="fl">0.5</span>, </span>
-<span id="cb7-14"><a></a>             <span class="at">y =</span> no_tutor, <span class="at">yend =</span> tutor,</span>
-<span id="cb7-15"><a></a>             <span class="at">colour =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
-<span id="cb7-16"><a></a>    <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> .<span class="dv">75</span>, <span class="at">y =</span> <span class="dv">8</span>, <span class="at">label =</span> <span class="st">"Mean Difference"</span>, </span>
-<span id="cb7-17"><a></a>             <span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
-<span id="cb7-18"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No tutor"</span>, <span class="st">"tutor"</span>)) <span class="sc">+</span></span>
-<span id="cb7-19"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">10</span>)) <span class="sc">+</span></span>
-<span id="cb7-20"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Group"</span>, <span class="at">y =</span> <span class="st">"Grade (out of 10)"</span>, <span class="at">color =</span> <span class="st">""</span>) <span class="sc">+</span></span>
-<span id="cb7-21"><a></a>  cowplot<span class="sc">::</span><span class="fu">theme_cowplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a>means <span class="ot">&lt;-</span> t_data <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a aria-label="2"></a>  <span class="fu">group_by</span>(tutor_lab) <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a aria-label="3"></a>  <span class="fu">summarize</span>(<span class="at">M =</span> <span class="fu">mean</span>(grade))</span>
+<span id="cb7-4"><a aria-label="4"></a>no_tutor <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(means[<span class="dv">1</span>,<span class="dv">2</span>])</span>
+<span id="cb7-5"><a aria-label="5"></a>tutor <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(means[<span class="dv">2</span>,<span class="dv">2</span>])</span>
+<span id="cb7-6"><a aria-label="6"></a></span>
+<span id="cb7-7"><a aria-label="7"></a></span>
+<span id="cb7-8"><a aria-label="8"></a>t_data <span class="sc">%&gt;%</span> </span>
+<span id="cb7-9"><a aria-label="9"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(tutor, grade, <span class="at">color =</span> tutor_lab)) <span class="sc">+</span></span>
+<span id="cb7-10"><a aria-label="10"></a>    <span class="fu">geom_jitter</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">width =</span> .<span class="dv">05</span>) <span class="sc">+</span></span>
+<span id="cb7-11"><a aria-label="11"></a>    <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> M, <span class="at">color =</span> tutor_lab), </span>
+<span id="cb7-12"><a aria-label="12"></a>              <span class="at">data =</span> means, <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span> </span>
+<span id="cb7-13"><a aria-label="13"></a>    <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> <span class="fl">0.5</span>, <span class="at">xend =</span> <span class="fl">0.5</span>, </span>
+<span id="cb7-14"><a aria-label="14"></a>             <span class="at">y =</span> no_tutor, <span class="at">yend =</span> tutor,</span>
+<span id="cb7-15"><a aria-label="15"></a>             <span class="at">colour =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb7-16"><a aria-label="16"></a>    <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> .<span class="dv">75</span>, <span class="at">y =</span> <span class="dv">8</span>, <span class="at">label =</span> <span class="st">"Mean Difference"</span>, </span>
+<span id="cb7-17"><a aria-label="17"></a>             <span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb7-18"><a aria-label="18"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No tutor"</span>, <span class="st">"tutor"</span>)) <span class="sc">+</span></span>
+<span id="cb7-19"><a aria-label="19"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb7-20"><a aria-label="20"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Group"</span>, <span class="at">y =</span> <span class="st">"Grade (out of 10)"</span>, <span class="at">color =</span> <span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb7-21"><a aria-label="21"></a>  cowplot<span class="sc">::</span><span class="fu">theme_cowplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 
 </div>
@@ -306,27 +312,27 @@ tutor         2.1300     0.3966   5.371 0.00004186706304119 ***
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>means <span class="ot">&lt;-</span> t_data <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a></a>  <span class="fu">group_by</span>(tutor_lab) <span class="sc">%&gt;%</span></span>
-<span id="cb8-3"><a></a>  <span class="fu">summarize</span>(<span class="at">M =</span> <span class="fu">mean</span>(grade))</span>
-<span id="cb8-4"><a></a>no_tutor <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(means[<span class="dv">1</span>,<span class="dv">2</span>])</span>
-<span id="cb8-5"><a></a>tutor <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(means[<span class="dv">2</span>,<span class="dv">2</span>])</span>
-<span id="cb8-6"><a></a></span>
-<span id="cb8-7"><a></a></span>
-<span id="cb8-8"><a></a>t_data <span class="sc">%&gt;%</span> </span>
-<span id="cb8-9"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(study, grade, <span class="at">color =</span> tutor_lab)) <span class="sc">+</span></span>
-<span id="cb8-10"><a></a>    <span class="fu">geom_jitter</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">width =</span> .<span class="dv">05</span>) <span class="sc">+</span></span>
-<span id="cb8-11"><a></a>    <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> M, <span class="at">color =</span> tutor_lab), </span>
-<span id="cb8-12"><a></a>              <span class="at">data =</span> means, <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span> </span>
-<span id="cb8-13"><a></a>    <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> <span class="fl">0.5</span>, <span class="at">xend =</span> <span class="fl">0.5</span>, </span>
-<span id="cb8-14"><a></a>             <span class="at">y =</span> no_tutor, <span class="at">yend =</span> tutor,</span>
-<span id="cb8-15"><a></a>             <span class="at">colour =</span> <span class="st">"royalblue"</span>) <span class="sc">+</span></span>
-<span id="cb8-16"><a></a>    <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="dv">8</span>, <span class="at">label =</span> <span class="st">"Mean Difference"</span>, </span>
-<span id="cb8-17"><a></a>             <span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span> </span>
-<span id="cb8-18"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Hours studying"</span>, <span class="at">y =</span> <span class="st">"Grade (out of 10)"</span>, <span class="at">color =</span> <span class="st">""</span>, </span>
-<span id="cb8-19"><a></a>       <span class="at">title =</span> <span class="st">"Is this capturing the data??"</span>) <span class="sc">+</span></span>
-<span id="cb8-20"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">10</span>)) <span class="sc">+</span></span>
-<span id="cb8-21"><a></a>  cowplot<span class="sc">::</span><span class="fu">theme_cowplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a>means <span class="ot">&lt;-</span> t_data <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a aria-label="2"></a>  <span class="fu">group_by</span>(tutor_lab) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a aria-label="3"></a>  <span class="fu">summarize</span>(<span class="at">M =</span> <span class="fu">mean</span>(grade))</span>
+<span id="cb8-4"><a aria-label="4"></a>no_tutor <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(means[<span class="dv">1</span>,<span class="dv">2</span>])</span>
+<span id="cb8-5"><a aria-label="5"></a>tutor <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(means[<span class="dv">2</span>,<span class="dv">2</span>])</span>
+<span id="cb8-6"><a aria-label="6"></a></span>
+<span id="cb8-7"><a aria-label="7"></a></span>
+<span id="cb8-8"><a aria-label="8"></a>t_data <span class="sc">%&gt;%</span> </span>
+<span id="cb8-9"><a aria-label="9"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(study, grade, <span class="at">color =</span> tutor_lab)) <span class="sc">+</span></span>
+<span id="cb8-10"><a aria-label="10"></a>    <span class="fu">geom_jitter</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">width =</span> .<span class="dv">05</span>) <span class="sc">+</span></span>
+<span id="cb8-11"><a aria-label="11"></a>    <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> M, <span class="at">color =</span> tutor_lab), </span>
+<span id="cb8-12"><a aria-label="12"></a>              <span class="at">data =</span> means, <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span> </span>
+<span id="cb8-13"><a aria-label="13"></a>    <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> <span class="fl">0.5</span>, <span class="at">xend =</span> <span class="fl">0.5</span>, </span>
+<span id="cb8-14"><a aria-label="14"></a>             <span class="at">y =</span> no_tutor, <span class="at">yend =</span> tutor,</span>
+<span id="cb8-15"><a aria-label="15"></a>             <span class="at">colour =</span> <span class="st">"royalblue"</span>) <span class="sc">+</span></span>
+<span id="cb8-16"><a aria-label="16"></a>    <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="dv">8</span>, <span class="at">label =</span> <span class="st">"Mean Difference"</span>, </span>
+<span id="cb8-17"><a aria-label="17"></a>             <span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span> </span>
+<span id="cb8-18"><a aria-label="18"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Hours studying"</span>, <span class="at">y =</span> <span class="st">"Grade (out of 10)"</span>, <span class="at">color =</span> <span class="st">""</span>, </span>
+<span id="cb8-19"><a aria-label="19"></a>       <span class="at">title =</span> <span class="st">"Is this capturing the data??"</span>) <span class="sc">+</span></span>
+<span id="cb8-20"><a aria-label="20"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb8-21"><a aria-label="21"></a>  cowplot<span class="sc">::</span><span class="fu">theme_cowplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 
 </div>
@@ -336,8 +342,8 @@ tutor         2.1300     0.3966   5.371 0.00004186706304119 ***
 <h3 id="interpreting-slopes">Interpreting slopes</h3>
 <p>Extending this to the multivariate case, let’s add hours spent studying (<code>study</code>) as another covariate.</p>
 <div class="cell" data-output.lines="[9,10,11,12,13]">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(grade <span class="sc">~</span> tutor_lab <span class="sc">+</span> study, <span class="at">data =</span> t_data)</span>
-<span id="cb9-2"><a></a><span class="fu">summary</span>(mod2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(grade <span class="sc">~</span> tutor_lab <span class="sc">+</span> study, <span class="at">data =</span> t_data)</span>
+<span id="cb9-2"><a aria-label="2"></a><span class="fu">summary</span>(mod2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>...
 Coefficients:
@@ -354,8 +360,8 @@ study            1.1777     0.2565   4.592         0.000259 ***
 <section class="slide level2">
 
 <div class="cell" data-output.lines="[9,10,11,12,13]">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(grade <span class="sc">~</span> tutor_lab <span class="sc">+</span> study, <span class="at">data =</span> t_data)</span>
-<span id="cb11-2"><a></a><span class="fu">summary</span>(mod2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(grade <span class="sc">~</span> tutor_lab <span class="sc">+</span> study, <span class="at">data =</span> t_data)</span>
+<span id="cb11-2"><a aria-label="2"></a><span class="fu">summary</span>(mod2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>...
 Coefficients:
@@ -376,22 +382,22 @@ study            1.1777     0.2565   4.592         0.000259 ***
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>mod <span class="ot">=</span> <span class="fu">lm</span>(grade <span class="sc">~</span> study <span class="sc">+</span> tutor_lab, <span class="at">data =</span> t_data)</span>
-<span id="cb13-2"><a></a>t_data<span class="sc">$</span>pmod <span class="ot">=</span> <span class="fu">predict</span>(mod)</span>
-<span id="cb13-3"><a></a></span>
-<span id="cb13-4"><a></a>predict<span class="fl">.2</span> <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">study =</span> <span class="fu">rep</span>(<span class="fu">mean</span>(t_data<span class="sc">$</span>study), <span class="dv">2</span>), <span class="at">tutor_lab =</span> <span class="fu">c</span>(<span class="st">"No tutor"</span>, <span class="st">"Tutor"</span>))</span>
-<span id="cb13-5"><a></a>predict<span class="fl">.2</span><span class="sc">$</span>grade <span class="ot">=</span> <span class="fu">predict</span>(mod, <span class="at">newdata =</span> predict<span class="fl">.2</span>) </span>
-<span id="cb13-6"><a></a>predict<span class="fl">.2</span> <span class="ot">=</span> <span class="fu">cbind</span>(predict<span class="fl">.2</span>[<span class="dv">1</span>,], predict<span class="fl">.2</span>[<span class="dv">2</span>,])</span>
-<span id="cb13-7"><a></a><span class="fu">names</span>(predict<span class="fl">.2</span>) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"x1"</span>, <span class="st">"d1"</span>, <span class="st">"y1"</span>, <span class="st">"x2"</span>, <span class="st">"d2"</span>, <span class="st">"y2"</span>)</span>
-<span id="cb13-8"><a></a></span>
-<span id="cb13-9"><a></a><span class="fu">ggplot</span>(t_data, <span class="fu">aes</span>(study,grade, <span class="at">color =</span> tutor_lab)) <span class="sc">+</span></span>
-<span id="cb13-10"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="fu">aes</span>(<span class="at">color =</span> tutor_lab)) <span class="sc">+</span></span>
-<span id="cb13-11"><a></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">y =</span> pmod), <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> F)<span class="sc">+</span></span>
-<span id="cb13-12"><a></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> x1, <span class="at">y =</span> y1, <span class="at">xend =</span> x2, <span class="at">yend =</span> y2), <span class="at">data =</span> predict<span class="fl">.2</span>, </span>
-<span id="cb13-13"><a></a>               <span class="at">inherit.aes =</span> F, <span class="at">size =</span> <span class="fl">1.5</span>)<span class="sc">+</span></span>
-<span id="cb13-14"><a></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Hours studying"</span>, <span class="at">y =</span> <span class="st">"Grade (out of 10)"</span>, <span class="at">color =</span> <span class="st">""</span>) <span class="sc">+</span></span>
-<span id="cb13-15"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">10</span>)) <span class="sc">+</span></span>
-<span id="cb13-16"><a></a>  cowplot<span class="sc">::</span><span class="fu">theme_cowplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a>mod <span class="ot">=</span> <span class="fu">lm</span>(grade <span class="sc">~</span> study <span class="sc">+</span> tutor_lab, <span class="at">data =</span> t_data)</span>
+<span id="cb13-2"><a aria-label="2"></a>t_data<span class="sc">$</span>pmod <span class="ot">=</span> <span class="fu">predict</span>(mod)</span>
+<span id="cb13-3"><a aria-label="3"></a></span>
+<span id="cb13-4"><a aria-label="4"></a>predict<span class="fl">.2</span> <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">study =</span> <span class="fu">rep</span>(<span class="fu">mean</span>(t_data<span class="sc">$</span>study), <span class="dv">2</span>), <span class="at">tutor_lab =</span> <span class="fu">c</span>(<span class="st">"No tutor"</span>, <span class="st">"Tutor"</span>))</span>
+<span id="cb13-5"><a aria-label="5"></a>predict<span class="fl">.2</span><span class="sc">$</span>grade <span class="ot">=</span> <span class="fu">predict</span>(mod, <span class="at">newdata =</span> predict<span class="fl">.2</span>) </span>
+<span id="cb13-6"><a aria-label="6"></a>predict<span class="fl">.2</span> <span class="ot">=</span> <span class="fu">cbind</span>(predict<span class="fl">.2</span>[<span class="dv">1</span>,], predict<span class="fl">.2</span>[<span class="dv">2</span>,])</span>
+<span id="cb13-7"><a aria-label="7"></a><span class="fu">names</span>(predict<span class="fl">.2</span>) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"x1"</span>, <span class="st">"d1"</span>, <span class="st">"y1"</span>, <span class="st">"x2"</span>, <span class="st">"d2"</span>, <span class="st">"y2"</span>)</span>
+<span id="cb13-8"><a aria-label="8"></a></span>
+<span id="cb13-9"><a aria-label="9"></a><span class="fu">ggplot</span>(t_data, <span class="fu">aes</span>(study,grade, <span class="at">color =</span> tutor_lab)) <span class="sc">+</span></span>
+<span id="cb13-10"><a aria-label="10"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="fu">aes</span>(<span class="at">color =</span> tutor_lab)) <span class="sc">+</span></span>
+<span id="cb13-11"><a aria-label="11"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">y =</span> pmod), <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> F)<span class="sc">+</span></span>
+<span id="cb13-12"><a aria-label="12"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> x1, <span class="at">y =</span> y1, <span class="at">xend =</span> x2, <span class="at">yend =</span> y2), <span class="at">data =</span> predict<span class="fl">.2</span>, </span>
+<span id="cb13-13"><a aria-label="13"></a>               <span class="at">inherit.aes =</span> F, <span class="at">size =</span> <span class="fl">1.5</span>)<span class="sc">+</span></span>
+<span id="cb13-14"><a aria-label="14"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Hours studying"</span>, <span class="at">y =</span> <span class="st">"Grade (out of 10)"</span>, <span class="at">color =</span> <span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb13-15"><a aria-label="15"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb13-16"><a aria-label="16"></a>  cowplot<span class="sc">::</span><span class="fu">theme_cowplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 
 </div>
@@ -402,20 +408,20 @@ study            1.1777     0.2565   4.592         0.000259 ***
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">ggplot</span>(t_data, <span class="fu">aes</span>(study, grade, <span class="at">group =</span> tutor_lab)) <span class="sc">+</span></span>
-<span id="cb14-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="fu">aes</span>(<span class="at">shape =</span> tutor_lab, <span class="at">color =</span> tutor_lab)) <span class="sc">+</span></span>
-<span id="cb14-3"><a></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">y =</span> pmod), <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> F, <span class="at">color =</span> <span class="st">"black"</span>)<span class="sc">+</span></span>
-<span id="cb14-4"><a></a>    <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> M), <span class="at">linetype =</span> <span class="st">"dashed"</span>,</span>
-<span id="cb14-5"><a></a>             <span class="at">data =</span> means, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span> </span>
-<span id="cb14-6"><a></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> x1, <span class="at">y =</span> y1, <span class="at">xend =</span> x2, <span class="at">yend =</span> y2), <span class="at">data =</span> predict<span class="fl">.2</span>, </span>
-<span id="cb14-7"><a></a>               <span class="at">inherit.aes =</span> F, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb14-8"><a></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> <span class="fl">0.5</span>, <span class="at">xend =</span> <span class="fl">0.5</span>, </span>
-<span id="cb14-9"><a></a>             <span class="at">y =</span> no_tutor, <span class="at">yend =</span> tutor,</span>
-<span id="cb14-10"><a></a>             <span class="at">linetype =</span> <span class="st">"dashed"</span>, </span>
-<span id="cb14-11"><a></a>           <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb14-12"><a></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Hours studying"</span>, <span class="at">y =</span> <span class="st">"Grade (out of 10)"</span>, <span class="at">color =</span> <span class="st">""</span>, <span class="at">shape =</span> <span class="st">""</span>) <span class="sc">+</span></span>
-<span id="cb14-13"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">10</span>)) <span class="sc">+</span></span>
-<span id="cb14-14"><a></a>  cowplot<span class="sc">::</span><span class="fu">theme_cowplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a><span class="fu">ggplot</span>(t_data, <span class="fu">aes</span>(study, grade, <span class="at">group =</span> tutor_lab)) <span class="sc">+</span></span>
+<span id="cb14-2"><a aria-label="2"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="fu">aes</span>(<span class="at">shape =</span> tutor_lab, <span class="at">color =</span> tutor_lab)) <span class="sc">+</span></span>
+<span id="cb14-3"><a aria-label="3"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">y =</span> pmod), <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> F, <span class="at">color =</span> <span class="st">"black"</span>)<span class="sc">+</span></span>
+<span id="cb14-4"><a aria-label="4"></a>    <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> M), <span class="at">linetype =</span> <span class="st">"dashed"</span>,</span>
+<span id="cb14-5"><a aria-label="5"></a>             <span class="at">data =</span> means, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span> </span>
+<span id="cb14-6"><a aria-label="6"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> x1, <span class="at">y =</span> y1, <span class="at">xend =</span> x2, <span class="at">yend =</span> y2), <span class="at">data =</span> predict<span class="fl">.2</span>, </span>
+<span id="cb14-7"><a aria-label="7"></a>               <span class="at">inherit.aes =</span> F, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb14-8"><a aria-label="8"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> <span class="fl">0.5</span>, <span class="at">xend =</span> <span class="fl">0.5</span>, </span>
+<span id="cb14-9"><a aria-label="9"></a>             <span class="at">y =</span> no_tutor, <span class="at">yend =</span> tutor,</span>
+<span id="cb14-10"><a aria-label="10"></a>             <span class="at">linetype =</span> <span class="st">"dashed"</span>, </span>
+<span id="cb14-11"><a aria-label="11"></a>           <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb14-12"><a aria-label="12"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Hours studying"</span>, <span class="at">y =</span> <span class="st">"Grade (out of 10)"</span>, <span class="at">color =</span> <span class="st">""</span>, <span class="at">shape =</span> <span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb14-13"><a aria-label="13"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb14-14"><a aria-label="14"></a>  cowplot<span class="sc">::</span><span class="fu">theme_cowplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 
 </div>
@@ -441,9 +447,9 @@ study            1.1777     0.2565   4.592         0.000259 ***
 <p>Now extend this example to include joint effects, not just additive effects:</p>
 <p><span class="math display">\[\hat{\text{grade}} = b_{0} + b_{1}\text{Tutor} + b_2\text{Study} + b_3(\text{Tutor}\times\text{Study})\]</span></p>
 <div class="cell" data-output.lines="[9,10,11,12,13,14]">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>mod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(grade <span class="sc">~</span> tutor_lab <span class="sc">+</span> study <span class="sc">+</span> tutor_lab<span class="sc">*</span>study, <span class="at">data =</span> t_data) </span>
-<span id="cb15-2"><a></a>mod3 <span class="ot">&lt;-</span>  <span class="fu">lm</span>(grade <span class="sc">~</span> tutor_lab<span class="sc">*</span>study, <span class="at">data =</span> t_data)</span>
-<span id="cb15-3"><a></a><span class="fu">summary</span>(mod3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a>mod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(grade <span class="sc">~</span> tutor_lab <span class="sc">+</span> study <span class="sc">+</span> tutor_lab<span class="sc">*</span>study, <span class="at">data =</span> t_data) </span>
+<span id="cb15-2"><a aria-label="2"></a>mod3 <span class="ot">&lt;-</span>  <span class="fu">lm</span>(grade <span class="sc">~</span> tutor_lab<span class="sc">*</span>study, <span class="at">data =</span> t_data)</span>
+<span id="cb15-3"><a aria-label="3"></a><span class="fu">summary</span>(mod3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>...
 Coefficients:
@@ -462,11 +468,11 @@ tutor_labTutor:study  -1.1713     0.4402  -2.661      0.017093 *
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">ggplot</span>(t_data, <span class="fu">aes</span>(study, grade, <span class="at">color =</span> tutor_lab)) <span class="sc">+</span></span>
-<span id="cb17-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb17-3"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> F)<span class="sc">+</span></span>
-<span id="cb17-4"><a></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Hours studying"</span>, <span class="at">y =</span> <span class="st">"Grade (out of 10)"</span>, <span class="at">color =</span> <span class="st">""</span>) <span class="sc">+</span></span>
-<span id="cb17-5"><a></a>  cowplot<span class="sc">::</span><span class="fu">theme_cowplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-label="1"></a><span class="fu">ggplot</span>(t_data, <span class="fu">aes</span>(study, grade, <span class="at">color =</span> tutor_lab)) <span class="sc">+</span></span>
+<span id="cb17-2"><a aria-label="2"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb17-3"><a aria-label="3"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> F)<span class="sc">+</span></span>
+<span id="cb17-4"><a aria-label="4"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Hours studying"</span>, <span class="at">y =</span> <span class="st">"Grade (out of 10)"</span>, <span class="at">color =</span> <span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb17-5"><a aria-label="5"></a>  cowplot<span class="sc">::</span><span class="fu">theme_cowplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 
 </div>
@@ -544,13 +550,11 @@ tutor_labTutor:study  -1.1713     0.4402  -2.661      0.017093 *
 <p><span class="math display">\[\hat{\text{grade}} = 5.01 + 2.92(\text{Tutor})+ 1.76(\text{Study})+ -1.17(\text{T} \times \text{S})\]</span></p>
 <div class="fragment">
 <p><span style="color:purple">Set Tutoring to 0</span></p>
-<p><span class="math display">\[
-\begin{aligned}
+<p><span class="math display">\[\begin{aligned}
 \hat{\text{grade}} &amp;= 5.01 + 2.92(0)+ 1.76(\text{Study})+ -1.17(0 \times \text{Study}) \\
 &amp;= 5.01 + 0+ 1.76(\text{Study})+ 0(\text{Study}) \\
 &amp;= 5.01 + 1.76(\text{Study})
-\end{aligned}
-\]</span></p>
+\end{aligned}\]</span></p>
 </div>
 </section>
 <section class="slide level2">
@@ -569,13 +573,11 @@ tutor_labTutor:study  -1.1713     0.4402  -2.661      0.017093 *
 </div>
 <p><span class="math display">\[\hat{\text{grade}} = 5.01 + 2.92(\text{Tutor})+ 1.76(\text{Study})+ -1.17(\text{T} \times \text{S})\]</span></p>
 <p><span style="color:purple">Set Tutoring to 1</span></p>
-<p><span class="math display">\[
-\begin{aligned}
+<p><span class="math display">\[\begin{aligned}
 \hat{\text{grade}} &amp;= 5.01 + 2.92(1)+ 1.76(\text{Study})+ -1.17(1 \times \text{Study}) \\
 &amp;= 5.01 + 2.92+ 1.76(\text{Study})+ -1.17(\text{Study}) \\
 &amp;= 7.93 + 0.59(\text{Study})
-\end{aligned}
-\]</span> ————————————————————————</p>
+\end{aligned}\]</span> ————————————————————————</p>
 </section>
 <section id="interaction-shapes" class="slide level2">
 <h2>Interaction shapes</h2>
@@ -594,16 +596,16 @@ tutor_labTutor:study  -1.1713     0.4402  -2.661      0.017093 *
 <section class="slide level2">
 
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">library</span>(sjPlot)</span>
-<span id="cb21-2"><a></a><span class="fu">plot_model</span>(mod3, <span class="at">type =</span> <span class="st">"int"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-label="1"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb21-2"><a aria-label="2"></a><span class="fu">plot_model</span>(mod3, <span class="at">type =</span> <span class="st">"int"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="lec-13_mod_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch"></section>
 <section class="slide level2">
 
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">library</span>(sjPlot)</span>
-<span id="cb22-2"><a></a><span class="fu">plot_model</span>(mod3, <span class="at">type =</span> <span class="st">"pred"</span>, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"study"</span>, <span class="st">"tutor_lab"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-label="1"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb22-2"><a aria-label="2"></a><span class="fu">plot_model</span>(mod3, <span class="at">type =</span> <span class="st">"pred"</span>, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"study"</span>, <span class="st">"tutor_lab"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="lec-13_mod_files/figure-revealjs/unnamed-chunk-22-1.png" width="960" class="r-stretch"></section>
@@ -625,9 +627,9 @@ tutor_labTutor:study  -1.1713     0.4402  -2.661      0.017093 *
 <section class="slide level2">
 
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>t_data <span class="ot">=</span> t_data <span class="sc">%&gt;%</span></span>
-<span id="cb23-2"><a></a>  <span class="fu">mutate</span>(<span class="at">study_c =</span> study <span class="sc">-</span> <span class="fu">mean</span>(study))</span>
-<span id="cb23-3"><a></a><span class="fu">head</span>(t_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-label="1"></a>t_data <span class="ot">=</span> t_data <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">study_c =</span> study <span class="sc">-</span> <span class="fu">mean</span>(study))</span>
+<span id="cb23-3"><a aria-label="3"></a><span class="fu">head</span>(t_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  ID study grade tutor tutor_lab study_c
 1  1  1.62   9.0     1     Tutor  0.3045
@@ -643,7 +645,7 @@ tutor_labTutor:study  -1.1713     0.4402  -2.661      0.017093 *
 <section class="slide level2">
 
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">summary</span>(<span class="fu">lm</span>(grade <span class="sc">~</span> tutor_lab <span class="sc">+</span> study_c <span class="sc">+</span> tutor_lab<span class="sc">:</span>study_c, <span class="at">data =</span> t_data))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-label="1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(grade <span class="sc">~</span> tutor_lab <span class="sc">+</span> study_c <span class="sc">+</span> tutor_lab<span class="sc">:</span>study_c, <span class="at">data =</span> t_data))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -672,7 +674,7 @@ F-statistic: 39.53 on 3 and 16 DF,  p-value: 0.0000001259</code></pre>
 <section class="slide level2">
 
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">summary</span>(mod3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-label="1"></a><span class="fu">summary</span>(mod3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -764,8 +766,8 @@ F-statistic: 39.53 on 3 and 16 DF,  p-value: 0.0000001259</code></pre>
 <h3 id="example">Example</h3>
 <p>Here we have an outcome (<code>Stress</code>) that we are interested in predicting from trait <code>Anxiety</code> and levels of social <code>Support</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>stress.data <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"files"</span>, <span class="st">"data"</span>, <span class="st">"stress.csv"</span>))</span>
-<span id="cb29-2"><a></a>psych<span class="sc">::</span><span class="fu">describe</span>(stress.data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-label="1"></a>stress.data <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"files"</span>, <span class="st">"data"</span>, <span class="st">"stress.csv"</span>))</span>
+<span id="cb29-2"><a aria-label="2"></a>psych<span class="sc">::</span><span class="fu">describe</span>(stress.data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           vars   n  mean    sd median trimmed   mad  min    max  range  skew
 id            1 118 59.50 34.21  59.50   59.50 43.74 1.00 118.00 117.00  0.00
@@ -785,8 +787,8 @@ Condition*    -2.01 0.05</code></pre>
 <section class="slide level2">
 
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>imodel <span class="ot">&lt;-</span> <span class="fu">lm</span>(Stress <span class="sc">~</span> Anxiety<span class="sc">*</span>Support, <span class="at">data =</span> stress.data)</span>
-<span id="cb31-2"><a></a><span class="fu">summary</span>(imodel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-label="1"></a>imodel <span class="ot">&lt;-</span> <span class="fu">lm</span>(Stress <span class="sc">~</span> Anxiety<span class="sc">*</span>Support, <span class="at">data =</span> stress.data)</span>
+<span id="cb31-2"><a aria-label="2"></a><span class="fu">summary</span>(imodel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -836,32 +838,28 @@ F-statistic: 26.23 on 3 and 114 DF,  p-value: 0.0000000000005645</code></pre>
 <p>The conditional nature of these effects is easiest to see by “plugging in” different values for one of your variables. Return to the regression equation estimated in our stress data:</p>
 <p><span class="math display">\[\hat{Stress} = -2.74 + 0.62(\text{Anx})+ 0.67(\text{Sup})+ -0.04(\text{Anx} \times \text{Sup})\]</span></p>
 <p><strong>Set Support to 5</strong></p>
-<p><span class="math display">\[
-\begin{aligned}
+<p><span class="math display">\[\begin{aligned}
 \hat{Stress} &amp;= -2.74 + 0.62(\text{Anx})+ 0.67(5)+ -0.04(\text{Anx} \times 5) \\
 &amp;= -2.74 + 0.62(\text{Anx})+ 3.35+ -0.2(\text{Anx}) \\
 &amp;= 0.61 + 0.42(\text{Anx})
-\end{aligned}
-\]</span></p>
+\end{aligned}\]</span></p>
 </section>
 <section class="slide level2">
 
 <p>The conditional nature of these effects is easiest to see by “plugging in” different values for one of your variables. Return to the regression equation estimated in our stress data:</p>
 <p><span class="math display">\[\hat{Stress} = -2.74 + 0.62(\text{Anx})+ 0.67(\text{Sup})+ -0.04(\text{Anx} \times \text{Sup})\]</span></p>
 <p><strong>Set Support to 10</strong></p>
-<p><span class="math display">\[
-\begin{aligned}
+<p><span class="math display">\[\begin{aligned}
 \hat{Stress} &amp;= -2.74 + 0.62(\text{Anx})+ 0.67(10)+ -0.04(\text{Anx} \times 10) \\
 &amp;= -2.74 + 0.62(\text{Anx})+ 6.7+ -0.4(\text{Anx}) \\
 &amp;= 3.96 + 0.22(\text{Anx})
-\end{aligned}
-\]</span></p>
+\end{aligned}\]</span></p>
 </section>
 <section id="plotting-interactions" class="slide level2">
 <h2>Plotting interactions</h2>
 <p>What is this plotting?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">plot_model</span>(imodel, <span class="at">type =</span> <span class="st">"pred"</span>, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"Support"</span>, <span class="st">"Anxiety[mean]"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-label="1"></a><span class="fu">plot_model</span>(imodel, <span class="at">type =</span> <span class="st">"pred"</span>, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"Support"</span>, <span class="st">"Anxiety[mean]"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="lec-13_mod_files/figure-revealjs/unnamed-chunk-35-1.png" width="960" class="r-stretch"></section>
@@ -880,9 +878,9 @@ F-statistic: 26.23 on 3 and 114 DF,  p-value: 0.0000000000005645</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="fu">plot_model</span>(imodel, <span class="at">type =</span> <span class="st">"pred"</span>, </span>
-<span id="cb34-2"><a></a>           <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"Support"</span>, </span>
-<span id="cb34-3"><a></a>                     <span class="st">"Anxiety[5,10]"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-label="1"></a><span class="fu">plot_model</span>(imodel, <span class="at">type =</span> <span class="st">"pred"</span>, </span>
+<span id="cb34-2"><a aria-label="2"></a>           <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"Support"</span>, </span>
+<span id="cb34-3"><a aria-label="3"></a>                     <span class="st">"Anxiety[5,10]"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:50%;">
 <p>Put values of the moderator in argument <code>mdrt.values</code>!</p>
@@ -896,22 +894,22 @@ F-statistic: 26.23 on 3 and 114 DF,  p-value: 0.0000000000005645</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">plot_model</span>(imodel, <span class="at">type =</span> <span class="st">"pred"</span>, </span>
-<span id="cb35-2"><a></a>           <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"Support"</span>, </span>
-<span id="cb35-3"><a></a>                     <span class="st">"Anxiety"</span>), </span>
-<span id="cb35-4"><a></a>           <span class="at">mdrt.values =</span> <span class="st">"meansd"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a aria-label="1"></a><span class="fu">plot_model</span>(imodel, <span class="at">type =</span> <span class="st">"pred"</span>, </span>
+<span id="cb35-2"><a aria-label="2"></a>           <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"Support"</span>, </span>
+<span id="cb35-3"><a aria-label="3"></a>                     <span class="st">"Anxiety"</span>), </span>
+<span id="cb35-4"><a aria-label="4"></a>           <span class="at">mdrt.values =</span> <span class="st">"meansd"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></div>
 </section>
 <section id="testing-simple-slopes" class="slide level2">
 <h2>Testing simple slopes</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="co">#https://easystats.github.io/modelbased/articles/introduction_comparisons_3.html?q=simple%20slo#contrasts-and-comparisons-for-slopes-of-numeric-predictors</span></span>
-<span id="cb36-2"><a></a></span>
-<span id="cb36-3"><a></a>pred <span class="ot">&lt;-</span> <span class="fu">estimate_means</span>(imodel, <span class="fu">c</span>(<span class="st">"Support"</span>, <span class="st">"Anxiety = c(5,6,7)"</span>))</span>
-<span id="cb36-4"><a></a><span class="fu">plot</span>(pred)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a aria-label="1"></a><span class="co">#https://easystats.github.io/modelbased/articles/introduction_comparisons_3.html?q=simple%20slo#contrasts-and-comparisons-for-slopes-of-numeric-predictors</span></span>
+<span id="cb36-2"><a aria-label="2"></a></span>
+<span id="cb36-3"><a aria-label="3"></a>pred <span class="ot">&lt;-</span> <span class="fu">estimate_means</span>(imodel, <span class="fu">c</span>(<span class="st">"Support"</span>, <span class="st">"Anxiety = c(5,6,7)"</span>))</span>
+<span id="cb36-4"><a aria-label="4"></a><span class="fu">plot</span>(pred)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">estimate_slopes</span>(imodel, <span class="st">"Support"</span>, <span class="at">by =</span> <span class="st">"Anxiety = c(5,6,7)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a aria-label="1"></a><span class="fu">estimate_slopes</span>(imodel, <span class="st">"Support"</span>, <span class="at">by =</span> <span class="st">"Anxiety = c(5,6,7)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Estimated Marginal Effects
 
@@ -929,7 +927,7 @@ Type of slope was dY/dX</code></pre>
 <section id="testing-simple-slopes-1" class="slide level2">
 <h2>Testing simple slopes</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="fu">estimate_slopes</span>(imodel, <span class="st">"Support"</span>, <span class="at">by =</span> <span class="st">"Anxiety=[sd]"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a aria-label="1"></a><span class="fu">estimate_slopes</span>(imodel, <span class="st">"Support"</span>, <span class="at">by =</span> <span class="st">"Anxiety=[sd]"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Estimated Marginal Effects
 
@@ -950,7 +948,7 @@ Type of slope was dY/dX</code></pre>
 <div class="fragment">
 <p>The test of the interaction coefficient is equivalent to the test of the difference in slopes at levels of Z separated by 1 unit.</p>
 <div class="cell" data-highlight.output="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">coef</span>(<span class="fu">summary</span>(imodel))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a aria-label="1"></a><span class="fu">coef</span>(<span class="fu">summary</span>(imodel))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                   Estimate Std. Error   t value           Pr(&gt;|t|)
 (Intercept)     -2.73966246 1.12100519 -2.443934 0.0160605206624654
@@ -965,7 +963,7 @@ Anxiety:Support -0.04174076 0.01309328 -3.187954 0.0018497364252185</code></pre>
 
 <p>Or you can use the <code>modelbased</code> package.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a><span class="fu">estimate_contrasts</span>(imodel, <span class="st">"Support"</span>, <span class="at">by =</span> <span class="st">"Anxiety=[sd]"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a aria-label="1"></a><span class="fu">estimate_contrasts</span>(imodel, <span class="st">"Support"</span>, <span class="at">by =</span> <span class="st">"Anxiety=[sd]"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Marginal Contrasts Analysis
 

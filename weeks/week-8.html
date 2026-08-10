@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Week 4 Exercises - Intro to Inference – PSYC 640 - Graduate Statistics</title>
+<title>Week 07 - Regression – PSYC 640 - Graduate Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -35,6 +35,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../weeks/week-9.html" rel="next">
+<link href="../weeks/week-7.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -78,8 +80,8 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Week 4 Exercises - Intro to Inference – PSYC 640 - Graduate Statistics">
-<meta property="og:description" content="">
+<meta property="og:title" content="Week 07 - Regression – PSYC 640 - Graduate Statistics">
+<meta property="og:image" content="https://dharaden.github.io/psyc640/weeks/images/clipboard-2550073227.jpeg">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
 
@@ -254,7 +256,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Week 4 Exercises - Intro to Inference</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-8.html">Week 8 - Intro Multiple Reg.</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -316,13 +318,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Weekly Materials</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../weeks/week-1.html" class="sidebar-item-text sidebar-link">
@@ -367,7 +369,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-8.html" class="sidebar-item-text sidebar-link">
+  <a href="../weeks/week-8.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Week 8 - Intro Multiple Reg.</span></a>
   </div>
 </li>
@@ -534,26 +536,23 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#following-along-with-professor" id="toc-following-along-with-professor" class="nav-link active" data-scroll-target="#following-along-with-professor">Following Along with Professor</a></li>
-  <li><a href="#on-your-own" id="toc-on-your-own" class="nav-link" data-scroll-target="#on-your-own">On Your Own</a>
+  <li><a href="#intro-overview-to-regression" id="toc-intro-overview-to-regression" class="nav-link active" data-scroll-target="#intro-overview-to-regression">Intro &amp; Overview to Regression</a>
   <ul class="collapse">
-  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives:</a></li>
-  <li><a href="#the-scenario-dataset" id="toc-the-scenario-dataset" class="nav-link" data-scroll-target="#the-scenario-dataset">The Scenario &amp; Dataset</a></li>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link" data-scroll-target="#instructions">Instructions:</a></li>
-  <li><a href="#task-1-parenting-style-and-anxiety" id="toc-task-1-parenting-style-and-anxiety" class="nav-link" data-scroll-target="#task-1-parenting-style-and-anxiety">Task 1: Parenting Style and Anxiety</a></li>
-  <li><a href="#task-2-sleep-and-anxiety" id="toc-task-2-sleep-and-anxiety" class="nav-link" data-scroll-target="#task-2-sleep-and-anxiety">Task 2: Sleep and Anxiety</a></li>
-  <li><a href="#challenge-question-if-you-finish-early" id="toc-challenge-question-if-you-finish-early" class="nav-link" data-scroll-target="#challenge-question-if-you-finish-early">🤔 Challenge Question (If you finish early)</a></li>
+  <li><a href="#prepare" id="toc-prepare" class="nav-link" data-scroll-target="#prepare">Prepare</a></li>
+  <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
+  <li><a href="#in-class-activity" id="toc-in-class-activity" class="nav-link" data-scroll-target="#in-class-activity">In-Class Activity</a></li>
+  <li><a href="#for-next-time" id="toc-for-next-time" class="nav-link" data-scroll-target="#for-next-time">For Next Time</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/class-activities/wk4_beg-inf.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/weeks/week-8.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-8.html">Week 8 - Intro Multiple Reg.</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Week 4 Exercises - Intro to Inference</h1>
+<h1 class="title">Week 07 - Regression</h1>
 </div>
 
 
@@ -570,78 +569,35 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="following-along-with-professor" class="level1">
-<h1>Following Along with Professor</h1>
-<p><a href="../files/data/wk4-inf.csv" download="wk4-inf.csv">Download Week 4 Follow Along Data (.csv)</a></p>
-<p>Download the data and move it to the correct folder so that you can access it in this activity.</p>
-<p>We’ve been hired as consultants for the university’s graduate school. They are concerned about student burnout and have given us some anonymous pilot data to explore potential factors. Our job is to be the data detectives.</p>
-<p>Import the data into your R file. I would suggest putting this line within the code chunk that you have your libraries in.</p>
-<p>Focus on having reproducible code! You may need to share your file with someone else. They should be able to run it.</p>
-<hr>
-</section>
-<section id="on-your-own" class="level1">
-<h1>On Your Own</h1>
-<p><strong>Goal</strong>: Work individually or in small groups to apply the concepts from today’s lecture and demo to a new dataset.</p>
-<section id="objectives" class="level3">
-<h3 class="anchored" data-anchor-id="objectives">Objectives:</h3>
+<section id="intro-overview-to-regression" class="level1">
+<h1>Intro &amp; Overview to Regression</h1>
+<section id="prepare" class="level2">
+<h2 class="anchored" data-anchor-id="prepare">Prepare</h2>
 <ul>
-<li><p>Identify predictor and outcome variables from a research question.</p></li>
-<li><p>Use the “decision tree” to select the correct family of statistical models.</p></li>
-<li><p>Create an appropriate visualization (<code>ggplot</code>).</p></li>
-<li><p>Run the correct statistical test (<code>t.test</code> or <code>cor.test</code>).</p></li>
-<li><p>Write a one-sentence conclusion synthesizing the results.</p></li>
+<li><p>Chapter 14.1.1 - 14.1.4 - ST</p></li>
+<li><p>Chapter 7.1 - 7.2.4 - IMS</p></li>
+<li><p>Chapter 8.1.1 &amp; 8.1.2 - MSR</p></li>
 </ul>
 </section>
-<section id="the-scenario-dataset" class="level3">
-<h3 class="anchored" data-anchor-id="the-scenario-dataset">The Scenario &amp; Dataset</h3>
-<p>A developmental psychology lab is exploring factors related to children’s well-being. They have collected pilot data from 100 children.</p>
-<p><a href="../files/data/child_wellbeing.csv" download="child_wellbeing.csv">Download Child Well-Being Data (.csv)</a></p>
-<p>Please download the <code>child_wellbeing.csv</code> file (above). It contains the following variables:</p>
-<ul>
-<li><p><code>child_id</code>: A unique identifier for each child.</p></li>
-<li><p><code>parenting_style</code>: The primary parenting style observed in the home (Categorical: “Authoritative” or “Permissive”).</p></li>
-<li><p><code>sleep_hours</code>: The average number of hours the child sleeps per night (Continuous).</p></li>
-<li><p><code>anxiety_score</code>: A score from 0-50 on a parent-report measure of the child’s anxiety (Continuous).</p></li>
-</ul>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<p><a href="../slides/lec-7_regression.html" target="_blank">💻 Intro to Regression</a></p>
 </section>
-<section id="instructions" class="level3">
-<h3 class="anchored" data-anchor-id="instructions">Instructions:</h3>
-<ol type="1">
-<li><p>Create a new R Markdown file titled <code>week4_inclass.Rmd</code>.</p></li>
-<li><p>Load the appropriate libraries.</p></li>
-<li><p>Load the <code>child_wellbeing.csv</code> dataset.</p></li>
-<li><p>For each task below, write the R code and answer the questions.</p></li>
-</ol>
+<section id="in-class-activity" class="level2">
+<h2 class="anchored" data-anchor-id="in-class-activity">In-Class Activity</h2>
+<p><a href="../class-activities/wk7_reg.html" target="_blank">Predicting Stuff with Regression</a></p>
+<p><img src="images/clipboard-2550073227.jpeg" class="img-fluid"></p>
 </section>
-<section id="task-1-parenting-style-and-anxiety" class="level3">
-<h3 class="anchored" data-anchor-id="task-1-parenting-style-and-anxiety">Task 1: Parenting Style and Anxiety</h3>
-<p><strong>The Research Question:</strong> “Do children raised in homes with an authoritative parenting style have different anxiety levels than children in homes with a permissive style?”</p>
-<p><strong>Your Steps:</strong></p>
-<ol type="1">
-<li><p><strong>Identify:</strong> What is the predictor (IV)? What is the outcome (DV)? Are they categorical or continuous?</p></li>
-<li><p><strong>Model:</strong> Based on your answer, what is the correct model <em>family</em> (t-test/ANOVA or Correlation/Regression)? Write out the specific model using R formula syntax (<code>outcome ~ predictor</code>).</p></li>
-<li><p><strong>Visualize:</strong> Create a boxplot to visualize the relationship between <code>parenting_style</code> and <code>anxiety_score</code>.</p></li>
-<li><p><strong>Analyze:</strong> Run the appropriate statistical test in R to test your model.</p></li>
-<li><p><strong>Conclude:</strong> Look at the p-value and the group means from your analysis. Write one clear sentence summarizing your finding (e.g., “We found that children with authoritative parents had significantly higher/lower anxiety scores than children with permissive parents, p = …”).</p></li>
-</ol>
-</section>
-<section id="task-2-sleep-and-anxiety" class="level3">
-<h3 class="anchored" data-anchor-id="task-2-sleep-and-anxiety">Task 2: Sleep and Anxiety</h3>
-<p><strong>The Research Question:</strong> “Is there an association between the average number of hours a child sleeps per night and their anxiety level?”</p>
-<p><strong>Your Steps:</strong></p>
-<ol type="1">
-<li><p><strong>Identify:</strong> What is the predictor (IV)? What is the outcome (DV)? Are they categorical or continuous?</p></li>
-<li><p><strong>Model:</strong> What is the correct model <em>family</em>? Write out the specific model using R formula syntax.</p></li>
-<li><p><strong>Visualize:</strong> Create a scatterplot to visualize the relationship between <code>sleep_hours</code> and <code>anxiety_score</code>. Add a line of best fit.</p></li>
-<li><p><strong>Analyze:</strong> Run the appropriate statistical test in R.</p></li>
-<li><p><strong>Conclude:</strong> Look at the p-value and the correlation coefficient (<code>r</code>). Write one clear sentence summarizing your finding (e.g., “We found a significant positive/negative association between hours of sleep and anxiety scores, r = …, p = …”).</p></li>
-</ol>
-</section>
-<section id="challenge-question-if-you-finish-early" class="level3">
-<h3 class="anchored" data-anchor-id="challenge-question-if-you-finish-early">🤔 Challenge Question (If you finish early)</h3>
-<p>Based on the <em>design</em> of this study (it is observational), can the researcher conclude that permissive parenting <em>causes</em> higher anxiety? In one or two sentences, explain why or why not, and propose one possible <strong>confounding variable</strong> that could be influencing both parenting style and a child’s anxiety</p>
-<hr>
-<p><strong><em>End of the document. Remember to Knit and upload the html and .Rmd to myCourses.</em></strong></p>
+<section id="for-next-time" class="level2">
+<h2 class="anchored" data-anchor-id="for-next-time">For Next Time</h2>
+<p><strong>NO CLASS 10/13/25</strong></p>
+<p>📋<a href="../labs/midterm-proj.html">Midterm Project</a></p>
+<p>📖Read Chapter 5 &amp; 14- ST</p>
+<p>📖Read Chapter 7.2.5 - IMS</p>
+<p><br><br></p>
+<div style="font-size: 0.875em;">
+<p>Back to <a href=".." title="Course schedule">course schedule</a> ⏎</p>
+</div>
 
 
 </section>
@@ -1061,6 +1017,18 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../weeks/week-7.html" class="pagination-link" aria-label="Week 7 - Variability &amp; Model Fit">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 7 - Variability &amp; Model Fit</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../weeks/week-9.html" class="pagination-link" aria-label="Week 9 - Multiple Reg.">
+        <span class="nav-page-text">Week 9 - Multiple Reg.</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1069,7 +1037,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/class-activities/wk4_beg-inf.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/weeks/week-8.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with ☕ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

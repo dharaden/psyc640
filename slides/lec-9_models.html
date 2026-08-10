@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.26">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <title>PSYC 640 - Graduate Statistics – Week 09: Model Selection &amp; Variability</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -16,10 +16,16 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -94,7 +100,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-5ae9c59b2727fcd5357d4f034d95f9e0.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-b2736e9fcda83c748fd63b6e579550ef.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -213,16 +219,16 @@
 <section class="slide level2">
 
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co">#Don't know if I'm using all of these, but including theme here anyways</span></span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3"><a></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-4"><a></a><span class="fu">library</span>(broom)</span>
-<span id="cb1-5"><a></a><span class="fu">library</span>(psych)</span>
-<span id="cb1-6"><a></a><span class="fu">library</span>(here)</span>
-<span id="cb1-7"><a></a></span>
-<span id="cb1-8"><a></a></span>
-<span id="cb1-9"><a></a><span class="co">#Remove Scientific Notation </span></span>
-<span id="cb1-10"><a></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="co">#Don't know if I'm using all of these, but including theme here anyways</span></span>
+<span id="cb1-2"><a aria-label="2"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a aria-label="3"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-4"><a aria-label="4"></a><span class="fu">library</span>(broom)</span>
+<span id="cb1-5"><a aria-label="5"></a><span class="fu">library</span>(psych)</span>
+<span id="cb1-6"><a aria-label="6"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-7"><a aria-label="7"></a></span>
+<span id="cb1-8"><a aria-label="8"></a></span>
+<span id="cb1-9"><a aria-label="9"></a><span class="co">#Remove Scientific Notation </span></span>
+<span id="cb1-10"><a aria-label="10"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -293,10 +299,10 @@ Z_y = \beta_0 + \beta_1Z_x + \epsilon_i
 <section id="example---lego-data" class="slide level2">
 <h2>Example - LEGO Data</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>lego <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"files"</span>, <span class="st">"data"</span>, <span class="st">"LEGO_data.csv"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-2"><a></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
-<span id="cb2-3"><a></a></span>
-<span id="cb2-4"><a></a><span class="fu">describe</span>(lego)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a>lego <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"files"</span>, <span class="st">"data"</span>, <span class="st">"LEGO_data.csv"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a aria-label="2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb2-3"><a aria-label="3"></a></span>
+<span id="cb2-4"><a aria-label="4"></a><span class="fu">describe</span>(lego)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                 vars  n     mean       sd   median  trimmed      mad      min
 set_name*           1 59    30.00    17.18    30.00    30.00    22.24     1.00
@@ -316,10 +322,10 @@ price              999.99   990 1.28     1.48   27.95</code></pre>
 <h3 id="visualization">Visualization</h3>
 <p>Good to see the scatterplots of this relationship</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>lego <span class="sc">%&gt;%</span> </span>
-<span id="cb4-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(number_of_pieces, price)) <span class="sc">+</span> </span>
-<span id="cb4-3"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb4-4"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a>lego <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(number_of_pieces, price)) <span class="sc">+</span> </span>
+<span id="cb4-3"><a aria-label="3"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb4-4"><a aria-label="4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="lec-9_models_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
@@ -340,13 +346,13 @@ price              999.99   990 1.28     1.48   27.95</code></pre>
 <p>Calculating the <strong>slope</strong></p>
 <p><span class="math display">\[\Large b_{1} = \frac{cov_{XY}}{s_{x}^{2}}\]</span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># Covariance</span></span>
-<span id="cb5-2"><a></a><span class="fu">cov</span>(lego<span class="sc">$</span>number_of_pieces, lego<span class="sc">$</span>price)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a><span class="co"># Covariance</span></span>
+<span id="cb5-2"><a aria-label="2"></a><span class="fu">cov</span>(lego<span class="sc">$</span>number_of_pieces, lego<span class="sc">$</span>price)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 469162.5</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># Variance of # of Pieces</span></span>
-<span id="cb7-2"><a></a><span class="fu">var</span>(lego<span class="sc">$</span>number_of_pieces)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a><span class="co"># Variance of # of Pieces</span></span>
+<span id="cb7-2"><a aria-label="2"></a><span class="fu">var</span>(lego<span class="sc">$</span>number_of_pieces)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5685305</code></pre>
 </div>
@@ -374,20 +380,20 @@ Cov(X, Y) = \frac 1{N-1} \sum (X_i - \bar{X}) (Y_i - \bar{Y})
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>mprice <span class="ot">&lt;-</span> <span class="fu">mean</span>(lego<span class="sc">$</span>price)</span>
-<span id="cb9-2"><a></a>mnum <span class="ot">&lt;-</span> <span class="fu">mean</span>(lego<span class="sc">$</span>number_of_pieces)</span>
-<span id="cb9-3"><a></a></span>
-<span id="cb9-4"><a></a>lego <span class="sc">%&gt;%</span> </span>
-<span id="cb9-5"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(number_of_pieces, price)) <span class="sc">+</span> </span>
-<span id="cb9-6"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb9-7"><a></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> mprice, </span>
-<span id="cb9-8"><a></a>             <span class="at">color =</span> <span class="st">"orange"</span>, </span>
-<span id="cb9-9"><a></a>             <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span> </span>
-<span id="cb9-10"><a></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> mnum, </span>
-<span id="cb9-11"><a></a>             <span class="at">color =</span> <span class="st">"purple"</span>, </span>
-<span id="cb9-12"><a></a>             <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span> </span>
-<span id="cb9-13"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb9-14"><a></a>              <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a>mprice <span class="ot">&lt;-</span> <span class="fu">mean</span>(lego<span class="sc">$</span>price)</span>
+<span id="cb9-2"><a aria-label="2"></a>mnum <span class="ot">&lt;-</span> <span class="fu">mean</span>(lego<span class="sc">$</span>number_of_pieces)</span>
+<span id="cb9-3"><a aria-label="3"></a></span>
+<span id="cb9-4"><a aria-label="4"></a>lego <span class="sc">%&gt;%</span> </span>
+<span id="cb9-5"><a aria-label="5"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(number_of_pieces, price)) <span class="sc">+</span> </span>
+<span id="cb9-6"><a aria-label="6"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb9-7"><a aria-label="7"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> mprice, </span>
+<span id="cb9-8"><a aria-label="8"></a>             <span class="at">color =</span> <span class="st">"orange"</span>, </span>
+<span id="cb9-9"><a aria-label="9"></a>             <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span> </span>
+<span id="cb9-10"><a aria-label="10"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> mnum, </span>
+<span id="cb9-11"><a aria-label="11"></a>             <span class="at">color =</span> <span class="st">"purple"</span>, </span>
+<span id="cb9-12"><a aria-label="12"></a>             <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span> </span>
+<span id="cb9-13"><a aria-label="13"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb9-14"><a aria-label="14"></a>              <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 
 </div>
@@ -396,18 +402,18 @@ Cov(X, Y) = \frac 1{N-1} \sum (X_i - \bar{X}) (Y_i - \bar{Y})
 <h2>Regression coefficient, <span class="math inline">\(b_{1}\)</span></h2>
 <p><span class="math display">\[\Large b_{1} = \frac{cov_{XY}}{s_{x}^{2}} = r_{xy} \frac{s_{y}}{s_{x}}\]</span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co">#SD of # of Pieces</span></span>
-<span id="cb10-2"><a></a><span class="fu">sd</span>(lego<span class="sc">$</span>number_of_pieces) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-label="1"></a><span class="co">#SD of # of Pieces</span></span>
+<span id="cb10-2"><a aria-label="2"></a><span class="fu">sd</span>(lego<span class="sc">$</span>number_of_pieces) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2384.388</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># SD of Price</span></span>
-<span id="cb12-2"><a></a><span class="fu">sd</span>(lego<span class="sc">$</span>price) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-label="1"></a><span class="co"># SD of Price</span></span>
+<span id="cb12-2"><a aria-label="2"></a><span class="fu">sd</span>(lego<span class="sc">$</span>price) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 214.7205</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="co"># Correlation</span></span>
-<span id="cb14-2"><a></a><span class="fu">cor</span>(lego<span class="sc">$</span>number_of_pieces, lego<span class="sc">$</span>price)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a><span class="co"># Correlation</span></span>
+<span id="cb14-2"><a aria-label="2"></a><span class="fu">cor</span>(lego<span class="sc">$</span>number_of_pieces, lego<span class="sc">$</span>price)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9163742</code></pre>
 </div>
@@ -419,11 +425,11 @@ Cov(X, Y) = \frac 1{N-1} \sum (X_i - \bar{X}) (Y_i - \bar{Y})
 <p><span class="math display">\[\Large b_0 = \bar{Y} - b_1\bar{X}\]</span></p>
 <p>The intercept adjusts the location of the regression line to ensure that it runs through the point <span class="math inline">\(\large (\bar{X}, \bar{Y}).\)</span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">mean</span>(lego<span class="sc">$</span>number_of_pieces)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-label="1"></a><span class="fu">mean</span>(lego<span class="sc">$</span>number_of_pieces)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2416.576</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">mean</span>(lego<span class="sc">$</span>price)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-label="1"></a><span class="fu">mean</span>(lego<span class="sc">$</span>price)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 218.1936</code></pre>
 </div>
@@ -477,7 +483,7 @@ Cov(X, Y) = \frac 1{N-1} \sum (X_i - \bar{X}) (Y_i - \bar{Y})
 <ul>
 <li>What is the best “model” to explain this data? If you had no information, what would be your best guess for someone’s score?</li>
 </ul>
-<p>. . .</p>
+<div class="fragment">
 <p>We are looking to explain variance in our outcome (Stroop Performance)</p>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -493,6 +499,7 @@ Cov(X, Y) = \frac 1{N-1} \sum (X_i - \bar{X}) (Y_i - \bar{Y})
 </div>
 </div>
 <p>The mean can be considered the “null model” in that it is the most basic</p>
+</div>
 </section>
 <section class="slide level2">
 
@@ -584,30 +591,30 @@ Cov(X, Y) = \frac 1{N-1} \sum (X_i - \bar{X}) (Y_i - \bar{Y})
 <p>This might be something that we are considering between. How do we pick the “right” one?</p>
 <p>Start with some data where we have 2 groups and we identify a 2 point difference in the groups scores</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">set.seed</span>(<span class="dv">2025</span>)</span>
-<span id="cb20-2"><a></a></span>
-<span id="cb20-3"><a></a><span class="co"># Two independent groups with equal variances</span></span>
-<span id="cb20-4"><a></a>n0 <span class="ot">&lt;-</span> <span class="dv">80</span>; n1 <span class="ot">&lt;-</span> <span class="dv">80</span></span>
-<span id="cb20-5"><a></a>mu0 <span class="ot">&lt;-</span> <span class="dv">12</span>; mu1 <span class="ot">&lt;-</span> <span class="dv">10</span>      <span class="co"># true mean difference = -2</span></span>
-<span id="cb20-6"><a></a>sigma <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb20-7"><a></a>y0 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n0, mu0, sigma)</span>
-<span id="cb20-8"><a></a>y1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n1, mu1, sigma)</span>
-<span id="cb20-9"><a></a></span>
-<span id="cb20-10"><a></a><span class="co"># Put that in a data frame</span></span>
-<span id="cb20-11"><a></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb20-12"><a></a>  <span class="at">dep =</span> <span class="fu">c</span>(y0, y1),</span>
-<span id="cb20-13"><a></a>  <span class="at">group01 =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span>, n0), <span class="fu">rep</span>(<span class="dv">1</span>, n1))</span>
-<span id="cb20-14"><a></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-15"><a></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">factor</span>(group01, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"control"</span>,<span class="st">"treatment"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">2025</span>)</span>
+<span id="cb20-2"><a aria-label="2"></a></span>
+<span id="cb20-3"><a aria-label="3"></a><span class="co"># Two independent groups with equal variances</span></span>
+<span id="cb20-4"><a aria-label="4"></a>n0 <span class="ot">&lt;-</span> <span class="dv">80</span>; n1 <span class="ot">&lt;-</span> <span class="dv">80</span></span>
+<span id="cb20-5"><a aria-label="5"></a>mu0 <span class="ot">&lt;-</span> <span class="dv">12</span>; mu1 <span class="ot">&lt;-</span> <span class="dv">10</span>      <span class="co"># true mean difference = -2</span></span>
+<span id="cb20-6"><a aria-label="6"></a>sigma <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb20-7"><a aria-label="7"></a>y0 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n0, mu0, sigma)</span>
+<span id="cb20-8"><a aria-label="8"></a>y1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n1, mu1, sigma)</span>
+<span id="cb20-9"><a aria-label="9"></a></span>
+<span id="cb20-10"><a aria-label="10"></a><span class="co"># Put that in a data frame</span></span>
+<span id="cb20-11"><a aria-label="11"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb20-12"><a aria-label="12"></a>  <span class="at">dep =</span> <span class="fu">c</span>(y0, y1),</span>
+<span id="cb20-13"><a aria-label="13"></a>  <span class="at">group01 =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span>, n0), <span class="fu">rep</span>(<span class="dv">1</span>, n1))</span>
+<span id="cb20-14"><a aria-label="14"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-15"><a aria-label="15"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">factor</span>(group01, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"control"</span>,<span class="st">"treatment"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
 
 <h3 id="t-test">t-test</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>tt_fit <span class="ot">&lt;-</span> <span class="fu">t.test</span>(dep <span class="sc">~</span> group, <span class="at">data =</span> dat, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb21-2"><a></a>tt_tidy <span class="ot">&lt;-</span> <span class="fu">tidy</span>(tt_fit)</span>
-<span id="cb21-3"><a></a>tt_tidy</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-label="1"></a>tt_fit <span class="ot">&lt;-</span> <span class="fu">t.test</span>(dep <span class="sc">~</span> group, <span class="at">data =</span> dat, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb21-2"><a aria-label="2"></a>tt_tidy <span class="ot">&lt;-</span> <span class="fu">tidy</span>(tt_fit)</span>
+<span id="cb21-3"><a aria-label="3"></a>tt_tidy</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 10
   estimate estimate1 estimate2 statistic    p.value parameter conf.low conf.high
@@ -621,8 +628,8 @@ Cov(X, Y) = \frac 1{N-1} \sum (X_i - \bar{X}) (Y_i - \bar{Y})
 
 <h3 id="anova">ANOVA</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>fit_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(dep <span class="sc">~</span> group, <span class="at">data =</span> dat)</span>
-<span id="cb23-2"><a></a><span class="fu">summary</span>(fit_aov)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-label="1"></a>fit_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(dep <span class="sc">~</span> group, <span class="at">data =</span> dat)</span>
+<span id="cb23-2"><a aria-label="2"></a><span class="fu">summary</span>(fit_aov)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             Df Sum Sq Mean Sq F value       Pr(&gt;F)    
 group         1  286.6  286.64   33.07 0.0000000448 ***
@@ -630,16 +637,16 @@ Residuals   158 1369.6    8.67
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>aov_tidy <span class="ot">&lt;-</span> <span class="fu">tidy</span>(fit_aov)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-label="1"></a>aov_tidy <span class="ot">&lt;-</span> <span class="fu">tidy</span>(fit_aov)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
 
 <h3 id="regression">Regression</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>reg_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(dep <span class="sc">~</span> group01, <span class="at">data =</span> dat)</span>
-<span id="cb26-2"><a></a>reg_tidy <span class="ot">&lt;-</span> <span class="fu">tidy</span>(reg_fit)</span>
-<span id="cb26-3"><a></a>reg_tidy</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-label="1"></a>reg_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(dep <span class="sc">~</span> group01, <span class="at">data =</span> dat)</span>
+<span id="cb26-2"><a aria-label="2"></a>reg_tidy <span class="ot">&lt;-</span> <span class="fu">tidy</span>(reg_fit)</span>
+<span id="cb26-3"><a aria-label="3"></a>reg_tidy</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 5
   term        estimate std.error statistic  p.value
@@ -647,66 +654,66 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 1 (Intercept)    12.1      0.329     36.9  1.65e-79
 2 group01        -2.68     0.466     -5.75 4.48e- 8</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>reg_glance <span class="ot">&lt;-</span> <span class="fu">glance</span>(reg_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-label="1"></a>reg_glance <span class="ot">&lt;-</span> <span class="fu">glance</span>(reg_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
 
 <h3 id="comparing-methods">Comparing Methods</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="co"># Equivalence 1: The regression slope for the dummy variable equals the difference in group means.</span></span>
-<span id="cb29-2"><a></a>mean_diff <span class="ot">&lt;-</span> tt_tidy<span class="sc">$</span>estimate2 <span class="sc">-</span> tt_tidy<span class="sc">$</span>estimate1</span>
-<span id="cb29-3"><a></a>beta1 <span class="ot">&lt;-</span> reg_tidy <span class="sc">%&gt;%</span> </span>
-<span id="cb29-4"><a></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"group01"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-5"><a></a>  <span class="fu">pull</span>(estimate)</span>
-<span id="cb29-6"><a></a></span>
-<span id="cb29-7"><a></a>mean_diff</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-label="1"></a><span class="co"># Equivalence 1: The regression slope for the dummy variable equals the difference in group means.</span></span>
+<span id="cb29-2"><a aria-label="2"></a>mean_diff <span class="ot">&lt;-</span> tt_tidy<span class="sc">$</span>estimate2 <span class="sc">-</span> tt_tidy<span class="sc">$</span>estimate1</span>
+<span id="cb29-3"><a aria-label="3"></a>beta1 <span class="ot">&lt;-</span> reg_tidy <span class="sc">%&gt;%</span> </span>
+<span id="cb29-4"><a aria-label="4"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"group01"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-5"><a aria-label="5"></a>  <span class="fu">pull</span>(estimate)</span>
+<span id="cb29-6"><a aria-label="6"></a></span>
+<span id="cb29-7"><a aria-label="7"></a>mean_diff</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -2.676943</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>beta1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-label="1"></a>beta1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -2.676943</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="co"># Equivalence 2: The F-statistic from the ANOVA is the regression square of the t-statistic.</span></span>
-<span id="cb33-2"><a></a>t_stat_reg <span class="ot">&lt;-</span> reg_tidy <span class="sc">%&gt;%</span> </span>
-<span id="cb33-3"><a></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"group01"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb33-4"><a></a>  <span class="fu">pull</span>(statistic)</span>
-<span id="cb33-5"><a></a></span>
-<span id="cb33-6"><a></a>t_stat_t <span class="ot">&lt;-</span> tt_tidy <span class="sc">%&gt;%</span> </span>
-<span id="cb33-7"><a></a>  <span class="fu">pull</span>(statistic)</span>
-<span id="cb33-8"><a></a></span>
-<span id="cb33-9"><a></a>f_stat <span class="ot">&lt;-</span> reg_glance<span class="sc">$</span>statistic</span>
-<span id="cb33-10"><a></a></span>
-<span id="cb33-11"><a></a></span>
-<span id="cb33-12"><a></a>t_stat_reg<span class="sc">^</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-label="1"></a><span class="co"># Equivalence 2: The F-statistic from the ANOVA is the regression square of the t-statistic.</span></span>
+<span id="cb33-2"><a aria-label="2"></a>t_stat_reg <span class="ot">&lt;-</span> reg_tidy <span class="sc">%&gt;%</span> </span>
+<span id="cb33-3"><a aria-label="3"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"group01"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb33-4"><a aria-label="4"></a>  <span class="fu">pull</span>(statistic)</span>
+<span id="cb33-5"><a aria-label="5"></a></span>
+<span id="cb33-6"><a aria-label="6"></a>t_stat_t <span class="ot">&lt;-</span> tt_tidy <span class="sc">%&gt;%</span> </span>
+<span id="cb33-7"><a aria-label="7"></a>  <span class="fu">pull</span>(statistic)</span>
+<span id="cb33-8"><a aria-label="8"></a></span>
+<span id="cb33-9"><a aria-label="9"></a>f_stat <span class="ot">&lt;-</span> reg_glance<span class="sc">$</span>statistic</span>
+<span id="cb33-10"><a aria-label="10"></a></span>
+<span id="cb33-11"><a aria-label="11"></a></span>
+<span id="cb33-12"><a aria-label="12"></a>t_stat_reg<span class="sc">^</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 33.06772</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>t_stat_t<span class="sc">^</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a aria-label="1"></a>t_stat_t<span class="sc">^</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       t 
 33.06772 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>f_stat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a aria-label="1"></a>f_stat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   value 
 33.06772 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="co"># Equivalence 3: The p-values are identical.</span></span>
-<span id="cb39-2"><a></a>tt_tidy<span class="sc">$</span>p.value</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a aria-label="1"></a><span class="co"># Equivalence 3: The p-values are identical.</span></span>
+<span id="cb39-2"><a aria-label="2"></a>tt_tidy<span class="sc">$</span>p.value</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.00000004475048</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>reg_tidy <span class="sc">%&gt;%</span> </span>
-<span id="cb41-2"><a></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"group01"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb41-3"><a></a>  <span class="fu">pull</span>(p.value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a aria-label="1"></a>reg_tidy <span class="sc">%&gt;%</span> </span>
+<span id="cb41-2"><a aria-label="2"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"group01"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb41-3"><a aria-label="3"></a>  <span class="fu">pull</span>(p.value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.00000004475048</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>aov_tidy <span class="sc">%&gt;%</span> </span>
-<span id="cb43-2"><a></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"group"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb43-3"><a></a>  <span class="fu">pull</span>(p.value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a aria-label="1"></a>aov_tidy <span class="sc">%&gt;%</span> </span>
+<span id="cb43-2"><a aria-label="2"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"group"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb43-3"><a aria-label="3"></a>  <span class="fu">pull</span>(p.value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.00000004475048</code></pre>
 </div>

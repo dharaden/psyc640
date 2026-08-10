@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.26">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <title>PSYC 640 - Graduate Statistics – Week 11: Categorical Predictors &amp; Logistic Regression</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -16,10 +16,16 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -94,7 +100,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-5ae9c59b2727fcd5357d4f034d95f9e0.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-b2736e9fcda83c748fd63b6e579550ef.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -211,16 +217,16 @@
 <section class="slide level2">
 
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-3"><a></a><span class="fu">library</span>(here)</span>
-<span id="cb1-4"><a></a><span class="fu">library</span>(lm.beta)</span>
-<span id="cb1-5"><a></a><span class="fu">library</span>(easystats)</span>
-<span id="cb1-6"><a></a><span class="fu">library</span>(sjPlot)</span>
-<span id="cb1-7"><a></a></span>
-<span id="cb1-8"><a></a></span>
-<span id="cb1-9"><a></a><span class="co">#Remove Scientific Notation </span></span>
-<span id="cb1-10"><a></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a aria-label="2"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-3"><a aria-label="3"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-4"><a aria-label="4"></a><span class="fu">library</span>(lm.beta)</span>
+<span id="cb1-5"><a aria-label="5"></a><span class="fu">library</span>(easystats)</span>
+<span id="cb1-6"><a aria-label="6"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb1-7"><a aria-label="7"></a></span>
+<span id="cb1-8"><a aria-label="8"></a></span>
+<span id="cb1-9"><a aria-label="9"></a><span class="co">#Remove Scientific Notation </span></span>
+<span id="cb1-10"><a aria-label="10"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="regression" class="slide level2 scrollable">
@@ -276,9 +282,9 @@
 <h2>Multiple Regression: Example</h2>
 <p>Previously, we predicted the # of Transformers movies someone watched by their age, income and # of books read</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>cah_data <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"files"</span>, <span class="st">"data"</span>, </span>
-<span id="cb2-2"><a></a>                        <span class="st">"CAH.csv"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-3"><a></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.character), <span class="sc">~</span><span class="fu">na_if</span>(., <span class="st">""</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a>cah_data <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"files"</span>, <span class="st">"data"</span>, </span>
+<span id="cb2-2"><a aria-label="2"></a>                        <span class="st">"CAH.csv"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a aria-label="3"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.character), <span class="sc">~</span><span class="fu">na_if</span>(., <span class="st">""</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The regression equation would look something like this:</p>
 <p><span class="math display">\[
@@ -289,12 +295,12 @@ Y = b_0 + b_1X_1 + b_2X_2 + b_3X_3 + e
 
 <h3 id="transformers-regression-b">Transformers Regression: <span class="math inline">\(b\)</span></h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>reg1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(transformers <span class="sc">~</span> age <span class="sc">+</span> income <span class="sc">+</span> books,</span>
-<span id="cb3-2"><a></a>           <span class="at">data =</span> cah_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a>reg1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(transformers <span class="sc">~</span> age <span class="sc">+</span> income <span class="sc">+</span> books,</span>
+<span id="cb3-2"><a aria-label="2"></a>           <span class="at">data =</span> cah_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Interpret</strong>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">summary</span>(reg1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a><span class="fu">summary</span>(reg1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -325,10 +331,10 @@ F-statistic: 9.811 on 3 and 427 DF,  p-value: 0.000002857</code></pre>
 <h3 id="transformers-regression-beta">Transformers Regression: <span class="math inline">\(\beta\)</span></h3>
 <p><code>scale()</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>reg1.std <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">scale</span>(transformers) <span class="sc">~</span> <span class="fu">scale</span>(age) <span class="sc">+</span> <span class="fu">scale</span>(income) <span class="sc">+</span> <span class="fu">scale</span>(books),</span>
-<span id="cb6-2"><a></a>           <span class="at">data =</span> cah_data)</span>
-<span id="cb6-3"><a></a></span>
-<span id="cb6-4"><a></a><span class="fu">summary</span>(reg1.std)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a>reg1.std <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">scale</span>(transformers) <span class="sc">~</span> <span class="fu">scale</span>(age) <span class="sc">+</span> <span class="fu">scale</span>(income) <span class="sc">+</span> <span class="fu">scale</span>(books),</span>
+<span id="cb6-2"><a aria-label="2"></a>           <span class="at">data =</span> cah_data)</span>
+<span id="cb6-3"><a aria-label="3"></a></span>
+<span id="cb6-4"><a aria-label="4"></a><span class="fu">summary</span>(reg1.std)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -360,12 +366,12 @@ F-statistic: 9.811 on 3 and 427 DF,  p-value: 0.000002857</code></pre>
 <h3 id="transformers-regression-beta-1">Transformers Regression: <span class="math inline">\(\beta\)</span></h3>
 <p><code>lm.beta()</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="do">## Same as before</span></span>
-<span id="cb8-2"><a></a>reg1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(transformers <span class="sc">~</span> age <span class="sc">+</span> income <span class="sc">+</span> books,</span>
-<span id="cb8-3"><a></a>           <span class="at">data =</span> cah_data)</span>
-<span id="cb8-4"><a></a></span>
-<span id="cb8-5"><a></a>beta1.std <span class="ot">&lt;-</span> <span class="fu">lm.beta</span>(reg1)</span>
-<span id="cb8-6"><a></a><span class="fu">summary</span>(beta1.std)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a><span class="do">## Same as before</span></span>
+<span id="cb8-2"><a aria-label="2"></a>reg1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(transformers <span class="sc">~</span> age <span class="sc">+</span> income <span class="sc">+</span> books,</span>
+<span id="cb8-3"><a aria-label="3"></a>           <span class="at">data =</span> cah_data)</span>
+<span id="cb8-4"><a aria-label="4"></a></span>
+<span id="cb8-5"><a aria-label="5"></a>beta1.std <span class="ot">&lt;-</span> <span class="fu">lm.beta</span>(reg1)</span>
+<span id="cb8-6"><a aria-label="6"></a><span class="fu">summary</span>(beta1.std)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -436,10 +442,10 @@ F-statistic: 9.811 on 3 and 427 DF,  p-value: 0.000002857</code></pre>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">tab_model</span>(reg1, <span class="at">show.std =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb11-2"><a></a>          <span class="at">pred.labels =</span> <span class="fu">c</span>(<span class="st">"Intercept"</span>, <span class="st">"Age"</span>, </span>
-<span id="cb11-3"><a></a>                          <span class="st">"Income"</span>, <span class="st">"# of Books"</span>), </span>
-<span id="cb11-4"><a></a>          <span class="at">dv.labels =</span> <span class="st">"# of Transformers Movies"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a><span class="fu">tab_model</span>(reg1, <span class="at">show.std =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb11-2"><a aria-label="2"></a>          <span class="at">pred.labels =</span> <span class="fu">c</span>(<span class="st">"Intercept"</span>, <span class="st">"Age"</span>, </span>
+<span id="cb11-3"><a aria-label="3"></a>                          <span class="st">"Income"</span>, <span class="st">"# of Books"</span>), </span>
+<span id="cb11-4"><a aria-label="4"></a>          <span class="at">dv.labels =</span> <span class="st">"# of Transformers Movies"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <table class="caption-top" style="border-collapse:collapse; border:none;">
@@ -513,20 +519,20 @@ F-statistic: 9.811 on 3 and 427 DF,  p-value: 0.000002857</code></pre>
 <h2>Categorical Predictors</h2>
 <p>Typically identified by a grouping variable that may be a <code>character</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">glimpse</span>(cah_data<span class="sc">$</span>political_affiliation)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-label="1"></a><span class="fu">glimpse</span>(cah_data<span class="sc">$</span>political_affiliation)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> chr [1:1000] "Democrat" "Democrat" "Independent" "Republican" "Democrat" ...</code></pre>
 </div>
 </div>
 <p>Need to change the variable from <code>character</code> to <code>factor</code> which will assign a number to each group</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>cah_data <span class="ot">&lt;-</span> cah_data <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a></a>  <span class="fu">mutate</span>(</span>
-<span id="cb14-3"><a></a>    <span class="at">pol =</span> <span class="fu">as.factor</span>(political_affiliation),</span>
-<span id="cb14-4"><a></a>    <span class="at">ghosts =</span> <span class="fu">as.factor</span>(ghosts)</span>
-<span id="cb14-5"><a></a>    )</span>
-<span id="cb14-6"><a></a></span>
-<span id="cb14-7"><a></a><span class="fu">glimpse</span>(cah_data<span class="sc">$</span>pol)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a>cah_data <span class="ot">&lt;-</span> cah_data <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb14-3"><a aria-label="3"></a>    <span class="at">pol =</span> <span class="fu">as.factor</span>(political_affiliation),</span>
+<span id="cb14-4"><a aria-label="4"></a>    <span class="at">ghosts =</span> <span class="fu">as.factor</span>(ghosts)</span>
+<span id="cb14-5"><a aria-label="5"></a>    )</span>
+<span id="cb14-6"><a aria-label="6"></a></span>
+<span id="cb14-7"><a aria-label="7"></a><span class="fu">glimpse</span>(cah_data<span class="sc">$</span>pol)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Factor w/ 3 levels "Democrat","Independent",..: 1 1 2 3 1 1 2 3 3 1 ...</code></pre>
 </div>
@@ -670,12 +676,12 @@ F-statistic: 9.811 on 3 and 427 DF,  p-value: 0.000002857</code></pre>
 <p>Going back to our Transformers dataset, let’s see how our political affiliation variable can predict # of transformers movies</p>
 <p>Usually you have to create the separate dummy variables, but not in R</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>cat1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(transformers <span class="sc">~</span> pol,</span>
-<span id="cb16-2"><a></a>           <span class="at">data =</span> cah_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-label="1"></a>cat1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(transformers <span class="sc">~</span> pol,</span>
+<span id="cb16-2"><a aria-label="2"></a>           <span class="at">data =</span> cah_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>You can also double check the dummy/contrast coding</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">contrasts</span>(cah_data<span class="sc">$</span>pol)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-label="1"></a><span class="fu">contrasts</span>(cah_data<span class="sc">$</span>pol)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            Independent Republican
 Democrat              0          0
@@ -702,7 +708,7 @@ Republican            0          1</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">summary</span>(cat1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-label="1"></a><span class="fu">summary</span>(cat1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -733,10 +739,10 @@ F-statistic:   1.3 on 2 and 799 DF,  p-value: 0.2731</code></pre>
 <p>Maybe we want to compare to a specific group</p>
 <p>We need to then update the reference group</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>cah_data<span class="sc">$</span>pol2 <span class="ot">&lt;-</span> <span class="fu">relevel</span>(cah_data<span class="sc">$</span>pol, <span class="at">ref =</span> <span class="st">"Independent"</span>)</span>
-<span id="cb21-2"><a></a>cat2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(transformers <span class="sc">~</span> pol2,</span>
-<span id="cb21-3"><a></a>           <span class="at">data =</span> cah_data)</span>
-<span id="cb21-4"><a></a><span class="fu">summary</span>(cat2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-label="1"></a>cah_data<span class="sc">$</span>pol2 <span class="ot">&lt;-</span> <span class="fu">relevel</span>(cah_data<span class="sc">$</span>pol, <span class="at">ref =</span> <span class="st">"Independent"</span>)</span>
+<span id="cb21-2"><a aria-label="2"></a>cat2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(transformers <span class="sc">~</span> pol2,</span>
+<span id="cb21-3"><a aria-label="3"></a>           <span class="at">data =</span> cah_data)</span>
+<span id="cb21-4"><a aria-label="4"></a><span class="fu">summary</span>(cat2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -768,9 +774,9 @@ F-statistic:   1.3 on 2 and 799 DF,  p-value: 0.2731</code></pre>
 <p>We are examining group differences in Transformer Movies (continuous) by Political Affiliation (group/categorical)</p>
 <p>IT IS JUST AN ANOVA</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>aov1 <span class="ot">&lt;-</span> <span class="fu">aov</span>(transformers <span class="sc">~</span> pol2,</span>
-<span id="cb23-2"><a></a>           <span class="at">data =</span> cah_data)</span>
-<span id="cb23-3"><a></a><span class="fu">summary</span>(aov1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-label="1"></a>aov1 <span class="ot">&lt;-</span> <span class="fu">aov</span>(transformers <span class="sc">~</span> pol2,</span>
+<span id="cb23-2"><a aria-label="2"></a>           <span class="at">data =</span> cah_data)</span>
+<span id="cb23-3"><a aria-label="3"></a><span class="fu">summary</span>(aov1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             Df Sum Sq Mean Sq F value Pr(&gt;F)
 pol2          2    5.9   2.929     1.3  0.273
@@ -784,13 +790,13 @@ Residuals   799 1799.8   2.252
 <h3 id="everything-is-a-linear-model">Everything is a linear model</h3>
 <p>We are able to come to the same conclusions that there are no significant differences between groups</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="co"># Regression F-value</span></span>
-<span id="cb25-2"><a></a><span class="fu">summary</span>(cat2)<span class="sc">$</span>fstatistic[[<span class="dv">1</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-label="1"></a><span class="co"># Regression F-value</span></span>
+<span id="cb25-2"><a aria-label="2"></a><span class="fu">summary</span>(cat2)<span class="sc">$</span>fstatistic[[<span class="dv">1</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.300092</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="co"># ANOVA F-value</span></span>
-<span id="cb27-2"><a></a><span class="fu">summary</span>(aov1)[[<span class="dv">1</span>]][<span class="dv">1</span>, <span class="dv">4</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-label="1"></a><span class="co"># ANOVA F-value</span></span>
+<span id="cb27-2"><a aria-label="2"></a><span class="fu">summary</span>(aov1)[[<span class="dv">1</span>]][<span class="dv">1</span>, <span class="dv">4</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.300092</code></pre>
 </div>
@@ -923,19 +929,19 @@ Average Score for Group 3 = ______________</p></li>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>cat_reg <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"files"</span>, <span class="st">"data"</span>, </span>
-<span id="cb29-2"><a></a>                       <span class="st">"cat_reg_complete.xlsx"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-3"><a></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb29-4"><a></a>  <span class="co"># 1 = recovered; 0 = not recovered</span></span>
-<span id="cb29-5"><a></a>  <span class="fu">mutate</span>(<span class="at">recover =</span> <span class="fu">if_else</span>(post_score <span class="sc">&gt;</span> <span class="dv">12</span>, <span class="dv">0</span>, <span class="dv">1</span>))</span>
-<span id="cb29-6"><a></a></span>
-<span id="cb29-7"><a></a>cat_reg <span class="sc">%&gt;%</span> </span>
-<span id="cb29-8"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(pre_score, recover)) <span class="sc">+</span></span>
-<span id="cb29-9"><a></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="dv">0</span>, <span class="at">height =</span> <span class="fl">0.05</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb29-10"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
-<span id="cb29-11"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb29-12"><a></a>    <span class="at">title =</span> <span class="st">"Pre-Score predicting Recovery"</span></span>
-<span id="cb29-13"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-label="1"></a>cat_reg <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"files"</span>, <span class="st">"data"</span>, </span>
+<span id="cb29-2"><a aria-label="2"></a>                       <span class="st">"cat_reg_complete.xlsx"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-3"><a aria-label="3"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb29-4"><a aria-label="4"></a>  <span class="co"># 1 = recovered; 0 = not recovered</span></span>
+<span id="cb29-5"><a aria-label="5"></a>  <span class="fu">mutate</span>(<span class="at">recover =</span> <span class="fu">if_else</span>(post_score <span class="sc">&gt;</span> <span class="dv">12</span>, <span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb29-6"><a aria-label="6"></a></span>
+<span id="cb29-7"><a aria-label="7"></a>cat_reg <span class="sc">%&gt;%</span> </span>
+<span id="cb29-8"><a aria-label="8"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(pre_score, recover)) <span class="sc">+</span></span>
+<span id="cb29-9"><a aria-label="9"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="dv">0</span>, <span class="at">height =</span> <span class="fl">0.05</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb29-10"><a aria-label="10"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb29-11"><a aria-label="11"></a>  <span class="fu">labs</span>(</span>
+<span id="cb29-12"><a aria-label="12"></a>    <span class="at">title =</span> <span class="st">"Pre-Score predicting Recovery"</span></span>
+<span id="cb29-13"><a aria-label="13"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 
 </div>
@@ -990,12 +996,12 @@ transformation(p_i)=\beta_0+\beta_1x_{1,i} + \beta_2x_{2,i} + \cdots+\beta_lx_{k
 <h3 id="glm---cah-data">GLM - CAH data 👻</h3>
 <p>Research Question: <em>Does age, the number of books and the number of transformer movies predict the belief in ghosts?</em></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="do">## Using glm() instead of lm()</span></span>
-<span id="cb30-2"><a></a>ln1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(ghosts <span class="sc">~</span> age <span class="sc">+</span> books <span class="sc">+</span> transformers, </span>
-<span id="cb30-3"><a></a>           <span class="at">data =</span> cah_data, </span>
-<span id="cb30-4"><a></a>           <span class="do">## This is new</span></span>
-<span id="cb30-5"><a></a>           <span class="do">##Tells the model we are doing logistic regression with a binary outcome</span></span>
-<span id="cb30-6"><a></a>           <span class="at">family =</span> <span class="st">"binomial"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-label="1"></a><span class="do">## Using glm() instead of lm()</span></span>
+<span id="cb30-2"><a aria-label="2"></a>ln1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(ghosts <span class="sc">~</span> age <span class="sc">+</span> books <span class="sc">+</span> transformers, </span>
+<span id="cb30-3"><a aria-label="3"></a>           <span class="at">data =</span> cah_data, </span>
+<span id="cb30-4"><a aria-label="4"></a>           <span class="do">## This is new</span></span>
+<span id="cb30-5"><a aria-label="5"></a>           <span class="do">##Tells the model we are doing logistic regression with a binary outcome</span></span>
+<span id="cb30-6"><a aria-label="6"></a>           <span class="at">family =</span> <span class="st">"binomial"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -1015,7 +1021,7 @@ transformation(p_i)=\beta_0+\beta_1x_{1,i} + \beta_2x_{2,i} + \cdots+\beta_lx_{k
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">summary</span>(ln1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-label="1"></a><span class="fu">summary</span>(ln1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1060,7 +1066,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 </div>
 <p><code>sjPlot</code> is always coming in with the good tables</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">tab_model</span>(ln1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-label="1"></a><span class="fu">tab_model</span>(ln1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top" style="border-collapse:collapse; border:none;">
 <tbody>
@@ -1121,21 +1127,21 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <h2>Visualization</h2>
 <p>Extract the model implied probabilities for each individual</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>probs <span class="ot">&lt;-</span> broom<span class="sc">::</span><span class="fu">augment</span>(ln1, <span class="at">type.predict =</span> <span class="st">"response"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-label="1"></a>probs <span class="ot">&lt;-</span> broom<span class="sc">::</span><span class="fu">augment</span>(ln1, <span class="at">type.predict =</span> <span class="st">"response"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Plotting the predicted probabilities</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>probs <span class="sc">%&gt;%</span> </span>
-<span id="cb35-2"><a></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(age, .fitted)) <span class="sc">+</span></span>
-<span id="cb35-3"><a></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb35-4"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb35-5"><a></a>    <span class="at">title =</span> <span class="st">"Predicted Probability of Believing in Ghosts by Age"</span>,</span>
-<span id="cb35-6"><a></a>    <span class="at">subtitle =</span> <span class="st">"Holding # of Books and Transformers Movies at their mean"</span>,</span>
-<span id="cb35-7"><a></a>    <span class="at">x =</span> <span class="st">"Age (years)"</span>,</span>
-<span id="cb35-8"><a></a>    <span class="at">y =</span> <span class="st">"Predicted Probability of Believing in Ghosts"</span></span>
-<span id="cb35-9"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb35-10"><a></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># Keep the y-axis bounded at 0 and 1</span></span>
-<span id="cb35-11"><a></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a aria-label="1"></a>probs <span class="sc">%&gt;%</span> </span>
+<span id="cb35-2"><a aria-label="2"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(age, .fitted)) <span class="sc">+</span></span>
+<span id="cb35-3"><a aria-label="3"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb35-4"><a aria-label="4"></a>  <span class="fu">labs</span>(</span>
+<span id="cb35-5"><a aria-label="5"></a>    <span class="at">title =</span> <span class="st">"Predicted Probability of Believing in Ghosts by Age"</span>,</span>
+<span id="cb35-6"><a aria-label="6"></a>    <span class="at">subtitle =</span> <span class="st">"Holding # of Books and Transformers Movies at their mean"</span>,</span>
+<span id="cb35-7"><a aria-label="7"></a>    <span class="at">x =</span> <span class="st">"Age (years)"</span>,</span>
+<span id="cb35-8"><a aria-label="8"></a>    <span class="at">y =</span> <span class="st">"Predicted Probability of Believing in Ghosts"</span></span>
+<span id="cb35-9"><a aria-label="9"></a>  ) <span class="sc">+</span></span>
+<span id="cb35-10"><a aria-label="10"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># Keep the y-axis bounded at 0 and 1</span></span>
+<span id="cb35-11"><a aria-label="11"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="lec-11_categor_files/figure-revealjs/unnamed-chunk-22-1.png" width="960" class="r-stretch"></section>
