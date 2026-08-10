@@ -1,10 +1,10 @@
-# Website for PSYC 640 at RIT (Fall 2025)
+# Website for PSYC 640 at RIT (Fall 2026)
 
 🔗 https://dharaden.github.io/psyc640/
 
 ## Colors
 
-- website background: #D9E3E4
+- website background: #C9ADE0 
 - headings: #5B888C
 
 ## Attribution
