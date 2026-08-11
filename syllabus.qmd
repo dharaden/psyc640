@@ -23,7 +23,7 @@ This course is the introduction to statistics for graduate students. The goal of
 
 ### **Course Materials**
 
-We will be using R for all data wrangling, visualization, and analysis. I will also be using JAMOVI to show how to mirror things in a different software. Students must have the latest version of R and it is strongly recommended that students also download the RStudio GUI, both can be found [here](https://posit.co/download/rstudio-desktop/#download). JAMOVI is also available [here](https://www.jamovi.org/index.html). All are free.
+We will be using R and JAMOVI for all data wrangling, visualization, and analysis. You may use other statistical programs in this course, but the examples in class (and what I am most familiar with) will be in R and JAMOVI. Students must have the latest version of R and it is strongly recommended that students also download the RStudio GUI, both can be found [here](https://posit.co/download/rstudio-desktop/#download). JAMOVI can be downloaded [here](https://www.jamovi.org/index.html). All software here is free.
 
 We will primarily be referring to chapters in the following textbooks:
 
@@ -67,15 +67,15 @@ Your grade is a reflection of your consistent effort, active engagement with the
 |                            |            |
 |----------------------------|------------|
 | **Component**              | **Weight** |
-| Weekly Labs                | 30%        |
+| Labs & In-Class Checks     | 35%        |
 | Journal Entries            | 10%        |
-| Participation & Engagement | 15%        |
+| Participation & Engagement | 10%        |
 | Midterm Project            | 20%        |
 | Final Project              | 25%        |
 
 ***Weekly Labs***
 
-These are your primary opportunity to build models and, more importantly, to interpret what they tell you. Each lab is built around interpretation and judgment, not just producing code that runs: I will often give you output (a model summary, a set of residual plots, a JAMOVI result) and ask you to explain what it means, decide whether you would trust it, identify which assumption a diagnostic plot implicates, and justify the next analysis. You will also write and modify R to reproduce and extend these results. The interpretation questions are often answered by the assigned readings, in the authors' own framing, so the readings (not an AI chatbot) are your fastest and most reliable path through the lab. Labs are submitted as Quarto/R Markdown files, and your lowest score will be dropped. Labs are due Wednesday night (11:59pm) before the next class.
+These are your primary opportunity to build models and, more importantly, to interpret what they tell you. Each lab is built around interpretation and judgment, not just producing code that runs: I will often give you output (a model summary, a set of residual plots, a JAMOVI result) and ask you to explain what it means, decide whether you would trust it, identify which assumption a diagnostic plot implicates, and justify the next analysis. You will also write and modify R to reproduce and extend these results. The interpretation questions are often answered by the assigned readings, in the authors' own framing, so the readings (not an AI chatbot) are your fastest and most reliable path through the lab. Labs are submitted as Quarto/R Markdown files, and your lowest score will be dropped. Labs are due Sunday night (11:59pm) before the next class. This category also includes the short in-class checks described below. Together, the labs (take-home) and the checks (in-class) are two windows on your skills regarding choosing, running, interpreting, and explaining an analysis.
 
 ***Journal Entries***
 
