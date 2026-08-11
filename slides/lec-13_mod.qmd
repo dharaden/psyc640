@@ -22,11 +22,11 @@ execute:
 
 ## Today...
 
--   Checking back in on Regression
+- Checking back in on Regression
 
--   Making things complicated with moderation
+- Making things complicated with moderation
 
--   Final Project Check in
+- Final Project Check in
 
 ------------------------------------------------------------------------
 
@@ -246,7 +246,7 @@ t_data = t_data %>% select(-pmod)
 
 When we have two variables, A and B, in a regression model, we are testing whether these variables have [additive effects]{style="color:purple"} on our outcome, Y. That is, the effect of A on Y is **constant** over all values of B.
 
--   Example: Studying and working with a tutor have additive effects on grades; no matter how many hours I spend studying, working with a tutor will improve my grade by 2 points.
+- Example: Studying and working with a tutor have additive effects on grades; no matter how many hours I spend studying, working with a tutor will improve my grade by 2 points.
 
 ------------------------------------------------------------------------
 
@@ -254,9 +254,9 @@ When we have two variables, A and B, in a regression model, we are testing wheth
 
 However, we may hypothesis that two variables have [joint effects]{style="color:purple"}, or interact with each other. In this case, the effect of A on Y changes as a function of B.
 
--   Example: Working with a tutor has a positive impact on grades but only for individuals who do not spend a lot of time studying; for individuals who study a lot, tutoring will have little or no impact.
+- Example: Working with a tutor has a positive impact on grades but only for individuals who do not spend a lot of time studying; for individuals who study a lot, tutoring will have little or no impact.
 
--   This is also referred to as [moderation.]{style="color:purple"}
+- This is also referred to as [moderation.]{style="color:purple"}
 
 Interactions (moderation) tell us whether the effect of one IV (on a DV) ***depends*** on another IV.
 
@@ -317,9 +317,9 @@ $$\hat{\text{grade}} = b_{0} + b_{1}\text{Tutor} + b_2\text{Study} + b_3(\text{T
 
 $b_3$
 
--   the linear effect of the product of hours studying and tutoring
--   how much the slope of `study` differs for the two tutoring groups
--   how much the effect of tutoring changes for for every one 1 hour increase in studying.
+- the linear effect of the product of hours studying and tutoring
+- how much the slope of `study` differs for the two tutoring groups
+- how much the effect of tutoring changes for for every one 1 hour increase in studying.
 
 ------------------------------------------------------------------------
 
@@ -337,7 +337,7 @@ $b_3$ is referred to as a "higher-order term."
 
 [Lower-order terms]{style="color:purple"} change depending on the values of the higher-order terms. The value of $b_1$ and $b_2$ will change depending on the value of $b_3$.
 
--   These values represent "conditional effects" (because the value is conditional on the level of the other variable). In many cases, the value and significance test with these terms is either meaningless (if an IV is never equal to 0) or unhelpful, as these values and significance change across the data.
+- These values represent "conditional effects" (because the value is conditional on the level of the other variable). In many cases, the value and significance test with these terms is either meaningless (if an IV is never equal to 0) or unhelpful, as these values and significance change across the data.
 
 ------------------------------------------------------------------------
 
@@ -345,9 +345,9 @@ $b_3$ is referred to as a "higher-order term."
 
 The regression line estimated in this model is quite difficult to interpret on its own. A good strategy is to decompose the regression equation into [simple slopes]{style="color:purple"}, which are determined by calculating the conditional effects at a specific level of the moderating variable.
 
--   Simple slope: the equation for Y on X at different levels of Z
+- Simple slope: the equation for Y on X at different levels of Z
 
--   Conditional effect: the slope coefficients in the full regression model that can change. These are the lower-order terms associated with a variable. E.g., studying has a conditional effect on grade.
+- Conditional effect: the slope coefficients in the full regression model that can change. These are the lower-order terms associated with a variable. E.g., studying has a conditional effect on grade.
 
 ------------------------------------------------------------------------
 
@@ -371,13 +371,11 @@ $$\hat{\text{grade}} = `r C.round[1]` + `r C.round[2]`(\text{Tutor})+ `r C.round
 
 [Set Tutoring to 0]{style="color:purple"}
 
-$$
-\begin{aligned}
+$$\begin{aligned}
 \hat{\text{grade}} &= `r C.round[1]` + `r C.round[2]`(0)+ `r C.round[3]`(\text{Study})+ `r C.round[4]`(0 \times \text{Study}) \\
 &= `r C.round[1]` + `r C.round[2]*0`+ `r C.round[3]`(\text{Study})+ `r C.round[4]*0`(\text{Study}) \\
 &= `r C.round[1] + C.round[2]*0` + `r C.round[3] + C.round[4]*0`(\text{Study})
-\end{aligned}
-$$
+\end{aligned}$$
 
 ------------------------------------------------------------------------
 
@@ -395,13 +393,12 @@ $$\hat{\text{grade}} = `r C.round[1]` + `r C.round[2]`(\text{Tutor})+ `r C.round
 
 [Set Tutoring to 1]{style="color:purple"}
 
-$$
-\begin{aligned}
+$$\begin{aligned}
 \hat{\text{grade}} &= `r C.round[1]` + `r C.round[2]`(1)+ `r C.round[3]`(\text{Study})+ `r C.round[4]`(1 \times \text{Study}) \\
 &= `r C.round[1]` + `r C.round[2]*1`+ `r C.round[3]`(\text{Study})+ `r C.round[4]*1`(\text{Study}) \\
 &= `r C.round[1] + C.round[2]*1` + `r C.round[3] + C.round[4]*1`(\text{Study})
-\end{aligned}
-$$ ------------------------------------------------------------------------
+\end{aligned}$$
+------------------------------------------------------------------------
 
 ## Interaction shapes
 
@@ -462,14 +459,14 @@ plot_model(mod3, type = "pred", terms = c("study", "tutor_lab"))
 
 The regression equation built using the raw data is not only difficult to interpret, but often the terms displayed are not relevant to the hypotheses we're interested.
 
--   $b_0$ is the expected value when all predictors are 0, but this may never happen in real life
--   $b_1$ is the effect of tutoring when hours spent studying is equal to 0, but this may not ever happen either.
+- $b_0$ is the expected value when all predictors are 0, but this may never happen in real life
+- $b_1$ is the effect of tutoring when hours spent studying is equal to 0, but this may not ever happen either.
 
 ------------------------------------------------------------------------
 
 [Centering]{style="color:purple"} your variables by subtracting the mean from all values can improve the interpretation of your results.
 
--   Remember, a linear transformation does not change associations (correlations) between variables. In this case, it only changes the interpretation for some coefficients.
+- Remember, a linear transformation does not change associations (correlations) between variables. In this case, it only changes the interpretation for some coefficients.
 
 ------------------------------------------------------------------------
 
@@ -513,7 +510,7 @@ Moderations with two *continuous* predictors
 
 When we have two variables, A and B, in a regression model, we are testing whether these variables have **additive effects** on our outcome, Y. That is, the effect of A on Y is constant over all values of B.
 
--   Example: Drinking coffee and hours of sleep have additive effects on alertness; no matter how any hours I slept the previous night, drinking one cup of coffee will make me .5 SD more awake than not drinking coffee.
+- Example: Drinking coffee and hours of sleep have additive effects on alertness; no matter how any hours I slept the previous night, drinking one cup of coffee will make me .5 SD more awake than not drinking coffee.
 
 ------------------------------------------------------------------------
 
@@ -521,11 +518,11 @@ When we have two variables, A and B, in a regression model, we are testing wheth
 
 However, we may hypothesis that two variables have **joint effects**, or interact with each other. In this case, the effect of A on Y changes as a function of B.
 
--   Example: Chronic stress has a negative impact on health but only for individuals who receive little or no social support; for individuals with high social support, chronic stress has no impact on health.
+- Example: Chronic stress has a negative impact on health but only for individuals who receive little or no social support; for individuals with high social support, chronic stress has no impact on health.
 
--   This is also referred to as **moderation.**
+- This is also referred to as **moderation.**
 
--   The **"interaction term"** is the regression coefficient that tests this hypothesis.
+- The **"interaction term"** is the regression coefficient that tests this hypothesis.
 
 ------------------------------------------------------------------------
 
@@ -604,11 +601,11 @@ The regression line estimated in this model is quite difficult to interpret on i
 
 ::::: columns
 ::: {.column width="50%"}
--   Simple slope: the equation for Y on X at different levels of Z; but also refers to only the coefficient for X in this equation
+- Simple slope: the equation for Y on X at different levels of Z; but also refers to only the coefficient for X in this equation
 :::
 
 ::: {.column width="50%"}
--   Conditional effect: the slope coefficients in the full regression model which can change. These are the lower-order terms associated with a variable.
+- Conditional effect: the slope coefficients in the full regression model which can change. These are the lower-order terms associated with a variable.
 :::
 :::::
 
@@ -638,13 +635,11 @@ $$\hat{Stress} = `r C.round[1]` + `r C.round[2]`(\text{Anx})+ `r C.round[3]`(\te
 
 **Set Support to 5**
 
-$$
-\begin{aligned}
+$$\begin{aligned}
 \hat{Stress} &= `r C.round[1]` + `r C.round[2]`(\text{Anx})+ `r C.round[3]`(5)+ `r C.round[4]`(\text{Anx} \times 5) \\
 &= `r C.round[1]` + `r C.round[2]`(\text{Anx})+ `r C.round[3]*5`+ `r C.round[4]*5`(\text{Anx}) \\
 &= `r C.round[1] + C.round[3]*5` + `r C.round[2] + C.round[4]*5`(\text{Anx})
-\end{aligned}
-$$
+\end{aligned}$$
 
 ------------------------------------------------------------------------
 
@@ -660,13 +655,11 @@ $$\hat{Stress} = `r C.round[1]` + `r C.round[2]`(\text{Anx})+ `r C.round[3]`(\te
 
 **Set Support to 10**
 
-$$
-\begin{aligned}
+$$\begin{aligned}
 \hat{Stress} &= `r C.round[1]` + `r C.round[2]`(\text{Anx})+ `r C.round[3]`(10)+ `r C.round[4]`(\text{Anx} \times 10) \\
 &= `r C.round[1]` + `r C.round[2]`(\text{Anx})+ `r C.round[3]*10`+ `r C.round[4]*10`(\text{Anx}) \\
 &= `r C.round[1] + C.round[3]*10` + `r C.round[2] + C.round[4]*10`(\text{Anx})
-\end{aligned}
-$$
+\end{aligned}$$
 
 ------------------------------------------------------------------------
 
