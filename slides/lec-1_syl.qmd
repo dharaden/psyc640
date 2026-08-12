@@ -1,6 +1,6 @@
 ---
 title: "Week 01: Getting Started!"
-subtitle: "Date: 08-25"
+subtitle: "Date: 08-27"
 footer:  "[course-website](https://dharaden.github.io/psyc640/)"
 logo: "images/640_hex.png"
 format: 
@@ -37,12 +37,12 @@ options(scipen = 100)
 
 # Today - Syllabus Time!
 
-I hope you grabbed one.
+I hope you have one.
 
 ## Schedule/Plan
 
 |  |  |
-|----|----|
+|------------------------------------|------------------------------------|
 | 8 - 8:45 | Get oriented. Go over syllabus. Explain course structure. Do all that fun stuff. |
 | 8:45 - 9ish | Break |
 | 9ish - 10:00 | Live Demo in R |
@@ -52,9 +52,9 @@ I hope you grabbed one.
 
 ## When the Teaching Happens
 
-**💾 Meeting Times:** Monday's 8:00 - 10:50am
+**💾 Meeting Times:** Thursday's 9:30am - 12:20pm
 
-**🧑‍🏫 Drop in Office Hours:** Wednesdays 9 - 11:00 am
+**🧑‍🏫 Drop in Office Hours:** Tuesday's 10am - 12:00 pm
 
 **📧 Best way to contact me?** Email me. I will usually respond within 24 hours. If it has been longer, then you can send me a follow-up
 
@@ -70,49 +70,47 @@ If you are having trouble, just ask!!
 
 Be open and honest with me and I will do what I can to support you.
 
-------------------------------------------------------------------------
-
 ## Who the heck am I? 🤷
 
--   Undergraduate degree at University of Denver
+- Undergraduate degree at University of Denver
 
-    -   Psychology & Philosophy
+  - Psychology & Philosophy
 
-    -   Hated Statistics
+  - Hated Statistics
 
--   Graduate degree at University of Illinois at Urbana-Champaign
+- Graduate degree at University of Illinois at Urbana-Champaign
 
-    -   Advisor: Dr. Benjamin Hankin
+  - Advisor: Dr. Benjamin Hankin
 
-    -   Clinical/Community PhD 🎓
+  - Clinical/Community PhD 🎓
 
--   Pre-Doctoral Internship & Postdoc at Rochester Institute of Technology
+- Pre-Doctoral Internship & Postdoc at Rochester Institute of Technology
 
 ## A little more about me
 
--   **Pronouns**: he/him/his
+- **Pronouns**: he/him/his
 
--   2 amazing kids, 2 dogs (Dachshund and Shepherd Mix), 1 wife
+- 2 amazing kids, 2 dogs (Dachshund and Shepherd Mix), 1 wife
 
--   **Currently Reading**: Dungeon Crawler Carl
+- **Currently Reading**: The Shadows of the Gods, Dungeon Crawler Carl
 
--   **Currently Listening**: The Lonely Island & Seth Meyers Podcast
+- **Currently Listening**: The Lonely Island & Seth Meyers Podcast
 
--   **Currently Watching**: Wednesday, Bluey, Hot Wheels - Let's Race
+- **Currently Watching**: Love on the Spectrum, Bluey, and Lizzie McGuire
 
 ## Teaching Philosophy
 
--   I’m here for you and to support you however I can
+- I’m here for you and to support you however I can
 
--   My job is to create a supportive, low-stakes environment where you can crash test ideas and develop new skills
+- My job is to create a supportive, low-stakes environment where you can crash test ideas and develop new skills
 
--   Your responsibility is to come to class prepared, ready to have fun, take some risks, and actively participate!
+- Your responsibility is to come to class prepared, ready to have fun, take some risks, and actively participate!
 
-    -   Ask questions, share relevant funny stories, seek clarification, question the status quo where applicable
+  - Ask questions, share relevant funny stories, seek clarification, question the status quo where applicable
 
--   Science is a team sport & failures/mistakes will happen, but it is okay! That’s what science and discovery is!
+- Science is a team sport & failures/mistakes will happen, but it is okay! That’s what science and discovery is!
 
-# [Syllabus](../files/PSYC640_Stats_Fall25.pdf){target="_blank"} Time
+# [Syllabus](../files/PSYC640_Stats_Fall26.pdf){target="_blank"} Time
 
 And we have this [fancy website](https://dharaden.github.io/psyc640/) 💻
 
@@ -124,43 +122,43 @@ Dr. Haraden will be extra
 
 I've pulled from a lot of different textbooks. Good thing is, they are all free!
 
--   [*Introduction to Modern Statistics (2e)*](https://openintro-ims.netlify.app/){target="\"_blank"} (Cetinkaya-Rundel & Hardin, 2024)
+- [*Introduction to Modern Statistics (2e)*](https://openintro-ims.netlify.app/){target="\"_blank"} (Cetinkaya-Rundel & Hardin, 2024)
 
--   [*Learning Statistics with R*](https://learningstatisticswithr-bookdown.netlify.com/index.html){target="\"_blank"} (Navarro)
+- [*Learning Statistics with R*](https://learningstatisticswithr-bookdown.netlify.com/index.html){target="\"_blank"} (Navarro)
 
--   [*R for Data Science (2e)*](https://r4ds.hadley.nz/){target="\"_blank"} (Wickham, Çetinkaya-Rundel, & Grolemund, 2023)
+- [*R for Data Science (2e)*](https://r4ds.hadley.nz/){target="\"_blank"} (Wickham, Çetinkaya-Rundel, & Grolemund, 2023)
 
--   [*Modern Statistics with R (2e)*](https://www.modernstatisticswithr.com/){target="\"_blank"} (Thullin, 2025)
+- [*Modern Statistics with R (2e)*](https://www.modernstatisticswithr.com/){target="\"_blank"} (Thullin, 2025)
 
--   [*Statistical Thinking*](https://statsthinking21.github.io/statsthinking21-core-site/){target="\"_blank"} (Poldrack, 2024)
+- [*Statistical Thinking*](https://statsthinking21.github.io/statsthinking21-core-site/){target="\"_blank"} (Poldrack, 2024)
 
--   [*An Introduction to Statistical Learning (2e)*](https://www.statlearning.com/){target="_blank"} (James, Witten, Hastie & Tibshirani, 2023)
+- [*An Introduction to Statistical Learning (2e)*](https://www.statlearning.com/){target="_blank"} (James, Witten, Hastie & Tibshirani, 2023)
 
--   [*Data Analysis: A Model Comparison Approach to Regression, ANOVA, and Beyond (3rd ed.)*](https://sadbhavnapublications.org/research-enrichment-material/2-Statistical-Books/Data-Analysis-A-Model-Comparison-Approach-To-Regression,-ANOVA,-and-Beyond.pdf){target="_blank"} (Judd, McClelland, & Ryan, 2017)
+- [*Data Analysis: A Model Comparison Approach to Regression, ANOVA, and Beyond (3rd ed.)*](https://sadbhavnapublications.org/research-enrichment-material/2-Statistical-Books/Data-Analysis-A-Model-Comparison-Approach-To-Regression,-ANOVA,-and-Beyond.pdf){target="_blank"} (Judd, McClelland, & Ryan, 2017)
 
 ## Evaluation & Grading
 
 |                            |            |
 |----------------------------|------------|
 | **Component**              | **Weight** |
-| Weekly Labs                | 30%        |
+| Labs & In-Class Check-ins  | 35%        |
 | Journal Entries            | 10%        |
-| Participation & Engagement | 15%        |
+| Participation & Engagement | 10%        |
 | Midterm Project            | 20%        |
 | Final Project              | 25%        |
 
 ------------------------------------------------------------------------
 
-### Weekly Labs (30%)
+### Labs & In Class Checks (35%)
 
-Each week, you will take what we worked on in class and apply it to a series of questions
+Each week, you will take what we worked on in class and apply it to a series of questions. There will also be various check-ins that I will have in the beginning of some classes so I can get a sense of how you are doing and if I need to revisit topics.
 
-This will typically be done completely in R, and will require the submission of a .Rmd file, and sometimes the .html file.
+Labs will typically be done completely in R, and will require the submission of a .Rmd file, and sometimes the .html file.
 
-Lowest score will be dropped
+Lowest score for labs will be dropped
 
 ::: callout-important
-***Each lab will be due the Sunday @ 11:59pm before the next class***
+***Each lab will be due the Tuesday \@ 11:59pm before the next class***
 :::
 
 ------------------------------------------------------------------------
@@ -181,7 +179,7 @@ The purpose of this “assignment” is to help facilitate communication between
 
 ------------------------------------------------------------------------
 
-### Participation & Engagement (15%)
+### Participation & Engagement (10%)
 
 Come to Class. Work with the material.
 
@@ -189,7 +187,7 @@ Basically just be here, be present and try. This will be very low stakes and the
 
 ------------------------------------------------------------------------
 
-### Midterm Project (20%) 
+### Midterm Project (20%)
 
 Examining a dataset that I provide
 
@@ -197,7 +195,7 @@ You will be given an initial research idea, but it will be up to you to formulat
 
 Clean & Visualize the data, then build an appropriate model to answer your question
 
-This project assesses your mastery of the first half of the course and will be due before the first class after Fall Break (October 19th @ 11:59pm).
+This project assesses your mastery of the first half of the course and will be due November 1st \@ 11:59pm.
 
 ------------------------------------------------------------------------
 
@@ -211,17 +209,29 @@ Develop your own research question, conduct analysis from start to finish
 
 📋Write up your work - Brief Abstract/methods, Data analytic plan & Results section
 
-Give a "lightening talk" about your findings on last day of class
+Give a "lightening talk" about your findings
 
 ------------------------------------------------------------------------
 
 ## Course Policies
 
--   Accommodations
+- Late
 
--   Safety
+- Accommodations
 
--   Academic Integrity
+- Safety
+
+- Academic Integrity
+
+------------------------------------------------------------------------
+
+### Late Policy
+
+*“A Wizard is never late, nor are they early. They arrive precisely when they mean to.”* 🧙‍♂️
+
+You aren't a wizard, Harry.
+
+10% deduction for each day late. Not accepted after 5 days.
 
 ------------------------------------------------------------------------
 
@@ -261,12 +271,10 @@ I want you to learn and understand these things. If you are going to AI to solve
 
 If you do use an AI as a supportive tool, you must:
 
--   **Review, edit, and take ownership** of all submitted work.
-
--   **Acknowledge** that it was used in a brief note at the end of the assignment (e.g., *“I used ChatGPT to help me make sense of the error message I was getting.”*) as well as being properly cited ([RIT Library Citation Infoguide](https://infoguides.rit.edu/c.php?g=1207799&p=10293622))
+- **Acknowledge** that it was used in a brief note at the end of the assignment (e.g., *“I used ChatGPT to help me make sense of the error message I was getting.”*) as well as being properly cited ([RIT Library Citation Infoguide](https://infoguides.rit.edu/c.php?g=1207799&p=10293622))
 
 ::: callout-important
-If I suspect AI usage beyond "support" or major portions of an assignment, you will likely receive a 0, and we will have a meeting. Turning in AI work is considered plagiarism. You *may* have the opportunity to revise at the discretion of the instructor.
+If I suspect AI usage beyond "support" or for portions of an assignment, you will likely receive a 0, and we will have a meeting. Turning in AI work is considered plagiarism. You *may* have the opportunity to revise at the discretion of the instructor.
 :::
 
 ------------------------------------------------------------------------

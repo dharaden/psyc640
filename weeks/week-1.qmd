@@ -7,13 +7,19 @@ editor: visual
 
 Welcome to the course! I am very excited to get to work with you this semester on our journey into statistics. During our first class, we will review the syllabus and the plan for the course, followed by walking through the structure of each of the classes.
 
-We’ll then dive right into our primary tool, R. This session will go over installing R and RStudio, navigating the interface, understanding R projects, and learning the foundational syntax of the R language and the `tidyverse`, including data types and basic functions.
+We’ll then dive right into our primary set of tools, R and JAMOVI. This session will go over installing R and RStudio, navigating the interface, and learning the foundational syntax of the R language and the `tidyverse`, including data types and basic functions.
+
+::: {.callout-note icon="false"}
+This first class will be Asynchronous due to me being away this week. Please use the class time to review the materials instead of doing it "some other time"
+:::
 
 ## Prepare
 
--   Install R and R-Studio (<https://posit.co/download/rstudio-desktop/>)
+Please have these downloaded. I will walk through the process as well if you are unclear.
 
--   Bring Laptop
+- Install R and R-Studio (<https://posit.co/download/rstudio-desktop/>)
+
+- Install JAMOVI (<https://www.jamovi.org/download.html>)
 
 ## Slides
 
