@@ -1,0 +1,45 @@
+---
+title: "Lab 10: Multiple Regression"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+  markdown: 
+    wrap: 72
+---
+
+## Here comes another lab that doesn't involve R! 
+
+## **Objective:** 
+
+This lab focuses on connecting what we have learned in class to the peer
+reviewed articles that you may be reading.
+
+## **Instructions:** 
+
+Identify articles in the scientific literature that perform quantitative
+analyses (no reviews or meta-analyses).
+
+Find [2 articles]{.underline}: one that includes a ***t-test*** and
+another that includes ***multiple regression***.
+
+In your document, I would like to see:
+
+-   The article citations and a designation of whether it is the t-test
+    or multiple regression
+
+-   The extracted text from the article that describes the test they are
+    performing (not necessarily just the results, but their
+    justification).
+
+-   The articles main research question
+
+-   How the analysis (t-test or multiple regression) adds to the
+    "answer" for the main research question
+
+-   Reflection on how challenging/easy finding each test was
+
+## Submission: 
+
+Please submit a document (Word or Google Doc) that includes the
+information above, as well as the PDFs of the 2 research papers that you
+identified.

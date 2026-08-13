@@ -1,0 +1,157 @@
+---
+title: "Lab 3: Describing and Visualizing Data"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+  markdown: 
+    wrap: 72
+---
+
+## Instructions
+
+Can't believe we're at Lab #3! Keep it going! We are going to continue
+to practice importing data and making a reproducible workflow. In this
+lab, you will be expanding the types of plots you are able to use.
+
+We will be using data from the [Bechdel
+test](https://en.wikipedia.org/wiki/Bechdel_test), a measure of the
+representation of women in fiction. You will be asked to do some
+Exploratory Data Analysis.
+
+Here are the things that you will need for this lab:
+
+-   <a href="/files/_lab-rmd/lab-3_describe-viz.Rmd" download="lab-3_describe-viz.Rmd">Download
+    Lab 3 (.Rmd)</a>
+-   <a href="/files/data/bechdel.csv" download="bechdel.csv">Download
+    Bechdel Data (.csv)</a>
+
+When you are finished, click the **Knit** button to turn your work into
+an HTML document. You will submit both this `.Rmd` file and the
+🧶knitted `.html` file.
+
+## Scenario and Goal
+
+In this lab, you will act as a data journalist exploring a dataset on
+movies. We will use the data from the FiveThirtyEight story “The
+Dollar-And-Cents Case Against Hollywood’s Exclusion of Women.”
+
+This analysis is about the [Bechdel
+test](https://en.wikipedia.org/wiki/Bechdel_test), a measure of the
+representation of women in fiction.
+
+Your goal is to **import, describe, and visualize** this data to
+understand the characteristics of movies in the dataset and see if there
+are relationships between a movie's budget, its box office gross, and
+its Bechdel Test rating. This is the critical first step in any
+analysis, known as **Exploratory Data Analysis (EDA)**.
+
+## Variables of Interest
+
+-   `year`: The year of movie release
+
+-   `clean_test`: Bechdel test result:
+
+    -   `ok` = passes test
+
+    -   `dubious`
+
+    -   `men` = women only talk about men
+
+    -   `notalk` = women don’t talk to each other
+
+    -   `nowomen` = fewer than two women
+
+<!-- -->
+
+-   `binary`: Bechdel Test PASS vs FAIL binary
+
+-   `budget_2013`: Total movie budget
+
+------------------------------------------------------------------------
+
+## Exercises
+
+### Exercise 1: Importing and Inspecting
+
+First, you need to set up your RMarkdown to get it ready for importing
+the data and using the appropriate libraries. Be sure to have all
+libraries listed here in the first code chunk along with importing the
+data. I should not see any lines that say `install.packages()`.
+
+I will attempt to reproduce your output in my own computer, so be sure
+that your code is reproducible.
+
+**Question 1:** Look at the output from your overview. How many total
+movies are in this database? And what year is the latest movie?
+
+**Your Answer:**
+
+**Question 2:** Calculate the Average budget of the whole dataset. Then,
+calculate the average for only movies in the year 2000.
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+### Exercise 2: Grouped Descriptive Statistics
+
+Averages for the whole dataset are useful, but we are often more
+interested in comparing averages *between groups*. Let's see if the
+average budget differs for movies that pass the Bechdel Test versus
+those that fail. The `binary` variable tells us this ("PASS" or "FAIL").
+
+**Question 3:** Based on your summary table, do movies that pass or fail
+the Bechdel test have a higher average (mean) budget?
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+### Exercise 3: Visualizing a Distribution (Histogram)
+
+Let's visualize the distribution of domestic gross earnings (adjusted
+for 2013) across all the movies.
+
+**Question 4:** Describe the shape of the distribution you see in the
+histogram. Is it symmetric (like a bell curve), or is it skewed in one
+direction? Where do most movies' earnings seem to be clustered?
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+### Exercise 4: Examining the Bechdel Test distribution
+
+Now we want to see how many movies fall into each of the Bechdel
+categories. Generate a barplot of the `clean_test` variable to see what
+the distribution of the test is.
+
+Then choose a year in the dataset, create a similar plot (but only for
+that year). Therefore you should have 2 plots below:
+
+**Question 5:** Examine both charts and describe the similarities and
+differences that you are noticing.
+
+**Answer:**
+
+------------------------------------------------------------------------
+
+### Exercise 5: Comparing Groups with a Boxplot
+
+Now let's visually compare the inflation-adjusted international gross
+(`intgross_2013`) for movies that pass the Bechdel test versus those
+that fail. A boxplot is an excellent way to see differences in the
+median and spread between groups.
+
+**Question 6:** Look at the boxplot. The thick horizontal line in the
+middle of each box represents the median. Does there appear to be a
+large difference in the median domestic gross between movies that pass
+and fail the test?
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+*End of Lab 3. You've now practiced exploratory data analysis! It is
+always important to visualize your data to get a good sense of what you
+are working with. Don't forget to Knit! 🧶*
