@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Week 9 - Model Creation – PSYC 640 - Graduate Statistics</title>
+<title>Midterm Project – PSYC 640 - Graduate Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,31 +26,64 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../weeks/week-10.html" rel="next">
-<link href="../weeks/week-8.html" rel="prev">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-1824e8889c6ef8b09c858f97847a7109.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-f446f165291aa2961a2c4f70154dc369.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-1824e8889c6ef8b09c858f97847a7109.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-1824e8889c6ef8b09c858f97847a7109.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-f446f165291aa2961a2c4f70154dc369.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-1824e8889c6ef8b09c858f97847a7109.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -80,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Week 9 - Model Creation – PSYC 640 - Graduate Statistics">
+<meta property="og:title" content="Midterm Project – PSYC 640 - Graduate Statistics">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
@@ -256,7 +289,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-9.html">Week 9 - Multiple Reg.</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Midterm Project</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -270,9 +303,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="../index.html" class="sidebar-logo-link">
-      <img src="../images/640_hex.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="../images/640_hex.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../images/640_hex.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../images/640_hex.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/dharaden/psyc640" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
@@ -298,19 +331,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">
+  <a href="../../course-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
+  <a href="../../syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
   </div>
 </li>
@@ -318,88 +351,88 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Weekly Materials</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-1.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 1 - Set up and Foundations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2 - Data Wrangling</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-3.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 3 - Describe &amp; Viz</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-4.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 4 - Design &amp; Inference</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-5.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-5.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 5 - Linear Model</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-6.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 6 - Linear Model: Part Deux</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-7.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-7.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 7 - Variability &amp; Model Fit</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-8.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-8.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 8 - Intro Multiple Reg.</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-9.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../weeks/week-9.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 9 - Multiple Reg.</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-10.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-10.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 10 - Assumptions &amp; Diagnostic</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-11.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-11.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 11 - Missing Data &amp; Building</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-12.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-12.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 12 - Logistic Reg.</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-13.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-13.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 13 - Mixed/Mulilevel Models</span></a>
   </div>
 </li>
@@ -408,7 +441,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-15.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-15.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 15 - Wrapping Up</span></a>
   </div>
 </li>
@@ -425,67 +458,67 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-1_data-workflow.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/lab-1_data-workflow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 1 - Data Intro</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-2_data-wrangling.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/lab-2_data-wrangling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 2 - Wrangling Intro</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-3_describe-viz.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/lab-3_describe-viz.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 3 - Describe/Visualize</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-4.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/lab-4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 4</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-5_cor.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/lab-5_cor.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 5 - Correlation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-6.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/lab-6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 6 - Comparing Means</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/midterm-proj.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/midterm-proj.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Midterm Project</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-9.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/lab-9.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 9</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-10.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/lab-10.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 10</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-11.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/lab-11.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 11</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-12.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/lab-12.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 12</span></a>
   </div>
 </li>
@@ -502,13 +535,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/midterm-proj.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/midterm-proj.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Midterm Project</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/final-proj.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/final-proj.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Final Project</span></a>
   </div>
 </li>
@@ -516,13 +549,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../resources.html" class="sidebar-item-text sidebar-link">
+  <a href="../../resources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Resources</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../previous-years.html" class="sidebar-item-text sidebar-link">
+  <a href="../../previous-years.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Previous Years</span></a>
   </div>
 </li>
@@ -536,23 +569,22 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#model-fitting-variability" id="toc-model-fitting-variability" class="nav-link active" data-scroll-target="#model-fitting-variability">Model Fitting &amp; Variability</a>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a>
   <ul class="collapse">
-  <li><a href="#stuff-for-today" id="toc-stuff-for-today" class="nav-link" data-scroll-target="#stuff-for-today">Stuff for Today</a></li>
-  <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
-  <li><a href="#in-class-activity" id="toc-in-class-activity" class="nav-link" data-scroll-target="#in-class-activity">In-Class Activity</a></li>
-  <li><a href="#for-next-time" id="toc-for-next-time" class="nav-link" data-scroll-target="#for-next-time">For Next Time</a></li>
+  <li><a href="#general" id="toc-general" class="nav-link" data-scroll-target="#general"><strong>General</strong></a></li>
   </ul></li>
+  <li><a href="#project-steps" id="toc-project-steps" class="nav-link" data-scroll-target="#project-steps"><strong>Project Steps</strong></a></li>
+  <li><a href="#additional-data-information" id="toc-additional-data-information" class="nav-link" data-scroll-target="#additional-data-information">Additional Data Information</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/weeks/week-9.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/archived/midterm-proj.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-9.html">Week 9 - Multiple Reg.</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 9 - Model Creation</h1>
+<h1 class="title">Midterm Project</h1>
 </div>
 
 
@@ -569,39 +601,164 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="model-fitting-variability" class="level1">
-<h1>Model Fitting &amp; Variability</h1>
-<p>We will focus on refamiliarizing ourselves with the process of regression (and maybe a little bit of ANOVA). Activities will include collecting some data, building regression models from the ground up, looking at the LEGO dataset (maybe), and further connecting our research questions to the types of analyses that we are going to be doing.</p>
-<section id="stuff-for-today" class="level2">
-<h2 class="anchored" data-anchor-id="stuff-for-today">Stuff for Today</h2>
+<section id="instructions" class="level2">
+<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<p>Here are the things that you will need for this project:</p>
 <ul>
-<li><a href="../files/data/LEGO_data.csv" download="LEGO_data.csv">Download LEGO data (.csv)</a></li>
-<li><a href="https://www.psytoolkit.org/experiment-library/experiment_stroop.html" target="_blank">Stroop Task</a></li>
-<li><a href="https://docs.google.com/spreadsheets/d/1VSWDBci5MlMmXnFDq-rau3GzlqJEZAeIrEb3fD1ye9g/edit?usp=sharing">Stroop Task Data</a></li>
+<li><a href="../../files/data/midterm_dataset.csv" download="midterm_dataset.csv">Download Project Data (.csv)</a></li>
 </ul>
-</section>
-<section id="slides" class="level2">
-<h2 class="anchored" data-anchor-id="slides">Slides</h2>
-<p><a href="../slides/lec-9_models.html" target="_blank">💻 Models &amp; Variability</a></p>
-</section>
-<section id="in-class-activity" class="level2">
-<h2 class="anchored" data-anchor-id="in-class-activity">In-Class Activity</h2>
+<p><strong>Objective:</strong> The goal of this midterm project is to apply the foundational data analysis skills we have learned in this course. You will be given a real-world dataset and tasked with importing it, preparing it for analysis, conducting descriptive and inferential statistics, and reporting your findings in a clear, professional manner.</p>
+<hr>
+<section id="general" class="level3">
+<h3 class="anchored" data-anchor-id="general"><strong>General</strong></h3>
 <ul>
-<li>It’s in the slides this time</li>
+<li><strong>Create an R Markdown File:</strong> All your work should be done in a single R Markdown (<code>.Rmd</code>) file. Name your file <code>LastName_FirstName_Midterm.Rmd</code>.
+<ul>
+<li>This file will include your code as well as your written responses. This should look close to a results section with the code in between.</li>
+<li>Provide comments within the code chunks to highlight the main goal of each of the functions or set of information that you are doing. This helps with organization since the reset of the text outside of the code chunks will be for writing the results.</li>
+</ul></li>
+<li><strong>Submission:</strong> You will submit both your <code>.Rmd</code> file and the knitted PDF or HTML document.</li>
 </ul>
+<hr>
 </section>
-<section id="for-next-time" class="level2">
-<h2 class="anchored" data-anchor-id="for-next-time">For Next Time</h2>
-<p>📋<a href="../labs/lab-9.html">Lab 9 - Models &amp; Research Questions</a></p>
-<p>📖<a href="https://learningstatisticswithr.com/book/" target="_blank">Chapter 15.3 - 15.5 - LSR</a></p>
-<p>📖<a href="https://openintro-ims.netlify.app/" target="_blank">Chapter 8 - IMS</a></p>
-<p><br><br></p>
-<div style="font-size: 0.875em;">
-<p>Back to <a href=".." title="Course schedule">course schedule</a> ⏎</p>
-</div>
+</section>
+<section id="project-steps" class="level2">
+<h2 class="anchored" data-anchor-id="project-steps"><strong>Project Steps</strong></h2>
+<section id="part-1-setup-and-data-import" class="level4">
+<h4 class="anchored" data-anchor-id="part-1-setup-and-data-import"><strong>Part 1: Setup and Data Import</strong></h4>
+<p>Your first step is to set up your R Markdown document and load the data.</p>
+<ol type="1">
+<li><strong>Load Libraries:</strong> At the top of your R Markdown script, load all the necessary libraries. You don’t have to know every single library to use here. Just be sure to add them to this section as you are going through your code.</li>
+<li><strong>Load the Data:</strong> Use the appropriate function (e.g., <code>read_csv()</code>). Be sure that this is easily reproducible on another computer.</li>
+</ol>
+</section>
+<section id="part-2-data-cleaning-and-scoring" class="level4">
+<h4 class="anchored" data-anchor-id="part-2-data-cleaning-and-scoring"><strong>Part 2: Data Cleaning and Scoring</strong></h4>
+<p>Real-world data is often messy. In this part, you will wrangle the data and create new variables needed for your analysis.</p>
+<ol type="1">
+<li><strong>Scoring the ARS-SF (Anxiety Resilience Scale - Short Form):</strong> We need to first reverse score Item #6. Then we can create two subscales:
+<ol type="1">
+<li>Anxiety Subscale - Calculate the mean of Items 1, 2 &amp; 3.</li>
+<li>Resilience Subscale - Calculate the mean of Items 4, 5 &amp; 6(reversed).</li>
+</ol></li>
+<li><strong>Recoding Variables:</strong> Create a new, cleanly labeled factor variable for any grouping variable (see example code below on how to do this). Recode the numeric values (e.g., 1s and 2s) to meaningful labels (e.g., “Male” and “Female”).</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Recode the grouping variable into a factor with clear labels</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>analytic_data <span class="ot">&lt;-</span> analytic_data <span class="sc">%&gt;%</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    [FACTOR_VARIABLE_NAME] <span class="ot">=</span> <span class="fu">factor</span>([ORIGINAL_VARIABLE],</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Group 1 Label"</span>, <span class="st">"Group 2 Label"</span>))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="part-3-descriptive-statistics" class="level4">
+<h4 class="anchored" data-anchor-id="part-3-descriptive-statistics"><strong>Part 3: Descriptive Statistics</strong></h4>
+<p>Now that you have clean data, let’s describe it.</p>
+<ol type="1">
+<li><strong>Continuous variabels:</strong> Get descriptive statistics (mean, sd, median, range) for the continuous variables (Note: when reporting the ARS-SF, just use the subscale scores).</li>
+<li><strong>Frequencies:</strong> Use <code>table()</code> or <code>count()</code> to get the frequency distribution for the categorical variables.</li>
+<li><strong>Write-up:</strong> Write a brief paragraph summarizing the descriptive statistics. Report the mean and standard deviation for continuous variables and the counts and percentages for categorical variables.
+<ol type="1">
+<li>For this write-up, focus on the age, sex, group and well-being variables. Include all variables in a table.</li>
+</ol></li>
+</ol>
+<p><em>Example: “The sample consisted of N = 143 participants (22% female) with an average age of 102.3 (SD = .03). 45% of the sample were students…”</em></p>
+</section>
+<section id="part-4-correlation-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="part-4-correlation-analysis"><strong>Part 4: Correlation Analysis</strong></h4>
+<p>Next, examine the associations between the continuous variables.</p>
+<ol type="1">
+<li><strong>Create a Correlation Matrix:</strong> Generate a table of the correlations (hint: use sjPlot). Be sure to include a title and have the labels make sense.</li>
+<li><strong>Write-up:</strong> Report the results in APA style. Describe the direction, strength, and statistical significance of the correlation between the Anxiety score and General Well Being.</li>
+</ol>
+</section>
+<section id="part-5-group-differences" class="level4">
+<h4 class="anchored" data-anchor-id="part-5-group-differences"><strong>Part 5: Group Differences</strong></h4>
+<p>Test for differences in your outcome variable across the three groups.</p>
+<ol type="1">
+<li><p><strong>Run the t-test or ANOVA:</strong> Test if the General Well-being score differs significantly across the levels of group. Conduct any follow-up/post-hoc analyses if necessary.</p></li>
+<li><p><strong>Visualize the Difference:</strong> Create a plot showing the distribution of outcome for each of the groups.</p></li>
+<li><p><strong>Write-up:</strong> Report the results in APA style. State whether there was a significant effect of the grouping variable on the outcome. Report follow-up/post-hoc analyses if necessary.</p></li>
+</ol>
+</section>
+<section id="part-6-regression-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="part-6-regression-analysis"><strong>Part 6: Regression Analysis</strong></h4>
+<p>Finally, build a simple linear regression model to predict the General Well-being outcome. Select one predictor variable that you want to investigate.</p>
+<ol type="1">
+<li><strong>Fit the Model:</strong> Use the <code>lm()</code> function to fit a regression model.</li>
+<li><strong>View the Summary:</strong> Use <code>summary()</code> to get the detailed results of your model.</li>
+<li><strong>Visualize the Model:</strong> Create a scatter plot (<code>ggplot</code>) showing the relationship between the variables (be sure to include a fit line, titles and nice axis labels)</li>
+<li><strong>Write-up:</strong> Write a paragraph summarizing the regression results in APA style. Report the overall model fit (R-squared and F-statistic) and the coefficients for the predictor, noting the statistical significance.</li>
+</ol>
+<p><strong><em>Nice work! Don’t forget to 🧶knit the document to submit!</em></strong></p>
+<hr>
+</section>
+</section>
+<section id="additional-data-information" class="level2">
+<h2 class="anchored" data-anchor-id="additional-data-information">Additional Data Information</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 38%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable Name</th>
+<th>Description</th>
+<th>Type &amp; Values</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ID</td>
+<td>Participant ID Number</td>
+<td>Continuous</td>
+</tr>
+<tr class="even">
+<td>age</td>
+<td>Participant’s age in years.</td>
+<td>Continuous</td>
+</tr>
+<tr class="odd">
+<td>sex</td>
+<td>Participant’s self-reported sex.</td>
+<td>Numeric (1 = Male, 2 = Female)</td>
+</tr>
+<tr class="even">
+<td>ARS 1, ASRS 2, ASR 3</td>
+<td>Items for the “Anxiety” subscale.</td>
+<td>Numeric (0-3)</td>
+</tr>
+<tr class="odd">
+<td>ASR 4, ASR 5, ASR 6</td>
+<td>Positive-worded items for the “Resilience” subscale.</td>
+<td>Numeric (1-5)</td>
+</tr>
+<tr class="even">
+<td>Weekday Sleep</td>
+<td>Average hours of sleep on a school/work night.</td>
+<td>Continuous</td>
+</tr>
+<tr class="odd">
+<td>Weekend Sleep</td>
+<td>Average hours of sleep on a non-work night.</td>
+<td>Continuous</td>
+</tr>
+<tr class="even">
+<td>Employment</td>
+<td>Participant’s primary employment status.</td>
+<td>Numeric (1=“Student”, 2=“Employed”, 3=“Not Employed”)</td>
+</tr>
+<tr class="odd">
+<td>outcome</td>
+<td>A score on a “General Well-Being Index.”</td>
+<td>Continuous</td>
+</tr>
+</tbody>
+</table>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1018,18 +1175,6 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../weeks/week-8.html" class="pagination-link" aria-label="Week 8 - Intro Multiple Reg.">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 8 - Intro Multiple Reg.</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../weeks/week-10.html" class="pagination-link" aria-label="Week 10 - Assumptions &amp; Diagnostic">
-        <span class="nav-page-text">Week 10 - Assumptions &amp; Diagnostic</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1038,7 +1183,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/weeks/week-9.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/archived/midterm-proj.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with ☕ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

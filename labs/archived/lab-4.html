@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Week 9 - Model Creation – PSYC 640 - Graduate Statistics</title>
+<title>Lab 4: Inferential Stats Basics – PSYC 640 - Graduate Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,28 +29,26 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../weeks/week-10.html" rel="next">
-<link href="../weeks/week-8.html" rel="prev">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-1824e8889c6ef8b09c858f97847a7109.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-f446f165291aa2961a2c4f70154dc369.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-1824e8889c6ef8b09c858f97847a7109.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-1824e8889c6ef8b09c858f97847a7109.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-f446f165291aa2961a2c4f70154dc369.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-1824e8889c6ef8b09c858f97847a7109.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -80,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Week 9 - Model Creation – PSYC 640 - Graduate Statistics">
+<meta property="og:title" content="Lab 4: Inferential Stats Basics – PSYC 640 - Graduate Statistics">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
@@ -256,7 +254,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-9.html">Week 9 - Multiple Reg.</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lab 4: Inferential Stats Basics</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -270,9 +268,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="../index.html" class="sidebar-logo-link">
-      <img src="../images/640_hex.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="../images/640_hex.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../images/640_hex.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../images/640_hex.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/dharaden/psyc640" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
@@ -298,19 +296,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">
+  <a href="../../course-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
+  <a href="../../syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
   </div>
 </li>
@@ -318,88 +316,88 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Weekly Materials</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-1.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 1 - Set up and Foundations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2 - Data Wrangling</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-3.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 3 - Describe &amp; Viz</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-4.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 4 - Design &amp; Inference</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-5.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-5.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 5 - Linear Model</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-6.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 6 - Linear Model: Part Deux</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-7.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-7.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 7 - Variability &amp; Model Fit</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-8.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-8.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 8 - Intro Multiple Reg.</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-9.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../weeks/week-9.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 9 - Multiple Reg.</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-10.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-10.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 10 - Assumptions &amp; Diagnostic</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-11.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-11.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 11 - Missing Data &amp; Building</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-12.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-12.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 12 - Logistic Reg.</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-13.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-13.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 13 - Mixed/Mulilevel Models</span></a>
   </div>
 </li>
@@ -408,7 +406,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-15.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-15.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 15 - Wrapping Up</span></a>
   </div>
 </li>
@@ -425,67 +423,67 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-1_data-workflow.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/lab-1_data-workflow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 1 - Data Intro</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-2_data-wrangling.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/lab-2_data-wrangling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 2 - Wrangling Intro</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-3_describe-viz.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/lab-3_describe-viz.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 3 - Describe/Visualize</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-4.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/lab-4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 4</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-5_cor.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/lab-5_cor.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 5 - Correlation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-6.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/lab-6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 6 - Comparing Means</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/midterm-proj.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/midterm-proj.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Midterm Project</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-9.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/lab-9.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 9</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-10.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/lab-10.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 10</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-11.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/lab-11.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 11</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-12.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/lab-12.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 12</span></a>
   </div>
 </li>
@@ -502,13 +500,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/midterm-proj.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/midterm-proj.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Midterm Project</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/final-proj.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/final-proj.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Final Project</span></a>
   </div>
 </li>
@@ -516,13 +514,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../resources.html" class="sidebar-item-text sidebar-link">
+  <a href="../../resources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Resources</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../previous-years.html" class="sidebar-item-text sidebar-link">
+  <a href="../../previous-years.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Previous Years</span></a>
   </div>
 </li>
@@ -536,23 +534,24 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#model-fitting-variability" id="toc-model-fitting-variability" class="nav-link active" data-scroll-target="#model-fitting-variability">Model Fitting &amp; Variability</a>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#scenario-and-data" id="toc-scenario-and-data" class="nav-link" data-scroll-target="#scenario-and-data">Scenario and Data</a></li>
+  <li><a href="#instructions-1" id="toc-instructions-1" class="nav-link" data-scroll-target="#instructions-1">Instructions</a>
   <ul class="collapse">
-  <li><a href="#stuff-for-today" id="toc-stuff-for-today" class="nav-link" data-scroll-target="#stuff-for-today">Stuff for Today</a></li>
-  <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
-  <li><a href="#in-class-activity" id="toc-in-class-activity" class="nav-link" data-scroll-target="#in-class-activity">In-Class Activity</a></li>
-  <li><a href="#for-next-time" id="toc-for-next-time" class="nav-link" data-scroll-target="#for-next-time">For Next Time</a></li>
+  <li><a href="#task-1-compute-scores-for-scales" id="toc-task-1-compute-scores-for-scales" class="nav-link" data-scroll-target="#task-1-compute-scores-for-scales">Task 1: Compute scores for scales</a></li>
+  <li><a href="#task-2-roommates-and-daytime-sleepiness-a-group-comparison" id="toc-task-2-roommates-and-daytime-sleepiness-a-group-comparison" class="nav-link" data-scroll-target="#task-2-roommates-and-daytime-sleepiness-a-group-comparison">Task 2: Roommates and Daytime Sleepiness (A Group Comparison)</a></li>
+  <li><a href="#bonus-sleep-habits-and-age-an-association" id="toc-bonus-sleep-habits-and-age-an-association" class="nav-link" data-scroll-target="#bonus-sleep-habits-and-age-an-association">Bonus: Sleep Habits and Age (An Association)</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/weeks/week-9.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/archived/lab-4.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-9.html">Week 9 - Multiple Reg.</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 9 - Model Creation</h1>
+<h1 class="title">Lab 4: Inferential Stats Basics</h1>
 </div>
 
 
@@ -569,36 +568,116 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="model-fitting-variability" class="level1">
-<h1>Model Fitting &amp; Variability</h1>
-<p>We will focus on refamiliarizing ourselves with the process of regression (and maybe a little bit of ANOVA). Activities will include collecting some data, building regression models from the ground up, looking at the LEGO dataset (maybe), and further connecting our research questions to the types of analyses that we are going to be doing.</p>
-<section id="stuff-for-today" class="level2">
-<h2 class="anchored" data-anchor-id="stuff-for-today">Stuff for Today</h2>
+<section id="instructions" class="level2">
+<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<p>Here are the things that you will need for this lab:</p>
 <ul>
-<li><a href="../files/data/LEGO_data.csv" download="LEGO_data.csv">Download LEGO data (.csv)</a></li>
-<li><a href="https://www.psytoolkit.org/experiment-library/experiment_stroop.html" target="_blank">Stroop Task</a></li>
-<li><a href="https://docs.google.com/spreadsheets/d/1VSWDBci5MlMmXnFDq-rau3GzlqJEZAeIrEb3fD1ye9g/edit?usp=sharing">Stroop Task Data</a></li>
+<li><a href="../../files/_lab-rmd/lab-4_intro-infer.Rmd" download="lab-4_intro-infer.Rmd">Download Lab 4 (.Rmd)</a></li>
+<li><a href="../../files/data/Sleep_Data.csv" download="Sleep_Data.csv">Download Sleep Data (.csv)</a></li>
 </ul>
+<p>When you are finished, click the <strong>Knit</strong> button to turn your work into an HTML document. You will submit both this <code>.Rmd</code> file and the 🧶knitted <code>.html</code> file.</p>
 </section>
-<section id="slides" class="level2">
-<h2 class="anchored" data-anchor-id="slides">Slides</h2>
-<p><a href="../slides/lec-9_models.html" target="_blank">💻 Models &amp; Variability</a></p>
-</section>
-<section id="in-class-activity" class="level2">
-<h2 class="anchored" data-anchor-id="in-class-activity">In-Class Activity</h2>
+<section id="scenario-and-data" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-and-data">Scenario and Data</h2>
+<p>A researcher at the university’s sleep center is interested in the factors that affect daytime sleepiness and attention in college students. They collected survey data from a sample of students.</p>
+<p>The data highlighted above contains the following variables (and more):</p>
 <ul>
-<li>It’s in the slides this time</li>
+<li><p><strong><code>ESS1 - ESS8</code></strong>: (Continuous) The student’s responses to each item on the Epworth Sleepiness Scale, a measure of general daytime sleepiness. Higher scores indicate greater sleepiness. <strong>NOTE:</strong> You will need to calculate a total score which is a sum of all 8 items.</p></li>
+<li><p><strong><code>ashs1 - ashs33</code></strong>: (Continuous) The student’s responses to each item on the Adolescent Sleep Hygiene Scale. Higher scores indicate better sleep habits (e.g., consistent bedtime, quiet environment). The original data collection did not have an item 25 (so you won’t see one in your data).</p>
+<ul>
+<li><strong>NOTE:</strong> You will need to reverse score all items <em>except</em>&nbsp;#27. You will also need to calculate a total mean score with these items.</li>
+</ul></li>
+<li><p><strong><code>attention1r - attention5r</code></strong>: (Categorical) An indication of whether they passed (1) or failed (0) the attention check item. A proxy for their attention during the survey. <strong>NOTE:</strong> Calculate a total attention score as a sum of all 5 items.</p></li>
+<li><p><strong><code>age</code></strong>: (Continuous) The student’s age in years.</p></li>
+<li><p><strong><code>roommate</code></strong>: (Categorical) Whether the student has a roommate or not (“Yes”, “No”).</p>
+<ul>
+<li>1 = “Yes” and 2 = “No”</li>
+</ul></li>
 </ul>
+<hr>
 </section>
-<section id="for-next-time" class="level2">
-<h2 class="anchored" data-anchor-id="for-next-time">For Next Time</h2>
-<p>📋<a href="../labs/lab-9.html">Lab 9 - Models &amp; Research Questions</a></p>
-<p>📖<a href="https://learningstatisticswithr.com/book/" target="_blank">Chapter 15.3 - 15.5 - LSR</a></p>
-<p>📖<a href="https://openintro-ims.netlify.app/" target="_blank">Chapter 8 - IMS</a></p>
-<p><br><br></p>
-<div style="font-size: 0.875em;">
-<p>Back to <a href=".." title="Course schedule">course schedule</a> ⏎</p>
+<section id="instructions-1" class="level1">
+<h1>Instructions</h1>
+<ol type="1">
+<li><p>Create a new R Markdown file for your submission. Make sure it is well-organized and includes your code, output, and written answers.</p></li>
+<li><p>Load the appropriate libraries and the <code>student_sleep_data.csv</code> dataset.</p></li>
+<li><p>Complete the tasks below.</p></li>
+</ol>
+<section id="task-1-compute-scores-for-scales" class="level2">
+<h2 class="anchored" data-anchor-id="task-1-compute-scores-for-scales">Task 1: Compute scores for scales</h2>
+<p>Be sure to compute the appropriate total scores for the ESS, ASHS and Attention variables.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>There are a couple attention items that are in the ASHS section which can get a little confusing when trying to reverse code and getting total scores.</p>
+</div>
+</div>
+<p>Once completed, only include students who have “passed” the attention check (i.e., having a score of 4 or higher on the attention sum total).</p>
+<p><em>hint: use dplyr and filter</em></p>
+</section>
+<section id="task-2-roommates-and-daytime-sleepiness-a-group-comparison" class="level2">
+<h2 class="anchored" data-anchor-id="task-2-roommates-and-daytime-sleepiness-a-group-comparison">Task 2: Roommates and Daytime Sleepiness (A Group Comparison)</h2>
+<p><strong>The Research Question:</strong> “Do students who have a roommate report different levels of daytime sleepiness compared to students who do not have a roommate?”</p>
+<p><strong>Your Steps:</strong></p>
+<ol type="1">
+<li><p><strong>Identify &amp; Model:</strong></p>
+<ul>
+<li><p>What is the predictor (IV) and what is the outcome (DV)?</p></li>
+<li><p>Are they categorical or continuous?</p></li>
+<li><p>Based on this, what is the appropriate model family? Write out the model in R formula syntax (<code>outcome ~ predictor</code>).</p></li>
+</ul></li>
+<li><p><strong>Describe &amp; Visualize:</strong></p>
+<ul>
+<li><p>Calculate the mean and standard deviation of <code>ess_score</code> for both groups (those with and without a roommate).</p></li>
+<li><p>Create a boxplot to visualize the distribution of <code>ess_score</code> for each group. Make sure your plot is clearly labeled.</p></li>
+</ul></li>
+<li><p><strong>Analyze:</strong></p>
+<ul>
+<li>Run the appropriate statistical test in R to determine if there is a significant difference between the groups.</li>
+</ul></li>
+<li><p><strong>Interpret &amp; Conclude:</strong></p>
+<ul>
+<li><p>What is the p-value from your test?</p></li>
+<li><p>Based on the test and your descriptive statistics, write a one-sentence conclusion that directly answers the research question.</p></li>
+<li><p><strong>Critical Thinking:</strong> This is an observational study. Can you conclude that having a roommate <em>causes</em> a change in sleepiness? Why or why not?</p></li>
+</ul></li>
+</ol>
+</section>
+<section id="bonus-sleep-habits-and-age-an-association" class="level2">
+<h2 class="anchored" data-anchor-id="bonus-sleep-habits-and-age-an-association">Bonus: Sleep Habits and Age (An Association)</h2>
+<p>This question is not required. But you will get some bonus points if you decide to do it!</p>
+<p><strong>The Research Question:</strong> “Is there an association between a student’s sleep habits and their age?”</p>
+<p><strong>Your Steps:</strong></p>
+<ol type="1">
+<li><p><strong>Identify &amp; Model:</strong></p>
+<ul>
+<li><p>What is the predictor (IV) and what is the outcome (DV)?</p></li>
+<li><p>Are they categorical or continuous?</p></li>
+<li><p>Based on this, what is the appropriate model family? Write out the model in R formula syntax.</p></li>
+</ul></li>
+<li><p><strong>Visualize:</strong></p>
+<ul>
+<li><p>Create a scatterplot to visualize the relationship between <code>ashs_score</code> (sleep habits) and <code>age</code>.</p></li>
+<li><p>Add a line of best fit to the plot. Make sure your plot is clearly labeled.</p></li>
+</ul></li>
+<li><p><strong>Analyze:</strong></p>
+<ul>
+<li>Run the appropriate statistical test in R to determine if there is a significant association between the two variables.</li>
+</ul></li>
+<li><p><strong>Interpret &amp; Conclude:</strong></p>
+<ul>
+<li><p>What is the correlation coefficient (<code>r</code>) and the p-value from your test?</p></li>
+<li><p>Based on these results, write a one-sentence conclusion that describes the nature and significance of the relationship.</p></li>
+</ul></li>
+</ol>
+<p><em>End of Lab. Don’t forget to Knit! 🧶</em></p>
 
 
 </section>
@@ -1018,18 +1097,6 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../weeks/week-8.html" class="pagination-link" aria-label="Week 8 - Intro Multiple Reg.">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 8 - Intro Multiple Reg.</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../weeks/week-10.html" class="pagination-link" aria-label="Week 10 - Assumptions &amp; Diagnostic">
-        <span class="nav-page-text">Week 10 - Assumptions &amp; Diagnostic</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1038,7 +1105,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/weeks/week-9.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/archived/lab-4.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with ☕ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
