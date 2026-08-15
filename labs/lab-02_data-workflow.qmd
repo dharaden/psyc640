@@ -160,7 +160,6 @@ ggplot(data = __, aes(x = __, y = __)) +
 - Look at your plot. Do you notice any characters that seem unusually
   heavy for their height? Briefly describe one.
 
-
 ## Step 6 — Render again and check
 
 Click **Render** again. Your new text, header, list, and the output of
@@ -180,8 +179,8 @@ Render one final time to produce the output document (it'll be an
 otherwise). Submit **both** the `.qmd` source and the rendered output if
 you can; if only one, send the rendered one.
 
-Include one to two sentences: how did that feel — smooth, fiddly, confusing?
-Honest reactions help me pace Week 2.
+Include one to two sentences about Lab 2: how did that feel — smooth,
+fiddly, confusing? Honest reactions help me pace Week 2.
 
 ------------------------------------------------------------------------
 
