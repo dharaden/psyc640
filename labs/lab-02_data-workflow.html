@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lab 1: Foundations of a Data Workflow – PSYC 640 - Graduate Statistics</title>
+<title>Lab 2 - Data Workflow – PSYC 640 - Graduate Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -70,8 +70,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../labs/lab-2_data-wrangling.html" rel="next">
-<link href="../weeks/week-15.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -115,7 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="Lab 1: Foundations of a Data Workflow – PSYC 640 - Graduate Statistics">
+<meta property="og:title" content="Lab 2 - Data Workflow – PSYC 640 - Graduate Statistics">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
@@ -291,7 +289,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/lab-1_data-workflow.html">Labs</a></li><li class="breadcrumb-item"><a href="../labs/lab-1_data-workflow.html">Lab 1 - Data Intro</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lab 2 - Data Workflow</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -451,16 +449,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Labs</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-1_data-workflow.html" class="sidebar-item-text sidebar-link active">
+  <a href="../labs/lab-1_data-workflow.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 1 - Data Intro</span></a>
   </div>
 </li>
@@ -571,23 +569,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a>
+  <li><a href="#lab-2-your-first-quarto-document" id="toc-lab-2-your-first-quarto-document" class="nav-link active" data-scroll-target="#lab-2-your-first-quarto-document">Lab 2 — Your First Quarto Document</a>
   <ul class="collapse">
-  <li><a href="#exercise-1-loading-packages-exploring-data" id="toc-exercise-1-loading-packages-exploring-data" class="nav-link" data-scroll-target="#exercise-1-loading-packages-exploring-data">Exercise 1: Loading Packages &amp; Exploring Data</a></li>
-  <li><a href="#exercise-2-data-wrangling" id="toc-exercise-2-data-wrangling" class="nav-link" data-scroll-target="#exercise-2-data-wrangling">Exercise 2: Data Wrangling</a></li>
-  <li><a href="#exercise-3-first-data-visualization" id="toc-exercise-3-first-data-visualization" class="nav-link" data-scroll-target="#exercise-3-first-data-visualization">Exercise 3: First Data Visualization</a></li>
-  <li><a href="#exercise-4-calculating-summary-statistics" id="toc-exercise-4-calculating-summary-statistics" class="nav-link" data-scroll-target="#exercise-4-calculating-summary-statistics">Exercise 4: Calculating Summary Statistics</a></li>
+  <li><a href="#why-this-matters-30-seconds-of-context" id="toc-why-this-matters-30-seconds-of-context" class="nav-link" data-scroll-target="#why-this-matters-30-seconds-of-context">Why this matters (30 seconds of context)</a></li>
+  <li><a href="#step-1-create-a-new-quarto-document" id="toc-step-1-create-a-new-quarto-document" class="nav-link" data-scroll-target="#step-1-create-a-new-quarto-document">Step 1 — Create a new Quarto document</a></li>
+  <li><a href="#step-2-render-it-as-is" id="toc-step-2-render-it-as-is" class="nav-link" data-scroll-target="#step-2-render-it-as-is">Step 2 — Render it as-is</a></li>
+  <li><a href="#step-3-visual-vs.-source" id="toc-step-3-visual-vs.-source" class="nav-link" data-scroll-target="#step-3-visual-vs.-source">Step 3 — Visual vs.&nbsp;Source</a></li>
+  <li><a href="#step-4-editing" id="toc-step-4-editing" class="nav-link" data-scroll-target="#step-4-editing">Step 4 – Editing</a></li>
+  <li><a href="#step-5-your-first-analysis" id="toc-step-5-your-first-analysis" class="nav-link" data-scroll-target="#step-5-your-first-analysis">Step 5 – Your First Analysis</a>
+  <ul class="collapse">
+  <li><a href="#visualize-your-data" id="toc-visualize-your-data" class="nav-link" data-scroll-target="#visualize-your-data">Visualize your data</a></li>
+  </ul></li>
+  <li><a href="#step-6-render-again-and-check" id="toc-step-6-render-again-and-check" class="nav-link" data-scroll-target="#step-6-render-again-and-check">Step 6 — Render again and check</a></li>
+  <li><a href="#step-7-submit" id="toc-step-7-submit" class="nav-link" data-scroll-target="#step-7-submit">Step 7 — Submit</a>
+  <ul class="collapse">
+  <li><a href="#the-takeaway" id="toc-the-takeaway" class="nav-link" data-scroll-target="#the-takeaway">The takeaway</a></li>
+  </ul></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/lab-1_data-workflow.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/lab-02_data-workflow.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/lab-1_data-workflow.html">Labs</a></li><li class="breadcrumb-item"><a href="../labs/lab-1_data-workflow.html">Lab 1 - Data Intro</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 1: Foundations of a Data Workflow</h1>
+<h1 class="title">Lab 2 - Data Workflow</h1>
 </div>
 
 
@@ -604,96 +612,110 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="instructions" class="level2">
-<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
-<p>Welcome to your first lab! The goal of this assignment is to move beyond basic syntax and begin practicing a reproducible data analysis workflow.</p>
-<p>Please complete the exercises below. Create a new <code>.Rmd</code> file and include the following at the top:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"Lab 1: Foundations of a Data Workflow"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>author<span class="sc">:</span> <span class="st">"Your Name Here"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>date<span class="sc">:</span> <span class="st">"`r Sys.Date()`"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> html_document</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>editor_options<span class="sc">:</span> </span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  chunk_output_type<span class="sc">:</span> console</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  markdown<span class="sc">:</span> </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    wrap<span class="sc">:</span> <span class="dv">72</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>You should then be able to copy/paste everything below into your document.</p>
-<p>When you are finished, click the <strong>Knit</strong> button to turn your work into an HTML document. You will submit both this <code>.Rmd</code> file and the final <code>.html</code> file.</p>
+<section id="lab-2-your-first-quarto-document" class="level1">
+<h1>Lab 2 — Your First Quarto Document</h1>
+<p><strong>Goal:</strong> create, edit, and render a Quarto document — the format you’ll use for every lab and both projects this semester. Again, no real statistics here. You’re learning the <em>container</em> your work will live in, while it’s low-stakes.</p>
+<p><strong>Prerequisite:</strong> Lab 1 done (R and RStudio installed and working).</p>
+<p><strong>What to submit:</strong> your rendered document (details in the last step).</p>
 <hr>
-<section id="exercise-1-loading-packages-exploring-data" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-1-loading-packages-exploring-data">Exercise 1: Loading Packages &amp; Exploring Data</h3>
-<p>A major strength of R is its ecosystem of packages that add new functionality. We will use the <code>tidyverse</code> package in almost every analysis we do. The <code>ggplot2</code> package, which is part of the <code>tidyverse</code>, contains a dataset called <code>msleep</code> about mammal sleep patterns.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Task 1: Load the tidyverse package.</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here:</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Task 2: The `msleep` dataset is available after loading the tidyverse.</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the `glimpse()` function to get a quick overview of the `msleep` dataset.</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here:</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Task 3: Now use the `summary()` function on the `msleep` dataset.</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here:</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>❓Question 1:</strong> Based on the output of <code>glimpse()</code>, how many rows (observations) and columns (variables) are in the <code>msleep</code> dataset?</p>
-<p><strong>Your Answer:</strong> [Type your answer here]</p>
-<p><strong>❓Question 2:</strong> What is one key difference between the information provided by <code>glimpse()</code> and the information provided by <code>summary()</code> for a variable like <code>sleep_total</code>?</p>
-<p><strong>Your Answer:</strong> [Type your answer here]</p>
-<hr>
+<section id="why-this-matters-30-seconds-of-context" class="level2">
+<h2 class="anchored" data-anchor-id="why-this-matters-30-seconds-of-context">Why this matters (30 seconds of context)</h2>
+<p>In this course, your writing and your analysis live in the <em>same</em> document. You write a sentence, then a chunk of R code, then the code’s output appears right there when you “render.” This is the heart of reproducible science: anyone can see exactly how you got your result, and re-run it. Getting comfortable with this now means you never have to think about it again.</p>
 </section>
-<section id="exercise-2-data-wrangling" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-2-data-wrangling">Exercise 2: Data Wrangling</h3>
-<p>Let’s say we are only interested in herbivores. We can use functions from the <code>dplyr</code> package (part of the <code>tidyverse</code>) to create a new, sorted dataset.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Task 1: Create a new object called `herbivores` that contains only the animals</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># from the `msleep` dataset where the `vore` column is equal to "herbi".</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: The syntax for filtering is: new_object &lt;- old_object %&gt;% filter(column_name == "value")</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here:</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Task 2: Now, sort this new `herbivores` dataset by total sleep time, from highest to lowest.</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># You can overwrite the `herbivores` object with the newly sorted version.</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: Use the `arrange()` function with `desc()` for descending order.</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># The syntax is: object &lt;- object %&gt;% arrange(desc(column_to_sort_by))</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here:</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, print the new, sorted `herbivores` object to see the result.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>❓Question:</strong> After sorting, which herbivore sleeps the most? How many hours does it sleep?</p>
-<p><strong>Your Answer:</strong> [Type your answer here]</p>
-<hr>
+<section id="step-1-create-a-new-quarto-document" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-create-a-new-quarto-document">Step 1 — Create a new Quarto document</h2>
+<ol type="1">
+<li>In RStudio: <strong>File → New File → Quarto Document…</strong></li>
+<li>Give it a title like “Lab 2” and put your name in the author field.</li>
+<li>Leave the other defaults. Click <strong>Create.</strong></li>
+<li>RStudio opens a new document with some example text already in it. You’ll see two kinds of content: plain text, and gray <strong>code chunks</strong> that start with <code>```{r}</code>.</li>
+</ol>
 </section>
-<section id="exercise-3-first-data-visualization" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3-first-data-visualization">Exercise 3: First Data Visualization</h3>
-<p>Data visualization is a critical part of understanding data. Let’s create a scatterplot to see if there is a relationship between how long a herbivore sleeps and how much time it spends dreaming.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Task: Create a scatterplot using ggplot().</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We want to plot the `sleep_rem` (dreaming sleep) on the y-axis and `sleep_total` on the x-axis,</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># using only our `herbivores` dataset.</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill in the blanks in the code below.</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> ________, <span class="fu">aes</span>(<span class="at">x =</span> _______, <span class="at">y =</span> _________)) <span class="sc">+</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  geom_????? <span class="sc">+</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Total Sleep vs. REM Sleep in Herbivores"</span>,</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Total Sleep (hours)"</span>,</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"REM Sleep (hours)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>❓Question 1:</strong> Look at the plot you created. In one or two sentences, describe the relationship you see between total sleep and REM sleep for these animals. Is the relationship positive, negative, or is there no clear relationship?</p>
-<p><strong>Your Answer:</strong> [Type your answer here]</p>
-<p><strong>❓Question 2:</strong> Are there any animals that seem unusual or stand out from the general pattern? Briefly describe one.</p>
-<p><strong>Your Answer:</strong> [Type your answer here]</p>
-<hr>
+<section id="step-2-render-it-as-is" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-render-it-as-is">Step 2 — Render it as-is</h2>
+<p>Before changing anything, click the <strong>Render</strong> button (near the top of the document — it has a blue arrow icon). RStudio may ask you to install additional packages, follow those instructions. It may also ask you to save the file first; save it somewhere you’ll find it.</p>
+<p>The first render may take a moment. When it finishes, a formatted document appears (in a viewer pane or your browser). <strong>That’s rendering:</strong> your <code>.qmd</code> source became a shareable output document. Look at how the example text and the code output map back to the source. This is the whole idea.</p>
 </section>
-<section id="exercise-4-calculating-summary-statistics" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-4-calculating-summary-statistics">Exercise 4: Calculating Summary Statistics</h3>
-<p>Often, we want to calculate a single value to summarize our data. The <code>summarise()</code> function is perfect for this.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Task: Calculate the average (mean) total sleep time for ALL mammals in the original `msleep` dataset.</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: The syntax is: dataset %&gt;% summarise(new_variable_name = mean(column_name, na.rm = TRUE))</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The `na.rm = TRUE` part is important because it tells R to ignore any missing values.</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here:</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>❓Question:</strong> What is the mean total sleep time for all mammals in the dataset?</p>
-<p><strong>Your Answer:</strong> [Type your answer here]</p>
+<section id="step-3-visual-vs.-source" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-visual-vs.-source">Step 3 — Visual vs.&nbsp;Source</h2>
+<p>In the top left you will see two “buttons” (Source, Visual). Click back and forth between them to examine the differences. These are Quarto documents which operate like a Markdown. These allow you to put regular text and your analyses all in one document. An example of this would be writing your results section and having all the numerical values populate accordingly. It’s like magic.</p>
+<p><strong>Source</strong></p>
+<p>This is the raw Markdown text. Beginner information about formatting around Markdown specifically can be found here (<a href="https://pkg.yihui.org/rmarkdown-book/">R Markdown: The Definitive Guide</a>), but that isn’t necessarily a focus of the course.</p>
+<p><strong>Visual</strong></p>
+<p>This is what you are used to seeing when working with a document. The Visual editor takes the Source material and formats it appropriately (<strong>bold</strong>, <em>italics,</em> <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">links</a>, etc.)</p>
+<p>You can choose either to work with. I may go back and forth between them. Sometimes debugging is a little bit easier in the Source.</p>
+</section>
+<section id="step-4-editing" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-editing">Step 4 – Editing</h2>
+<p>Now edit the source. Delete the example text below the title block (everything under the second <code>---</code>) and replace it with your own:</p>
+<ol type="1">
+<li><p>Add a <strong>header</strong> by starting a line with <code>##</code>:</p>
+<pre><code>## PSYC 640</code></pre></li>
+<li><p>Add a short list (each item starts with a dash):</p>
+<pre><code>- My favorite movie is ...
+- Something I'm hoping to learn this semester is ...</code></pre></li>
+<li><p>Now add a <strong>code chunk</strong>. You can click the green “+C” insert-chunk button, or type it manually:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Code chunks can be run by clicking the “Play” button on the top right of the chunk. You can also put the cursor on the line you want to run and use the keyboard shortcut Ctrl + Enter (for PC) Command + Enter (for Mac).</p></li>
+<li><p>Inside the chunk you can put any R. Here we’re just averaging three numbers again.</p></li>
+<li><p>Add one more chunk that does simple arithmetic of your choosing — anything like <code>100 / 4</code> or <code>2 ^ 5</code>. The point is just to see <em>your</em> code produce <em>your</em> output.</p></li>
+</ol>
+</section>
+<section id="step-5-your-first-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-your-first-analysis">Step 5 – Your First Analysis</h2>
+<ol type="1">
+<li><p>Create another Code Chunk</p></li>
+<li><p>Load the <code>tidyverse</code> library (<code>library(tidyverse)</code>)</p></li>
+<li><p>Create the object <code>datawars</code> and assign dataset called <code>starwars</code> to it (hint: <code>datawars &lt;- starwars</code>)</p></li>
+<li><p>Use <code>View()</code>, <code>head()</code> and <code>glimpse()</code> to look at <code>datawars</code>.</p></li>
+<li><p>In the text below, answer this question:</p>
+<p>What do each of these do?</p></li>
+<li><p>Create another code chunk and use <code>summary()</code> to get descriptives of all variables in the dataset.</p>
+<ol type="1">
+<li>Look at the output of your <code>summary()</code> command. For the <code>mass</code> and <code>height</code> variables, you’ll see a value for <code>NA's</code>. In your own words, what do you think <code>NA</code> means in this context?</li>
+</ol></li>
+</ol>
+<section id="visualize-your-data" class="level3">
+<h3 class="anchored" data-anchor-id="visualize-your-data">Visualize your data</h3>
+<p>Now we want to investigate the relationship between <code>mass</code> and <code>height</code> in this dataset.</p>
+<ul>
+<li><p>Create a scatterplot using <code>ggplot()</code>.</p></li>
+<li><p>The plot should show <code>height</code> on the x-axis and <code>mass</code> on the y-axis.</p></li>
+<li><p>Add some labels to make your plot clear and professional.</p>
+<ul>
+<li><strong>Hint:</strong> Use the code below as a template and fill in the blanks.</li>
+</ul></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> __, <span class="fu">aes</span>(<span class="at">x =</span> __, <span class="at">y =</span> __)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"__"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"__"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"__"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Look at your plot. Do you notice any characters that seem unusually heavy for their height? Briefly describe one.</li>
+</ul>
+</section>
+</section>
+<section id="step-6-render-again-and-check" class="level2">
+<h2 class="anchored" data-anchor-id="step-6-render-again-and-check">Step 6 — Render again and check</h2>
+<p>Click <strong>Render</strong> again. Your new text, header, list, and the output of your code chunks should all appear in the formatted document. If a number you computed shows up in the output, your code ran successfully.</p>
+<blockquote class="blockquote">
+<p><strong>If it won’t render:</strong> the most common cause is a code chunk with a typo (a missing backtick or parenthesis). Check that each chunk opens with <code>```{r}</code> and closes with <code>```</code> on its own line. If you’re still stuck, submit the <code>.qmd</code> file with a note about what happened and we’ll look next week.</p>
+</blockquote>
+</section>
+<section id="step-7-submit" class="level2">
+<h2 class="anchored" data-anchor-id="step-7-submit">Step 7 — Submit</h2>
+<p>Render one final time to produce the output document (it’ll be an <code>.html</code> file in the same folder as your <code>.qmd</code>, unless you chose otherwise). Submit <strong>both</strong> the <code>.qmd</code> source and the rendered output if you can; if only one, send the rendered one.</p>
+<p>Include one to two sentences: how did that feel — smooth, fiddly, confusing? Honest reactions help me pace Week 2.</p>
 <hr>
-<p><em>End of Lab 1. Don’t forget to Knit! 🧶</em></p>
+<section id="the-takeaway" class="level3">
+<h3 class="anchored" data-anchor-id="the-takeaway">The takeaway</h3>
+<p>You just did, in miniature, what every assignment this semester will ask: write in a <code>.qmd</code>, run code in chunks, render to a shareable document. The statistics will get more involved; this container won’t change. You’re set.</p>
 
 
+</section>
 </section>
 </section>
 
@@ -1111,18 +1133,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../weeks/week-15.html" class="pagination-link" aria-label="Week 15 - Wrapping Up">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 15 - Wrapping Up</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../labs/lab-2_data-wrangling.html" class="pagination-link" aria-label="Lab 2 - Wrangling Intro">
-        <span class="nav-page-text">Lab 2 - Wrangling Intro</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1131,7 +1141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/lab-1_data-workflow.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/lab-02_data-workflow.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with ☕ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

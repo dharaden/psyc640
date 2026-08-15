@@ -80,10 +80,10 @@ ul.task-list li input[type="checkbox"] {
 
 <meta property="og:title" content="Getting Started with R – PSYC 640 - Graduate Statistics">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://dharaden.github.io/psyc640/resources/images/RDataRestore.png">
+<meta property="og:image" content="https://dharaden.github.io/psyc640/resources/images/OG-r.png">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
-<meta property="og:image:height" content="1147">
-<meta property="og:image:width" content="1094">
+<meta property="og:image:height" content="1432">
+<meta property="og:image:width" content="2256">
 </head>
 
 <body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -426,7 +426,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-1_data-workflow.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-1_data-workflow.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 1 - Data Intro</span></a>
   </div>
 </li>
@@ -587,10 +587,10 @@ ul.task-list li input[type="checkbox"] {
 <section id="r-download-and-install" class="level3">
 <h3 class="anchored" data-anchor-id="r-download-and-install">R: Download and Install</h3>
 <p>Information taken from “<a href="https://rstudio-education.github.io/hopr/starting.html">Hands-On Programming with R</a>”</p>
-<p>R is maintained by an international team of developers who make the language available through the web page of<a href="http://cran.r-project.org">The Comprehensive R Archive Network</a>. The top of the web page provides three links for downloading R. Follow the link that describes your operating system: Windows or Mac.</p>
+<p>R is maintained by an international team of developers who make the language available through the web page of <a href="http://cran.r-project.org">The Comprehensive R Archive Network</a>. The top of the web page provides three links for downloading R. Follow the link that describes your operating system: Windows or Mac.</p>
 <section id="windows" class="level4">
 <h4 class="anchored" data-anchor-id="windows">Windows</h4>
-<p>To install R on Windows, click the “Download R for Windows” link.<a href="https://cran.r-project.org/bin/windows/base/">Then click the “base” link.</a> Next, click the first link at the top of the new page. This link should say something like “Download R 4.3.1 for Windows,” except the 4.3.1 will be replaced by the most current version of R. The link downloads an installer program, which installs the most up-to-date version of R for Windows. Run this program and step through the installation wizard that appears. The wizard will install R into your program files folders and place a shortcut in your Start menu. Note that you’ll need to have all of the appropriate administration privileges to install new software on your machine.</p>
+<p>To install R on Windows, click the “Download R for Windows” link. <a href="https://cran.r-project.org/bin/windows/base/">Then click the “base” link.</a> Next, click the first link at the top of the new page. This link should say something like “Download R 4.3.1 for Windows,” except the 4.3.1 will be replaced by the most current version of R. The link downloads an installer program, which installs the most up-to-date version of R for Windows. Run this program and step through the installation wizard that appears. The wizard will install R into your program files folders and place a shortcut in your Start menu. Note that you’ll need to have all of the appropriate administration privileges to install new software on your machine.</p>
 </section>
 <section id="mac" class="level4">
 <h4 class="anchored" data-anchor-id="mac">Mac</h4>
@@ -600,12 +600,17 @@ ul.task-list li input[type="checkbox"] {
 <section id="using-r" class="level3">
 <h3 class="anchored" data-anchor-id="using-r">Using R</h3>
 <p>R isn’t a program that you can open and start using, like Microsoft Word or Internet Explorer. Instead, R is a computer language, like C, C++, or UNIX. You use R by writing commands in the R language and asking your computer to interpret them. In the old days, people ran R code in a UNIX terminal window—as if they were hackers in a movie from the 1980s. Now almost everyone uses R with an application called RStudio, and I recommend that you do, too.</p>
-<p>Go ahead and try to open R without using R-Studio. You will get something like this:&nbsp;</p>
+<p>Go ahead and try to open R without using R-Studio, but shield your eyes. You will get something like this:&nbsp;</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/OG-r.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 </section>
 </section>
 <section id="r-studio-download-and-install" class="level2">
 <h2 class="anchored" data-anchor-id="r-studio-download-and-install">R-Studio: Download and Install</h2>
-<p>RStudio is an application like Microsoft Word—except that instead of helping you write in English, RStudio helps you write in R. We will use RStudio throughout because it makes working with R <strong>SO</strong> much easier. Plus there are a lot of additional functionalities that RStudio has that will expand what you can do (e.g., RMarkdown). Also, the RStudio interface looks the same for the various operating systems which will make teaching and your experience with the material a lot easier.</p>
+<p>RStudio is an application like Microsoft Word. We will use RStudio throughout because it makes working with R <strong>SO</strong> much easier. Plus there are a lot of additional functionalities that RStudio has that will expand what you can do (e.g., RMarkdown, Quarto). Also, the RStudio interface looks the same for the various operating systems which will make teaching and your experience with the material a lot easier.</p>
 <p>RStudio (the company) has recently changed their name to Posit. To download RStudio, you can navigate to the Posit download page for “<a href="https://posit.co/download/rstudio-desktop/">RStudio Desktop</a>”. We have already completed Step 1 (you could have just come here to download it, but it is helpful to know where to get the latest versions and materials)! All you have to do is select the box under “2: Install RStudio” to download. It should recognize the operating system that you are using, but if it does not, you will just need to scroll down the page to identify the appropriate installer.</p>
 <p>Now you are all set and ready to go! Nice job following the instructions and getting R and RStudio on your computer. Next you can begin to customize and get used to using RStudio. Remember, this is not something that is scary or a thing you can “break”. When in doubt, check out Google or reach out to the professor!</p>
 </section>

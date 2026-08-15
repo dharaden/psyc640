@@ -425,7 +425,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/lab-1_data-workflow.html" class="sidebar-item-text sidebar-link">
+  <a href="./labs/lab-1_data-workflow.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 1 - Data Intro</span></a>
   </div>
 </li>
@@ -598,7 +598,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<p>For a PDF copy of the syllabus: <a href="./files/PSYC640_Stats_Fall25.pdf">Download File</a></p>
+<p>For a PDF copy of the syllabus: <a href="./files/PSYC640_Stats_Fall26.pdf">Download File</a></p>
 <section id="course-overview" class="level3">
 <h3 class="anchored" data-anchor-id="course-overview"><strong>Course Overview</strong></h3>
 <p>This course is the introduction to statistics for graduate students. The goal of the course is to provide a grounding in statistical concepts, methods and application to research. I aim to increase student’s confidence in using these techniques and introducing them to R. Topics will range from including mathematical conceptualizations to practical application with various techniques ranging from descriptive statistics to regression.</p>
@@ -609,13 +609,11 @@ ul.task-list li input[type="checkbox"] {
 <p>We will be using R and JAMOVI for all data wrangling, visualization, and analysis. You may use other statistical programs in this course, but the examples in class (and what I am most familiar with) will be in R and JAMOVI. Students must have the latest version of R and it is strongly recommended that students also download the RStudio GUI, both can be found <a href="https://posit.co/download/rstudio-desktop/#download">here</a>. JAMOVI can be downloaded <a href="https://www.jamovi.org/index.html">here</a>. All software here is free.</p>
 <p>We will primarily be referring to chapters in the following textbooks:</p>
 <ul>
-<li><p><a href="https://openintro-ims.netlify.app/" target="&quot;_blank"><em>Introduction to Modern Statistics (2e)</em></a> (Cetinkaya-Rundel &amp; Hardin, 2024)</p></li>
-<li><p><a href="https://learningstatisticswithr-bookdown.netlify.com/index.html" target="&quot;_blank"><em>Learning Statistics with R</em></a> (Navarro)</p></li>
-<li><p><a href="https://r4ds.hadley.nz/" target="&quot;_blank"><em>R for Data Science (2e)</em></a> (Wickham, Çetinkaya-Rundel, &amp; Grolemund, 2023)</p></li>
-<li><p><a href="https://www.modernstatisticswithr.com/" target="&quot;_blank"><em>Modern Statistics with R (2e)</em></a> (Thullin, 2025)</p></li>
-<li><p><a href="https://statsthinking21.github.io/statsthinking21-core-site/" target="&quot;_blank"><em>Statistical Thinking</em></a> (Poldrack, 2024)</p></li>
-<li><p><a href="https://www.statlearning.com/" target="_blank"><em>An Introduction to Statistical Learning (2e)</em></a> (James, Witten, Hastie &amp; Tibshirani, 2023)</p></li>
-<li><p><a href="https://sadbhavnapublications.org/research-enrichment-material/2-Statistical-Books/Data-Analysis-A-Model-Comparison-Approach-To-Regression,-ANOVA,-and-Beyond.pdf" target="_blank"><em>Data Analysis: A Model Comparison Approach to Regression, ANOVA, and Beyond (3rd ed.)</em></a> (Judd, McClelland, &amp; Ryan, 2017)</p></li>
+<li><p><a href="https://avehtari.github.io/ROS-Examples/"><em>Regression and Other Stories</em></a> (Gelman, Hill &amp; Vehtari, 2024)</p></li>
+<li><p><a href="https://learningstatisticswithr.com/book/"><em>Learning Statistics with R</em></a> (Navarro)</p></li>
+<li><p><a href="https://r4ds.hadley.nz/"><em>R for Data Science (2e)</em></a> (Wickham, Çetinkaya-Rundel, &amp; Grolemund, 2023)</p></li>
+<li><p><a href="https://www.modernstatisticswithr.com/"><em>Modern Statistics with R (2e)</em></a> (Thullin, 2025)</p></li>
+<li><p><a href="https://statsthinking21.github.io/statsthinking21-core-site/"><em>Statistical Thinking</em></a> (Poldrack, 2024)</p></li>
 </ul>
 <p>These textbooks are available for free online and able to be downloaded. You may choose to purchase a paper copy if you wish, but it is not required.</p>
 <p><em>All additional readings will be provided by the instructor.</em></p>
@@ -679,7 +677,7 @@ Important
 <p>These are your primary opportunity to build models and, more importantly, to interpret what they tell you. Each lab is built around interpretation and judgment, not just producing code that runs: I will often give you output (a model summary, a set of residual plots, a JAMOVI result) and ask you to explain what it means, decide whether you would trust it, identify which assumption a diagnostic plot implicates, and justify the next analysis. You will also write and modify R to reproduce and extend these results. The interpretation questions are often answered by the assigned readings, in the authors’ own framing, so the readings (not an AI chatbot) are your fastest and most reliable path through the lab. Labs are submitted as Quarto/R Markdown files, and your lowest score will be dropped. They will be assigned during class and then labs are due Tuesday night (11:59pm) before the next class. This category also includes the short in-class checks described below. Together, the labs (take-home) and the checks (in-class) are two windows on your skills regarding choosing, running, interpreting, and explaining an analysis.</p>
 <p><strong><em>Journal Entries</em></strong></p>
 <p>Each week, you will submit a short, reflective journal entry. This is a space for metacognition (i.e., thinking about your own learning). Prompts can include questions like, “What was the clearest concept this week, and why did it click?” or “What was the ‘muddiest’ point for you, and what question would you ask about it?”. They can also take the form of just a general reflection. I want to get to know you and your learning throughout this process. This can also include anything related to your personal life or mental health that you would like for me to know, such as whether you are struggling to balance classes and research, having trouble creating a workspace at home, or whether you can balance time spent on campus and off. This can also be completely random things, like a news article you can’t stop thinking about, or a favorite TV show, movie or book that you just love (especially if it is LOTR, Cosmere or Dungeon Crawler Carl related). The content of what you write has <em>no impact</em> on your grade. In addition, what you write will be kept confidential.</p>
-<p>The purpose of this “assignment” is to help facilitate communication between you and me. I have found other instructors using this and I would like to be able to develop supportive relationships with students, so I decided to implement this. Other instructors reported that they found that many students were more comfortable discussing questions and concerns in their journal assignments rather than through email.</p>
+<p>The purpose of this “assignment” is to help facilitate communication between you and me. I have found other instructors using this and I would like to be able to develop supportive relationships with students, so I decided to implement this. Other instructors reported that they found that many students were more comfortable discussing questions and concerns in their journal assignments rather than through email. There will be approximately 1 per week (we will have some weeks that we skip) and they will be due at the beginning of the week (Mondays at 11:59pm).</p>
 <p><strong><em>In-Class Engagement &amp; Activities</em></strong></p>
 <p>Our class is a workshop, and your active participation is key. This portion of your grade is earned by being present and engaged. This includes participating in group discussions, engaging with the readings, working with peers on problems, and completing the small, hands-on exercises we’ll do together or in small groups in class. Roughly every two to three weeks this also includes a short (about 20-minute) in-class check at the start of our meeting involving interpreting a piece of output, fixing a small bug in a scaffolded script, and/or choosing and justifying a test. These are open-notes, open-readings, open-past-labs, and done in class rather than at home. Their purpose is not to trick you or be a huge challenge; it is to give you (and me) an honest read on where your understanding actually is, and to make the readings pay off. This is a low-stress grade based on your consistent effort and collaboration.</p>
 <p><strong><em>Midterm Project</em></strong></p>
@@ -786,6 +784,10 @@ Important
 <li>www.rit.edu/ombuds/contact-us</li>
 </ul></li>
 </ul>
+</section>
+<section id="psychological-orientation-statement" class="level4">
+<h4 class="anchored" data-anchor-id="psychological-orientation-statement"><strong>Psychological Orientation Statement</strong></h4>
+<p>Psychology is the study of the mind and behavior. Psychologists study universals as well as group and individual differences. In human beings, these groups can include, but are not limited to, those characterized by age, race, ethnicity, nationality, national origin, immigration status, political orientation, language, disability, sex, gender, sexual orientation, gender identity, socioeconomic status, religion, and culture. Understanding variations in thinking and behavior, and the broader factors that may shape such variety, is essential to understanding psychology and aligns with <a href="https://www.apa.org/about/policy/undergraduate-psychology-major.pdf" title="https://www.apa.org/about/policy/undergraduate-psychology-major.pdf">professional standards</a>&nbsp;in teaching psychology. Thus, all psychology classes discuss group patterns in thinking and behavior. By remaining in this course, students consent to be exposed to, learn about, discuss, complete assignments relating to, and otherwise engage with this content.</p>
 </section>
 <section id="academic-integrity-statement" class="level4">
 <h4 class="anchored" data-anchor-id="academic-integrity-statement">Academic Integrity Statement</h4>

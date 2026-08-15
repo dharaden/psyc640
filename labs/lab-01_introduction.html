@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Week 3 - Describe, Visualize, Communicize – PSYC 640 - Graduate Statistics</title>
+<title>Lab 1 - Getting Started – PSYC 640 - Graduate Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -35,8 +70,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../weeks/week-4.html" rel="next">
-<link href="../weeks/week-2.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -80,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Week 3 - Describe, Visualize, Communicize – PSYC 640 - Graduate Statistics">
+<meta property="og:title" content="Lab 1 - Getting Started – PSYC 640 - Graduate Statistics">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
@@ -256,7 +289,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-3.html">Week 3 - Describe &amp; Viz</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lab 1 - Getting Started</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -318,13 +351,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Weekly Materials</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../weeks/week-1.html" class="sidebar-item-text sidebar-link">
@@ -339,7 +372,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-3.html" class="sidebar-item-text sidebar-link active">
+  <a href="../weeks/week-3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 3 - Describe &amp; Viz</span></a>
   </div>
 </li>
@@ -536,23 +569,28 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#descriptives-visualizations-communication" id="toc-descriptives-visualizations-communication" class="nav-link active" data-scroll-target="#descriptives-visualizations-communication">Descriptives, Visualizations + Communication</a>
+  <li><a href="#your-first-r-session" id="toc-your-first-r-session" class="nav-link active" data-scroll-target="#your-first-r-session"><strong>Your First R Session</strong></a></li>
+  <li><a href="#introduce-yourself" id="toc-introduce-yourself" class="nav-link" data-scroll-target="#introduce-yourself">Introduce yourself!</a></li>
+  <li><a href="#step-1-say-hello-to-the-console" id="toc-step-1-say-hello-to-the-console" class="nav-link" data-scroll-target="#step-1-say-hello-to-the-console">Step 1 — Say hello to the console</a></li>
+  <li><a href="#step-2-make-r-studio-yours" id="toc-step-2-make-r-studio-yours" class="nav-link" data-scroll-target="#step-2-make-r-studio-yours">Step 2 — Make R-Studio Yours</a>
   <ul class="collapse">
-  <li><a href="#prepare" id="toc-prepare" class="nav-link" data-scroll-target="#prepare">Prepare</a></li>
-  <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
-  <li><a href="#in-class-activity" id="toc-in-class-activity" class="nav-link" data-scroll-target="#in-class-activity">In-Class Activity</a></li>
-  <li><a href="#for-next-time" id="toc-for-next-time" class="nav-link" data-scroll-target="#for-next-time">For Next Time</a></li>
+  <li><a href="#decorate" id="toc-decorate" class="nav-link" data-scroll-target="#decorate">Decorate</a></li>
+  </ul></li>
+  <li><a href="#step-3-install-your-first-package" id="toc-step-3-install-your-first-package" class="nav-link" data-scroll-target="#step-3-install-your-first-package">Step 3 — Install your first package</a></li>
+  <li><a href="#step-4-confirm-and-submit" id="toc-step-4-confirm-and-submit" class="nav-link" data-scroll-target="#step-4-confirm-and-submit">Step 4 — Confirm and submit</a>
+  <ul class="collapse">
+  <li><a href="#if-you-got-stuck-anywhere" id="toc-if-you-got-stuck-anywhere" class="nav-link" data-scroll-target="#if-you-got-stuck-anywhere">If you got stuck anywhere</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/weeks/week-3.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/lab-01_introduction.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-3.html">Week 3 - Describe &amp; Viz</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 3 - Describe, Visualize, Communicize</h1>
+<h1 class="title">Lab 1 - Getting Started</h1>
 </div>
 
 
@@ -569,34 +607,85 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="descriptives-visualizations-communication" class="level1">
-<h1>Descriptives, Visualizations + Communication</h1>
-<p>We are now in the third week and you are all probably thinking about how much you dislike R and do not ever want to look at the <code>here()</code> library again. But we are going to have to do just that. Importing and getting started are one of the hardest things to do when first working with R. And then trying to make things reproducible is another thing. We are going to practice this A LOT. Especially right in the beginning.</p>
-<p>This week we are going to expand on some data wrangling to get more comfortable with <code>dplyr</code> and the larger <code>tidyverse</code>. <a href="https://p4a.jhelvy.com/data-wrangling">Here is a good website that can also be helpful</a>. Then we will move into an overview of descriptive statistics and how to get them using R. Finally, we will continue with visualizations using <code>ggplot2</code>. With time, we will start introducing how to talk communicate these types of statistics in a manuscript.</p>
-<section id="prepare" class="level2">
-<h2 class="anchored" data-anchor-id="prepare">Prepare</h2>
-<p>📖Read <a href="https://learningstatisticswithr.com/book/" target="_blank">Chapter 5 - LSR</a></p>
-<p>📖Read <a href="https://r4ds.hadley.nz/" target="_blank">Chapter 1 &amp; 3 - R4DS</a></p>
+<section id="your-first-r-session" class="level3">
+<h3 class="anchored" data-anchor-id="your-first-r-session"><strong>Your First R Session</strong></h3>
+<p><strong>Goal</strong>: To become familiar with the RStudio interface and perform some basic tasks. That’s it. There is no statistics in this lab and nothing to get wrong. If you finish with R-studio open and responding, you’ve succeeded.</p>
+<p><strong>What to submit:</strong> A Word doc (or whatever format you prefer) as a short confirmation (see the last step). This lab is graded only on completion, and if you get stuck, getting stuck <em>is</em> useful information! Tell me about it at the end and we can fix it next week (or you can try troubleshooting too).</p>
 </section>
-<section id="slides" class="level2">
-<h2 class="anchored" data-anchor-id="slides">Slides</h2>
-<p><a href="../slides/lec-3_wrangle.html" target="_blank">💻 Data Wrangling</a></p>
-<p><a href="../slides/lec-3_desc-viz.html" target="_blank">💻 Describe &amp; Visualize</a></p>
-</section>
-<section id="in-class-activity" class="level2">
-<h2 class="anchored" data-anchor-id="in-class-activity">In-Class Activity</h2>
-<p><a href="../class-activities/wk3_desc-viz.html">Describing &amp; Visualizing</a></p>
-</section>
-<section id="for-next-time" class="level2">
-<h2 class="anchored" data-anchor-id="for-next-time">For Next Time</h2>
-<p>📋<a href="../labs/lab-3_describe-viz.html">Lab 3 - Describe and Visualize</a></p>
-<p><a href="https://openintro-ims.netlify.app/" target="_blank">📖Read Chapter 2 - IMS</a></p>
-<p><a href="https://www.modernstatisticswithr.com/" target="_blank">📖Read Chapter 3 - MSR</a></p>
-<p><a href="https://statsthinking21.github.io/statsthinking21-core-site/" target="_blank">📖Read Chapter 7 - ST</a></p>
-<p><br><br></p>
-<div style="font-size: 0.875em;">
-<p>Back to <a href=".." title="Course schedule">course schedule</a> ⏎</p>
+<section id="introduce-yourself" class="level3">
+<h3 class="anchored" data-anchor-id="introduce-yourself">Introduce yourself!</h3>
+<p>Start by introducing yourself. Answer these questions below:</p>
+<blockquote class="blockquote">
+<ul>
+<li><p>Name</p></li>
+<li><p>Pronouns</p></li>
+<li><p>Year in school</p></li>
+<li><p>PhD/Thesis/Capstone/Other</p></li>
+<li><p>Area of focus</p></li>
+<li><p>Research interests</p></li>
+<li><p>Comfort with R (1-10 with 10 being “Expert”)</p></li>
+<li><p>Anxiety around Stats (1-10 with 10 being “Extremely” 😟)</p></li>
+<li><p>Overall feelings toward Statistics</p></li>
+<li><p>Anything else you want to share</p></li>
+</ul>
+</blockquote>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you have already installed R and R-Studio, you may skip to Step 3</p>
+<p>If you need steps to installing R and R-Studio, check out our <a href="https://dharaden.github.io/psyc640/resources/startingwithR.html" target="blank">resources</a></p>
+</div>
+</div>
+</section>
+<section id="step-1-say-hello-to-the-console" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-say-hello-to-the-console">Step 1 — Say hello to the console</h2>
+<p>Start up R-Studio.</p>
+<p>The <strong>console</strong> is the pane (usually lower-left) with a <code>&gt;</code> prompt. Think of it as a calculator that talks back.</p>
+<p>Click in the console, type this, and press Enter:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You should see <code>[1] 2</code>. (The <code>[1]</code> is just R numbering its output — ignore it.)</p>
+<p>Now try one more:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">9</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You should get <code>[1] 6</code>. You just asked R to take the average of three numbers. <code>c( )</code> bundles the numbers together, and <code>mean( )</code> averages them. Don’t worry about the details — you’re just confirming R responds.</p>
+</section>
+<section id="step-2-make-r-studio-yours" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-make-r-studio-yours">Step 2 — Make R-Studio Yours</h2>
+<p>Taken from our resources page.</p>
+<section id="decorate" class="level3">
+<h3 class="anchored" data-anchor-id="decorate">Decorate</h3>
+<p>Navigate to <strong>Tools &gt; Global Options &gt; Appearance</strong></p>
+<p>This is all yours! Take ownership and find a cool theme that you like. Make it look nice and how you want it. Right now I am rocking the “Chaos” theme with my fonts a little larger because apparently I am getting older.</p>
+<p>Report what theme you are going with and paste a screenshot.</p>
+</section>
+</section>
+<section id="step-3-install-your-first-package" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-install-your-first-package">Step 3 — Install your first package</h2>
+<p>A <strong>package</strong> adds tools to R. We’ll use the tidyverse a lot. In the console, type:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Press Enter and wait. <strong>You will see a lot of red text scroll by. This is normal and does not mean something is broken.</strong> Red text in R is often just status information, not an error. Let it finish (it can take a few minutes).</p>
+<p>When it’s done and the <code>&gt;</code> prompt returns, load it:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You may see a message about “attaching packages” and some conflicts. That message is expected and fine.</p>
+<blockquote class="blockquote">
+<p><strong>If Step 3 threw an actual error</strong> (something that stops and says “Error:”), don’t worry — copy the message into your submission and we’ll sort it out next week. Package problems are the single most common first-week snag and never a reason to fall behind.</p>
+</blockquote>
+</section>
+<section id="step-4-confirm-and-submit" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-confirm-and-submit">Step 4 — Confirm and submit</h2>
+<p>In the console, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>R.version.string</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Copy whatever it prints. Submit that line <strong>plus</strong> one sentence: did everything work, or where did you get stuck? That’s the whole submission.</p>
+<hr>
+<section id="if-you-got-stuck-anywhere" class="level3">
+<h3 class="anchored" data-anchor-id="if-you-got-stuck-anywhere">If you got stuck anywhere</h3>
+<p>That is completely normal and expected — installation is the messiest part of the entire course, and it’s messy for everyone. Note where it broke (a screenshot of the error helps), submit what you have, and flag it. We’ll fix it together in Week 2, and no one falls behind over an install problem. You have my word on that.</p>
 
 
 </section>
@@ -1016,18 +1105,6 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../weeks/week-2.html" class="pagination-link" aria-label="Week 2 - Data Wrangling">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 2 - Data Wrangling</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../weeks/week-4.html" class="pagination-link" aria-label="Week 4 - Design &amp; Inference">
-        <span class="nav-page-text">Week 4 - Design &amp; Inference</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1036,7 +1113,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/weeks/week-3.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/lab-01_introduction.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with ☕ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
