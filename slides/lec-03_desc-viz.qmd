@@ -1,6 +1,6 @@
 ---
 title: "Week 03: Describe & Vizualize"
-subtitle: "Date: September 8, 2025"
+subtitle: "Date: September 3, 2025"
 footer:  "[course-website](https://dharaden.github.io/psyc640/)"
 logo: "images/640_hex.png"
 format: 
@@ -48,7 +48,7 @@ Then, create a new Notebook/Markdown Document that we will use for today
 
 Setup the libraries and bring in the data
 
--   We will use the TIPI data from the last lecture that has already been scored
+- We will use the TIPI data from the last lecture that has already been scored
 
 ```{r}
 #import data - Your path may be different
@@ -58,8 +58,6 @@ tipi <- import(here("files", "data", "final_tipi.csv")) %>%
 ```
 
 # Descriptive Statistics
-
-*How old is Dr. Haraden?*
 
 ------------------------------------------------------------------------
 
@@ -85,15 +83,12 @@ Let’s take a look at the data that we have already loaded in, and complete som
 
 ### Mean/Average
 
-$$
-\bar{X} = \frac{X_1+X_2+...+X\_{N-1}X_N}{N}
-$$
+$$\bar{X} = \frac{X_1+X_2+...+X\_{N-1}X_N}{N}
+$$$$\bar{X} = \frac{X_1+X_2+...+X\_{N-1}X_N}{N}$$
 
 OR
 
-$$
-\bar{X} = \frac{1}{N}\sum_{i=1}^{N} X_i
-$$
+$$\bar{X} = \frac{1}{N}\sum_{i=1}^{N} X_i$$
 
 ------------------------------------------------------------------------
 
@@ -157,11 +152,11 @@ Find the range of the `duration_in_seconds` variable.
 
 For nearly normally distributed data:
 
--   about 68% falls within 1 SD of the mean,
+- about 68% falls within 1 SD of the mean,
 
--   about 95% falls within 2 SD of the mean,
+- about 95% falls within 2 SD of the mean,
 
--   about 99.7% falls within 3 SD of the mean.
+- about 99.7% falls within 3 SD of the mean.
 
 It is possible for observations to fall 4, 5, or more standard deviations away from the mean, but these occurrences are very rare if the data are nearly normal.
 
@@ -194,9 +189,9 @@ $$\hat{\sigma}^2 = s^2 = \frac{1}{N-1}\sum_{i=1}^N(X-\bar{X})^2$$
 ***Why do we use the squared deviation in the calculation of variance?***
 
 ::: incremental
--   To get rid of negative values so that observations equally distant from the mean are weighted equally
+- To get rid of negative values so that observations equally distant from the mean are weighted equally
 
--   To weigh larger deviations from the mean
+- To weigh larger deviations from the mean
 :::
 
 ------------------------------------------------------------------------
@@ -278,8 +273,8 @@ Since we have already installed and loaded the library, we don't have to do anyt
 
 `ggplot2` follows the "grammar of graphics"
 
--   Theoretical framework for creating data visualizations
--   Breaks the process down into separate components:
+- Theoretical framework for creating data visualizations
+- Breaks the process down into separate components:
 
 ::::: columns
 ::: {.column width="50%"}

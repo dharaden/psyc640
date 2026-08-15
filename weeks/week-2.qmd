@@ -3,11 +3,11 @@ title: "Week 2"
 editor: visual
 ---
 
-# R & Tidy Data
+# Foundations of R
 
-You survived the first week! I hope your classes are off to a good start. Although we don't have class this week (Labor Day), we will still have readings and an assignment. Please view this page to make sure you have all the information you need to get going.
+You survived the first week! I hope your classes are off to a good start. I'm looking forward to getting to meet you all in person this week.
 
-We are going to work on expanding our comfort with the syntax in R and using the tidyverse for some more data wrangling. We will import some new data, and compute some new values. This will be a skill that will be useful no matter what data you are working with. There will be plenty of practice with this!
+This session we are going to set up our foundation for using R. One of the most helpful things is the R Project. Having a project file will help us when we read in data, which is often one of the hardest parts to start with. We will import some new data, and compute some new values. This will be a skill that will be useful no matter what data you are working with. There will be plenty of practice with this!
 
 ![](images/clipboard-2598929654.jpeg){fig-alt="Stylized text providing an overview of Tidy Data. The top reads “Tidy data is a standard way of mapping the meaning of a dataset to its structure. - Hadley Wickham.” On the left reads “In tidy data: each variable forms a column; each observation forms a row; each cell is a single measurement.” There is an example table on the lower right with columns ‘id’, ‘name’ and ‘color’ with observations for different cats, illustrating tidy data structure." fig-align="center"}
 
@@ -19,21 +19,17 @@ We are going to work on expanding our comfort with the syntax in R and using the
 
 "Illustrations from the [Openscapes](https://www.openscapes.org/) blog [Tidy Data for reproducibility, efficiency, and collaboration](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by Julia Lowndes and Allison Horst"
 
-## Prepare
-
--   Be sure to have read the chapters!
-
--   Download the data for this week
-
-<a href="https://drive.google.com/file/d/1zPHM4qR8j70vM1isyfl3cJyC5so_iLts/view?usp=sharing" download="TIPI_Data.csv">Download From Drive (CSV)</a>
-
 ## Slides
 
-None (Labor Day)
+💻R Foundations<a href="/slides/lec-03_foundations.pptx" download="wk2_foundations_slides.pptx">R Foundation Slides (.pptx)</a>
 
-## In-Class Activity
+## Data
 
-No Class this week (Labor Day)
+Cookie Ratings<a href="/files/data/cookie_ratings.csv" download="cookie_ratings.csv">Cookie Ratings (.csv)</a>
+
+## Activity
+
+🍪 The R Kitchen<a href="/files/handouts/welcome-to-the-kitchen.docx" download="welcome-to-the-kitchen.docx">Welcome to the Kitchen (.docx)</a>
 
 ## For Next Time
 

@@ -24,18 +24,6 @@ execute:
 
 ![](images/clipboard-4156918685.png)
 
-# Introduce: Library Tracker
-
-There are so many things to remember. Let's try to make it easier.
-
-[Group Library Tracker](https://docs.google.com/document/d/1s5HqvebeLKwuXAaudsp_TjzN9_khCPohqXlaYalMMug/edit?usp=sharing){target="_blank"}
-
-Use this page to document the different libraries that we are using in class and for the labs. Share any other libraries that you find a long the way!
-
-Remember, this is for future you! Let's try to be nice to them.
-
-------------------------------------------------------------------------
-
 ```{r, results = 'hide', message = F, warning = F}
 # File management
 library(here)
@@ -58,7 +46,7 @@ Then, create a new Notebook/Markdown Document that we will use for today
 
 Setup the libraries and bring in the data
 
--   We will use the TIPI data from the last lab
+- We will use the TIPI data from the last lab
 
 ```{r}
 #import  data - Your path may be different
@@ -168,7 +156,7 @@ The `mutate()` function is most commonly used to add new columns to your data fr
 
 `mutate()` requires data as its first argument, followed by a set of expressions defining new columns.
 
--   **Note**: New variables are automatically added at the end of the data frame (scroll to the right to see them)
+- **Note**: New variables are automatically added at the end of the data frame (scroll to the right to see them)
 
 For example, in the lab, we had the [Ten Item Personality Inventory](https://gosling.psy.utexas.edu/scales-weve-developed/ten-item-personality-measure-tipi/){target="_blank"}
 
