@@ -10,21 +10,21 @@ We will go over this during the first day of class, so this guide is just to use
 
 **Things needed:**
 
--   Computer
+- Computer
 
--   Internet Connection
+- Internet Connection
 
--   A coffee or preferred beverage usually helps!
+- A coffee or preferred beverage usually helps!
 
 ### R: Download and Install
 
 Information taken from “[Hands-On Programming with R](https://rstudio-education.github.io/hopr/starting.html)”
 
-R is maintained by an international team of developers who make the language available through the web page of[The Comprehensive R Archive Network](http://cran.r-project.org). The top of the web page provides three links for downloading R. Follow the link that describes your operating system: Windows or Mac.
+R is maintained by an international team of developers who make the language available through the web page of [The Comprehensive R Archive Network](http://cran.r-project.org). The top of the web page provides three links for downloading R. Follow the link that describes your operating system: Windows or Mac.
 
 #### Windows
 
-To install R on Windows, click the “Download R for Windows” link.[Then click the “base” link.](https://cran.r-project.org/bin/windows/base/) Next, click the first link at the top of the new page. This link should say something like “Download R 4.3.1 for Windows,” except the 4.3.1 will be replaced by the most current version of R. The link downloads an installer program, which installs the most up-to-date version of R for Windows. Run this program and step through the installation wizard that appears. The wizard will install R into your program files folders and place a shortcut in your Start menu. Note that you’ll need to have all of the appropriate administration privileges to install new software on your machine.
+To install R on Windows, click the “Download R for Windows” link. [Then click the “base” link.](https://cran.r-project.org/bin/windows/base/) Next, click the first link at the top of the new page. This link should say something like “Download R 4.3.1 for Windows,” except the 4.3.1 will be replaced by the most current version of R. The link downloads an installer program, which installs the most up-to-date version of R for Windows. Run this program and step through the installation wizard that appears. The wizard will install R into your program files folders and place a shortcut in your Start menu. Note that you’ll need to have all of the appropriate administration privileges to install new software on your machine.
 
 #### Mac
 
@@ -34,11 +34,13 @@ To install R on a Mac, click the “Download R for Mac'' link. Next, click on th
 
 R isn’t a program that you can open and start using, like Microsoft Word or Internet Explorer. Instead, R is a computer language, like C, C++, or UNIX. You use R by writing commands in the R language and asking your computer to interpret them. In the old days, people ran R code in a UNIX terminal window—as if they were hackers in a movie from the 1980s. Now almost everyone uses R with an application called RStudio, and I recommend that you do, too.
 
-Go ahead and try to open R without using R-Studio. You will get something like this: 
+Go ahead and try to open R without using R-Studio, but shield your eyes. You will get something like this: 
+
+![](images/OG-r.png){fig-align="center"}
 
 ## R-Studio: Download and Install
 
-RStudio is an application like Microsoft Word—except that instead of helping you write in English, RStudio helps you write in R. We will use RStudio throughout because it makes working with R **SO** much easier. Plus there are a lot of additional functionalities that RStudio has that will expand what you can do (e.g., RMarkdown). Also, the RStudio interface looks the same for the various operating systems which will make teaching and your experience with the material a lot easier.
+RStudio is an application like Microsoft Word. We will use RStudio throughout because it makes working with R **SO** much easier. Plus there are a lot of additional functionalities that RStudio has that will expand what you can do (e.g., RMarkdown, Quarto). Also, the RStudio interface looks the same for the various operating systems which will make teaching and your experience with the material a lot easier.
 
 RStudio (the company) has recently changed their name to Posit. To download RStudio, you can navigate to the Posit download page for “[RStudio Desktop](https://posit.co/download/rstudio-desktop/)”. We have already completed Step 1 (you could have just come here to download it, but it is helpful to know where to get the latest versions and materials)! All you have to do is select the box under “2: Install RStudio” to download. It should recognize the operating system that you are using, but if it does not, you will just need to scroll down the page to identify the appropriate installer.
 

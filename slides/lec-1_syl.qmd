@@ -37,16 +37,7 @@ options(scipen = 100)
 
 # Today - Syllabus Time!
 
-I hope you have one.
-
-## Schedule/Plan
-
-|  |  |
-|------------------------------------|------------------------------------|
-| 8 - 8:45 | Get oriented. Go over syllabus. Explain course structure. Do all that fun stuff. |
-| 8:45 - 9ish | Break |
-| 9ish - 10:00 | Live Demo in R |
-| 10 - 10:50 | Get comfortable with R |
+I hope you have one. If not, grab it [here](/files/PSYC640_Stats_Fall26.pdf).
 
 ------------------------------------------------------------------------
 
@@ -80,11 +71,11 @@ Be open and honest with me and I will do what I can to support you.
 
 - Graduate degree at University of Illinois at Urbana-Champaign
 
-  - Advisor: Dr. Benjamin Hankin
+  - Advisor: Dr. Benjamin Hankin 👨‍🔬
 
   - Clinical/Community PhD 🎓
 
-- Pre-Doctoral Internship & Postdoc at Rochester Institute of Technology
+- Pre-Doctoral Internship & Postdoc at Rochester Institute of Technology 🐯
 
 ## A little more about me
 
@@ -92,7 +83,7 @@ Be open and honest with me and I will do what I can to support you.
 
 - 2 amazing kids, 2 dogs (Dachshund and Shepherd Mix), 1 wife
 
-- **Currently Reading**: The Shadows of the Gods, Dungeon Crawler Carl
+- **Currently Reading**: The Shadows of the Gods 🤷, Dungeon Crawler Carl 🐱
 
 - **Currently Listening**: The Lonely Island & Seth Meyers Podcast
 
@@ -122,19 +113,15 @@ Dr. Haraden will be extra
 
 I've pulled from a lot of different textbooks. Good thing is, they are all free!
 
-- [*Introduction to Modern Statistics (2e)*](https://openintro-ims.netlify.app/){target="\"_blank"} (Cetinkaya-Rundel & Hardin, 2024)
+- [*Regression and Other Stories*](https://avehtari.github.io/ROS-Examples/) (Gelman, Hill & Vehtari, 2024)
 
-- [*Learning Statistics with R*](https://learningstatisticswithr-bookdown.netlify.com/index.html){target="\"_blank"} (Navarro)
+- [*Learning Statistics with R*](https://learningstatisticswithr.com/book/) (Navarro)
 
-- [*R for Data Science (2e)*](https://r4ds.hadley.nz/){target="\"_blank"} (Wickham, Çetinkaya-Rundel, & Grolemund, 2023)
+- [*R for Data Science (2e)*](https://r4ds.hadley.nz/) (Wickham, Çetinkaya-Rundel, & Grolemund, 2023)
 
-- [*Modern Statistics with R (2e)*](https://www.modernstatisticswithr.com/){target="\"_blank"} (Thullin, 2025)
+- [*Modern Statistics with R (2e)*](https://www.modernstatisticswithr.com/) (Thullin, 2025)
 
-- [*Statistical Thinking*](https://statsthinking21.github.io/statsthinking21-core-site/){target="\"_blank"} (Poldrack, 2024)
-
-- [*An Introduction to Statistical Learning (2e)*](https://www.statlearning.com/){target="_blank"} (James, Witten, Hastie & Tibshirani, 2023)
-
-- [*Data Analysis: A Model Comparison Approach to Regression, ANOVA, and Beyond (3rd ed.)*](https://sadbhavnapublications.org/research-enrichment-material/2-Statistical-Books/Data-Analysis-A-Model-Comparison-Approach-To-Regression,-ANOVA,-and-Beyond.pdf){target="_blank"} (Judd, McClelland, & Ryan, 2017)
+- [*Statistical Thinking*](https://statsthinking21.github.io/statsthinking21-core-site/) (Poldrack, 2024)
 
 ## Evaluation & Grading
 
@@ -183,7 +170,7 @@ The purpose of this “assignment” is to help facilitate communication between
 
 Come to Class. Work with the material.
 
-Basically just be here, be present and try. This will be very low stakes and there will be plenty of mistakes by myself and others.
+Basically I want you to be here, be present and try. This will be very low stakes and there will be plenty of mistakes by myself and others. Not necessarily a reflection of how much you talk in front of everyone. There are other ways to participate and engage.
 
 ------------------------------------------------------------------------
 
@@ -264,6 +251,12 @@ You know we are talking about AI here 🤖
 Use AI as a really nice TA who can help you when I'm not around! *But this TA sometimes gets things wrong, or codes in a different way*
 
 I want you to learn and understand these things. If you are going to AI to solve your problems, then I am doing something wrong (or maybe you are...)
+
+------------------------------------------------------------------------
+
+### Academic Integrity 🤖
+
+[![](images/AI-grads.png){fig-align="center"}](https://eytanadar.medium.com/ai-native-phd-students-f9f6eebc1f91)
 
 ------------------------------------------------------------------------
 

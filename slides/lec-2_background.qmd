@@ -1,6 +1,6 @@
 ---
 title: "Week 01: Getting Started - DATA!"
-subtitle: "Date: 08-25"
+subtitle: "Date: 08-27"
 footer:  "[course-website](https://dharaden.github.io/psyc640/)"
 logo: "images/640_hex.png"
 format: 
@@ -21,8 +21,6 @@ execute:
 
 ```{r setup}
 #| include: false
-
-library(countdown)
 
 knitr::opts_chunk$set(
   fig.width = 8,
@@ -85,7 +83,7 @@ I want to bake a cake!
 <br></br>
 
 | Replication | Reproducibility |
-|----|----|
+|------------------------------------|------------------------------------|
 | Have a similar research question | Use the same research question |
 | Collect your own data | Use their data |
 | Follow their steps with **your** resources | Follow their steps with **their** resources |
@@ -125,35 +123,35 @@ You are your own worst collaborator!
 
 ------------------------------------------------------------------------
 
-## Garden of Forking Paths
-
-::: fragment
-![](images/forking-paths.png)
-:::
-
-------------------------------------------------------------------------
-
 ::::: columns
 ::: {.column width="35%"}
 100 Replication Studies Adequately Powered
 
 **Original Studies:**
 
--   Mean Effect: 0.403
+- Mean Effect: 0.403
 
--   \% with p\<.05: 97%
+- \% with p\<.05: 97%
 
 **Replication Studies:**
 
--   Mean Effect: 0.197
+- Mean Effect: 0.197
 
--   \% with p\<.05: 47%
+- \% with p\<.05: 47%
 :::
 
 ::: {.column width="65%"}
 ![](images/clipboard-450213428.png)
 :::
 :::::
+
+------------------------------------------------------------------------
+
+## Garden of Forking Paths
+
+::: fragment
+![](images/forking-paths.png)
+:::
 
 ------------------------------------------------------------------------
 
@@ -173,11 +171,13 @@ You are your own worst collaborator!
 
 [Modern Statistics Using R](https://www.modernstatisticswithr.com/thebasics.html){target="_blank"}
 
-# Break Time ☕
+## Getting R Setup Properly
 
-Or at least I hope it is around this time
+There are some defaults that make things more challenging in the long run
 
-# Now back to the show!
+To update them, let's look at [Setting Things Up](https://dharaden.github.io/psyc640/resources/startingwithR.html#setting-things-up){target="_blank"}
+
+------------------------------------------------------------------------
 
 ## Working with R-Studio
 
@@ -191,40 +191,20 @@ The Markdown document is the recipe
 
 The bottom right sometimes acts as the little window on the oven where you can see things baking
 
-Creating a Project puts these things in their place
-
 ------------------------------------------------------------------------
-
-## Next Steps
-
--   Create a project
-
--   Set up a Markdown Document
-
--   Run and Knit the document
-
--   Live Example
-
-# In Class Workshop
-
-Create a new .Rmd file and name it `introduction.Rmd`
-
-In the markdown, delete everything that is unnecessary
-
-Introduce yourself in the text portion of the document
-
-Load `tidyverse` and use the `starwars` dataset
-
-For full instructions, navigate to [Day 1 In Class Activity](../class-activities/day1.html){target="_blank"}
 
 # Next Week
 
+In-Person
+
+📖 Read Chapter 1 & 2 - LSR
+
+📖 Read Chapter 1 - ROS
+
 ::: callout-note
-Items below are due 8/31 \@ 11:59pm
+Items below are due 9/1 \@ 11:59pm
 :::
 
-📋Lab 1 - Foundations of a Data Workflow
+📋Lab 1
 
-📖Read Chapter 1 & 2 - ST
-
-📖Read Chapter 2 - MSR
+📋Lab 2

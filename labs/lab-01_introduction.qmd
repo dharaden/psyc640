@@ -1,0 +1,110 @@
+---
+title: "Lab 1 - Getting Started"
+editor: visual
+---
+
+### **Your First R Session**
+
+**Goal**: To become familiar with the RStudio interface and perform some basic tasks. That's it. There is no statistics in this lab and nothing to get wrong. If you finish with R-studio open and responding, you've succeeded.
+
+**What to submit:** A Word doc (or whatever format you prefer) as a short confirmation (see the last step). This lab is graded only on completion, and if you get stuck, getting stuck *is* useful information! Tell me about it at the end and we can fix it next week (or you can try troubleshooting too).
+
+### Introduce yourself!
+
+Start by introducing yourself. Answer these questions below:
+
+> - Name
+>
+> - Pronouns
+>
+> - Year in school
+>
+> - PhD/Thesis/Capstone/Other
+>
+> - Area of focus
+>
+> - Research interests
+>
+> - Comfort with R (1-10 with 10 being "Expert")
+>
+> - Anxiety around Stats (1-10 with 10 being "Extremely" 😟)
+>
+> - Overall feelings toward Statistics
+>
+> - Anything else you want to share
+
+::: callout-note
+If you have already installed R and R-Studio, you may skip to Step 3
+
+If you need steps to installing R and R-Studio, check out our [resources](https://dharaden.github.io/psyc640/resources/startingwithR.html){target="blank"}
+:::
+
+## Step 1 — Say hello to the console
+
+Start up R-Studio.
+
+The **console** is the pane (usually lower-left) with a `>` prompt. Think of it as a calculator that talks back.
+
+Click in the console, type this, and press Enter:
+
+``` r
+1 + 1
+```
+
+You should see `[1] 2`. (The `[1]` is just R numbering its output — ignore it.)
+
+Now try one more:
+
+``` r
+mean(c(3, 6, 9))
+```
+
+You should get `[1] 6`. You just asked R to take the average of three numbers. `c( )` bundles the numbers together, and `mean( )` averages them. Don't worry about the details — you're just confirming R responds.
+
+## Step 2 — Make R-Studio Yours
+
+Taken from our resources page.
+
+### Decorate
+
+Navigate to **Tools \> Global Options \> Appearance**
+
+This is all yours! Take ownership and find a cool theme that you like. Make it look nice and how you want it. Right now I am rocking the "Chaos" theme with my fonts a little larger because apparently I am getting older.
+
+Report what theme you are going with and paste a screenshot.
+
+## Step 3 — Install your first package
+
+A **package** adds tools to R. We'll use the tidyverse a lot. In the console, type:
+
+``` r
+install.packages("tidyverse")
+```
+
+Press Enter and wait. **You will see a lot of red text scroll by. This is normal and does not mean something is broken.** Red text in R is often just status information, not an error. Let it finish (it can take a few minutes).
+
+When it's done and the `>` prompt returns, load it:
+
+``` r
+library(tidyverse)
+```
+
+You may see a message about "attaching packages" and some conflicts. That message is expected and fine.
+
+> **If Step 3 threw an actual error** (something that stops and says "Error:"), don't worry — copy the message into your submission and we'll sort it out next week. Package problems are the single most common first-week snag and never a reason to fall behind.
+
+## Step 4 — Confirm and submit
+
+In the console, run:
+
+``` r
+R.version.string
+```
+
+Copy whatever it prints. Submit that line **plus** one sentence: did everything work, or where did you get stuck? That's the whole submission.
+
+------------------------------------------------------------------------
+
+### If you got stuck anywhere
+
+That is completely normal and expected — installation is the messiest part of the entire course, and it's messy for everyone. Note where it broke (a screenshot of the error helps), submit what you have, and flag it. We'll fix it together in Week 2, and no one falls behind over an install problem. You have my word on that.

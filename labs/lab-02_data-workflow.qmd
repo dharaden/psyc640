@@ -1,0 +1,193 @@
+---
+title: "Lab 2 - Data Workflow"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+  markdown: 
+    wrap: 72
+---
+
+# Lab 2 — Your First Quarto Document
+
+**Goal:** create, edit, and render a Quarto document — the format you'll
+use for every lab and both projects this semester. Again, no real
+statistics here. You're learning the *container* your work will live in,
+while it's low-stakes.
+
+**Prerequisite:** Lab 1 done (R and RStudio installed and working).
+
+**What to submit:** your rendered document (details in the last step).
+
+------------------------------------------------------------------------
+
+## Why this matters (30 seconds of context)
+
+In this course, your writing and your analysis live in the *same*
+document. You write a sentence, then a chunk of R code, then the code's
+output appears right there when you "render." This is the heart of
+reproducible science: anyone can see exactly how you got your result,
+and re-run it. Getting comfortable with this now means you never have to
+think about it again.
+
+## Step 1 — Create a new Quarto document
+
+1.  In RStudio: **File → New File → Quarto Document…**
+2.  Give it a title like "Lab 2" and put your name in the author field.
+3.  Leave the other defaults. Click **Create.**
+4.  RStudio opens a new document with some example text already in it.
+    You'll see two kinds of content: plain text, and gray **code
+    chunks** that start with ```` ```{r} ````.
+
+## Step 2 — Render it as-is
+
+Before changing anything, click the **Render** button (near the top of
+the document — it has a blue arrow icon). RStudio may ask you to install
+additional packages, follow those instructions. It may also ask you to
+save the file first; save it somewhere you'll find it.
+
+The first render may take a moment. When it finishes, a formatted
+document appears (in a viewer pane or your browser). **That's
+rendering:** your `.qmd` source became a shareable output document. Look
+at how the example text and the code output map back to the source. This
+is the whole idea.
+
+## Step 3 — Visual vs. Source
+
+In the top left you will see two "buttons" (Source, Visual). Click back
+and forth between them to examine the differences. These are Quarto
+documents which operate like a Markdown. These allow you to put regular
+text and your analyses all in one document. An example of this would be
+writing your results section and having all the numerical values
+populate accordingly. It's like magic.
+
+**Source**
+
+This is the raw Markdown text. Beginner information about formatting
+around Markdown specifically can be found here ([R Markdown: The
+Definitive Guide](https://pkg.yihui.org/rmarkdown-book/)), but that
+isn't necessarily a focus of the course.
+
+**Visual**
+
+This is what you are used to seeing when working with a document. The
+Visual editor takes the Source material and formats it appropriately
+(**bold**, *italics,*
+[links](https://www.youtube.com/watch?v=dQw4w9WgXcQ), etc.)
+
+You can choose either to work with. I may go back and forth between
+them. Sometimes debugging is a little bit easier in the Source.
+
+## Step 4 – Editing
+
+Now edit the source. Delete the example text below the title block
+(everything under the second `---`) and replace it with your own:
+
+1.  Add a **header** by starting a line with `##`:
+
+    ```         
+    ## PSYC 640
+    ```
+
+2.  Add a short list (each item starts with a dash):
+
+    ```         
+    - My favorite movie is ...
+    - Something I'm hoping to learn this semester is ...
+    ```
+
+3.  Now add a **code chunk**. You can click the green "+C" insert-chunk
+    button, or type it manually:
+
+    ```{{r}}
+    mean(c(10, 20, 30))
+    ```
+
+    Code chunks can be run by clicking the "Play" button on the top
+    right of the chunk. You can also put the cursor on the line you want
+    to run and use the keyboard shortcut Ctrl + Enter (for PC) Command +
+    Enter (for Mac).
+
+4.  Inside the chunk you can put any R. Here we're just averaging three
+    numbers again.
+
+5.  Add one more chunk that does simple arithmetic of your choosing —
+    anything like `100 / 4` or `2 ^ 5`. The point is just to see *your*
+    code produce *your* output.
+
+## Step 5 – Your First Analysis
+
+1.  Create another Code Chunk
+
+2.  Load the `tidyverse` library (`library(tidyverse)`)
+
+3.  Create the object `datawars` and assign dataset called `starwars` to
+    it (hint: `datawars <- starwars`)
+
+4.  Use `View()`, `head()` and `glimpse()` to look at `datawars`.
+
+5.  In the text below, answer this question:
+
+    What do each of these do?
+
+6.  Create another code chunk and use `summary()` to get descriptives of
+    all variables in the dataset.
+
+    1.  Look at the output of your `summary()` command. For the `mass`
+        and `height` variables, you'll see a value for `NA's`. In your
+        own words, what do you think `NA` means in this context?
+
+### Visualize your data
+
+Now we want to investigate the relationship between `mass` and `height`
+in this dataset.
+
+- Create a scatterplot using `ggplot()`.
+
+- The plot should show `height` on the x-axis and `mass` on the y-axis.
+
+- Add some labels to make your plot clear and professional.
+
+  - **Hint:** Use the code below as a template and fill in the blanks.
+
+``` r
+ggplot(data = __, aes(x = __, y = __)) +
+  geom_point() +
+  labs(title = "__",
+       x = "__",
+       y = "__")
+```
+
+- Look at your plot. Do you notice any characters that seem unusually
+  heavy for their height? Briefly describe one.
+
+
+## Step 6 — Render again and check
+
+Click **Render** again. Your new text, header, list, and the output of
+your code chunks should all appear in the formatted document. If a
+number you computed shows up in the output, your code ran successfully.
+
+> **If it won't render:** the most common cause is a code chunk with a
+> typo (a missing backtick or parenthesis). Check that each chunk opens
+> with ```` ```{r} ```` and closes with ```` ``` ```` on its own line.
+> If you're still stuck, submit the `.qmd` file with a note about what
+> happened and we'll look next week.
+
+## Step 7 — Submit
+
+Render one final time to produce the output document (it'll be an
+`.html` file in the same folder as your `.qmd`, unless you chose
+otherwise). Submit **both** the `.qmd` source and the rendered output if
+you can; if only one, send the rendered one.
+
+Include one to two sentences: how did that feel — smooth, fiddly, confusing?
+Honest reactions help me pace Week 2.
+
+------------------------------------------------------------------------
+
+### The takeaway
+
+You just did, in miniature, what every assignment this semester will
+ask: write in a `.qmd`, run code in chunks, render to a shareable
+document. The statistics will get more involved; this container won't
+change. You're set.
