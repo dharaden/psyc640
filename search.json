@@ -254,7 +254,7 @@
     "href": "weeks/week-1.html",
     "title": "Week 1",
     "section": "",
-    "text": "Welcome to the course! I am very excited to get to work with you this semester on our journey into statistics. During our first class, we will review the syllabus and the plan for the course, followed by walking through the structure of each of the classes.\nWe’ll then dive right into our primary set of tools, R and JAMOVI. This session will go over installing R and RStudio, navigating the interface, and learning the foundational syntax of the R language and the tidyverse, including data types and basic functions.\n\n\n\n\n\n\nNote\n\n\n\nThis first class will be Asynchronous due to me being away this week. Please use the class time to review the materials instead of doing it “some other time”\n\n\n\n\nPlease have these downloaded. I will walk through the process as well if you are unclear.\n\nInstall R and R-Studio (https://posit.co/download/rstudio-desktop/)\nInstall JAMOVI (https://www.jamovi.org/download.html)\n\n\n\n\n💻 Getting Started - Syllabus\n📹Syllabus Recording\n💻Getting Started - Data\n\n\n\n📋Lab 1 - Getting Started\n📋Lab 2 - Data Workflow\n📖Chapter 1 & 2 - LSR\n📖Chapter 1 - ROS\n\n\nBack to course schedule ⏎",
+    "text": "Welcome to the course! I am very excited to get to work with you this semester on our journey into statistics. During our first class, we will review the syllabus and the plan for the course, followed by walking through the structure of each of the classes.\nWe’ll then dive right into our primary set of tools, R and JAMOVI. This session will go over installing R and RStudio, navigating the interface, and learning the foundational syntax of the R language and the tidyverse, including data types and basic functions.\n\n\n\n\n\n\nNote\n\n\n\nThis first class will be Asynchronous due to me being away this week. Please use the class time to review the materials instead of doing it “some other time”\n\n\n\n\nPlease have these downloaded. I will walk through the process as well if you are unclear.\n\nInstall R and R-Studio (https://posit.co/download/rstudio-desktop/)\nInstall JAMOVI (https://www.jamovi.org/download.html)\n\n\n\n\n💻 Getting Started - Syllabus\n📹Syllabus Recording\n💻Getting Started - Data\n\n\n\n📋Lab 1 - Getting Started\n📋Lab 2 - Data Workflow\n❓Introduction Check-in\n📖Chapter 1 & 2 - LSR\n📖Chapter 1 - ROS\n\n\nBack to course schedule ⏎",
     "crumbs": [
       "Weekly Materials",
       "Week 1 - Set up and Foundations"
@@ -287,7 +287,7 @@
     "href": "weeks/week-1.html#for-next-time",
     "title": "Week 1",
     "section": "",
-    "text": "📋Lab 1 - Getting Started\n📋Lab 2 - Data Workflow\n📖Chapter 1 & 2 - LSR\n📖Chapter 1 - ROS\n\n\nBack to course schedule ⏎",
+    "text": "📋Lab 1 - Getting Started\n📋Lab 2 - Data Workflow\n❓Introduction Check-in\n📖Chapter 1 & 2 - LSR\n📖Chapter 1 - ROS\n\n\nBack to course schedule ⏎",
     "crumbs": [
       "Weekly Materials",
       "Week 1 - Set up and Foundations"
@@ -798,7 +798,7 @@
     "href": "labs/lab-02_data-workflow.html",
     "title": "Lab 2 - Data Workflow",
     "section": "",
-    "text": "Goal: create, edit, and render a Quarto document — the format you’ll use for every lab and both projects this semester. Again, no real statistics here. You’re learning the container your work will live in, while it’s low-stakes.\nPrerequisite: Lab 1 done (R and RStudio installed and working).\nWhat to submit: your rendered document (details in the last step).\n\n\n\nIn this course, your writing and your analysis live in the same document. You write a sentence, then a chunk of R code, then the code’s output appears right there when you “render.” This is the heart of reproducible science: anyone can see exactly how you got your result, and re-run it. Getting comfortable with this now means you never have to think about it again.\n\n\n\n\nIn RStudio: File → New File → Quarto Document…\nGive it a title like “Lab 2” and put your name in the author field.\nLeave the other defaults. Click Create.\nRStudio opens a new document with some example text already in it. You’ll see two kinds of content: plain text, and gray code chunks that start with ```{r}.\n\n\n\n\nBefore changing anything, click the Render button (near the top of the document — it has a blue arrow icon). RStudio may ask you to install additional packages, follow those instructions. It may also ask you to save the file first; save it somewhere you’ll find it.\nThe first render may take a moment. When it finishes, a formatted document appears (in a viewer pane or your browser). That’s rendering: your .qmd source became a shareable output document. Look at how the example text and the code output map back to the source. This is the whole idea.\n\n\n\nIn the top left you will see two “buttons” (Source, Visual). Click back and forth between them to examine the differences. These are Quarto documents which operate like a Markdown. These allow you to put regular text and your analyses all in one document. An example of this would be writing your results section and having all the numerical values populate accordingly. It’s like magic.\nSource\nThis is the raw Markdown text. Beginner information about formatting around Markdown specifically can be found here (R Markdown: The Definitive Guide), but that isn’t necessarily a focus of the course.\nVisual\nThis is what you are used to seeing when working with a document. The Visual editor takes the Source material and formats it appropriately (bold, italics, links, etc.)\nYou can choose either to work with. I may go back and forth between them. Sometimes debugging is a little bit easier in the Source.\n\n\n\nNow edit the source. Delete the example text below the title block (everything under the second ---) and replace it with your own:\n\nAdd a header by starting a line with ##:\n## PSYC 640\nAdd a short list (each item starts with a dash):\n- My favorite movie is ...\n- Something I'm hoping to learn this semester is ...\nNow add a code chunk. You can click the green “+C” insert-chunk button, or type it manually:\n```{r}\nmean(c(10, 20, 30))\n```\nCode chunks can be run by clicking the “Play” button on the top right of the chunk. You can also put the cursor on the line you want to run and use the keyboard shortcut Ctrl + Enter (for PC) Command + Enter (for Mac).\nInside the chunk you can put any R. Here we’re just averaging three numbers again.\nAdd one more chunk that does simple arithmetic of your choosing — anything like 100 / 4 or 2 ^ 5. The point is just to see your code produce your output.\n\n\n\n\n\nCreate another Code Chunk\nLoad the tidyverse library (library(tidyverse))\nCreate the object datawars and assign dataset called starwars to it (hint: datawars &lt;- starwars)\nUse View(), head() and glimpse() to look at datawars.\nIn the text below, answer this question:\nWhat do each of these do?\nCreate another code chunk and use summary() to get descriptives of all variables in the dataset.\n\nLook at the output of your summary() command. For the mass and height variables, you’ll see a value for NA's. In your own words, what do you think NA means in this context?\n\n\n\n\nNow we want to investigate the relationship between mass and height in this dataset.\n\nCreate a scatterplot using ggplot().\nThe plot should show height on the x-axis and mass on the y-axis.\nAdd some labels to make your plot clear and professional.\n\nHint: Use the code below as a template and fill in the blanks.\n\n\nggplot(data = __, aes(x = __, y = __)) +\n  geom_point() +\n  labs(title = \"__\",\n       x = \"__\",\n       y = \"__\")\n\nLook at your plot. Do you notice any characters that seem unusually heavy for their height? Briefly describe one.\n\n\n\n\n\nClick Render again. Your new text, header, list, and the output of your code chunks should all appear in the formatted document. If a number you computed shows up in the output, your code ran successfully.\n\nIf it won’t render: the most common cause is a code chunk with a typo (a missing backtick or parenthesis). Check that each chunk opens with ```{r} and closes with ``` on its own line. If you’re still stuck, submit the .qmd file with a note about what happened and we’ll look next week.\n\n\n\n\nRender one final time to produce the output document (it’ll be an .html file in the same folder as your .qmd, unless you chose otherwise). Submit both the .qmd source and the rendered output if you can; if only one, send the rendered one.\nInclude one to two sentences: how did that feel — smooth, fiddly, confusing? Honest reactions help me pace Week 2.\n\n\n\nYou just did, in miniature, what every assignment this semester will ask: write in a .qmd, run code in chunks, render to a shareable document. The statistics will get more involved; this container won’t change. You’re set."
+    "text": "Goal: create, edit, and render a Quarto document — the format you’ll use for every lab and both projects this semester. Again, no real statistics here. You’re learning the container your work will live in, while it’s low-stakes.\nPrerequisite: Lab 1 done (R and RStudio installed and working).\nWhat to submit: your rendered document (details in the last step).\n\n\n\nIn this course, your writing and your analysis live in the same document. You write a sentence, then a chunk of R code, then the code’s output appears right there when you “render.” This is the heart of reproducible science: anyone can see exactly how you got your result, and re-run it. Getting comfortable with this now means you never have to think about it again.\n\n\n\n\nIn RStudio: File → New File → Quarto Document…\nGive it a title like “Lab 2” and put your name in the author field.\nLeave the other defaults. Click Create.\nRStudio opens a new document with some example text already in it. You’ll see two kinds of content: plain text, and gray code chunks that start with ```{r}.\n\n\n\n\nBefore changing anything, click the Render button (near the top of the document — it has a blue arrow icon). RStudio may ask you to install additional packages, follow those instructions. It may also ask you to save the file first; save it somewhere you’ll find it.\nThe first render may take a moment. When it finishes, a formatted document appears (in a viewer pane or your browser). That’s rendering: your .qmd source became a shareable output document. Look at how the example text and the code output map back to the source. This is the whole idea.\n\n\n\nIn the top left you will see two “buttons” (Source, Visual). Click back and forth between them to examine the differences. These are Quarto documents which operate like a Markdown. These allow you to put regular text and your analyses all in one document. An example of this would be writing your results section and having all the numerical values populate accordingly. It’s like magic.\nSource\nThis is the raw Markdown text. Beginner information about formatting around Markdown specifically can be found here (R Markdown: The Definitive Guide), but that isn’t necessarily a focus of the course.\nVisual\nThis is what you are used to seeing when working with a document. The Visual editor takes the Source material and formats it appropriately (bold, italics, links, etc.)\nYou can choose either to work with. I may go back and forth between them. Sometimes debugging is a little bit easier in the Source.\n\n\n\nNow edit the source. Delete the example text below the title block (everything under the second ---) and replace it with your own:\n\nAdd a header by starting a line with ##:\n## PSYC 640\nAdd a short list (each item starts with a dash):\n- My favorite movie is ...\n- Something I'm hoping to learn this semester is ...\nNow add a code chunk. You can click the green “+C” insert-chunk button, or type it manually:\n```{r}\nmean(c(10, 20, 30))\n```\nCode chunks can be run by clicking the “Play” button on the top right of the chunk. You can also put the cursor on the line you want to run and use the keyboard shortcut Ctrl + Enter (for PC) Command + Enter (for Mac).\nInside the chunk you can put any R. Here we’re just averaging three numbers again.\nAdd one more chunk that does simple arithmetic of your choosing — anything like 100 / 4 or 2 ^ 5. The point is just to see your code produce your output.\n\n\n\n\n\nCreate another Code Chunk\nLoad the tidyverse library (library(tidyverse))\nCreate the object datawars and assign dataset called starwars to it (hint: datawars &lt;- starwars)\nUse View(), head() and glimpse() to look at datawars.\nIn the text below, answer this question:\nWhat do each of these do?\nCreate another code chunk and use summary() to get descriptives of all variables in the dataset.\n\nLook at the output of your summary() command. For the mass and height variables, you’ll see a value for NA's. In your own words, what do you think NA means in this context?\n\n\n\n\nNow we want to investigate the relationship between mass and height in this dataset.\n\nCreate a scatterplot using ggplot().\nThe plot should show height on the x-axis and mass on the y-axis.\nAdd some labels to make your plot clear and professional.\n\nHint: Use the code below as a template and fill in the blanks.\n\n\nggplot(data = __, aes(x = __, y = __)) +\n  geom_point() +\n  labs(title = \"__\",\n       x = \"__\",\n       y = \"__\")\n\nLook at your plot. Do you notice any characters that seem unusually heavy for their height? Briefly describe one.\n\n\n\n\n\nClick Render again. Your new text, header, list, and the output of your code chunks should all appear in the formatted document. If a number you computed shows up in the output, your code ran successfully.\n\nIf it won’t render: the most common cause is a code chunk with a typo (a missing backtick or parenthesis). Check that each chunk opens with ```{r} and closes with ``` on its own line. If you’re still stuck, submit the .qmd file with a note about what happened and we’ll look next week.\n\n\n\n\nRender one final time to produce the output document (it’ll be an .html file in the same folder as your .qmd, unless you chose otherwise). Submit both the .qmd source and the rendered output if you can; if only one, send the rendered one.\nInclude one to two sentences about Lab 2: how did that feel — smooth, fiddly, confusing? Honest reactions help me pace Week 2.\n\n\n\nYou just did, in miniature, what every assignment this semester will ask: write in a .qmd, run code in chunks, render to a shareable document. The statistics will get more involved; this container won’t change. You’re set."
   },
   {
     "objectID": "labs/lab-02_data-workflow.html#why-this-matters-30-seconds-of-context",
@@ -854,7 +854,7 @@
     "href": "labs/lab-02_data-workflow.html#step-7-submit",
     "title": "Lab 2 - Data Workflow",
     "section": "",
-    "text": "Render one final time to produce the output document (it’ll be an .html file in the same folder as your .qmd, unless you chose otherwise). Submit both the .qmd source and the rendered output if you can; if only one, send the rendered one.\nInclude one to two sentences: how did that feel — smooth, fiddly, confusing? Honest reactions help me pace Week 2.\n\n\n\nYou just did, in miniature, what every assignment this semester will ask: write in a .qmd, run code in chunks, render to a shareable document. The statistics will get more involved; this container won’t change. You’re set."
+    "text": "Render one final time to produce the output document (it’ll be an .html file in the same folder as your .qmd, unless you chose otherwise). Submit both the .qmd source and the rendered output if you can; if only one, send the rendered one.\nInclude one to two sentences about Lab 2: how did that feel — smooth, fiddly, confusing? Honest reactions help me pace Week 2.\n\n\n\nYou just did, in miniature, what every assignment this semester will ask: write in a .qmd, run code in chunks, render to a shareable document. The statistics will get more involved; this container won’t change. You’re set."
   },
   {
     "objectID": "labs/midterm-proj.html",
@@ -1074,382 +1074,298 @@
     ]
   },
   {
-    "objectID": "slides/lec-9_models.html#today",
-    "href": "slides/lec-9_models.html#today",
-    "title": "Week 09: Model Selection & Variability",
+    "objectID": "slides/lec-12_logistic.html#today",
+    "href": "slides/lec-12_logistic.html#today",
+    "title": "Week 12: Categorical & Logistic Regression",
     "section": "Today…",
-    "text": "Today…\nRegression & Model Selection"
+    "text": "Today…\n\nFinal Project Prep\nSome helpful tools (autosave & new library)\nRegression Review\nCategorical Predictors Review\nLogistic Regression\nModel Diagnostics 🤷"
   },
   {
-    "objectID": "slides/lec-9_models.html#example---lego-data",
-    "href": "slides/lec-9_models.html#example---lego-data",
-    "title": "Week 09: Model Selection & Variability",
-    "section": "Example - LEGO Data",
-    "text": "Example - LEGO Data\n\nlego &lt;- import(here(\"files\", \"data\", \"LEGO_data.csv\")) %&gt;% \n  janitor::clean_names()\n\ndescribe(lego)\n\n                 vars  n     mean       sd   median  trimmed      mad      min\nset_name*           1 59    30.00    17.18    30.00    30.00    22.24     1.00\nset_number          2 59 37023.29 25089.50 31167.00 35693.88 30827.70 10294.00\nnumber_of_pieces    3 59  2416.58  2384.39  1503.00  2073.37  1906.62   104.00\nprice               4 59   218.19   214.72   129.99   189.81   163.09     9.99\n                      max range skew kurtosis      se\nset_name*           59.00    58 0.00    -1.26    2.24\nset_number       76974.00 66680 0.55    -1.21 3266.37\nnumber_of_pieces 10001.00  9897 1.32     1.37  310.42\nprice              999.99   990 1.28     1.48   27.95"
+    "objectID": "slides/lec-12_logistic.html#autosave",
+    "href": "slides/lec-12_logistic.html#autosave",
+    "title": "Week 12: Categorical & Logistic Regression",
+    "section": "Autosave",
+    "text": "Autosave\nTools &gt;&gt; Global Options &gt;&gt; Code &gt;&gt; Saving"
   },
   {
-    "objectID": "slides/lec-9_models.html#regression-coefficient-b_1",
-    "href": "slides/lec-9_models.html#regression-coefficient-b_1",
-    "title": "Week 09: Model Selection & Variability",
-    "section": "Regression coefficient, \\(b_{1}\\)",
-    "text": "Regression coefficient, \\(b_{1}\\)\nCalculating the slope\n\\[\\Large b_{1} = \\frac{cov_{XY}}{s_{x}^{2}}\\]\n\n# Covariance\ncov(lego$number_of_pieces, lego$price)\n\n[1] 469162.5\n\n# Variance of # of Pieces\nvar(lego$number_of_pieces)\n\n[1] 5685305"
+    "objectID": "slides/lec-12_logistic.html#new-library-genzplyr",
+    "href": "slides/lec-12_logistic.html#new-library-genzplyr",
+    "title": "Week 12: Categorical & Logistic Regression",
+    "section": "New Library: genzplyr",
+    "text": "New Library: genzplyr\n\n\ndplyr but make it bussin fr fr no cap\n\ngenzplyr 💅"
   },
   {
-    "objectID": "slides/lec-9_models.html#regression-coefficient-b_1-1",
-    "href": "slides/lec-9_models.html#regression-coefficient-b_1-1",
-    "title": "Week 09: Model Selection & Variability",
-    "section": "Regression coefficient, \\(b_{1}\\)",
-    "text": "Regression coefficient, \\(b_{1}\\)\n\\[\\Large b_{1} = \\frac{cov_{XY}}{s_{x}^{2}} = r_{xy} \\frac{s_{y}}{s_{x}}\\]\n\n#SD of # of Pieces\nsd(lego$number_of_pieces) \n\n[1] 2384.388\n\n# SD of Price\nsd(lego$price) \n\n[1] 214.7205\n\n# Correlation\ncor(lego$number_of_pieces, lego$price)\n\n[1] 0.9163742"
+    "objectID": "slides/lec-12_logistic.html#regression",
+    "href": "slides/lec-12_logistic.html#regression",
+    "title": "Week 12: Categorical & Logistic Regression",
+    "section": "Regression",
+    "text": "Regression\nWhat is the equation for a regression??"
   },
   {
-    "objectID": "slides/lec-9_models.html#regression-coefficient-b_0",
-    "href": "slides/lec-9_models.html#regression-coefficient-b_0",
-    "title": "Week 09: Model Selection & Variability",
-    "section": "Regression Coefficient, \\(b_0\\)",
-    "text": "Regression Coefficient, \\(b_0\\)\nCalculating the Intercept:\n\\[\\Large b_0 = \\bar{Y} - b_1\\bar{X}\\]\nThe intercept adjusts the location of the regression line to ensure that it runs through the point \\(\\large (\\bar{X}, \\bar{Y}).\\)\n\nmean(lego$number_of_pieces)\n\n[1] 2416.576\n\nmean(lego$price)\n\n[1] 218.1936"
+    "objectID": "slides/lec-12_logistic.html#regression-1",
+    "href": "slides/lec-12_logistic.html#regression-1",
+    "title": "Week 12: Categorical & Logistic Regression",
+    "section": "Regression",
+    "text": "Regression\n\\[ Y_i = b_0 + b_1X_{1i} + b_2X_{2i} + ... + b_nX_{ni}+ e_i \\]"
   },
   {
-    "objectID": "slides/lec-9_models.html#what-is-the-regression-model",
-    "href": "slides/lec-9_models.html#what-is-the-regression-model",
-    "title": "Week 09: Model Selection & Variability",
-    "section": "What is the Regression Model?",
-    "text": "What is the Regression Model?\nUsing the calculations, identify what the linear model would be."
+    "objectID": "slides/lec-12_logistic.html#regression-2",
+    "href": "slides/lec-12_logistic.html#regression-2",
+    "title": "Week 12: Categorical & Logistic Regression",
+    "section": "Regression",
+    "text": "Regression\nHow do we interpret the regression coefficients (Intercepts & slopes)?"
   },
   {
-    "objectID": "slides/lec-9_models.html#what-is-the-regression-model-1",
-    "href": "slides/lec-9_models.html#what-is-the-regression-model-1",
-    "title": "Week 09: Model Selection & Variability",
-    "section": "What is the Regression Model?",
-    "text": "What is the Regression Model?\nUsing the calculations, identify what the linear model would be.\nYou hear about 3 new sets coming out that you are interested in. Since you have this regression model, you can calculate the total price for each. How much money do you need to save (excluding taxes) to buy all 3 sets?\n\n\n\nSet 1: 1031 pieces\nSet 2: 357\nSet 3: 4154"
+    "objectID": "slides/lec-12_logistic.html#regression-3",
+    "href": "slides/lec-12_logistic.html#regression-3",
+    "title": "Week 12: Categorical & Logistic Regression",
+    "section": "Regression",
+    "text": "Regression\nINTERCEPT: When all predictor variables are set to 0, our expected value (predicted \\(\\hat{Y}\\)) will be this value.\nSLOPES: For every 1 unit change in our \\(X_n\\) variable, there will be beta (b or \\(\\beta\\)) units increase in our Y (outcome) variable, holding all other variables constant."
   },
   {
-    "objectID": "slides/lec-9_models.html#explaining-variance",
-    "href": "slides/lec-9_models.html#explaining-variance",
-    "title": "Week 09: Model Selection & Variability",
+    "objectID": "slides/lec-12_logistic.html#categorical-predictors-factors",
+    "href": "slides/lec-12_logistic.html#categorical-predictors-factors",
+    "title": "Week 12: Categorical & Logistic Regression",
+    "section": "Categorical Predictors = factors",
+    "text": "Categorical Predictors = factors\nTypically identified by a grouping variable that may be a character\n\nglimpse(cah_data$political_affiliation)\n\n chr [1:1000] \"Democrat\" \"Democrat\" \"Independent\" \"Republican\" \"Democrat\" ...\n\n\nNeed to change the variable from character to factor which will assign a number to each group\n\ncah_data &lt;- cah_data %&gt;%\n  mutate(\n    pol = as.factor(political_affiliation),\n    ghosts = as.factor(ghosts)\n    )\n\nglimpse(cah_data$pol)\n\n Factor w/ 3 levels \"Democrat\",\"Independent\",..: 1 1 2 3 1 1 2 3 3 1 ..."
+  },
+  {
+    "objectID": "slides/lec-12_logistic.html#dummy-coding-replacing-factors",
+    "href": "slides/lec-12_logistic.html#dummy-coding-replacing-factors",
+    "title": "Week 12: Categorical & Logistic Regression",
+    "section": "Dummy Coding (replacing factors)",
+    "text": "Dummy Coding (replacing factors)\nNumerical placeholders used to represent categorical variables\nTaking a categorical variable with \\(k\\) levels (e.g., Democratic, Independent, Republican) into \\(k-1\\) binary variables.\n\n\n\npolitical_affiliation\nbecomes\nInd (binary1)\nRep (binary2)\n\n\n\n\nDemocrat\n–&gt;\n0\n0\n\n\nIndependent\n–&gt;\n1\n0\n\n\nRepublican\n–&gt;\n0\n1\n\n\n…\n\n…\n…"
+  },
+  {
+    "objectID": "slides/lec-12_logistic.html#categorical-regression",
+    "href": "slides/lec-12_logistic.html#categorical-regression",
+    "title": "Week 12: Categorical & Logistic Regression",
+    "section": "Categorical Regression",
+    "text": "Categorical Regression\nGoing back to our Transformers dataset, let’s see how our political affiliation variable can predict # of transformers movies\nUsually you have to create the separate dummy variables, but not in R. As long as your predictor is set as a factor, R will automatically dummy code the variable.\n\ncat1 &lt;- lm(transformers ~ pol,\n           data = cah_data)\n\nYou can also double check the dummy/contrast coding\n\ncontrasts(cah_data$pol)\n\n            Independent Republican\nDemocrat              0          0\nIndependent           1          0\nRepublican            0          1"
+  },
+  {
+    "objectID": "slides/lec-12_logistic.html#categories-in-action-last-time",
+    "href": "slides/lec-12_logistic.html#categories-in-action-last-time",
+    "title": "Week 12: Categorical & Logistic Regression",
+    "section": "Categories in Action (last time)",
+    "text": "Categories in Action (last time)\nGoal: Gain greater familiarity with dummy coding and categorical predictors\nScenario: We are researchers examining the impact of a new intervention on reducing the vocalization “6️⃣7️⃣” in the youths. We have done classroom observations to collect data on how many times students say “6️⃣7️⃣” after receiving the intervention. Youths have been randomly assigned to one of 3 groups, and we need to determine which had the biggest impact."
+  },
+  {
+    "objectID": "slides/lec-12_logistic.html#using-r",
+    "href": "slides/lec-12_logistic.html#using-r",
+    "title": "Week 12: Categorical & Logistic Regression",
+    "section": "Using R",
+    "text": "Using R\nImport dataset, include age and pre-scores to see how that changes interpretation\n\n\n\n\n\n\nWarning\n\n\nDr. Haraden is going to start opening up R and doing a follow-along thing. You have been warned"
+  },
+  {
+    "objectID": "slides/lec-12_logistic.html#status",
+    "href": "slides/lec-12_logistic.html#status",
+    "title": "Week 12: Categorical & Logistic Regression",
+    "section": "6️⃣7️⃣ Status",
+    "text": "6️⃣7️⃣ Status\nIn our last example, we were able to see how these categorical variables could predict a continuous variable. This is perfect for linear regression.\nWhat if we want to see if students have “recovered” from 6️⃣7️⃣?\nWe would then ask: “Which participants dropped below the clinical threshold for 6️⃣7️⃣ at follow-up? Now, our outcome is either recovered or not recovered.”"
+  },
+  {
+    "objectID": "slides/lec-12_logistic.html#recovery-status",
+    "href": "slides/lec-12_logistic.html#recovery-status",
+    "title": "Week 12: Categorical & Logistic Regression",
+    "section": "Recovery Status",
+    "text": "Recovery Status\nNow we have a binary outcome; Yes/No recovery\nWhat happens when we fit a linear regression? What are the chances of someone with a pre-score of 12 recovering by the follow-up?\n\n\nCode\nsix_seven &lt;- import(here(\"files\", \"data\", \n                       \"cat_reg_complete.xlsx\")) %&gt;% \n  janitor::clean_names() %&gt;% \n  # 1 = recovered; 0 = not recovered\n  mutate(recover = if_else(post_score &gt; 14, 0, 1))"
+  },
+  {
+    "objectID": "slides/lec-12_logistic.html#binary-outcomes-in-regression",
+    "href": "slides/lec-12_logistic.html#binary-outcomes-in-regression",
+    "title": "Week 12: Categorical & Logistic Regression",
+    "section": "Binary Outcomes in Regression",
+    "text": "Binary Outcomes in Regression\n\nA simple line is not going to appropriately capture the data\n\nPlus, it definitely doesn’t make it a normal distribution! We only have 2 scores in our predictor variable…\n\n\nIntroducing Logistic Regression 🌟\n\nUsing a logistic function we are able to better capture the data and get a “likelihood” or “probability” of an outcome"
+  },
+  {
+    "objectID": "slides/lec-12_logistic.html#probability-to-odds-to-log-odds",
+    "href": "slides/lec-12_logistic.html#probability-to-odds-to-log-odds",
+    "title": "Week 12: Categorical & Logistic Regression",
+    "section": "Probability to Odds to Log-Odds",
+    "text": "Probability to Odds to Log-Odds\nProbability (p): The chance of an event happening. Ranges from 0 to 1\nOdds: The ratio of the probability of an event happening to it not happening.\n\n\\(Odds = \\frac{p}{1-p}\\)\nRanges from 0 to ∞. An odds of 4 means the event is 4 times more likely to happen than not.\n\nLog-Odds (logit): The natural log of the odds\n\n\\(Logit(p) = ln(\\frac{p}{1-p})\\)\nRanges from -∞ to +∞\n\n\n\n\n\n\n\nImportant\n\n\nThis step transforms our bounded outcome variable (0/1) to an unbound one!"
+  },
+  {
+    "objectID": "slides/lec-12_logistic.html#generalized-linear-model-glm",
+    "href": "slides/lec-12_logistic.html#generalized-linear-model-glm",
+    "title": "Week 12: Categorical & Logistic Regression",
+    "section": "Generalized Linear Model (GLM)",
+    "text": "Generalized Linear Model (GLM)\nA generalization of a linear model (duh) that is used when the response variable has a non-normal error distribution\nMost commonly used when there is a binary (0-1) or count variable as the outcome (we will focus on the binary)\nUltimately, we are trying to identify the probability of the outcome taking the value 1 (“success”) that is being modeled in relation to the predictor variables"
+  },
+  {
+    "objectID": "slides/lec-12_logistic.html#recovering-from-67",
+    "href": "slides/lec-12_logistic.html#recovering-from-67",
+    "title": "Week 12: Categorical & Logistic Regression",
+    "section": "Recovering from 6️⃣7️⃣",
+    "text": "Recovering from 6️⃣7️⃣\nNow we have a tool to figure this out, let’s see if the pre-score can predict recovery!\n\n## Using glm() instead of lm()\nrec_glm &lt;- glm(recover ~ pre_score, \n           data = six_seven, \n           ## This is new\n           ##Tells the model we are doing logistic regression with a binary outcome\n           family = \"binomial\")"
+  },
+  {
+    "objectID": "slides/lec-12_logistic.html#odds-ratios-or",
+    "href": "slides/lec-12_logistic.html#odds-ratios-or",
+    "title": "Week 12: Categorical & Logistic Regression",
+    "section": "Odds Ratios (OR)",
+    "text": "Odds Ratios (OR)\nOR &gt; 1: The predictor increases the odds of the outcome. (e.g., OR of 2.5 means the odds of believing in ghosts are 2.5 times higher).\nOR &lt; 1: The predictor decreases the odds of the outcome. (e.g., OR of 0.4 means the odds of believing in ghosts are 60% lower).\nOR = 1: The predictor has no effect on the odds of the outcome."
+  },
+  {
+    "objectID": "slides/lec-12_logistic.html#visualization",
+    "href": "slides/lec-12_logistic.html#visualization",
+    "title": "Week 12: Categorical & Logistic Regression",
+    "section": "Visualization",
+    "text": "Visualization\nExtract the model implied probabilities for each individual\n\nprobs &lt;- broom::augment(rec_glm, type.predict = \"response\")\n\nPlotting the predicted probabilities\n\nprobs %&gt;% \nggplot(aes(pre_score, .fitted)) +\n  geom_line(color = \"blue\", linewidth = 0.5) +\n  geom_jitter(width = 0.2, alpha = 0.5) +\n  labs(\n    title = \"Predicted Probability of Recovery from 6-7 by Pre-Score\",\n    x = \"Pre-Score\",\n    y = \"Predicted Probability of Recovery\"\n  ) +\n  ylim(0, 1) + # Keep the y-axis bounded at 0 and 1\n  theme_minimal()"
+  },
+  {
+    "objectID": "slides/lec-12_logistic.html#logistic-regression-summary",
+    "href": "slides/lec-12_logistic.html#logistic-regression-summary",
+    "title": "Week 12: Categorical & Logistic Regression",
+    "section": "Logistic Regression: Summary",
+    "text": "Logistic Regression: Summary\n\n\n\n\n\n\n\n\nFeature\nLinear Regression\nLogistic Regression\n\n\n\n\nOutcome Variable\nContinuous\nCategorical (Binary)\n\n\nEquation\n\\(Y=β_0+β_1X\\)\n\\(ln⁡(\\frac{p}{1-p})=β_0+β_1X\\)\n\n\nKey Interpretation\n\\(\\beta_1\\) is the change in the mean of Y\n\\(\\exp(\\beta_1)\\) is the odds ratio\n\n\nR Function\nlm()\nglm(..., family=\"binomial\")"
+  },
+  {
+    "objectID": "slides/lec-12_logistic.html#next-up",
+    "href": "slides/lec-12_logistic.html#next-up",
+    "title": "Week 12: Categorical & Logistic Regression",
+    "section": "Next Up…",
+    "text": "Next Up…\nFollow along to apply these methods to a new dataset!\nPredicting the probability of believing in ghosts. Hopefully we have time to go through this example 👻"
+  },
+  {
+    "objectID": "slides/lec-10_multiple-reg.html#today",
+    "href": "slides/lec-10_multiple-reg.html#today",
+    "title": "Week 10: Multiple Regression",
+    "section": "Today…",
+    "text": "Today…\nhttps://bsky.app/profile/andrew.heiss.phd/post/3ly6hqr3mtk2z"
+  },
+  {
+    "objectID": "slides/lec-10_multiple-reg.html#regression",
+    "href": "slides/lec-10_multiple-reg.html#regression",
+    "title": "Week 10: Multiple Regression",
+    "section": "Regression",
+    "text": "Regression\n3 main reasons for using regression:\n\nAs a description (what is the average salary for men and women?)\nAs part of causal inference (Does being a woman result in a lower salary?)\nFor prediction (“What happens if…” questions)"
+  },
+  {
+    "objectID": "slides/lec-10_multiple-reg.html#explaining-variance",
+    "href": "slides/lec-10_multiple-reg.html#explaining-variance",
+    "title": "Week 10: Multiple Regression",
     "section": "Explaining Variance",
     "text": "Explaining Variance"
   },
   {
-    "objectID": "slides/lec-9_models.html#stroop-data-modeling",
-    "href": "slides/lec-9_models.html#stroop-data-modeling",
-    "title": "Week 09: Model Selection & Variability",
-    "section": "Stroop Data Modeling",
-    "text": "Stroop Data Modeling\nResearch Question: Sleep Quality is negatively related to the Stroop Effect. Lower sleep quality will predict a greater Stroop effect.\nData Set (I hope I entered all the data in appropriately)"
+    "objectID": "slides/lec-10_multiple-reg.html#model-interpretation",
+    "href": "slides/lec-10_multiple-reg.html#model-interpretation",
+    "title": "Week 10: Multiple Regression",
+    "section": "Model Interpretation",
+    "text": "Model Interpretation\nOnce we have a model, we will be able to interpret the coefficients. For a bivariate regression, this was fairly straightforward\nWe would look to the beta (effect size) and interpret it as: for every 1 unit increase in our X variable, there will be beta units increase in our Y variable."
   },
   {
-    "objectID": "slides/lec-9_models.html#linear-regression",
-    "href": "slides/lec-9_models.html#linear-regression",
-    "title": "Week 09: Model Selection & Variability",
-    "section": "Linear Regression",
-    "text": "Linear Regression\nUse the information and let’s do it in R instead of on the board\nVisualize the relationship\nRun a linear regression"
+    "objectID": "slides/lec-10_multiple-reg.html#regressions",
+    "href": "slides/lec-10_multiple-reg.html#regressions",
+    "title": "Week 10: Multiple Regression",
+    "section": "Regressions",
+    "text": "Regressions\nWe may want to include additional predictors into our model to best explain the variance in an outcome:\n\\[ Y_i = b_0 + b_1X_{1i} + b_2X_{2i} + ... + b_nX_{ni}+ e_i \\]"
   },
   {
-    "objectID": "slides/lec-9_models.html#model-fit",
-    "href": "slides/lec-9_models.html#model-fit",
-    "title": "Week 09: Model Selection & Variability",
-    "section": "Model Fit",
-    "text": "Model Fit\nTake a look at the \\(R^2\\) value\nIs there any other data that we have that could impact overall Stroop Effects?\nAfter including it in the model, we can examine the change in \\(R^2\\)\nWhat would happen if we put the random number variable in there?"
+    "objectID": "slides/lec-10_multiple-reg.html#fire-data-example",
+    "href": "slides/lec-10_multiple-reg.html#fire-data-example",
+    "title": "Week 10: Multiple Regression",
+    "section": "Fire Data Example",
+    "text": "Fire Data Example\nWe have been contracted by the county to examine their Fire Department. We have been provided with the data below, and asked to examine what may be related to how expensive a fire costs.\n\n\nCode\n# --- Step 1: Simulate the Data ---\nset.seed(123) # for reproducibility\nn &lt;- 300 # number of fires\n\n# Create three distinct groups for fire size\nfire_sizes &lt;- sample(c(\"Small\", \"Medium\", \"Large\"), n, replace = TRUE, prob = c(0.4, 0.3, 0.3))\n\n# Simulate our variables based on fire size\nfire_data &lt;- tibble(size = factor(fire_sizes, levels = c(\"Small\", \"Medium\", \"Large\"))) %&gt;%\n  mutate(\n    # The bigger the fire, the more trucks are sent.\n    num_trucks = case_when(\n      size == \"Small\"  ~ round(rnorm(n(), 2, 0.5)),\n      size == \"Medium\" ~ round(rnorm(n(), 5, 1)),\n      size == \"Large\"  ~ round(rnorm(n(), 9, 1.5))\n    ),\n    # For a given size, more trucks -&gt; less damage (the true effect)\n    # But bigger size -&gt; more damage (the confounding effect)\n    damage_amount = case_when(\n      size == \"Small\"  ~ 20 - 2 * num_trucks + rnorm(n(), 0, 5),\n      size == \"Medium\" ~ 80 - 3 * num_trucks + rnorm(n(), 0, 8),\n      size == \"Large\"  ~ 150 - 4 * num_trucks + rnorm(n(), 0, 12)\n    )\n  ) %&gt;%\n  # ensure no negative values\n  filter(num_trucks &gt; 0, damage_amount &gt; 0)\n\n\n\nglimpse(fire_data)\n\nRows: 300\nColumns: 3\n$ size          &lt;fct&gt; Small, Medium, Large, Medium, Medium, Small, Large, Medi…\n$ num_trucks    &lt;dbl&gt; 2, 6, 10, 6, 6, 2, 11, 5, 6, 9, 6, 10, 10, 6, 2, 6, 2, 2…\n$ damage_amount &lt;dbl&gt; 17.65717, 50.53150, 126.92287, 69.08090, 69.22461, 18.92…"
   },
   {
-    "objectID": "slides/lec-9_models.html#selecting-a-model",
-    "href": "slides/lec-9_models.html#selecting-a-model",
-    "title": "Week 09: Model Selection & Variability",
-    "section": "Selecting a Model",
-    "text": "Selecting a Model\nOne of the most daunting tasks can be identifying the “right” statistical model for the data you have\nYou may see flowcharts like this:"
+    "objectID": "slides/lec-10_multiple-reg.html#reporting-standardized-or-unstandardized",
+    "href": "slides/lec-10_multiple-reg.html#reporting-standardized-or-unstandardized",
+    "title": "Week 10: Multiple Regression",
+    "section": "Reporting Standardized or Unstandardized?",
+    "text": "Reporting Standardized or Unstandardized?\nINTERPRET b:\n\nWhen the variables are measured in a meaningful metric\nTo compare the relative effects of different predictors in the same sample\n\nINTERPRET β:\n\nWhen the variables are not measured in a meaningful metric\nTo compare effects across samples or studies"
   },
   {
-    "objectID": "slides/lec-9_models.html#example-t-test-vs.-anova-vs.-regression",
-    "href": "slides/lec-9_models.html#example-t-test-vs.-anova-vs.-regression",
-    "title": "Week 09: Model Selection & Variability",
-    "section": "Example: t-test vs. ANOVA vs. Regression",
-    "text": "Example: t-test vs. ANOVA vs. Regression\nThis might be something that we are considering between. How do we pick the “right” one?\nStart with some data where we have 2 groups and we identify a 2 point difference in the groups scores\n\nset.seed(2025)\n\n# Two independent groups with equal variances\nn0 &lt;- 80; n1 &lt;- 80\nmu0 &lt;- 12; mu1 &lt;- 10      # true mean difference = -2\nsigma &lt;- 3\ny0 &lt;- rnorm(n0, mu0, sigma)\ny1 &lt;- rnorm(n1, mu1, sigma)\n\n# Put that in a data frame\ndat &lt;- data.frame(\n  dep = c(y0, y1),\n  group01 = c(rep(0, n0), rep(1, n1))\n) %&gt;% \n  mutate(group = factor(group01, levels = c(0,1), labels = c(\"control\",\"treatment\")))"
+    "objectID": "slides/lec-10_multiple-reg.html#goldilocks-problem",
+    "href": "slides/lec-10_multiple-reg.html#goldilocks-problem",
+    "title": "Week 10: Multiple Regression",
+    "section": "Goldilocks Problem",
+    "text": "Goldilocks Problem\nModels that are underfit, overfit or just-right"
   },
   {
-    "objectID": "slides/lec-13_mod.html#today",
-    "href": "slides/lec-13_mod.html#today",
-    "title": "Week 13: Intro to Moderation",
-    "section": "Today…",
-    "text": "Today…\n\nChecking back in on Regression\nMaking things complicated with moderation\nFinal Project Check in"
+    "objectID": "slides/lec-10_multiple-reg.html#another-example-computer-time-frustration",
+    "href": "slides/lec-10_multiple-reg.html#another-example-computer-time-frustration",
+    "title": "Week 10: Multiple Regression",
+    "section": "Another Example: Computer time & Frustration",
+    "text": "Another Example: Computer time & Frustration\n\n\nCode\n# Step 1: Simulate the Data \nn &lt;- 150 # Number of students\n\n# Simulate total daily computer use in hours\ncomputer_use &lt;- rnorm(n, mean = 6, sd = 1.5)\n\n# Simulate hours spent on stats homework, now as a whole number\nstats_homework &lt;- round(0.7 * computer_use + rnorm(n, 0, 1))\n# Ensure no negative values after rounding\nstats_homework[stats_homework &lt; 0] &lt;- 0\nstats_homework[stats_homework &gt; computer_use] &lt;- 1\n\n# Simulate frustration level (driven mostly by stats homework)\n# Scale of 1-100\nfrustration &lt;- 10 + (2 * computer_use) + (8 * stats_homework) + rnorm(n, 0, 10)\n\n# Create a dataframe and clean up any impossible values\nstudent_data &lt;- tibble(\n  frustration = frustration,\n  computer_use = computer_use,\n  stats_homework = stats_homework\n) %&gt;%\n  filter(frustration &gt; 0, computer_use &gt; 0)\n\n# Bin the 'stats_homework' variable\nstudent_data &lt;- student_data %&gt;%\n  mutate(\n    stats_homework_bin = cut(stats_homework,\n                           breaks = quantile(stats_homework, probs = seq(0, 1, by = 1/3)),\n                           include.lowest = TRUE,\n                           labels = c(\"Low\", \"Medium\", \"High\"))\n  )\n\n\nWe have collected data on graduate students and their weekly frustration levels. Data that were also collected included the amount of time they were spending on their computer as well as the amount of statistics homework that they had."
   },
   {
-    "objectID": "slides/lec-13_mod.html#motivating-example",
-    "href": "slides/lec-13_mod.html#motivating-example",
-    "title": "Week 13: Intro to Moderation",
-    "section": "Motivating example",
-    "text": "Motivating example\n\nglimpse(t_data)\n\nRows: 20\nColumns: 4\n$ ID    &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 1…\n$ study &lt;dbl&gt; 1.62, 0.54, 0.86, 0.80, 0.36, 2.14, 1.13, 1.66, 1.23, 1.92, 1.82…\n$ grade &lt;dbl&gt; 9.0, 7.8, 8.5, 6.2, 6.9, 9.0, 6.6, 8.7, 6.6, 8.8, 9.7, 5.9, 9.5,…\n$ tutor &lt;int&gt; 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0\n\nt_data = t_data %&gt;%\n  mutate(tutor_lab = factor(tutor, \n                            levels = c(0,1),\n                            labels = c(\"No tutor\", \"Tutor\")))"
+    "objectID": "slides/lec-10_multiple-reg.html#model-assumptions-frustration",
+    "href": "slides/lec-10_multiple-reg.html#model-assumptions-frustration",
+    "title": "Week 10: Multiple Regression",
+    "section": "Model Assumptions: Frustration",
+    "text": "Model Assumptions: Frustration\n\ncheck_model(frus.lm2)"
   },
   {
-    "objectID": "slides/lec-13_mod.html#what-are-interactions",
-    "href": "slides/lec-13_mod.html#what-are-interactions",
-    "title": "Week 13: Intro to Moderation",
-    "section": "What are interactions?",
-    "text": "What are interactions?\nWhen we have two variables, A and B, in a regression model, we are testing whether these variables have additive effects on our outcome, Y. That is, the effect of A on Y is constant over all values of B.\n\nExample: Studying and working with a tutor have additive effects on grades; no matter how many hours I spend studying, working with a tutor will improve my grade by 2 points."
+    "objectID": "slides/lec-10_multiple-reg.html#model-selection---stepwise",
+    "href": "slides/lec-10_multiple-reg.html#model-selection---stepwise",
+    "title": "Week 10: Multiple Regression",
+    "section": "Model Selection - Stepwise",
+    "text": "Model Selection - Stepwise\n\nBackward elimination\n\nStart with the full model (all potential predictors)\nPredictors eliminated one-at-a-time from the model until we cannot improve the model any further\n\nForward selection\n\nStart with nothing in the model\nContinue to add predictors one-at-a-time until we cannot find any predictors that improve the model any further"
   },
   {
-    "objectID": "slides/lec-13_mod.html#what-are-interactions-1",
-    "href": "slides/lec-13_mod.html#what-are-interactions-1",
-    "title": "Week 13: Intro to Moderation",
-    "section": "What are interactions?",
-    "text": "What are interactions?\nHowever, we may hypothesis that two variables have joint effects, or interact with each other. In this case, the effect of A on Y changes as a function of B.\n\nExample: Working with a tutor has a positive impact on grades but only for individuals who do not spend a lot of time studying; for individuals who study a lot, tutoring will have little or no impact.\nThis is also referred to as moderation.\n\nInteractions (moderation) tell us whether the effect of one IV (on a DV) depends on another IV."
+    "objectID": "slides/lec-10_multiple-reg.html#model-selection",
+    "href": "slides/lec-10_multiple-reg.html#model-selection",
+    "title": "Week 10: Multiple Regression",
+    "section": "Model Selection",
+    "text": "Model Selection\nALWAYS start with theory and previous work\nYou should NEVER just go into data with just a lot of predictors and backward selection in mind. 🧨"
   },
   {
-    "objectID": "slides/lec-13_mod.html#interactions",
-    "href": "slides/lec-13_mod.html#interactions",
-    "title": "Week 13: Intro to Moderation",
-    "section": "Interactions",
-    "text": "Interactions\nNow extend this example to include joint effects, not just additive effects:\n\\[\\hat{\\text{grade}} = b_{0} + b_{1}\\text{Tutor} + b_2\\text{Study} + b_3(\\text{Tutor}\\times\\text{Study})\\]\n\nmod3 &lt;- lm(grade ~ tutor_lab + study + tutor_lab*study, data = t_data) \nmod3 &lt;-  lm(grade ~ tutor_lab*study, data = t_data)\nsummary(mod3)\n\n...\nCoefficients:\n                     Estimate Std. Error t value      Pr(&gt;|t|)    \n(Intercept)            5.0121     0.3496  14.337 0.00000000015 ***\ntutor_labTutor         2.9203     0.6418   4.550      0.000328 ***\nstudy                  1.7567     0.3095   5.676 0.00003443132 ***\ntutor_labTutor:study  -1.1713     0.4402  -2.661      0.017093 *  \n..."
+    "objectID": "slides/lec-01_syl.html#when-the-teaching-happens",
+    "href": "slides/lec-01_syl.html#when-the-teaching-happens",
+    "title": "Week 01: Getting Started!",
+    "section": "When the Teaching Happens",
+    "text": "When the Teaching Happens\n💾 Meeting Times: Thursday’s 9:30am - 12:20pm\n🧑‍🏫 Drop in Office Hours: Tuesday’s 10am - 12:00 pm\n📧 Best way to contact me? Email me. I will usually respond within 24 hours. If it has been longer, then you can send me a follow-up\n\n\n\n\n\n\nNote\n\n\nI just figured out how to easily put emojis into the presentation. I’m sorry that you will have to witness that."
   },
   {
-    "objectID": "slides/lec-13_mod.html#interpreting-coefficients",
-    "href": "slides/lec-13_mod.html#interpreting-coefficients",
-    "title": "Week 13: Intro to Moderation",
-    "section": "Interpreting coefficients",
-    "text": "Interpreting coefficients\n\\[\\hat{\\text{grade}} = b_{0} + b_{1}\\text{Tutor} + b_2\\text{Study} + b_3(\\text{Tutor}\\times\\text{Study})\\]\n\n\n...\nCoefficients:\n                     Estimate Std. Error t value      Pr(&gt;|t|)    \n(Intercept)            5.0121     0.3496  14.337 0.00000000015 ***\ntutor_labTutor         2.9203     0.6418   4.550      0.000328 ***\nstudy                  1.7567     0.3095   5.676 0.00003443132 ***\ntutor_labTutor:study  -1.1713     0.4402  -2.661      0.017093 *  \n...\n\n\nIntercept: the expected value of Y when all predictors are 0\n\\(b_1\\): The difference in means (tutor vs no tutor) when study = 0\n\\(b_2\\): The slope of study when tutor = 0, or the reference group\n\\(b_3\\)?"
+    "objectID": "slides/lec-01_syl.html#communication",
+    "href": "slides/lec-01_syl.html#communication",
+    "title": "Week 01: Getting Started!",
+    "section": "Communication",
+    "text": "Communication\nPlease ask questions! 🙋‍♀️\nIf you are having trouble, just ask!!\nBe open and honest with me and I will do what I can to support you."
   },
   {
-    "objectID": "slides/lec-13_mod.html#interpreting-coefficients-1",
-    "href": "slides/lec-13_mod.html#interpreting-coefficients-1",
-    "title": "Week 13: Intro to Moderation",
-    "section": "Interpreting coefficients",
-    "text": "Interpreting coefficients\n\\[\\hat{\\text{grade}} = b_{0} + b_{1}\\text{Tutor} + b_2\\text{Study} + b_3(\\text{Tutor}\\times\\text{Study})\\]\n\\(b_3\\)\n\nthe linear effect of the product of hours studying and tutoring\nhow much the slope of study differs for the two tutoring groups\nhow much the effect of tutoring changes for for every one 1 hour increase in studying."
+    "objectID": "slides/lec-01_syl.html#who-the-heck-am-i",
+    "href": "slides/lec-01_syl.html#who-the-heck-am-i",
+    "title": "Week 01: Getting Started!",
+    "section": "Who the heck am I? 🤷",
+    "text": "Who the heck am I? 🤷\n\nUndergraduate degree at University of Denver\n\nPsychology & Philosophy\nHated Statistics\n\nGraduate degree at University of Illinois at Urbana-Champaign\n\nAdvisor: Dr. Benjamin Hankin 👨‍🔬\nClinical/Community PhD 🎓\n\nPre-Doctoral Internship & Postdoc at Rochester Institute of Technology 🐯"
   },
   {
-    "objectID": "slides/lec-13_mod.html#terms",
-    "href": "slides/lec-13_mod.html#terms",
-    "title": "Week 13: Intro to Moderation",
-    "section": "Terms",
-    "text": "Terms\nInteractions tell us whether the effect of one IV (on a DV) depends on another IV. In this case, the effect of tutoring depends on a student’s time spent studying. Tutoring has a large effect when a student’s spends little time studying, but a small effect when the amount of time studying is high.\n\\(b_3\\) is referred to as a “higher-order term.”\nHigher-order terms are those terms that represent interactions."
+    "objectID": "slides/lec-01_syl.html#a-little-more-about-me",
+    "href": "slides/lec-01_syl.html#a-little-more-about-me",
+    "title": "Week 01: Getting Started!",
+    "section": "A little more about me",
+    "text": "A little more about me\n\nPronouns: he/him/his\n2 amazing kids, 2 dogs (Dachshund and Shepherd Mix), 1 wife\nCurrently Reading: The Shadows of the Gods 🤷, Dungeon Crawler Carl 🐱\nCurrently Listening: The Lonely Island & Seth Meyers Podcast\nCurrently Watching: Love on the Spectrum, Bluey, and Lizzie McGuire"
   },
   {
-    "objectID": "slides/lec-13_mod.html#terms-1",
-    "href": "slides/lec-13_mod.html#terms-1",
-    "title": "Week 13: Intro to Moderation",
-    "section": "Terms",
-    "text": "Terms\nLower-order terms change depending on the values of the higher-order terms. The value of \\(b_1\\) and \\(b_2\\) will change depending on the value of \\(b_3\\).\n\nThese values represent “conditional effects” (because the value is conditional on the level of the other variable). In many cases, the value and significance test with these terms is either meaningless (if an IV is never equal to 0) or unhelpful, as these values and significance change across the data."
+    "objectID": "slides/lec-01_syl.html#teaching-philosophy",
+    "href": "slides/lec-01_syl.html#teaching-philosophy",
+    "title": "Week 01: Getting Started!",
+    "section": "Teaching Philosophy",
+    "text": "Teaching Philosophy\n\nI’m here for you and to support you however I can\nMy job is to create a supportive, low-stakes environment where you can crash test ideas and develop new skills\nYour responsibility is to come to class prepared, ready to have fun, take some risks, and actively participate!\n\nAsk questions, share relevant funny stories, seek clarification, question the status quo where applicable\n\nScience is a team sport & failures/mistakes will happen, but it is okay! That’s what science and discovery is!"
   },
   {
-    "objectID": "slides/lec-13_mod.html#conditional-effects-and-simple-slopes",
-    "href": "slides/lec-13_mod.html#conditional-effects-and-simple-slopes",
-    "title": "Week 13: Intro to Moderation",
-    "section": "Conditional effects and simple slopes",
-    "text": "Conditional effects and simple slopes\nThe regression line estimated in this model is quite difficult to interpret on its own. A good strategy is to decompose the regression equation into simple slopes, which are determined by calculating the conditional effects at a specific level of the moderating variable.\n\nSimple slope: the equation for Y on X at different levels of Z\nConditional effect: the slope coefficients in the full regression model that can change. These are the lower-order terms associated with a variable. E.g., studying has a conditional effect on grade."
+    "objectID": "slides/lec-01_syl.html#class-materials",
+    "href": "slides/lec-01_syl.html#class-materials",
+    "title": "Week 01: Getting Started!",
+    "section": "Class Materials",
+    "text": "Class Materials\nI’ve pulled from a lot of different textbooks. Good thing is, they are all free!\n\nRegression and Other Stories (Gelman, Hill & Vehtari, 2024)\nLearning Statistics with R (Navarro)\nR for Data Science (2e) (Wickham, Çetinkaya-Rundel, & Grolemund, 2023)\nModern Statistics with R (2e) (Thullin, 2025)\nStatistical Thinking (Poldrack, 2024)"
   },
   {
-    "objectID": "slides/lec-13_mod.html#interaction-shapes",
-    "href": "slides/lec-13_mod.html#interaction-shapes",
-    "title": "Week 13: Intro to Moderation",
-    "section": "Interaction shapes",
-    "text": "Interaction shapes\nOften we graph the simple slopes as a way to understand the interaction. The shape of the lines in the graph are informative and help us interpret conceptually what’s happening."
+    "objectID": "slides/lec-01_syl.html#evaluation-grading",
+    "href": "slides/lec-01_syl.html#evaluation-grading",
+    "title": "Week 01: Getting Started!",
+    "section": "Evaluation & Grading",
+    "text": "Evaluation & Grading\n\n\n\nComponent\nWeight\n\n\nLabs & In-Class Check-ins\n35%\n\n\nJournal Entries\n10%\n\n\nParticipation & Engagement\n10%\n\n\nMidterm Project\n20%\n\n\nFinal Project\n25%"
   },
   {
-    "objectID": "slides/lec-13_mod.html#centering",
-    "href": "slides/lec-13_mod.html#centering",
-    "title": "Week 13: Intro to Moderation",
-    "section": "Centering",
-    "text": "Centering\nThe regression equation built using the raw data is not only difficult to interpret, but often the terms displayed are not relevant to the hypotheses we’re interested.\n\n\\(b_0\\) is the expected value when all predictors are 0, but this may never happen in real life\n\\(b_1\\) is the effect of tutoring when hours spent studying is equal to 0, but this may not ever happen either."
-  },
-  {
-    "objectID": "slides/lec-13_mod.html#wrapping-up",
-    "href": "slides/lec-13_mod.html#wrapping-up",
-    "title": "Week 13: Intro to Moderation",
-    "section": "Wrapping Up",
-    "text": "Wrapping Up\nWe just examined moderation as an interaction between a categorical variable and a continuous variable"
-  },
-  {
-    "objectID": "slides/lec-13_mod.html#next-steps",
-    "href": "slides/lec-13_mod.html#next-steps",
-    "title": "Week 13: Intro to Moderation",
-    "section": "Next Steps",
-    "text": "Next Steps\nModerations with two continuous predictors"
-  },
-  {
-    "objectID": "slides/lec-13_mod.html#what-are-interactions-2",
-    "href": "slides/lec-13_mod.html#what-are-interactions-2",
-    "title": "Week 13: Intro to Moderation",
-    "section": "What are interactions?",
-    "text": "What are interactions?\nWhen we have two variables, A and B, in a regression model, we are testing whether these variables have additive effects on our outcome, Y. That is, the effect of A on Y is constant over all values of B.\n\nExample: Drinking coffee and hours of sleep have additive effects on alertness; no matter how any hours I slept the previous night, drinking one cup of coffee will make me .5 SD more awake than not drinking coffee."
-  },
-  {
-    "objectID": "slides/lec-13_mod.html#what-are-interactions-3",
-    "href": "slides/lec-13_mod.html#what-are-interactions-3",
-    "title": "Week 13: Intro to Moderation",
-    "section": "What are interactions?",
-    "text": "What are interactions?\nHowever, we may hypothesis that two variables have joint effects, or interact with each other. In this case, the effect of A on Y changes as a function of B.\n\nExample: Chronic stress has a negative impact on health but only for individuals who receive little or no social support; for individuals with high social support, chronic stress has no impact on health.\nThis is also referred to as moderation.\nThe “interaction term” is the regression coefficient that tests this hypothesis."
-  },
-  {
-    "objectID": "slides/lec-13_mod.html#conditional-effects-and-simple-slopes-1",
-    "href": "slides/lec-13_mod.html#conditional-effects-and-simple-slopes-1",
-    "title": "Week 13: Intro to Moderation",
-    "section": "Conditional effects and simple slopes",
-    "text": "Conditional effects and simple slopes\nThe regression line estimated in this model is quite difficult to interpret on its own. A good strategy is to decompose the regression equation into simple slopes, which are determined by calculating the conditional effects at a specific level of the moderating variable.\n\n\n\nSimple slope: the equation for Y on X at different levels of Z; but also refers to only the coefficient for X in this equation\n\n\n\nConditional effect: the slope coefficients in the full regression model which can change. These are the lower-order terms associated with a variable."
-  },
-  {
-    "objectID": "slides/lec-13_mod.html#plotting-interactions",
-    "href": "slides/lec-13_mod.html#plotting-interactions",
-    "title": "Week 13: Intro to Moderation",
-    "section": "Plotting interactions",
-    "text": "Plotting interactions\nWhat is this plotting?\n\nplot_model(imodel, type = \"pred\", terms = c(\"Support\", \"Anxiety[mean]\"))"
-  },
-  {
-    "objectID": "slides/lec-13_mod.html#testing-simple-slopes",
-    "href": "slides/lec-13_mod.html#testing-simple-slopes",
-    "title": "Week 13: Intro to Moderation",
-    "section": "Testing simple slopes",
-    "text": "Testing simple slopes\n\n#https://easystats.github.io/modelbased/articles/introduction_comparisons_3.html?q=simple%20slo#contrasts-and-comparisons-for-slopes-of-numeric-predictors\n\npred &lt;- estimate_means(imodel, c(\"Support\", \"Anxiety = c(5,6,7)\"))\nplot(pred)\n\nestimate_slopes(imodel, \"Support\", by = \"Anxiety = c(5,6,7)\")\n\nEstimated Marginal Effects\n\nAnxiety | Slope |   SE |       95% CI | t(114) |      p\n-------------------------------------------------------\n5       |  0.46 | 0.05 | [0.36, 0.56] |   8.83 | &lt; .001\n6       |  0.42 | 0.05 | [0.32, 0.51] |   8.44 | &lt; .001\n7       |  0.37 | 0.05 | [0.28, 0.47] |   7.47 | &lt; .001\n\nMarginal effects estimated for Support\nType of slope was dY/dX"
-  },
-  {
-    "objectID": "slides/lec-13_mod.html#testing-simple-slopes-1",
-    "href": "slides/lec-13_mod.html#testing-simple-slopes-1",
-    "title": "Week 13: Intro to Moderation",
-    "section": "Testing simple slopes",
-    "text": "Testing simple slopes\n\nestimate_slopes(imodel, \"Support\", by = \"Anxiety=[sd]\")\n\nEstimated Marginal Effects\n\nAnxiety | Slope |   SE |       95% CI | t(114) |      p\n-------------------------------------------------------\n5.13    |  0.45 | 0.05 | [0.35, 0.55] |   8.82 | &lt; .001\n7.61    |  0.35 | 0.05 | [0.25, 0.45] |   6.67 | &lt; .001\n10.10   |  0.25 | 0.07 | [0.11, 0.38] |   3.48 | &lt; .001\n\nMarginal effects estimated for Support\nType of slope was dY/dX"
-  },
-  {
-    "objectID": "slides/lec-13_mod.html#simple-slopes---significance-tests",
-    "href": "slides/lec-13_mod.html#simple-slopes---significance-tests",
-    "title": "Week 13: Intro to Moderation",
-    "section": "Simple slopes - Significance tests",
-    "text": "Simple slopes - Significance tests\nWhat if you want to compare slopes to each other? How would we test this?\n\nThe test of the interaction coefficient is equivalent to the test of the difference in slopes at levels of Z separated by 1 unit.\n\ncoef(summary(imodel))\n\n                   Estimate Std. Error   t value           Pr(&gt;|t|)\n(Intercept)     -2.73966246 1.12100519 -2.443934 0.0160605206624654\nAnxiety          0.61561220 0.13010161  4.731780 0.0000064353728132\nSupport          0.66696689 0.09547464  6.985802 0.0000000002017698\nAnxiety:Support -0.04174076 0.01309328 -3.187954 0.0018497364252185"
-  },
-  {
-    "objectID": "slides/template-seasons.html#quarto",
-    "href": "slides/template-seasons.html#quarto",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Quarto",
-    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
-  },
-  {
-    "objectID": "slides/template-seasons.html#bullets",
-    "href": "slides/template-seasons.html#bullets",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Bullets",
-    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code\n\n\nlm(mpg ~ disp, data = mtcars)\n\n\nCall:\nlm(formula = mpg ~ disp, data = mtcars)\n\nCoefficients:\n(Intercept)         disp  \n   29.59985     -0.04122"
-  },
-  {
-    "objectID": "slides/template-seasons.html#latex-equations",
-    "href": "slides/template-seasons.html#latex-equations",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "LaTeX Equations",
-    "text": "LaTeX Equations\nMathJax rendering of equations to HTML\n\\[\\begin{gather*}\na_1=b_1+c_1\\\\\na_2=b_2+c_2-d_2+e_2\n\\end{gather*}\\]\n\\[\\begin{align}\na_{11}& =b_{11}&\n  a_{12}& =b_{12}\\\\\na_{21}& =b_{21}&\n  a_{22}& =b_{22}+c_{22}\n\\end{align}\\]"
-  },
-  {
-    "objectID": "slides/template-seasons.html#tables",
-    "href": "slides/template-seasons.html#tables",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Tables",
-    "text": "Tables\n\n\n\nSyntax\nDescription\n\n\n\n\nHeader\nTitle\n\n\nParagraph\nText"
-  },
-  {
-    "objectID": "slides/template-seasons.html#callout-blocks",
-    "href": "slides/template-seasons.html#callout-blocks",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Callout Blocks",
-    "text": "Callout Blocks\n\n\n\n\n\n\nNote\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDanger, callouts will really improve your writing.\n\n\n\n\n\n\n\n\n\nTip With Caption\n\n\nThis is an example of a callout with a caption."
-  },
-  {
-    "objectID": "slides/template-seasons.html#quarto-1",
-    "href": "slides/template-seasons.html#quarto-1",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Quarto",
-    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
-  },
-  {
-    "objectID": "slides/template-seasons.html#bullets-1",
-    "href": "slides/template-seasons.html#bullets-1",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Bullets",
-    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code\n\n\nlm(mpg ~ disp, data = mtcars)\n\n\nCall:\nlm(formula = mpg ~ disp, data = mtcars)\n\nCoefficients:\n(Intercept)         disp  \n   29.59985     -0.04122"
-  },
-  {
-    "objectID": "slides/template-seasons.html#latex-equations-1",
-    "href": "slides/template-seasons.html#latex-equations-1",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "LaTeX Equations",
-    "text": "LaTeX Equations\nMathJax rendering of equations to HTML\n\\[\\begin{gather*}\na_1=b_1+c_1\\\\\na_2=b_2+c_2-d_2+e_2\n\\end{gather*}\\]\n\\[\\begin{align}\na_{11}& =b_{11}&\n  a_{12}& =b_{12}\\\\\na_{21}& =b_{21}&\n  a_{22}& =b_{22}+c_{22}\n\\end{align}\\]"
-  },
-  {
-    "objectID": "slides/template-seasons.html#tables-1",
-    "href": "slides/template-seasons.html#tables-1",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Tables",
-    "text": "Tables\n\n\n\nSyntax\nDescription\n\n\n\n\nHeader\nTitle\n\n\nParagraph\nText"
-  },
-  {
-    "objectID": "slides/template-seasons.html#callout-blocks-1",
-    "href": "slides/template-seasons.html#callout-blocks-1",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Callout Blocks",
-    "text": "Callout Blocks\n\n\n\n\n\n\nNote\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDanger, callouts will really improve your writing.\n\n\n\n\n\n\n\n\n\nTip With Caption\n\n\nThis is an example of a callout with a caption."
-  },
-  {
-    "objectID": "slides/template-seasons.html#quarto-2",
-    "href": "slides/template-seasons.html#quarto-2",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Quarto",
-    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
-  },
-  {
-    "objectID": "slides/template-seasons.html#bullets-2",
-    "href": "slides/template-seasons.html#bullets-2",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Bullets",
-    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code\n\n\nlm(mpg ~ disp, data = mtcars)\n\n\nCall:\nlm(formula = mpg ~ disp, data = mtcars)\n\nCoefficients:\n(Intercept)         disp  \n   29.59985     -0.04122"
-  },
-  {
-    "objectID": "slides/template-seasons.html#latex-equations-2",
-    "href": "slides/template-seasons.html#latex-equations-2",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "LaTeX Equations",
-    "text": "LaTeX Equations\nMathJax rendering of equations to HTML\n\\[\\begin{gather*}\na_1=b_1+c_1\\\\\na_2=b_2+c_2-d_2+e_2\n\\end{gather*}\\]\n\\[\\begin{align}\na_{11}& =b_{11}&\n  a_{12}& =b_{12}\\\\\na_{21}& =b_{21}&\n  a_{22}& =b_{22}+c_{22}\n\\end{align}\\]"
-  },
-  {
-    "objectID": "slides/template-seasons.html#tables-2",
-    "href": "slides/template-seasons.html#tables-2",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Tables",
-    "text": "Tables\n\n\n\nSyntax\nDescription\n\n\n\n\nHeader\nTitle\n\n\nParagraph\nText"
-  },
-  {
-    "objectID": "slides/template-seasons.html#callout-blocks-2",
-    "href": "slides/template-seasons.html#callout-blocks-2",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Callout Blocks",
-    "text": "Callout Blocks\n\n\n\n\n\n\nNote\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDanger, callouts will really improve your writing.\n\n\n\n\n\n\n\n\n\nTip With Caption\n\n\nThis is an example of a callout with a caption."
-  },
-  {
-    "objectID": "slides/template-seasons.html#quarto-3",
-    "href": "slides/template-seasons.html#quarto-3",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Quarto",
-    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
-  },
-  {
-    "objectID": "slides/template-seasons.html#bullets-3",
-    "href": "slides/template-seasons.html#bullets-3",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Bullets",
-    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code\n\n\nlm(mpg ~ disp, data = mtcars)\n\n\nCall:\nlm(formula = mpg ~ disp, data = mtcars)\n\nCoefficients:\n(Intercept)         disp  \n   29.59985     -0.04122"
-  },
-  {
-    "objectID": "slides/template-seasons.html#latex-equations-3",
-    "href": "slides/template-seasons.html#latex-equations-3",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "LaTeX Equations",
-    "text": "LaTeX Equations\nMathJax rendering of equations to HTML\n\\[\\begin{gather*}\na_1=b_1+c_1\\\\\na_2=b_2+c_2-d_2+e_2\n\\end{gather*}\\]\n\\[\\begin{align}\na_{11}& =b_{11}&\n  a_{12}& =b_{12}\\\\\na_{21}& =b_{21}&\n  a_{22}& =b_{22}+c_{22}\n\\end{align}\\]"
-  },
-  {
-    "objectID": "slides/template-seasons.html#tables-3",
-    "href": "slides/template-seasons.html#tables-3",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Tables",
-    "text": "Tables\n\n\n\nSyntax\nDescription\n\n\n\n\nHeader\nTitle\n\n\nParagraph\nText"
-  },
-  {
-    "objectID": "slides/template-seasons.html#callout-blocks-3",
-    "href": "slides/template-seasons.html#callout-blocks-3",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Callout Blocks",
-    "text": "Callout Blocks\n\n\n\n\n\n\nNote\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDanger, callouts will really improve your writing.\n\n\n\n\n\n\n\n\n\nTip With Caption\n\n\nThis is an example of a callout with a caption."
+    "objectID": "slides/lec-01_syl.html#course-policies",
+    "href": "slides/lec-01_syl.html#course-policies",
+    "title": "Week 01: Getting Started!",
+    "section": "Course Policies",
+    "text": "Course Policies\n\nLate\nAccommodations\nSafety\nAcademic Integrity"
   },
   {
     "objectID": "slides/lec-3_wrangle.html#naming-conventions",
@@ -1625,6 +1541,356 @@
     "title": "Week 11: Categorical Predictors & Logistic Regression",
     "section": "Logistic Regression: Summary",
     "text": "Logistic Regression: Summary\n\n\n\n\n\n\n\n\nFeature\nLinear Regression\nLogistic Regression\n\n\n\n\nOutcome Variable\nContinuous\nCategorical (Binary)\n\n\nEquation\n\\(Y=β_0+β_1X\\)\n\\(ln⁡(\\frac{p}{1-p})=β_0+β_1X\\)\n\n\nKey Interpretation\n\\(\\beta_1\\) is the change in the mean of Y\n\\(\\exp(\\beta_1)\\) is theodds ratio\n\n\nR Function\nlm()\nglm(..., family=\"binomial\")"
+  },
+  {
+    "objectID": "slides/lec-7_regression.html#today",
+    "href": "slides/lec-7_regression.html#today",
+    "title": "Week 07: Simple Regression",
+    "section": "Today…",
+    "text": "Today…\nRegression\n\nWhy use regression?\nOne equation to rule them all"
+  },
+  {
+    "objectID": "slides/lec-7_regression.html#overview-of-regression",
+    "href": "slides/lec-7_regression.html#overview-of-regression",
+    "title": "Week 07: Simple Regression",
+    "section": "Overview of Regression",
+    "text": "Overview of Regression\nRegression is a general data analytic system\n\nLots of things fall under the umbrella of regression\nThis system can handle a variety of forms of relations and types of variables\n\nThe output of regression includes both effect sizes and statistical significance\nWe can also incorporate multiple influences (IVs) and account for their intercorrelations"
+  },
+  {
+    "objectID": "slides/lec-7_regression.html#study-design-collection",
+    "href": "slides/lec-7_regression.html#study-design-collection",
+    "title": "Week 07: Simple Regression",
+    "section": "Study Design & Collection",
+    "text": "Study Design & Collection\n\n\nDesign - When data are collected\n\nRetrospective/Prospective\nLongitudinal\nCross-Sectional\n\n\nCollection - How data are collected\n\nExperimental\nField\nObservational\nMeta-analysis\nNeuroimaging/Psychophysiology\nSurvey\nQuasi-Experimental"
+  },
+  {
+    "objectID": "slides/lec-7_regression.html#ols",
+    "href": "slides/lec-7_regression.html#ols",
+    "title": "Week 07: Simple Regression",
+    "section": "OLS",
+    "text": "OLS\n\nHow do we find the regression estimates?\nOrdinary Least Squares (OLS) estimation\nMinimizes deviations\n\n\\[ min\\sum(Y_{i} - \\hat{Y} ) ^{2} \\]\n\nOther estimation procedures possible (and necessary in some cases)"
+  },
+  {
+    "objectID": "slides/lec-7_regression.html#compare-to-bad-fit",
+    "href": "slides/lec-7_regression.html#compare-to-bad-fit",
+    "title": "Week 07: Simple Regression",
+    "section": "compare to bad fit",
+    "text": "compare to bad fit"
+  },
+  {
+    "objectID": "slides/lec-7_regression.html#ols-1",
+    "href": "slides/lec-7_regression.html#ols-1",
+    "title": "Week 07: Simple Regression",
+    "section": "OLS",
+    "text": "OLS\nThe line that yields the smallest sum of squared deviations\n\\[\\Sigma(Y_i - \\hat{Y_i})^2\\] \\[= \\Sigma(Y_i - (b_0+b_{1}X_i))^2\\] \\[= \\Sigma(e_i)^2\\]\n\nIn order to find the OLS solution, you could try many different coefficients \\((b_0 \\text{ and } b_{1})\\) until you find the one with the smallest sum squared deviation. Luckily, there are simple calculations that will yield the OLS solution every time."
+  },
+  {
+    "objectID": "slides/lec-7_regression.html#regression-coefficient-b_1",
+    "href": "slides/lec-7_regression.html#regression-coefficient-b_1",
+    "title": "Week 07: Simple Regression",
+    "section": "Regression coefficient, \\(b_{1}\\)",
+    "text": "Regression coefficient, \\(b_{1}\\)\n\\[b_{1} = \\frac{cov_{XY}}{s_{x}^{2}} = r_{xy} \\frac{s_{y}}{s_{x}}\\]\nWhat units is the regression coefficient in?\n\nThe regression coefficient (slope) equals the estimated change in Y for a 1-unit change in X"
+  },
+  {
+    "objectID": "slides/lec-7_regression.html#standardized-regression-equation",
+    "href": "slides/lec-7_regression.html#standardized-regression-equation",
+    "title": "Week 07: Simple Regression",
+    "section": "Standardized regression equation",
+    "text": "Standardized regression equation\n\\[\\Large Z_{y_i} = b_{yx}^*Z_{x_i}+e_i\\]\n\\[\\Large b_{yx}^* = b_{yx}\\frac{s_x}{s_y} = r_{xy}\\]\n\nAccording to this regression equation, when \\(X = 0, Y = 0\\). Our interpretation of the coefficient is that a one-standard deviation increase in X is associated with a \\(b_{yx}^*\\) standard deviation increase in Y. Our regression coefficient is equivalent to the correlation coefficient when we have only one predictor in our model."
+  },
+  {
+    "objectID": "slides/lec-7_regression.html#estimating-the-intercept-b_0",
+    "href": "slides/lec-7_regression.html#estimating-the-intercept-b_0",
+    "title": "Week 07: Simple Regression",
+    "section": "Estimating the intercept, \\(b_0\\)",
+    "text": "Estimating the intercept, \\(b_0\\)\n\nintercept serves to adjust for differences in means between X and Y\n\n\\[\\hat{Y_i} = \\bar{Y} + r_{xy} \\frac{s_{y}}{s_{x}}(X_i-\\bar{X})\\]\n\nif standardized, intercept drops out\notherwise, intercept is where regression line crosses the y-axis at X = 0\n\n\n\nAlso, notice that when \\(X = \\bar{X}\\) the regression line goes through \\(\\bar{Y}\\)\n\n\\[b_0 = \\bar{Y} - b_1\\bar{X}\\]"
+  },
+  {
+    "objectID": "slides/lec-7_regression.html#example-by-hand",
+    "href": "slides/lec-7_regression.html#example-by-hand",
+    "title": "Week 07: Simple Regression",
+    "section": "Example (by hand)",
+    "text": "Example (by hand)\n\nlibrary(gapminder)\ngapminder %&lt;&gt;% filter(year == 2007 & continent == \"Asia\") %&gt;% \n  mutate(log_gdp = log(gdpPercap))\n\ngapminder %&gt;% \n  select(log_gdp, lifeExp) %&gt;% \n  describe()\n\n        vars  n  mean   sd median trimmed  mad   min   max range  skew kurtosis\nlog_gdp    1 33  8.74 1.24   8.41    8.73 1.42  6.85 10.76  3.91  0.21    -1.37\nlifeExp    2 33 70.73 7.96  72.40   71.31 7.70 43.83 82.60 38.77 -1.07     1.79\n          se\nlog_gdp 0.22\nlifeExp 1.39\n\ncor(gapminder$log_gdp, gapminder$lifeExp)\n\n[1] 0.8003474"
+  },
+  {
+    "objectID": "slides/lec-7_regression.html#in-r",
+    "href": "slides/lec-7_regression.html#in-r",
+    "title": "Week 07: Simple Regression",
+    "section": "In R",
+    "text": "In R\n\nfit.1 &lt;- lm(lifeExp ~ log_gdp, data = gapminder)\nsummary(fit.1)\n\n\nCall:\nlm(formula = lifeExp ~ log_gdp, data = gapminder)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-17.314  -1.650  -0.040   3.428   8.370 \n\nCoefficients:\n            Estimate Std. Error t value     Pr(&gt;|t|)    \n(Intercept)  25.6501     6.1234   4.189     0.000216 ***\nlog_gdp       5.1573     0.6939   7.433 0.0000000226 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 4.851 on 31 degrees of freedom\nMultiple R-squared:  0.6406,    Adjusted R-squared:  0.629 \nF-statistic: 55.24 on 1 and 31 DF,  p-value: 0.00000002263\n\n\n\nThings to discuss\n\nCoefficient estimates\nStatistical tests (covered in more detail soon)"
+  },
+  {
+    "objectID": "slides/lec-7_regression.html#using-easystats",
+    "href": "slides/lec-7_regression.html#using-easystats",
+    "title": "Week 07: Simple Regression",
+    "section": "Using easystats",
+    "text": "Using easystats\n\nperformance::check_model(fit.1)"
+  },
+  {
+    "objectID": "slides/lec-7_regression.html#using-sjplot",
+    "href": "slides/lec-7_regression.html#using-sjplot",
+    "title": "Week 07: Simple Regression",
+    "section": "Using sjPlot",
+    "text": "Using sjPlot\n\nsjPlot::tab_model(fit.1)\n\n\n\n\n \nlife Exp\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n25.65\n13.16 – 38.14\n&lt;0.001\n\n\nlog gdp\n5.16\n3.74 – 6.57\n&lt;0.001\n\n\nObservations\n33\n\n\nR2 / R2 adjusted\n0.641 / 0.629"
+  },
+  {
+    "objectID": "slides/lec-7_regression.html#regression-to-the-mean",
+    "href": "slides/lec-7_regression.html#regression-to-the-mean",
+    "title": "Week 07: Simple Regression",
+    "section": "Regression to the mean",
+    "text": "Regression to the mean\nAn observation about heights was part of the motivation to develop the regression equation: If you selected a parent who was exceptionally tall (or short), their child was almost always not as tall (or as short).\n\n\nCode\nlibrary(psychTools)\nlibrary(tidyverse)\nheights = psychTools::galton\nmod = lm(child~parent, data = heights)\npoint = 902\nheights = broom::augment(mod)\n\n\nheights %&gt;%\n  ggplot(aes(x = parent, y = child)) +\n  geom_jitter(alpha = .3) +\n  geom_hline(aes(yintercept = 72), color = \"red\") +\n  geom_vline(aes(xintercept = 72), color = \"red\") +\n  theme_bw(base_size = 20)"
+  },
+  {
+    "objectID": "slides/lec-7_regression.html#regression-to-the-mean-1",
+    "href": "slides/lec-7_regression.html#regression-to-the-mean-1",
+    "title": "Week 07: Simple Regression",
+    "section": "Regression to the mean",
+    "text": "Regression to the mean\nThis phenomenon is known as regression to the mean. This describes the phenomenon in which an random variable produces an extreme score on a first measurement, but a lower score on a second measurement."
+  },
+  {
+    "objectID": "slides/lec-7_regression.html#regression-to-the-mean-2",
+    "href": "slides/lec-7_regression.html#regression-to-the-mean-2",
+    "title": "Week 07: Simple Regression",
+    "section": "Regression to the mean",
+    "text": "Regression to the mean\nThis can be a threat to internal validity if interventions are applied based on first measurement scores."
+  },
+  {
+    "objectID": "slides/lec-7_regression.html#another-dataset",
+    "href": "slides/lec-7_regression.html#another-dataset",
+    "title": "Week 07: Simple Regression",
+    "section": "Another Dataset",
+    "text": "Another Dataset\n\nschool &lt;- read_csv(\"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/example2-chisq.csv\") %&gt;% \n  mutate(Sleep_Hours_Non_Schoolnight = as.numeric(Sleep_Hours_Non_Schoolnight)) %&gt;% \n  filter(Sleep_Hours_Non_Schoolnight &lt; 24) #removing impossible values"
+  },
+  {
+    "objectID": "slides/lec-7_regression.html#statistical-inference",
+    "href": "slides/lec-7_regression.html#statistical-inference",
+    "title": "Week 07: Simple Regression",
+    "section": "Statistical Inference",
+    "text": "Statistical Inference\n\nThe way the world is = our model + error\nHow good is our model? Does it “fit” the data well?\n\n\nTo assess how well our model fits the data, we will examine the proportion of variance in our outcome variable that can be “explained” by our model.\nTo do so, we need to partition the variance into different categories. For now, we will partition it into two categories: the variability that is captured by (explained by) our model, and variability that is not."
+  },
+  {
+    "objectID": "slides/lec-7_regression.html#partitioning-variation",
+    "href": "slides/lec-7_regression.html#partitioning-variation",
+    "title": "Week 07: Simple Regression",
+    "section": "Partitioning variation",
+    "text": "Partitioning variation\nLet’s start with the formula defining the relationship between observed \\(Y\\) and fitted \\(\\hat{Y}\\):\n\\[Y_i = \\hat{Y}_i + e_i\\]\n\nOne of the properties that we love about variance is that variances are additive when two variables are independent. In other words, if we create some variable, C, by adding together two other variables, A and B, then the variance of C is equal to the sum of the variances of A and B.\n\n\nWhy can we use that rule in this case?\n\nStudents must recognize that Y-hat and e are uncorrelated, they must be the way that we’ve built the OLS function."
+  },
+  {
+    "objectID": "slides/lec-7_regression.html#partitioning-variation-1",
+    "href": "slides/lec-7_regression.html#partitioning-variation-1",
+    "title": "Week 07: Simple Regression",
+    "section": "Partitioning variation",
+    "text": "Partitioning variation\n\n\n\\(\\hat{Y}_i\\) and \\(e_i\\) must be independent from each other. Thus, the variance of \\(Y\\) is equal to the sum of the variance of \\(\\hat{Y}\\) and \\(e\\).\n\\[\\large s^2_Y = s^2_{\\hat{Y}} + s^2_{e}\\]\n\nRecall that variances are sums of squares divided by N-1. Thus, all variances have the same sample size, so we can also note the following:\n\\[\\large SS_Y = SS_{\\hat{Y}} + SS_{\\text{e}}\\]"
+  },
+  {
+    "objectID": "slides/lec-7_regression.html#coefficient-of-determination",
+    "href": "slides/lec-7_regression.html#coefficient-of-determination",
+    "title": "Week 07: Simple Regression",
+    "section": "Coefficient of Determination",
+    "text": "Coefficient of Determination\n\\[\\Large \\frac{SS_{Model}}{SS_{Y}} = \\frac{s_{Model}^2}{s_{y}^2} = R^2\\]\n\\(R^2\\) represents the proportion of variance in Y that is explained by the model.\n\n\\(\\sqrt{R^2} = R\\) is the correlation between the predicted values of Y from the model and the actual values of Y\n\\[\\large \\sqrt{R^2} = r_{Y\\hat{Y}}\\]"
+  },
+  {
+    "objectID": "slides/lec-4_design-inference.html#from-squirrels-to-significance-a-guide-to-research-design-inference",
+    "href": "slides/lec-4_design-inference.html#from-squirrels-to-significance-a-guide-to-research-design-inference",
+    "title": "Week 04: Design & Inference",
+    "section": "From Squirrels to Significance: A Guide to Research Design & Inference",
+    "text": "From Squirrels to Significance: A Guide to Research Design & Inference\nWeek 4"
+  },
+  {
+    "objectID": "slides/lec-4_design-inference.html#the-core-challenge",
+    "href": "slides/lec-4_design-inference.html#the-core-challenge",
+    "title": "Week 04: Design & Inference",
+    "section": "The Core Challenge",
+    "text": "The Core Challenge\n\nLast week: We learned to describe and visualize patterns in our sample.\nThe Rest of the Course: We want to make claims about the population.\nThe Problem: How do we know if a pattern we see in our sample (e.g., a difference between groups) is a “real” effect or just random sampling error?\nThe Solution: We build a statistical model to test our question against the backdrop of randomness."
+  },
+  {
+    "objectID": "slides/lec-4_design-inference.html#the-journey-of-a-research-question",
+    "href": "slides/lec-4_design-inference.html#the-journey-of-a-research-question",
+    "title": "Week 04: Design & Inference",
+    "section": "The Journey of a Research Question",
+    "text": "The Journey of a Research Question\n\nAll research starts with a question about the world.\nBut how do we get from a messy, real-world question to a clean, statistical answer?\n\nOur Journey Today:\n\nPart 1: From Concept to Data (How do we measure what we care about?)\nPart 2: The Blueprint for Claims (How do we structure our study?)\nPart 3: From Design to Model (How do we analyze our data?)"
+  },
+  {
+    "objectID": "slides/lec-4_design-inference.html#the-first-most-important-choice",
+    "href": "slides/lec-4_design-inference.html#the-first-most-important-choice",
+    "title": "Week 04: Design & Inference",
+    "section": "The First & Most Important Choice",
+    "text": "The First & Most Important Choice\n\nBefore we can analyze anything, we need data. This means turning an abstract concept into a concrete, measurable variable.\nThis process is called operationalization.\nYour operationalization is your argument for what a concept means in the context of your study."
+  },
+  {
+    "objectID": "slides/lec-4_design-inference.html#the-squirrel-gang",
+    "href": "slides/lec-4_design-inference.html#the-squirrel-gang",
+    "title": "Week 04: Design & Inference",
+    "section": "The Squirrel Gang",
+    "text": "The Squirrel Gang\nLet’s imagine a new study. Our research question is:\nDoes being aggressively attacked by a campus squirrel for your sandwich increase a student’s acute stress?\n\nPredictor: squirrel_incident (Attacked vs. Not Attacked).\nOutcome: acute_stress.\n\nBut what is “acute stress”? As the researcher, how do you measure it?\n\n\n\nTurn to the person/people next to you and identify how you would define and measure “stress”."
+  },
+  {
+    "objectID": "slides/lec-4_design-inference.html#how-would-you-measure-stress",
+    "href": "slides/lec-4_design-inference.html#how-would-you-measure-stress",
+    "title": "Week 04: Design & Inference",
+    "section": "How Would You Measure “Stress”?",
+    "text": "How Would You Measure “Stress”?\n\n\n\n\n\n\n\n\n\nMethod of Measurement\nHow It Works\nData Generated\nWhat It Really Measures\n\n\nSubjective Self-Report\n“On a scale of 0-100, how stressed do you feel right now?”\nContinuous (0-100)\nThe feeling of stress.\n\n\nAutonomic Arousal\nMeasure heart rate in beats per minute (BPM).\nContinuous (e.g., 115 BPM)\nThe body’s alarm for stress.\n\n\nCognitive Impairment\n“Count backward from 1,084 by 7s.” Measure speed & accuracy.\nContinuous (# of errors)\nThe brain’s processing under stress.\n\n\nCoded Facial Expression\nAnalyze video for micro-expressions of fear or anger.\nCategorical or Ordinal\nThe face’s expression of stress."
+  },
+  {
+    "objectID": "slides/lec-4_design-inference.html#the-two-big-claims",
+    "href": "slides/lec-4_design-inference.html#the-two-big-claims",
+    "title": "Week 04: Design & Inference",
+    "section": "The Two Big Claims",
+    "text": "The Two Big Claims\nNow that we know what we’re measuring, let’s talk about how we structure the study. Your design determines the kind of claim you can make.\n\nAn Associational Claim: Two variables are related.\n\n“People who experience squirrel attacks tend to report higher stress.”\n\nA Causal Claim: A change in one variable causes a change in another.\n\n“The experience of a squirrel attack causes an increase in stress.”"
+  },
+  {
+    "objectID": "slides/lec-4_design-inference.html#the-3-rules-of-causality",
+    "href": "slides/lec-4_design-inference.html#the-3-rules-of-causality",
+    "title": "Week 04: Design & Inference",
+    "section": "The 3 Rules of Causality",
+    "text": "The 3 Rules of Causality\nTo earn the right to say “X causes Y,” you must demonstrate three things:\n\nCovariance: X and Y are related.\nTemporal Precedence: The cause (X) must happen before the effect (Y).\nInternal Validity: There are no other plausible explanations (we’ve ruled out confounds)."
+  },
+  {
+    "objectID": "slides/lec-4_design-inference.html#the-confounding-variable-problem",
+    "href": "slides/lec-4_design-inference.html#the-confounding-variable-problem",
+    "title": "Week 04: Design & Inference",
+    "section": "The Confounding Variable Problem",
+    "text": "The Confounding Variable Problem\nA confound is a “third variable” that creates a spurious relationship between your two variables. This is the #1 threat to causal claims.\n\nClassic Example: Ice cream sales are positively correlated with drowning deaths.\nThe Confound: Summer heat! Hot weather causes both more ice cream sales and more swimming."
+  },
+  {
+    "objectID": "slides/lec-4_design-inference.html#the-gold-standard-for-defeating-confounds-the-experiment",
+    "href": "slides/lec-4_design-inference.html#the-gold-standard-for-defeating-confounds-the-experiment",
+    "title": "Week 04: Design & Inference",
+    "section": "The Gold Standard for Defeating Confounds: The Experiment",
+    "text": "The Gold Standard for Defeating Confounds: The Experiment\nA True Experiment is the most powerful tool for establishing causality. It has two magic ingredients:\n\nManipulation: The researcher actively manipulates the Independent Variable (IV).\nRandom Assignment: Every participant has an equal chance of being in any condition. This breaks the links to potential confounds by distributing them evenly across groups."
+  },
+  {
+    "objectID": "slides/lec-4_design-inference.html#key-design-dimensions",
+    "href": "slides/lec-4_design-inference.html#key-design-dimensions",
+    "title": "Week 04: Design & Inference",
+    "section": "Key Design Dimensions",
+    "text": "Key Design Dimensions\n\nBetween-Subjects: Different groups of people get different conditions. We compare Group A vs. Group B.\nWithin-Subjects: The same group of people experiences all conditions. We compare people to themselves.\nCross-Sectional: All data is collected at a single point in time. (Fails temporal precedence).\nLongitudinal: Data is collected from the same people over multiple time points. (Establishes temporal precedence)."
+  },
+  {
+    "objectID": "slides/lec-4_design-inference.html#descriptives-vs.-inference",
+    "href": "slides/lec-4_design-inference.html#descriptives-vs.-inference",
+    "title": "Week 04: Design & Inference",
+    "section": "Descriptives vs. Inference",
+    "text": "Descriptives vs. Inference\n\n\nMoving from simply describing our data\nWith means and standard deviations\n\nTo drawing conclusions about the population\nUsing inferential statistics"
+  },
+  {
+    "objectID": "slides/lec-4_design-inference.html#probability---understanding-randomness",
+    "href": "slides/lec-4_design-inference.html#probability---understanding-randomness",
+    "title": "Week 04: Design & Inference",
+    "section": "Probability - Understanding Randomness",
+    "text": "Probability - Understanding Randomness\nThere are several possible interpretations of probability but they (almost) completely agree on the mathematical rules probability must follow:\n\\(P(A)\\) = Probablity of event A\n0 ≤ \\(P(A)\\) ≤ 1"
+  },
+  {
+    "objectID": "slides/lec-4_design-inference.html#the-law-of-large-numbers",
+    "href": "slides/lec-4_design-inference.html#the-law-of-large-numbers",
+    "title": "Week 04: Design & Inference",
+    "section": "The Law of Large Numbers",
+    "text": "The Law of Large Numbers\nAs more observations are collected, the proportion of occurrences with a particular outcome, \\(p̂_n\\), converges to the probability of that outcome, \\(p\\).\nExample:\n\nAs the sample size increases, the sample mean tends to get closer to the population mean\nAnd as the sample size approaches infinity ♾️, the sample mean approaches the population mean"
+  },
+  {
+    "objectID": "slides/lec-4_design-inference.html#statistics-probability-inference",
+    "href": "slides/lec-4_design-inference.html#statistics-probability-inference",
+    "title": "Week 04: Design & Inference",
+    "section": "Statistics, Probability & Inference",
+    "text": "Statistics, Probability & Inference\n\nThink about seeing statistics posted on the news\n\nOften times polling companies survey a large sample to then make a statement about the population\n\nWe assume the sample is representative of the larger population, but how representative?\n\nThis is where probability theory comes in\n\nProbability theory provides tools to assess how likely sample results are if they differ from the true population parameter"
+  },
+  {
+    "objectID": "slides/lec-4_design-inference.html#role-of-probability-theory",
+    "href": "slides/lec-4_design-inference.html#role-of-probability-theory",
+    "title": "Week 04: Design & Inference",
+    "section": "Role of Probability Theory",
+    "text": "Role of Probability Theory"
+  },
+  {
+    "objectID": "slides/lec-4_design-inference.html#probability---the-2-main-realms",
+    "href": "slides/lec-4_design-inference.html#probability---the-2-main-realms",
+    "title": "Week 04: Design & Inference",
+    "section": "Probability - The 2 main realms",
+    "text": "Probability - The 2 main realms\n\n\nFrequentist\nProbability is a long-run frequency of an event\n\nBayesian\nProbability of an event as the degree of belief"
+  },
+  {
+    "objectID": "slides/lec-4_design-inference.html#the-universal-language-of-models",
+    "href": "slides/lec-4_design-inference.html#the-universal-language-of-models",
+    "title": "Week 04: Design & Inference",
+    "section": "The Universal Language of Models",
+    "text": "The Universal Language of Models\n\nYour measurement and design choices create the blueprint for your analysis. They lead you directly to the correct statistical model.\nAll models we learn this semester can be expressed in R with a simple formula:\n\nOutcome ~ Predictor"
+  },
+  {
+    "objectID": "slides/lec-4_design-inference.html#a-decision-tree-for-your-model",
+    "href": "slides/lec-4_design-inference.html#a-decision-tree-for-your-model",
+    "title": "Week 04: Design & Inference",
+    "section": "A Decision Tree for Your Model 🌳",
+    "text": "A Decision Tree for Your Model 🌳\n\n\nIf your goal is to… COMPARE GROUPS:\n\nPredictor (IV) is Categorical\nOutcome (DV) is Continuous\n👉 You are in the t-test / ANOVA family of models.\nThe model looks like: Continuous_Outcome ~ Categorical_Predictor\n\n\nIf your goal is to… ASSESS AN ASSOCIATION:\n\nPredictor (IV) is Continuous\nOutcome (DV) is Continuous\n👉 You are in the Correlation / Regression family of models.\nThe model looks like: Continuous_Outcome ~ Continuous_Predictor"
+  },
+  {
+    "objectID": "slides/lec-4_design-inference.html#data-to-models-to-inference-nhst",
+    "href": "slides/lec-4_design-inference.html#data-to-models-to-inference-nhst",
+    "title": "Week 04: Design & Inference",
+    "section": "Data to Models to Inference (NHST)",
+    "text": "Data to Models to Inference (NHST)\nSo we have a model, like: depression_score ~ therapy_group. How do we test it?\nWe use the Null Hypothesis Significance Testing (NHST) framework:\n\nThe Null Hypothesis \\(H_0\\) : A statement that the predictor has no relationship with the outcome in the population. It is the “null model.”\n\n\\(H_0\\) : In the population, there is no difference in depression scores between the therapy and control groups. therapy_group does not predict depression_score.\n\nThe Alternative Hypothesis \\(H_A\\) : Our research hypothesis. The predictor does have a relationship with the outcome.\n\n\\(H_A\\) : In the population, there is a difference. therapy_group does predict depression_score."
+  },
+  {
+    "objectID": "slides/lec-4_design-inference.html#the-p-value",
+    "href": "slides/lec-4_design-inference.html#the-p-value",
+    "title": "Week 04: Design & Inference",
+    "section": "The p-value",
+    "text": "The p-value\nThe p-value tells us how surprising our sample data would be if the null hypothesis (the “no relationship” model) were true for the population.\nIt’s a measure of the incompatibility between our data and the null model.\n\nA small p-value (p&lt;.05) suggests that our data are incompatible with the null model. We have evidence to reject the null model and conclude that our predictor is likely related to the outcome.\n\nThe statistical test you run (t.test, cor.test, lm) is just the engine that calculates the p-value for your specific model. The logic is always the same."
+  },
+  {
+    "objectID": "slides/lec-02_background.html#replication-reproducibility-1",
+    "href": "slides/lec-02_background.html#replication-reproducibility-1",
+    "title": "Week 01: Getting Started - DATA!",
+    "section": "Replication & Reproducibility 🍰",
+    "text": "Replication & Reproducibility 🍰\nI want to bake a cake!\n\nFind a recipe online (try ignoring their life story narrative)\nGet ingredients (Wegmans if you 💰)\nFollow recipe and bake 🧑‍🍳\nEnjoy the delicious cake 🍽️\n\n\nReplication"
+  },
+  {
+    "objectID": "slides/lec-02_background.html#replication-reproducibility-2",
+    "href": "slides/lec-02_background.html#replication-reproducibility-2",
+    "title": "Week 01: Getting Started - DATA!",
+    "section": "Replication & Reproducibility 🍰",
+    "text": "Replication & Reproducibility 🍰\nI want to bake a cake!\nReproduction\n\nFind a recipe online –&gt; Find their kitchen\nGet ingredients –&gt; Use their ingredients\nFollow recipe and bake –&gt; Watch what they do and follow\nEnjoy the delicious cake –&gt; Enjoy cake (and jail for B&E)"
+  },
+  {
+    "objectID": "slides/lec-02_background.html#replication-reproducibility-3",
+    "href": "slides/lec-02_background.html#replication-reproducibility-3",
+    "title": "Week 01: Getting Started - DATA!",
+    "section": "Replication & Reproducibility 📊",
+    "text": "Replication & Reproducibility 📊\n\n\n\n\n\n\n\n\nReplication\nReproducibility\n\n\n\n\nHave a similar research question\nUse the same research question\n\n\nCollect your own data\nUse their data\n\n\nFollow their steps with your resources\nFollow their steps with their resources\n\n\nOutcome: Similar results (depends on other factors)\nOutcome: Identical results"
+  },
+  {
+    "objectID": "slides/lec-02_background.html#replication-reproducibility-4",
+    "href": "slides/lec-02_background.html#replication-reproducibility-4",
+    "title": "Week 01: Getting Started - DATA!",
+    "section": "Replication & Reproducibility 📊",
+    "text": "Replication & Reproducibility 📊\nGoals of Science\nImportant: We want to replicate other researchers work\nMOST Important: Be able to reproduce all of our results\nYou are your own worst collaborator!"
+  },
+  {
+    "objectID": "slides/lec-02_background.html#garden-of-forking-paths",
+    "href": "slides/lec-02_background.html#garden-of-forking-paths",
+    "title": "Week 01: Getting Started - DATA!",
+    "section": "Garden of Forking Paths",
+    "text": "Garden of Forking Paths"
+  },
+  {
+    "objectID": "slides/lec-02_background.html#installing-and-using-r",
+    "href": "slides/lec-02_background.html#installing-and-using-r",
+    "title": "Week 01: Getting Started - DATA!",
+    "section": "Installing and Using R",
+    "text": "Installing and Using R\nFrom the course website\nModern Statistics Using R"
+  },
+  {
+    "objectID": "slides/lec-02_background.html#getting-r-setup-properly",
+    "href": "slides/lec-02_background.html#getting-r-setup-properly",
+    "title": "Week 01: Getting Started - DATA!",
+    "section": "Getting R Setup Properly",
+    "text": "Getting R Setup Properly\nThere are some defaults that make things more challenging in the long run\nTo update them, let’s look at Setting Things Up"
+  },
+  {
+    "objectID": "slides/lec-02_background.html#working-with-r-studio",
+    "href": "slides/lec-02_background.html#working-with-r-studio",
+    "title": "Week 01: Getting Started - DATA!",
+    "section": "Working with R-Studio",
+    "text": "Working with R-Studio\nR-Studio is just like a kitchen 🧑‍🍳\nThe Environment pane is the pantry/fridge\nThe Console is like the oven/stove\nThe Markdown document is the recipe\nThe bottom right sometimes acts as the little window on the oven where you can see things baking"
   },
   {
     "objectID": "slides/lec-5_correlation.html#today",
@@ -1856,356 +2122,6 @@
     "title": "Week 05: Correlation & Effect Sizes",
     "section": "Fancier Scatterplot",
     "text": "Fancier Scatterplot\nTake a look at ggstatsplot https://indrajeetpatil.github.io/ggstatsplot/\n\nggscatterstats(\n  data = sleep_data, \n  x = age, \n  y = ess_tot, \n  xlab = \"Age\", \n  ylab = \"ESS Total\", \n  title = \"Relationship between Age and Sleepiness\"\n)"
-  },
-  {
-    "objectID": "slides/lec-4_design-inference.html#from-squirrels-to-significance-a-guide-to-research-design-inference",
-    "href": "slides/lec-4_design-inference.html#from-squirrels-to-significance-a-guide-to-research-design-inference",
-    "title": "Week 04: Design & Inference",
-    "section": "From Squirrels to Significance: A Guide to Research Design & Inference",
-    "text": "From Squirrels to Significance: A Guide to Research Design & Inference\nWeek 4"
-  },
-  {
-    "objectID": "slides/lec-4_design-inference.html#the-core-challenge",
-    "href": "slides/lec-4_design-inference.html#the-core-challenge",
-    "title": "Week 04: Design & Inference",
-    "section": "The Core Challenge",
-    "text": "The Core Challenge\n\nLast week: We learned to describe and visualize patterns in our sample.\nThe Rest of the Course: We want to make claims about the population.\nThe Problem: How do we know if a pattern we see in our sample (e.g., a difference between groups) is a “real” effect or just random sampling error?\nThe Solution: We build a statistical model to test our question against the backdrop of randomness."
-  },
-  {
-    "objectID": "slides/lec-4_design-inference.html#the-journey-of-a-research-question",
-    "href": "slides/lec-4_design-inference.html#the-journey-of-a-research-question",
-    "title": "Week 04: Design & Inference",
-    "section": "The Journey of a Research Question",
-    "text": "The Journey of a Research Question\n\nAll research starts with a question about the world.\nBut how do we get from a messy, real-world question to a clean, statistical answer?\n\nOur Journey Today:\n\nPart 1: From Concept to Data (How do we measure what we care about?)\nPart 2: The Blueprint for Claims (How do we structure our study?)\nPart 3: From Design to Model (How do we analyze our data?)"
-  },
-  {
-    "objectID": "slides/lec-4_design-inference.html#the-first-most-important-choice",
-    "href": "slides/lec-4_design-inference.html#the-first-most-important-choice",
-    "title": "Week 04: Design & Inference",
-    "section": "The First & Most Important Choice",
-    "text": "The First & Most Important Choice\n\nBefore we can analyze anything, we need data. This means turning an abstract concept into a concrete, measurable variable.\nThis process is called operationalization.\nYour operationalization is your argument for what a concept means in the context of your study."
-  },
-  {
-    "objectID": "slides/lec-4_design-inference.html#the-squirrel-gang",
-    "href": "slides/lec-4_design-inference.html#the-squirrel-gang",
-    "title": "Week 04: Design & Inference",
-    "section": "The Squirrel Gang",
-    "text": "The Squirrel Gang\nLet’s imagine a new study. Our research question is:\nDoes being aggressively attacked by a campus squirrel for your sandwich increase a student’s acute stress?\n\nPredictor: squirrel_incident (Attacked vs. Not Attacked).\nOutcome: acute_stress.\n\nBut what is “acute stress”? As the researcher, how do you measure it?\n\n\n\nTurn to the person/people next to you and identify how you would define and measure “stress”."
-  },
-  {
-    "objectID": "slides/lec-4_design-inference.html#how-would-you-measure-stress",
-    "href": "slides/lec-4_design-inference.html#how-would-you-measure-stress",
-    "title": "Week 04: Design & Inference",
-    "section": "How Would You Measure “Stress”?",
-    "text": "How Would You Measure “Stress”?\n\n\n\n\n\n\n\n\n\nMethod of Measurement\nHow It Works\nData Generated\nWhat It Really Measures\n\n\nSubjective Self-Report\n“On a scale of 0-100, how stressed do you feel right now?”\nContinuous (0-100)\nThe feeling of stress.\n\n\nAutonomic Arousal\nMeasure heart rate in beats per minute (BPM).\nContinuous (e.g., 115 BPM)\nThe body’s alarm for stress.\n\n\nCognitive Impairment\n“Count backward from 1,084 by 7s.” Measure speed & accuracy.\nContinuous (# of errors)\nThe brain’s processing under stress.\n\n\nCoded Facial Expression\nAnalyze video for micro-expressions of fear or anger.\nCategorical or Ordinal\nThe face’s expression of stress."
-  },
-  {
-    "objectID": "slides/lec-4_design-inference.html#the-two-big-claims",
-    "href": "slides/lec-4_design-inference.html#the-two-big-claims",
-    "title": "Week 04: Design & Inference",
-    "section": "The Two Big Claims",
-    "text": "The Two Big Claims\nNow that we know what we’re measuring, let’s talk about how we structure the study. Your design determines the kind of claim you can make.\n\nAn Associational Claim: Two variables are related.\n\n“People who experience squirrel attacks tend to report higher stress.”\n\nA Causal Claim: A change in one variable causes a change in another.\n\n“The experience of a squirrel attack causes an increase in stress.”"
-  },
-  {
-    "objectID": "slides/lec-4_design-inference.html#the-3-rules-of-causality",
-    "href": "slides/lec-4_design-inference.html#the-3-rules-of-causality",
-    "title": "Week 04: Design & Inference",
-    "section": "The 3 Rules of Causality",
-    "text": "The 3 Rules of Causality\nTo earn the right to say “X causes Y,” you must demonstrate three things:\n\nCovariance: X and Y are related.\nTemporal Precedence: The cause (X) must happen before the effect (Y).\nInternal Validity: There are no other plausible explanations (we’ve ruled out confounds)."
-  },
-  {
-    "objectID": "slides/lec-4_design-inference.html#the-confounding-variable-problem",
-    "href": "slides/lec-4_design-inference.html#the-confounding-variable-problem",
-    "title": "Week 04: Design & Inference",
-    "section": "The Confounding Variable Problem",
-    "text": "The Confounding Variable Problem\nA confound is a “third variable” that creates a spurious relationship between your two variables. This is the #1 threat to causal claims.\n\nClassic Example: Ice cream sales are positively correlated with drowning deaths.\nThe Confound: Summer heat! Hot weather causes both more ice cream sales and more swimming."
-  },
-  {
-    "objectID": "slides/lec-4_design-inference.html#the-gold-standard-for-defeating-confounds-the-experiment",
-    "href": "slides/lec-4_design-inference.html#the-gold-standard-for-defeating-confounds-the-experiment",
-    "title": "Week 04: Design & Inference",
-    "section": "The Gold Standard for Defeating Confounds: The Experiment",
-    "text": "The Gold Standard for Defeating Confounds: The Experiment\nA True Experiment is the most powerful tool for establishing causality. It has two magic ingredients:\n\nManipulation: The researcher actively manipulates the Independent Variable (IV).\nRandom Assignment: Every participant has an equal chance of being in any condition. This breaks the links to potential confounds by distributing them evenly across groups."
-  },
-  {
-    "objectID": "slides/lec-4_design-inference.html#key-design-dimensions",
-    "href": "slides/lec-4_design-inference.html#key-design-dimensions",
-    "title": "Week 04: Design & Inference",
-    "section": "Key Design Dimensions",
-    "text": "Key Design Dimensions\n\nBetween-Subjects: Different groups of people get different conditions. We compare Group A vs. Group B.\nWithin-Subjects: The same group of people experiences all conditions. We compare people to themselves.\nCross-Sectional: All data is collected at a single point in time. (Fails temporal precedence).\nLongitudinal: Data is collected from the same people over multiple time points. (Establishes temporal precedence)."
-  },
-  {
-    "objectID": "slides/lec-4_design-inference.html#descriptives-vs.-inference",
-    "href": "slides/lec-4_design-inference.html#descriptives-vs.-inference",
-    "title": "Week 04: Design & Inference",
-    "section": "Descriptives vs. Inference",
-    "text": "Descriptives vs. Inference\n\n\nMoving from simply describing our data\nWith means and standard deviations\n\nTo drawing conclusions about the population\nUsing inferential statistics"
-  },
-  {
-    "objectID": "slides/lec-4_design-inference.html#probability---understanding-randomness",
-    "href": "slides/lec-4_design-inference.html#probability---understanding-randomness",
-    "title": "Week 04: Design & Inference",
-    "section": "Probability - Understanding Randomness",
-    "text": "Probability - Understanding Randomness\nThere are several possible interpretations of probability but they (almost) completely agree on the mathematical rules probability must follow:\n\\(P(A)\\) = Probablity of event A\n0 ≤ \\(P(A)\\) ≤ 1"
-  },
-  {
-    "objectID": "slides/lec-4_design-inference.html#the-law-of-large-numbers",
-    "href": "slides/lec-4_design-inference.html#the-law-of-large-numbers",
-    "title": "Week 04: Design & Inference",
-    "section": "The Law of Large Numbers",
-    "text": "The Law of Large Numbers\nAs more observations are collected, the proportion of occurrences with a particular outcome, \\(p̂_n\\), converges to the probability of that outcome, \\(p\\).\nExample:\n\nAs the sample size increases, the sample mean tends to get closer to the population mean\nAnd as the sample size approaches infinity ♾️, the sample mean approaches the population mean"
-  },
-  {
-    "objectID": "slides/lec-4_design-inference.html#statistics-probability-inference",
-    "href": "slides/lec-4_design-inference.html#statistics-probability-inference",
-    "title": "Week 04: Design & Inference",
-    "section": "Statistics, Probability & Inference",
-    "text": "Statistics, Probability & Inference\n\nThink about seeing statistics posted on the news\n\nOften times polling companies survey a large sample to then make a statement about the population\n\nWe assume the sample is representative of the larger population, but how representative?\n\nThis is where probability theory comes in\n\nProbability theory provides tools to assess how likely sample results are if they differ from the true population parameter"
-  },
-  {
-    "objectID": "slides/lec-4_design-inference.html#role-of-probability-theory",
-    "href": "slides/lec-4_design-inference.html#role-of-probability-theory",
-    "title": "Week 04: Design & Inference",
-    "section": "Role of Probability Theory",
-    "text": "Role of Probability Theory"
-  },
-  {
-    "objectID": "slides/lec-4_design-inference.html#probability---the-2-main-realms",
-    "href": "slides/lec-4_design-inference.html#probability---the-2-main-realms",
-    "title": "Week 04: Design & Inference",
-    "section": "Probability - The 2 main realms",
-    "text": "Probability - The 2 main realms\n\n\nFrequentist\nProbability is a long-run frequency of an event\n\nBayesian\nProbability of an event as the degree of belief"
-  },
-  {
-    "objectID": "slides/lec-4_design-inference.html#the-universal-language-of-models",
-    "href": "slides/lec-4_design-inference.html#the-universal-language-of-models",
-    "title": "Week 04: Design & Inference",
-    "section": "The Universal Language of Models",
-    "text": "The Universal Language of Models\n\nYour measurement and design choices create the blueprint for your analysis. They lead you directly to the correct statistical model.\nAll models we learn this semester can be expressed in R with a simple formula:\n\nOutcome ~ Predictor"
-  },
-  {
-    "objectID": "slides/lec-4_design-inference.html#a-decision-tree-for-your-model",
-    "href": "slides/lec-4_design-inference.html#a-decision-tree-for-your-model",
-    "title": "Week 04: Design & Inference",
-    "section": "A Decision Tree for Your Model 🌳",
-    "text": "A Decision Tree for Your Model 🌳\n\n\nIf your goal is to… COMPARE GROUPS:\n\nPredictor (IV) is Categorical\nOutcome (DV) is Continuous\n👉 You are in the t-test / ANOVA family of models.\nThe model looks like: Continuous_Outcome ~ Categorical_Predictor\n\n\nIf your goal is to… ASSESS AN ASSOCIATION:\n\nPredictor (IV) is Continuous\nOutcome (DV) is Continuous\n👉 You are in the Correlation / Regression family of models.\nThe model looks like: Continuous_Outcome ~ Continuous_Predictor"
-  },
-  {
-    "objectID": "slides/lec-4_design-inference.html#data-to-models-to-inference-nhst",
-    "href": "slides/lec-4_design-inference.html#data-to-models-to-inference-nhst",
-    "title": "Week 04: Design & Inference",
-    "section": "Data to Models to Inference (NHST)",
-    "text": "Data to Models to Inference (NHST)\nSo we have a model, like: depression_score ~ therapy_group. How do we test it?\nWe use the Null Hypothesis Significance Testing (NHST) framework:\n\nThe Null Hypothesis \\(H_0\\) : A statement that the predictor has no relationship with the outcome in the population. It is the “null model.”\n\n\\(H_0\\) : In the population, there is no difference in depression scores between the therapy and control groups. therapy_group does not predict depression_score.\n\nThe Alternative Hypothesis \\(H_A\\) : Our research hypothesis. The predictor does have a relationship with the outcome.\n\n\\(H_A\\) : In the population, there is a difference. therapy_group does predict depression_score."
-  },
-  {
-    "objectID": "slides/lec-4_design-inference.html#the-p-value",
-    "href": "slides/lec-4_design-inference.html#the-p-value",
-    "title": "Week 04: Design & Inference",
-    "section": "The p-value",
-    "text": "The p-value\nThe p-value tells us how surprising our sample data would be if the null hypothesis (the “no relationship” model) were true for the population.\nIt’s a measure of the incompatibility between our data and the null model.\n\nA small p-value (p&lt;.05) suggests that our data are incompatible with the null model. We have evidence to reject the null model and conclude that our predictor is likely related to the outcome.\n\nThe statistical test you run (t.test, cor.test, lm) is just the engine that calculates the p-value for your specific model. The logic is always the same."
-  },
-  {
-    "objectID": "slides/lec-7_regression.html#today",
-    "href": "slides/lec-7_regression.html#today",
-    "title": "Week 07: Simple Regression",
-    "section": "Today…",
-    "text": "Today…\nRegression\n\nWhy use regression?\nOne equation to rule them all"
-  },
-  {
-    "objectID": "slides/lec-7_regression.html#overview-of-regression",
-    "href": "slides/lec-7_regression.html#overview-of-regression",
-    "title": "Week 07: Simple Regression",
-    "section": "Overview of Regression",
-    "text": "Overview of Regression\nRegression is a general data analytic system\n\nLots of things fall under the umbrella of regression\nThis system can handle a variety of forms of relations and types of variables\n\nThe output of regression includes both effect sizes and statistical significance\nWe can also incorporate multiple influences (IVs) and account for their intercorrelations"
-  },
-  {
-    "objectID": "slides/lec-7_regression.html#study-design-collection",
-    "href": "slides/lec-7_regression.html#study-design-collection",
-    "title": "Week 07: Simple Regression",
-    "section": "Study Design & Collection",
-    "text": "Study Design & Collection\n\n\nDesign - When data are collected\n\nRetrospective/Prospective\nLongitudinal\nCross-Sectional\n\n\nCollection - How data are collected\n\nExperimental\nField\nObservational\nMeta-analysis\nNeuroimaging/Psychophysiology\nSurvey\nQuasi-Experimental"
-  },
-  {
-    "objectID": "slides/lec-7_regression.html#ols",
-    "href": "slides/lec-7_regression.html#ols",
-    "title": "Week 07: Simple Regression",
-    "section": "OLS",
-    "text": "OLS\n\nHow do we find the regression estimates?\nOrdinary Least Squares (OLS) estimation\nMinimizes deviations\n\n\\[ min\\sum(Y_{i} - \\hat{Y} ) ^{2} \\]\n\nOther estimation procedures possible (and necessary in some cases)"
-  },
-  {
-    "objectID": "slides/lec-7_regression.html#compare-to-bad-fit",
-    "href": "slides/lec-7_regression.html#compare-to-bad-fit",
-    "title": "Week 07: Simple Regression",
-    "section": "compare to bad fit",
-    "text": "compare to bad fit"
-  },
-  {
-    "objectID": "slides/lec-7_regression.html#ols-1",
-    "href": "slides/lec-7_regression.html#ols-1",
-    "title": "Week 07: Simple Regression",
-    "section": "OLS",
-    "text": "OLS\nThe line that yields the smallest sum of squared deviations\n\\[\\Sigma(Y_i - \\hat{Y_i})^2\\] \\[= \\Sigma(Y_i - (b_0+b_{1}X_i))^2\\] \\[= \\Sigma(e_i)^2\\]\n\nIn order to find the OLS solution, you could try many different coefficients \\((b_0 \\text{ and } b_{1})\\) until you find the one with the smallest sum squared deviation. Luckily, there are simple calculations that will yield the OLS solution every time."
-  },
-  {
-    "objectID": "slides/lec-7_regression.html#regression-coefficient-b_1",
-    "href": "slides/lec-7_regression.html#regression-coefficient-b_1",
-    "title": "Week 07: Simple Regression",
-    "section": "Regression coefficient, \\(b_{1}\\)",
-    "text": "Regression coefficient, \\(b_{1}\\)\n\\[b_{1} = \\frac{cov_{XY}}{s_{x}^{2}} = r_{xy} \\frac{s_{y}}{s_{x}}\\]\nWhat units is the regression coefficient in?\n\nThe regression coefficient (slope) equals the estimated change in Y for a 1-unit change in X"
-  },
-  {
-    "objectID": "slides/lec-7_regression.html#standardized-regression-equation",
-    "href": "slides/lec-7_regression.html#standardized-regression-equation",
-    "title": "Week 07: Simple Regression",
-    "section": "Standardized regression equation",
-    "text": "Standardized regression equation\n\\[\\Large Z_{y_i} = b_{yx}^*Z_{x_i}+e_i\\]\n\\[\\Large b_{yx}^* = b_{yx}\\frac{s_x}{s_y} = r_{xy}\\]\n\nAccording to this regression equation, when \\(X = 0, Y = 0\\). Our interpretation of the coefficient is that a one-standard deviation increase in X is associated with a \\(b_{yx}^*\\) standard deviation increase in Y. Our regression coefficient is equivalent to the correlation coefficient when we have only one predictor in our model."
-  },
-  {
-    "objectID": "slides/lec-7_regression.html#estimating-the-intercept-b_0",
-    "href": "slides/lec-7_regression.html#estimating-the-intercept-b_0",
-    "title": "Week 07: Simple Regression",
-    "section": "Estimating the intercept, \\(b_0\\)",
-    "text": "Estimating the intercept, \\(b_0\\)\n\nintercept serves to adjust for differences in means between X and Y\n\n\\[\\hat{Y_i} = \\bar{Y} + r_{xy} \\frac{s_{y}}{s_{x}}(X_i-\\bar{X})\\]\n\nif standardized, intercept drops out\notherwise, intercept is where regression line crosses the y-axis at X = 0\n\n\n\nAlso, notice that when \\(X = \\bar{X}\\) the regression line goes through \\(\\bar{Y}\\)\n\n\\[b_0 = \\bar{Y} - b_1\\bar{X}\\]"
-  },
-  {
-    "objectID": "slides/lec-7_regression.html#example-by-hand",
-    "href": "slides/lec-7_regression.html#example-by-hand",
-    "title": "Week 07: Simple Regression",
-    "section": "Example (by hand)",
-    "text": "Example (by hand)\n\nlibrary(gapminder)\ngapminder %&lt;&gt;% filter(year == 2007 & continent == \"Asia\") %&gt;% \n  mutate(log_gdp = log(gdpPercap))\n\ngapminder %&gt;% \n  select(log_gdp, lifeExp) %&gt;% \n  describe()\n\n        vars  n  mean   sd median trimmed  mad   min   max range  skew kurtosis\nlog_gdp    1 33  8.74 1.24   8.41    8.73 1.42  6.85 10.76  3.91  0.21    -1.37\nlifeExp    2 33 70.73 7.96  72.40   71.31 7.70 43.83 82.60 38.77 -1.07     1.79\n          se\nlog_gdp 0.22\nlifeExp 1.39\n\ncor(gapminder$log_gdp, gapminder$lifeExp)\n\n[1] 0.8003474"
-  },
-  {
-    "objectID": "slides/lec-7_regression.html#in-r",
-    "href": "slides/lec-7_regression.html#in-r",
-    "title": "Week 07: Simple Regression",
-    "section": "In R",
-    "text": "In R\n\nfit.1 &lt;- lm(lifeExp ~ log_gdp, data = gapminder)\nsummary(fit.1)\n\n\nCall:\nlm(formula = lifeExp ~ log_gdp, data = gapminder)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-17.314  -1.650  -0.040   3.428   8.370 \n\nCoefficients:\n            Estimate Std. Error t value     Pr(&gt;|t|)    \n(Intercept)  25.6501     6.1234   4.189     0.000216 ***\nlog_gdp       5.1573     0.6939   7.433 0.0000000226 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 4.851 on 31 degrees of freedom\nMultiple R-squared:  0.6406,    Adjusted R-squared:  0.629 \nF-statistic: 55.24 on 1 and 31 DF,  p-value: 0.00000002263\n\n\n\nThings to discuss\n\nCoefficient estimates\nStatistical tests (covered in more detail soon)"
-  },
-  {
-    "objectID": "slides/lec-7_regression.html#using-easystats",
-    "href": "slides/lec-7_regression.html#using-easystats",
-    "title": "Week 07: Simple Regression",
-    "section": "Using easystats",
-    "text": "Using easystats\n\nperformance::check_model(fit.1)"
-  },
-  {
-    "objectID": "slides/lec-7_regression.html#using-sjplot",
-    "href": "slides/lec-7_regression.html#using-sjplot",
-    "title": "Week 07: Simple Regression",
-    "section": "Using sjPlot",
-    "text": "Using sjPlot\n\nsjPlot::tab_model(fit.1)\n\n\n\n\n \nlife Exp\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n25.65\n13.16 – 38.14\n&lt;0.001\n\n\nlog gdp\n5.16\n3.74 – 6.57\n&lt;0.001\n\n\nObservations\n33\n\n\nR2 / R2 adjusted\n0.641 / 0.629"
-  },
-  {
-    "objectID": "slides/lec-7_regression.html#regression-to-the-mean",
-    "href": "slides/lec-7_regression.html#regression-to-the-mean",
-    "title": "Week 07: Simple Regression",
-    "section": "Regression to the mean",
-    "text": "Regression to the mean\nAn observation about heights was part of the motivation to develop the regression equation: If you selected a parent who was exceptionally tall (or short), their child was almost always not as tall (or as short).\n\n\nCode\nlibrary(psychTools)\nlibrary(tidyverse)\nheights = psychTools::galton\nmod = lm(child~parent, data = heights)\npoint = 902\nheights = broom::augment(mod)\n\n\nheights %&gt;%\n  ggplot(aes(x = parent, y = child)) +\n  geom_jitter(alpha = .3) +\n  geom_hline(aes(yintercept = 72), color = \"red\") +\n  geom_vline(aes(xintercept = 72), color = \"red\") +\n  theme_bw(base_size = 20)"
-  },
-  {
-    "objectID": "slides/lec-7_regression.html#regression-to-the-mean-1",
-    "href": "slides/lec-7_regression.html#regression-to-the-mean-1",
-    "title": "Week 07: Simple Regression",
-    "section": "Regression to the mean",
-    "text": "Regression to the mean\nThis phenomenon is known as regression to the mean. This describes the phenomenon in which an random variable produces an extreme score on a first measurement, but a lower score on a second measurement."
-  },
-  {
-    "objectID": "slides/lec-7_regression.html#regression-to-the-mean-2",
-    "href": "slides/lec-7_regression.html#regression-to-the-mean-2",
-    "title": "Week 07: Simple Regression",
-    "section": "Regression to the mean",
-    "text": "Regression to the mean\nThis can be a threat to internal validity if interventions are applied based on first measurement scores."
-  },
-  {
-    "objectID": "slides/lec-7_regression.html#another-dataset",
-    "href": "slides/lec-7_regression.html#another-dataset",
-    "title": "Week 07: Simple Regression",
-    "section": "Another Dataset",
-    "text": "Another Dataset\n\nschool &lt;- read_csv(\"https://raw.githubusercontent.com/dharaden/dharaden.github.io/main/data/example2-chisq.csv\") %&gt;% \n  mutate(Sleep_Hours_Non_Schoolnight = as.numeric(Sleep_Hours_Non_Schoolnight)) %&gt;% \n  filter(Sleep_Hours_Non_Schoolnight &lt; 24) #removing impossible values"
-  },
-  {
-    "objectID": "slides/lec-7_regression.html#statistical-inference",
-    "href": "slides/lec-7_regression.html#statistical-inference",
-    "title": "Week 07: Simple Regression",
-    "section": "Statistical Inference",
-    "text": "Statistical Inference\n\nThe way the world is = our model + error\nHow good is our model? Does it “fit” the data well?\n\n\nTo assess how well our model fits the data, we will examine the proportion of variance in our outcome variable that can be “explained” by our model.\nTo do so, we need to partition the variance into different categories. For now, we will partition it into two categories: the variability that is captured by (explained by) our model, and variability that is not."
-  },
-  {
-    "objectID": "slides/lec-7_regression.html#partitioning-variation",
-    "href": "slides/lec-7_regression.html#partitioning-variation",
-    "title": "Week 07: Simple Regression",
-    "section": "Partitioning variation",
-    "text": "Partitioning variation\nLet’s start with the formula defining the relationship between observed \\(Y\\) and fitted \\(\\hat{Y}\\):\n\\[Y_i = \\hat{Y}_i + e_i\\]\n\nOne of the properties that we love about variance is that variances are additive when two variables are independent. In other words, if we create some variable, C, by adding together two other variables, A and B, then the variance of C is equal to the sum of the variances of A and B.\n\n\nWhy can we use that rule in this case?\n\nStudents must recognize that Y-hat and e are uncorrelated, they must be the way that we’ve built the OLS function."
-  },
-  {
-    "objectID": "slides/lec-7_regression.html#partitioning-variation-1",
-    "href": "slides/lec-7_regression.html#partitioning-variation-1",
-    "title": "Week 07: Simple Regression",
-    "section": "Partitioning variation",
-    "text": "Partitioning variation\n\n\n\\(\\hat{Y}_i\\) and \\(e_i\\) must be independent from each other. Thus, the variance of \\(Y\\) is equal to the sum of the variance of \\(\\hat{Y}\\) and \\(e\\).\n\\[\\large s^2_Y = s^2_{\\hat{Y}} + s^2_{e}\\]\n\nRecall that variances are sums of squares divided by N-1. Thus, all variances have the same sample size, so we can also note the following:\n\\[\\large SS_Y = SS_{\\hat{Y}} + SS_{\\text{e}}\\]"
-  },
-  {
-    "objectID": "slides/lec-7_regression.html#coefficient-of-determination",
-    "href": "slides/lec-7_regression.html#coefficient-of-determination",
-    "title": "Week 07: Simple Regression",
-    "section": "Coefficient of Determination",
-    "text": "Coefficient of Determination\n\\[\\Large \\frac{SS_{Model}}{SS_{Y}} = \\frac{s_{Model}^2}{s_{y}^2} = R^2\\]\n\\(R^2\\) represents the proportion of variance in Y that is explained by the model.\n\n\\(\\sqrt{R^2} = R\\) is the correlation between the predicted values of Y from the model and the actual values of Y\n\\[\\large \\sqrt{R^2} = r_{Y\\hat{Y}}\\]"
-  },
-  {
-    "objectID": "slides/lec-1_syl.html#when-the-teaching-happens",
-    "href": "slides/lec-1_syl.html#when-the-teaching-happens",
-    "title": "Week 01: Getting Started!",
-    "section": "When the Teaching Happens",
-    "text": "When the Teaching Happens\n💾 Meeting Times: Thursday’s 9:30am - 12:20pm\n🧑‍🏫 Drop in Office Hours: Tuesday’s 10am - 12:00 pm\n📧 Best way to contact me? Email me. I will usually respond within 24 hours. If it has been longer, then you can send me a follow-up\n\n\n\n\n\n\nNote\n\n\nI just figured out how to easily put emojis into the presentation. I’m sorry that you will have to witness that."
-  },
-  {
-    "objectID": "slides/lec-1_syl.html#communication",
-    "href": "slides/lec-1_syl.html#communication",
-    "title": "Week 01: Getting Started!",
-    "section": "Communication",
-    "text": "Communication\nPlease ask questions! 🙋‍♀️\nIf you are having trouble, just ask!!\nBe open and honest with me and I will do what I can to support you."
-  },
-  {
-    "objectID": "slides/lec-1_syl.html#who-the-heck-am-i",
-    "href": "slides/lec-1_syl.html#who-the-heck-am-i",
-    "title": "Week 01: Getting Started!",
-    "section": "Who the heck am I? 🤷",
-    "text": "Who the heck am I? 🤷\n\nUndergraduate degree at University of Denver\n\nPsychology & Philosophy\nHated Statistics\n\nGraduate degree at University of Illinois at Urbana-Champaign\n\nAdvisor: Dr. Benjamin Hankin 👨‍🔬\nClinical/Community PhD 🎓\n\nPre-Doctoral Internship & Postdoc at Rochester Institute of Technology 🐯"
-  },
-  {
-    "objectID": "slides/lec-1_syl.html#a-little-more-about-me",
-    "href": "slides/lec-1_syl.html#a-little-more-about-me",
-    "title": "Week 01: Getting Started!",
-    "section": "A little more about me",
-    "text": "A little more about me\n\nPronouns: he/him/his\n2 amazing kids, 2 dogs (Dachshund and Shepherd Mix), 1 wife\nCurrently Reading: The Shadows of the Gods 🤷, Dungeon Crawler Carl 🐱\nCurrently Listening: The Lonely Island & Seth Meyers Podcast\nCurrently Watching: Love on the Spectrum, Bluey, and Lizzie McGuire"
-  },
-  {
-    "objectID": "slides/lec-1_syl.html#teaching-philosophy",
-    "href": "slides/lec-1_syl.html#teaching-philosophy",
-    "title": "Week 01: Getting Started!",
-    "section": "Teaching Philosophy",
-    "text": "Teaching Philosophy\n\nI’m here for you and to support you however I can\nMy job is to create a supportive, low-stakes environment where you can crash test ideas and develop new skills\nYour responsibility is to come to class prepared, ready to have fun, take some risks, and actively participate!\n\nAsk questions, share relevant funny stories, seek clarification, question the status quo where applicable\n\nScience is a team sport & failures/mistakes will happen, but it is okay! That’s what science and discovery is!"
-  },
-  {
-    "objectID": "slides/lec-1_syl.html#class-materials",
-    "href": "slides/lec-1_syl.html#class-materials",
-    "title": "Week 01: Getting Started!",
-    "section": "Class Materials",
-    "text": "Class Materials\nI’ve pulled from a lot of different textbooks. Good thing is, they are all free!\n\nRegression and Other Stories (Gelman, Hill & Vehtari, 2024)\nLearning Statistics with R (Navarro)\nR for Data Science (2e) (Wickham, Çetinkaya-Rundel, & Grolemund, 2023)\nModern Statistics with R (2e) (Thullin, 2025)\nStatistical Thinking (Poldrack, 2024)"
-  },
-  {
-    "objectID": "slides/lec-1_syl.html#evaluation-grading",
-    "href": "slides/lec-1_syl.html#evaluation-grading",
-    "title": "Week 01: Getting Started!",
-    "section": "Evaluation & Grading",
-    "text": "Evaluation & Grading\n\n\n\nComponent\nWeight\n\n\nLabs & In-Class Check-ins\n35%\n\n\nJournal Entries\n10%\n\n\nParticipation & Engagement\n10%\n\n\nMidterm Project\n20%\n\n\nFinal Project\n25%"
-  },
-  {
-    "objectID": "slides/lec-1_syl.html#course-policies",
-    "href": "slides/lec-1_syl.html#course-policies",
-    "title": "Week 01: Getting Started!",
-    "section": "Course Policies",
-    "text": "Course Policies\n\nLate\nAccommodations\nSafety\nAcademic Integrity"
   },
   {
     "objectID": "slides/lec-3_desc-viz.html#some-terminology",
@@ -2733,298 +2649,382 @@
     "text": "ASAP and Results\nNow let’s use R to finish the steps and put together a results section!\n\nWrangle 🤠 and tidy the data\nDescribe my data (Cronbach \\(\\alpha\\), correlations, means & sds)\nVisualize 📈\nBuilding my Model 🚧\nInterpreting and Reporting 📓"
   },
   {
-    "objectID": "slides/lec-10_multiple-reg.html#today",
-    "href": "slides/lec-10_multiple-reg.html#today",
-    "title": "Week 10: Multiple Regression",
+    "objectID": "slides/template-seasons.html#quarto",
+    "href": "slides/template-seasons.html#quarto",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Quarto",
+    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
+  },
+  {
+    "objectID": "slides/template-seasons.html#bullets",
+    "href": "slides/template-seasons.html#bullets",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Bullets",
+    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code\n\n\nlm(mpg ~ disp, data = mtcars)\n\n\nCall:\nlm(formula = mpg ~ disp, data = mtcars)\n\nCoefficients:\n(Intercept)         disp  \n   29.59985     -0.04122"
+  },
+  {
+    "objectID": "slides/template-seasons.html#latex-equations",
+    "href": "slides/template-seasons.html#latex-equations",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "LaTeX Equations",
+    "text": "LaTeX Equations\nMathJax rendering of equations to HTML\n\\[\\begin{gather*}\na_1=b_1+c_1\\\\\na_2=b_2+c_2-d_2+e_2\n\\end{gather*}\\]\n\\[\\begin{align}\na_{11}& =b_{11}&\n  a_{12}& =b_{12}\\\\\na_{21}& =b_{21}&\n  a_{22}& =b_{22}+c_{22}\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/template-seasons.html#tables",
+    "href": "slides/template-seasons.html#tables",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Tables",
+    "text": "Tables\n\n\n\nSyntax\nDescription\n\n\n\n\nHeader\nTitle\n\n\nParagraph\nText"
+  },
+  {
+    "objectID": "slides/template-seasons.html#callout-blocks",
+    "href": "slides/template-seasons.html#callout-blocks",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Callout Blocks",
+    "text": "Callout Blocks\n\n\n\n\n\n\nNote\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDanger, callouts will really improve your writing.\n\n\n\n\n\n\n\n\n\nTip With Caption\n\n\nThis is an example of a callout with a caption."
+  },
+  {
+    "objectID": "slides/template-seasons.html#quarto-1",
+    "href": "slides/template-seasons.html#quarto-1",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Quarto",
+    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
+  },
+  {
+    "objectID": "slides/template-seasons.html#bullets-1",
+    "href": "slides/template-seasons.html#bullets-1",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Bullets",
+    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code\n\n\nlm(mpg ~ disp, data = mtcars)\n\n\nCall:\nlm(formula = mpg ~ disp, data = mtcars)\n\nCoefficients:\n(Intercept)         disp  \n   29.59985     -0.04122"
+  },
+  {
+    "objectID": "slides/template-seasons.html#latex-equations-1",
+    "href": "slides/template-seasons.html#latex-equations-1",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "LaTeX Equations",
+    "text": "LaTeX Equations\nMathJax rendering of equations to HTML\n\\[\\begin{gather*}\na_1=b_1+c_1\\\\\na_2=b_2+c_2-d_2+e_2\n\\end{gather*}\\]\n\\[\\begin{align}\na_{11}& =b_{11}&\n  a_{12}& =b_{12}\\\\\na_{21}& =b_{21}&\n  a_{22}& =b_{22}+c_{22}\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/template-seasons.html#tables-1",
+    "href": "slides/template-seasons.html#tables-1",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Tables",
+    "text": "Tables\n\n\n\nSyntax\nDescription\n\n\n\n\nHeader\nTitle\n\n\nParagraph\nText"
+  },
+  {
+    "objectID": "slides/template-seasons.html#callout-blocks-1",
+    "href": "slides/template-seasons.html#callout-blocks-1",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Callout Blocks",
+    "text": "Callout Blocks\n\n\n\n\n\n\nNote\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDanger, callouts will really improve your writing.\n\n\n\n\n\n\n\n\n\nTip With Caption\n\n\nThis is an example of a callout with a caption."
+  },
+  {
+    "objectID": "slides/template-seasons.html#quarto-2",
+    "href": "slides/template-seasons.html#quarto-2",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Quarto",
+    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
+  },
+  {
+    "objectID": "slides/template-seasons.html#bullets-2",
+    "href": "slides/template-seasons.html#bullets-2",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Bullets",
+    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code\n\n\nlm(mpg ~ disp, data = mtcars)\n\n\nCall:\nlm(formula = mpg ~ disp, data = mtcars)\n\nCoefficients:\n(Intercept)         disp  \n   29.59985     -0.04122"
+  },
+  {
+    "objectID": "slides/template-seasons.html#latex-equations-2",
+    "href": "slides/template-seasons.html#latex-equations-2",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "LaTeX Equations",
+    "text": "LaTeX Equations\nMathJax rendering of equations to HTML\n\\[\\begin{gather*}\na_1=b_1+c_1\\\\\na_2=b_2+c_2-d_2+e_2\n\\end{gather*}\\]\n\\[\\begin{align}\na_{11}& =b_{11}&\n  a_{12}& =b_{12}\\\\\na_{21}& =b_{21}&\n  a_{22}& =b_{22}+c_{22}\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/template-seasons.html#tables-2",
+    "href": "slides/template-seasons.html#tables-2",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Tables",
+    "text": "Tables\n\n\n\nSyntax\nDescription\n\n\n\n\nHeader\nTitle\n\n\nParagraph\nText"
+  },
+  {
+    "objectID": "slides/template-seasons.html#callout-blocks-2",
+    "href": "slides/template-seasons.html#callout-blocks-2",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Callout Blocks",
+    "text": "Callout Blocks\n\n\n\n\n\n\nNote\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDanger, callouts will really improve your writing.\n\n\n\n\n\n\n\n\n\nTip With Caption\n\n\nThis is an example of a callout with a caption."
+  },
+  {
+    "objectID": "slides/template-seasons.html#quarto-3",
+    "href": "slides/template-seasons.html#quarto-3",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Quarto",
+    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
+  },
+  {
+    "objectID": "slides/template-seasons.html#bullets-3",
+    "href": "slides/template-seasons.html#bullets-3",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Bullets",
+    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code\n\n\nlm(mpg ~ disp, data = mtcars)\n\n\nCall:\nlm(formula = mpg ~ disp, data = mtcars)\n\nCoefficients:\n(Intercept)         disp  \n   29.59985     -0.04122"
+  },
+  {
+    "objectID": "slides/template-seasons.html#latex-equations-3",
+    "href": "slides/template-seasons.html#latex-equations-3",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "LaTeX Equations",
+    "text": "LaTeX Equations\nMathJax rendering of equations to HTML\n\\[\\begin{gather*}\na_1=b_1+c_1\\\\\na_2=b_2+c_2-d_2+e_2\n\\end{gather*}\\]\n\\[\\begin{align}\na_{11}& =b_{11}&\n  a_{12}& =b_{12}\\\\\na_{21}& =b_{21}&\n  a_{22}& =b_{22}+c_{22}\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/template-seasons.html#tables-3",
+    "href": "slides/template-seasons.html#tables-3",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Tables",
+    "text": "Tables\n\n\n\nSyntax\nDescription\n\n\n\n\nHeader\nTitle\n\n\nParagraph\nText"
+  },
+  {
+    "objectID": "slides/template-seasons.html#callout-blocks-3",
+    "href": "slides/template-seasons.html#callout-blocks-3",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Callout Blocks",
+    "text": "Callout Blocks\n\n\n\n\n\n\nNote\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDanger, callouts will really improve your writing.\n\n\n\n\n\n\n\n\n\nTip With Caption\n\n\nThis is an example of a callout with a caption."
+  },
+  {
+    "objectID": "slides/lec-13_mod.html#today",
+    "href": "slides/lec-13_mod.html#today",
+    "title": "Week 13: Intro to Moderation",
     "section": "Today…",
-    "text": "Today…\nhttps://bsky.app/profile/andrew.heiss.phd/post/3ly6hqr3mtk2z"
+    "text": "Today…\n\nChecking back in on Regression\nMaking things complicated with moderation\nFinal Project Check in"
   },
   {
-    "objectID": "slides/lec-10_multiple-reg.html#regression",
-    "href": "slides/lec-10_multiple-reg.html#regression",
-    "title": "Week 10: Multiple Regression",
-    "section": "Regression",
-    "text": "Regression\n3 main reasons for using regression:\n\nAs a description (what is the average salary for men and women?)\nAs part of causal inference (Does being a woman result in a lower salary?)\nFor prediction (“What happens if…” questions)"
+    "objectID": "slides/lec-13_mod.html#motivating-example",
+    "href": "slides/lec-13_mod.html#motivating-example",
+    "title": "Week 13: Intro to Moderation",
+    "section": "Motivating example",
+    "text": "Motivating example\n\nglimpse(t_data)\n\nRows: 20\nColumns: 4\n$ ID    &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 1…\n$ study &lt;dbl&gt; 1.62, 0.54, 0.86, 0.80, 0.36, 2.14, 1.13, 1.66, 1.23, 1.92, 1.82…\n$ grade &lt;dbl&gt; 9.0, 7.8, 8.5, 6.2, 6.9, 9.0, 6.6, 8.7, 6.6, 8.8, 9.7, 5.9, 9.5,…\n$ tutor &lt;int&gt; 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0\n\nt_data = t_data %&gt;%\n  mutate(tutor_lab = factor(tutor, \n                            levels = c(0,1),\n                            labels = c(\"No tutor\", \"Tutor\")))"
   },
   {
-    "objectID": "slides/lec-10_multiple-reg.html#explaining-variance",
-    "href": "slides/lec-10_multiple-reg.html#explaining-variance",
-    "title": "Week 10: Multiple Regression",
+    "objectID": "slides/lec-13_mod.html#what-are-interactions",
+    "href": "slides/lec-13_mod.html#what-are-interactions",
+    "title": "Week 13: Intro to Moderation",
+    "section": "What are interactions?",
+    "text": "What are interactions?\nWhen we have two variables, A and B, in a regression model, we are testing whether these variables have additive effects on our outcome, Y. That is, the effect of A on Y is constant over all values of B.\n\nExample: Studying and working with a tutor have additive effects on grades; no matter how many hours I spend studying, working with a tutor will improve my grade by 2 points."
+  },
+  {
+    "objectID": "slides/lec-13_mod.html#what-are-interactions-1",
+    "href": "slides/lec-13_mod.html#what-are-interactions-1",
+    "title": "Week 13: Intro to Moderation",
+    "section": "What are interactions?",
+    "text": "What are interactions?\nHowever, we may hypothesis that two variables have joint effects, or interact with each other. In this case, the effect of A on Y changes as a function of B.\n\nExample: Working with a tutor has a positive impact on grades but only for individuals who do not spend a lot of time studying; for individuals who study a lot, tutoring will have little or no impact.\nThis is also referred to as moderation.\n\nInteractions (moderation) tell us whether the effect of one IV (on a DV) depends on another IV."
+  },
+  {
+    "objectID": "slides/lec-13_mod.html#interactions",
+    "href": "slides/lec-13_mod.html#interactions",
+    "title": "Week 13: Intro to Moderation",
+    "section": "Interactions",
+    "text": "Interactions\nNow extend this example to include joint effects, not just additive effects:\n\\[\\hat{\\text{grade}} = b_{0} + b_{1}\\text{Tutor} + b_2\\text{Study} + b_3(\\text{Tutor}\\times\\text{Study})\\]\n\nmod3 &lt;- lm(grade ~ tutor_lab + study + tutor_lab*study, data = t_data) \nmod3 &lt;-  lm(grade ~ tutor_lab*study, data = t_data)\nsummary(mod3)\n\n...\nCoefficients:\n                     Estimate Std. Error t value      Pr(&gt;|t|)    \n(Intercept)            5.0121     0.3496  14.337 0.00000000015 ***\ntutor_labTutor         2.9203     0.6418   4.550      0.000328 ***\nstudy                  1.7567     0.3095   5.676 0.00003443132 ***\ntutor_labTutor:study  -1.1713     0.4402  -2.661      0.017093 *  \n..."
+  },
+  {
+    "objectID": "slides/lec-13_mod.html#interpreting-coefficients",
+    "href": "slides/lec-13_mod.html#interpreting-coefficients",
+    "title": "Week 13: Intro to Moderation",
+    "section": "Interpreting coefficients",
+    "text": "Interpreting coefficients\n\\[\\hat{\\text{grade}} = b_{0} + b_{1}\\text{Tutor} + b_2\\text{Study} + b_3(\\text{Tutor}\\times\\text{Study})\\]\n\n\n...\nCoefficients:\n                     Estimate Std. Error t value      Pr(&gt;|t|)    \n(Intercept)            5.0121     0.3496  14.337 0.00000000015 ***\ntutor_labTutor         2.9203     0.6418   4.550      0.000328 ***\nstudy                  1.7567     0.3095   5.676 0.00003443132 ***\ntutor_labTutor:study  -1.1713     0.4402  -2.661      0.017093 *  \n...\n\n\nIntercept: the expected value of Y when all predictors are 0\n\\(b_1\\): The difference in means (tutor vs no tutor) when study = 0\n\\(b_2\\): The slope of study when tutor = 0, or the reference group\n\\(b_3\\)?"
+  },
+  {
+    "objectID": "slides/lec-13_mod.html#interpreting-coefficients-1",
+    "href": "slides/lec-13_mod.html#interpreting-coefficients-1",
+    "title": "Week 13: Intro to Moderation",
+    "section": "Interpreting coefficients",
+    "text": "Interpreting coefficients\n\\[\\hat{\\text{grade}} = b_{0} + b_{1}\\text{Tutor} + b_2\\text{Study} + b_3(\\text{Tutor}\\times\\text{Study})\\]\n\\(b_3\\)\n\nthe linear effect of the product of hours studying and tutoring\nhow much the slope of study differs for the two tutoring groups\nhow much the effect of tutoring changes for for every one 1 hour increase in studying."
+  },
+  {
+    "objectID": "slides/lec-13_mod.html#terms",
+    "href": "slides/lec-13_mod.html#terms",
+    "title": "Week 13: Intro to Moderation",
+    "section": "Terms",
+    "text": "Terms\nInteractions tell us whether the effect of one IV (on a DV) depends on another IV. In this case, the effect of tutoring depends on a student’s time spent studying. Tutoring has a large effect when a student’s spends little time studying, but a small effect when the amount of time studying is high.\n\\(b_3\\) is referred to as a “higher-order term.”\nHigher-order terms are those terms that represent interactions."
+  },
+  {
+    "objectID": "slides/lec-13_mod.html#terms-1",
+    "href": "slides/lec-13_mod.html#terms-1",
+    "title": "Week 13: Intro to Moderation",
+    "section": "Terms",
+    "text": "Terms\nLower-order terms change depending on the values of the higher-order terms. The value of \\(b_1\\) and \\(b_2\\) will change depending on the value of \\(b_3\\).\n\nThese values represent “conditional effects” (because the value is conditional on the level of the other variable). In many cases, the value and significance test with these terms is either meaningless (if an IV is never equal to 0) or unhelpful, as these values and significance change across the data."
+  },
+  {
+    "objectID": "slides/lec-13_mod.html#conditional-effects-and-simple-slopes",
+    "href": "slides/lec-13_mod.html#conditional-effects-and-simple-slopes",
+    "title": "Week 13: Intro to Moderation",
+    "section": "Conditional effects and simple slopes",
+    "text": "Conditional effects and simple slopes\nThe regression line estimated in this model is quite difficult to interpret on its own. A good strategy is to decompose the regression equation into simple slopes, which are determined by calculating the conditional effects at a specific level of the moderating variable.\n\nSimple slope: the equation for Y on X at different levels of Z\nConditional effect: the slope coefficients in the full regression model that can change. These are the lower-order terms associated with a variable. E.g., studying has a conditional effect on grade."
+  },
+  {
+    "objectID": "slides/lec-13_mod.html#interaction-shapes",
+    "href": "slides/lec-13_mod.html#interaction-shapes",
+    "title": "Week 13: Intro to Moderation",
+    "section": "Interaction shapes",
+    "text": "Interaction shapes\nOften we graph the simple slopes as a way to understand the interaction. The shape of the lines in the graph are informative and help us interpret conceptually what’s happening."
+  },
+  {
+    "objectID": "slides/lec-13_mod.html#centering",
+    "href": "slides/lec-13_mod.html#centering",
+    "title": "Week 13: Intro to Moderation",
+    "section": "Centering",
+    "text": "Centering\nThe regression equation built using the raw data is not only difficult to interpret, but often the terms displayed are not relevant to the hypotheses we’re interested.\n\n\\(b_0\\) is the expected value when all predictors are 0, but this may never happen in real life\n\\(b_1\\) is the effect of tutoring when hours spent studying is equal to 0, but this may not ever happen either."
+  },
+  {
+    "objectID": "slides/lec-13_mod.html#wrapping-up",
+    "href": "slides/lec-13_mod.html#wrapping-up",
+    "title": "Week 13: Intro to Moderation",
+    "section": "Wrapping Up",
+    "text": "Wrapping Up\nWe just examined moderation as an interaction between a categorical variable and a continuous variable"
+  },
+  {
+    "objectID": "slides/lec-13_mod.html#next-steps",
+    "href": "slides/lec-13_mod.html#next-steps",
+    "title": "Week 13: Intro to Moderation",
+    "section": "Next Steps",
+    "text": "Next Steps\nModerations with two continuous predictors"
+  },
+  {
+    "objectID": "slides/lec-13_mod.html#what-are-interactions-2",
+    "href": "slides/lec-13_mod.html#what-are-interactions-2",
+    "title": "Week 13: Intro to Moderation",
+    "section": "What are interactions?",
+    "text": "What are interactions?\nWhen we have two variables, A and B, in a regression model, we are testing whether these variables have additive effects on our outcome, Y. That is, the effect of A on Y is constant over all values of B.\n\nExample: Drinking coffee and hours of sleep have additive effects on alertness; no matter how any hours I slept the previous night, drinking one cup of coffee will make me .5 SD more awake than not drinking coffee."
+  },
+  {
+    "objectID": "slides/lec-13_mod.html#what-are-interactions-3",
+    "href": "slides/lec-13_mod.html#what-are-interactions-3",
+    "title": "Week 13: Intro to Moderation",
+    "section": "What are interactions?",
+    "text": "What are interactions?\nHowever, we may hypothesis that two variables have joint effects, or interact with each other. In this case, the effect of A on Y changes as a function of B.\n\nExample: Chronic stress has a negative impact on health but only for individuals who receive little or no social support; for individuals with high social support, chronic stress has no impact on health.\nThis is also referred to as moderation.\nThe “interaction term” is the regression coefficient that tests this hypothesis."
+  },
+  {
+    "objectID": "slides/lec-13_mod.html#conditional-effects-and-simple-slopes-1",
+    "href": "slides/lec-13_mod.html#conditional-effects-and-simple-slopes-1",
+    "title": "Week 13: Intro to Moderation",
+    "section": "Conditional effects and simple slopes",
+    "text": "Conditional effects and simple slopes\nThe regression line estimated in this model is quite difficult to interpret on its own. A good strategy is to decompose the regression equation into simple slopes, which are determined by calculating the conditional effects at a specific level of the moderating variable.\n\n\n\nSimple slope: the equation for Y on X at different levels of Z; but also refers to only the coefficient for X in this equation\n\n\n\nConditional effect: the slope coefficients in the full regression model which can change. These are the lower-order terms associated with a variable."
+  },
+  {
+    "objectID": "slides/lec-13_mod.html#plotting-interactions",
+    "href": "slides/lec-13_mod.html#plotting-interactions",
+    "title": "Week 13: Intro to Moderation",
+    "section": "Plotting interactions",
+    "text": "Plotting interactions\nWhat is this plotting?\n\nplot_model(imodel, type = \"pred\", terms = c(\"Support\", \"Anxiety[mean]\"))"
+  },
+  {
+    "objectID": "slides/lec-13_mod.html#testing-simple-slopes",
+    "href": "slides/lec-13_mod.html#testing-simple-slopes",
+    "title": "Week 13: Intro to Moderation",
+    "section": "Testing simple slopes",
+    "text": "Testing simple slopes\n\n#https://easystats.github.io/modelbased/articles/introduction_comparisons_3.html?q=simple%20slo#contrasts-and-comparisons-for-slopes-of-numeric-predictors\n\npred &lt;- estimate_means(imodel, c(\"Support\", \"Anxiety = c(5,6,7)\"))\nplot(pred)\n\nestimate_slopes(imodel, \"Support\", by = \"Anxiety = c(5,6,7)\")\n\nEstimated Marginal Effects\n\nAnxiety | Slope |   SE |       95% CI | t(114) |      p\n-------------------------------------------------------\n5       |  0.46 | 0.05 | [0.36, 0.56] |   8.83 | &lt; .001\n6       |  0.42 | 0.05 | [0.32, 0.51] |   8.44 | &lt; .001\n7       |  0.37 | 0.05 | [0.28, 0.47] |   7.47 | &lt; .001\n\nMarginal effects estimated for Support\nType of slope was dY/dX"
+  },
+  {
+    "objectID": "slides/lec-13_mod.html#testing-simple-slopes-1",
+    "href": "slides/lec-13_mod.html#testing-simple-slopes-1",
+    "title": "Week 13: Intro to Moderation",
+    "section": "Testing simple slopes",
+    "text": "Testing simple slopes\n\nestimate_slopes(imodel, \"Support\", by = \"Anxiety=[sd]\")\n\nEstimated Marginal Effects\n\nAnxiety | Slope |   SE |       95% CI | t(114) |      p\n-------------------------------------------------------\n5.13    |  0.45 | 0.05 | [0.35, 0.55] |   8.82 | &lt; .001\n7.61    |  0.35 | 0.05 | [0.25, 0.45] |   6.67 | &lt; .001\n10.10   |  0.25 | 0.07 | [0.11, 0.38] |   3.48 | &lt; .001\n\nMarginal effects estimated for Support\nType of slope was dY/dX"
+  },
+  {
+    "objectID": "slides/lec-13_mod.html#simple-slopes---significance-tests",
+    "href": "slides/lec-13_mod.html#simple-slopes---significance-tests",
+    "title": "Week 13: Intro to Moderation",
+    "section": "Simple slopes - Significance tests",
+    "text": "Simple slopes - Significance tests\nWhat if you want to compare slopes to each other? How would we test this?\n\nThe test of the interaction coefficient is equivalent to the test of the difference in slopes at levels of Z separated by 1 unit.\n\ncoef(summary(imodel))\n\n                   Estimate Std. Error   t value           Pr(&gt;|t|)\n(Intercept)     -2.73966246 1.12100519 -2.443934 0.0160605206624654\nAnxiety          0.61561220 0.13010161  4.731780 0.0000064353728132\nSupport          0.66696689 0.09547464  6.985802 0.0000000002017698\nAnxiety:Support -0.04174076 0.01309328 -3.187954 0.0018497364252185"
+  },
+  {
+    "objectID": "slides/lec-9_models.html#today",
+    "href": "slides/lec-9_models.html#today",
+    "title": "Week 09: Model Selection & Variability",
+    "section": "Today…",
+    "text": "Today…\nRegression & Model Selection"
+  },
+  {
+    "objectID": "slides/lec-9_models.html#example---lego-data",
+    "href": "slides/lec-9_models.html#example---lego-data",
+    "title": "Week 09: Model Selection & Variability",
+    "section": "Example - LEGO Data",
+    "text": "Example - LEGO Data\n\nlego &lt;- import(here(\"files\", \"data\", \"LEGO_data.csv\")) %&gt;% \n  janitor::clean_names()\n\ndescribe(lego)\n\n                 vars  n     mean       sd   median  trimmed      mad      min\nset_name*           1 59    30.00    17.18    30.00    30.00    22.24     1.00\nset_number          2 59 37023.29 25089.50 31167.00 35693.88 30827.70 10294.00\nnumber_of_pieces    3 59  2416.58  2384.39  1503.00  2073.37  1906.62   104.00\nprice               4 59   218.19   214.72   129.99   189.81   163.09     9.99\n                      max range skew kurtosis      se\nset_name*           59.00    58 0.00    -1.26    2.24\nset_number       76974.00 66680 0.55    -1.21 3266.37\nnumber_of_pieces 10001.00  9897 1.32     1.37  310.42\nprice              999.99   990 1.28     1.48   27.95"
+  },
+  {
+    "objectID": "slides/lec-9_models.html#regression-coefficient-b_1",
+    "href": "slides/lec-9_models.html#regression-coefficient-b_1",
+    "title": "Week 09: Model Selection & Variability",
+    "section": "Regression coefficient, \\(b_{1}\\)",
+    "text": "Regression coefficient, \\(b_{1}\\)\nCalculating the slope\n\\[\\Large b_{1} = \\frac{cov_{XY}}{s_{x}^{2}}\\]\n\n# Covariance\ncov(lego$number_of_pieces, lego$price)\n\n[1] 469162.5\n\n# Variance of # of Pieces\nvar(lego$number_of_pieces)\n\n[1] 5685305"
+  },
+  {
+    "objectID": "slides/lec-9_models.html#regression-coefficient-b_1-1",
+    "href": "slides/lec-9_models.html#regression-coefficient-b_1-1",
+    "title": "Week 09: Model Selection & Variability",
+    "section": "Regression coefficient, \\(b_{1}\\)",
+    "text": "Regression coefficient, \\(b_{1}\\)\n\\[\\Large b_{1} = \\frac{cov_{XY}}{s_{x}^{2}} = r_{xy} \\frac{s_{y}}{s_{x}}\\]\n\n#SD of # of Pieces\nsd(lego$number_of_pieces) \n\n[1] 2384.388\n\n# SD of Price\nsd(lego$price) \n\n[1] 214.7205\n\n# Correlation\ncor(lego$number_of_pieces, lego$price)\n\n[1] 0.9163742"
+  },
+  {
+    "objectID": "slides/lec-9_models.html#regression-coefficient-b_0",
+    "href": "slides/lec-9_models.html#regression-coefficient-b_0",
+    "title": "Week 09: Model Selection & Variability",
+    "section": "Regression Coefficient, \\(b_0\\)",
+    "text": "Regression Coefficient, \\(b_0\\)\nCalculating the Intercept:\n\\[\\Large b_0 = \\bar{Y} - b_1\\bar{X}\\]\nThe intercept adjusts the location of the regression line to ensure that it runs through the point \\(\\large (\\bar{X}, \\bar{Y}).\\)\n\nmean(lego$number_of_pieces)\n\n[1] 2416.576\n\nmean(lego$price)\n\n[1] 218.1936"
+  },
+  {
+    "objectID": "slides/lec-9_models.html#what-is-the-regression-model",
+    "href": "slides/lec-9_models.html#what-is-the-regression-model",
+    "title": "Week 09: Model Selection & Variability",
+    "section": "What is the Regression Model?",
+    "text": "What is the Regression Model?\nUsing the calculations, identify what the linear model would be."
+  },
+  {
+    "objectID": "slides/lec-9_models.html#what-is-the-regression-model-1",
+    "href": "slides/lec-9_models.html#what-is-the-regression-model-1",
+    "title": "Week 09: Model Selection & Variability",
+    "section": "What is the Regression Model?",
+    "text": "What is the Regression Model?\nUsing the calculations, identify what the linear model would be.\nYou hear about 3 new sets coming out that you are interested in. Since you have this regression model, you can calculate the total price for each. How much money do you need to save (excluding taxes) to buy all 3 sets?\n\n\n\nSet 1: 1031 pieces\nSet 2: 357\nSet 3: 4154"
+  },
+  {
+    "objectID": "slides/lec-9_models.html#explaining-variance",
+    "href": "slides/lec-9_models.html#explaining-variance",
+    "title": "Week 09: Model Selection & Variability",
     "section": "Explaining Variance",
     "text": "Explaining Variance"
   },
   {
-    "objectID": "slides/lec-10_multiple-reg.html#model-interpretation",
-    "href": "slides/lec-10_multiple-reg.html#model-interpretation",
-    "title": "Week 10: Multiple Regression",
-    "section": "Model Interpretation",
-    "text": "Model Interpretation\nOnce we have a model, we will be able to interpret the coefficients. For a bivariate regression, this was fairly straightforward\nWe would look to the beta (effect size) and interpret it as: for every 1 unit increase in our X variable, there will be beta units increase in our Y variable."
+    "objectID": "slides/lec-9_models.html#stroop-data-modeling",
+    "href": "slides/lec-9_models.html#stroop-data-modeling",
+    "title": "Week 09: Model Selection & Variability",
+    "section": "Stroop Data Modeling",
+    "text": "Stroop Data Modeling\nResearch Question: Sleep Quality is negatively related to the Stroop Effect. Lower sleep quality will predict a greater Stroop effect.\nData Set (I hope I entered all the data in appropriately)"
   },
   {
-    "objectID": "slides/lec-10_multiple-reg.html#regressions",
-    "href": "slides/lec-10_multiple-reg.html#regressions",
-    "title": "Week 10: Multiple Regression",
-    "section": "Regressions",
-    "text": "Regressions\nWe may want to include additional predictors into our model to best explain the variance in an outcome:\n\\[ Y_i = b_0 + b_1X_{1i} + b_2X_{2i} + ... + b_nX_{ni}+ e_i \\]"
+    "objectID": "slides/lec-9_models.html#linear-regression",
+    "href": "slides/lec-9_models.html#linear-regression",
+    "title": "Week 09: Model Selection & Variability",
+    "section": "Linear Regression",
+    "text": "Linear Regression\nUse the information and let’s do it in R instead of on the board\nVisualize the relationship\nRun a linear regression"
   },
   {
-    "objectID": "slides/lec-10_multiple-reg.html#fire-data-example",
-    "href": "slides/lec-10_multiple-reg.html#fire-data-example",
-    "title": "Week 10: Multiple Regression",
-    "section": "Fire Data Example",
-    "text": "Fire Data Example\nWe have been contracted by the county to examine their Fire Department. We have been provided with the data below, and asked to examine what may be related to how expensive a fire costs.\n\n\nCode\n# --- Step 1: Simulate the Data ---\nset.seed(123) # for reproducibility\nn &lt;- 300 # number of fires\n\n# Create three distinct groups for fire size\nfire_sizes &lt;- sample(c(\"Small\", \"Medium\", \"Large\"), n, replace = TRUE, prob = c(0.4, 0.3, 0.3))\n\n# Simulate our variables based on fire size\nfire_data &lt;- tibble(size = factor(fire_sizes, levels = c(\"Small\", \"Medium\", \"Large\"))) %&gt;%\n  mutate(\n    # The bigger the fire, the more trucks are sent.\n    num_trucks = case_when(\n      size == \"Small\"  ~ round(rnorm(n(), 2, 0.5)),\n      size == \"Medium\" ~ round(rnorm(n(), 5, 1)),\n      size == \"Large\"  ~ round(rnorm(n(), 9, 1.5))\n    ),\n    # For a given size, more trucks -&gt; less damage (the true effect)\n    # But bigger size -&gt; more damage (the confounding effect)\n    damage_amount = case_when(\n      size == \"Small\"  ~ 20 - 2 * num_trucks + rnorm(n(), 0, 5),\n      size == \"Medium\" ~ 80 - 3 * num_trucks + rnorm(n(), 0, 8),\n      size == \"Large\"  ~ 150 - 4 * num_trucks + rnorm(n(), 0, 12)\n    )\n  ) %&gt;%\n  # ensure no negative values\n  filter(num_trucks &gt; 0, damage_amount &gt; 0)\n\n\n\nglimpse(fire_data)\n\nRows: 300\nColumns: 3\n$ size          &lt;fct&gt; Small, Medium, Large, Medium, Medium, Small, Large, Medi…\n$ num_trucks    &lt;dbl&gt; 2, 6, 10, 6, 6, 2, 11, 5, 6, 9, 6, 10, 10, 6, 2, 6, 2, 2…\n$ damage_amount &lt;dbl&gt; 17.65717, 50.53150, 126.92287, 69.08090, 69.22461, 18.92…"
+    "objectID": "slides/lec-9_models.html#model-fit",
+    "href": "slides/lec-9_models.html#model-fit",
+    "title": "Week 09: Model Selection & Variability",
+    "section": "Model Fit",
+    "text": "Model Fit\nTake a look at the \\(R^2\\) value\nIs there any other data that we have that could impact overall Stroop Effects?\nAfter including it in the model, we can examine the change in \\(R^2\\)\nWhat would happen if we put the random number variable in there?"
   },
   {
-    "objectID": "slides/lec-10_multiple-reg.html#reporting-standardized-or-unstandardized",
-    "href": "slides/lec-10_multiple-reg.html#reporting-standardized-or-unstandardized",
-    "title": "Week 10: Multiple Regression",
-    "section": "Reporting Standardized or Unstandardized?",
-    "text": "Reporting Standardized or Unstandardized?\nINTERPRET b:\n\nWhen the variables are measured in a meaningful metric\nTo compare the relative effects of different predictors in the same sample\n\nINTERPRET β:\n\nWhen the variables are not measured in a meaningful metric\nTo compare effects across samples or studies"
+    "objectID": "slides/lec-9_models.html#selecting-a-model",
+    "href": "slides/lec-9_models.html#selecting-a-model",
+    "title": "Week 09: Model Selection & Variability",
+    "section": "Selecting a Model",
+    "text": "Selecting a Model\nOne of the most daunting tasks can be identifying the “right” statistical model for the data you have\nYou may see flowcharts like this:"
   },
   {
-    "objectID": "slides/lec-10_multiple-reg.html#goldilocks-problem",
-    "href": "slides/lec-10_multiple-reg.html#goldilocks-problem",
-    "title": "Week 10: Multiple Regression",
-    "section": "Goldilocks Problem",
-    "text": "Goldilocks Problem\nModels that are underfit, overfit or just-right"
-  },
-  {
-    "objectID": "slides/lec-10_multiple-reg.html#another-example-computer-time-frustration",
-    "href": "slides/lec-10_multiple-reg.html#another-example-computer-time-frustration",
-    "title": "Week 10: Multiple Regression",
-    "section": "Another Example: Computer time & Frustration",
-    "text": "Another Example: Computer time & Frustration\n\n\nCode\n# Step 1: Simulate the Data \nn &lt;- 150 # Number of students\n\n# Simulate total daily computer use in hours\ncomputer_use &lt;- rnorm(n, mean = 6, sd = 1.5)\n\n# Simulate hours spent on stats homework, now as a whole number\nstats_homework &lt;- round(0.7 * computer_use + rnorm(n, 0, 1))\n# Ensure no negative values after rounding\nstats_homework[stats_homework &lt; 0] &lt;- 0\nstats_homework[stats_homework &gt; computer_use] &lt;- 1\n\n# Simulate frustration level (driven mostly by stats homework)\n# Scale of 1-100\nfrustration &lt;- 10 + (2 * computer_use) + (8 * stats_homework) + rnorm(n, 0, 10)\n\n# Create a dataframe and clean up any impossible values\nstudent_data &lt;- tibble(\n  frustration = frustration,\n  computer_use = computer_use,\n  stats_homework = stats_homework\n) %&gt;%\n  filter(frustration &gt; 0, computer_use &gt; 0)\n\n# Bin the 'stats_homework' variable\nstudent_data &lt;- student_data %&gt;%\n  mutate(\n    stats_homework_bin = cut(stats_homework,\n                           breaks = quantile(stats_homework, probs = seq(0, 1, by = 1/3)),\n                           include.lowest = TRUE,\n                           labels = c(\"Low\", \"Medium\", \"High\"))\n  )\n\n\nWe have collected data on graduate students and their weekly frustration levels. Data that were also collected included the amount of time they were spending on their computer as well as the amount of statistics homework that they had."
-  },
-  {
-    "objectID": "slides/lec-10_multiple-reg.html#model-assumptions-frustration",
-    "href": "slides/lec-10_multiple-reg.html#model-assumptions-frustration",
-    "title": "Week 10: Multiple Regression",
-    "section": "Model Assumptions: Frustration",
-    "text": "Model Assumptions: Frustration\n\ncheck_model(frus.lm2)"
-  },
-  {
-    "objectID": "slides/lec-10_multiple-reg.html#model-selection---stepwise",
-    "href": "slides/lec-10_multiple-reg.html#model-selection---stepwise",
-    "title": "Week 10: Multiple Regression",
-    "section": "Model Selection - Stepwise",
-    "text": "Model Selection - Stepwise\n\nBackward elimination\n\nStart with the full model (all potential predictors)\nPredictors eliminated one-at-a-time from the model until we cannot improve the model any further\n\nForward selection\n\nStart with nothing in the model\nContinue to add predictors one-at-a-time until we cannot find any predictors that improve the model any further"
-  },
-  {
-    "objectID": "slides/lec-10_multiple-reg.html#model-selection",
-    "href": "slides/lec-10_multiple-reg.html#model-selection",
-    "title": "Week 10: Multiple Regression",
-    "section": "Model Selection",
-    "text": "Model Selection\nALWAYS start with theory and previous work\nYou should NEVER just go into data with just a lot of predictors and backward selection in mind. 🧨"
-  },
-  {
-    "objectID": "slides/lec-12_logistic.html#today",
-    "href": "slides/lec-12_logistic.html#today",
-    "title": "Week 12: Categorical & Logistic Regression",
-    "section": "Today…",
-    "text": "Today…\n\nFinal Project Prep\nSome helpful tools (autosave & new library)\nRegression Review\nCategorical Predictors Review\nLogistic Regression\nModel Diagnostics 🤷"
-  },
-  {
-    "objectID": "slides/lec-12_logistic.html#autosave",
-    "href": "slides/lec-12_logistic.html#autosave",
-    "title": "Week 12: Categorical & Logistic Regression",
-    "section": "Autosave",
-    "text": "Autosave\nTools &gt;&gt; Global Options &gt;&gt; Code &gt;&gt; Saving"
-  },
-  {
-    "objectID": "slides/lec-12_logistic.html#new-library-genzplyr",
-    "href": "slides/lec-12_logistic.html#new-library-genzplyr",
-    "title": "Week 12: Categorical & Logistic Regression",
-    "section": "New Library: genzplyr",
-    "text": "New Library: genzplyr\n\n\ndplyr but make it bussin fr fr no cap\n\ngenzplyr 💅"
-  },
-  {
-    "objectID": "slides/lec-12_logistic.html#regression",
-    "href": "slides/lec-12_logistic.html#regression",
-    "title": "Week 12: Categorical & Logistic Regression",
-    "section": "Regression",
-    "text": "Regression\nWhat is the equation for a regression??"
-  },
-  {
-    "objectID": "slides/lec-12_logistic.html#regression-1",
-    "href": "slides/lec-12_logistic.html#regression-1",
-    "title": "Week 12: Categorical & Logistic Regression",
-    "section": "Regression",
-    "text": "Regression\n\\[ Y_i = b_0 + b_1X_{1i} + b_2X_{2i} + ... + b_nX_{ni}+ e_i \\]"
-  },
-  {
-    "objectID": "slides/lec-12_logistic.html#regression-2",
-    "href": "slides/lec-12_logistic.html#regression-2",
-    "title": "Week 12: Categorical & Logistic Regression",
-    "section": "Regression",
-    "text": "Regression\nHow do we interpret the regression coefficients (Intercepts & slopes)?"
-  },
-  {
-    "objectID": "slides/lec-12_logistic.html#regression-3",
-    "href": "slides/lec-12_logistic.html#regression-3",
-    "title": "Week 12: Categorical & Logistic Regression",
-    "section": "Regression",
-    "text": "Regression\nINTERCEPT: When all predictor variables are set to 0, our expected value (predicted \\(\\hat{Y}\\)) will be this value.\nSLOPES: For every 1 unit change in our \\(X_n\\) variable, there will be beta (b or \\(\\beta\\)) units increase in our Y (outcome) variable, holding all other variables constant."
-  },
-  {
-    "objectID": "slides/lec-12_logistic.html#categorical-predictors-factors",
-    "href": "slides/lec-12_logistic.html#categorical-predictors-factors",
-    "title": "Week 12: Categorical & Logistic Regression",
-    "section": "Categorical Predictors = factors",
-    "text": "Categorical Predictors = factors\nTypically identified by a grouping variable that may be a character\n\nglimpse(cah_data$political_affiliation)\n\n chr [1:1000] \"Democrat\" \"Democrat\" \"Independent\" \"Republican\" \"Democrat\" ...\n\n\nNeed to change the variable from character to factor which will assign a number to each group\n\ncah_data &lt;- cah_data %&gt;%\n  mutate(\n    pol = as.factor(political_affiliation),\n    ghosts = as.factor(ghosts)\n    )\n\nglimpse(cah_data$pol)\n\n Factor w/ 3 levels \"Democrat\",\"Independent\",..: 1 1 2 3 1 1 2 3 3 1 ..."
-  },
-  {
-    "objectID": "slides/lec-12_logistic.html#dummy-coding-replacing-factors",
-    "href": "slides/lec-12_logistic.html#dummy-coding-replacing-factors",
-    "title": "Week 12: Categorical & Logistic Regression",
-    "section": "Dummy Coding (replacing factors)",
-    "text": "Dummy Coding (replacing factors)\nNumerical placeholders used to represent categorical variables\nTaking a categorical variable with \\(k\\) levels (e.g., Democratic, Independent, Republican) into \\(k-1\\) binary variables.\n\n\n\npolitical_affiliation\nbecomes\nInd (binary1)\nRep (binary2)\n\n\n\n\nDemocrat\n–&gt;\n0\n0\n\n\nIndependent\n–&gt;\n1\n0\n\n\nRepublican\n–&gt;\n0\n1\n\n\n…\n\n…\n…"
-  },
-  {
-    "objectID": "slides/lec-12_logistic.html#categorical-regression",
-    "href": "slides/lec-12_logistic.html#categorical-regression",
-    "title": "Week 12: Categorical & Logistic Regression",
-    "section": "Categorical Regression",
-    "text": "Categorical Regression\nGoing back to our Transformers dataset, let’s see how our political affiliation variable can predict # of transformers movies\nUsually you have to create the separate dummy variables, but not in R. As long as your predictor is set as a factor, R will automatically dummy code the variable.\n\ncat1 &lt;- lm(transformers ~ pol,\n           data = cah_data)\n\nYou can also double check the dummy/contrast coding\n\ncontrasts(cah_data$pol)\n\n            Independent Republican\nDemocrat              0          0\nIndependent           1          0\nRepublican            0          1"
-  },
-  {
-    "objectID": "slides/lec-12_logistic.html#categories-in-action-last-time",
-    "href": "slides/lec-12_logistic.html#categories-in-action-last-time",
-    "title": "Week 12: Categorical & Logistic Regression",
-    "section": "Categories in Action (last time)",
-    "text": "Categories in Action (last time)\nGoal: Gain greater familiarity with dummy coding and categorical predictors\nScenario: We are researchers examining the impact of a new intervention on reducing the vocalization “6️⃣7️⃣” in the youths. We have done classroom observations to collect data on how many times students say “6️⃣7️⃣” after receiving the intervention. Youths have been randomly assigned to one of 3 groups, and we need to determine which had the biggest impact."
-  },
-  {
-    "objectID": "slides/lec-12_logistic.html#using-r",
-    "href": "slides/lec-12_logistic.html#using-r",
-    "title": "Week 12: Categorical & Logistic Regression",
-    "section": "Using R",
-    "text": "Using R\nImport dataset, include age and pre-scores to see how that changes interpretation\n\n\n\n\n\n\nWarning\n\n\nDr. Haraden is going to start opening up R and doing a follow-along thing. You have been warned"
-  },
-  {
-    "objectID": "slides/lec-12_logistic.html#status",
-    "href": "slides/lec-12_logistic.html#status",
-    "title": "Week 12: Categorical & Logistic Regression",
-    "section": "6️⃣7️⃣ Status",
-    "text": "6️⃣7️⃣ Status\nIn our last example, we were able to see how these categorical variables could predict a continuous variable. This is perfect for linear regression.\nWhat if we want to see if students have “recovered” from 6️⃣7️⃣?\nWe would then ask: “Which participants dropped below the clinical threshold for 6️⃣7️⃣ at follow-up? Now, our outcome is either recovered or not recovered.”"
-  },
-  {
-    "objectID": "slides/lec-12_logistic.html#recovery-status",
-    "href": "slides/lec-12_logistic.html#recovery-status",
-    "title": "Week 12: Categorical & Logistic Regression",
-    "section": "Recovery Status",
-    "text": "Recovery Status\nNow we have a binary outcome; Yes/No recovery\nWhat happens when we fit a linear regression? What are the chances of someone with a pre-score of 12 recovering by the follow-up?\n\n\nCode\nsix_seven &lt;- import(here(\"files\", \"data\", \n                       \"cat_reg_complete.xlsx\")) %&gt;% \n  janitor::clean_names() %&gt;% \n  # 1 = recovered; 0 = not recovered\n  mutate(recover = if_else(post_score &gt; 14, 0, 1))"
-  },
-  {
-    "objectID": "slides/lec-12_logistic.html#binary-outcomes-in-regression",
-    "href": "slides/lec-12_logistic.html#binary-outcomes-in-regression",
-    "title": "Week 12: Categorical & Logistic Regression",
-    "section": "Binary Outcomes in Regression",
-    "text": "Binary Outcomes in Regression\n\nA simple line is not going to appropriately capture the data\n\nPlus, it definitely doesn’t make it a normal distribution! We only have 2 scores in our predictor variable…\n\n\nIntroducing Logistic Regression 🌟\n\nUsing a logistic function we are able to better capture the data and get a “likelihood” or “probability” of an outcome"
-  },
-  {
-    "objectID": "slides/lec-12_logistic.html#probability-to-odds-to-log-odds",
-    "href": "slides/lec-12_logistic.html#probability-to-odds-to-log-odds",
-    "title": "Week 12: Categorical & Logistic Regression",
-    "section": "Probability to Odds to Log-Odds",
-    "text": "Probability to Odds to Log-Odds\nProbability (p): The chance of an event happening. Ranges from 0 to 1\nOdds: The ratio of the probability of an event happening to it not happening.\n\n\\(Odds = \\frac{p}{1-p}\\)\nRanges from 0 to ∞. An odds of 4 means the event is 4 times more likely to happen than not.\n\nLog-Odds (logit): The natural log of the odds\n\n\\(Logit(p) = ln(\\frac{p}{1-p})\\)\nRanges from -∞ to +∞\n\n\n\n\n\n\n\nImportant\n\n\nThis step transforms our bounded outcome variable (0/1) to an unbound one!"
-  },
-  {
-    "objectID": "slides/lec-12_logistic.html#generalized-linear-model-glm",
-    "href": "slides/lec-12_logistic.html#generalized-linear-model-glm",
-    "title": "Week 12: Categorical & Logistic Regression",
-    "section": "Generalized Linear Model (GLM)",
-    "text": "Generalized Linear Model (GLM)\nA generalization of a linear model (duh) that is used when the response variable has a non-normal error distribution\nMost commonly used when there is a binary (0-1) or count variable as the outcome (we will focus on the binary)\nUltimately, we are trying to identify the probability of the outcome taking the value 1 (“success”) that is being modeled in relation to the predictor variables"
-  },
-  {
-    "objectID": "slides/lec-12_logistic.html#recovering-from-67",
-    "href": "slides/lec-12_logistic.html#recovering-from-67",
-    "title": "Week 12: Categorical & Logistic Regression",
-    "section": "Recovering from 6️⃣7️⃣",
-    "text": "Recovering from 6️⃣7️⃣\nNow we have a tool to figure this out, let’s see if the pre-score can predict recovery!\n\n## Using glm() instead of lm()\nrec_glm &lt;- glm(recover ~ pre_score, \n           data = six_seven, \n           ## This is new\n           ##Tells the model we are doing logistic regression with a binary outcome\n           family = \"binomial\")"
-  },
-  {
-    "objectID": "slides/lec-12_logistic.html#odds-ratios-or",
-    "href": "slides/lec-12_logistic.html#odds-ratios-or",
-    "title": "Week 12: Categorical & Logistic Regression",
-    "section": "Odds Ratios (OR)",
-    "text": "Odds Ratios (OR)\nOR &gt; 1: The predictor increases the odds of the outcome. (e.g., OR of 2.5 means the odds of believing in ghosts are 2.5 times higher).\nOR &lt; 1: The predictor decreases the odds of the outcome. (e.g., OR of 0.4 means the odds of believing in ghosts are 60% lower).\nOR = 1: The predictor has no effect on the odds of the outcome."
-  },
-  {
-    "objectID": "slides/lec-12_logistic.html#visualization",
-    "href": "slides/lec-12_logistic.html#visualization",
-    "title": "Week 12: Categorical & Logistic Regression",
-    "section": "Visualization",
-    "text": "Visualization\nExtract the model implied probabilities for each individual\n\nprobs &lt;- broom::augment(rec_glm, type.predict = \"response\")\n\nPlotting the predicted probabilities\n\nprobs %&gt;% \nggplot(aes(pre_score, .fitted)) +\n  geom_line(color = \"blue\", linewidth = 0.5) +\n  geom_jitter(width = 0.2, alpha = 0.5) +\n  labs(\n    title = \"Predicted Probability of Recovery from 6-7 by Pre-Score\",\n    x = \"Pre-Score\",\n    y = \"Predicted Probability of Recovery\"\n  ) +\n  ylim(0, 1) + # Keep the y-axis bounded at 0 and 1\n  theme_minimal()"
-  },
-  {
-    "objectID": "slides/lec-12_logistic.html#logistic-regression-summary",
-    "href": "slides/lec-12_logistic.html#logistic-regression-summary",
-    "title": "Week 12: Categorical & Logistic Regression",
-    "section": "Logistic Regression: Summary",
-    "text": "Logistic Regression: Summary\n\n\n\n\n\n\n\n\nFeature\nLinear Regression\nLogistic Regression\n\n\n\n\nOutcome Variable\nContinuous\nCategorical (Binary)\n\n\nEquation\n\\(Y=β_0+β_1X\\)\n\\(ln⁡(\\frac{p}{1-p})=β_0+β_1X\\)\n\n\nKey Interpretation\n\\(\\beta_1\\) is the change in the mean of Y\n\\(\\exp(\\beta_1)\\) is the odds ratio\n\n\nR Function\nlm()\nglm(..., family=\"binomial\")"
-  },
-  {
-    "objectID": "slides/lec-12_logistic.html#next-up",
-    "href": "slides/lec-12_logistic.html#next-up",
-    "title": "Week 12: Categorical & Logistic Regression",
-    "section": "Next Up…",
-    "text": "Next Up…\nFollow along to apply these methods to a new dataset!\nPredicting the probability of believing in ghosts. Hopefully we have time to go through this example 👻"
-  },
-  {
-    "objectID": "slides/lec-2_background.html#replication-reproducibility-1",
-    "href": "slides/lec-2_background.html#replication-reproducibility-1",
-    "title": "Week 01: Getting Started - DATA!",
-    "section": "Replication & Reproducibility 🍰",
-    "text": "Replication & Reproducibility 🍰\nI want to bake a cake!\n\nFind a recipe online (try ignoring their life story narrative)\nGet ingredients (Wegmans if you 💰)\nFollow recipe and bake 🧑‍🍳\nEnjoy the delicious cake 🍽️\n\n\nReplication"
-  },
-  {
-    "objectID": "slides/lec-2_background.html#replication-reproducibility-2",
-    "href": "slides/lec-2_background.html#replication-reproducibility-2",
-    "title": "Week 01: Getting Started - DATA!",
-    "section": "Replication & Reproducibility 🍰",
-    "text": "Replication & Reproducibility 🍰\nI want to bake a cake!\nReproduction\n\nFind a recipe online –&gt; Find their kitchen\nGet ingredients –&gt; Use their ingredients\nFollow recipe and bake –&gt; Watch what they do and follow\nEnjoy the delicious cake –&gt; Enjoy cake (and jail for B&E)"
-  },
-  {
-    "objectID": "slides/lec-2_background.html#replication-reproducibility-3",
-    "href": "slides/lec-2_background.html#replication-reproducibility-3",
-    "title": "Week 01: Getting Started - DATA!",
-    "section": "Replication & Reproducibility 📊",
-    "text": "Replication & Reproducibility 📊\n\n\n\n\n\n\n\n\nReplication\nReproducibility\n\n\n\n\nHave a similar research question\nUse the same research question\n\n\nCollect your own data\nUse their data\n\n\nFollow their steps with your resources\nFollow their steps with their resources\n\n\nOutcome: Similar results (depends on other factors)\nOutcome: Identical results"
-  },
-  {
-    "objectID": "slides/lec-2_background.html#replication-reproducibility-4",
-    "href": "slides/lec-2_background.html#replication-reproducibility-4",
-    "title": "Week 01: Getting Started - DATA!",
-    "section": "Replication & Reproducibility 📊",
-    "text": "Replication & Reproducibility 📊\nGoals of Science\nImportant: We want to replicate other researchers work\nMOST Important: Be able to reproduce all of our results\nYou are your own worst collaborator!"
-  },
-  {
-    "objectID": "slides/lec-2_background.html#garden-of-forking-paths",
-    "href": "slides/lec-2_background.html#garden-of-forking-paths",
-    "title": "Week 01: Getting Started - DATA!",
-    "section": "Garden of Forking Paths",
-    "text": "Garden of Forking Paths"
-  },
-  {
-    "objectID": "slides/lec-2_background.html#installing-and-using-r",
-    "href": "slides/lec-2_background.html#installing-and-using-r",
-    "title": "Week 01: Getting Started - DATA!",
-    "section": "Installing and Using R",
-    "text": "Installing and Using R\nFrom the course website\nModern Statistics Using R"
-  },
-  {
-    "objectID": "slides/lec-2_background.html#getting-r-setup-properly",
-    "href": "slides/lec-2_background.html#getting-r-setup-properly",
-    "title": "Week 01: Getting Started - DATA!",
-    "section": "Getting R Setup Properly",
-    "text": "Getting R Setup Properly\nThere are some defaults that make things more challenging in the long run\nTo update them, let’s look at Setting Things Up"
-  },
-  {
-    "objectID": "slides/lec-2_background.html#working-with-r-studio",
-    "href": "slides/lec-2_background.html#working-with-r-studio",
-    "title": "Week 01: Getting Started - DATA!",
-    "section": "Working with R-Studio",
-    "text": "Working with R-Studio\nR-Studio is just like a kitchen 🧑‍🍳\nThe Environment pane is the pantry/fridge\nThe Console is like the oven/stove\nThe Markdown document is the recipe\nThe bottom right sometimes acts as the little window on the oven where you can see things baking"
+    "objectID": "slides/lec-9_models.html#example-t-test-vs.-anova-vs.-regression",
+    "href": "slides/lec-9_models.html#example-t-test-vs.-anova-vs.-regression",
+    "title": "Week 09: Model Selection & Variability",
+    "section": "Example: t-test vs. ANOVA vs. Regression",
+    "text": "Example: t-test vs. ANOVA vs. Regression\nThis might be something that we are considering between. How do we pick the “right” one?\nStart with some data where we have 2 groups and we identify a 2 point difference in the groups scores\n\nset.seed(2025)\n\n# Two independent groups with equal variances\nn0 &lt;- 80; n1 &lt;- 80\nmu0 &lt;- 12; mu1 &lt;- 10      # true mean difference = -2\nsigma &lt;- 3\ny0 &lt;- rnorm(n0, mu0, sigma)\ny1 &lt;- rnorm(n1, mu1, sigma)\n\n# Put that in a data frame\ndat &lt;- data.frame(\n  dep = c(y0, y1),\n  group01 = c(rep(0, n0), rep(1, n1))\n) %&gt;% \n  mutate(group = factor(group01, levels = c(0,1), labels = c(\"control\",\"treatment\")))"
   },
   {
     "objectID": "labs/archived/lab-9.html",
