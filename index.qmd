@@ -1,6 +1,6 @@
 ---
 title: "PSYC 640: Graduate Statistics"
-tbl-colwidths: [7,15,25,30]
+tbl-colwidths: [7,10,20,25,15]
 ---
 
 This page contains an outline of the topics, content, and preparation for the semester. This schedule will be updated as the semester progresses, with all changes documented here.
@@ -10,84 +10,86 @@ Readings on the schedule will need to be completed prior to the course they are 
 :::
 
 ::: {}
-+--------------------------+-----------+---------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+
-| Week                     | Date      | Topic                                                         | Prepare                                                                                                       |
-+:========================:+:=========:+:=============================================================:+:=============================================================================================================:+
-| [1](/weeks/week-1.html)  | 08-25     | Getting set up + foundations - VIRTUAL                        | Install R/RStudio & JAMOVI                                                                                    |
-+--------------------------+-----------+---------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+
-| [2](weeks/week-2.html)   | 09-03     | R Foundations + Data Wrangling                                | [Chapter 1 & 2 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}           |
-|                          |           |                                                               |                                                                                                               |
-|                          |           |                                                               | [Chapter 2 - MSR](https://www.modernstatisticswithr.com/){target="_blank"}                                    |
-+--------------------------+-----------+---------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+
-| [3](weeks/week-3.html)   | 09-10     | Descriptives, Visualizations + Communication                  | [Chapter 5 - LSR](https://learningstatisticswithr.com/book/){target="_blank"}                                 |
-|                          |           |                                                               |                                                                                                               |
-|                          |           |                                                               | [Chapter 1 & 3 - R4DS](https://r4ds.hadley.nz/){target="_blank"}                                              |
-+--------------------------+-----------+---------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+
-| [4](weeks/week-4.html)   | 09-17     | Design, Sampling + Inference                                  | Navarro Blog Post                                                                                             |
-|                          |           |                                                               |                                                                                                               |
-|                          |           |                                                               | [Chapter 2 - IMS](https://openintro-ims.netlify.app/){target="_blank"}                                        |
-|                          |           |                                                               |                                                                                                               |
-|                          |           |                                                               | [Chapter 3 - MSR](https://www.modernstatisticswithr.com/){target="_blank"}                                    |
-|                          |           |                                                               |                                                                                                               |
-|                          |           |                                                               | [Chapter 7 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}               |
-+--------------------------+-----------+---------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+
-| [5](weeks/week-5.html)   | 09-24     | Simple Regression: The Linear Model                           | [Chapter 5.1 & 13 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}        |
-|                          |           |                                                               |                                                                                                               |
-|                          |           |                                                               | [Chapter 11 - LSR](https://learningstatisticswithr.com/book/){target="_blank"}                                |
-|                          |           |                                                               |                                                                                                               |
-|                          |           |                                                               | [Chapter 14.1.1 - 14.1.4 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"} |
-|                          |           |                                                               |                                                                                                               |
-|                          |           |                                                               | [Chapter 7.1 - 7.2.4 - IMS](https://openintro-ims.netlify.app/){target="_blank"}                              |
-|                          |           |                                                               |                                                                                                               |
-|                          |           |                                                               | [Chapter 8.1.1 & 8.1.2 - MSR](https://www.modernstatisticswithr.com/){target="_blank"}                        |
-+--------------------------+-----------+---------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+
-| [6](weeks/week-6.html)   | 10-01     | Comparing Groups                                              | [Chapter 9 & 10 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}          |
-|                          |           |                                                               |                                                                                                               |
-|                          |           |                                                               | [Chapter 13 - LSR](https://learningstatisticswithr.com/book/){target="_blank"}                                |
-+--------------------------+-----------+---------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+
-| [7](weeks/week-7.html)   | 10-08     | Variability & Model Fit                                       | [Chapter 5 & 14 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}          |
-|                          |           |                                                               |                                                                                                               |
-|                          |           |                                                               | [Chapter 7.2.5 - IMS](https://openintro-ims.netlify.app/){target="_blank"}                                    |
-+--------------------------+-----------+---------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+
-| [8](weeks/week-8.html)   | 10-15     | Multiple Regression I: Adding Predictors                      | [Chapter 15.3 - 15.5 - LSR](https://learningstatisticswithr.com/book/){target="_blank"}                       |
-|                          |           |                                                               |                                                                                                               |
-|                          |           |                                                               | [Chapter 8 - IMS](https://openintro-ims.netlify.app/){target="_blank"}                                        |
-+--------------------------+-----------+---------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+
-| [9](weeks/week-9.html)   | 10-22     | Multiple Regression II: Categorical Predictors + Interactions | [Chapter 9 - IMS](https://openintro-ims.netlify.app/){target="_blank"}                                        |
-|                          |           |                                                               |                                                                                                               |
-|                          |           |                                                               | [Chapter 8.3 - MSR](https://www.modernstatisticswithr.com/){target="_blank"}                                  |
-+--------------------------+-----------+---------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+
-| [10](weeks/week-10.html) | 10-29     | Assumptions + Model Diagnostics                               | [Chapter 7.3 - IMS](https://openintro-ims.netlify.app/){target="_blank"}                                      |
-|                          |           |                                                               |                                                                                                               |
-|                          |           |                                                               | [Chapter 14.5 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}            |
-|                          |           |                                                               |                                                                                                               |
-|                          |           |                                                               | [Chapter 8.1.4 - MSR](https://www.modernstatisticswithr.com/){target="_blank"}                                |
-+--------------------------+-----------+---------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+
-| [11](weeks/week-11.html) | 11-05     | Missing Data + Model Building/Comparison                      | [Chapter 15.8 - 15.10 - LSR](https://learningstatisticswithr.com/book/){target="_blank"}                      |
-+--------------------------+-----------+---------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+
-| [12](weeks/week-12.html) | 11-12     | Logistic Regression                                           | [Chapter 14.2 & 14.3 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}     |
-+--------------------------+-----------+---------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+
-| [13](weeks/week-13.html) | 11-19     | Mixed/Multilevel Models                                       | MATERIALS                                                                                                     |
-+--------------------------+-----------+---------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+
-| [14](weeks/week-14.html) | 11-26     | THANKSGIVING - No Class                                       |                                                                                                               |
-+--------------------------+-----------+---------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+
-| [15](weeks/week-15.html) | 12-03     | Making R Work for You                                         | [Chapter 17 & 18 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}         |
-+--------------------------+-----------+---------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+
++--------------------------+----------+---------------------------------------------------------------+--------------------------------------------------------------------------------------------+-------+
+| Week                     | Date     | Topic                                                         | Readings                                                                                   | Due   |
++:========================:+:========:+:=============================================================:+:==========================================================================================:+=======+
+| [1](/weeks/week-1.html)  | 08-27    | Getting set up + foundations - VIRTUAL                        | [Chapter 1 - ROS](https://users.aalto.fi/~ave/ROS.pdf)                                     |       |
+|                          |          |                                                               |                                                                                            |       |
+|                          |          |                                                               | [Chapters 1 & 2 - LSR](https://learningstatisticswithr.com/)                               |       |
++--------------------------+----------+---------------------------------------------------------------+--------------------------------------------------------------------------------------------+-------+
+| [2](weeks/week-2.html)   | 09-03    | R Foundations + Data Wrangling                                | [Chapters 2-4, 6 & 28 - R4DS](https://r4ds.hadley.nz/)                                     | Lab 1 |
+|                          |          |                                                               |                                                                                            |       |
+|                          |          |                                                               | [Chapter 2 - MSR](https://www.modernstatisticswithr.com/)                                  | Lab 2 |
++--------------------------+----------+---------------------------------------------------------------+--------------------------------------------------------------------------------------------+-------+
+| [3](weeks/week-3.html)   | 09-10    | Descriptives, Visualizations + Communication                  | [Chapter 5 - MSR](https://www.modernstatisticswithr.com/)                                  |       |
+|                          |          |                                                               |                                                                                            |       |
+|                          |          |                                                               | [Chapters 3 & 4 - ST](https://statsthinking21.github.io/statsthinking21-core-site/)        |       |
+|                          |          |                                                               |                                                                                            |       |
+|                          |          |                                                               | [Chapter 1 - R4DS](https://r4ds.hadley.nz/)                                                |       |
++--------------------------+----------+---------------------------------------------------------------+--------------------------------------------------------------------------------------------+-------+
+| [4](weeks/week-4.html)   | 09-17    | Design, Sampling + Inference                                  | Navarro Blog Post                                                                          |       |
+|                          |          |                                                               |                                                                                            |       |
+|                          |          |                                                               | [Chapters 2-4 - ROS](https://users.aalto.fi/~ave/ROS.pdf)                                  |       |
+|                          |          |                                                               |                                                                                            |       |
+|                          |          |                                                               | [Chapter 3 - MSR](https://www.modernstatisticswithr.com/) (focus on 3.3, 3.7, 3.10 & 3.11) |       |
++--------------------------+----------+---------------------------------------------------------------+--------------------------------------------------------------------------------------------+-------+
+| [5](weeks/week-5.html)   | 09-24    | Simple Regression: The Linear Model                           | [Chapter 6 - ROS](https://users.aalto.fi/~ave/ROS.pdf)                                     |       |
+|                          |          |                                                               |                                                                                            |       |
+|                          |          |                                                               | [Chapter 14.1 - ST](https://statsthinking21.github.io/statsthinking21-core-site/)          |       |
+|                          |          |                                                               |                                                                                            |       |
+|                          |          |                                                               | [Chapter 11 - LSR](https://learningstatisticswithr.com/)                                   |       |
++--------------------------+----------+---------------------------------------------------------------+--------------------------------------------------------------------------------------------+-------+
+| [6](weeks/week-6.html)   | 10-01    | Comparing Groups                                              | [Chapter 15 - ST](https://statsthinking21.github.io/statsthinking21-core-site/)            |       |
++--------------------------+----------+---------------------------------------------------------------+--------------------------------------------------------------------------------------------+-------+
+| [7](weeks/week-7.html)   | 10-08    | Variability & Model Fit                                       | [Chapter 8 - ROS](https://users.aalto.fi/~ave/ROS.pdf)                                     |       |
+|                          |          |                                                               |                                                                                            |       |
+|                          |          |                                                               | [Chapters 5 & 14.5 - ST](https://statsthinking21.github.io/statsthinking21-core-site/)     |       |
+|                          |          |                                                               |                                                                                            |       |
+|                          |          |                                                               | [Chapter 15.4 - LSR](https://learningstatisticswithr.com/)                                 |       |
++--------------------------+----------+---------------------------------------------------------------+--------------------------------------------------------------------------------------------+-------+
+| [8](weeks/week-8.html)   | 10-15    | Multiple Regression I: Adding Predictors                      | [Chapter 10 - ROS](https://users.aalto.fi/~ave/ROS.pdf)                                    |       |
++--------------------------+----------+---------------------------------------------------------------+--------------------------------------------------------------------------------------------+-------+
+| [9](weeks/week-9.html)   | 10-22    | Multiple Regression II: Categorical Predictors + Interactions | [Chapter 14.3 - ST](https://statsthinking21.github.io/statsthinking21-core-site/)          |       |
+|                          |          |                                                               |                                                                                            |       |
+|                          |          |                                                               | [Chapter 8.1 - MSR](https://www.modernstatisticswithr.com/)                                |       |
++--------------------------+----------+---------------------------------------------------------------+--------------------------------------------------------------------------------------------+-------+
+| [10](weeks/week-10.html) | 10-29    | Assumptions + Model Diagnostics                               | [Chapter 11 - ROS](https://users.aalto.fi/~ave/ROS.pdf)                                    |       |
+|                          |          |                                                               |                                                                                            |       |
+|                          |          |                                                               | [Chapter 14.5 - ST](https://statsthinking21.github.io/statsthinking21-core-site/)          |       |
+|                          |          |                                                               |                                                                                            |       |
+|                          |          |                                                               | [Chapter 15.8 & 15.9 - LSR](https://learningstatisticswithr.com/)                          |       |
++--------------------------+----------+---------------------------------------------------------------+--------------------------------------------------------------------------------------------+-------+
+| [11](weeks/week-11.html) | 11-05    | Missing Data + Model Building/Comparison                      | [Chapter 15.10 - LSR](https://learningstatisticswithr.com/)                                |       |
+|                          |          |                                                               |                                                                                            |       |
+|                          |          |                                                               | [Chapter 17 - ST](https://statsthinking21.github.io/statsthinking21-core-site/)            |       |
+|                          |          |                                                               |                                                                                            |       |
+|                          |          |                                                               | [Chapters 17.3 - 17.7 - ROS](https://users.aalto.fi/~ave/ROS.pdf)                          |       |
+|                          |          |                                                               |                                                                                            |       |
+|                          |          |                                                               | [Chapter 8.7 - MSR](https://www.modernstatisticswithr.com/)                                |       |
++--------------------------+----------+---------------------------------------------------------------+--------------------------------------------------------------------------------------------+-------+
+| [12](weeks/week-12.html) | 11-12    | Logistic Regression                                           | [Chapter 13 - ROS](https://users.aalto.fi/~ave/ROS.pdf)                                    |       |
+|                          |          |                                                               |                                                                                            |       |
+|                          |          |                                                               | [Chapter 8.3 - MSR](https://www.modernstatisticswithr.com/)                                |       |
++--------------------------+----------+---------------------------------------------------------------+--------------------------------------------------------------------------------------------+-------+
+| [13](weeks/week-13.html) | 11-19    | Mixed/Multilevel Models                                       | [Chapter 8.8 - MSR](https://www.modernstatisticswithr.com/)                                |       |
+|                          |          |                                                               |                                                                                            |       |
+|                          |          |                                                               | [Chapter 15.8 - ST](https://statsthinking21.github.io/statsthinking21-core-site/)          |       |
++--------------------------+----------+---------------------------------------------------------------+--------------------------------------------------------------------------------------------+-------+
+| [14](weeks/week-14.html) | 11-26    | THANKSGIVING - No Class                                       | No Readings                                                                                |       |
++--------------------------+----------+---------------------------------------------------------------+--------------------------------------------------------------------------------------------+-------+
+| [15](weeks/week-15.html) | 12-03    | Making R Work for You                                         | [Chapter 18 - ST](https://statsthinking21.github.io/statsthinking21-core-site/)            |       |
++--------------------------+----------+---------------------------------------------------------------+--------------------------------------------------------------------------------------------+-------+
 :::
 
-[*Introduction to Modern Statistics (2e)*](https://openintro-ims.netlify.app/){target="_blank"} –\> IMS
-
-[*Learning Statistics with R*](https://learningstatisticswithr.com/book/){target="_blank"} –\> LSR
-
-[*R for Data Science (2e)*](https://r4ds.hadley.nz/){target="_blank"} –\> R4DS
+[*Regression and Other Stories*](https://users.aalto.fi/~ave/ROS.pdf) –\> ROS
 
 [*Modern Statistics with R (2e)*](https://www.modernstatisticswithr.com/){target="_blank"} –\> MSR
 
 [*Statistical Thinking*](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"} –\> ST
 
-[*An Introduction to Statistical Learning (2e)*](https://www.statlearning.com/){target="_blank"} –\> ISL
+[*Learning Statistics with R*](https://learningstatisticswithr.com/){target="_blank"} –\> LSR
 
-[*Data Analysis: A Model Comparison Approach to Regression, ANOVA, and Beyond (3rd ed.)*](https://sadbhavnapublications.org/research-enrichment-material/2-Statistical-Books/Data-Analysis-A-Model-Comparison-Approach-To-Regression,-ANOVA,-and-Beyond.pdf){target="_blank"} –\> DA
+[*R for Data Science (2e)*](https://r4ds.hadley.nz/){target="_blank"} –\> R4DS
 
 ```{r echo = FALSE}
 knitr::knit_exit()
