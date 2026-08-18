@@ -26,7 +26,7 @@
     "href": "index.html",
     "title": "PSYC 640: Graduate Statistics",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and preparation for the semester. This schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\nImportant\n\n\n\nReadings on the schedule will need to be completed prior to the course they are listed for. We will build on the concepts you read about in that specific class period, so it is important that you have read.\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nReadings\nDue\n\n\n\n\n1\n08-27\nGetting set up + foundations - VIRTUAL\nChapter 1 - ROS\nChapters 1 & 2 - LSR\n\n\n\n2\n09-03\nR Foundations + Data Wrangling\nChapters 2-4, 6 & 28 - R4DS\nChapter 2 - MSR\nLab 1\nLab 2\n\n\n3\n09-10\nDescriptives, Visualizations + Communication\nChapter 5 - MSR\nChapters 3 & 4 - ST\nChapter 1 - R4DS\n\n\n\n4\n09-17\nDesign, Sampling + Inference\nNavarro Blog Post\nChapters 2-4 - ROS\nChapter 3 - MSR (focus on 3.3, 3.7, 3.10 & 3.11)\n\n\n\n5\n09-24\nSimple Regression: The Linear Model\nChapter 6 - ROS\nChapter 14.1 - ST\nChapter 11 - LSR\n\n\n\n6\n10-01\nComparing Groups\nChapter 15 - ST\n\n\n\n7\n10-08\nVariability & Model Fit\nChapter 8 - ROS\nChapters 5 & 14.5 - ST\nChapter 15.4 - LSR\n\n\n\n8\n10-15\nMultiple Regression I: Adding Predictors\nChapter 10 - ROS\n\n\n\n9\n10-22\nMultiple Regression II: Categorical Predictors + Interactions\nChapter 14.3 - ST\nChapter 8.1 - MSR\n\n\n\n10\n10-29\nAssumptions + Model Diagnostics\nChapter 11 - ROS\nChapter 14.5 - ST\nChapter 15.8 & 15.9 - LSR\n\n\n\n11\n11-05\nMissing Data + Model Building/Comparison\nChapter 15.10 - LSR\nChapter 17 - ST\nChapters 17.3 - 17.7 - ROS\nChapter 8.7 - MSR\n\n\n\n12\n11-12\nLogistic Regression\nChapter 13 - ROS\nChapter 8.3 - MSR\n\n\n\n13\n11-19\nMixed/Multilevel Models\nChapter 8.8 - MSR\nChapter 15.8 - ST\n\n\n\n14\n11-26\nTHANKSGIVING - No Class\nNo Readings\n\n\n\n15\n12-03\nMaking R Work for You\nChapter 18 - ST\n\n\n\n\n\nRegression and Other Stories –&gt; ROS\nModern Statistics with R (2e) –&gt; MSR\nStatistical Thinking –&gt; ST\nLearning Statistics with R –&gt; LSR\nR for Data Science (2e) –&gt; R4DS",
+    "text": "This page contains an outline of the topics, content, and preparation for the semester. This schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\nImportant\n\n\n\nReadings on the schedule will need to be completed prior to the course they are listed for. We will build on the concepts you read about in that specific class period, so it is important that you have read.\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\n📆Date\n📝Topic\n📖Readings\n📋Due\n\n\n\n\n1\n08-27\nGetting set up + foundations - VIRTUAL\nChapter 1 - ROS\nChapters 1 & 2 - LSR\n\n\n\n2\n09-03\nR Foundations + Data Wrangling\nChapters 2-4, 6 & 28 - R4DS\nChapter 2 - MSR\nLab 1\nLab 2\n\n\n3\n09-10\nDescriptives, Visualizations + Communication\nChapter 5 - MSR\nChapters 3 & 4 - ST\nChapter 1 - R4DS\n\n\n\n4\n09-17\nDesign, Sampling + Inference\nNavarro Blog Post\nChapters 2-4 - ROS\nChapter 3 - MSR (focus on 3.3, 3.7, 3.10 & 3.11)\n\n\n\n5\n09-24\nSimple Regression: The Linear Model\nChapter 6 - ROS\nChapter 14.1 - ST\nChapter 11 - LSR\n\n\n\n6\n10-01\nComparing Groups\nChapter 15 - ST\n\n\n\n7\n10-08\nVariability & Model Fit\nChapter 8 - ROS\nChapters 5 & 14.5 - ST\nChapter 15.4 - LSR\n\n\n\n8\n10-15\nMultiple Regression I: Adding Predictors\nChapter 10 - ROS\n\n\n\n9\n10-22\nMultiple Regression II: Categorical Predictors + Interactions\nChapter 14.3 - ST\nChapter 8.1 - MSR\n\n\n\n10\n10-29\nAssumptions + Model Diagnostics\nChapter 11 - ROS\nChapter 14.5 - ST\nChapter 15.8 & 15.9 - LSR\n\n\n\n11\n11-05\nMissing Data + Model Building/Comparison\nChapter 15.10 - LSR\nChapter 17 - ST\nChapters 17.3 - 17.7 - ROS\nChapter 8.7 - MSR\n\n\n\n12\n11-12\nLogistic Regression\nChapter 13 - ROS\nChapter 8.3 - MSR\n\n\n\n13\n11-19\nMixed/Multilevel Models\nChapter 8.8 - MSR\nChapter 15.8 - ST\n\n\n\n14\n11-26\nTHANKSGIVING - No Class\nNo Readings\n\n\n\n15\n12-03\nMaking R Work for You\nChapter 18 - ST\n\n\n\n\n\nRegression and Other Stories –&gt; ROS\nModern Statistics with R (2e) –&gt; MSR\nStatistical Thinking –&gt; ST\nLearning Statistics with R –&gt; LSR\nR for Data Science (2e) –&gt; R4DS",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -507,55 +507,35 @@
     "href": "weeks/week-15.html",
     "title": "Week 15 - Having R Work for You: wRapping up",
     "section": "",
-    "text": "We are almost at the end of the course! This week, we will be focusing on some random things related to R that could make things easier. Plus, there will be time for working on your final project, helping your peers and “office hours”.",
-    "crumbs": [
-      "Weekly Materials",
-      "Week 15 - Wrapping Up"
-    ]
+    "text": "We are almost at the end of the course! This week, we will be focusing on some random things related to R that could make things easier. Plus, there will be time for working on your final project, helping your peers and “office hours”."
   },
   {
     "objectID": "weeks/week-15.html#data-for-today",
     "href": "weeks/week-15.html#data-for-today",
     "title": "Week 15 - Having R Work for You: wRapping up",
     "section": "Data for Today",
-    "text": "Data for Today\nWe may have a demo of a workflow. In that case, we will be able to pick some data from this website below. I think the DASS (Depression, Anxiety and Stress Scale) dataset would be a good candidate.\nOpen Source Psychometrics Project\nHere is the RMD file that I worked on in class today for you to review if needed\n\nDownload DASS File from Class",
-    "crumbs": [
-      "Weekly Materials",
-      "Week 15 - Wrapping Up"
-    ]
+    "text": "Data for Today\nWe may have a demo of a workflow. In that case, we will be able to pick some data from this website below. I think the DASS (Depression, Anxiety and Stress Scale) dataset would be a good candidate.\nOpen Source Psychometrics Project\nHere is the RMD file that I worked on in class today for you to review if needed\n\nDownload DASS File from Class"
   },
   {
     "objectID": "weeks/week-15.html#rando-calrissian",
     "href": "weeks/week-15.html#rando-calrissian",
     "title": "Week 15 - Having R Work for You: wRapping up",
     "section": "Rando CalRissian",
-    "text": "Rando CalRissian\npapaja: Reproducible APA Manuscripts in R\nWTF-R: What They Forgot to teach about R\nDefinitive R Markdown Guide\nShiny Apps\nBig Book of R\nConvenience Functions for Psych",
-    "crumbs": [
-      "Weekly Materials",
-      "Week 15 - Wrapping Up"
-    ]
+    "text": "Rando CalRissian\npapaja: Reproducible APA Manuscripts in R\nWTF-R: What They Forgot to teach about R\nDefinitive R Markdown Guide\nShiny Apps\nBig Book of R\nConvenience Functions for Psych"
   },
   {
     "objectID": "weeks/week-15.html#in-class-help",
     "href": "weeks/week-15.html#in-class-help",
     "title": "Week 15 - Having R Work for You: wRapping up",
     "section": "In-Class Help",
-    "text": "In-Class Help\n📎Final Statistical Consulting (Google Doc Template)\n\nNo need to turn in",
-    "crumbs": [
-      "Weekly Materials",
-      "Week 15 - Wrapping Up"
-    ]
+    "text": "In-Class Help\n📎Final Statistical Consulting (Google Doc Template)\n\nNo need to turn in"
   },
   {
     "objectID": "weeks/week-15.html#for-next-time",
     "href": "weeks/week-15.html#for-next-time",
     "title": "Week 15 - Having R Work for You: wRapping up",
     "section": "For Next Time",
-    "text": "For Next Time\nPresent your final project!\nTurn in the final paper\n\n\nBack to course schedule ⏎",
-    "crumbs": [
-      "Weekly Materials",
-      "Week 15 - Wrapping Up"
-    ]
+    "text": "For Next Time\nPresent your final project!\nTurn in the final paper\n\n\nBack to course schedule ⏎"
   },
   {
     "objectID": "ideas.html",
@@ -576,35 +556,55 @@
     "href": "labs/lab-01_introduction.html",
     "title": "Lab 1 - Getting Started",
     "section": "",
-    "text": "Goal: To become familiar with the RStudio interface and perform some basic tasks. That’s it. There is no statistics in this lab and nothing to get wrong. If you finish with R-studio open and responding, you’ve succeeded.\nWhat to submit: A Word doc (or whatever format you prefer) as a short confirmation (see the last step). This lab is graded only on completion, and if you get stuck, getting stuck is useful information! Tell me about it at the end and we can fix it next week (or you can try troubleshooting too)."
+    "text": "Goal: To become familiar with the RStudio interface and perform some basic tasks. That’s it. There is no statistics in this lab and nothing to get wrong. If you finish with R-studio open and responding, you’ve succeeded.\nWhat to submit: A Word doc (or whatever format you prefer) as a short confirmation (see the last step). This lab is graded only on completion, and if you get stuck, getting stuck is useful information! Tell me about it at the end and we can fix it next week (or you can try troubleshooting too).",
+    "crumbs": [
+      "Labs",
+      "Lab 1 - Introduction"
+    ]
   },
   {
     "objectID": "labs/lab-01_introduction.html#step-1-say-hello-to-the-console",
     "href": "labs/lab-01_introduction.html#step-1-say-hello-to-the-console",
     "title": "Lab 1 - Getting Started",
     "section": "Step 1 — Say hello to the console",
-    "text": "Step 1 — Say hello to the console\nStart up R-Studio.\nThe console is the pane (usually lower-left) with a &gt; prompt. Think of it as a calculator that talks back.\nClick in the console, type this, and press Enter:\n1 + 1\nYou should see [1] 2. (The [1] is just R numbering its output — ignore it.)\nNow try one more:\nmean(c(3, 6, 9))\nYou should get [1] 6. You just asked R to take the average of three numbers. c( ) bundles the numbers together, and mean( ) averages them. Don’t worry about the details — you’re just confirming R responds."
+    "text": "Step 1 — Say hello to the console\nStart up R-Studio.\nThe console is the pane (usually lower-left) with a &gt; prompt. Think of it as a calculator that talks back.\nClick in the console, type this, and press Enter:\n1 + 1\nYou should see [1] 2. (The [1] is just R numbering its output — ignore it.)\nNow try one more:\nmean(c(3, 6, 9))\nYou should get [1] 6. You just asked R to take the average of three numbers. c( ) bundles the numbers together, and mean( ) averages them. Don’t worry about the details — you’re just confirming R responds.",
+    "crumbs": [
+      "Labs",
+      "Lab 1 - Introduction"
+    ]
   },
   {
     "objectID": "labs/lab-01_introduction.html#step-2-make-r-studio-yours",
     "href": "labs/lab-01_introduction.html#step-2-make-r-studio-yours",
     "title": "Lab 1 - Getting Started",
     "section": "Step 2 — Make R-Studio Yours",
-    "text": "Step 2 — Make R-Studio Yours\nTaken from our resources page.\n\nDecorate\nNavigate to Tools &gt; Global Options &gt; Appearance\nThis is all yours! Take ownership and find a cool theme that you like. Make it look nice and how you want it. Right now I am rocking the “Chaos” theme with my fonts a little larger because apparently I am getting older.\nReport what theme you are going with and paste a screenshot."
+    "text": "Step 2 — Make R-Studio Yours\nTaken from our resources page.\n\nDecorate\nNavigate to Tools &gt; Global Options &gt; Appearance\nThis is all yours! Take ownership and find a cool theme that you like. Make it look nice and how you want it. Right now I am rocking the “Chaos” theme with my fonts a little larger because apparently I am getting older.\nReport what theme you are going with and paste a screenshot.",
+    "crumbs": [
+      "Labs",
+      "Lab 1 - Introduction"
+    ]
   },
   {
     "objectID": "labs/lab-01_introduction.html#step-3-install-your-first-package",
     "href": "labs/lab-01_introduction.html#step-3-install-your-first-package",
     "title": "Lab 1 - Getting Started",
     "section": "Step 3 — Install your first package",
-    "text": "Step 3 — Install your first package\nA package adds tools to R. We’ll use the tidyverse a lot. In the console, type:\ninstall.packages(\"tidyverse\")\nPress Enter and wait. You will see a lot of red text scroll by. This is normal and does not mean something is broken. Red text in R is often just status information, not an error. Let it finish (it can take a few minutes).\nWhen it’s done and the &gt; prompt returns, load it:\nlibrary(tidyverse)\nYou may see a message about “attaching packages” and some conflicts. That message is expected and fine.\n\nIf Step 3 threw an actual error (something that stops and says “Error:”), don’t worry — copy the message into your submission and we’ll sort it out next week. Package problems are the single most common first-week snag and never a reason to fall behind."
+    "text": "Step 3 — Install your first package\nA package adds tools to R. We’ll use the tidyverse a lot. In the console, type:\ninstall.packages(\"tidyverse\")\nPress Enter and wait. You will see a lot of red text scroll by. This is normal and does not mean something is broken. Red text in R is often just status information, not an error. Let it finish (it can take a few minutes).\nWhen it’s done and the &gt; prompt returns, load it:\nlibrary(tidyverse)\nYou may see a message about “attaching packages” and some conflicts. That message is expected and fine.\n\nIf Step 3 threw an actual error (something that stops and says “Error:”), don’t worry — copy the message into your submission and we’ll sort it out next week. Package problems are the single most common first-week snag and never a reason to fall behind.",
+    "crumbs": [
+      "Labs",
+      "Lab 1 - Introduction"
+    ]
   },
   {
     "objectID": "labs/lab-01_introduction.html#step-4-confirm-and-submit",
     "href": "labs/lab-01_introduction.html#step-4-confirm-and-submit",
     "title": "Lab 1 - Getting Started",
     "section": "Step 4 — Confirm and submit",
-    "text": "Step 4 — Confirm and submit\nIn the console, run:\nR.version.string\nCopy whatever it prints. Submit that line plus one sentence: did everything work, or where did you get stuck? That’s the whole submission.\n\n\nIf you got stuck anywhere\nThat is completely normal and expected — installation is the messiest part of the entire course, and it’s messy for everyone. Note where it broke (a screenshot of the error helps), submit what you have, and flag it. We’ll fix it together in Week 2, and no one falls behind over an install problem. You have my word on that."
+    "text": "Step 4 — Confirm and submit\nIn the console, run:\nR.version.string\nCopy whatever it prints. Submit that line plus one sentence: did everything work, or where did you get stuck? That’s the whole submission.\n\n\nIf you got stuck anywhere\nThat is completely normal and expected — installation is the messiest part of the entire course, and it’s messy for everyone. Note where it broke (a screenshot of the error helps), submit what you have, and flag it. We’ll fix it together in Week 2, and no one falls behind over an install problem. You have my word on that.",
+    "crumbs": [
+      "Labs",
+      "Lab 1 - Introduction"
+    ]
   },
   {
     "objectID": "labs/final-proj.html",
@@ -765,96 +765,120 @@
     "href": "labs/lab-2_data-wrangling.html",
     "title": "Lab 2: Data Wrangling Beginnings",
     "section": "",
-    "text": "We have made it to Lab #2! We are going to keep practicing the skills we started using in the last week, except with using some new data. Before, we were using pre-installed data, but that won’t be the case IRL. When working with your own data, you will want to create a workflow of cleaning and wrangling your data in a reproducible way. These steps will likely occur for every new dataset that you work with.\nPlease complete the exercises below. Create a new .Rmd file and include the following at the top:\n---\ntitle: \"Lab 2: Data Wrangling Beginnings\"\nauthor: \"Your Name Here\"\ndate: \"`r Sys.Date()`\"\noutput: html_document\neditor_options: \n  chunk_output_type: console\n  markdown: \n    wrap: 72\n---\nYou should then be able to copy/paste everything below into your document.\nHere is a .Rmd file that you should be able to download and use as well.\n\nDownload Lab 2 (.Rmd)\n\nWhen you are finished, click the Knit button to turn your work into an HTML document. You will submit both this .Rmd file and the 🧶knitted .html file.",
-    "crumbs": [
-      "Labs",
-      "Lab 2 - Wrangling Intro"
-    ]
+    "text": "We have made it to Lab #2! We are going to keep practicing the skills we started using in the last week, except with using some new data. Before, we were using pre-installed data, but that won’t be the case IRL. When working with your own data, you will want to create a workflow of cleaning and wrangling your data in a reproducible way. These steps will likely occur for every new dataset that you work with.\nPlease complete the exercises below. Create a new .Rmd file and include the following at the top:\n---\ntitle: \"Lab 2: Data Wrangling Beginnings\"\nauthor: \"Your Name Here\"\ndate: \"`r Sys.Date()`\"\noutput: html_document\neditor_options: \n  chunk_output_type: console\n  markdown: \n    wrap: 72\n---\nYou should then be able to copy/paste everything below into your document.\nHere is a .Rmd file that you should be able to download and use as well.\n\nDownload Lab 2 (.Rmd)\n\nWhen you are finished, click the Knit button to turn your work into an HTML document. You will submit both this .Rmd file and the 🧶knitted .html file."
   },
   {
     "objectID": "labs/lab-2_data-wrangling.html#instructions",
     "href": "labs/lab-2_data-wrangling.html#instructions",
     "title": "Lab 2: Data Wrangling Beginnings",
     "section": "",
-    "text": "We have made it to Lab #2! We are going to keep practicing the skills we started using in the last week, except with using some new data. Before, we were using pre-installed data, but that won’t be the case IRL. When working with your own data, you will want to create a workflow of cleaning and wrangling your data in a reproducible way. These steps will likely occur for every new dataset that you work with.\nPlease complete the exercises below. Create a new .Rmd file and include the following at the top:\n---\ntitle: \"Lab 2: Data Wrangling Beginnings\"\nauthor: \"Your Name Here\"\ndate: \"`r Sys.Date()`\"\noutput: html_document\neditor_options: \n  chunk_output_type: console\n  markdown: \n    wrap: 72\n---\nYou should then be able to copy/paste everything below into your document.\nHere is a .Rmd file that you should be able to download and use as well.\n\nDownload Lab 2 (.Rmd)\n\nWhen you are finished, click the Knit button to turn your work into an HTML document. You will submit both this .Rmd file and the 🧶knitted .html file.",
-    "crumbs": [
-      "Labs",
-      "Lab 2 - Wrangling Intro"
-    ]
+    "text": "We have made it to Lab #2! We are going to keep practicing the skills we started using in the last week, except with using some new data. Before, we were using pre-installed data, but that won’t be the case IRL. When working with your own data, you will want to create a workflow of cleaning and wrangling your data in a reproducible way. These steps will likely occur for every new dataset that you work with.\nPlease complete the exercises below. Create a new .Rmd file and include the following at the top:\n---\ntitle: \"Lab 2: Data Wrangling Beginnings\"\nauthor: \"Your Name Here\"\ndate: \"`r Sys.Date()`\"\noutput: html_document\neditor_options: \n  chunk_output_type: console\n  markdown: \n    wrap: 72\n---\nYou should then be able to copy/paste everything below into your document.\nHere is a .Rmd file that you should be able to download and use as well.\n\nDownload Lab 2 (.Rmd)\n\nWhen you are finished, click the Knit button to turn your work into an HTML document. You will submit both this .Rmd file and the 🧶knitted .html file."
   },
   {
     "objectID": "labs/lab-2_data-wrangling.html#scenario-and-goal",
     "href": "labs/lab-2_data-wrangling.html#scenario-and-goal",
     "title": "Lab 2: Data Wrangling Beginnings",
     "section": "Scenario and Goal",
-    "text": "Scenario and Goal\nCongratulations, you’ve just collected data for a study on “Personality”! You administered a 10-item personality questionnaire, where participants responded on a 5-point Likert scale (1 = Strongly Disagree, 5 = Strongly Agree). This measure is called the “Ten Item Personality Inventory” (TIPI) and more information about the measure can be found here: TIPI Scale Info. Please refer to this page and documents to help with scoring the data and getting familiar with the measure.\nHowever, the raw data from the survey software is messy. Your goal in this lab is to import, clean, and score the data to prepare it for analysis. This process of turning raw data into usable data is called data wrangling, and it’s what researchers spend most of their time doing.\nYou will learn to: * Import a CSV file. * Rename variables for clarity. * Filter out participants based on data quality checks. * Reverse-score negatively worded items. * Compute a composite score for a psychological scale.\n\n\nGetting Data\nBe aware of your file structure and how things are organized. For some refreshers, take a look at the Resources and rstats.wtf\n\nDownload your data\nDownload Data from Drive (CSV)\nDownload Questionnaire From Drive (DOC)\n\n\n\nExercise 1: Importing and Inspecting the Data\nFirst, you need to load the appropriate packages and import your data. Use the tidyverse, rio, and here libraries.\n# Load the appropriate libraries.   \n\n# Write your import code here:   \n  ## This will look like:     \n  # your_data_name &lt;- import(here(\"path\", \"to\", \"file\", \"filename.csv))    \n\n\n# Use glimpse() to get a first look at the raw_data. \n# Write your code here:  \nQuestion 1: How many participants (rows) are in the raw, imported dataset?\n❓Your Answer: [Type your answer here]\n\n\n\nExercise 2: Renaming Variables for Clarity\nThe column names are a mixture of naming conventions. Let’s rename them to be consistent and convey the appropriate information.\nFirst, let’s take a look at what the names are. You can do this by using View(), but let’s use the names() function to list out all the column names.\nnames(Whatever_you_Named_your_data)\nThis will give you your list of names. You can see which ones we may want to rename. What does Q85 even mean? Thanks Qualtrics. Review the documentation for the survey to get a sense of what the questions are asking to properly rename the variables.\nFor now, let’s update the names as follows. It is helpful to keep everything lowercase to make it easier to type (but this is a personal preference), and make sure there aren’t any spaces in your variable names:\n\nID -&gt; id\nProgress -&gt; progress\nDuration (in seconds) -&gt; duration\nConsent -&gt; consent\nQ85 -&gt; sex_orient\nQ85_6_TEXT -&gt; sex_orient_txt\nSleep Quality -&gt; sleep_qual\nHours of Sleep -&gt; sleep_hours\n\n# Task: Use the rename() function to change the variable names as listed above.\n# Create a new object called `renamed_data`.\n# Hint: The syntax is: new_object &lt;- old_object %&gt;% rename(new_name_1 = old_name_1, new_name_2 = old_name_2)\n\n# Write your code here:\n# This part is a placeholder as the actual column names from the URL will differ.\n# Be sure to update the following template with the info from your own data\nrenamed_data &lt;- raw_data %&gt;%\n  rename(participant_id = country, \n         grit_1 = year,\n         grit_2 = population)\n         # ... and so on for the other variables\n\n# Print the first few rows of your new `renamed_data` object to check your work.\nhead(renamed_data)\n\n\n\nExercise 3: Filtering for Data Quality\nOur survey includes variables that allow us to see how long they took and what percentage they completed. We should remove participants who did not finish the survey, as well as those who finished it too quickly.\nThis will be done using the filter() function (more about filter). Use filter to keep participants where their progress is equal to 100. You will also want to remove participants who completed the survey in less than 7 minutes (note: the Duration variable is in seconds).\n# Create a new object called `filtered_data`.\n\n# Example code:\n# filtered_data &lt;- renamed_data %&gt;%\n#   filter(Progress == 100) %&gt;% \n#   filter(Duration ==, &lt;, &gt; 1000)\nQuestion 2: How many participants remain from your original dataset? How many participants did you remove with your filters?\n❓Your Answer: [Type your answer here]\n\n\n\nExercise 4: Reverse-Scoring Items\nIn a lot of psychological research, we need to reverse score variables. They are often worded in a negative/positive way compared to the rest of the items. Review the TIPI documentation to see what items need to be reverse scored.\nFor example, Item 2 is a item that should reflect “Agreeableness”, but the rated words are “Critical, quarrelsome”. Therefore low score on this item would reflect high amounts of Agreeableness.\nThe formula for reverse scoring an item is: (Maximum Possible Value + 1) - Original Score. So, for the TIPI, it’s 8 - TIPI_2.\nTo create/compute a new variable we use the mutate() function (more about mutate). I like to remember this function name because we are “mutating” the data and introducing another “growth” or something extra that wasn’t there before.\n# Task: Use the mutate() function to create new, reverse-scored variables.\n# Use a new name to indicate which items are reverse-scored.\n# Create a new object called `scored_data`.\n# Hint: The syntax is: \n  # new_object &lt;- old_object %&gt;% \n  #   mutate(new_variable = computation, \n  #          new_variable2 = computation)\n\n\n# Exmple code:\n# scored_data &lt;- filtered_data %&gt;%\n#   mutate(TIPI_2r = 8 - TIPI_2)\n\n\n\n# Print the first few rows, showing only the original and new reverse-scored item to check your work.\n\n# scored_data %&gt;% select(TIPI_2, TIPI_2r) %&gt;% head()\nQuestion 3: If a participant’s original score on TIPI_4 was a 6, what would their score be on the new TIPI_4r variable?\n❓Your Answer: [Type your answer here]\n\n\n\nExercise 5: Computing and Finalizing the Scored File\nNow we are ready to compute the final score! There are individual subscales for each of the 5 factors of the Big 5 Personality Inex. Compute the 5 scales. Remember to use the reverse-scored items (TIPI_2r), not the original one.s\n# Task 1: Use mutate() to calculate the total grit score.\n# Sum the items corresponding to each scale.\n# Call the new variables 'extra', 'agree', 'consc', 'emo', 'open.\n# Overwrite your `scored_data` object with this new version.\n\n# Task 2: Create a final, clean dataset.\n# Use select() to keep only the 'id' and Big 5 scale columns.\n# Call this object `final_data`.\n# Conceptual code:\n# final_data &lt;- scored_data %&gt;%\n#   select(id, agree, ...)\n\n\n\n# Task 3: Calculate the mean and standard deviation of each of the subscale scores.\nQuestion 4: What would be the highest possible Emotional Stability score a participant could get? What would be the lowest?\n❓Your Answer: [Type your answer here]\nQuestion 5: Report the mean’s and standard deviations of each of the subscale scores\n❓Your Answer:\n\nExtraversion:\nAgreeableness:\nConscientiousness:\nEmotional Stability:\nOpenness to Experience:\n\n\n\n\nExercise 6: Visualize Relationships\nWe often want to see the relationship between 2 variables. This is often done using a scatterplot. Select 2 scales that you would like to see the relationship between. Use the code from the previous lab/class to create a scatterplot of the relationship. Take a look at this cheat sheet to help with ggplot2!\n# Using ggplot and the scored data you have, generate a scatterplot. It can be as simple or as fancy as you would like (try putting a title and changing the axis names)\n\n\n\n# Use the cheat sheet and other materials to put a straight line to the data (Hint: add another layer with a smooth geom)\nQuestion 6.1: Visually inspect the chart you have and describe the relationship below. Be sure to include the two variables and an estimate of your correlation in your answer.\n❓Your Answer:\n# Compute a correltion for your variables\n# Hint: use the `cor.test()` function. You will need to specify the variable names as `name_of_data$name_of_variable`\n  \n  # Example\n    # cor.test(starwars$height, starwars$mass)\nQuestion 6.2: Calculate the correlation coefficient for your two variables of interest (refer here for more info). Report the correlation, and reflect on how close or how far away your initial estimate was. Do your best here. I recognize that we haven’t really gone over this just yet.\n❓Your Answer:\n\nEnd of Lab. Don’t forget to Knit! 🧶",
-    "crumbs": [
-      "Labs",
-      "Lab 2 - Wrangling Intro"
-    ]
+    "text": "Scenario and Goal\nCongratulations, you’ve just collected data for a study on “Personality”! You administered a 10-item personality questionnaire, where participants responded on a 5-point Likert scale (1 = Strongly Disagree, 5 = Strongly Agree). This measure is called the “Ten Item Personality Inventory” (TIPI) and more information about the measure can be found here: TIPI Scale Info. Please refer to this page and documents to help with scoring the data and getting familiar with the measure.\nHowever, the raw data from the survey software is messy. Your goal in this lab is to import, clean, and score the data to prepare it for analysis. This process of turning raw data into usable data is called data wrangling, and it’s what researchers spend most of their time doing.\nYou will learn to: * Import a CSV file. * Rename variables for clarity. * Filter out participants based on data quality checks. * Reverse-score negatively worded items. * Compute a composite score for a psychological scale.\n\n\nGetting Data\nBe aware of your file structure and how things are organized. For some refreshers, take a look at the Resources and rstats.wtf\n\nDownload your data\nDownload Data from Drive (CSV)\nDownload Questionnaire From Drive (DOC)\n\n\n\nExercise 1: Importing and Inspecting the Data\nFirst, you need to load the appropriate packages and import your data. Use the tidyverse, rio, and here libraries.\n# Load the appropriate libraries.   \n\n# Write your import code here:   \n  ## This will look like:     \n  # your_data_name &lt;- import(here(\"path\", \"to\", \"file\", \"filename.csv))    \n\n\n# Use glimpse() to get a first look at the raw_data. \n# Write your code here:  \nQuestion 1: How many participants (rows) are in the raw, imported dataset?\n❓Your Answer: [Type your answer here]\n\n\n\nExercise 2: Renaming Variables for Clarity\nThe column names are a mixture of naming conventions. Let’s rename them to be consistent and convey the appropriate information.\nFirst, let’s take a look at what the names are. You can do this by using View(), but let’s use the names() function to list out all the column names.\nnames(Whatever_you_Named_your_data)\nThis will give you your list of names. You can see which ones we may want to rename. What does Q85 even mean? Thanks Qualtrics. Review the documentation for the survey to get a sense of what the questions are asking to properly rename the variables.\nFor now, let’s update the names as follows. It is helpful to keep everything lowercase to make it easier to type (but this is a personal preference), and make sure there aren’t any spaces in your variable names:\n\nID -&gt; id\nProgress -&gt; progress\nDuration (in seconds) -&gt; duration\nConsent -&gt; consent\nQ85 -&gt; sex_orient\nQ85_6_TEXT -&gt; sex_orient_txt\nSleep Quality -&gt; sleep_qual\nHours of Sleep -&gt; sleep_hours\n\n# Task: Use the rename() function to change the variable names as listed above.\n# Create a new object called `renamed_data`.\n# Hint: The syntax is: new_object &lt;- old_object %&gt;% rename(new_name_1 = old_name_1, new_name_2 = old_name_2)\n\n# Write your code here:\n# This part is a placeholder as the actual column names from the URL will differ.\n# Be sure to update the following template with the info from your own data\nrenamed_data &lt;- raw_data %&gt;%\n  rename(participant_id = country, \n         grit_1 = year,\n         grit_2 = population)\n         # ... and so on for the other variables\n\n# Print the first few rows of your new `renamed_data` object to check your work.\nhead(renamed_data)\n\n\n\nExercise 3: Filtering for Data Quality\nOur survey includes variables that allow us to see how long they took and what percentage they completed. We should remove participants who did not finish the survey, as well as those who finished it too quickly.\nThis will be done using the filter() function (more about filter). Use filter to keep participants where their progress is equal to 100. You will also want to remove participants who completed the survey in less than 7 minutes (note: the Duration variable is in seconds).\n# Create a new object called `filtered_data`.\n\n# Example code:\n# filtered_data &lt;- renamed_data %&gt;%\n#   filter(Progress == 100) %&gt;% \n#   filter(Duration ==, &lt;, &gt; 1000)\nQuestion 2: How many participants remain from your original dataset? How many participants did you remove with your filters?\n❓Your Answer: [Type your answer here]\n\n\n\nExercise 4: Reverse-Scoring Items\nIn a lot of psychological research, we need to reverse score variables. They are often worded in a negative/positive way compared to the rest of the items. Review the TIPI documentation to see what items need to be reverse scored.\nFor example, Item 2 is a item that should reflect “Agreeableness”, but the rated words are “Critical, quarrelsome”. Therefore low score on this item would reflect high amounts of Agreeableness.\nThe formula for reverse scoring an item is: (Maximum Possible Value + 1) - Original Score. So, for the TIPI, it’s 8 - TIPI_2.\nTo create/compute a new variable we use the mutate() function (more about mutate). I like to remember this function name because we are “mutating” the data and introducing another “growth” or something extra that wasn’t there before.\n# Task: Use the mutate() function to create new, reverse-scored variables.\n# Use a new name to indicate which items are reverse-scored.\n# Create a new object called `scored_data`.\n# Hint: The syntax is: \n  # new_object &lt;- old_object %&gt;% \n  #   mutate(new_variable = computation, \n  #          new_variable2 = computation)\n\n\n# Exmple code:\n# scored_data &lt;- filtered_data %&gt;%\n#   mutate(TIPI_2r = 8 - TIPI_2)\n\n\n\n# Print the first few rows, showing only the original and new reverse-scored item to check your work.\n\n# scored_data %&gt;% select(TIPI_2, TIPI_2r) %&gt;% head()\nQuestion 3: If a participant’s original score on TIPI_4 was a 6, what would their score be on the new TIPI_4r variable?\n❓Your Answer: [Type your answer here]\n\n\n\nExercise 5: Computing and Finalizing the Scored File\nNow we are ready to compute the final score! There are individual subscales for each of the 5 factors of the Big 5 Personality Inex. Compute the 5 scales. Remember to use the reverse-scored items (TIPI_2r), not the original one.s\n# Task 1: Use mutate() to calculate the total grit score.\n# Sum the items corresponding to each scale.\n# Call the new variables 'extra', 'agree', 'consc', 'emo', 'open.\n# Overwrite your `scored_data` object with this new version.\n\n# Task 2: Create a final, clean dataset.\n# Use select() to keep only the 'id' and Big 5 scale columns.\n# Call this object `final_data`.\n# Conceptual code:\n# final_data &lt;- scored_data %&gt;%\n#   select(id, agree, ...)\n\n\n\n# Task 3: Calculate the mean and standard deviation of each of the subscale scores.\nQuestion 4: What would be the highest possible Emotional Stability score a participant could get? What would be the lowest?\n❓Your Answer: [Type your answer here]\nQuestion 5: Report the mean’s and standard deviations of each of the subscale scores\n❓Your Answer:\n\nExtraversion:\nAgreeableness:\nConscientiousness:\nEmotional Stability:\nOpenness to Experience:\n\n\n\n\nExercise 6: Visualize Relationships\nWe often want to see the relationship between 2 variables. This is often done using a scatterplot. Select 2 scales that you would like to see the relationship between. Use the code from the previous lab/class to create a scatterplot of the relationship. Take a look at this cheat sheet to help with ggplot2!\n# Using ggplot and the scored data you have, generate a scatterplot. It can be as simple or as fancy as you would like (try putting a title and changing the axis names)\n\n\n\n# Use the cheat sheet and other materials to put a straight line to the data (Hint: add another layer with a smooth geom)\nQuestion 6.1: Visually inspect the chart you have and describe the relationship below. Be sure to include the two variables and an estimate of your correlation in your answer.\n❓Your Answer:\n# Compute a correltion for your variables\n# Hint: use the `cor.test()` function. You will need to specify the variable names as `name_of_data$name_of_variable`\n  \n  # Example\n    # cor.test(starwars$height, starwars$mass)\nQuestion 6.2: Calculate the correlation coefficient for your two variables of interest (refer here for more info). Report the correlation, and reflect on how close or how far away your initial estimate was. Do your best here. I recognize that we haven’t really gone over this just yet.\n❓Your Answer:\n\nEnd of Lab. Don’t forget to Knit! 🧶"
   },
   {
     "objectID": "labs/lab-02_data-workflow.html",
     "href": "labs/lab-02_data-workflow.html",
     "title": "Lab 2 - Data Workflow",
     "section": "",
-    "text": "Goal: create, edit, and render a Quarto document — the format you’ll use for every lab and both projects this semester. Again, no real statistics here. You’re learning the container your work will live in, while it’s low-stakes.\nPrerequisite: Lab 1 done (R and RStudio installed and working).\nWhat to submit: your rendered document (details in the last step).\n\n\n\nIn this course, your writing and your analysis live in the same document. You write a sentence, then a chunk of R code, then the code’s output appears right there when you “render.” This is the heart of reproducible science: anyone can see exactly how you got your result, and re-run it. Getting comfortable with this now means you never have to think about it again.\n\n\n\n\nIn RStudio: File → New File → Quarto Document…\nGive it a title like “Lab 2” and put your name in the author field.\nLeave the other defaults. Click Create.\nRStudio opens a new document with some example text already in it. You’ll see two kinds of content: plain text, and gray code chunks that start with ```{r}.\n\n\n\n\nBefore changing anything, click the Render button (near the top of the document — it has a blue arrow icon). RStudio may ask you to install additional packages, follow those instructions. It may also ask you to save the file first; save it somewhere you’ll find it.\nThe first render may take a moment. When it finishes, a formatted document appears (in a viewer pane or your browser). That’s rendering: your .qmd source became a shareable output document. Look at how the example text and the code output map back to the source. This is the whole idea.\n\n\n\nIn the top left you will see two “buttons” (Source, Visual). Click back and forth between them to examine the differences. These are Quarto documents which operate like a Markdown. These allow you to put regular text and your analyses all in one document. An example of this would be writing your results section and having all the numerical values populate accordingly. It’s like magic.\nSource\nThis is the raw Markdown text. Beginner information about formatting around Markdown specifically can be found here (R Markdown: The Definitive Guide), but that isn’t necessarily a focus of the course.\nVisual\nThis is what you are used to seeing when working with a document. The Visual editor takes the Source material and formats it appropriately (bold, italics, links, etc.)\nYou can choose either to work with. I may go back and forth between them. Sometimes debugging is a little bit easier in the Source.\n\n\n\nNow edit the source. Delete the example text below the title block (everything under the second ---) and replace it with your own:\n\nAdd a header by starting a line with ##:\n## PSYC 640\nAdd a short list (each item starts with a dash):\n- My favorite movie is ...\n- Something I'm hoping to learn this semester is ...\nNow add a code chunk. You can click the green “+C” insert-chunk button, or type it manually:\n```{r}\nmean(c(10, 20, 30))\n```\nCode chunks can be run by clicking the “Play” button on the top right of the chunk. You can also put the cursor on the line you want to run and use the keyboard shortcut Ctrl + Enter (for PC) Command + Enter (for Mac).\nInside the chunk you can put any R. Here we’re just averaging three numbers again.\nAdd one more chunk that does simple arithmetic of your choosing — anything like 100 / 4 or 2 ^ 5. The point is just to see your code produce your output.\n\n\n\n\n\nCreate another Code Chunk\nLoad the tidyverse library (library(tidyverse))\nCreate the object datawars and assign dataset called starwars to it (hint: datawars &lt;- starwars)\nUse View(), head() and glimpse() to look at datawars.\nIn the text below, answer this question:\nWhat do each of these do?\nCreate another code chunk and use summary() to get descriptives of all variables in the dataset.\n\nLook at the output of your summary() command. For the mass and height variables, you’ll see a value for NA's. In your own words, what do you think NA means in this context?\n\n\n\n\nNow we want to investigate the relationship between mass and height in this dataset.\n\nCreate a scatterplot using ggplot().\nThe plot should show height on the x-axis and mass on the y-axis.\nAdd some labels to make your plot clear and professional.\n\nHint: Use the code below as a template and fill in the blanks.\n\n\nggplot(data = __, aes(x = __, y = __)) +\n  geom_point() +\n  labs(title = \"__\",\n       x = \"__\",\n       y = \"__\")\n\nLook at your plot. Do you notice any characters that seem unusually heavy for their height? Briefly describe one.\n\n\n\n\n\nClick Render again. Your new text, header, list, and the output of your code chunks should all appear in the formatted document. If a number you computed shows up in the output, your code ran successfully.\n\nIf it won’t render: the most common cause is a code chunk with a typo (a missing backtick or parenthesis). Check that each chunk opens with ```{r} and closes with ``` on its own line. If you’re still stuck, submit the .qmd file with a note about what happened and we’ll look next week.\n\n\n\n\nRender one final time to produce the output document (it’ll be an .html file in the same folder as your .qmd, unless you chose otherwise). Submit both the .qmd source and the rendered output if you can; if only one, send the rendered one.\nInclude one to two sentences about Lab 2: how did that feel — smooth, fiddly, confusing? Honest reactions help me pace Week 2.\n\n\n\nYou just did, in miniature, what every assignment this semester will ask: write in a .qmd, run code in chunks, render to a shareable document. The statistics will get more involved; this container won’t change. You’re set."
+    "text": "Goal: create, edit, and render a Quarto document — the format you’ll use for every lab and both projects this semester. Again, no real statistics here. You’re learning the container your work will live in, while it’s low-stakes.\nPrerequisite: Lab 1 done (R and RStudio installed and working).\nWhat to submit: your rendered document (details in the last step).\n\n\n\nIn this course, your writing and your analysis live in the same document. You write a sentence, then a chunk of R code, then the code’s output appears right there when you “render.” This is the heart of reproducible science: anyone can see exactly how you got your result, and re-run it. Getting comfortable with this now means you never have to think about it again.\n\n\n\n\nIn RStudio: File → New File → Quarto Document…\nGive it a title like “Lab 2” and put your name in the author field.\nLeave the other defaults. Click Create.\nRStudio opens a new document with some example text already in it. You’ll see two kinds of content: plain text, and gray code chunks that start with ```{r}.\n\n\n\n\nBefore changing anything, click the Render button (near the top of the document — it has a blue arrow icon). RStudio may ask you to install additional packages, follow those instructions. It may also ask you to save the file first; save it somewhere you’ll find it.\nThe first render may take a moment. When it finishes, a formatted document appears (in a viewer pane or your browser). That’s rendering: your .qmd source became a shareable output document. Look at how the example text and the code output map back to the source. This is the whole idea.\n\n\n\nIn the top left you will see two “buttons” (Source, Visual). Click back and forth between them to examine the differences. These are Quarto documents which operate like a Markdown. These allow you to put regular text and your analyses all in one document. An example of this would be writing your results section and having all the numerical values populate accordingly. It’s like magic.\nSource\nThis is the raw Markdown text. Beginner information about formatting around Markdown specifically can be found here (R Markdown: The Definitive Guide), but that isn’t necessarily a focus of the course.\nVisual\nThis is what you are used to seeing when working with a document. The Visual editor takes the Source material and formats it appropriately (bold, italics, links, etc.)\nYou can choose either to work with. I may go back and forth between them. Sometimes debugging is a little bit easier in the Source.\n\n\n\nNow edit the source. Delete the example text below the title block (everything under the second ---) and replace it with your own:\n\nAdd a header by starting a line with ##:\n## PSYC 640\nAdd a short list (each item starts with a dash):\n- My favorite movie is ...\n- Something I'm hoping to learn this semester is ...\nNow add a code chunk. You can click the green “+C” insert-chunk button, or type it manually:\n```{r}\nmean(c(10, 20, 30))\n```\nCode chunks can be run by clicking the “Play” button on the top right of the chunk. You can also put the cursor on the line you want to run and use the keyboard shortcut Ctrl + Enter (for PC) Command + Enter (for Mac).\nInside the chunk you can put any R. Here we’re just averaging three numbers again.\nAdd one more chunk that does simple arithmetic of your choosing — anything like 100 / 4 or 2 ^ 5. The point is just to see your code produce your output.\n\n\n\n\n\nCreate another Code Chunk\nLoad the tidyverse library (library(tidyverse))\nCreate the object datawars and assign dataset called starwars to it (hint: datawars &lt;- starwars)\nUse View(), head() and glimpse() to look at datawars.\nIn the text below, answer this question:\nWhat do each of these do?\nCreate another code chunk and use summary() to get descriptives of all variables in the dataset.\n\nLook at the output of your summary() command. For the mass and height variables, you’ll see a value for NA's. In your own words, what do you think NA means in this context?\n\n\n\n\nNow we want to investigate the relationship between mass and height in this dataset.\n\nCreate a scatterplot using ggplot().\nThe plot should show height on the x-axis and mass on the y-axis.\nAdd some labels to make your plot clear and professional.\n\nHint: Use the code below as a template and fill in the blanks.\n\n\nggplot(data = __, aes(x = __, y = __)) +\n  geom_point() +\n  labs(title = \"__\",\n       x = \"__\",\n       y = \"__\")\n\nLook at your plot. Do you notice any characters that seem unusually heavy for their height? Briefly describe one.\n\n\n\n\n\nClick Render again. Your new text, header, list, and the output of your code chunks should all appear in the formatted document. If a number you computed shows up in the output, your code ran successfully.\n\nIf it won’t render: the most common cause is a code chunk with a typo (a missing backtick or parenthesis). Check that each chunk opens with ```{r} and closes with ``` on its own line. If you’re still stuck, submit the .qmd file with a note about what happened and we’ll look next week.\n\n\n\n\nRender one final time to produce the output document (it’ll be an .html file in the same folder as your .qmd, unless you chose otherwise). Submit both the .qmd source and the rendered output if you can; if only one, send the rendered one.\nInclude one to two sentences about Lab 2: how did that feel — smooth, fiddly, confusing? Honest reactions help me pace Week 2.\n\n\n\nYou just did, in miniature, what every assignment this semester will ask: write in a .qmd, run code in chunks, render to a shareable document. The statistics will get more involved; this container won’t change. You’re set.",
+    "crumbs": [
+      "Labs",
+      "Lab 2 - Data Workflow"
+    ]
   },
   {
     "objectID": "labs/lab-02_data-workflow.html#why-this-matters-30-seconds-of-context",
     "href": "labs/lab-02_data-workflow.html#why-this-matters-30-seconds-of-context",
     "title": "Lab 2 - Data Workflow",
     "section": "",
-    "text": "In this course, your writing and your analysis live in the same document. You write a sentence, then a chunk of R code, then the code’s output appears right there when you “render.” This is the heart of reproducible science: anyone can see exactly how you got your result, and re-run it. Getting comfortable with this now means you never have to think about it again."
+    "text": "In this course, your writing and your analysis live in the same document. You write a sentence, then a chunk of R code, then the code’s output appears right there when you “render.” This is the heart of reproducible science: anyone can see exactly how you got your result, and re-run it. Getting comfortable with this now means you never have to think about it again.",
+    "crumbs": [
+      "Labs",
+      "Lab 2 - Data Workflow"
+    ]
   },
   {
     "objectID": "labs/lab-02_data-workflow.html#step-1-create-a-new-quarto-document",
     "href": "labs/lab-02_data-workflow.html#step-1-create-a-new-quarto-document",
     "title": "Lab 2 - Data Workflow",
     "section": "",
-    "text": "In RStudio: File → New File → Quarto Document…\nGive it a title like “Lab 2” and put your name in the author field.\nLeave the other defaults. Click Create.\nRStudio opens a new document with some example text already in it. You’ll see two kinds of content: plain text, and gray code chunks that start with ```{r}."
+    "text": "In RStudio: File → New File → Quarto Document…\nGive it a title like “Lab 2” and put your name in the author field.\nLeave the other defaults. Click Create.\nRStudio opens a new document with some example text already in it. You’ll see two kinds of content: plain text, and gray code chunks that start with ```{r}.",
+    "crumbs": [
+      "Labs",
+      "Lab 2 - Data Workflow"
+    ]
   },
   {
     "objectID": "labs/lab-02_data-workflow.html#step-2-render-it-as-is",
     "href": "labs/lab-02_data-workflow.html#step-2-render-it-as-is",
     "title": "Lab 2 - Data Workflow",
     "section": "",
-    "text": "Before changing anything, click the Render button (near the top of the document — it has a blue arrow icon). RStudio may ask you to install additional packages, follow those instructions. It may also ask you to save the file first; save it somewhere you’ll find it.\nThe first render may take a moment. When it finishes, a formatted document appears (in a viewer pane or your browser). That’s rendering: your .qmd source became a shareable output document. Look at how the example text and the code output map back to the source. This is the whole idea."
+    "text": "Before changing anything, click the Render button (near the top of the document — it has a blue arrow icon). RStudio may ask you to install additional packages, follow those instructions. It may also ask you to save the file first; save it somewhere you’ll find it.\nThe first render may take a moment. When it finishes, a formatted document appears (in a viewer pane or your browser). That’s rendering: your .qmd source became a shareable output document. Look at how the example text and the code output map back to the source. This is the whole idea.",
+    "crumbs": [
+      "Labs",
+      "Lab 2 - Data Workflow"
+    ]
   },
   {
     "objectID": "labs/lab-02_data-workflow.html#step-3-visual-vs.-source",
     "href": "labs/lab-02_data-workflow.html#step-3-visual-vs.-source",
     "title": "Lab 2 - Data Workflow",
     "section": "",
-    "text": "In the top left you will see two “buttons” (Source, Visual). Click back and forth between them to examine the differences. These are Quarto documents which operate like a Markdown. These allow you to put regular text and your analyses all in one document. An example of this would be writing your results section and having all the numerical values populate accordingly. It’s like magic.\nSource\nThis is the raw Markdown text. Beginner information about formatting around Markdown specifically can be found here (R Markdown: The Definitive Guide), but that isn’t necessarily a focus of the course.\nVisual\nThis is what you are used to seeing when working with a document. The Visual editor takes the Source material and formats it appropriately (bold, italics, links, etc.)\nYou can choose either to work with. I may go back and forth between them. Sometimes debugging is a little bit easier in the Source."
+    "text": "In the top left you will see two “buttons” (Source, Visual). Click back and forth between them to examine the differences. These are Quarto documents which operate like a Markdown. These allow you to put regular text and your analyses all in one document. An example of this would be writing your results section and having all the numerical values populate accordingly. It’s like magic.\nSource\nThis is the raw Markdown text. Beginner information about formatting around Markdown specifically can be found here (R Markdown: The Definitive Guide), but that isn’t necessarily a focus of the course.\nVisual\nThis is what you are used to seeing when working with a document. The Visual editor takes the Source material and formats it appropriately (bold, italics, links, etc.)\nYou can choose either to work with. I may go back and forth between them. Sometimes debugging is a little bit easier in the Source.",
+    "crumbs": [
+      "Labs",
+      "Lab 2 - Data Workflow"
+    ]
   },
   {
     "objectID": "labs/lab-02_data-workflow.html#step-4-editing",
     "href": "labs/lab-02_data-workflow.html#step-4-editing",
     "title": "Lab 2 - Data Workflow",
     "section": "",
-    "text": "Now edit the source. Delete the example text below the title block (everything under the second ---) and replace it with your own:\n\nAdd a header by starting a line with ##:\n## PSYC 640\nAdd a short list (each item starts with a dash):\n- My favorite movie is ...\n- Something I'm hoping to learn this semester is ...\nNow add a code chunk. You can click the green “+C” insert-chunk button, or type it manually:\n```{r}\nmean(c(10, 20, 30))\n```\nCode chunks can be run by clicking the “Play” button on the top right of the chunk. You can also put the cursor on the line you want to run and use the keyboard shortcut Ctrl + Enter (for PC) Command + Enter (for Mac).\nInside the chunk you can put any R. Here we’re just averaging three numbers again.\nAdd one more chunk that does simple arithmetic of your choosing — anything like 100 / 4 or 2 ^ 5. The point is just to see your code produce your output."
+    "text": "Now edit the source. Delete the example text below the title block (everything under the second ---) and replace it with your own:\n\nAdd a header by starting a line with ##:\n## PSYC 640\nAdd a short list (each item starts with a dash):\n- My favorite movie is ...\n- Something I'm hoping to learn this semester is ...\nNow add a code chunk. You can click the green “+C” insert-chunk button, or type it manually:\n```{r}\nmean(c(10, 20, 30))\n```\nCode chunks can be run by clicking the “Play” button on the top right of the chunk. You can also put the cursor on the line you want to run and use the keyboard shortcut Ctrl + Enter (for PC) Command + Enter (for Mac).\nInside the chunk you can put any R. Here we’re just averaging three numbers again.\nAdd one more chunk that does simple arithmetic of your choosing — anything like 100 / 4 or 2 ^ 5. The point is just to see your code produce your output.",
+    "crumbs": [
+      "Labs",
+      "Lab 2 - Data Workflow"
+    ]
   },
   {
     "objectID": "labs/lab-02_data-workflow.html#step-5-your-first-analysis",
     "href": "labs/lab-02_data-workflow.html#step-5-your-first-analysis",
     "title": "Lab 2 - Data Workflow",
     "section": "",
-    "text": "Create another Code Chunk\nLoad the tidyverse library (library(tidyverse))\nCreate the object datawars and assign dataset called starwars to it (hint: datawars &lt;- starwars)\nUse View(), head() and glimpse() to look at datawars.\nIn the text below, answer this question:\nWhat do each of these do?\nCreate another code chunk and use summary() to get descriptives of all variables in the dataset.\n\nLook at the output of your summary() command. For the mass and height variables, you’ll see a value for NA's. In your own words, what do you think NA means in this context?\n\n\n\n\nNow we want to investigate the relationship between mass and height in this dataset.\n\nCreate a scatterplot using ggplot().\nThe plot should show height on the x-axis and mass on the y-axis.\nAdd some labels to make your plot clear and professional.\n\nHint: Use the code below as a template and fill in the blanks.\n\n\nggplot(data = __, aes(x = __, y = __)) +\n  geom_point() +\n  labs(title = \"__\",\n       x = \"__\",\n       y = \"__\")\n\nLook at your plot. Do you notice any characters that seem unusually heavy for their height? Briefly describe one."
+    "text": "Create another Code Chunk\nLoad the tidyverse library (library(tidyverse))\nCreate the object datawars and assign dataset called starwars to it (hint: datawars &lt;- starwars)\nUse View(), head() and glimpse() to look at datawars.\nIn the text below, answer this question:\nWhat do each of these do?\nCreate another code chunk and use summary() to get descriptives of all variables in the dataset.\n\nLook at the output of your summary() command. For the mass and height variables, you’ll see a value for NA's. In your own words, what do you think NA means in this context?\n\n\n\n\nNow we want to investigate the relationship between mass and height in this dataset.\n\nCreate a scatterplot using ggplot().\nThe plot should show height on the x-axis and mass on the y-axis.\nAdd some labels to make your plot clear and professional.\n\nHint: Use the code below as a template and fill in the blanks.\n\n\nggplot(data = __, aes(x = __, y = __)) +\n  geom_point() +\n  labs(title = \"__\",\n       x = \"__\",\n       y = \"__\")\n\nLook at your plot. Do you notice any characters that seem unusually heavy for their height? Briefly describe one.",
+    "crumbs": [
+      "Labs",
+      "Lab 2 - Data Workflow"
+    ]
   },
   {
     "objectID": "labs/lab-02_data-workflow.html#step-6-render-again-and-check",
     "href": "labs/lab-02_data-workflow.html#step-6-render-again-and-check",
     "title": "Lab 2 - Data Workflow",
     "section": "",
-    "text": "Click Render again. Your new text, header, list, and the output of your code chunks should all appear in the formatted document. If a number you computed shows up in the output, your code ran successfully.\n\nIf it won’t render: the most common cause is a code chunk with a typo (a missing backtick or parenthesis). Check that each chunk opens with ```{r} and closes with ``` on its own line. If you’re still stuck, submit the .qmd file with a note about what happened and we’ll look next week."
+    "text": "Click Render again. Your new text, header, list, and the output of your code chunks should all appear in the formatted document. If a number you computed shows up in the output, your code ran successfully.\n\nIf it won’t render: the most common cause is a code chunk with a typo (a missing backtick or parenthesis). Check that each chunk opens with ```{r} and closes with ``` on its own line. If you’re still stuck, submit the .qmd file with a note about what happened and we’ll look next week.",
+    "crumbs": [
+      "Labs",
+      "Lab 2 - Data Workflow"
+    ]
   },
   {
     "objectID": "labs/lab-02_data-workflow.html#step-7-submit",
     "href": "labs/lab-02_data-workflow.html#step-7-submit",
     "title": "Lab 2 - Data Workflow",
     "section": "",
-    "text": "Render one final time to produce the output document (it’ll be an .html file in the same folder as your .qmd, unless you chose otherwise). Submit both the .qmd source and the rendered output if you can; if only one, send the rendered one.\nInclude one to two sentences about Lab 2: how did that feel — smooth, fiddly, confusing? Honest reactions help me pace Week 2.\n\n\n\nYou just did, in miniature, what every assignment this semester will ask: write in a .qmd, run code in chunks, render to a shareable document. The statistics will get more involved; this container won’t change. You’re set."
+    "text": "Render one final time to produce the output document (it’ll be an .html file in the same folder as your .qmd, unless you chose otherwise). Submit both the .qmd source and the rendered output if you can; if only one, send the rendered one.\nInclude one to two sentences about Lab 2: how did that feel — smooth, fiddly, confusing? Honest reactions help me pace Week 2.\n\n\n\nYou just did, in miniature, what every assignment this semester will ask: write in a .qmd, run code in chunks, render to a shareable document. The statistics will get more involved; this container won’t change. You’re set.",
+    "crumbs": [
+      "Labs",
+      "Lab 2 - Data Workflow"
+    ]
   },
   {
     "objectID": "labs/midterm-proj.html",
@@ -1424,123 +1448,235 @@
     "text": "export()\nNow that we have a scored dataset, we will want to save that.\nYou can do this by re-running all of your steps above, or by exporting your dataset.\nexport(final_tipi, here(\"files\", \"data\", \"final_tipi.csv\"))\n\n\n\n\n\n\nNote\n\n\nBe careful when exporting and knitting docs. Each time you knit, it will run the export code. After I export, I usually will comment out that line of code."
   },
   {
-    "objectID": "slides/lec-11_categor.html#today",
-    "href": "slides/lec-11_categor.html#today",
-    "title": "Week 11: Categorical Predictors & Logistic Regression",
+    "objectID": "slides/lec-5_correlation.html#today",
+    "href": "slides/lec-5_correlation.html#today",
+    "title": "Week 05: Correlation & Effect Sizes",
     "section": "Today…",
-    "text": "Today…"
+    "text": "Today…\nExplore hypotheses, correlations and effect sizes\n\n# File management\nlibrary(here)\n# for dplyr, ggplot2\nlibrary(tidyverse)\n# Loading data\nlibrary(rio)\n# Pretty tables\nlibrary(sjPlot)\nlibrary(kableExtra)\nlibrary(ggstatsplot)\n\n#Remove Scientific Notation \noptions(scipen=999)"
   },
   {
-    "objectID": "slides/lec-11_categor.html#regression",
-    "href": "slides/lec-11_categor.html#regression",
-    "title": "Week 11: Categorical Predictors & Logistic Regression",
-    "section": "Regression",
-    "text": "Regression\n3 main reasons for using regression:\n\nAs a description (what is the average salary for men and women?)\nAs part of causal inference (Does being a woman result in a lower salary?)\nFor prediction (“What happens if…” questions)"
+    "objectID": "slides/lec-5_correlation.html#todays-roadmap",
+    "href": "slides/lec-5_correlation.html#todays-roadmap",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "Today’s Roadmap 🗺️",
+    "text": "Today’s Roadmap 🗺️\n\nExplain the counterintuitive logic of Null Hypothesis Significance Testing (NHST)\nDefine and correctly interpret a p-value\nDistinguish what a p-value is from what it is not\nApply the steps of NHST to a research question"
   },
   {
-    "objectID": "slides/lec-11_categor.html#multiple-regression",
-    "href": "slides/lec-11_categor.html#multiple-regression",
-    "title": "Week 11: Categorical Predictors & Logistic Regression",
-    "section": "Multiple Regression",
-    "text": "Multiple Regression\nWe may want to include additional predictors into our model to best explain the variance in an outcome:\n\\[ Y_i = b_0 + b_1X_{1i} + b_2X_{2i} + ... + b_nX_{ni}+ e_i \\]"
+    "objectID": "slides/lec-5_correlation.html#setting",
+    "href": "slides/lec-5_correlation.html#setting",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "Setting:",
+    "text": "Setting:\nIn 1925, during a summer afternoon on campus, a lady, Dr. Muriel Bristol (who has an algae species named after her), was handed a cup of tea by Ronald Fisher. She declined saying:\n“I prefer the flavor when the milk is poured first. I can tell when there is a difference”\nFisher, being a statistician and a white man:\n“Prove it”\n\n\n\n\n\n\nNote\n\n\nSometimes, groundbreaking insights arise from everyday claims!"
   },
   {
-    "objectID": "slides/lec-11_categor.html#reporting-standardized-or-unstandardized",
-    "href": "slides/lec-11_categor.html#reporting-standardized-or-unstandardized",
-    "title": "Week 11: Categorical Predictors & Logistic Regression",
-    "section": "Reporting Standardized or Unstandardized?",
-    "text": "Reporting Standardized or Unstandardized?\nINTERPRET b:\n\nWhen the variables are measured in a meaningful metric\nTo compare the relative effects of different predictors in the same sample\n\nINTERPRET β:\n\nWhen the variables are not measured in a meaningful metric\nTo compare effects across samples or studies"
+    "objectID": "slides/lec-5_correlation.html#designing-the-test",
+    "href": "slides/lec-5_correlation.html#designing-the-test",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "Designing the Test:",
+    "text": "Designing the Test:\nFisher prepared 8 cups of tea; 4 with milk first & 4 with tea first\nDr. Muriel Bristol correctly identified 3 out of 4 of each! (some reports claim she identified all correctly)\nWas it just chance or genuine ability?\n\n\n\n\n\n\nNote\n\n\nAlways consider both outcomes. In hypothesis testing, this means setting up null and alternative hypotheses."
   },
   {
-    "objectID": "slides/lec-11_categor.html#multiple-regression-example",
-    "href": "slides/lec-11_categor.html#multiple-regression-example",
-    "title": "Week 11: Categorical Predictors & Logistic Regression",
-    "section": "Multiple Regression: Example",
-    "text": "Multiple Regression: Example\nPreviously, we predicted the # of Transformers movies someone watched by their age, income and # of books read\n\ncah_data &lt;- import(here(\"files\", \"data\", \n                        \"CAH.csv\")) %&gt;% \n  mutate(across(where(is.character), ~na_if(., \"\")))\n\nThe regression equation would look something like this:\n\\[\nY = b_0 + b_1X_1 + b_2X_2 + b_3X_3 + e\n\\]"
+    "objectID": "slides/lec-5_correlation.html#birth-of-hypothesis-testing",
+    "href": "slides/lec-5_correlation.html#birth-of-hypothesis-testing",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "Birth of Hypothesis Testing:",
+    "text": "Birth of Hypothesis Testing:\nFisher framed it as a combinatorial problem\nIf it was mere luck/chance, the probability of getting all 8 correct was low\nThis way of thinking is the groundwork for the concept of the p-value\n\n\n\n\n\n\nImportant\n\n\nThe p-value gives the probability of observing data (or something more extreme) given that the null hypothesis is true."
   },
   {
-    "objectID": "slides/lec-11_categor.html#categorical-predictors",
-    "href": "slides/lec-11_categor.html#categorical-predictors",
-    "title": "Week 11: Categorical Predictors & Logistic Regression",
-    "section": "Categorical Predictors",
-    "text": "Categorical Predictors\nTypically identified by a grouping variable that may be a character\n\nglimpse(cah_data$political_affiliation)\n\n chr [1:1000] \"Democrat\" \"Democrat\" \"Independent\" \"Republican\" \"Democrat\" ...\n\n\nNeed to change the variable from character to factor which will assign a number to each group\n\ncah_data &lt;- cah_data %&gt;%\n  mutate(\n    pol = as.factor(political_affiliation),\n    ghosts = as.factor(ghosts)\n    )\n\nglimpse(cah_data$pol)\n\n Factor w/ 3 levels \"Democrat\",\"Independent\",..: 1 1 2 3 1 1 2 3 3 1 ..."
+    "objectID": "slides/lec-5_correlation.html#the-tortured-logic-of-nhst",
+    "href": "slides/lec-5_correlation.html#the-tortured-logic-of-nhst",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "The Tortured Logic of NHST",
+    "text": "The Tortured Logic of NHST\nWe create two hypotheses, \\(H_0\\) and \\(H_1\\). Usually, we care about \\(H_1\\), not \\(H_0\\). In fact, what we really want to know is how likely \\(H_1\\), given our data.\n\\[P(H_1|Data)\\] Instead, we’re going to test our null hypothesis. Well, not really. We’re going to assume our null hypothesis is true, and test how likely we would be to get these data.\n\\[P(Data|H_0)\\]"
   },
   {
-    "objectID": "slides/lec-11_categor.html#dummy-coding",
-    "href": "slides/lec-11_categor.html#dummy-coding",
-    "title": "Week 11: Categorical Predictors & Logistic Regression",
-    "section": "Dummy Coding",
-    "text": "Dummy Coding\nNumerical placeholders used to represent categorical variables\nTaking a categorical variable with \\(k\\) levels (e.g., Democratic, Independent, Republican) into \\(k-1\\) binary variables.\n\n\n\npolitical_affiliation\nbecomes\nInd (binary1)\nRep (binary2)\n\n\n\n\nDemocrat\n–&gt;\n0\n0\n\n\nIndependent\n–&gt;\n1\n0\n\n\nRepublican\n–&gt;\n0\n1\n\n\n…\n\n…\n…"
+    "objectID": "slides/lec-5_correlation.html#nhst-analogy-the-legal-system",
+    "href": "slides/lec-5_correlation.html#nhst-analogy-the-legal-system",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "NHST Analogy: The Legal System",
+    "text": "NHST Analogy: The Legal System\n\nThe Null Hypothesis ( \\(H_0\\) ) is the starting assumption: “presumed innocent.” In research, this means assuming there is no effect, no relationship, or no difference.\nYou, the researcher, are the prosecution, gathering evidence (data) to challenge this presumption.\nYour p-value reflects the strength of your evidence. A small p-value likely means your evidence is strong.\nRejecting the null is like a “guilty” verdict. You have enough evidence to say the initial presumption of innocence (no effect) is unlikely to be true."
   },
   {
-    "objectID": "slides/lec-11_categor.html#categorical-regression",
-    "href": "slides/lec-11_categor.html#categorical-regression",
-    "title": "Week 11: Categorical Predictors & Logistic Regression",
-    "section": "Categorical Regression",
-    "text": "Categorical Regression\nGoing back to our Transformers dataset, let’s see how our political affiliation variable can predict # of transformers movies\nUsually you have to create the separate dummy variables, but not in R\n\ncat1 &lt;- lm(transformers ~ pol,\n           data = cah_data)\n\nYou can also double check the dummy/contrast coding\n\ncontrasts(cah_data$pol)\n\n            Independent Republican\nDemocrat              0          0\nIndependent           1          0\nRepublican            0          1"
+    "objectID": "slides/lec-5_correlation.html#p-value-formal-definition",
+    "href": "slides/lec-5_correlation.html#p-value-formal-definition",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "p-value: Formal Definition",
+    "text": "p-value: Formal Definition\nThis is one of the most important—and misunderstood—concepts in statistics.\nThe p-value is:\n\nThe probability of observing a result as extreme as, or more extreme than, the one we actually observed, assuming the null hypothesis is true."
   },
   {
-    "objectID": "slides/lec-11_categor.html#categories-in-action",
-    "href": "slides/lec-11_categor.html#categories-in-action",
-    "title": "Week 11: Categorical Predictors & Logistic Regression",
-    "section": "Categories in Action",
-    "text": "Categories in Action\nGoal: Gain greater familiarity with dummy coding and categorical predictors\nScenario: We are researchers examining the impact of a new intervention on reducing the vocalization “6️⃣7️⃣” in the youths. We have done classroom observations to collect data on how many times students say “6️⃣7️⃣” after receiving the intervention. This is the data you have in front of you. Youths have been randomly assigned to one of 3 groups, and we need to determine which had the biggest impact.\n\n\n\n\n\n\nNote\n\n\nYou will submit one Rmd file for the whole group. Be sure to include all group member’s names."
+    "objectID": "slides/lec-5_correlation.html#p-value-formal-definition-1",
+    "href": "slides/lec-5_correlation.html#p-value-formal-definition-1",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "p-value: Formal Definition",
+    "text": "p-value: Formal Definition\nThis is one of the most important—and misunderstood—concepts in statistics.\nIt is NOT:\n\nThe probability that the null hypothesis is true\nThe probability that our research hypothesis is true\nA measure of the size or importance of an effect"
   },
   {
-    "objectID": "slides/lec-11_categor.html#categories-in-action-using-r",
-    "href": "slides/lec-11_categor.html#categories-in-action-using-r",
-    "title": "Week 11: Categorical Predictors & Logistic Regression",
-    "section": "Categories in Action: Using R",
-    "text": "Categories in Action: Using R\nNow that we have the data entered appropriately, let’s double check, and include some additional variables!\nImport dataset, confirm predictions, include pre-scores to see how that changes interpretation\n\n\n\n\n\n\nWarning\n\n\nDr. Haraden is going to start opening up R and doing a follow-along thing. You have been warned"
+    "objectID": "slides/lec-5_correlation.html#what-are-the-steps-of-nhst",
+    "href": "slides/lec-5_correlation.html#what-are-the-steps-of-nhst",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "What are the steps of NHST?",
+    "text": "What are the steps of NHST?\n\n\n\nDefine null and alternative hypothesis.\nSet and justify alpha level (usually \\(\\alpha\\) = .05)\nDetermine which sampling distribution ( \\(z\\), \\(t\\), or \\(\\chi^2\\) for now)\nCalculate parameters of your sampling distribution under the null.\n\n\nIf \\(z\\), calculate \\(\\mu\\) and \\(\\sigma_M\\)\n\n\n\nCalculate test statistic under the null.\n\n\nIf \\(z\\), \\(\\frac{\\bar{X} - \\mu}{\\sigma_M}\\)\n\n\nCalculate probability of that test statistic or more extreme under the null, and compare to alpha."
   },
   {
-    "objectID": "slides/lec-11_categor.html#status",
-    "href": "slides/lec-11_categor.html#status",
-    "title": "Week 11: Categorical Predictors & Logistic Regression",
-    "section": "6️⃣7️⃣ Status",
-    "text": "6️⃣7️⃣ Status\nIn our last example, we were able to see how these categorical variables could predict a continuous variable. This is perfect for linear regression.\nWhat if we want to see if students have “recovered” from 6️⃣7️⃣?\nWe would then ask: ““Which participants dropped below the clinical threshold for 6️⃣7️⃣ at follow-up? Now, our outcome is either recovered or not recovered.”"
+    "objectID": "slides/lec-5_correlation.html#think-about",
+    "href": "slides/lec-5_correlation.html#think-about",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "🧠 Think about…",
+    "text": "🧠 Think about…\n\nYou run a correlational analysis to see if levels of anxiety are related to caffeine consumption. You get a correlation of 0.38 and a p-value of p = .045.\n\nTurn to someone next to you and in your own words, explain what the p-value is telling you.\n\nLooking at the p-value, what can you conclude?\nLooking at the p-value, what can’t you conclude?"
   },
   {
-    "objectID": "slides/lec-11_categor.html#recovery-status",
-    "href": "slides/lec-11_categor.html#recovery-status",
-    "title": "Week 11: Categorical Predictors & Logistic Regression",
-    "section": "Recovery Status",
-    "text": "Recovery Status\nNow we have a binary outcome; Yes/No recovery\nWhat happens when we fit a linear regression? What are the chances of someone with a pre-score of 12 recovering by the follow-up?\n\n\nCode\ncat_reg &lt;- import(here(\"files\", \"data\", \n                       \"cat_reg_complete.xlsx\")) %&gt;% \n  janitor::clean_names() %&gt;% \n  # 1 = recovered; 0 = not recovered\n  mutate(recover = if_else(post_score &gt; 12, 0, 1))\n\ncat_reg %&gt;% \n  ggplot(aes(pre_score, recover)) +\n  geom_jitter(width = 0, height = 0.05, alpha = 0.5) + \n  geom_smooth(method = \"lm\", se = FALSE) + \n  labs(\n    title = \"Pre-Score predicting Recovery\"\n  )"
+    "objectID": "slides/lec-5_correlation.html#more-thinking",
+    "href": "slides/lec-5_correlation.html#more-thinking",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "🧠More thinking…",
+    "text": "🧠More thinking…\nWhat if you ran the same study and analyses, but found that your p-value was p = .052?"
   },
   {
-    "objectID": "slides/lec-11_categor.html#probability-to-odds-to-log-odds",
-    "href": "slides/lec-11_categor.html#probability-to-odds-to-log-odds",
-    "title": "Week 11: Categorical Predictors & Logistic Regression",
-    "section": "Probability to Odds to Log-Odds",
-    "text": "Probability to Odds to Log-Odds\nProbability (p): The chance of an event happening. Ranges from 0 to 1\nOdds: The ratio of the probability of an event happening to it not happening.\n\n\\(Odds = \\frac{p}{1-p}\\)\nRanges from 0 to ∞. An odds of 4 means the event is 4 times more likely to happen than not.\n\nLog-Odds (logit): The natural log of the odds\n\n\\(Logit(p) = ln(\\frac{p}{1-p})\\)\nRanges from -∞ to +∞\n\n\n\n\n\n\n\nImportant\n\n\nThis step transforms our bounded outcome variable (0/1) to an unbound one!"
+    "objectID": "slides/lec-5_correlation.html#what-is-a-correlation",
+    "href": "slides/lec-5_correlation.html#what-is-a-correlation",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "What is a Correlation?",
+    "text": "What is a Correlation?\nA statistical expression that quantifies the extent to which two continuous variables are linearly related\nAssociation - Correlation\nWill tell us 2 key pieces of information about the relationship:\n\nDirection (Positive vs. Negative)\nStrength (Magnitude from 0 to 1)"
   },
   {
-    "objectID": "slides/lec-11_categor.html#generalized-linear-model-glm",
-    "href": "slides/lec-11_categor.html#generalized-linear-model-glm",
-    "title": "Week 11: Categorical Predictors & Logistic Regression",
-    "section": "Generalized Linear Model (GLM)",
-    "text": "Generalized Linear Model (GLM)\nA generalization of a linear model (duh) that is used when the response variable has a non-normal error distribution\nMost commonly used when there is a binary (0-1) or count variable as the outcome (we will focus on the binary)\nUltimately, we are trying to identify the probability of the outcome taking the value 1 (“success”) that is being modeled in relation to the predictor variables"
+    "objectID": "slides/lec-5_correlation.html#example-candy-of-houses",
+    "href": "slides/lec-5_correlation.html#example-candy-of-houses",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "Example: Candy & # of Houses",
+    "text": "Example: Candy & # of Houses\nResearch Question: Is there a relationship between the amount of candy we receive on Halloween and the # of houses that we go to?\n\nVariables:\n\nhouse_n: Number of houses approached\ncandy: Amount of candy (# of pieces)\n\nHypothesis \\(H_A\\) : There will be a positive correlation. As a trick-or-treater goes to more houses, their amount of candy will increase ( \\(r \\neq 0\\) .\nNull Hypothesis \\(H_0\\): There is no correlation ( \\(r = 0\\) )."
   },
   {
-    "objectID": "slides/lec-11_categor.html#odds-ratios-or",
-    "href": "slides/lec-11_categor.html#odds-ratios-or",
-    "title": "Week 11: Categorical Predictors & Logistic Regression",
-    "section": "Odds Ratios (OR)",
-    "text": "Odds Ratios (OR)\nOR &gt; 1: The predictor increases the odds of the outcome. (e.g., OR of 2.5 means the odds of believing in ghosts are 2.5 times higher).\nOR &lt; 1: The predictor decreases the odds of the outcome. (e.g., OR of 0.4 means the odds of believing in ghosts are 60% lower).\nOR = 1: The predictor has no effect on the odds of the outcome."
+    "objectID": "slides/lec-5_correlation.html#association---covariance",
+    "href": "slides/lec-5_correlation.html#association---covariance",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "Association - Covariance",
+    "text": "Association - Covariance\nBefore we talk about correlation, we need to take a look at covariance\n\\[\ncov_{xy} = \\frac{\\sum(x-\\bar{x})(y-\\bar{y})}{N-1}\n\\]\n\nCovariance can be thought of as the “average cross product” between two variables\nIt captures the raw/unstandardized relationship between two variables\nCovariance matrix is the basis for many statistical analyses"
   },
   {
-    "objectID": "slides/lec-11_categor.html#visualization",
-    "href": "slides/lec-11_categor.html#visualization",
-    "title": "Week 11: Categorical Predictors & Logistic Regression",
-    "section": "Visualization",
-    "text": "Visualization\nExtract the model implied probabilities for each individual\n\nprobs &lt;- broom::augment(ln1, type.predict = \"response\")\n\nPlotting the predicted probabilities\n\nprobs %&gt;% \nggplot(aes(age, .fitted)) +\n  geom_line(color = \"blue\", linewidth = 1.5) +\n  labs(\n    title = \"Predicted Probability of Believing in Ghosts by Age\",\n    subtitle = \"Holding # of Books and Transformers Movies at their mean\",\n    x = \"Age (years)\",\n    y = \"Predicted Probability of Believing in Ghosts\"\n  ) +\n  ylim(0, 1) + # Keep the y-axis bounded at 0 and 1\n  theme_minimal()"
+    "objectID": "slides/lec-5_correlation.html#covariance-to-correlation",
+    "href": "slides/lec-5_correlation.html#covariance-to-correlation",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "Covariance to Correlation",
+    "text": "Covariance to Correlation\nThe Pearson correlation coefficient \\(r\\) addresses this by standardizing the covariance\nIt is done in the same way that we would create a \\(z-score\\)…by dividing by the standard deviation\n\\[\nr_{xy} = \\frac{Cov(x,y)}{sd_x sd_y}\n\\]"
   },
   {
-    "objectID": "slides/lec-11_categor.html#logistic-regression-summary",
-    "href": "slides/lec-11_categor.html#logistic-regression-summary",
-    "title": "Week 11: Categorical Predictors & Logistic Regression",
-    "section": "Logistic Regression: Summary",
-    "text": "Logistic Regression: Summary\n\n\n\n\n\n\n\n\nFeature\nLinear Regression\nLogistic Regression\n\n\n\n\nOutcome Variable\nContinuous\nCategorical (Binary)\n\n\nEquation\n\\(Y=β_0+β_1X\\)\n\\(ln⁡(\\frac{p}{1-p})=β_0+β_1X\\)\n\n\nKey Interpretation\n\\(\\beta_1\\) is the change in the mean of Y\n\\(\\exp(\\beta_1)\\) is theodds ratio\n\n\nR Function\nlm()\nglm(..., family=\"binomial\")"
+    "objectID": "slides/lec-5_correlation.html#pearsons-r",
+    "href": "slides/lec-5_correlation.html#pearsons-r",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "Pearson’s \\(r\\)",
+    "text": "Pearson’s \\(r\\)\nRange: Varies from -1 (perfect negative correlation) and +1 (perfect positive correlation)\nAssumptions:\n\nContinuous Variables: Both variables are measured on an interval or ratio scale.\nLinearity: The relationship between the variables is linear. (This is why you must visualize your data!)\nBivariate Normality: Data points are normally distributed for both variables. (Pearson’s \\(r\\) is fairly robust to minor violations)."
+  },
+  {
+    "objectID": "slides/lec-5_correlation.html#calculating-correlation-in-r",
+    "href": "slides/lec-5_correlation.html#calculating-correlation-in-r",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "Calculating Correlation in R",
+    "text": "Calculating Correlation in R\nNow how do we get a correlation value in R?\n\ncor(corr_data$house_n, corr_data$candy)\n\n[1] 0.8929946\n\n\nThat will give us the correlation, but we also want to know how to get our p-value"
+  },
+  {
+    "objectID": "slides/lec-5_correlation.html#significance",
+    "href": "slides/lec-5_correlation.html#significance",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "Significance",
+    "text": "Significance\nThe \\(p-value\\) gives us the statistical significance. It will tell us that the effect we identified is likely not to be 0\nIt does not tell us anything about how large or meaningful the effect actually is. This is where the effect size comes in!\n\n\n\n\n\n\nImportant\n\n\nWith a large enough sample size, even a tiny, trivial correlation (e.g., r &lt; 0.1) can become statistically significant. Think about what happens to sampling distribution when sample size increases.\n\n\n\nStatistical Significance \\(\\neq\\) Practical Significance"
+  },
+  {
+    "objectID": "slides/lec-5_correlation.html#effect-sizes-correlation",
+    "href": "slides/lec-5_correlation.html#effect-sizes-correlation",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "Effect Sizes: Correlation",
+    "text": "Effect Sizes: Correlation\nFor correlation, we have two related measures of effect size:\n\nPearson’s \\(r\\): The correlation coefficient itself. A standardized measure of the strength and direction of the linear association.\n\nCohen’s Conventions (a rough guide): Small (∣.10∣), Medium (∣.30∣), Large (∣.50∣).\nOur finding of \\(r = 0.89\\) is a large effect.\n\nCoefficient of Determination (\\(R^2\\)): This is simply r squared. It represents the proportion of variance in one variable that is “explained” or “accounted for” by the other."
+  },
+  {
+    "objectID": "slides/lec-5_correlation.html#age-x-ess_total-visualize",
+    "href": "slides/lec-5_correlation.html#age-x-ess_total-visualize",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "Age x ESS_total: Visualize",
+    "text": "Age x ESS_total: Visualize\nLet’s examine the overall correlation between Age and overall sleepiness\nFirst: Visualize\n\n\nCode\nsleep_data %&gt;% \n  ggplot(aes(age, ess_tot)) + \n  geom_point() + \n  geom_smooth(method=\"lm\", se=FALSE)\n\n\n\nIt doesn’t seem like there is much of a relationship here…"
+  },
+  {
+    "objectID": "slides/lec-5_correlation.html#age-x-ess_total-test",
+    "href": "slides/lec-5_correlation.html#age-x-ess_total-test",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "Age x ESS_total: Test",
+    "text": "Age x ESS_total: Test\nLet’s check the overall correlation just to see what we are finding\n\ncor.test(sleep_data$age, sleep_data$ess_tot)\n\n\n    Pearson's product-moment correlation\n\ndata:  sleep_data$age and sleep_data$ess_tot\nt = -2.2489, df = 1450, p-value = 0.02467\nalternative hypothesis: true correlation is not equal to 0\n95 percent confidence interval:\n -0.110064846 -0.007534546\nsample estimates:\n        cor \n-0.05895518"
+  },
+  {
+    "objectID": "slides/lec-5_correlation.html#writing-up-example",
+    "href": "slides/lec-5_correlation.html#writing-up-example",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "Writing up: Example",
+    "text": "Writing up: Example\nWe have all of the pieces for writing up our correlation between age and sleepiness.\nTemplate: r(degress of freedom) = the r statistic, p = p value.\n\nAmong the students in the sample, age was negatively related to overall levels of sleepiness (r(1450) = -0.06, p = .024).\n\nWhat about our \\(R^2\\) value?\n\\(R^2 = -0.06^2 = 0.0034\\). Therefore, approximately 0.34% of the variability in the sleepiness scale (ess_tot) is explained by age. Is this meaningful?"
+  },
+  {
+    "objectID": "slides/lec-5_correlation.html#handling-missing---correlation",
+    "href": "slides/lec-5_correlation.html#handling-missing---correlation",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "Handling Missing - Correlation",
+    "text": "Handling Missing - Correlation\n\nListwise Deletion (complete cases)\n\nRemoves participants completely if they are missing a value being compared\nSmaller Sample Sizes\nDoesn’t bias correlation estimate\n\nPairwise Deletion\n\nRemoves participants for that single pair, but leaves information in when there are complete information\nLarger Sample Sizes\nCould bias estimates if there is a systematic reason things are missing"
+  },
+  {
+    "objectID": "slides/lec-5_correlation.html#spearmans-rank-correlation-1",
+    "href": "slides/lec-5_correlation.html#spearmans-rank-correlation-1",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "Spearman’s Rank Correlation",
+    "text": "Spearman’s Rank Correlation\nWe need to be able to capture this different (ordinal) “relationship”\n\nIf student 1 works more hours than student 2, then we can guarantee that student 1 will get a better grade\n\nInstead of using the amount given by the variables (“hours studied”), we rank the variables based on least (rank = 1) to most (rank = 10)\nThen we correlate the rankings with one another"
+  },
+  {
+    "objectID": "slides/lec-5_correlation.html#statistics-and-eugenics",
+    "href": "slides/lec-5_correlation.html#statistics-and-eugenics",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "Statistics and Eugenics",
+    "text": "Statistics and Eugenics\nThe concept of the correlation is primarily attributed to Sir Frances Galton\n\nHe was also the founder of the concept of eugenics\n\nThe correlation coefficient was developed by his student, Karl Pearson, and adapted into the ANOVA framework by Sir Ronald Fisher\n\nBoth were prominent advocates for the eugenics movement"
+  },
+  {
+    "objectID": "slides/lec-5_correlation.html#what-do-we-do-with-this-info",
+    "href": "slides/lec-5_correlation.html#what-do-we-do-with-this-info",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "What do we do with this info?",
+    "text": "What do we do with this info?\n\nNever use the correlation or the later techniques developed on it? Of course not.\nAcknowledge this history? Certainly.\nUnderstand how the perspectives of Galton, Fisher, Pearson and others shaped our practices? We must! – these are not set in stone, nor are they necessarily the best way to move forward."
+  },
+  {
+    "objectID": "slides/lec-5_correlation.html#be-aware-of-the-assumptions",
+    "href": "slides/lec-5_correlation.html#be-aware-of-the-assumptions",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "Be aware of the assumptions",
+    "text": "Be aware of the assumptions\n\nStatistics are often thought of as being absent of bias…they are just numbers\nStatistical significance was a way to avoid talking about nuance or degree.\n“Correlation does not imply causation” was a refutation of work demonstrating associations between environment and poverty.\nNeed to be particularly mindful of our goals as scientists and how they can influence the way we interpret the findings"
+  },
+  {
+    "objectID": "slides/lec-5_correlation.html#correlation-tables",
+    "href": "slides/lec-5_correlation.html#correlation-tables",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "Correlation Tables",
+    "text": "Correlation Tables\nBefore we used the cor() function to create a correlation matrix of our variables\nBut what is missing?\n\nsleep_data %&gt;% \n  select(age, ESS1:ESS8, ess_tot) %&gt;% \n  cor(use = \"complete\") %&gt;% \n  kable()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nage\nESS1\nESS2\nESS3\nESS4\nESS5\nESS6\nESS7\nESS8\ness_tot\n\n\n\n\nage\n1.0000000\n-0.0057641\n0.0039691\n-0.0421214\n-0.1059506\n-0.0871016\n0.0484763\n0.0057761\n-0.0206676\n-0.0594733\n\n\nESS1\n-0.0057641\n1.0000000\n0.3303236\n0.2784836\n0.1455593\n0.2295289\n0.1422071\n0.2206383\n0.0984444\n0.5981508\n\n\nESS2\n0.0039691\n0.3303236\n1.0000000\n0.1976108\n0.1387409\n0.2190331\n0.1748049\n0.2134999\n0.1010883\n0.5565852\n\n\nESS3\n-0.0421214\n0.2784836\n0.1976108\n1.0000000\n0.2920448\n0.1948408\n0.2888370\n0.2778982\n0.2178073\n0.6121220\n\n\nESS4\n-0.1059506\n0.1455593\n0.1387409\n0.2920448\n1.0000000\n0.2579808\n0.0897873\n0.2589136\n0.2409171\n0.5936136\n\n\nESS5\n-0.0871016\n0.2295289\n0.2190331\n0.1948408\n0.2579808\n1.0000000\n0.0704590\n0.2821851\n0.0629151\n0.5718083\n\n\nESS6\n0.0484763\n0.1422071\n0.1748049\n0.2888370\n0.0897873\n0.0704590\n1.0000000\n0.2833070\n0.3493524\n0.4143559\n\n\nESS7\n0.0057761\n0.2206383\n0.2134999\n0.2778982\n0.2589136\n0.2821851\n0.2833070\n1.0000000\n0.2356524\n0.6088579\n\n\nESS8\n-0.0206676\n0.0984444\n0.1010883\n0.2178073\n0.2409171\n0.0629151\n0.3493524\n0.2356524\n1.0000000\n0.4293874\n\n\ness_tot\n-0.0594733\n0.5981508\n0.5565852\n0.6121220\n0.5936136\n0.5718083\n0.4143559\n0.6088579\n0.4293874\n1.0000000"
+  },
+  {
+    "objectID": "slides/lec-5_correlation.html#correlation-tables---sjplot",
+    "href": "slides/lec-5_correlation.html#correlation-tables---sjplot",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "Correlation Tables - sjPlot",
+    "text": "Correlation Tables - sjPlot\n\nsleep_data %&gt;% \n  select(ESS1:ESS8) %&gt;% \n  tab_corr(na.deletion = \"listwise\", triangle = \"lower\")\n\n\n\n\n \nESS1\nESS2\nESS3\nESS4\nESS5\nESS6\nESS7\nESS8\n\n\nESS1\n \n \n \n \n \n \n \n \n\n\nESS2\n0.330***\n \n \n \n \n \n \n \n\n\nESS3\n0.278***\n0.198***\n \n \n \n \n \n \n\n\nESS4\n0.146***\n0.139***\n0.292***\n \n \n \n \n \n\n\nESS5\n0.230***\n0.219***\n0.195***\n0.258***\n \n \n \n \n\n\nESS6\n0.142***\n0.175***\n0.289***\n0.090***\n0.070**\n \n \n \n\n\nESS7\n0.221***\n0.213***\n0.278***\n0.259***\n0.282***\n0.283***\n \n \n\n\nESS8\n0.098***\n0.101***\n0.218***\n0.241***\n0.063*\n0.349***\n0.236***\n \n\n\nComputed correlation used pearson-method with listwise-deletion."
+  },
+  {
+    "objectID": "slides/lec-5_correlation.html#correlation-tables---sjplot-1",
+    "href": "slides/lec-5_correlation.html#correlation-tables---sjplot-1",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "Correlation Tables - sjPlot",
+    "text": "Correlation Tables - sjPlot\nSo many different cusomizations for this type of plot\nCan add titles, indicate what missingness and method\nSaves you a TON of time when putting it into a manuscript"
+  },
+  {
+    "objectID": "slides/lec-5_correlation.html#scatterplot",
+    "href": "slides/lec-5_correlation.html#scatterplot",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "Scatterplot",
+    "text": "Scatterplot\nBefore we had a scatterplot that looked like this:\n\nsleep_data %&gt;% \n  ggplot(aes(age, ess_tot)) + \n  geom_point() + \n  geom_smooth(method=\"lm\", se=FALSE) + \n  labs(\n    x = \"Age\", \n    y = \"ESS Total\", \n    title = \"Relationship between Age and Sleepiness\" \n  )"
+  },
+  {
+    "objectID": "slides/lec-5_correlation.html#fancier-scatterplot",
+    "href": "slides/lec-5_correlation.html#fancier-scatterplot",
+    "title": "Week 05: Correlation & Effect Sizes",
+    "section": "Fancier Scatterplot",
+    "text": "Fancier Scatterplot\nTake a look at ggstatsplot https://indrajeetpatil.github.io/ggstatsplot/\n\nggscatterstats(\n  data = sleep_data, \n  x = age, \n  y = ess_tot, \n  xlab = \"Age\", \n  ylab = \"ESS Total\", \n  title = \"Relationship between Age and Sleepiness\"\n)"
   },
   {
     "objectID": "slides/lec-7_regression.html#today",
@@ -1893,368 +2029,256 @@
     "text": "Working with R-Studio\nR-Studio is just like a kitchen 🧑‍🍳\nThe Environment pane is the pantry/fridge\nThe Console is like the oven/stove\nThe Markdown document is the recipe\nThe bottom right sometimes acts as the little window on the oven where you can see things baking"
   },
   {
-    "objectID": "slides/lec-5_correlation.html#today",
-    "href": "slides/lec-5_correlation.html#today",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "Today…",
-    "text": "Today…\nExplore hypotheses, correlations and effect sizes\n\n# File management\nlibrary(here)\n# for dplyr, ggplot2\nlibrary(tidyverse)\n# Loading data\nlibrary(rio)\n# Pretty tables\nlibrary(sjPlot)\nlibrary(kableExtra)\nlibrary(ggstatsplot)\n\n#Remove Scientific Notation \noptions(scipen=999)"
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#todays-roadmap",
-    "href": "slides/lec-5_correlation.html#todays-roadmap",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "Today’s Roadmap 🗺️",
-    "text": "Today’s Roadmap 🗺️\n\nExplain the counterintuitive logic of Null Hypothesis Significance Testing (NHST)\nDefine and correctly interpret a p-value\nDistinguish what a p-value is from what it is not\nApply the steps of NHST to a research question"
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#setting",
-    "href": "slides/lec-5_correlation.html#setting",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "Setting:",
-    "text": "Setting:\nIn 1925, during a summer afternoon on campus, a lady, Dr. Muriel Bristol (who has an algae species named after her), was handed a cup of tea by Ronald Fisher. She declined saying:\n“I prefer the flavor when the milk is poured first. I can tell when there is a difference”\nFisher, being a statistician and a white man:\n“Prove it”\n\n\n\n\n\n\nNote\n\n\nSometimes, groundbreaking insights arise from everyday claims!"
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#designing-the-test",
-    "href": "slides/lec-5_correlation.html#designing-the-test",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "Designing the Test:",
-    "text": "Designing the Test:\nFisher prepared 8 cups of tea; 4 with milk first & 4 with tea first\nDr. Muriel Bristol correctly identified 3 out of 4 of each! (some reports claim she identified all correctly)\nWas it just chance or genuine ability?\n\n\n\n\n\n\nNote\n\n\nAlways consider both outcomes. In hypothesis testing, this means setting up null and alternative hypotheses."
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#birth-of-hypothesis-testing",
-    "href": "slides/lec-5_correlation.html#birth-of-hypothesis-testing",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "Birth of Hypothesis Testing:",
-    "text": "Birth of Hypothesis Testing:\nFisher framed it as a combinatorial problem\nIf it was mere luck/chance, the probability of getting all 8 correct was low\nThis way of thinking is the groundwork for the concept of the p-value\n\n\n\n\n\n\nImportant\n\n\nThe p-value gives the probability of observing data (or something more extreme) given that the null hypothesis is true."
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#the-tortured-logic-of-nhst",
-    "href": "slides/lec-5_correlation.html#the-tortured-logic-of-nhst",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "The Tortured Logic of NHST",
-    "text": "The Tortured Logic of NHST\nWe create two hypotheses, \\(H_0\\) and \\(H_1\\). Usually, we care about \\(H_1\\), not \\(H_0\\). In fact, what we really want to know is how likely \\(H_1\\), given our data.\n\\[P(H_1|Data)\\] Instead, we’re going to test our null hypothesis. Well, not really. We’re going to assume our null hypothesis is true, and test how likely we would be to get these data.\n\\[P(Data|H_0)\\]"
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#nhst-analogy-the-legal-system",
-    "href": "slides/lec-5_correlation.html#nhst-analogy-the-legal-system",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "NHST Analogy: The Legal System",
-    "text": "NHST Analogy: The Legal System\n\nThe Null Hypothesis ( \\(H_0\\) ) is the starting assumption: “presumed innocent.” In research, this means assuming there is no effect, no relationship, or no difference.\nYou, the researcher, are the prosecution, gathering evidence (data) to challenge this presumption.\nYour p-value reflects the strength of your evidence. A small p-value likely means your evidence is strong.\nRejecting the null is like a “guilty” verdict. You have enough evidence to say the initial presumption of innocence (no effect) is unlikely to be true."
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#p-value-formal-definition",
-    "href": "slides/lec-5_correlation.html#p-value-formal-definition",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "p-value: Formal Definition",
-    "text": "p-value: Formal Definition\nThis is one of the most important—and misunderstood—concepts in statistics.\nThe p-value is:\n\nThe probability of observing a result as extreme as, or more extreme than, the one we actually observed, assuming the null hypothesis is true."
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#p-value-formal-definition-1",
-    "href": "slides/lec-5_correlation.html#p-value-formal-definition-1",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "p-value: Formal Definition",
-    "text": "p-value: Formal Definition\nThis is one of the most important—and misunderstood—concepts in statistics.\nIt is NOT:\n\nThe probability that the null hypothesis is true\nThe probability that our research hypothesis is true\nA measure of the size or importance of an effect"
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#what-are-the-steps-of-nhst",
-    "href": "slides/lec-5_correlation.html#what-are-the-steps-of-nhst",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "What are the steps of NHST?",
-    "text": "What are the steps of NHST?\n\n\n\nDefine null and alternative hypothesis.\nSet and justify alpha level (usually \\(\\alpha\\) = .05)\nDetermine which sampling distribution ( \\(z\\), \\(t\\), or \\(\\chi^2\\) for now)\nCalculate parameters of your sampling distribution under the null.\n\n\nIf \\(z\\), calculate \\(\\mu\\) and \\(\\sigma_M\\)\n\n\n\nCalculate test statistic under the null.\n\n\nIf \\(z\\), \\(\\frac{\\bar{X} - \\mu}{\\sigma_M}\\)\n\n\nCalculate probability of that test statistic or more extreme under the null, and compare to alpha."
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#think-about",
-    "href": "slides/lec-5_correlation.html#think-about",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "🧠 Think about…",
-    "text": "🧠 Think about…\n\nYou run a correlational analysis to see if levels of anxiety are related to caffeine consumption. You get a correlation of 0.38 and a p-value of p = .045.\n\nTurn to someone next to you and in your own words, explain what the p-value is telling you.\n\nLooking at the p-value, what can you conclude?\nLooking at the p-value, what can’t you conclude?"
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#more-thinking",
-    "href": "slides/lec-5_correlation.html#more-thinking",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "🧠More thinking…",
-    "text": "🧠More thinking…\nWhat if you ran the same study and analyses, but found that your p-value was p = .052?"
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#what-is-a-correlation",
-    "href": "slides/lec-5_correlation.html#what-is-a-correlation",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "What is a Correlation?",
-    "text": "What is a Correlation?\nA statistical expression that quantifies the extent to which two continuous variables are linearly related\nAssociation - Correlation\nWill tell us 2 key pieces of information about the relationship:\n\nDirection (Positive vs. Negative)\nStrength (Magnitude from 0 to 1)"
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#example-candy-of-houses",
-    "href": "slides/lec-5_correlation.html#example-candy-of-houses",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "Example: Candy & # of Houses",
-    "text": "Example: Candy & # of Houses\nResearch Question: Is there a relationship between the amount of candy we receive on Halloween and the # of houses that we go to?\n\nVariables:\n\nhouse_n: Number of houses approached\ncandy: Amount of candy (# of pieces)\n\nHypothesis \\(H_A\\) : There will be a positive correlation. As a trick-or-treater goes to more houses, their amount of candy will increase ( \\(r \\neq 0\\) .\nNull Hypothesis \\(H_0\\): There is no correlation ( \\(r = 0\\) )."
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#association---covariance",
-    "href": "slides/lec-5_correlation.html#association---covariance",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "Association - Covariance",
-    "text": "Association - Covariance\nBefore we talk about correlation, we need to take a look at covariance\n\\[\ncov_{xy} = \\frac{\\sum(x-\\bar{x})(y-\\bar{y})}{N-1}\n\\]\n\nCovariance can be thought of as the “average cross product” between two variables\nIt captures the raw/unstandardized relationship between two variables\nCovariance matrix is the basis for many statistical analyses"
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#covariance-to-correlation",
-    "href": "slides/lec-5_correlation.html#covariance-to-correlation",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "Covariance to Correlation",
-    "text": "Covariance to Correlation\nThe Pearson correlation coefficient \\(r\\) addresses this by standardizing the covariance\nIt is done in the same way that we would create a \\(z-score\\)…by dividing by the standard deviation\n\\[\nr_{xy} = \\frac{Cov(x,y)}{sd_x sd_y}\n\\]"
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#pearsons-r",
-    "href": "slides/lec-5_correlation.html#pearsons-r",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "Pearson’s \\(r\\)",
-    "text": "Pearson’s \\(r\\)\nRange: Varies from -1 (perfect negative correlation) and +1 (perfect positive correlation)\nAssumptions:\n\nContinuous Variables: Both variables are measured on an interval or ratio scale.\nLinearity: The relationship between the variables is linear. (This is why you must visualize your data!)\nBivariate Normality: Data points are normally distributed for both variables. (Pearson’s \\(r\\) is fairly robust to minor violations)."
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#calculating-correlation-in-r",
-    "href": "slides/lec-5_correlation.html#calculating-correlation-in-r",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "Calculating Correlation in R",
-    "text": "Calculating Correlation in R\nNow how do we get a correlation value in R?\n\ncor(corr_data$house_n, corr_data$candy)\n\n[1] 0.8929946\n\n\nThat will give us the correlation, but we also want to know how to get our p-value"
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#significance",
-    "href": "slides/lec-5_correlation.html#significance",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "Significance",
-    "text": "Significance\nThe \\(p-value\\) gives us the statistical significance. It will tell us that the effect we identified is likely not to be 0\nIt does not tell us anything about how large or meaningful the effect actually is. This is where the effect size comes in!\n\n\n\n\n\n\nImportant\n\n\nWith a large enough sample size, even a tiny, trivial correlation (e.g., r &lt; 0.1) can become statistically significant. Think about what happens to sampling distribution when sample size increases.\n\n\n\nStatistical Significance \\(\\neq\\) Practical Significance"
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#effect-sizes-correlation",
-    "href": "slides/lec-5_correlation.html#effect-sizes-correlation",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "Effect Sizes: Correlation",
-    "text": "Effect Sizes: Correlation\nFor correlation, we have two related measures of effect size:\n\nPearson’s \\(r\\): The correlation coefficient itself. A standardized measure of the strength and direction of the linear association.\n\nCohen’s Conventions (a rough guide): Small (∣.10∣), Medium (∣.30∣), Large (∣.50∣).\nOur finding of \\(r = 0.89\\) is a large effect.\n\nCoefficient of Determination (\\(R^2\\)): This is simply r squared. It represents the proportion of variance in one variable that is “explained” or “accounted for” by the other."
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#age-x-ess_total-visualize",
-    "href": "slides/lec-5_correlation.html#age-x-ess_total-visualize",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "Age x ESS_total: Visualize",
-    "text": "Age x ESS_total: Visualize\nLet’s examine the overall correlation between Age and overall sleepiness\nFirst: Visualize\n\n\nCode\nsleep_data %&gt;% \n  ggplot(aes(age, ess_tot)) + \n  geom_point() + \n  geom_smooth(method=\"lm\", se=FALSE)\n\n\n\nIt doesn’t seem like there is much of a relationship here…"
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#age-x-ess_total-test",
-    "href": "slides/lec-5_correlation.html#age-x-ess_total-test",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "Age x ESS_total: Test",
-    "text": "Age x ESS_total: Test\nLet’s check the overall correlation just to see what we are finding\n\ncor.test(sleep_data$age, sleep_data$ess_tot)\n\n\n    Pearson's product-moment correlation\n\ndata:  sleep_data$age and sleep_data$ess_tot\nt = -2.2489, df = 1450, p-value = 0.02467\nalternative hypothesis: true correlation is not equal to 0\n95 percent confidence interval:\n -0.110064846 -0.007534546\nsample estimates:\n        cor \n-0.05895518"
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#writing-up-example",
-    "href": "slides/lec-5_correlation.html#writing-up-example",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "Writing up: Example",
-    "text": "Writing up: Example\nWe have all of the pieces for writing up our correlation between age and sleepiness.\nTemplate: r(degress of freedom) = the r statistic, p = p value.\n\nAmong the students in the sample, age was negatively related to overall levels of sleepiness (r(1450) = -0.06, p = .024).\n\nWhat about our \\(R^2\\) value?\n\\(R^2 = -0.06^2 = 0.0034\\). Therefore, approximately 0.34% of the variability in the sleepiness scale (ess_tot) is explained by age. Is this meaningful?"
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#handling-missing---correlation",
-    "href": "slides/lec-5_correlation.html#handling-missing---correlation",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "Handling Missing - Correlation",
-    "text": "Handling Missing - Correlation\n\nListwise Deletion (complete cases)\n\nRemoves participants completely if they are missing a value being compared\nSmaller Sample Sizes\nDoesn’t bias correlation estimate\n\nPairwise Deletion\n\nRemoves participants for that single pair, but leaves information in when there are complete information\nLarger Sample Sizes\nCould bias estimates if there is a systematic reason things are missing"
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#spearmans-rank-correlation-1",
-    "href": "slides/lec-5_correlation.html#spearmans-rank-correlation-1",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "Spearman’s Rank Correlation",
-    "text": "Spearman’s Rank Correlation\nWe need to be able to capture this different (ordinal) “relationship”\n\nIf student 1 works more hours than student 2, then we can guarantee that student 1 will get a better grade\n\nInstead of using the amount given by the variables (“hours studied”), we rank the variables based on least (rank = 1) to most (rank = 10)\nThen we correlate the rankings with one another"
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#statistics-and-eugenics",
-    "href": "slides/lec-5_correlation.html#statistics-and-eugenics",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "Statistics and Eugenics",
-    "text": "Statistics and Eugenics\nThe concept of the correlation is primarily attributed to Sir Frances Galton\n\nHe was also the founder of the concept of eugenics\n\nThe correlation coefficient was developed by his student, Karl Pearson, and adapted into the ANOVA framework by Sir Ronald Fisher\n\nBoth were prominent advocates for the eugenics movement"
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#what-do-we-do-with-this-info",
-    "href": "slides/lec-5_correlation.html#what-do-we-do-with-this-info",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "What do we do with this info?",
-    "text": "What do we do with this info?\n\nNever use the correlation or the later techniques developed on it? Of course not.\nAcknowledge this history? Certainly.\nUnderstand how the perspectives of Galton, Fisher, Pearson and others shaped our practices? We must! – these are not set in stone, nor are they necessarily the best way to move forward."
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#be-aware-of-the-assumptions",
-    "href": "slides/lec-5_correlation.html#be-aware-of-the-assumptions",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "Be aware of the assumptions",
-    "text": "Be aware of the assumptions\n\nStatistics are often thought of as being absent of bias…they are just numbers\nStatistical significance was a way to avoid talking about nuance or degree.\n“Correlation does not imply causation” was a refutation of work demonstrating associations between environment and poverty.\nNeed to be particularly mindful of our goals as scientists and how they can influence the way we interpret the findings"
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#correlation-tables",
-    "href": "slides/lec-5_correlation.html#correlation-tables",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "Correlation Tables",
-    "text": "Correlation Tables\nBefore we used the cor() function to create a correlation matrix of our variables\nBut what is missing?\n\nsleep_data %&gt;% \n  select(age, ESS1:ESS8, ess_tot) %&gt;% \n  cor(use = \"complete\") %&gt;% \n  kable()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nage\nESS1\nESS2\nESS3\nESS4\nESS5\nESS6\nESS7\nESS8\ness_tot\n\n\n\n\nage\n1.0000000\n-0.0057641\n0.0039691\n-0.0421214\n-0.1059506\n-0.0871016\n0.0484763\n0.0057761\n-0.0206676\n-0.0594733\n\n\nESS1\n-0.0057641\n1.0000000\n0.3303236\n0.2784836\n0.1455593\n0.2295289\n0.1422071\n0.2206383\n0.0984444\n0.5981508\n\n\nESS2\n0.0039691\n0.3303236\n1.0000000\n0.1976108\n0.1387409\n0.2190331\n0.1748049\n0.2134999\n0.1010883\n0.5565852\n\n\nESS3\n-0.0421214\n0.2784836\n0.1976108\n1.0000000\n0.2920448\n0.1948408\n0.2888370\n0.2778982\n0.2178073\n0.6121220\n\n\nESS4\n-0.1059506\n0.1455593\n0.1387409\n0.2920448\n1.0000000\n0.2579808\n0.0897873\n0.2589136\n0.2409171\n0.5936136\n\n\nESS5\n-0.0871016\n0.2295289\n0.2190331\n0.1948408\n0.2579808\n1.0000000\n0.0704590\n0.2821851\n0.0629151\n0.5718083\n\n\nESS6\n0.0484763\n0.1422071\n0.1748049\n0.2888370\n0.0897873\n0.0704590\n1.0000000\n0.2833070\n0.3493524\n0.4143559\n\n\nESS7\n0.0057761\n0.2206383\n0.2134999\n0.2778982\n0.2589136\n0.2821851\n0.2833070\n1.0000000\n0.2356524\n0.6088579\n\n\nESS8\n-0.0206676\n0.0984444\n0.1010883\n0.2178073\n0.2409171\n0.0629151\n0.3493524\n0.2356524\n1.0000000\n0.4293874\n\n\ness_tot\n-0.0594733\n0.5981508\n0.5565852\n0.6121220\n0.5936136\n0.5718083\n0.4143559\n0.6088579\n0.4293874\n1.0000000"
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#correlation-tables---sjplot",
-    "href": "slides/lec-5_correlation.html#correlation-tables---sjplot",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "Correlation Tables - sjPlot",
-    "text": "Correlation Tables - sjPlot\n\nsleep_data %&gt;% \n  select(ESS1:ESS8) %&gt;% \n  tab_corr(na.deletion = \"listwise\", triangle = \"lower\")\n\n\n\n\n \nESS1\nESS2\nESS3\nESS4\nESS5\nESS6\nESS7\nESS8\n\n\nESS1\n \n \n \n \n \n \n \n \n\n\nESS2\n0.330***\n \n \n \n \n \n \n \n\n\nESS3\n0.278***\n0.198***\n \n \n \n \n \n \n\n\nESS4\n0.146***\n0.139***\n0.292***\n \n \n \n \n \n\n\nESS5\n0.230***\n0.219***\n0.195***\n0.258***\n \n \n \n \n\n\nESS6\n0.142***\n0.175***\n0.289***\n0.090***\n0.070**\n \n \n \n\n\nESS7\n0.221***\n0.213***\n0.278***\n0.259***\n0.282***\n0.283***\n \n \n\n\nESS8\n0.098***\n0.101***\n0.218***\n0.241***\n0.063*\n0.349***\n0.236***\n \n\n\nComputed correlation used pearson-method with listwise-deletion."
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#correlation-tables---sjplot-1",
-    "href": "slides/lec-5_correlation.html#correlation-tables---sjplot-1",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "Correlation Tables - sjPlot",
-    "text": "Correlation Tables - sjPlot\nSo many different cusomizations for this type of plot\nCan add titles, indicate what missingness and method\nSaves you a TON of time when putting it into a manuscript"
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#scatterplot",
-    "href": "slides/lec-5_correlation.html#scatterplot",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "Scatterplot",
-    "text": "Scatterplot\nBefore we had a scatterplot that looked like this:\n\nsleep_data %&gt;% \n  ggplot(aes(age, ess_tot)) + \n  geom_point() + \n  geom_smooth(method=\"lm\", se=FALSE) + \n  labs(\n    x = \"Age\", \n    y = \"ESS Total\", \n    title = \"Relationship between Age and Sleepiness\" \n  )"
-  },
-  {
-    "objectID": "slides/lec-5_correlation.html#fancier-scatterplot",
-    "href": "slides/lec-5_correlation.html#fancier-scatterplot",
-    "title": "Week 05: Correlation & Effect Sizes",
-    "section": "Fancier Scatterplot",
-    "text": "Fancier Scatterplot\nTake a look at ggstatsplot https://indrajeetpatil.github.io/ggstatsplot/\n\nggscatterstats(\n  data = sleep_data, \n  x = age, \n  y = ess_tot, \n  xlab = \"Age\", \n  ylab = \"ESS Total\", \n  title = \"Relationship between Age and Sleepiness\"\n)"
-  },
-  {
-    "objectID": "slides/lec-3_desc-viz.html#some-terminology",
-    "href": "slides/lec-3_desc-viz.html#some-terminology",
+    "objectID": "slides/lec-03_desc-viz.html#some-terminology",
+    "href": "slides/lec-03_desc-viz.html#some-terminology",
     "title": "Week 03: Describe & Vizualize",
     "section": "Some Terminology",
     "text": "Some Terminology\n\n\n\n\n\n\n\nPopulation\nSample\n\n\n\n\n\\(\\mu\\) (mu) = Population Mean\n\\(\\bar{X}\\) (x bar) = Sample Mean\n\n\n\\(\\sigma\\) (sigma) = Population Standard Deviation\n\\(s\\) = \\(\\hat{\\sigma}\\) = Sample Standard Deviation\n\n\n\\(\\sigma^2\\) (sigma squared) = Population Variance\n\\(s^2\\) = \\(\\hat{\\sigma^2}\\) = Sample Variance"
   },
   {
-    "objectID": "slides/lec-3_desc-viz.html#measures-of-central-tendency",
-    "href": "slides/lec-3_desc-viz.html#measures-of-central-tendency",
+    "objectID": "slides/lec-03_desc-viz.html#measures-of-central-tendency",
+    "href": "slides/lec-03_desc-viz.html#measures-of-central-tendency",
     "title": "Week 03: Describe & Vizualize",
     "section": "Measures of Central Tendency",
     "text": "Measures of Central Tendency\nFor a given set of observations, measures of central tendency allow us to get the “gist” of the data.\nThey tell us about where the “average” or the “mid-point” of the data lies or how much deviation there is from a central point.\nLet’s take a look at the data that we have already loaded in, and complete some of these tasks."
   },
   {
-    "objectID": "slides/lec-3_desc-viz.html#measures-of-variability",
-    "href": "slides/lec-3_desc-viz.html#measures-of-variability",
+    "objectID": "slides/lec-03_desc-viz.html#measures-of-variability",
+    "href": "slides/lec-03_desc-viz.html#measures-of-variability",
     "title": "Week 03: Describe & Vizualize",
     "section": "Measures of Variability",
     "text": "Measures of Variability\nThe overall spread of the data; How far from the middle?"
   },
   {
-    "objectID": "slides/lec-3_desc-viz.html#variance",
-    "href": "slides/lec-3_desc-viz.html#variance",
+    "objectID": "slides/lec-03_desc-viz.html#variance",
+    "href": "slides/lec-03_desc-viz.html#variance",
     "title": "Week 03: Describe & Vizualize",
     "section": "Variance",
     "text": "Variance\nThe sum of squared deviations\n\\[\\sigma^2 = \\frac{1}{N}\\sum_{i=1}^N(X-\\bar{X})^2\\]\n\\[\\hat{\\sigma}^2 = s^2 = \\frac{1}{N-1}\\sum_{i=1}^N(X-\\bar{X})^2\\]"
   },
   {
-    "objectID": "slides/lec-3_desc-viz.html#in-class-activity-variance",
-    "href": "slides/lec-3_desc-viz.html#in-class-activity-variance",
+    "objectID": "slides/lec-03_desc-viz.html#in-class-activity-variance",
+    "href": "slides/lec-03_desc-viz.html#in-class-activity-variance",
     "title": "Week 03: Describe & Vizualize",
     "section": "In-Class Activity: Variance",
     "text": "In-Class Activity: Variance\nOpen up Instagram (that is still a thing right?)\nIdentify a celebrity and look at their most recent Instagram posts.\nLet’s calculate the variance of their likes.\nGoogle Form"
   },
   {
-    "objectID": "slides/lec-3_desc-viz.html#variance-in-r",
-    "href": "slides/lec-3_desc-viz.html#variance-in-r",
+    "objectID": "slides/lec-03_desc-viz.html#variance-in-r",
+    "href": "slides/lec-03_desc-viz.html#variance-in-r",
     "title": "Week 03: Describe & Vizualize",
     "section": "Variance in R",
     "text": "Variance in R\nTo find the variance and standard deviation, we use var() and sd(), respectively. Find the variance and standard deviation of the age variable.\n\nvar(tipi$age)\n\n[1] 3.399093\n\nsd(tipi$age)\n\n[1] 1.843663"
   },
   {
-    "objectID": "slides/lec-3_desc-viz.html#describe",
-    "href": "slides/lec-3_desc-viz.html#describe",
+    "objectID": "slides/lec-03_desc-viz.html#describe",
+    "href": "slides/lec-03_desc-viz.html#describe",
     "title": "Week 03: Describe & Vizualize",
     "section": "describe()",
     "text": "describe()\nThis function automatically calculates all of the descriptives we reviewed above (and more!). Use the describe() function from the psych package on the entire sleep_data dataset.\nNotes: If you load a library at the beginning, you can directly call any function from it. Instead, you can call a function by library_name::function_name without loading the entire library.\n\npsych::describe(tipi)\n\n                    vars  n    mean       sd median trimmed    mad    min\nid                     1 99 1058.12    31.05 1059.0 1057.93  38.55 1006.0\nprogress               2 99  100.00     0.00  100.0  100.00   0.00  100.0\nduration_in_seconds    3 99 7197.29 34904.64 1461.0 1527.88 486.29  623.0\nconsent                4 99    1.00     0.00    1.0    1.00   0.00    1.0\ngenderid               5 99    4.46     0.82    4.0    4.47   1.48    1.0\ngenderid_7_text*       6 99    1.03     0.22    1.0    1.00   0.00    1.0\nsex                    7 99    1.51     0.50    2.0    1.51   0.00    1.0\nage                    8 99   19.78     1.84   20.0   19.53   1.48   17.0\nyear_school            9 99    2.18     1.22    2.0    2.04   1.48    1.0\nq85                   10 99    1.64     1.32    1.0    1.32   0.00    1.0\nq85_6_text*           11 99    1.03     0.22    1.0    1.00   0.00    1.0\ntipi_1                12 99    3.99     1.90    4.0    3.99   2.97    1.0\ntipi_2                13 99    4.15     1.53    4.0    4.23   1.48    1.0\ntipi_3                14 99    5.38     1.26    6.0    5.51   1.48    1.0\ntipi_4                15 99    4.29     1.69    5.0    4.31   1.48    1.0\ntipi_5                16 99    5.38     1.28    6.0    5.52   1.48    1.0\ntipi_6                17 99    4.76     1.64    5.0    4.84   1.48    1.0\ntipi_7                18 99    5.45     1.24    6.0    5.57   1.48    2.0\ntipi_8                19 99    3.17     1.70    3.0    3.09   1.48    1.0\ntipi_9                20 99    5.01     1.35    5.0    5.05   1.48    2.0\ntipi_10               21 99    3.10     1.48    3.0    3.04   1.48    1.0\nsleep_quality         22 99    2.56     1.15    2.0    2.46   1.48    1.0\nhours_of_sleep        23 99    6.51     1.04    7.0    6.63   0.00    1.0\ntipi_2r               24 99    3.85     1.53    4.0    3.77   1.48    1.0\ntipi_4r               25 99    3.71     1.69    3.0    3.69   1.48    1.0\ntipi_6r               26 99    3.24     1.64    3.0    3.16   1.48    1.0\ntipi_8r               27 99    4.83     1.70    5.0    4.91   1.48    1.0\ntipi_10r              28 99    4.90     1.48    5.0    4.96   1.48    1.0\nextra                 29 99    3.62     1.60    3.5    3.56   2.22    1.0\nagree                 30 99    4.65     1.08    4.5    4.63   0.74    2.0\nconsc                 31 99    5.11     1.22    5.5    5.15   1.48    2.0\nemo                   32 99    4.36     1.29    4.5    4.37   1.48    1.5\nopen                  33 99    5.14     1.04    5.0    5.19   0.74    2.5\n                       max    range  skew kurtosis      se\nid                    1112    106.0  0.03    -1.21    3.12\nprogress               100      0.0   NaN      NaN    0.00\nduration_in_seconds 252521 251898.0  6.57    42.24 3508.05\nconsent                  1      0.0   NaN      NaN    0.00\ngenderid                 7      6.0 -0.81     5.57    0.08\ngenderid_7_text*         3      2.0  7.70    61.15    0.02\nsex                      2      1.0 -0.02    -2.02    0.05\nage                     31     14.0  2.67    12.52    0.19\nyear_school              5      4.0  0.73    -0.44    0.12\nq85                      7      6.0  2.18     4.14    0.13\nq85_6_text*              3      2.0  7.70    61.15    0.02\ntipi_1                   7      6.0  0.01    -1.34    0.19\ntipi_2                   7      6.0 -0.46    -0.58    0.15\ntipi_3                   7      6.0 -0.86     0.58    0.13\ntipi_4                   7      6.0 -0.17    -0.95    0.17\ntipi_5                   7      6.0 -0.94     0.86    0.13\ntipi_6                   7      6.0 -0.46    -0.86    0.17\ntipi_7                   7      5.0 -0.65    -0.08    0.12\ntipi_8                   7      6.0  0.37    -1.12    0.17\ntipi_9                   7      5.0 -0.29    -0.81    0.14\ntipi_10                  7      6.0  0.35    -0.71    0.15\nsleep_quality            5      4.0  0.87     0.14    0.12\nhours_of_sleep           8      7.0 -2.01     5.99    0.10\ntipi_2r                  7      6.0  0.46    -0.58    0.15\ntipi_4r                  7      6.0  0.17    -0.95    0.17\ntipi_6r                  7      6.0  0.46    -0.86    0.17\ntipi_8r                  7      6.0 -0.37    -1.12    0.17\ntipi_10r                 7      6.0 -0.35    -0.71    0.15\nextra                    7      6.0  0.18    -0.98    0.16\nagree                    7      5.0  0.11     0.04    0.11\nconsc                    7      5.0 -0.32    -0.70    0.12\nemo                      7      5.5 -0.10    -0.54    0.13\nopen                     7      4.5 -0.48     0.13    0.10\n\n# or if you have already loaded the library\n\ndescribe(tipi)\n\n                    vars  n    mean       sd median trimmed    mad    min\nid                     1 99 1058.12    31.05 1059.0 1057.93  38.55 1006.0\nprogress               2 99  100.00     0.00  100.0  100.00   0.00  100.0\nduration_in_seconds    3 99 7197.29 34904.64 1461.0 1527.88 486.29  623.0\nconsent                4 99    1.00     0.00    1.0    1.00   0.00    1.0\ngenderid               5 99    4.46     0.82    4.0    4.47   1.48    1.0\ngenderid_7_text*       6 99    1.03     0.22    1.0    1.00   0.00    1.0\nsex                    7 99    1.51     0.50    2.0    1.51   0.00    1.0\nage                    8 99   19.78     1.84   20.0   19.53   1.48   17.0\nyear_school            9 99    2.18     1.22    2.0    2.04   1.48    1.0\nq85                   10 99    1.64     1.32    1.0    1.32   0.00    1.0\nq85_6_text*           11 99    1.03     0.22    1.0    1.00   0.00    1.0\ntipi_1                12 99    3.99     1.90    4.0    3.99   2.97    1.0\ntipi_2                13 99    4.15     1.53    4.0    4.23   1.48    1.0\ntipi_3                14 99    5.38     1.26    6.0    5.51   1.48    1.0\ntipi_4                15 99    4.29     1.69    5.0    4.31   1.48    1.0\ntipi_5                16 99    5.38     1.28    6.0    5.52   1.48    1.0\ntipi_6                17 99    4.76     1.64    5.0    4.84   1.48    1.0\ntipi_7                18 99    5.45     1.24    6.0    5.57   1.48    2.0\ntipi_8                19 99    3.17     1.70    3.0    3.09   1.48    1.0\ntipi_9                20 99    5.01     1.35    5.0    5.05   1.48    2.0\ntipi_10               21 99    3.10     1.48    3.0    3.04   1.48    1.0\nsleep_quality         22 99    2.56     1.15    2.0    2.46   1.48    1.0\nhours_of_sleep        23 99    6.51     1.04    7.0    6.63   0.00    1.0\ntipi_2r               24 99    3.85     1.53    4.0    3.77   1.48    1.0\ntipi_4r               25 99    3.71     1.69    3.0    3.69   1.48    1.0\ntipi_6r               26 99    3.24     1.64    3.0    3.16   1.48    1.0\ntipi_8r               27 99    4.83     1.70    5.0    4.91   1.48    1.0\ntipi_10r              28 99    4.90     1.48    5.0    4.96   1.48    1.0\nextra                 29 99    3.62     1.60    3.5    3.56   2.22    1.0\nagree                 30 99    4.65     1.08    4.5    4.63   0.74    2.0\nconsc                 31 99    5.11     1.22    5.5    5.15   1.48    2.0\nemo                   32 99    4.36     1.29    4.5    4.37   1.48    1.5\nopen                  33 99    5.14     1.04    5.0    5.19   0.74    2.5\n                       max    range  skew kurtosis      se\nid                    1112    106.0  0.03    -1.21    3.12\nprogress               100      0.0   NaN      NaN    0.00\nduration_in_seconds 252521 251898.0  6.57    42.24 3508.05\nconsent                  1      0.0   NaN      NaN    0.00\ngenderid                 7      6.0 -0.81     5.57    0.08\ngenderid_7_text*         3      2.0  7.70    61.15    0.02\nsex                      2      1.0 -0.02    -2.02    0.05\nage                     31     14.0  2.67    12.52    0.19\nyear_school              5      4.0  0.73    -0.44    0.12\nq85                      7      6.0  2.18     4.14    0.13\nq85_6_text*              3      2.0  7.70    61.15    0.02\ntipi_1                   7      6.0  0.01    -1.34    0.19\ntipi_2                   7      6.0 -0.46    -0.58    0.15\ntipi_3                   7      6.0 -0.86     0.58    0.13\ntipi_4                   7      6.0 -0.17    -0.95    0.17\ntipi_5                   7      6.0 -0.94     0.86    0.13\ntipi_6                   7      6.0 -0.46    -0.86    0.17\ntipi_7                   7      5.0 -0.65    -0.08    0.12\ntipi_8                   7      6.0  0.37    -1.12    0.17\ntipi_9                   7      5.0 -0.29    -0.81    0.14\ntipi_10                  7      6.0  0.35    -0.71    0.15\nsleep_quality            5      4.0  0.87     0.14    0.12\nhours_of_sleep           8      7.0 -2.01     5.99    0.10\ntipi_2r                  7      6.0  0.46    -0.58    0.15\ntipi_4r                  7      6.0  0.17    -0.95    0.17\ntipi_6r                  7      6.0  0.46    -0.86    0.17\ntipi_8r                  7      6.0 -0.37    -1.12    0.17\ntipi_10r                 7      6.0 -0.35    -0.71    0.15\nextra                    7      6.0  0.18    -0.98    0.16\nagree                    7      5.0  0.11     0.04    0.11\nconsc                    7      5.0 -0.32    -0.70    0.12\nemo                      7      5.5 -0.10    -0.54    0.13\nopen                     7      4.5 -0.48     0.13    0.10\n\n\nNOTE: Some variables are not numeric and are categorical variables of type character. By default, the describe() function forces non-numeric variables to be numeric and attempts to calculate descriptives for them. These variables are marked with an asterisk (*). In this case, it doesn’t make sense to calculate descriptive statistics for these variables, so we get a warning message and a bunch of NaN’s and NA’s for these variables.\nA better approach would be to remove non-numeric variables before you attempt to run numerical calculations on your dataset."
   },
   {
-    "objectID": "slides/lec-3_desc-viz.html#make-it-pretty",
-    "href": "slides/lec-3_desc-viz.html#make-it-pretty",
+    "objectID": "slides/lec-03_desc-viz.html#make-it-pretty",
+    "href": "slides/lec-03_desc-viz.html#make-it-pretty",
     "title": "Week 03: Describe & Vizualize",
     "section": "Make it Pretty",
     "text": "Make it Pretty\nUsing sjPlot (https://strengejacke.github.io/sjPlot/index.html) we can make things a little more publishable! You can use select() to also keep particular variables (maybe you don’t care about the skew)\n\ntipi %&gt;% \n  psych::describe() %&gt;% \n  sjPlot::tab_df()\n\n\n\n\nvars\nn\nmean\nsd\nmedian\ntrimmed\nmad\nmin\nmax\nrange\nskew\nkurtosis\nse\n\n\n1\n99\n1058.12\n31.05\n1059.00\n1057.93\n38.55\n1006.00\n1112\n106.00\n0.03\n-1.21\n3.12\n\n\n2\n99\n100.00\n0.00\n100.00\n100.00\n0.00\n100.00\n100\n0.00\nNaN\nNaN\n0.00\n\n\n3\n99\n7197.29\n34904.64\n1461.00\n1527.88\n486.29\n623.00\n252521\n251898.00\n6.57\n42.24\n3508.05\n\n\n4\n99\n1.00\n0.00\n1.00\n1.00\n0.00\n1.00\n1\n0.00\nNaN\nNaN\n0.00\n\n\n5\n99\n4.46\n0.82\n4.00\n4.47\n1.48\n1.00\n7\n6.00\n-0.81\n5.57\n0.08\n\n\n6\n99\n1.03\n0.22\n1.00\n1.00\n0.00\n1.00\n3\n2.00\n7.70\n61.15\n0.02\n\n\n7\n99\n1.51\n0.50\n2.00\n1.51\n0.00\n1.00\n2\n1.00\n-0.02\n-2.02\n0.05\n\n\n8\n99\n19.78\n1.84\n20.00\n19.53\n1.48\n17.00\n31\n14.00\n2.67\n12.52\n0.19\n\n\n9\n99\n2.18\n1.22\n2.00\n2.04\n1.48\n1.00\n5\n4.00\n0.73\n-0.44\n0.12\n\n\n10\n99\n1.64\n1.32\n1.00\n1.32\n0.00\n1.00\n7\n6.00\n2.18\n4.14\n0.13\n\n\n11\n99\n1.03\n0.22\n1.00\n1.00\n0.00\n1.00\n3\n2.00\n7.70\n61.15\n0.02\n\n\n12\n99\n3.99\n1.90\n4.00\n3.99\n2.97\n1.00\n7\n6.00\n0.01\n-1.34\n0.19\n\n\n13\n99\n4.15\n1.53\n4.00\n4.23\n1.48\n1.00\n7\n6.00\n-0.46\n-0.58\n0.15\n\n\n14\n99\n5.38\n1.26\n6.00\n5.51\n1.48\n1.00\n7\n6.00\n-0.86\n0.58\n0.13\n\n\n15\n99\n4.29\n1.69\n5.00\n4.31\n1.48\n1.00\n7\n6.00\n-0.17\n-0.95\n0.17\n\n\n16\n99\n5.38\n1.28\n6.00\n5.52\n1.48\n1.00\n7\n6.00\n-0.94\n0.86\n0.13\n\n\n17\n99\n4.76\n1.64\n5.00\n4.84\n1.48\n1.00\n7\n6.00\n-0.46\n-0.86\n0.17\n\n\n18\n99\n5.45\n1.24\n6.00\n5.57\n1.48\n2.00\n7\n5.00\n-0.65\n-0.08\n0.12\n\n\n19\n99\n3.17\n1.70\n3.00\n3.09\n1.48\n1.00\n7\n6.00\n0.37\n-1.12\n0.17\n\n\n20\n99\n5.01\n1.35\n5.00\n5.05\n1.48\n2.00\n7\n5.00\n-0.29\n-0.81\n0.14\n\n\n21\n99\n3.10\n1.48\n3.00\n3.04\n1.48\n1.00\n7\n6.00\n0.35\n-0.71\n0.15\n\n\n22\n99\n2.56\n1.15\n2.00\n2.46\n1.48\n1.00\n5\n4.00\n0.87\n0.14\n0.12\n\n\n23\n99\n6.51\n1.04\n7.00\n6.63\n0.00\n1.00\n8\n7.00\n-2.01\n5.99\n0.10\n\n\n24\n99\n3.85\n1.53\n4.00\n3.77\n1.48\n1.00\n7\n6.00\n0.46\n-0.58\n0.15\n\n\n25\n99\n3.71\n1.69\n3.00\n3.69\n1.48\n1.00\n7\n6.00\n0.17\n-0.95\n0.17\n\n\n26\n99\n3.24\n1.64\n3.00\n3.16\n1.48\n1.00\n7\n6.00\n0.46\n-0.86\n0.17\n\n\n27\n99\n4.83\n1.70\n5.00\n4.91\n1.48\n1.00\n7\n6.00\n-0.37\n-1.12\n0.17\n\n\n28\n99\n4.90\n1.48\n5.00\n4.96\n1.48\n1.00\n7\n6.00\n-0.35\n-0.71\n0.15\n\n\n29\n99\n3.62\n1.60\n3.50\n3.56\n2.22\n1.00\n7\n6.00\n0.18\n-0.98\n0.16\n\n\n30\n99\n4.65\n1.08\n4.50\n4.63\n0.74\n2.00\n7\n5.00\n0.11\n0.04\n0.11\n\n\n31\n99\n5.11\n1.22\n5.50\n5.15\n1.48\n2.00\n7\n5.00\n-0.32\n-0.70\n0.12\n\n\n32\n99\n4.36\n1.29\n4.50\n4.37\n1.48\n1.50\n7\n5.50\n-0.10\n-0.54\n0.13\n\n\n33\n99\n5.14\n1.04\n5.00\n5.19\n0.74\n2.50\n7\n4.50\n-0.48\n0.13\n0.10"
   },
   {
-    "objectID": "slides/lec-3_desc-viz.html#ggplot2-from-the-tidyverse",
-    "href": "slides/lec-3_desc-viz.html#ggplot2-from-the-tidyverse",
+    "objectID": "slides/lec-03_desc-viz.html#ggplot2-from-the-tidyverse",
+    "href": "slides/lec-03_desc-viz.html#ggplot2-from-the-tidyverse",
     "title": "Week 03: Describe & Vizualize",
     "section": "ggplot2 from the tidyverse",
     "text": "ggplot2 from the tidyverse\nSince we have already installed and loaded the library, we don’t have to do anything else at this point!\nggplot2 follows the “grammar of graphics”\n\nTheoretical framework for creating data visualizations\nBreaks the process down into separate components:\n\n\n\nData\nAesthetics (aes)\nGeometric Objects (geoms)\n\nFaceting\nThemes"
   },
   {
-    "objectID": "slides/lec-3_desc-viz.html#grammar-of-graphics",
-    "href": "slides/lec-3_desc-viz.html#grammar-of-graphics",
+    "objectID": "slides/lec-03_desc-viz.html#grammar-of-graphics",
+    "href": "slides/lec-03_desc-viz.html#grammar-of-graphics",
     "title": "Week 03: Describe & Vizualize",
     "section": "Grammar of Graphics",
     "text": "Grammar of Graphics"
   },
   {
-    "objectID": "slides/lec-3_desc-viz.html#ggplot2-syntax",
-    "href": "slides/lec-3_desc-viz.html#ggplot2-syntax",
+    "objectID": "slides/lec-03_desc-viz.html#ggplot2-syntax",
+    "href": "slides/lec-03_desc-viz.html#ggplot2-syntax",
     "title": "Week 03: Describe & Vizualize",
     "section": "ggplot2 syntax",
     "text": "ggplot2 syntax\nThere is a basic structure to create a plot within ggplot2, and consists of at least these three things:\n\nA Data Set\nCoordinate System\nGeoms - visual marks to represent the data points\n\nIn R it looks like this:\n\nggplot(data = &lt;DATA&gt;) + \n  &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;MAPPINGS&gt;))\n\n#or how I like to do it\n&lt;DATA&gt; %&gt;% \n  ggplot(aes(&lt;MAPPINGS&gt;)) + \n  &lt;GEOM_FUNCTION&gt;()"
   },
   {
-    "objectID": "slides/lec-3_desc-viz.html#ggplot2-syntax-1",
-    "href": "slides/lec-3_desc-viz.html#ggplot2-syntax-1",
+    "objectID": "slides/lec-03_desc-viz.html#ggplot2-syntax-1",
+    "href": "slides/lec-03_desc-viz.html#ggplot2-syntax-1",
     "title": "Week 03: Describe & Vizualize",
     "section": "ggplot2 syntax",
     "text": "ggplot2 syntax\nLet’s start with a basic figure with our TIPI data\nFirst we will define the data that we are using and the variables we are visualizing\n\n#the dataset is called penguins\n\ntipi %&gt;% \n  #including the variables we want to visualize\n  ggplot(aes(x = emo, \n             y = extra))\n\nWhat happens?"
   },
   {
-    "objectID": "slides/lec-3_desc-viz.html#adding-in-color",
-    "href": "slides/lec-3_desc-viz.html#adding-in-color",
+    "objectID": "slides/lec-03_desc-viz.html#adding-in-color",
+    "href": "slides/lec-03_desc-viz.html#adding-in-color",
     "title": "Week 03: Describe & Vizualize",
     "section": "Adding in Color",
     "text": "Adding in Color\nMaybe we would like to have each of the points colored by their respective sex\nThis information will be added to the aes() within the geom_point() layer\n\ntipi %&gt;% \n  ggplot(aes(x = emo, \n             y = extra)) + \n  geom_point(aes(color=sex))"
   },
   {
-    "objectID": "slides/lec-3_desc-viz.html#including-a-fit-line",
-    "href": "slides/lec-3_desc-viz.html#including-a-fit-line",
+    "objectID": "slides/lec-03_desc-viz.html#including-a-fit-line",
+    "href": "slides/lec-03_desc-viz.html#including-a-fit-line",
     "title": "Week 03: Describe & Vizualize",
     "section": "Including a fit line",
     "text": "Including a fit line\nWhy don’t we put in a line that represents the relationship between these variables?\nWe will want to add another layer/geom\n\ntipi %&gt;% \n  ggplot(aes(x = emo, \n             y = extra)) + \n  geom_point(aes(color=sex)) + \n  geom_smooth()\n\n\nThat looks a little wonky…why is that? Did you get a note in the console?"
   },
   {
-    "objectID": "slides/lec-3_desc-viz.html#including-a-fit-line-1",
-    "href": "slides/lec-3_desc-viz.html#including-a-fit-line-1",
+    "objectID": "slides/lec-03_desc-viz.html#including-a-fit-line-1",
+    "href": "slides/lec-03_desc-viz.html#including-a-fit-line-1",
     "title": "Week 03: Describe & Vizualize",
     "section": "Including a fit line",
     "text": "Including a fit line\nThe geom_smooth() defaults to using a loess line to fit to the data\nIn order to update that, we need to change some of the defaults for that layer and specify that we want a “linear model” or lm function to the data\n\ntipi %&gt;% \n  ggplot(aes(x = emo, \n             y = extra)) + \n  geom_point(aes(color=sex)) + \n  geom_smooth(method = 'lm')\n\n\nDid that look a little better?"
   },
   {
-    "objectID": "slides/lec-3_desc-viz.html#individual-fit-lines",
-    "href": "slides/lec-3_desc-viz.html#individual-fit-lines",
+    "objectID": "slides/lec-03_desc-viz.html#individual-fit-lines",
+    "href": "slides/lec-03_desc-viz.html#individual-fit-lines",
     "title": "Week 03: Describe & Vizualize",
     "section": "Individual fit lines",
     "text": "Individual fit lines\nIt might make more sense to have individual lines for each of the species instead of something that is across all\n\ntipi %&gt;% \n  ggplot(aes(x = emo, \n             y = extra, \n             color = sex)) + \n  geom_point(aes(color=sex)) + \n  geom_smooth(method = 'lm')\n\n\nWhat did we move around from the last set of code?\nWhat was the error you got?"
   },
   {
-    "objectID": "slides/lec-3_desc-viz.html#data-types",
-    "href": "slides/lec-3_desc-viz.html#data-types",
+    "objectID": "slides/lec-03_desc-viz.html#data-types",
+    "href": "slides/lec-03_desc-viz.html#data-types",
     "title": "Week 03: Describe & Vizualize",
     "section": "Data Types",
     "text": "Data Types\nIt looks like R is looking at our binary variable as a continuous number\nWe want to be able to tell our code that these are categories/factors\nIf we want to change or compute a new variable, what do we use?\n\n\ntipi &lt;- tipi %&gt;% \n  mutate(sex = as.factor(sex))"
   },
   {
-    "objectID": "slides/lec-3_desc-viz.html#updating-labelstitle",
-    "href": "slides/lec-3_desc-viz.html#updating-labelstitle",
+    "objectID": "slides/lec-03_desc-viz.html#updating-labelstitle",
+    "href": "slides/lec-03_desc-viz.html#updating-labelstitle",
     "title": "Week 03: Describe & Vizualize",
     "section": "Updating Labels/Title",
     "text": "Updating Labels/Title\nIt will default to including the variable names as the x and y labels, but that isn’t something that makes sense. Also would be good to have a title!\nWe add on another layer called labs() for our labels (link)\n\ntipi %&gt;% \n  ggplot(aes(x = emo, \n             y = extra, \n             color = sex)) + \n  geom_point(aes(color=sex)) + \n  geom_smooth(method = 'lm') + \n  labs(\n    title = \"TIPI Data\",\n    subtitle = \"Extraversion by Emotional Stability\", \n    x = \"motional Stability\", \n    y = \"Extraversion\", \n    color = \"Sex at Birth\"\n  )"
   },
   {
-    "objectID": "slides/lec-3_desc-viz.html#other-graphs",
-    "href": "slides/lec-3_desc-viz.html#other-graphs",
+    "objectID": "slides/lec-03_desc-viz.html#other-graphs",
+    "href": "slides/lec-03_desc-viz.html#other-graphs",
     "title": "Week 03: Describe & Vizualize",
     "section": "Other Graphs",
     "text": "Other Graphs\nTake another look at the ggplot cheatsheet\nWhat else is a useful chart?"
+  },
+  {
+    "objectID": "slides/lec-11_categor.html#today",
+    "href": "slides/lec-11_categor.html#today",
+    "title": "Week 11: Categorical Predictors & Logistic Regression",
+    "section": "Today…",
+    "text": "Today…"
+  },
+  {
+    "objectID": "slides/lec-11_categor.html#regression",
+    "href": "slides/lec-11_categor.html#regression",
+    "title": "Week 11: Categorical Predictors & Logistic Regression",
+    "section": "Regression",
+    "text": "Regression\n3 main reasons for using regression:\n\nAs a description (what is the average salary for men and women?)\nAs part of causal inference (Does being a woman result in a lower salary?)\nFor prediction (“What happens if…” questions)"
+  },
+  {
+    "objectID": "slides/lec-11_categor.html#multiple-regression",
+    "href": "slides/lec-11_categor.html#multiple-regression",
+    "title": "Week 11: Categorical Predictors & Logistic Regression",
+    "section": "Multiple Regression",
+    "text": "Multiple Regression\nWe may want to include additional predictors into our model to best explain the variance in an outcome:\n\\[ Y_i = b_0 + b_1X_{1i} + b_2X_{2i} + ... + b_nX_{ni}+ e_i \\]"
+  },
+  {
+    "objectID": "slides/lec-11_categor.html#reporting-standardized-or-unstandardized",
+    "href": "slides/lec-11_categor.html#reporting-standardized-or-unstandardized",
+    "title": "Week 11: Categorical Predictors & Logistic Regression",
+    "section": "Reporting Standardized or Unstandardized?",
+    "text": "Reporting Standardized or Unstandardized?\nINTERPRET b:\n\nWhen the variables are measured in a meaningful metric\nTo compare the relative effects of different predictors in the same sample\n\nINTERPRET β:\n\nWhen the variables are not measured in a meaningful metric\nTo compare effects across samples or studies"
+  },
+  {
+    "objectID": "slides/lec-11_categor.html#multiple-regression-example",
+    "href": "slides/lec-11_categor.html#multiple-regression-example",
+    "title": "Week 11: Categorical Predictors & Logistic Regression",
+    "section": "Multiple Regression: Example",
+    "text": "Multiple Regression: Example\nPreviously, we predicted the # of Transformers movies someone watched by their age, income and # of books read\n\ncah_data &lt;- import(here(\"files\", \"data\", \n                        \"CAH.csv\")) %&gt;% \n  mutate(across(where(is.character), ~na_if(., \"\")))\n\nThe regression equation would look something like this:\n\\[\nY = b_0 + b_1X_1 + b_2X_2 + b_3X_3 + e\n\\]"
+  },
+  {
+    "objectID": "slides/lec-11_categor.html#categorical-predictors",
+    "href": "slides/lec-11_categor.html#categorical-predictors",
+    "title": "Week 11: Categorical Predictors & Logistic Regression",
+    "section": "Categorical Predictors",
+    "text": "Categorical Predictors\nTypically identified by a grouping variable that may be a character\n\nglimpse(cah_data$political_affiliation)\n\n chr [1:1000] \"Democrat\" \"Democrat\" \"Independent\" \"Republican\" \"Democrat\" ...\n\n\nNeed to change the variable from character to factor which will assign a number to each group\n\ncah_data &lt;- cah_data %&gt;%\n  mutate(\n    pol = as.factor(political_affiliation),\n    ghosts = as.factor(ghosts)\n    )\n\nglimpse(cah_data$pol)\n\n Factor w/ 3 levels \"Democrat\",\"Independent\",..: 1 1 2 3 1 1 2 3 3 1 ..."
+  },
+  {
+    "objectID": "slides/lec-11_categor.html#dummy-coding",
+    "href": "slides/lec-11_categor.html#dummy-coding",
+    "title": "Week 11: Categorical Predictors & Logistic Regression",
+    "section": "Dummy Coding",
+    "text": "Dummy Coding\nNumerical placeholders used to represent categorical variables\nTaking a categorical variable with \\(k\\) levels (e.g., Democratic, Independent, Republican) into \\(k-1\\) binary variables.\n\n\n\npolitical_affiliation\nbecomes\nInd (binary1)\nRep (binary2)\n\n\n\n\nDemocrat\n–&gt;\n0\n0\n\n\nIndependent\n–&gt;\n1\n0\n\n\nRepublican\n–&gt;\n0\n1\n\n\n…\n\n…\n…"
+  },
+  {
+    "objectID": "slides/lec-11_categor.html#categorical-regression",
+    "href": "slides/lec-11_categor.html#categorical-regression",
+    "title": "Week 11: Categorical Predictors & Logistic Regression",
+    "section": "Categorical Regression",
+    "text": "Categorical Regression\nGoing back to our Transformers dataset, let’s see how our political affiliation variable can predict # of transformers movies\nUsually you have to create the separate dummy variables, but not in R\n\ncat1 &lt;- lm(transformers ~ pol,\n           data = cah_data)\n\nYou can also double check the dummy/contrast coding\n\ncontrasts(cah_data$pol)\n\n            Independent Republican\nDemocrat              0          0\nIndependent           1          0\nRepublican            0          1"
+  },
+  {
+    "objectID": "slides/lec-11_categor.html#categories-in-action",
+    "href": "slides/lec-11_categor.html#categories-in-action",
+    "title": "Week 11: Categorical Predictors & Logistic Regression",
+    "section": "Categories in Action",
+    "text": "Categories in Action\nGoal: Gain greater familiarity with dummy coding and categorical predictors\nScenario: We are researchers examining the impact of a new intervention on reducing the vocalization “6️⃣7️⃣” in the youths. We have done classroom observations to collect data on how many times students say “6️⃣7️⃣” after receiving the intervention. This is the data you have in front of you. Youths have been randomly assigned to one of 3 groups, and we need to determine which had the biggest impact.\n\n\n\n\n\n\nNote\n\n\nYou will submit one Rmd file for the whole group. Be sure to include all group member’s names."
+  },
+  {
+    "objectID": "slides/lec-11_categor.html#categories-in-action-using-r",
+    "href": "slides/lec-11_categor.html#categories-in-action-using-r",
+    "title": "Week 11: Categorical Predictors & Logistic Regression",
+    "section": "Categories in Action: Using R",
+    "text": "Categories in Action: Using R\nNow that we have the data entered appropriately, let’s double check, and include some additional variables!\nImport dataset, confirm predictions, include pre-scores to see how that changes interpretation\n\n\n\n\n\n\nWarning\n\n\nDr. Haraden is going to start opening up R and doing a follow-along thing. You have been warned"
+  },
+  {
+    "objectID": "slides/lec-11_categor.html#status",
+    "href": "slides/lec-11_categor.html#status",
+    "title": "Week 11: Categorical Predictors & Logistic Regression",
+    "section": "6️⃣7️⃣ Status",
+    "text": "6️⃣7️⃣ Status\nIn our last example, we were able to see how these categorical variables could predict a continuous variable. This is perfect for linear regression.\nWhat if we want to see if students have “recovered” from 6️⃣7️⃣?\nWe would then ask: ““Which participants dropped below the clinical threshold for 6️⃣7️⃣ at follow-up? Now, our outcome is either recovered or not recovered.”"
+  },
+  {
+    "objectID": "slides/lec-11_categor.html#recovery-status",
+    "href": "slides/lec-11_categor.html#recovery-status",
+    "title": "Week 11: Categorical Predictors & Logistic Regression",
+    "section": "Recovery Status",
+    "text": "Recovery Status\nNow we have a binary outcome; Yes/No recovery\nWhat happens when we fit a linear regression? What are the chances of someone with a pre-score of 12 recovering by the follow-up?\n\n\nCode\ncat_reg &lt;- import(here(\"files\", \"data\", \n                       \"cat_reg_complete.xlsx\")) %&gt;% \n  janitor::clean_names() %&gt;% \n  # 1 = recovered; 0 = not recovered\n  mutate(recover = if_else(post_score &gt; 12, 0, 1))\n\ncat_reg %&gt;% \n  ggplot(aes(pre_score, recover)) +\n  geom_jitter(width = 0, height = 0.05, alpha = 0.5) + \n  geom_smooth(method = \"lm\", se = FALSE) + \n  labs(\n    title = \"Pre-Score predicting Recovery\"\n  )"
+  },
+  {
+    "objectID": "slides/lec-11_categor.html#probability-to-odds-to-log-odds",
+    "href": "slides/lec-11_categor.html#probability-to-odds-to-log-odds",
+    "title": "Week 11: Categorical Predictors & Logistic Regression",
+    "section": "Probability to Odds to Log-Odds",
+    "text": "Probability to Odds to Log-Odds\nProbability (p): The chance of an event happening. Ranges from 0 to 1\nOdds: The ratio of the probability of an event happening to it not happening.\n\n\\(Odds = \\frac{p}{1-p}\\)\nRanges from 0 to ∞. An odds of 4 means the event is 4 times more likely to happen than not.\n\nLog-Odds (logit): The natural log of the odds\n\n\\(Logit(p) = ln(\\frac{p}{1-p})\\)\nRanges from -∞ to +∞\n\n\n\n\n\n\n\nImportant\n\n\nThis step transforms our bounded outcome variable (0/1) to an unbound one!"
+  },
+  {
+    "objectID": "slides/lec-11_categor.html#generalized-linear-model-glm",
+    "href": "slides/lec-11_categor.html#generalized-linear-model-glm",
+    "title": "Week 11: Categorical Predictors & Logistic Regression",
+    "section": "Generalized Linear Model (GLM)",
+    "text": "Generalized Linear Model (GLM)\nA generalization of a linear model (duh) that is used when the response variable has a non-normal error distribution\nMost commonly used when there is a binary (0-1) or count variable as the outcome (we will focus on the binary)\nUltimately, we are trying to identify the probability of the outcome taking the value 1 (“success”) that is being modeled in relation to the predictor variables"
+  },
+  {
+    "objectID": "slides/lec-11_categor.html#odds-ratios-or",
+    "href": "slides/lec-11_categor.html#odds-ratios-or",
+    "title": "Week 11: Categorical Predictors & Logistic Regression",
+    "section": "Odds Ratios (OR)",
+    "text": "Odds Ratios (OR)\nOR &gt; 1: The predictor increases the odds of the outcome. (e.g., OR of 2.5 means the odds of believing in ghosts are 2.5 times higher).\nOR &lt; 1: The predictor decreases the odds of the outcome. (e.g., OR of 0.4 means the odds of believing in ghosts are 60% lower).\nOR = 1: The predictor has no effect on the odds of the outcome."
+  },
+  {
+    "objectID": "slides/lec-11_categor.html#visualization",
+    "href": "slides/lec-11_categor.html#visualization",
+    "title": "Week 11: Categorical Predictors & Logistic Regression",
+    "section": "Visualization",
+    "text": "Visualization\nExtract the model implied probabilities for each individual\n\nprobs &lt;- broom::augment(ln1, type.predict = \"response\")\n\nPlotting the predicted probabilities\n\nprobs %&gt;% \nggplot(aes(age, .fitted)) +\n  geom_line(color = \"blue\", linewidth = 1.5) +\n  labs(\n    title = \"Predicted Probability of Believing in Ghosts by Age\",\n    subtitle = \"Holding # of Books and Transformers Movies at their mean\",\n    x = \"Age (years)\",\n    y = \"Predicted Probability of Believing in Ghosts\"\n  ) +\n  ylim(0, 1) + # Keep the y-axis bounded at 0 and 1\n  theme_minimal()"
+  },
+  {
+    "objectID": "slides/lec-11_categor.html#logistic-regression-summary",
+    "href": "slides/lec-11_categor.html#logistic-regression-summary",
+    "title": "Week 11: Categorical Predictors & Logistic Regression",
+    "section": "Logistic Regression: Summary",
+    "text": "Logistic Regression: Summary\n\n\n\n\n\n\n\n\nFeature\nLinear Regression\nLogistic Regression\n\n\n\n\nOutcome Variable\nContinuous\nCategorical (Binary)\n\n\nEquation\n\\(Y=β_0+β_1X\\)\n\\(ln⁡(\\frac{p}{1-p})=β_0+β_1X\\)\n\n\nKey Interpretation\n\\(\\beta_1\\) is the change in the mean of Y\n\\(\\exp(\\beta_1)\\) is theodds ratio\n\n\nR Function\nlm()\nglm(..., family=\"binomial\")"
   },
   {
     "objectID": "slides/lec-6_mean.html#today",
@@ -2919,7 +2943,7 @@
     "href": "slides/lec-13_mod.html#testing-simple-slopes",
     "title": "Week 13: Intro to Moderation",
     "section": "Testing simple slopes",
-    "text": "Testing simple slopes\n\n#https://easystats.github.io/modelbased/articles/introduction_comparisons_3.html?q=simple%20slo#contrasts-and-comparisons-for-slopes-of-numeric-predictors\n\npred &lt;- estimate_means(imodel, c(\"Support\", \"Anxiety = c(5,6,7)\"))\nplot(pred)\n\nestimate_slopes(imodel, \"Support\", by = \"Anxiety = c(5,6,7)\")\n\nEstimated Marginal Effects\n\nAnxiety | Slope |   SE |       95% CI | t(114) |      p\n-------------------------------------------------------\n5       |  0.46 | 0.05 | [0.36, 0.56] |   8.83 | &lt; .001\n6       |  0.42 | 0.05 | [0.32, 0.51] |   8.44 | &lt; .001\n7       |  0.37 | 0.05 | [0.28, 0.47] |   7.47 | &lt; .001\n\nMarginal effects estimated for Support\nType of slope was dY/dX"
+    "text": "Testing simple slopes\n\n#https://easystats.github.io/modelbased/articles/introduction_comparisons_3.html?q=simple%20slo#contrasts-and-comparisons-for-slopes-of-numeric-predictors\n\npred &lt;- estimate_means(imodel, c(\"Support\", \"Anxiety = c(5,6,7)\"))\nplot(pred)\n\nestimate_slopes(imodel, \"Support\", by = \"Anxiety = c(5,6,7)\")\n\nEstimated Marginal Effects\n\nAnxiety | Slope |   SE |       95% CI | t(114) |      p\n-------------------------------------------------------\n5       |  0.46 | 0.05 | [0.36, 0.56] |   8.83 | &lt; .001\n6       |  0.42 | 0.05 | [0.32, 0.51] |   8.44 | &lt; .001\n7       |  0.37 | 0.05 | [0.28, 0.47] |   7.46 | &lt; .001\n\nMarginal effects estimated for Support\nType of slope was dY/dX"
   },
   {
     "objectID": "slides/lec-13_mod.html#testing-simple-slopes-1",
@@ -2933,7 +2957,7 @@
     "href": "slides/lec-13_mod.html#simple-slopes---significance-tests",
     "title": "Week 13: Intro to Moderation",
     "section": "Simple slopes - Significance tests",
-    "text": "Simple slopes - Significance tests\nWhat if you want to compare slopes to each other? How would we test this?\n\nThe test of the interaction coefficient is equivalent to the test of the difference in slopes at levels of Z separated by 1 unit.\n\ncoef(summary(imodel))\n\n                   Estimate Std. Error   t value           Pr(&gt;|t|)\n(Intercept)     -2.73966246 1.12100519 -2.443934 0.0160605206624654\nAnxiety          0.61561220 0.13010161  4.731780 0.0000064353728132\nSupport          0.66696689 0.09547464  6.985802 0.0000000002017698\nAnxiety:Support -0.04174076 0.01309328 -3.187954 0.0018497364252185"
+    "text": "Simple slopes - Significance tests\nWhat if you want to compare slopes to each other? How would we test this?\n\nThe test of the interaction coefficient is equivalent to the test of the difference in slopes at levels of Z separated by 1 unit.\n\ncoef(summary(imodel))\n\n                   Estimate Std. Error   t value           Pr(&gt;|t|)\n(Intercept)     -2.73966246 1.12100519 -2.443934 0.0160605206624655\nAnxiety          0.61561220 0.13010161  4.731780 0.0000064353728132\nSupport          0.66696689 0.09547464  6.985802 0.0000000002017698\nAnxiety:Support -0.04174076 0.01309328 -3.187954 0.0018497364252185"
   },
   {
     "objectID": "slides/lec-9_models.html#today",
@@ -3537,7 +3561,7 @@
     "text": "We will focus on refamiliarizing ourselves with the process of regression (and maybe a little bit of ANOVA). Activities will include collecting some data, building regression models from the ground up, looking at the LEGO dataset (maybe), and further connecting our research questions to the types of analyses that we are going to be doing.\n\n\n\nDownload LEGO data (.csv)\nStroop Task\nStroop Task Data\n\n\n\n\n💻 Models & Variability\n\n\n\n\nIt’s in the slides this time\n\n\n\n\n📋Lab 9 - Models & Research Questions\n📖Chapter 15.3 - 15.5 - LSR\n📖Chapter 8 - IMS\n\n\nBack to course schedule ⏎",
     "crumbs": [
       "Weekly Materials",
-      "Week 9 - Multiple Reg."
+      "Week 9 - Multiple Reg. II"
     ]
   },
   {
@@ -3548,7 +3572,7 @@
     "text": "Download LEGO data (.csv)\nStroop Task\nStroop Task Data",
     "crumbs": [
       "Weekly Materials",
-      "Week 9 - Multiple Reg."
+      "Week 9 - Multiple Reg. II"
     ]
   },
   {
@@ -3559,7 +3583,7 @@
     "text": "💻 Models & Variability",
     "crumbs": [
       "Weekly Materials",
-      "Week 9 - Multiple Reg."
+      "Week 9 - Multiple Reg. II"
     ]
   },
   {
@@ -3570,7 +3594,7 @@
     "text": "It’s in the slides this time",
     "crumbs": [
       "Weekly Materials",
-      "Week 9 - Multiple Reg."
+      "Week 9 - Multiple Reg. II"
     ]
   },
   {
@@ -3581,7 +3605,7 @@
     "text": "📋Lab 9 - Models & Research Questions\n📖Chapter 15.3 - 15.5 - LSR\n📖Chapter 8 - IMS\n\n\nBack to course schedule ⏎",
     "crumbs": [
       "Weekly Materials",
-      "Week 9 - Multiple Reg."
+      "Week 9 - Multiple Reg. II"
     ]
   },
   {
@@ -3589,18 +3613,7 @@
     "href": "weeks/week-2.html",
     "title": "Week 2",
     "section": "",
-    "text": "You survived the first week! I hope your classes are off to a good start. Although we don’t have class this week (Labor Day), we will still have readings and an assignment. Please view this page to make sure you have all the information you need to get going.\nWe are going to work on expanding our comfort with the syntax in R and using the tidyverse for some more data wrangling. We will import some new data, and compute some new values. This will be a skill that will be useful no matter what data you are working with. There will be plenty of practice with this!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n“Illustrations from the Openscapes blog Tidy Data for reproducibility, efficiency, and collaboration by Julia Lowndes and Allison Horst”\n\n\n\nBe sure to have read the chapters!\nDownload the data for this week\n\nDownload From Drive (CSV)\n\n\n\nNone (Labor Day)\n\n\n\nNo Class this week (Labor Day)\n\n\n\n📋Lab 2 - Getting Comfy with Data Wrangling\n📖Read Chapter 5 - LSR\n📖Read Chapter 1 & 3 - R4DS\n\n\nBack to course schedule ⏎",
-    "crumbs": [
-      "Weekly Materials",
-      "Week 2 - Data Wrangling"
-    ]
-  },
-  {
-    "objectID": "weeks/week-2.html#prepare",
-    "href": "weeks/week-2.html#prepare",
-    "title": "Week 2",
-    "section": "",
-    "text": "Be sure to have read the chapters!\nDownload the data for this week\n\nDownload From Drive (CSV)",
+    "text": "You survived the first week! I hope your classes are off to a good start. I’m looking forward to getting to meet you all in person this week.\nThis session we are going to set up our foundation for using R. One of the most helpful things is the R Project. Having a project file will help us when we read in data, which is often one of the hardest parts to start with. We will import some new data, and compute some new values. This will be a skill that will be useful no matter what data you are working with. There will be plenty of practice with this!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n“Illustrations from the Openscapes blog Tidy Data for reproducibility, efficiency, and collaboration by Julia Lowndes and Allison Horst”\n\n\n💻R FoundationsR Foundation Slides (.pptx)\n\n\n\nCookie RatingsCookie Ratings (.csv)\n\n\n\n🍪 The R KitchenWelcome to the Kitchen (.docx)\n\n\n\n📋Lab 2 - Getting Comfy with Data Wrangling\n📖Read Chapter 5 - LSR\n📖Read Chapter 1 & 3 - R4DS\n\n\nBack to course schedule ⏎",
     "crumbs": [
       "Weekly Materials",
       "Week 2 - Data Wrangling"
@@ -3611,18 +3624,29 @@
     "href": "weeks/week-2.html#slides",
     "title": "Week 2",
     "section": "",
-    "text": "None (Labor Day)",
+    "text": "💻R FoundationsR Foundation Slides (.pptx)",
     "crumbs": [
       "Weekly Materials",
       "Week 2 - Data Wrangling"
     ]
   },
   {
-    "objectID": "weeks/week-2.html#in-class-activity",
-    "href": "weeks/week-2.html#in-class-activity",
+    "objectID": "weeks/week-2.html#data",
+    "href": "weeks/week-2.html#data",
     "title": "Week 2",
     "section": "",
-    "text": "No Class this week (Labor Day)",
+    "text": "Cookie RatingsCookie Ratings (.csv)",
+    "crumbs": [
+      "Weekly Materials",
+      "Week 2 - Data Wrangling"
+    ]
+  },
+  {
+    "objectID": "weeks/week-2.html#activity",
+    "href": "weeks/week-2.html#activity",
+    "title": "Week 2",
+    "section": "",
+    "text": "🍪 The R KitchenWelcome to the Kitchen (.docx)",
     "crumbs": [
       "Weekly Materials",
       "Week 2 - Data Wrangling"
@@ -3647,7 +3671,7 @@
     "text": "Chapter 14.1.1 - 14.1.4 - ST\nChapter 7.1 - 7.2.4 - IMS\nChapter 8.1.1 & 8.1.2 - MSR\n\n\n\n\n💻 Intro to Regression\n\n\n\nPredicting Stuff with Regression\n\n\n\n\nNO CLASS 10/13/25\n📋Midterm Project\n📖Read Chapter 5 & 14- ST\n📖Read Chapter 7.2.5 - IMS\n\n\nBack to course schedule ⏎",
     "crumbs": [
       "Weekly Materials",
-      "Week 8 - Intro Multiple Reg."
+      "Week 8 - Multiple Reg. I"
     ]
   },
   {
@@ -3658,7 +3682,7 @@
     "text": "Chapter 14.1.1 - 14.1.4 - ST\nChapter 7.1 - 7.2.4 - IMS\nChapter 8.1.1 & 8.1.2 - MSR",
     "crumbs": [
       "Weekly Materials",
-      "Week 8 - Intro Multiple Reg."
+      "Week 8 - Multiple Reg. I"
     ]
   },
   {
@@ -3669,7 +3693,7 @@
     "text": "💻 Intro to Regression",
     "crumbs": [
       "Weekly Materials",
-      "Week 8 - Intro Multiple Reg."
+      "Week 8 - Multiple Reg. I"
     ]
   },
   {
@@ -3680,7 +3704,7 @@
     "text": "Predicting Stuff with Regression",
     "crumbs": [
       "Weekly Materials",
-      "Week 8 - Intro Multiple Reg."
+      "Week 8 - Multiple Reg. I"
     ]
   },
   {
@@ -3691,7 +3715,7 @@
     "text": "NO CLASS 10/13/25\n📋Midterm Project\n📖Read Chapter 5 & 14- ST\n📖Read Chapter 7.2.5 - IMS\n\n\nBack to course schedule ⏎",
     "crumbs": [
       "Weekly Materials",
-      "Week 8 - Intro Multiple Reg."
+      "Week 8 - Multiple Reg. I"
     ]
   },
   {
@@ -3757,7 +3781,7 @@
     "text": "Download Categorical data (.csv)\n\n\n\n\n💻 Categorical Data - Regression\n\n\n\nGetting Comfy with R\n\n\n\n📋Lab 11 - Categories & Regression\n📖Chapter 7.3 - IMS\n📖Chapter 14.5 - ST\n📖Chapter 8.1.4 - MSR\n📖Chapter 15.8 - LSR\n\n\nBack to course schedule ⏎",
     "crumbs": [
       "Weekly Materials",
-      "Week 11 - Missing Data & Building"
+      "Week 11 - Missing Data & ModelBuilding"
     ]
   },
   {
@@ -3768,7 +3792,7 @@
     "text": "Download Categorical data (.csv)",
     "crumbs": [
       "Weekly Materials",
-      "Week 11 - Missing Data & Building"
+      "Week 11 - Missing Data & ModelBuilding"
     ]
   },
   {
@@ -3779,7 +3803,7 @@
     "text": "💻 Categorical Data - Regression",
     "crumbs": [
       "Weekly Materials",
-      "Week 11 - Missing Data & Building"
+      "Week 11 - Missing Data & ModelBuilding"
     ]
   },
   {
@@ -3790,7 +3814,7 @@
     "text": "Getting Comfy with R",
     "crumbs": [
       "Weekly Materials",
-      "Week 11 - Missing Data & Building"
+      "Week 11 - Missing Data & ModelBuilding"
     ]
   },
   {
@@ -3801,7 +3825,7 @@
     "text": "📋Lab 11 - Categories & Regression\n📖Chapter 7.3 - IMS\n📖Chapter 14.5 - ST\n📖Chapter 8.1.4 - MSR\n📖Chapter 15.8 - LSR\n\n\nBack to course schedule ⏎",
     "crumbs": [
       "Weekly Materials",
-      "Week 11 - Missing Data & Building"
+      "Week 11 - Missing Data & ModelBuilding"
     ]
   },
   {
