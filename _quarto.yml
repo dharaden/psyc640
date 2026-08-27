@@ -50,30 +50,30 @@ website:
             text: "Week 1 - Set up and Foundations"
           - href: weeks/week-2.qmd
             text: "Week 2 - Data Wrangling"
-          - href: weeks/week-3.qmd
+          - href: #weeks/week-3.qmd
             text: "Week 3 - Describe & Viz"
-          - href: weeks/week-4.qmd
+          - href: #weeks/week-4.qmd
             text: "Week 4 - Design & Inference"
-          - href: weeks/week-5.qmd
+          - href: #weeks/week-5.qmd
             text: "Week 5 - Linear Model"
-          - href: weeks/week-6.qmd
+          - href: #weeks/week-6.qmd
             text: "Week 6 - Linear Model: Part Deux"
-          - href: weeks/week-7.qmd
+          - href: #weeks/week-7.qmd
             text: "Week 7 - Variability & Model Fit"
-          - href: weeks/week-8.qmd
-            text: "Week 8 - Intro Multiple Reg."
-          - href: weeks/week-9.qmd
-            text: "Week 9 - Multiple Reg."
-          - href: weeks/week-10.qmd
+          - href: #weeks/week-8.qmd
+            text: "Week 8 - Multiple Reg. I"
+          - href: #weeks/week-9.qmd
+            text: "Week 9 - Multiple Reg. II"
+          - href: #weeks/week-10.qmd
             text: "Week 10 - Assumptions & Diagnostic"
-          - href: weeks/week-11.qmd
-            text: "Week 11 - Missing Data & Building"
-          - href: weeks/week-12.qmd
+          - href: #weeks/week-11.qmd
+            text: "Week 11 - Missing Data & ModelBuilding"
+          - href: #weeks/week-12.qmd
             text: "Week 12 - Logistic Reg."
-          - href: weeks/week-13.qmd
+          - href: #weeks/week-13.qmd
             text: "Week 13 - Mixed/Mulilevel Models"
           - text: "Week 14 - NO CLASS"
-          - href: weeks/week-15.qmd
+          - href: #weeks/week-15.qmd
             text: "Week 15 - Wrapping Up"
       - section: "Labs"
         contents:
@@ -81,29 +81,29 @@ website:
             text: "Lab 1 - Introduction" 
           - href: labs/lab-02_data-workflow.qmd
             text: "Lab 2 - Data Workflow" 
-          - href: labs/lab-3_describe-viz.qmd
+          - href: #labs/lab-3_describe-viz.qmd
             text: "Lab 3 - Describe/Visualize" 
-          - href: labs/lab-4.qmd
+          - href: #labs/lab-4.qmd
             text: "Lab 4" 
-          - href: labs/lab-5_cor.qmd
+          - href: #labs/lab-5_cor.qmd
             text: "Lab 5 - Correlation" 
-          - href: labs/lab-6.qmd
+          - href: #labs/lab-6.qmd
             text: "Lab 6 - Comparing Means" 
-          - href: labs/midterm-proj.qmd
+          - href: #labs/midterm-proj.qmd
             text: "Midterm Project" 
-          - href: labs/lab-9.qmd
+          - href: #labs/lab-9.qmd
             text: "Lab 9" 
-          - href: labs/lab-10.qmd
+          - href: #labs/lab-10.qmd
             text: "Lab 10"
-          - href: labs/lab-11.qmd
+          - href: #labs/lab-11.qmd
             text: "Lab 11"
-          - href: labs/lab-12.qmd
+          - href: #labs/lab-12.qmd
             text: "Lab 12"
       - section: "Projects"
         contents: 
-          - href: labs/midterm-proj.qmd
+          - href: #labs/midterm-proj.qmd
             text: "Midterm Project" 
-          - href: labs/final-proj.qmd
+          - href: #labs/final-proj.qmd
             text: "Final Project"
       - href: resources.qmd
         text: "Resources" 
