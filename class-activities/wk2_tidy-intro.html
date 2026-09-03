@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PSYC 640: Graduate Statistics – PSYC 640 - Graduate Statistics</title>
+<title>Week 2 Exercise - Intro to Tidy Data – PSYC 640 - Graduate Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,31 +26,64 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./weeks/week-1.html" rel="next">
-<link href="./syllabus.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1824e8889c6ef8b09c858f97847a7109.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-f446f165291aa2961a2c4f70154dc369.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-1824e8889c6ef8b09c858f97847a7109.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-1824e8889c6ef8b09c858f97847a7109.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-f446f165291aa2961a2c4f70154dc369.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-1824e8889c6ef8b09c858f97847a7109.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -80,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="PSYC 640: Graduate Statistics – PSYC 640 - Graduate Statistics">
+<meta property="og:title" content="Week 2 Exercise - Intro to Tidy Data – PSYC 640 - Graduate Statistics">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
@@ -256,7 +289,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course-overview.html">Course information</a></li><li class="breadcrumb-item"><a href="./index.html">Schedule</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Week 2 Exercise - Intro to Tidy Data</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -270,9 +303,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/640_hex.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="./images/640_hex.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/640_hex.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../images/640_hex.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/dharaden/psyc640" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
@@ -289,28 +322,28 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Course information</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-overview.html" class="sidebar-item-text sidebar-link">
+  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./syllabus.html" class="sidebar-item-text sidebar-link">
+  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
   </div>
 </li>
@@ -327,13 +360,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weeks/week-1.html" class="sidebar-item-text sidebar-link">
+  <a href="../weeks/week-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 1 - Set up and Foundations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weeks/week-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../weeks/week-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2 - Data Wrangling</span></a>
   </div>
 </li>
@@ -389,13 +422,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/lab-01_introduction.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-01_introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 1 - Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/lab-02_data-workflow.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-02_data-workflow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 2 - Data Workflow</span></a>
   </div>
 </li>
@@ -447,13 +480,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./resources.html" class="sidebar-item-text sidebar-link">
+  <a href="../resources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Resources</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./previous-years.html" class="sidebar-item-text sidebar-link">
+  <a href="../previous-years.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Previous Years</span></a>
   </div>
 </li>
@@ -462,16 +495,26 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#in-class-activity-your-first-in-person-r-session" id="toc-in-class-activity-your-first-in-person-r-session" class="nav-link active" data-scroll-target="#in-class-activity-your-first-in-person-r-session"><strong>In-Class Activity: Your First (in-person) R Session</strong></a></li>
+  <li><a href="#create-a-new-markdown-document" id="toc-create-a-new-markdown-document" class="nav-link" data-scroll-target="#create-a-new-markdown-document">Create a new Markdown Document</a></li>
+  <li><a href="#starting-the-document" id="toc-starting-the-document" class="nav-link" data-scroll-target="#starting-the-document">Starting the document</a></li>
+  <li><a href="#your-first-analysis" id="toc-your-first-analysis" class="nav-link" data-scroll-target="#your-first-analysis"><strong>Your First “Analysis”</strong></a></li>
+  <li><a href="#closing-out-the-document" id="toc-closing-out-the-document" class="nav-link" data-scroll-target="#closing-out-the-document">Closing out the Document</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/class-activities/wk2_tidy-intro.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course-overview.html">Course information</a></li><li class="breadcrumb-item"><a href="./index.html">Schedule</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">PSYC 640: Graduate Statistics</h1>
+<h1 class="title">Week 2 Exercise - Intro to Tidy Data</h1>
 </div>
 
 
@@ -488,173 +531,98 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This page contains an outline of the topics, content, and preparation for the semester. This schedule will be updated as the semester progresses, with all changes documented here.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Readings on the schedule will need to be completed prior to the course they are listed for. We will build on the concepts you read about in that specific class period, so it is important that you have read.</p>
-</div>
-</div>
-<div>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 7%">
-<col style="width: 10%">
-<col style="width: 20%">
-<col style="width: 25%">
-<col style="width: 15%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Week</th>
-<th style="text-align: center;">📆Date</th>
-<th style="text-align: center;">📝Topic</th>
-<th style="text-align: center;">📖Readings</th>
-<th style="text-align: center;">📋Due</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><a href="./weeks/week-1.html">1</a></td>
-<td style="text-align: center;">08-27</td>
-<td style="text-align: center;">Getting set up + foundations - VIRTUAL</td>
-<td style="text-align: center;"><p><a href="https://users.aalto.fi/~ave/ROS.pdf">Chapter 1 - ROS</a></p>
-<p><a href="https://learningstatisticswithr.com/">Chapters 1 &amp; 2 - LSR</a></p></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><a href="weeks/week-2.html">2</a></td>
-<td style="text-align: center;">09-03</td>
-<td style="text-align: center;">R Foundations + Data Wrangling</td>
-<td style="text-align: center;"><p><a href="https://r4ds.hadley.nz/">Chapters 2-4, 6 &amp; 28 - R4DS</a></p>
-<p><a href="https://www.modernstatisticswithr.com/">Chapter 2 - MSR</a></p></td>
-<td style="text-align: center;"><p>Lab 1</p>
-<p>Lab 2</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><a href="weeks/week-3.html">3</a></td>
-<td style="text-align: center;">09-10</td>
-<td style="text-align: center;">Descriptives, Visualizations + Communication</td>
-<td style="text-align: center;"><p><a href="https://www.modernstatisticswithr.com/">Chapter 5 - MSR</a></p>
-<p><a href="https://statsthinking21.github.io/statsthinking21-core-site/">Chapters 3 &amp; 4 - ST</a></p>
-<p><a href="https://r4ds.hadley.nz/">Chapter 1 - R4DS</a></p></td>
-<td style="text-align: center;">Lab 3</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><a href="weeks/week-4.html">4</a></td>
-<td style="text-align: center;">09-17</td>
-<td style="text-align: center;">Design, Sampling + Inference</td>
-<td style="text-align: center;"><p><a href="https://blog.djnavarro.net/posts/2026-08-06_separating-sex-and-gender-is-statistical-malpractice/">Navarro Blog Post</a></p>
-<p><a href="https://users.aalto.fi/~ave/ROS.pdf">Chapters 2-4 - ROS</a></p>
-<p><a href="https://www.modernstatisticswithr.com/">Chapter 3 - MSR</a> (focus on 3.3, 3.7, 3.10 &amp; 3.11)</p></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><a href="weeks/week-5.html">5</a></td>
-<td style="text-align: center;">09-24</td>
-<td style="text-align: center;">Simple Regression: The Linear Model</td>
-<td style="text-align: center;"><p><a href="https://users.aalto.fi/~ave/ROS.pdf">Chapter 6 - ROS</a></p>
-<p><a href="https://statsthinking21.github.io/statsthinking21-core-site/">Chapter 14.1 - ST</a></p>
-<p><a href="https://learningstatisticswithr.com/">Chapter 11 - LSR</a></p></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><a href="weeks/week-6.html">6</a></td>
-<td style="text-align: center;">10-01</td>
-<td style="text-align: center;">Comparing Groups</td>
-<td style="text-align: center;"><a href="https://statsthinking21.github.io/statsthinking21-core-site/">Chapter 15 - ST</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><a href="weeks/week-7.html">7</a></td>
-<td style="text-align: center;">10-08</td>
-<td style="text-align: center;">Variability &amp; Model Fit</td>
-<td style="text-align: center;"><p><a href="https://users.aalto.fi/~ave/ROS.pdf">Chapter 8 - ROS</a></p>
-<p><a href="https://statsthinking21.github.io/statsthinking21-core-site/">Chapters 5 &amp; 14.5 - ST</a></p>
-<p><a href="https://learningstatisticswithr.com/">Chapter 15.4 - LSR</a></p></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><a href="weeks/week-8.html">8</a></td>
-<td style="text-align: center;">10-15</td>
-<td style="text-align: center;">Multiple Regression I: Adding Predictors</td>
-<td style="text-align: center;"><a href="https://users.aalto.fi/~ave/ROS.pdf">Chapter 10 - ROS</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><a href="weeks/week-9.html">9</a></td>
-<td style="text-align: center;">10-22</td>
-<td style="text-align: center;">Multiple Regression II: Categorical Predictors + Interactions</td>
-<td style="text-align: center;"><p><a href="https://statsthinking21.github.io/statsthinking21-core-site/">Chapter 14.3 - ST</a></p>
-<p><a href="https://www.modernstatisticswithr.com/">Chapter 8.1 - MSR</a></p></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><a href="weeks/week-10.html">10</a></td>
-<td style="text-align: center;">10-29</td>
-<td style="text-align: center;">Assumptions + Model Diagnostics</td>
-<td style="text-align: center;"><p><a href="https://users.aalto.fi/~ave/ROS.pdf">Chapter 11 - ROS</a></p>
-<p><a href="https://statsthinking21.github.io/statsthinking21-core-site/">Chapter 14.5 - ST</a></p>
-<p><a href="https://learningstatisticswithr.com/">Chapter 15.8 &amp; 15.9 - LSR</a></p></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><a href="weeks/week-11.html">11</a></td>
-<td style="text-align: center;">11-05</td>
-<td style="text-align: center;">Missing Data + Model Building/Comparison</td>
-<td style="text-align: center;"><p><a href="https://learningstatisticswithr.com/">Chapter 15.10 - LSR</a></p>
-<p><a href="https://statsthinking21.github.io/statsthinking21-core-site/">Chapter 17 - ST</a></p>
-<p><a href="https://users.aalto.fi/~ave/ROS.pdf">Chapters 17.3 - 17.7 - ROS</a></p>
-<p><a href="https://www.modernstatisticswithr.com/">Chapter 8.7 - MSR</a></p></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><a href="weeks/week-12.html">12</a></td>
-<td style="text-align: center;">11-12</td>
-<td style="text-align: center;">Logistic Regression</td>
-<td style="text-align: center;"><p><a href="https://users.aalto.fi/~ave/ROS.pdf">Chapter 13 - ROS</a></p>
-<p><a href="https://www.modernstatisticswithr.com/">Chapter 8.3 - MSR</a></p></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><a href="weeks/week-13.html">13</a></td>
-<td style="text-align: center;">11-19</td>
-<td style="text-align: center;">Mixed/Multilevel Models</td>
-<td style="text-align: center;"><p><a href="https://www.modernstatisticswithr.com/">Chapter 8.8 - MSR</a></p>
-<p><a href="https://statsthinking21.github.io/statsthinking21-core-site/">Chapter 15.8 - ST</a></p></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><a href="weeks/week-14.html">14</a></td>
-<td style="text-align: center;">11-26</td>
-<td style="text-align: center;">THANKSGIVING - No Class</td>
-<td style="text-align: center;">No Readings</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><a href="weeks/week-15.html">15</a></td>
-<td style="text-align: center;">12-03</td>
-<td style="text-align: center;">Making R Work for You</td>
-<td style="text-align: center;"><a href="https://statsthinking21.github.io/statsthinking21-core-site/">Chapter 18 - ST</a></td>
-<td style="text-align: center;"></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><a href="https://users.aalto.fi/~ave/ROS.pdf"><em>Regression and Other Stories</em></a> –&gt; ROS</p>
-<p><a href="https://www.modernstatisticswithr.com/" target="_blank"><em>Modern Statistics with R (2e)</em></a> –&gt; MSR</p>
-<p><a href="https://statsthinking21.github.io/statsthinking21-core-site/" target="_blank"><em>Statistical Thinking</em></a> –&gt; ST</p>
-<p><a href="https://learningstatisticswithr.com/" target="_blank"><em>Learning Statistics with R</em></a> –&gt; LSR</p>
-<p><a href="https://r4ds.hadley.nz/" target="_blank"><em>R for Data Science (2e)</em></a> –&gt; R4DS</p>
+<section id="in-class-activity-your-first-in-person-r-session" class="level3">
+<h3 class="anchored" data-anchor-id="in-class-activity-your-first-in-person-r-session"><strong>In-Class Activity: Your First (in-person) R Session</strong></h3>
+<p><strong>Goal</strong>: To become more familiar with the RStudio interface and perform a basic data exploration workflow.</p>
+</section>
+<section id="create-a-new-markdown-document" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-new-markdown-document">Create a new Markdown Document</h3>
+<ol type="1">
+<li><p>Go to <code>File &gt; New File &gt; Quarto Document</code></p></li>
+<li><p>Provide the title “Intro to Tidy Data” and input your name as the author</p></li>
+<li><p>A script will open in the <strong>Source</strong> pane. Remove unnecessary code.</p></li>
+<li><p>Go to <code>File &gt; Save</code> and name it <code>wk2_tidy-data.qmd</code>. Make sure this saves in the same folder as all of your other stuff. Stay Organized!</p>
+<ol type="1">
+<li>I’m not going to tell you how to organize your folders, but I will give a suggestion. Have 1 folder for the whole class. This will have the Project that we created. Inside there, have a folder for “Class Activities”. This is where you can save this file. Then, have other folders for the labs and what not.</li>
+</ol></li>
+</ol>
+</section>
+<section id="starting-the-document" class="level3">
+<h3 class="anchored" data-anchor-id="starting-the-document">Starting the document</h3>
+<p>In the text field of the markdown file answer these questions below:</p>
+<blockquote class="blockquote">
+<ul>
+<li><p>Name</p></li>
+<li><p>Comfort with R (1-10 with 10 being “Master”)</p></li>
+<li><p>Overall feelings toward Statistics and R</p></li>
+<li><p>What could you give a 30 minute master class on with no preparation?</p></li>
+</ul>
+</blockquote>
+</section>
+<section id="your-first-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="your-first-analysis"><strong>Your First “Analysis”</strong></h3>
+<ol type="1">
+<li><p>Create a Code Chunk</p></li>
+<li><p>Load the <code>tidyverse</code> library</p></li>
+<li><p>Create the object <code>datawars</code> and assign dataset called <code>starwars</code> to it (hint: <code>datawars &lt;- starwars</code>)</p></li>
+<li><p>Use <code>View()</code>, <code>head()</code> and <code>glimpse()</code> to look at <code>datawars</code></p></li>
+<li><p>In the text below, answer these questions:</p>
+<ol type="1">
+<li><p>What do each of these do?</p></li>
+<li><p>Which do you like more?</p></li>
+</ol></li>
+<li><p>Create another code chunk and use <code>summary()</code> to get descriptives of all variables in the dataset.</p>
+<ol type="1">
+<li>Look at the output of your <code>summary()</code> command. For the <code>mass</code> and <code>height</code> variables, you’ll see a value for <code>NA's</code>. In your own words, what do you think <code>NA</code> means in this context?</li>
+</ol></li>
+</ol>
+<section id="visualize-your-data" class="level4">
+<h4 class="anchored" data-anchor-id="visualize-your-data">Visualize your data</h4>
+<p>Now we want to investigate the relationship between <code>mass</code> and <code>height</code> in this dataset.</p>
+<ul>
+<li><p>Create a scatterplot using <code>ggplot()</code>.</p></li>
+<li><p>The plot should show <code>height</code> on the x-axis and <code>mass</code> on the y-axis.</p></li>
+<li><p>Add some labels to make your plot clear and professional.</p>
+<ul>
+<li><strong>Hint:</strong> Use the code below as a template and fill in the blanks.</li>
+</ul></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> __, <span class="fu">aes</span>(<span class="at">x =</span> __, <span class="at">y =</span> __)) <span class="sc">+</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"__"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"__"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"__"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Look at your plot. Do you notice any characters that seem unusually heavy for their height? Briefly describe one.</li>
+</ul>
+</section>
+<section id="wrangle-your-data" class="level4">
+<h4 class="anchored" data-anchor-id="wrangle-your-data">Wrangle your Data</h4>
+<p>Since we have some outliers that seem to be related to non-human species, let’s just look at Humans.</p>
+<ol type="1">
+<li><p>Create a new object called <code>rebels</code>.</p></li>
+<li><p>This new object should contain only the characters from the <code>starwars</code> dataset where the <code>species</code> is “Human”.</p>
+<ul>
+<li><strong>Hint:</strong> Use the <code>filter()</code> function. The syntax is <code>new_object &lt;- old_object %&gt;% filter(column_name == "value")</code>. Remember that “Human” needs to be in quotes.</li>
+</ul></li>
+<li><p>Print your new <code>rebels</code> object to the console to make sure your filter worked correctly. Once confirmed, calculate the average (hint: use <code>mean()</code>) for the height and weight of the <code>rebels</code>.</p></li>
+</ol>
+<ul>
+<li><p>How many rows are in your new <code>rebels</code> dataset?</p></li>
+<li><p>What is the average height and weight?</p></li>
+</ul>
+<ol start="4" type="1">
+<li>Create another scatterplot with your new dataset. Copy and update the code we used previously.</li>
+</ol>
+</section>
+</section>
+<section id="closing-out-the-document" class="level3">
+<h3 class="anchored" data-anchor-id="closing-out-the-document">Closing out the Document</h3>
+<p>What is 1 thing you are looking forward to this semester and 1 thing that you are worried about (can be in or outside of this class)?</p>
+<p><strong><em>End of the document. Remember to Knit and upload to myCourses.</em></strong></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1070,18 +1038,6 @@ Important
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./syllabus.html" class="pagination-link" aria-label="Syllabus">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Syllabus</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./weeks/week-1.html" class="pagination-link" aria-label="Week 1 - Set up and Foundations">
-        <span class="nav-page-text">Week 1 - Set up and Foundations</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1090,7 +1046,7 @@ Important
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/class-activities/wk2_tidy-intro.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with ☕ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

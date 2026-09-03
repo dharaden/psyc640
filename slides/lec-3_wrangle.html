@@ -196,7 +196,7 @@
     }
   </style>
 <meta property="og:title" content="Week 03: Wrangling – PSYC 640 - Graduate Statistics">
-<meta property="og:description" content="Date: September 8, 2025">
+<meta property="og:description" content="Date: September 3, 2026">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
 <body class="quarto-light">
@@ -205,7 +205,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Week 03: Wrangling</h1>
-  <p class="subtitle">Date: September 8, 2025</p>
+  <p class="subtitle">Date: September 3, 2026</p>
 
 <div class="quarto-title-authors">
 </div>
@@ -239,7 +239,7 @@
 <p>Then, create a new Notebook/Markdown Document that we will use for today</p>
 <p>Setup the libraries and bring in the data</p>
 <ul>
-<li>We will use the TIPI data from the last lab</li>
+<li>We will use the TIPI data (Note: We will also be using it in our <a href="../labs/lab-03_data-wrangling.html">lab 3</a></li>
 </ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a><span class="co">#import  data - Your path may be different</span></span>
@@ -286,7 +286,7 @@
 <img data-src="images/select().png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="using-select" class="slide level2">
 <h2>Using <code>select()</code></h2>
-<p>You used this in lab, so you are all experts. Let’s review by looking at the <a href="https://rstudio.github.io/cheatsheets/data-transformation.pdf" target="_blank">cheatsheet</a> for <code>dplyr</code>.</p>
+<p>Review by looking at the <a href="https://rstudio.github.io/cheatsheets/data-transformation.pdf" target="_blank">cheatsheet</a> for <code>dplyr</code>.</p>
 <p>The <code>dplyr</code> package makes data wrangling and transformation much easier. <code>select()</code> allows you to…well…select the columns that you want to keep.</p>
 <blockquote>
 <p>Create a dataset that only includes: id, progress, duration, TIPI items</p>
@@ -366,15 +366,15 @@
 <ul>
 <li><strong>Note</strong>: New variables are automatically added at the end of the data frame (scroll to the right to see them)</li>
 </ul>
-<p>For example, in the lab, we had the <a href="https://gosling.psy.utexas.edu/scales-weve-developed/ten-item-personality-measure-tipi/" target="_blank">Ten Item Personality Inventory</a></p>
+<p>We have the <a href="https://gosling.psy.utexas.edu/scales-weve-developed/ten-item-personality-measure-tipi/" target="_blank">Ten Item Personality Inventory</a></p>
 <p>Take a look at the scoring of the TIPI and compute the necessary variables for all subscales</p>
 </section>
 <section class="slide level2">
 
 <h3 id="reverse-coding">Reverse Coding</h3>
 <p>There are some items in questionnaire data that are rated in the opposite direction from the other items. These need to be “reverse coded” or “reverse scored”</p>
-<p>The TIPI documentions highlights certain variables that need this done</p>
-<p>We can take the max value, add 1, then subtract the Item</p>
+<p>The TIPI documention highlights certain variables that need this done</p>
+<p>We can take the max value, add 1, then subtract the Item Score</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a>coded_tipi_data <span class="ot">&lt;-</span> clean_tipi_data <span class="sc">%&gt;%</span> </span>
 <span id="cb11-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">tipi_2r =</span> <span class="dv">8</span> <span class="sc">-</span> tipi_2, </span>
