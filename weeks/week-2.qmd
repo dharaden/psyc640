@@ -21,19 +21,25 @@ This session we are going to set up our foundation for using R. One of the most 
 
 ## Slides
 
-💻R Foundations<a href="/slides/lec-03_foundations.pptx" download="wk2_foundations_slides.pptx">R Foundation Slides (.pptx)</a>
+💻R Foundations <a href="/slides/lec-03_foundations.pptx" download="wk2_foundations_slides.pptx">R Foundation Slides (.pptx)</a>
+
+[💻 Data Wrangling](../slides/lec-3_wrangle.html){target="_blank"}
 
 ## Data
 
-Cookie Ratings<a href="/files/data/cookie_ratings.csv" download="cookie_ratings.csv">Cookie Ratings (.csv)</a>
+📈Cookie Ratings <a href="/files/data/cookie_ratings.csv" download="cookie_ratings.csv">Cookie Ratings (.csv)</a>
+
+📈TIPI Data <a href="/files/data/TIPI_Data.csv" download="TIPI_Data.csv">TIPI Data (.csv)</a>
 
 ## Activity
 
-🍪 The R Kitchen<a href="/files/handouts/welcome-to-the-kitchen.docx" download="welcome-to-the-kitchen.docx">Welcome to the Kitchen (.docx)</a>
+🍪 The R Kitchen <a href="/files/handouts/welcome-to-the-kitchen.docx" download="welcome-to-the-kitchen.docx">Welcome to the Kitchen (.docx)</a>
+
+[📓Tidy Data with R](../class-activities/wk2_tidy-intro.html)
 
 ## For Next Time
 
-📋[Lab 2 - Getting Comfy with Data Wrangling](../labs/lab-2_data-wrangling.html)
+📋[Lab 3 - Getting Comfy with Data Wrangling](../labs/lab-03_data-wrangling.html)
 
 📖Read [Chapter 5 - LSR](https://learningstatisticswithr.com/book/){target="_blank"}
 

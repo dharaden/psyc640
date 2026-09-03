@@ -1,5 +1,5 @@
 ---
-title: "Lab 2: Data Wrangling Beginnings"
+title: "Lab 3: Data Wrangling Beginnings"
 output: html_document
 editor_options: 
   chunk_output_type: console
@@ -9,19 +9,19 @@ editor_options:
 
 ## Instructions
 
-We have made it to Lab #2! We are going to keep practicing the skills we
-started using in the last week, except with using some new data. Before,
-we were using pre-installed data, but that won't be the case IRL. When
-working with your own data, you will want to create a workflow of
-cleaning and wrangling your data in a reproducible way. These steps will
-likely occur for every new dataset that you work with.
+We have made it to Lab #3! We are going to keep practicing the skills we
+started using. We've used pre-installed data before, but we will
+continue with some actual participant data. When working with your own
+data, you will want to create a workflow of cleaning and wrangling your
+data in a reproducible way. These steps will likely occur for every new
+dataset that you work with.
 
-Please complete the exercises below. Create a new `.Rmd` file and
+Please complete the exercises below. Create a new `.qmd` file and
 include the following at the top:
 
 ``` r
 ---
-title: "Lab 2: Data Wrangling Beginnings"
+title: "Lab 3: Data Wrangling Beginnings"
 author: "Your Name Here"
 date: "`r Sys.Date()`"
 output: html_document
@@ -35,13 +35,8 @@ editor_options:
 You should then be able to copy/paste everything below into your
 document.
 
-Here is a .Rmd file that you should be able to download and use as well.
-
--   <a href="/files/_lab-rmd/lab-2_data-wrangling.Rmd" download="lab-2_data-wrangling.Rmd">Download
-    Lab 2 (.Rmd)</a>
-
 When you are finished, click the **Knit** button to turn your work into
-an HTML document. You will submit both this `.Rmd` file and the
+an HTML document. You will submit both this `.qmd` file and the
 🧶knitted `.html` file.
 
 ## Scenario and Goal
@@ -131,14 +126,18 @@ everything lowercase to make it easier to type (but this is a personal
 preference), and make sure there aren't any spaces in your variable
 names:
 
--   `ID` -\> `id`
--   `Progress` -\> `progress`
--   `Duration (in seconds)` -\> `duration`
--   `Consent` -\> `consent`
--   `Q85` -\> `sex_orient`
--   `Q85_6_TEXT` -\> `sex_orient_txt`
--   `Sleep Quality` -\> `sleep_qual`
--   `Hours of Sleep` -\> `sleep_hours`
+::: callout-note
+You can also just use the `janitor` functions that we went over in class
+:::
+
+- `ID` -\> `id`
+- `Progress` -\> `progress`
+- `Duration (in seconds)` -\> `duration`
+- `Consent` -\> `consent`
+- `Q85` -\> `sex_orient`
+- `Q85_6_TEXT` -\> `sex_orient_txt`
+- `Sleep Quality` -\> `sleep_qual`
+- `Hours of Sleep` -\> `sleep_hours`
 
 ``` r
 # Task: Use the rename() function to change the variable names as listed above.
@@ -273,15 +272,15 @@ subscale scores
 
 **❓Your Answer:**
 
--   Extraversion:
+- Extraversion:
 
--   Agreeableness:
+- Agreeableness:
 
--   Conscientiousness:
+- Conscientiousness:
 
--   Emotional Stability:
+- Emotional Stability:
 
--   Openness to Experience:
+- Openness to Experience:
 
 ------------------------------------------------------------------------
 
@@ -316,12 +315,12 @@ of your correlation in your answer.
     # cor.test(starwars$height, starwars$mass)
 ```
 
-**Question 6.2:** Calculate the correlation coefficient for your two
+**Try it out:** Calculate the correlation coefficient for your two
 variables of interest ([refer here for more
 info](https://statsandr.com/blog/correlation-coefficient-and-correlation-test-in-r/#for-2-variables){target="_blank"}).
 Report the correlation, and reflect on how close or how far away your
 initial estimate was. Do your best here. I recognize that we haven't
-really gone over this just yet.
+gone over this just yet.
 
 **❓Your Answer:**
 
