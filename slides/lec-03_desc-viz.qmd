@@ -64,7 +64,7 @@ tipi <- import(here("files", "data", "final_tipi.csv")) %>%
 ## Some Terminology
 
 | Population | Sample |
-|------------------------------------|------------------------------------|
+|----|----|
 | $\mu$ (mu) = Population Mean | $\bar{X}$ (x bar) = Sample Mean |
 | $\sigma$ (sigma) = Population Standard Deviation | $s$ = $\hat{\sigma}$ = Sample Standard Deviation |
 | $\sigma^2$ (sigma squared) = Population Variance | $s^2$ = $\hat{\sigma^2}$ = Sample Variance |
@@ -177,7 +177,7 @@ $$\hat{\sigma}^2 = s^2 = \frac{1}{N-1}\sum_{i=1}^N(X-\bar{X})^2$$
 ------------------------------------------------------------------------
 
 | $i$ (observation) | $X_i$ (value) | $\bar{X}$ (sample mean) | $X_i - \bar{X}$ (deviation from mean) | $(X_i - \bar{X})^2$ (squared deviation) |
-|---------------|---------------|---------------|---------------|---------------|
+|----|----|----|----|----|
 | 1 | 56 | 36.6 | 19.4 | 376.36 |
 | 2 | 31 | 36.6 | -5.6 | 31.36 |
 | 3 | 56 | 36.6 | 19.4 | 376.36 |

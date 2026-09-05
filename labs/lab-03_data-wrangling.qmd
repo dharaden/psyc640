@@ -16,15 +16,15 @@ data, you will want to create a workflow of cleaning and wrangling your
 data in a reproducible way. These steps will likely occur for every new
 dataset that you work with.
 
-Please complete the exercises below. Create a new `.qmd` file and
-include the following at the top:
+Please complete the exercises below. Create a new `Quarto` `.qmd` file
+and include the following at the top:
 
 ``` r
 ---
 title: "Lab 3: Data Wrangling Beginnings"
 author: "Your Name Here"
 date: "`r Sys.Date()`"
-output: html_document
+format: docx
 editor_options: 
   chunk_output_type: console
   markdown: 
@@ -35,9 +35,9 @@ editor_options:
 You should then be able to copy/paste everything below into your
 document.
 
-When you are finished, click the **Knit** button to turn your work into
-an HTML document. You will submit both this `.qmd` file and the
-🧶knitted `.html` file.
+When you are finished, be sure to **Render** your document. This will
+generate a Word Document, which you will submit along with your `.qmd`
+file.
 
 ## Scenario and Goal
 
@@ -72,6 +72,11 @@ refreshers, take a look at the
 [rstats.wtf](https://rstats.wtf/){target="_blank"}
 
 #### Download your data
+
+::: callout-note
+This is the same data that we used in class. If you already have it
+downloaded, you do not need to do it again.
+:::
 
 <a href="https://drive.google.com/file/d/1zPHM4qR8j70vM1isyfl3cJyC5so_iLts/view?usp=sharing" download="TIPI_Data.csv">Download
 Data from Drive (CSV)</a>
@@ -127,7 +132,9 @@ preference), and make sure there aren't any spaces in your variable
 names:
 
 ::: callout-note
-You can also just use the `janitor` functions that we went over in class
+You can also use the `janitor` functions that we went over in class
+
+**Be sure to update the "Q85" and "Q85_6_TEXT" to match what is below.**
 :::
 
 - `ID` -\> `id`
@@ -240,13 +247,13 @@ what would their score be on the new `TIPI_4r` variable?
 ### Exercise 5: Computing and Finalizing the Scored File
 
 Now we are ready to compute the final score! There are individual
-subscales for each of the 5 factors of the Big 5 Personality Inex.
+subscales for each of the 5 factors of the Big 5 Personality Index.
 Compute the 5 scales. Remember to use the **reverse-scored** items
 (`TIPI_2r`), not the original one.s
 
 ``` r
-# Task 1: Use mutate() to calculate the total grit score.
-# Sum the items corresponding to each scale.
+# Task 1: Use mutate() to calculate the subscale scores.
+# Follow the instructions in the manual to calculate the subscale scores.
 # Call the new variables 'extra', 'agree', 'consc', 'emo', 'open.
 # Overwrite your `scored_data` object with this new version.
 
@@ -326,4 +333,4 @@ gone over this just yet.
 
 ------------------------------------------------------------------------
 
-*End of Lab. Don't forget to Knit! 🧶*
+*End of Lab. Don't forget to Render to Word* 📄

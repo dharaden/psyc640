@@ -81,7 +81,7 @@ website:
             text: "Lab 1 - Introduction" 
           - href: labs/lab-02_data-workflow.qmd
             text: "Lab 2 - Data Workflow" 
-          - href: #labs/lab-3_describe-viz.qmd
+          - href: labs/lab-03_describe-viz.qmd
             text: "Lab 3 - Describe/Visualize" 
           - href: #labs/lab-4.qmd
             text: "Lab 4" 
