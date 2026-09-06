@@ -752,200 +752,179 @@
     "text": "Simple slopes - Significance tests\nWhat if you want to compare slopes to each other? How would we test this?\n\nThe test of the interaction coefficient is equivalent to the test of the difference in slopes at levels of Z separated by 1 unit.\n\ncoef(summary(imodel))\n\n                   Estimate Std. Error   t value           Pr(&gt;|t|)\n(Intercept)     -2.73966246 1.12100519 -2.443934 0.0160605206624654\nAnxiety          0.61561220 0.13010161  4.731780 0.0000064353728132\nSupport          0.66696689 0.09547464  6.985802 0.0000000002017698\nAnxiety:Support -0.04174076 0.01309328 -3.187954 0.0018497364252185"
   },
   {
-    "objectID": "slides/lec-3_wrangle.html#naming-conventions",
-    "href": "slides/lec-3_wrangle.html#naming-conventions",
+    "objectID": "slides/lec-01_syl.html#when-the-teaching-happens",
+    "href": "slides/lec-01_syl.html#when-the-teaching-happens",
+    "title": "Week 01: Getting Started!",
+    "section": "When the Teaching Happens",
+    "text": "When the Teaching Happens\n💾 Meeting Times: Thursday’s 9:30am - 12:20pm\n🧑‍🏫 Drop in Office Hours: Tuesday’s 10am - 12:00 pm\n📧 Best way to contact me? Email me. I will usually respond within 24 hours. If it has been longer, then you can send me a follow-up\n\n\n\n\n\n\nNote\n\n\nI just figured out how to easily put emojis into the presentation. I’m sorry that you will have to witness that."
+  },
+  {
+    "objectID": "slides/lec-01_syl.html#communication",
+    "href": "slides/lec-01_syl.html#communication",
+    "title": "Week 01: Getting Started!",
+    "section": "Communication",
+    "text": "Communication\nPlease ask questions! 🙋‍♀️\nIf you are having trouble, just ask!!\nBe open and honest with me and I will do what I can to support you."
+  },
+  {
+    "objectID": "slides/lec-01_syl.html#who-the-heck-am-i",
+    "href": "slides/lec-01_syl.html#who-the-heck-am-i",
+    "title": "Week 01: Getting Started!",
+    "section": "Who the heck am I? 🤷",
+    "text": "Who the heck am I? 🤷\n\nUndergraduate degree at University of Denver\n\nPsychology & Philosophy\nHated Statistics\n\nGraduate degree at University of Illinois at Urbana-Champaign\n\nAdvisor: Dr. Benjamin Hankin 👨‍🔬\nClinical/Community PhD 🎓\n\nPre-Doctoral Internship & Postdoc at Rochester Institute of Technology 🐯"
+  },
+  {
+    "objectID": "slides/lec-01_syl.html#a-little-more-about-me",
+    "href": "slides/lec-01_syl.html#a-little-more-about-me",
+    "title": "Week 01: Getting Started!",
+    "section": "A little more about me",
+    "text": "A little more about me\n\nPronouns: he/him/his\n2 amazing kids, 2 dogs (Dachshund and Shepherd Mix), 1 wife\nCurrently Reading: The Shadows of the Gods 🤷, Dungeon Crawler Carl 🐱\nCurrently Listening: The Lonely Island & Seth Meyers Podcast\nCurrently Watching: Love on the Spectrum, Bluey, and Lizzie McGuire"
+  },
+  {
+    "objectID": "slides/lec-01_syl.html#teaching-philosophy",
+    "href": "slides/lec-01_syl.html#teaching-philosophy",
+    "title": "Week 01: Getting Started!",
+    "section": "Teaching Philosophy",
+    "text": "Teaching Philosophy\n\nI’m here for you and to support you however I can\nMy job is to create a supportive, low-stakes environment where you can crash test ideas and develop new skills\nYour responsibility is to come to class prepared, ready to have fun, take some risks, and actively participate!\n\nAsk questions, share relevant funny stories, seek clarification, question the status quo where applicable\n\nScience is a team sport & failures/mistakes will happen, but it is okay! That’s what science and discovery is!"
+  },
+  {
+    "objectID": "slides/lec-01_syl.html#class-materials",
+    "href": "slides/lec-01_syl.html#class-materials",
+    "title": "Week 01: Getting Started!",
+    "section": "Class Materials",
+    "text": "Class Materials\nI’ve pulled from a lot of different textbooks. Good thing is, they are all free!\n\nRegression and Other Stories (Gelman, Hill & Vehtari, 2024)\nLearning Statistics with R (Navarro)\nR for Data Science (2e) (Wickham, Çetinkaya-Rundel, & Grolemund, 2023)\nModern Statistics with R (2e) (Thullin, 2025)\nStatistical Thinking (Poldrack, 2024)"
+  },
+  {
+    "objectID": "slides/lec-01_syl.html#evaluation-grading",
+    "href": "slides/lec-01_syl.html#evaluation-grading",
+    "title": "Week 01: Getting Started!",
+    "section": "Evaluation & Grading",
+    "text": "Evaluation & Grading\n\n\n\nComponent\nWeight\n\n\nLabs & In-Class Check-ins\n35%\n\n\nJournal Entries\n10%\n\n\nParticipation & Engagement\n10%\n\n\nMidterm Project\n20%\n\n\nFinal Project\n25%"
+  },
+  {
+    "objectID": "slides/lec-01_syl.html#course-policies",
+    "href": "slides/lec-01_syl.html#course-policies",
+    "title": "Week 01: Getting Started!",
+    "section": "Course Policies",
+    "text": "Course Policies\n\nLate\nAccommodations\nSafety\nAcademic Integrity"
+  },
+  {
+    "objectID": "slides/lec-14.html#today",
+    "href": "slides/lec-14.html#today",
+    "title": "Week 14: Model Building",
+    "section": "Today…",
+    "text": "Today…\n\nStarting from scratch & building your results\nFinal Project Check in"
+  },
+  {
+    "objectID": "slides/lec-14.html#research-process-overview",
+    "href": "slides/lec-14.html#research-process-overview",
+    "title": "Week 14: Model Building",
+    "section": "Research Process Overview",
+    "text": "Research Process Overview"
+  },
+  {
+    "objectID": "slides/lec-14.html#the-adolescent-sleep-affect-project-asap",
+    "href": "slides/lec-14.html#the-adolescent-sleep-affect-project-asap",
+    "title": "Week 14: Model Building",
+    "section": "The Adolescent Sleep & Affect Project (ASAP)",
+    "text": "The Adolescent Sleep & Affect Project (ASAP)\nFirst, we need to familiarize ourselves with the variables that are present in the data\nThe Dataset:\n\nN = 400 children followed annually for 3 years.\n3 Timepoints: Baseline (ages 7-9), T2 (8-10), and T3 (9-11)\nKey Measures:\n\nPsychopathology: Depression (Dep), Anxiety (Anx)\nSleep: Sleep Duration (SleepDur), Sleep Quality (SleepQual)\nStress: Peer Stress (PeerStress), Academic Stress (AcadStress)\nDevelopment: Puberty (Puberty on 0-8 scale), Age (Age)"
+  },
+  {
+    "objectID": "slides/lec-14.html#congratulations",
+    "href": "slides/lec-14.html#congratulations",
+    "title": "Week 14: Model Building",
+    "section": "✨Congratulations ✨",
+    "text": "✨Congratulations ✨\nYou just made your data analytic plan!\nEvery paper should have a section that goes into detail about the steps they are going to go through. This helps to give readers a framework on what to expect."
+  },
+  {
+    "objectID": "slides/lec-14.html#building-the-results-section",
+    "href": "slides/lec-14.html#building-the-results-section",
+    "title": "Week 14: Model Building",
+    "section": "Building the Results Section",
+    "text": "Building the Results Section\nNow that we have a clearly defined our research question, we can begin the process of working with the data!\nHere are the steps that I tend to follow:\n\nWrangle 🤠 and tidy the data\nDescribe my data (Cronbach \\(\\alpha\\), correlations, means & sds)\nVisualize 📈\nBuilding my Model 🚧\nInterpreting and Reporting 📓"
+  },
+  {
+    "objectID": "slides/lec-14.html#building-the-results-section-1",
+    "href": "slides/lec-14.html#building-the-results-section-1",
+    "title": "Week 14: Model Building",
+    "section": "Building the Results Section",
+    "text": "Building the Results Section\nFrom our data analytic plan, we have a general idea on how to build our model 👷‍♀️\nBut that is all the way at step #4\nWe need to construct the foundation and provide the reader with the necessary information to be able to properly interpret your results"
+  },
+  {
+    "objectID": "slides/lec-14.html#baking-the-results-section",
+    "href": "slides/lec-14.html#baking-the-results-section",
+    "title": "Week 14: Model Building",
+    "section": "Baking the Results Section 🧑‍🍳",
+    "text": "Baking the Results Section 🧑‍🍳\nData Analytic Plan = Recipe\n\nGiving the overview of the plan and what to expect\n\nDescriptives & “Table 1” = Your specific ingredients\n\nThe reader is able to see your ingredients and know they can “trust” your results\n\nBuilding the Models = Putting everything together and baking\n\nYou go through the steps in order and put it in the oven\n\nDiscussion = Icing and Finishing touches\n\nComparing to the other cakes and highlight where you can improve when you bake it again"
+  },
+  {
+    "objectID": "slides/lec-14.html#constructing-the-results-section",
+    "href": "slides/lec-14.html#constructing-the-results-section",
+    "title": "Week 14: Model Building",
+    "section": "Constructing the Results Section",
+    "text": "Constructing the Results Section\nGetting away from baking, let’s say you are building something (LEGO?), or remodeling.\nResults Part 1 (Descriptives) is the “Inventory & Site Survey”\n\nBefore you build a house, you must check the materials. Do you have enough bricks (N)? Are any bricks broken (missing data)? Is the land/foundation flat or weirdly shaped (normality/outliers)?\n\n\n\n\n\n\n\nNote\n\n\nWe cannot build a stable house if we don’t admit that 10% of our wood is rotten. Descriptives are just us checking the pile of lumber to make sure it’s safe to build with.\n\n\n\nResults Part 2 (Inference) is the “Construction & Stress Test”\n\nNow that we know the wood is good, we nail it together to see if it holds together"
+  },
+  {
+    "objectID": "slides/lec-14.html#asap-and-results",
+    "href": "slides/lec-14.html#asap-and-results",
+    "title": "Week 14: Model Building",
+    "section": "ASAP and Results",
+    "text": "ASAP and Results\nNow let’s use R to finish the steps and put together a results section!\n\nWrangle 🤠 and tidy the data\nDescribe my data (Cronbach \\(\\alpha\\), correlations, means & sds)\nVisualize 📈\nBuilding my Model 🚧\nInterpreting and Reporting 📓"
+  },
+  {
+    "objectID": "slides/lec-03_wrangle.html#naming-conventions",
+    "href": "slides/lec-03_wrangle.html#naming-conventions",
     "title": "Week 03: Wrangling",
     "section": "Naming Conventions",
     "text": "Naming Conventions\nRemember in the lab when things were named all funky? We used the rename() function to do that last time. This can be helpful if you want to change it to something specific, but we may just want to make these names a little cleaner.\nIntroducing janitor https://sfirke.github.io/janitor/index.html\n\n#same code as before\ntipi &lt;- import(here(\"files\", \"data\", \"TIPI_Data.csv\")) %&gt;% \n  # from the janitor package\n  janitor::clean_names()\nnames(tipi)\n\n [1] \"id\"                  \"progress\"            \"duration_in_seconds\"\n [4] \"consent\"             \"genderid\"            \"genderid_7_text\"    \n [7] \"sex\"                 \"age\"                 \"year_school\"        \n[10] \"q85\"                 \"q85_6_text\"          \"tipi_1\"             \n[13] \"tipi_2\"              \"tipi_3\"              \"tipi_4\"             \n[16] \"tipi_5\"              \"tipi_6\"              \"tipi_7\"             \n[19] \"tipi_8\"              \"tipi_9\"              \"tipi_10\"            \n[22] \"sleep_quality\"       \"hours_of_sleep\""
   },
   {
-    "objectID": "slides/lec-3_wrangle.html#using-select",
-    "href": "slides/lec-3_wrangle.html#using-select",
+    "objectID": "slides/lec-03_wrangle.html#using-select",
+    "href": "slides/lec-03_wrangle.html#using-select",
     "title": "Week 03: Wrangling",
     "section": "Using select()",
     "text": "Using select()\nReview by looking at the cheatsheet for dplyr.\nThe dplyr package makes data wrangling and transformation much easier. select() allows you to…well…select the columns that you want to keep.\n\nCreate a dataset that only includes: id, progress, duration, TIPI items"
   },
   {
-    "objectID": "slides/lec-3_wrangle.html#using-select-1",
-    "href": "slides/lec-3_wrangle.html#using-select-1",
+    "objectID": "slides/lec-03_wrangle.html#using-select-1",
+    "href": "slides/lec-03_wrangle.html#using-select-1",
     "title": "Week 03: Wrangling",
     "section": "Using select()",
     "text": "Using select()\n\ntipi &lt;- tipi %&gt;% \n  select(c(id, progress, duration_in_seconds, tipi_1, \n           tipi_2, tipi_3, tipi_4, tipi_5, tipi_6, tipi_7, \n           tipi_8, tipi_9, tipi_10))\n\ntipi &lt;- tipi %&gt;% \n  select(c(id:duration_in_seconds, contains(\"tipi_\")))\n\n## OR\n\ntipi &lt;- tipi %&gt;% \n  select(-c(consent:q85_6_text, sleep_quality, hours_of_sleep))"
   },
   {
-    "objectID": "slides/lec-3_wrangle.html#extract-rows",
-    "href": "slides/lec-3_wrangle.html#extract-rows",
+    "objectID": "slides/lec-03_wrangle.html#extract-rows",
+    "href": "slides/lec-03_wrangle.html#extract-rows",
     "title": "Week 03: Wrangling",
     "section": "Extract Rows",
     "text": "Extract Rows\nThe ‘filter()’ function is used to subset observations based on their values.\nThe result of filtering is a data frame with the same number of columns as before but fewer rows.\nThe first argument is data and subsequent arguments are logical expressions that tell you which observations to retain in the data frame.\nNote: You are stating which types of rows you want to keep. If a variable can answer TRUE to your condition, then it will stay in the data.\n\nfilter(starwars, hair_color == \"none\")\n\n# A tibble: 38 × 14\n   name     height  mass hair_color skin_color eye_color birth_year sex   gender\n   &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; \n 1 Darth V…    202   136 none       white      yellow          41.9 male  mascu…\n 2 IG-88       200   140 none       metal      red             15   none  mascu…\n 3 Bossk       190   113 none       green      red             53   male  mascu…\n 4 Lobot       175    79 none       light      blue            37   male  mascu…\n 5 Ackbar      180    83 none       brown mot… orange          41   male  mascu…\n 6 Nien Nu…    160    68 none       grey       black           NA   male  mascu…\n 7 Nute Gu…    191    90 none       mottled g… red             NA   male  mascu…\n 8 Jar Jar…    196    66 none       orange     orange          52   male  mascu…\n 9 Roos Ta…    224    82 none       grey       orange          NA   male  mascu…\n10 Rugor N…    206    NA none       green      orange          NA   male  mascu…\n# ℹ 28 more rows\n# ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,\n#   vehicles &lt;list&gt;, starships &lt;list&gt;"
   },
   {
-    "objectID": "slides/lec-3_wrangle.html#filter-observations",
-    "href": "slides/lec-3_wrangle.html#filter-observations",
+    "objectID": "slides/lec-03_wrangle.html#filter-observations",
+    "href": "slides/lec-03_wrangle.html#filter-observations",
     "title": "Week 03: Wrangling",
     "section": "Filter Observations",
     "text": "Filter Observations\nWe can now generate a subset of observations based on a particular value\nThere may be some data checks that you perform when wrangling data. One that I would suggest is to look at the overall completion percentages and the amount of time that it took for participants to complete the questionnaire.\nThis is exactly what filter() is set to do.\n\n# Assigning it to a new variable\nclean_tipi_data &lt;- tipi %&gt;% \n  filter(progress == 100 & \n         duration_in_seconds &gt; 600)"
   },
   {
-    "objectID": "slides/lec-3_wrangle.html#compute-new-variable",
-    "href": "slides/lec-3_wrangle.html#compute-new-variable",
+    "objectID": "slides/lec-03_wrangle.html#compute-new-variable",
+    "href": "slides/lec-03_wrangle.html#compute-new-variable",
     "title": "Week 03: Wrangling",
     "section": "Compute new variable",
     "text": "Compute new variable\nWe often need to make a sum/mean score for a variable of interest, or transform it in some way.\nThe mutate() function is most commonly used to add new columns to your data frame that are functions of existing columns.\nmutate() requires data as its first argument, followed by a set of expressions defining new columns.\n\nNote: New variables are automatically added at the end of the data frame (scroll to the right to see them)\n\nWe have the Ten Item Personality Inventory\nTake a look at the scoring of the TIPI and compute the necessary variables for all subscales"
   },
   {
-    "objectID": "slides/lec-3_wrangle.html#sum-scores",
-    "href": "slides/lec-3_wrangle.html#sum-scores",
+    "objectID": "slides/lec-03_wrangle.html#sum-scores",
+    "href": "slides/lec-03_wrangle.html#sum-scores",
     "title": "Week 03: Wrangling",
     "section": "Sum Scores",
     "text": "Sum Scores\nAnd finally, we can use mutate() to create total scores (or really any type of computation)\nFor the TIPI data, we need to compute each of the 5 pieces of the Big Five (Extraversion, Agreeableness, Conscientiousness, Emotional Stability and Openness to Experience)\n\nfinal_tipi &lt;- wizard_tipi_data %&gt;% \n  mutate(\n    extra = (tipi_1 + tipi_6r)/2,\n    agree = (tipi_2r + tipi_7)/2,\n    consc = (tipi_3 + tipi_8r)/2,\n    emo = (tipi_4r + tipi_9)/2,\n    open = (tipi_5 + tipi_10r)/2\n  )"
   },
   {
-    "objectID": "slides/lec-3_wrangle.html#export",
-    "href": "slides/lec-3_wrangle.html#export",
+    "objectID": "slides/lec-03_wrangle.html#export",
+    "href": "slides/lec-03_wrangle.html#export",
     "title": "Week 03: Wrangling",
     "section": "export()",
     "text": "export()\nNow that we have a scored dataset, we will want to save that.\nYou can do this by re-running all of your steps above, or by exporting your dataset.\nexport(final_tipi, here(\"files\", \"data\", \"final_tipi.csv\"))\n\n\n\n\n\n\nNote\n\n\nBe careful when exporting and knitting docs. Each time you knit, it will run the export code. After I export, I usually will comment out that line of code."
-  },
-  {
-    "objectID": "slides/template-seasons.html#quarto",
-    "href": "slides/template-seasons.html#quarto",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Quarto",
-    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
-  },
-  {
-    "objectID": "slides/template-seasons.html#bullets",
-    "href": "slides/template-seasons.html#bullets",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Bullets",
-    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code\n\n\nlm(mpg ~ disp, data = mtcars)\n\n\nCall:\nlm(formula = mpg ~ disp, data = mtcars)\n\nCoefficients:\n(Intercept)         disp  \n   29.59985     -0.04122"
-  },
-  {
-    "objectID": "slides/template-seasons.html#latex-equations",
-    "href": "slides/template-seasons.html#latex-equations",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "LaTeX Equations",
-    "text": "LaTeX Equations\nMathJax rendering of equations to HTML\n\\[\\begin{gather*}\na_1=b_1+c_1\\\\\na_2=b_2+c_2-d_2+e_2\n\\end{gather*}\\]\n\\[\\begin{align}\na_{11}& =b_{11}&\n  a_{12}& =b_{12}\\\\\na_{21}& =b_{21}&\n  a_{22}& =b_{22}+c_{22}\n\\end{align}\\]"
-  },
-  {
-    "objectID": "slides/template-seasons.html#tables",
-    "href": "slides/template-seasons.html#tables",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Tables",
-    "text": "Tables\n\n\n\nSyntax\nDescription\n\n\n\n\nHeader\nTitle\n\n\nParagraph\nText"
-  },
-  {
-    "objectID": "slides/template-seasons.html#callout-blocks",
-    "href": "slides/template-seasons.html#callout-blocks",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Callout Blocks",
-    "text": "Callout Blocks\n\n\n\n\n\n\nNote\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDanger, callouts will really improve your writing.\n\n\n\n\n\n\n\n\n\nTip With Caption\n\n\nThis is an example of a callout with a caption."
-  },
-  {
-    "objectID": "slides/template-seasons.html#quarto-1",
-    "href": "slides/template-seasons.html#quarto-1",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Quarto",
-    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
-  },
-  {
-    "objectID": "slides/template-seasons.html#bullets-1",
-    "href": "slides/template-seasons.html#bullets-1",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Bullets",
-    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code\n\n\nlm(mpg ~ disp, data = mtcars)\n\n\nCall:\nlm(formula = mpg ~ disp, data = mtcars)\n\nCoefficients:\n(Intercept)         disp  \n   29.59985     -0.04122"
-  },
-  {
-    "objectID": "slides/template-seasons.html#latex-equations-1",
-    "href": "slides/template-seasons.html#latex-equations-1",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "LaTeX Equations",
-    "text": "LaTeX Equations\nMathJax rendering of equations to HTML\n\\[\\begin{gather*}\na_1=b_1+c_1\\\\\na_2=b_2+c_2-d_2+e_2\n\\end{gather*}\\]\n\\[\\begin{align}\na_{11}& =b_{11}&\n  a_{12}& =b_{12}\\\\\na_{21}& =b_{21}&\n  a_{22}& =b_{22}+c_{22}\n\\end{align}\\]"
-  },
-  {
-    "objectID": "slides/template-seasons.html#tables-1",
-    "href": "slides/template-seasons.html#tables-1",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Tables",
-    "text": "Tables\n\n\n\nSyntax\nDescription\n\n\n\n\nHeader\nTitle\n\n\nParagraph\nText"
-  },
-  {
-    "objectID": "slides/template-seasons.html#callout-blocks-1",
-    "href": "slides/template-seasons.html#callout-blocks-1",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Callout Blocks",
-    "text": "Callout Blocks\n\n\n\n\n\n\nNote\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDanger, callouts will really improve your writing.\n\n\n\n\n\n\n\n\n\nTip With Caption\n\n\nThis is an example of a callout with a caption."
-  },
-  {
-    "objectID": "slides/template-seasons.html#quarto-2",
-    "href": "slides/template-seasons.html#quarto-2",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Quarto",
-    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
-  },
-  {
-    "objectID": "slides/template-seasons.html#bullets-2",
-    "href": "slides/template-seasons.html#bullets-2",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Bullets",
-    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code\n\n\nlm(mpg ~ disp, data = mtcars)\n\n\nCall:\nlm(formula = mpg ~ disp, data = mtcars)\n\nCoefficients:\n(Intercept)         disp  \n   29.59985     -0.04122"
-  },
-  {
-    "objectID": "slides/template-seasons.html#latex-equations-2",
-    "href": "slides/template-seasons.html#latex-equations-2",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "LaTeX Equations",
-    "text": "LaTeX Equations\nMathJax rendering of equations to HTML\n\\[\\begin{gather*}\na_1=b_1+c_1\\\\\na_2=b_2+c_2-d_2+e_2\n\\end{gather*}\\]\n\\[\\begin{align}\na_{11}& =b_{11}&\n  a_{12}& =b_{12}\\\\\na_{21}& =b_{21}&\n  a_{22}& =b_{22}+c_{22}\n\\end{align}\\]"
-  },
-  {
-    "objectID": "slides/template-seasons.html#tables-2",
-    "href": "slides/template-seasons.html#tables-2",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Tables",
-    "text": "Tables\n\n\n\nSyntax\nDescription\n\n\n\n\nHeader\nTitle\n\n\nParagraph\nText"
-  },
-  {
-    "objectID": "slides/template-seasons.html#callout-blocks-2",
-    "href": "slides/template-seasons.html#callout-blocks-2",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Callout Blocks",
-    "text": "Callout Blocks\n\n\n\n\n\n\nNote\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDanger, callouts will really improve your writing.\n\n\n\n\n\n\n\n\n\nTip With Caption\n\n\nThis is an example of a callout with a caption."
-  },
-  {
-    "objectID": "slides/template-seasons.html#quarto-3",
-    "href": "slides/template-seasons.html#quarto-3",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Quarto",
-    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
-  },
-  {
-    "objectID": "slides/template-seasons.html#bullets-3",
-    "href": "slides/template-seasons.html#bullets-3",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Bullets",
-    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code\n\n\nlm(mpg ~ disp, data = mtcars)\n\n\nCall:\nlm(formula = mpg ~ disp, data = mtcars)\n\nCoefficients:\n(Intercept)         disp  \n   29.59985     -0.04122"
-  },
-  {
-    "objectID": "slides/template-seasons.html#latex-equations-3",
-    "href": "slides/template-seasons.html#latex-equations-3",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "LaTeX Equations",
-    "text": "LaTeX Equations\nMathJax rendering of equations to HTML\n\\[\\begin{gather*}\na_1=b_1+c_1\\\\\na_2=b_2+c_2-d_2+e_2\n\\end{gather*}\\]\n\\[\\begin{align}\na_{11}& =b_{11}&\n  a_{12}& =b_{12}\\\\\na_{21}& =b_{21}&\n  a_{22}& =b_{22}+c_{22}\n\\end{align}\\]"
-  },
-  {
-    "objectID": "slides/template-seasons.html#tables-3",
-    "href": "slides/template-seasons.html#tables-3",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Tables",
-    "text": "Tables\n\n\n\nSyntax\nDescription\n\n\n\n\nHeader\nTitle\n\n\nParagraph\nText"
-  },
-  {
-    "objectID": "slides/template-seasons.html#callout-blocks-3",
-    "href": "slides/template-seasons.html#callout-blocks-3",
-    "title": "PSYC 640 - Graduate Statistics",
-    "section": "Callout Blocks",
-    "text": "Callout Blocks\n\n\n\n\n\n\nNote\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDanger, callouts will really improve your writing.\n\n\n\n\n\n\n\n\n\nTip With Caption\n\n\nThis is an example of a callout with a caption."
   },
   {
     "objectID": "slides/lec-11_categor.html#today",
@@ -2829,123 +2808,144 @@
     "text": "Other Graphs\nTake another look at the ggplot cheatsheet\nWhat else is a useful chart?"
   },
   {
-    "objectID": "slides/lec-14.html#today",
-    "href": "slides/lec-14.html#today",
-    "title": "Week 14: Model Building",
-    "section": "Today…",
-    "text": "Today…\n\nStarting from scratch & building your results\nFinal Project Check in"
+    "objectID": "slides/template-seasons.html#quarto",
+    "href": "slides/template-seasons.html#quarto",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Quarto",
+    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
   },
   {
-    "objectID": "slides/lec-14.html#research-process-overview",
-    "href": "slides/lec-14.html#research-process-overview",
-    "title": "Week 14: Model Building",
-    "section": "Research Process Overview",
-    "text": "Research Process Overview"
+    "objectID": "slides/template-seasons.html#bullets",
+    "href": "slides/template-seasons.html#bullets",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Bullets",
+    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code\n\n\nlm(mpg ~ disp, data = mtcars)\n\n\nCall:\nlm(formula = mpg ~ disp, data = mtcars)\n\nCoefficients:\n(Intercept)         disp  \n   29.59985     -0.04122"
   },
   {
-    "objectID": "slides/lec-14.html#the-adolescent-sleep-affect-project-asap",
-    "href": "slides/lec-14.html#the-adolescent-sleep-affect-project-asap",
-    "title": "Week 14: Model Building",
-    "section": "The Adolescent Sleep & Affect Project (ASAP)",
-    "text": "The Adolescent Sleep & Affect Project (ASAP)\nFirst, we need to familiarize ourselves with the variables that are present in the data\nThe Dataset:\n\nN = 400 children followed annually for 3 years.\n3 Timepoints: Baseline (ages 7-9), T2 (8-10), and T3 (9-11)\nKey Measures:\n\nPsychopathology: Depression (Dep), Anxiety (Anx)\nSleep: Sleep Duration (SleepDur), Sleep Quality (SleepQual)\nStress: Peer Stress (PeerStress), Academic Stress (AcadStress)\nDevelopment: Puberty (Puberty on 0-8 scale), Age (Age)"
+    "objectID": "slides/template-seasons.html#latex-equations",
+    "href": "slides/template-seasons.html#latex-equations",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "LaTeX Equations",
+    "text": "LaTeX Equations\nMathJax rendering of equations to HTML\n\\[\\begin{gather*}\na_1=b_1+c_1\\\\\na_2=b_2+c_2-d_2+e_2\n\\end{gather*}\\]\n\\[\\begin{align}\na_{11}& =b_{11}&\n  a_{12}& =b_{12}\\\\\na_{21}& =b_{21}&\n  a_{22}& =b_{22}+c_{22}\n\\end{align}\\]"
   },
   {
-    "objectID": "slides/lec-14.html#congratulations",
-    "href": "slides/lec-14.html#congratulations",
-    "title": "Week 14: Model Building",
-    "section": "✨Congratulations ✨",
-    "text": "✨Congratulations ✨\nYou just made your data analytic plan!\nEvery paper should have a section that goes into detail about the steps they are going to go through. This helps to give readers a framework on what to expect."
+    "objectID": "slides/template-seasons.html#tables",
+    "href": "slides/template-seasons.html#tables",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Tables",
+    "text": "Tables\n\n\n\nSyntax\nDescription\n\n\n\n\nHeader\nTitle\n\n\nParagraph\nText"
   },
   {
-    "objectID": "slides/lec-14.html#building-the-results-section",
-    "href": "slides/lec-14.html#building-the-results-section",
-    "title": "Week 14: Model Building",
-    "section": "Building the Results Section",
-    "text": "Building the Results Section\nNow that we have a clearly defined our research question, we can begin the process of working with the data!\nHere are the steps that I tend to follow:\n\nWrangle 🤠 and tidy the data\nDescribe my data (Cronbach \\(\\alpha\\), correlations, means & sds)\nVisualize 📈\nBuilding my Model 🚧\nInterpreting and Reporting 📓"
+    "objectID": "slides/template-seasons.html#callout-blocks",
+    "href": "slides/template-seasons.html#callout-blocks",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Callout Blocks",
+    "text": "Callout Blocks\n\n\n\n\n\n\nNote\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDanger, callouts will really improve your writing.\n\n\n\n\n\n\n\n\n\nTip With Caption\n\n\nThis is an example of a callout with a caption."
   },
   {
-    "objectID": "slides/lec-14.html#building-the-results-section-1",
-    "href": "slides/lec-14.html#building-the-results-section-1",
-    "title": "Week 14: Model Building",
-    "section": "Building the Results Section",
-    "text": "Building the Results Section\nFrom our data analytic plan, we have a general idea on how to build our model 👷‍♀️\nBut that is all the way at step #4\nWe need to construct the foundation and provide the reader with the necessary information to be able to properly interpret your results"
+    "objectID": "slides/template-seasons.html#quarto-1",
+    "href": "slides/template-seasons.html#quarto-1",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Quarto",
+    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
   },
   {
-    "objectID": "slides/lec-14.html#baking-the-results-section",
-    "href": "slides/lec-14.html#baking-the-results-section",
-    "title": "Week 14: Model Building",
-    "section": "Baking the Results Section 🧑‍🍳",
-    "text": "Baking the Results Section 🧑‍🍳\nData Analytic Plan = Recipe\n\nGiving the overview of the plan and what to expect\n\nDescriptives & “Table 1” = Your specific ingredients\n\nThe reader is able to see your ingredients and know they can “trust” your results\n\nBuilding the Models = Putting everything together and baking\n\nYou go through the steps in order and put it in the oven\n\nDiscussion = Icing and Finishing touches\n\nComparing to the other cakes and highlight where you can improve when you bake it again"
+    "objectID": "slides/template-seasons.html#bullets-1",
+    "href": "slides/template-seasons.html#bullets-1",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Bullets",
+    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code\n\n\nlm(mpg ~ disp, data = mtcars)\n\n\nCall:\nlm(formula = mpg ~ disp, data = mtcars)\n\nCoefficients:\n(Intercept)         disp  \n   29.59985     -0.04122"
   },
   {
-    "objectID": "slides/lec-14.html#constructing-the-results-section",
-    "href": "slides/lec-14.html#constructing-the-results-section",
-    "title": "Week 14: Model Building",
-    "section": "Constructing the Results Section",
-    "text": "Constructing the Results Section\nGetting away from baking, let’s say you are building something (LEGO?), or remodeling.\nResults Part 1 (Descriptives) is the “Inventory & Site Survey”\n\nBefore you build a house, you must check the materials. Do you have enough bricks (N)? Are any bricks broken (missing data)? Is the land/foundation flat or weirdly shaped (normality/outliers)?\n\n\n\n\n\n\n\nNote\n\n\nWe cannot build a stable house if we don’t admit that 10% of our wood is rotten. Descriptives are just us checking the pile of lumber to make sure it’s safe to build with.\n\n\n\nResults Part 2 (Inference) is the “Construction & Stress Test”\n\nNow that we know the wood is good, we nail it together to see if it holds together"
+    "objectID": "slides/template-seasons.html#latex-equations-1",
+    "href": "slides/template-seasons.html#latex-equations-1",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "LaTeX Equations",
+    "text": "LaTeX Equations\nMathJax rendering of equations to HTML\n\\[\\begin{gather*}\na_1=b_1+c_1\\\\\na_2=b_2+c_2-d_2+e_2\n\\end{gather*}\\]\n\\[\\begin{align}\na_{11}& =b_{11}&\n  a_{12}& =b_{12}\\\\\na_{21}& =b_{21}&\n  a_{22}& =b_{22}+c_{22}\n\\end{align}\\]"
   },
   {
-    "objectID": "slides/lec-14.html#asap-and-results",
-    "href": "slides/lec-14.html#asap-and-results",
-    "title": "Week 14: Model Building",
-    "section": "ASAP and Results",
-    "text": "ASAP and Results\nNow let’s use R to finish the steps and put together a results section!\n\nWrangle 🤠 and tidy the data\nDescribe my data (Cronbach \\(\\alpha\\), correlations, means & sds)\nVisualize 📈\nBuilding my Model 🚧\nInterpreting and Reporting 📓"
+    "objectID": "slides/template-seasons.html#tables-1",
+    "href": "slides/template-seasons.html#tables-1",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Tables",
+    "text": "Tables\n\n\n\nSyntax\nDescription\n\n\n\n\nHeader\nTitle\n\n\nParagraph\nText"
   },
   {
-    "objectID": "slides/lec-01_syl.html#when-the-teaching-happens",
-    "href": "slides/lec-01_syl.html#when-the-teaching-happens",
-    "title": "Week 01: Getting Started!",
-    "section": "When the Teaching Happens",
-    "text": "When the Teaching Happens\n💾 Meeting Times: Thursday’s 9:30am - 12:20pm\n🧑‍🏫 Drop in Office Hours: Tuesday’s 10am - 12:00 pm\n📧 Best way to contact me? Email me. I will usually respond within 24 hours. If it has been longer, then you can send me a follow-up\n\n\n\n\n\n\nNote\n\n\nI just figured out how to easily put emojis into the presentation. I’m sorry that you will have to witness that."
+    "objectID": "slides/template-seasons.html#callout-blocks-1",
+    "href": "slides/template-seasons.html#callout-blocks-1",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Callout Blocks",
+    "text": "Callout Blocks\n\n\n\n\n\n\nNote\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDanger, callouts will really improve your writing.\n\n\n\n\n\n\n\n\n\nTip With Caption\n\n\nThis is an example of a callout with a caption."
   },
   {
-    "objectID": "slides/lec-01_syl.html#communication",
-    "href": "slides/lec-01_syl.html#communication",
-    "title": "Week 01: Getting Started!",
-    "section": "Communication",
-    "text": "Communication\nPlease ask questions! 🙋‍♀️\nIf you are having trouble, just ask!!\nBe open and honest with me and I will do what I can to support you."
+    "objectID": "slides/template-seasons.html#quarto-2",
+    "href": "slides/template-seasons.html#quarto-2",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Quarto",
+    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
   },
   {
-    "objectID": "slides/lec-01_syl.html#who-the-heck-am-i",
-    "href": "slides/lec-01_syl.html#who-the-heck-am-i",
-    "title": "Week 01: Getting Started!",
-    "section": "Who the heck am I? 🤷",
-    "text": "Who the heck am I? 🤷\n\nUndergraduate degree at University of Denver\n\nPsychology & Philosophy\nHated Statistics\n\nGraduate degree at University of Illinois at Urbana-Champaign\n\nAdvisor: Dr. Benjamin Hankin 👨‍🔬\nClinical/Community PhD 🎓\n\nPre-Doctoral Internship & Postdoc at Rochester Institute of Technology 🐯"
+    "objectID": "slides/template-seasons.html#bullets-2",
+    "href": "slides/template-seasons.html#bullets-2",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Bullets",
+    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code\n\n\nlm(mpg ~ disp, data = mtcars)\n\n\nCall:\nlm(formula = mpg ~ disp, data = mtcars)\n\nCoefficients:\n(Intercept)         disp  \n   29.59985     -0.04122"
   },
   {
-    "objectID": "slides/lec-01_syl.html#a-little-more-about-me",
-    "href": "slides/lec-01_syl.html#a-little-more-about-me",
-    "title": "Week 01: Getting Started!",
-    "section": "A little more about me",
-    "text": "A little more about me\n\nPronouns: he/him/his\n2 amazing kids, 2 dogs (Dachshund and Shepherd Mix), 1 wife\nCurrently Reading: The Shadows of the Gods 🤷, Dungeon Crawler Carl 🐱\nCurrently Listening: The Lonely Island & Seth Meyers Podcast\nCurrently Watching: Love on the Spectrum, Bluey, and Lizzie McGuire"
+    "objectID": "slides/template-seasons.html#latex-equations-2",
+    "href": "slides/template-seasons.html#latex-equations-2",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "LaTeX Equations",
+    "text": "LaTeX Equations\nMathJax rendering of equations to HTML\n\\[\\begin{gather*}\na_1=b_1+c_1\\\\\na_2=b_2+c_2-d_2+e_2\n\\end{gather*}\\]\n\\[\\begin{align}\na_{11}& =b_{11}&\n  a_{12}& =b_{12}\\\\\na_{21}& =b_{21}&\n  a_{22}& =b_{22}+c_{22}\n\\end{align}\\]"
   },
   {
-    "objectID": "slides/lec-01_syl.html#teaching-philosophy",
-    "href": "slides/lec-01_syl.html#teaching-philosophy",
-    "title": "Week 01: Getting Started!",
-    "section": "Teaching Philosophy",
-    "text": "Teaching Philosophy\n\nI’m here for you and to support you however I can\nMy job is to create a supportive, low-stakes environment where you can crash test ideas and develop new skills\nYour responsibility is to come to class prepared, ready to have fun, take some risks, and actively participate!\n\nAsk questions, share relevant funny stories, seek clarification, question the status quo where applicable\n\nScience is a team sport & failures/mistakes will happen, but it is okay! That’s what science and discovery is!"
+    "objectID": "slides/template-seasons.html#tables-2",
+    "href": "slides/template-seasons.html#tables-2",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Tables",
+    "text": "Tables\n\n\n\nSyntax\nDescription\n\n\n\n\nHeader\nTitle\n\n\nParagraph\nText"
   },
   {
-    "objectID": "slides/lec-01_syl.html#class-materials",
-    "href": "slides/lec-01_syl.html#class-materials",
-    "title": "Week 01: Getting Started!",
-    "section": "Class Materials",
-    "text": "Class Materials\nI’ve pulled from a lot of different textbooks. Good thing is, they are all free!\n\nRegression and Other Stories (Gelman, Hill & Vehtari, 2024)\nLearning Statistics with R (Navarro)\nR for Data Science (2e) (Wickham, Çetinkaya-Rundel, & Grolemund, 2023)\nModern Statistics with R (2e) (Thullin, 2025)\nStatistical Thinking (Poldrack, 2024)"
+    "objectID": "slides/template-seasons.html#callout-blocks-2",
+    "href": "slides/template-seasons.html#callout-blocks-2",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Callout Blocks",
+    "text": "Callout Blocks\n\n\n\n\n\n\nNote\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDanger, callouts will really improve your writing.\n\n\n\n\n\n\n\n\n\nTip With Caption\n\n\nThis is an example of a callout with a caption."
   },
   {
-    "objectID": "slides/lec-01_syl.html#evaluation-grading",
-    "href": "slides/lec-01_syl.html#evaluation-grading",
-    "title": "Week 01: Getting Started!",
-    "section": "Evaluation & Grading",
-    "text": "Evaluation & Grading\n\n\n\nComponent\nWeight\n\n\nLabs & In-Class Check-ins\n35%\n\n\nJournal Entries\n10%\n\n\nParticipation & Engagement\n10%\n\n\nMidterm Project\n20%\n\n\nFinal Project\n25%"
+    "objectID": "slides/template-seasons.html#quarto-3",
+    "href": "slides/template-seasons.html#quarto-3",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Quarto",
+    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
   },
   {
-    "objectID": "slides/lec-01_syl.html#course-policies",
-    "href": "slides/lec-01_syl.html#course-policies",
-    "title": "Week 01: Getting Started!",
-    "section": "Course Policies",
-    "text": "Course Policies\n\nLate\nAccommodations\nSafety\nAcademic Integrity"
+    "objectID": "slides/template-seasons.html#bullets-3",
+    "href": "slides/template-seasons.html#bullets-3",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Bullets",
+    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code\n\n\nlm(mpg ~ disp, data = mtcars)\n\n\nCall:\nlm(formula = mpg ~ disp, data = mtcars)\n\nCoefficients:\n(Intercept)         disp  \n   29.59985     -0.04122"
+  },
+  {
+    "objectID": "slides/template-seasons.html#latex-equations-3",
+    "href": "slides/template-seasons.html#latex-equations-3",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "LaTeX Equations",
+    "text": "LaTeX Equations\nMathJax rendering of equations to HTML\n\\[\\begin{gather*}\na_1=b_1+c_1\\\\\na_2=b_2+c_2-d_2+e_2\n\\end{gather*}\\]\n\\[\\begin{align}\na_{11}& =b_{11}&\n  a_{12}& =b_{12}\\\\\na_{21}& =b_{21}&\n  a_{22}& =b_{22}+c_{22}\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/template-seasons.html#tables-3",
+    "href": "slides/template-seasons.html#tables-3",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Tables",
+    "text": "Tables\n\n\n\nSyntax\nDescription\n\n\n\n\nHeader\nTitle\n\n\nParagraph\nText"
+  },
+  {
+    "objectID": "slides/template-seasons.html#callout-blocks-3",
+    "href": "slides/template-seasons.html#callout-blocks-3",
+    "title": "PSYC 640 - Graduate Statistics",
+    "section": "Callout Blocks",
+    "text": "Callout Blocks\n\n\n\n\n\n\nNote\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDanger, callouts will really improve your writing.\n\n\n\n\n\n\n\n\n\nTip With Caption\n\n\nThis is an example of a callout with a caption."
   },
   {
     "objectID": "slides/lec-10_multiple-reg.html#today",
