@@ -1,6 +1,6 @@
 ---
 title: "Week 03: Describe & Vizualize"
-subtitle: "Date: September 3, 2025"
+subtitle: "Date: September 10, 2026"
 footer:  "[course-website](https://dharaden.github.io/psyc640/)"
 logo: "images/640_hex.png"
 format: 
@@ -24,7 +24,10 @@ execute:
 
 ![](images/ggplot2.png){fig-alt="A fuzzy monster in a beret and scarf, critiquing their own column graph on a canvas in front of them while other assistant monsters (also in berets) carry over boxes full of elements that can be used to customize a graph (like themes and geometric shapes). In the background is a wall with framed data visualizations. Stylized text reads “ggplot2: build a data masterpiece.” Learn more about ggplot2." fig-align="center"}
 
-```{r, results = 'hide', message = F, warning = F}
+```{r results='hide'}
+#| echo: true
+#| message: false
+#| warning: false
 # File management
 library(here)
 # for dplyr, ggplot2
@@ -44,7 +47,7 @@ options(scipen=999)
 
 Let's first start by opening our **`Project`**
 
-Then, create a new Notebook/Markdown Document that we will use for today
+Then, create a new Quarto Document that we will use for today
 
 Setup the libraries and bring in the data
 
@@ -64,7 +67,7 @@ tipi <- import(here("files", "data", "final_tipi.csv")) %>%
 ## Some Terminology
 
 | Population | Sample |
-|----|----|
+|------------------------------------|------------------------------------|
 | $\mu$ (mu) = Population Mean | $\bar{X}$ (x bar) = Sample Mean |
 | $\sigma$ (sigma) = Population Standard Deviation | $s$ = $\hat{\sigma}$ = Sample Standard Deviation |
 | $\sigma^2$ (sigma squared) = Population Variance | $s^2$ = $\hat{\sigma^2}$ = Sample Variance |
@@ -177,7 +180,7 @@ $$\hat{\sigma}^2 = s^2 = \frac{1}{N-1}\sum_{i=1}^N(X-\bar{X})^2$$
 ------------------------------------------------------------------------
 
 | $i$ (observation) | $X_i$ (value) | $\bar{X}$ (sample mean) | $X_i - \bar{X}$ (deviation from mean) | $(X_i - \bar{X})^2$ (squared deviation) |
-|----|----|----|----|----|
+|---------------|---------------|---------------|---------------|---------------|
 | 1 | 56 | 36.6 | 19.4 | 376.36 |
 | 2 | 31 | 36.6 | -5.6 | 31.36 |
 | 3 | 56 | 36.6 | 19.4 | 376.36 |
@@ -193,20 +196,6 @@ $$\hat{\sigma}^2 = s^2 = \frac{1}{N-1}\sum_{i=1}^N(X-\bar{X})^2$$
 
 - To weigh larger deviations from the mean
 :::
-
-------------------------------------------------------------------------
-
-## In-Class Activity: Variance
-
-Open up Instagram (that is still a thing right?)
-
-Identify a celebrity and look at their most recent Instagram posts.
-
-Let's calculate the variance of their likes.
-
-[Google Form](https://forms.gle/ojrzADJ9o35tM2gY9){target="_blank"}
-
-![](images/clipboard-2553485530.png)
 
 ------------------------------------------------------------------------
 
@@ -229,11 +218,11 @@ Fortunately for us, there is a function called `describe()` from the `{psych}` p
 
 Be sure to first install the package prior to putting it into your library code chunk. Reminder: anytime you add a library, be sure you actually run the code line **`library(psych)`**. Otherwise, you will have a hard time trying to use the next functions. 
 
-Let’s use it with our sleep dataset!
+Let’s use it with our dataset!
 
 ## describe()
 
-This function automatically calculates all of the descriptives we reviewed above (and more!). Use the describe() function from the **psych** package on the entire sleep_data dataset.
+This function automatically calculates all of the descriptives we reviewed above (and more!). Use the describe() function from the **psych** package on the entire dataset.
 
 **Notes:** If you load a library at the beginning, you can directly call any function from it. Instead, you can call a function by library_name::function_name without loading the entire library.
 
@@ -260,6 +249,18 @@ tipi %>%
   psych::describe() %>% 
   sjPlot::tab_df()
 ```
+
+------------------------------------------------------------------------
+
+## In-Class Activity 🧟
+
+Calculate the variance associated with the prices and/or piece of LEGO sets.
+
+1\) Go to the [LEGO website](https://www.lego.com/en-us/themes){target="_blank"} and select a Theme.
+
+2\) Record the Price and Number of Pieces for 5 random sets within your theme on this [Google Sheet](https://docs.google.com/spreadsheets/d/1oxGD35Va66iDQvI2H_Sua_UZVEVp2SUya9wclPI6z9s/edit?usp=sharing){target="_blank"}
+
+3\) Calculate the means and variance of each
 
 ------------------------------------------------------------------------
 
@@ -331,7 +332,6 @@ Let's start with a basic figure with our TIPI data
 **First** we will define the data that we are using and the variables we are visualizing
 
 ```{r, eval = FALSE}
-#the dataset is called penguins
 
 tipi %>% 
   #including the variables we want to visualize
@@ -498,19 +498,144 @@ What else is a useful chart?
 
 ------------------------------------------------------------------------
 
-### Bar Charts
+### Histograms/Bar Charts
 
 ```{r}
 tipi %>% 
+  #filter(duration_in_seconds < 2500) %>% 
   ggplot(aes(x = duration_in_seconds)) + 
-  geom_bar()
+  geom_histogram()
 
 tipi %>% 
   ggplot(aes(x = age)) + 
   geom_bar(aes(fill = sex), 
                  alpha = 0.5, 
-                 position = "identity")
+                 position = "dodge")
+
 ```
+
+------------------------------------------------------------------------
+
+### `stat_summary()`
+
+```{r}
+
+tipi %>% 
+  ggplot(aes(x = age, 
+             y = sleep_quality)) + 
+  stat_summary(fun = "mean", 
+               geom = "bar")
+```
+
+------------------------------------------------------------------------
+
+### `stat_summary()`
+
+Define *what* we want to plot (the “mean”), and *how* (as a “bar” chart)
+
+We supply two arguments to the function, `fun =` and `geom =`.
+
+1.  The `fun` argument specifies *what* function we’d like to apply to the data for each value of `x`. Here, we said that we would like to take the `mean` and we specified that as a string.
+
+2.  The `geom` (= geometric object) argument specifies *how* we would like to plot the result, namely as a “bar” plot.
+
+❓What if we want to display the median instead of the mean❓
+
+------------------------------------------------------------------------
+
+### `stat_summary()` MEDIAN
+
+```{r}
+tipi %>% 
+  ggplot(aes(x = age, 
+             y = sleep_quality)) + 
+  stat_summary(fun = "median", 
+               geom = "bar")
+
+```
+
+❓What about points instead of bars❓
+
+------------------------------------------------------------------------
+
+### `stat_summary()` POINT
+
+```{r}
+tipi %>% 
+  ggplot(aes(x = age, 
+             y = sleep_quality)) + 
+  stat_summary(fun = "mean", 
+               geom = "point")
+```
+
+Maybe we need some different data
+
+------------------------------------------------------------------------
+
+```{r}
+#midwest data - population rates of the midwest
+midwest %>% 
+  ggplot(aes(state, 
+             y = poptotal)) + 
+  stat_summary(fun = "mean", 
+               geom = "point", 
+               color = "hotpink", 
+               size = 3) +
+  stat_summary(fun.data = "mean_cl_boot",
+               geom = "linerange")
+```
+
+::: callout-note
+The order of the layers matters here! Notice how the linerange is on top of the point
+:::
+
+------------------------------------------------------------------------
+
+## Practice Plot
+
+Make a bar plot that shows the average `hours_of_sleep` for students (on the y-axis) as a function of their `year_school` (on the x-axis). Add error bars. It should look like the plot below
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+tipi %>% 
+  ggplot(aes(x = year_school, 
+             y = hours_of_sleep)) + 
+  stat_summary(fun = "mean", 
+               geom = "bar") + 
+  stat_summary(fun.data = "mean_cl_boot", 
+               geom = "linerange")
+```
+
+::: callout-note
+If this comes easy, try replicating the plot on the next page
+:::
+
+------------------------------------------------------------------------
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+tipi %>%
+  mutate(year_school = as.factor(year_school)) %>% 
+  ggplot(aes(x = year_school, 
+             y = hours_of_sleep, 
+             fill = year_school)) + 
+  geom_violin()  +
+  labs(title = "Average Hours of Sleep by Year in School", 
+       x = "Year in School", 
+       y = "# of Hours")
+```
+
+------------------------------------------------------------------------
+
+## Always Visualize Your Data!
+
+![](images/hiding_data.png){fig-align="center"}
 
 # Now you try! 🎉
 
