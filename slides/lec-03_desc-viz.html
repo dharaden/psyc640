@@ -196,7 +196,7 @@
     }
   </style>
 <meta property="og:title" content="Week 03: Describe &amp; Vizualize – PSYC 640 - Graduate Statistics">
-<meta property="og:description" content="Date: September 3, 2025">
+<meta property="og:description" content="Date: September 10, 2026">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
 <body class="quarto-light">
@@ -205,7 +205,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Week 03: Describe &amp; Vizualize</h1>
-  <p class="subtitle">Date: September 3, 2025</p>
+  <p class="subtitle">Date: September 10, 2026</p>
 
 <div class="quarto-title-authors">
 </div>
@@ -241,7 +241,7 @@
 <section id="starting-up" class="title-slide slide level1 center">
 <h1>Starting Up</h1>
 <p>Let’s first start by opening our <strong><code>Project</code></strong></p>
-<p>Then, create a new Notebook/Markdown Document that we will use for today</p>
+<p>Then, create a new Quarto Document that we will use for today</p>
 <p>Setup the libraries and bring in the data</p>
 <ul>
 <li>We will use the TIPI data from the last lecture that has already been scored</li>
@@ -439,14 +439,6 @@
 <li class="fragment"><p>To weigh larger deviations from the mean</p></li>
 </ul>
 </section>
-<section id="in-class-activity-variance" class="slide level2">
-<h2>In-Class Activity: Variance</h2>
-<p>Open up Instagram (that is still a thing right?)</p>
-<p>Identify a celebrity and look at their most recent Instagram posts.</p>
-<p>Let’s calculate the variance of their likes.</p>
-<p><a href="https://forms.gle/ojrzADJ9o35tM2gY9" target="_blank">Google Form</a></p>
-
-<img data-src="images/clipboard-2553485530.png" class="r-stretch"></section>
 <section id="variance-in-r" class="slide level2">
 <h2>Variance in R</h2>
 <p>To find the variance and standard deviation, we use var() and sd(), respectively. Find the variance and standard deviation of the age variable.</p>
@@ -470,11 +462,11 @@
 <p>So far we have been calculating various descriptive statistics (somewhat painstakingly) using an assortment of different functions. So what if we have a dataset with a bunch of variables we want descriptive statistics for? Surely we don’t want to calculate descriptives for each variable by hand…</p>
 <p>Fortunately for us, there is a function called <code>describe()</code> from the <code>{psych}</code> package, which we can use to quickly summarize a whole set of variables in a dataset.</p>
 <p>Be sure to first install the package prior to putting it into your library code chunk. Reminder: anytime you add a library, be sure you actually run the code line <strong><code>library(psych)</code></strong>. Otherwise, you will have a hard time trying to use the next functions.&nbsp;</p>
-<p>Let’s use it with our sleep dataset!</p>
+<p>Let’s use it with our dataset!</p>
 </section>
 <section id="describe" class="slide level2">
 <h2>describe()</h2>
-<p>This function automatically calculates all of the descriptives we reviewed above (and more!). Use the describe() function from the <strong>psych</strong> package on the entire sleep_data dataset.</p>
+<p>This function automatically calculates all of the descriptives we reviewed above (and more!). Use the describe() function from the <strong>psych</strong> package on the entire dataset.</p>
 <p><strong>Notes:</strong> If you load a library at the beginning, you can directly call any function from it. Instead, you can call a function by library_name::function_name without loading the entire library.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(tipi)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1150,6 +1142,13 @@ open                     7      4.5 -0.48     0.13    0.10</code></pre>
 </div>
 </div>
 </section>
+<section id="in-class-activity" class="slide level2">
+<h2>In-Class Activity 🧟</h2>
+<p>Calculate the variance associated with the prices and/or piece of LEGO sets.</p>
+<p>1) Go to the <a href="https://www.lego.com/en-us/themes" target="_blank">LEGO website</a> and select a Theme.</p>
+<p>2) Record the Price and Number of Pieces for 5 random sets within your theme on this <a href="https://docs.google.com/spreadsheets/d/1oxGD35Va66iDQvI2H_Sua_UZVEVp2SUya9wclPI6z9s/edit?usp=sharing" target="_blank">Google Sheet</a></p>
+<p>3) Calculate the means and variance of each</p>
+</section>
 <section class="slide level2">
 
 </section></section>
@@ -1213,12 +1212,10 @@ open                     7      4.5 -0.48     0.13    0.10</code></pre>
 <p>Let’s start with a basic figure with our TIPI data</p>
 <p><strong>First</strong> we will define the data that we are using and the variables we are visualizing</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-label="1"></a><span class="co">#the dataset is called penguins</span></span>
-<span id="cb19-2"><a aria-label="2"></a></span>
-<span id="cb19-3"><a aria-label="3"></a>tipi <span class="sc">%&gt;%</span> </span>
-<span id="cb19-4"><a aria-label="4"></a>  <span class="co">#including the variables we want to visualize</span></span>
-<span id="cb19-5"><a aria-label="5"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> emo, </span>
-<span id="cb19-6"><a aria-label="6"></a>             <span class="at">y =</span> extra))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-label="1"></a>tipi <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a aria-label="2"></a>  <span class="co">#including the variables we want to visualize</span></span>
+<span id="cb19-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> emo, </span>
+<span id="cb19-4"><a aria-label="4"></a>             <span class="at">y =</span> extra))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>What happens?</p>
 </section>
@@ -1345,11 +1342,12 @@ What did we move around from the last set of code?</p>
 </section>
 <section class="slide level2">
 
-<h3 id="bar-charts">Bar Charts</h3>
+<h3 id="histogramsbar-charts">Histograms/Bar Charts</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-label="1"></a>tipi <span class="sc">%&gt;%</span> </span>
-<span id="cb28-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> duration_in_seconds)) <span class="sc">+</span> </span>
-<span id="cb28-3"><a aria-label="3"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb28-2"><a aria-label="2"></a>  <span class="co">#filter(duration_in_seconds &lt; 2500) %&gt;% </span></span>
+<span id="cb28-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> duration_in_seconds)) <span class="sc">+</span> </span>
+<span id="cb28-4"><a aria-label="4"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -1361,7 +1359,7 @@ What did we move around from the last set of code?</p>
 <span id="cb29-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age)) <span class="sc">+</span> </span>
 <span id="cb29-3"><a aria-label="3"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill =</span> sex), </span>
 <span id="cb29-4"><a aria-label="4"></a>                 <span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
-<span id="cb29-5"><a aria-label="5"></a>                 <span class="at">position =</span> <span class="st">"identity"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb29-5"><a aria-label="5"></a>                 <span class="at">position =</span> <span class="st">"dodge"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -1370,7 +1368,111 @@ What did we move around from the last set of code?</p>
 </div>
 </div>
 </div>
-</section></section>
+</section>
+<section class="slide level2">
+
+<h3 id="stat_summary"><code>stat_summary()</code></h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-label="1"></a>tipi <span class="sc">%&gt;%</span> </span>
+<span id="cb30-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, </span>
+<span id="cb30-3"><a aria-label="3"></a>             <span class="at">y =</span> sleep_quality)) <span class="sc">+</span> </span>
+<span id="cb30-4"><a aria-label="4"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="st">"mean"</span>, </span>
+<span id="cb30-5"><a aria-label="5"></a>               <span class="at">geom =</span> <span class="st">"bar"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="lec-03_desc-viz_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2 scrollable">
+
+<h3 id="stat_summary-1"><code>stat_summary()</code></h3>
+<p>Define <em>what</em> we want to plot (the “mean”), and <em>how</em> (as a “bar” chart)</p>
+<p>We supply two arguments to the function, <code>fun =</code> and <code>geom =</code>.</p>
+<ol type="1">
+<li><p>The <code>fun</code> argument specifies <em>what</em> function we’d like to apply to the data for each value of <code>x</code>. Here, we said that we would like to take the <code>mean</code> and we specified that as a string.</p></li>
+<li><p>The <code>geom</code> (= geometric object) argument specifies <em>how</em> we would like to plot the result, namely as a “bar” plot.</p></li>
+</ol>
+<p>❓What if we want to display the median instead of the mean❓</p>
+</section>
+<section class="slide level2">
+
+<h3 id="stat_summary-median"><code>stat_summary()</code> MEDIAN</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-label="1"></a>tipi <span class="sc">%&gt;%</span> </span>
+<span id="cb31-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, </span>
+<span id="cb31-3"><a aria-label="3"></a>             <span class="at">y =</span> sleep_quality)) <span class="sc">+</span> </span>
+<span id="cb31-4"><a aria-label="4"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="st">"median"</span>, </span>
+<span id="cb31-5"><a aria-label="5"></a>               <span class="at">geom =</span> <span class="st">"bar"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="lec-03_desc-viz_files/figure-revealjs/unnamed-chunk-20-1.png" width="960" class="r-stretch"><p>❓What about points instead of bars❓</p>
+</section>
+<section class="slide level2">
+
+<h3 id="stat_summary-point"><code>stat_summary()</code> POINT</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-label="1"></a>tipi <span class="sc">%&gt;%</span> </span>
+<span id="cb32-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, </span>
+<span id="cb32-3"><a aria-label="3"></a>             <span class="at">y =</span> sleep_quality)) <span class="sc">+</span> </span>
+<span id="cb32-4"><a aria-label="4"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="st">"mean"</span>, </span>
+<span id="cb32-5"><a aria-label="5"></a>               <span class="at">geom =</span> <span class="st">"point"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="lec-03_desc-viz_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch"><p>Maybe we need some different data</p>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-label="1"></a><span class="co">#midwest data - population rates of the midwest</span></span>
+<span id="cb33-2"><a aria-label="2"></a>midwest <span class="sc">%&gt;%</span> </span>
+<span id="cb33-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(state, </span>
+<span id="cb33-4"><a aria-label="4"></a>             <span class="at">y =</span> poptotal)) <span class="sc">+</span> </span>
+<span id="cb33-5"><a aria-label="5"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="st">"mean"</span>, </span>
+<span id="cb33-6"><a aria-label="6"></a>               <span class="at">geom =</span> <span class="st">"point"</span>, </span>
+<span id="cb33-7"><a aria-label="7"></a>               <span class="at">color =</span> <span class="st">"hotpink"</span>, </span>
+<span id="cb33-8"><a aria-label="8"></a>               <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb33-9"><a aria-label="9"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> <span class="st">"mean_cl_boot"</span>,</span>
+<span id="cb33-10"><a aria-label="10"></a>               <span class="at">geom =</span> <span class="st">"linerange"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="lec-03_desc-viz_files/figure-revealjs/unnamed-chunk-22-1.png" width="960" class="r-stretch"><div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>The order of the layers matters here! Notice how the linerange is on top of the point</p>
+</div>
+</div>
+</div>
+</section>
+<section id="practice-plot" class="slide level2">
+<h2>Practice Plot</h2>
+<p>Make a bar plot that shows the average <code>hours_of_sleep</code> for students (on the y-axis) as a function of their <code>year_school</code> (on the x-axis). Add error bars. It should look like the plot below</p>
+
+<img data-src="lec-03_desc-viz_files/figure-revealjs/unnamed-chunk-23-1.png" width="960" class="r-stretch"><div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>If this comes easy, try replicating the plot on the next page</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+
+<img data-src="lec-03_desc-viz_files/figure-revealjs/unnamed-chunk-24-1.png" width="960" class="r-stretch"></section>
+<section id="always-visualize-your-data" class="slide level2">
+<h2>Always Visualize Your Data!</h2>
+
+<img data-src="images/hiding_data.png" class="quarto-figure quarto-figure-center r-stretch"></section></section>
 <section id="now-you-try" class="title-slide slide level1 center">
 <h1>Now you try! 🎉</h1>
 <p><a href="../class-activities/wk3_desc-viz.html" target="_blank">Week 3 - InClass Activity</a></p>
