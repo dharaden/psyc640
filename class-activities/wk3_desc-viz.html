@@ -336,8 +336,11 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">Week 3 - Describe &amp; Viz</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 3 - Describe &amp; Viz</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
  <span class="menu-text">Week 4 - Design &amp; Inference</span>
   </li>
@@ -468,7 +471,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#create-a-new-markdown-document" id="toc-create-a-new-markdown-document" class="nav-link active" data-scroll-target="#create-a-new-markdown-document">Create a new Markdown Document</a></li>
+  <li><a href="#download-the-activity-document" id="toc-download-the-activity-document" class="nav-link active" data-scroll-target="#download-the-activity-document">Download the Activity Document</a></li>
   <li><a href="#setting-it-up" id="toc-setting-it-up" class="nav-link" data-scroll-target="#setting-it-up"><strong>Setting it up</strong></a></li>
   <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">The Data</a></li>
   <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a>
@@ -506,13 +509,11 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><strong>Goal</strong>: Work on importing data as well as being able to build a pipeline from descriptives to reporting to visualizing.</p>
-<section id="create-a-new-markdown-document" class="level2">
-<h2 class="anchored" data-anchor-id="create-a-new-markdown-document">Create a new Markdown Document</h2>
+<section id="download-the-activity-document" class="level2">
+<h2 class="anchored" data-anchor-id="download-the-activity-document">Download the Activity Document</h2>
 <ol type="1">
-<li><p>Go to <code>File &gt; New File &gt; R Markdown</code></p></li>
-<li><p>Provide the title “Describe &amp; Visualize” and input your name as the author</p></li>
-<li><p>A script will open in the <strong>Source</strong> pane. Remove unnecessary code.</p></li>
-<li><p>Go to <code>File &gt; Save</code> and name it <code>week3.Rmd</code>. Make sure this saves in the same folder as all of your other stuff. Stay Organized!</p></li>
+<li><p>Grab the Quarto Doc for the activity: <a href="../files/_lab-qmd/wk3_desc-viz_inclass.qmd" download="wk3_desc-viz_inclass.qmd">Download Week 3 Activity (.qmd)</a></p></li>
+<li><p>Update the Author and Date field</p></li>
 </ol>
 </section>
 <section id="setting-it-up" class="level2">
@@ -527,7 +528,6 @@ ul.task-list li input[type="checkbox"] {
 <p><a href="../files/data/wk3-viz.csv" download="wk3-viz.csv">Download Week 3 InClass Data (.csv)</a></p>
 <p>Download the data and move it to the correct folder so that you can access it in this lab.</p>
 <p>Your dataset is from a larger study that was examining the overall impact of sleep on energy (and vice versa). Students in different areas across the country completed various questionnaires. The current data is a selection of overall sleep quality rating (0-100) and overall energy level (0-100) across all cities. You will be asked to examine these variables in a descriptive and visual way for your specific city.</p>
-<p>Break up into your groups and work to visualize your assigned cities dataset.</p>
 <table class="caption-top table">
 <tbody>
 <tr class="odd">
@@ -583,7 +583,7 @@ Tip
 </section>
 <section id="calculating-descriptives" class="level3">
 <h3 class="anchored" data-anchor-id="calculating-descriptives">Calculating Descriptives</h3>
-<p>You should now have 2 datasets (1 for the entire sample, and 1 for your city). Calculate and report the mean and standard deviation for <strong>your city</strong>. Then calcullate and report the mean and standard deviation for the <strong>whole sample</strong>.</p>
+<p>You should now have 2 datasets (1 for the entire sample, and 1 for your city). Calculate and report the mean and standard deviation for <strong>your city</strong>. Then calculate and report the mean and standard deviation for the <strong>whole sample</strong>.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -646,7 +646,7 @@ Tip
 <p>✅Answer:</p>
 <hr>
 <p>As a class, we will review the different cities to see if we would be able to come to some broad conclusion.</p>
-<p><strong><em>End of the document. Remember to Knit and upload the html and .Rmd to myCourses.</em></strong></p>
+<p><strong><em>End of the document. Render to a Word Doc.</em></strong></p>
 
 
 </section>
