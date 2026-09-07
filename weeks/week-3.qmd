@@ -9,11 +9,13 @@ We are now in the third week and you are all probably thinking about how much yo
 
 This week we are going to expand on some data wrangling to get more comfortable with `dplyr` and the larger `tidyverse`. [Here is a good website that can also be helpful](https://p4a.jhelvy.com/data-wrangling). Then we will move into an overview of descriptive statistics and how to get them using R. Finally, we will continue with visualizations using `ggplot2`. With time, we will start introducing how to talk communicate these types of statistics in a manuscript.
 
+We will also start out with some JAMOVI!
+
 ## Slides
 
-[💻 Data Wrangling](../slides/lec-3_wrangle.html){target="_blank"}
+[💻 Describe & Visualize](../slides/lec-03_desc-viz.html){target="_blank"}
 
-[💻 Describe & Visualize](../slides/lec-3_desc-viz.html){target="_blank"}
+[💻 Describe & Visualize - JAMOVI](../slides/lec-03_desc-viz_JAMOVI.html){target="_blank"}
 
 ## In-Class Activity
 

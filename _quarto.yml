@@ -50,7 +50,7 @@ website:
             text: "Week 1 - Set up and Foundations"
           - href: weeks/week-2.qmd
             text: "Week 2 - Data Wrangling"
-          - href: #weeks/week-3.qmd
+          - href: weeks/week-3.qmd
             text: "Week 3 - Describe & Viz"
           - href: #weeks/week-4.qmd
             text: "Week 4 - Design & Inference"

@@ -6,25 +6,17 @@ editor: visual
 
 **Goal**: Work on importing data as well as being able to build a pipeline from descriptives to reporting to visualizing.
 
-## Create a new Markdown Document
+## Download the Activity Document
 
-1.  Go to `File > New File > R Markdown`
+1.  Grab the Quarto Doc for the activity: <a href="/files/_lab-qmd/wk3_desc-viz_inclass.qmd" download="wk3_desc-viz_inclass.qmd">Download Week 3 Activity (.qmd)</a>
 
-2.  Provide the title "Describe & Visualize" and input your name as the author
-
-3.  A script will open in the **Source** pane. Remove unnecessary code.
-
-4.  Go to `File > Save` and name it `week3.Rmd`. Make sure this saves in the same folder as all of your other stuff. Stay Organized!
+2.  Update the Author and Date field
 
 ## **Setting it up**
 
 1.  Create a Code Chunk
 
 2.  Load the `tidyverse`, `psych` and `sjPlot` libraries (Install them if you need to)
-
-```{r}
-
-```
 
 ## The Data
 
@@ -33,8 +25,6 @@ editor: visual
 Download the data and move it to the correct folder so that you can access it in this lab.
 
 Your dataset is from a larger study that was examining the overall impact of sleep on energy (and vice versa). Students in different areas across the country completed various questionnaires. The current data is a selection of overall sleep quality rating (0-100) and overall energy level (0-100) across all cities. You will be asked to examine these variables in a descriptive and visual way for your specific city.
-
-Break up into your groups and work to visualize your assigned cities dataset.
 
 |                  |         |            |
 |------------------|---------|------------|
@@ -47,19 +37,11 @@ Import the data into your R file. I would suggest putting this line within the c
 
 Focus on having reproducible code! You may need to share your file with someone else. They should be able to run it.
 
-```{r}
-
-```
-
 ## Questions
 
 With the data that you have imported, follow the following steps and answer the questions along the way.
 
 ### Number of Observations
-
-```{r}
-
-```
 
 ❓After importing, how many total observations are there?
 
@@ -73,10 +55,6 @@ The dataset has all cities involved in the study. You only want to keep the data
 We've used `dplyr` a lot to move our data around. Maybe it has something to do with `select()` or `filter()` or `mutate()`
 :::
 
-```{r}
-
-```
-
 ❓How many total observations are there in your new dataset (for your city)?
 
 ✅Answer:
@@ -85,18 +63,14 @@ We've used `dplyr` a lot to move our data around. Maybe it has something to do w
 
 ### Calculating Descriptives
 
-You should now have 2 datasets (1 for the entire sample, and 1 for your city). Calculate and report the mean and standard deviation for **your city**. Then calcullate and report the mean and standard deviation for the **whole sample**.
+You should now have 2 datasets (1 for the entire sample, and 1 for your city). Calculate and report the mean and standard deviation for **your city**. Then calculate and report the mean and standard deviation for the **whole sample**.
 
-```{r}
-
-```
-
-| Your City    | Total Sample  |
-|--------------|---------------|
-| Sleep Mean:  | Sleep Mean:   |
-| Sleep SD:    | Sleep SD:     |
-| Energy Mean: | Energy Mean:  |
-| Energy SD:   | Energy SD:    |
+| Your City    | Total Sample |
+|--------------|--------------|
+| Sleep Mean:  | Sleep Mean:  |
+| Sleep SD:    | Sleep SD:    |
+| Energy Mean: | Energy Mean: |
+| Energy SD:   | Energy SD:   |
 
 ❓How are the mean and standard deviations similar/different?
 
@@ -128,10 +102,6 @@ Be sure that your plot has a clear main title and clear labels for each axis.
 Look back to the lecture or past labs and pull in some of the `ggplot` code that you have! You can always re-use code.
 :::
 
-```{r}
-
-```
-
 ❓Describe the overall look of the data for your city.
 
 ✅Answer:
@@ -140,4 +110,4 @@ Look back to the lecture or past labs and pull in some of the `ggplot` code that
 
 As a class, we will review the different cities to see if we would be able to come to some broad conclusion.
 
-***End of the document. Remember to Knit and upload the html and .Rmd to myCourses.***
+***End of the document. Render to a Word Doc.***
