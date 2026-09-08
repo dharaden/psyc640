@@ -81,7 +81,7 @@ website:
             text: "Lab 1 - Introduction" 
           - href: labs/lab-02_data-workflow.qmd
             text: "Lab 2 - Data Workflow" 
-          - href: labs/lab-03_data-Wrangling.qmd
+          - href: labs/lab-03_data-wrangling.qmd
             text: "Lab 3 - Data Wrangling" 
           - href: #labs/lab-4.qmd
             text: "Lab 4" 
@@ -110,6 +110,8 @@ website:
 
 format:
   html:
+    grid:
+      sidebar-width: 350px
     theme:
       light: [cosmo, theme.scss]
       dark: [cosmo, theme-dark.scss]
