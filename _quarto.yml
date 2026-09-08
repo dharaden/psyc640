@@ -81,24 +81,22 @@ website:
             text: "Lab 1 - Introduction" 
           - href: labs/lab-02_data-workflow.qmd
             text: "Lab 2 - Data Workflow" 
-          - href: labs/lab-3_describe-viz.qmd
-            text: "Lab 3 - Describe/Visualize" 
+          - href: labs/lab-03_data-Wrangling.qmd
+            text: "Lab 3 - Data Wrangling" 
           - href: #labs/lab-4.qmd
             text: "Lab 4" 
           - href: #labs/lab-5_cor.qmd
-            text: "Lab 5 - Correlation" 
+            text: "Lab 5" 
           - href: #labs/lab-6.qmd
-            text: "Lab 6 - Comparing Means" 
-          - href: #labs/midterm-proj.qmd
-            text: "Midterm Project" 
+            text: "Lab 6"  
+          - href: #labs/lab-7.qmd
+            text: "Lab 7" 
+          - href: #labs/lab-8.qmd
+            text: "Lab 8"
           - href: #labs/lab-9.qmd
-            text: "Lab 9" 
+            text: "Lab 9"
           - href: #labs/lab-10.qmd
             text: "Lab 10"
-          - href: #labs/lab-11.qmd
-            text: "Lab 11"
-          - href: #labs/lab-12.qmd
-            text: "Lab 12"
       - section: "Projects"
         contents: 
           - href: #labs/midterm-proj.qmd
