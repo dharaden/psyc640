@@ -49,7 +49,9 @@ JAMOVI is basically a GUI for R that is more point-click
 
 Open JAMOVI and import the TIPI Data
 
-> Menu \> Open \> tipi.csv
+<a href="/files/data/final_tipi.csv" download="final_tipi.csv">Download Clean TIPI Data (.csv)</a>
+
+> Menu \> Open \> final_tipi.csv
 
 - We will use the TIPI data from the last lecture that has already been scored
 

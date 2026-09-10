@@ -65,13 +65,13 @@ We've used `dplyr` a lot to move our data around. Maybe it has something to do w
 
 You should now have 2 datasets (1 for the entire sample, and 1 for your city). Calculate and report the mean and standard deviation for **your city**. *Hint: use the `describe()`* *function.*
 
-| Your City     |
-|---------------|
-| Sleep Mean:   |
-| Sleep SD:     |
-| Energy Mean:  |
-| Energy SD:    |
-| Correlation:  |
+| Your City    |
+|--------------|
+| Sleep Mean:  |
+| Sleep SD:    |
+| Energy Mean: |
+| Energy SD:   |
+| Correlation: |
 
 Then, using the entire sample dataset, let's work on grouping our variables based on the city to have a table with every city. Try using the `group_by()` function in your process ([documentation for group-by](https://dplyr.tidyverse.org/reference/group_by.html){target="_blank"})
 
