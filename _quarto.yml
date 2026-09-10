@@ -83,7 +83,7 @@ website:
             text: "Lab 2 - Data Workflow" 
           - href: labs/lab-03_data-wrangling.qmd
             text: "Lab 3 - Data Wrangling" 
-          - href: labs/lab-04.qmd
+          - href: labs/lab-04_describe-viz.qmd
             text: "Lab 4 - Describe & Viz." 
           - href: #labs/lab-5_cor.qmd
             text: "Lab 5" 

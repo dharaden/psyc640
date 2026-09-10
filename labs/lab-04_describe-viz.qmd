@@ -1,5 +1,5 @@
 ---
-title: "Lab 3: Describing and Visualizing Data"
+title: "Lab 4: Describing and Visualizing Data"
 output: html_document
 editor_options: 
   chunk_output_type: console
@@ -24,6 +24,8 @@ Here are the things that you will need for this lab:
   Lab 4 (.qmd)</a>
 - <a href="/files/data/bechdel.csv" download="bechdel.csv">Download
   Bechdel Data (.csv)</a>
+
+***NOTE*** To Download the file, right click the link for the .qmd and select "Save Link As"
 
 When you are finished, render your file to a Word document. You will
 submit both the `.qmd` file and the Word doc.
