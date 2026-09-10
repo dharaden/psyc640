@@ -227,9 +227,11 @@
 <span id="cb1-6"><a aria-label="6"></a><span class="fu">library</span>(rio)</span>
 <span id="cb1-7"><a aria-label="7"></a><span class="co"># for descriptives</span></span>
 <span id="cb1-8"><a aria-label="8"></a><span class="fu">library</span>(psych)</span>
-<span id="cb1-9"><a aria-label="9"></a></span>
-<span id="cb1-10"><a aria-label="10"></a><span class="co">#Remove Scientific Notation </span></span>
-<span id="cb1-11"><a aria-label="11"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-9"><a aria-label="9"></a><span class="co"># for nice tables</span></span>
+<span id="cb1-10"><a aria-label="10"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb1-11"><a aria-label="11"></a></span>
+<span id="cb1-12"><a aria-label="12"></a><span class="co">#Remove Scientific Notation </span></span>
+<span id="cb1-13"><a aria-label="13"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -297,15 +299,14 @@
 <section class="slide level2">
 
 <h3 id="meanaverage">Mean/Average</h3>
-<p><span class="math display">\[\bar{X} = \frac{X_1+X_2+...+X\_{N-1}X_N}{N}
-\]</span><span class="math display">\[\bar{X} = \frac{X_1+X_2+...+X\_{N-1}X_N}{N}\]</span></p>
+<p><span class="math display">\[\bar{X} = \frac{X_1+X_2+...+X\_{N-1}X_N}{N}\]</span></p>
 <p>OR</p>
 <p><span class="math display">\[\bar{X} = \frac{1}{N}\sum_{i=1}^{N} X_i\]</span></p>
 </section>
 <section class="slide level2">
 
 <h3 id="mean-in-r">Mean in R</h3>
-<p>A quick way to find the mean is to use the aptly named <code>mean()</code> function from base R. Use this function to get the average <code>age</code> and <code>ess total</code> in our dataset.</p>
+<p>A quick way to find the mean is to use the aptly named <code>mean()</code> function from base R. Use this function to get the average <code>age</code> and <code>hours_of_sleep</code> in our dataset.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a><span class="fu">mean</span>(tipi<span class="sc">$</span>age)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1144,10 +1145,10 @@ open                     7      4.5 -0.48     0.13    0.10</code></pre>
 </section>
 <section id="in-class-activity" class="slide level2">
 <h2>In-Class Activity 🧟</h2>
-<p>Calculate the variance associated with the prices and/or piece of LEGO sets.</p>
+<p>Calculate the variance associated with the prices and # of pieces of LEGO sets.</p>
 <p>1) Go to the <a href="https://www.lego.com/en-us/themes" target="_blank">LEGO website</a> and select a Theme.</p>
-<p>2) Record the Price and Number of Pieces for 5 random sets within your theme on this <a href="https://docs.google.com/spreadsheets/d/1oxGD35Va66iDQvI2H_Sua_UZVEVp2SUya9wclPI6z9s/edit?usp=sharing" target="_blank">Google Sheet</a></p>
-<p>3) Calculate the means and variance of each</p>
+<p>2) Record the Price and Number of Pieces for 5 random sets within your theme on the <a href="https://docs.google.com/spreadsheets/d/1oxGD35Va66iDQvI2H_Sua_UZVEVp2SUya9wclPI6z9s/edit?usp=sharing" target="_blank">Google Sheet</a></p>
+<p>3) Calculate the means and variance of each for your Theme</p>
 </section>
 <section class="slide level2">
 
@@ -1329,7 +1330,7 @@ What did we move around from the last set of code?</p>
 <span id="cb27-7"><a aria-label="7"></a>  <span class="fu">labs</span>(</span>
 <span id="cb27-8"><a aria-label="8"></a>    <span class="at">title =</span> <span class="st">"TIPI Data"</span>,</span>
 <span id="cb27-9"><a aria-label="9"></a>    <span class="at">subtitle =</span> <span class="st">"Extraversion by Emotional Stability"</span>, </span>
-<span id="cb27-10"><a aria-label="10"></a>    <span class="at">x =</span> <span class="st">"motional Stability"</span>, </span>
+<span id="cb27-10"><a aria-label="10"></a>    <span class="at">x =</span> <span class="st">"Emotional Stability"</span>, </span>
 <span id="cb27-11"><a aria-label="11"></a>    <span class="at">y =</span> <span class="st">"Extraversion"</span>, </span>
 <span id="cb27-12"><a aria-label="12"></a>    <span class="at">color =</span> <span class="st">"Sex at Birth"</span></span>
 <span id="cb27-13"><a aria-label="13"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

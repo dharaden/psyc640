@@ -407,8 +407,11 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">Lab 4</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-04.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 4 - Describe &amp; Viz.</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
  <span class="menu-text">Lab 5</span>
   </li>
@@ -476,6 +479,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#number-of-observations" id="toc-number-of-observations" class="nav-link" data-scroll-target="#number-of-observations">Number of Observations</a></li>
   <li><a href="#calculating-descriptives" id="toc-calculating-descriptives" class="nav-link" data-scroll-target="#calculating-descriptives">Calculating Descriptives</a></li>
   <li><a href="#reporting-descriptive-statistics" id="toc-reporting-descriptive-statistics" class="nav-link" data-scroll-target="#reporting-descriptive-statistics">Reporting Descriptive Statistics</a></li>
+  <li><a href="#your-recommendations" id="toc-your-recommendations" class="nav-link" data-scroll-target="#your-recommendations">Your Recommendations</a></li>
   <li><a href="#visualizing" id="toc-visualizing" class="nav-link" data-scroll-target="#visualizing">Visualizing</a></li>
   </ul></li>
   </ul>
@@ -524,7 +528,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="the-data">The Data</h2>
 <p><a href="../files/data/wk3-viz.csv" download="wk3-viz.csv">Download Week 3 InClass Data (.csv)</a></p>
 <p>Download the data and move it to the correct folder so that you can access it in this lab.</p>
-<p>Your dataset is from a larger study that was examining the overall impact of sleep on energy (and vice versa). Students in different areas across the country completed various questionnaires. The current data is a selection of overall sleep quality rating (0-100) and overall energy level (0-100) across all cities. You will be asked to examine these variables in a descriptive and visual way for your specific city.</p>
+<p>Your dataset is from a larger study that was examining the overall impact of sleep on energy (and vice versa). Students in different areas across the country completed various questionnaires. The current data is a selection of overall sleep quality rating (0-100) and overall energy level (0-100) across all cities.</p>
 <table class="caption-top table">
 <tbody>
 <tr class="odd">
@@ -560,7 +564,7 @@ ul.task-list li input[type="checkbox"] {
 <p>❓After importing, how many total observations are there?</p>
 <p>✅Answer:</p>
 <hr>
-<p>The dataset has all cities involved in the study. You only want to keep the data from your city. Create a new dataset that has only your city in it.</p>
+<p>The dataset has all cities involved in the study. You only want to keep the data from your selected city. Create a new dataset that has only your city in it.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -580,33 +584,32 @@ Tip
 </section>
 <section id="calculating-descriptives" class="level3">
 <h3 class="anchored" data-anchor-id="calculating-descriptives">Calculating Descriptives</h3>
-<p>You should now have 2 datasets (1 for the entire sample, and 1 for your city). Calculate and report the mean and standard deviation for <strong>your city</strong>. Then calculate and report the mean and standard deviation for the <strong>whole sample</strong>.</p>
+<p>You should now have 2 datasets (1 for the entire sample, and 1 for your city). Calculate and report the mean and standard deviation for <strong>your city</strong>. <em>Hint: use the <code>describe()</code></em> <em>function.</em></p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Your City</th>
-<th>Total Sample</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>Sleep Mean:</td>
-<td>Sleep Mean:</td>
 </tr>
 <tr class="even">
-<td>Sleep SD:</td>
 <td>Sleep SD:</td>
 </tr>
 <tr class="odd">
 <td>Energy Mean:</td>
-<td>Energy Mean:</td>
 </tr>
 <tr class="even">
 <td>Energy SD:</td>
-<td>Energy SD:</td>
+</tr>
+<tr class="odd">
+<td>Correlation:</td>
 </tr>
 </tbody>
 </table>
+<p>Then, using the entire sample dataset, let’s work on grouping our variables based on the city to have a table with every city. Try using the <code>group_by()</code> function in your process (<a href="https://dplyr.tidyverse.org/reference/group_by.html" target="_blank">documentation for group-by</a>)</p>
 <p>❓How are the mean and standard deviations similar/different?</p>
 <p>✅Answer:</p>
 <hr>
@@ -617,9 +620,17 @@ Tip
 <blockquote class="blockquote">
 <p>The sample as a whole was relatively young (<em>M</em> = 19.22, <em>SD</em> = 3.45).</p>
 <p>The average amount of drinks consumed was 3.37 (SD = 0.92).</p>
+<p>The relationship between sleep quality and cognitive performance was significantly different from zero (r = 0.39, p = .02)</p>
 </blockquote>
-<p>❓Report the means and standard deviations in text for the two variables in your city sample.</p>
+<p>❓Report the means and standard deviations in text for the two variables in your city sample. Provide one sentence that reports the correlation.</p>
 <p>✅Answer:</p>
+<hr>
+</section>
+<section id="your-recommendations" class="level3">
+<h3 class="anchored" data-anchor-id="your-recommendations">Your Recommendations</h3>
+<p>You now have seen all the descriptive data for the cities. You are involved in a project that is going to provide an intervention to individuals to improve their sleep to hopefully impact their mood.</p>
+<p>❓Given the data you have observed, which city should your team target first and why? Be sure to include any calculated information (mean, sd, correlation) in your reasoning.</p>
+<p>✅ Answer:</p>
 <hr>
 </section>
 <section id="visualizing" class="level3">

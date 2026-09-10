@@ -33,6 +33,8 @@ variables in a descriptive and visual way for your specific city.
 | Boston           | Ithaca  | Sacramento |
 | Champaign-Urbana | Madison | Seattle    |
 
+Toronto should also be in there, but then the table wouldn't be even.
+
 ## Questions
 
 With the data that you have imported, follow the following steps and
@@ -71,19 +73,20 @@ city)?
 
 You should now have 2 datasets (1 for the entire sample, and 1 for your
 city). Calculate and report the mean and standard deviation for **your
-city**. Then calculate and report the mean and standard deviation for
-the **whole sample**.
+city**. *Hint: use the `describe()`* *function.*
 
-```{r}
+| Your City     |
+|---------------|
+| Sleep Mean:   |
+| Sleep SD:     |
+| Energy Mean:  |
+| Energy SD:    |
+| Correlation:  |
 
-```
-
-| Your City    | Total Sample |
-|--------------|--------------|
-| Sleep Mean:  | Sleep Mean:  |
-| Sleep SD:    | Sleep SD:    |
-| Energy Mean: | Energy Mean: |
-| Energy SD:   | Energy SD:   |
+Then, using the entire sample dataset, let's work on grouping our
+variables based on the city to have a table with every city. Try using
+the `group_by()` function in your process ([documentation for
+group-by](https://dplyr.tidyverse.org/reference/group_by.html){target="_blank"})
 
 ❓How are the mean and standard deviations similar/different?
 
@@ -102,11 +105,27 @@ example:
 > The sample as a whole was relatively young (*M* = 19.22, *SD* = 3.45).
 >
 > The average amount of drinks consumed was 3.37 (SD = 0.92).
+>
+> The relationship between sleep quality and cognitive performance was
+> significantly different from zero (r = 0.39, *p* = .02)
 
 ❓Report the means and standard deviations in text for the two variables
-in your city sample.
+in your city sample. Provide one sentence that reports the correlation.
 
 ✅Answer:
+
+------------------------------------------------------------------------
+
+### Your Recommendations
+
+You now have seen all the descriptive data for the cities. You are
+involved in a project that is going to provide an intervention to
+individuals to improve their sleep to hopefully impact their mood.
+
+❓Given the data you have observed, which city should your team target
+first and why?
+
+✅ Answer:
 
 ------------------------------------------------------------------------
 
