@@ -24,7 +24,7 @@ editor: visual
 
 Download the data and move it to the correct folder so that you can access it in this lab.
 
-Your dataset is from a larger study that was examining the overall impact of sleep on energy (and vice versa). Students in different areas across the country completed various questionnaires. The current data is a selection of overall sleep quality rating (0-100) and overall energy level (0-100) across all cities. You will be asked to examine these variables in a descriptive and visual way for your specific city.
+Your dataset is from a larger study that was examining the overall impact of sleep on energy (and vice versa). Students in different areas across the country completed various questionnaires. The current data is a selection of overall sleep quality rating (0-100) and overall energy level (0-100) across all cities.
 
 |                  |         |            |
 |------------------|---------|------------|
@@ -49,7 +49,7 @@ With the data that you have imported, follow the following steps and answer the 
 
 ------------------------------------------------------------------------
 
-The dataset has all cities involved in the study. You only want to keep the data from your city. Create a new dataset that has only your city in it.
+The dataset has all cities involved in the study. You only want to keep the data from your selected city. Create a new dataset that has only your city in it.
 
 ::: callout-tip
 We've used `dplyr` a lot to move our data around. Maybe it has something to do with `select()` or `filter()` or `mutate()`
@@ -63,14 +63,17 @@ We've used `dplyr` a lot to move our data around. Maybe it has something to do w
 
 ### Calculating Descriptives
 
-You should now have 2 datasets (1 for the entire sample, and 1 for your city). Calculate and report the mean and standard deviation for **your city**. Then calculate and report the mean and standard deviation for the **whole sample**.
+You should now have 2 datasets (1 for the entire sample, and 1 for your city). Calculate and report the mean and standard deviation for **your city**. *Hint: use the `describe()`* *function.*
 
-| Your City    | Total Sample |
-|--------------|--------------|
-| Sleep Mean:  | Sleep Mean:  |
-| Sleep SD:    | Sleep SD:    |
-| Energy Mean: | Energy Mean: |
-| Energy SD:   | Energy SD:   |
+| Your City     |
+|---------------|
+| Sleep Mean:   |
+| Sleep SD:     |
+| Energy Mean:  |
+| Energy SD:    |
+| Correlation:  |
+
+Then, using the entire sample dataset, let's work on grouping our variables based on the city to have a table with every city. Try using the `group_by()` function in your process ([documentation for group-by](https://dplyr.tidyverse.org/reference/group_by.html){target="_blank"})
 
 ❓How are the mean and standard deviations similar/different?
 
@@ -85,10 +88,22 @@ Now that you have each of the pieces of information calculated for the entire sa
 > The sample as a whole was relatively young (*M* = 19.22, *SD* = 3.45).
 >
 > The average amount of drinks consumed was 3.37 (SD = 0.92).
+>
+> The relationship between sleep quality and cognitive performance was significantly different from zero (r = 0.39, p = .02)
 
-❓Report the means and standard deviations in text for the two variables in your city sample.
+❓Report the means and standard deviations in text for the two variables in your city sample. Provide one sentence that reports the correlation.
 
 ✅Answer:
+
+------------------------------------------------------------------------
+
+### Your Recommendations
+
+You now have seen all the descriptive data for the cities. You are involved in a project that is going to provide an intervention to individuals to improve their sleep to hopefully impact their mood.
+
+❓Given the data you have observed, which city should your team target first and why? Be sure to include any calculated information (mean, sd, correlation) in your reasoning.
+
+✅ Answer:
 
 ------------------------------------------------------------------------
 

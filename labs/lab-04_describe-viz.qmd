@@ -20,14 +20,13 @@ Exploratory Data Analysis.
 
 Here are the things that you will need for this lab:
 
--   <a href="/files/_lab-rmd/lab-3_describe-viz.Rmd" download="lab-3_describe-viz.Rmd">Download
-    Lab 3 (.Rmd)</a>
--   <a href="/files/data/bechdel.csv" download="bechdel.csv">Download
-    Bechdel Data (.csv)</a>
+- <a href="/files/_lab-rmd/lab-4_describe-viz.qmd" download="lab-4_describe-viz.qmd">Download
+  Lab 4 (.qmd)</a>
+- <a href="/files/data/bechdel.csv" download="bechdel.csv">Download
+  Bechdel Data (.csv)</a>
 
-When you are finished, click the **Knit** button to turn your work into
-an HTML document. You will submit both this `.Rmd` file and the
-🧶knitted `.html` file.
+When you are finished, render your file to a Word document. You will
+submit both the `.qmd` file and the Word doc.
 
 ## Scenario and Goal
 
@@ -47,25 +46,23 @@ analysis, known as **Exploratory Data Analysis (EDA)**.
 
 ## Variables of Interest
 
--   `year`: The year of movie release
+- `year`: The year of movie release
 
--   `clean_test`: Bechdel test result:
+- `clean_test`: Bechdel test result:
 
-    -   `ok` = passes test
+  - `ok` = passes test
 
-    -   `dubious`
+  - `dubious`
 
-    -   `men` = women only talk about men
+  - `men` = women only talk about men
 
-    -   `notalk` = women don’t talk to each other
+  - `notalk` = women don’t talk to each other
 
-    -   `nowomen` = fewer than two women
+  - `nowomen` = fewer than two women
 
-<!-- -->
+  - `binary`: Bechdel Test PASS vs FAIL binary
 
--   `binary`: Bechdel Test PASS vs FAIL binary
-
--   `budget_2013`: Total movie budget
+  - `budget_2013`: Total movie budget
 
 ------------------------------------------------------------------------
 
@@ -154,4 +151,4 @@ and fail the test?
 
 *End of Lab 3. You've now practiced exploratory data analysis! It is
 always important to visualize your data to get a good sense of what you
-are working with. Don't forget to Knit! 🧶*
+are working with. Don't forget to Render!*

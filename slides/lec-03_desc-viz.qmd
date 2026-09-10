@@ -36,6 +36,8 @@ library(tidyverse)
 library(rio)
 # for descriptives
 library(psych)
+# for nice tables
+library(sjPlot)
 
 #Remove Scientific Notation 
 options(scipen=999)
@@ -67,7 +69,7 @@ tipi <- import(here("files", "data", "final_tipi.csv")) %>%
 ## Some Terminology
 
 | Population | Sample |
-|------------------------------------|------------------------------------|
+|----|----|
 | $\mu$ (mu) = Population Mean | $\bar{X}$ (x bar) = Sample Mean |
 | $\sigma$ (sigma) = Population Standard Deviation | $s$ = $\hat{\sigma}$ = Sample Standard Deviation |
 | $\sigma^2$ (sigma squared) = Population Variance | $s^2$ = $\hat{\sigma^2}$ = Sample Variance |
@@ -86,8 +88,7 @@ Let’s take a look at the data that we have already loaded in, and complete som
 
 ### Mean/Average
 
-$$\bar{X} = \frac{X_1+X_2+...+X\_{N-1}X_N}{N}
-$$$$\bar{X} = \frac{X_1+X_2+...+X\_{N-1}X_N}{N}$$
+$$\bar{X} = \frac{X_1+X_2+...+X\_{N-1}X_N}{N}$$
 
 OR
 
@@ -97,7 +98,7 @@ $$\bar{X} = \frac{1}{N}\sum_{i=1}^{N} X_i$$
 
 ### Mean in R
 
-A quick way to find the mean is to use the aptly named `mean()` function from base R. Use this function to get the average `age` and `ess total` in our dataset.
+A quick way to find the mean is to use the aptly named `mean()` function from base R. Use this function to get the average `age` and `hours_of_sleep` in our dataset.
 
 ```{r}
 mean(tipi$age)
@@ -180,7 +181,7 @@ $$\hat{\sigma}^2 = s^2 = \frac{1}{N-1}\sum_{i=1}^N(X-\bar{X})^2$$
 ------------------------------------------------------------------------
 
 | $i$ (observation) | $X_i$ (value) | $\bar{X}$ (sample mean) | $X_i - \bar{X}$ (deviation from mean) | $(X_i - \bar{X})^2$ (squared deviation) |
-|---------------|---------------|---------------|---------------|---------------|
+|----|----|----|----|----|
 | 1 | 56 | 36.6 | 19.4 | 376.36 |
 | 2 | 31 | 36.6 | -5.6 | 31.36 |
 | 3 | 56 | 36.6 | 19.4 | 376.36 |
@@ -254,13 +255,13 @@ tipi %>%
 
 ## In-Class Activity 🧟
 
-Calculate the variance associated with the prices and/or piece of LEGO sets.
+Calculate the variance associated with the prices and \# of pieces of LEGO sets.
 
 1\) Go to the [LEGO website](https://www.lego.com/en-us/themes){target="_blank"} and select a Theme.
 
-2\) Record the Price and Number of Pieces for 5 random sets within your theme on this [Google Sheet](https://docs.google.com/spreadsheets/d/1oxGD35Va66iDQvI2H_Sua_UZVEVp2SUya9wclPI6z9s/edit?usp=sharing){target="_blank"}
+2\) Record the Price and Number of Pieces for 5 random sets within your theme on the [Google Sheet](https://docs.google.com/spreadsheets/d/1oxGD35Va66iDQvI2H_Sua_UZVEVp2SUya9wclPI6z9s/edit?usp=sharing){target="_blank"}
 
-3\) Calculate the means and variance of each
+3\) Calculate the means and variance of each for your Theme
 
 ------------------------------------------------------------------------
 
@@ -482,7 +483,7 @@ tipi %>%
   labs(
     title = "TIPI Data",
     subtitle = "Extraversion by Emotional Stability", 
-    x = "motional Stability", 
+    x = "Emotional Stability", 
     y = "Extraversion", 
     color = "Sex at Birth"
   )
