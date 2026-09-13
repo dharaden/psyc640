@@ -769,7 +769,7 @@
     "href": "slides/lec-13_mod.html#simple-slopes---significance-tests",
     "title": "Week 13: Intro to Moderation",
     "section": "Simple slopes - Significance tests",
-    "text": "Simple slopes - Significance tests\nWhat if you want to compare slopes to each other? How would we test this?\n\nThe test of the interaction coefficient is equivalent to the test of the difference in slopes at levels of Z separated by 1 unit.\n\ncoef(summary(imodel))\n\n                   Estimate Std. Error   t value           Pr(&gt;|t|)\n(Intercept)     -2.73966246 1.12100519 -2.443934 0.0160605206624654\nAnxiety          0.61561220 0.13010161  4.731780 0.0000064353728132\nSupport          0.66696689 0.09547464  6.985802 0.0000000002017698\nAnxiety:Support -0.04174076 0.01309328 -3.187954 0.0018497364252185"
+    "text": "Simple slopes - Significance tests\nWhat if you want to compare slopes to each other? How would we test this?\n\nThe test of the interaction coefficient is equivalent to the test of the difference in slopes at levels of Z separated by 1 unit.\n\ncoef(summary(imodel))\n\n                   Estimate Std. Error   t value           Pr(&gt;|t|)\n(Intercept)     -2.73966246 1.12100519 -2.443934 0.0160605206624655\nAnxiety          0.61561220 0.13010161  4.731780 0.0000064353728132\nSupport          0.66696689 0.09547464  6.985802 0.0000000002017698\nAnxiety:Support -0.04174076 0.01309328 -3.187954 0.0018497364252185"
   },
   {
     "objectID": "slides/lec-01_syl.html#when-the-teaching-happens",
@@ -1273,7 +1273,7 @@
     "href": "labs/lab-04_describe-viz.html",
     "title": "Lab 4: Describing and Visualizing Data",
     "section": "",
-    "text": "Can’t believe we’re at Lab #3! Keep it going! We are going to continue to practice importing data and making a reproducible workflow. In this lab, you will be expanding the types of plots you are able to use.\nWe will be using data from the Bechdel test, a measure of the representation of women in fiction. You will be asked to do some Exploratory Data Analysis.\nHere are the things that you will need for this lab:\n\nDownload Lab 4 (.qmd)\nDownload Bechdel Data (.csv)\n\nNOTE To Download the file, right click the link for the .qmd and select “Save Link As”\nWhen you are finished, render your file to a Word document. You will submit both the .qmd file and the Word doc.",
+    "text": "Can’t believe we’re at Lab #3! Keep it going! We are going to continue to practice importing data and making a reproducible workflow. In this lab, you will be expanding the types of plots you are able to use.\nWe will be using data from the Bechdel test, a measure of the representation of women in fiction. You will be asked to do some Exploratory Data Analysis.\nHere are the things that you will need for this lab:\n\nDownload Lab 4 (.qmd)\nDownload Bechdel Data (.csv)\n\nWhen you are finished, render your file to a Word document. You will submit both the .qmd file and the Word doc.",
     "crumbs": [
       "Labs",
       "Lab 4 - Describe & Viz."
@@ -1284,7 +1284,7 @@
     "href": "labs/lab-04_describe-viz.html#instructions",
     "title": "Lab 4: Describing and Visualizing Data",
     "section": "",
-    "text": "Can’t believe we’re at Lab #3! Keep it going! We are going to continue to practice importing data and making a reproducible workflow. In this lab, you will be expanding the types of plots you are able to use.\nWe will be using data from the Bechdel test, a measure of the representation of women in fiction. You will be asked to do some Exploratory Data Analysis.\nHere are the things that you will need for this lab:\n\nDownload Lab 4 (.qmd)\nDownload Bechdel Data (.csv)\n\nNOTE To Download the file, right click the link for the .qmd and select “Save Link As”\nWhen you are finished, render your file to a Word document. You will submit both the .qmd file and the Word doc.",
+    "text": "Can’t believe we’re at Lab #3! Keep it going! We are going to continue to practice importing data and making a reproducible workflow. In this lab, you will be expanding the types of plots you are able to use.\nWe will be using data from the Bechdel test, a measure of the representation of women in fiction. You will be asked to do some Exploratory Data Analysis.\nHere are the things that you will need for this lab:\n\nDownload Lab 4 (.qmd)\nDownload Bechdel Data (.csv)\n\nWhen you are finished, render your file to a Word document. You will submit both the .qmd file and the Word doc.",
     "crumbs": [
       "Labs",
       "Lab 4 - Describe & Viz."
