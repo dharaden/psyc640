@@ -265,7 +265,7 @@
     "href": "weeks/week-3.html",
     "title": "Week 3 - Describe, Visualize, Communicize",
     "section": "",
-    "text": "We are now in the third week and you are all probably thinking about how much you dislike R and do not ever want to look at the here() library again. But we are going to have to do just that. Importing and getting started are one of the hardest things to do when first working with R. And then trying to make things reproducible is another thing. We are going to practice this A LOT. Especially right in the beginning.\nThis week we are going to expand on some data wrangling to get more comfortable with dplyr and the larger tidyverse. Here is a good website that can also be helpful. Then we will move into an overview of descriptive statistics and how to get them using R. Finally, we will continue with visualizations using ggplot2. With time, we will start introducing how to talk communicate these types of statistics in a manuscript.\nWe will also start out with some JAMOVI!\n\n\n💻 Describe & Visualize\n💻 Describe & Visualize - JAMOVI\n\n\n\nDescribing & Visualizing\n\n\n\n📋Lab 4 - Describe and Visualize\n💻Navarro Blog Post\n📖Chapters 2-4 - ROS\n📖Chapter 3 - MSR (focus on 3.3, 3.7, 3.10 & 3.11)\n\n\nBack to course schedule ⏎",
+    "text": "We are now in the third week and you are all probably thinking about how much you dislike R and do not ever want to look at the here() library again. But we are going to have to do just that. Importing and getting started are one of the hardest things to do when first working with R. And then trying to make things reproducible is another thing. We are going to practice this A LOT. Especially right in the beginning.\nThis week we are going to expand on some data wrangling to get more comfortable with dplyr and the larger tidyverse. Here is a good website that can also be helpful. Then we will move into an overview of descriptive statistics and how to get them using R. Finally, we will continue with visualizations using ggplot2. With time, we will start introducing how to talk communicate these types of statistics in a manuscript.\nWe will also start out with some JAMOVI!\n\n\n💻 Describe & Visualize\n💻 Describe & Visualize - JAMOVI\n\n\n\nDownload Clean TIPI Data (.csv)\n\n\n\nDescribing & Visualizing\n\n\n\n📋Lab 4 - Describe and Visualize\n💻Navarro Blog Post\n📖Chapters 2-4 - ROS\n📖Chapter 3 - MSR (focus on 3.3, 3.7, 3.10 & 3.11)\n\n\nBack to course schedule ⏎",
     "crumbs": [
       "Weekly Materials",
       "Week 3 - Describe & Viz"
@@ -277,6 +277,17 @@
     "title": "Week 3 - Describe, Visualize, Communicize",
     "section": "",
     "text": "💻 Describe & Visualize\n💻 Describe & Visualize - JAMOVI",
+    "crumbs": [
+      "Weekly Materials",
+      "Week 3 - Describe & Viz"
+    ]
+  },
+  {
+    "objectID": "weeks/week-3.html#data",
+    "href": "weeks/week-3.html#data",
+    "title": "Week 3 - Describe, Visualize, Communicize",
+    "section": "",
+    "text": "Download Clean TIPI Data (.csv)",
     "crumbs": [
       "Weekly Materials",
       "Week 3 - Describe & Viz"
@@ -744,7 +755,7 @@
     "href": "slides/lec-13_mod.html#testing-simple-slopes",
     "title": "Week 13: Intro to Moderation",
     "section": "Testing simple slopes",
-    "text": "Testing simple slopes\n\n#https://easystats.github.io/modelbased/articles/introduction_comparisons_3.html?q=simple%20slo#contrasts-and-comparisons-for-slopes-of-numeric-predictors\n\npred &lt;- estimate_means(imodel, c(\"Support\", \"Anxiety = c(5,6,7)\"))\nplot(pred)\n\nestimate_slopes(imodel, \"Support\", by = \"Anxiety = c(5,6,7)\")\n\nEstimated Marginal Effects\n\nAnxiety | Slope |   SE |       95% CI | t(114) |      p\n-------------------------------------------------------\n5       |  0.46 | 0.05 | [0.36, 0.56] |   8.83 | &lt; .001\n6       |  0.42 | 0.05 | [0.32, 0.51] |   8.44 | &lt; .001\n7       |  0.37 | 0.05 | [0.28, 0.47] |   7.47 | &lt; .001\n\nMarginal effects estimated for Support\nType of slope was dY/dX"
+    "text": "Testing simple slopes\n\n#https://easystats.github.io/modelbased/articles/introduction_comparisons_3.html?q=simple%20slo#contrasts-and-comparisons-for-slopes-of-numeric-predictors\n\npred &lt;- estimate_means(imodel, c(\"Support\", \"Anxiety = c(5,6,7)\"))\nplot(pred)\n\nestimate_slopes(imodel, \"Support\", by = \"Anxiety = c(5,6,7)\")\n\nEstimated Marginal Effects\n\nAnxiety | Slope |   SE |       95% CI | t(114) |      p\n-------------------------------------------------------\n5       |  0.46 | 0.05 | [0.36, 0.56] |   8.84 | &lt; .001\n6       |  0.42 | 0.05 | [0.32, 0.51] |   8.44 | &lt; .001\n7       |  0.37 | 0.05 | [0.28, 0.47] |   7.47 | &lt; .001\n\nMarginal effects estimated for Support\nType of slope was dY/dX"
   },
   {
     "objectID": "slides/lec-13_mod.html#testing-simple-slopes-1",
