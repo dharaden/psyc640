@@ -297,7 +297,7 @@ We often want to see the relationship between 2 variables. This is often
 done using a scatterplot. Select 2 scales that you would like to see the
 relationship between. Use the code from the previous lab/class to create
 a scatterplot of the relationship. Take a look at this [cheat
-sheet](https://posit.co/wp-content/uploads/2022/10/data-visualization-1.pdf){target="_blank"}
+sheet](https://rstudio.github.io/cheatsheets/data-visualization.pdf){target="_blank"}
 to help with `ggplot2`!
 
 ``` r
