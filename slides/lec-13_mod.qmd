@@ -38,6 +38,7 @@ library(here)
 library(lm.beta)
 library(easystats) #https://easystats.github.io/modelbased/articles/introduction_comparisons_3.html?q=simple%20slo#contrasts-and-comparisons-for-slopes-of-numeric-predictors
 library(sjPlot)
+library(marginaleffects)
 
 
 #Remove Scientific Notation 
@@ -397,8 +398,7 @@ $$\begin{aligned}
 \hat{\text{grade}} &= `r C.round[1]` + `r C.round[2]`(1)+ `r C.round[3]`(\text{Study})+ `r C.round[4]`(1 \times \text{Study}) \\
 &= `r C.round[1]` + `r C.round[2]*1`+ `r C.round[3]`(\text{Study})+ `r C.round[4]*1`(\text{Study}) \\
 &= `r C.round[1] + C.round[2]*1` + `r C.round[3] + C.round[4]*1`(\text{Study})
-\end{aligned}$$
-------------------------------------------------------------------------
+\end{aligned}$$ ------------------------------------------------------------------------
 
 ## Interaction shapes
 
