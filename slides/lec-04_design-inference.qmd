@@ -1,6 +1,6 @@
 ---
 title: "Week 04: Design & Inference"
-subtitle: "Date: September 15, 2025"
+subtitle: "Date: September 17, 2026"
 footer:  "[course-website](https://dharaden.github.io/psyc640/)"
 logo: "images/640_hex.png"
 format: 
@@ -24,25 +24,29 @@ execute:
 
 ### Week 4
 
+::: callout-warning
+This lecture will be more theory and "lecture-y"
+:::
+
 ------------------------------------------------------------------------
 
 ## The Core Challenge
 
--   **Last week:** We learned to *describe* and *visualize* patterns in our **sample**.
+- **Last week:** We learned to *describe* and *visualize* patterns in our **sample**.
 
--   **The Rest of the Course:** We want to make claims about the **population**.
+- **The Rest of the Course:** We want to make claims about the **population**.
 
--   **The Problem:** How do we know if a pattern we see in our sample (e.g., a difference between groups) is a **"real" effect** or just random **sampling error**?
+- **The Problem:** How do we know if a pattern we see in our sample (e.g., a difference between groups) is a **"real" effect** or just random **sampling error**?
 
--   **The Solution:** We build a **statistical model** to test our question against the backdrop of randomness.
+- **The Solution:** We build a **statistical model** to test our question against the backdrop of randomness.
 
 ------------------------------------------------------------------------
 
 ## The Journey of a Research Question
 
--   All research starts with a question about the world.
+- All research starts with a question about the world.
 
--   But how do we get from a messy, real-world question to a clean, statistical answer?
+- But how do we get from a messy, real-world question to a clean, statistical answer?
 
 **Our Journey Today:**
 
@@ -58,11 +62,11 @@ execute:
 
 ## The First & Most Important Choice
 
--   Before we can analyze anything, we need data. This means turning an abstract concept into a concrete, measurable variable.
+- Before we can analyze anything, we need data. This means turning an abstract concept into a concrete, measurable variable.
 
--   This process is called **operationalization**.
+- This process is called **operationalization**.
 
--   Your operationalization is your argument for what a concept *means* in the context of your study.
+- Your operationalization is your argument for what a concept *means* in the context of your study.
 
 ------------------------------------------------------------------------
 
@@ -72,9 +76,9 @@ Let's imagine a new study. Our research question is:
 
 ***Does being aggressively attacked by a campus squirrel for your sandwich increase a student's acute stress?***
 
--   **Predictor:** `squirrel_incident` (Attacked vs. Not Attacked).
+- **Predictor:** `squirrel_incident` (Attacked vs. Not Attacked).
 
--   **Outcome:** `acute_stress`.
+- **Outcome:** `acute_stress`.
 
 But what *is* "acute stress"? As the researcher, how do you measure it?
 
@@ -104,11 +108,11 @@ Now that we know *what* we're measuring, let's talk about *how* we structure the
 
 1.  **An Associational Claim:** Two variables are related.
 
-    -   *"People who experience squirrel attacks tend to report higher stress."*
+    - *"People who experience squirrel attacks tend to report higher stress."*
 
 2.  **A Causal Claim:** A change in one variable *causes* a change in another.
 
-    -   *"The experience of a squirrel attack causes an increase in stress."*
+    - *"The experience of a squirrel attack causes an increase in stress."*
 
 ------------------------------------------------------------------------
 
@@ -128,9 +132,9 @@ To earn the right to say "X causes Y," you must demonstrate three things:
 
 A **confound** is a "third variable" that creates a spurious relationship between your two variables. This is the #1 threat to causal claims.
 
--   **Classic Example:** Ice cream sales are positively correlated with drowning deaths.
+- **Classic Example:** Ice cream sales are positively correlated with drowning deaths.
 
--   **The Confound:** Summer heat! Hot weather causes both more ice cream sales and more swimming.
+- **The Confound:** Summer heat! Hot weather causes both more ice cream sales and more swimming.
 
 ------------------------------------------------------------------------
 
@@ -146,31 +150,31 @@ A **True Experiment** is the most powerful tool for establishing causality. It h
 
 ## Key Design Dimensions
 
--   **Between-Subjects:** Different groups of people get different conditions. We compare Group A vs. Group B.
+- **Between-Subjects:** Different groups of people get different conditions. We compare Group A vs. Group B.
 
--   **Within-Subjects:** The same group of people experiences all conditions. We compare people to themselves.
+- **Within-Subjects:** The same group of people experiences all conditions. We compare people to themselves.
 
--   **Cross-Sectional:** All data is collected at a single point in time. (Fails temporal precedence).
+- **Cross-Sectional:** All data is collected at a single point in time. (Fails temporal precedence).
 
--   **Longitudinal:** Data is collected from the same people over multiple time points. (Establishes temporal precedence).
+- **Longitudinal:** Data is collected from the same people over multiple time points. (Establishes temporal precedence).
 
 ------------------------------------------------------------------------
 
 #### **A New Dimension - Who Are You Studying?**
 
--   So far, we've focused on what we *do* with our participants (the design).
+- So far, we've focused on what we *do* with our participants (the design).
 
--   But there's another crucial question: *Who are our participants and who do they represent?*
+- But there's another crucial question: *Who are our participants and who do they represent?*
 
--   **Population:** The entire group we want to draw conclusions about.
+- **Population:** The entire group we want to draw conclusions about.
 
-    -   *e.g., All college students in the United States.*
+  - *e.g., All college students in the United States.*
 
--   **Sample:** The specific subset of the population that we actually collect data from.
+- **Sample:** The specific subset of the population that we actually collect data from.
 
-    -   *e.g., 150 undergraduates from our university's psychology subject pool.*
+  - *e.g., 150 undergraduates from our university's psychology subject pool.*
 
--   The central question of sampling is **generalizability**: How well do the findings from our sample apply to the broader population?
+- The central question of sampling is **generalizability**: How well do the findings from our sample apply to the broader population?
 
 ------------------------------------------------------------------------
 
@@ -178,15 +182,15 @@ A **True Experiment** is the most powerful tool for establishing causality. It h
 
 **Random Sampling (The Ideal)**
 
--   Every single member of the target population has an equal chance of being selected for the study.
+- Every single member of the target population has an equal chance of being selected for the study.
 
--   **Why it's the gold standard:** It minimizes systematic bias. In the long run, it produces samples that are highly representative of the population.
+- **Why it's the gold standard:** It minimizes systematic bias. In the long run, it produces samples that are highly representative of the population.
 
 **Convenience Sampling (The Reality)**
 
--   The researcher includes people who are easy to reach (e.g., Using undergraduate students, posting a flier in the clinic, etc.)
+- The researcher includes people who are easy to reach (e.g., Using undergraduate students, posting a flier in the clinic, etc.)
 
--   **The Limitation:** Our convenience sample may differ from the population in systematic ways (e.g., younger, wealthier, college educated, etc.). Must be thoughtful when generalizing from these samples.
+- **The Limitation:** Our convenience sample may differ from the population in systematic ways (e.g., younger, wealthier, college educated, etc.). Must be thoughtful when generalizing from these samples.
 
 # Checkpoint
 
@@ -234,19 +238,11 @@ As more observations are collected, the proportion of occurrences with a particu
 
 *Example:*
 
--   As the sample size increases, the sample mean tends to get closer to the population mean
+- As the sample size increases, the sample mean tends to get closer to the population mean
 
--   And as the sample size approaches infinity ♾️, the sample mean approaches the population mean
+- And as the sample size approaches infinity ♾️, the sample mean approaches the population mean
 
-------------------------------------------------------------------------
-
-### Law of Large Numbers
-
-> *When tossing a fair coin, if heads comes up on each of the first 10 tosses, what do you think the chance is that another head will come up on the next toss? 0.5, less than 0.5, or more than 0.5?*
-
-|                                     |
-|-------------------------------------|
-| H H H H H H H H H H [?]{.underline} |
+<https://psu-eberly.shinyapps.io/Law_of_Large_Numbers/>
 
 ------------------------------------------------------------------------
 
@@ -258,9 +254,19 @@ As more observations are collected, the proportion of occurrences with a particu
 |-------------------------------------|
 | H H H H H H H H H H [?]{.underline} |
 
--   Probability is still 0.5
+------------------------------------------------------------------------
 
--   Coin is not "due" for a tail
+### Law of Large Numbers
+
+> *When tossing a fair coin, if heads comes up on each of the first 10 tosses, what do you think the chance is that another head will come up on the next toss? 0.5, less than 0.5, or more than 0.5?*
+
+|                                     |
+|-------------------------------------|
+| H H H H H H H H H H [?]{.underline} |
+
+- Probability is still 0.5
+
+- Coin is not "due" for a tail
 
 ::: callout-important
 The common misunderstanding of the LLN is that random processes are supposed to compensate for whatever happened in the past; this is just not true and is also called gambler’s fallacy (or law of averages)
@@ -270,15 +276,15 @@ The common misunderstanding of the LLN is that random processes are supposed to 
 
 ## Statistics, Probability & Inference
 
--   Think about seeing statistics posted on the news
+- Think about seeing statistics posted on the news
 
-    -   Often times polling companies survey a large sample to then make a statement about the population
+  - Often times polling companies survey a large sample to then make a statement about the population
 
--   We assume the sample is representative of the larger population, but how representative?
+- We assume the sample is representative of the larger population, but how representative?
 
-    -   This is where probability theory comes in
+  - This is where probability theory comes in
 
--   Probability theory provides tools to assess how likely sample results are if they differ from the true population parameter
+- Probability theory provides tools to assess how likely sample results are if they differ from the true population parameter
 
 ------------------------------------------------------------------------
 
@@ -310,8 +316,8 @@ Probability of an event as the **degree of belief**
 
 [**Pros**]{.underline}
 
--   **Objective**: the probability of an event is grounded in the world & exist in the physical universe
--   **Unambiguous**: two people can watch the same sequence of events and will come up with the same answer
+- **Objective**: the probability of an event is grounded in the world & exist in the physical universe
+- **Unambiguous**: two people can watch the same sequence of events and will come up with the same answer
 
 ------------------------------------------------------------------------
 
@@ -319,15 +325,15 @@ Probability of an event as the **degree of belief**
 
 [**Cons**]{.underline}
 
--   Infinity: not possible in the physical world
+- Infinity: not possible in the physical world
 
-    -   What would happen if we flipped a coin an infinite amount of times?
+  - What would happen if we flipped a coin an infinite amount of times?
 
--   Narrow in scope: although we want to make statements about a single event, we typically are forbidden (see above point about infinity)
+- Narrow in scope: although we want to make statements about a single event, we typically are forbidden (see above point about infinity)
 
-    -   Example: There is a 60% chance that it will rain on Wednesday in Rochester. “There is a category of days for which I predict a 60% chance of rain, and if we look only across those days for which I make this prediction, then on 60% of those days it will actually rain”
+  - Example: There is a 60% chance that it will rain on Wednesday in Rochester. “There is a category of days for which I predict a 60% chance of rain, and if we look only across those days for which I make this prediction, then on 60% of those days it will actually rain”
 
-# Probability Theory as part of the solution 
+# Probability Theory as part of the solution
 
 **So, How Does This Help Us?**
 
@@ -341,9 +347,9 @@ This question is the foundation for the rest of our journey today.
 
 ## The Universal Language of Models
 
--   Your measurement and design choices create the blueprint for your analysis. They lead you directly to the correct statistical model.
+- Your measurement and design choices create the blueprint for your analysis. They lead you directly to the correct statistical model.
 
--   All models we learn this semester can be expressed in R with a simple formula:
+- All models we learn this semester can be expressed in R with a simple formula:
 
 `Outcome ~ Predictor`
 
@@ -355,25 +361,25 @@ This question is the foundation for the rest of our journey today.
 ::: {.column width="50%"}
 **If your goal is to... COMPARE GROUPS:**
 
--   Predictor (IV) is **Categorical**
+- Predictor (IV) is **Categorical**
 
--   Outcome (DV) is **Continuous**
+- Outcome (DV) is **Continuous**
 
--   👉 You are in the **t-test / ANOVA** family of models.
+- 👉 You are in the **t-test / ANOVA** family of models.
 
--   The model looks like: `Continuous_Outcome ~ Categorical_Predictor`
+- The model looks like: `Continuous_Outcome ~ Categorical_Predictor`
 :::
 
 ::: {.column width="50%"}
 **If your goal is to... ASSESS AN ASSOCIATION:**
 
--   Predictor (IV) is **Continuous**
+- Predictor (IV) is **Continuous**
 
--   Outcome (DV) is **Continuous**
+- Outcome (DV) is **Continuous**
 
--   👉 You are in the **Correlation / Regression** family of models.
+- 👉 You are in the **Correlation / Regression** family of models.
 
--   The model looks like: `Continuous_Outcome ~ Continuous_Predictor`
+- The model looks like: `Continuous_Outcome ~ Continuous_Predictor`
 :::
 :::::
 
@@ -385,13 +391,13 @@ So we have a model, like: `depression_score ~ therapy_group`. How do we test it?
 
 We use the Null Hypothesis Significance Testing (NHST) framework:
 
--   **The Null Hypothesis** $H_0$ : A statement that the predictor has **no relationship** with the outcome in the population. It is the "null model."
+- **The Null Hypothesis** $H_0$ : A statement that the predictor has **no relationship** with the outcome in the population. It is the "null model."
 
-    -   $H_0$ : In the population, there is no difference in depression scores between the therapy and control groups. `therapy_group` does **not** predict `depression_score`.
+  - $H_0$ : In the population, there is no difference in depression scores between the therapy and control groups. `therapy_group` does **not** predict `depression_score`.
 
--   **The Alternative Hypothesis** $H_A$ : Our research hypothesis. The predictor **does** have a relationship with the outcome.
+- **The Alternative Hypothesis** $H_A$ : Our research hypothesis. The predictor **does** have a relationship with the outcome.
 
-    -   $H_A$ : In the population, there **is** a difference. `therapy_group` **does** predict `depression_score`.
+  - $H_A$ : In the population, there **is** a difference. `therapy_group` **does** predict `depression_score`.
 
 ------------------------------------------------------------------------
 
@@ -401,19 +407,19 @@ The **p-value** tells us how surprising our sample data would be *if the null hy
 
 It's a measure of the incompatibility between our data and the null model.
 
--   A **small p-value** (p\<.05) suggests that our data are incompatible with the null model. We have evidence to **reject the null model** and conclude that our predictor is likely related to the outcome.
+- A **small p-value** (p\<.05) suggests that our data are incompatible with the null model. We have evidence to **reject the null model** and conclude that our predictor is likely related to the outcome.
 
 The statistical test you run (`t.test`, `cor.test`, `lm`) is just the engine that calculates the p-value for your specific model. The logic is always the same.
 
 # Synthesis
 
--   Your **Statistical Model** (and its p-value) tells you if a relationship is **statistically significant** (i.e., unlikely to be due to random chance).
+- Your **Statistical Model** (and its p-value) tells you if a relationship is **statistically significant** (i.e., unlikely to be due to random chance).
 
 But...
 
--   Your **Study Design** tells you if you can call that relationship **causal** (requires random assignment, temporal precedence).
+- Your **Study Design** tells you if you can call that relationship **causal** (requires random assignment, temporal precedence).
 
--   Your **Sampling Method** tells you if you can **generalize** that relationship to a broader population.
+- Your **Sampling Method** tells you if you can **generalize** that relationship to a broader population.
 
 ::: callout-important
 ### A p-value or statistical test cannot fix a flawed design!

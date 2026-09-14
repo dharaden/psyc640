@@ -23,15 +23,15 @@ Focus on having reproducible code! You may need to share your file with someone 
 
 ### Objectives:
 
--   Identify predictor and outcome variables from a research question.
+- Identify predictor and outcome variables from a research question.
 
--   Use the "decision tree" to select the correct family of statistical models.
+- Use the "decision tree" to select the correct family of statistical models.
 
--   Create an appropriate visualization (`ggplot`).
+- Create an appropriate visualization (`ggplot`).
 
--   Run the correct statistical test (`t.test` or `cor.test`).
+- Run the correct statistical test (`t.test` or `cor.test`).
 
--   Write a one-sentence conclusion synthesizing the results.
+- Write a one-sentence conclusion synthesizing the results.
 
 ### The Scenario & Dataset
 
@@ -41,13 +41,13 @@ A developmental psychology lab is exploring factors related to children's well-b
 
 Please download the `child_wellbeing.csv` file (above). It contains the following variables:
 
--   `child_id`: A unique identifier for each child.
+- `child_id`: A unique identifier for each child.
 
--   `parenting_style`: The primary parenting style observed in the home (Categorical: "Authoritative" or "Permissive").
+- `parenting_style`: The primary parenting style observed in the home (Categorical: "Authoritative" or "Permissive").
 
--   `sleep_hours`: The average number of hours the child sleeps per night (Continuous).
+- `sleep_hours`: The average number of hours the child sleeps per night (Continuous).
 
--   `anxiety_score`: A score from 0-50 on a parent-report measure of the child's anxiety (Continuous).
+- `anxiety_score`: A score from 0-50 on a parent-report measure of the child's anxiety (Continuous).
 
 ### Instructions:
 
