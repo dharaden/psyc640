@@ -5,7 +5,7 @@ footer:  "[course-website](https://dharaden.github.io/psyc640/)"
 logo: "images/640_hex.png"
 format: 
   revealjs:
-    theme: clean.scss
+    theme: [default, brand, clean.scss]
     multiplex: false
     transition: fade
     slide-number: true
@@ -105,7 +105,7 @@ The heavier tails of the t-distribution, especially for small N, are the penalty
 
 For examples today, we will use a dataset from Cards Against Humanity's Pulse of the Nation survey (<https://thepulseofthenation.com/>)
 
--   <a href="/files/data/CAH.csv" download="CAH.csv">Cards Against Humanity Data (.csv)</a>
+-   <a href="../files/data/CAH.csv" download="CAH.csv">Cards Against Humanity Data (.csv)</a>
 
 ```{r}
 ## We are using read_csv() this time

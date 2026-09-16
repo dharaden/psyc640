@@ -5,7 +5,7 @@ footer:  "[course-website](https://dharaden.github.io/psyc640/)"
 logo: "images/640_hex.png"
 format: 
   revealjs:
-    theme: slides.scss
+    theme: [default, brand, clean.scss]
     multiplex: false
     transition: fade
     slide-number: true

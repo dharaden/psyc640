@@ -7,7 +7,7 @@ editor: visual
 
 ## Stuff for Today
 
--   <a href="/files/data/cat_reg.csv" download="categorical_reg.csv">Download Categorical data (.csv)</a>
+-   <a href="../files/data/cat_reg.csv" download="categorical_reg.csv">Download Categorical data (.csv)</a>
 
 ## Slides
 
@@ -32,5 +32,5 @@ editor: visual
 <br><br>
 
 ::: {style="font-size: 0.875em;"}
-Back to [course schedule](/ "Course schedule") ⏎
+Back to [course schedule](../index.qmd "Course schedule") ⏎
 :::

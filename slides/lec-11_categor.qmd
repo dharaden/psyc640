@@ -5,7 +5,7 @@ footer:  "[course-website](https://dharaden.github.io/psyc640/)"
 logo: "images/640_hex.png"
 format: 
   revealjs:
-    theme: clean.scss
+    theme: [default, brand, clean.scss]
     multiplex: false
     transition: fade
     slide-number: true
@@ -394,7 +394,7 @@ You will submit **one** Rmd file for the whole group. Be sure to include all gro
 ### Part 1
 
 1.  Get into groups of 4
-2.  Download the data <a href="/files/data/cat_reg.csv" download="categorical_reg.csv">\[Download Categorical data (.csv)\]</a>
+2.  Download the data <a href="../files/data/cat_reg.csv" download="categorical_reg.csv">\[Download Categorical data (.csv)\]</a>
 3.  Enter the data into the spreadsheet with the chips that you have
     1.  Each chip has an ID number (three digits) and a score (between 5 - 20)
     2.  These are the scores for the "post"

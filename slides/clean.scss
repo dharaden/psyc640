@@ -1,33 +1,17 @@
 /*-- scss:defaults --*/
+// Colors and font come from _brand.yml; this file only adds the 'clean' slide layout.
 
 // Custom colours and variables
 
-$jet: #131516;
-$accent: #107895;
-$accent2: #9a2515;
+$jet: #212121; // brand charcoal
+$accent: #7B5EA7; // brand purple-deep
+$accent2: #B3261E; // brand clay
 // $accent2: #e64173;
 $right-arrow: "\2192"; // Unicode character for right arrow
 
 // fonts
 
-/*
-Note: This theme uses the Roboto font family, which it imports from Google
-  Fonts to ensure consistent weighting in addition to availability. While
-  you can use a local installation of Roboto, this is generally not 
-  recommended since the weighting will likely be wrong (probably too
-  light). OTOH, importing from Google Fonts can cause some issues in
-  certain secure environments due the external CDN (see:
-  https://github.com/grantmcdermott/quarto-revealjs-clean/issues/7). If
-  that's the case for you, simply comment out the `@import url(...)` line
-  below and it will default for the default Sans Serif font on your system
-  (e.g., Helvetica on a Mac). Circling back to the earlier point about
-  preserving consistent font weights, you may also wish to remove "Roboto"
-  from the choice set if the family is installed locally.
-*/
-@import url('https://fonts.googleapis.com/css?family=Roboto:200,200i,300,300i,350,350i,400,400i&display=swap');
 
-$font-family-sans-serif: "Roboto", sans-serif !default;
-$presentation-heading-font: "Roboto", sans-serif !default;
 
 $presentation-heading-color: $jet !default;
 $presentation-heading-font-weight: lighter;
@@ -39,7 +23,7 @@ $presentation-font-size-root: 32px;
 //$body-bg: #f0f1eb !default;
 $body-color: $jet !default;
 $link-color: $accent !default;
-$selection-bg: #26351c !default;
+$selection-bg: #C9ADE0 !default; // brand purple-light
 
 
 /*-- scss:rules --*/
@@ -251,8 +235,8 @@ $selection-bg: #26351c !default;
 }
 
 .button:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
+  background-color: #5E4585;
+  border-color: #5E4585;
 }
 
 .button::before {

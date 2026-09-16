@@ -1,5 +1,34 @@
-project: 
+project:
   type: website
+  # Only these files are built and published. Add each week's files here when you post them.
+  render:
+    - index.qmd
+    - course-overview.qmd
+    - syllabus.qmd
+    - resources.qmd
+    - resources/*.qmd
+    - previous-years.qmd
+    - weeks/week-1.qmd
+    - weeks/week-2.qmd
+    - weeks/week-3.qmd
+    - labs/lab-01_introduction.qmd
+    - labs/lab-02_data-workflow.qmd
+    - labs/lab-03_data-wrangling.qmd
+    - labs/lab-04_describe-viz.qmd
+    - class-activities/day1.qmd
+    - class-activities/wk2_tidy-intro.qmd
+    - class-activities/wk3_desc-viz.qmd
+    - class-activities/wk4_beg-inf.qmd
+    - slides/lec-01_syl.qmd
+    - slides/lec-02_background.qmd
+    - slides/lec-03_wrangle.qmd
+    - slides/lec-03_desc-viz.qmd
+    - slides/lec-03_desc-viz_JAMOVI.qmd
+    - slides/lec-04_design-inference.qmd
+  # Downloadable files copied to the site as-is (data, handouts, .qmd templates, .pptx)
+  resources:
+    - "files/**"
+    - "slides/*.pptx"
   
 website: 
   page-navigation: true
@@ -9,17 +38,13 @@ website:
   repo-url: https://github.com/dharaden/psyc640 
   repo-actions: [edit, issue]
 
-
-
   open-graph: true
   
   page-footer:
     right: "This page is built with ☕ and [Quarto](https://quarto.org/)."
     left: "&copy; CC-By Dustin Haraden, 2026"
-    background: "#C9ADE0"
     
   sidebar:
-    background: "#C9ADE0"
     logo: "images/640_hex.png"
     pinned: true
     align: center
@@ -52,29 +77,29 @@ website:
             text: "Week 2 - Data Wrangling"
           - href: weeks/week-3.qmd
             text: "Week 3 - Describe & Viz"
-          - href: #weeks/week-4.qmd
-            text: "Week 4 - Design & Inference"
-          - href: #weeks/week-5.qmd
-            text: "Week 5 - Linear Model"
-          - href: #weeks/week-6.qmd
-            text: "Week 6 - Linear Model: Part Deux"
-          - href: #weeks/week-7.qmd
-            text: "Week 7 - Variability & Model Fit"
-          - href: #weeks/week-8.qmd
-            text: "Week 8 - Multiple Reg. I"
-          - href: #weeks/week-9.qmd
-            text: "Week 9 - Multiple Reg. II"
-          - href: #weeks/week-10.qmd
-            text: "Week 10 - Assumptions & Diagnostic"
-          - href: #weeks/week-11.qmd
-            text: "Week 11 - Missing Data & ModelBuilding"
-          - href: #weeks/week-12.qmd
-            text: "Week 12 - Logistic Reg."
-          - href: #weeks/week-13.qmd
-            text: "Week 13 - Mixed/Mulilevel Models"
-          - text: "Week 14 - NO CLASS"
-          - href: #weeks/week-15.qmd
-            text: "Week 15 - Wrapping Up"
+          # - href: weeks/week-4.qmd
+            # text: "Week 4 - Design & Inference"
+          # - href: weeks/week-5.qmd
+            # text: "Week 5 - Linear Model"
+          # - href: weeks/week-6.qmd
+            # text: "Week 6 - Linear Model: Part Deux"
+          # - href: weeks/week-7.qmd
+            # text: "Week 7 - Variability & Model Fit"
+          # - href: weeks/week-8.qmd
+            # text: "Week 8 - Multiple Reg. I"
+          # - href: weeks/week-9.qmd
+            # text: "Week 9 - Multiple Reg. II"
+          # - href: weeks/week-10.qmd
+            # text: "Week 10 - Assumptions & Diagnostic"
+          # - href: weeks/week-11.qmd
+            # text: "Week 11 - Missing Data & ModelBuilding"
+          # - href: weeks/week-12.qmd
+            # text: "Week 12 - Logistic Reg."
+          # - href: weeks/week-13.qmd
+            # text: "Week 13 - Mixed/Mulilevel Models"
+         # - text: "Week 14 - NO CLASS"
+          # - href: weeks/week-15.qmd
+            # text: "Week 15 - Wrapping Up"
       - section: "Labs"
         contents:
           - href: labs/lab-01_introduction.qmd
@@ -85,48 +110,43 @@ website:
             text: "Lab 3 - Data Wrangling" 
           - href: labs/lab-04_describe-viz.qmd
             text: "Lab 4 - Describe & Viz." 
-          - href: #labs/lab-5_cor.qmd
-            text: "Lab 5" 
-          - href: #labs/lab-6.qmd
-            text: "Lab 6"  
-          - href: #labs/lab-7.qmd
-            text: "Lab 7" 
-          - href: #labs/lab-8.qmd
-            text: "Lab 8"
-          - href: #labs/lab-9.qmd
-            text: "Lab 9"
-          - href: #labs/lab-10.qmd
-            text: "Lab 10"
-      - section: "Projects"
-        contents: 
-          - href: #labs/midterm-proj.qmd
-            text: "Midterm Project" 
-          - href: #labs/final-proj.qmd
-            text: "Final Project"
+          # - href: labs/lab-5_cor.qmd
+            # text: "Lab 5" 
+          # - href: labs/lab-6.qmd
+            # text: "Lab 6"  
+          # - href: labs/lab-7.qmd
+            # text: "Lab 7" 
+          # - href: labs/lab-8.qmd
+            # text: "Lab 8"
+          # - href: labs/lab-9.qmd
+            # text: "Lab 9"
+          # - href: labs/lab-10.qmd
+            # text: "Lab 10"
+      # - section: "Projects"
+      #   contents:
+          # - href: labs/midterm-proj.qmd
+            # text: "Midterm Project" 
+          # - href: labs/final-proj.qmd
+            # text: "Final Project"
       - href: resources.qmd
         text: "Resources" 
       - href: previous-years.qmd
         text: "Previous Years"
+
+brand:
+  light: _brand.yml
+  dark: _brand-dark.yml
+
 
 format:
   html:
     grid:
       sidebar-width: 350px
     theme:
-      light: [minty, theme.scss]
-      dark: [minty, theme-dark.scss]
-    mainfont: "Atkinson Hyperlegible"
+      light: [minty, brand, theme-light.scss]
+      dark: [minty, brand, theme-dark.scss]
     code-copy: true
     code-overflow: wrap
     toc: true
 
 freeze: auto
-
-editor: visual
-
-
-filters:
-  - include-files.lua
-  - quarto
-
-  

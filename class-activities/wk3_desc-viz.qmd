@@ -8,7 +8,7 @@ editor: visual
 
 ## Download the Activity Document
 
-1.  Grab the Quarto Doc for the activity: <a href="/files/_lab-qmd/wk3_desc-viz_inclass.qmd" download="wk3_desc-viz_inclass.qmd">Download Week 3 Activity (.qmd)</a>
+1.  Grab the Quarto Doc for the activity: <a href="../files/_lab-qmd/wk3_desc-viz_inclass.qmd" download="wk3_desc-viz_inclass.qmd">Download Week 3 Activity (.qmd)</a>
 
 2.  Update the Author and Date field
 
@@ -20,7 +20,7 @@ editor: visual
 
 ## The Data
 
-<a href="/files/data/wk3-viz.csv" download="wk3-viz.csv">Download Week 3 InClass Data (.csv)</a>
+<a href="../files/data/wk3-viz.csv" download="wk3-viz.csv">Download Week 3 InClass Data (.csv)</a>
 
 Download the data and move it to the correct folder so that you can access it in this lab.
 

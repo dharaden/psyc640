@@ -5,7 +5,7 @@ footer:  "[course-website](https://dharaden.github.io/psyc640/)"
 logo: "images/640_hex.png"
 format: 
   revealjs:
-    theme: clean.scss
+    theme: [default, brand, clean.scss]
     multiplex: false
     transition: fade
     slide-number: true
@@ -54,7 +54,7 @@ Then, create a new Quarto Document that we will use for today
 Setup the libraries and bring in the data
 
 - We will use the TIPI data from the last lecture that has already been scored
-- <a href="/files/data/final_tipi.csv" download="final_tipi.csv">Download Clean TIPI Data (.csv)</a>
+- <a href="../files/data/final_tipi.csv" download="final_tipi.csv">Download Clean TIPI Data (.csv)</a>
 
 ```{r}
 #import data - Your path may be different

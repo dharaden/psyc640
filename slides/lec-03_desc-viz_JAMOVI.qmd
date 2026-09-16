@@ -5,7 +5,7 @@ footer:  "[course-website](https://dharaden.github.io/psyc640/)"
 logo: "images/640_hex.png"
 format: 
   revealjs:
-    theme: clean.scss
+    theme: [default, brand, clean.scss]
     multiplex: false
     transition: fade
     slide-number: true
@@ -49,7 +49,7 @@ JAMOVI is basically a GUI for R that is more point-click
 
 Open JAMOVI and import the TIPI Data
 
-<a href="/files/data/final_tipi.csv" download="final_tipi.csv">Download Clean TIPI Data (.csv)</a>
+<a href="../files/data/final_tipi.csv" download="final_tipi.csv">Download Clean TIPI Data (.csv)</a>
 
 > Menu \> Open \> final_tipi.csv
 

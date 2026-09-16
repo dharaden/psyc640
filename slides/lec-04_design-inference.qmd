@@ -5,7 +5,7 @@ footer:  "[course-website](https://dharaden.github.io/psyc640/)"
 logo: "images/640_hex.png"
 format: 
   revealjs:
-    theme: clean.scss
+    theme: [default, brand, clean.scss]
     multiplex: false
     transition: fade
     slide-number: true
@@ -91,7 +91,7 @@ Turn to the person/people next to you and identify how you would define and meas
 ## How Would You Measure "Stress"?
 
 |  |  |  |  |
-|------------------|------------------|------------------|------------------|
+|----|----|----|----|
 | **Method of Measurement** | **How It Works** | **Data Generated** | **What It Really Measures** |
 | **Subjective Self-Report** | "On a scale of 0-100, how stressed do you feel *right now*?" | **Continuous** (0-100) | The **feeling** of stress. |
 | **Autonomic Arousal** | Measure heart rate in beats per minute (BPM). | **Continuous** (e.g., 115 BPM) | The **body's alarm** for stress. |

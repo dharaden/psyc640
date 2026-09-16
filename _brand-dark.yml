@@ -1,0 +1,25 @@
+meta:
+  name: PSYC 640 - Graduate Statistics
+
+color:
+  palette:
+    purple-light: "#C9ADE0"
+    purple-deep: "#7B5EA7"
+    charcoal: "#181818"
+    offwhite: "#F5F5F5"
+    sage: "#4C9C77"
+    amber: "#D6A93A"
+    clay: "#D9756A"
+  background: charcoal
+  foreground: offwhite
+  primary: purple-light
+  secondary: purple-deep
+  success: sage
+  warning: amber
+  danger: clay
+
+typography:
+  fonts:
+    - family: Atkinson Hyperlegible
+      source: google
+  base: Atkinson Hyperlegible

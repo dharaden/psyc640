@@ -7,7 +7,7 @@ editor: visual
 
 ## Data for Today (maybe?)
 
--   <a href="/files/data/CAH.csv" download="cards_CAH.csv">Download Cards Against Humanity Data (.csv)</a>
+-   <a href="../files/data/CAH.csv" download="cards_CAH.csv">Download Cards Against Humanity Data (.csv)</a>
 
 ## Slides
 
@@ -26,5 +26,5 @@ editor: visual
 <br><br>
 
 ::: {style="font-size: 0.875em;"}
-Back to [course schedule](/ "Course schedule") ⏎
+Back to [course schedule](../index.qmd "Course schedule") ⏎
 :::

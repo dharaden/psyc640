@@ -13,7 +13,7 @@ We may have a demo of a workflow. In that case, we will be able to pick some dat
 
 Here is the RMD file that I worked on in class today for you to review if needed
 
--   <a href="/files/_lab-rmd/DASS_data.Rmd" download="DASS_data.Rmd">Download DASS File from Class</a>
+-   <a href="../files/_lab-rmd/DASS_data.Rmd" download="DASS_data.Rmd">Download DASS File from Class</a>
 
 ## Rando CalRissian
 
@@ -44,5 +44,5 @@ Turn in the final paper
 <br><br>
 
 ::: {style="font-size: 0.875em;"}
-Back to [course schedule](/ "Course schedule") ⏎
+Back to [course schedule](../index.qmd "Course schedule") ⏎
 :::

@@ -4,8 +4,10 @@
 
 ## Colors
 
-- website background: #C9ADE0 
-- headings: #5B888C
+Colors and fonts live in `_brand.yml` (light) and `_brand-dark.yml` (dark); the website and slides both use them.
+
+- sidebar/footer (light): #C9ADE0
+- primary (light): #7B5EA7
 
 ## Attribution
 

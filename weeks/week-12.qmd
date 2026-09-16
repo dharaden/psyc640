@@ -7,8 +7,8 @@ editor: visual
 
 ## Data for Today
 
--   <a href="/files/data/CAH.csv" download="cards_CAH.csv">Download Cards Against Humanity Data (.csv)</a>
--   <a href="/files/data/cat_reg_complete.xlsx" download="cat_reg_complete.xlsx">Download Categorical data (.xlsx)</a>
+-   <a href="../files/data/CAH.csv" download="cards_CAH.csv">Download Cards Against Humanity Data (.csv)</a>
+-   <a href="../files/data/cat_reg_complete.xlsx" download="cat_reg_complete.xlsx">Download Categorical data (.xlsx)</a>
 
 ## Slides
 
@@ -29,5 +29,5 @@ Lego Logistic Regression
 <br><br>
 
 ::: {style="font-size: 0.875em;"}
-Back to [course schedule](/ "Course schedule") ⏎
+Back to [course schedule](../index.qmd "Course schedule") ⏎
 :::

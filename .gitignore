@@ -10,3 +10,8 @@ _site/
 .DS_Store
 
 **/*.quarto_ipynb
+
+# Quarto render leftovers & OS files
+*_files/
+desktop.ini
+Thumbs.db
