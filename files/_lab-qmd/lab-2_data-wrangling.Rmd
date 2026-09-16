@@ -1,0 +1,303 @@
+---
+title: "Lab 2: Data Wrangling Beginnings"
+author: "Your Name Here"
+date: "`r Sys.Date()`"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+## Scenario and Goal
+
+Congratulations, you've just collected data for a study on
+"Personality"! You administered a 10-item personality questionnaire,
+where participants responded on a 5-point Likert scale (1 = Strongly
+Disagree, 5 = Strongly Agree). This measure is called the "Ten Item
+Personality Inventory" (TIPI) and more information about the measure can
+be found here: [TIPI Scale
+Info](https://gosling.psy.utexas.edu/scales-weve-developed/ten-item-personality-measure-tipi/){target="_blank"}.
+Please refer to this page and documents to help with scoring the data
+and getting familiar with the measure.
+
+However, the raw data from the survey software is messy. Your goal in
+this lab is to **import, clean, and score** the data to prepare it for
+analysis. This process of turning raw data into usable data is called
+**data wrangling**, and it's what researchers spend most of their time
+doing.
+
+**You will learn to:** \* Import a CSV file. \* Rename variables for
+clarity. \* Filter out participants based on data quality checks. \*
+Reverse-score negatively worded items. \* Compute a composite score for
+a psychological scale.
+
+------------------------------------------------------------------------
+
+### Getting Data
+
+Be aware of your file structure and how things are organized. For some
+refreshers, take a look at the resources page and rstats.wtf
+
+### Exercise 1: Importing and Inspecting the Data
+
+First, you need to load the appropriate packages and import your data.
+Use the `tidyverse`, `rio`, and `here` libraries.
+
+```{r ex1}
+# Task 1: Load the appropriate libraries.
+
+
+# Write your import code here:
+  ## This will look like:
+    # your_data_name <- import(here("path", "to", "file", "filename.csv))
+
+
+
+# Task 3: Use glimpse() to get a first look at the raw_data.
+# Write your code here:
+
+
+
+```
+
+**Question 1:** How many participants (rows) are in the raw, imported
+dataset?
+
+**❓Your Answer:** [Type your answer here]
+
+------------------------------------------------------------------------
+
+### Exercise 2: Renaming Variables for Clarity
+
+The column names are a mixture of naming conventions. Let's rename them
+to be consistent and convey the appropriate information.
+
+First, let's take a look at what the names are. You can do this by using
+`View()`, but let's use the `names()` function to list out all the
+column names.
+
+``` r
+names(Whatever_you_Named_your_data)
+```
+
+This will give you your list of names. You can see which ones we may
+want to rename. What does `Q85` even mean? Thanks Qualtrics. Review the
+documentation for the survey to get a sense of what the questions are
+asking to properly rename the variables.
+
+For now, let's update the names as follows. It is helpful to keep
+everything lowercase to make it easier to type (but this is a personal
+preference), and make sure there aren't any spaces in your variable
+names:
+
+-   `ID` -\> `id`
+-   `Progress` -\> `progress`
+-   `Duration (in seconds)` -\> `duration`
+-   `Consent` -\> `consent`
+-   `Q85` -\> `sex_orient`
+-   `Q85_6_TEXT` -\> `sex_orient_txt`
+-   `Sleep Quality` -\> `sleep_qual`
+-   `Hours of Sleep` -\> `sleep_hours`
+
+```{r ex2}
+# Task: Use the rename() function to change the variable names as listed above.
+# Create a new object called `renamed_data`.
+# Hint: The syntax is: new_object <- old_object %>% rename(new_name_1 = old_name_1, new_name_2 = old_name_2)
+
+# Write your code here:
+# This part is a placeholder as the actual column names from the URL will differ.
+# Be sure to update the following template with the info from your own data
+renamed_data <- raw_data %>%
+  rename(participant_id = country, 
+         grit_1 = year,
+         grit_2 = population)
+         # ... and so on for the other variables
+
+# Print the first few rows of your new `renamed_data` object to check your work.
+head(renamed_data)
+```
+
+------------------------------------------------------------------------
+
+### Exercise 3: Filtering for Data Quality
+
+Our survey includes variables that allow us to see how long they took
+and what percentage they completed. We should remove participants who
+did not finish the survey, as well as those who finished it too quickly.
+
+This will be done using the `filter()` function ([more about
+filter](https://dplyr.tidyverse.org/reference/filter.html){target="_blank"}).
+Use `filter` to keep participants where their progress is equal to 100.
+You will also want to remove participants who completed the survey in
+less than 7 minutes (**note:** the Duration variable is in seconds).
+
+```{r ex3}
+# Create a new object called `filtered_data`.
+
+# Example code:
+# filtered_data <- renamed_data %>%
+#   filter(Progress == 100) %>% 
+#   filter(Duration ==, <, > 1000)
+
+```
+
+**Question 2:** How many participants remain from your original dataset?
+How many participants did you remove with your filters?
+
+**❓Your Answer:** [Type your answer here]
+
+------------------------------------------------------------------------
+
+### Exercise 4: Reverse-Scoring Items
+
+In a lot of psychological research, we need to reverse score variables.
+They are often worded in a negative/positive way compared to the rest of
+the items. Review the [TIPI
+documentation](https://gosling.psy.utexas.edu/scales-weve-developed/ten-item-personality-measure-tipi/){target="_blank"}
+to see what items need to be reverse scored.
+
+For example, Item 2 is a item that should reflect "Agreeableness", but
+the rated words are "Critical, quarrelsome". Therefore *low* score on
+this item would reflect *high* amounts of Agreeableness.
+
+The formula for reverse scoring an item is: **(Maximum Possible Value +
+1) - Original Score**. So, for the TIPI, it's `8 - TIPI_2`.
+
+To create/compute a new variable we use the `mutate()` function ([more
+about
+mutate](https://dplyr.tidyverse.org/reference/mutate.html){target="_blank"}).
+I like to remember this function name because we are "mutating" the data
+and introducing another "growth" or something extra that wasn't there
+before.
+
+```{r ex4}
+# Task: Use the mutate() function to create new, reverse-scored variables.
+# Use a new name to indicate which items are reverse-scored.
+# Create a new object called `scored_data`.
+# Hint: The syntax is: 
+  # new_object <- old_object %>% 
+  #   mutate(new_variable = computation, 
+  #          new_variable2 = computation)
+
+
+# Exmple code:
+# scored_data <- filtered_data %>%
+#   mutate(TIPI_2r = 8 - TIPI_2)
+
+
+
+# Print the first few rows, showing only the original and new reverse-scored item to check your work.
+
+# scored_data %>% select(TIPI_2, TIPI_2r) %>% head()
+```
+
+**Question 3:** If a participant's original score on `TIPI_4` was a 6,
+what would their score be on the new `TIPI_4r` variable?
+
+**❓Your Answer:** [Type your answer here]
+
+------------------------------------------------------------------------
+
+### Exercise 5: Computing and Finalizing the Scored File
+
+Now we are ready to compute the final score! There are individual
+subscales for each of the 5 factors of the Big 5 Personality Inex.
+Compute the 5 scales. Remember to use the **reverse-scored** items
+(`TIPI_2r`), not the original one.s
+
+```{r ex5}
+# Task 1: Use mutate() to calculate the total grit score.
+# Sum the items corresponding to each scale.
+# Call the new variables 'extra', 'agree', 'consc', 'emo', 'open.
+# Overwrite your `scored_data` object with this new version.
+
+# Task 2: Create a final, clean dataset.
+# Use select() to keep only the 'id' and Big 5 scale columns.
+# Call this object `final_data`.
+# Conceptual code:
+# final_data <- scored_data %>%
+#   select(id, agree, ...)
+
+
+
+# Task 3: Calculate the mean and standard deviation of each of the subscale scores.
+
+
+
+```
+
+**Question 4:** What would be the highest possible `Emotional Stability`
+score a participant could get? What would be the lowest?
+
+**❓Your Answer:** [Type your answer here]
+
+**Question 5:** Report the mean's and standard deviations of each of the
+subscale scores
+
+**❓Your Answer:**
+
+-   Extraversion:
+
+-   Agreeableness:
+
+-   Conscientiousness:
+
+-   Emotional Stability:
+
+-   Openness to Experience:
+
+------------------------------------------------------------------------
+
+### Exercise 6: Visualize Relationships
+
+We often want to see the relationship between 2 variables. This is often
+done using a scatterplot. Select 2 scales that you would like to see the
+relationship between. Use the code from the previous lab/class to create
+a scatterplot of the relationship. Take a look at this [cheat
+sheet](https://posit.co/wp-content/uploads/2022/10/data-visualization-1.pdf){target="_blank"}
+to help with `ggplot2`!
+
+```{r ex6.1}
+# Using ggplot and the scored data you have, generate a scatterplot. It can be as simple or as fancy as you would like (try putting a title and changing the axis names)
+
+
+
+# Use the cheat sheet and other materials to put a straight line to the data (Hint: add another layer with a smooth geom)
+
+
+```
+
+**Question 6.1:** Visually inspect the chart you have and describe the
+relationship below. Be sure to include the two variables and an estimate
+of your correlation in your answer.
+
+**❓Your Answer:**
+
+```{r ex6.2}
+# Compute a correltion for your variables
+# Hint: use the `cor.test()` function. You will need to specify the variable names as `name_of_data$name_of_variable`
+  
+  # Example
+    # cor.test(starwars$height, starwars$mass)
+
+
+
+```
+
+**Question 6.2:** Calculate the correlation coefficient for your two
+variables of interest ([refer here for more
+info](https://statsandr.com/blog/correlation-coefficient-and-correlation-test-in-r/#for-2-variables){target="_blank"}).
+Report the correlation, and reflect on how close or how far away your
+initial estimate was. Do your best here. I recognize that we haven't
+really gone over this just yet.
+
+**❓Your Answer:**
+
+------------------------------------------------------------------------
+
+*End of Lab. Don't forget to Knit! 🧶*
