@@ -113,8 +113,8 @@ format:
     grid:
       sidebar-width: 350px
     theme:
-      light: [cosmo, theme.scss]
-      dark: [cosmo, theme-dark.scss]
+      light: [minty, theme.scss]
+      dark: [minty, theme-dark.scss]
     mainfont: "Atkinson Hyperlegible"
     code-copy: true
     code-overflow: wrap
