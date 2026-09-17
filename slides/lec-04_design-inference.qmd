@@ -91,7 +91,7 @@ Turn to the person/people next to you and identify how you would define and meas
 ## How Would You Measure "Stress"?
 
 |  |  |  |  |
-|----|----|----|----|
+|------------------|------------------|------------------|------------------|
 | **Method of Measurement** | **How It Works** | **Data Generated** | **What It Really Measures** |
 | **Subjective Self-Report** | "On a scale of 0-100, how stressed do you feel *right now*?" | **Continuous** (0-100) | The **feeling** of stress. |
 | **Autonomic Arousal** | Measure heart rate in beats per minute (BPM). | **Continuous** (e.g., 115 BPM) | The **body's alarm** for stress. |
@@ -192,6 +192,20 @@ A **True Experiment** is the most powerful tool for establishing causality. It h
 
 - **The Limitation:** Our convenience sample may differ from the population in systematic ways (e.g., younger, wealthier, college educated, etc.). Must be thoughtful when generalizing from these samples.
 
+## 🛠️ Activity Stop 1: Design Warm-Up
+
+**The Inference Machine:** Part 0 · 5 min · Pairs · No code
+
+> *"Grad students who work more than 50 hours a week are more burned out, so universities should cap lab hours."*
+
+1.  Predictor & outcome: how would you **operationalize** each?
+2.  **Association** or **causal** claim? What does the headline *imply*?
+3.  Which of the **3 rules of causality** can a survey satisfy?
+4.  Name one **confounding variable**.
+5.  Design an **experiment** to test it (or explain why you can't).
+
+[Open the activity](../class-activities/wk4_inference-machine.html){.button target="_blank"}
+
 # Checkpoint
 
 We have our perfectly designed study to collect stress data from our observations on being on the squirrel hunt (let's ignore the ethics around knowing squirrels might attack and not interfering).
@@ -274,6 +288,36 @@ The common misunderstanding of the LLN is that random processes are supposed to 
 
 ------------------------------------------------------------------------
 
+## 🎲 See It: Sampling Distributions
+
+Before we code it, let's *watch* it happen.
+
+1.  **Draw 1 sample slowly:** one sample becomes one point in the bottom chart
+2.  **Draw 10,000:** the pile of sample means is the **sampling distribution**
+3.  **Change n** (10 → 100): the dashed outline shows the old width. What happens to the spread? (**Law of Large Numbers**)
+4.  **Switch the population to *Skewed* or *Bimodal***: what shape do the *sample means* take? (**Central Limit Theorem**)
+
+[Open the interactive](../interactives/sampling-distribution.html){.button target="_blank"}
+
+------------------------------------------------------------------------
+
+## 🛠️ Activity Stop 2: Seeing the Law of Large Numbers
+
+::: callout-tip
+**The Inference Machine: Parts 1–2** · 15 min · Pairs
+:::
+
+1.  Download the activity file and run the `setup` chunk
+2.  **Build a population** of 10,000 grad students (we know the *true* mean!)
+3.  Draw **one** sample of 10. Compare your mean with your neighbor's
+4.  Draw **1,000** samples each at n = 10, 50, 200 and plot them
+
+**Watch for:** What happens to the *center* and the *spread* as n grows?
+
+[Open the activity](../class-activities/wk4_inference-machine.html){.button target="_blank"} <a href="../files/_lab-qmd/wk4_inference-machine_inclass.qmd" download="wk4_inference-machine_inclass.qmd" class="button">Download .qmd</a>
+
+------------------------------------------------------------------------
+
 ## Statistics, Probability & Inference
 
 - Think about seeing statistics posted on the news
@@ -325,7 +369,7 @@ Probability of an event as the **degree of belief**
 
 [**Cons**]{.underline}
 
-- Infinity: not possible in the physical world
+- ♾️Infinity: not possible in the physical world
 
   - What would happen if we flipped a coin an infinite amount of times?
 
@@ -411,6 +455,26 @@ It's a measure of the incompatibility between our data and the null model.
 
 The statistical test you run (`t.test`, `cor.test`, `lm`) is just the engine that calculates the p-value for your specific model. The logic is always the same.
 
+## 🛠️ Activity Stop 3: Putting p-values to the Test
+
+::: callout-tip
+**The Inference Machine: Parts 3–4** · \~18 min · Pairs
+:::
+
+**Part 3: The Null World:** two groups from the *same* population, 1,000 times
+
+- How often is p \< .05 when *nothing* is going on?
+
+**Part 4: A Real Effect:** group 2 is truly 5 points higher
+
+- How often do we *detect* it with n = 20, 50, 100 per group?
+
+**Finished early?** Try the *Forking Paths* challenge 🍴
+
+[Open the activity](../class-activities/wk4_inference-machine.html){.button target="_blank"}
+
+------------------------------------------------------------------------
+
 # Synthesis
 
 - Your **Statistical Model** (and its p-value) tells you if a relationship is **statistically significant** (i.e., unlikely to be due to random chance).
@@ -424,3 +488,39 @@ But...
 ::: callout-important
 ### A p-value or statistical test cannot fix a flawed design!
 :::
+
+------------------------------------------------------------------------
+
+## ✍️ Wrap-Up: The Inference Machine
+
+With your partner, finish this sentence:
+
+> *"A p-value tells me \_\_\_\_\_\_\_, but it does **not** tell me \_\_\_\_\_\_\_."*
+
+Add it to the end of your activity file.
+
+------------------------------------------------------------------------
+
+## ☕ Break {background-color="#C9ADE0"}
+
+**10 minutes**
+
+When we come back: **Data Detectives** 🔍
+
+------------------------------------------------------------------------
+
+## 🛠️ Activity Stop 4: Data Detectives
+
+::: callout-tip
+**Week 4 Exercises** · \~50 min
+:::
+
+**Follow along (\~20 min):** Graduate school burnout data
+
+**On your own (\~30 min):** Child well-being data
+
+- **Task 1:** Parenting style → anxiety
+- **Task 2:** Sleep → anxiety *(finish as homework if we run short on time)*
+- 🤔 **Challenge:** Can we call it *causal*?
+
+[Open Week 4 Exercises](../class-activities/wk4_beg-inf.html){.button target="_blank"}

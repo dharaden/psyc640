@@ -1,0 +1,75 @@
+---
+title: "Lab 5: Two Tests, One Line"
+subtitle: "Connecting t-tests and correlations, and a sneak peek at the linear model"
+editor: visual
+---
+
+## Instructions
+
+This week we connected **study design** to **inference**: *how* data were collected decides what claims you can make, and a p-value tells you how surprising your data would be if nothing were going on. In this lab you'll put those ideas to work with two tests you already know, then look at them in a new way. That new view is the foundation for everything we do next week.
+
+Here are the things you'll need for this lab:
+
+- <a href="../files/_lab-qmd/lab-5_two-tests-one-line.qmd" download="lab-5_two-tests-one-line.qmd">Download Lab 5 (.qmd)</a>
+- <a href="../files/data/study_strategies.csv" download="study_strategies.csv">Download Study Strategies Data (.csv)</a>
+
+Save the `.csv` in the `data` folder of your PSYC 640 R Project, and the `.qmd` in your project folder.
+
+When you're finished, **render your file to a Word document**, and submit **both** the `.qmd` file and the Word doc to myCourses.
+
+::: callout-note
+## What you'll practice
+
+- Telling experimental variables apart from observational ones, and what that means for **causal claims**
+- Running and reporting a **t-test** and a **correlation** in APA style
+- Interpreting a p-value correctly
+- Seeing a **group difference** as a **line**
+- Running `lm()` for the first time, and discovering how it is different
+:::
+
+## Scenario
+
+The graduate school wants to know how students can study more effectively. Researchers ran a study with **120 graduate students**:
+
+- Each student was **randomly assigned** to either **Rereading** their notes or **Retrieval Practice** (quizzing themselves without looking).
+- The researchers also **measured** study time, sleep, and test anxiety.
+- Everyone took the same stats quiz.
+
+## Variables
+
+| Variable | Description | Type |
+|-------------------|----------------------------------|-------------------|
+| `student_id` | Unique student ID | ID |
+| `condition` | `"Rereading"` or `"Retrieval Practice"` (**randomly assigned**) | Categorical (2 groups) |
+| `study_minutes` | Minutes spent studying (measured) | Continuous |
+| `sleep_hours` | Hours of sleep the night before (measured) | Continuous |
+| `test_anxiety` | Test anxiety, 10–50 (measured; higher = more anxious) | Continuous |
+| `exam_score` | Quiz score, 0–100 | Continuous |
+
+------------------------------------------------------------------------
+
+## Exercises at a Glance
+
+| Exercise | What you'll do | Key functions |
+|------------------|----------------------------|--------------------------|
+| **1. Import & Design** | Load the data; decide which variables support causal claims | `import()`, `here()`, `glimpse()` |
+| **2. Describe** | Group means and SDs | `group_by()`, `summarize()` |
+| **3. Compare Groups** | Boxplot + independent-samples t-test | `ggplot()`, `t.test(var.equal = TRUE)` |
+| **4. Association** | Scatterplot + correlation | `geom_smooth()`, `cor.test()` |
+| **5. Group Difference as a Line** | Code condition as 0/1 and draw a line through it | `mutate()`, `if_else()` |
+| **6. Sneak Peek** 👀 | Run `lm()` and compare its numbers to Exercises 3–4 | `lm()`, `broom::tidy()` |
+| **7. Reflect & Predict** | What does "everything is a linear model" mean? | *(writing)* |
+
+::: callout-tip
+## Tips
+
+- **Exercise 3:** Use `var.equal = TRUE` in `t.test()`. It assumes both groups have similar spread (Student's t-test), which is the version that matches `lm()`.
+- **Exercise 5:** `if_else(condition == "Retrieval Practice", 1, 0)` turns the groups into numbers. `scale_x_continuous(breaks = c(0, 1))` keeps the x-axis clean.
+- **Exercise 6:** You haven't learned `lm()` yet, and that's intentional! `broom::tidy()` gives a short table: find the row that is **not** `(Intercept)` and read across it.
+- **Grading:** Exercises 6–7 are graded on **completion and effort**, not on getting the "right" answer.
+- **Stuck on the t-test sign?** R compares the groups in alphabetical order. Look closely at which group comes first.
+:::
+
+------------------------------------------------------------------------
+
+*Next week: Simple Regression, the Linear Model. Come ready to share your answer to Question 11!*

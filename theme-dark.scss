@@ -17,8 +17,28 @@ $popover-bg: #242424;
 $input-bg: #242424;
 
 
+// Breadcrumb bar: dark surface with light text (Minty defaults it to $primary)
+$breadcrumb-bg: #2A2433;
+$breadcrumb-color: #F5F5F5;
+$breadcrumb-active-color: #F5F5F5;
+$breadcrumb-divider-color: #C9ADE0;
+
+// Minty hard-codes gray headings, which disappear on the dark background
+$headings-color: #F5F5F5;
+
 /*-- scss:rules --*/
 
 .layout-example {
   background: $gray-700;
+}
+
+// Readable breadcrumb links on the dark bar
+.quarto-page-breadcrumbs .breadcrumb a,
+.quarto-page-breadcrumbs .breadcrumb .breadcrumb-item a {
+  color: #C9ADE0;
+}
+.quarto-page-breadcrumbs .breadcrumb .breadcrumb-item.active,
+.quarto-page-breadcrumbs .breadcrumb .breadcrumb-item:last-child,
+.quarto-page-breadcrumbs .breadcrumb .breadcrumb-item:last-child a {
+  color: #F5F5F5;
 }

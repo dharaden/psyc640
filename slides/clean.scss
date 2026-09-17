@@ -17,7 +17,7 @@ $presentation-heading-color: $jet !default;
 $presentation-heading-font-weight: lighter;
 //$presentation-heading-line-height: 2;
 //$presentation-block-margin: 28px;
-$presentation-font-size-root: 32px;
+$presentation-font-size-root: 30px; // text body
 
 // colors
 //$body-bg: #f0f1eb !default;
@@ -35,7 +35,7 @@ $selection-bg: #C9ADE0 !default; // brand purple-light
 .reveal p {
   // font-weight: 300;
   font-weight: lighter;
-  margin-top: 1.25em;
+  margin-top: 0.75em; // was 1.25em
 }
 
 // title and headings
@@ -149,6 +149,19 @@ $selection-bg: #C9ADE0 !default; // brand purple-light
   }
 }
 
+// Tighter list spacing
+// Lists with blank lines between items wrap each item in <p>, which picked up
+// the paragraph margins above; remove those inside list items.
+.reveal .slides .slide ul li,
+.reveal .slides .slide ol li {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+.reveal .slides li > p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 // Ordered lists
 
 .reveal ol {
@@ -215,7 +228,8 @@ $selection-bg: #C9ADE0 !default; // brand purple-light
 
 // Beamer-style button link environment
 
-.button {
+// `.reveal a.button` outranks the theme rule `.reveal a { background-color: transparent }`
+.reveal a.button {
   display: inline-block;
   padding: 6px 12px;
   margin-bottom: 0;
@@ -226,7 +240,7 @@ $selection-bg: #C9ADE0 !default; // brand purple-light
   white-space: nowrap;
   vertical-align: middle;
   cursor: pointer;
-  background-color: $accent;
+  background-color: $accent !important;
   border: 1px solid $accent;
   color: #fff !important;
   text-decoration: none;
@@ -234,12 +248,13 @@ $selection-bg: #C9ADE0 !default; // brand purple-light
   transition: all 0.2s ease-in-out;
 }
 
-.button:hover {
-  background-color: #5E4585;
+.reveal a.button:hover,
+.reveal a.button:focus-visible {
+  background-color: #5E4585 !important;
   border-color: #5E4585;
 }
 
-.button::before {
+.reveal a.button::before {
   content: "▶";
   margin-right: 5px;
 }

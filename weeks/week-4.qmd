@@ -5,11 +5,21 @@ editor: visual
 
 # Introduction to Inference
 
+Last week we were describing our data and getting a visual of what is going on. Now we want to try to make claims about our data. This is the goal of inferential statistics!
+
+This week we will have plenty of fun interactive tools to show things like the sampling distribution, the law of large numbers and the central limit theorem. We'll talk about probability (but not in a scary way). And finally get to do some tests!
+
+::: callout-note
+I spent too much time on getting the slides and interactive components together and didn't have time to put in JAMOVI pieces. You are welcome to work with JAMOVI if you'd like!
+:::
+
 ## Slides
 
-[💻 Design & Inference](../slides/lec-4_design-inference.html){target="_blank"}
+[💻 Design & Inference](../slides/lec-04_design-inference.html){target="_blank"}
 
 ## In-Class Activity
+
+[Inference Machine](../class-activities/wk4_inference-machine.html)
 
 [Beginnings of Inference](../class-activities/wk4_beg-inf.html){target="_blank"}
 
@@ -17,11 +27,11 @@ editor: visual
 
 📋[Lab 4 - Intro to Inference](../labs/lab-4.html)
 
-Complete Stats Check (see myCourses)
+[Chapter 6 - ROS](https://users.aalto.fi/~ave/ROS.pdf)
 
-📖[Chapter 5.1 & 13 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}
+[Chapter 14.1 - ST](https://statsthinking21.github.io/statsthinking21-core-site/)
 
-📖[Chapter 11 - LSR](https://learningstatisticswithr.com/book/){target="_blank"}
+[Chapter 11 - LSR](https://learningstatisticswithr.com/)
 
 <br><br>
 

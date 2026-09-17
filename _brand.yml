@@ -12,8 +12,8 @@ color:
     clay: "#B3261E"
   background: white
   foreground: charcoal
-  primary: purple-light
-  secondary: purple-deep
+  primary: purple-deep
+  secondary: purple-light
   success: sage
   warning: amber
   danger: clay

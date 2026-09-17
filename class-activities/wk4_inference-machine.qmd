@@ -1,0 +1,114 @@
+---
+title: "Week 4 Activity - The Inference Machine"
+subtitle: "Simulating samples, p-values, and false positives"
+---
+
+::: callout-note
+## Where this fits
+
+Today's lecture said that **inference** means using a *sample* to make a claim about a *population*, and that probability tells us how much to trust that claim. Usually we never get to see the population. **Today we build one**, so we can check how well samples (and p-values) actually do.
+
+About 40 minutes · Pairs · 🧰 `tidyverse` (from Weeks 2–3)
+:::
+
+<a href="../files/_lab-qmd/wk4_inference-machine_inclass.qmd" download="wk4_inference-machine_inclass.qmd">Download the activity file (.qmd)</a>
+
+Save it in your PSYC 640 R Project folder, open it in RStudio, and fill in the `___` blanks as you go. No data download is needed: we generate our own.
+
+------------------------------------------------------------------------
+
+## Design warm-up (5 min, no code)
+
+A news headline reads:
+
+> **"Grad students who work more than 50 hours a week are more burned out, so universities should cap lab hours."**
+
+With your partner:
+
+1.  What are the **predictor** and the **outcome**? How might each one have been **operationalized** (measured)?
+2.  Is this an **association** claim or a **causal** claim? What does the headline *imply*?
+3.  Which of the **3 rules of causality** can an observational survey satisfy, and which can't it?
+4.  Name one plausible **confounding variable**.
+5.  Sketch (in one sentence) an experiment that could test the causal claim, or explain why it would be unethical or impractical to run.
+
+------------------------------------------------------------------------
+
+## Part 1: Build a population (5 min)
+
+We'll create a "university" of 10,000 grad students whose true average burnout score is known.
+
+``` r
+set.seed(640)
+population <- tibble(
+  student_id = 1:10000,
+  burnout    = round(rnorm(10000, mean = 50, sd = 12))
+)
+```
+
+- Calculate the **true population mean** of `burnout`, and store it as `true_mean`.
+- Make a histogram of `burnout`.
+
+❓ In real research, why can we almost never calculate this number?
+
+------------------------------------------------------------------------
+
+## Part 2: One sample vs. many samples (10 min)
+
+::: callout-tip
+## Watch it first 🎲
+
+The [Sampling Distributions interactive](../interactives/sampling-distribution.html){target="_blank"} shows this whole process visually. Keep it open in another tab while you code, and check that your plots look like its bottom chart.
+:::
+
+1.  Use `slice_sample(n = 10)` to draw **one** sample of 10 students. What is its mean? Compare with your neighbors'. Why are they different?
+2.  Use the provided `sample_mean()` function to repeat this **1,000 times** each for n = 10, 50, and 200.
+3.  Plot the three **sampling distributions** (one facet per sample size), with a red line at `true_mean`.
+
+❓ What happens to the *center* and the *spread* of the sample means as n increases? Which idea from lecture is this? (Hint: the Law of Large Numbers.)
+
+❓ The spread (SD) of these sample means is the **standard error**. Compare it to `12 / sqrt(n)`. What do you notice?
+
+------------------------------------------------------------------------
+
+## Part 3: The null world (10 min)
+
+Now we run a "study" where **there is truly no difference**: we draw two groups from the *same* population and run a t-test.
+
+1.  Run `null_study(20)` a few times. Watch the p-value jump around.
+2.  Repeat it **1,000 times** and calculate the proportion of p-values below .05.
+3.  Plot a histogram of those p-values.
+
+❓ About what proportion of the "studies" were significant, even though nothing was going on? What name do we give those results?
+
+❓ Describe the shape of the p-value histogram when the null is true. Does a single p = .03 "prove" anything?
+
+------------------------------------------------------------------------
+
+## Part 4: A real effect (8 min)
+
+Now group 2 really does score **5 points higher**.
+
+1.  Use `effect_study()` to run 1,000 studies each with 20, 50, and 100 people per group.
+2.  For each sample size, calculate the proportion of studies with p \< .05. This is the study's **power**.
+
+❓ With 20 people per group, how often did we *miss* a real effect? What is that kind of error called?
+
+❓ If you were designing the burnout study from Part 0, what does this tell you about sample size?
+
+------------------------------------------------------------------------
+
+## 🤔 Challenge: The forking paths (if you finish early)
+
+A researcher measures **5 different outcomes** (burnout, sleep, anxiety, ...) in the null world, and reports the study as a "success" if *any* of them has p \< .05.
+
+- Simulate this 1,000 times. How often does the researcher get a "success"?
+- Compare your answer with `1 - .95^5`.
+- Connect this to the replication crisis examples from Week 1.
+
+------------------------------------------------------------------------
+
+## Wrap-up (2 min)
+
+In **one or two sentences**, finish this statement: *"A p-value tells me \_\_\_, but it does not tell me \_\_\_."*
+
+***Render your file and upload the .html and .qmd to myCourses.***

@@ -11,24 +11,30 @@ project:
     - weeks/week-1.qmd
     - weeks/week-2.qmd
     - weeks/week-3.qmd
+    - weeks/week-4.qmd
     - labs/lab-01_introduction.qmd
     - labs/lab-02_data-workflow.qmd
     - labs/lab-03_data-wrangling.qmd
     - labs/lab-04_describe-viz.qmd
+    - labs/lab-05_two-tests-one-line.qmd
     - class-activities/day1.qmd
     - class-activities/wk2_tidy-intro.qmd
     - class-activities/wk3_desc-viz.qmd
     - class-activities/wk4_beg-inf.qmd
+    - class-activities/wk4_inference-machine.qmd
     - slides/lec-01_syl.qmd
     - slides/lec-02_background.qmd
     - slides/lec-03_wrangle.qmd
     - slides/lec-03_desc-viz.qmd
     - slides/lec-03_desc-viz_JAMOVI.qmd
     - slides/lec-04_design-inference.qmd
+    
+    
   # Downloadable files copied to the site as-is (data, handouts, .qmd templates, .pptx)
   resources:
     - "files/**"
     - "slides/*.pptx"
+    - "interactives/**"
   
 website: 
   page-navigation: true
@@ -77,8 +83,8 @@ website:
             text: "Week 2 - Data Wrangling"
           - href: weeks/week-3.qmd
             text: "Week 3 - Describe & Viz"
-          # - href: weeks/week-4.qmd
-            # text: "Week 4 - Design & Inference"
+          - href: weeks/week-4.qmd
+            text: "Week 4 - Design & Inference"
           # - href: weeks/week-5.qmd
             # text: "Week 5 - Linear Model"
           # - href: weeks/week-6.qmd
@@ -141,7 +147,7 @@ brand:
 format:
   html:
     grid:
-      sidebar-width: 350px
+      sidebar-width: 300px
     theme:
       light: [minty, brand, theme-light.scss]
       dark: [minty, brand, theme-dark.scss]

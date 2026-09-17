@@ -3,3 +3,23 @@
 // Dark-mode equivalents live in theme-dark.scss.
 $sidebar-bg: #C9ADE0;
 $footer-bg: #C9ADE0;
+
+// Breadcrumb bar ("Weekly Materials > Week 3"): Minty colors it with $primary,
+// which is too dark here. Use a soft lavender bar with readable text instead.
+$breadcrumb-bg: #F3EDF9;
+$breadcrumb-color: #212121;
+$breadcrumb-active-color: #212121;
+$breadcrumb-divider-color: #7B5EA7;
+
+/*-- scss:rules --*/
+
+// Minty forces breadcrumb links to white; make them readable on the lavender bar
+.quarto-page-breadcrumbs .breadcrumb a,
+.quarto-page-breadcrumbs .breadcrumb .breadcrumb-item a {
+  color: #5E4585;
+}
+.quarto-page-breadcrumbs .breadcrumb .breadcrumb-item.active,
+.quarto-page-breadcrumbs .breadcrumb .breadcrumb-item:last-child,
+.quarto-page-breadcrumbs .breadcrumb .breadcrumb-item:last-child a {
+  color: #212121;
+}

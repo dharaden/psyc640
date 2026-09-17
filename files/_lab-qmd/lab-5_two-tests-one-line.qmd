@@ -1,0 +1,212 @@
+---
+title: "Lab 5: Two Tests, One Line"
+author: "Your Name Here"
+date: "`r Sys.Date()`"
+format: docx
+editor: visual
+editor_options:
+  chunk_output_type: console
+---
+
+## Scenario and Goal
+
+The graduate school wants to know how students can study more effectively for their stats quiz. The researchers ran a study with **120 graduate students**:
+
+- Each student was **randomly assigned** to one of two study strategies: **Rereading** their notes, or **Retrieval Practice** (quizzing themselves without looking).
+- The researchers also **measured** (but did *not* assign) how long each student studied, how much they slept the night before, and their test anxiety.
+- Everyone then took the same quiz.
+
+Your goal is to answer **two research questions** with the tests from this week, then look at both of them a new way. By the end, you should notice something surprising about how these "different" tests relate to each other.
+
+## Variables
+
+- `student_id`: Unique student ID
+- `condition`: Study strategy (**randomly assigned**): `"Rereading"` or `"Retrieval Practice"`
+- `study_minutes`: Minutes spent studying (measured)
+- `sleep_hours`: Hours of sleep the night before the quiz (measured)
+- `test_anxiety`: Test anxiety score, 10–50 (measured; higher = more anxious)
+- `exam_score`: Quiz score, 0–100
+
+------------------------------------------------------------------------
+
+## Exercises
+
+### Exercise 1: Import, Inspect, and Think About Design
+
+Load all of your libraries and import the data in the chunk below. I should not see any lines that say `install.packages()`. Make sure your code is reproducible: I will run it on my own computer.
+
+```{r ex1}
+# Load the libraries (tidyverse, rio, here)
+
+
+# Import study_strategies.csv from your data folder
+
+
+# Get an overview of your data (e.g., glimpse())
+
+```
+
+**Question 1:** How many students are in the dataset? How many are in each `condition`?
+
+**Your Answer:**
+
+**Question 2:** Which variable is part of an **experiment**, and which variables are **observational**? For each type, can a significant result support a **causal** claim? Explain using what you learned in the Week 4 lecture.
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+### Exercise 2: Describe
+
+Create a summary table of `exam_score` (mean, SD, and n) **for each condition**. Then calculate the mean and SD of `study_minutes` for the whole sample.
+
+```{r ex2}
+# Grouped summary of exam_score by condition
+
+
+# Mean and SD of study_minutes
+
+```
+
+**Question 3:** Which study strategy had the higher average quiz score, and by how many points? **Write this difference down; you will need it later.**
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+### Exercise 3: Research Question 1 (Comparing Groups)
+
+> **"Does the study strategy affect quiz scores?"**
+
+1.  Make a **boxplot** of `exam_score` by `condition`, with the individual points added (`geom_jitter()`), axis labels, and a title.
+2.  Run an **independent-samples t-test** with `var.equal = TRUE`. This tells R to assume both groups have about the same spread (variance), which gives the classic *Student's* t-test. It's also the version that matches the model you'll meet in Exercise 6.
+
+``` r
+t.test(outcome ~ predictor, data = your_data, var.equal = TRUE)
+```
+
+```{r ex3}
+# Boxplot
+
+
+# t-test
+
+```
+
+**Question 4:** Report the result in APA style: *t*(df) = \_\_\_, *p* = \_\_\_. Include the two group means.
+
+**Your Answer:**
+
+**Question 5:** In plain language, what does this p-value tell you? What does it **not** tell you? (Think back to the Inference Machine activity.)
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+### Exercise 4: Research Question 2 (Association)
+
+> **"Is the amount of time spent studying related to quiz scores?"**
+
+1.  Make a **scatterplot** with `study_minutes` on the x-axis and `exam_score` on the y-axis. Add a line of best fit (`geom_smooth(method = "lm", se = FALSE)`), axis labels, and a title.
+2.  Run a **correlation test** with `cor.test()`.
+
+```{r ex4}
+# Scatterplot with a line of best fit
+
+
+# Correlation test
+
+```
+
+**Question 6:** Report the result in APA style: *r*(df) = \_\_\_, *p* = \_\_\_. Describe the direction and strength of the relationship. Also, `cor.test()` reports a **t** value. Write that down too.
+
+**Your Answer:**
+
+**Question 7:** Can we conclude that studying longer **causes** higher scores? Why or why not? Name one possible confound.
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+### Exercise 5: Seeing the Group Difference as a Line
+
+In Exercise 4 the relationship was a **line**. Can a *group difference* be a line too?
+
+1.  Use `mutate()` to create a new variable, `retrieval`, that is `0` for Rereading and `1` for Retrieval Practice. (Hint: `if_else(condition == "Retrieval Practice", 1, 0)`.)
+2.  Make a **scatterplot** with `retrieval` on the x-axis and `exam_score` on the y-axis. Use `geom_jitter(width = 0.05)` so the points don't stack, and add `geom_smooth(method = "lm", se = FALSE)`.
+3.  Add `scale_x_continuous(breaks = c(0, 1))`, axis labels, and a title.
+
+```{r ex5}
+# Create the 0/1 variable
+
+
+# Plot exam_score by retrieval with a line
+
+```
+
+**Question 8:** Look at your line.
+
+a.  About where does the line cross **x = 0**? Which group's mean is that?
+b.  About where does it cross **x = 1**? Which group's mean is that?
+c.  How much does the line go **up** when x moves from 0 to 1? Compare this to your answer to Question 3.
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+### Exercise 6: Sneak Peek at Next Week 👁️👄👁️
+
+::: callout-important
+## You haven't learned this yet, and that's the point!
+
+Next week we meet the **linear model**, `lm()`. This exercise is a *discovery* activity: you run the code, find a few numbers, and make a thoughtful guess about what's going on. **Exercises 6 and 7 are graded on completion and effort, not on being right.**
+:::
+
+Run the code below (replace the blanks with your data name). `tidy()` from the **broom** package turns the model into a small, readable table. broom is installed with the tidyverse, so you don't need to install anything new.
+
+```{r ex6}
+# Model 1: the same question as the t-test
+model_groups <- lm(exam_score ~ condition, data = ___)
+broom::tidy(model_groups)
+
+# Model 2: the same question as the correlation
+model_minutes <- lm(exam_score ~ study_minutes, data = ___)
+broom::tidy(model_minutes)
+```
+
+Each output has two rows. Find the row whose `term` is **not** `(Intercept)`, and read across it: `estimate`, `statistic` (this is the *t* value), and `p.value`. Fill in the table below with the numbers from your earlier tests and from the `lm()` output.
+
+| Research Question | Earlier test | Earlier **t** | Earlier **p** | `lm()` **estimate** | `lm()` **statistic** (t) | `lm()` **p.value** |
+|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+| Strategy → Score | t-test |  |  |  |  |  |
+| Minutes → Score | correlation |  |  |  |  |  |
+
+**Question 9:** Compare the columns. What is the **same**, and what (if anything) is different? (Look closely at the sign of *t* in the first row.)
+
+**Your Answer:**
+
+**Question 10:** For Model 1, compare the estimate in the `(Intercept)` row and the estimate in the `conditionRetrieval Practice` row to your answers to Questions 3 and 8. What do you think these two numbers represent?
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+### Exercise 7: Reflect and Predict
+
+*Graded on completion and effort. A thoughtful guess earns full credit.*
+
+**Question 11:** A t-test and a correlation are usually taught as two completely different tests. Based on this lab, what do they have in common? In 2–3 sentences, make a prediction: what do you think "**everything is a linear model**" means?
+
+**Your Answer:**
+
+**Question 12 (Bonus):** `scale()` converts a variable into z-scores (mean = 0, SD = 1). Run the model below. Compare the estimate for `scale(study_minutes)` with your correlation from Question 6. What do you notice?
+
+```{r ex7-bonus}
+broom::tidy(lm(scale(exam_score) ~ scale(study_minutes), data = ___))
+```
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+*End of Lab 5. You just ran two "different" tests and found that they are both lines. Hold on to that idea for next week! Don't forget to Render!*

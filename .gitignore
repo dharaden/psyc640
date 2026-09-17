@@ -15,3 +15,7 @@ _site/
 *_files/
 desktop.ini
 Thumbs.db
+
+
+# Instructor-only: answer keys, rubrics, grading scripts, student submissions (never publish)
+_instructor/

@@ -1,100 +1,296 @@
 ---
-title: "Week 4 Exercises - Intro to Inference"
+title: "Week 4 Exercises - Data Detectives"
+subtitle: "From research question → model → plot → test → conclusion"
 editor: visual
 ---
 
-# Following Along with Professor
+::: callout-note
+## Overview
 
-<a href="../files/data/wk4-inf.csv" download="wk4-inf.csv">Download Week 4 Follow Along Data (.csv)</a>
+About 50 minutes · Pairs or small groups · 🧰 `tidyverse`, `rio`, `here`
 
-Download the data and move it to the correct folder so that you can access it in this activity.
+- **Part A: Follow along (\~20 min):** We work through the graduate school burnout data together.
+- **Part B: On your own (\~30 min):** You apply the same routine to a new dataset on children's well-being.
 
-We've been hired as consultants for the university's graduate school. They are concerned about student burnout and have given us some anonymous pilot data to explore potential factors. Our job is to be the data detectives.
+**By the end you should be able to:**
 
-Import the data into your R file. I would suggest putting this line within the code chunk that you have your libraries in.
-
-Focus on having reproducible code! You may need to share your file with someone else. They should be able to run it.
+- Identify the predictor and outcome in a research question, and say whether each is categorical or continuous
+- Use the **decision tree** from lecture to choose a model family
+- Make a plot that matches the model
+- Run `t.test()` or `cor.test()` and find the numbers that matter
+- Write a one-sentence, APA-style conclusion, and say whether it is *causal*
+:::
 
 ------------------------------------------------------------------------
 
-# On Your Own
+# Set up (5 min)
 
-**Goal**: Work individually or in small groups to apply the concepts from today's lecture and demo to a new dataset.
+1.  **Download both datasets** and save them in the `data` folder of your PSYC 640 R Project.
 
-### Objectives:
+    - <a href="../files/data/wk4-inf.csv" download="wk4-inf.csv">Graduate school burnout data (.csv)</a> (Part A)
+    - <a href="../files/data/child_wellbeing.csv" download="child_wellbeing.csv">Child well-being data (.csv)</a> (Part B)
 
-- Identify predictor and outcome variables from a research question.
+2.  **Open your R Project** (double-click the `.Rproj` file). Check the top-right corner of RStudio: it should show your project's name.
 
-- Use the "decision tree" to select the correct family of statistical models.
+3.  **Create a new Quarto document:** *File → New File → Quarto Document...*
 
-- Create an appropriate visualization (`ggplot`).
+    - Title: `Week 4 - Data Detectives`
+    - Author: your name (and your partner's)
+    - Save it as `week4_inclass.qmd` in your project folder
 
-- Run the correct statistical test (`t.test` or `cor.test`).
+4.  **Delete the example text**, then add a setup chunk that loads your packages *and* imports both datasets:
 
-- Write a one-sentence conclusion synthesizing the results.
+``` r
+library(tidyverse)
+library(rio)
+library(here)
 
-### The Scenario & Dataset
+burnout   <- import(here("data", "wk4-inf.csv"))
+wellbeing <- import(here("data", "child_wellbeing.csv"))
+```
 
-A developmental psychology lab is exploring factors related to children's well-being. They have collected pilot data from 100 children.
+5.  **Run the chunk**. You should see `burnout` (90 obs.) and `wellbeing` (100 obs.) in your Environment pane.
 
-<a href="../files/data/child_wellbeing.csv" download="child_wellbeing.csv">Download Child Well-Being Data (.csv)</a>
+::: callout-tip
+## Error saying `file does not exist`?
 
-Please download the `child_wellbeing.csv` file (above). It contains the following variables:
+The file isn't where `here()` is looking. Run `here()` in the Console to see your project folder, then make sure the CSV is inside its `data` folder, and that the file name is spelled exactly the same.
+:::
 
-- `child_id`: A unique identifier for each child.
+------------------------------------------------------------------------
 
-- `parenting_style`: The primary parenting style observed in the home (Categorical: "Authoritative" or "Permissive").
+# The Data Detective Routine 🔍
 
-- `sleep_hours`: The average number of hours the child sleeps per night (Continuous).
+Use these **same five steps** for every research question today:
 
-- `anxiety_score`: A score from 0-50 on a parent-report measure of the child's anxiety (Continuous).
+| Step | Ask yourself | What you'll do in R |
+|------------------|---------------------------|---------------------------|
+| **1. Identify** | What is the predictor (IV)? The outcome (DV)? Is each **categorical** or **continuous**? | `glimpse(data)` |
+| **2. Model** | Which model family fits, based on the decision tree? Write it as `outcome ~ predictor`. | *(No code; write it in text)* |
+| **3. Visualize** | Which plot shows this relationship? | `ggplot()` |
+| **4. Analyze** | Which test matches the model? | `t.test()` or `cor.test()` |
+| **5. Conclude** | What did we find? Can we say it *causes* the outcome? | *(Write one sentence)* |
 
-### Instructions:
+**Decision tree reminder:**
 
-1.  Create a new R Markdown file titled `week4_inclass.Rmd`.
+- **Categorical predictor (2 groups)** + continuous outcome → compare means → **t-test** → plot with a **boxplot**
+- **Continuous predictor** + continuous outcome → association → **correlation** → plot with a **scatterplot**
 
-2.  Load the appropriate libraries.
+------------------------------------------------------------------------
 
-3.  Load the `child_wellbeing.csv` dataset.
+# Part A: Follow Along with Professor (\~20 min)
 
-4.  For each task below, write the R code and answer the questions.
+### The scenario
+
+We've been hired as consultants for the university's graduate school. They're concerned about student burnout and have given us anonymous pilot data from 90 graduate students. Our job: be the data detectives.
+
+| Variable | Description | Type |
+|----------------------|----------------------------|----------------------|
+| `student_id` | Unique ID for each student | ID |
+| `program_type` | `"Thesis-Based"` or `"Capstone-Based"` | Categorical (2 groups) |
+| `weekly_hours` | Average hours per week spent on graduate work | Continuous |
+| `burnout_score` | Burnout score (higher = more burned out) | Continuous |
+
+In your `.qmd`, add a header `# Part A` and follow along. **Type the code yourself** rather than copying it; it sticks better.
+
+### A1. Get to know the data
+
+``` r
+glimpse(burnout)
+
+burnout %>%
+  group_by(program_type) %>%
+  summarize(mean_burnout = mean(burnout_score),
+            sd_burnout   = sd(burnout_score),
+            n            = n())
+```
+
+### A2. Research Question 1
+
+> **"Do thesis-based and capstone-based students differ in burnout?"**
+
+Work through the five steps together:
+
+1.  **Identify:** predictor = `program_type` (categorical, 2 groups); outcome = `burnout_score` (continuous)
+2.  **Model:** compare two group means → t-test → `burnout_score ~ program_type`
+3.  **Visualize:**
+
+``` r
+ggplot(burnout, aes(x = program_type, y = burnout_score)) +
+  geom_boxplot() +
+  geom_jitter(width = 0.1, alpha = 0.4) +
+  labs(x = "Program Type", y = "Burnout Score",
+       title = "Burnout by Program Type")
+```
+
+4.  **Analyze:**
+
+``` r
+t.test(burnout_score ~ program_type, data = burnout)
+```
+
+5.  **Conclude:** From the output, find the **t**, **df**, **p-value**, and the two **group means**, then write the sentence together as a class.
+
+### A3. Research Question 2
+
+> **"Is there an association between weekly work hours and burnout?"**
+
+🛑 **Before you run anything:** write down your prediction. Will the relationship be positive or negative? Why?
+
+1.  **Identify:** predictor = `weekly_hours` (continuous); outcome = `burnout_score` (continuous)
+2.  **Model:** association between two continuous variables → correlation → `burnout_score ~ weekly_hours`
+3.  **Visualize:**
+
+``` r
+ggplot(burnout, aes(x = weekly_hours, y = burnout_score)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(x = "Weekly Hours", y = "Burnout Score",
+       title = "Weekly Hours and Burnout")
+```
+
+4.  **Analyze:**
+
+``` r
+cor.test(~ weekly_hours + burnout_score, data = burnout)
+```
+
+5.  **Conclude:** Find **r**, **df**, and the **p-value**. Did the result match your prediction? 🤔 If not, what could explain it? (Think about who these students are, and what might be a **confound**.)
+
+------------------------------------------------------------------------
+
+# Part B: On Your Own (\~30 min)
+
+### The scenario
+
+A developmental psychology lab is exploring factors related to children's well-being. They collected pilot data from **100 children**. This is an **observational** study: nobody was randomly assigned to anything.
+
+| Variable | Description | Type |
+|----------------------|----------------------------|----------------------|
+| `child_id` | Unique ID for each child | ID |
+| `parenting_style` | Primary parenting style observed at home: `"Authoritative"` or `"Permissive"` | Categorical (2 groups) |
+| `sleep_hours` | Average hours of sleep per night | Continuous |
+| `anxiety_score` | Parent-reported anxiety (0–50; higher = more anxious) | Continuous |
+
+In your `.qmd`, add a header `# Part B`. For each task, create a **sub-header**, a **code chunk** for each step that needs code, and write your answers **in text below the chunk** (not as code comments).
+
+::: callout-tip
+## Stuck?
+
+Every task follows the same pattern as Part A. Copy your Part A code and change the **data name** and **variable names**. The `___` blanks below show you what to change.
+:::
 
 ### Task 1: Parenting Style and Anxiety
 
-**The Research Question:** "Do children raised in homes with an authoritative parenting style have different anxiety levels than children in homes with a permissive style?"
+> **"Do children raised by authoritative parents have different anxiety levels than children raised by permissive parents?"**
 
-**Your Steps:**
+**Step 1: Identify.** In text, answer:
 
-1.  **Identify:** What is the predictor (IV)? What is the outcome (DV)? Are they categorical or continuous?
+- What is the predictor? Is it categorical or continuous?
+- What is the outcome? Is it categorical or continuous?
 
-2.  **Model:** Based on your answer, what is the correct model *family* (t-test/ANOVA or Correlation/Regression)? Write out the specific model using R formula syntax (`outcome ~ predictor`).
+**Step 2: Model.** In text, answer:
 
-3.  **Visualize:** Create a boxplot to visualize the relationship between `parenting_style` and `anxiety_score`.
+- Which model family does the decision tree point to?
+- Write the model in R formula syntax: `___ ~ ___`
 
-4.  **Analyze:** Run the appropriate statistical test in R to test your model.
+**Step 3: Visualize.** Make a boxplot, with points added, and give it labels and a title:
 
-5.  **Conclude:** Look at the p-value and the group means from your analysis. Write one clear sentence summarizing your finding (e.g., "We found that children with authoritative parents had significantly higher/lower anxiety scores than children with permissive parents, p = ...").
+``` r
+ggplot(wellbeing, aes(x = ___, y = ___)) +
+  geom_boxplot() +
+  geom_jitter(width = 0.1, alpha = 0.4) +
+  labs(x = "___", y = "___", title = "___")
+```
 
-### Task 2: Sleep and Anxiety
+✍️ *Before running the test:* based on the plot alone, do you think the groups differ? Which group looks higher?
 
-**The Research Question:** "Is there an association between the average number of hours a child sleeps per night and their anxiety level?"
+**Step 4: Analyze.** Get the group means, then run the test:
 
-**Your Steps:**
+``` r
+wellbeing %>%
+  group_by(___) %>%
+  summarize(mean_anxiety = mean(___),
+            sd_anxiety   = sd(___),
+            n            = n())
 
-1.  **Identify:** What is the predictor (IV)? What is the outcome (DV)? Are they categorical or continuous?
+t.test(___ ~ ___, data = wellbeing)
+```
 
-2.  **Model:** What is the correct model *family*? Write out the specific model using R formula syntax.
+**Step 5: Conclude.** Fill in this template with your numbers:
 
-3.  **Visualize:** Create a scatterplot to visualize the relationship between `sleep_hours` and `anxiety_score`. Add a line of best fit.
+> *Children with \_\_\_\_\_ parents (M = \_\_\_\_\_, SD = \_\_\_\_\_) had significantly **higher / lower** anxiety scores than children with \_\_\_\_\_ parents (M = \_\_\_\_\_, SD = \_\_\_\_\_), t(\_\_\_\_\_) = \_\_\_\_\_, p \_\_\_\_\_.*
 
-4.  **Analyze:** Run the appropriate statistical test in R.
+::: callout-note
+## Reading the `t.test()` output
 
-5.  **Conclude:** Look at the p-value and the correlation coefficient (`r`). Write one clear sentence summarizing your finding (e.g., "We found a significant positive/negative association between hours of sleep and anxiety scores, r = ..., p = ...").
-
-### 🤔 Challenge Question (If you finish early)
-
-Based on the *design* of this study (it is observational), can the researcher conclude that permissive parenting *causes* higher anxiety? In one or two sentences, explain why or why not, and propose one possible **confounding variable** that could be influencing both parenting style and a child's anxiety
+- `t = ...`: the test statistic
+- `df = ...`: degrees of freedom (R uses a Welch correction, so it may have decimals; round to one decimal place)
+- `p-value = ...`: if R prints `< 2.2e-16`, report it as **p \< .001**
+- `mean in group ...`: the two group means
+:::
 
 ------------------------------------------------------------------------
 
-***End of the document. Remember to Knit and upload the html and .Rmd to myCourses.***
+### Task 2: Sleep and Anxiety
+
+> **"Is there an association between how many hours a child sleeps and their anxiety level?"**
+
+**Step 1: Identify.** What are the predictor and outcome? Is each categorical or continuous?
+
+**Step 2: Model.** Which model family? Write the formula.
+
+✋ **Prediction:** before running anything, do you expect a positive or negative relationship? Why?
+
+**Step 3: Visualize.** Make a scatterplot with a line of best fit:
+
+``` r
+ggplot(wellbeing, aes(x = ___, y = ___)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(x = "___", y = "___", title = "___")
+```
+
+**Step 4: Analyze.**
+
+``` r
+cor.test(~ ___ + ___, data = wellbeing)
+```
+
+**Step 5: Conclude.** Fill in this template:
+
+> *There was a significant **positive / negative** correlation between children's hours of sleep and their anxiety scores, r(\_\_\_\_\_) = \_\_\_\_\_, p \_\_\_\_\_. Children who slept more tended to have **higher / lower** anxiety.*
+
+Then answer: **How strong** is this relationship? (Rough guide: \|r\| ≈ .10 small, .30 moderate, .50+ large.) Did it match your prediction?
+
+::: callout-note
+## Reading the `cor.test()` output
+
+- `cor`: this is **r**, the correlation (between −1 and +1)
+- `df = ...`: degrees of freedom (N − 2)
+- `p-value = ...`: same rules as above
+:::
+
+------------------------------------------------------------------------
+
+### 🤔 Challenge Question (if you finish early)
+
+This study is **observational**. In 3–4 sentences, answer:
+
+1.  Can the researchers conclude that permissive parenting **causes** higher anxiety? Use the **3 rules of causality** from lecture to explain why or why not.
+2.  Propose one **confounding variable** that could influence *both* parenting style and child anxiety, and explain how.
+3.  **Bonus:** could the causal arrow run the *other* way (anxiety → parenting style)? Describe how.
+4.  **Bonus:** describe a study design that would give *stronger* evidence for a causal claim.
+
+------------------------------------------------------------------------
+
+# Before You Submit ✅
+
+- [ ] Your name(s) and date are in the YAML header
+- [ ] Part A and Part B each have a header, and each task has a sub-header
+- [ ] Every plot has axis labels and a title
+- [ ] Every Step 1, 2, and 5 answer is written **in text**, not as code comments
+- [ ] Both conclusion templates are filled in with **your** numbers
+- [ ] The document **renders** without errors (click **Render**)
+
+***Upload both the rendered `.docx` and your `.qmd` file to myCourses.***
