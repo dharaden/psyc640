@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Week 4 Exercises - Intro to Inference – PSYC 640 - Graduate Statistics</title>
+<title>Week 4 Exercises - Data Detectives – PSYC 640 - Graduate Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -25,6 +25,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -46,9 +81,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-655a7717fa40803f87da20ac9f33eafc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-2a4fd83ab253b12b059239a5736b94d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-655a7717fa40803f87da20ac9f33eafc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-ec2427c9d1066c1b6d2fbf99895004ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-5c51e7f2b9ed86a84d54895526db5dd5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-ec2427c9d1066c1b6d2fbf99895004ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -78,8 +113,8 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Week 4 Exercises - Intro to Inference – PSYC 640 - Graduate Statistics">
-<meta property="og:description" content="">
+<meta property="og:title" content="Week 4 Exercises - Data Detectives – PSYC 640 - Graduate Statistics">
+<meta property="og:description" content="From research question → model → plot → test → conclusion">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
 
@@ -254,7 +289,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Week 4 Exercises - Intro to Inference</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Week 4 Exercises - Data Detectives</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -341,6 +376,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Week 3 - Describe &amp; Viz</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 4 - Design &amp; Inference</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -400,16 +441,23 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#following-along-with-professor" id="toc-following-along-with-professor" class="nav-link active" data-scroll-target="#following-along-with-professor">Following Along with Professor</a></li>
-  <li><a href="#on-your-own" id="toc-on-your-own" class="nav-link" data-scroll-target="#on-your-own">On Your Own</a>
+  <li><a href="#set-up-5-min" id="toc-set-up-5-min" class="nav-link active" data-scroll-target="#set-up-5-min">Set up (5 min)</a></li>
+  <li><a href="#the-data-detective-routine" id="toc-the-data-detective-routine" class="nav-link" data-scroll-target="#the-data-detective-routine">The Data Detective Routine 🔍</a></li>
+  <li><a href="#part-a-follow-along-with-professor-20-min" id="toc-part-a-follow-along-with-professor-20-min" class="nav-link" data-scroll-target="#part-a-follow-along-with-professor-20-min">Part A: Follow Along with Professor (~20 min)</a>
   <ul class="collapse">
-  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives:</a></li>
-  <li><a href="#the-scenario-dataset" id="toc-the-scenario-dataset" class="nav-link" data-scroll-target="#the-scenario-dataset">The Scenario &amp; Dataset</a></li>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link" data-scroll-target="#instructions">Instructions:</a></li>
+  <li><a href="#the-scenario" id="toc-the-scenario" class="nav-link" data-scroll-target="#the-scenario">The scenario</a></li>
+  <li><a href="#a1.-get-to-know-the-data" id="toc-a1.-get-to-know-the-data" class="nav-link" data-scroll-target="#a1.-get-to-know-the-data">A1. Get to know the data</a></li>
+  <li><a href="#a2.-research-question-1" id="toc-a2.-research-question-1" class="nav-link" data-scroll-target="#a2.-research-question-1">A2. Research Question 1</a></li>
+  <li><a href="#a3.-research-question-2" id="toc-a3.-research-question-2" class="nav-link" data-scroll-target="#a3.-research-question-2">A3. Research Question 2</a></li>
+  </ul></li>
+  <li><a href="#part-b-on-your-own-30-min" id="toc-part-b-on-your-own-30-min" class="nav-link" data-scroll-target="#part-b-on-your-own-30-min">Part B: On Your Own (~30 min)</a>
+  <ul class="collapse">
+  <li><a href="#the-scenario-1" id="toc-the-scenario-1" class="nav-link" data-scroll-target="#the-scenario-1">The scenario</a></li>
   <li><a href="#task-1-parenting-style-and-anxiety" id="toc-task-1-parenting-style-and-anxiety" class="nav-link" data-scroll-target="#task-1-parenting-style-and-anxiety">Task 1: Parenting Style and Anxiety</a></li>
   <li><a href="#task-2-sleep-and-anxiety" id="toc-task-2-sleep-and-anxiety" class="nav-link" data-scroll-target="#task-2-sleep-and-anxiety">Task 2: Sleep and Anxiety</a></li>
-  <li><a href="#challenge-question-if-you-finish-early" id="toc-challenge-question-if-you-finish-early" class="nav-link" data-scroll-target="#challenge-question-if-you-finish-early">🤔 Challenge Question (If you finish early)</a></li>
+  <li><a href="#challenge-question-if-you-finish-early" id="toc-challenge-question-if-you-finish-early" class="nav-link" data-scroll-target="#challenge-question-if-you-finish-early">🤔 Challenge Question (if you finish early)</a></li>
   </ul></li>
+  <li><a href="#before-you-submit" id="toc-before-you-submit" class="nav-link" data-scroll-target="#before-you-submit">Before You Submit ✅</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/class-activities/wk4_beg-inf.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -419,7 +467,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 4 Exercises - Intro to Inference</h1>
+<h1 class="title">Week 4 Exercises - Data Detectives</h1>
+<p class="subtitle lead">From research question → model → plot → test → conclusion</p>
 </div>
 
 
@@ -436,81 +485,400 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="following-along-with-professor" class="level1">
-<h1>Following Along with Professor</h1>
-<p><a href="../files/data/wk4-inf.csv" download="wk4-inf.csv">Download Week 4 Follow Along Data (.csv)</a></p>
-<p>Download the data and move it to the correct folder so that you can access it in this activity.</p>
-<p>We’ve been hired as consultants for the university’s graduate school. They are concerned about student burnout and have given us some anonymous pilot data to explore potential factors. Our job is to be the data detectives.</p>
-<p>Import the data into your R file. I would suggest putting this line within the code chunk that you have your libraries in.</p>
-<p>Focus on having reproducible code! You may need to share your file with someone else. They should be able to run it.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Overview
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>About 50 minutes · Pairs or small groups · 🧰 <code>tidyverse</code>, <code>rio</code>, <code>here</code></p>
+<ul>
+<li><strong>Part A: Follow along (~20 min):</strong> We work through the graduate school burnout data together.</li>
+<li><strong>Part B: On your own (~30 min):</strong> You apply the same routine to a new dataset on children’s well-being.</li>
+</ul>
+<p><strong>By the end you should be able to:</strong></p>
+<ul>
+<li>Identify the predictor and outcome in a research question, and say whether each is categorical or continuous</li>
+<li>Use the <strong>decision tree</strong> from lecture to choose a model family</li>
+<li>Make a plot that matches the model</li>
+<li>Run <code>t.test()</code> or <code>cor.test()</code> and find the numbers that matter</li>
+<li>Write a one-sentence, APA-style conclusion, and say whether it is <em>causal</em></li>
+</ul>
+</div>
+</div>
+<hr>
+<section id="set-up-5-min" class="level1">
+<h1>Set up (5 min)</h1>
+<ol type="1">
+<li><p><strong>Download both datasets</strong> and save them in the <code>data</code> folder of your PSYC 640 R Project.</p>
+<ul>
+<li><a href="../files/data/wk4-inf.csv" download="wk4-inf.csv">Graduate school burnout data (.csv)</a> (Part A)</li>
+<li><a href="../files/data/child_wellbeing.csv" download="child_wellbeing.csv">Child well-being data (.csv)</a> (Part B)</li>
+</ul></li>
+<li><p><strong>Open your R Project</strong> (double-click the <code>.Rproj</code> file). Check the top-right corner of RStudio: it should show your project’s name.</p></li>
+<li><p><strong>Create a new Quarto document:</strong> <em>File → New File → Quarto Document…</em></p>
+<ul>
+<li>Title: <code>Week 4 - Data Detectives</code></li>
+<li>Author: your name (and your partner’s)</li>
+<li>Save it as <code>week4_inclass.qmd</code> in your project folder</li>
+</ul></li>
+<li><p><strong>Delete the example text</strong>, then add a setup chunk that loads your packages <em>and</em> imports both datasets:</p></li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>burnout   <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wk4-inf.csv"</span>))</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>wellbeing <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"child_wellbeing.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="5" type="1">
+<li><strong>Run the chunk</strong>. You should see <code>burnout</code> (90 obs.) and <code>wellbeing</code> (100 obs.) in your Environment pane.</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Error saying <code>file does not exist</code>?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The file isn’t where <code>here()</code> is looking. Run <code>here()</code> in the Console to see your project folder, then make sure the CSV is inside its <code>data</code> folder, and that the file name is spelled exactly the same.</p>
+</div>
+</div>
 <hr>
 </section>
-<section id="on-your-own" class="level1">
-<h1>On Your Own</h1>
-<p><strong>Goal</strong>: Work individually or in small groups to apply the concepts from today’s lecture and demo to a new dataset.</p>
-<section id="objectives" class="level3">
-<h3 class="anchored" data-anchor-id="objectives">Objectives:</h3>
+<section id="the-data-detective-routine" class="level1">
+<h1>The Data Detective Routine 🔍</h1>
+<p>Use these <strong>same five steps</strong> for every research question today:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 37%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Ask yourself</th>
+<th>What you’ll do in R</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>1. Identify</strong></td>
+<td>What is the predictor (IV)? The outcome (DV)? Is each <strong>categorical</strong> or <strong>continuous</strong>?</td>
+<td><code>glimpse(data)</code></td>
+</tr>
+<tr class="even">
+<td><strong>2. Model</strong></td>
+<td>Which model family fits, based on the decision tree? Write it as <code>outcome ~ predictor</code>.</td>
+<td><em>(No code; write it in text)</em></td>
+</tr>
+<tr class="odd">
+<td><strong>3. Visualize</strong></td>
+<td>Which plot shows this relationship?</td>
+<td><code>ggplot()</code></td>
+</tr>
+<tr class="even">
+<td><strong>4. Analyze</strong></td>
+<td>Which test matches the model?</td>
+<td><code>t.test()</code> or <code>cor.test()</code></td>
+</tr>
+<tr class="odd">
+<td><strong>5. Conclude</strong></td>
+<td>What did we find? Can we say it <em>causes</em> the outcome?</td>
+<td><em>(Write one sentence)</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Decision tree reminder:</strong></p>
 <ul>
-<li><p>Identify predictor and outcome variables from a research question.</p></li>
-<li><p>Use the “decision tree” to select the correct family of statistical models.</p></li>
-<li><p>Create an appropriate visualization (<code>ggplot</code>).</p></li>
-<li><p>Run the correct statistical test (<code>t.test</code> or <code>cor.test</code>).</p></li>
-<li><p>Write a one-sentence conclusion synthesizing the results.</p></li>
+<li><strong>Categorical predictor (2 groups)</strong> + continuous outcome → compare means → <strong>t-test</strong> → plot with a <strong>boxplot</strong></li>
+<li><strong>Continuous predictor</strong> + continuous outcome → association → <strong>correlation</strong> → plot with a <strong>scatterplot</strong></li>
 </ul>
+<hr>
 </section>
-<section id="the-scenario-dataset" class="level3">
-<h3 class="anchored" data-anchor-id="the-scenario-dataset">The Scenario &amp; Dataset</h3>
-<p>A developmental psychology lab is exploring factors related to children’s well-being. They have collected pilot data from 100 children.</p>
-<p><a href="../files/data/child_wellbeing.csv" download="child_wellbeing.csv">Download Child Well-Being Data (.csv)</a></p>
-<p>Please download the <code>child_wellbeing.csv</code> file (above). It contains the following variables:</p>
-<ul>
-<li><p><code>child_id</code>: A unique identifier for each child.</p></li>
-<li><p><code>parenting_style</code>: The primary parenting style observed in the home (Categorical: “Authoritative” or “Permissive”).</p></li>
-<li><p><code>sleep_hours</code>: The average number of hours the child sleeps per night (Continuous).</p></li>
-<li><p><code>anxiety_score</code>: A score from 0-50 on a parent-report measure of the child’s anxiety (Continuous).</p></li>
-</ul>
+<section id="part-a-follow-along-with-professor-20-min" class="level1">
+<h1>Part A: Follow Along with Professor (~20 min)</h1>
+<section id="the-scenario" class="level3">
+<h3 class="anchored" data-anchor-id="the-scenario">The scenario</h3>
+<p>We’ve been hired as consultants for the university’s graduate school. They’re concerned about student burnout and have given us anonymous pilot data from 90 graduate students. Our job: be the data detectives.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 38%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>student_id</code></td>
+<td>Unique ID for each student</td>
+<td>ID</td>
+</tr>
+<tr class="even">
+<td><code>program_type</code></td>
+<td><code>"Thesis-Based"</code> or <code>"Capstone-Based"</code></td>
+<td>Categorical (2 groups)</td>
+</tr>
+<tr class="odd">
+<td><code>weekly_hours</code></td>
+<td>Average hours per week spent on graduate work</td>
+<td>Continuous</td>
+</tr>
+<tr class="even">
+<td><code>burnout_score</code></td>
+<td>Burnout score (higher = more burned out)</td>
+<td>Continuous</td>
+</tr>
+</tbody>
+</table>
+<p>In your <code>.qmd</code>, add a header <code># Part A</code> and follow along. <strong>Type the code yourself</strong> rather than copying it; it sticks better.</p>
 </section>
-<section id="instructions" class="level3">
-<h3 class="anchored" data-anchor-id="instructions">Instructions:</h3>
+<section id="a1.-get-to-know-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="a1.-get-to-know-the-data">A1. Get to know the data</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(burnout)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>burnout <span class="sc">%&gt;%</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(program_type) <span class="sc">%&gt;%</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_burnout =</span> <span class="fu">mean</span>(burnout_score),</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_burnout   =</span> <span class="fu">sd</span>(burnout_score),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">n            =</span> <span class="fu">n</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="a2.-research-question-1" class="level3">
+<h3 class="anchored" data-anchor-id="a2.-research-question-1">A2. Research Question 1</h3>
+<blockquote class="blockquote">
+<p><strong>“Do thesis-based and capstone-based students differ in burnout?”</strong></p>
+</blockquote>
+<p>Work through the five steps together:</p>
 <ol type="1">
-<li><p>Create a new R Markdown file titled <code>week4_inclass.Rmd</code>.</p></li>
-<li><p>Load the appropriate libraries.</p></li>
-<li><p>Load the <code>child_wellbeing.csv</code> dataset.</p></li>
-<li><p>For each task below, write the R code and answer the questions.</p></li>
+<li><strong>Identify:</strong> predictor = <code>program_type</code> (categorical, 2 groups); outcome = <code>burnout_score</code> (continuous)</li>
+<li><strong>Model:</strong> compare two group means → t-test → <code>burnout_score ~ program_type</code></li>
+<li><strong>Visualize:</strong></li>
 </ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(burnout, <span class="fu">aes</span>(<span class="at">x =</span> program_type, <span class="at">y =</span> burnout_score)) <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Program Type"</span>, <span class="at">y =</span> <span class="st">"Burnout Score"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Burnout by Program Type"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="4" type="1">
+<li><strong>Analyze:</strong></li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(burnout_score <span class="sc">~</span> program_type, <span class="at">data =</span> burnout)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="5" type="1">
+<li><strong>Conclude:</strong> From the output, find the <strong>t</strong>, <strong>df</strong>, <strong>p-value</strong>, and the two <strong>group means</strong>, then write the sentence together as a class.</li>
+</ol>
+</section>
+<section id="a3.-research-question-2" class="level3">
+<h3 class="anchored" data-anchor-id="a3.-research-question-2">A3. Research Question 2</h3>
+<blockquote class="blockquote">
+<p><strong>“Is there an association between weekly work hours and burnout?”</strong></p>
+</blockquote>
+<p>🛑 <strong>Before you run anything:</strong> write down your prediction. Will the relationship be positive or negative? Why?</p>
+<ol type="1">
+<li><strong>Identify:</strong> predictor = <code>weekly_hours</code> (continuous); outcome = <code>burnout_score</code> (continuous)</li>
+<li><strong>Model:</strong> association between two continuous variables → correlation → <code>burnout_score ~ weekly_hours</code></li>
+<li><strong>Visualize:</strong></li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(burnout, <span class="fu">aes</span>(<span class="at">x =</span> weekly_hours, <span class="at">y =</span> burnout_score)) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Weekly Hours"</span>, <span class="at">y =</span> <span class="st">"Burnout Score"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Weekly Hours and Burnout"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="4" type="1">
+<li><strong>Analyze:</strong></li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="sc">~</span> weekly_hours <span class="sc">+</span> burnout_score, <span class="at">data =</span> burnout)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="5" type="1">
+<li><strong>Conclude:</strong> Find <strong>r</strong>, <strong>df</strong>, and the <strong>p-value</strong>. Did the result match your prediction? 🤔 If not, what could explain it? (Think about who these students are, and what might be a <strong>confound</strong>.)</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="part-b-on-your-own-30-min" class="level1">
+<h1>Part B: On Your Own (~30 min)</h1>
+<section id="the-scenario-1" class="level3">
+<h3 class="anchored" data-anchor-id="the-scenario-1">The scenario</h3>
+<p>A developmental psychology lab is exploring factors related to children’s well-being. They collected pilot data from <strong>100 children</strong>. This is an <strong>observational</strong> study: nobody was randomly assigned to anything.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 38%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>child_id</code></td>
+<td>Unique ID for each child</td>
+<td>ID</td>
+</tr>
+<tr class="even">
+<td><code>parenting_style</code></td>
+<td>Primary parenting style observed at home: <code>"Authoritative"</code> or <code>"Permissive"</code></td>
+<td>Categorical (2 groups)</td>
+</tr>
+<tr class="odd">
+<td><code>sleep_hours</code></td>
+<td>Average hours of sleep per night</td>
+<td>Continuous</td>
+</tr>
+<tr class="even">
+<td><code>anxiety_score</code></td>
+<td>Parent-reported anxiety (0–50; higher = more anxious)</td>
+<td>Continuous</td>
+</tr>
+</tbody>
+</table>
+<p>In your <code>.qmd</code>, add a header <code># Part B</code>. For each task, create a <strong>sub-header</strong>, a <strong>code chunk</strong> for each step that needs code, and write your answers <strong>in text below the chunk</strong> (not as code comments).</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Stuck?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Every task follows the same pattern as Part A. Copy your Part A code and change the <strong>data name</strong> and <strong>variable names</strong>. The <code>___</code> blanks below show you what to change.</p>
+</div>
+</div>
 </section>
 <section id="task-1-parenting-style-and-anxiety" class="level3">
 <h3 class="anchored" data-anchor-id="task-1-parenting-style-and-anxiety">Task 1: Parenting Style and Anxiety</h3>
-<p><strong>The Research Question:</strong> “Do children raised in homes with an authoritative parenting style have different anxiety levels than children in homes with a permissive style?”</p>
-<p><strong>Your Steps:</strong></p>
-<ol type="1">
-<li><p><strong>Identify:</strong> What is the predictor (IV)? What is the outcome (DV)? Are they categorical or continuous?</p></li>
-<li><p><strong>Model:</strong> Based on your answer, what is the correct model <em>family</em> (t-test/ANOVA or Correlation/Regression)? Write out the specific model using R formula syntax (<code>outcome ~ predictor</code>).</p></li>
-<li><p><strong>Visualize:</strong> Create a boxplot to visualize the relationship between <code>parenting_style</code> and <code>anxiety_score</code>.</p></li>
-<li><p><strong>Analyze:</strong> Run the appropriate statistical test in R to test your model.</p></li>
-<li><p><strong>Conclude:</strong> Look at the p-value and the group means from your analysis. Write one clear sentence summarizing your finding (e.g., “We found that children with authoritative parents had significantly higher/lower anxiety scores than children with permissive parents, p = …”).</p></li>
-</ol>
+<blockquote class="blockquote">
+<p><strong>“Do children raised by authoritative parents have different anxiety levels than children raised by permissive parents?”</strong></p>
+</blockquote>
+<p><strong>Step 1: Identify.</strong> In text, answer:</p>
+<ul>
+<li>What is the predictor? Is it categorical or continuous?</li>
+<li>What is the outcome? Is it categorical or continuous?</li>
+</ul>
+<p><strong>Step 2: Model.</strong> In text, answer:</p>
+<ul>
+<li>Which model family does the decision tree point to?</li>
+<li>Write the model in R formula syntax: <code>___ ~ ___</code></li>
+</ul>
+<p><strong>Step 3: Visualize.</strong> Make a boxplot, with points added, and give it labels and a title:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(wellbeing, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"___"</span>, <span class="at">y =</span> <span class="st">"___"</span>, <span class="at">title =</span> <span class="st">"___"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>✍️ <em>Before running the test:</em> based on the plot alone, do you think the groups differ? Which group looks higher?</p>
+<p><strong>Step 4: Analyze.</strong> Get the group means, then run the test:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>wellbeing <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(___) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_anxiety =</span> <span class="fu">mean</span>(___),</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_anxiety   =</span> <span class="fu">sd</span>(___),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">n            =</span> <span class="fu">n</span>())</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(___ <span class="sc">~</span> ___, <span class="at">data =</span> wellbeing)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Step 5: Conclude.</strong> Fill in this template with your numbers:</p>
+<blockquote class="blockquote">
+<p><em>Children with _____ parents (M = _____, SD = _____) had significantly <strong>higher / lower</strong> anxiety scores than children with _____ parents (M = _____, SD = _____), t(_____) = _____, p _____.</em></p>
+</blockquote>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Reading the <code>t.test()</code> output
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><code>t = ...</code>: the test statistic</li>
+<li><code>df = ...</code>: degrees of freedom (R uses a Welch correction, so it may have decimals; round to one decimal place)</li>
+<li><code>p-value = ...</code>: if R prints <code>&lt; 2.2e-16</code>, report it as <strong>p &lt; .001</strong></li>
+<li><code>mean in group ...</code>: the two group means</li>
+</ul>
+</div>
+</div>
+<hr>
 </section>
 <section id="task-2-sleep-and-anxiety" class="level3">
 <h3 class="anchored" data-anchor-id="task-2-sleep-and-anxiety">Task 2: Sleep and Anxiety</h3>
-<p><strong>The Research Question:</strong> “Is there an association between the average number of hours a child sleeps per night and their anxiety level?”</p>
-<p><strong>Your Steps:</strong></p>
-<ol type="1">
-<li><p><strong>Identify:</strong> What is the predictor (IV)? What is the outcome (DV)? Are they categorical or continuous?</p></li>
-<li><p><strong>Model:</strong> What is the correct model <em>family</em>? Write out the specific model using R formula syntax.</p></li>
-<li><p><strong>Visualize:</strong> Create a scatterplot to visualize the relationship between <code>sleep_hours</code> and <code>anxiety_score</code>. Add a line of best fit.</p></li>
-<li><p><strong>Analyze:</strong> Run the appropriate statistical test in R.</p></li>
-<li><p><strong>Conclude:</strong> Look at the p-value and the correlation coefficient (<code>r</code>). Write one clear sentence summarizing your finding (e.g., “We found a significant positive/negative association between hours of sleep and anxiety scores, r = …, p = …”).</p></li>
-</ol>
+<blockquote class="blockquote">
+<p><strong>“Is there an association between how many hours a child sleeps and their anxiety level?”</strong></p>
+</blockquote>
+<p><strong>Step 1: Identify.</strong> What are the predictor and outcome? Is each categorical or continuous?</p>
+<p><strong>Step 2: Model.</strong> Which model family? Write the formula.</p>
+<p>✋ <strong>Prediction:</strong> before running anything, do you expect a positive or negative relationship? Why?</p>
+<p><strong>Step 3: Visualize.</strong> Make a scatterplot with a line of best fit:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(wellbeing, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"___"</span>, <span class="at">y =</span> <span class="st">"___"</span>, <span class="at">title =</span> <span class="st">"___"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Step 4: Analyze.</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="sc">~</span> ___ <span class="sc">+</span> ___, <span class="at">data =</span> wellbeing)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Step 5: Conclude.</strong> Fill in this template:</p>
+<blockquote class="blockquote">
+<p><em>There was a significant <strong>positive / negative</strong> correlation between children’s hours of sleep and their anxiety scores, r(_____) = _____, p _____. Children who slept more tended to have <strong>higher / lower</strong> anxiety.</em></p>
+</blockquote>
+<p>Then answer: <strong>How strong</strong> is this relationship? (Rough guide: |r| ≈ .10 small, .30 moderate, .50+ large.) Did it match your prediction?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Reading the <code>cor.test()</code> output
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><code>cor</code>: this is <strong>r</strong>, the correlation (between −1 and +1)</li>
+<li><code>df = ...</code>: degrees of freedom (N − 2)</li>
+<li><code>p-value = ...</code>: same rules as above</li>
+</ul>
+</div>
+</div>
+<hr>
 </section>
 <section id="challenge-question-if-you-finish-early" class="level3">
-<h3 class="anchored" data-anchor-id="challenge-question-if-you-finish-early">🤔 Challenge Question (If you finish early)</h3>
-<p>Based on the <em>design</em> of this study (it is observational), can the researcher conclude that permissive parenting <em>causes</em> higher anxiety? In one or two sentences, explain why or why not, and propose one possible <strong>confounding variable</strong> that could be influencing both parenting style and a child’s anxiety</p>
+<h3 class="anchored" data-anchor-id="challenge-question-if-you-finish-early">🤔 Challenge Question (if you finish early)</h3>
+<p>This study is <strong>observational</strong>. In 3–4 sentences, answer:</p>
+<ol type="1">
+<li>Can the researchers conclude that permissive parenting <strong>causes</strong> higher anxiety? Use the <strong>3 rules of causality</strong> from lecture to explain why or why not.</li>
+<li>Propose one <strong>confounding variable</strong> that could influence <em>both</em> parenting style and child anxiety, and explain how.</li>
+<li><strong>Bonus:</strong> could the causal arrow run the <em>other</em> way (anxiety → parenting style)? Describe how.</li>
+<li><strong>Bonus:</strong> describe a study design that would give <em>stronger</em> evidence for a causal claim.</li>
+</ol>
 <hr>
-<p><strong><em>End of the document. Remember to Knit and upload the html and .Rmd to myCourses.</em></strong></p>
-
-
 </section>
+</section>
+<section id="before-you-submit" class="level1">
+<h1>Before You Submit ✅</h1>
+<ul class="task-list">
+<li><label><input type="checkbox">Your name(s) and date are in the YAML header</label></li>
+<li><label><input type="checkbox">Part A and Part B each have a header, and each task has a sub-header</label></li>
+<li><label><input type="checkbox">Every plot has axis labels and a title</label></li>
+<li><label><input type="checkbox">Every Step 1, 2, and 5 answer is written <strong>in text</strong>, not as code comments</label></li>
+<li><label><input type="checkbox">Both conclusion templates are filled in with <strong>your</strong> numbers</label></li>
+<li><label><input type="checkbox">The document <strong>renders</strong> without errors (click <strong>Render</strong>)</label></li>
+</ul>
+<p><strong><em>Upload both the rendered <code>.docx</code> and your <code>.qmd</code> file to myCourses.</em></strong></p>
+
+
 </section>
 
 </main> <!-- /main -->

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Previous Years – PSYC 640 - Graduate Statistics</title>
+<title>Lab 5: Two Tests, One Line – PSYC 640 - Graduate Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,27 +29,26 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./resources.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ec2427c9d1066c1b6d2fbf99895004ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-5c51e7f2b9ed86a84d54895526db5dd5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-ec2427c9d1066c1b6d2fbf99895004ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-ec2427c9d1066c1b6d2fbf99895004ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-5c51e7f2b9ed86a84d54895526db5dd5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-ec2427c9d1066c1b6d2fbf99895004ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -79,8 +78,8 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Previous Years – PSYC 640 - Graduate Statistics">
-<meta property="og:description" content="">
+<meta property="og:title" content="Lab 5: Two Tests, One Line – PSYC 640 - Graduate Statistics">
+<meta property="og:description" content="Connecting t-tests and correlations, and a sneak peek at the linear model">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
 
@@ -255,7 +254,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./previous-years.html">Previous Years</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lab 5: Two Tests, One Line</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -269,9 +268,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/640_hex.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="./images/640_hex.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/640_hex.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../images/640_hex.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/dharaden/psyc640" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
@@ -297,19 +296,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-overview.html" class="sidebar-item-text sidebar-link">
+  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./syllabus.html" class="sidebar-item-text sidebar-link">
+  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
   </div>
 </li>
@@ -326,25 +325,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weeks/week-1.html" class="sidebar-item-text sidebar-link">
+  <a href="../weeks/week-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 1 - Set up and Foundations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weeks/week-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../weeks/week-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2 - Data Wrangling</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weeks/week-3.html" class="sidebar-item-text sidebar-link">
+  <a href="../weeks/week-3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 3 - Describe &amp; Viz</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weeks/week-4.html" class="sidebar-item-text sidebar-link">
+  <a href="../weeks/week-4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 4 - Design &amp; Inference</span></a>
   </div>
 </li>
@@ -361,25 +360,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/lab-01_introduction.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-01_introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 1 - Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/lab-02_data-workflow.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-02_data-workflow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 2 - Data Workflow</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/lab-03_data-wrangling.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-03_data-wrangling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 3 - Data Wrangling</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/lab-04_describe-viz.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-04_describe-viz.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 4 - Describe &amp; Viz.</span></a>
   </div>
 </li>
@@ -387,13 +386,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./resources.html" class="sidebar-item-text sidebar-link">
+  <a href="../resources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Resources</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./previous-years.html" class="sidebar-item-text sidebar-link active">
+  <a href="../previous-years.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Previous Years</span></a>
   </div>
 </li>
@@ -407,12 +406,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#fall-2025" id="toc-fall-2025" class="nav-link" data-scroll-target="#fall-2025">Fall 2025</a></li>
-  <li><a href="#fall-2024" id="toc-fall-2024" class="nav-link" data-scroll-target="#fall-2024">Fall 2024</a></li>
-  <li><a href="#fall-2023" id="toc-fall-2023" class="nav-link" data-scroll-target="#fall-2023">Fall 2023</a></li>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#scenario" id="toc-scenario" class="nav-link" data-scroll-target="#scenario">Scenario</a></li>
+  <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables">Variables</a></li>
+  <li><a href="#exercises-at-a-glance" id="toc-exercises-at-a-glance" class="nav-link" data-scroll-target="#exercises-at-a-glance">Exercises at a Glance</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/previous-years.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/lab-05_two-tests-one-line.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -420,7 +419,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Previous Years</h1>
+<h1 class="title">Lab 5: Two Tests, One Line</h1>
+<p class="subtitle lead">Connecting t-tests and correlations, and a sneak peek at the linear model</p>
 </div>
 
 
@@ -437,21 +437,169 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>This course has been taught for a number of years, but this instructor has only started teaching it in Fall 2023. Below are previous iterations of the course in case you would like to check out how it has progressed!</p>
+<section id="instructions" class="level2">
+<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<p>This week we connected <strong>study design</strong> to <strong>inference</strong>: <em>how</em> data were collected decides what claims you can make, and a p-value tells you how surprising your data would be if nothing were going on. In this lab you’ll put those ideas to work with two tests you already know, then look at them in a new way. That new view is the foundation for everything we do next week.</p>
+<p>Here are the things you’ll need for this lab:</p>
+<ul>
+<li><a href="../files/_lab-qmd/lab-5_two-tests-one-line.qmd" download="lab-5_two-tests-one-line.qmd">Download Lab 5 (.qmd)</a></li>
+<li><a href="../files/data/study_strategies.csv" download="study_strategies.csv">Download Study Strategies Data (.csv)</a></li>
+</ul>
+<p>Save the <code>.csv</code> in the <code>data</code> folder of your PSYC 640 R Project, and the <code>.qmd</code> in your project folder.</p>
+<p>When you’re finished, <strong>render your file to a Word document</strong>, and submit <strong>both</strong> the <code>.qmd</code> file and the Word doc to myCourses.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>What you’ll practice
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Telling experimental variables apart from observational ones, and what that means for <strong>causal claims</strong></li>
+<li>Running and reporting a <strong>t-test</strong> and a <strong>correlation</strong> in APA style</li>
+<li>Interpreting a p-value correctly</li>
+<li>Seeing a <strong>group difference</strong> as a <strong>line</strong></li>
+<li>Running <code>lm()</code> for the first time, and discovering how it is different</li>
+</ul>
+</div>
+</div>
 </section>
-<section id="fall-2025" class="level2">
-<h2 class="anchored" data-anchor-id="fall-2025">Fall 2025</h2>
-<p><a href="https://dharaden.github.io/psyc640_2025/" target="_blank">Website</a></p>
+<section id="scenario" class="level2">
+<h2 class="anchored" data-anchor-id="scenario">Scenario</h2>
+<p>The graduate school wants to know how students can study more effectively. Researchers ran a study with <strong>120 graduate students</strong>:</p>
+<ul>
+<li>Each student was <strong>randomly assigned</strong> to either <strong>Rereading</strong> their notes or <strong>Retrieval Practice</strong> (quizzing themselves without looking).</li>
+<li>The researchers also <strong>measured</strong> study time, sleep, and test anxiety.</li>
+<li>Everyone took the same stats quiz.</li>
+</ul>
 </section>
-<section id="fall-2024" class="level2">
-<h2 class="anchored" data-anchor-id="fall-2024">Fall 2024</h2>
-<p><a href="https://dharaden.github.io/psyc640_2024/" target="_blank">Website</a></p>
+<section id="variables" class="level2">
+<h2 class="anchored" data-anchor-id="variables">Variables</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 47%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>student_id</code></td>
+<td>Unique student ID</td>
+<td>ID</td>
+</tr>
+<tr class="even">
+<td><code>condition</code></td>
+<td><code>"Rereading"</code> or <code>"Retrieval Practice"</code> (<strong>randomly assigned</strong>)</td>
+<td>Categorical (2 groups)</td>
+</tr>
+<tr class="odd">
+<td><code>study_minutes</code></td>
+<td>Minutes spent studying (measured)</td>
+<td>Continuous</td>
+</tr>
+<tr class="even">
+<td><code>sleep_hours</code></td>
+<td>Hours of sleep the night before (measured)</td>
+<td>Continuous</td>
+</tr>
+<tr class="odd">
+<td><code>test_anxiety</code></td>
+<td>Test anxiety, 10–50 (measured; higher = more anxious)</td>
+<td>Continuous</td>
+</tr>
+<tr class="even">
+<td><code>exam_score</code></td>
+<td>Quiz score, 0–100</td>
+<td>Continuous</td>
+</tr>
+</tbody>
+</table>
+<hr>
 </section>
-<section id="fall-2023" class="level2">
-<h2 class="anchored" data-anchor-id="fall-2023">Fall 2023</h2>
-<p><a href="https://dharaden.github.io/psyc640_2023/" target="_blank">Website</a></p>
+<section id="exercises-at-a-glance" class="level2">
+<h2 class="anchored" data-anchor-id="exercises-at-a-glance">Exercises at a Glance</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 38%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Exercise</th>
+<th>What you’ll do</th>
+<th>Key functions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>1. Import &amp; Design</strong></td>
+<td>Load the data; decide which variables support causal claims</td>
+<td><code>import()</code>, <code>here()</code>, <code>glimpse()</code></td>
+</tr>
+<tr class="even">
+<td><strong>2. Describe</strong></td>
+<td>Group means and SDs</td>
+<td><code>group_by()</code>, <code>summarize()</code></td>
+</tr>
+<tr class="odd">
+<td><strong>3. Compare Groups</strong></td>
+<td>Boxplot + independent-samples t-test</td>
+<td><code>ggplot()</code>, <code>t.test(var.equal = TRUE)</code></td>
+</tr>
+<tr class="even">
+<td><strong>4. Association</strong></td>
+<td>Scatterplot + correlation</td>
+<td><code>geom_smooth()</code>, <code>cor.test()</code></td>
+</tr>
+<tr class="odd">
+<td><strong>5. Group Difference as a Line</strong></td>
+<td>Code condition as 0/1 and draw a line through it</td>
+<td><code>mutate()</code>, <code>if_else()</code></td>
+</tr>
+<tr class="even">
+<td><strong>6. Sneak Peek</strong> 👀</td>
+<td>Run <code>lm()</code> and compare its numbers to Exercises 3–4</td>
+<td><code>lm()</code>, <code>broom::tidy()</code></td>
+</tr>
+<tr class="odd">
+<td><strong>7. Reflect &amp; Predict</strong></td>
+<td>What does “everything is a linear model” mean?</td>
+<td><em>(writing)</em></td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Tips
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Exercise 3:</strong> Use <code>var.equal = TRUE</code> in <code>t.test()</code>. It assumes both groups have similar spread (Student’s t-test), which is the version that matches <code>lm()</code>.</li>
+<li><strong>Exercise 5:</strong> <code>if_else(condition == "Retrieval Practice", 1, 0)</code> turns the groups into numbers. <code>scale_x_continuous(breaks = c(0, 1))</code> keeps the x-axis clean.</li>
+<li><strong>Exercise 6:</strong> You haven’t learned <code>lm()</code> yet, and that’s intentional! <code>broom::tidy()</code> gives a short table: find the row that is <strong>not</strong> <code>(Intercept)</code> and read across it.</li>
+<li><strong>Grading:</strong> Exercises 6–7 are graded on <strong>completion and effort</strong>, not on getting the “right” answer.</li>
+<li><strong>Stuck on the t-test sign?</strong> R compares the groups in alphabetical order. Look closely at which group comes first.</li>
+</ul>
+</div>
+</div>
+<hr>
+<p><em>Next week: Simple Regression, the Linear Model. Come ready to share your answer to Question 11!</em></p>
 
 
 </section>
@@ -870,15 +1018,6 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./resources.html" class="pagination-link" aria-label="Resources">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Resources</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -887,7 +1026,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/previous-years.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/lab-05_two-tests-one-line.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with ☕ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

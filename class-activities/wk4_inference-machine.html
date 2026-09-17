@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Previous Years – PSYC 640 - Graduate Statistics</title>
+<title>Week 4 Activity - The Inference Machine – PSYC 640 - Graduate Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,30 +26,64 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./resources.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ec2427c9d1066c1b6d2fbf99895004ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-5c51e7f2b9ed86a84d54895526db5dd5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-ec2427c9d1066c1b6d2fbf99895004ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-ec2427c9d1066c1b6d2fbf99895004ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-5c51e7f2b9ed86a84d54895526db5dd5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-ec2427c9d1066c1b6d2fbf99895004ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -79,8 +113,8 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Previous Years – PSYC 640 - Graduate Statistics">
-<meta property="og:description" content="">
+<meta property="og:title" content="Week 4 Activity - The Inference Machine – PSYC 640 - Graduate Statistics">
+<meta property="og:description" content="Simulating samples, p-values, and false positives">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
 
@@ -255,7 +289,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./previous-years.html">Previous Years</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Week 4 Activity - The Inference Machine</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -269,9 +303,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/640_hex.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="./images/640_hex.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/640_hex.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../images/640_hex.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/dharaden/psyc640" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
@@ -297,19 +331,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-overview.html" class="sidebar-item-text sidebar-link">
+  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./syllabus.html" class="sidebar-item-text sidebar-link">
+  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
   </div>
 </li>
@@ -326,25 +360,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weeks/week-1.html" class="sidebar-item-text sidebar-link">
+  <a href="../weeks/week-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 1 - Set up and Foundations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weeks/week-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../weeks/week-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2 - Data Wrangling</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weeks/week-3.html" class="sidebar-item-text sidebar-link">
+  <a href="../weeks/week-3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 3 - Describe &amp; Viz</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weeks/week-4.html" class="sidebar-item-text sidebar-link">
+  <a href="../weeks/week-4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 4 - Design &amp; Inference</span></a>
   </div>
 </li>
@@ -361,25 +395,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/lab-01_introduction.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-01_introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 1 - Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/lab-02_data-workflow.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-02_data-workflow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 2 - Data Workflow</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/lab-03_data-wrangling.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-03_data-wrangling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 3 - Data Wrangling</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/lab-04_describe-viz.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-04_describe-viz.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 4 - Describe &amp; Viz.</span></a>
   </div>
 </li>
@@ -387,13 +421,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./resources.html" class="sidebar-item-text sidebar-link">
+  <a href="../resources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Resources</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./previous-years.html" class="sidebar-item-text sidebar-link active">
+  <a href="../previous-years.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Previous Years</span></a>
   </div>
 </li>
@@ -407,12 +441,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#fall-2025" id="toc-fall-2025" class="nav-link" data-scroll-target="#fall-2025">Fall 2025</a></li>
-  <li><a href="#fall-2024" id="toc-fall-2024" class="nav-link" data-scroll-target="#fall-2024">Fall 2024</a></li>
-  <li><a href="#fall-2023" id="toc-fall-2023" class="nav-link" data-scroll-target="#fall-2023">Fall 2023</a></li>
+  <li><a href="#design-warm-up-5-min-no-code" id="toc-design-warm-up-5-min-no-code" class="nav-link active" data-scroll-target="#design-warm-up-5-min-no-code">Design warm-up (5 min, no code)</a></li>
+  <li><a href="#part-1-build-a-population-5-min" id="toc-part-1-build-a-population-5-min" class="nav-link" data-scroll-target="#part-1-build-a-population-5-min">Part 1: Build a population (5 min)</a></li>
+  <li><a href="#part-2-one-sample-vs.-many-samples-10-min" id="toc-part-2-one-sample-vs.-many-samples-10-min" class="nav-link" data-scroll-target="#part-2-one-sample-vs.-many-samples-10-min">Part 2: One sample vs.&nbsp;many samples (10 min)</a></li>
+  <li><a href="#part-3-the-null-world-10-min" id="toc-part-3-the-null-world-10-min" class="nav-link" data-scroll-target="#part-3-the-null-world-10-min">Part 3: The null world (10 min)</a></li>
+  <li><a href="#part-4-a-real-effect-8-min" id="toc-part-4-a-real-effect-8-min" class="nav-link" data-scroll-target="#part-4-a-real-effect-8-min">Part 4: A real effect (8 min)</a></li>
+  <li><a href="#challenge-the-forking-paths-if-you-finish-early" id="toc-challenge-the-forking-paths-if-you-finish-early" class="nav-link" data-scroll-target="#challenge-the-forking-paths-if-you-finish-early">🤔 Challenge: The forking paths (if you finish early)</a></li>
+  <li><a href="#wrap-up-2-min" id="toc-wrap-up-2-min" class="nav-link" data-scroll-target="#wrap-up-2-min">Wrap-up (2 min)</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/previous-years.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/class-activities/wk4_inference-machine.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -420,7 +457,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Previous Years</h1>
+<h1 class="title">Week 4 Activity - The Inference Machine</h1>
+<p class="subtitle lead">Simulating samples, p-values, and false positives</p>
 </div>
 
 
@@ -437,21 +475,115 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>This course has been taught for a number of years, but this instructor has only started teaching it in Fall 2023. Below are previous iterations of the course in case you would like to check out how it has progressed!</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Where this fits
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Today’s lecture said that <strong>inference</strong> means using a <em>sample</em> to make a claim about a <em>population</em>, and that probability tells us how much to trust that claim. Usually we never get to see the population. <strong>Today we build one</strong>, so we can check how well samples (and p-values) actually do.</p>
+<p>About 40 minutes · Pairs · 🧰 <code>tidyverse</code> (from Weeks 2–3)</p>
+</div>
+</div>
+<p><a href="../files/_lab-qmd/wk4_inference-machine_inclass.qmd" download="wk4_inference-machine_inclass.qmd">Download the activity file (.qmd)</a></p>
+<p>Save it in your PSYC 640 R Project folder, open it in RStudio, and fill in the <code>___</code> blanks as you go. No data download is needed: we generate our own.</p>
+<hr>
+<section id="design-warm-up-5-min-no-code" class="level2">
+<h2 class="anchored" data-anchor-id="design-warm-up-5-min-no-code">Design warm-up (5 min, no code)</h2>
+<p>A news headline reads:</p>
+<blockquote class="blockquote">
+<p><strong>“Grad students who work more than 50 hours a week are more burned out, so universities should cap lab hours.”</strong></p>
+</blockquote>
+<p>With your partner:</p>
+<ol type="1">
+<li>What are the <strong>predictor</strong> and the <strong>outcome</strong>? How might each one have been <strong>operationalized</strong> (measured)?</li>
+<li>Is this an <strong>association</strong> claim or a <strong>causal</strong> claim? What does the headline <em>imply</em>?</li>
+<li>Which of the <strong>3 rules of causality</strong> can an observational survey satisfy, and which can’t it?</li>
+<li>Name one plausible <strong>confounding variable</strong>.</li>
+<li>Sketch (in one sentence) an experiment that could test the causal claim, or explain why it would be unethical or impractical to run.</li>
+</ol>
+<hr>
 </section>
-<section id="fall-2025" class="level2">
-<h2 class="anchored" data-anchor-id="fall-2025">Fall 2025</h2>
-<p><a href="https://dharaden.github.io/psyc640_2025/" target="_blank">Website</a></p>
+<section id="part-1-build-a-population-5-min" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-build-a-population-5-min">Part 1: Build a population (5 min)</h2>
+<p>We’ll create a “university” of 10,000 grad students whose true average burnout score is known.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">640</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">student_id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">burnout    =</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">12</span>))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Calculate the <strong>true population mean</strong> of <code>burnout</code>, and store it as <code>true_mean</code>.</li>
+<li>Make a histogram of <code>burnout</code>.</li>
+</ul>
+<p>❓ In real research, why can we almost never calculate this number?</p>
+<hr>
 </section>
-<section id="fall-2024" class="level2">
-<h2 class="anchored" data-anchor-id="fall-2024">Fall 2024</h2>
-<p><a href="https://dharaden.github.io/psyc640_2024/" target="_blank">Website</a></p>
+<section id="part-2-one-sample-vs.-many-samples-10-min" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-one-sample-vs.-many-samples-10-min">Part 2: One sample vs.&nbsp;many samples (10 min)</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Watch it first 🎲
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <a href="../interactives/sampling-distribution.html" target="_blank">Sampling Distributions interactive</a> shows this whole process visually. Keep it open in another tab while you code, and check that your plots look like its bottom chart.</p>
+</div>
+</div>
+<ol type="1">
+<li>Use <code>slice_sample(n = 10)</code> to draw <strong>one</strong> sample of 10 students. What is its mean? Compare with your neighbors’. Why are they different?</li>
+<li>Use the provided <code>sample_mean()</code> function to repeat this <strong>1,000 times</strong> each for n = 10, 50, and 200.</li>
+<li>Plot the three <strong>sampling distributions</strong> (one facet per sample size), with a red line at <code>true_mean</code>.</li>
+</ol>
+<p>❓ What happens to the <em>center</em> and the <em>spread</em> of the sample means as n increases? Which idea from lecture is this? (Hint: the Law of Large Numbers.)</p>
+<p>❓ The spread (SD) of these sample means is the <strong>standard error</strong>. Compare it to <code>12 / sqrt(n)</code>. What do you notice?</p>
+<hr>
 </section>
-<section id="fall-2023" class="level2">
-<h2 class="anchored" data-anchor-id="fall-2023">Fall 2023</h2>
-<p><a href="https://dharaden.github.io/psyc640_2023/" target="_blank">Website</a></p>
+<section id="part-3-the-null-world-10-min" class="level2">
+<h2 class="anchored" data-anchor-id="part-3-the-null-world-10-min">Part 3: The null world (10 min)</h2>
+<p>Now we run a “study” where <strong>there is truly no difference</strong>: we draw two groups from the <em>same</em> population and run a t-test.</p>
+<ol type="1">
+<li>Run <code>null_study(20)</code> a few times. Watch the p-value jump around.</li>
+<li>Repeat it <strong>1,000 times</strong> and calculate the proportion of p-values below .05.</li>
+<li>Plot a histogram of those p-values.</li>
+</ol>
+<p>❓ About what proportion of the “studies” were significant, even though nothing was going on? What name do we give those results?</p>
+<p>❓ Describe the shape of the p-value histogram when the null is true. Does a single p = .03 “prove” anything?</p>
+<hr>
+</section>
+<section id="part-4-a-real-effect-8-min" class="level2">
+<h2 class="anchored" data-anchor-id="part-4-a-real-effect-8-min">Part 4: A real effect (8 min)</h2>
+<p>Now group 2 really does score <strong>5 points higher</strong>.</p>
+<ol type="1">
+<li>Use <code>effect_study()</code> to run 1,000 studies each with 20, 50, and 100 people per group.</li>
+<li>For each sample size, calculate the proportion of studies with p &lt; .05. This is the study’s <strong>power</strong>.</li>
+</ol>
+<p>❓ With 20 people per group, how often did we <em>miss</em> a real effect? What is that kind of error called?</p>
+<p>❓ If you were designing the burnout study from Part 0, what does this tell you about sample size?</p>
+<hr>
+</section>
+<section id="challenge-the-forking-paths-if-you-finish-early" class="level2">
+<h2 class="anchored" data-anchor-id="challenge-the-forking-paths-if-you-finish-early">🤔 Challenge: The forking paths (if you finish early)</h2>
+<p>A researcher measures <strong>5 different outcomes</strong> (burnout, sleep, anxiety, …) in the null world, and reports the study as a “success” if <em>any</em> of them has p &lt; .05.</p>
+<ul>
+<li>Simulate this 1,000 times. How often does the researcher get a “success”?</li>
+<li>Compare your answer with <code>1 - .95^5</code>.</li>
+<li>Connect this to the replication crisis examples from Week 1.</li>
+</ul>
+<hr>
+</section>
+<section id="wrap-up-2-min" class="level2">
+<h2 class="anchored" data-anchor-id="wrap-up-2-min">Wrap-up (2 min)</h2>
+<p>In <strong>one or two sentences</strong>, finish this statement: <em>“A p-value tells me ___, but it does not tell me ___.”</em></p>
+<p><strong><em>Render your file and upload the .html and .qmd to myCourses.</em></strong></p>
 
 
 </section>
@@ -870,15 +1002,6 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./resources.html" class="pagination-link" aria-label="Resources">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Resources</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -887,7 +1010,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/previous-years.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/class-activities/wk4_inference-machine.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with ☕ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

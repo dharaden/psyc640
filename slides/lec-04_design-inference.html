@@ -34,7 +34,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-73876c930df55ec0f93ac7c924e50558.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-257723e3f8c37b3170acb06a96dd7d4b.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -340,6 +340,21 @@
 <li><p>The researcher includes people who are easy to reach (e.g., Using undergraduate students, posting a flier in the clinic, etc.)</p></li>
 <li><p><strong>The Limitation:</strong> Our convenience sample may differ from the population in systematic ways (e.g., younger, wealthier, college educated, etc.). Must be thoughtful when generalizing from these samples.</p></li>
 </ul>
+</section>
+<section id="activity-stop-1-design-warm-up" class="slide level2 scrollable">
+<h2>🛠️ Activity Stop 1: Design Warm-Up</h2>
+<p><strong>The Inference Machine:</strong> Part 0 · 5 min · Pairs · No code</p>
+<blockquote>
+<p><em>“Grad students who work more than 50 hours a week are more burned out, so universities should cap lab hours.”</em></p>
+</blockquote>
+<ol type="1">
+<li>Predictor &amp; outcome: how would you <strong>operationalize</strong> each?</li>
+<li><strong>Association</strong> or <strong>causal</strong> claim? What does the headline <em>imply</em>?</li>
+<li>Which of the <strong>3 rules of causality</strong> can a survey satisfy?</li>
+<li>Name one <strong>confounding variable</strong>.</li>
+<li>Design an <strong>experiment</strong> to test it (or explain why you can’t).</li>
+</ol>
+<p><a href="../class-activities/wk4_inference-machine.html" class="button" target="_blank">Open the activity</a></p>
 </section></section>
 <section>
 <section id="checkpoint" class="title-slide slide level1 center">
@@ -421,6 +436,41 @@
 </div>
 </div>
 </section>
+<section id="see-it-sampling-distributions" class="slide level2 scrollable">
+<h2>🎲 See It: Sampling Distributions</h2>
+<p>Before we code it, let’s <em>watch</em> it happen.</p>
+<ol type="1">
+<li><strong>Draw 1 sample slowly:</strong> one sample becomes one point in the bottom chart</li>
+<li><strong>Draw 10,000:</strong> the pile of sample means is the <strong>sampling distribution</strong></li>
+<li><strong>Change n</strong> (10 → 100): the dashed outline shows the old width. What happens to the spread? (<strong>Law of Large Numbers</strong>)</li>
+<li><strong>Switch the population to <em>Skewed</em> or <em>Bimodal</em></strong>: what shape do the <em>sample means</em> take? (<strong>Central Limit Theorem</strong>)</li>
+</ol>
+<p><a href="../interactives/sampling-distribution.html" class="button" target="_blank">Open the interactive</a></p>
+</section>
+<section id="activity-stop-2-seeing-the-law-of-large-numbers" class="slide level2 scrollable">
+<h2>🛠️ Activity Stop 2: Seeing the Law of Large Numbers</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>The Inference Machine: Parts 1–2</strong> · 15 min · Pairs</p>
+</div>
+</div>
+</div>
+<ol type="1">
+<li>Download the activity file and run the <code>setup</code> chunk</li>
+<li><strong>Build a population</strong> of 10,000 grad students (we know the <em>true</em> mean!)</li>
+<li>Draw <strong>one</strong> sample of 10. Compare your mean with your neighbor’s</li>
+<li>Draw <strong>1,000</strong> samples each at n = 10, 50, 200 and plot them</li>
+</ol>
+<p><strong>Watch for:</strong> What happens to the <em>center</em> and the <em>spread</em> as n grows?</p>
+<p><a href="../class-activities/wk4_inference-machine.html" class="button" target="_blank">Open the activity</a> <a href="../files/_lab-qmd/wk4_inference-machine_inclass.qmd" download="wk4_inference-machine_inclass.qmd" class="button">Download .qmd</a></p>
+</section>
 <section id="statistics-probability-inference" class="slide level2">
 <h2>Statistics, Probability &amp; Inference</h2>
 <ul>
@@ -464,7 +514,7 @@
 <h3 id="frequentist-approach-1">Frequentist Approach</h3>
 <p><u><strong>Cons</strong></u></p>
 <ul>
-<li><p>Infinity: not possible in the physical world</p>
+<li><p>♾️Infinity: not possible in the physical world</p>
 <ul>
 <li>What would happen if we flipped a coin an infinite amount of times?</li>
 </ul></li>
@@ -538,7 +588,37 @@
 <li>A <strong>small p-value</strong> (p&lt;.05) suggests that our data are incompatible with the null model. We have evidence to <strong>reject the null model</strong> and conclude that our predictor is likely related to the outcome.</li>
 </ul>
 <p>The statistical test you run (<code>t.test</code>, <code>cor.test</code>, <code>lm</code>) is just the engine that calculates the p-value for your specific model. The logic is always the same.</p>
+</section>
+<section id="activity-stop-3-putting-p-values-to-the-test" class="slide level2">
+<h2>🛠️ Activity Stop 3: Putting p-values to the Test</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>The Inference Machine: Parts 3–4</strong> · ~18 min · Pairs</p>
+</div>
+</div>
+</div>
+<p><strong>Part 3: The Null World:</strong> two groups from the <em>same</em> population, 1,000 times</p>
+<ul>
+<li>How often is p &lt; .05 when <em>nothing</em> is going on?</li>
+</ul>
+<p><strong>Part 4: A Real Effect:</strong> group 2 is truly 5 points higher</p>
+<ul>
+<li>How often do we <em>detect</em> it with n = 20, 50, 100 per group?</li>
+</ul>
+<p><strong>Finished early?</strong> Try the <em>Forking Paths</em> challenge 🍴</p>
+<p><a href="../class-activities/wk4_inference-machine.html" class="button" target="_blank">Open the activity</a></p>
+</section>
+<section class="slide level2">
+
 </section></section>
+<section>
 <section id="synthesis" class="title-slide slide level1 center">
 <h1>Synthesis</h1>
 <ul>
@@ -562,9 +642,46 @@
 </div>
 </div>
 </div>
-
-
 </section>
+<section id="wrap-up-the-inference-machine" class="slide level2">
+<h2>✍️ Wrap-Up: The Inference Machine</h2>
+<p>With your partner, finish this sentence:</p>
+<blockquote>
+<p><em>“A p-value tells me _______, but it does <strong>not</strong> tell me _______.”</em></p>
+</blockquote>
+<p>Add it to the end of your activity file.</p>
+</section>
+<section id="break" class="slide level2" data-background-color="#C9ADE0">
+<h2>☕ Break</h2>
+<p><strong>10 minutes</strong></p>
+<p>When we come back: <strong>Data Detectives</strong> 🔍</p>
+</section>
+<section id="activity-stop-4-data-detectives" class="slide level2">
+<h2>🛠️ Activity Stop 4: Data Detectives</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Week 4 Exercises</strong> · ~50 min</p>
+</div>
+</div>
+</div>
+<p><strong>Follow along (~20 min):</strong> Graduate school burnout data</p>
+<p><strong>On your own (~30 min):</strong> Child well-being data</p>
+<ul>
+<li><strong>Task 1:</strong> Parenting style → anxiety</li>
+<li><strong>Task 2:</strong> Sleep → anxiety <em>(finish as homework if we run short on time)</em></li>
+<li>🤔 <strong>Challenge:</strong> Can we call it <em>causal</em>?</li>
+</ul>
+<p><a href="../class-activities/wk4_beg-inf.html" class="button" target="_blank">Open Week 4 Exercises</a></p>
+
+
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="../images/640_hex.png" class="slide-logo"></p>
