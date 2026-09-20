@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lab 4: Describing and Visualizing Data – PSYC 640 - Graduate Statistics</title>
+<title>Week 5 Exercises - One Line, Two Stories – PSYC 640 - Graduate Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -35,8 +70,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../labs/lab-05_two-tests-one-line.html" rel="next">
-<link href="../labs/lab-03_data-wrangling.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -79,9 +112,38 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Lab 4: Describing and Visualizing Data – PSYC 640 - Graduate Statistics">
-<meta property="og:description" content="">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Week 5 Exercises - One Line, Two Stories – PSYC 640 - Graduate Statistics">
+<meta property="og:description" content="From correlation → line → prediction → residual">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
 
@@ -256,7 +318,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/lab-01_introduction.html">Labs</a></li><li class="breadcrumb-item"><a href="../labs/lab-04_describe-viz.html">Lab 4 - Describe &amp; Viz.</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Week 5 Exercises - One Line, Two Stories</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -359,13 +421,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Labs</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../labs/lab-01_introduction.html" class="sidebar-item-text sidebar-link">
@@ -386,7 +448,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-04_describe-viz.html" class="sidebar-item-text sidebar-link active">
+  <a href="../labs/lab-04_describe-viz.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 4 - Describe &amp; Viz.</span></a>
   </div>
 </li>
@@ -426,27 +488,38 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
-  <li><a href="#scenario-and-goal" id="toc-scenario-and-goal" class="nav-link" data-scroll-target="#scenario-and-goal">Scenario and Goal</a></li>
-  <li><a href="#variables-of-interest" id="toc-variables-of-interest" class="nav-link" data-scroll-target="#variables-of-interest">Variables of Interest</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
+  <li><a href="#set-up-5-min" id="toc-set-up-5-min" class="nav-link active" data-scroll-target="#set-up-5-min">Set up (5 min)</a></li>
+  <li><a href="#part-a-follow-along-transformers-and-age-20-min" id="toc-part-a-follow-along-transformers-and-age-20-min" class="nav-link" data-scroll-target="#part-a-follow-along-transformers-and-age-20-min">Part A — Follow along: Transformers and age (20 min)</a>
   <ul class="collapse">
-  <li><a href="#exercise-1-importing-and-inspecting" id="toc-exercise-1-importing-and-inspecting" class="nav-link" data-scroll-target="#exercise-1-importing-and-inspecting">Exercise 1: Importing and Inspecting</a></li>
-  <li><a href="#exercise-2-grouped-descriptive-statistics" id="toc-exercise-2-grouped-descriptive-statistics" class="nav-link" data-scroll-target="#exercise-2-grouped-descriptive-statistics">Exercise 2: Grouped Descriptive Statistics</a></li>
-  <li><a href="#exercise-3-visualizing-a-distribution-histogram" id="toc-exercise-3-visualizing-a-distribution-histogram" class="nav-link" data-scroll-target="#exercise-3-visualizing-a-distribution-histogram">Exercise 3: Visualizing a Distribution (Histogram)</a></li>
-  <li><a href="#exercise-4-examining-the-bechdel-test-distribution" id="toc-exercise-4-examining-the-bechdel-test-distribution" class="nav-link" data-scroll-target="#exercise-4-examining-the-bechdel-test-distribution">Exercise 4: Examining the Bechdel Test distribution</a></li>
-  <li><a href="#exercise-5-comparing-groups-with-a-boxplot" id="toc-exercise-5-comparing-groups-with-a-boxplot" class="nav-link" data-scroll-target="#exercise-5-comparing-groups-with-a-boxplot">Exercise 5: Comparing Groups with a Boxplot</a></li>
+  <li><a href="#look-before-you-model" id="toc-look-before-you-model" class="nav-link" data-scroll-target="#look-before-you-model">1. Look before you model</a></li>
+  <li><a href="#plot-it-first" id="toc-plot-it-first" class="nav-link" data-scroll-target="#plot-it-first">2. Plot it first</a></li>
+  <li><a href="#correlation-first-then-the-line" id="toc-correlation-first-then-the-line" class="nav-link" data-scroll-target="#correlation-first-then-the-line">3. Correlation first, then the line</a></li>
+  <li><a href="#read-the-three-numbers" id="toc-read-the-three-numbers" class="nav-link" data-scroll-target="#read-the-three-numbers">4. Read the three numbers</a></li>
+  <li><a href="#predict-a-person-then-find-the-residual" id="toc-predict-a-person-then-find-the-residual" class="nav-link" data-scroll-target="#predict-a-person-then-find-the-residual">5. Predict a person, then find the residual</a></li>
+  <li><a href="#questions-for-part-a" id="toc-questions-for-part-a" class="nav-link" data-scroll-target="#questions-for-part-a">❓Questions for Part A</a></li>
   </ul></li>
+  <li><a href="#part-b-on-your-own-do-older-people-read-more-books-25-min" id="toc-part-b-on-your-own-do-older-people-read-more-books-25-min" class="nav-link" data-scroll-target="#part-b-on-your-own-do-older-people-read-more-books-25-min">Part B — On your own: do older people read more books? (25 min)</a>
+  <ul class="collapse">
+  <li><a href="#steps" id="toc-steps" class="nav-link" data-scroll-target="#steps">Steps</a></li>
+  <li><a href="#the-decision-that-changes-the-answer" id="toc-the-decision-that-changes-the-answer" class="nav-link" data-scroll-target="#the-decision-that-changes-the-answer">The decision that changes the answer</a></li>
+  <li><a href="#questions-for-part-b" id="toc-questions-for-part-b" class="nav-link" data-scroll-target="#questions-for-part-b">❓Questions for Part B</a></li>
+  </ul></li>
+  <li><a href="#part-c-together-the-lab-5-punchline-10-min" id="toc-part-c-together-the-lab-5-punchline-10-min" class="nav-link" data-scroll-target="#part-c-together-the-lab-5-punchline-10-min">Part C — Together: the Lab 5 punchline (10 min)</a>
+  <ul class="collapse">
+  <li><a href="#questions-for-part-c" id="toc-questions-for-part-c" class="nav-link" data-scroll-target="#questions-for-part-c">❓Questions for Part C</a></li>
+  </ul></li>
+  <li><a href="#exit-ticket" id="toc-exit-ticket" class="nav-link" data-scroll-target="#exit-ticket">Exit ticket ✅</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/lab-04_describe-viz.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/class-activities/wk5_linear-model.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/lab-01_introduction.html">Labs</a></li><li class="breadcrumb-item"><a href="../labs/lab-04_describe-viz.html">Lab 4 - Describe &amp; Viz.</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 4: Describing and Visualizing Data</h1>
+<h1 class="title">Week 5 Exercises - One Line, Two Stories</h1>
+<p class="subtitle lead">From correlation → line → prediction → residual</p>
 </div>
 
 
@@ -463,84 +536,265 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="instructions" class="level2">
-<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
-<p>Can’t believe we’re at Lab #3! Keep it going! We are going to continue to practice importing data and making a reproducible workflow. In this lab, you will be expanding the types of plots you are able to use.</p>
-<p>We will be using data from the <a href="https://en.wikipedia.org/wiki/Bechdel_test">Bechdel test</a>, a measure of the representation of women in fiction. You will be asked to do some Exploratory Data Analysis.</p>
-<p>Here are the things that you will need for this lab:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Overview
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>About 55 minutes · Pairs or small groups · 🧰 <code>tidyverse</code>, <code>rio</code>, <code>here</code></p>
 <ul>
-<li><a href="../files/_lab-qmd/lab-4_describe-viz.qmd" download="lab-4_describe-viz.qmd">Download Lab 4 (.qmd)</a></li>
-<li><a href="../files/data/bechdel.csv" download="bechdel.csv">Download Bechdel Data (.csv)</a></li>
+<li><strong>Part A: Follow along (~20 min):</strong> We fit our first real regression together — do people watch fewer Transformers movies as they get older?</li>
+<li><strong>Part B: On your own (~25 min):</strong> The same routine on a messier question, where the answer depends on one decision you make.</li>
+<li><strong>Part C: Together (~10 min):</strong> The punchline from Lab 5 — a t-test <em>is</em> a regression.</li>
 </ul>
-<p>When you are finished, render your file to a Word document. You will submit both the <code>.qmd</code> file and the Word doc.</p>
-</section>
-<section id="scenario-and-goal" class="level2">
-<h2 class="anchored" data-anchor-id="scenario-and-goal">Scenario and Goal</h2>
-<p>In this lab, you will act as a data journalist exploring a dataset on movies. We will use the data from the FiveThirtyEight story “The Dollar-And-Cents Case Against Hollywood’s Exclusion of Women.”</p>
-<p>This analysis is about the <a href="https://en.wikipedia.org/wiki/Bechdel_test">Bechdel test</a>, a measure of the representation of women in fiction.</p>
-<p>Your goal is to <strong>import, describe, and visualize</strong> this data to understand the characteristics of movies in the dataset and see if there are relationships between a movie’s budget, its box office gross, and its Bechdel Test rating. This is the critical first step in any analysis, known as <strong>Exploratory Data Analysis (EDA)</strong>.</p>
-</section>
-<section id="variables-of-interest" class="level2">
-<h2 class="anchored" data-anchor-id="variables-of-interest">Variables of Interest</h2>
+<p><strong>By the end you should be able to:</strong></p>
 <ul>
-<li><p><code>year</code>: The year of movie release</p></li>
-<li><p><code>clean_test</code>: Bechdel test result:</p>
+<li>Fit a simple regression with <code>lm()</code> and find the intercept and slope in the output</li>
+<li>Say what the slope means in the units of the study, out loud, without looking it up</li>
+<li>Decide whether the intercept means anything at all</li>
+<li>Predict a score for a specific person, and compute that person’s residual</li>
+<li>Connect <em>r</em>, R², and the slope’s <em>t</em>-test to each other</li>
+<li>Notice when one strange observation is running the whole model</li>
+</ul>
+</div>
+</div>
+<hr>
+<section id="set-up-5-min" class="level1">
+<h1>Set up (5 min)</h1>
+<ol type="1">
+<li><p><strong>Download the data</strong> and save it in the <code>data</code> folder of your PSYC 640 R Project.</p>
 <ul>
-<li><p><code>ok</code> = passes test</p></li>
-<li><p><code>dubious</code></p></li>
-<li><p><code>men</code> = women only talk about men</p></li>
-<li><p><code>notalk</code> = women don’t talk to each other</p></li>
-<li><p><code>nowomen</code> = fewer than two women</p></li>
-<li><p><code>binary</code>: Bechdel Test PASS vs FAIL binary</p></li>
-<li><p><code>budget_2013</code>: Total movie budget</p></li>
+<li><a href="../files/data/CAH.csv" download="CAH.csv">Cards Against Humanity: Pulse of the Nation (.csv)</a></li>
 </ul></li>
-</ul>
+<li><p><strong>Open your R Project</strong> (double-click the <code>.Rproj</code> file). The top-right corner of RStudio should show the project name.</p></li>
+<li><p><strong>Create a new Quarto document:</strong> <em>File → New File → Quarto Document…</em></p>
+<ul>
+<li>Title: <code>Week 5 - One Line, Two Stories</code></li>
+<li>Author: you (and your partner)</li>
+<li>Save it as <code>week5_inclass.qmd</code> in your project folder</li>
+</ul></li>
+<li><p><strong>Delete the example text</strong>, then add a setup chunk:</p></li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>cah <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"CAH.csv"</span>))</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(cah)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Check yourself
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>cah</code> should have <strong>1,000 rows and 16 columns</strong>. If <code>here()</code> cannot find the file, run <code>here()</code> in the Console to see where it is looking, and make sure <code>CAH.csv</code> is in that folder’s <code>data</code> subfolder.</p>
+</div>
+</div>
+<p><strong>About the data.</strong> Cards Against Humanity ran a monthly national poll called <em>Pulse of the Nation</em>. Among the serious demographic items, they asked how many books a person read in the past year and how many Transformers movies they had seen. Today those two questions are our outcomes.</p>
 <hr>
 </section>
-<section id="exercises" class="level2">
-<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
-<section id="exercise-1-importing-and-inspecting" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-1-importing-and-inspecting">Exercise 1: Importing and Inspecting</h3>
-<p>First, you need to set up your RMarkdown to get it ready for importing the data and using the appropriate libraries. Be sure to have all libraries listed here in the first code chunk along with importing the data. I should not see any lines that say <code>install.packages()</code>.</p>
-<p>I will attempt to reproduce your output in my own computer, so be sure that your code is reproducible.</p>
-<p><strong>Question 1:</strong> Look at the output from your overview. How many total movies are in this database? And what year is the latest movie?</p>
-<p><strong>Your Answer:</strong></p>
-<p><strong>Question 2:</strong> Calculate the Average budget of the whole dataset. Then, calculate the average for only movies in the year 2000.</p>
-<p><strong>Your Answer:</strong></p>
+<section id="part-a-follow-along-transformers-and-age-20-min" class="level1">
+<h1>Part A — Follow along: Transformers and age (20 min)</h1>
+<blockquote class="blockquote">
+<p><strong>Research question:</strong> Do people see fewer Transformers movies as they get older?</p>
+</blockquote>
+<section id="look-before-you-model" class="level2">
+<h2 class="anchored" data-anchor-id="look-before-you-model">1. Look before you model</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>cah <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(age, transformers) <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>age</code> runs from 18 to 99. <code>transformers</code> runs from 0 to 5, with a mean of about 1.3. Note that <strong>nobody in this dataset is younger than 18</strong> — we will come back to that.</p>
+</section>
+<section id="plot-it-first" class="level2">
+<h2 class="anchored" data-anchor-id="plot-it-first">2. Plot it first</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cah, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> transformers)) <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Transformers movies seen, by age"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Age (years)"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of Transformers movies seen"</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Talk about it (2 min)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The line slopes down. Before we fit anything: <strong>how strong</strong> does that relationship look to you? If you had to guess <em>r</em>, what would you say? Write your guess down — we’ll check it in a minute.</p>
+</div>
+</div>
+</section>
+<section id="correlation-first-then-the-line" class="level2">
+<h2 class="anchored" data-anchor-id="correlation-first-then-the-line">3. Correlation first, then the line</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(cah<span class="sc">$</span>age, cah<span class="sc">$</span>transformers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You should get <strong>r = −.27</strong>, <em>t</em>(936) = −8.46, <em>p</em> &lt; .001.</p>
+<p>Now the same relationship as a line:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mod_tf <span class="ot">&lt;-</span> <span class="fu">lm</span>(transformers <span class="sc">~</span> age, <span class="at">data =</span> cah)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_tf)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code>Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept)  2.577000   0.155000  16.626  &lt; 2e-16 ***
+age         -0.025398   0.003002  -8.461  &lt; 2e-16 ***
+
+Residual standard error: 1.50 on 936 degrees of freedom
+Multiple R-squared:  0.0710,    Adjusted R-squared:  0.0700</code></pre>
+</section>
+<section id="read-the-three-numbers" class="level2">
+<h2 class="anchored" data-anchor-id="read-the-three-numbers">4. Read the three numbers</h2>
+<p><strong>The slope: −0.0254.</strong> Each additional year of age is associated with <strong>0.025 fewer</strong> Transformers movies seen. That sounds like nothing — which is why slopes are almost always more honest when you scale them to a meaningful unit:</p>
+<blockquote class="blockquote">
+<p>Ten years of age is associated with about <strong>0.25 fewer movies</strong>; forty years, about <strong>one whole movie</strong> fewer.</p>
+</blockquote>
+<p><strong>The intercept: 2.577.</strong> The model’s predicted number of movies for a person aged <strong>0</strong>. Newborns do not watch Transformers, and there is nobody under 18 in the data, so this number is an anchor for the line, not a finding.</p>
+<p><strong>R² = .071.</strong> Age accounts for about <strong>7%</strong> of the variation in movies seen. And notice: (−.27)² = .071. <strong>R² is the squared correlation.</strong> Also notice the <em>t</em> for the slope (−8.46) is the same <em>t</em> <code>cor.test()</code> gave you. Same test, two outfits.</p>
+</section>
+<section id="predict-a-person-then-find-the-residual" class="level2">
+<h2 class="anchored" data-anchor-id="predict-a-person-then-find-the-residual">5. Predict a person, then find the residual</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># predicted movies for a 20-year-old</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fl">2.577</span> <span class="sc">+</span> (<span class="sc">-</span><span class="fl">0.025398</span> <span class="sc">*</span> <span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The model predicts about <strong>2.07</strong> movies for a 20-year-old.</p>
+<p>Now pick a real 20-year-old from the data who has seen <strong>4</strong> movies:</p>
+<p><span class="math display">\[\text{residual} = \text{observed} - \text{predicted} = 4 - 2.07 = +1.93\]</span></p>
+<p>Positive residual = <strong>above</strong> the line = the model <strong>under-predicted</strong> this person. The residual is the part of this person the model gets wrong — and in a few weeks, residuals become the whole story.</p>
+</section>
+<section id="questions-for-part-a" class="level2">
+<h2 class="anchored" data-anchor-id="questions-for-part-a">❓Questions for Part A</h2>
+<ol type="1">
+<li>Write the fitted equation using the variable names.</li>
+<li>What does the model predict for a 50-year-old? For a 70-year-old?</li>
+<li>Would you use this model to predict movies seen for a 10-year-old? Why or why not?</li>
+<li>Can we say that <em>getting older causes</em> people to see fewer Transformers movies? What else could produce this pattern?</li>
+</ol>
 <hr>
 </section>
-<section id="exercise-2-grouped-descriptive-statistics" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-2-grouped-descriptive-statistics">Exercise 2: Grouped Descriptive Statistics</h3>
-<p>Averages for the whole dataset are useful, but we are often more interested in comparing averages <em>between groups</em>. Let’s see if the average budget differs for movies that pass the Bechdel Test versus those that fail. The <code>binary</code> variable tells us this (“PASS” or “FAIL”).</p>
-<p><strong>Question 3:</strong> Based on your summary table, do movies that pass or fail the Bechdel test have a higher average (mean) budget?</p>
-<p><strong>Your Answer:</strong></p>
+</section>
+<section id="part-b-on-your-own-do-older-people-read-more-books-25-min" class="level1">
+<h1>Part B — On your own: do older people read more books? (25 min)</h1>
+<blockquote class="blockquote">
+<p><strong>Research question:</strong> Does the number of books a person reads in a year go up with age?</p>
+</blockquote>
+<p>Work through the same five steps in your own document. Write your answers as text between the code chunks, not just as output.</p>
+<section id="steps" class="level2">
+<h2 class="anchored" data-anchor-id="steps">Steps</h2>
+<ol type="1">
+<li><strong>Look first.</strong> Run <code>summary()</code> on <code>age</code> and <code>books</code>. Something in <code>books</code> should stop you — what is it?</li>
+<li><strong>Plot it.</strong> Scatterplot with a regression line, labeled properly.</li>
+<li><strong>Fit it.</strong> <code>lm(books ~ age, data = cah)</code> and <code>summary()</code>.</li>
+<li><strong>Read it.</strong> Write one sentence interpreting the slope in real units (per year <em>and</em> per decade), one sentence on whether the intercept means anything, and report R².</li>
+<li><strong>Judge it.</strong> Would you report this model in a paper as it stands? Why or why not?</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Check yourself
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The slope is <strong>0.32</strong> books per year of age, <em>t</em>(975) = 2.21, <strong>p = .027</strong>, R² = <strong>.005</strong>.</p>
+<p>So it is “statistically significant.” Now look at that R² again, and look back at your scatterplot.</p>
+</div>
+</div>
+</section>
+<section id="the-decision-that-changes-the-answer" class="level2">
+<h2 class="anchored" data-anchor-id="the-decision-that-changes-the-answer">The decision that changes the answer</h2>
+<p>Someone in this sample reported reading <strong>1,000 books</strong> in the past year — about three a day, every day. Five people reported 500 or more.</p>
+<p>Re-fit the model without the responses that are not plausible:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>cah_trim <span class="ot">&lt;-</span> cah <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(books <span class="sc">&lt;=</span> <span class="dv">365</span>)      <span class="co"># at most one book a day</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(books <span class="sc">~</span> age, <span class="at">data =</span> cah_trim) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Now the slope is <strong>0.10</strong>, <em>t</em>(969) = 1.44, <strong>p = .150</strong>, R² = <strong>.002</strong>. The “significant” result is gone.</p>
+</section>
+<section id="questions-for-part-b" class="level2">
+<h2 class="anchored" data-anchor-id="questions-for-part-b">❓Questions for Part B</h2>
+<ol type="1">
+<li>Which of the two models would you report? Defend the choice — there is a defensible answer either way, but you have to <em>make</em> the case.</li>
+<li>Your cutoff was 365. What would happen with a cutoff of 100? Try it. Does your conclusion depend on a number you picked yourself?</li>
+<li>What would you have to tell a reader for them to be able to judge your decision? Write the one sentence you would put in a methods section.</li>
+<li>Does a p-value of .027 mean this is an important finding? Use the R² in your answer.</li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>The point of Part B
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Both models are “correct.” Neither one is a mistake in R. The difference between them is a <strong>judgment call you made about your data</strong>, and the p-value flipped because of it. Every analysis you run for the rest of your career will have several of these decisions in it. Making them thoughtfully — and reporting them — is most of what separates trustworthy research from the other kind.</p>
+</div>
+</div>
 <hr>
 </section>
-<section id="exercise-3-visualizing-a-distribution-histogram" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3-visualizing-a-distribution-histogram">Exercise 3: Visualizing a Distribution (Histogram)</h3>
-<p>Let’s visualize the distribution of domestic gross earnings (adjusted for 2013) across all the movies.</p>
-<p><strong>Question 4:</strong> Describe the shape of the distribution you see in the histogram. Is it symmetric (like a bell curve), or is it skewed in one direction? Where do most movies’ earnings seem to be clustered?</p>
-<p><strong>Your Answer:</strong></p>
+</section>
+<section id="part-c-together-the-lab-5-punchline-10-min" class="level1">
+<h1>Part C — Together: the Lab 5 punchline (10 min)</h1>
+<p>In Lab 5 you ran a t-test and then an <code>lm()</code> and got suspiciously similar numbers. Let’s settle it.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>cah_mf <span class="ot">&lt;-</span> cah <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># the t-test you already know</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(transformers <span class="sc">~</span> gender, <span class="at">data =</span> cah_mf, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># the same question as a line</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(transformers <span class="sc">~</span> gender, <span class="at">data =</span> cah_mf) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The t-test gives <em>t</em>(911) = −2.29, <em>p</em> = .022; means of <strong>1.21</strong> (Female) and <strong>1.44</strong> (Male).</p>
+<p>The regression gives an intercept of <strong>1.21</strong> and a slope of <strong>0.23</strong>, with <em>t</em> = 2.29 and <em>p</em> = .022.</p>
+<section id="questions-for-part-c" class="level2">
+<h2 class="anchored" data-anchor-id="questions-for-part-c">❓Questions for Part C</h2>
+<ol type="1">
+<li>Where does the intercept 1.21 come from? Which group is it?</li>
+<li>Where does the slope 0.23 come from?</li>
+<li>R fit a line through a predictor with only two values. What are the only two predicted values this “line” can produce?</li>
+<li>In one sentence: why is a t-test a special case of regression?</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Why this matters
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is the reason we are teaching regression first. You do not have to memorize a separate procedure for every design. One model, <code>outcome ~ predictor</code>, handles the continuous case (Parts A and B) and the group case (Part C) — and over the next few weeks we’ll add more predictors to the same machine.</p>
+</div>
+</div>
 <hr>
 </section>
-<section id="exercise-4-examining-the-bechdel-test-distribution" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-4-examining-the-bechdel-test-distribution">Exercise 4: Examining the Bechdel Test distribution</h3>
-<p>Now we want to see how many movies fall into each of the Bechdel categories. Generate a barplot of the <code>clean_test</code> variable to see what the distribution of the test is.</p>
-<p>Then choose a year in the dataset, create a similar plot (but only for that year). Therefore you should have 2 plots below:</p>
-<p><strong>Question 5:</strong> Examine both charts and describe the similarities and differences that you are noticing.</p>
-<p><strong>Answer:</strong></p>
-<hr>
 </section>
-<section id="exercise-5-comparing-groups-with-a-boxplot" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-5-comparing-groups-with-a-boxplot">Exercise 5: Comparing Groups with a Boxplot</h3>
-<p>Now let’s visually compare the inflation-adjusted international gross (<code>intgross_2013</code>) for movies that pass the Bechdel test versus those that fail. A boxplot is an excellent way to see differences in the median and spread between groups.</p>
-<p><strong>Question 6:</strong> Look at the boxplot. The thick horizontal line in the middle of each box represents the median. Does there appear to be a large difference in the median domestic gross between movies that pass and fail the test?</p>
-<p><strong>Your Answer:</strong></p>
-<hr>
-<p><em>End of Lab 3. You’ve now practiced exploratory data analysis! It is always important to visualize your data to get a good sense of what you are working with. Don’t forget to Render!</em></p>
+<section id="exit-ticket" class="level1">
+<h1>Exit ticket ✅</h1>
+<p>Before you leave, write these three things at the bottom of your document (they’ll also help you on Lab 6):</p>
+<ol type="1">
+<li>A slope, stated in the units of a study, without using the word “slope.”</li>
+<li>One intercept from today that is meaningless, and why.</li>
+<li>One thing that is still muddy — put it in your journal entry this week and I will pick it up next class.</li>
+</ol>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -957,18 +1211,6 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../labs/lab-03_data-wrangling.html" class="pagination-link" aria-label="Lab 3 - Data Wrangling">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 3 - Data Wrangling</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../labs/lab-05_two-tests-one-line.html" class="pagination-link" aria-label="Lab 5 - Intro to Inference">
-        <span class="nav-page-text">Lab 5 - Intro to Inference</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -977,7 +1219,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/lab-04_describe-viz.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/class-activities/wk5_linear-model.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with ☕ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
