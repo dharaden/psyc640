@@ -38,7 +38,7 @@ The graduate school wants to know how students can study more effectively. Resea
 ## Variables
 
 | Variable | Description | Type |
-|-------------------|----------------------------------|-------------------|
+|----|----|----|
 | `student_id` | Unique student ID | ID |
 | `condition` | `"Rereading"` or `"Retrieval Practice"` (**randomly assigned**) | Categorical (2 groups) |
 | `study_minutes` | Minutes spent studying (measured) | Continuous |
@@ -51,7 +51,7 @@ The graduate school wants to know how students can study more effectively. Resea
 ## Exercises at a Glance
 
 | Exercise | What you'll do | Key functions |
-|------------------|----------------------------|--------------------------|
+|----|----|----|
 | **1. Import & Design** | Load the data; decide which variables support causal claims | `import()`, `here()`, `glimpse()` |
 | **2. Describe** | Group means and SDs | `group_by()`, `summarize()` |
 | **3. Compare Groups** | Boxplot + independent-samples t-test | `ggplot()`, `t.test(var.equal = TRUE)` |

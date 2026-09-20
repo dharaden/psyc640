@@ -116,8 +116,8 @@ website:
             text: "Lab 3 - Data Wrangling" 
           - href: labs/lab-04_describe-viz.qmd
             text: "Lab 4 - Describe & Viz." 
-          # - href: labs/lab-5_cor.qmd
-            # text: "Lab 5" 
+          - href: labs/lab-05_two-tests-one-line.qmd
+            text: "Lab 5 - Intro to Inference" 
           # - href: labs/lab-6.qmd
             # text: "Lab 6"  
           # - href: labs/lab-7.qmd
