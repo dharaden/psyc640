@@ -1,0 +1,63 @@
+---
+title: "Lab 6: Reading the Line"
+subtitle: "Interpreting regression output you did not run"
+editor: visual
+---
+
+## Instructions
+
+Last week you ran `lm()` for the first time and saw that a group difference *is* a line. This week the work is interpretation: I give you the output, and you tell me what it means.
+
+There is almost **no coding in this lab**. That is on purpose. Being able to *produce* a regression is not the same skill as being able to *read* one, and reading one is what you will do for the rest of your career: in a paper, in a colleague's slide, in your advisor's draft, and in the results section you write yourself. The readings for this week (ROS Ch. 6, ST 14.1, LSR Ch. 11) are the fastest path through these questions — they describe intercepts, slopes, and residuals in exactly the terms I am asking for.
+
+Here is what you'll need:
+
+- <a href="../files/_lab-qmd/lab-6_reading-the-line.qmd" download="lab-6_reading-the-line.qmd">Download Lab 6 (.qmd)</a>
+
+**What to submit:** the completed document, rendered to Word. If you would rather type your answers straight into a Word doc, that is fine — just keep the question numbers. No data files, and no `.qmd`/Word pair required this time. Submit to myCourses.
+
+::: callout-important
+## Due date
+
+**Tuesday, September 29 at 11:59 pm.** Note that this is a week earlier than the date printed in the PDF syllabus — the lab schedule was revised, and the course website is the current version.
+:::
+
+::: callout-note
+## What you'll practice
+
+- Writing a fitted regression equation from a coefficient table
+- Interpreting a **slope** and an **intercept** in the units of the study
+- Making a **prediction**, and computing the **residual** for a real case
+- Reading **R²** as "how much of the variation we account for"
+- Recognizing when the intercept, or a prediction, is **extrapolation**
+- Deciding whether a model supports a **causal** claim
+- Telling apart "not significant" from "no relationship"
+:::
+
+## Part 1 — Back to the study strategies data (14 points)
+
+You already know this study from Lab 5: 120 graduate students, randomly assigned to **Rereading** or **Retrieval Practice**, with study time, sleep, and test anxiety measured, and everyone taking the same quiz.
+
+In Lab 5 you looked at `condition` as a predictor. Here we use **`study_minutes`**, a continuous one, and the output is provided for you. You will write the equation, interpret both coefficients, predict a score, find a residual, and connect the results back to the correlation you already ran.
+
+## Part 2 — A new context: what does a LEGO set cost? (10 points)
+
+A different dataset, so you can show the skill transfers. We have 59 current LEGO sets with the number of pieces and the retail price, and a model predicting price from piece count. Same questions, new units — plus one set the model gets badly wrong, which you'll have to explain.
+
+## Part 3 — Would you trust it? (4 points)
+
+Two more models from the study strategies data: one with a small but statistically significant slope, and one with a slope that is not significant at all. You'll say what each one licenses you to claim, and what it does not.
+
+## Bonus (+1)
+
+Reproduce one of the Part 1 numbers in R.
+
+------------------------------------------------------------------------
+
+**Total: 28 points (+1 bonus)**
+
+::: callout-tip
+## A hint about the intercept
+
+Every intercept question in this lab has the same two parts: what does the model say the outcome is when the predictor equals zero, and *is a predictor value of zero anything real*? The second half is where the credit is.
+:::

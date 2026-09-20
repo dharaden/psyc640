@@ -12,22 +12,26 @@ project:
     - weeks/week-2.qmd
     - weeks/week-3.qmd
     - weeks/week-4.qmd
+    - weeks/week-5.qmd
     - labs/lab-01_introduction.qmd
     - labs/lab-02_data-workflow.qmd
     - labs/lab-03_data-wrangling.qmd
     - labs/lab-04_describe-viz.qmd
     - labs/lab-05_two-tests-one-line.qmd
+    - labs/lab-06_reading-the-line.qmd
     - class-activities/day1.qmd
     - class-activities/wk2_tidy-intro.qmd
     - class-activities/wk3_desc-viz.qmd
     - class-activities/wk4_beg-inf.qmd
     - class-activities/wk4_inference-machine.qmd
+    - class-activities/wk5_linear-model.qmd
     - slides/lec-01_syl.qmd
     - slides/lec-02_background.qmd
     - slides/lec-03_wrangle.qmd
     - slides/lec-03_desc-viz.qmd
     - slides/lec-03_desc-viz_JAMOVI.qmd
     - slides/lec-04_design-inference.qmd
+    - slides/lec-05_regression.qmd
     
     
   # Downloadable files copied to the site as-is (data, handouts, .qmd templates, .pptx)
@@ -85,8 +89,8 @@ website:
             text: "Week 3 - Describe & Viz"
           - href: weeks/week-4.qmd
             text: "Week 4 - Design & Inference"
-          # - href: weeks/week-5.qmd
-            # text: "Week 5 - Linear Model"
+          - href: weeks/week-5.qmd
+            text: "Week 5 - Simple Regression"
           # - href: weeks/week-6.qmd
             # text: "Week 6 - Linear Model: Part Deux"
           # - href: weeks/week-7.qmd
@@ -118,6 +122,8 @@ website:
             text: "Lab 4 - Describe & Viz." 
           - href: labs/lab-05_two-tests-one-line.qmd
             text: "Lab 5 - Intro to Inference" 
+          - href: labs/lab-06_reading-the-line.qmd
+            text: "Lab 6 - Reading the Line"
           # - href: labs/lab-6.qmd
             # text: "Lab 6"  
           # - href: labs/lab-7.qmd

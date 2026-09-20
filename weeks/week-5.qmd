@@ -1,33 +1,55 @@
 ---
-title: "Week 05"
+title: "Week 5 - Simple Regression"
 editor: visual
 ---
 
-# Correlation & Effect Sizes
+# The Linear Model
+
+Last week ended with a trick question. You ran a t-test, you ran a correlation, and then you ran `lm()` — and the numbers came back the same. That was not a coincidence, and this week we find out why.
+
+Here is the idea the rest of the course rests on: **almost everything we do is a line through data.** A group difference is a line. A correlation is a line. Regression is not a new topic sitting next to t-tests and correlations — it is the general machine that those tests are special cases of. Once you can read a line, you can read most of a results section.
+
+So this week we slow down on three numbers: the **intercept** (where the line starts), the **slope** (how steeply it climbs), and the **residual** (how wrong the line is for one particular person). We'll fold in correlation and effect size along the way, because *r* and R² are just other ways of asking how much the line helps.
+
+::: callout-note
+## A note on the intercept
+
+You are about to meet a lot of intercepts that are nonsense — the predicted number of Transformers movies for a person aged zero, the price of a LEGO set with no pieces. That is fine and expected. Part of reading a model well is knowing which of its numbers you are allowed to take seriously.
+:::
 
 ## Prepare
 
-- [Chapter 5.1 & 13 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}
+- 📖[Chapter 6 - ROS](https://users.aalto.fi/~ave/ROS.pdf)
 
-- [Chapter 11 - LSR](https://learningstatisticswithr.com/book/){target="_blank"}
+- 📖[Chapter 14.1 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}
+
+- 📖[Chapter 11 - LSR](https://learningstatisticswithr.com/){target="_blank"}
 
 ## Slides
 
-[💻 Correlation & ES](../slides/lec-5_correlation.html){target="_blank"}
+[💻 Simple Regression: The Linear Model](../slides/lec-05_regression.html){target="_blank"}
+
+## Data
+
+-   <a href="../files/data/CAH.csv" download="CAH.csv">Cards Against Humanity - Pulse of the Nation (.csv)</a>
+
+Data comes from [Cards Against Humanity: Pulse of the Nation](https://thepulseofthenation.com/#future){target="_blank"}, a monthly public opinion poll that asked a national sample some genuinely strange questions.
 
 ## In-Class Activity
 
-[Correlations](../class-activities/wk5_cor.html){target="_blank"}
+[📓One Line, Two Stories](../class-activities/wk5_linear-model.html){target="_blank"}
 
 ## For Next Time
 
-📋[Lab 5 - More Correlations](../labs/lab-5_cor.html)
+📋[Lab 6 - Reading the Line](../labs/lab-06_reading-the-line.html) — **due Tuesday 9/29 at 11:59pm**
 
-📋[Reverse Results](../labs/reverse_results.html){target="_blank"}
+::: callout-important
+## Schedule change
 
-📖[Chapter 9 & 10 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}
+The lab schedule has shifted from the version in the PDF syllabus. Lab 6 is due **9/29**, a week earlier than the PDF says, and the midterm project will be assigned on **10/15** and due **10/27**. The course website is the current version — I will walk through the full revised schedule in class.
+:::
 
-📖[Chapter 13 - LSR](https://learningstatisticswithr.com/book/){target="_blank"}
+📖[Chapter 15 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}
 
 <br><br>
 

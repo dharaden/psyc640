@@ -1,0 +1,249 @@
+---
+title: "Week 5 Exercises - One Line, Two Stories"
+subtitle: "From correlation → line → prediction → residual"
+editor: visual
+---
+
+::: callout-note
+## Overview
+
+About 55 minutes · Pairs or small groups · 🧰 `tidyverse`, `rio`, `here`
+
+- **Part A: Follow along (\~20 min):** We fit our first real regression together — do people watch fewer Transformers movies as they get older?
+- **Part B: On your own (\~25 min):** The same routine on a messier question, where the answer depends on one decision you make.
+- **Part C: Together (\~10 min):** The punchline from Lab 5 — a t-test *is* a regression.
+
+**By the end you should be able to:**
+
+- Fit a simple regression with `lm()` and find the intercept and slope in the output
+- Say what the slope means in the units of the study, out loud, without looking it up
+- Decide whether the intercept means anything at all
+- Predict a score for a specific person, and compute that person's residual
+- Connect *r*, R², and the slope's *t*-test to each other
+- Notice when one strange observation is running the whole model
+:::
+
+------------------------------------------------------------------------
+
+# Set up (5 min)
+
+1.  **Download the data** and save it in the `data` folder of your PSYC 640 R Project.
+
+    - <a href="../files/data/CAH.csv" download="CAH.csv">Cards Against Humanity: Pulse of the Nation (.csv)</a>
+
+2.  **Open your R Project** (double-click the `.Rproj` file). The top-right corner of RStudio should show the project name.
+
+3.  **Create a new Quarto document:** *File → New File → Quarto Document…*
+
+    - Title: `Week 5 - One Line, Two Stories`
+    - Author: you (and your partner)
+    - Save it as `week5_inclass.qmd` in your project folder
+
+4.  **Delete the example text**, then add a setup chunk:
+
+``` r
+library(tidyverse)
+library(rio)
+library(here)
+
+cah <- import(here("data", "CAH.csv"))
+
+glimpse(cah)
+```
+
+::: callout-tip
+## Check yourself
+
+`cah` should have **1,000 rows and 16 columns**. If `here()` cannot find the file, run `here()` in the Console to see where it is looking, and make sure `CAH.csv` is in that folder's `data` subfolder.
+:::
+
+**About the data.** Cards Against Humanity ran a monthly national poll called *Pulse of the Nation*. Among the serious demographic items, they asked how many books a person read in the past year and how many Transformers movies they had seen. Today those two questions are our outcomes.
+
+------------------------------------------------------------------------
+
+# Part A — Follow along: Transformers and age (20 min)
+
+> **Research question:** Do people see fewer Transformers movies as they get older?
+
+## 1. Look before you model
+
+``` r
+cah |>
+  select(age, transformers) |>
+  summary()
+```
+
+`age` runs from 18 to 99. `transformers` runs from 0 to 5, with a mean of about 1.3. Note that **nobody in this dataset is younger than 18** — we will come back to that.
+
+## 2. Plot it first
+
+``` r
+ggplot(cah, aes(x = age, y = transformers)) +
+  geom_point(alpha = .3) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(
+    title = "Transformers movies seen, by age",
+    x = "Age (years)",
+    y = "Number of Transformers movies seen"
+  ) +
+  theme_minimal()
+```
+
+::: callout-tip
+## Talk about it (2 min)
+
+The line slopes down. Before we fit anything: **how strong** does that relationship look to you? If you had to guess *r*, what would you say? Write your guess down — we'll check it in a minute.
+:::
+
+## 3. Correlation first, then the line
+
+``` r
+cor.test(cah$age, cah$transformers)
+```
+
+You should get **r = −.27**, *t*(936) = −8.46, *p* \< .001.
+
+Now the same relationship as a line:
+
+``` r
+mod_tf <- lm(transformers ~ age, data = cah)
+summary(mod_tf)
+```
+
+```
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)
+(Intercept)  2.577000   0.155000  16.626  < 2e-16 ***
+age         -0.025398   0.003002  -8.461  < 2e-16 ***
+
+Residual standard error: 1.50 on 936 degrees of freedom
+Multiple R-squared:  0.0710,    Adjusted R-squared:  0.0700
+```
+
+## 4. Read the three numbers
+
+**The slope: −0.0254.** Each additional year of age is associated with **0.025 fewer** Transformers movies seen. That sounds like nothing — which is why slopes are almost always more honest when you scale them to a meaningful unit:
+
+> Ten years of age is associated with about **0.25 fewer movies**; forty years, about **one whole movie** fewer.
+
+**The intercept: 2.577.** The model's predicted number of movies for a person aged **0**. Newborns do not watch Transformers, and there is nobody under 18 in the data, so this number is an anchor for the line, not a finding.
+
+**R² = .071.** Age accounts for about **7%** of the variation in movies seen. And notice: (−.27)² = .071. **R² is the squared correlation.** Also notice the *t* for the slope (−8.46) is the same *t* `cor.test()` gave you. Same test, two outfits.
+
+## 5. Predict a person, then find the residual
+
+``` r
+# predicted movies for a 20-year-old
+2.577 + (-0.025398 * 20)
+```
+
+The model predicts about **2.07** movies for a 20-year-old.
+
+Now pick a real 20-year-old from the data who has seen **4** movies:
+
+$$\text{residual} = \text{observed} - \text{predicted} = 4 - 2.07 = +1.93$$
+
+Positive residual = **above** the line = the model **under-predicted** this person. The residual is the part of this person the model gets wrong — and in a few weeks, residuals become the whole story.
+
+## ❓Questions for Part A
+
+1.  Write the fitted equation using the variable names.
+2.  What does the model predict for a 50-year-old? For a 70-year-old?
+3.  Would you use this model to predict movies seen for a 10-year-old? Why or why not?
+4.  Can we say that *getting older causes* people to see fewer Transformers movies? What else could produce this pattern?
+
+------------------------------------------------------------------------
+
+# Part B — On your own: do older people read more books? (25 min)
+
+> **Research question:** Does the number of books a person reads in a year go up with age?
+
+Work through the same five steps in your own document. Write your answers as text between the code chunks, not just as output.
+
+## Steps
+
+1.  **Look first.** Run `summary()` on `age` and `books`. Something in `books` should stop you — what is it?
+2.  **Plot it.** Scatterplot with a regression line, labeled properly.
+3.  **Fit it.** `lm(books ~ age, data = cah)` and `summary()`.
+4.  **Read it.** Write one sentence interpreting the slope in real units (per year *and* per decade), one sentence on whether the intercept means anything, and report R².
+5.  **Judge it.** Would you report this model in a paper as it stands? Why or why not?
+
+::: callout-tip
+## Check yourself
+
+The slope is **0.32** books per year of age, *t*(975) = 2.21, **p = .027**, R² = **.005**.
+
+So it is "statistically significant." Now look at that R² again, and look back at your scatterplot.
+:::
+
+## The decision that changes the answer
+
+Someone in this sample reported reading **1,000 books** in the past year — about three a day, every day. Five people reported 500 or more.
+
+Re-fit the model without the responses that are not plausible:
+
+``` r
+cah_trim <- cah |>
+  filter(books <= 365)      # at most one book a day
+
+lm(books ~ age, data = cah_trim) |> summary()
+```
+
+Now the slope is **0.10**, *t*(969) = 1.44, **p = .150**, R² = **.002**. The "significant" result is gone.
+
+## ❓Questions for Part B
+
+1.  Which of the two models would you report? Defend the choice — there is a defensible answer either way, but you have to *make* the case.
+2.  Your cutoff was 365. What would happen with a cutoff of 100? Try it. Does your conclusion depend on a number you picked yourself?
+3.  What would you have to tell a reader for them to be able to judge your decision? Write the one sentence you would put in a methods section.
+4.  Does a p-value of .027 mean this is an important finding? Use the R² in your answer.
+
+::: callout-important
+## The point of Part B
+
+Both models are "correct." Neither one is a mistake in R. The difference between them is a **judgment call you made about your data**, and the p-value flipped because of it. Every analysis you run for the rest of your career will have several of these decisions in it. Making them thoughtfully — and reporting them — is most of what separates trustworthy research from the other kind.
+:::
+
+------------------------------------------------------------------------
+
+# Part C — Together: the Lab 5 punchline (10 min)
+
+In Lab 5 you ran a t-test and then an `lm()` and got suspiciously similar numbers. Let's settle it.
+
+``` r
+cah_mf <- cah |>
+  filter(gender %in% c("Male", "Female"))
+
+# the t-test you already know
+t.test(transformers ~ gender, data = cah_mf, var.equal = TRUE)
+
+# the same question as a line
+lm(transformers ~ gender, data = cah_mf) |> summary()
+```
+
+The t-test gives *t*(911) = −2.29, *p* = .022; means of **1.21** (Female) and **1.44** (Male).
+
+The regression gives an intercept of **1.21** and a slope of **0.23**, with *t* = 2.29 and *p* = .022.
+
+## ❓Questions for Part C
+
+1.  Where does the intercept 1.21 come from? Which group is it?
+2.  Where does the slope 0.23 come from?
+3.  R fit a line through a predictor with only two values. What are the only two predicted values this "line" can produce?
+4.  In one sentence: why is a t-test a special case of regression?
+
+::: callout-note
+## Why this matters
+
+This is the reason we are teaching regression first. You do not have to memorize a separate procedure for every design. One model, `outcome ~ predictor`, handles the continuous case (Parts A and B) and the group case (Part C) — and over the next few weeks we'll add more predictors to the same machine.
+:::
+
+------------------------------------------------------------------------
+
+# Exit ticket ✅
+
+Before you leave, write these three things at the bottom of your document (they'll also help you on Lab 6):
+
+1.  A slope, stated in the units of a study, without using the word "slope."
+2.  One intercept from today that is meaningless, and why.
+3.  One thing that is still muddy — put it in your journal entry this week and I will pick it up next class.
