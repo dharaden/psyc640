@@ -655,7 +655,7 @@
     "href": "weeks/week-4.html",
     "title": "Week 4",
     "section": "",
-    "text": "Last week we were describing our data and getting a visual of what is going on. Now we want to try to make claims about our data. This is the goal of inferential statistics!\nThis week we will have plenty of fun interactive tools to show things like the sampling distribution, the law of large numbers and the central limit theorem. We’ll talk about probability (but not in a scary way). And finally get to do some tests!\n\n\n\n\n\n\nNote\n\n\n\nI spent too much time on getting the slides and interactive components together and didn’t have time to put in JAMOVI pieces. You are welcome to work with JAMOVI if you’d like!\n\n\n\n\n💻 Design & Inference\n\n\n\nInference Machine\nBeginnings of Inference\n\n\n\n📋Lab 4 - Intro to Inference\nChapter 6 - ROS\nChapter 14.1 - ST\nChapter 11 - LSR\n\n\nBack to course schedule ⏎",
+    "text": "Last week we were describing our data and getting a visual of what is going on. Now we want to try to make claims about our data. This is the goal of inferential statistics!\nThis week we will have plenty of fun interactive tools to show things like the sampling distribution, the law of large numbers and the central limit theorem. We’ll talk about probability (but not in a scary way). And finally get to do some tests!\n\n\n\n\n\n\nNote\n\n\n\nI spent too much time on getting the slides and interactive components together and didn’t have time to put in JAMOVI pieces. You are welcome to work with JAMOVI if you’d like!\n\n\n\n\n💻 Design & Inference\n\n\n\nInference Machine\nBeginnings of Inference\n\n\n\n📋Lab 5 - Intro to Inference\nChapter 6 - ROS\nChapter 14.1 - ST\nChapter 11 - LSR\n\n\nBack to course schedule ⏎",
     "crumbs": [
       "Weekly Materials",
       "Week 4 - Design & Inference"
@@ -688,7 +688,7 @@
     "href": "weeks/week-4.html#for-next-time",
     "title": "Week 4",
     "section": "",
-    "text": "📋Lab 4 - Intro to Inference\nChapter 6 - ROS\nChapter 14.1 - ST\nChapter 11 - LSR\n\n\nBack to course schedule ⏎",
+    "text": "📋Lab 5 - Intro to Inference\nChapter 6 - ROS\nChapter 14.1 - ST\nChapter 11 - LSR\n\n\nBack to course schedule ⏎",
     "crumbs": [
       "Weekly Materials",
       "Week 4 - Design & Inference"
@@ -1199,35 +1199,55 @@
     "href": "labs/lab-05_two-tests-one-line.html",
     "title": "Lab 5: Two Tests, One Line",
     "section": "",
-    "text": "This week we connected study design to inference: how data were collected decides what claims you can make, and a p-value tells you how surprising your data would be if nothing were going on. In this lab you’ll put those ideas to work with two tests you already know, then look at them in a new way. That new view is the foundation for everything we do next week.\nHere are the things you’ll need for this lab:\n\nDownload Lab 5 (.qmd)\nDownload Study Strategies Data (.csv)\n\nSave the .csv in the data folder of your PSYC 640 R Project, and the .qmd in your project folder.\nWhen you’re finished, render your file to a Word document, and submit both the .qmd file and the Word doc to myCourses.\n\n\n\n\n\n\nNoteWhat you’ll practice\n\n\n\n\nTelling experimental variables apart from observational ones, and what that means for causal claims\nRunning and reporting a t-test and a correlation in APA style\nInterpreting a p-value correctly\nSeeing a group difference as a line\nRunning lm() for the first time, and discovering how it is different"
+    "text": "This week we connected study design to inference: how data were collected decides what claims you can make, and a p-value tells you how surprising your data would be if nothing were going on. In this lab you’ll put those ideas to work with two tests you already know, then look at them in a new way. That new view is the foundation for everything we do next week.\nHere are the things you’ll need for this lab:\n\nDownload Lab 5 (.qmd)\nDownload Study Strategies Data (.csv)\n\nSave the .csv in the data folder of your PSYC 640 R Project, and the .qmd in your project folder.\nWhen you’re finished, render your file to a Word document, and submit both the .qmd file and the Word doc to myCourses.\n\n\n\n\n\n\nNoteWhat you’ll practice\n\n\n\n\nTelling experimental variables apart from observational ones, and what that means for causal claims\nRunning and reporting a t-test and a correlation in APA style\nInterpreting a p-value correctly\nSeeing a group difference as a line\nRunning lm() for the first time, and discovering how it is different",
+    "crumbs": [
+      "Labs",
+      "Lab 5 - Intro to Inference"
+    ]
   },
   {
     "objectID": "labs/lab-05_two-tests-one-line.html#instructions",
     "href": "labs/lab-05_two-tests-one-line.html#instructions",
     "title": "Lab 5: Two Tests, One Line",
     "section": "",
-    "text": "This week we connected study design to inference: how data were collected decides what claims you can make, and a p-value tells you how surprising your data would be if nothing were going on. In this lab you’ll put those ideas to work with two tests you already know, then look at them in a new way. That new view is the foundation for everything we do next week.\nHere are the things you’ll need for this lab:\n\nDownload Lab 5 (.qmd)\nDownload Study Strategies Data (.csv)\n\nSave the .csv in the data folder of your PSYC 640 R Project, and the .qmd in your project folder.\nWhen you’re finished, render your file to a Word document, and submit both the .qmd file and the Word doc to myCourses.\n\n\n\n\n\n\nNoteWhat you’ll practice\n\n\n\n\nTelling experimental variables apart from observational ones, and what that means for causal claims\nRunning and reporting a t-test and a correlation in APA style\nInterpreting a p-value correctly\nSeeing a group difference as a line\nRunning lm() for the first time, and discovering how it is different"
+    "text": "This week we connected study design to inference: how data were collected decides what claims you can make, and a p-value tells you how surprising your data would be if nothing were going on. In this lab you’ll put those ideas to work with two tests you already know, then look at them in a new way. That new view is the foundation for everything we do next week.\nHere are the things you’ll need for this lab:\n\nDownload Lab 5 (.qmd)\nDownload Study Strategies Data (.csv)\n\nSave the .csv in the data folder of your PSYC 640 R Project, and the .qmd in your project folder.\nWhen you’re finished, render your file to a Word document, and submit both the .qmd file and the Word doc to myCourses.\n\n\n\n\n\n\nNoteWhat you’ll practice\n\n\n\n\nTelling experimental variables apart from observational ones, and what that means for causal claims\nRunning and reporting a t-test and a correlation in APA style\nInterpreting a p-value correctly\nSeeing a group difference as a line\nRunning lm() for the first time, and discovering how it is different",
+    "crumbs": [
+      "Labs",
+      "Lab 5 - Intro to Inference"
+    ]
   },
   {
     "objectID": "labs/lab-05_two-tests-one-line.html#scenario",
     "href": "labs/lab-05_two-tests-one-line.html#scenario",
     "title": "Lab 5: Two Tests, One Line",
     "section": "Scenario",
-    "text": "Scenario\nThe graduate school wants to know how students can study more effectively. Researchers ran a study with 120 graduate students:\n\nEach student was randomly assigned to either Rereading their notes or Retrieval Practice (quizzing themselves without looking).\nThe researchers also measured study time, sleep, and test anxiety.\nEveryone took the same stats quiz."
+    "text": "Scenario\nThe graduate school wants to know how students can study more effectively. Researchers ran a study with 120 graduate students:\n\nEach student was randomly assigned to either Rereading their notes or Retrieval Practice (quizzing themselves without looking).\nThe researchers also measured study time, sleep, and test anxiety.\nEveryone took the same stats quiz.",
+    "crumbs": [
+      "Labs",
+      "Lab 5 - Intro to Inference"
+    ]
   },
   {
     "objectID": "labs/lab-05_two-tests-one-line.html#variables",
     "href": "labs/lab-05_two-tests-one-line.html#variables",
     "title": "Lab 5: Two Tests, One Line",
     "section": "Variables",
-    "text": "Variables\n\n\n\n\n\n\n\n\nVariable\nDescription\nType\n\n\n\n\nstudent_id\nUnique student ID\nID\n\n\ncondition\n\"Rereading\" or \"Retrieval Practice\" (randomly assigned)\nCategorical (2 groups)\n\n\nstudy_minutes\nMinutes spent studying (measured)\nContinuous\n\n\nsleep_hours\nHours of sleep the night before (measured)\nContinuous\n\n\ntest_anxiety\nTest anxiety, 10–50 (measured; higher = more anxious)\nContinuous\n\n\nexam_score\nQuiz score, 0–100\nContinuous"
+    "text": "Variables\n\n\n\n\n\n\n\n\nVariable\nDescription\nType\n\n\n\n\nstudent_id\nUnique student ID\nID\n\n\ncondition\n\"Rereading\" or \"Retrieval Practice\" (randomly assigned)\nCategorical (2 groups)\n\n\nstudy_minutes\nMinutes spent studying (measured)\nContinuous\n\n\nsleep_hours\nHours of sleep the night before (measured)\nContinuous\n\n\ntest_anxiety\nTest anxiety, 10–50 (measured; higher = more anxious)\nContinuous\n\n\nexam_score\nQuiz score, 0–100\nContinuous",
+    "crumbs": [
+      "Labs",
+      "Lab 5 - Intro to Inference"
+    ]
   },
   {
     "objectID": "labs/lab-05_two-tests-one-line.html#exercises-at-a-glance",
     "href": "labs/lab-05_two-tests-one-line.html#exercises-at-a-glance",
     "title": "Lab 5: Two Tests, One Line",
     "section": "Exercises at a Glance",
-    "text": "Exercises at a Glance\n\n\n\n\n\n\n\n\nExercise\nWhat you’ll do\nKey functions\n\n\n\n\n1. Import & Design\nLoad the data; decide which variables support causal claims\nimport(), here(), glimpse()\n\n\n2. Describe\nGroup means and SDs\ngroup_by(), summarize()\n\n\n3. Compare Groups\nBoxplot + independent-samples t-test\nggplot(), t.test(var.equal = TRUE)\n\n\n4. Association\nScatterplot + correlation\ngeom_smooth(), cor.test()\n\n\n5. Group Difference as a Line\nCode condition as 0/1 and draw a line through it\nmutate(), if_else()\n\n\n6. Sneak Peek 👀\nRun lm() and compare its numbers to Exercises 3–4\nlm(), broom::tidy()\n\n\n7. Reflect & Predict\nWhat does “everything is a linear model” mean?\n(writing)\n\n\n\n\n\n\n\n\n\nTipTips\n\n\n\n\nExercise 3: Use var.equal = TRUE in t.test(). It assumes both groups have similar spread (Student’s t-test), which is the version that matches lm().\nExercise 5: if_else(condition == \"Retrieval Practice\", 1, 0) turns the groups into numbers. scale_x_continuous(breaks = c(0, 1)) keeps the x-axis clean.\nExercise 6: You haven’t learned lm() yet, and that’s intentional! broom::tidy() gives a short table: find the row that is not (Intercept) and read across it.\nGrading: Exercises 6–7 are graded on completion and effort, not on getting the “right” answer.\nStuck on the t-test sign? R compares the groups in alphabetical order. Look closely at which group comes first.\n\n\n\n\nNext week: Simple Regression, the Linear Model. Come ready to share your answer to Question 11!"
+    "text": "Exercises at a Glance\n\n\n\n\n\n\n\n\nExercise\nWhat you’ll do\nKey functions\n\n\n\n\n1. Import & Design\nLoad the data; decide which variables support causal claims\nimport(), here(), glimpse()\n\n\n2. Describe\nGroup means and SDs\ngroup_by(), summarize()\n\n\n3. Compare Groups\nBoxplot + independent-samples t-test\nggplot(), t.test(var.equal = TRUE)\n\n\n4. Association\nScatterplot + correlation\ngeom_smooth(), cor.test()\n\n\n5. Group Difference as a Line\nCode condition as 0/1 and draw a line through it\nmutate(), if_else()\n\n\n6. Sneak Peek 👀\nRun lm() and compare its numbers to Exercises 3–4\nlm(), broom::tidy()\n\n\n7. Reflect & Predict\nWhat does “everything is a linear model” mean?\n(writing)\n\n\n\n\n\n\n\n\n\nTipTips\n\n\n\n\nExercise 3: Use var.equal = TRUE in t.test(). It assumes both groups have similar spread (Student’s t-test), which is the version that matches lm().\nExercise 5: if_else(condition == \"Retrieval Practice\", 1, 0) turns the groups into numbers. scale_x_continuous(breaks = c(0, 1)) keeps the x-axis clean.\nExercise 6: You haven’t learned lm() yet, and that’s intentional! broom::tidy() gives a short table: find the row that is not (Intercept) and read across it.\nGrading: Exercises 6–7 are graded on completion and effort, not on getting the “right” answer.\nStuck on the t-test sign? R compares the groups in alphabetical order. Look closely at which group comes first.\n\n\n\n\nNext week: Simple Regression, the Linear Model. Come ready to share your answer to Question 11!",
+    "crumbs": [
+      "Labs",
+      "Lab 5 - Intro to Inference"
+    ]
   },
   {
     "objectID": "class-activities/wk2_tidy-intro.html",
