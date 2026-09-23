@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
+
+  <title>PSYC 640 - Graduate Statistics – Week 05: Simple Regression with JAMOVI</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-257723e3f8c37b3170acb06a96dd7d4b.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+<meta property="og:title" content="Week 05: Simple Regression with JAMOVI – PSYC 640 - Graduate Statistics">
+<meta property="og:description" content="Date: September 24, 2026">
+<meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Week 05: Simple Regression with JAMOVI</h1>
+  <p class="subtitle">Date: September 24, 2026</p>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section id="today" class="slide level2">
+<h2>Today…</h2>
+<p><strong>The Linear Model</strong> — the same machine, driven by point-and-click</p>
+<ul>
+<li>Why a line? (and why regression <em>first</em>)</li>
+<li>Data = Model + Error</li>
+<li>Where the intercept and slope come from</li>
+<li>Reading a slope out loud</li>
+<li>How well does the line fit? (<span class="math inline">\(R^2\)</span>, effect size)</li>
+<li>The punchline from Lab 5</li>
+</ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>This is the <strong>JAMOVI</strong> version of this week’s lecture. The concepts, the data, and every number are identical to the R version — only the buttons change. Use whichever you like; the exam-room skill is <em>reading</em> the output, not producing it.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="first-a-confession-about-lab-5" class="slide level2 scrollable">
+<h2>First, a confession about Lab 5</h2>
+<p>In Lab 5 you ran three things:</p>
+<ol type="1">
+<li>A <strong>t-test</strong> comparing two groups</li>
+<li>A <strong>correlation</strong> between two continuous variables</li>
+<li>An <code>lm()</code> — the “sneak peek” 👀</li>
+</ol>
+<p>And the numbers came back <em>the same</em>.</p>
+<div class="fragment">
+<p>That was not a bug, and it was not a coincidence.</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Regression is not a new test that sits next to t-tests and correlations. It is the <strong>general machine</strong> that both of them are special cases of. In JAMOVI, that machine is <strong>Analyses → Regression → Linear Regression</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="why-we-teach-regression-first" class="slide level2">
+<h2>Why we teach regression first</h2>
+<p>Regression is a general data analytic system</p>
+<ul>
+<li><p>Lots of things fall under the umbrella of regression</p></li>
+<li><p>It handles many forms of relations and types of variables</p></li>
+<li><p>The output gives you <strong>effect sizes</strong> <em>and</em> <strong>statistical significance</strong></p></li>
+<li><p>We can add multiple predictors and account for their intercorrelations</p></li>
+</ul>
+<div class="fragment">
+<p>Learn one machine well, then add parts to it. That is the whole plan for the next eight weeks.</p>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="uses-for-regression">Uses for regression</h3>
+<ul>
+<li class="fragment"><p><strong>Adjustment</strong>: Take into account (<em>control</em>) known effects in a relationship</p></li>
+<li class="fragment"><p><strong>Prediction</strong>: Develop a model based on what has happened previously to predict what will happen in the future</p></li>
+<li class="fragment"><p><strong>Explanation</strong>: Examine the influence of one or more variables on some outcome</p></li>
+</ul>
+</section>
+<section>
+<section id="part-1-building-the-line" class="title-slide slide level1 center">
+<h1>Part 1: Building the Line</h1>
+
+</section>
+<section class="slide level2">
+
+<h3 id="the-core-idea">The core idea</h3>
+<p>With regression, we are <strong><em>building a model</em></strong> that we think best represents the data, and the broader world</p>
+<p><span class="math display">\[
+Data = Model + error
+\]</span></p>
+<div class="fragment">
+<p>Every model we build for the rest of the semester is a variation on this sentence.</p>
+</div>
+</section>
+<section id="a-line-you-already-know" class="slide level2">
+<h2>A line you already know</h2>
+<p>At the simplest form we draw a line to characterize the linear relationship between two variables, so that for any value of <code>x</code> we have an estimate of <code>y</code></p>
+<p><span class="math display">\[
+Y = mX + b
+\]</span></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><p>Y = Outcome Variable (DV)</p></li>
+<li class="fragment"><p>m = Slope Term</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><p>X = Predictor (IV)</p></li>
+<li class="fragment"><p>b = Intercept</p></li>
+</ul>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="lets-science-up-the-equation">Let’s “science up” the equation</h3>
+<p><span class="math display">\[
+Y_i = b_0 + b_1X_i + e_i
+\]</span></p>
+<p>This captures how we calculate <strong>each observation</strong> ( <span class="math inline">\(Y_i\)</span> )</p>
+<p><span class="math display">\[
+\hat{Y_i} = b_0 + b_1X_i
+\]</span></p>
+<p>This gives the “best guess” or <em>expected</em> value of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X\)</span></p>
+</section>
+<section class="slide level2">
+
+<h3 id="expected-vs.-actual">Expected vs.&nbsp;Actual</h3>
+<p><span class="math display">\[Y_i = b_{0} + b_{1}X_i + e_i \qquad \hat{Y_i} = b_{0} + b_{1}X_i\]</span></p>
+<p><span class="math inline">\(\hat{Y}\)</span> signifies the <strong>fitted</strong> score — no error. We interpret it as “on average.”</p>
+<p>The difference between the fitted and the observed score is the <strong>residual</strong>:</p>
+<p><span class="math display">\[Y_i - \hat{Y_i} = e_i\]</span></p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>JAMOVI will hand you both of these if you ask: in <strong>Linear Regression → Save</strong>, tick <strong>Predicted values</strong> and <strong>Residuals</strong>, and two new columns appear in your spreadsheet.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="ols" class="slide level2">
+<h2>OLS</h2>
+<ul>
+<li class="fragment"><p>How do we find the regression estimates?</p></li>
+<li class="fragment"><p><strong>O</strong>rdinary <strong>L</strong>east <strong>S</strong>quares estimation</p></li>
+<li class="fragment"><p>Minimizes deviations</p>
+<ul>
+<li class="fragment"><span class="math display">\[ min\sum(Y_{i} - \hat{Y} ) ^{2} \]</span></li>
+</ul></li>
+<li class="fragment"><p>Other estimation procedures are possible (and necessary in some cases)</p></li>
+</ul>
+</section>
+<section id="ols-1" class="slide level2">
+<h2>OLS</h2>
+<p>The line that yields the smallest sum of squared deviations</p>
+<p><span class="math display">\[\Sigma(Y_i - \hat{Y_i})^2\]</span> <span class="math display">\[= \Sigma(Y_i - (b_0+b_{1}X_i))^2\]</span> <span class="math display">\[= \Sigma(e_i)^2\]</span></p>
+<div class="fragment">
+<p>You <em>could</em> try many different coefficients until you find the pair with the smallest sum of squared deviations. Luckily, there are simple calculations that yield the OLS solution every time — and JAMOVI does them the moment you drop a variable in a box.</p>
+</div>
+</section>
+<section id="watch-ols-happen" class="slide level2">
+<h2>🔍 Watch OLS happen</h2>
+<p>Drag the points around and watch the line chase them:</p>
+<p><a href="https://setosa.io/ev/ordinary-least-squares-regression/" class="uri">https://setosa.io/ev/ordinary-least-squares-regression/</a></p>
+<p><a href="https://observablehq.com/@yizhe-ang/interactive-visualization-of-linear-regression">https://observablehq.com/@yizhe-ang/interactive-visualization-of-linear-regression</a></p>
+</section>
+<section id="where-does-the-slope-come-from" class="slide level2">
+<h2>Where does the slope come from? 🤔</h2>
+<p>Remember <strong>covariance</strong> from last week:</p>
+<p><span class="math display">\[cov_{xy} = \frac{\sum(x-\bar{x})(y-\bar{y})}{N-1}\]</span></p>
+<p>and the correlation, which standardizes it:</p>
+<p><span class="math display">\[r_{xy} = \frac{cov_{xy}}{s_x s_y}\]</span></p>
+<div class="fragment">
+<p>The regression coefficient is built from exactly the same pieces.</p>
+</div>
+</section>
+<section id="regression-coefficient-b_1" class="slide level2">
+<h2>Regression coefficient, <span class="math inline">\(b_{1}\)</span></h2>
+<p><span class="math display">\[b_{1} = \frac{cov_{XY}}{s_{x}^{2}} = r_{xy} \frac{s_{y}}{s_{x}}\]</span></p>
+<p>What units is the regression coefficient in?</p>
+<div class="fragment">
+<p>The slope equals the estimated change in <strong>Y</strong> for a <strong>1-unit</strong> change in <strong>X</strong></p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>A correlation is unitless. A slope is <strong>in the units of your study</strong>. That is why a slope is often the more useful number to report to a human being.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="slope-is-the-correlation-rescaled" class="slide level2">
+<h2>Slope <em>is</em> the correlation (rescaled)</h2>
+<p><span class="math display">\[\Large b_{1} = r_{xy} \frac{s_{y}}{s_{x}}\]</span></p>
+<p>If the standard deviation of both X and Y is equal to 1:</p>
+<p><span class="math display">\[\Large b_1 = r_{xy} \frac{s_{y}}{s_{x}} = r_{xy} \frac{1}{1} = r_{xy} = \beta_{yx}\]</span></p>
+<div class="fragment">
+<p><strong>Standardize both variables and the slope becomes the correlation.</strong> In JAMOVI that is the <strong>Standardized estimate</strong> checkbox under <em>Model Coefficients</em> — tick it and watch it equal <em>r</em>.</p>
+</div>
+</section>
+<section id="estimating-the-intercept-b_0" class="slide level2">
+<h2>Estimating the intercept, <span class="math inline">\(b_0\)</span></h2>
+<ul>
+<li>The intercept adjusts for differences in the means of X and Y</li>
+</ul>
+<p><span class="math display">\[\hat{Y_i} = \bar{Y} + r_{xy} \frac{s_{y}}{s_{x}}(X_i-\bar{X})\]</span></p>
+<ul>
+<li><p>It is where the regression line crosses the y-axis, at <span class="math inline">\(X = 0\)</span></p></li>
+<li><p>It ensures the line runs through the point <span class="math inline">\((\bar{X}, \bar{Y})\)</span></p></li>
+</ul>
+<p><span class="math display">\[\Large b_0 = \bar{Y} - b_1\bar{X}\]</span></p>
+</section></section>
+<section>
+<section id="part-2-reading-a-line-out-loud" class="title-slide slide level1 center">
+<h1>Part 2: Reading a Line Out Loud</h1>
+
+</section>
+<section id="our-data-today" class="slide level2">
+<h2>Our data today 🃏</h2>
+<p><strong>Cards Against Humanity: <em>Pulse of the Nation</em></strong> — a national poll that asked serious demographic questions <em>and</em> some very strange ones.</p>
+<p><a href="../files/data/CAH.csv" download="CAH.csv">Download the data (.csv)</a></p>
+<blockquote>
+<p>☰ Menu &gt; <strong>Open</strong> &gt; Browse &gt; <code>CAH.csv</code></p>
+</blockquote>
+<p>JAMOVI will guess the measure type for each column. Check the icons at the top of each column:</p>
+<ul>
+<li><code>age</code>, <code>transformers</code>, <code>books</code> should be <strong>continuous</strong> (ruler icon)</li>
+<li><code>gender</code> should be <strong>nominal</strong> (three circles)</li>
+</ul>
+<p>Click the column header to fix any it guessed wrong.</p>
+</section>
+<section id="step-1-always-visualize-first" class="slide level2">
+<h2>Step 1: ALWAYS visualize first</h2>
+<p>We need the <strong>scatr</strong> module for scatterplots.</p>
+<blockquote>
+<p>➕ <strong>Modules</strong> &gt; jamovi library &gt; install <strong>scatr</strong></p>
+</blockquote>
+<p>Then:</p>
+<blockquote>
+<p><strong>Analyses &gt; Exploration &gt; scatr &gt; Scatterplot</strong></p>
+</blockquote>
+<ul>
+<li><strong>X-Axis:</strong> <code>age</code> · <strong>Y-Axis:</strong> <code>transformers</code></li>
+<li><strong>Regression Line:</strong> choose <strong>Linear</strong></li>
+</ul>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Talk about it (2 min)</strong></p>
+</div>
+<div class="callout-content">
+<p>The line slopes down. Before we fit anything: <strong>how strong</strong> does that relationship look to you? If you had to guess <em>r</em>, what would you say? Write your guess down.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="step-2-descriptives-first" class="slide level2">
+<h2>Step 2: Descriptives first</h2>
+<blockquote>
+<p><strong>Analyses &gt; Exploration &gt; Descriptives</strong></p>
+</blockquote>
+<p>Drag <code>age</code> and <code>transformers</code> into <strong>Variables</strong>.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>N</th>
+<th>Mean</th>
+<th>SD</th>
+<th>Min</th>
+<th>Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>age</code></td>
+<td>1000</td>
+<td>49.41</td>
+<td>16.63</td>
+<td>18</td>
+<td>99</td>
+</tr>
+<tr class="even">
+<td><code>transformers</code></td>
+<td>938</td>
+<td>1.33</td>
+<td>1.56</td>
+<td>0</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>Notice the two different Ns. <strong>62 people did not answer the Transformers question.</strong> JAMOVI, like R, will quietly use only the complete cases when it fits the model. Worth knowing <em>before</em> you report an N.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="step-3-the-correlation" class="slide level2">
+<h2>Step 3: The correlation</h2>
+<blockquote>
+<p><strong>Analyses &gt; Regression &gt; Correlation Matrix</strong></p>
+</blockquote>
+<p>Drag in <code>age</code> and <code>transformers</code>. Tick <strong>Pearson</strong>, <strong>p-value</strong>, and (optionally) <strong>Correlation matrix</strong> under Plot.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>age</th>
+<th>transformers</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>transformers</strong></td>
+<td>r = <strong>−0.266</strong></td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>p <strong>&lt; .001</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>How close was your guess?</p>
+</section>
+<section id="step-4-the-same-relationship-as-a-line" class="slide level2">
+<h2>Step 4: The same relationship as a line</h2>
+<blockquote>
+<p><strong>Analyses &gt; Regression &gt; Linear Regression</strong></p>
+</blockquote>
+<ul>
+<li><strong>Dependent Variable:</strong> <code>transformers</code></li>
+<li><strong>Covariates:</strong> <code>age</code> <em>(continuous predictors go in Covariates)</em></li>
+</ul>
+<p>Open <strong>Model Coefficients</strong> and tick <strong>Standardized estimate</strong>.</p>
+<p><strong>Model Fit</strong></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>R</th>
+<th>R²</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.266</td>
+<td><strong>0.071</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Model Coefficients</strong></p>
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Predictor</th>
+<th>Estimate</th>
+<th>SE</th>
+<th>t</th>
+<th>p</th>
+<th>Stand. Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Intercept</td>
+<td><strong>2.577</strong></td>
+<td>0.155</td>
+<td>16.63</td>
+<td>&lt; .001</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>age</td>
+<td><strong>−0.0254</strong></td>
+<td>0.0030</td>
+<td>−8.46</td>
+<td>&lt; .001</td>
+<td><strong>−0.266</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="saying-the-slope-out-loud" class="slide level2">
+<h2>Saying the slope out loud</h2>
+<p><span class="math display">\[\widehat{transformers} = 2.58 - 0.025(age)\]</span></p>
+<ul>
+<li class="fragment"><p>“Each <strong>additional year</strong> of age is associated with <strong>0.025 fewer</strong> Transformers movies seen.”</p></li>
+<li class="fragment"><p>That sounds like nothing. So <strong>rescale it to a unit people care about</strong>:</p>
+<ul>
+<li class="fragment">10 years → about <strong>0.25 fewer</strong> movies</li>
+<li class="fragment">40 years → about <strong>one whole movie</strong> fewer</li>
+</ul></li>
+<li class="fragment"><p>Note the word <strong>associated</strong>. Nobody was randomly assigned an age.</p></li>
+</ul>
+</section>
+<section id="and-the-intercept" class="slide level2">
+<h2>And the intercept?</h2>
+<p><span class="math inline">\(b_0 = 2.58\)</span> = the predicted number of Transformers movies for a person aged <strong>zero</strong>.</p>
+<div class="fragment">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Careful</strong></p>
+</div>
+<div class="callout-content">
+<p>Nobody in this sample is under <strong>18</strong>. A prediction at age 0 is <strong>extrapolation</strong> — the model has never seen data anywhere near there.</p>
+<p>The intercept is an <strong>anchor for the line</strong>, not a finding.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>When zero is not meaningful, <strong>centering</strong> the predictor fixes the interpretation (we will do this for real in Week 9).</p>
+</div>
+</section>
+<section id="predict-a-person-find-a-residual" class="slide level2">
+<h2>Predict a person, find a residual</h2>
+<p><strong>By hand:</strong> <span class="math inline">\(2.577 + (-0.0254 \times 20) = 2.07\)</span> movies for a 20-year-old.</p>
+<p><strong>By JAMOVI:</strong> in <strong>Linear Regression → Save</strong>, tick <strong>Predicted values</strong> and <strong>Residuals</strong>. Two new columns appear in the <strong>Data</strong> tab — one row per person.</p>
+<div class="fragment">
+<p>A 20-year-old in the data who has seen <strong>4</strong> movies:</p>
+<p><span class="math display">\[e_i = Y_i - \hat{Y_i} = 4 - 2.07 = +1.93\]</span></p>
+<p><strong>Positive residual</strong> → above the line → the model <strong>under-predicted</strong> this person.</p>
+</div>
+</section>
+<section id="activity-stop-1-one-line-two-stories" class="slide level2">
+<h2>🛠️ Activity Stop 1: One Line, Two Stories</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Part A: Follow along</strong> · ~20 min · Pairs</p>
+</div>
+</div>
+</div>
+<p>We fit this model together, from the top:</p>
+<ul>
+<li>Plot it, then guess <em>r</em> <strong>before</strong> you run it</li>
+<li>Fit the model; find the intercept and slope in the Coefficients table</li>
+<li>Say the slope in a unit that means something</li>
+<li>Predict a person and compute their residual</li>
+</ul>
+<p><a href="../class-activities/wk5_linear-model.html" class="button" target="_blank">Open the activity</a></p>
+</section>
+<section id="break" class="slide level2" data-background-color="#C9ADE0">
+<h2>☕ Break</h2>
+<p><strong>10 minutes</strong></p>
+<p>When we come back: how do we know if this line is any <em>good</em>?</p>
+</section></section>
+<section>
+<section id="part-3-how-well-does-the-line-fit" class="title-slide slide level1 center">
+<h1>Part 3: How Well Does the Line Fit?</h1>
+
+</section>
+<section id="statistical-inference" class="slide level2">
+<h2>Statistical inference</h2>
+<ul>
+<li><p>The way the world is = our model + error</p></li>
+<li><p>How good is our model? Does it “fit” the data well?</p></li>
+</ul>
+<div class="fragment">
+<p>To assess fit, we examine the proportion of variance in our outcome that is “explained” by our model.</p>
+<p>To do that, we <strong>partition the variance</strong> into two categories: variability captured by the model, and variability that is not.</p>
+</div>
+</section>
+<section id="partitioning-variation" class="slide level2">
+<h2>Partitioning variation</h2>
+<p>Start with the relationship between observed <span class="math inline">\(Y\)</span> and fitted <span class="math inline">\(\hat{Y}\)</span>:</p>
+<p><span class="math display">\[Y_i = \hat{Y}_i + e_i\]</span></p>
+<div class="fragment">
+<p>Variances are <strong>additive when two variables are independent</strong>. If C = A + B, then the variance of C is the sum of the variances of A and B.</p>
+</div>
+<div class="fragment">
+<p>Why can we use that rule here?</p>
+<aside class="notes">
+<p>Students must recognize that Y-hat and e are uncorrelated — they must be, by the way OLS is built.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="partitioning-variation-1" class="slide level2">
+<h2>Partitioning variation</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span style="font-size:80%"><span class="math inline">\(\hat{Y}_i\)</span> and <span class="math inline">\(e_i\)</span> are independent of each other. So the variance of <span class="math inline">\(Y\)</span> equals the variance of <span class="math inline">\(\hat{Y}\)</span> plus the variance of <span class="math inline">\(e\)</span>.</span></p>
+<p><span class="math display">\[\large s^2_Y = s^2_{\hat{Y}} + s^2_{e}\]</span></p>
+</div><div class="column" style="width:50%;">
+<p><span style="font-size:80%">Variances are sums of squares divided by N−1, and all have the same sample size here, so:</span></p>
+<p><span class="math display">\[\large SS_Y = SS_{\hat{Y}} + SS_{\text{e}}\]</span></p>
+</div></div>
+<div class="fragment">
+<p><span class="math display">\[ SS_Y = SS_{\text{Model}} + SS_{\text{Residual}}\]</span></p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Want to <em>see</em> those sums of squares? In Linear Regression, open <strong>Model Fit → Overall Model Test (F test)</strong>. That F is <span class="math inline">\(SS_{Model}\)</span> and <span class="math inline">\(SS_{Residual}\)</span>, each divided by its degrees of freedom.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="coefficient-of-determination" class="slide level2">
+<h2>Coefficient of Determination</h2>
+<p><span class="math display">\[\Large \frac{SS_{Model}}{SS_{Y}} = \frac{s_{Model}^2}{s_{y}^2} = R^2\]</span></p>
+<p><span class="math inline">\(R^2\)</span> is the <strong>proportion of variance in Y explained by the model</strong></p>
+<div class="fragment">
+<p><span class="math display">\[\large \sqrt{R^2} = r_{Y\hat{Y}}\]</span></p>
+<p>With one predictor, that is just our old friend <span class="math inline">\(r\)</span>.</p>
+</div>
+</section>
+<section id="ta-da" class="slide level2">
+<h2>Ta da! 🎉</h2>
+<p>Look back at the two tables you already have open:</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Correlation Matrix</strong></p>
+<p>r = <strong>−0.266</strong></p>
+<p>(−0.266)² = <strong>0.071</strong></p>
+</div><div class="column" style="width:50%;">
+<p><strong>Linear Regression → Model Fit</strong></p>
+<p>R = 0.266</p>
+<p>R² = <strong>0.071</strong></p>
+</div></div>
+<div class="fragment">
+<p>And the <strong>Standardized estimate</strong> for <code>age</code>? <strong>−0.266</strong>. The same number, wearing a third hat.</p>
+</div>
+</section>
+<section id="significance-neq-importance" class="slide level2">
+<h2>Significance <span class="math inline">\(\neq\)</span> importance</h2>
+<p>The <span class="math inline">\(p\)</span>-value tells us the effect is <strong>likely not zero</strong>. It says <em>nothing</em> about whether the effect is large or meaningful.</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>With a large enough sample, a tiny, trivial effect becomes statistically significant. Our <em>n</em> here is <strong>938</strong>.</p>
+</div>
+</div>
+</div>
+<p><strong>Statistical Significance</strong> <span class="math inline">\(\neq\)</span> <strong>Practical Significance</strong></p>
+</section>
+<section id="effect-size-for-a-regression" class="slide level2 scrollable">
+<h2>Effect size for a regression</h2>
+<ol type="1">
+<li><p><strong>The slope itself</strong> — in the units of your study. The most concrete thing you have.</p></li>
+<li><p><strong>Standardized estimate /</strong> <span class="math inline">\(r\)</span> — Cohen’s rough guide: small (|.10|), medium (|.30|), large (|.50|)</p></li>
+<li><p><strong>Coefficient of determination</strong> <span class="math inline">\(R^2\)</span> — proportion of variance accounted for</p></li>
+</ol>
+<div class="fragment">
+<p>For our model: <span class="math inline">\(r = -.27\)</span>, so <span class="math inline">\(R^2 = .071\)</span></p>
+<blockquote>
+<p>“Approximately <strong>7%</strong> of the variability in Transformers movies seen is accounted for by age.”</p>
+</blockquote>
+</div>
+</section>
+<section id="writing-it-up" class="slide level2">
+<h2>Writing it up</h2>
+<p>Template: <em>b</em> = slope, <em>t</em>(df) = statistic, <em>p</em> = p-value, plus <span class="math inline">\(R^2\)</span></p>
+<blockquote>
+<p>Age significantly predicted the number of Transformers movies a respondent had seen, <em>b</em> = −0.03, <em>t</em>(936) = −8.46, <em>p</em> &lt; .001. Each additional decade of age was associated with about a quarter of a movie fewer, and age accounted for 7.1% of the variance in movies seen (<span class="math inline">\(R^2\)</span> = .07).</p>
+</blockquote>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Notice what the good version includes: the estimate <strong>in real units</strong>, the test, <em>and</em> a statement of how much it matters. All three.</p>
+<p>JAMOVI’s tables are nearly APA-formatted already — right-click any table → <strong>Export</strong> (or copy) to drop it into Word.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="checking-the-residuals" class="slide level2">
+<h2>Checking the residuals</h2>
+<blockquote>
+<p><strong>Linear Regression &gt; Assumption Checks</strong></p>
+</blockquote>
+<ul>
+<li><strong>Residual Plots</strong> gives you residuals vs.&nbsp;fitted values, plus a Q-Q plot</li>
+<li><strong>Q-Q plot of residuals</strong> checks the normality of the errors</li>
+</ul>
+<div class="fragment">
+<p>The residuals-vs-fitted plot should look like a shapeless cloud with no trend. Flat. <strong>By construction</strong> — and in Week 10 we will use that fact to catch models that are lying to us.</p>
+</div>
+</section></section>
+<section>
+<section id="part-4-the-lab-5-punchline" class="title-slide slide level1 center">
+<h1>Part 4: The Lab 5 Punchline</h1>
+
+</section>
+<section id="a-t-test-is-a-regression" class="slide level2">
+<h2>A t-test <em>is</em> a regression</h2>
+<p>First the test you already know:</p>
+<blockquote>
+<p><strong>Analyses &gt; T-Tests &gt; Independent Samples T-Test</strong></p>
+</blockquote>
+<ul>
+<li><strong>Dependent Variable:</strong> <code>transformers</code> · <strong>Grouping Variable:</strong> <code>gender</code></li>
+<li>Tick <strong>Student’s</strong> (equal variances) and <strong>Descriptives</strong></li>
+</ul>
+<p><em>(Filter to Male/Female first — Data → Filters → <code>gender != "Other"</code>)</em></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Test</th>
+<th>statistic</th>
+<th>df</th>
+<th>p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Student’s t</td>
+<td><strong>−2.29</strong></td>
+<td>911</td>
+<td><strong>0.022</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Group means: Female <strong>1.21</strong> · Male <strong>1.44</strong></p>
+</section>
+<section id="the-same-question-as-a-line" class="slide level2">
+<h2>The same question as a line</h2>
+<blockquote>
+<p><strong>Analyses &gt; Regression &gt; Linear Regression</strong></p>
+</blockquote>
+<ul>
+<li><strong>Dependent Variable:</strong> <code>transformers</code></li>
+<li><strong>Factors:</strong> <code>gender</code> <em>(categorical predictors go in Factors, not Covariates)</em></li>
+</ul>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Predictor</th>
+<th>Estimate</th>
+<th>SE</th>
+<th>t</th>
+<th>p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Intercept</td>
+<td><strong>1.21</strong></td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>gender: Male – Female</td>
+<td><strong>0.23</strong></td>
+<td>0.10</td>
+<td><strong>2.29</strong></td>
+<td><strong>0.022</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li class="fragment">The <strong>intercept</strong> (1.21) is the mean of the reference group (Female)</li>
+<li class="fragment">The <strong>estimate</strong> (0.23) is the <em>difference</em> between the means</li>
+<li class="fragment">Same <em>t</em>. Same <em>p</em>. One machine.</li>
+</ul>
+</section>
+<section id="who-is-the-reference-group" class="slide level2">
+<h2>Who is the reference group?</h2>
+<p>JAMOVI picks the <strong>first level alphabetically</strong> by default — here, Female.</p>
+<blockquote>
+<p><strong>Linear Regression &gt; Reference Levels</strong></p>
+</blockquote>
+<p>Change it to Male and watch what happens:</p>
+<ul>
+<li>The intercept becomes <strong>1.44</strong> (the Male mean)</li>
+<li>The estimate flips sign to <strong>−0.23</strong></li>
+<li>The <em>t</em> and <em>p</em> are <strong>unchanged</strong></li>
+</ul>
+<div class="fragment">
+<p>The model is the same model. You just asked it to answer from a different starting point.</p>
+</div>
+</section>
+<section id="why-this-matters" class="slide level2">
+<h2>Why this matters</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>You do not have to memorize a separate procedure for every design.</p>
+<p><strong>Dependent Variable + Covariates/Factors</strong> handles the continuous case <strong>and</strong> the group case. Over the next few weeks we just add more predictors to the same boxes.</p>
+</div>
+</div>
+</div>
+<p><strong>Next week:</strong> groups as regression, in full — t-tests and ANOVA as one model.</p>
+</section>
+<section id="one-more-thing-regression-to-the-mean" class="slide level2">
+<h2>One more thing: regression to the mean</h2>
+<p>An observation about heights motivated the development of regression: if you selected an exceptionally tall (or short) parent, their child was almost always <strong>less</strong> extreme.</p>
+<p><strong>Regression to the mean</strong>: a random variable that produces an extreme score on a first measurement tends to produce a less extreme score on a second measurement.</p>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>This is a threat to internal validity whenever an intervention is assigned <strong>based on</strong> first-measurement scores.</p>
+<p>Tutoring the students who bombed the midterm? They would have improved somewhat <em>anyway</em>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="activity-stop-2-parts-b-c" class="slide level2">
+<h2>🛠️ Activity Stop 2: Parts B &amp; C</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>One Line, Two Stories</strong> · ~35 min · Pairs</p>
+</div>
+</div>
+</div>
+<p><strong>Part B (~25 min):</strong> Do older people read more books?</p>
+<ul>
+<li>You will get <em>p</em> = .027 — and then one person who reported reading <strong>1,000 books</strong> will make it disappear</li>
+<li>In JAMOVI that decision is a <strong>filter</strong>: Data → Filters → <code>books &lt;= 365</code></li>
+<li>The p-value flips on a judgment call <strong>you</strong> make</li>
+</ul>
+<p><strong>Part C (~10 min):</strong> The t-test / regression equivalence, in your own file</p>
+<p><a href="../class-activities/wk5_linear-model.html" class="button" target="_blank">Open the activity</a></p>
+</section>
+<section id="jamovi-r-cheat-sheet" class="slide level2">
+<h2>JAMOVI ↔︎ R cheat sheet</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>What you want</th>
+<th>JAMOVI</th>
+<th>R</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Descriptives</td>
+<td>Exploration → Descriptives</td>
+<td><code>describe()</code> / <code>summary()</code></td>
+</tr>
+<tr class="even">
+<td>Scatterplot + line</td>
+<td>scatr → Scatterplot, Linear</td>
+<td><code>ggplot() + geom_smooth(method = "lm")</code></td>
+</tr>
+<tr class="odd">
+<td>Correlation</td>
+<td>Regression → Correlation Matrix</td>
+<td><code>cor.test()</code></td>
+</tr>
+<tr class="even">
+<td>Fit a line</td>
+<td>Regression → Linear Regression</td>
+<td><code>lm(y ~ x, data = d)</code></td>
+</tr>
+<tr class="odd">
+<td>Continuous predictor</td>
+<td><strong>Covariates</strong> box</td>
+<td>just add it</td>
+</tr>
+<tr class="even">
+<td>Categorical predictor</td>
+<td><strong>Factors</strong> box</td>
+<td><code>factor()</code></td>
+</tr>
+<tr class="odd">
+<td>Standardized slope</td>
+<td>Model Coefficients → Standardized estimate</td>
+<td><code>lm.beta()</code> / scale the variables</td>
+</tr>
+<tr class="even">
+<td>R²</td>
+<td>Model Fit → R²</td>
+<td><code>summary(fit)$r.squared</code></td>
+</tr>
+<tr class="odd">
+<td>Predicted values &amp; residuals</td>
+<td>Save → Predicted values, Residuals</td>
+<td><code>broom::augment(fit)</code></td>
+</tr>
+<tr class="even">
+<td>Drop cases</td>
+<td>Data → Filters</td>
+<td><code>filter()</code></td>
+</tr>
+<tr class="odd">
+<td>Change reference group</td>
+<td>Reference Levels</td>
+<td><code>relevel()</code> / <code>fct_relevel()</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="wrap-up" class="slide level2 scrollable">
+<h2>✍️ Wrap-Up</h2>
+<p>Finish these at the bottom of your activity file:</p>
+<ol type="1">
+<li>A slope, stated in the units of a study, <strong>without using the word “slope.”</strong></li>
+<li>One intercept from today that is meaningless, and why.</li>
+<li>One thing that is still muddy → put it in your journal this week.</li>
+</ol>
+</section>
+<section id="for-next-time" class="slide level2">
+<h2>For next time</h2>
+<p>📋 <strong>Lab 6 — Reading the Line</strong>, due <strong>Tuesday 9/29 at 11:59pm</strong></p>
+<ul>
+<li>Almost no coding — and nothing that requires R <em>or</em> JAMOVI. I give you the output; you tell me what it means.</li>
+<li>Uses the Lab 5 data plus a new context</li>
+</ul>
+<p>📖 Chapter 15 — ST</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Schedule change</strong></p>
+</div>
+<div class="callout-content">
+<p>The lab schedule has moved up from the PDF syllabus. <strong>Lab 6 is due 9/29</strong>, the <strong>midterm is assigned 10/15 and due 10/27</strong>. Website = current version.</p>
+</div>
+</div>
+</div>
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="../images/640_hex.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p><a href="https://dharaden.github.io/psyc640/">course-website</a></p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: false,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/dharaden\.github\.io\/psyc640");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

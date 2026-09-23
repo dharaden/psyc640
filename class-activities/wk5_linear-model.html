@@ -81,9 +81,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-ec2427c9d1066c1b6d2fbf99895004ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-5c51e7f2b9ed86a84d54895526db5dd5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-ec2427c9d1066c1b6d2fbf99895004ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-3502d72582367641a98a453c687a2354.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-9fe6195f28bedb9d423a5f9902e70718.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-3502d72582367641a98a453c687a2354.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -546,7 +546,8 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>About 55 minutes · Pairs or small groups · 🧰 <code>tidyverse</code>, <code>rio</code>, <code>here</code></p>
+<p>About 55 minutes · Pairs or small groups · 🧰 R (<code>tidyverse</code>, <code>rio</code>, <code>here</code>) <strong>or</strong> JAMOVI</p>
+<p>Every step below is given <strong>both ways</strong>. Use the tool you want to get better at — the skills being graded (reading a slope, an intercept, a residual, an R²) are identical in both.</p>
 <ul>
 <li><strong>Part A: Follow along (~20 min):</strong> We fit our first real regression together — do people watch fewer Transformers movies as they get older?</li>
 <li><strong>Part B: On your own (~25 min):</strong> The same routine on a messier question, where the answer depends on one decision you make.</li>
@@ -598,6 +599,24 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <p><code>cah</code> should have <strong>1,000 rows and 16 columns</strong>. If <code>here()</code> cannot find the file, run <code>here()</code> in the Console to see where it is looking, and make sure <code>CAH.csv</code> is in that folder’s <code>data</code> subfolder.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🖱️ In JAMOVI instead
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Open JAMOVI → <strong>☰ Menu → Open → Browse →</strong> <code>CAH.csv</code></li>
+<li>Check the measure-type icon on each column you will use: <code>age</code>, <code>transformers</code> and <code>books</code> should be <strong>continuous</strong> (ruler); <code>gender</code> should be <strong>nominal</strong> (three circles). Click a column header to change one.</li>
+<li>Install the <strong>scatr</strong> module once: <strong>➕ Modules → jamovi library → scatr</strong> (for scatterplots with a regression line).</li>
+<li>Save your work as a <code>.omv</code> file so you can hand it in or come back to it.</li>
+</ol>
 </div>
 </div>
 <p><strong>About the data.</strong> Cards Against Humanity ran a monthly national poll called <em>Pulse of the Nation</em>. Among the serious demographic items, they asked how many books a person read in the past year and how many Transformers movies they had seen. Today those two questions are our outcomes.</p>
@@ -654,6 +673,25 @@ age         -0.025398   0.003002  -8.461  &lt; 2e-16 ***
 
 Residual standard error: 1.50 on 936 degrees of freedom
 Multiple R-squared:  0.0710,    Adjusted R-squared:  0.0700</code></pre>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🖱️ Part A in JAMOVI
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Descriptives:</strong> Analyses → <strong>Exploration → Descriptives</strong>; drag in <code>age</code> and <code>transformers</code>. (Note the two different Ns — 62 people skipped the Transformers question.)</li>
+<li><strong>Scatterplot:</strong> Analyses → <strong>Exploration → scatr → Scatterplot</strong>. X-Axis <code>age</code>, Y-Axis <code>transformers</code>, <strong>Regression Line: Linear</strong>.</li>
+<li><strong>Correlation:</strong> Analyses → <strong>Regression → Correlation Matrix</strong>; tick <strong>Pearson</strong> and <strong>p-value</strong>. You should get r = −0.266, p &lt; .001.</li>
+<li><strong>The line:</strong> Analyses → <strong>Regression → Linear Regression</strong>. Dependent Variable <code>transformers</code>; put <code>age</code> in <strong>Covariates</strong> (continuous predictors go there). Open <strong>Model Fit</strong> and tick <strong>R²</strong>; open <strong>Model Coefficients</strong> and tick <strong>Standardized estimate</strong>.</li>
+</ul>
+<p>You should see Intercept <strong>2.577</strong> and age <strong>−0.0254</strong>, R² = <strong>0.071</strong>, and a standardized estimate of <strong>−0.266</strong> — the same numbers, in a different window.</p>
+</div>
+</div>
 </section>
 <section id="read-the-three-numbers" class="level2">
 <h2 class="anchored" data-anchor-id="read-the-three-numbers">4. Read the three numbers</h2>
@@ -672,6 +710,19 @@ Multiple R-squared:  0.0710,    Adjusted R-squared:  0.0700</code></pre>
 <p>Now pick a real 20-year-old from the data who has seen <strong>4</strong> movies:</p>
 <p><span class="math display">\[\text{residual} = \text{observed} - \text{predicted} = 4 - 2.07 = +1.93\]</span></p>
 <p>Positive residual = <strong>above</strong> the line = the model <strong>under-predicted</strong> this person. The residual is the part of this person the model gets wrong — and in a few weeks, residuals become the whole story.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>🖱️ Let JAMOVI do it for you
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In <strong>Linear Regression → Save</strong>, tick <strong>Predicted values</strong> and <strong>Residuals</strong>. Two new columns appear in the <strong>Data</strong> tab, one row per person — no arithmetic required. Find a 20-year-old and read their residual straight off the sheet.</p>
+</div>
+</div>
 </section>
 <section id="questions-for-part-a" class="level2">
 <h2 class="anchored" data-anchor-id="questions-for-part-a">❓Questions for Part A</h2>
@@ -722,6 +773,21 @@ Multiple R-squared:  0.0710,    Adjusted R-squared:  0.0700</code></pre>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(books <span class="sc">&lt;=</span> <span class="dv">365</span>)      <span class="co"># at most one book a day</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(books <span class="sc">~</span> age, <span class="at">data =</span> cah_trim) <span class="sc">%&gt;%</span> <span class="fu">summary</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🖱️ The same decision in JAMOVI
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Go to the <strong>Data</strong> tab → <strong>Filters</strong> (funnel icon) → add a filter and type:</p>
+<pre><code>books &lt;= 365</code></pre>
+<p>Every analysis updates the moment the filter is active. Toggle the filter’s eye icon off and on to watch the p-value move — which is exactly the point of this part.</p>
+</div>
+</div>
 <p>Now the slope is <strong>0.10</strong>, <em>t</em>(969) = 1.44, <strong>p = .150</strong>, R² = <strong>.002</strong>. The “significant” result is gone.</p>
 </section>
 <section id="questions-for-part-b" class="level2">
@@ -751,16 +817,34 @@ Multiple R-squared:  0.0710,    Adjusted R-squared:  0.0700</code></pre>
 <section id="part-c-together-the-lab-5-punchline-10-min" class="level1">
 <h1>Part C — Together: the Lab 5 punchline (10 min)</h1>
 <p>In Lab 5 you ran a t-test and then an <code>lm()</code> and got suspiciously similar numbers. Let’s settle it.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>cah_mf <span class="ot">&lt;-</span> cah <span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>))</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># the t-test you already know</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(transformers <span class="sc">~</span> gender, <span class="at">data =</span> cah_mf, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># the same question as a line</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(transformers <span class="sc">~</span> gender, <span class="at">data =</span> cah_mf) <span class="sc">%&gt;%</span> <span class="fu">summary</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>cah_mf <span class="ot">&lt;-</span> cah <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># the t-test you already know</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(transformers <span class="sc">~</span> gender, <span class="at">data =</span> cah_mf, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># the same question as a line</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(transformers <span class="sc">~</span> gender, <span class="at">data =</span> cah_mf) <span class="sc">%&gt;%</span> <span class="fu">summary</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The t-test gives <em>t</em>(911) = −2.29, <em>p</em> = .022; means of <strong>1.21</strong> (Female) and <strong>1.44</strong> (Male).</p>
 <p>The regression gives an intercept of <strong>1.21</strong> and a slope of <strong>0.23</strong>, with <em>t</em> = 2.29 and <em>p</em> = .022.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🖱️ Part C in JAMOVI
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Filter out “Other”:</strong> Data → Filters → <code>gender != "Other"</code></li>
+<li><strong>The t-test:</strong> Analyses → <strong>T-Tests → Independent Samples T-Test</strong>. Dependent <code>transformers</code>, Grouping <code>gender</code>; tick <strong>Student’s</strong> and <strong>Descriptives</strong>.</li>
+<li><strong>The line:</strong> Analyses → <strong>Regression → Linear Regression</strong>. Dependent <code>transformers</code>, and put <code>gender</code> in <strong>Factors</strong> (categorical predictors go there, not Covariates).</li>
+<li><strong>Bonus:</strong> open <strong>Reference Levels</strong> and switch the reference group from Female to Male. The intercept becomes 1.44, the estimate flips to −0.23, and <em>t</em> and <em>p</em> do not move. Why not?</li>
+</ul>
+</div>
+</div>
 <section id="questions-for-part-c" class="level2">
 <h2 class="anchored" data-anchor-id="questions-for-part-c">❓Questions for Part C</h2>
 <ol type="1">
