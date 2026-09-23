@@ -1,0 +1,743 @@
+---
+title: "Week 05: Simple Regression with JAMOVI"
+subtitle: "Date: September 24, 2026"
+footer:  "[course-website](https://dharaden.github.io/psyc640/)"
+logo: "images/640_hex.png"
+format:
+  revealjs:
+    theme: [default, brand, clean.scss]
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false
+    chalkboard: true
+    overview: false
+    scrollable: true
+    code-line-numbers: true
+editor: visual
+execute:
+  echo: true
+  freeze: auto
+---
+
+## Today...
+
+**The Linear Model** — the same machine, driven by point-and-click
+
+- Why a line? (and why regression *first*)
+- Data = Model + Error
+- Where the intercept and slope come from
+- Reading a slope out loud
+- How well does the line fit? ($R^2$, effect size)
+- The punchline from Lab 5
+
+::: callout-note
+This is the **JAMOVI** version of this week's lecture. The concepts, the data, and every number are identical to the R version — only the buttons change. Use whichever you like; the exam-room skill is *reading* the output, not producing it.
+:::
+
+------------------------------------------------------------------------
+
+## First, a confession about Lab 5
+
+In Lab 5 you ran three things:
+
+1.  A **t-test** comparing two groups
+2.  A **correlation** between two continuous variables
+3.  An `lm()` — the "sneak peek" 👀
+
+And the numbers came back *the same*.
+
+. . .
+
+That was not a bug, and it was not a coincidence.
+
+::: callout-important
+Regression is not a new test that sits next to t-tests and correlations. It is the **general machine** that both of them are special cases of. In JAMOVI, that machine is **Analyses → Regression → Linear Regression**.
+:::
+
+------------------------------------------------------------------------
+
+## Why we teach regression first
+
+Regression is a general data analytic system
+
+- Lots of things fall under the umbrella of regression
+
+- It handles many forms of relations and types of variables
+
+- The output gives you **effect sizes** *and* **statistical significance**
+
+- We can add multiple predictors and account for their intercorrelations
+
+. . .
+
+Learn one machine well, then add parts to it. That is the whole plan for the next eight weeks.
+
+------------------------------------------------------------------------
+
+### Uses for regression
+
+::: incremental
+-   **Adjustment**: Take into account (*control*) known effects in a relationship
+
+-   **Prediction**: Develop a model based on what has happened previously to predict what will happen in the future
+
+-   **Explanation**: Examine the influence of one or more variables on some outcome
+:::
+
+# Part 1: Building the Line
+
+------------------------------------------------------------------------
+
+### The core idea
+
+With regression, we are ***building a model*** that we think best represents the data, and the broader world
+
+$$
+Data = Model + error
+$$
+
+. . .
+
+Every model we build for the rest of the semester is a variation on this sentence.
+
+------------------------------------------------------------------------
+
+## A line you already know
+
+At the simplest form we draw a line to characterize the linear relationship between two variables, so that for any value of `x` we have an estimate of `y`
+
+$$
+Y = mX + b
+$$
+
+::::::: columns
+:::: {.column width="50%"}
+::: incremental
+-   Y = Outcome Variable (DV)
+
+-   m = Slope Term
+:::
+::::
+
+:::: {.column width="50%"}
+::: incremental
+-   X = Predictor (IV)
+
+-   b = Intercept
+:::
+::::
+:::::::
+
+------------------------------------------------------------------------
+
+### Let's "science up" the equation
+
+$$
+Y_i = b_0 + b_1X_i + e_i
+$$
+
+This captures how we calculate **each observation** ( $Y_i$ )
+
+$$
+\hat{Y_i} = b_0 + b_1X_i
+$$
+
+This gives the "best guess" or *expected* value of $Y$ given $X$
+
+------------------------------------------------------------------------
+
+### Expected vs. Actual
+
+$$Y_i = b_{0} + b_{1}X_i + e_i \qquad \hat{Y_i} = b_{0} + b_{1}X_i$$
+
+$\hat{Y}$ signifies the **fitted** score — no error. We interpret it as "on average."
+
+The difference between the fitted and the observed score is the **residual**:
+
+$$Y_i - \hat{Y_i} = e_i$$
+
+::: callout-note
+JAMOVI will hand you both of these if you ask: in **Linear Regression → Save**, tick **Predicted values** and **Residuals**, and two new columns appear in your spreadsheet.
+:::
+
+------------------------------------------------------------------------
+
+## OLS
+
+::: incremental
+-   How do we find the regression estimates?
+
+-   **O**rdinary **L**east **S**quares estimation
+
+-   Minimizes deviations
+
+    -   $$ min\sum(Y_{i} - \hat{Y} ) ^{2} $$
+
+-   Other estimation procedures are possible (and necessary in some cases)
+:::
+
+------------------------------------------------------------------------
+
+## OLS
+
+The line that yields the smallest sum of squared deviations
+
+$$\Sigma(Y_i - \hat{Y_i})^2$$ $$= \Sigma(Y_i - (b_0+b_{1}X_i))^2$$ $$= \Sigma(e_i)^2$$
+
+. . .
+
+You *could* try many different coefficients until you find the pair with the smallest sum of squared deviations. Luckily, there are simple calculations that yield the OLS solution every time — and JAMOVI does them the moment you drop a variable in a box.
+
+------------------------------------------------------------------------
+
+## 🔍 Watch OLS happen
+
+Drag the points around and watch the line chase them:
+
+<https://setosa.io/ev/ordinary-least-squares-regression/>
+
+[https://observablehq.com/\@yizhe-ang/interactive-visualization-of-linear-regression](https://observablehq.com/@yizhe-ang/interactive-visualization-of-linear-regression)
+
+------------------------------------------------------------------------
+
+## Where does the slope come from? 🤔
+
+Remember **covariance** from last week:
+
+$$cov_{xy} = \frac{\sum(x-\bar{x})(y-\bar{y})}{N-1}$$
+
+and the correlation, which standardizes it:
+
+$$r_{xy} = \frac{cov_{xy}}{s_x s_y}$$
+
+. . .
+
+The regression coefficient is built from exactly the same pieces.
+
+------------------------------------------------------------------------
+
+## Regression coefficient, $b_{1}$
+
+$$b_{1} = \frac{cov_{XY}}{s_{x}^{2}} = r_{xy} \frac{s_{y}}{s_{x}}$$
+
+What units is the regression coefficient in?
+
+. . .
+
+The slope equals the estimated change in **Y** for a **1-unit** change in **X**
+
+::: callout-tip
+A correlation is unitless. A slope is **in the units of your study**. That is why a slope is often the more useful number to report to a human being.
+:::
+
+------------------------------------------------------------------------
+
+## Slope *is* the correlation (rescaled)
+
+$$\Large b_{1} = r_{xy} \frac{s_{y}}{s_{x}}$$
+
+If the standard deviation of both X and Y is equal to 1:
+
+$$\Large b_1 = r_{xy} \frac{s_{y}}{s_{x}} = r_{xy} \frac{1}{1} = r_{xy} = \beta_{yx}$$
+
+. . .
+
+**Standardize both variables and the slope becomes the correlation.** In JAMOVI that is the **Standardized estimate** checkbox under *Model Coefficients* — tick it and watch it equal *r*.
+
+------------------------------------------------------------------------
+
+## Estimating the intercept, $b_0$
+
+- The intercept adjusts for differences in the means of X and Y
+
+$$\hat{Y_i} = \bar{Y} + r_{xy} \frac{s_{y}}{s_{x}}(X_i-\bar{X})$$
+
+- It is where the regression line crosses the y-axis, at $X = 0$
+
+- It ensures the line runs through the point $(\bar{X}, \bar{Y})$
+
+$$\Large b_0 = \bar{Y} - b_1\bar{X}$$
+
+# Part 2: Reading a Line Out Loud
+
+------------------------------------------------------------------------
+
+## Our data today 🃏
+
+**Cards Against Humanity: *Pulse of the Nation*** — a national poll that asked serious demographic questions *and* some very strange ones.
+
+<a href="../files/data/CAH.csv" download="CAH.csv">Download the data (.csv)</a>
+
+> ☰ Menu \> **Open** \> Browse \> `CAH.csv`
+
+JAMOVI will guess the measure type for each column. Check the icons at the top of each column:
+
+- `age`, `transformers`, `books` should be **continuous** (ruler icon)
+- `gender` should be **nominal** (three circles)
+
+Click the column header to fix any it guessed wrong.
+
+------------------------------------------------------------------------
+
+## Step 1: ALWAYS visualize first
+
+We need the **scatr** module for scatterplots.
+
+> ➕ **Modules** \> jamovi library \> install **scatr**
+
+Then:
+
+> **Analyses \> Exploration \> scatr \> Scatterplot**
+
+- **X-Axis:** `age`  ·  **Y-Axis:** `transformers`
+- **Regression Line:** choose **Linear**
+
+::: callout-tip
+## Talk about it (2 min)
+
+The line slopes down. Before we fit anything: **how strong** does that relationship look to you? If you had to guess *r*, what would you say? Write your guess down.
+:::
+
+------------------------------------------------------------------------
+
+## Step 2: Descriptives first
+
+> **Analyses \> Exploration \> Descriptives**
+
+Drag `age` and `transformers` into **Variables**.
+
+| Variable | N | Mean | SD | Min | Max |
+|---------------|---------|---------|---------|---------|---------|
+| `age` | 1000 | 49.41 | 16.63 | 18 | 99 |
+| `transformers` | 938 | 1.33 | 1.56 | 0 | 5 |
+
+::: callout-warning
+Notice the two different Ns. **62 people did not answer the Transformers question.** JAMOVI, like R, will quietly use only the complete cases when it fits the model. Worth knowing *before* you report an N.
+:::
+
+------------------------------------------------------------------------
+
+## Step 3: The correlation
+
+> **Analyses \> Regression \> Correlation Matrix**
+
+Drag in `age` and `transformers`. Tick **Pearson**, **p-value**, and (optionally) **Correlation matrix** under Plot.
+
+|  | age | transformers |
+|------------------|------------------|------------------|
+| **transformers** | r = **−0.266** | — |
+|  | p **\< .001** |  |
+
+How close was your guess?
+
+------------------------------------------------------------------------
+
+## Step 4: The same relationship as a line
+
+> **Analyses \> Regression \> Linear Regression**
+
+- **Dependent Variable:** `transformers`
+- **Covariates:** `age`   *(continuous predictors go in Covariates)*
+
+Open **Model Coefficients** and tick **Standardized estimate**.
+
+**Model Fit**
+
+| R | R² |
+|-------|-------|
+| 0.266 | **0.071** |
+
+**Model Coefficients**
+
+| Predictor | Estimate | SE | t | p | Stand. Estimate |
+|------------|------------|------------|------------|------------|------------|
+| Intercept | **2.577** | 0.155 | 16.63 | \< .001 | — |
+| age | **−0.0254** | 0.0030 | −8.46 | \< .001 | **−0.266** |
+
+------------------------------------------------------------------------
+
+## Saying the slope out loud
+
+$$\widehat{transformers} = 2.58 - 0.025(age)$$
+
+::: incremental
+- "Each **additional year** of age is associated with **0.025 fewer** Transformers movies seen."
+
+- That sounds like nothing. So **rescale it to a unit people care about**:
+
+  - 10 years → about **0.25 fewer** movies
+  - 40 years → about **one whole movie** fewer
+
+- Note the word **associated**. Nobody was randomly assigned an age.
+:::
+
+------------------------------------------------------------------------
+
+## And the intercept?
+
+$b_0 = 2.58$ = the predicted number of Transformers movies for a person aged **zero**.
+
+. . .
+
+::: callout-warning
+## Careful
+
+Nobody in this sample is under **18**. A prediction at age 0 is **extrapolation** — the model has never seen data anywhere near there.
+
+The intercept is an **anchor for the line**, not a finding.
+:::
+
+. . .
+
+When zero is not meaningful, **centering** the predictor fixes the interpretation (we will do this for real in Week 9).
+
+------------------------------------------------------------------------
+
+## Predict a person, find a residual
+
+**By hand:** $2.577 + (-0.0254 \times 20) = 2.07$ movies for a 20-year-old.
+
+**By JAMOVI:** in **Linear Regression → Save**, tick **Predicted values** and **Residuals**. Two new columns appear in the **Data** tab — one row per person.
+
+. . .
+
+A 20-year-old in the data who has seen **4** movies:
+
+$$e_i = Y_i - \hat{Y_i} = 4 - 2.07 = +1.93$$
+
+**Positive residual** → above the line → the model **under-predicted** this person.
+
+------------------------------------------------------------------------
+
+## 🛠️ Activity Stop 1: One Line, Two Stories
+
+::: callout-tip
+**Part A: Follow along** · \~20 min · Pairs
+:::
+
+We fit this model together, from the top:
+
+- Plot it, then guess *r* **before** you run it
+- Fit the model; find the intercept and slope in the Coefficients table
+- Say the slope in a unit that means something
+- Predict a person and compute their residual
+
+[Open the activity](../class-activities/wk5_linear-model.html){.button target="_blank"}
+
+------------------------------------------------------------------------
+
+## ☕ Break {background-color="#C9ADE0"}
+
+**10 minutes**
+
+When we come back: how do we know if this line is any *good*?
+
+# Part 3: How Well Does the Line Fit?
+
+------------------------------------------------------------------------
+
+## Statistical inference
+
+- The way the world is = our model + error
+
+- How good is our model? Does it "fit" the data well?
+
+. . .
+
+To assess fit, we examine the proportion of variance in our outcome that is "explained" by our model.
+
+To do that, we **partition the variance** into two categories: variability captured by the model, and variability that is not.
+
+------------------------------------------------------------------------
+
+## Partitioning variation
+
+Start with the relationship between observed $Y$ and fitted $\hat{Y}$:
+
+$$Y_i = \hat{Y}_i + e_i$$
+
+. . .
+
+Variances are **additive when two variables are independent**. If C = A + B, then the variance of C is the sum of the variances of A and B.
+
+. . .
+
+Why can we use that rule here?
+
+::: notes
+Students must recognize that Y-hat and e are uncorrelated — they must be, by the way OLS is built.
+:::
+
+------------------------------------------------------------------------
+
+## Partitioning variation
+
+::::: columns
+::: {.column width="50%"}
+[$\hat{Y}_i$ and $e_i$ are independent of each other. So the variance of $Y$ equals the variance of $\hat{Y}$ plus the variance of $e$.]{style="font-size:80%"}
+
+$$\large s^2_Y = s^2_{\hat{Y}} + s^2_{e}$$
+:::
+
+::: {.column width="50%"}
+[Variances are sums of squares divided by N−1, and all have the same sample size here, so:]{style="font-size:80%"}
+
+$$\large SS_Y = SS_{\hat{Y}} + SS_{\text{e}}$$
+:::
+:::::
+
+. . .
+
+$$ SS_Y = SS_{\text{Model}} + SS_{\text{Residual}}$$
+
+::: callout-note
+Want to *see* those sums of squares? In Linear Regression, open **Model Fit → Overall Model Test (F test)**. That F is $SS_{Model}$ and $SS_{Residual}$, each divided by its degrees of freedom.
+:::
+
+------------------------------------------------------------------------
+
+## Coefficient of Determination
+
+$$\Large \frac{SS_{Model}}{SS_{Y}} = \frac{s_{Model}^2}{s_{y}^2} = R^2$$
+
+$R^2$ is the **proportion of variance in Y explained by the model**
+
+. . .
+
+$$\large \sqrt{R^2} = r_{Y\hat{Y}}$$
+
+With one predictor, that is just our old friend $r$.
+
+------------------------------------------------------------------------
+
+## Ta da! 🎉
+
+Look back at the two tables you already have open:
+
+::::: columns
+::: {.column width="50%"}
+**Correlation Matrix**
+
+r = **−0.266**
+
+(−0.266)² = **0.071**
+:::
+
+::: {.column width="50%"}
+**Linear Regression → Model Fit**
+
+R = 0.266
+
+R² = **0.071**
+:::
+:::::
+
+. . .
+
+And the **Standardized estimate** for `age`? **−0.266**. The same number, wearing a third hat.
+
+------------------------------------------------------------------------
+
+## Significance $\neq$ importance
+
+The $p$-value tells us the effect is **likely not zero**. It says *nothing* about whether the effect is large or meaningful.
+
+::: callout-important
+With a large enough sample, a tiny, trivial effect becomes statistically significant. Our *n* here is **938**.
+:::
+
+**Statistical Significance** $\neq$ **Practical Significance**
+
+------------------------------------------------------------------------
+
+## Effect size for a regression
+
+1.  **The slope itself** — in the units of your study. The most concrete thing you have.
+
+2.  **Standardized estimate /** $r$ — Cohen's rough guide: small (|.10|), medium (|.30|), large (|.50|)
+
+3.  **Coefficient of determination** $R^2$ — proportion of variance accounted for
+
+. . .
+
+For our model: $r = -.27$, so $R^2 = .071$
+
+> "Approximately **7%** of the variability in Transformers movies seen is accounted for by age."
+
+------------------------------------------------------------------------
+
+## Writing it up
+
+Template: *b* = slope, *t*(df) = statistic, *p* = p-value, plus $R^2$
+
+> Age significantly predicted the number of Transformers movies a respondent had seen, *b* = −0.03, *t*(936) = −8.46, *p* \< .001. Each additional decade of age was associated with about a quarter of a movie fewer, and age accounted for 7.1% of the variance in movies seen ($R^2$ = .07).
+
+. . .
+
+::: callout-tip
+Notice what the good version includes: the estimate **in real units**, the test, *and* a statement of how much it matters. All three.
+
+JAMOVI's tables are nearly APA-formatted already — right-click any table → **Export** (or copy) to drop it into Word.
+:::
+
+------------------------------------------------------------------------
+
+## Checking the residuals
+
+> **Linear Regression \> Assumption Checks**
+
+- **Residual Plots** gives you residuals vs. fitted values, plus a Q-Q plot
+- **Q-Q plot of residuals** checks the normality of the errors
+
+. . .
+
+The residuals-vs-fitted plot should look like a shapeless cloud with no trend. Flat. **By construction** — and in Week 10 we will use that fact to catch models that are lying to us.
+
+# Part 4: The Lab 5 Punchline
+
+------------------------------------------------------------------------
+
+## A t-test *is* a regression
+
+First the test you already know:
+
+> **Analyses \> T-Tests \> Independent Samples T-Test**
+
+- **Dependent Variable:** `transformers`  ·  **Grouping Variable:** `gender`
+- Tick **Student's** (equal variances) and **Descriptives**
+
+*(Filter to Male/Female first — Data → Filters → `gender != "Other"`)*
+
+| Test | statistic | df | p |
+|-------------|-------------|-------------|-------------|
+| Student's t | **−2.29** | 911 | **0.022** |
+
+Group means: Female **1.21** · Male **1.44**
+
+------------------------------------------------------------------------
+
+## The same question as a line
+
+> **Analyses \> Regression \> Linear Regression**
+
+- **Dependent Variable:** `transformers`
+- **Factors:** `gender`   *(categorical predictors go in Factors, not Covariates)*
+
+| Predictor | Estimate | SE | t | p |
+|-------------|-------------|-------------|-------------|-------------|
+| Intercept | **1.21** | — | — | — |
+| gender: Male – Female | **0.23** | 0.10 | **2.29** | **0.022** |
+
+::: incremental
+- The **intercept** (1.21) is the mean of the reference group (Female)
+- The **estimate** (0.23) is the *difference* between the means
+- Same *t*. Same *p*. One machine.
+:::
+
+------------------------------------------------------------------------
+
+## Who is the reference group?
+
+JAMOVI picks the **first level alphabetically** by default — here, Female.
+
+> **Linear Regression \> Reference Levels**
+
+Change it to Male and watch what happens:
+
+- The intercept becomes **1.44** (the Male mean)
+- The estimate flips sign to **−0.23**
+- The *t* and *p* are **unchanged**
+
+. . .
+
+The model is the same model. You just asked it to answer from a different starting point.
+
+------------------------------------------------------------------------
+
+## Why this matters
+
+::: callout-note
+You do not have to memorize a separate procedure for every design.
+
+**Dependent Variable + Covariates/Factors** handles the continuous case **and** the group case. Over the next few weeks we just add more predictors to the same boxes.
+:::
+
+**Next week:** groups as regression, in full — t-tests and ANOVA as one model.
+
+------------------------------------------------------------------------
+
+## One more thing: regression to the mean
+
+An observation about heights motivated the development of regression: if you selected an exceptionally tall (or short) parent, their child was almost always **less** extreme.
+
+**Regression to the mean**: a random variable that produces an extreme score on a first measurement tends to produce a less extreme score on a second measurement.
+
+::: callout-warning
+This is a threat to internal validity whenever an intervention is assigned **based on** first-measurement scores.
+
+Tutoring the students who bombed the midterm? They would have improved somewhat *anyway*.
+:::
+
+------------------------------------------------------------------------
+
+## 🛠️ Activity Stop 2: Parts B & C
+
+::: callout-tip
+**One Line, Two Stories** · \~35 min · Pairs
+:::
+
+**Part B (\~25 min):** Do older people read more books?
+
+- You will get *p* = .027 — and then one person who reported reading **1,000 books** will make it disappear
+- In JAMOVI that decision is a **filter**: Data → Filters → `books <= 365`
+- The p-value flips on a judgment call **you** make
+
+**Part C (\~10 min):** The t-test / regression equivalence, in your own file
+
+[Open the activity](../class-activities/wk5_linear-model.html){.button target="_blank"}
+
+------------------------------------------------------------------------
+
+## JAMOVI ↔ R cheat sheet
+
+| What you want | JAMOVI | R |
+|------------------------|------------------------|------------------------|
+| Descriptives | Exploration → Descriptives | `describe()` / `summary()` |
+| Scatterplot + line | scatr → Scatterplot, Linear | `ggplot() + geom_smooth(method = "lm")` |
+| Correlation | Regression → Correlation Matrix | `cor.test()` |
+| Fit a line | Regression → Linear Regression | `lm(y ~ x, data = d)` |
+| Continuous predictor | **Covariates** box | just add it |
+| Categorical predictor | **Factors** box | `factor()` |
+| Standardized slope | Model Coefficients → Standardized estimate | `lm.beta()` / scale the variables |
+| R² | Model Fit → R² | `summary(fit)$r.squared` |
+| Predicted values & residuals | Save → Predicted values, Residuals | `broom::augment(fit)` |
+| Drop cases | Data → Filters | `filter()` |
+| Change reference group | Reference Levels | `relevel()` / `fct_relevel()` |
+
+------------------------------------------------------------------------
+
+## ✍️ Wrap-Up
+
+Finish these at the bottom of your activity file:
+
+1.  A slope, stated in the units of a study, **without using the word "slope."**
+2.  One intercept from today that is meaningless, and why.
+3.  One thing that is still muddy → put it in your journal this week.
+
+------------------------------------------------------------------------
+
+## For next time
+
+📋 **Lab 6 — Reading the Line**, due **Tuesday 9/29 at 11:59pm**
+
+- Almost no coding — and nothing that requires R *or* JAMOVI. I give you the output; you tell me what it means.
+- Uses the Lab 5 data plus a new context
+
+📖 Chapter 15 — ST
+
+::: callout-important
+## Schedule change
+
+The lab schedule has moved up from the PDF syllabus. **Lab 6 is due 9/29**, the **midterm is assigned 10/15 and due 10/27**. Website = current version.
+:::

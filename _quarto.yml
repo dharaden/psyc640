@@ -32,6 +32,7 @@ project:
     - slides/lec-03_desc-viz_JAMOVI.qmd
     - slides/lec-04_design-inference.qmd
     - slides/lec-05_regression.qmd
+    - slides/lec-05_regression_JAMOVI.qmd
     
     
   # Downloadable files copied to the site as-is (data, handouts, .qmd templates, .pptx)

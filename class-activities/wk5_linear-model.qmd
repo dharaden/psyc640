@@ -7,7 +7,9 @@ editor: visual
 ::: callout-note
 ## Overview
 
-About 55 minutes · Pairs or small groups · 🧰 `tidyverse`, `rio`, `here`
+About 55 minutes · Pairs or small groups · 🧰 R (`tidyverse`, `rio`, `here`) **or** JAMOVI
+
+Every step below is given **both ways**. Use the tool you want to get better at — the skills being graded (reading a slope, an intercept, a residual, an R²) are identical in both.
 
 - **Part A: Follow along (\~20 min):** We fit our first real regression together — do people watch fewer Transformers movies as they get older?
 - **Part B: On your own (\~25 min):** The same routine on a messier question, where the answer depends on one decision you make.
@@ -55,6 +57,15 @@ glimpse(cah)
 ## Check yourself
 
 `cah` should have **1,000 rows and 16 columns**. If `here()` cannot find the file, run `here()` in the Console to see where it is looking, and make sure `CAH.csv` is in that folder's `data` subfolder.
+:::
+
+::: callout-note
+## 🖱️ In JAMOVI instead
+
+1.  Open JAMOVI → **☰ Menu → Open → Browse →** `CAH.csv`
+2.  Check the measure-type icon on each column you will use: `age`, `transformers` and `books` should be **continuous** (ruler); `gender` should be **nominal** (three circles). Click a column header to change one.
+3.  Install the **scatr** module once: **➕ Modules → jamovi library → scatr** (for scatterplots with a regression line).
+4.  Save your work as a `.omv` file so you can hand it in or come back to it.
 :::
 
 **About the data.** Cards Against Humanity ran a monthly national poll called *Pulse of the Nation*. Among the serious demographic items, they asked how many books a person read in the past year and how many Transformers movies they had seen. Today those two questions are our outcomes.
@@ -110,7 +121,7 @@ mod_tf <- lm(transformers ~ age, data = cah)
 summary(mod_tf)
 ```
 
-```
+```         
 Coefficients:
              Estimate Std. Error t value Pr(>|t|)
 (Intercept)  2.577000   0.155000  16.626  < 2e-16 ***
@@ -119,6 +130,17 @@ age         -0.025398   0.003002  -8.461  < 2e-16 ***
 Residual standard error: 1.50 on 936 degrees of freedom
 Multiple R-squared:  0.0710,    Adjusted R-squared:  0.0700
 ```
+
+::: callout-note
+## 🖱️ Part A in JAMOVI
+
+- **Descriptives:** Analyses → **Exploration → Descriptives**; drag in `age` and `transformers`. (Note the two different Ns — 62 people skipped the Transformers question.)
+- **Scatterplot:** Analyses → **Exploration → scatr → Scatterplot**. X-Axis `age`, Y-Axis `transformers`, **Regression Line: Linear**.
+- **Correlation:** Analyses → **Regression → Correlation Matrix**; tick **Pearson** and **p-value**. You should get r = −0.266, p \< .001.
+- **The line:** Analyses → **Regression → Linear Regression**. Dependent Variable `transformers`; put `age` in **Covariates** (continuous predictors go there). Open **Model Fit** and tick **R²**; open **Model Coefficients** and tick **Standardized estimate**.
+
+You should see Intercept **2.577** and age **−0.0254**, R² = **0.071**, and a standardized estimate of **−0.266** — the same numbers, in a different window.
+:::
 
 ## 4. Read the three numbers
 
@@ -144,6 +166,12 @@ Now pick a real 20-year-old from the data who has seen **4** movies:
 $$\text{residual} = \text{observed} - \text{predicted} = 4 - 2.07 = +1.93$$
 
 Positive residual = **above** the line = the model **under-predicted** this person. The residual is the part of this person the model gets wrong — and in a few weeks, residuals become the whole story.
+
+::: callout-tip
+## 🖱️ Let JAMOVI do it for you
+
+In **Linear Regression → Save**, tick **Predicted values** and **Residuals**. Two new columns appear in the **Data** tab, one row per person — no arithmetic required. Find a 20-year-old and read their residual straight off the sheet.
+:::
 
 ## ❓Questions for Part A
 
@@ -189,6 +217,18 @@ cah_trim <- cah %>%
 lm(books ~ age, data = cah_trim) %>% summary()
 ```
 
+::: callout-note
+## 🖱️ The same decision in JAMOVI
+
+Go to the **Data** tab → **Filters** (funnel icon) → add a filter and type:
+
+```         
+books <= 365
+```
+
+Every analysis updates the moment the filter is active. Toggle the filter's eye icon off and on to watch the p-value move — which is exactly the point of this part.
+:::
+
 Now the slope is **0.10**, *t*(969) = 1.44, **p = .150**, R² = **.002**. The "significant" result is gone.
 
 ## ❓Questions for Part B
@@ -224,6 +264,15 @@ lm(transformers ~ gender, data = cah_mf) %>% summary()
 The t-test gives *t*(911) = −2.29, *p* = .022; means of **1.21** (Female) and **1.44** (Male).
 
 The regression gives an intercept of **1.21** and a slope of **0.23**, with *t* = 2.29 and *p* = .022.
+
+::: callout-note
+## 🖱️ Part C in JAMOVI
+
+- **Filter out "Other":** Data → Filters → `gender != "Other"`
+- **The t-test:** Analyses → **T-Tests → Independent Samples T-Test**. Dependent `transformers`, Grouping `gender`; tick **Student's** and **Descriptives**.
+- **The line:** Analyses → **Regression → Linear Regression**. Dependent `transformers`, and put `gender` in **Factors** (categorical predictors go there, not Covariates).
+- **Bonus:** open **Reference Levels** and switch the reference group from Female to Male. The intercept becomes 1.44, the estimate flips to −0.23, and *t* and *p* do not move. Why not?
+:::
 
 ## ❓Questions for Part C
 

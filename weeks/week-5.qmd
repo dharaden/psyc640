@@ -29,6 +29,12 @@ You are about to meet a lot of intercepts that are nonsense — the predicted nu
 
 [💻 Simple Regression: The Linear Model](../slides/lec-05_regression.html){target="_blank"}
 
+[💻 Simple Regression - JAMOVI](../slides/lec-05_regression_JAMOVI.html){target="_blank"}
+
+::: callout-note
+Both decks cover the same concepts with the same data and the same numbers - one drives R, the other drives JAMOVI. Pick whichever you want to get better at. The in-class activity gives every step both ways, and the JAMOVI deck ends with a side-by-side cheat sheet.
+:::
+
 ## Data
 
 -   <a href="../files/data/CAH.csv" download="CAH.csv">Cards Against Humanity - Pulse of the Nation (.csv)</a>
