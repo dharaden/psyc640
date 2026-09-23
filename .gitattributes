@@ -1,0 +1,14 @@
+# Normalize line endings: store LF in the repo, check out native on each machine.
+* text=auto
+
+# Keep these exactly as-is (binary)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.avif binary
+*.pdf binary
+*.docx binary
+*.xlsx binary
+*.pptx binary
