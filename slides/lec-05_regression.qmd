@@ -8,6 +8,7 @@ format:
     theme: [default, brand, clean.scss]
     multiplex: false
     transition: fade
+    transition-speed: fast
     slide-number: true
     incremental: false
     chalkboard: true
@@ -260,6 +261,8 @@ ggplot(d1.f, aes(x = x.1, y = y.1)) +
 
 ## Compare to a bad fit
 
+Which has more \[**RED\]**{style="color: red;"}
+
 ::::: columns
 ::: {.column width="50%"}
 ```{r, echo=FALSE, message = F}
@@ -381,8 +384,25 @@ Play with these — they make the "least squares" part click:
 ```{r}
 cah %>%
   select(age, transformers, books) %>%
-  describe(fast = TRUE)
+  psych::describe()
 ```
+
+------------------------------------------------------------------------
+
+## 🛠️ Activity Stop 1: One Line, Two Stories
+
+::: callout-tip
+**Part A: Follow along** · \~20 min · Pairs
+:::
+
+We fit this model together, from the top:
+
+- Plot it, then guess *r* **before** you run it
+- `lm()`, find the intercept and slope
+- Say the slope in a unit that means something
+- Predict a person and compute their residual
+
+[Open the activity](../class-activities/wk5_linear-model.html){.button target="_blank"}
 
 ------------------------------------------------------------------------
 
@@ -411,7 +431,7 @@ m_age    <- mean(cah$age, na.rm = TRUE)
 m_tf     <- mean(cah$transformers, na.rm = TRUE)
 
 b1 <- r * (s_tf / s_age)
-b0 <- m_tf - b1 * m_age
+b0 <- m_tf - (b1 * m_age)
 
 c(r = r, b1 = b1, b0 = b0)
 ```
@@ -428,6 +448,60 @@ summary(fit.1)
 ::: notes
 Point at the Estimate column first, then the t and p. Note the slope's t is identical to cor.test — we prove it on the next slides.
 :::
+
+------------------------------------------------------------------------
+
+## wait...they aren't the same? Rounding?
+
+The results are close, but not identical. What's the deal??
+
+::::: columns
+::: {.column width="50%"}
+```{r}
+c(r = r, b1 = b1, b0 = b0)
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+tidy(fit.1)
+```
+:::
+:::::
+
+. . .
+
+**MISSING DATA**
+
+Our data has 62 participants with missing values
+
+`lm()` just kicks folks out with `NA` - listwise deletion
+
+Hand calculation used all participants in the data
+
+------------------------------------------------------------------------
+
+## Comparing...again
+
+This time we are going to listwise delete participants.
+
+```{r}
+cah_tf <- cah %>% drop_na(age, transformers)
+r        <- cor(cah_tf$age, cah_tf$transformers, use = "pairwise")
+s_age    <- sd(cah_tf$age, na.rm = TRUE)
+s_tf     <- sd(cah_tf$transformers, na.rm = TRUE)
+m_age    <- mean(cah_tf$age, na.rm = TRUE)
+m_tf     <- mean(cah_tf$transformers, na.rm = TRUE)
+
+b1 <- r * (s_tf / s_age)
+b0 <- m_tf - (b1 * m_age)
+
+c(r = r, b1 = b1, b0 = b0)
+```
+
+```{r}
+tidy(fit.1)
+```
 
 ------------------------------------------------------------------------
 
@@ -482,23 +556,6 @@ A 20-year-old in the data who has seen **4** movies:
 $$e_i = Y_i - \hat{Y_i} = 4 - 2.07 = +1.93$$
 
 **Positive residual** → above the line → the model **under-predicted** this person.
-
-------------------------------------------------------------------------
-
-## 🛠️ Activity Stop 1: One Line, Two Stories
-
-::: callout-tip
-**Part A: Follow along** · \~20 min · Pairs
-:::
-
-We fit this model together, from the top:
-
-- Plot it, then guess *r* **before** you run it
-- `lm()`, find the intercept and slope
-- Say the slope in a unit that means something
-- Predict a person and compute their residual
-
-[Open the activity](../class-activities/wk5_linear-model.html){.button target="_blank"}
 
 ------------------------------------------------------------------------
 
@@ -619,7 +676,7 @@ With a large enough sample, a tiny, trivial effect becomes statistically signifi
 
 1.  **The slope itself** — in the units of your study. The most concrete thing you have.
 
-2.  **Standardized slope /** $r$ — Cohen's rough guide: small (\|.10\|), medium (\|.30\|), large (\|.50\|)
+2.  **Standardized slope** — in SD units. Cohen's rough guide: small (\|.10\|), medium (\|.30\|), large (\|.50\|)
 
 3.  **Coefficient of determination** $R^2$ — proportion of variance accounted for
 
@@ -635,12 +692,14 @@ For our model: $r = -.27$, so $R^2 = .071$
 
 Template: *b* = slope, *t*(df) = statistic, *p* = p-value, plus $R^2$
 
-> Age significantly predicted the number of Transformers movies a respondent had seen, *b* = −0.03, *t*(936) = −8.46, *p* \< .001. Each additional decade of age was associated with about a quarter of a movie fewer, and age accounted for 7.1% of the variance in movies seen ($R^2$ = .07).
+> Age significantly predicted the number of Transformers movies a respondent had seen (*b* = −0.03, *p* \< .001). Each additional decade of age was associated with about a quarter of a movie fewer, and age accounted for 7.1% of the variance in movies seen ($R^2$ = .07).
 
 . . .
 
 ::: callout-tip
 Notice what the good version includes: the estimate **in real units**, the test, *and* a statement of how much it matters. All three.
+
+Some folks will include the t-values, but I find that overwhelming. Just have that in the tables.
 :::
 
 ------------------------------------------------------------------------
@@ -648,7 +707,7 @@ Notice what the good version includes: the estimate **in real units**, the test,
 ## Pretty tables with `sjPlot`
 
 ```{r}
-tab_model(fit.1)
+tab_model(fit.1, show.std = TRUE)
 ```
 
 ------------------------------------------------------------------------
@@ -691,7 +750,12 @@ Flat. Always. **By construction** — and in Week 10 we will use that fact to ca
 ## A t-test *is* a regression
 
 ```{r}
+cah_mf <- cah %>% filter(gender == "Male" | 
+                           gender == "Female") 
+#OR
+
 cah_mf <- cah %>% filter(gender %in% c("Male", "Female"))
+
 
 t.test(transformers ~ gender, data = cah_mf, var.equal = TRUE)
 ```

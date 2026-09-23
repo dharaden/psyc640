@@ -68,8 +68,8 @@ glimpse(cah)
 ## 1. Look before you model
 
 ``` r
-cah |>
-  select(age, transformers) |>
+cah %>%
+  select(age, transformers) %>%
   summary()
 ```
 
@@ -183,10 +183,10 @@ Someone in this sample reported reading **1,000 books** in the past year — abo
 Re-fit the model without the responses that are not plausible:
 
 ``` r
-cah_trim <- cah |>
+cah_trim <- cah %>%
   filter(books <= 365)      # at most one book a day
 
-lm(books ~ age, data = cah_trim) |> summary()
+lm(books ~ age, data = cah_trim) %>% summary()
 ```
 
 Now the slope is **0.10**, *t*(969) = 1.44, **p = .150**, R² = **.002**. The "significant" result is gone.
@@ -211,14 +211,14 @@ Both models are "correct." Neither one is a mistake in R. The difference between
 In Lab 5 you ran a t-test and then an `lm()` and got suspiciously similar numbers. Let's settle it.
 
 ``` r
-cah_mf <- cah |>
+cah_mf <- cah %>%
   filter(gender %in% c("Male", "Female"))
 
 # the t-test you already know
 t.test(transformers ~ gender, data = cah_mf, var.equal = TRUE)
 
 # the same question as a line
-lm(transformers ~ gender, data = cah_mf) |> summary()
+lm(transformers ~ gender, data = cah_mf) %>% summary()
 ```
 
 The t-test gives *t*(911) = −2.29, *p* = .022; means of **1.21** (Female) and **1.44** (Male).
