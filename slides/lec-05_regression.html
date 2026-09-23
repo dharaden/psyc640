@@ -435,6 +435,7 @@ Y_i = b_0 + b_1X_i + e_i
 <img data-src="lec-05_regression_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
 <section id="compare-to-a-bad-fit" class="slide level2">
 <h2>Compare to a bad fit</h2>
+<p>Which has more [<strong>RED]</strong>{style=“color: red;”}</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
@@ -535,14 +536,42 @@ Y_i = b_0 + b_1X_i + e_i
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a>cah <span class="sc">%&gt;%</span></span>
 <span id="cb6-2"><a aria-label="2"></a>  <span class="fu">select</span>(age, transformers, books) <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a aria-label="3"></a>  <span class="fu">describe</span>(<span class="at">fast =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-3"><a aria-label="3"></a>  psych<span class="sc">::</span><span class="fu">describe</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>             vars    n  mean    sd median min  max range  skew kurtosis   se
-age             1 1000 49.41 16.63     50  18   99    81  0.07    -0.49 0.53
-transformers    2  938  1.33  1.56      1   0    5     5  0.90    -0.38 0.05
-books           3  977 22.33 75.87      5   0 1000  1000 10.00   118.09 2.43</code></pre>
+<pre><code>             vars    n  mean    sd median trimmed   mad min  max range  skew
+age             1 1000 49.41 16.63     50   49.30 17.79  18   99    81  0.07
+transformers    2  938  1.33  1.56      1    1.10  1.48   0    5     5  0.90
+books           3  977 22.33 75.87      5    9.47  7.41   0 1000  1000 10.00
+             kurtosis   se
+age             -0.49 0.53
+transformers    -0.38 0.05
+books          118.09 2.43</code></pre>
 </div>
 </div>
+</section>
+<section id="activity-stop-1-one-line-two-stories" class="slide level2">
+<h2>🛠️ Activity Stop 1: One Line, Two Stories</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Part A: Follow along</strong> · ~20 min · Pairs</p>
+</div>
+</div>
+</div>
+<p>We fit this model together, from the top:</p>
+<ul>
+<li>Plot it, then guess <em>r</em> <strong>before</strong> you run it</li>
+<li><code>lm()</code>, find the intercept and slope</li>
+<li>Say the slope in a unit that means something</li>
+<li>Predict a person and compute their residual</li>
+</ul>
+<p><a href="../class-activities/wk5_linear-model.html" class="button" target="_blank">Open the activity</a></p>
 </section>
 <section id="step-1-always-visualize-first" class="slide level2">
 <h2>Step 1: ALWAYS visualize first</h2>
@@ -569,7 +598,7 @@ books           3  977 22.33 75.87      5   0 1000  1000 10.00   118.09 2.43</co
 <span id="cb9-5"><a aria-label="5"></a>m_tf     <span class="ot">&lt;-</span> <span class="fu">mean</span>(cah<span class="sc">$</span>transformers, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb9-6"><a aria-label="6"></a></span>
 <span id="cb9-7"><a aria-label="7"></a>b1 <span class="ot">&lt;-</span> r <span class="sc">*</span> (s_tf <span class="sc">/</span> s_age)</span>
-<span id="cb9-8"><a aria-label="8"></a>b0 <span class="ot">&lt;-</span> m_tf <span class="sc">-</span> b1 <span class="sc">*</span> m_age</span>
+<span id="cb9-8"><a aria-label="8"></a>b0 <span class="ot">&lt;-</span> m_tf <span class="sc">-</span> (b1 <span class="sc">*</span> m_age)</span>
 <span id="cb9-9"><a aria-label="9"></a></span>
 <span id="cb9-10"><a aria-label="10"></a><span class="fu">c</span>(<span class="at">r =</span> r, <span class="at">b1 =</span> b1, <span class="at">b0 =</span> b0)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -619,6 +648,68 @@ F-statistic: 71.53 on 1 and 936 DF,  p-value: &lt; 0.00000000000000022</code></p
           display:block!important;
       }</style></aside>
 </section>
+<section id="waitthey-arent-the-same-rounding" class="slide level2">
+<h2>wait…they aren’t the same? Rounding?</h2>
+<p>The results are close, but not identical. What’s the deal??</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a><span class="fu">c</span>(<span class="at">r =</span> r, <span class="at">b1 =</span> b1, <span class="at">b0 =</span> b0)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          r          b1          b0 
+-0.26644722 -0.02498682  2.56823762 </code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a><span class="fu">tidy</span>(fit<span class="fl">.1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 5
+  term        estimate std.error statistic  p.value
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 (Intercept)   2.58     0.155       16.6  1.41e-54
+2 age          -0.0254   0.00300     -8.46 1.04e-16</code></pre>
+</div>
+</div>
+</div></div>
+<div class="fragment">
+<p><strong>MISSING DATA</strong></p>
+<p>Our data has 62 participants with missing values</p>
+<p><code>lm()</code> just kicks folks out with <code>NA</code> - listwise deletion</p>
+<p>Hand calculation used all participants in the data</p>
+</div>
+</section>
+<section id="comparingagain" class="slide level2">
+<h2>Comparing…again</h2>
+<p>This time we are going to listwise delete participants.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-label="1"></a>cah_tf <span class="ot">&lt;-</span> cah <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>(age, transformers)</span>
+<span id="cb17-2"><a aria-label="2"></a>r        <span class="ot">&lt;-</span> <span class="fu">cor</span>(cah_tf<span class="sc">$</span>age, cah_tf<span class="sc">$</span>transformers, <span class="at">use =</span> <span class="st">"pairwise"</span>)</span>
+<span id="cb17-3"><a aria-label="3"></a>s_age    <span class="ot">&lt;-</span> <span class="fu">sd</span>(cah_tf<span class="sc">$</span>age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb17-4"><a aria-label="4"></a>s_tf     <span class="ot">&lt;-</span> <span class="fu">sd</span>(cah_tf<span class="sc">$</span>transformers, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb17-5"><a aria-label="5"></a>m_age    <span class="ot">&lt;-</span> <span class="fu">mean</span>(cah_tf<span class="sc">$</span>age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb17-6"><a aria-label="6"></a>m_tf     <span class="ot">&lt;-</span> <span class="fu">mean</span>(cah_tf<span class="sc">$</span>transformers, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb17-7"><a aria-label="7"></a></span>
+<span id="cb17-8"><a aria-label="8"></a>b1 <span class="ot">&lt;-</span> r <span class="sc">*</span> (s_tf <span class="sc">/</span> s_age)</span>
+<span id="cb17-9"><a aria-label="9"></a>b0 <span class="ot">&lt;-</span> m_tf <span class="sc">-</span> (b1 <span class="sc">*</span> m_age)</span>
+<span id="cb17-10"><a aria-label="10"></a></span>
+<span id="cb17-11"><a aria-label="11"></a><span class="fu">c</span>(<span class="at">r =</span> r, <span class="at">b1 =</span> b1, <span class="at">b0 =</span> b0)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          r          b1          b0 
+-0.26644722 -0.02537607  2.57733245 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-label="1"></a><span class="fu">tidy</span>(fit<span class="fl">.1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 5
+  term        estimate std.error statistic  p.value
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 (Intercept)   2.58     0.155       16.6  1.41e-54
+2 age          -0.0254   0.00300     -8.46 1.04e-16</code></pre>
+</div>
+</div>
+</section>
 <section id="saying-the-slope-out-loud" class="slide level2">
 <h2>Saying the slope out loud</h2>
 <p><span class="math display">\[\widehat{transformers} = 2.58 - 0.025(age)\]</span></p>
@@ -658,10 +749,10 @@ F-statistic: 71.53 on 1 and 936 DF,  p-value: &lt; 0.00000000000000022</code></p
 <section id="predict-a-person" class="slide level2">
 <h2>Predict a person</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a><span class="co"># predicted movies for a 20-year-old</span></span>
-<span id="cb13-2"><a aria-label="2"></a>b0 <span class="sc">+</span> b1 <span class="sc">*</span> <span class="dv">20</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-label="1"></a><span class="co"># predicted movies for a 20-year-old</span></span>
+<span id="cb21-2"><a aria-label="2"></a>b0 <span class="sc">+</span> b1 <span class="sc">*</span> <span class="dv">20</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.068501</code></pre>
+<pre><code>[1] 2.069811</code></pre>
 </div>
 </div>
 <div class="fragment">
@@ -669,30 +760,6 @@ F-statistic: 71.53 on 1 and 936 DF,  p-value: &lt; 0.00000000000000022</code></p
 <p><span class="math display">\[e_i = Y_i - \hat{Y_i} = 4 - 2.07 = +1.93\]</span></p>
 <p><strong>Positive residual</strong> → above the line → the model <strong>under-predicted</strong> this person.</p>
 </div>
-</section>
-<section id="activity-stop-1-one-line-two-stories" class="slide level2">
-<h2>🛠️ Activity Stop 1: One Line, Two Stories</h2>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
-</div>
-<div class="callout-content">
-<p><strong>Part A: Follow along</strong> · ~20 min · Pairs</p>
-</div>
-</div>
-</div>
-<p>We fit this model together, from the top:</p>
-<ul>
-<li>Plot it, then guess <em>r</em> <strong>before</strong> you run it</li>
-<li><code>lm()</code>, find the intercept and slope</li>
-<li>Say the slope in a unit that means something</li>
-<li>Predict a person and compute their residual</li>
-</ul>
-<p><a href="../class-activities/wk5_linear-model.html" class="button" target="_blank">Open the activity</a></p>
 </section>
 <section id="break" class="slide level2" data-background-color="#C9ADE0">
 <h2>☕ Break</h2>
@@ -765,13 +832,13 @@ F-statistic: 71.53 on 1 and 936 DF,  p-value: &lt; 0.00000000000000022</code></p
 <section id="ta-da" class="slide level2">
 <h2>Ta da! 🎉</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a><span class="co"># the correlation, squared</span></span>
-<span id="cb15-2"><a aria-label="2"></a><span class="fu">cor</span>(cah<span class="sc">$</span>age, cah<span class="sc">$</span>transformers, <span class="at">use =</span> <span class="st">"pairwise"</span>)<span class="sc">^</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-label="1"></a><span class="co"># the correlation, squared</span></span>
+<span id="cb23-2"><a aria-label="2"></a><span class="fu">cor</span>(cah<span class="sc">$</span>age, cah<span class="sc">$</span>transformers, <span class="at">use =</span> <span class="st">"pairwise"</span>)<span class="sc">^</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.07099412</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-label="1"></a><span class="co"># R-squared straight from the model</span></span>
-<span id="cb17-2"><a aria-label="2"></a><span class="fu">summary</span>(fit<span class="fl">.1</span>)<span class="sc">$</span>r.squared</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-label="1"></a><span class="co"># R-squared straight from the model</span></span>
+<span id="cb25-2"><a aria-label="2"></a><span class="fu">summary</span>(fit<span class="fl">.1</span>)<span class="sc">$</span>r.squared</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.07099412</code></pre>
 </div>
@@ -779,7 +846,7 @@ F-statistic: 71.53 on 1 and 936 DF,  p-value: &lt; 0.00000000000000022</code></p
 <div class="fragment">
 <p>And the <em>t</em> for the slope?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-label="1"></a><span class="fu">tidy</span>(fit<span class="fl">.1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-label="1"></a><span class="fu">tidy</span>(fit<span class="fl">.1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 5
   term        estimate std.error statistic  p.value
@@ -787,7 +854,7 @@ F-statistic: 71.53 on 1 and 936 DF,  p-value: &lt; 0.00000000000000022</code></p
 1 (Intercept)   2.58     0.155       16.6  1.41e-54
 2 age          -0.0254   0.00300     -8.46 1.04e-16</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-label="1"></a><span class="fu">cor.test</span>(cah<span class="sc">$</span>age, cah<span class="sc">$</span>transformers)<span class="sc">$</span>statistic</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-label="1"></a><span class="fu">cor.test</span>(cah<span class="sc">$</span>age, cah<span class="sc">$</span>transformers)<span class="sc">$</span>statistic</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        t 
 -8.457459 </code></pre>
@@ -817,7 +884,7 @@ F-statistic: 71.53 on 1 and 936 DF,  p-value: &lt; 0.00000000000000022</code></p
 <h2>Effect size for a regression</h2>
 <ol type="1">
 <li><p><strong>The slope itself</strong> — in the units of your study. The most concrete thing you have.</p></li>
-<li><p><strong>Standardized slope /</strong> <span class="math inline">\(r\)</span> — Cohen’s rough guide: small (|.10|), medium (|.30|), large (|.50|)</p></li>
+<li><p><strong>Standardized slope</strong> — in SD units. Cohen’s rough guide: small (|.10|), medium (|.30|), large (|.50|)</p></li>
 <li><p><strong>Coefficient of determination</strong> <span class="math inline">\(R^2\)</span> — proportion of variance accounted for</p></li>
 </ol>
 <div class="fragment">
@@ -831,7 +898,7 @@ F-statistic: 71.53 on 1 and 936 DF,  p-value: &lt; 0.00000000000000022</code></p
 <h2>Writing it up</h2>
 <p>Template: <em>b</em> = slope, <em>t</em>(df) = statistic, <em>p</em> = p-value, plus <span class="math inline">\(R^2\)</span></p>
 <blockquote>
-<p>Age significantly predicted the number of Transformers movies a respondent had seen, <em>b</em> = −0.03, <em>t</em>(936) = −8.46, <em>p</em> &lt; .001. Each additional decade of age was associated with about a quarter of a movie fewer, and age accounted for 7.1% of the variance in movies seen (<span class="math inline">\(R^2\)</span> = .07).</p>
+<p>Age significantly predicted the number of Transformers movies a respondent had seen (<em>b</em> = −0.03, <em>p</em> &lt; .001). Each additional decade of age was associated with about a quarter of a movie fewer, and age accounted for 7.1% of the variance in movies seen (<span class="math inline">\(R^2\)</span> = .07).</p>
 </blockquote>
 <div class="fragment">
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -844,6 +911,7 @@ F-statistic: 71.53 on 1 and 936 DF,  p-value: &lt; 0.00000000000000022</code></p
 </div>
 <div class="callout-content">
 <p>Notice what the good version includes: the estimate <strong>in real units</strong>, the test, <em>and</em> a statement of how much it matters. All three.</p>
+<p>Some folks will include the t-values, but I find that overwhelming. Just have that in the tables.</p>
 </div>
 </div>
 </div>
@@ -852,39 +920,45 @@ F-statistic: 71.53 on 1 and 936 DF,  p-value: &lt; 0.00000000000000022</code></p
 <section id="pretty-tables-with-sjplot" class="slide level2">
 <h2>Pretty tables with <code>sjPlot</code></h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-label="1"></a><span class="fu">tab_model</span>(fit<span class="fl">.1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-label="1"></a><span class="fu">tab_model</span>(fit<span class="fl">.1</span>, <span class="at">show.std =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top" style="border-collapse:collapse; border:none;">
 <tbody>
 <tr class="odd">
 <th data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">&nbsp;</th>
-<th colspan="3" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">transformers</th>
+<th colspan="5" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">transformers</th>
 </tr>
 <tr class="even">
 <td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Predictors</td>
 <td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Estimates</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">std. Beta</td>
 <td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">CI</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">standardized CI</td>
 <td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">p</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">(Intercept)</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">2.58</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.00</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">2.27&nbsp;–&nbsp;2.88</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.06&nbsp;–&nbsp;0.06</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
 </tr>
 <tr class="even">
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">age</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.03</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.27</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.03&nbsp;–&nbsp;-0.02</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.33&nbsp;–&nbsp;-0.20</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">Observations</td>
-<td colspan="3" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">938</td>
+<td colspan="5" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">938</td>
 </tr>
 <tr class="even">
 <td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">R<sup>2</sup> / R<sup>2</sup> adjusted</td>
-<td colspan="3" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">0.071 / 0.070</td>
+<td colspan="5" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">0.071 / 0.070</td>
 </tr>
 </tbody>
 </table>
@@ -894,8 +968,8 @@ F-statistic: 71.53 on 1 and 936 DF,  p-value: &lt; 0.00000000000000022</code></p
 <section id="data-fitted-and-residuals" class="slide level2">
 <h2>Data, fitted, and residuals</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-label="1"></a>model_info <span class="ot">&lt;-</span> <span class="fu">augment</span>(fit<span class="fl">.1</span>)</span>
-<span id="cb24-2"><a aria-label="2"></a><span class="fu">head</span>(model_info)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-label="1"></a>model_info <span class="ot">&lt;-</span> <span class="fu">augment</span>(fit<span class="fl">.1</span>)</span>
+<span id="cb32-2"><a aria-label="2"></a><span class="fu">head</span>(model_info)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 9
   .rownames transformers   age .fitted  .resid    .hat .sigma .cooksd .std.resid
@@ -928,17 +1002,17 @@ F-statistic: 71.53 on 1 and 936 DF,  p-value: &lt; 0.00000000000000022</code></p
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-label="1"></a>model_info <span class="sc">%&gt;%</span></span>
-<span id="cb26-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
-<span id="cb26-3"><a aria-label="3"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb26-4"><a aria-label="4"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> F, <span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
-<span id="cb26-5"><a aria-label="5"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">"e"</span>) <span class="sc">+</span></span>
-<span id="cb26-6"><a aria-label="6"></a>  <span class="fu">scale_x_continuous</span>(<span class="fu">expression</span>(<span class="fu">hat</span>(Y))) <span class="sc">+</span></span>
-<span id="cb26-7"><a aria-label="7"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">25</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-label="1"></a>model_info <span class="sc">%&gt;%</span></span>
+<span id="cb34-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
+<span id="cb34-3"><a aria-label="3"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb34-4"><a aria-label="4"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> F, <span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb34-5"><a aria-label="5"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">"e"</span>) <span class="sc">+</span></span>
+<span id="cb34-6"><a aria-label="6"></a>  <span class="fu">scale_x_continuous</span>(<span class="fu">expression</span>(<span class="fu">hat</span>(Y))) <span class="sc">+</span></span>
+<span id="cb34-7"><a aria-label="7"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">25</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 
 </div>
-<img data-src="lec-05_regression_files/figure-revealjs/unnamed-chunk-16-1.png" width="768" class="r-stretch"><div class="fragment">
+<img data-src="lec-05_regression_files/figure-revealjs/unnamed-chunk-20-1.png" width="768" class="r-stretch"><div class="fragment">
 <p>Flat. Always. <strong>By construction</strong> — and in Week 10 we will use that fact to catch models that are lying to us.</p>
 </div>
 </section></section>
@@ -950,9 +1024,14 @@ F-statistic: 71.53 on 1 and 936 DF,  p-value: &lt; 0.00000000000000022</code></p
 <section id="a-t-test-is-a-regression" class="slide level2">
 <h2>A t-test <em>is</em> a regression</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-label="1"></a>cah_mf <span class="ot">&lt;-</span> cah <span class="sc">%&gt;%</span> <span class="fu">filter</span>(gender <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>))</span>
-<span id="cb27-2"><a aria-label="2"></a></span>
-<span id="cb27-3"><a aria-label="3"></a><span class="fu">t.test</span>(transformers <span class="sc">~</span> gender, <span class="at">data =</span> cah_mf, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a aria-label="1"></a>cah_mf <span class="ot">&lt;-</span> cah <span class="sc">%&gt;%</span> <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">"Male"</span> <span class="sc">|</span> </span>
+<span id="cb35-2"><a aria-label="2"></a>                           gender <span class="sc">==</span> <span class="st">"Female"</span>) </span>
+<span id="cb35-3"><a aria-label="3"></a><span class="co">#OR</span></span>
+<span id="cb35-4"><a aria-label="4"></a></span>
+<span id="cb35-5"><a aria-label="5"></a>cah_mf <span class="ot">&lt;-</span> cah <span class="sc">%&gt;%</span> <span class="fu">filter</span>(gender <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>))</span>
+<span id="cb35-6"><a aria-label="6"></a></span>
+<span id="cb35-7"><a aria-label="7"></a></span>
+<span id="cb35-8"><a aria-label="8"></a><span class="fu">t.test</span>(transformers <span class="sc">~</span> gender, <span class="at">data =</span> cah_mf, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Two Sample t-test
@@ -971,7 +1050,7 @@ mean in group Female   mean in group Male
 <section id="the-same-question-as-a-line" class="slide level2">
 <h2>The same question as a line</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-label="1"></a><span class="fu">lm</span>(transformers <span class="sc">~</span> gender, <span class="at">data =</span> cah_mf) <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a aria-label="1"></a><span class="fu">lm</span>(transformers <span class="sc">~</span> gender, <span class="at">data =</span> cah_mf) <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 5
   term        estimate std.error statistic  p.value
@@ -1010,22 +1089,22 @@ mean in group Female   mean in group Male
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-label="1"></a><span class="fu">library</span>(psychTools)</span>
-<span id="cb31-2"><a aria-label="2"></a>heights <span class="ot">&lt;-</span> psychTools<span class="sc">::</span>galton</span>
-<span id="cb31-3"><a aria-label="3"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(child <span class="sc">~</span> parent, <span class="at">data =</span> heights)</span>
-<span id="cb31-4"><a aria-label="4"></a>heights <span class="ot">&lt;-</span> broom<span class="sc">::</span><span class="fu">augment</span>(mod)</span>
-<span id="cb31-5"><a aria-label="5"></a></span>
-<span id="cb31-6"><a aria-label="6"></a>heights <span class="sc">%&gt;%</span></span>
-<span id="cb31-7"><a aria-label="7"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> parent, <span class="at">y =</span> child)) <span class="sc">+</span></span>
-<span id="cb31-8"><a aria-label="8"></a>  <span class="fu">geom_jitter</span>(<span class="at">alpha =</span> .<span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb31-9"><a aria-label="9"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb31-10"><a aria-label="10"></a>  <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> <span class="dv">72</span>), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb31-11"><a aria-label="11"></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="dv">72</span>), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb31-12"><a aria-label="12"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a aria-label="1"></a><span class="fu">library</span>(psychTools)</span>
+<span id="cb39-2"><a aria-label="2"></a>heights <span class="ot">&lt;-</span> psychTools<span class="sc">::</span>galton</span>
+<span id="cb39-3"><a aria-label="3"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(child <span class="sc">~</span> parent, <span class="at">data =</span> heights)</span>
+<span id="cb39-4"><a aria-label="4"></a>heights <span class="ot">&lt;-</span> broom<span class="sc">::</span><span class="fu">augment</span>(mod)</span>
+<span id="cb39-5"><a aria-label="5"></a></span>
+<span id="cb39-6"><a aria-label="6"></a>heights <span class="sc">%&gt;%</span></span>
+<span id="cb39-7"><a aria-label="7"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> parent, <span class="at">y =</span> child)) <span class="sc">+</span></span>
+<span id="cb39-8"><a aria-label="8"></a>  <span class="fu">geom_jitter</span>(<span class="at">alpha =</span> .<span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb39-9"><a aria-label="9"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb39-10"><a aria-label="10"></a>  <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> <span class="dv">72</span>), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb39-11"><a aria-label="11"></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="dv">72</span>), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb39-12"><a aria-label="12"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 
 </div>
-<img data-src="lec-05_regression_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"></section>
+<img data-src="lec-05_regression_files/figure-revealjs/unnamed-chunk-23-1.png" width="960" class="r-stretch"></section>
 <section id="regression-to-the-mean" class="slide level2">
 <h2>Regression to the mean</h2>
 <p><strong>Regression to the mean</strong>: a random variable that produces an extreme score on a first measurement tends to produce a less extreme score on a second measurement.</p>
@@ -1267,7 +1346,7 @@ mean in group Female   mean in group Male
         transition: 'fade',
 
         // Transition speed (default/fast/slow)
-        transitionSpeed: 'default',
+        transitionSpeed: 'fast',
 
         // Transition style for full page slide backgrounds
         // (none/fade/slide/convex/concave/zoom)

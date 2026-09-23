@@ -81,9 +81,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-3502d72582367641a98a453c687a2354.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-9fe6195f28bedb9d423a5f9902e70718.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-3502d72582367641a98a453c687a2354.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-ec2427c9d1066c1b6d2fbf99895004ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-5c51e7f2b9ed86a84d54895526db5dd5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-ec2427c9d1066c1b6d2fbf99895004ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -610,8 +610,8 @@ window.Quarto = {
 </blockquote>
 <section id="look-before-you-model" class="level2">
 <h2 class="anchored" data-anchor-id="look-before-you-model">1. Look before you model</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>cah <span class="sc">|&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(age, transformers) <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>cah <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(age, transformers) <span class="sc">%&gt;%</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>age</code> runs from 18 to 99. <code>transformers</code> runs from 0 to 5, with a mean of about 1.3. Note that <strong>nobody in this dataset is younger than 18</strong> — we will come back to that.</p>
 </section>
@@ -718,10 +718,10 @@ Multiple R-squared:  0.0710,    Adjusted R-squared:  0.0700</code></pre>
 <h2 class="anchored" data-anchor-id="the-decision-that-changes-the-answer">The decision that changes the answer</h2>
 <p>Someone in this sample reported reading <strong>1,000 books</strong> in the past year — about three a day, every day. Five people reported 500 or more.</p>
 <p>Re-fit the model without the responses that are not plausible:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>cah_trim <span class="ot">&lt;-</span> cah <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>cah_trim <span class="ot">&lt;-</span> cah <span class="sc">%&gt;%</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(books <span class="sc">&lt;=</span> <span class="dv">365</span>)      <span class="co"># at most one book a day</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(books <span class="sc">~</span> age, <span class="at">data =</span> cah_trim) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(books <span class="sc">~</span> age, <span class="at">data =</span> cah_trim) <span class="sc">%&gt;%</span> <span class="fu">summary</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Now the slope is <strong>0.10</strong>, <em>t</em>(969) = 1.44, <strong>p = .150</strong>, R² = <strong>.002</strong>. The “significant” result is gone.</p>
 </section>
 <section id="questions-for-part-b" class="level2">
@@ -751,14 +751,14 @@ Multiple R-squared:  0.0710,    Adjusted R-squared:  0.0700</code></pre>
 <section id="part-c-together-the-lab-5-punchline-10-min" class="level1">
 <h1>Part C — Together: the Lab 5 punchline (10 min)</h1>
 <p>In Lab 5 you ran a t-test and then an <code>lm()</code> and got suspiciously similar numbers. Let’s settle it.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>cah_mf <span class="ot">&lt;-</span> cah <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>cah_mf <span class="ot">&lt;-</span> cah <span class="sc">%&gt;%</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>))</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># the t-test you already know</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(transformers <span class="sc">~</span> gender, <span class="at">data =</span> cah_mf, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># the same question as a line</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(transformers <span class="sc">~</span> gender, <span class="at">data =</span> cah_mf) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(transformers <span class="sc">~</span> gender, <span class="at">data =</span> cah_mf) <span class="sc">%&gt;%</span> <span class="fu">summary</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The t-test gives <em>t</em>(911) = −2.29, <em>p</em> = .022; means of <strong>1.21</strong> (Female) and <strong>1.44</strong> (Male).</p>
 <p>The regression gives an intercept of <strong>1.21</strong> and a slope of <strong>0.23</strong>, with <em>t</em> = 2.29 and <em>p</em> = .022.</p>
 <section id="questions-for-part-c" class="level2">
