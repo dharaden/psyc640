@@ -1,38 +1,65 @@
 ---
-title: "Week 06"
+title: "Week 6 - Comparing Groups"
 editor: visual
 ---
 
-# Comparing Means 
+# Comparing Groups as Regression
 
-## Materials/Data
+Last week ended with a magic trick: you ran a t-test, then ran the same question through `lm()`, and the numbers matched exactly. This week we pull the trick apart and show you the wires.
 
--   <a href="../files/data/CAH.csv" download="CAH.csv">Cards Against Humanity Data (.csv)</a>
--   <a href="../files/data/pokemon.csv" download="pokemon.csv">Week 6 Class Activity Data (.csv)</a>
+The key move is **dummy coding** — the trick that lets a model with only numbers in it handle a variable like "treatment group." Once you see it, two things happen. First, the t-test stops being a separate procedure and becomes a regression with one categorical predictor. Second, **ANOVA** does too: three groups is just two dummy variables instead of one.
+
+We will also deal with the question that comes up the moment you have three groups: why not just run a t-test on every pair? (Short answer: because your false-positive rate quietly climbs to 14%.)
+
+::: callout-note
+## A small thing that matters a lot
+
+Software picks the reference group alphabetically. Your research question almost never does. Choosing the reference group deliberately is one of the easiest ways to make a results table say what you actually mean.
+:::
 
 ## Prepare
 
--   [Chapter 9 & 10 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}
-
--   [Chapter 13 - LSR](https://learningstatisticswithr.com/book/){target="_blank"}
+- 📖[Chapter 15 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}
 
 ## Slides
 
-[💻 Comparing Means](../slides/lec-6_mean.html){target="_blank"}
+[💻 Comparing Groups as Regression](../slides/lec-06_groups.html){target="_blank"}
+
+[💻 Comparing Groups - JAMOVI](../slides/lec-06_groups_JAMOVI.html){target="_blank"}
+
+::: callout-note
+Both decks cover the same concepts with the same data and the same numbers - one drives R, the other drives JAMOVI. The in-class activity gives every step both ways.
+:::
+
+## Data
+
+**Lecture:** <a href="../files/data/final_tipi.csv" download="final_tipi.csv">TIPI Data (.csv)</a> - the same cleaned dataset from Week 3
+
+**In-class activity:** <a href="../files/data/Pokemon.csv" download="Pokemon.csv">Pokémon Data (.csv)</a>
 
 ## In-Class Activity
 
-[Walk along comparing means](../class-activities/wk6_means.html){target="_blank"}
+[📓Same Question, Three Ways](../class-activities/wk6_groups.html){target="_blank"}
 
 ## For Next Time
 
-📋[Lab 6 - Still Comparing Means](../labs/lab-6.html)
+📋[Lab 7 - Does the Therapy Work?](../labs/lab-07_comparing-groups.html) — **due Tuesday 10/6 at 11:59pm**
 
-📖[Chapter 14.1.1 - 14.1.4 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}
+A three-arm randomized trial of CBT for depression. You fit the model, choose the reference group, and write up the results.
 
-📖[Chapter 7.1 - 7.2.4 - IMS](https://openintro-ims.netlify.app/){target="_blank"}
+📖[Chapter 8 - ROS](https://users.aalto.fi/~ave/ROS.pdf)
 
-📖[Chapter 8.1.1 & 8.1.2 - MSR](https://www.modernstatisticswithr.com/){target="_blank"}
+📖[Chapters 5 & 14.5 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}
+
+📖[Chapter 15.4 - LSR](https://learningstatisticswithr.com/){target="_blank"}
+
+::: callout-important
+## Looking ahead
+
+**Lab 8** is due Tuesday **10/13**, which falls during Fall Break — it is submitted online as usual.
+
+The **Midterm Project** is handed out **10/15** and due **Tuesday 10/27**.
+:::
 
 <br><br>
 

@@ -1,0 +1,89 @@
+---
+title: "Lab 7: Does the Therapy Work?"
+subtitle: "Three groups, one model"
+editor: visual
+---
+
+## Instructions
+
+This week you built the machine; now you run it on something that matters. You are the data analyst for a clinical psychology lab that has just finished a pilot **randomized controlled trial** of a brief CBT intervention for depression. Three arms: Individual CBT, Group CBT, and a Waitlist Control.
+
+Unlike Lab 6, this one is hands-on. You will fit the model yourself, choose the reference group on purpose, and write the results the way they would appear in a paper.
+
+Here is what you'll need:
+
+- <a href="../files/_lab-qmd/lab-7_comparing-groups.qmd" download="lab-7_comparing-groups.qmd">Download Lab 7 (.qmd)</a>
+- <a href="../files/data/cbt_data_f25.csv" download="cbt_data_f25.csv">Download the Trial Data (.csv)</a>
+
+Save the `.csv` in the `data` folder of your PSYC 640 R Project and the `.qmd` in the project folder.
+
+When you're finished, **render your file to a Word document**, and submit **both** the `.qmd` and the Word doc to myCourses.
+
+::: callout-important
+## Due date
+
+**Tuesday, October 6 at 11:59 pm.**
+:::
+
+::: callout-note
+## Working in JAMOVI?
+
+You may do the analysis in JAMOVI instead. Submit your `.omv` file plus a Word document with your written answers, using the same question numbers. Every question is answerable in either program — Week 6's JAMOVI slides have the menu paths.
+:::
+
+## The study
+
+Ninety adults with elevated depression scores were **randomly assigned** to one of three conditions:
+
+- **Individual CBT** — eight weekly one-on-one sessions
+- **Group CBT** — eight weekly sessions in groups of six
+- **Waitlist Control** — no treatment during the trial, offered therapy afterwards
+
+Depression was measured with the **Beck Depression Inventory (BDI)** before and after the eight weeks. Higher scores mean more depressive symptoms.
+
+**Five participants did not complete the post-assessment.** That is normal in clinical research, and you will have to decide what to say about it.
+
+## Variables
+
+| Variable | Description |
+|----|----|
+| `participant_id` | Unique ID |
+| `group` | `"Individual CBT"`, `"Group CBT"`, or `"Waitlist Control"` (**randomly assigned**) |
+| `sex` | `"Female"` or `"Male"` |
+| `age` | Age in years (18–55) |
+| `bdi_pre` | BDI score before treatment |
+| `bdi_post` | BDI score after eight weeks (**5 missing**) |
+
+::: callout-note
+## What you'll practice
+
+- Checking whether randomization worked before you trust a result
+- Fitting a one-way model with **three** groups and reading every coefficient
+- Choosing a **reference group** that matches your research question
+- Getting the comparison the coefficient table hides
+- Reporting an omnibus test, group means, pairwise comparisons, and an effect size
+- Saying something honest about missing data
+- Making a **causal** claim — and being right to do it, for once
+:::
+
+## Exercises at a glance
+
+| Exercise | What you'll do | Key functions |
+|----|----|----|
+| **1. Import & inspect** | Load the data, count the groups, find the missing scores | `import()`, `here()`, `summary()` |
+| **2. Did randomization work?** | Compare the groups on `bdi_pre`, `age`, `sex` | `group_by()`, `summarize()` |
+| **3. Describe & plot** | Post-treatment scores by group | `ggplot()`, boxplot or means plot |
+| **4. Fit the model** | `lm()` with a three-level factor | `lm()`, `summary()` |
+| **5. Reference group** | Re-fit so the control group is the baseline | `fct_relevel()` |
+| **6. Which pairs differ?** | Tukey-adjusted comparisons | `emmeans()` |
+| **7. Effect size** | Cohen's *d* for the key contrast, plus R² | `cohens_d()`, `glance()` |
+| **8. Write it up** | One APA-style results paragraph | — |
+| **9. Judgment** | Missing data, and what you may claim | — |
+
+------------------------------------------------------------------------
+
+**Total: 28 points (+1 bonus)**
+
+::: callout-tip
+Exercise 5 is the one to think hardest about. In a treatment study, the reference group is not a formatting detail — it decides which comparisons your table reports.
+:::

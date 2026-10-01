@@ -1,0 +1,207 @@
+---
+title: "Lab 7: Does the Therapy Work?"
+author: "Your Name Here"
+date: "`r Sys.Date()`"
+format: docx
+editor_options:
+  chunk_output_type: console
+  markdown:
+    wrap: 72
+---
+
+```{r setup, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(rio)
+library(here)
+library(emmeans)
+
+cbt <- import(here("data", "cbt_data_f25.csv"))
+```
+
+# Lab 7 — Does the Therapy Work?
+
+**Due Tuesday, October 6, 11:59 pm.** Render to Word and submit both the
+`.qmd` and the Word document.
+
+Ninety adults with elevated depression scores were **randomly assigned**
+to **Individual CBT**, **Group CBT**, or a **Waitlist Control**.
+Depression was measured with the BDI before (`bdi_pre`) and after
+(`bdi_post`) eight weeks. Higher = more symptoms. Five people did not
+complete the post-assessment.
+
+Write your answers under each **Your Answer:** line, in complete
+sentences.
+
+------------------------------------------------------------------------
+
+## Exercise 1 — Import and inspect (3 points)
+
+a)  How many participants are in each group?
+b)  How many are missing a `bdi_post` score? Which group(s) are they in?
+c)  What is your analysis N — the number of people who actually
+    contribute to a model of `bdi_post`?
+
+```{r}
+# Your code here
+
+```
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 2 — Did randomization work? (3 points)
+
+Before trusting any treatment effect, check that the groups started out
+similar. Compare the three groups on **`bdi_pre`**, and on one
+demographic variable of your choice (`age` or `sex`).
+
+```{r}
+# Your code here
+
+```
+
+a)  Report the pre-treatment means by group.
+b)  Do the groups look comparable at baseline? What would it have meant
+    for your conclusions if they had *not*?
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 3 — Describe and visualize (3 points)
+
+Make a table of `bdi_post` (n, mean, SD) by group, and a plot that shows
+the group differences. Label your axes and give the plot a title.
+
+```{r}
+# Your code here
+
+```
+
+**Your Answer:** (one or two sentences describing what the plot shows)
+
+------------------------------------------------------------------------
+
+## Exercise 4 — Fit the model (4 points)
+
+Fit a linear model predicting `bdi_post` from `group`, and print the
+summary.
+
+```{r}
+# Your code here
+
+```
+
+a)  Which group is the reference? How do you know?
+b)  What does the **intercept** mean, in the units of this study?
+c)  What does **each** of the two other coefficients mean?
+d)  Report the omnibus test: *F*, both degrees of freedom, and *p*.
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 5 — Choose the reference group on purpose (4 points)
+
+R chose the reference alphabetically. That is not the question the trial
+was designed to answer: the control group is the natural baseline.
+
+Re-fit the model with **Waitlist Control** as the reference.
+
+```{r}
+# Hint: fct_relevel() inside mutate()
+
+```
+
+a)  What is the new intercept, and what does it mean?
+b)  What do the two coefficients now tell you?
+c)  Which numbers from Exercise 4 changed, and which stayed exactly the
+    same? Why?
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 6 — Which pairs actually differ? (3 points)
+
+The coefficient table compares each treatment to the control, but never
+compares the two treatments to each other. Get all three pairwise
+comparisons with a correction for multiple testing.
+
+```{r}
+# Your code here
+
+```
+
+a)  Report the three comparisons and their adjusted p-values.
+b)  Is Individual CBT significantly better than Group CBT?
+c)  Why not just run three t-tests instead?
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 7 — Effect size (3 points)
+
+a)  Compute Cohen's *d* for **Individual CBT vs. Waitlist Control**.
+b)  Report R² for the full model.
+c)  Explain what each number tells a reader. Which one would you put in
+    an abstract?
+
+```{r}
+# Your code here
+
+```
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 8 — Write it up (3 points)
+
+Write **one paragraph** reporting these results as they would appear in
+the Results section of a paper. Include, in this order: the omnibus
+test, the group descriptives, the pairwise comparisons that matter, and
+an effect size.
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 9 — Judgment calls (2 points)
+
+a)  Five people are missing post-treatment scores, and four of them were
+    in the Individual CBT group — the group with the best outcome. Why
+    might that matter for how you read the result? What is the one
+    sentence you would add to the paper about it?
+b)  Participants were **randomly assigned** to condition. Does that let
+    you say the therapy *caused* the reduction in depression? Compare
+    your answer to Lab 6, where you could not make a causal claim.
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Bonus (+1 point)
+
+Everything above used `bdi_post` alone, ignoring where people started.
+Fit a model that predicts `bdi_post` from **both** `group` and
+`bdi_pre`:
+
+```{r}
+# Your code here
+
+```
+
+What happens to the treatment coefficients, and why might a clinical
+researcher prefer this model? (One or two sentences — we do this
+properly in Week 8.)
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+**Total: 28 points (+1 bonus)**
+
+*Remember to render to Word before submitting.*

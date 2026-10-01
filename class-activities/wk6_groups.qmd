@@ -1,0 +1,301 @@
+---
+title: "Week 6 Exercises - Same Question, Three Ways"
+subtitle: "t-test → regression → ANOVA, and why they are all one model"
+editor: visual
+---
+
+::: callout-note
+## Overview
+
+About 55 minutes · Pairs or small groups · 🧰 R (`tidyverse`, `rio`, `here`, `emmeans`) **or** JAMOVI
+
+Every step is given **both ways**. The skill is reading the output, not producing it.
+
+- **Part A: Follow along (\~20 min):** two groups, three different commands, one answer.
+- **Part B: On your own (\~25 min):** three groups, from descriptives to a written-up result.
+- **Part C: Together (\~10 min):** choose the reference group on purpose.
+
+**By the end you should be able to:**
+
+- Explain what the intercept and each coefficient mean when the predictor is a group
+- Predict what changes when you switch the reference group — and what doesn't
+- Run and read a one-way ANOVA as a regression
+- Say why three t-tests is not the same as one omnibus test
+- Get the pairwise comparison the coefficient table does not show you
+- Report a group difference in APA style with an effect size
+:::
+
+::: callout-important
+Please submit this to the Week 6 exercise on myCourses. I just want to check how folks are doing during these. Render to Word as well. Ungraded.
+:::
+
+------------------------------------------------------------------------
+
+# Set up (5 min)
+
+1.  **Download the data** into the `data` folder of your PSYC 640 R Project.
+
+    - <a href="../files/data/Pokemon.csv" download="Pokemon.csv">Pokémon data (.csv)</a>
+
+2.  New Quarto document, titled `Week 6 - Same Question, Three Ways`, saved as `week6_inclass.qmd`.
+
+3.  Setup chunk:
+
+``` r
+library(tidyverse)
+library(rio)
+library(here)
+library(emmeans)
+
+pokemon <- import(here("data", "Pokemon.csv"))
+
+glimpse(pokemon)
+```
+
+::: callout-tip
+## Check yourself
+
+`pokemon` should have **801 rows and 17 columns**, and 70 of those rows should have `is_legendary == 1`.
+:::
+
+::: callout-note
+## 🖱️ In JAMOVI instead
+
+1.  **☰ Menu → Open → Browse →** `Pokemon.csv`
+2.  Click the `is_legendary` column header → set the measure type to **Nominal**, then under **Levels** label `0` as "Not legendary" and `1` as "Legendary".
+3.  Check that `type1` is **Nominal** and `attack` / `speed` are **Continuous**.
+4.  Save as a `.omv` file.
+:::
+
+------------------------------------------------------------------------
+
+# Part A — Follow along: two groups (20 min)
+
+> **Research question:** Do legendary Pokémon have higher attack than non-legendary ones?
+
+## 1. Always look first
+
+``` r
+pokemon %>%
+  group_by(is_legendary) %>%
+  summarize(n = n(), M = mean(attack), SD = sd(attack))
+```
+
+| Group             | n   | M      | SD    |
+|-------------------|-----|--------|-------|
+| Not legendary (0) | 731 | 74.84  | 30.58 |
+| Legendary (1)     | 70  | 109.36 | 31.56 |
+
+Write down the **difference between the means** before you go on. You will see it again in about ninety seconds.
+
+## 2. The test you already know
+
+``` r
+t.test(attack ~ is_legendary, data = pokemon, var.equal = TRUE)
+```
+
+## 3. The same question as a line
+
+``` r
+mod_leg <- lm(attack ~ is_legendary, data = pokemon)
+summary(mod_leg)
+```
+
+::: callout-tip
+## Check yourself
+
+Intercept = **74.84**. Slope = **34.52**. *t* = **9.00**, *p* \< .001 — the same *t* and *p* the t-test gave you (the sign depends on which group goes first).
+
+Is the slope the number you wrote down in step 1?
+:::
+
+::: callout-note
+## 🖱️ Part A in JAMOVI
+
+- **Descriptives:** Analyses → **Exploration → Descriptives**; `attack` into Variables, `is_legendary` into **Split by**.
+- **t-test:** Analyses → **T-Tests → Independent Samples T-Test**; Dependent `attack`, Grouping `is_legendary`. Tick **Student's**, **Mean difference**, **Effect size**.
+- **The line:** Analyses → **Regression → Linear Regression**; Dependent `attack`, and put `is_legendary` in **Factors** (not Covariates — it is a group).
+- Open **Model Fit** and tick **R²**.
+:::
+
+## 4. Why it works: dummy coding
+
+The model cannot read the word "legendary," so it uses a number:
+
+| Group         | coded |
+|---------------|-------|
+| Not legendary | 0     |
+| Legendary     | 1     |
+
+$$\widehat{attack} = 74.84 + 34.52(legendary)$$
+
+- Plug in **0** → 74.84 → the mean of the non-legendary group
+- Plug in **1** → 109.36 → the mean of the legendary group
+
+The intercept *is* a group mean. The slope *is* the difference between the means.
+
+## ❓Questions for Part A
+
+1.  Cohen's *d* for this comparison is **1.13** and R² is **.092**. Explain, in one sentence each, what those two numbers tell a reader. Why might you report both?
+2.  There are 731 non-legendary and 70 legendary Pokémon. Does that imbalance make the comparison invalid? What does it affect?
+3.  Can we say that being legendary *causes* higher attack? (Careful — this one has a wrinkle. Who assigned the groups?)
+
+------------------------------------------------------------------------
+
+# Part B — On your own: three groups (25 min)
+
+> **Research question:** Do the three starter types — fire, grass, and water — differ in speed?
+
+``` r
+starters <- pokemon %>%
+  filter(type1 %in% c("fire", "grass", "water"))
+```
+
+::: callout-note
+## 🖱️ In JAMOVI
+
+**Data → Filters** → `type1 == "fire" or type1 == "grass" or type1 == "water"`
+:::
+
+## Steps
+
+1.  **Describe.** Mean, SD and n of `speed` for each of the three types. Which looks fastest?
+2.  **Plot.** A boxplot or a means-with-error-bars plot of speed by type.
+3.  **Fit.** `lm(speed ~ type1, data = starters)` — or Linear Regression with `type1` in **Factors**.
+4.  **Read the omnibus test.** Find *F*, its two degrees of freedom, *p*, and R².
+5.  **Read the coefficients.** What is the intercept? What is each estimate comparing?
+6.  **Get the missing comparison** (see below).
+7.  **Write it up** in APA style: omnibus → descriptives → which pairs differ.
+
+::: callout-tip
+## Check yourself
+
+Means: fire **73.35**, grass **59.03**, water **63.92**.
+
+*F*(2, 241) = **5.01**, *p* = **.007**, R² = **.040**.
+
+Intercept = 73.35, `type1grass` = −14.32, `type1water` = −9.43.
+:::
+
+## The comparison the table does not show you
+
+The coefficient table compares everything to **fire**. It never compares grass to water. For that:
+
+``` r
+mod_type <- lm(speed ~ type1, data = starters)
+
+emmeans(mod_type, pairwise ~ type1, adjust = "tukey")
+```
+
+::: callout-note
+## 🖱️ In JAMOVI
+
+Analyses → **ANOVA → ANOVA**; Dependent `speed`, Fixed Factors `type1`. Then open **Post Hoc Tests**, move `type1` across, and choose the **Tukey** correction. Tick **η²** under Effect Size while you are there.
+:::
+
+::: callout-tip
+## Check yourself
+
+Tukey-adjusted: fire vs grass *p* = **.005** · fire vs water *p* = **.070** · grass vs water *p* = **.389**.
+
+Note that fire vs water was *p* = .027 **before** the correction. Adjusting for multiple comparisons changed the answer.
+:::
+
+## ❓Questions for Part B
+
+1.  Write the fitted equation using the variable names.
+2.  Using only the coefficient table, what is the predicted speed of a water type? Show the arithmetic.
+3.  The omnibus test is significant. What exactly does that let you claim — and what does it *not* let you claim?
+4.  Fire vs water is significant uncorrected and not significant after Tukey. Which would you report, and why? Is there a defensible answer either way?
+5.  R² = .040. In plain language, how much have we learned about speed by knowing a Pokémon's type?
+
+------------------------------------------------------------------------
+
+# 🔬 Stretch: see the problem for yourself (finished early?)
+
+In lecture we simulated studies where **nothing was going on** and counted how often at least one pairwise t-test came out "significant." Run it yourself, then break it.
+
+``` r
+set.seed(640)
+
+num_groups <- 3
+sample_size <- 30
+num_sims <- 1000
+
+one_study <- function(n = 30, k = 3) {
+  # k groups, all drawn from the SAME population - no real differences
+  d <- tibble(group = rep(LETTERS[1:k], each = n),
+              y     = rnorm(n * k))
+  
+  combn(LETTERS[1:k], 2, simplify = FALSE) %>% 
+    map_dbl(function(pair) {
+      t.test(y ~ group, data = filter(d, group %in% pair), 
+             var.equal = TRUE)$p.value
+    }) %>% 
+    min()
+}
+
+smallest_p <- map_dbl(1:num_sims, function(i) one_study(sample_size, num_groups))
+
+mean(smallest_p < .05)     # how often did we fool ourselves?
+```
+
+## ❓Questions
+
+1.  You should get something close to **.12**. Why is that not **.05**, when every group came from the same population?
+2.  Change `num_groups = 3` to `num_groups = 5` in the function call and run it again. What happens, and why?
+3.  The arithmetic shortcut says five groups should give $1 - .95^{10}$ = 40%, but the simulation says about 29%. What does the shortcut assume that is not true here?
+4.  Now set `num_groups = 2`. What rate do you get, and why is *that* the number we were promised all along?
+
+See what happens when you change the `num_groups`, `sample_size` and `num_sims` values. Careful, the more simulations, the longer it will take.
+
+::: callout-note
+## 🖱️ JAMOVI users
+
+JAMOVI has no simulator, so this one is R-only. Pair up with someone running R, or just watch — the questions are the point, not the code.
+:::
+
+------------------------------------------------------------------------
+
+# Part C — Together: pick the reference on purpose (10 min)
+
+Fire is the reference group only because **f** comes before **g** and **w**. That is a terrible reason.
+
+Suppose the question you actually care about is *"how do fire and water compare to grass?"*
+
+``` r
+starters <- starters %>%
+  mutate(type1 = fct_relevel(type1, "grass"))
+
+reg.speed <- lm(speed ~ type1, data = starters)
+summary(reg.speed)
+```
+
+::: callout-note
+## 🖱️ In JAMOVI
+
+**Linear Regression → Reference Levels** → set `type1` reference to **grass**.
+:::
+
+## ❓Questions for Part C
+
+1.  **Before you run it:** which numbers will change, and which will stay exactly the same? Write your prediction down, then check.
+2.  What is the new intercept, and why?
+3.  Did *F*, its df, R², or the overall *p* change at all? Why not?
+4.  In your own research, what should decide the reference group — alphabetical order, or something else? Give an example from your area.
+
+::: callout-important
+## The point of Part C
+
+Changing the reference group changes the **questions the table answers**, not the model. The model is the same model: same fitted values, same residuals, same F, same R². This becomes essential in Week 9 when categorical predictors meet interactions.
+:::
+
+------------------------------------------------------------------------
+
+# Exit ticket ✅
+
+At the bottom of your document:
+
+1.  One sentence: what is the intercept when the predictor is a group?
+2.  One sentence: why is an omnibus F test not the same as running every pairwise t-test?
+3.  What is a p-value? How is it related to the false-positive rate?
