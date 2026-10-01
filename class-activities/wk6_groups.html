@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Week 1 – PSYC 640 - Graduate Statistics</title>
+<title>Week 6 Exercises - Same Question, Three Ways – PSYC 640 - Graduate Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -35,8 +70,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../weeks/week-2.html" rel="next">
-<link href="../index.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -79,9 +112,38 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Week 1 – PSYC 640 - Graduate Statistics">
-<meta property="og:description" content="">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Week 6 Exercises - Same Question, Three Ways – PSYC 640 - Graduate Statistics">
+<meta property="og:description" content="t-test → regression → ANOVA, and why they are all one model">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
 
@@ -256,7 +318,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-1.html">Week 1 - Set up and Foundations</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Week 6 Exercises - Same Question, Three Ways</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -318,16 +380,16 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Weekly Materials</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-1.html" class="sidebar-item-text sidebar-link active">
+  <a href="../weeks/week-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 1 - Set up and Foundations</span></a>
   </div>
 </li>
@@ -438,22 +500,41 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started">Getting Started!!</a>
+  <li><a href="#set-up-5-min" id="toc-set-up-5-min" class="nav-link active" data-scroll-target="#set-up-5-min">Set up (5 min)</a></li>
+  <li><a href="#part-a-follow-along-two-groups-20-min" id="toc-part-a-follow-along-two-groups-20-min" class="nav-link" data-scroll-target="#part-a-follow-along-two-groups-20-min">Part A — Follow along: two groups (20 min)</a>
   <ul class="collapse">
-  <li><a href="#prepare" id="toc-prepare" class="nav-link" data-scroll-target="#prepare">Prepare</a></li>
-  <li><a href="#slides-recordings" id="toc-slides-recordings" class="nav-link" data-scroll-target="#slides-recordings">Slides &amp; Recordings</a></li>
-  <li><a href="#for-next-time" id="toc-for-next-time" class="nav-link" data-scroll-target="#for-next-time">For Next Time</a></li>
+  <li><a href="#always-look-first" id="toc-always-look-first" class="nav-link" data-scroll-target="#always-look-first">1. Always look first</a></li>
+  <li><a href="#the-test-you-already-know" id="toc-the-test-you-already-know" class="nav-link" data-scroll-target="#the-test-you-already-know">2. The test you already know</a></li>
+  <li><a href="#the-same-question-as-a-line" id="toc-the-same-question-as-a-line" class="nav-link" data-scroll-target="#the-same-question-as-a-line">3. The same question as a line</a></li>
+  <li><a href="#why-it-works-dummy-coding" id="toc-why-it-works-dummy-coding" class="nav-link" data-scroll-target="#why-it-works-dummy-coding">4. Why it works: dummy coding</a></li>
+  <li><a href="#questions-for-part-a" id="toc-questions-for-part-a" class="nav-link" data-scroll-target="#questions-for-part-a">❓Questions for Part A</a></li>
   </ul></li>
+  <li><a href="#part-b-on-your-own-three-groups-25-min" id="toc-part-b-on-your-own-three-groups-25-min" class="nav-link" data-scroll-target="#part-b-on-your-own-three-groups-25-min">Part B — On your own: three groups (25 min)</a>
+  <ul class="collapse">
+  <li><a href="#steps" id="toc-steps" class="nav-link" data-scroll-target="#steps">Steps</a></li>
+  <li><a href="#the-comparison-the-table-does-not-show-you" id="toc-the-comparison-the-table-does-not-show-you" class="nav-link" data-scroll-target="#the-comparison-the-table-does-not-show-you">The comparison the table does not show you</a></li>
+  <li><a href="#questions-for-part-b" id="toc-questions-for-part-b" class="nav-link" data-scroll-target="#questions-for-part-b">❓Questions for Part B</a></li>
+  </ul></li>
+  <li><a href="#stretch-see-the-problem-for-yourself-finished-early" id="toc-stretch-see-the-problem-for-yourself-finished-early" class="nav-link" data-scroll-target="#stretch-see-the-problem-for-yourself-finished-early">🔬 Stretch: see the problem for yourself (finished early?)</a>
+  <ul class="collapse">
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">❓Questions</a></li>
+  </ul></li>
+  <li><a href="#part-c-together-pick-the-reference-on-purpose-10-min" id="toc-part-c-together-pick-the-reference-on-purpose-10-min" class="nav-link" data-scroll-target="#part-c-together-pick-the-reference-on-purpose-10-min">Part C — Together: pick the reference on purpose (10 min)</a>
+  <ul class="collapse">
+  <li><a href="#questions-for-part-c" id="toc-questions-for-part-c" class="nav-link" data-scroll-target="#questions-for-part-c">❓Questions for Part C</a></li>
+  </ul></li>
+  <li><a href="#exit-ticket" id="toc-exit-ticket" class="nav-link" data-scroll-target="#exit-ticket">Exit ticket ✅</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/weeks/week-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/class-activities/wk6_groups.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-1.html">Week 1 - Set up and Foundations</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 1</h1>
+<h1 class="title">Week 6 Exercises - Same Question, Three Ways</h1>
+<p class="subtitle lead">t-test → regression → ANOVA, and why they are all one model</p>
 </div>
 
 
@@ -470,53 +551,413 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="getting-started" class="level1">
-<h1>Getting Started!!</h1>
-<p>Welcome to the course! I am very excited to get to work with you this semester on our journey into statistics. During our first class, we will review the syllabus and the plan for the course, followed by walking through the structure of each of the classes.</p>
-<p>We’ll then dive right into our primary set of tools, R and JAMOVI. This session will go over installing R and RStudio, navigating the interface, and learning the foundational syntax of the R language and the <code>tidyverse</code>, including data types and basic functions.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Note</span>Overview
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This first class will be Asynchronous due to me being away this week. Please use the class time to review the materials instead of doing it “some other time”</p>
-</div>
-</div>
-<section id="prepare" class="level2">
-<h2 class="anchored" data-anchor-id="prepare">Prepare</h2>
-<p>Please have these downloaded. I will walk through the process as well if you are unclear.</p>
+<p>About 55 minutes · Pairs or small groups · 🧰 R (<code>tidyverse</code>, <code>rio</code>, <code>here</code>, <code>emmeans</code>) <strong>or</strong> JAMOVI</p>
+<p>Every step is given <strong>both ways</strong>. The skill is reading the output, not producing it.</p>
 <ul>
-<li><p>Install R and R-Studio (<a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a>)</p></li>
-<li><p>Install JAMOVI (<a href="https://www.jamovi.org/download.html" class="uri">https://www.jamovi.org/download.html</a>)</p></li>
+<li><strong>Part A: Follow along (~20 min):</strong> two groups, three different commands, one answer.</li>
+<li><strong>Part B: On your own (~25 min):</strong> three groups, from descriptives to a written-up result.</li>
+<li><strong>Part C: Together (~10 min):</strong> choose the reference group on purpose.</li>
 </ul>
-</section>
-<section id="slides-recordings" class="level2">
-<h2 class="anchored" data-anchor-id="slides-recordings">Slides &amp; Recordings</h2>
-<p><a href="../slides/lec-01_syl.html" target="_blank">💻 Getting Started - Syllabus</a></p>
-<p><a href="https://rit.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=43baad4b-51ec-4d65-b231-b4b3002b4a29" target="_blank">📹Syllabus Recording</a></p>
-<p><a href="../slides/lec-02_background.html" target="_blank">💻Getting Started - Data</a></p>
-<p><a href="https://rit.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=f3cf9b4c-4730-4dbf-8db4-b4b3002ce161" target="_blank">📹Reproduction/Reproducibility Recording</a></p>
-<p><a href="https://rit.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=e31e8ad2-2e73-46e8-bfb4-b4b3002d959b" target="_blank">📹Getting Started with R Recording</a></p>
-</section>
-<section id="for-next-time" class="level2">
-<h2 class="anchored" data-anchor-id="for-next-time">For Next Time</h2>
-<p>📋<a href="../labs/lab-01_introduction">Lab 1 - Getting Started</a></p>
-<p>📋<a href="../labs/lab-02_data-workflow">Lab 2 - Data Workflow</a></p>
-<p>❓<a href="https://rit.az1.qualtrics.com/jfe/form/SV_7VV0edmGEBKisey" target="_blank">Introduction Check-in</a></p>
-<p>📖Chapter 1 &amp; 2 - LSR</p>
-<p>📖Chapter 1 - ROS</p>
-<p><br><br></p>
-<div style="font-size: 0.875em;">
-<p>Back to <a href="../index.html" title="Course schedule">course schedule</a> ⏎</p>
+<p><strong>By the end you should be able to:</strong></p>
+<ul>
+<li>Explain what the intercept and each coefficient mean when the predictor is a group</li>
+<li>Predict what changes when you switch the reference group — and what doesn’t</li>
+<li>Run and read a one-way ANOVA as a regression</li>
+<li>Say why three t-tests is not the same as one omnibus test</li>
+<li>Get the pairwise comparison the coefficient table does not show you</li>
+<li>Report a group difference in APA style with an effect size</li>
+</ul>
 </div>
-
-
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Please submit this to the Week 6 exercise on myCourses. I just want to check how folks are doing during these. Render to Word as well. Ungraded.</p>
+</div>
+</div>
+<hr>
+<section id="set-up-5-min" class="level1">
+<h1>Set up (5 min)</h1>
+<ol type="1">
+<li><p><strong>Download the data</strong> into the <code>data</code> folder of your PSYC 640 R Project.</p>
+<ul>
+<li><a href="../files/data/Pokemon.csv" download="Pokemon.csv">Pokémon data (.csv)</a></li>
+</ul></li>
+<li><p>New Quarto document, titled <code>Week 6 - Same Question, Three Ways</code>, saved as <code>week6_inclass.qmd</code>.</p></li>
+<li><p>Setup chunk:</p></li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>pokemon <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"Pokemon.csv"</span>))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(pokemon)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Check yourself
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>pokemon</code> should have <strong>801 rows and 17 columns</strong>, and 70 of those rows should have <code>is_legendary == 1</code>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🖱️ In JAMOVI instead
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><strong>☰ Menu → Open → Browse →</strong> <code>Pokemon.csv</code></li>
+<li>Click the <code>is_legendary</code> column header → set the measure type to <strong>Nominal</strong>, then under <strong>Levels</strong> label <code>0</code> as “Not legendary” and <code>1</code> as “Legendary”.</li>
+<li>Check that <code>type1</code> is <strong>Nominal</strong> and <code>attack</code> / <code>speed</code> are <strong>Continuous</strong>.</li>
+<li>Save as a <code>.omv</code> file.</li>
+</ol>
+</div>
+</div>
+<hr>
 </section>
+<section id="part-a-follow-along-two-groups-20-min" class="level1">
+<h1>Part A — Follow along: two groups (20 min)</h1>
+<blockquote class="blockquote">
+<p><strong>Research question:</strong> Do legendary Pokémon have higher attack than non-legendary ones?</p>
+</blockquote>
+<section id="always-look-first" class="level2">
+<h2 class="anchored" data-anchor-id="always-look-first">1. Always look first</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pokemon <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(is_legendary) <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">M =</span> <span class="fu">mean</span>(attack), <span class="at">SD =</span> <span class="fu">sd</span>(attack))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Group</th>
+<th>n</th>
+<th>M</th>
+<th>SD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Not legendary (0)</td>
+<td>731</td>
+<td>74.84</td>
+<td>30.58</td>
+</tr>
+<tr class="even">
+<td>Legendary (1)</td>
+<td>70</td>
+<td>109.36</td>
+<td>31.56</td>
+</tr>
+</tbody>
+</table>
+<p>Write down the <strong>difference between the means</strong> before you go on. You will see it again in about ninety seconds.</p>
+</section>
+<section id="the-test-you-already-know" class="level2">
+<h2 class="anchored" data-anchor-id="the-test-you-already-know">2. The test you already know</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(attack <span class="sc">~</span> is_legendary, <span class="at">data =</span> pokemon, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="the-same-question-as-a-line" class="level2">
+<h2 class="anchored" data-anchor-id="the-same-question-as-a-line">3. The same question as a line</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mod_leg <span class="ot">&lt;-</span> <span class="fu">lm</span>(attack <span class="sc">~</span> is_legendary, <span class="at">data =</span> pokemon)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_leg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Check yourself
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Intercept = <strong>74.84</strong>. Slope = <strong>34.52</strong>. <em>t</em> = <strong>9.00</strong>, <em>p</em> &lt; .001 — the same <em>t</em> and <em>p</em> the t-test gave you (the sign depends on which group goes first).</p>
+<p>Is the slope the number you wrote down in step 1?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🖱️ Part A in JAMOVI
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Descriptives:</strong> Analyses → <strong>Exploration → Descriptives</strong>; <code>attack</code> into Variables, <code>is_legendary</code> into <strong>Split by</strong>.</li>
+<li><strong>t-test:</strong> Analyses → <strong>T-Tests → Independent Samples T-Test</strong>; Dependent <code>attack</code>, Grouping <code>is_legendary</code>. Tick <strong>Student’s</strong>, <strong>Mean difference</strong>, <strong>Effect size</strong>.</li>
+<li><strong>The line:</strong> Analyses → <strong>Regression → Linear Regression</strong>; Dependent <code>attack</code>, and put <code>is_legendary</code> in <strong>Factors</strong> (not Covariates — it is a group).</li>
+<li>Open <strong>Model Fit</strong> and tick <strong>R²</strong>.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="why-it-works-dummy-coding" class="level2">
+<h2 class="anchored" data-anchor-id="why-it-works-dummy-coding">4. Why it works: dummy coding</h2>
+<p>The model cannot read the word “legendary,” so it uses a number:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Group</th>
+<th>coded</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Not legendary</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>Legendary</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[\widehat{attack} = 74.84 + 34.52(legendary)\]</span></p>
+<ul>
+<li>Plug in <strong>0</strong> → 74.84 → the mean of the non-legendary group</li>
+<li>Plug in <strong>1</strong> → 109.36 → the mean of the legendary group</li>
+</ul>
+<p>The intercept <em>is</em> a group mean. The slope <em>is</em> the difference between the means.</p>
+</section>
+<section id="questions-for-part-a" class="level2">
+<h2 class="anchored" data-anchor-id="questions-for-part-a">❓Questions for Part A</h2>
+<ol type="1">
+<li>Cohen’s <em>d</em> for this comparison is <strong>1.13</strong> and R² is <strong>.092</strong>. Explain, in one sentence each, what those two numbers tell a reader. Why might you report both?</li>
+<li>There are 731 non-legendary and 70 legendary Pokémon. Does that imbalance make the comparison invalid? What does it affect?</li>
+<li>Can we say that being legendary <em>causes</em> higher attack? (Careful — this one has a wrinkle. Who assigned the groups?)</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="part-b-on-your-own-three-groups-25-min" class="level1">
+<h1>Part B — On your own: three groups (25 min)</h1>
+<blockquote class="blockquote">
+<p><strong>Research question:</strong> Do the three starter types — fire, grass, and water — differ in speed?</p>
+</blockquote>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>starters <span class="ot">&lt;-</span> pokemon <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type1 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"fire"</span>, <span class="st">"grass"</span>, <span class="st">"water"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🖱️ In JAMOVI
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Data → Filters</strong> → <code>type1 == "fire" or type1 == "grass" or type1 == "water"</code></p>
+</div>
+</div>
+<section id="steps" class="level2">
+<h2 class="anchored" data-anchor-id="steps">Steps</h2>
+<ol type="1">
+<li><strong>Describe.</strong> Mean, SD and n of <code>speed</code> for each of the three types. Which looks fastest?</li>
+<li><strong>Plot.</strong> A boxplot or a means-with-error-bars plot of speed by type.</li>
+<li><strong>Fit.</strong> <code>lm(speed ~ type1, data = starters)</code> — or Linear Regression with <code>type1</code> in <strong>Factors</strong>.</li>
+<li><strong>Read the omnibus test.</strong> Find <em>F</em>, its two degrees of freedom, <em>p</em>, and R².</li>
+<li><strong>Read the coefficients.</strong> What is the intercept? What is each estimate comparing?</li>
+<li><strong>Get the missing comparison</strong> (see below).</li>
+<li><strong>Write it up</strong> in APA style: omnibus → descriptives → which pairs differ.</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Check yourself
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Means: fire <strong>73.35</strong>, grass <strong>59.03</strong>, water <strong>63.92</strong>.</p>
+<p><em>F</em>(2, 241) = <strong>5.01</strong>, <em>p</em> = <strong>.007</strong>, R² = <strong>.040</strong>.</p>
+<p>Intercept = 73.35, <code>type1grass</code> = −14.32, <code>type1water</code> = −9.43.</p>
+</div>
+</div>
+</section>
+<section id="the-comparison-the-table-does-not-show-you" class="level2">
+<h2 class="anchored" data-anchor-id="the-comparison-the-table-does-not-show-you">The comparison the table does not show you</h2>
+<p>The coefficient table compares everything to <strong>fire</strong>. It never compares grass to water. For that:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mod_type <span class="ot">&lt;-</span> <span class="fu">lm</span>(speed <span class="sc">~</span> type1, <span class="at">data =</span> starters)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">emmeans</span>(mod_type, pairwise <span class="sc">~</span> type1, <span class="at">adjust =</span> <span class="st">"tukey"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🖱️ In JAMOVI
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Analyses → <strong>ANOVA → ANOVA</strong>; Dependent <code>speed</code>, Fixed Factors <code>type1</code>. Then open <strong>Post Hoc Tests</strong>, move <code>type1</code> across, and choose the <strong>Tukey</strong> correction. Tick <strong>η²</strong> under Effect Size while you are there.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Check yourself
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Tukey-adjusted: fire vs grass <em>p</em> = <strong>.005</strong> · fire vs water <em>p</em> = <strong>.070</strong> · grass vs water <em>p</em> = <strong>.389</strong>.</p>
+<p>Note that fire vs water was <em>p</em> = .027 <strong>before</strong> the correction. Adjusting for multiple comparisons changed the answer.</p>
+</div>
+</div>
+</section>
+<section id="questions-for-part-b" class="level2">
+<h2 class="anchored" data-anchor-id="questions-for-part-b">❓Questions for Part B</h2>
+<ol type="1">
+<li>Write the fitted equation using the variable names.</li>
+<li>Using only the coefficient table, what is the predicted speed of a water type? Show the arithmetic.</li>
+<li>The omnibus test is significant. What exactly does that let you claim — and what does it <em>not</em> let you claim?</li>
+<li>Fire vs water is significant uncorrected and not significant after Tukey. Which would you report, and why? Is there a defensible answer either way?</li>
+<li>R² = .040. In plain language, how much have we learned about speed by knowing a Pokémon’s type?</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="stretch-see-the-problem-for-yourself-finished-early" class="level1">
+<h1>🔬 Stretch: see the problem for yourself (finished early?)</h1>
+<p>In lecture we simulated studies where <strong>nothing was going on</strong> and counted how often at least one pairwise t-test came out “significant.” Run it yourself, then break it.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">640</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>num_groups <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>sample_size <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>num_sims <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>one_study <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">k =</span> <span class="dv">3</span>) {</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># k groups, all drawn from the SAME population - no real differences</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">group =</span> <span class="fu">rep</span>(LETTERS[<span class="dv">1</span><span class="sc">:</span>k], <span class="at">each =</span> n),</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">y     =</span> <span class="fu">rnorm</span>(n <span class="sc">*</span> k))</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">combn</span>(LETTERS[<span class="dv">1</span><span class="sc">:</span>k], <span class="dv">2</span>, <span class="at">simplify =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">map_dbl</span>(<span class="cf">function</span>(pair) {</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">t.test</span>(y <span class="sc">~</span> group, <span class="at">data =</span> <span class="fu">filter</span>(d, group <span class="sc">%in%</span> pair), </span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>             <span class="at">var.equal =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>p.value</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    }) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">min</span>()</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>smallest_p <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span>num_sims, <span class="cf">function</span>(i) <span class="fu">one_study</span>(sample_size, num_groups))</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(smallest_p <span class="sc">&lt;</span> .<span class="dv">05</span>)     <span class="co"># how often did we fool ourselves?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">❓Questions</h2>
+<ol type="1">
+<li>You should get something close to <strong>.12</strong>. Why is that not <strong>.05</strong>, when every group came from the same population?</li>
+<li>Change <code>num_groups = 3</code> to <code>num_groups = 5</code> in the function call and run it again. What happens, and why?</li>
+<li>The arithmetic shortcut says five groups should give <span class="math inline">\(1 - .95^{10}\)</span> = 40%, but the simulation says about 29%. What does the shortcut assume that is not true here?</li>
+<li>Now set <code>num_groups = 2</code>. What rate do you get, and why is <em>that</em> the number we were promised all along?</li>
+</ol>
+<p>See what happens when you change the <code>num_groups</code>, <code>sample_size</code> and <code>num_sims</code> values. Careful, the more simulations, the longer it will take.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🖱️ JAMOVI users
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>JAMOVI has no simulator, so this one is R-only. Pair up with someone running R, or just watch — the questions are the point, not the code.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="part-c-together-pick-the-reference-on-purpose-10-min" class="level1">
+<h1>Part C — Together: pick the reference on purpose (10 min)</h1>
+<p>Fire is the reference group only because <strong>f</strong> comes before <strong>g</strong> and <strong>w</strong>. That is a terrible reason.</p>
+<p>Suppose the question you actually care about is <em>“how do fire and water compare to grass?”</em></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>starters <span class="ot">&lt;-</span> starters <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">type1 =</span> <span class="fu">fct_relevel</span>(type1, <span class="st">"grass"</span>))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>reg.speed <span class="ot">&lt;-</span> <span class="fu">lm</span>(speed <span class="sc">~</span> type1, <span class="at">data =</span> starters)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg.speed)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🖱️ In JAMOVI
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Linear Regression → Reference Levels</strong> → set <code>type1</code> reference to <strong>grass</strong>.</p>
+</div>
+</div>
+<section id="questions-for-part-c" class="level2">
+<h2 class="anchored" data-anchor-id="questions-for-part-c">❓Questions for Part C</h2>
+<ol type="1">
+<li><strong>Before you run it:</strong> which numbers will change, and which will stay exactly the same? Write your prediction down, then check.</li>
+<li>What is the new intercept, and why?</li>
+<li>Did <em>F</em>, its df, R², or the overall <em>p</em> change at all? Why not?</li>
+<li>In your own research, what should decide the reference group — alphabetical order, or something else? Give an example from your area.</li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>The point of Part C
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Changing the reference group changes the <strong>questions the table answers</strong>, not the model. The model is the same model: same fitted values, same residuals, same F, same R². This becomes essential in Week 9 when categorical predictors meet interactions.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="exit-ticket" class="level1">
+<h1>Exit ticket ✅</h1>
+<p>At the bottom of your document:</p>
+<ol type="1">
+<li>One sentence: what is the intercept when the predictor is a group?</li>
+<li>One sentence: why is an omnibus F test not the same as running every pairwise t-test?</li>
+<li>What is a p-value? How is it related to the false-positive rate?</li>
+</ol>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -933,18 +1374,6 @@ Note
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../index.html" class="pagination-link" aria-label="Schedule">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Schedule</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../weeks/week-2.html" class="pagination-link" aria-label="Week 2 - Data Wrangling">
-        <span class="nav-page-text">Week 2 - Data Wrangling</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -953,7 +1382,7 @@ Note
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/weeks/week-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/class-activities/wk6_groups.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with ☕ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
