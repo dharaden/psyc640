@@ -14,6 +14,7 @@ project:
     - weeks/week-4.qmd
     - weeks/week-5.qmd
     - weeks/week-6.qmd
+    - weeks/week-7.qmd
     - labs/lab-01_introduction.qmd
     - labs/lab-02_data-workflow.qmd
     - labs/lab-03_data-wrangling.qmd
@@ -21,6 +22,8 @@ project:
     - labs/lab-05_two-tests-one-line.qmd
     - labs/lab-06_reading-the-line.qmd
     - labs/lab-07_comparing-groups.qmd
+    - labs/lab-08_model-fit.qmd
+    - labs/midterm-project.qmd
     - class-activities/day1.qmd
     - class-activities/wk2_tidy-intro.qmd
     - class-activities/wk3_desc-viz.qmd
@@ -28,6 +31,7 @@ project:
     - class-activities/wk4_inference-machine.qmd
     - class-activities/wk5_linear-model.qmd
     - class-activities/wk6_groups.qmd
+    - class-activities/wk7_fit.qmd
     - slides/lec-01_syl.qmd
     - slides/lec-02_background.qmd
     - slides/lec-03_wrangle.qmd
@@ -38,6 +42,8 @@ project:
     - slides/lec-05_regression_JAMOVI.qmd
     - slides/lec-06_groups.qmd
     - slides/lec-06_groups_JAMOVI.qmd
+    - slides/lec-07_fit.qmd
+    - slides/lec-07_fit_JAMOVI.qmd
     
     
   # Downloadable files copied to the site as-is (data, handouts, .qmd templates, .pptx)
@@ -99,8 +105,8 @@ website:
             text: "Week 5 - Simple Regression"
           - href: weeks/week-6.qmd
             text: "Week 6 - Comparing Groups"
-          # - href: weeks/week-7.qmd
-            # text: "Week 7 - Variability & Model Fit"
+          - href: weeks/week-7.qmd
+            text: "Week 7 - Variability & Model Fit"
           # - href: weeks/week-8.qmd
             # text: "Week 8 - Multiple Reg. I"
           # - href: weeks/week-9.qmd
@@ -132,6 +138,8 @@ website:
             text: "Lab 6 - Reading the Line"
           - href: labs/lab-07_comparing-groups.qmd
             text: "Lab 7 - Comparing Groups"
+          - href: labs/lab-08_model-fit.qmd
+            text: "Lab 8 - Model Fit"
           # - href: labs/lab-6.qmd
             # text: "Lab 6"  
           # - href: labs/lab-7.qmd
@@ -142,10 +150,10 @@ website:
             # text: "Lab 9"
           # - href: labs/lab-10.qmd
             # text: "Lab 10"
-      # - section: "Projects"
-      #   contents:
-          # - href: labs/midterm-proj.qmd
-            # text: "Midterm Project" 
+      - section: "Projects"
+        contents:
+          - href: labs/midterm-project.qmd
+            text: "Midterm Project"
           # - href: labs/final-proj.qmd
             # text: "Final Project"
       - href: resources.qmd

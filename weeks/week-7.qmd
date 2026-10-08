@@ -1,37 +1,75 @@
 ---
-title: "Week 07 - Regression"
+title: "Week 7 - Variability & Model Fit"
 editor: visual
 ---
 
-# Intro & Overview to Regression
+# How Good Is This Model?
+
+For three weeks we have been reading **estimates** — slopes, intercepts, group differences. This week we read the other half of the output: the numbers that tell you whether the model is worth anything at all.
+
+The core idea is simple arithmetic. Start with how wrong you would be using nothing but the mean. Fit a line. Whatever distance the line covers is the **model**; whatever is left is the **residual**. That single split gives you R², the F test, and the residual standard error — three numbers you have been glancing past since Week 5.
+
+::: callout-note
+## The sentence to watch for this week
+
+"Statistically significant" and "explains a lot" are different claims. With 400 people you can be very confident about a slope that accounts for 6% of the variance. Both facts are true, and a careful results section says both.
+:::
+
+We will also meet the first real trap in model building: **R² can never go down when you add a predictor**, even a pointless one. That is why adjusted R² exists, and why it is the number to watch once your models have more than one thing in them.
+
+::: callout-important
+## In-class check today
+
+**In-Class Check 2** runs at the start of class — about 20 minutes, open notes, open readings, open past labs. It covers Weeks 5 and 6: slopes, intercepts, prediction and residuals, R², and groups as a line.
+:::
 
 ## Prepare
 
--   Chapter 14.1.1 - 14.1.4 - ST
+- 📖[Chapter 8 - ROS](https://users.aalto.fi/~ave/ROS.pdf)
 
--   Chapter 7.1 - 7.2.4 - IMS
+- 📖[Chapters 5 & 14.5 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}
 
--   Chapter 8.1.1 & 8.1.2 - MSR
+- 📖[Chapter 15.4 - LSR](https://learningstatisticswithr.com/){target="_blank"}
 
 ## Slides
 
-[💻 Intro to Regression](../slides/lec-7_regression.html){target="_blank"}
+[💻 Variability & Model Fit](../slides/lec-07_fit.html){target="_blank"}
+
+[💻 Variability & Model Fit - JAMOVI](../slides/lec-07_fit_JAMOVI.html){target="_blank"}
+
+::: callout-note
+Both decks use the same data and reach the same numbers. JAMOVI has one genuine advantage this week - the **Model Builder** compares nested models and reports ΔR² for you - so the JAMOVI deck spends a little longer there.
+:::
+
+## Data
+
+**Lecture:** <a href="../files/data/asap_data.csv" download="asap_data.csv">ASAP Sleep & Mood Data (.csv)</a>
+
+**In-class activity:** <a href="../files/data/popular_spotify.csv" download="popular_spotify.csv">Spotify Data (.csv)</a>
 
 ## In-Class Activity
 
-[Predicting Stuff with Regression](../class-activities/wk7_reg.html){target="_blank"}
-
-![](images/clipboard-2550073227.jpeg)
+[📓Does the Algorithm Know What a Hit Is?](../class-activities/wk7_fit.html){target="_blank"}
 
 ## For Next Time
 
-**NO CLASS 10/13/25**
+📋[Lab 8 - How Good Is This Model?](../labs/lab-08_model-fit.html) — **due Tuesday 10/13 at 11:59pm**
 
-📋[Midterm Project](../labs/midterm-proj.html)
+::: callout-warning
+## Fall Break
 
-📖Read Chapter 5 & 14- ST
+Monday 10/12 and Tuesday 10/13 are **Fall Break** — no classes. Lab 8 is still due Tuesday at 11:59pm and is submitted online as usual. There are no office hours that week before the deadline, so come by **Tuesday 10/6** or email me if you want help before the break.
+:::
 
-📖Read Chapter 7.2.5 - IMS
+📖[Chapter 10 - ROS](https://users.aalto.fi/~ave/ROS.pdf) — multiple regression, for next week
+
+::: callout-important
+## 📂 Midterm Project — handed out today
+
+The [**Midterm Project**](../labs/midterm-project.html) is posted now and is due **Tuesday 10/27**.
+
+Parts 1-5 use only what you already know, so you can start this weekend. Part 6 needs multiple regression, which we cover on 10/15. No lab is due in Weeks 9 or 10, so that time is yours for the project.
+:::
 
 <br><br>
 

@@ -1,0 +1,74 @@
+---
+title: "Lab 8: How Good Is This Model?"
+subtitle: "Fit, in percentages and in real units"
+editor: visual
+---
+
+## Instructions
+
+Everything so far has been about **estimates** — slopes, intercepts, group differences. This lab is about the other half of the output: the numbers that tell you whether the model is worth anything.
+
+You will fit three models to the same outcome, pull apart where the variance went, and report fit in the units a reader actually cares about. The last exercise is a sneak peek at Week 8, and it is the interesting one: a predictor that looks completely useless on its own turns out to matter quite a lot.
+
+Here is what you'll need:
+
+- <a href="../files/_lab-qmd/lab-8_model-fit.qmd" download="lab-8_model-fit.qmd">Download Lab 8 (.qmd)</a>
+- <a href="../files/data/stress.csv" download="stress.csv">Download the Coping Study Data (.csv)</a>
+
+Save the `.csv` in your `data` folder and the `.qmd` in your project folder. Render to Word and submit **both** files to myCourses.
+
+::: callout-important
+## Due date — and a heads-up
+
+**Tuesday, October 13 at 11:59 pm.**
+
+That Monday and Tuesday are **Fall Break**, so there is no class and no office hours that week before the deadline. The lab is submitted online exactly as usual. If you want help, email me before the break and we can find a time to meet if needed.
+:::
+
+::: callout-note
+## Working in JAMOVI?
+
+Go ahead — submit your `.omv` plus a Word document with your written answers. JAMOVI's **Model Builder** with **Model Comparisons** is genuinely nicer than base R for Exercises 5 and 6.
+:::
+
+## The study
+
+A researcher recruited **118 undergraduates** to study how stress and social support relate to anxiety. Each participant completed measures of:
+
+| Variable | Description |
+|------------------------------------|------------------------------------|
+| `Anxiety` | Current anxiety symptoms (higher = more anxious) |
+| `Stress` | Perceived stress over the past month (higher = more stressed) |
+| `Support` | Perceived social support (higher = more supported) |
+| `Condition` | `"Tx"` or `"Control"` — half the sample completed a brief coping workshop |
+
+## What you'll practice
+
+- Partitioning variance by hand: $SS_{total} = SS_{model} + SS_{residual}$
+- Reading R², adjusted R², and the residual standard error off the output
+- Translating fit into the units of the outcome ("how wrong are we, typically?")
+- Recognizing that **adjusted R² can go negative**, and what that means
+- Comparing nested models with ΔR²
+- Noticing when a predictor's story **changes** once another variable is in the model
+
+## Exercises at a glance
+
+| Exercise | What you'll do | Points |
+|------------------------|------------------------|------------------------|
+| **1. Describe** | Import, describe, correlation matrix | 3 |
+| **2. Model 1** | `Anxiety ~ Stress` — and a surprise | 4 |
+| **3. Model 2** | `Anxiety ~ Support` | 4 |
+| **4. Partition** | Verify $SS_{total} = SS_{model} + SS_{residual}$ by hand | 4 |
+| **5. Real units** | What the residual SE means for a counselor | 3 |
+| **6. Sneak peek** 👀 | Both predictors at once — and the plot twist | 6 |
+| **7. Judgment** | What Model 1 alone would have made you conclude | 2 |
+| **8. Write-up** | One paragraph, APA style | 2 |
+| **Bonus** | Add `Condition` | +1 |
+
+------------------------------------------------------------------------
+
+**Total: 28 points (+1 bonus)**
+
+::: callout-tip
+Exercise 6 is the point of the whole lab. Do not skip to it — the surprise only works if you have already met Model 1 on its own terms.
+:::

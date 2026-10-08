@@ -1,0 +1,215 @@
+---
+title: "Midterm Project"
+subtitle: "Ask a question, build a model, defend it"
+editor: visual
+---
+
+## Overview
+
+Everything you have done so far has been a lab: I gave you the question, you ran the analysis. The midterm is the first time **you** decide what to ask.
+
+You will get one messy dataset. From it you will formulate a research question, clean and score the measures, describe the sample, build and compare models, and write the whole thing up the way it would appear in a paper. The analysis skills are ones you already have. What is new is that nobody tells you which variables to use — and you will have to defend the ones you pick.
+
+::: callout-important
+## Dates
+
+**Handed out:** Thursday, October 8 · **Due:** Tuesday, October 27 at 11:59 pm
+
+**200 points** — 20% of your course grade.
+:::
+
+## What you'll need
+
+- <a href="../files/data/midterm_dataset.csv" download="midterm_dataset.csv">Download the dataset (.csv)</a>
+- <a href="../files/_lab-qmd/midterm-project_template.qmd" download="midterm-project_template.qmd">Download the starter file (.qmd)</a> — a YAML header, a setup chunk, and a submission checklist. **It is not an outline.**
+
+Submit **both** your `.qmd` source and the rendered **Word document** to myCourses. Name them `LastName_Midterm.qmd` and `LastName_Midterm.docx`.
+
+::: callout-note
+## How to organize it
+
+**You decide the structure.** The parts below tell you what the project must contain, not what your headings have to say or what order to write in. A good report threads these into something readable — a question, the data, what you did, what you found, what it means — rather than marching through eight numbered answers.
+
+I need to be able to find every part. Beyond that, it is your document.
+:::
+
+::: callout-note
+## Working in JAMOVI?
+
+You may run the analyses in JAMOVI instead. Submit your `.omv` file plus a Word document containing your full write-up, using the same section headings. The requirements are identical; only the tool changes.
+:::
+
+------------------------------------------------------------------------
+
+## A note on timing ⏱️
+
+You have three weeks, but they are not interchangeable. **Parts 1 through 5 use only what you already know** — you can do them this weekend if you want to.
+
+**Part 6 needs multiple regression**, which we cover on **October 15**. Do not leave the whole project until after that class; by then you should already have a clean dataset, a research question, and your one-predictor models in hand.
+
+| By when   | What should be done                                 |
+|-----------|-----------------------------------------------------|
+| Fri 10/16 | Parts 1–4 (import, clean, score, describe)          |
+| Fri 10/23 | Part 5 (one-predictor models) and a draft of Part 6 |
+| Tue 10/27 | Everything, rendered and submitted                  |
+
+Fall Break is 10/12–10/13 and **Lab 8 is due 10/13**, so plan around that week rather than through it.
+
+------------------------------------------------------------------------
+
+## The data
+
+250 adults completed a survey about sleep, mood, and general well-being. The data are exactly as they came out of the survey software, which means variable names have spaces in them, grouping variables are stored as numbers, one scale item is worded backwards, and there are missing values scattered throughout.
+
+| Variable | Description | Type & Values |
+|----|----|----|
+| `id` | Participant ID | — |
+| `age` | Age in years | Continuous (18–34) |
+| `sex` | Self-reported sex | 1 = Male, 2 = Female |
+| `ARS 1`, `ARS 2`, `ARS 3` | Items for the **Anxiety** subscale | Numeric (0–3) |
+| `ARS 4`, `ARS 5`, `ARS 6` | Items for the **Resilience** subscale | Numeric (1–5) |
+| `Weekday Sleep` | Average hours slept on a work night | Continuous |
+| `Weekend Sleep` | Average hours slept on a non-work night | Continuous |
+| `Employment` | Employment status | 1 = Student, 2 = Employed, 3 = Not Employed |
+| `outcome` | **General Well-Being Index** score | Continuous |
+
+::: callout-warning
+## Scoring the ARS-SF
+
+**Item 6 is reverse-worded** and must be reverse-scored before you use it. The item is on a 1–5 scale, so the reversed score is `6 - ARS 6`.
+
+- **Anxiety subscale** = mean of items 1, 2, 3
+- **Resilience subscale** = mean of items 4, 5, and 6-reversed
+
+Score the subscales as **means, not sums**, so that missing responses don't silently turn into low scores.
+:::
+
+------------------------------------------------------------------------
+
+# The assignment
+
+## Part 1 — Setup and reproducibility (15 points)
+
+Your document should run on my computer without me editing a single line.
+
+1.  Load your libraries in one setup chunk at the top.
+2.  Import the data with a **relative path** (`here()`), not an absolute one.
+3.  Your file must render cleanly from a fresh session.
+
+::: callout-tip
+Before you submit, restart R (Session → Restart R) and render once from scratch. If it fails, so will my copy.
+:::
+
+## Part 2 — Cleaning and scoring (30 points)
+
+1.  **Fix the variable names** so they are usable in code (`janitor::clean_names()` is your friend).
+2.  **Reverse-score item 6** and create the two subscale scores described above.
+3.  **Recode the categorical variables** into labeled factors — `sex` and `Employment` should print as words, not numbers, in every table and figure.
+4.  **Report the missing data**: how many cases are missing on each variable you plan to use, and how many complete cases you have for your analyses. State what you did about it and why.
+
+## Part 3 — Your research question (20 points)
+
+This is the part that makes it a project rather than a lab.
+
+State **one** research question that you can answer with these data. It must involve:
+
+- **General Well-Being** as the outcome, and
+- at least **two predictors**, one of which is **continuous** and one of which is **categorical**
+
+Then write a short paragraph (roughly 150 words) that:
+
+1.  States the question plainly,
+2.  Says why each predictor is plausibly related to well-being — your reasoning, not a literature review,
+3.  States the **direction** you expect for each, before you look.
+
+::: callout-note
+Committing to a prediction in advance is not a formality. Part 7 asks you to compare what you found against what you expected, and "I expected X and got the opposite" is a far more interesting paper than one where nothing was ever at stake.
+:::
+
+## Part 4 — Describe the sample (25 points)
+
+1.  A table of descriptive statistics for every continuous variable you use (n, mean, SD, min, max).
+2.  Frequencies and percentages for your categorical variables.
+3.  **Two figures**: one showing the distribution of your outcome, one showing its relationship with your continuous predictor. Both fully labeled, with titles.
+4.  A written paragraph describing the sample in APA style.
+
+## Part 5 — One predictor at a time (30 points)
+
+Fit **two separate models**, each with a single predictor.
+
+1.  **Model A:** well-being predicted by your **continuous** predictor.
+2.  **Model B:** well-being predicted by your **categorical** predictor (if it has more than two levels, follow up appropriately).
+
+For each one, report and interpret:
+
+- the intercept and the slope(s), **in the units of this study**
+- R² and the residual standard error — and what they say about how useful the model is
+- the overall test
+
+Write each up in APA style.
+
+::: callout-tip
+Your categorical predictor may turn out to show no significant differences. **That is a result, not a failure.** Report it accurately and move on — you are graded on whether your interpretation matches your output, never on whether the p-value cooperated.
+:::
+
+## Part 6 — Both predictors together (40 points)
+
+*(This part uses material from the October 15 class.)*
+
+1.  Fit a model with **both** predictors.
+2.  Interpret each coefficient, using the phrase that now matters: **holding the other variable constant**.
+3.  **Compare the coefficients to Parts 5A and 5B.** Did anything change — size, sign, significance? If so, say what you think is going on. If nothing changed, say what that tells you.
+4.  Report R² and adjusted R² for all three models in one table, and compute **ΔR²** for the two-predictor model relative to each single-predictor model.
+5.  Which model would you report in a paper, and why? "The one with the biggest R²" is not an acceptable answer on its own.
+
+::: callout-tip
+## Not required, but do it anyway
+
+Plot your final model's residuals against its fitted values and take ten seconds to look. You are **not** graded on formal assumption checks — that is Week 10 — but if that plot shows a clear curve, a funnel, or one wildly stray point, mention it in Part 7. Noticing is worth more than ignoring.
+:::
+
+## Part 7 — Interpretation and limits (25 points)
+
+1.  **Direction check.** Compare each result to the prediction you made in Part 3. Where they disagree, give at least two plausible explanations — and consider whether something about **how the measure was scored** could be responsible.
+2.  **Causal language.** State plainly what this design does and does not let you claim, and name one specific confound.
+3.  **Missing data.** You reported it in Part 2; now interpret it. Who is missing, and could that have shaped your results?
+4.  **What next?** One concrete analysis or measurement you would add, and what it would settle.
+
+## Part 8 — Communication (15 points)
+
+- Tables and figures are labeled, titled, and readable on their own.
+- Code is commented where a reader would need it, and your prose is outside the code chunks.
+- The document reads as a report you organized, not as a list of answers to my questions. Headings are yours; they should help a reader navigate.
+- If you used generative AI, include the acknowledgment note described in the syllabus.
+
+------------------------------------------------------------------------
+
+## How it's graded
+
+| Part                          | Points  |
+|-------------------------------|---------|
+| 1\. Setup and reproducibility | 15      |
+| 2\. Cleaning and scoring      | 30      |
+| 3\. Research question         | 20      |
+| 4\. Describe the sample       | 25      |
+| 5\. One predictor at a time   | 30      |
+| 6\. Both predictors together  | 40      |
+| 7\. Interpretation and limits | 25      |
+| 8\. Communication             | 15      |
+| **Total**                     | **200** |
+
+::: callout-important
+## What I am actually looking for
+
+Any competent analyst can produce this output. What separates a strong project is whether **your interpretation matches your numbers** — whether you notice the odd result instead of narrating past it, whether your claims stop where your design stops, and whether a reader who has not seen the data could follow what you did and why.
+
+Parts 6(3) and 7(1) are where that shows up most. Spend your time there.
+:::
+
+::: callout-note
+## Getting help
+
+This is an individual project. You may ask me anything, and you may ask classmates about **code** — "why won't this render," "which function does X." You may not share interpretations, write-ups, or results.
+
+The AI policy from the syllabus applies in full. A model you cannot explain out loud is one you should not submit.
+:::

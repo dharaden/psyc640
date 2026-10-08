@@ -1,0 +1,180 @@
+---
+title: "Week 7 Exercises - Does the Algorithm Know What a Hit Is?"
+subtitle: "R², adjusted R², and the predictor nobody wants to talk about"
+editor: visual
+---
+
+::: callout-note
+## Overview
+
+About 45 minutes · Pairs or small groups · 🧰 R (`tidyverse`, `rio`, `here`, `broom`) **or** JAMOVI
+
+Every step is given **both ways**.
+
+- **Part A: Follow along (\~15 min):** can danceability predict streams?
+- **Part B: On your own (\~20 min):** throw four audio features at it, then find the one variable that actually works.
+- **Part C: Together (\~10 min):** the uncomfortable conclusion.
+
+**By the end you should be able to:**
+
+- Read R², adjusted R² and the residual standard error off any model output
+- Say what a small R² means in the units of the outcome, not just as a percentage
+- Explain why a significant predictor can be a nearly useless one
+- Show that R² never decreases when you add a predictor, and that adjusted R² can
+- Decide whether a model that fits well is actually telling you anything
+:::
+
+------------------------------------------------------------------------
+
+# Set up (5 min)
+
+1.  **Download the data** into the `data` folder of your PSYC 640 R Project.
+
+    - <a href="../files/data/popular_spotify.csv" download="popular_spotify.csv">Spotify data (.csv)</a>
+
+2.  New Quarto document, `Week 7 - Model Fit`, saved as `week7_inclass.qmd`.
+
+``` r
+library(tidyverse)
+library(rio)
+library(here)
+library(broom)
+
+spotify <- import(here("data", "popular_spotify.csv")) %>%
+  janitor::clean_names() %>%
+  mutate(streams = as.numeric(streams),
+         streams_m = streams / 1e6)     # streams in millions, easier to read
+
+glimpse(spotify)
+```
+
+::: callout-tip
+## Check yourself
+
+952 songs. `streams_m` should run from under 1 million to about 3,700 million, with an SD of about **567**.
+:::
+
+::: callout-note
+## 🖱️ In JAMOVI instead
+
+1.  **☰ Menu → Open → Browse →** `popular_spotify.csv`
+2.  **Data → Compute** → new variable `streams_m` with the formula `streams / 1000000`
+3.  Check that `streams_m` and the `%` variables are **Continuous**.
+:::
+
+**About the data.** 952 of the most-streamed songs on Spotify, with audio features scored 0–100 by Spotify's own algorithm: `danceability_percent`, `energy_percent`, `valence_percent` (how upbeat it sounds), `acousticness_percent`, and more.
+
+------------------------------------------------------------------------
+
+# Part A — Follow along: can danceability predict streams? (15 min)
+
+> **Research question:** Do more danceable songs get streamed more?
+
+``` r
+fit_dance <- lm(streams_m ~ danceability_percent, data = spotify)
+summary(fit_dance)
+```
+
+::: callout-note
+## 🖱️ In JAMOVI
+
+Analyses → **Regression → Linear Regression**. Dependent `streams_m`, **Covariates** `danceability_percent`. Under **Model Fit**, tick R², Adjusted R² and RMSE.
+:::
+
+::: callout-tip
+## Check yourself
+
+*b* = **−4.09**, *t*(950) = **−3.27**, *p* = **.001** · R² = **.011** · residual SE ≈ **564**
+:::
+
+## ❓Questions for Part A
+
+1.  The slope is **significant**. Write the sentence a journalist would write about this finding.
+2.  Now write the sentence a *statistician* would write. What does R² = .011 add?
+3.  The SD of `streams_m` is **567**. The residual standard error is **564**. In plain language, how much better is this model than guessing the mean for every song?
+4.  With n = 952, is it surprising that *p* = .001? What would have happened with n = 50?
+
+------------------------------------------------------------------------
+
+# Part B — On your own: more features, better model? (20 min)
+
+## Step 1: Throw everything at it
+
+Fit a model with **four** audio features: danceability, energy, valence, and acousticness.
+
+``` r
+# Your code here
+```
+
+::: callout-note
+## 🖱️ In JAMOVI
+
+Put all four in **Covariates**. Better still: use **Model Builder** — Block 1 = danceability, Block 2 = the other three — and tick **Model Comparisons** to get ΔR² directly.
+:::
+
+::: callout-tip
+## Check yourself
+
+R² = **.013** · adjusted R² = **.0088** · and only danceability is significant.
+
+Compare to the one-predictor model: R² = .0111, adjusted R² = .0101.
+:::
+
+### ❓Questions
+
+1.  R² went **up** (.0111 → .0130) but adjusted R² went **down** (.0101 → .0088). Explain how both of those can be true at once.
+2.  Three of the four predictors are not significant. What did adding them buy you?
+3.  If a colleague showed you only the R² values and said "see, the bigger model is better," what would you say?
+
+## Step 2: Find the variable that actually works
+
+The dataset has a column called `in_spotify_playlists` — the number of playlists the song appears on. Fit:
+
+``` r
+# streams_m ~ in_spotify_playlists
+```
+
+::: callout-tip
+## Check yourself
+
+R² = **.624** · residual SE ≈ **348** · *b* = 0.057, *t*(950) = 39.7
+:::
+
+### ❓Questions
+
+4.  Compare this R² to the four-feature model. What does 62% vs 1% mean in plain language?
+5.  The residual SE dropped from 564 to 348. Restate that in terms of **how wrong you tend to be about a song**.
+6.  Add `danceability_percent` to *this* model. What happens to R², to adjusted R², and to danceability's p-value? Why?
+
+------------------------------------------------------------------------
+
+# Part C — Together: the uncomfortable conclusion (10 min)
+
+We have a model that explains **62%** of the variance in streams. That is a very good fit by psychology standards.
+
+::: callout-important
+## But what have we learned?
+
+Songs on more playlists get streamed more.
+:::
+
+## ❓Questions for Part C
+
+1.  Is `in_spotify_playlists` a **cause** of streams, a **consequence** of streams, or both? Explain the feedback loop.
+2.  Which model would you rather have for **predicting** next month's streams? Which would you rather have for **understanding** why a song succeeds? Are they the same model?
+3.  A record label asks you: "should we make our songs more danceable?" Answer using numbers from today — and say what the data can and cannot support.
+4.  Write one sentence that uses R² honestly in each direction: one where a **small** R² is still interesting, and one where a **large** R² is not.
+
+::: callout-note
+## The point of Part C
+
+R² measures how well a model **tracks** the outcome. It says nothing about whether the model explains **why**, and nothing about whether anyone can act on it. A high R² from a variable that is partly the outcome in disguise is a warning sign, not a trophy.
+:::
+
+------------------------------------------------------------------------
+
+# Exit ticket ✅
+
+1.  Explain R² in one sentence to someone who has never taken statistics.
+2.  Why can a predictor be statistically significant and still barely improve a model?
+3.  One thing that is still muddy → journal.
