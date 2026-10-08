@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Week 6 - Comparing Groups – PSYC 640 - Graduate Statistics</title>
+<title>Week 7 - Variability &amp; Model Fit – PSYC 640 - Graduate Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -35,8 +35,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../weeks/week-7.html" rel="next">
-<link href="../weeks/week-5.html" rel="prev">
+<link href="../labs/lab-01_introduction.html" rel="next">
+<link href="../weeks/week-6.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -80,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Week 6 - Comparing Groups – PSYC 640 - Graduate Statistics">
+<meta property="og:title" content="Week 7 - Variability &amp; Model Fit – PSYC 640 - Graduate Statistics">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
@@ -256,7 +256,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-6.html">Week 6 - Comparing Groups</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-7.html">Week 7 - Variability &amp; Model Fit</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -357,13 +357,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-6.html" class="sidebar-item-text sidebar-link active">
+  <a href="../weeks/week-6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 6 - Comparing Groups</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-7.html" class="sidebar-item-text sidebar-link">
+  <a href="../weeks/week-7.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Week 7 - Variability &amp; Model Fit</span></a>
   </div>
 </li>
@@ -467,7 +467,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#comparing-groups-as-regression" id="toc-comparing-groups-as-regression" class="nav-link active" data-scroll-target="#comparing-groups-as-regression">Comparing Groups as Regression</a>
+  <li><a href="#how-good-is-this-model" id="toc-how-good-is-this-model" class="nav-link active" data-scroll-target="#how-good-is-this-model">How Good Is This Model?</a>
   <ul class="collapse">
   <li><a href="#prepare" id="toc-prepare" class="nav-link" data-scroll-target="#prepare">Prepare</a></li>
   <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
@@ -476,15 +476,15 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#for-next-time" id="toc-for-next-time" class="nav-link" data-scroll-target="#for-next-time">For Next Time</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/weeks/week-6.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/weeks/week-7.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-6.html">Week 6 - Comparing Groups</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-7.html">Week 7 - Variability &amp; Model Fit</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Week 6 - Comparing Groups</h1>
+<h1 class="title">Week 7 - Variability &amp; Model Fit</h1>
 </div>
 
 
@@ -501,34 +501,49 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="comparing-groups-as-regression" class="level1">
-<h1>Comparing Groups as Regression</h1>
-<p>Last week ended with a magic trick: you ran a t-test, then ran the same question through <code>lm()</code>, and the numbers matched exactly. This week we pull the trick apart and show you the wires.</p>
-<p>The key move is <strong>dummy coding</strong> — the trick that lets a model with only numbers in it handle a variable like “treatment group.” Once you see it, two things happen. First, the t-test stops being a separate procedure and becomes a regression with one categorical predictor. Second, <strong>ANOVA</strong> does too: three groups is just two dummy variables instead of one.</p>
-<p>We will also deal with the question that comes up the moment you have three groups: why not just run a t-test on every pair? (Short answer: because your false-positive rate quietly climbs to 14%.)</p>
+<section id="how-good-is-this-model" class="level1">
+<h1>How Good Is This Model?</h1>
+<p>For three weeks we have been reading <strong>estimates</strong> — slopes, intercepts, group differences. This week we read the other half of the output: the numbers that tell you whether the model is worth anything at all.</p>
+<p>The core idea is simple arithmetic. Start with how wrong you would be using nothing but the mean. Fit a line. Whatever distance the line covers is the <strong>model</strong>; whatever is left is the <strong>residual</strong>. That single split gives you R², the F test, and the residual standard error — three numbers you have been glancing past since Week 5.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>A small thing that matters a lot
+<span class="screen-reader-only">Note</span>The sentence to watch for this week
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Software picks the reference group alphabetically. Your research question almost never does. Choosing the reference group deliberately is one of the easiest ways to make a results table say what you actually mean.</p>
+<p>“Statistically significant” and “explains a lot” are different claims. With 400 people you can be very confident about a slope that accounts for 6% of the variance. Both facts are true, and a careful results section says both.</p>
+</div>
+</div>
+<p>We will also meet the first real trap in model building: <strong>R² can never go down when you add a predictor</strong>, even a pointless one. That is why adjusted R² exists, and why it is the number to watch once your models have more than one thing in them.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>In-class check today
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>In-Class Check 2</strong> runs at the start of class — about 20 minutes, open notes, open readings, open past labs. It covers Weeks 5 and 6: slopes, intercepts, prediction and residuals, R², and groups as a line.</p>
 </div>
 </div>
 <section id="prepare" class="level2">
 <h2 class="anchored" data-anchor-id="prepare">Prepare</h2>
 <ul>
-<li>📖<a href="https://statsthinking21.github.io/statsthinking21-core-site/" target="_blank">Chapter 15 - ST</a></li>
+<li><p>📖<a href="https://users.aalto.fi/~ave/ROS.pdf">Chapter 8 - ROS</a></p></li>
+<li><p>📖<a href="https://statsthinking21.github.io/statsthinking21-core-site/" target="_blank">Chapters 5 &amp; 14.5 - ST</a></p></li>
+<li><p>📖<a href="https://learningstatisticswithr.com/" target="_blank">Chapter 15.4 - LSR</a></p></li>
 </ul>
 </section>
 <section id="slides" class="level2">
 <h2 class="anchored" data-anchor-id="slides">Slides</h2>
-<p><a href="../slides/lec-06_groups.html" target="_blank">💻 Comparing Groups as Regression</a></p>
-<p><a href="../slides/lec-06_groups_JAMOVI.html" target="_blank">💻 Comparing Groups - JAMOVI</a></p>
+<p><a href="../slides/lec-07_fit.html" target="_blank">💻 Variability &amp; Model Fit</a></p>
+<p><a href="../slides/lec-07_fit_JAMOVI.html" target="_blank">💻 Variability &amp; Model Fit - JAMOVI</a></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -539,38 +554,48 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Both decks cover the same concepts with the same data and the same numbers - one drives R, the other drives JAMOVI. The in-class activity gives every step both ways.</p>
+<p>Both decks use the same data and reach the same numbers. JAMOVI has one genuine advantage this week - the <strong>Model Builder</strong> compares nested models and reports ΔR² for you - so the JAMOVI deck spends a little longer there.</p>
 </div>
 </div>
 </section>
 <section id="data" class="level2">
 <h2 class="anchored" data-anchor-id="data">Data</h2>
-<p><strong>Lecture:</strong> <a href="../files/data/final_tipi.csv" download="final_tipi.csv">TIPI Data (.csv)</a> - the same cleaned dataset from Week 3</p>
-<p><strong>In-class activity:</strong> <a href="../files/data/Pokemon.csv" download="Pokemon.csv">Pokémon Data (.csv)</a></p>
+<p><strong>Lecture:</strong> <a href="../files/data/asap_data.csv" download="asap_data.csv">ASAP Sleep &amp; Mood Data (.csv)</a></p>
+<p><strong>In-class activity:</strong> <a href="../files/data/popular_spotify.csv" download="popular_spotify.csv">Spotify Data (.csv)</a></p>
 </section>
 <section id="in-class-activity" class="level2">
 <h2 class="anchored" data-anchor-id="in-class-activity">In-Class Activity</h2>
-<p><a href="../class-activities/wk6_groups.html" target="_blank">📓Same Question, Three Ways</a></p>
+<p><a href="../class-activities/wk7_fit.html" target="_blank">📓Does the Algorithm Know What a Hit Is?</a></p>
 </section>
 <section id="for-next-time" class="level2">
 <h2 class="anchored" data-anchor-id="for-next-time">For Next Time</h2>
-<p>📋<a href="../labs/lab-07_comparing-groups.html">Lab 7 - Does the Therapy Work?</a> — <strong>due Tuesday 10/6 at 11:59pm</strong></p>
-<p>A three-arm randomized trial of CBT for depression. You fit the model, choose the reference group, and write up the results.</p>
-<p>📖<a href="https://users.aalto.fi/~ave/ROS.pdf">Chapter 8 - ROS</a></p>
-<p>📖<a href="https://statsthinking21.github.io/statsthinking21-core-site/" target="_blank">Chapters 5 &amp; 14.5 - ST</a></p>
-<p>📖<a href="https://learningstatisticswithr.com/" target="_blank">Chapter 15.4 - LSR</a></p>
+<p>📋<a href="../labs/lab-08_model-fit.html">Lab 8 - How Good Is This Model?</a> — <strong>due Tuesday 10/13 at 11:59pm</strong></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Fall Break
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Monday 10/12 and Tuesday 10/13 are <strong>Fall Break</strong> — no classes. Lab 8 is still due Tuesday at 11:59pm and is submitted online as usual. There are no office hours that week before the deadline, so come by <strong>Tuesday 10/6</strong> or email me if you want help before the break.</p>
+</div>
+</div>
+<p>📖<a href="https://users.aalto.fi/~ave/ROS.pdf">Chapter 10 - ROS</a> — multiple regression, for next week</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Looking ahead
+<span class="screen-reader-only">Important</span>📂 Midterm Project — handed out today
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Lab 8</strong> is due Tuesday <strong>10/13</strong>, which falls during Fall Break — it is submitted online as usual.</p>
-<p>The <strong>Midterm Project</strong> is handed out <strong>10/8</strong> and due <strong>Tuesday 10/27</strong>.</p>
+<p>The <a href="../labs/midterm-project.html"><strong>Midterm Project</strong></a> is posted now and is due <strong>Tuesday 10/27</strong>.</p>
+<p>Parts 1-5 use only what you already know, so you can start this weekend. Part 6 needs multiple regression, which we cover on 10/15. No lab is due in Weeks 9 or 10, so that time is yours for the project.</p>
 </div>
 </div>
 <p><br><br></p>
@@ -998,13 +1023,13 @@ Note
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../weeks/week-5.html" class="pagination-link" aria-label="Week 5 - Simple Regression">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 5 - Simple Regression</span>
+      <a href="../weeks/week-6.html" class="pagination-link" aria-label="Week 6 - Comparing Groups">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 6 - Comparing Groups</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../weeks/week-7.html" class="pagination-link" aria-label="Week 7 - Variability &amp; Model Fit">
-        <span class="nav-page-text">Week 7 - Variability &amp; Model Fit</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../labs/lab-01_introduction.html" class="pagination-link" aria-label="Lab 1 - Introduction">
+        <span class="nav-page-text">Lab 1 - Introduction</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1016,7 +1041,7 @@ Note
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/weeks/week-6.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/weeks/week-7.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with ☕ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

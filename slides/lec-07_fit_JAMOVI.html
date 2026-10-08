@@ -9,7 +9,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.10.19">
 
-  <title>PSYC 640 - Graduate Statistics – Week 01: Getting Started - DATA!</title>
+  <title>PSYC 640 - Graduate Statistics – Week 07: Variability &amp; Model Fit with JAMOVI</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -129,8 +129,8 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="Week 01: Getting Started - DATA! – PSYC 640 - Graduate Statistics">
-<meta property="og:description" content="Date: 08-27">
+<meta property="og:title" content="Week 07: Variability &amp; Model Fit with JAMOVI – PSYC 640 - Graduate Statistics">
+<meta property="og:description" content="Date: October 8, 2026">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
 <body class="quarto-light">
@@ -138,195 +138,24 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Week 01: Getting Started - DATA!</h1>
-  <p class="subtitle">Date: 08-27</p>
+  <h1 class="title">Week 07: Variability &amp; Model Fit with JAMOVI</h1>
+  <p class="subtitle">Date: October 8, 2026</p>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="now--science-stuff" class="title-slide slide level1 center">
-<h1>Now- Science Stuff!</h1>
-<p>🧑‍🔬 💾 📎 📊</p>
-</section>
-
-<section id="what-makes-sciencegood-science" class="title-slide slide level1 center">
-<h1>What makes science…good science?</h1>
-
-</section>
-
-<section>
-<section id="replication-reproducibility" class="title-slide slide level1 center">
-<h1>Replication &amp; Reproducibility</h1>
-<p><strong>Replication:</strong> The process of applying the same methodology with a different sample and research group</p>
-<p><strong>Reproduction:</strong> Taking all materials from a study and coming to the same conclusions</p>
-</section>
-<section id="replication-reproducibility-1" class="slide level2 scrollable">
-<h2>Replication &amp; Reproducibility 🍰</h2>
-<p>I want to bake a cake!</p>
-<ol type="1">
-<li class="fragment">Find a recipe online (try ignoring their life story narrative)</li>
-<li class="fragment">Get ingredients (Wegmans if you 💰)</li>
-<li class="fragment">Follow recipe and bake 🧑‍🍳</li>
-<li class="fragment">Enjoy the delicious cake 🍽️</li>
-</ol>
-<div class="fragment">
-<p><strong>Replication</strong></p>
-</div>
-</section>
-<section id="replication-reproducibility-2" class="slide level2 scrollable">
-<h2>Replication &amp; Reproducibility 🍰</h2>
-<p>I want to bake a cake!</p>
-<p><strong>Reproduction</strong></p>
-<ol type="1">
-<li class="fragment">Find a recipe online –&gt; <strong>Find their kitchen</strong></li>
-<li class="fragment">Get ingredients –&gt; <strong>Use their ingredients</strong></li>
-<li class="fragment">Follow recipe and bake –&gt; <strong>Watch what they do and follow</strong></li>
-<li class="fragment">Enjoy the delicious cake –&gt; <strong>Enjoy cake (and jail for B&amp;E)</strong></li>
-</ol>
-</section>
-<section id="replication-reproducibility-3" class="slide level2">
-<h2>Replication &amp; Reproducibility 📊</h2>
-<p><br><br></p>
-<table class="caption-top">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Replication</th>
-<th>Reproducibility</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Have a similar research question</td>
-<td>Use the same research question</td>
-</tr>
-<tr class="even">
-<td>Collect your own data</td>
-<td>Use their data</td>
-</tr>
-<tr class="odd">
-<td>Follow their steps with <strong>your</strong> resources</td>
-<td>Follow their steps with <strong>their</strong> resources</td>
-</tr>
-<tr class="even">
-<td>Outcome: Similar results (depends on other factors)</td>
-<td>Outcome: Identical results</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="replication-reproducibility-4" class="slide level2">
-<h2>Replication &amp; Reproducibility 📊</h2>
-<p><u>Goals of Science</u></p>
-<p><strong>Important:</strong> We want to <strong><em>replicate</em></strong> other researchers work</p>
-<p><strong>MOST Important:</strong> Be able to <strong><em>reproduce</em></strong> all of our results</p>
-<p>You are your own worst collaborator!</p>
-</section></section>
-<section id="does-this-play-out-in-the-field" class="title-slide slide level1 center">
-<h1>Does this play out in the field??</h1>
-
-</section>
-
-<section>
-<section id="section" class="title-slide slide level1 center">
-<h1><img data-src="images/rep-crisis.png"></h1>
-
-</section>
-<section class="slide level2">
-
-<p><img data-src="images/bem.png" class="absolute" style="top: 100px; "></p>
-<div class="fragment">
-<p><img data-src="images/cornell.png" class="absolute" style="bottom: 0px; right: 0px; "></p>
-</div>
-<div class="fragment">
-<p><img data-src="images/stapel.png" class="absolute" style="top: 0px; left: 0px; "></p>
-</div>
-<div class="fragment">
-<p><img data-src="images/powerpose.png" class="absolute" style="top: 200px; right: 0px; width: 300px; "> <img data-src="images/ego-dep.png" class="absolute" style="top: 275px; left: 0px; width: 300px; "></p>
-</div>
-</section>
-<section class="slide level2">
-
-<div class="columns">
-<div class="column" style="width:35%;">
-<p>100 Replication Studies Adequately Powered</p>
-<p><strong>Original Studies:</strong></p>
+<section id="today" class="slide level2">
+<h2>Today…</h2>
+<p><strong>How good is this model, actually?</strong></p>
 <ul>
-<li><p>Mean Effect: 0.403</p></li>
-<li><p>% with p&lt;.05: 97%</p></li>
+<li>Where the variance goes: <span class="math inline">\(SS_{total} = SS_{model} + SS_{residual}\)</span></li>
+<li>R², one more time — and what it is <em>not</em></li>
+<li>The typical miss, in real units</li>
+<li>The F test as a ratio</li>
+<li>Why R² can only go <strong>up</strong>, and what to use instead</li>
+<li>👀 A sneak peek at two predictors</li>
 </ul>
-<p><strong>Replication Studies:</strong></p>
-<ul>
-<li><p>Mean Effect: 0.197</p></li>
-<li><p>% with p&lt;.05: 47%</p></li>
-</ul>
-</div><div class="column" style="width:65%;">
-<p><img data-src="images/clipboard-450213428.png"></p>
-</div></div>
-</section>
-<section id="garden-of-forking-paths" class="slide level2">
-<h2>Garden of Forking Paths</h2>
-<div class="fragment">
-<p><img data-src="images/forking-paths.png"></p>
-</div>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="what-can-we-do-about-it" class="title-slide slide level1 center">
-<h1>What can we do about it? 🤷</h1>
-
-</section>
-<section class="slide level2">
-
-<div class="quarto-layout-panel" data-layout="[[-1], [1], [-1]]">
-<div class="quarto-layout-row">
-<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
-<p>&nbsp;</p>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/clipboard-1147635043.png" class="quarto-figure quarto-figure-center"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="installing-and-using-r" class="slide level2">
-<h2>Installing and Using R</h2>
-<p><a href="../resources.html">From the course website</a></p>
-<p><a href="https://www.modernstatisticswithr.com/thebasics.html" target="_blank">Modern Statistics Using R</a></p>
-</section>
-<section id="getting-r-setup-properly" class="slide level2">
-<h2>Getting R Setup Properly</h2>
-<p>There are some defaults that make things more challenging in the long run</p>
-<p>To update them, let’s look at <a href="https://dharaden.github.io/psyc640/resources/startingwithR.html#setting-things-up" target="_blank">Setting Things Up</a></p>
-</section>
-<section id="working-with-r-studio" class="slide level2">
-<h2>Working with R-Studio</h2>
-<p>R-Studio is just like a kitchen 🧑‍🍳</p>
-<p>The Environment pane is the pantry/fridge</p>
-<p>The Console is like the oven/stove</p>
-<p>The Markdown document is the recipe</p>
-<p>The bottom right sometimes acts as the little window on the oven where you can see things baking</p>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section id="next-week" class="title-slide slide level1 center">
-<h1>Next Week</h1>
-<p>In-Person</p>
-<p>📖 Read Chapter 1 &amp; 2 - LSR</p>
-<p>📖 Read Chapter 1 - ROS</p>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -336,15 +165,667 @@
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>Items below are due 9/1 @ 11:59pm</p>
+<p>This is the <strong>JAMOVI</strong> version. Same data, same numbers as the R deck. JAMOVI is genuinely <em>better</em> than base R at one thing today — comparing nested models — so stick around for Part 3.</p>
 </div>
 </div>
 </div>
-<p>📋Lab 1</p>
-<p>📋Lab 2</p>
-
+</section>
+<section id="our-data-the-asap-study" class="slide level2">
+<h2>Our data: the ASAP study 😴</h2>
+<p>400 adolescents, measured on sleep, stress, and mood.</p>
+<p><a href="../files/data/asap_data.csv" download="asap_data.csv">Download the ASAP data (.csv)</a></p>
+<blockquote>
+<p>☰ <strong>Menu → Open → Browse →</strong> <code>asap_data.csv</code></p>
+</blockquote>
+<blockquote>
+<p><strong>Analyses → Exploration → Descriptives</strong> · <code>T1_SleepDur</code>, <code>T1_PeerStress</code>, <code>T1_AcadStress</code>, <code>T1_Dep</code></p>
+</blockquote>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>N</th>
+<th>Mean</th>
+<th>SD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>T1_SleepDur</code> (hours)</td>
+<td>400</td>
+<td>9.45</td>
+<td>1.00</td>
+</tr>
+<tr class="even">
+<td><code>T1_PeerStress</code></td>
+<td>400</td>
+<td>7.93</td>
+<td>1.77</td>
+</tr>
+<tr class="odd">
+<td><code>T1_AcadStress</code></td>
+<td>400</td>
+<td>5.02</td>
+<td>1.83</td>
+</tr>
+<tr class="even">
+<td><code>T1_Dep</code></td>
+<td>400</td>
+<td>9.84</td>
+<td><strong>2.15</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Research question:</strong> Does how long adolescents sleep predict depressive symptoms?</p>
+</blockquote>
+</section>
+<section>
+<section id="part-1-where-does-the-variance-go" class="title-slide slide level1 center">
+<h1>Part 1: Where Does the Variance Go?</h1>
 
 </section>
+<section id="start-with-the-dumbest-possible-model" class="slide level2">
+<h2>Start with the dumbest possible model</h2>
+<p>Suppose you had <strong>no predictor at all</strong>. What is your best guess for anyone’s depression score?</p>
+<div class="fragment">
+<p>The <strong>mean</strong>: 9.84. That’s it. That’s the model.</p>
+</div>
+<div class="fragment">
+<p>How wrong is that model? Add up every squared miss:</p>
+<p><span class="math display">\[SS_{total} = \sum(Y_i - \bar{Y})^2 = 1840.5\]</span></p>
+<p>This is the <strong>total variability</strong> we are trying to account for. Everything from here is about shrinking it.</p>
+</div>
+</section>
+<section id="now-add-a-predictor" class="slide level2">
+<h2>Now add a predictor</h2>
+<blockquote>
+<p><strong>Analyses → Regression → Linear Regression</strong></p>
+<p>Dependent Variable: <code>T1_Dep</code> · <strong>Covariates:</strong> <code>T1_SleepDur</code></p>
+<p>Model Fit: tick <strong>R²</strong>, <strong>Adjusted R²</strong>, <strong>RMSE</strong>, <strong>Overall Model Test</strong></p>
+<p>Model Coefficients: tick <strong>Omnibus ANOVA Test</strong></p>
+</blockquote>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Predictor</th>
+<th>Estimate</th>
+<th>SE</th>
+<th>t</th>
+<th>p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Intercept</td>
+<td>15.031</td>
+<td>0.985</td>
+<td>15.26</td>
+<td>&lt; .001</td>
+</tr>
+<tr class="even">
+<td>T1_SleepDur</td>
+<td><strong>−0.549</strong></td>
+<td>0.104</td>
+<td><strong>−5.30</strong></td>
+<td><strong>&lt; .001</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Each additional hour of sleep is associated with <strong>0.55 fewer</strong> points of depression. But today’s question is: <strong>how much better is this line than the mean?</strong></p>
+</section>
+<section id="three-distances-one-observation" class="slide level2">
+<h2>Three distances, one observation</h2>
+<p>For any single adolescent:</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math display">\[\underbrace{Y_i - \bar{Y}}_{\text{total}} = \underbrace{\hat{Y_i} - \bar{Y}}_{\text{model}} + \underbrace{Y_i - \hat{Y_i}}_{\text{residual}}\]</span></p>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><strong>Total</strong>: how far this person is from the overall mean</li>
+<li><strong>Model</strong>: how far the <em>line</em> moved them from the mean</li>
+<li><strong>Residual</strong>: how far the line still missed</li>
+</ul>
+</div></div>
+<div class="fragment">
+<p>Square them, add them up across all 400 people, and the same decomposition holds:</p>
+<p><span class="math display">\[SS_{total} = SS_{model} + SS_{residual}\]</span></p>
+</div>
+</section>
+<section id="see-it-in-the-numbers" class="slide level2">
+<h2>See it in the numbers</h2>
+<p>The <strong>Omnibus ANOVA Test</strong> table you just ticked:</p>
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Term</th>
+<th>Sum of Squares</th>
+<th>df</th>
+<th>Mean Square</th>
+<th>F</th>
+<th>p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>T1_SleepDur</td>
+<td><strong>121.2</strong></td>
+<td>1</td>
+<td>121.2</td>
+<td>28.05</td>
+<td>&lt; .001</td>
+</tr>
+<tr class="even">
+<td>Residuals</td>
+<td><strong>1719.4</strong></td>
+<td>398</td>
+<td>4.32</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li class="fragment"><span class="math inline">\(SS_{model}\)</span> = <strong>121.2</strong> — variability the line accounts for</li>
+<li class="fragment"><span class="math inline">\(SS_{residual}\)</span> = <strong>1719.4</strong> — variability it does not</li>
+<li class="fragment">Together: 121.2 + 1719.4 = <strong>1840.5</strong> = <span class="math inline">\(SS_{total}\)</span> ✅</li>
+</ul>
+</section>
+<section id="r²-is-just-a-share" class="slide level2">
+<h2>R² is just a share</h2>
+<p><span class="math display">\[R^2 = \frac{SS_{model}}{SS_{total}} = \frac{121.2}{1840.5} = .066\]</span></p>
+<p><strong>Model Fit Measures</strong></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>R</th>
+<th>R²</th>
+<th>Adjusted R²</th>
+<th>RMSE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.257</td>
+<td><strong>0.0658</strong></td>
+<td>0.0635</td>
+<td>2.073</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p><strong>6.6%</strong> of the variability in depression is accounted for by sleep duration.</p>
+<p>Which means <strong>93.4% is not</strong>. Both halves of that sentence are the finding.</p>
+</div>
+</section>
+<section id="small-r²-strong-evidence" class="slide level2">
+<h2>Small R², strong evidence</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>R² = .066</strong></p>
+<p>Sleep duration tells us very little about any individual adolescent’s depression.</p>
+</div><div class="column" style="width:50%;">
+<p><strong>p &lt; .001</strong></p>
+<p>With n = 400, we are confident the slope is not zero.</p>
+</div></div>
+<div class="fragment">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>These are answers to <strong>different questions</strong>. “Is there an effect?” and “how much does it explain?” are not the same, and a p-value only answers the first.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>This is normal in psychology. Behavior has many causes; one predictor rarely owns much of the variance.</p>
+</div>
+</section></section>
+<section>
+<section id="part-2-fit-in-real-units" class="title-slide slide level1 center">
+<h1>Part 2: Fit in Real Units</h1>
+
+</section>
+<section id="r²-is-unitless.-thats-a-problem." class="slide level2">
+<h2>R² is unitless. That’s a problem.</h2>
+<p>“.066” does not tell you whether this model is useful for a clinician.</p>
+<div class="fragment">
+<p><strong>RMSE</strong> does. It is roughly the size of a typical miss, in the units of the outcome:</p>
+<p><span class="math display">\[RMSE \approx \sqrt{\frac{SS_{residual}}{n}} = \sqrt{\frac{1719.4}{400}} = 2.07\]</span></p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>JAMOVI’s RMSE divides by <em>n</em>; R’s “residual standard error” divides by the degrees of freedom (2.08 here). Same idea, trivially different arithmetic — don’t let the two labels confuse you.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-comparison-that-matters" class="slide level2">
+<h2>The comparison that matters</h2>
+<ul>
+<li class="fragment">Guess the <strong>mean</strong> for everyone → you are off by about <strong>2.15</strong> points on average</li>
+<li class="fragment">Use the <strong>model</strong> → you are off by about <strong>2.07</strong> points</li>
+</ul>
+<div class="fragment">
+<p>We bought ourselves about <strong>0.08 points</strong> of accuracy.</p>
+</div>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>That is the honest way to describe a small R² to a non-statistician: <em>not</em> “6.6% of variance,” which means nothing to most people, but “knowing how long a teenager slept barely improves our guess about their mood.”</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-f-test-is-a-ratio" class="slide level2">
+<h2>The F test is a ratio</h2>
+<p><span class="math display">\[F = \frac{MS_{model}}{MS_{residual}} = \frac{121.2}{4.32} = 28.05\]</span></p>
+<p><strong>Overall Model Test</strong></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>F</th>
+<th>df1</th>
+<th>df2</th>
+<th>p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>28.05</strong></td>
+<td>1</td>
+<td>398</td>
+<td>&lt; .001</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li class="fragment">If the model explained <strong>nothing</strong>, F would hover around 1</li>
+<li class="fragment">With one predictor, <span class="math inline">\(F = t^2\)</span>: <span class="math inline">\((-5.30)^2 = 28.05\)</span> ✅ — the same test again</li>
+</ul>
+</section></section>
+<section>
+<section id="part-3-adding-predictors" class="title-slide slide level1 center">
+<h1>Part 3: Adding Predictors 👀</h1>
+
+</section>
+<section id="jamovis-best-trick-model-builder" class="slide level2">
+<h2>JAMOVI’s best trick: Model Builder</h2>
+<blockquote>
+<p><strong>Linear Regression → Model Builder</strong></p>
+<p><strong>Block 1:</strong> <code>T1_SleepDur</code></p>
+<p>Click <strong>+ Add New Block</strong> → <strong>Block 2:</strong> <code>T1_PeerStress</code></p>
+</blockquote>
+<div class="fragment">
+<p>Now tick <strong>Model Comparisons</strong> under Model Fit.</p>
+<p>JAMOVI will fit <em>both</em> models and test the difference between them — which is exactly the question “did peer stress earn its place?”</p>
+</div>
+</section>
+<section id="does-peer-stress-help" class="slide level2">
+<h2>Does peer stress help?</h2>
+<p><strong>Model Comparisons</strong></p>
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Comparison</th>
+<th>ΔR²</th>
+<th>F</th>
+<th>df1</th>
+<th>df2</th>
+<th>p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Model 1 − Model 2</td>
+<td><strong>0.027</strong></td>
+<td>11.78</td>
+<td>1</td>
+<td>397</td>
+<td><strong>&lt; .001</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Model Fit Measures</strong></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>R²</th>
+<th>Adjusted R²</th>
+<th>RMSE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. Sleep only</td>
+<td>.0658</td>
+<td>.0635</td>
+<td>2.073</td>
+</tr>
+<tr class="even">
+<td>2. + peer stress</td>
+<td><strong>.0928</strong></td>
+<td><strong>.0882</strong></td>
+<td><strong>2.043</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li class="fragment"><span class="math inline">\(\Delta R^2\)</span> = <strong>.027</strong> — peer stress accounts for 2.7% <em>beyond</em> sleep</li>
+<li class="fragment">The typical miss dropped from 2.073 to 2.043</li>
+</ul>
+</section>
+<section id="now-lets-add-something-useless" class="slide level2">
+<h2>Now let’s add something useless</h2>
+<blockquote>
+<p><strong>+ Add New Block</strong> → <strong>Block 3:</strong> <code>T1_AcadStress</code></p>
+</blockquote>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Predictor</th>
+<th>Estimate</th>
+<th>SE</th>
+<th>t</th>
+<th>p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>T1_AcadStress</td>
+<td><strong>−0.007</strong></td>
+<td>0.057</td>
+<td>−0.12</td>
+<td><strong>0.902</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Academic stress is as close to nothing as you will ever see.</p>
+</section>
+<section id="watch-what-r²-does" class="slide level2">
+<h2>Watch what R² does</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>R²</th>
+<th>Adjusted R²</th>
+<th>RMSE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. Sleep only</td>
+<td>.0658</td>
+<td>.0635</td>
+<td>2.073</td>
+</tr>
+<tr class="even">
+<td>2. + peer stress</td>
+<td>.0928</td>
+<td>.0882</td>
+<td>2.043</td>
+</tr>
+<tr class="odd">
+<td>3. + academic stress</td>
+<td><strong>.0928</strong></td>
+<td><strong>.0859</strong> ⬇️</td>
+<td>2.043</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li class="fragment">R² <strong>did not go down</strong> — it never can</li>
+<li class="fragment">Adjusted R² <strong>did</strong></li>
+<li class="fragment">And Model Comparisons reports the block as non-significant, <em>p</em> = .90</li>
+</ul>
+</section>
+<section id="why-r²-can-only-climb" class="slide level2">
+<h2>Why R² can only climb</h2>
+<p>Adding a predictor gives the model one more knob to turn. At worst the coefficient sits near zero and fit stays the same; usually it catches a sliver of noise and R² ticks up.</p>
+<div class="fragment">
+<p><span class="math display">\[R^2_{adj} = 1 - (1 - R^2)\frac{n - 1}{n - k - 1}\]</span></p>
+<p>Every predictor <span class="math inline">\(k\)</span> costs you something. Adjusted R² only rises if the new variable earns its place.</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>R² is not a model-selection tool.</strong> The biggest R² always belongs to the model with the most predictors. Week 11 gives us honest ways to compare models — and JAMOVI’s Model Comparisons table is the first one.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="jamovi-r-cheat-sheet" class="slide level2">
+<h2>JAMOVI ↔︎ R cheat sheet</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>What you want</th>
+<th>JAMOVI</th>
+<th>R</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>R², adjusted R²</td>
+<td>Model Fit Measures</td>
+<td><code>glance(fit)</code></td>
+</tr>
+<tr class="even">
+<td>Typical miss</td>
+<td>Model Fit → <strong>RMSE</strong></td>
+<td><code>glance(fit)$sigma</code></td>
+</tr>
+<tr class="odd">
+<td>Sums of squares</td>
+<td>Model Coefficients → <strong>Omnibus ANOVA Test</strong></td>
+<td><code>anova(fit)</code></td>
+</tr>
+<tr class="even">
+<td>Overall F</td>
+<td>Model Fit → Overall Model Test</td>
+<td><code>glance(fit)$statistic</code></td>
+</tr>
+<tr class="odd">
+<td>Compare nested models</td>
+<td><strong>Model Builder</strong> blocks + Model Comparisons</td>
+<td><code>anova(fit1, fit2)</code></td>
+</tr>
+<tr class="even">
+<td>ΔR²</td>
+<td>Model Comparisons table</td>
+<td>subtract two <code>glance()</code> rows</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="one-last-thing-look-at-the-residuals" class="slide level2" data-background-color="#EFE6F7">
+<h2>⏱️ One last thing: look at the residuals</h2>
+<p>We spent all day computing <span class="math inline">\(SS_{residual}\)</span>. Let’s actually <strong>look</strong> at the residuals instead of just squaring them.</p>
+<blockquote>
+<p><strong>Linear Regression → Assumption Checks</strong></p>
+<p>Tick <strong>Residual plots</strong></p>
+</blockquote>
+<p>JAMOVI gives you residuals against fitted values (plus a Q-Q plot). For the ASAP model it is a shapeless cloud centered on zero — which is what “nothing obviously wrong” looks like.</p>
+</section>
+<section id="what-you-are-glancing-for" class="slide level2">
+<h2>What you are glancing for</h2>
+
+<img data-src="lec-07_fit_JAMOVI_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"><ul>
+<li class="fragment"><strong>Curve</strong> → the line is the wrong shape for these data</li>
+<li class="fragment"><strong>Funnel</strong> → the model is more wrong for some people than others</li>
+<li class="fragment"><strong>Strange point</strong> → one observation may be running the whole model (remember the 1,000-books reader?)</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>That is the entire diagnostic toolkit for now: <strong>tick the box, look for a pattern.</strong> Week 10 turns each of these into a named assumption with a proper test. For the midterm, the glance is enough.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="activity-does-the-algorithm-know-what-a-hit-is" class="slide level2">
+<h2>🛠️ Activity: Does the Algorithm Know What a Hit Is?</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Week 7 Exercises</strong> · ~45 min · Pairs</p>
+</div>
+</div>
+</div>
+<p>Spotify data: 952 popular songs, with danceability, energy, valence, acousticness — and streams.</p>
+<ul>
+<li>Four audio features together explain about <strong>1%</strong> of streams</li>
+<li>One boring variable explains <strong>62%</strong></li>
+<li>You will find it, and then explain why the fancy features lost</li>
+</ul>
+<p><a href="../class-activities/wk7_fit.html" class="button" target="_blank">Open the activity</a></p>
+</section>
+<section id="wrap-up" class="slide level2 scrollable">
+<h2>✍️ Wrap-Up</h2>
+<p>Finish these at the bottom of your activity file:</p>
+<ol type="1">
+<li>In one sentence, explain R² to someone who has never taken statistics.</li>
+<li>Why can a predictor be statistically significant and still barely improve a model?</li>
+<li>One thing that is still muddy → journal.</li>
+</ol>
+</section>
+<section id="for-next-time" class="slide level2">
+<h2>For next time</h2>
+<p>📋 <strong>Lab 8 — How Good Is This Model?</strong>, due <strong>Tuesday 10/13 at 11:59pm</strong></p>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>10/13 is during Fall Break.</strong> The lab is submitted online as usual — nothing to hand in physically, and no class that Monday or Tuesday.</p>
+</div>
+</div>
+</div>
+<ul>
+<li>Model fit on a real anxiety dataset, in the units people care about</li>
+<li>Ends with a <strong>sneak peek</strong>: one predictor that looks useless alone, and what happens when you add a second</li>
+</ul>
+<p>📖 Chapter 10 — ROS (for next week’s multiple regression)</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>📂 Midterm Project — posted today</strong></p>
+</div>
+<div class="callout-content">
+<p>The <a href="../labs/midterm-project.html"><strong>Midterm Project</strong></a> is up on the website now. <strong>Due Tuesday, 10/27 at 11:59pm.</strong> It is worth 200 points (20% of your grade).</p>
+<ul>
+<li><strong>Parts 1-5 use only what you already know</strong> - cleaning, scoring, describing, one-predictor models. You can start this weekend.</li>
+<li><strong>Part 6 needs multiple regression</strong>, which is next class (10/15).</li>
+<li>You pick your own research question. Read the whole thing before you leave today.</li>
+</ul>
+<p>No lab is due in Weeks 9 or 10, so that time is yours for the project.</p>
+</div>
+</div>
+</div>
+
+
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="../images/640_hex.png" class="slide-logo"></p>

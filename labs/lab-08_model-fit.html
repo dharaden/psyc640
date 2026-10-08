@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Week 6 - Comparing Groups – PSYC 640 - Graduate Statistics</title>
+<title>Lab 8: How Good Is This Model? – PSYC 640 - Graduate Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -35,8 +35,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../weeks/week-7.html" rel="next">
-<link href="../weeks/week-5.html" rel="prev">
+<link href="../labs/midterm-project.html" rel="next">
+<link href="../labs/lab-07_comparing-groups.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -79,9 +79,38 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Week 6 - Comparing Groups – PSYC 640 - Graduate Statistics">
-<meta property="og:description" content="">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Lab 8: How Good Is This Model? – PSYC 640 - Graduate Statistics">
+<meta property="og:description" content="Fit, in percentages and in real units">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
 
@@ -256,7 +285,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-6.html">Week 6 - Comparing Groups</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/lab-01_introduction.html">Labs</a></li><li class="breadcrumb-item"><a href="../labs/lab-08_model-fit.html">Lab 8 - Model Fit</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -318,13 +347,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Weekly Materials</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../weeks/week-1.html" class="sidebar-item-text sidebar-link">
@@ -357,7 +386,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-6.html" class="sidebar-item-text sidebar-link active">
+  <a href="../weeks/week-6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 6 - Comparing Groups</span></a>
   </div>
 </li>
@@ -371,13 +400,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Labs</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../labs/lab-01_introduction.html" class="sidebar-item-text sidebar-link">
@@ -422,7 +451,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-08_model-fit.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-08_model-fit.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Lab 8 - Model Fit</span></a>
   </div>
 </li>
@@ -467,24 +496,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#comparing-groups-as-regression" id="toc-comparing-groups-as-regression" class="nav-link active" data-scroll-target="#comparing-groups-as-regression">Comparing Groups as Regression</a>
-  <ul class="collapse">
-  <li><a href="#prepare" id="toc-prepare" class="nav-link" data-scroll-target="#prepare">Prepare</a></li>
-  <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
-  <li><a href="#in-class-activity" id="toc-in-class-activity" class="nav-link" data-scroll-target="#in-class-activity">In-Class Activity</a></li>
-  <li><a href="#for-next-time" id="toc-for-next-time" class="nav-link" data-scroll-target="#for-next-time">For Next Time</a></li>
-  </ul></li>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#the-study" id="toc-the-study" class="nav-link" data-scroll-target="#the-study">The study</a></li>
+  <li><a href="#what-youll-practice" id="toc-what-youll-practice" class="nav-link" data-scroll-target="#what-youll-practice">What you’ll practice</a></li>
+  <li><a href="#exercises-at-a-glance" id="toc-exercises-at-a-glance" class="nav-link" data-scroll-target="#exercises-at-a-glance">Exercises at a glance</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/weeks/week-6.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/lab-08_model-fit.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-6.html">Week 6 - Comparing Groups</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/lab-01_introduction.html">Labs</a></li><li class="breadcrumb-item"><a href="../labs/lab-08_model-fit.html">Lab 8 - Model Fit</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Week 6 - Comparing Groups</h1>
+<h1 class="title">Lab 8: How Good Is This Model?</h1>
+<p class="subtitle lead">Fit, in percentages and in real units</p>
 </div>
 
 
@@ -501,85 +527,169 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="comparing-groups-as-regression" class="level1">
-<h1>Comparing Groups as Regression</h1>
-<p>Last week ended with a magic trick: you ran a t-test, then ran the same question through <code>lm()</code>, and the numbers matched exactly. This week we pull the trick apart and show you the wires.</p>
-<p>The key move is <strong>dummy coding</strong> — the trick that lets a model with only numbers in it handle a variable like “treatment group.” Once you see it, two things happen. First, the t-test stops being a separate procedure and becomes a regression with one categorical predictor. Second, <strong>ANOVA</strong> does too: three groups is just two dummy variables instead of one.</p>
-<p>We will also deal with the question that comes up the moment you have three groups: why not just run a t-test on every pair? (Short answer: because your false-positive rate quietly climbs to 14%.)</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>A small thing that matters a lot
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Software picks the reference group alphabetically. Your research question almost never does. Choosing the reference group deliberately is one of the easiest ways to make a results table say what you actually mean.</p>
-</div>
-</div>
-<section id="prepare" class="level2">
-<h2 class="anchored" data-anchor-id="prepare">Prepare</h2>
+<section id="instructions" class="level2">
+<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<p>Everything so far has been about <strong>estimates</strong> — slopes, intercepts, group differences. This lab is about the other half of the output: the numbers that tell you whether the model is worth anything.</p>
+<p>You will fit three models to the same outcome, pull apart where the variance went, and report fit in the units a reader actually cares about. The last exercise is a sneak peek at Week 8, and it is the interesting one: a predictor that looks completely useless on its own turns out to matter quite a lot.</p>
+<p>Here is what you’ll need:</p>
 <ul>
-<li>📖<a href="https://statsthinking21.github.io/statsthinking21-core-site/" target="_blank">Chapter 15 - ST</a></li>
+<li><a href="../files/_lab-qmd/lab-8_model-fit.qmd" download="lab-8_model-fit.qmd">Download Lab 8 (.qmd)</a></li>
+<li><a href="../files/data/stress.csv" download="stress.csv">Download the Coping Study Data (.csv)</a></li>
 </ul>
-</section>
-<section id="slides" class="level2">
-<h2 class="anchored" data-anchor-id="slides">Slides</h2>
-<p><a href="../slides/lec-06_groups.html" target="_blank">💻 Comparing Groups as Regression</a></p>
-<p><a href="../slides/lec-06_groups_JAMOVI.html" target="_blank">💻 Comparing Groups - JAMOVI</a></p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Both decks cover the same concepts with the same data and the same numbers - one drives R, the other drives JAMOVI. The in-class activity gives every step both ways.</p>
-</div>
-</div>
-</section>
-<section id="data" class="level2">
-<h2 class="anchored" data-anchor-id="data">Data</h2>
-<p><strong>Lecture:</strong> <a href="../files/data/final_tipi.csv" download="final_tipi.csv">TIPI Data (.csv)</a> - the same cleaned dataset from Week 3</p>
-<p><strong>In-class activity:</strong> <a href="../files/data/Pokemon.csv" download="Pokemon.csv">Pokémon Data (.csv)</a></p>
-</section>
-<section id="in-class-activity" class="level2">
-<h2 class="anchored" data-anchor-id="in-class-activity">In-Class Activity</h2>
-<p><a href="../class-activities/wk6_groups.html" target="_blank">📓Same Question, Three Ways</a></p>
-</section>
-<section id="for-next-time" class="level2">
-<h2 class="anchored" data-anchor-id="for-next-time">For Next Time</h2>
-<p>📋<a href="../labs/lab-07_comparing-groups.html">Lab 7 - Does the Therapy Work?</a> — <strong>due Tuesday 10/6 at 11:59pm</strong></p>
-<p>A three-arm randomized trial of CBT for depression. You fit the model, choose the reference group, and write up the results.</p>
-<p>📖<a href="https://users.aalto.fi/~ave/ROS.pdf">Chapter 8 - ROS</a></p>
-<p>📖<a href="https://statsthinking21.github.io/statsthinking21-core-site/" target="_blank">Chapters 5 &amp; 14.5 - ST</a></p>
-<p>📖<a href="https://learningstatisticswithr.com/" target="_blank">Chapter 15.4 - LSR</a></p>
+<p>Save the <code>.csv</code> in your <code>data</code> folder and the <code>.qmd</code> in your project folder. Render to Word and submit <strong>both</strong> files to myCourses.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Looking ahead
+<span class="screen-reader-only">Important</span>Due date — and a heads-up
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Lab 8</strong> is due Tuesday <strong>10/13</strong>, which falls during Fall Break — it is submitted online as usual.</p>
-<p>The <strong>Midterm Project</strong> is handed out <strong>10/8</strong> and due <strong>Tuesday 10/27</strong>.</p>
+<p><strong>Tuesday, October 13 at 11:59 pm.</strong></p>
+<p>That Monday and Tuesday are <strong>Fall Break</strong>, so there is no class and no office hours that week before the deadline. The lab is submitted online exactly as usual. If you want help, email me before the break and we can find a time to meet if needed.</p>
 </div>
 </div>
-<p><br><br></p>
-<div style="font-size: 0.875em;">
-<p>Back to <a href="../index.html" title="Course schedule">course schedule</a> ⏎</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-
-
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Working in JAMOVI?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Go ahead — submit your <code>.omv</code> plus a Word document with your written answers. JAMOVI’s <strong>Model Builder</strong> with <strong>Model Comparisons</strong> is genuinely nicer than base R for Exercises 5 and 6.</p>
+</div>
+</div>
 </section>
+<section id="the-study" class="level2">
+<h2 class="anchored" data-anchor-id="the-study">The study</h2>
+<p>A researcher recruited <strong>118 undergraduates</strong> to study how stress and social support relate to anxiety. Each participant completed measures of:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Anxiety</code></td>
+<td>Current anxiety symptoms (higher = more anxious)</td>
+</tr>
+<tr class="even">
+<td><code>Stress</code></td>
+<td>Perceived stress over the past month (higher = more stressed)</td>
+</tr>
+<tr class="odd">
+<td><code>Support</code></td>
+<td>Perceived social support (higher = more supported)</td>
+</tr>
+<tr class="even">
+<td><code>Condition</code></td>
+<td><code>"Tx"</code> or <code>"Control"</code> — half the sample completed a brief coping workshop</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="what-youll-practice" class="level2">
+<h2 class="anchored" data-anchor-id="what-youll-practice">What you’ll practice</h2>
+<ul>
+<li>Partitioning variance by hand: <span class="math inline">\(SS_{total} = SS_{model} + SS_{residual}\)</span></li>
+<li>Reading R², adjusted R², and the residual standard error off the output</li>
+<li>Translating fit into the units of the outcome (“how wrong are we, typically?”)</li>
+<li>Recognizing that <strong>adjusted R² can go negative</strong>, and what that means</li>
+<li>Comparing nested models with ΔR²</li>
+<li>Noticing when a predictor’s story <strong>changes</strong> once another variable is in the model</li>
+</ul>
+</section>
+<section id="exercises-at-a-glance" class="level2">
+<h2 class="anchored" data-anchor-id="exercises-at-a-glance">Exercises at a glance</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Exercise</th>
+<th>What you’ll do</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>1. Describe</strong></td>
+<td>Import, describe, correlation matrix</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td><strong>2. Model 1</strong></td>
+<td><code>Anxiety ~ Stress</code> — and a surprise</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td><strong>3. Model 2</strong></td>
+<td><code>Anxiety ~ Support</code></td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td><strong>4. Partition</strong></td>
+<td>Verify <span class="math inline">\(SS_{total} = SS_{model} + SS_{residual}\)</span> by hand</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td><strong>5. Real units</strong></td>
+<td>What the residual SE means for a counselor</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td><strong>6. Sneak peek</strong> 👀</td>
+<td>Both predictors at once — and the plot twist</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td><strong>7. Judgment</strong></td>
+<td>What Model 1 alone would have made you conclude</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td><strong>8. Write-up</strong></td>
+<td>One paragraph, APA style</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td><strong>Bonus</strong></td>
+<td>Add <code>Condition</code></td>
+<td>+1</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>Total: 28 points (+1 bonus)</strong></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Exercise 6 is the point of the whole lab. Do not skip to it — the surprise only works if you have already met Model 1 on its own terms.</p>
+</div>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -998,13 +1108,13 @@ Note
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../weeks/week-5.html" class="pagination-link" aria-label="Week 5 - Simple Regression">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 5 - Simple Regression</span>
+      <a href="../labs/lab-07_comparing-groups.html" class="pagination-link" aria-label="Lab 7 - Comparing Groups">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 7 - Comparing Groups</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../weeks/week-7.html" class="pagination-link" aria-label="Week 7 - Variability &amp; Model Fit">
-        <span class="nav-page-text">Week 7 - Variability &amp; Model Fit</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../labs/midterm-project.html" class="pagination-link" aria-label="Midterm Project">
+        <span class="nav-page-text">Midterm Project</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1016,7 +1126,7 @@ Note
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/weeks/week-6.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/labs/lab-08_model-fit.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with ☕ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
