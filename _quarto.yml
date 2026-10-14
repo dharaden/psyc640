@@ -15,6 +15,8 @@ project:
     - weeks/week-5.qmd
     - weeks/week-6.qmd
     - weeks/week-7.qmd
+    - weeks/week-8.qmd
+    - weeks/week-9.qmd
     - labs/lab-01_introduction.qmd
     - labs/lab-02_data-workflow.qmd
     - labs/lab-03_data-wrangling.qmd
@@ -23,6 +25,7 @@ project:
     - labs/lab-06_reading-the-line.qmd
     - labs/lab-07_comparing-groups.qmd
     - labs/lab-08_model-fit.qmd
+    - labs/lab-09_groups-slopes.qmd
     - labs/midterm-project.qmd
     - class-activities/day1.qmd
     - class-activities/wk2_tidy-intro.qmd
@@ -32,6 +35,8 @@ project:
     - class-activities/wk5_linear-model.qmd
     - class-activities/wk6_groups.qmd
     - class-activities/wk7_fit.qmd
+    - class-activities/wk8_multiple-reg.qmd
+    - class-activities/wk9_interactions.qmd
     - slides/lec-01_syl.qmd
     - slides/lec-02_background.qmd
     - slides/lec-03_wrangle.qmd
@@ -44,6 +49,10 @@ project:
     - slides/lec-06_groups_JAMOVI.qmd
     - slides/lec-07_fit.qmd
     - slides/lec-07_fit_JAMOVI.qmd
+    - slides/lec-08_multiple-reg.qmd
+    - slides/lec-08_multiple-reg_JAMOVI.qmd
+    - slides/lec-09_interactions.qmd
+    - slides/lec-09_interactions_JAMOVI.qmd
     
     
   # Downloadable files copied to the site as-is (data, handouts, .qmd templates, .pptx)
@@ -107,10 +116,10 @@ website:
             text: "Week 6 - Comparing Groups"
           - href: weeks/week-7.qmd
             text: "Week 7 - Variability & Model Fit"
-          # - href: weeks/week-8.qmd
-            # text: "Week 8 - Multiple Reg. I"
-          # - href: weeks/week-9.qmd
-            # text: "Week 9 - Multiple Reg. II"
+          - href: weeks/week-8.qmd
+            text: "Week 8 - Multiple Reg. I"
+          - href: weeks/week-9.qmd
+            text: "Week 9 - Multiple Reg. II"
           # - href: weeks/week-10.qmd
             # text: "Week 10 - Assumptions & Diagnostic"
           # - href: weeks/week-11.qmd
@@ -140,6 +149,8 @@ website:
             text: "Lab 7 - Comparing Groups"
           - href: labs/lab-08_model-fit.qmd
             text: "Lab 8 - Model Fit"
+          - href: labs/lab-09_groups-slopes.qmd
+            text: "Lab 9 - Groups, Slopes & Interactions"
           # - href: labs/lab-6.qmd
             # text: "Lab 6"  
           # - href: labs/lab-7.qmd

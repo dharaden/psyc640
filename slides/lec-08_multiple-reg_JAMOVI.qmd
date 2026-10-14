@@ -1,0 +1,602 @@
+---
+title: "Week 08: Multiple Regression I"
+subtitle: "JAMOVI version · Date: October 15, 2026"
+footer:  "[course-website](https://dharaden.github.io/psyc640/)"
+logo: "images/640_hex.png"
+format:
+  revealjs:
+    theme: [default, brand, clean.scss]
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false
+    chalkboard: true
+    overview: false
+    scrollable: true
+    code-line-numbers: true
+editor: visual
+execute:
+  echo: false
+  freeze: auto
+---
+
+## Today...
+
+**One predictor was never the plan.**
+
+- Why a second predictor changes the first one's meaning
+- "Holding constant" — what it actually does
+- A slope that **flips sign** when we add the right variable
+- Did the new predictor earn its place? (Model Builder + Model Comparisons)
+- *b* or *β*: which one do you report?
+- When predictors step on each other (collinearity)
+
+::: callout-note
+This is the **JAMOVI** version of Week 8. Same models, same numbers, same interpretations — all point-and-click. The R version is [here](lec-08_multiple-reg.html).
+:::
+
+------------------------------------------------------------------------
+
+## Where we have been
+
+| Week | Model | What was new |
+|------|-------|--------------|
+| 5 | $Y = b_0 + b_1X$ | one continuous predictor (**Covariates**) |
+| 6 | $Y = b_0 + b_1D$ | the predictor can be a group (**Factors**) |
+| 7 | $SS_{total} = SS_{model} + SS_{res}$ | how well the line fits |
+
+. . .
+
+Everything so far has been **one predictor at a time**. That is almost never the model you want.
+
+------------------------------------------------------------------------
+
+## The only equation we need
+
+$$Y_i = b_0 + b_1X_{1i} + b_2X_{2i} + \dots + b_kX_{ki} + e_i$$
+
+::: incremental
+- $b_0$ — predicted $Y$ when **every** predictor is 0
+- $b_1$ — change in $Y$ per 1-unit change in $X_1$, **holding the other predictors constant**
+- $e_i$ — still the part we miss
+:::
+
+. . .
+
+::: callout-important
+In JAMOVI you build this model by dragging **more than one variable** into **Covariates**. That is the entire mechanical change. Everything else today is about what the numbers now *mean*.
+:::
+
+# Part 1: Why Bother?
+
+------------------------------------------------------------------------
+
+## You have been hired by the county 🚒
+
+The fire department wants to know what drives the **cost of a fire**.
+
+300 fires: how many **trucks** were dispatched, how many **acres** burned, and the **damage** in thousands of dollars.
+
+::: callout-note
+## 🖱️ Open the data
+
+**☰ Menu → Open → Browse →** `fire_data.csv`
+
+Four columns: `fire_id`, `acres`, `trucks`, `damage`. Confirm all three analysis variables are **Continuous**.
+:::
+
+------------------------------------------------------------------------
+
+## Start where we always start
+
+::: callout-note
+## 🖱️ Look at it first
+
+**Exploration → scatr → Scatterplot**
+
+- `trucks` → **X-Axis**
+- `damage` → **Y-Axis**
+- **Regression Line:** Linear
+:::
+
+A clear, tight, positive cloud. More trucks, more damage.
+
+------------------------------------------------------------------------
+
+## The bivariate model
+
+::: callout-note
+## 🖱️ Fit it
+
+**Regression → Linear Regression**
+
+- `damage` → **Dependent Variable**
+- `trucks` → **Covariates**
+- **Model Coefficients:** ✅ Estimate, ✅ Standard error, ✅ p-value
+- **Model Fit:** ✅ R², ✅ Adjusted R², ✅ Overall model test (F test)
+:::
+
+| Predictor | *b* | *SE* | *t* | *p* |
+|---|---|---|---|---|
+| Intercept | 8.84 | 3.28 | 2.70 | .007 |
+| `trucks` | **12.73** | 0.51 | 24.73 | \< .001 |
+
+*R²* = **.672**
+
+------------------------------------------------------------------------
+
+## What would you tell the county?
+
+::: incremental
+- *b* = **12.73**: each additional truck is associated with **\$12,730 more** damage
+- $p$ \< .001, $R^2$ = .67 — this is not a fragile finding
+:::
+
+. . .
+
+> "Trucks strongly predict damage. **Send fewer trucks.**"
+
+. . .
+
+::: callout-warning
+Every number in that sentence is correct. The recommendation would get people killed.
+:::
+
+------------------------------------------------------------------------
+
+## 🧠 Side quest: draw the thing {background-color="#EFE6F7"}
+
+Before you fit anything, sketch what you think is going on. Arrows for "causes."
+
+- Does `trucks` → `damage`?
+- Does something cause **both**?
+
+. . .
+
+A variable that causes both your predictor and your outcome is a **confound**. Leave it out and your slope absorbs its effect.
+
+These sketches have a name — **Directed Acyclic Graphs** — and Dr. Haraden is about to abuse the chalkboard with one. 🧑‍🏫
+
+------------------------------------------------------------------------
+
+## The variable we ignored
+
+::: callout-note
+## 🖱️ Colour the cloud by fire size
+
+**Exploration → scatr → Scatterplot**
+
+- `trucks` → **X-Axis**, `damage` → **Y-Axis**
+- `acres` → **Group** *(JAMOVI will bin a continuous grouping variable; alternatively make a 3-level size variable under **Data → Compute** using `IF`)*
+:::
+
+Big fires get more trucks **and** do more damage. The slope we estimated was mostly **fire size wearing a truck costume**.
+
+------------------------------------------------------------------------
+
+## Put acres in the model
+
+::: callout-note
+## 🖱️ One extra drag
+
+In the same **Linear Regression** panel, drag `acres` into **Covariates** underneath `trucks`.
+:::
+
+| Predictor | *b* | *SE* | *t* | *p* |
+|---|---|---|---|---|
+| Intercept | 10.94 | 1.65 | 6.62 | \< .001 |
+| `trucks` | **−2.63** | 0.58 | −4.54 | \< .001 |
+| `acres` | **4.09** | 0.14 | 29.64 | \< .001 |
+
+*R²* = **.917**, adj. *R²* = .917
+
+------------------------------------------------------------------------
+
+## The sign flipped
+
+::: incremental
+- `trucks`: **+12.73 → −2.63**
+- `acres`: +4.09 per acre
+- $R^2$: .672 → **.917**
+:::
+
+. . .
+
+Each additional truck is associated with **\$2,630 less** damage — **among fires of the same size**.
+
+------------------------------------------------------------------------
+
+## What just happened
+
+::::: columns
+::: {.column width="50%"}
+**Before**
+
+We compared a 2-truck fire to a 9-truck fire. Those are not the same fire. One was a kitchen; one was a neighborhood.
+:::
+
+::: {.column width="50%"}
+**After**
+
+We compare 2-truck and 3-truck fires **of the same acreage**. Now the extra truck can only help.
+:::
+:::::
+
+. . .
+
+::: callout-important
+## "Holding constant" is a comparison, not a magic word
+
+$b_1$ answers: among cases that are **identical on every other predictor in the model**, what is the difference in $Y$ per unit of $X_1$?
+
+Identical on the predictors you *included*. Nothing else.
+:::
+
+------------------------------------------------------------------------
+
+## Omitted variables do not politely disappear
+
+When you leave out a variable that is related to both $X$ and $Y$, its effect does not vanish — it gets **folded into** the coefficients you did estimate.
+
+::: incremental
+- Sometimes the slope is **inflated** (the trucks case)
+- Sometimes it is **shrunk** (next week's tutoring example)
+- Sometimes it appears out of nowhere (Lab 8's suppression)
+- Sometimes **nothing moves** — and that is a finding too
+:::
+
+. . .
+
+You cannot tell which from the output. You can only tell from **what you chose to measure**.
+
+# Part 2: Real Data, Real Stakes
+
+------------------------------------------------------------------------
+
+## 520 students, one survey 😵‍💫
+
+A student-stress survey: everything rated 1–5.
+
+::: callout-note
+## 🖱️ Open and rename
+
+**☰ Menu → Open → Browse →** `student_stress.xlsx`
+
+The column headers are full sentences (with emoji). Double-click each header and give it a short **Name**:
+
+| Original question | Name it |
+|---|---|
+| Rate your sleep quality | `sleep_quality` |
+| Headaches per week | `headaches` |
+| Rate your academic performance | `academic_perf` |
+| Rate your study load | `study_load` |
+| Extracurriculars per week | `extracurricular` |
+| Rate your stress levels | `stress` |
+
+Set all six to **Continuous**.
+:::
+
+------------------------------------------------------------------------
+
+## Describe, then correlate
+
+::: callout-note
+## 🖱️ Two panels
+
+1.  **Exploration → Descriptives** — all six variables, ✅ Mean, ✅ SD, ✅ Minimum, ✅ Maximum
+2.  **Regression → Correlation Matrix** — all six variables
+:::
+
+| | *r* with stress |
+|---|---|
+| `study_load` | **.392** |
+| `sleep_quality` | **.165** |
+| `extracurricular` | .052 |
+| `academic_perf` | .055 |
+| `headaches` | −.072 |
+
+. . .
+
+And the two predictors we care about barely know each other: *r*(study_load, sleep_quality) = **.065**
+
+------------------------------------------------------------------------
+
+## Model 1: study load alone
+
+::: callout-note
+## 🖱️ Linear Regression
+
+`stress` → **Dependent Variable** · `study_load` → **Covariates**
+:::
+
+| Predictor | *b* | *SE* | *t* | *p* |
+|---|---|---|---|---|
+| Intercept | 1.810 | 0.123 | 14.72 | \< .001 |
+| `study_load` | **0.388** | 0.040 | 9.69 | \< .001 |
+
+*R²* = **.153**, adj. *R²* = .152, RSE = 1.251
+
+. . .
+
+Each 1-point increase in study load → **0.39** points more stress.
+
+------------------------------------------------------------------------
+
+## Model 2: add sleep quality
+
+::: callout-note
+## 🖱️ Drag `sleep_quality` into **Covariates**
+:::
+
+| Predictor | *b* | *SE* | *t* | *p* |
+|---|---|---|---|---|
+| Intercept | 1.292 | 0.191 | 6.76 | \< .001 |
+| `study_load` | **0.378** | 0.040 | 9.54 | \< .001 |
+| `sleep_quality` | **0.174** | 0.050 | 3.50 | \< .001 |
+
+. . .
+
+| Predictor | Alone | Together |
+|---|---|---|
+| `study_load` | 0.388 | **0.378** |
+
+The study-load slope moved by **0.01**. Essentially nothing.
+
+------------------------------------------------------------------------
+
+## Why nothing moved
+
+A coefficient only changes when the new predictor is related to **both** the outcome and the old predictor.
+
+::: incremental
+- *r*(study_load, sleep_quality) = **.065** → the two predictors carry **separate** information
+- So each one keeps the effect it had on its own
+- Their contributions simply **add**
+:::
+
+. . .
+
+::: callout-tip
+"I added a predictor and the first one didn't budge" is a **real result**, and it is the common one. It means your two predictors are not competing for the same variance. Say that, instead of apologizing for it.
+:::
+
+------------------------------------------------------------------------
+
+## Interpreting Model 2 out loud
+
+$$\widehat{Stress} = 1.29 + 0.378(StudyLoad) + 0.174(SleepQuality)$$
+
+::: incremental
+- **1.29** — predicted stress for a student who rated study load *and* sleep quality as 0. **Neither is possible** (the scale starts at 1), so this intercept is a mathematical anchor, not a person.
+- **0.378** — comparing two students with the **same sleep quality**, one point more study load goes with 0.38 points more stress
+- **0.174** — comparing two students with the **same study load**, one point more sleep quality goes with 0.17 points more stress
+:::
+
+------------------------------------------------------------------------
+
+## Wait. Read that last one again. 🤨
+
+**Better sleep quality predicts *more* stress** (*b* = +0.174, *p* \< .001), holding study load constant.
+
+. . .
+
+Three possibilities, and you cannot choose between them from this output:
+
+::: incremental
+1.  The item is scored **backwards** — maybe 5 means "I rate my sleep quality as a problem"
+2.  The relationship is real and reflects something else (students who sleep well take on more)
+3.  The survey question was ambiguous and students interpreted it inconsistently
+:::
+
+. . .
+
+::: callout-important
+This is the midterm's lesson arriving in a lecture. **Check the direction of every coefficient against what you expected.** When it disagrees, the first suspect is always scoring — not the universe.
+:::
+
+# Part 3: Did It Earn Its Place?
+
+------------------------------------------------------------------------
+
+## JAMOVI does this better than R 🏆
+
+::: callout-note
+## 🖱️ Model Builder
+
+Inside **Linear Regression**, open the **Model Builder** section:
+
+1.  `study_load` → **Block 1**
+2.  Click **+ Add New Block**
+3.  `sleep_quality` → **Block 2**
+
+Then open **Model Comparisons** and tick **Compare models**.
+:::
+
+JAMOVI now reports both models side by side **and** the test of the difference. In R this takes a second `lm()` and an `anova()` call.
+
+------------------------------------------------------------------------
+
+## The Model Fit Comparison table
+
+| Model | *R²* | adj. *R²* | RSE |
+|---|---|---|---|
+| 1. study load | .1534 | .1517 | 1.2506 |
+| 2. \+ sleep quality | **.1730** | **.1698** | **1.2372** |
+
+**Model Comparisons:** Δ*R²* = **.0196**, *F*(1, 517) = **12.27**, *p* \< **.001**
+
+::: incremental
+- About 2% more of stress accounted for
+- Adjusted $R^2$ went **up**, so the predictor paid its own df
+- Typical miss shrank from 1.251 to 1.237 (on a variable with SD = 1.358)
+:::
+
+------------------------------------------------------------------------
+
+## What that *F* actually is
+
+The comparison test asks: *does the drop in unexplained variability exceed what one extra predictor would buy by chance?*
+
+::: incremental
+- Residual SS: 810.12 → **791.34**
+- The new predictor picked up **18.78** of it
+- $F$(1, 517) = **12.27**, *p* = .0005
+:::
+
+. . .
+
+With one added predictor, this $F$ is just the square of its $t$: $3.503^2 = 12.27$. Same test, different table. ✅
+
+------------------------------------------------------------------------
+
+## Now let's add three useless things
+
+::: callout-note
+## 🖱️ Block 3
+
+Add `extracurricular`, `headaches` and `academic_perf` together as **Block 3**.
+:::
+
+| Predictor | *b* | *p* |
+|---|---|---|
+| `study_load` | 0.383 | \< .001 |
+| `sleep_quality` | 0.178 | \< .001 |
+| `extracurricular` | −0.015 | **.697** |
+| `headaches` | −0.074 | **.097** |
+| `academic_perf` | −0.038 | **.483** |
+
+------------------------------------------------------------------------
+
+## Watch the two R²s diverge
+
+| Model | *R²* | adj. *R²* | RSE |
+|---|---|---|---|
+| 2 predictors | .1730 | .1698 | 1.2372 |
+| 5 predictors | **.1779** ⬆️ | **.1699** ➡️ | 1.2371 |
+
+::: incremental
+- $R^2$ rose by .005, because **it always rises**
+- Adjusted $R^2$ moved by **.0001** — three predictors bought you nothing
+- RSE: unchanged to four decimals
+:::
+
+. . .
+
+::: callout-important
+Week 7's warning, now with consequences. $R^2$ cannot tell you whether a predictor belongs in the model. **Adjusted $R^2$, the model comparison, and your theory** can.
+:::
+
+# Part 4: Reporting It
+
+------------------------------------------------------------------------
+
+## *b* or *β*?
+
+::: callout-note
+## 🖱️ Standardized estimates
+
+**Model Coefficients → ✅ Standardized estimate**
+
+JAMOVI adds a `Stand. Estimate` column. (It standardizes continuous predictors only — which is what you want.)
+:::
+
+::::: columns
+::: {.column width="50%"}
+**Report *b* when**
+
+- the units mean something (dollars, hours, mg)
+- you want to compare predictors **within** this sample
+:::
+
+::: {.column width="50%"}
+**Report *β* when**
+
+- the units are arbitrary (survey points)
+- you want to compare **across** studies or scales
+:::
+:::::
+
+. . .
+
+Here: β = **.38** (study load) vs **.14** (sleep quality). Study load matters roughly **2.7×** as much.
+
+------------------------------------------------------------------------
+
+## When predictors step on each other
+
+If two predictors are nearly the same variable, the model cannot tell them apart. Coefficients get unstable and standard errors balloon.
+
+::: callout-note
+## 🖱️ Check it
+
+**Assumption Checks → ✅ Collinearity statistics**
+
+JAMOVI prints **VIF** and **tolerance** for each predictor.
+:::
+
+::: incremental
+- Stress model: VIF = **1.004** — these predictors are strangers
+- Fire model: VIF = **5.00** — acres and trucks are nearly redundant (*r* = .89), and the SE on `trucks` rose from 0.515 to 0.579 as a result
+:::
+
+. . .
+
+Rules of thumb: \> 5 is worth a sentence, \> 10 is a problem. Note that the fire model still **worked** — high VIF widens your SEs, it does not invalidate the model.
+
+------------------------------------------------------------------------
+
+## The write-up
+
+> Stress was regressed on self-reported study load and sleep quality in a sample of 520 students. The overall model was significant, *F*(2, 517) = 54.07, *p* \< .001, accounting for 17.3% of the variance in stress (adj. *R²* = .170). Holding sleep quality constant, each one-point increase in study load was associated with a 0.38-point increase in stress (*b* = 0.38, *SE* = 0.04, *t* = 9.54, *p* \< .001). Holding study load constant, each one-point increase in rated sleep quality was associated with a 0.17-point increase in stress (*b* = 0.17, *SE* = 0.05, *t* = 3.50, *p* \< .001). Adding sleep quality improved fit over study load alone, Δ*R²* = .020, *F*(1, 517) = 12.27, *p* \< .001. The positive coefficient for sleep quality was contrary to expectation and may reflect the direction in which that item was scored.
+
+. . .
+
+::: callout-tip
+Everything a reader needs: the overall test, each coefficient **with its holding-constant clause**, the model comparison, and an honest flag on the odd result.
+:::
+
+------------------------------------------------------------------------
+
+## 🛠️ Activity: Does Spending More Make More?
+
+::: callout-tip
+**Week 8 Exercises** · \~45 min · Pairs
+:::
+
+1,763 films, 1970–2013: budget, international gross, year, and whether the film passes the Bechdel test.
+
+- Budget alone explains **35%** of gross
+- Add **one** more variable and the budget slope gets *bigger*
+- You will find out why, and write it up like a consultant
+
+**Every step in the activity is given in both R and JAMOVI.**
+
+[Open the activity](../class-activities/wk8_multiple-reg.html){.button target="_blank"}
+
+------------------------------------------------------------------------
+
+## ✍️ Wrap-Up
+
+Finish these at the bottom of your activity file:
+
+1.  In your own words: what does "holding X constant" let you compare?
+2.  A colleague says "my $R^2$ went up, so the new predictor helped." What do you ask them for?
+3.  One thing that is still muddy → journal.
+
+------------------------------------------------------------------------
+
+## For next time
+
+::: callout-important
+## 📂 Midterm Project — due Tuesday 10/27 at 11:59pm
+
+**Part 6 is now unlocked.** You have everything you need: the two-predictor model, the "holding constant" interpretation, Δ*R²* via **Model Builder → Model Comparisons**, and the model-comparison table.
+
+Target for this weekend: Parts 1–5 done, Part 6 drafted. That leaves next week for writing instead of panicking.
+:::
+
+**No lab is due this week or next** — the midterm is the assignment.
+
+📖 Chapter 14.3 — ST · Chapter 8.1 — MSR
+
+**Next week:** what happens when the groups from Week 6 meet the predictors from this week — and what to do when a slope is *different* for different groups.

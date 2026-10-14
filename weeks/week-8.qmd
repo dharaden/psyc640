@@ -1,37 +1,79 @@
 ---
-title: "Week 07 - Regression"
+title: "Week 8 - Multiple Regression I"
 editor: visual
 ---
 
-# Intro & Overview to Regression
+# Adding Predictors
+
+Up to now every model has had exactly one predictor. That was a teaching convenience, not a research design. Almost nothing you care about has one cause, and almost no variable you measure is unentangled from the rest.
+
+This week we put two predictors in the same model, and the whole week turns on one phrase: **holding the other predictor constant**. It is not a hedge and it is not boilerplate. It changes what the coefficient is a number *about* — from "the difference between people who differ in X" to "the difference between people who differ in X and are otherwise matched on everything else in the model."
+
+::: callout-note
+## The sentence to watch for this week
+
+A slope is not a property of a variable. It is a property of a **variable inside a particular model**. Change what else is in the model and the number changes — sometimes a little, sometimes a lot, occasionally all the way to the opposite sign.
+:::
+
+We open with a county fire department, 300 fires, and a regression that says sending more fire trucks causes more damage. The output is correct. The conclusion is lethal. Fixing it takes exactly one more variable.
+
+Then we do it with real survey data, where the honest finding is less dramatic: two predictors that barely move each other, which turns out to be the common case and a perfectly reportable result.
+
+::: callout-important
+## This is the week the midterm needs
+
+Part 6 of the [Midterm Project](../labs/midterm-project.html) asks for a two-predictor model, each coefficient interpreted with its *holding constant* clause, and a model-comparison table with ΔR². All of that is today.
+
+If you have been waiting on Part 6, you are no longer waiting. **The project is due Tuesday 10/27.**
+:::
 
 ## Prepare
 
--   Chapter 14.1.1 - 14.1.4 - ST
+- 📖[Chapter 10 - ROS](https://users.aalto.fi/~ave/ROS.pdf)
 
--   Chapter 7.1 - 7.2.4 - IMS
+- 📖[Chapter 14.2 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}
 
--   Chapter 8.1.1 & 8.1.2 - MSR
+- 📖[Chapter 15.5 - LSR](https://learningstatisticswithr.com/){target="_blank"}
 
 ## Slides
 
-[💻 Intro to Regression](../slides/lec-7_regression.html){target="_blank"}
+[💻 Multiple Regression I](../slides/lec-08_multiple-reg.html){target="_blank"}
+
+[💻 Multiple Regression I - JAMOVI](../slides/lec-08_multiple-reg_JAMOVI.html){target="_blank"}
+
+::: callout-note
+Both decks use the same data and reach the same numbers. JAMOVI again has the edge on model comparison — **Model Builder → Model Comparisons** gives you ΔR² and its *F* test without fitting a second model by hand.
+:::
+
+## Data
+
+**Lecture:** <a href="../files/data/fire_data.csv" download="fire_data.csv">County Fire Data (.csv)</a> · <a href="../files/data/student_stress.xlsx" download="student_stress.xlsx">Student Stress Survey (.xlsx)</a>
+
+**In-class activity:** <a href="../files/data/bechdel.csv" download="bechdel.csv">Film Budgets & Box Office (.csv)</a>
+
+::: callout-tip
+The film data is deliberately messy: one of the money columns imports as **text** because the spreadsheet wrote `#N/A` into some cells. Part of the activity is noticing that before you try to model it.
+:::
 
 ## In-Class Activity
 
-[Predicting Stuff with Regression](../class-activities/wk7_reg.html){target="_blank"}
-
-![](images/clipboard-2550073227.jpeg)
+[📓Does Spending More Make More?](../class-activities/wk8_multiple-reg.html){target="_blank"}
 
 ## For Next Time
 
-**NO CLASS 10/13/25**
+**No lab is due this week.** The midterm is the assignment.
 
-📋[Midterm Project](../labs/midterm-proj.html)
+📋[Midterm Project](../labs/midterm-project.html) — **due Tuesday 10/27 at 11:59pm**
 
-📖Read Chapter 5 & 14- ST
+📖[Chapter 14.3 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"} — categorical predictors
 
-📖Read Chapter 7.2.5 - IMS
+📖[Chapter 8.1 - MSR](https://psyteachr.github.io/stat-models-v1/){target="_blank"} — interactions
+
+::: callout-note
+## Where this is heading
+
+Week 6 gave you groups. Week 8 gave you two predictors. Next week they meet: a model with a group **and** a continuous predictor in it, and then the question that makes moderation interesting — what if the slope is not the same for every group?
+:::
 
 <br><br>
 

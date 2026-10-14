@@ -1,0 +1,227 @@
+---
+title: "Lab 9: Groups, Slopes & Interactions"
+author: "Your Name Here"
+date: "`r Sys.Date()`"
+format: docx
+editor_options:
+  chunk_output_type: console
+  markdown:
+    wrap: 72
+---
+
+```{r setup, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(rio)
+library(here)
+library(broom)
+
+burnout <- import(here("data", "wk4-inf.csv")) %>%
+  mutate(program_type = factor(program_type,
+                               levels = c("Capstone-Based", "Thesis-Based")))
+```
+
+# Lab 9 — Groups, Slopes & Interactions
+
+**Due Tuesday, November 3, 11:59 pm.** Render to Word and submit both
+files.
+
+90 graduate students reported their `weekly_hours` of academic work and
+completed a burnout inventory (`burnout_score`). Each was in a
+`Thesis-Based` or `Capstone-Based` program.
+
+Answer under each **Your Answer:** line, in complete sentences. A number
+with no sentence attached earns no credit.
+
+------------------------------------------------------------------------
+
+## Exercise 1 — Describe the data (3 points)
+
+a)  Report n, mean and SD of `weekly_hours` and `burnout_score`
+    **separately for each program type**.
+b)  Report the correlation between `weekly_hours` and `burnout_score`.
+c)  Look at the two program groups' mean `weekly_hours`. Write down one
+    prediction about what will happen when you later put both predictors
+    in the same model. You will check it in Exercise 5.
+
+```{r}
+# Your code here
+
+```
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 2 — Model A: hours alone (4 points)
+
+Fit `burnout_score ~ weekly_hours`.
+
+```{r}
+# Your code here
+
+```
+
+a)  Report the intercept and slope.
+b)  Interpret the **slope** in the units of this study.
+c)  Interpret the **intercept**. Is it a student who could exist?
+d)  Report R² and the residual standard error, and compare the RSE to
+    the SD of `burnout_score`.
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 3 — The direction check 🤨 (3 points)
+
+Your slope says that students who work **more** hours are **less** burned
+out.
+
+a)  State the direction you would have predicted before seeing the data.
+b)  Give **two** different substantive explanations for the result you
+    actually got. At least one of them should not involve measurement
+    error.
+c)  Name one variable that is not in this dataset that could produce
+    this pattern, and say which way it would have to work.
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 4 — Model B: program type alone (3 points)
+
+Fit `burnout_score ~ program_type`.
+
+```{r}
+# Your code here
+
+```
+
+a)  What does the intercept represent here? Name the group.
+b)  Interpret the coefficient for `Thesis-Based`.
+c)  Report the overall test and R².
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 5 — Both at once (6 points)
+
+Fit `burnout_score ~ weekly_hours + program_type`.
+
+```{r}
+# Your code here
+
+```
+
+a)  Interpret the `weekly_hours` coefficient, **with** its holding-constant
+    clause.
+b)  Interpret the `program_type` coefficient, **with** its
+    holding-constant clause.
+c)  Build a small table comparing each coefficient to what it was in
+    Models A and B.
+d)  **Both coefficients barely moved.** Explain why, using something you
+    reported in Exercise 1. (This is the part worth the most points.)
+e)  Write out the two prediction equations this model implies — one for
+    each program type.
+
+```{r}
+# Your code here
+
+```
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 6 — Did adding the program help? (4 points)
+
+Compare Model A to the additive model.
+
+```{r}
+# Your code here
+
+```
+
+a)  Report R² and adjusted R² for both models, and compute ΔR².
+b)  Report the nested *F* test in APA format.
+c)  Did adjusted R² go up or down? What does that tell you?
+d)  In one sentence: should `program_type` stay in the model?
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 7 — Does the slope differ by program? (6 points)
+
+So far the model has **assumed** that hours matter the same amount in
+both programs. Test it.
+
+```{r}
+# Your code here
+
+```
+
+a)  Report the interaction coefficient, its *SE*, *t* and *p*.
+b)  Compute the **simple slope** of `weekly_hours` in each program, and
+    show your arithmetic.
+c)  Report the nested *F* test for the interaction, and ΔR².
+d)  What happened to adjusted R² when you added the interaction?
+e)  Which model will you interpret, and why?
+f)  A reader asks whether this proves that hours affect burnout
+    **identically** in the two programs. Answer them carefully — think
+    about how many students are in each group.
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 8 — Centering (3 points)
+
+Create a centered version of `weekly_hours` and refit the interaction
+model.
+
+```{r}
+# Your code here
+
+```
+
+a)  Report the intercept and the `program_type` coefficient from the
+    centered model, and compare them to the uncentered version.
+b)  Which numbers changed, and which did **not**?
+c)  In one sentence, say what centering bought you.
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 9 — Write-up (3 points)
+
+Write **one paragraph** in APA style reporting the model you chose in
+Exercise 7(e). It must include:
+
+- the overall model test and R² (or adjusted R²)
+- both coefficients, each with its holding-constant clause
+- the interaction test, reported **either way**
+- one sentence of interpretation that a reader outside statistics could
+  follow
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Bonus — One figure, two models (+2 points)
+
+Make a single scatterplot of `burnout_score` against `weekly_hours`,
+coloured by `program_type`, showing the fitted lines from the **additive**
+model and from the **interaction** model.
+
+```{r}
+# Your code here
+
+```
+
+a)  Looking only at the figure, could you have guessed the interaction
+    was not significant? What is it about the two sets of lines that
+    tells you?
+
+**Your Answer:**

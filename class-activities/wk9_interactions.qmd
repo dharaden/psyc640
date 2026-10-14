@@ -1,0 +1,276 @@
+---
+title: "Week 9 Exercises - Did the Program Work?"
+subtitle: "Groups, baselines, and an effect that evaporates"
+editor: visual
+---
+
+::: callout-note
+## Overview
+
+About 45 minutes · Pairs or small groups · 🧰 R (`tidyverse`, `rio`, `here`, `janitor`, `broom`) **or** JAMOVI
+
+Every step is given **both ways**.
+
+- **Part A: Follow along (\~15 min):** which instructional group did best?
+- **Part B: On your own (\~20 min):** control for where students started, and watch the finding disappear.
+- **Part C: Together (\~10 min):** what you would actually tell the school.
+
+**By the end you should be able to:**
+
+- Fit a model with a 3-level factor and a continuous predictor together
+- Explain why a significant group difference can be a baseline difference in disguise
+- Test an interaction between a factor and a covariate, and report a null one properly
+- Tell the difference between "the program didn't work" and "we can't tell whether it worked"
+:::
+
+------------------------------------------------------------------------
+
+# The study
+
+A middle school ran a reading intervention. Thirty students, split across **two schools**, were placed into one of **three instructional groups** (Green, Orange, Yellow). Everyone took a 20-point reading assessment **before** the program (`pre_score`) and **after** it (`post_score`).
+
+The district wants to know which group's instruction worked best.
+
+------------------------------------------------------------------------
+
+# Set up (5 min)
+
+1.  **Download the data** into the `data` folder of your PSYC 640 R Project.
+
+    - <a href="../files/data/cat_reg_complete.xlsx" download="cat_reg_complete.xlsx">Reading program data (.xlsx)</a>
+
+2.  New Quarto document, `Week 9 - Groups & Interactions`, saved as `week9_inclass.qmd`.
+
+``` r
+library(tidyverse)
+library(rio)
+library(here)
+library(janitor)
+library(broom)
+
+reading <- import(here("data", "cat_reg_complete.xlsx")) %>%
+  clean_names() %>%
+  mutate(group  = factor(group,  levels = c("Green", "Orange", "Yellow")),
+         school = factor(school))
+
+glimpse(reading)
+```
+
+::: callout-tip
+## Check yourself
+
+30 rows, 6 columns. The original headers were `Pre-Score` and `Post-Score` — hyphens are illegal in R names, which is why `clean_names()` is the second line of the pipe. You should now have `pre_score` and `post_score`.
+
+**10 students per group**, **15 per school**.
+:::
+
+::: callout-note
+## 🖱️ In JAMOVI instead
+
+1.  **☰ Menu → Open → Browse →** `cat_reg_complete.xlsx`
+2.  Set `Group` and `School` to **Nominal**; `Pre-Score`, `Post-Score` and `Age` to **Continuous**
+3.  Under any analysis's **Reference Levels**, set the `Group` reference to **Green**
+:::
+
+------------------------------------------------------------------------
+
+# Part A — Follow along (15 min)
+
+## A1. Describe first
+
+``` r
+reading %>%
+  group_by(group) %>%
+  summarise(n = n(),
+            pre_m  = mean(pre_score),  pre_sd  = sd(pre_score),
+            post_m = mean(post_score), post_sd = sd(post_score))
+```
+
+::: callout-note
+## 🖱️ In JAMOVI
+
+**Exploration → Descriptives**: `Pre-Score` and `Post-Score` → **Variables**, `Group` → **Split by**
+:::
+
+::: callout-tip
+## What you get
+
+| Group | n | pre *M* | post *M* |
+|---|---|---|---|
+| Green | 10 | 14.3 | 11.5 |
+| Orange | 10 | 15.5 | 13.0 |
+| Yellow | 10 | **16.8** | **14.5** |
+:::
+
+**Q1.** Before any test: write down what you notice about those two columns side by side.
+
+## A2. The question the district asked
+
+``` r
+mod_group <- lm(post_score ~ group, data = reading)
+
+tidy(mod_group)
+anova(mod_group)
+glance(mod_group) %>% select(r.squared, adj.r.squared)
+```
+
+::: callout-note
+## 🖱️ In JAMOVI
+
+**Regression → Linear Regression**: `Post-Score` → **Dependent Variable**, `Group` → **Factors**. Tick **Model Fit → R², Adjusted R², Overall model test**, and **Model Coefficients → Omnibus test (ANOVA test)**.
+:::
+
+::: callout-tip
+## What you get
+
+| Term | *b* | *p* |
+|---|---|---|
+| Intercept (Green) | 11.50 | \< .001 |
+| Orange – Green | +1.50 | .273 |
+| Yellow – Green | **+3.00** | **.034** |
+
+Omnibus: *F*(2, 27) = **2.50**, *p* = **.101**. *R²* = .156
+:::
+
+**Q2.** The Yellow–Green contrast is significant (*p* = .034) but the **omnibus test is not** (*p* = .101). Which one would you report, and why? (Think back to Week 6 and familywise error.)
+
+**Q3.** Write the APA sentence for the omnibus test as it stands.
+
+------------------------------------------------------------------------
+
+# Part B — On your own (20 min)
+
+## B1. The variable we have been sitting on
+
+Students were **not** randomly assigned — they were *placed* into groups. Check whether the groups started in the same place.
+
+``` r
+anova(lm(pre_score ~ group, data = reading))
+```
+
+**Q4.** *F*(2, 27) = 2.77, *p* = .080. Strictly, that is not significant. Is "not significant" a good enough reason to ignore it here? Look back at the pre-test means in A1 before you answer.
+
+## B2. Pre-test predicts post-test
+
+``` r
+mod_pre <- lm(post_score ~ pre_score, data = reading)
+tidy(mod_pre)
+glance(mod_pre) %>% select(r.squared, adj.r.squared, sigma)
+```
+
+::: callout-note
+## 🖱️ In JAMOVI
+
+`Post-Score` → **Dependent Variable**, `Pre-Score` → **Covariates** (remove `Group` for now).
+:::
+
+::: callout-tip
+## Check yourself
+
+*b*~0~ = **−4.95**, *b*~1~ = **1.156**, *R²* = **.851**, RSE = 1.240
+:::
+
+**Q5.** Interpret the slope. Then interpret *R²* = .851 in one sentence — and say what that single number does to the credibility of Part A's analysis.
+
+## B3. Both together
+
+``` r
+mod_both <- lm(post_score ~ pre_score + group, data = reading)
+tidy(mod_both)
+glance(mod_both) %>% select(r.squared, adj.r.squared, sigma)
+
+anova(mod_pre, mod_both)
+```
+
+::: callout-note
+## 🖱️ In JAMOVI
+
+`Pre-Score` → **Covariates**, `Group` → **Factors**. Then use **Model Builder**: Block 1 = `Pre-Score`, Block 2 = `Group`, and open **Model Comparisons**.
+:::
+
+::: callout-tip
+## What you get
+
+| Term | *b* | *p* |
+|---|---|---|
+| Intercept | −4.895 | .004 |
+| `pre_score` | 1.147 | \< .001 |
+| Orange – Green | **+0.124** | **.834** |
+| Yellow – Green | **+0.134** | **.834** |
+
+*R²* = .8509, adj. *R²* = .8337 · Δ*R²* = **.0003**, *F*(2, 26) = **0.03**, *p* = **.971**
+:::
+
+**Q6.** The Yellow advantage went from **+3.00** to **+0.13**. Explain in plain English what happened to it.
+
+**Q7.** Compare adjusted *R²* for `post ~ pre` (.8453) and `post ~ pre + group` (.8337). What does that comparison say about keeping `group` in the model?
+
+**Q8.** Write the APA sentence reporting the group effect **after** controlling for pre-test.
+
+## B4. Test the interaction
+
+Maybe the program worked differently depending on how strong a reader you already were.
+
+``` r
+mod_int <- lm(post_score ~ pre_score * group, data = reading)
+tidy(mod_int)
+
+anova(mod_both, mod_int)
+```
+
+::: callout-note
+## 🖱️ In JAMOVI
+
+In **Model Builder**, Ctrl/Cmd-click `Pre-Score` and `Group`, then use the **arrow dropdown ▾ → Interaction**. Add it as **Block 3**.
+:::
+
+::: callout-tip
+## What you get
+
+Both interaction terms are nowhere near significant (*p* = .82 and *p* = .97).
+
+Δ*R²* = **.0007**, *F*(2, 24) = **0.05**, *p* = **.951**. Adjusted *R²* falls from .8337 to .8206.
+:::
+
+**Q9.** Report the interaction test in one APA sentence, and say which model you will interpret.
+
+**Q10.** With 10 students per group, how much power do you have to detect a difference in slopes? What does that do to your confidence in the phrase "there is no interaction"?
+
+## B5. Bonus: the most null result you will ever see
+
+``` r
+lm(post_score ~ pre_score + school, data = reading) %>% tidy()
+```
+
+**Q11.** The `school` coefficient is **0.000** with *p* = **1.000**. Is this a bug? What do you think happened when this dataset was put together?
+
+------------------------------------------------------------------------
+
+# Part C — Together (10 min)
+
+## C1. Write the memo
+
+The district asked: **which instructional group worked best?**
+
+## ❓Questions for Part C
+
+1.  Answer the district's question in three sentences, using numbers. You are allowed to tell them the question cannot be answered — but you have to say *why*.
+2.  Part A's analysis was not wrong. Every number in it was correct. What was wrong with it?
+3.  Suppose the groups had been assigned **at random**. Would you still control for pre-test score? What would it buy you, and what would change about your interpretation?
+4.  Yellow started at 16.8 and finished at 14.5. Every group's scores went **down** from pre to post. Does that change what you would tell the district? What would you need to know to interpret it?
+
+::: callout-note
+## The point of Part C
+
+Controlling for a covariate is not a technique for rescuing a result — it is a question about what comparison you meant to make. "Which group ended up highest?" and "which group gained the most, given where students started?" are different questions with different answers, and only one of them is about the program.
+
+When assignment is not random, the second question is usually the one worth asking, and the first one is a description of who got sorted where.
+:::
+
+------------------------------------------------------------------------
+
+# Exit ticket ✅
+
+1.  What does an interaction let you say that two separate models cannot?
+2.  Why can't you interpret the main effect of a group once an interaction is in the model?
+3.  One thing that is still muddy → journal.

@@ -1,33 +1,81 @@
 ---
-title: "Week 9 - Model Creation"
+title: "Week 9 - Multiple Regression II"
 editor: visual
 ---
 
-# Model Fitting & Variability
+# Groups, Slopes & Interactions
 
-We will focus on refamiliarizing ourselves with the process of regression (and maybe a little bit of ANOVA). Activities will include collecting some data, building regression models from the ground up, looking at the LEGO dataset (maybe), and further connecting our research questions to the types of analyses that we are going to be doing.
+Week 6 taught you that a group is just a predictor. Week 8 taught you that a predictor's coefficient depends on what else is in the model. This week those two facts meet in a single regression: one categorical predictor, one continuous predictor, and a question neither week could ask.
 
-## Stuff for Today
+The additive model — group plus covariate — draws **parallel lines**: same slope for every group, different heights. That is a strong assumption, and most people never notice they made it. An **interaction** relaxes it, and lets the slope itself differ from group to group.
 
--   <a href="../files/data/LEGO_data.csv" download="LEGO_data.csv">Download LEGO data (.csv)</a>
--   [Stroop Task](https://www.psytoolkit.org/experiment-library/experiment_stroop.html){target="_blank"}
--   [Stroop Task Data](https://docs.google.com/spreadsheets/d/1VSWDBci5MlMmXnFDq-rau3GzlqJEZAeIrEb3fD1ye9g/edit?usp=sharing)
+::: callout-note
+## The sentence to watch for this week
+
+Once an interaction is in the model, there is no such thing as "the effect of X." There is only the effect of X **at a particular value of the other variable**. That is why we report simple slopes, and why centering stops being cosmetic.
+:::
+
+We work two examples deliberately: one where the interaction is real and changes the story (tutoring helps the students who study least), and one where we test for an interaction, do not find it, and report the additive model like adults. Both are correct outcomes. Only one of them usually gets written up honestly.
+
+::: callout-important
+## In-class check today
+
+**In-Class Check 3** runs at the start of class — about 20 minutes, open notes, open readings, open past labs. It covers **Weeks 7 and 8**: R², adjusted R², the residual standard error, the nested *F* test, and interpreting a coefficient with its *holding constant* clause.
+:::
+
+## Prepare
+
+- 📖[Chapter 14.3 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}
+
+- 📖[Chapter 8.1 - MSR](https://psyteachr.github.io/stat-models-v1/){target="_blank"}
+
+- 📖[Chapter 10 - ROS](https://users.aalto.fi/~ave/ROS.pdf) — the interaction sections
 
 ## Slides
 
-[💻 Models & Variability](../slides/lec-9_models.html){target="_blank"}
+[💻 Multiple Regression II](../slides/lec-09_interactions.html){target="_blank"}
+
+[💻 Multiple Regression II - JAMOVI](../slides/lec-09_interactions_JAMOVI.html){target="_blank"}
+
+::: callout-note
+The interaction menu is the one thing in JAMOVI that is genuinely hard to find the first time — it lives behind the **arrow dropdown ▾** in Model Builder, not in the variable boxes. The JAMOVI deck walks through it twice.
+:::
+
+## Data
+
+**Lecture:** <a href="../files/data/tutor.csv" download="tutor.csv">Study, Tutoring & Grades (.csv)</a> · <a href="../files/data/child_wellbeing.csv" download="child_wellbeing.csv">Sleep, Parenting & Anxiety (.csv)</a>
+
+**In-class activity:** <a href="../files/data/cat_reg_complete.xlsx" download="cat_reg_complete.xlsx">Reading Program Data (.xlsx)</a>
 
 ## In-Class Activity
 
--   It's in the slides this time
+[📓Did the Program Work?](../class-activities/wk9_interactions.html){target="_blank"}
 
 ## For Next Time
 
-📋[Lab 9 - Models & Research Questions](../labs/lab-9.html)
+📋[Midterm Project](../labs/midterm-project.html) — **due Tuesday 10/27 at 11:59pm**
 
-📖[Chapter 15.3 - 15.5 - LSR](https://learningstatisticswithr.com/book/){target="_blank"}
+::: callout-warning
+## Five days
 
-📖[Chapter 8 - IMS](https://openintro-ims.netlify.app/){target="_blank"}
+The midterm is due Tuesday. No lab is due that week, which means there is nothing competing for your time and nothing to blame if it is not done. If Part 6 is not drafted by this weekend, it will not be good by Tuesday.
+:::
+
+📋[Lab 9 - Groups, Slopes & Interactions](../labs/lab-09_groups-slopes.html) — **due Tuesday 11/3 at 11:59pm**, posted today
+
+::: callout-note
+Lab 9 is posted now so you can see what is coming, but **do the midterm first.** The lab assumes everything from today and nothing from after today.
+:::
+
+📖[Chapter 11 - ROS](https://users.aalto.fi/~ave/ROS.pdf) — assumptions and diagnostics
+
+📖[Chapter 12.1 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}
+
+::: callout-note
+## Where this is heading
+
+For four weeks we have been glancing at residual plots and saying "nothing obviously wrong." Next week each of those glances becomes a named assumption with a diagnostic, a test, and something to do about it when it fails.
+:::
 
 <br><br>
 

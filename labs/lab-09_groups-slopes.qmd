@@ -1,0 +1,80 @@
+---
+title: "Lab 9: Groups, Slopes & Interactions"
+subtitle: "Two kinds of predictor in one model"
+editor: visual
+---
+
+## Instructions
+
+You have met this dataset before. In **Week 4** you used it to run a *t*-test and a correlation, because that was all you had. You are going to get a lot more out of it this time.
+
+This lab puts a categorical predictor and a continuous predictor into the same model, asks what each coefficient means once the other one is in there, and then tests whether the two groups even have the same slope. The last exercise is the one that separates "I ran the interaction" from "I understand the interaction."
+
+Here is what you'll need:
+
+- <a href="../files/_lab-qmd/lab-9_groups-slopes.qmd" download="lab-9_groups-slopes.qmd">Download Lab 9 (.qmd)</a>
+- <a href="../files/data/wk4-inf.csv" download="wk4-inf.csv">Download the Graduate Burnout Data (.csv)</a>
+
+Save the `.csv` in your `data` folder and the `.qmd` in your project folder. Render to Word and submit **both** files to myCourses.
+
+::: callout-important
+## Due date
+
+**Tuesday, November 3 at 11:59 pm.**
+
+This lab is posted during Week 9 so you can see what is coming, but the **Midterm Project is due 10/27**. Do that first. Nothing in this lab depends on anything after the October 22 class.
+:::
+
+::: callout-note
+## Working in JAMOVI?
+
+Go ahead — submit your `.omv` plus a Word document with your written answers. JAMOVI's **Model Builder** handles Exercises 4 and 6 nicely, but you will have to compute the **simple slopes** in Exercise 7 yourself from the coefficient table. That is a feature, not a bug.
+:::
+
+## The study
+
+**90 graduate students** reported how many hours a week they spent on academic work, and completed a burnout inventory. Each was in one of two kinds of program.
+
+| Variable | Description |
+|------------------------------------|------------------------------------|
+| `student_id` | Participant ID |
+| `program_type` | `"Thesis-Based"` or `"Capstone-Based"` |
+| `weekly_hours` | Self-reported hours per week on academic work |
+| `burnout_score` | Burnout inventory total (higher = more burned out) |
+
+::: callout-warning
+One of the results in this lab points the **opposite direction** from what most people predict. That is deliberate. Exercise 3 asks you to deal with it rather than narrate past it.
+:::
+
+## What you'll practice
+
+- Fitting a model with a factor and a covariate together
+- Interpreting each coefficient with its *holding constant* clause
+- Explaining **why** a coefficient moved — or why it didn't
+- Comparing nested models with ΔR² and the nested *F*
+- Testing a factor × covariate interaction and reporting it either way
+- Computing and reporting **simple slopes**
+- Centering a continuous predictor, and saying what centering did and did not change
+
+## Exercises at a glance
+
+| Exercise | What you'll do | Points |
+|------------------------|------------------------|------------------------|
+| **1. Describe** | Import, describe by group, correlation | 3 |
+| **2. Model A** | `burnout ~ weekly_hours` | 4 |
+| **3. Direction check** 🤨 | The sign is backwards. Now what? | 3 |
+| **4. Model B** | `burnout ~ program_type` | 3 |
+| **5. Both** | Additive model, both coefficients interpreted | 6 |
+| **6. Did it help?** | ΔR², adjusted R², nested *F* | 4 |
+| **7. Interaction** | Fit it, test it, report it | 6 |
+| **8. Centering** | Center hours, and say what changed | 3 |
+| **9. Write-up** | One paragraph, APA style | 3 |
+| **Bonus** | Plot both models on one figure | +2 |
+
+------------------------------------------------------------------------
+
+**Total: 35 points (+2 bonus)**
+
+::: callout-tip
+Exercises 5 and 7 are worth 12 points between them, and both of them are graded on the **interpretation**, not on getting the model to run. Budget your time accordingly.
+:::
