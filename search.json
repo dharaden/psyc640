@@ -1271,21 +1271,21 @@
     "href": "class-activities/wk8_multiple-reg.html#a2.-one-predictor",
     "title": "Week 8 Exercises - Does Spending More Make More?",
     "section": "A2. One predictor",
-    "text": "A2. One predictor\nmod_budget &lt;- lm(gross_m ~ budget_m, data = films)\n\ntidy(mod_budget)\nglance(mod_budget) %&gt;% select(r.squared, adj.r.squared, sigma)\n\n\n\n\n\n\nNote🖱️ In JAMOVI\n\n\n\nRegression → Linear Regression: gross_m → Dependent Variable, budget_m → Covariates. Under Model Coefficients check Estimate and Standard error; under Model Fit check R², Adjusted R² and Overall model test (F test).\n\n\n\n\n\n\n\n\nTipCheck yourself\n\n\n\nb0 = 27.47, b1 = 3.054, R² = .349, RSE = 229.2, F(1, 1761) = 945.85\n\n\nQ2. Interpret budget_m in a sentence a studio executive would understand. Include the units.\nQ3. The intercept is 27.47. What film does that describe, and is it a film that exists?\nQ4. R² = .349 and RSE = 229. Put the RSE in plain language: when this model guesses a film’s gross, how far off is it typically? Compare that to the SD of gross_m (284)."
+    "text": "A2. One predictor\nmod_budget &lt;- lm(gross_m ~ budget_m, data = films)\n\nsummary(mod_budget)\n#glance(mod_budget) %&gt;% select(r.squared, adj.r.squared, sigma)\n\n\n\n\n\n\nNote🖱️ In JAMOVI\n\n\n\nRegression → Linear Regression: gross_m → Dependent Variable, budget_m → Covariates. Under Model Coefficients check Estimate and Standard error; under Model Fit check R², Adjusted R² and Overall model test (F test).\n\n\n\n\n\n\n\n\nTipCheck yourself\n\n\n\nb0 = 27.47, b1 = 3.054, R² = .349, RSE = 229.2, F(1, 1761) = 945.85\n\n\nQ2. Interpret budget_m in a sentence a studio executive would understand. Include the units.\nQ3. The intercept is 27.47. What film does that describe, and is it a film that exists?\nQ4. R² = .349 and RSE = 229. Put the RSE in plain language: when this model guesses a film’s gross, how far off is it typically? Compare that to the SD of gross_m (284)."
   },
   {
     "objectID": "class-activities/wk8_multiple-reg.html#b1.-does-year-matter-on-its-own",
     "href": "class-activities/wk8_multiple-reg.html#b1.-does-year-matter-on-its-own",
     "title": "Week 8 Exercises - Does Spending More Make More?",
     "section": "B1. Does year matter on its own?",
-    "text": "B1. Does year matter on its own?\nmod_year &lt;- lm(gross_m ~ year, data = films)\ntidy(mod_year)\nglance(mod_year) %&gt;% select(r.squared, adj.r.squared)\nQ5. Year alone: R² = .019, b = −4.32. Write the interpretation. Does the sign surprise you? (Remember every dollar here is already inflation-adjusted to 2013.)"
+    "text": "B1. Does year matter on its own?\nmod_year &lt;- lm(gross_m ~ year, data = films)\nsummary(mod_year)\n#glance(mod_year) %&gt;% select(r.squared, adj.r.squared)\nQ5. Year alone: R² = .019, b = −4.32. Write the interpretation. Does the sign surprise you? (Remember every dollar here is already inflation-adjusted to 2013.)"
   },
   {
     "objectID": "class-activities/wk8_multiple-reg.html#b2.-now-both",
     "href": "class-activities/wk8_multiple-reg.html#b2.-now-both",
     "title": "Week 8 Exercises - Does Spending More Make More?",
     "section": "B2. Now both",
-    "text": "B2. Now both\nmod_both &lt;- lm(gross_m ~ budget_m + year, data = films)\ntidy(mod_both)\nglance(mod_both) %&gt;% select(r.squared, adj.r.squared, sigma)\n\n\n\n\n\n\nNote🖱️ In JAMOVI\n\n\n\nSame Linear Regression panel — drag year into Covariates alongside budget_m. JAMOVI updates the coefficient table immediately.\n\n\n\n\n\n\n\n\nTipCheck yourself\n\n\n\n\n\n\n\nb\np\n\n\n\n\nintercept\n11654.52\n&lt; .001\n\n\nbudget_m\n3.127\n&lt; .001\n\n\nyear\n−5.808\n&lt; .001\n\n\n\nR² = .3829, adj. R² = .3822, RSE = 223.3\n\n\nQ6. Interpret both coefficients, each with its holding constant clause.\nQ7. The budget slope went up: 3.054 → 3.127. Most people expect a coefficient to shrink when you add a control. Use these three correlations to explain why this one grew:\nfilms %&gt;% select(year, budget_m, gross_m) %&gt;% cor() %&gt;% round(3)\n\n\n\n\n\n\nNote🖱️ In JAMOVI\n\n\n\nRegression → Correlation Matrix: all three variables into the box.\n\n\n\n\n\n\n\n\nTipHint\n\n\n\nyear is positively related to budget (r = .08) and negatively related to gross (r = −.14). So part of what made the raw budget slope look smaller was that expensive films are disproportionately recent, and recent films gross less. Hold year still and the budget effect comes through a little more cleanly. This is the same machinery as Lab 8’s suppression, in a gentler form."
+    "text": "B2. Now both\nmod_both &lt;- lm(gross_m ~ budget_m + year, data = films)\nsummary(mod_both)\n#glance(mod_both) %&gt;% select(r.squared, adj.r.squared, sigma)\n\n\n\n\n\n\nNote🖱️ In JAMOVI\n\n\n\nSame Linear Regression panel — drag year into Covariates alongside budget_m. JAMOVI updates the coefficient table immediately.\n\n\n\n\n\n\n\n\nTipCheck yourself\n\n\n\n\n\n\n\nb\np\n\n\n\n\nintercept\n11654.52\n&lt; .001\n\n\nbudget_m\n3.127\n&lt; .001\n\n\nyear\n−5.808\n&lt; .001\n\n\n\nR² = .3829, adj. R² = .3822, RSE = 223.3\n\n\nQ6. Interpret both coefficients, each with its holding constant clause.\nQ7. The budget slope went up: 3.054 → 3.127. Most people expect a coefficient to shrink when you add a control. Use these three correlations to explain why this one grew:\n\n\n\n\n\n\nNote\n\n\n\nTry to use the sjPlot library to make it look nice!\n\n\nfilms %&gt;% select(year, budget_m, gross_m) %&gt;% cor() %&gt;% round(3)\n\n\n\n\n\n\nNote🖱️ In JAMOVI\n\n\n\nRegression → Correlation Matrix: all three variables into the box.\n\n\n\n\n\n\n\n\nTipHint\n\n\n\nyear is positively related to budget (r = .08) and negatively related to gross (r = −.14). So part of what made the raw budget slope look smaller was that expensive films are disproportionately recent, and recent films gross less. Hold year still and the budget effect comes through a little more cleanly. This is the same machinery as Lab 8’s suppression, in a gentler form."
   },
   {
     "objectID": "class-activities/wk8_multiple-reg.html#b3.-did-year-earn-its-place",
@@ -1306,7 +1306,7 @@
     "href": "class-activities/wk8_multiple-reg.html#c2.-ask-it-properly",
     "title": "Week 8 Exercises - Does Spending More Make More?",
     "section": "C2. Ask it properly",
-    "text": "C2. Ask it properly\nmod_bechdel &lt;- lm(gross_m ~ budget_m + year + bechdel, data = films)\ntidy(mod_bechdel)\n\nanova(mod_both, mod_bechdel)\n\n\n\n\n\n\nNote🖱️ In JAMOVI\n\n\n\nDrag bechdel into Factors (not Covariates — it is categorical). Under Reference Levels, confirm the reference is fail. Add it as Block 3 in Model Builder to get its ΔR².\n\n\n\n\n\n\n\n\nTipWhat you get\n\n\n\nbechdel (pass vs. fail): b = +5.96, SE = 10.88, t = 0.55, p = .584\nΔR² = .0001, F(1, 1759) = 0.30, p = .584"
+    "text": "C2. Ask it properly\nmod_bechdel &lt;- lm(gross_m ~ budget_m + year + bechdel, data = films)\nsummary(mod_bechdel)\n\nanova(mod_both, mod_bechdel)\n\n\n\n\n\n\nNote🖱️ In JAMOVI\n\n\n\nDrag bechdel into Factors (not Covariates — it is categorical). Under Reference Levels, confirm the reference is fail. Add it as Block 3 in Model Builder to get its ΔR².\n\n\n\n\n\n\n\n\nTipWhat you get\n\n\n\nbechdel (pass vs. fail): b = +5.96, SE = 10.88, t = 0.55, p = .584\nΔR² = .0001, F(1, 1759) = 0.30, p = .584"
   },
   {
     "objectID": "class-activities/wk8_multiple-reg.html#questions-for-part-c",
@@ -1810,9 +1810,9 @@
   {
     "objectID": "weeks/week-7.html",
     "href": "weeks/week-7.html",
-    "title": "Week 7 - Variability & Model Fit",
+    "title": "Week 07 - Regression",
     "section": "",
-    "text": "For three weeks we have been reading estimates — slopes, intercepts, group differences. This week we read the other half of the output: the numbers that tell you whether the model is worth anything at all.\nThe core idea is simple arithmetic. Start with how wrong you would be using nothing but the mean. Fit a line. Whatever distance the line covers is the model; whatever is left is the residual. That single split gives you R², the F test, and the residual standard error — three numbers you have been glancing past since Week 5.\n\n\n\n\n\n\nNoteThe sentence to watch for this week\n\n\n\n“Statistically significant” and “explains a lot” are different claims. With 400 people you can be very confident about a slope that accounts for 6% of the variance. Both facts are true, and a careful results section says both.\n\n\nWe will also meet the first real trap in model building: R² can never go down when you add a predictor, even a pointless one. That is why adjusted R² exists, and why it is the number to watch once your models have more than one thing in them.\n\n\n\n\n\n\nImportantIn-class check today\n\n\n\nIn-Class Check 2 runs at the start of class — about 20 minutes, open notes, open readings, open past labs. It covers Weeks 5 and 6: slopes, intercepts, prediction and residuals, R², and groups as a line.\n\n\n\n\n\n📖Chapter 8 - ROS\n📖Chapters 5 & 14.5 - ST\n📖Chapter 15.4 - LSR\n\n\n\n\n💻 Variability & Model Fit\n💻 Variability & Model Fit - JAMOVI\n\n\n\n\n\n\nNote\n\n\n\nBoth decks use the same data and reach the same numbers. JAMOVI has one genuine advantage this week - the Model Builder compares nested models and reports ΔR² for you - so the JAMOVI deck spends a little longer there.\n\n\n\n\n\nLecture: ASAP Sleep & Mood Data (.csv)\nIn-class activity: Spotify Data (.csv)\n\n\n\n📓Does the Algorithm Know What a Hit Is?\n\n\n\n📋Lab 8 - How Good Is This Model? — due Tuesday 10/13 at 11:59pm\n\n\n\n\n\n\nWarningFall Break\n\n\n\nMonday 10/12 and Tuesday 10/13 are Fall Break — no classes. Lab 8 is still due Tuesday at 11:59pm and is submitted online as usual. There are no office hours that week before the deadline, so come by Tuesday 10/6 or email me if you want help before the break.\n\n\n📖Chapter 10 - ROS — multiple regression, for next week\n\n\n\n\n\n\nImportant📂 Midterm Project — handed out today\n\n\n\nThe Midterm Project is posted now and is due Tuesday 10/27.\nParts 1-5 use only what you already know, so you can start this weekend. Part 6 needs multiple regression, which we cover on 10/15. No lab is due in Weeks 9 or 10, so that time is yours for the project.\n\n\n\n\nBack to course schedule ⏎",
+    "text": "Chapter 14.1.1 - 14.1.4 - ST\nChapter 7.1 - 7.2.4 - IMS\nChapter 8.1.1 & 8.1.2 - MSR\n\n\n\n\n💻 Intro to Regression\n\n\n\nPredicting Stuff with Regression\n\n\n\n\nNO CLASS 10/13/25\n📋Midterm Project\n📖Read Chapter 5 & 14- ST\n📖Read Chapter 7.2.5 - IMS\n\n\nBack to course schedule ⏎",
     "crumbs": [
       "Weekly Materials",
       "Week 7 - Variability & Model Fit"
@@ -1821,9 +1821,9 @@
   {
     "objectID": "weeks/week-7.html#prepare",
     "href": "weeks/week-7.html#prepare",
-    "title": "Week 7 - Variability & Model Fit",
+    "title": "Week 07 - Regression",
     "section": "",
-    "text": "📖Chapter 8 - ROS\n📖Chapters 5 & 14.5 - ST\n📖Chapter 15.4 - LSR",
+    "text": "Chapter 14.1.1 - 14.1.4 - ST\nChapter 7.1 - 7.2.4 - IMS\nChapter 8.1.1 & 8.1.2 - MSR",
     "crumbs": [
       "Weekly Materials",
       "Week 7 - Variability & Model Fit"
@@ -1832,20 +1832,9 @@
   {
     "objectID": "weeks/week-7.html#slides",
     "href": "weeks/week-7.html#slides",
-    "title": "Week 7 - Variability & Model Fit",
+    "title": "Week 07 - Regression",
     "section": "",
-    "text": "💻 Variability & Model Fit\n💻 Variability & Model Fit - JAMOVI\n\n\n\n\n\n\nNote\n\n\n\nBoth decks use the same data and reach the same numbers. JAMOVI has one genuine advantage this week - the Model Builder compares nested models and reports ΔR² for you - so the JAMOVI deck spends a little longer there.",
-    "crumbs": [
-      "Weekly Materials",
-      "Week 7 - Variability & Model Fit"
-    ]
-  },
-  {
-    "objectID": "weeks/week-7.html#data",
-    "href": "weeks/week-7.html#data",
-    "title": "Week 7 - Variability & Model Fit",
-    "section": "",
-    "text": "Lecture: ASAP Sleep & Mood Data (.csv)\nIn-class activity: Spotify Data (.csv)",
+    "text": "💻 Intro to Regression",
     "crumbs": [
       "Weekly Materials",
       "Week 7 - Variability & Model Fit"
@@ -1854,9 +1843,9 @@
   {
     "objectID": "weeks/week-7.html#in-class-activity",
     "href": "weeks/week-7.html#in-class-activity",
-    "title": "Week 7 - Variability & Model Fit",
+    "title": "Week 07 - Regression",
     "section": "",
-    "text": "📓Does the Algorithm Know What a Hit Is?",
+    "text": "Predicting Stuff with Regression",
     "crumbs": [
       "Weekly Materials",
       "Week 7 - Variability & Model Fit"
@@ -1865,9 +1854,9 @@
   {
     "objectID": "weeks/week-7.html#for-next-time",
     "href": "weeks/week-7.html#for-next-time",
-    "title": "Week 7 - Variability & Model Fit",
+    "title": "Week 07 - Regression",
     "section": "",
-    "text": "📋Lab 8 - How Good Is This Model? — due Tuesday 10/13 at 11:59pm\n\n\n\n\n\n\nWarningFall Break\n\n\n\nMonday 10/12 and Tuesday 10/13 are Fall Break — no classes. Lab 8 is still due Tuesday at 11:59pm and is submitted online as usual. There are no office hours that week before the deadline, so come by Tuesday 10/6 or email me if you want help before the break.\n\n\n📖Chapter 10 - ROS — multiple regression, for next week\n\n\n\n\n\n\nImportant📂 Midterm Project — handed out today\n\n\n\nThe Midterm Project is posted now and is due Tuesday 10/27.\nParts 1-5 use only what you already know, so you can start this weekend. Part 6 needs multiple regression, which we cover on 10/15. No lab is due in Weeks 9 or 10, so that time is yours for the project.\n\n\n\n\nBack to course schedule ⏎",
+    "text": "NO CLASS 10/13/25\n📋Midterm Project\n📖Read Chapter 5 & 14- ST\n📖Read Chapter 7.2.5 - IMS\n\n\nBack to course schedule ⏎",
     "crumbs": [
       "Weekly Materials",
       "Week 7 - Variability & Model Fit"
@@ -2092,7 +2081,7 @@
     "href": "index.html",
     "title": "PSYC 640: Graduate Statistics",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and preparation for the semester. This schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\nImportant\n\n\n\nReadings on the schedule will need to be completed prior to the course they are listed for. We will build on the concepts you read about in that specific class period, so it is important that you have read.\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\n📆Date\n📝Topic\n📖Readings\n📋Due\n\n\n\n\n1\n08-27\nGetting set up + foundations - VIRTUAL\nChapter 1 - ROS\nChapters 1 & 2 - LSR\n\n\n\n2\n09-03\nR Foundations + Data Wrangling\nChapters 2-4, 6 & 28 - R4DS\nChapter 2 - MSR\nLab 1\nLab 2\n\n\n3\n09-10\nDescriptives, Visualizations + Communication\nChapter 5 - MSR\nChapters 3 & 4 - ST\nChapter 1 - R4DS\nLab 3\n\n\n4\n09-17\nDesign, Sampling + Inference\nNavarro Blog Post\nChapters 2-4 - ROS\nChapter 3 - MSR (focus on 3.3, 3.7, 3.10 & 3.11)\nLab 4\n\n\n5\n09-24\nSimple Regression: The Linear Model\nChapter 6 - ROS\nChapter 14.1 - ST\nChapter 11 - LSR\n💾Class Check\n\n\n6\n10-01\nComparing Groups\nChapter 15 - ST\nLab 5 & 6\n\n\n7\n10-08\nVariability & Model Fit\nChapter 8 - ROS\nChapters 5 & 14.5 - ST\nChapter 15.4 - LSR\nLab 7\n💾Class Check\n\n\n8\n10-15\nMultiple Regression I: Adding Predictors\nChapter 10 - ROS\nLab 8\n\n\n9\n10-22\nMultiple Regression II: Categorical Predictors + Interactions\nChapter 14.3 - ST\nChapter 8.1 - MSR\n💾Class Check\n\n\n10\n10-29\nAssumptions + Model Diagnostics\nChapter 11 - ROS\nChapter 14.5 - ST\nChapter 15.8 & 15.9 - LSR\nMidterm\n\n\n11\n11-05\nMissing Data + Model Building/Comparison\nChapter 15.10 - LSR\nChapter 17 - ST\nChapters 17.3 - 17.7 - ROS\nChapter 8.7 - MSR\nLab 9\n💾Class Check\n\n\n12\n11-12\nLogistic Regression\nChapter 13 - ROS\nChapter 8.3 - MSR\nLab 10\n\n\n13\n11-19\nMixed/Multilevel Models\nChapter 8.8 - MSR\nChapter 15.8 - ST\nLab 11\n💾Class Check\n\n\n14\n11-26\nTHANKSGIVING - No Class\nNo Readings\n\n\n\n15\n12-03\nMaking R Work for You\nChapter 18 - ST\n\n\n\n\n\nRegression and Other Stories –&gt; ROS\nModern Statistics with R (2e) –&gt; MSR\nStatistical Thinking –&gt; ST\nLearning Statistics with R –&gt; LSR\nR for Data Science (2e) –&gt; R4DS",
+    "text": "This page contains an outline of the topics, content, and preparation for the semester. This schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\nImportant\n\n\n\nReadings on the schedule will need to be completed prior to the course they are listed for. We will build on the concepts you read about in that specific class period, so it is important that you have read.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nSlides\nLabs\n\n\n\n\n1\n08-25\nGetting set up + R foundations\nInstall R/RStudio; Bring a laptop\n💻 Getting Started - Syllabus\n💻Getting Started - Data\nLab 1 - Intro to Data Workflow\n\n\n2\n09-01\nLABOR DAY\nChapter 1 & 2 - ST\nChapter 2 - MSR\nLABOR DAY\nLab 2 - Data Wrangling\n\n\n3\n09-08\nDescriptives, Visualizations + Communication\nChapter 5 - LSR\nChapter 1 & 3 - R4DS\n💻 Data Wrangling\n💻 Describe & Visualize\nLab 3\n\n\n4\n09-15\nDesign, Sampling + Inference\nChapter 2 - IMS\nChapter 3 - MSR\nChapter 7 - ST\n💻 Design & Inference\nLab 4 - Intro to Inference\nStatistical Check\n\n\n5\n09-22\nCorrelation + Effect Sizes\nChapter 5.1 & 13 - ST\nChapter 11 - LSR\n💻 Correlation & ES\nLab 5 - Correlation & ES\n\n\n6\n09-29\nComparing Groups\nChapter 9 & 10 - ST\nChapter 13 - LSR\n💻Comparing Means\nLab 6 - Compare Means\n\n\n7\n10-06\nSimple Linear Regression\nChapter 14.1.1 - 14.1.4 - ST\nChapter 7.1 - 7.2.4 - IMS\nChapter 8.1.1 & 8.1.2 - MSR\n💻Intro to Regression\nMIDTERM PROJECT\n\n\n8\n10-13\nFALL BREAK\nWork on your midterm project\n\n\n\n\n9\n10-20\nVariability & Model Fit\nChapter 5 & 14- ST\nChapter 7.2.5 - IMS\n\n\n\n\n10\n10-27\nMultiple Regression I: Adding Predictors\nChapter 15.3 - 15.5 - LSR\nChapter 8 - IMS\n\n\n\n\n11\n11-03\nMultiple Regression II: Categorical Predictors\nChapter 9 - IMS\nChapter 8.3 - MSR\n\n\n\n\n12\n11-10\nAssumptions + Model Diagnostics\nChapter 7.3 - IMS\nChapter 14.5 - ST\nChapter 8.1.4 - MSR\nChapter 15.8 - LSR\n\n\n\n\n13\n11-17\nExpanding Regression\nChapter 14.2 & 14.3 - ST\n\n\n\n\n14\n11-24\nModel Building + Comparison\nChapter 15.8 - 15.10 - LSR\n\n\n\n\n15\n12-01\nMaking R Work for You\nChapter 17 & 18 - ST\n\n\n\n\n16\n12-08\nWrapping Up + Workshop\n\n\n\n\n\n\n\nIntroduction to Modern Statistics (2e) –&gt; IMS\nLearning Statistics with R –&gt; LSR\nR for Data Science (2e) –&gt; R4DS\nModern Statistics with R (2e) –&gt; MSR\nStatistical Thinking –&gt; ST\nAn Introduction to Statistical Learning (2e) –&gt; ISL\nData Analysis: A Model Comparison Approach to Regression, ANOVA, and Beyond (3rd ed.) –&gt; DA",
     "crumbs": [
       "Course information",
       "Schedule"

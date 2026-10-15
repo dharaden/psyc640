@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Week 7 - Variability &amp; Model Fit – PSYC 640 - Graduate Statistics</title>
+<title>Week 07 - Regression – PSYC 640 - Graduate Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -80,8 +80,8 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Week 7 - Variability &amp; Model Fit – PSYC 640 - Graduate Statistics">
-<meta property="og:description" content="">
+<meta property="og:title" content="Week 07 - Regression – PSYC 640 - Graduate Statistics">
+<meta property="og:image" content="https://dharaden.github.io/psyc640/weeks/images/clipboard-2550073227.jpeg">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
 
@@ -473,11 +473,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#how-good-is-this-model" id="toc-how-good-is-this-model" class="nav-link active" data-scroll-target="#how-good-is-this-model">How Good Is This Model?</a>
+  <li><a href="#intro-overview-to-regression" id="toc-intro-overview-to-regression" class="nav-link active" data-scroll-target="#intro-overview-to-regression">Intro &amp; Overview to Regression</a>
   <ul class="collapse">
   <li><a href="#prepare" id="toc-prepare" class="nav-link" data-scroll-target="#prepare">Prepare</a></li>
   <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
   <li><a href="#in-class-activity" id="toc-in-class-activity" class="nav-link" data-scroll-target="#in-class-activity">In-Class Activity</a></li>
   <li><a href="#for-next-time" id="toc-for-next-time" class="nav-link" data-scroll-target="#for-next-time">For Next Time</a></li>
   </ul></li>
@@ -490,7 +489,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-7.html">Week 7 - Variability &amp; Model Fit</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Week 7 - Variability &amp; Model Fit</h1>
+<h1 class="title">Week 07 - Regression</h1>
 </div>
 
 
@@ -507,106 +506,34 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="how-good-is-this-model" class="level1">
-<h1>How Good Is This Model?</h1>
-<p>For three weeks we have been reading <strong>estimates</strong> — slopes, intercepts, group differences. This week we read the other half of the output: the numbers that tell you whether the model is worth anything at all.</p>
-<p>The core idea is simple arithmetic. Start with how wrong you would be using nothing but the mean. Fit a line. Whatever distance the line covers is the <strong>model</strong>; whatever is left is the <strong>residual</strong>. That single split gives you R², the F test, and the residual standard error — three numbers you have been glancing past since Week 5.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>The sentence to watch for this week
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>“Statistically significant” and “explains a lot” are different claims. With 400 people you can be very confident about a slope that accounts for 6% of the variance. Both facts are true, and a careful results section says both.</p>
-</div>
-</div>
-<p>We will also meet the first real trap in model building: <strong>R² can never go down when you add a predictor</strong>, even a pointless one. That is why adjusted R² exists, and why it is the number to watch once your models have more than one thing in them.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>In-class check today
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>In-Class Check 2</strong> runs at the start of class — about 20 minutes, open notes, open readings, open past labs. It covers Weeks 5 and 6: slopes, intercepts, prediction and residuals, R², and groups as a line.</p>
-</div>
-</div>
+<section id="intro-overview-to-regression" class="level1">
+<h1>Intro &amp; Overview to Regression</h1>
 <section id="prepare" class="level2">
 <h2 class="anchored" data-anchor-id="prepare">Prepare</h2>
 <ul>
-<li><p>📖<a href="https://users.aalto.fi/~ave/ROS.pdf">Chapter 8 - ROS</a></p></li>
-<li><p>📖<a href="https://statsthinking21.github.io/statsthinking21-core-site/" target="_blank">Chapters 5 &amp; 14.5 - ST</a></p></li>
-<li><p>📖<a href="https://learningstatisticswithr.com/" target="_blank">Chapter 15.4 - LSR</a></p></li>
+<li><p>Chapter 14.1.1 - 14.1.4 - ST</p></li>
+<li><p>Chapter 7.1 - 7.2.4 - IMS</p></li>
+<li><p>Chapter 8.1.1 &amp; 8.1.2 - MSR</p></li>
 </ul>
 </section>
 <section id="slides" class="level2">
 <h2 class="anchored" data-anchor-id="slides">Slides</h2>
-<p><a href="../slides/lec-07_fit.html" target="_blank">💻 Variability &amp; Model Fit</a></p>
-<p><a href="../slides/lec-07_fit_JAMOVI.html" target="_blank">💻 Variability &amp; Model Fit - JAMOVI</a></p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Both decks use the same data and reach the same numbers. JAMOVI has one genuine advantage this week - the <strong>Model Builder</strong> compares nested models and reports ΔR² for you - so the JAMOVI deck spends a little longer there.</p>
-</div>
-</div>
-</section>
-<section id="data" class="level2">
-<h2 class="anchored" data-anchor-id="data">Data</h2>
-<p><strong>Lecture:</strong> <a href="../files/data/asap_data.csv" download="asap_data.csv">ASAP Sleep &amp; Mood Data (.csv)</a></p>
-<p><strong>In-class activity:</strong> <a href="../files/data/popular_spotify.csv" download="popular_spotify.csv">Spotify Data (.csv)</a></p>
+<p><a href="../slides/lec-7_regression.html" target="_blank">💻 Intro to Regression</a></p>
 </section>
 <section id="in-class-activity" class="level2">
 <h2 class="anchored" data-anchor-id="in-class-activity">In-Class Activity</h2>
-<p><a href="../class-activities/wk7_fit.html" target="_blank">📓Does the Algorithm Know What a Hit Is?</a></p>
+<p><a href="../class-activities/wk7_reg.html" target="_blank">Predicting Stuff with Regression</a></p>
+<p><img src="images/clipboard-2550073227.jpeg" class="img-fluid"></p>
 </section>
 <section id="for-next-time" class="level2">
 <h2 class="anchored" data-anchor-id="for-next-time">For Next Time</h2>
-<p>📋<a href="../labs/lab-08_model-fit.html">Lab 8 - How Good Is This Model?</a> — <strong>due Tuesday 10/13 at 11:59pm</strong></p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Fall Break
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Monday 10/12 and Tuesday 10/13 are <strong>Fall Break</strong> — no classes. Lab 8 is still due Tuesday at 11:59pm and is submitted online as usual. There are no office hours that week before the deadline, so come by <strong>Tuesday 10/6</strong> or email me if you want help before the break.</p>
-</div>
-</div>
-<p>📖<a href="https://users.aalto.fi/~ave/ROS.pdf">Chapter 10 - ROS</a> — multiple regression, for next week</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>📂 Midterm Project — handed out today
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The <a href="../labs/midterm-project.html"><strong>Midterm Project</strong></a> is posted now and is due <strong>Tuesday 10/27</strong>.</p>
-<p>Parts 1-5 use only what you already know, so you can start this weekend. Part 6 needs multiple regression, which we cover on 10/15. No lab is due in Weeks 9 or 10, so that time is yours for the project.</p>
-</div>
-</div>
+<p><strong>NO CLASS 10/13/25</strong></p>
+<p>📋<a href="../labs/midterm-proj.html">Midterm Project</a></p>
+<p>📖Read Chapter 5 &amp; 14- ST</p>
+<p>📖Read Chapter 7.2.5 - IMS</p>
 <p><br><br></p>
 <div style="font-size: 0.875em;">
-<p>Back to <a href="../index.html" title="Course schedule">course schedule</a> ⏎</p>
+<p>Back to <a href=".." title="Course schedule">course schedule</a> ⏎</p>
 </div>
 
 

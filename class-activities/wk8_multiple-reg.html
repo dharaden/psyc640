@@ -607,18 +607,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Look at <code>intgross_2013</code> in your <code>glimpse()</code> output. It came in as <strong>character</strong>, not numeric, because somewhere in those 1,774 rows the spreadsheet wrote <code>#N/A</code> instead of leaving a cell empty. R will not do arithmetic on that.</p>
-<p>Also: the raw dollar columns are in <strong>dollars</strong>, so every coefficient would come out in dollars and the output becomes unreadable. We will work in <strong>millions</strong>.</p>
+<p>The raw dollar columns are in <strong>dollars</strong>, so every coefficient would come out in dollars and the output becomes unreadable. We will work in <strong>millions</strong>.</p>
 </div>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>films <span class="ot">&lt;-</span> films_raw <span class="sc">%&gt;%</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">intgross_2013 =</span> <span class="fu">as.numeric</span>(<span class="fu">na_if</span>(intgross_2013, <span class="st">"#N/A"</span>)),</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">gross_m  =</span> intgross_2013 <span class="sc">/</span> <span class="fl">1e6</span>,     <span class="co"># international gross, $M (2013 dollars)</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">budget_m =</span> budget_2013   <span class="sc">/</span> <span class="fl">1e6</span>,     <span class="co"># budget, $M (2013 dollars)</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">bechdel  =</span> <span class="fu">factor</span>(binary, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"fail"</span>, <span class="st">"pass"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(gross_m, budget_m, year)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(films)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gross_m  =</span> intgross_2013 <span class="sc">/</span> <span class="fl">1e6</span>,     <span class="co"># international gross, $M (2013 dollars)</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">budget_m =</span> budget_2013   <span class="sc">/</span> <span class="fl">1e6</span>,     <span class="co"># budget, $M (2013 dollars)</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">bechdel  =</span> <span class="fu">factor</span>(binary, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"fail"</span>, <span class="st">"pass"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(gross_m, budget_m, year)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(films)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -695,8 +693,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="a2.-one-predictor">A2. One predictor</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mod_budget <span class="ot">&lt;-</span> <span class="fu">lm</span>(gross_m <span class="sc">~</span> budget_m, <span class="at">data =</span> films)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(mod_budget)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(mod_budget) <span class="sc">%&gt;%</span> <span class="fu">select</span>(r.squared, adj.r.squared, sigma)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_budget)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#glance(mod_budget) %&gt;% select(r.squared, adj.r.squared, sigma)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -735,15 +733,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="b1.-does-year-matter-on-its-own" class="level2">
 <h2 class="anchored" data-anchor-id="b1.-does-year-matter-on-its-own">B1. Does year matter on its own?</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mod_year <span class="ot">&lt;-</span> <span class="fu">lm</span>(gross_m <span class="sc">~</span> year, <span class="at">data =</span> films)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(mod_year)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(mod_year) <span class="sc">%&gt;%</span> <span class="fu">select</span>(r.squared, adj.r.squared)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_year)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#glance(mod_year) %&gt;% select(r.squared, adj.r.squared)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Q5.</strong> Year alone: <em>R²</em> = .019, <em>b</em> = <strong>−4.32</strong>. Write the interpretation. Does the sign surprise you? (Remember every dollar here is already inflation-adjusted to 2013.)</p>
 </section>
 <section id="b2.-now-both" class="level2">
 <h2 class="anchored" data-anchor-id="b2.-now-both">B2. Now both</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mod_both <span class="ot">&lt;-</span> <span class="fu">lm</span>(gross_m <span class="sc">~</span> budget_m <span class="sc">+</span> year, <span class="at">data =</span> films)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(mod_both)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(mod_both) <span class="sc">%&gt;%</span> <span class="fu">select</span>(r.squared, adj.r.squared, sigma)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_both)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#glance(mod_both) %&gt;% select(r.squared, adj.r.squared, sigma)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -798,6 +796,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Q6.</strong> Interpret <strong>both</strong> coefficients, each with its <em>holding constant</em> clause.</p>
 <p><strong>Q7.</strong> The budget slope went <strong>up</strong>: 3.054 → 3.127. Most people expect a coefficient to shrink when you add a control. Use these three correlations to explain why this one grew:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Try to use the sjPlot library to make it look nice!</p>
+</div>
+</div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>films <span class="sc">%&gt;%</span> <span class="fu">select</span>(year, budget_m, gross_m) <span class="sc">%&gt;%</span> <span class="fu">cor</span>() <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -902,7 +913,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="c2.-ask-it-properly" class="level2">
 <h2 class="anchored" data-anchor-id="c2.-ask-it-properly">C2. Ask it properly</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mod_bechdel <span class="ot">&lt;-</span> <span class="fu">lm</span>(gross_m <span class="sc">~</span> budget_m <span class="sc">+</span> year <span class="sc">+</span> bechdel, <span class="at">data =</span> films)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(mod_bechdel)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_bechdel)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod_both, mod_bechdel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled">
