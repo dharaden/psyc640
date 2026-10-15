@@ -55,7 +55,7 @@ options(scipen = 999)
 ## Where we have been
 
 | Week | Model                                | What was new                     |
-|------|--------------------------------------|----------------------------------|
+|---------------|-------------------------------|---------------------------|
 | 5    | $Y = b_0 + b_1X$                     | one continuous predictor         |
 | 6    | $Y = b_0 + b_1D$                     | the predictor can be a **group** |
 | 7    | $SS_{total} = SS_{model} + SS_{res}$ | how well the line fits           |
@@ -524,7 +524,7 @@ anova(frus.lm1, frus.lm2)
 ------------------------------------------------------------------------
 
 | Statistic | Meaning | Interpretation |
-|----|----|----|
+|------------------------|------------------------|------------------------|
 | `Res.Df` (Residual Degrees of Freedom) | Remaining degrees of freedom after estimating parameters | 148 for Model 1, 147 for Model 2 (one more parameter estimated) |
 | `RSS` (Residual Sum of Squares) | Total unexplained variance by the model | Decreases substantially from 24,468 → 13,620 with the new predictor, showing improved fit |
 | `Df` (Difference in df) | Number of parameters added | 1 (adding `stats_homework`) |
@@ -537,7 +537,7 @@ anova(frus.lm1, frus.lm2)
 ## Model Assumptions: Frustration
 
 ```{r}
-check_model(frus.lm2)
+performance::check_model(frus.lm2)
 ```
 
 ------------------------------------------------------------------------
@@ -832,7 +832,7 @@ With two predictors you can compute it by hand — regress one predictor on the 
 1 / (1 - summary(lm(study_load ~ sleep_quality, data = stress))$r.squared)
 
 # fire model
-1 / (1 - summary(lm(trucks ~ acres, data = fire))$r.squared)
+1 / (1 - summary(lm(trucks ~ acres, data = fire_data))$r.squared)
 ```
 
 ::: incremental
