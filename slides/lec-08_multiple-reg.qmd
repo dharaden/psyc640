@@ -18,6 +18,8 @@ editor: visual
 execute:
   echo: true
   freeze: auto
+editor_options: 
+  chunk_output_type: console
 ---
 
 ## Today...
@@ -45,11 +47,11 @@ options(scipen = 999)
 
 ## Where we have been
 
-| Week | Model | What was new |
-|------|-------|--------------|
-| 5 | $Y = b_0 + b_1X$ | one continuous predictor |
-| 6 | $Y = b_0 + b_1D$ | the predictor can be a **group** |
-| 7 | $SS_{total} = SS_{model} + SS_{res}$ | how well the line fits |
+| Week | Model                                | What was new                     |
+|------|--------------------------------------|----------------------------------|
+| 5    | $Y = b_0 + b_1X$                     | one continuous predictor         |
+| 6    | $Y = b_0 + b_1D$                     | the predictor can be a **group** |
+| 7    | $SS_{total} = SS_{model} + SS_{res}$ | how well the line fits           |
 
 . . .
 
@@ -151,7 +153,7 @@ Before you fit anything, sketch what you think is going on. Arrows for "causes."
 
 A variable that causes both your predictor and your outcome is a **confound**. Leave it out and your slope absorbs its effect.
 
-These sketches have a name — **Directed Acyclic Graphs** — and Dr. Haraden is about to abuse the chalkboard with one. 🧑‍🏫
+These sketches have a name. Remember when we talked about **Directed Acyclic Graphs (DAG's)**?
 
 ------------------------------------------------------------------------
 
@@ -260,6 +262,24 @@ stress %>% describe(fast = TRUE)
 stress %>% cor() %>% round(3)
 ```
 
+. . .
+
+## Well that doesn't look nice...
+
+------------------------------------------------------------------------
+
+## Who correlates with stress? (but looks nice)
+
+<https://strengejacke.github.io/sjPlot/reference/tab_corr.html>
+
+```{r}
+stress %>% 
+  sjPlot::tab_corr(var.labels = c("Sleep Quality", "Headaches", 
+                                  "Academic Performance", "Study Load", 
+                                  "Extracurricular", "Stress"),
+                   triangle = "lower")
+```
+
 ::: incremental
 - `study_load` is the obvious candidate: *r* = **.39**
 - `sleep_quality` is next: *r* = **.17**
@@ -291,10 +311,10 @@ tidy(s_two)
 
 . . .
 
-| Predictor | Alone | Together |
-|---|---|---|
-| `study_load` | 0.388 | **0.378** |
-| `sleep_quality` | — | **0.174** |
+| Predictor       | Alone | Together  |
+|-----------------|-------|-----------|
+| `study_load`    | 0.388 | **0.378** |
+| `sleep_quality` | —     | **0.174** |
 
 The study-load slope moved by **0.01**. Essentially nothing.
 
@@ -305,7 +325,7 @@ The study-load slope moved by **0.01**. Essentially nothing.
 A coefficient only changes when the new predictor is related to **both** the outcome and the old predictor.
 
 ```{r}
-cor(stress$study_load, stress$sleep_quality)
+cor.test(stress$study_load, stress$sleep_quality)
 ```
 
 ::: incremental
@@ -365,10 +385,10 @@ glance(s_one) %>% select(r.squared, adj.r.squared, sigma)
 glance(s_two) %>% select(r.squared, adj.r.squared, sigma)
 ```
 
-| Model | $R^2$ | adj. $R^2$ | RSE |
-|---|---|---|---|
-| study load | .1534 | .1517 | 1.2506 |
-| \+ sleep quality | **.1730** | **.1698** | **1.2372** |
+| Model            | $R^2$     | adj. $R^2$ | RSE        |
+|------------------|-----------|------------|------------|
+| study load       | .1534     | .1517      | 1.2506     |
+| \+ sleep quality | **.1730** | **.1698**  | **1.2372** |
 
 ::: incremental
 - $\Delta R^2$ = **.0196** — about 2% more of stress accounted for
@@ -390,14 +410,14 @@ anova(s_one, s_two)
 
 ## Reading that table
 
-| Column | What it is | Here |
-|---|---|---|
-| `Res.Df` | df left after estimating | 518 → 517 |
-| `RSS` | unexplained SS | 810.12 → 791.34 |
-| `Df` | predictors added | 1 |
-| `Sum of Sq` | SS the new predictor picked up | **18.78** |
-| `F` | is that drop bigger than noise? | **12.27** |
-| `Pr(>F)` | the *p*-value | **.0005** |
+| Column      | What it is                      | Here            |
+|-------------|---------------------------------|-----------------|
+| `Res.Df`    | df left after estimating        | 518 → 517       |
+| `RSS`       | unexplained SS                  | 810.12 → 791.34 |
+| `Df`        | predictors added                | 1               |
+| `Sum of Sq` | SS the new predictor picked up  | **18.78**       |
+| `F`         | is that drop bigger than noise? | **12.27**       |
+| `Pr(>F)`    | the *p*-value                   | **.0005**       |
 
 . . .
 
@@ -420,9 +440,9 @@ Extracurriculars (*p* = .70), headaches (*p* = .10), academic performance (*p* =
 
 ## Watch the two R²s diverge
 
-| Model | $R^2$ | adj. $R^2$ | RSE |
-|---|---|---|---|
-| 2 predictors | .1730 | .1698 | 1.2372 |
+| Model        | $R^2$        | adj. $R^2$   | RSE    |
+|--------------|--------------|--------------|--------|
+| 2 predictors | .1730        | .1698        | 1.2372 |
 | 5 predictors | **.1779** ⬆️ | **.1699** ➡️ | 1.2371 |
 
 ::: incremental
@@ -434,7 +454,7 @@ Extracurriculars (*p* = .70), headaches (*p* = .10), academic performance (*p* =
 . . .
 
 ::: callout-important
-Week 7's warning, now with consequences. $R^2$ cannot tell you whether a predictor belongs in the model. **Adjusted $R^2$, the nested $F$, and your theory** can.
+Week 7's warning, now with consequences. $R^2$ cannot tell you whether a predictor belongs in the model. **Adjusted** $R^2$, the nested $F$, and your theory can.
 :::
 
 # Part 4: Reporting It
@@ -500,9 +520,21 @@ Rules of thumb: \> 5 is worth a sentence, \> 10 is a problem. Note that the fire
 
 ------------------------------------------------------------------------
 
+## Checking the Model - Easy
+
+There are a lot of ways to take a look at the model
+
+One of the easiest ways is to use `performance` and their `check_model()` function
+
+```{r}
+performance::check_model(s_junk)
+```
+
+------------------------------------------------------------------------
+
 ## The write-up
 
-> Stress was regressed on self-reported study load and sleep quality in a sample of 520 students. The overall model was significant, *F*(2, 517) = 54.07, *p* \< .001, accounting for 17.3% of the variance in stress (adj. *R²* = .170). Holding sleep quality constant, each one-point increase in study load was associated with a 0.38-point increase in stress (*b* = 0.38, *SE* = 0.04, *t* = 9.54, *p* \< .001). Holding study load constant, each one-point increase in rated sleep quality was associated with a 0.17-point increase in stress (*b* = 0.17, *SE* = 0.05, *t* = 3.50, *p* \< .001). Adding sleep quality improved fit over study load alone, Δ*R²* = .020, *F*(1, 517) = 12.27, *p* \< .001. The positive coefficient for sleep quality was contrary to expectation and may reflect the direction in which that item was scored.
+> [Stress was regressed on self-reported study load and sleep quality]{.underline} in a sample of 520 students. The overall model was significant, *F*(2, 517) = 54.07, *p* \< .001, accounting for 17.3% of the variance in stress (adj. *R²* = .170). Holding sleep quality constant, each one-point increase in study load was associated with a 0.38-point increase in stress (*b* = 0.38, *SE* = 0.04, *t* = 9.54, *p* \< .001). Holding study load constant, each one-point increase in rated sleep quality was associated with a 0.17-point increase in stress (*b* = 0.17, *SE* = 0.05, *t* = 3.50, *p* \< .001). Adding sleep quality improved fit over study load alone, Δ*R²* = .020, *F*(1, 517) = 12.27, *p* \< .001. The positive coefficient for sleep quality was contrary to expectation and may reflect the direction in which that item was scored.
 
 . . .
 
