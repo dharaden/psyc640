@@ -228,17 +228,25 @@
 <span id="cb1-3"><a aria-label="3"></a><span class="fu">library</span>(rio)</span>
 <span id="cb1-4"><a aria-label="4"></a><span class="fu">library</span>(broom)</span>
 <span id="cb1-5"><a aria-label="5"></a><span class="fu">library</span>(psych)</span>
-<span id="cb1-6"><a aria-label="6"></a></span>
-<span id="cb1-7"><a aria-label="7"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-6"><a aria-label="6"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb1-7"><a aria-label="7"></a></span>
+<span id="cb1-8"><a aria-label="8"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</section>
+<section id="today-1" class="slide level2">
+<h2>Today…</h2>
+<p><a href="https://bsky.app/profile/andrew.heiss.phd/post/3ly6hqr3mtk2z" class="uri">https://bsky.app/profile/andrew.heiss.phd/post/3ly6hqr3mtk2z</a></p>
+</section>
+<section id="section" class="slide level2">
+<h2><img data-src="../images/p-values.jpg" class="quarto-figure quarto-figure-center"></h2>
 </section>
 <section id="where-we-have-been" class="slide level2">
 <h2>Where we have been</h2>
 <table class="caption-top">
 <colgroup>
-<col style="width: 7%">
-<col style="width: 48%">
-<col style="width: 43%">
+<col style="width: 20%">
+<col style="width: 42%">
+<col style="width: 36%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -269,6 +277,31 @@
 <p>Everything so far has been <strong>one predictor at a time</strong>. That is almost never the model you want.</p>
 </div>
 </section>
+<section class="slide level2">
+
+<h3 id="regression">Regression</h3>
+<p>Overall, we are providing a model to give us a “best guess” on predicting our outcome</p>
+<p><span class="math display">\[ Y_i = b_0 + b_1X_i + e_i \]</span></p>
+</section>
+<section id="explaining-variance" class="slide level2">
+<h2>Explaining Variance</h2>
+
+<img data-src="../images/predict_var.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="explaining-variance-1">Explaining Variance</h3>
+
+<img data-src="images/clipboard-2717803324.png" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="explaining-variance-2">Explaining Variance</h3>
+
+<img data-src="images/clipboard-3448148790.png" class="r-stretch"></section>
+<section id="model-interpretation" class="slide level2">
+<h2>Model Interpretation</h2>
+<p>Once we have a model, we will be able to interpret the coefficients. For a bivariate regression (simple regression), this was fairly straightforward</p>
+<p>We would look to the beta (effect size) and interpret it as: <strong><em>for every 1 unit increase in our X variable, there will be beta units increase in our Y variable.</em></strong></p>
+</section>
 <section id="the-only-equation-we-need" class="slide level2">
 <h2>The only equation we need</h2>
 <p><span class="math display">\[Y_i = b_0 + b_1X_{1i} + b_2X_{2i} + \dots + b_kX_{ki} + e_i\]</span></p>
@@ -293,6 +326,11 @@
 </div>
 </div>
 </section>
+<section class="slide level2">
+
+<h3 id="explaining-variance-3">Explaining Variance</h3>
+
+<img data-src="images/clipboard-4102854469.png" class="r-stretch"></section>
 <section>
 <section id="part-1-why-bother" class="title-slide slide level1 center">
 <h1>Part 1: Why Bother?</h1>
@@ -313,11 +351,11 @@
 <span id="cb2-6"><a aria-label="6"></a>trucks[trucks <span class="sc">&lt;</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
 <span id="cb2-7"><a aria-label="7"></a>damage <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">+</span> <span class="fl">4.2</span> <span class="sc">*</span> acres <span class="sc">-</span> <span class="fl">2.8</span> <span class="sc">*</span> trucks <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, <span class="dv">12</span>)</span>
 <span id="cb2-8"><a aria-label="8"></a></span>
-<span id="cb2-9"><a aria-label="9"></a>fire <span class="ot">&lt;-</span> <span class="fu">tibble</span>(acres, trucks, damage)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-9"><a aria-label="9"></a>fire_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(acres, trucks, damage)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a><span class="fu">glimpse</span>(fire)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a><span class="fu">glimpse</span>(fire_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 300
 Columns: 3
@@ -332,7 +370,7 @@ $ damage &lt;dbl&gt; 68.4656354, 29.8639841, 98.0352116, 123.1168377, 42.6368658
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a>fire <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a>fire_data <span class="sc">%&gt;%</span></span>
 <span id="cb5-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> trucks, <span class="at">y =</span> damage)) <span class="sc">+</span></span>
 <span id="cb5-3"><a aria-label="3"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
 <span id="cb5-4"><a aria-label="4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"#B3261E"</span>) <span class="sc">+</span></span>
@@ -341,24 +379,62 @@ $ damage &lt;dbl&gt; 68.4656354, 29.8639841, 98.0352116, 123.1168377, 42.6368658
 </details>
 
 </div>
-<img data-src="lec-08_multiple-reg_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"><div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a>fire_one <span class="ot">&lt;-</span> <span class="fu">lm</span>(damage <span class="sc">~</span> trucks, <span class="at">data =</span> fire)</span>
-<span id="cb6-2"><a aria-label="2"></a><span class="fu">tidy</span>(fire_one)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<img data-src="lec-08_multiple-reg_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="bivariate-relationship">Bivariate relationship</h3>
+<p>This relationship can also be represented by a correlation, or a regression</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a><span class="fu">cor.test</span>(fire_data<span class="sc">$</span>trucks, fire_data<span class="sc">$</span>damage)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 5
-  term        estimate std.error statistic  p.value
-  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-1 (Intercept)     8.84     3.28       2.70 7.41e- 3
-2 trucks         12.7      0.515     24.7  3.53e-74</code></pre>
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  fire_data$trucks and fire_data$damage
+t = 24.728, df = 298, p-value &lt; 0.00000000000000022
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.7790614 0.8539156
+sample estimates:
+      cor 
+0.8199638 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a><span class="do">## OR</span></span>
+<span id="cb8-2"><a aria-label="2"></a>fire.lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(damage <span class="sc">~</span> trucks, <span class="at">data =</span> fire_data)</span>
+<span id="cb8-3"><a aria-label="3"></a><span class="fu">summary</span>(fire.lm1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = damage ~ trucks, data = fire_data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-73.661 -16.168   1.857  15.619  76.910 
+
+Coefficients:
+            Estimate Std. Error t value             Pr(&gt;|t|)    
+(Intercept)   8.8397     3.2784   2.696              0.00741 ** 
+trucks       12.7299     0.5148  24.728 &lt; 0.0000000000000002 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 25.26 on 298 degrees of freedom
+Multiple R-squared:  0.6723,    Adjusted R-squared:  0.6712 
+F-statistic: 611.5 on 1 and 298 DF,  p-value: &lt; 0.00000000000000022</code></pre>
 </div>
 </div>
 </section>
-<section id="what-would-you-tell-the-county" class="slide level2">
-<h2>What would you tell the county?</h2>
-<ul>
-<li class="fragment"><em>b</em> = <strong>12.73</strong>: each additional truck is associated with <strong>$12,730 more</strong> damage</li>
-<li class="fragment"><span class="math inline">\(p\)</span> &lt; .001, <span class="math inline">\(R^2\)</span> = .67 — this is not a fragile finding</li>
-</ul>
+<section class="slide level2">
+
+<h3 id="bivariate-relationship-1">Bivariate relationship</h3>
+<p>Based on the visualization, the correlation and the regression, what would we conclude from this analysis?</p>
+</section>
+<section class="slide level2">
+
+<h3 id="bivariate-relationship-2">Bivariate relationship</h3>
+<blockquote>
+<p>A linear regression was used to examine the impact of number of trucks on the scene and the amount of damage that was done by a fire. The number of trucks positively impacted the damage done by the fire (<em>b</em> = 11.67, <em>p</em> &lt; .001), suggesting that as more trucks are present, the fire does more damage.</p>
+</blockquote>
 <div class="fragment">
 <blockquote>
 <p>“Trucks strongly predict damage. <strong>Send fewer trucks.</strong>”</p>
@@ -392,18 +468,22 @@ $ damage &lt;dbl&gt; 68.4656354, 29.8639841, 98.0352116, 123.1168377, 42.6368658
 <p>These sketches have a name. Remember when we talked about <strong>Directed Acyclic Graphs (DAG’s)</strong>?</p>
 </div>
 </section>
+<section id="side-quest-draw-the-thing-1" class="slide level2" data-background-color="#EFE6F7">
+<h2>🧠 Side quest: draw the thing</h2>
+
+<img data-src="images/clipboard-3557664801.png" class="quarto-figure quarto-figure-center r-stretch" width="380"></section>
 <section id="the-variable-we-ignored" class="slide level2">
 <h2>The variable we ignored</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a>fire <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> trucks, <span class="at">y =</span> damage, <span class="at">color =</span> acres)) <span class="sc">+</span></span>
-<span id="cb8-3"><a aria-label="3"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">8</span>) <span class="sc">+</span></span>
-<span id="cb8-4"><a aria-label="4"></a>  <span class="fu">scale_color_viridis_c</span>(<span class="at">option =</span> <span class="st">"inferno"</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb8-5"><a aria-label="5"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Trucks dispatched"</span>, <span class="at">y =</span> <span class="st">"Damage ($1,000s)"</span>,</span>
-<span id="cb8-6"><a aria-label="6"></a>       <span class="at">color =</span> <span class="st">"Acres</span><span class="sc">\n</span><span class="st">burned"</span>) <span class="sc">+</span></span>
-<span id="cb8-7"><a aria-label="7"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-label="1"></a>fire_data <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> trucks, <span class="at">y =</span> damage, <span class="at">color =</span> acres)) <span class="sc">+</span></span>
+<span id="cb10-3"><a aria-label="3"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">8</span>) <span class="sc">+</span></span>
+<span id="cb10-4"><a aria-label="4"></a>  <span class="fu">scale_color_viridis_c</span>(<span class="at">option =</span> <span class="st">"inferno"</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb10-5"><a aria-label="5"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Trucks dispatched"</span>, <span class="at">y =</span> <span class="st">"Damage ($1,000s)"</span>,</span>
+<span id="cb10-6"><a aria-label="6"></a>       <span class="at">color =</span> <span class="st">"Acres</span><span class="sc">\n</span><span class="st">burned"</span>) <span class="sc">+</span></span>
+<span id="cb10-7"><a aria-label="7"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 
 </div>
@@ -412,15 +492,29 @@ $ damage &lt;dbl&gt; 68.4656354, 29.8639841, 98.0352116, 123.1168377, 42.6368658
 <section id="put-acres-in-the-model" class="slide level2">
 <h2>Put acres in the model</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a>fire_two <span class="ot">&lt;-</span> <span class="fu">lm</span>(damage <span class="sc">~</span> trucks <span class="sc">+</span> acres, <span class="at">data =</span> fire)</span>
-<span id="cb9-2"><a aria-label="2"></a><span class="fu">tidy</span>(fire_two)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a>fire.lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(damage <span class="sc">~</span> trucks <span class="sc">+</span> acres,</span>
+<span id="cb11-2"><a aria-label="2"></a>               <span class="at">data =</span> fire_data)</span>
+<span id="cb11-3"><a aria-label="3"></a><span class="fu">summary</span>(fire.lm2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 5
-  term        estimate std.error statistic  p.value
-  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-1 (Intercept)    10.9      1.65       6.62 1.64e-10
-2 trucks         -2.63     0.579     -4.54 8.16e- 6
-3 acres           4.09     0.138     29.6  9.72e-91</code></pre>
+<pre><code>
+Call:
+lm(formula = damage ~ trucks + acres, data = fire_data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-34.190  -9.226   0.103   8.002  40.010 
+
+Coefficients:
+            Estimate Std. Error t value             Pr(&gt;|t|)    
+(Intercept)  10.9421     1.6520   6.624       0.000000000164 ***
+trucks       -2.6306     0.5794  -4.541       0.000008163552 ***
+acres         4.0861     0.1378  29.645 &lt; 0.0000000000000002 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 12.72 on 297 degrees of freedom
+Multiple R-squared:  0.9172,    Adjusted R-squared:  0.9167 
+F-statistic:  1646 on 2 and 297 DF,  p-value: &lt; 0.00000000000000022</code></pre>
 </div>
 </div>
 <div class="fragment">
@@ -461,6 +555,13 @@ $ damage &lt;dbl&gt; 68.4656354, 29.8639841, 98.0352116, 123.1168377, 42.6368658
 </div>
 </div>
 </section>
+<section class="slide level2">
+
+<h3 id="fire-data-formal-writeup">Fire Data: Formal Writeup</h3>
+<blockquote>
+<p>“The current set of analyses sought to examine the influence of the number of firetrucks on the scene and the amount of damage that a fire caused, controlling for the size of the fire. The damage amount (in \$1,000s) was regressed on the number of firetrucks present and the size of the fire (in acres burned). The overall multiple regression was statistically significant ( <span class="math inline">\(R^2\)</span> = .92, <em>p</em> &lt; .001), meaning the two variables (Number of Trucks and Size of the Fire) accounted for 92% of the variance in damage done. Each of the two independent variables also had a statistically significant effect on damage (<em>p’s</em> &lt; .001). The number of trucks was negatively related to the amount of damage done (<em>b</em> = -2.63), meaning that for each additional truck that was on the scene, there was a $2,630 reduction in damage, controlling for the size of the fire. Additionally, the size of the fire increased the amount of damage by approximately $4,000 for each additional acre burned.”</p>
+</blockquote>
+</section>
 <section id="omitted-variables-do-not-politely-disappear" class="slide level2">
 <h2>Omitted variables do not politely disappear</h2>
 <p>When you leave out a variable that is related to both <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, its effect does not vanish — it gets <strong>folded into</strong> the coefficients you did estimate.</p>
@@ -473,21 +574,416 @@ $ damage &lt;dbl&gt; 68.4656354, 29.8639841, 98.0352116, 123.1168377, 42.6368658
 <div class="fragment">
 <p>You cannot tell which from the output. You can only tell from <strong>what you chose to measure</strong>.</p>
 </div>
-</section></section>
-<section>
-<section id="part-2-real-data-real-stakes" class="title-slide slide level1 center">
-<h1>Part 2: Real Data, Real Stakes</h1>
-
 </section>
-<section id="students-one-survey" class="slide level2">
-<h2>520 students, one survey 😵‍💫</h2>
+<section id="goldilocks-problem" class="slide level2">
+<h2>Goldilocks Problem</h2>
+<p>Models that are underfit, overfit or just-right</p>
+
+<img data-src="images/clipboard-699917906.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="another-example-computer-time-frustration" class="slide level2">
+<h2>Another Example: Computer time &amp; Frustration 💻 😠</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>This example will focus mostly on the model comparisons</p>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a><span class="co"># Step 1: Simulate the Data </span></span>
+<span id="cb13-2"><a aria-label="2"></a>n <span class="ot">&lt;-</span> <span class="dv">150</span> <span class="co"># Number of students</span></span>
+<span id="cb13-3"><a aria-label="3"></a></span>
+<span id="cb13-4"><a aria-label="4"></a><span class="co"># Simulate total daily computer use in hours</span></span>
+<span id="cb13-5"><a aria-label="5"></a>computer_use <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">6</span>, <span class="at">sd =</span> <span class="fl">1.5</span>)</span>
+<span id="cb13-6"><a aria-label="6"></a></span>
+<span id="cb13-7"><a aria-label="7"></a><span class="co"># Simulate hours spent on stats homework, now as a whole number</span></span>
+<span id="cb13-8"><a aria-label="8"></a>stats_homework <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fl">0.7</span> <span class="sc">*</span> computer_use <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb13-9"><a aria-label="9"></a><span class="co"># Ensure no negative values after rounding</span></span>
+<span id="cb13-10"><a aria-label="10"></a>stats_homework[stats_homework <span class="sc">&lt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb13-11"><a aria-label="11"></a>stats_homework[stats_homework <span class="sc">&gt;</span> computer_use] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb13-12"><a aria-label="12"></a></span>
+<span id="cb13-13"><a aria-label="13"></a><span class="co"># Simulate frustration level (driven mostly by stats homework)</span></span>
+<span id="cb13-14"><a aria-label="14"></a><span class="co"># Scale of 1-100</span></span>
+<span id="cb13-15"><a aria-label="15"></a>frustration <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">+</span> (<span class="dv">2</span> <span class="sc">*</span> computer_use) <span class="sc">+</span> (<span class="dv">8</span> <span class="sc">*</span> stats_homework) <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, <span class="dv">10</span>)</span>
+<span id="cb13-16"><a aria-label="16"></a></span>
+<span id="cb13-17"><a aria-label="17"></a><span class="co"># Create a dataframe and clean up any impossible values</span></span>
+<span id="cb13-18"><a aria-label="18"></a>student_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb13-19"><a aria-label="19"></a>  <span class="at">frustration =</span> frustration,</span>
+<span id="cb13-20"><a aria-label="20"></a>  <span class="at">computer_use =</span> computer_use,</span>
+<span id="cb13-21"><a aria-label="21"></a>  <span class="at">stats_homework =</span> stats_homework</span>
+<span id="cb13-22"><a aria-label="22"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-23"><a aria-label="23"></a>  <span class="fu">filter</span>(frustration <span class="sc">&gt;</span> <span class="dv">0</span>, computer_use <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb13-24"><a aria-label="24"></a></span>
+<span id="cb13-25"><a aria-label="25"></a><span class="co"># Bin the 'stats_homework' variable</span></span>
+<span id="cb13-26"><a aria-label="26"></a>student_data <span class="ot">&lt;-</span> student_data <span class="sc">%&gt;%</span></span>
+<span id="cb13-27"><a aria-label="27"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb13-28"><a aria-label="28"></a>    <span class="at">stats_homework_bin =</span> <span class="fu">cut</span>(stats_homework,</span>
+<span id="cb13-29"><a aria-label="29"></a>                           <span class="at">breaks =</span> <span class="fu">quantile</span>(stats_homework, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>)),</span>
+<span id="cb13-30"><a aria-label="30"></a>                           <span class="at">include.lowest =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-31"><a aria-label="31"></a>                           <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Low"</span>, <span class="st">"Medium"</span>, <span class="st">"High"</span>))</span>
+<span id="cb13-32"><a aria-label="32"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>We have collected data on graduate students and their weekly frustration levels. Data that were also collected included the amount of time they were spending on their computer as well as the amount of statistics homework that they had.</p>
+</section>
+<section class="slide level2">
+
+<h3 id="frustration-model">Frustration Model</h3>
+<p>Taking a bivariate look at things, we might have an initial model like this:</p>
+<p><span class="math display">\[
+Frustration=b_0 + b_1Comp.Hours + e_i
+\]</span></p>
+</section>
+<section class="slide level2">
+
+<h3 id="frustration-model-1">Frustration Model</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a>p1 <span class="ot">&lt;-</span> student_data <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> computer_use, <span class="at">y =</span> frustration)) <span class="sc">+</span></span>
+<span id="cb14-3"><a aria-label="3"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb14-4"><a aria-label="4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,</span>
+<span id="cb14-5"><a aria-label="5"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb14-6"><a aria-label="6"></a>              <span class="at">color =</span> <span class="st">"darkorange"</span>) <span class="sc">+</span></span>
+<span id="cb14-7"><a aria-label="7"></a>  <span class="fu">labs</span>(</span>
+<span id="cb14-8"><a aria-label="8"></a>    <span class="at">title =</span> <span class="st">"Frustration &amp; Computer Use"</span>,</span>
+<span id="cb14-9"><a aria-label="9"></a>    <span class="at">subtitle =</span> <span class="st">"Linear Fit"</span>,</span>
+<span id="cb14-10"><a aria-label="10"></a>    <span class="at">x =</span> <span class="st">"Daily Computer Use (Hours)"</span>,</span>
+<span id="cb14-11"><a aria-label="11"></a>    <span class="at">y =</span> <span class="st">"Frustration Level (1-100)"</span></span>
+<span id="cb14-12"><a aria-label="12"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-13"><a aria-label="13"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb14-14"><a aria-label="14"></a></span>
+<span id="cb14-15"><a aria-label="15"></a>p2 <span class="ot">&lt;-</span> student_data <span class="sc">%&gt;%</span></span>
+<span id="cb14-16"><a aria-label="16"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> computer_use, <span class="at">y =</span> frustration)) <span class="sc">+</span></span>
+<span id="cb14-17"><a aria-label="17"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb14-18"><a aria-label="18"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>,</span>
+<span id="cb14-19"><a aria-label="19"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb14-20"><a aria-label="20"></a>              <span class="at">color =</span> <span class="st">"darkorange"</span>) <span class="sc">+</span></span>
+<span id="cb14-21"><a aria-label="21"></a>  <span class="fu">labs</span>(</span>
+<span id="cb14-22"><a aria-label="22"></a>    <span class="at">title =</span> <span class="st">"Frustration &amp; Computer Use"</span>,</span>
+<span id="cb14-23"><a aria-label="23"></a>    <span class="at">subtitle =</span> <span class="st">"Loess Fit"</span>,</span>
+<span id="cb14-24"><a aria-label="24"></a>    <span class="at">x =</span> <span class="st">"Daily Computer Use (Hours)"</span>,</span>
+<span id="cb14-25"><a aria-label="25"></a>    <span class="at">y =</span> <span class="st">"Frustration Level (1-100)"</span></span>
+<span id="cb14-26"><a aria-label="26"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-27"><a aria-label="27"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb14-28"><a aria-label="28"></a></span>
+<span id="cb14-29"><a aria-label="29"></a>p1 <span class="sc">+</span> p2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+
+</div>
+<img data-src="lec-08_multiple-reg_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
+<section id="what-are-the-correlations" class="slide level2">
+<h2>What are the correlations?</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a>student_data <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>stats_homework_bin) <span class="sc">%&gt;%</span> <span class="fu">cor</span>() <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               frustration computer_use stats_homework
+frustration          1.000        0.717          0.845
+computer_use         0.717        1.000          0.751
+stats_homework       0.845        0.751          1.000</code></pre>
+</div>
+</div>
+</section>
+<section id="well-that-doesnt-look-nice" class="slide level2">
+<h2>Well that doesn’t look nice…</h2>
+</section>
+<section id="what-are-the-correlations-1" class="slide level2">
+<h2>What are the correlations? 💅</h2>
+<p><a href="https://strengejacke.github.io/sjPlot/reference/tab_corr.html" class="uri">https://strengejacke.github.io/sjPlot/reference/tab_corr.html</a></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-label="1"></a>student_data <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a aria-label="2"></a>  <span class="fu">select</span>(<span class="sc">-</span>stats_homework_bin) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-3"><a aria-label="3"></a>  sjPlot<span class="sc">::</span><span class="fu">tab_corr</span>(<span class="at">var.labels =</span> <span class="fu">c</span>(<span class="st">"Frustration"</span>, <span class="st">"Computer Use"</span>, </span>
+<span id="cb17-4"><a aria-label="4"></a>                                  <span class="st">"Statistics Homework"</span>),</span>
+<span id="cb17-5"><a aria-label="5"></a>                   <span class="at">triangle =</span> <span class="st">"lower"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top" style="border-collapse:collapse; border:none;">
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">&nbsp;</th>
+<th data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">Frustration</th>
+<th data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">Computer Use</th>
+<th data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">Statistics Homework</th>
+</tr>
+<tr class="even">
+<td style="font-style: italic">Frustration</td>
+<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
+<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
+<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
+</tr>
+<tr class="odd">
+<td style="font-style: italic">Computer Use</td>
+<td style="text-align: center; padding: 0.2cm;">0.717<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
+<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
+</tr>
+<tr class="even">
+<td style="font-style: italic">Statistics Homework</td>
+<td style="text-align: center; padding: 0.2cm;">0.845<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">0.751<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
+</tr>
+<tr class="odd">
+<td colspan="4" style="text-align: right; border-bottom: double black; border-top: 1px solid black; font-style: italic; font-size: 0.9em;">Computed correlation used pearson-method with listwise-deletion.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section class="slide level2 scrollable">
+
+<h3 id="side-quest-model-assumptions">Side Quest: Model Assumptions</h3>
+<ol type="1">
+<li><strong>Linearity</strong> - A linear relationship exists between predictors and outcome</li>
+<li><strong>Multicollinearity</strong> - The variables are minimally related to one another (VIF)</li>
+<li><strong>Independence of Observations</strong> - Each observation in the model is independent of one another</li>
+<li><strong>Homoscedasticity of Residuals</strong> - Residuals have constant variance across all points of the model</li>
+<li><strong>Multivariate Normality</strong> - Residuals of the model are normally distributed (QQ Plots)</li>
+</ol>
+<p>All of these are checked when using <code>check_model()</code> within the <code>easystats</code> library</p>
+</section>
+<section class="slide level2">
+
+<h3 id="frustration-model-lm">Frustration Model: lm()</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-label="1"></a>frus.lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(frustration <span class="sc">~</span> computer_use, <span class="at">data =</span> student_data)</span>
+<span id="cb18-2"><a aria-label="2"></a><span class="fu">summary</span>(frus.lm1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = frustration ~ computer_use, data = student_data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-30.562  -8.140   1.604   7.439  33.613 
+
+Coefficients:
+             Estimate Std. Error t value            Pr(&gt;|t|)    
+(Intercept)   -1.1840     4.5220  -0.262               0.794    
+computer_use   9.2552     0.7427  12.462 &lt;0.0000000000000002 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 13.14 on 147 degrees of freedom
+Multiple R-squared:  0.5137,    Adjusted R-squared:  0.5104 
+F-statistic: 155.3 on 1 and 147 DF,  p-value: &lt; 0.00000000000000022</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="frustration-model-multivariate">Frustration Model: Multivariate</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-label="1"></a><span class="fu">ggplot</span>(student_data, <span class="fu">aes</span>(<span class="at">x =</span> computer_use, <span class="at">y =</span> frustration, <span class="at">color =</span> stats_homework_bin)) <span class="sc">+</span></span>
+<span id="cb20-2"><a aria-label="2"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb20-3"><a aria-label="3"></a>  <span class="fu">labs</span>(</span>
+<span id="cb20-4"><a aria-label="4"></a>    <span class="at">title =</span> <span class="st">"Frustration &amp; Computer Use by Stats"</span>,</span>
+<span id="cb20-5"><a aria-label="5"></a>    <span class="at">x =</span> <span class="st">"Daily Computer Use (Hours)"</span>,</span>
+<span id="cb20-6"><a aria-label="6"></a>    <span class="at">y =</span> <span class="st">"Frustration Level (1-100)"</span>,</span>
+<span id="cb20-7"><a aria-label="7"></a>    <span class="at">color =</span> <span class="st">"Stats HW (Hours)"</span></span>
+<span id="cb20-8"><a aria-label="8"></a>  ) <span class="sc">+</span></span>
+<span id="cb20-9"><a aria-label="9"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+
+</div>
+<img data-src="lec-08_multiple-reg_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="frustration-model-multivariate-1">Frustration Model: Multivariate</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-label="1"></a>student_data <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> computer_use, <span class="at">y =</span> frustration, </span>
+<span id="cb21-3"><a aria-label="3"></a>             <span class="at">color =</span> stats_homework_bin)) <span class="sc">+</span></span>
+<span id="cb21-4"><a aria-label="4"></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb21-5"><a aria-label="5"></a>    <span class="co"># Fit a line FOR EACH GROUP to show the true relationship</span></span>
+<span id="cb21-6"><a aria-label="6"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb21-7"><a aria-label="7"></a>    <span class="fu">labs</span>(</span>
+<span id="cb21-8"><a aria-label="8"></a>      <span class="at">title =</span> <span class="st">"Frustration &amp; Computer Use by Stats"</span>,</span>
+<span id="cb21-9"><a aria-label="9"></a>      <span class="at">x =</span> <span class="st">"Daily Computer Use (Hours)"</span>,</span>
+<span id="cb21-10"><a aria-label="10"></a>      <span class="at">y =</span> <span class="st">"Frustration Level (1-100)"</span>,</span>
+<span id="cb21-11"><a aria-label="11"></a>      <span class="at">color =</span> <span class="st">"Stats HW (Hours)"</span></span>
+<span id="cb21-12"><a aria-label="12"></a>    ) <span class="sc">+</span></span>
+<span id="cb21-13"><a aria-label="13"></a>    <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+
+</div>
+<img data-src="lec-08_multiple-reg_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="frustration-model-2">Frustration Model</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-label="1"></a>frus.lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(frustration <span class="sc">~</span> computer_use <span class="sc">+</span> stats_homework,</span>
+<span id="cb22-2"><a aria-label="2"></a>               <span class="at">data =</span> student_data)</span>
+<span id="cb22-3"><a aria-label="3"></a><span class="fu">summary</span>(frus.lm2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = frustration ~ computer_use + stats_homework, data = student_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-19.5242  -7.7787   0.5553   6.0824  23.6036 
+
+Coefficients:
+               Estimate Std. Error t value             Pr(&gt;|t|)    
+(Intercept)      6.0628     3.4473   1.759              0.08073 .  
+computer_use     2.4187     0.8416   2.874              0.00466 ** 
+stats_homework   8.3376     0.7712  10.811 &lt; 0.0000000000000002 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 9.828 on 146 degrees of freedom
+Multiple R-squared:  0.7299,    Adjusted R-squared:  0.7262 
+F-statistic: 197.3 on 2 and 146 DF,  p-value: &lt; 0.00000000000000022</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="comparing-models">Comparing Models</h3>
+<p>Maybe we would like to test to see if including the Stats Homework variable improved the model</p>
+<p>Since the first regression is <em>nested</em> within the second, we can run an ANOVA</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-label="1"></a><span class="fu">anova</span>(frus.lm1, frus.lm2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Model 1: frustration ~ computer_use
+Model 2: frustration ~ computer_use + stats_homework
+  Res.Df   RSS Df Sum of Sq      F                Pr(&gt;F)    
+1    147 25391                                              
+2    146 14102  1     11289 116.88 &lt; 0.00000000000000022 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Statistic</th>
+<th>Meaning</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Res.Df</code> (Residual Degrees of Freedom)</td>
+<td>Remaining degrees of freedom after estimating parameters</td>
+<td>148 for Model 1, 147 for Model 2 (one more parameter estimated)</td>
+</tr>
+<tr class="even">
+<td><code>RSS</code> (Residual Sum of Squares)</td>
+<td>Total unexplained variance by the model</td>
+<td>Decreases substantially from 24,468 → 13,620 with the new predictor, showing improved fit</td>
+</tr>
+<tr class="odd">
+<td><code>Df</code> (Difference in df)</td>
+<td>Number of parameters added</td>
+<td>1 (adding <code>stats_homework</code>)</td>
+</tr>
+<tr class="even">
+<td><code>Sum of Sq</code> (Difference in RSS)</td>
+<td>Variance explained by the added predictor</td>
+<td>10,848 units of variance explained by <code>stats_homework</code></td>
+</tr>
+<tr class="odd">
+<td><code>F</code></td>
+<td>F-statistic testing whether this variance reduction is significant</td>
+<td>117.07 — very large, meaning substantial improvement</td>
+</tr>
+<tr class="even">
+<td><code>Pr(&gt;F)</code></td>
+<td>p-value associated with F</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="model-assumptions-frustration" class="slide level2">
+<h2>Model Assumptions: Frustration</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-label="1"></a>performance<span class="sc">::</span><span class="fu">check_model</span>(frus.lm2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="lec-08_multiple-reg_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2 scrollable">
+
+<h3 id="model-assumptions">Model Assumptions</h3>
+<ol type="1">
+<li><strong>Linearity</strong> - A linear relationship exists between predictors and outcome
+<ol type="1">
+<li>Apply Transformation (square root or log); Drop the variable</li>
+</ol></li>
+<li><strong>Multicollinearity</strong> - The variables are minimally related to one another (VIF)
+<ol type="1">
+<li>Remove variable; different type of regression (lasso, partial least squares)</li>
+</ol></li>
+<li><strong>Independence of Observations</strong> - Each observation in the model is independent of one another
+<ol type="1">
+<li>Dummy coding, lags; Use MLM</li>
+</ol></li>
+<li><strong>Homoscedasticity of Residuals</strong> - Residuals have constant variance across all points of the model
+<ol type="1">
+<li>Apply Transformation (square root or log);</li>
+</ol></li>
+<li><strong>Multivariate Normality</strong> - Residuals of the model are normally distributed (QQ Plots)
+<ol type="1">
+<li>Check for outliers; Apply Transformation (square root or log)</li>
+</ol></li>
+</ol>
+</section>
+<section id="model-selection---stepwise" class="slide level2">
+<h2>Model Selection - Stepwise</h2>
+<ul>
+<li><p><em>Backward elimination</em></p>
+<ul>
+<li><p>Start with the full model (all potential predictors)</p></li>
+<li><p>Predictors eliminated one-at-a-time from the model until we cannot improve the model any further</p></li>
+</ul></li>
+<li><p><em>Forward selection</em></p>
+<ul>
+<li><p>Start with nothing in the model</p></li>
+<li><p>Continue to add predictors one-at-a-time until we cannot find any predictors that improve the model any further</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="model-selection" class="slide level2">
+<h2>Model Selection</h2>
+<p><strong>ALWAYS</strong> start with theory and previous work</p>
+<p>You should NEVER just go into data with just a lot of predictors and backward selection in mind. 🧨</p>
+</section>
+<section id="one-more-example---bringing-it-together" class="slide level2">
+<h2>One More Example - Bringing it together</h2>
+<p>520 students, one survey 😵‍💫</p>
 <p>A student-stress survey: everything rated 1–5. The column names are, charitably, a disaster — so we rename by position.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a>stress <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"files"</span>, <span class="st">"data"</span>, <span class="st">"student_stress.xlsx"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb11-2"><a aria-label="2"></a>  <span class="fu">set_names</span>(<span class="fu">c</span>(<span class="st">"sleep_quality"</span>, <span class="st">"headaches"</span>, <span class="st">"academic_perf"</span>,</span>
-<span id="cb11-3"><a aria-label="3"></a>              <span class="st">"study_load"</span>, <span class="st">"extracurricular"</span>, <span class="st">"stress"</span>))</span>
-<span id="cb11-4"><a aria-label="4"></a></span>
-<span id="cb11-5"><a aria-label="5"></a>stress <span class="sc">%&gt;%</span> <span class="fu">describe</span>(<span class="at">fast =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-label="1"></a>stress <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"files"</span>, <span class="st">"data"</span>, <span class="st">"student_stress.xlsx"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a aria-label="2"></a>  <span class="fu">set_names</span>(<span class="fu">c</span>(<span class="st">"sleep_quality"</span>, <span class="st">"headaches"</span>, <span class="st">"academic_perf"</span>,</span>
+<span id="cb27-3"><a aria-label="3"></a>              <span class="st">"study_load"</span>, <span class="st">"extracurricular"</span>, <span class="st">"stress"</span>))</span>
+<span id="cb27-4"><a aria-label="4"></a></span>
+<span id="cb27-5"><a aria-label="5"></a>stress <span class="sc">%&gt;%</span> <span class="fu">describe</span>(<span class="at">fast =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                vars   n mean   sd median min max range  skew kurtosis   se
 sleep_quality      1 520 3.12 1.10    3.0   1   5     4  0.01    -0.66 0.05
@@ -502,37 +998,11 @@ stress             6 520 2.88 1.36    3.0   1   5     4  0.09    -1.18 0.06</cod
 <section id="who-correlates-with-stress" class="slide level2">
 <h2>Who correlates with stress?</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a>stress <span class="sc">%&gt;%</span> <span class="fu">cor</span>() <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                sleep_quality headaches academic_perf study_load
-sleep_quality           1.000    -0.059         0.254      0.065
-headaches              -0.059     1.000        -0.205     -0.007
-academic_perf           0.254    -0.205         1.000      0.096
-study_load              0.065    -0.007         0.096      1.000
-extracurricular         0.001    -0.073         0.153      0.175
-stress                  0.165    -0.072         0.055      0.392
-                extracurricular stress
-sleep_quality             0.001  0.165
-headaches                -0.073 -0.072
-academic_perf             0.153  0.055
-study_load                0.175  0.392
-extracurricular           1.000  0.052
-stress                    0.052  1.000</code></pre>
-</div>
-</div>
-</section>
-<section id="well-that-doesnt-look-nice" class="slide level2">
-<h2>Well that doesn’t look nice…</h2>
-</section>
-<section id="who-correlates-with-stress-but-looks-nice" class="slide level2">
-<h2>Who correlates with stress? (but looks nice)</h2>
-<p><a href="https://strengejacke.github.io/sjPlot/reference/tab_corr.html" class="uri">https://strengejacke.github.io/sjPlot/reference/tab_corr.html</a></p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a>stress <span class="sc">%&gt;%</span> </span>
-<span id="cb15-2"><a aria-label="2"></a>  sjPlot<span class="sc">::</span><span class="fu">tab_corr</span>(<span class="at">var.labels =</span> <span class="fu">c</span>(<span class="st">"Sleep Quality"</span>, <span class="st">"Headaches"</span>, </span>
-<span id="cb15-3"><a aria-label="3"></a>                                  <span class="st">"Academic Performance"</span>, <span class="st">"Study Load"</span>, </span>
-<span id="cb15-4"><a aria-label="4"></a>                                  <span class="st">"Extracurricular"</span>, <span class="st">"Stress"</span>),</span>
-<span id="cb15-5"><a aria-label="5"></a>                   <span class="at">triangle =</span> <span class="st">"lower"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-label="1"></a>stress <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a aria-label="2"></a>  sjPlot<span class="sc">::</span><span class="fu">tab_corr</span>(<span class="at">var.labels =</span> <span class="fu">c</span>(<span class="st">"Sleep Quality"</span>, <span class="st">"Headaches"</span>, </span>
+<span id="cb29-3"><a aria-label="3"></a>                                  <span class="st">"Academic Performance"</span>, <span class="st">"Study Load"</span>, </span>
+<span id="cb29-4"><a aria-label="4"></a>                                  <span class="st">"Extracurricular"</span>, <span class="st">"Stress"</span>),</span>
+<span id="cb29-5"><a aria-label="5"></a>                   <span class="at">triangle =</span> <span class="st">"lower"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top" style="border-collapse:collapse; border:none;">
 <tbody>
@@ -615,21 +1085,27 @@ stress                    0.052  1.000</code></pre>
 <section id="model-1-study-load-alone" class="slide level2">
 <h2>Model 1: study load alone</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-label="1"></a>s_one <span class="ot">&lt;-</span> <span class="fu">lm</span>(stress <span class="sc">~</span> study_load, <span class="at">data =</span> stress)</span>
-<span id="cb16-2"><a aria-label="2"></a><span class="fu">tidy</span>(s_one)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-label="1"></a>s_one <span class="ot">&lt;-</span> <span class="fu">lm</span>(stress <span class="sc">~</span> study_load, <span class="at">data =</span> stress)</span>
+<span id="cb30-2"><a aria-label="2"></a><span class="fu">summary</span>(s_one)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 5
-  term        estimate std.error statistic  p.value
-  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-1 (Intercept)    1.81     0.123      14.7  3.11e-41
-2 study_load     0.387    0.0400      9.69 1.66e-20</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-label="1"></a><span class="fu">glance</span>(s_one) <span class="sc">%&gt;%</span> <span class="fu">select</span>(r.squared, adj.r.squared, sigma)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 3
-  r.squared adj.r.squared sigma
-      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;
-1     0.153         0.152  1.25</code></pre>
+<pre><code>
+Call:
+lm(formula = stress ~ study_load, data = stress)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.7468 -0.9719 -0.1969  1.0844  2.8031 
+
+Coefficients:
+            Estimate Std. Error t value            Pr(&gt;|t|)    
+(Intercept)   1.8095     0.1229  14.722 &lt;0.0000000000000002 ***
+study_load    0.3875     0.0400   9.687 &lt;0.0000000000000002 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.251 on 518 degrees of freedom
+Multiple R-squared:  0.1534,    Adjusted R-squared:  0.1517 
+F-statistic: 93.84 on 1 and 518 DF,  p-value: &lt; 0.00000000000000022</code></pre>
 </div>
 </div>
 <div class="fragment">
@@ -639,8 +1115,8 @@ stress                    0.052  1.000</code></pre>
 <section id="model-2-add-sleep-quality" class="slide level2">
 <h2>Model 2: add sleep quality</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-label="1"></a>s_two <span class="ot">&lt;-</span> <span class="fu">lm</span>(stress <span class="sc">~</span> study_load <span class="sc">+</span> sleep_quality, <span class="at">data =</span> stress)</span>
-<span id="cb20-2"><a aria-label="2"></a><span class="fu">tidy</span>(s_two)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-label="1"></a>s_two <span class="ot">&lt;-</span> <span class="fu">lm</span>(stress <span class="sc">~</span> study_load <span class="sc">+</span> sleep_quality, <span class="at">data =</span> stress)</span>
+<span id="cb32-2"><a aria-label="2"></a><span class="fu">tidy</span>(s_two)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 5
   term          estimate std.error statistic  p.value
@@ -679,7 +1155,7 @@ stress                    0.052  1.000</code></pre>
 <h2>Why nothing moved</h2>
 <p>A coefficient only changes when the new predictor is related to <strong>both</strong> the outcome and the old predictor.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-label="1"></a><span class="fu">cor.test</span>(stress<span class="sc">$</span>study_load, stress<span class="sc">$</span>sleep_quality)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-label="1"></a><span class="fu">cor.test</span>(stress<span class="sc">$</span>study_load, stress<span class="sc">$</span>sleep_quality)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's product-moment correlation
@@ -759,14 +1235,14 @@ sample estimates:
 <section id="three-ways-to-ask-the-same-question" class="slide level2">
 <h2>Three ways to ask the same question</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-label="1"></a><span class="fu">glance</span>(s_one) <span class="sc">%&gt;%</span> <span class="fu">select</span>(r.squared, adj.r.squared, sigma)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a aria-label="1"></a><span class="fu">glance</span>(s_one) <span class="sc">%&gt;%</span> <span class="fu">select</span>(r.squared, adj.r.squared, sigma)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
   r.squared adj.r.squared sigma
       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;
 1     0.153         0.152  1.25</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-label="1"></a><span class="fu">glance</span>(s_two) <span class="sc">%&gt;%</span> <span class="fu">select</span>(r.squared, adj.r.squared, sigma)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a aria-label="1"></a><span class="fu">glance</span>(s_two) <span class="sc">%&gt;%</span> <span class="fu">select</span>(r.squared, adj.r.squared, sigma)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
   r.squared adj.r.squared sigma
@@ -808,7 +1284,7 @@ sample estimates:
 <h2>The formal test: nested models</h2>
 <p>Model 1 is <strong>nested</strong> inside Model 2 — same data, same outcome, Model 1 is Model 2 with one coefficient forced to zero. That lets us test the difference directly.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-label="1"></a><span class="fu">anova</span>(s_one, s_two)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a aria-label="1"></a><span class="fu">anova</span>(s_one, s_two)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Variance Table
 
@@ -872,10 +1348,10 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <section id="now-lets-add-three-useless-things" class="slide level2">
 <h2>Now let’s add three useless things</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-label="1"></a>s_junk <span class="ot">&lt;-</span> <span class="fu">lm</span>(stress <span class="sc">~</span> study_load <span class="sc">+</span> sleep_quality <span class="sc">+</span></span>
-<span id="cb30-2"><a aria-label="2"></a>               extracurricular <span class="sc">+</span> headaches <span class="sc">+</span> academic_perf,</span>
-<span id="cb30-3"><a aria-label="3"></a>             <span class="at">data =</span> stress)</span>
-<span id="cb30-4"><a aria-label="4"></a><span class="fu">tidy</span>(s_junk)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a aria-label="1"></a>s_junk <span class="ot">&lt;-</span> <span class="fu">lm</span>(stress <span class="sc">~</span> study_load <span class="sc">+</span> sleep_quality <span class="sc">+</span></span>
+<span id="cb42-2"><a aria-label="2"></a>               extracurricular <span class="sc">+</span> headaches <span class="sc">+</span> academic_perf,</span>
+<span id="cb42-3"><a aria-label="3"></a>             <span class="at">data =</span> stress)</span>
+<span id="cb42-4"><a aria-label="4"></a><span class="fu">tidy</span>(s_junk)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 5
   term            estimate std.error statistic  p.value
@@ -945,16 +1421,16 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <section id="b-or-β" class="slide level2">
 <h2><em>b</em> or <em>β</em>?</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-label="1"></a>stress <span class="sc">%&gt;%</span></span>
-<span id="cb32-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(.x)))) <span class="sc">%&gt;%</span></span>
-<span id="cb32-3"><a aria-label="3"></a>  <span class="fu">lm</span>(stress <span class="sc">~</span> study_load <span class="sc">+</span> sleep_quality, <span class="at">data =</span> .) <span class="sc">%&gt;%</span></span>
-<span id="cb32-4"><a aria-label="4"></a>  <span class="fu">tidy</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb32-5"><a aria-label="5"></a>  <span class="fu">select</span>(term, estimate)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a aria-label="1"></a>stress <span class="sc">%&gt;%</span></span>
+<span id="cb44-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(.x)))) <span class="sc">%&gt;%</span></span>
+<span id="cb44-3"><a aria-label="3"></a>  <span class="fu">lm</span>(stress <span class="sc">~</span> study_load <span class="sc">+</span> sleep_quality, <span class="at">data =</span> .) <span class="sc">%&gt;%</span></span>
+<span id="cb44-4"><a aria-label="4"></a>  <span class="fu">tidy</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb44-5"><a aria-label="5"></a>  <span class="fu">select</span>(term, estimate)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   term          estimate
   &lt;chr&gt;            &lt;dbl&gt;
-1 (Intercept)   1.26e-16
+1 (Intercept)   1.78e-16
 2 study_load    3.82e- 1
 3 sleep_quality 1.40e- 1</code></pre>
 </div>
@@ -983,13 +1459,13 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p><strong>VIF</strong> (variance inflation factor) measures it: <span class="math inline">\(VIF_j = \frac{1}{1 - R^2_j}\)</span>, where <span class="math inline">\(R^2_j\)</span> is from regressing predictor <span class="math inline">\(j\)</span> on all the others.</p>
 <p>With two predictors you can compute it by hand — regress one predictor on the other:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-label="1"></a><span class="co"># stress model</span></span>
-<span id="cb34-2"><a aria-label="2"></a><span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">summary</span>(<span class="fu">lm</span>(study_load <span class="sc">~</span> sleep_quality, <span class="at">data =</span> stress))<span class="sc">$</span>r.squared)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a aria-label="1"></a><span class="co"># stress model</span></span>
+<span id="cb46-2"><a aria-label="2"></a><span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">summary</span>(<span class="fu">lm</span>(study_load <span class="sc">~</span> sleep_quality, <span class="at">data =</span> stress))<span class="sc">$</span>r.squared)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.004305</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a aria-label="1"></a><span class="co"># fire model</span></span>
-<span id="cb36-2"><a aria-label="2"></a><span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">summary</span>(<span class="fu">lm</span>(trucks <span class="sc">~</span> acres, <span class="at">data =</span> fire))<span class="sc">$</span>r.squared)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a aria-label="1"></a><span class="co"># fire model</span></span>
+<span id="cb48-2"><a aria-label="2"></a><span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">summary</span>(<span class="fu">lm</span>(trucks <span class="sc">~</span> acres, <span class="at">data =</span> fire_data))<span class="sc">$</span>r.squared)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4.997326</code></pre>
 </div>
@@ -1007,10 +1483,10 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>There are a lot of ways to take a look at the model</p>
 <p>One of the easiest ways is to use <code>performance</code> and their <code>check_model()</code> function</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a aria-label="1"></a>performance<span class="sc">::</span><span class="fu">check_model</span>(s_junk)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a aria-label="1"></a>performance<span class="sc">::</span><span class="fu">check_model</span>(s_junk)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="lec-08_multiple-reg_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"></section>
+<img data-src="lec-08_multiple-reg_files/figure-revealjs/unnamed-chunk-28-1.png" width="960" class="r-stretch"></section>
 <section id="the-write-up" class="slide level2">
 <h2>The write-up</h2>
 <blockquote>

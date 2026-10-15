@@ -3871,7 +3871,14 @@
     "href": "slides/lec-08_multiple-reg.html#today",
     "title": "Week 08: Multiple Regression I",
     "section": "Today…",
-    "text": "Today…\nOne predictor was never the plan.\n\nWhy a second predictor changes the first one’s meaning\n“Holding constant” — what it actually does\nA slope that flips sign when we add the right variable\nDid the new predictor earn its place? (\\(\\Delta R^2\\), nested \\(F\\))\nb or β: which one do you report?\nWhen predictors step on each other (multicollinearity)\n\n\nlibrary(here)\nlibrary(tidyverse)\nlibrary(rio)\nlibrary(broom)\nlibrary(psych)\n\noptions(scipen = 999)"
+    "text": "Today…\nOne predictor was never the plan.\n\nWhy a second predictor changes the first one’s meaning\n“Holding constant” — what it actually does\nA slope that flips sign when we add the right variable\nDid the new predictor earn its place? (\\(\\Delta R^2\\), nested \\(F\\))\nb or β: which one do you report?\nWhen predictors step on each other (multicollinearity)\n\n\nlibrary(here)\nlibrary(tidyverse)\nlibrary(rio)\nlibrary(broom)\nlibrary(psych)\nlibrary(patchwork)\n\noptions(scipen = 999)"
+  },
+  {
+    "objectID": "slides/lec-08_multiple-reg.html#today-1",
+    "href": "slides/lec-08_multiple-reg.html#today-1",
+    "title": "Week 08: Multiple Regression I",
+    "section": "Today…",
+    "text": "Today…\nhttps://bsky.app/profile/andrew.heiss.phd/post/3ly6hqr3mtk2z"
   },
   {
     "objectID": "slides/lec-08_multiple-reg.html#where-we-have-been",
@@ -3879,6 +3886,20 @@
     "title": "Week 08: Multiple Regression I",
     "section": "Where we have been",
     "text": "Where we have been\n\n\n\n\n\n\n\n\nWeek\nModel\nWhat was new\n\n\n\n\n5\n\\(Y = b_0 + b_1X\\)\none continuous predictor\n\n\n6\n\\(Y = b_0 + b_1D\\)\nthe predictor can be a group\n\n\n7\n\\(SS_{total} = SS_{model} + SS_{res}\\)\nhow well the line fits\n\n\n\n\nEverything so far has been one predictor at a time. That is almost never the model you want."
+  },
+  {
+    "objectID": "slides/lec-08_multiple-reg.html#explaining-variance",
+    "href": "slides/lec-08_multiple-reg.html#explaining-variance",
+    "title": "Week 08: Multiple Regression I",
+    "section": "Explaining Variance",
+    "text": "Explaining Variance"
+  },
+  {
+    "objectID": "slides/lec-08_multiple-reg.html#model-interpretation",
+    "href": "slides/lec-08_multiple-reg.html#model-interpretation",
+    "title": "Week 08: Multiple Regression I",
+    "section": "Model Interpretation",
+    "text": "Model Interpretation\nOnce we have a model, we will be able to interpret the coefficients. For a bivariate regression (simple regression), this was fairly straightforward\nWe would look to the beta (effect size) and interpret it as: for every 1 unit increase in our X variable, there will be beta units increase in our Y variable."
   },
   {
     "objectID": "slides/lec-08_multiple-reg.html#the-only-equation-we-need",
@@ -3892,21 +3913,14 @@
     "href": "slides/lec-08_multiple-reg.html#you-have-been-hired-by-the-county",
     "title": "Week 08: Multiple Regression I",
     "section": "You have been hired by the county 🚒",
-    "text": "You have been hired by the county 🚒\nThe fire department wants to know what drives the cost of a fire.\nThey hand you 300 fires: how many trucks were dispatched, how many acres burned, and the damage in thousands of dollars.\n\n\nCode\nset.seed(640)\nn &lt;- 300\n\nacres  &lt;- round(runif(n, 0.5, 40), 1)\ntrucks &lt;- round(1 + 0.22 * acres + rnorm(n, 0, 1.2))\ntrucks[trucks &lt; 1] &lt;- 1\ndamage &lt;- 10 + 4.2 * acres - 2.8 * trucks + rnorm(n, 0, 12)\n\nfire &lt;- tibble(acres, trucks, damage)\n\n\n\nglimpse(fire)\n\nRows: 300\nColumns: 3\n$ acres  &lt;dbl&gt; 10.3, 8.0, 29.4, 31.7, 8.0, 25.9, 12.5, 38.6, 29.3, 14.0, 32.1,…\n$ trucks &lt;dbl&gt; 1, 3, 8, 7, 2, 7, 2, 10, 8, 3, 6, 6, 8, 8, 1, 4, 1, 6, 7, 11, 1…\n$ damage &lt;dbl&gt; 68.4656354, 29.8639841, 98.0352116, 123.1168377, 42.6368658, 10…"
+    "text": "You have been hired by the county 🚒\nThe fire department wants to know what drives the cost of a fire.\nThey hand you 300 fires: how many trucks were dispatched, how many acres burned, and the damage in thousands of dollars.\n\n\nCode\nset.seed(640)\nn &lt;- 300\n\nacres  &lt;- round(runif(n, 0.5, 40), 1)\ntrucks &lt;- round(1 + 0.22 * acres + rnorm(n, 0, 1.2))\ntrucks[trucks &lt; 1] &lt;- 1\ndamage &lt;- 10 + 4.2 * acres - 2.8 * trucks + rnorm(n, 0, 12)\n\nfire_data &lt;- tibble(acres, trucks, damage)\n\n\n\nglimpse(fire_data)\n\nRows: 300\nColumns: 3\n$ acres  &lt;dbl&gt; 10.3, 8.0, 29.4, 31.7, 8.0, 25.9, 12.5, 38.6, 29.3, 14.0, 32.1,…\n$ trucks &lt;dbl&gt; 1, 3, 8, 7, 2, 7, 2, 10, 8, 3, 6, 6, 8, 8, 1, 4, 1, 6, 7, 11, 1…\n$ damage &lt;dbl&gt; 68.4656354, 29.8639841, 98.0352116, 123.1168377, 42.6368658, 10…"
   },
   {
     "objectID": "slides/lec-08_multiple-reg.html#start-where-we-always-start",
     "href": "slides/lec-08_multiple-reg.html#start-where-we-always-start",
     "title": "Week 08: Multiple Regression I",
     "section": "Start where we always start",
-    "text": "Start where we always start\n\n\nCode\nfire %&gt;%\n  ggplot(aes(x = trucks, y = damage)) +\n  geom_point(alpha = .5) +\n  geom_smooth(method = \"lm\", se = FALSE, color = \"#B3261E\") +\n  labs(x = \"Trucks dispatched\", y = \"Damage ($1,000s)\") +\n  theme_bw(base_size = 16)\n\n\n\n\nfire_one &lt;- lm(damage ~ trucks, data = fire)\ntidy(fire_one)\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)     8.84     3.28       2.70 7.41e- 3\n2 trucks         12.7      0.515     24.7  3.53e-74"
-  },
-  {
-    "objectID": "slides/lec-08_multiple-reg.html#what-would-you-tell-the-county",
-    "href": "slides/lec-08_multiple-reg.html#what-would-you-tell-the-county",
-    "title": "Week 08: Multiple Regression I",
-    "section": "What would you tell the county?",
-    "text": "What would you tell the county?\n\nb = 12.73: each additional truck is associated with $12,730 more damage\n\\(p\\) &lt; .001, \\(R^2\\) = .67 — this is not a fragile finding\n\n\n\n“Trucks strongly predict damage. Send fewer trucks.”\n\n\n\n\n\n\n\n\n\nWarning\n\n\nEvery number in that sentence is correct. The recommendation would get people killed."
+    "text": "Start where we always start\n\n\nCode\nfire_data %&gt;%\n  ggplot(aes(x = trucks, y = damage)) +\n  geom_point(alpha = .5) +\n  geom_smooth(method = \"lm\", se = FALSE, color = \"#B3261E\") +\n  labs(x = \"Trucks dispatched\", y = \"Damage ($1,000s)\") +\n  theme_bw(base_size = 16)"
   },
   {
     "objectID": "slides/lec-08_multiple-reg.html#side-quest-draw-the-thing",
@@ -3916,18 +3930,25 @@
     "text": "🧠 Side quest: draw the thing\nBefore you fit anything, sketch what you think is going on. Arrows for “causes.”\n\nDoes trucks → damage?\nDoes something cause both?\n\n\nA variable that causes both your predictor and your outcome is a confound. Leave it out and your slope absorbs its effect.\nThese sketches have a name. Remember when we talked about Directed Acyclic Graphs (DAG’s)?"
   },
   {
+    "objectID": "slides/lec-08_multiple-reg.html#side-quest-draw-the-thing-1",
+    "href": "slides/lec-08_multiple-reg.html#side-quest-draw-the-thing-1",
+    "title": "Week 08: Multiple Regression I",
+    "section": "🧠 Side quest: draw the thing",
+    "text": "🧠 Side quest: draw the thing"
+  },
+  {
     "objectID": "slides/lec-08_multiple-reg.html#the-variable-we-ignored",
     "href": "slides/lec-08_multiple-reg.html#the-variable-we-ignored",
     "title": "Week 08: Multiple Regression I",
     "section": "The variable we ignored",
-    "text": "The variable we ignored\n\n\nCode\nfire %&gt;%\n  ggplot(aes(x = trucks, y = damage, color = acres)) +\n  geom_point(alpha = .8) +\n  scale_color_viridis_c(option = \"inferno\", direction = -1) +\n  labs(x = \"Trucks dispatched\", y = \"Damage ($1,000s)\",\n       color = \"Acres\\nburned\") +\n  theme_bw(base_size = 16)\n\n\n\nBig fires get more trucks and do more damage. The slope we estimated was mostly fire size wearing a truck costume."
+    "text": "The variable we ignored\n\n\nCode\nfire_data %&gt;%\n  ggplot(aes(x = trucks, y = damage, color = acres)) +\n  geom_point(alpha = .8) +\n  scale_color_viridis_c(option = \"inferno\", direction = -1) +\n  labs(x = \"Trucks dispatched\", y = \"Damage ($1,000s)\",\n       color = \"Acres\\nburned\") +\n  theme_bw(base_size = 16)\n\n\n\nBig fires get more trucks and do more damage. The slope we estimated was mostly fire size wearing a truck costume."
   },
   {
     "objectID": "slides/lec-08_multiple-reg.html#put-acres-in-the-model",
     "href": "slides/lec-08_multiple-reg.html#put-acres-in-the-model",
     "title": "Week 08: Multiple Regression I",
     "section": "Put acres in the model",
-    "text": "Put acres in the model\n\nfire_two &lt;- lm(damage ~ trucks + acres, data = fire)\ntidy(fire_two)\n\n# A tibble: 3 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)    10.9      1.65       6.62 1.64e-10\n2 trucks         -2.63     0.579     -4.54 8.16e- 6\n3 acres           4.09     0.138     29.6  9.72e-91\n\n\n\n\ntrucks: +12.73 → −2.63. The sign flipped.\nacres: +4.09 per acre\n\\(R^2\\): .672 → .917\n\n\n\nEach additional truck is associated with $2,630 less damage — among fires of the same size."
+    "text": "Put acres in the model\n\nfire.lm2 &lt;- lm(damage ~ trucks + acres,\n               data = fire_data)\nsummary(fire.lm2)\n\n\nCall:\nlm(formula = damage ~ trucks + acres, data = fire_data)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-34.190  -9.226   0.103   8.002  40.010 \n\nCoefficients:\n            Estimate Std. Error t value             Pr(&gt;|t|)    \n(Intercept)  10.9421     1.6520   6.624       0.000000000164 ***\ntrucks       -2.6306     0.5794  -4.541       0.000008163552 ***\nacres         4.0861     0.1378  29.645 &lt; 0.0000000000000002 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 12.72 on 297 degrees of freedom\nMultiple R-squared:  0.9172,    Adjusted R-squared:  0.9167 \nF-statistic:  1646 on 2 and 297 DF,  p-value: &lt; 0.00000000000000022\n\n\n\n\ntrucks: +12.73 → −2.63. The sign flipped.\nacres: +4.09 per acre\n\\(R^2\\): .672 → .917\n\n\n\nEach additional truck is associated with $2,630 less damage — among fires of the same size."
   },
   {
     "objectID": "slides/lec-08_multiple-reg.html#what-just-happened",
@@ -3944,18 +3965,25 @@
     "text": "Omitted variables do not politely disappear\nWhen you leave out a variable that is related to both \\(X\\) and \\(Y\\), its effect does not vanish — it gets folded into the coefficients you did estimate.\n\nSometimes the slope is inflated (the trucks case)\nSometimes it is shrunk (next week’s tutoring example)\nSometimes it appears out of nowhere (Lab 8’s suppression)\nSometimes nothing moves — and that is a finding too\n\n\nYou cannot tell which from the output. You can only tell from what you chose to measure."
   },
   {
-    "objectID": "slides/lec-08_multiple-reg.html#students-one-survey",
-    "href": "slides/lec-08_multiple-reg.html#students-one-survey",
+    "objectID": "slides/lec-08_multiple-reg.html#goldilocks-problem",
+    "href": "slides/lec-08_multiple-reg.html#goldilocks-problem",
     "title": "Week 08: Multiple Regression I",
-    "section": "520 students, one survey 😵‍💫",
-    "text": "520 students, one survey 😵‍💫\nA student-stress survey: everything rated 1–5. The column names are, charitably, a disaster — so we rename by position.\n\nstress &lt;- import(here(\"files\", \"data\", \"student_stress.xlsx\")) %&gt;%\n  set_names(c(\"sleep_quality\", \"headaches\", \"academic_perf\",\n              \"study_load\", \"extracurricular\", \"stress\"))\n\nstress %&gt;% describe(fast = TRUE)\n\n                vars   n mean   sd median min max range  skew kurtosis   se\nsleep_quality      1 520 3.12 1.10    3.0   1   5     4  0.01    -0.66 0.05\nheadaches          2 520 2.18 1.25    2.0   1   5     4  0.75    -0.48 0.05\nacademic_perf      3 520 3.33 1.06    3.0   1   5     4 -0.34    -0.28 0.05\nstudy_load         4 520 2.75 1.37    2.5   1   5     4  0.23    -1.25 0.06\nextracurricular    5 520 2.68 1.47    3.0   1   5     4  0.32    -1.26 0.06\nstress             6 520 2.88 1.36    3.0   1   5     4  0.09    -1.18 0.06"
+    "section": "Goldilocks Problem",
+    "text": "Goldilocks Problem\nModels that are underfit, overfit or just-right"
   },
   {
-    "objectID": "slides/lec-08_multiple-reg.html#who-correlates-with-stress",
-    "href": "slides/lec-08_multiple-reg.html#who-correlates-with-stress",
+    "objectID": "slides/lec-08_multiple-reg.html#another-example-computer-time-frustration",
+    "href": "slides/lec-08_multiple-reg.html#another-example-computer-time-frustration",
     "title": "Week 08: Multiple Regression I",
-    "section": "Who correlates with stress?",
-    "text": "Who correlates with stress?\n\nstress %&gt;% cor() %&gt;% round(3)\n\n                sleep_quality headaches academic_perf study_load\nsleep_quality           1.000    -0.059         0.254      0.065\nheadaches              -0.059     1.000        -0.205     -0.007\nacademic_perf           0.254    -0.205         1.000      0.096\nstudy_load              0.065    -0.007         0.096      1.000\nextracurricular         0.001    -0.073         0.153      0.175\nstress                  0.165    -0.072         0.055      0.392\n                extracurricular stress\nsleep_quality             0.001  0.165\nheadaches                -0.073 -0.072\nacademic_perf             0.153  0.055\nstudy_load                0.175  0.392\nextracurricular           1.000  0.052\nstress                    0.052  1.000"
+    "section": "Another Example: Computer time & Frustration 💻 😠",
+    "text": "Another Example: Computer time & Frustration 💻 😠\n\n\n\n\n\n\nNote\n\n\nThis example will focus mostly on the model comparisons\n\n\n\n\n\nCode\n# Step 1: Simulate the Data \nn &lt;- 150 # Number of students\n\n# Simulate total daily computer use in hours\ncomputer_use &lt;- rnorm(n, mean = 6, sd = 1.5)\n\n# Simulate hours spent on stats homework, now as a whole number\nstats_homework &lt;- round(0.7 * computer_use + rnorm(n, 0, 1))\n# Ensure no negative values after rounding\nstats_homework[stats_homework &lt; 0] &lt;- 0\nstats_homework[stats_homework &gt; computer_use] &lt;- 1\n\n# Simulate frustration level (driven mostly by stats homework)\n# Scale of 1-100\nfrustration &lt;- 10 + (2 * computer_use) + (8 * stats_homework) + rnorm(n, 0, 10)\n\n# Create a dataframe and clean up any impossible values\nstudent_data &lt;- tibble(\n  frustration = frustration,\n  computer_use = computer_use,\n  stats_homework = stats_homework\n) %&gt;%\n  filter(frustration &gt; 0, computer_use &gt; 0)\n\n# Bin the 'stats_homework' variable\nstudent_data &lt;- student_data %&gt;%\n  mutate(\n    stats_homework_bin = cut(stats_homework,\n                           breaks = quantile(stats_homework, probs = seq(0, 1, by = 1/3)),\n                           include.lowest = TRUE,\n                           labels = c(\"Low\", \"Medium\", \"High\"))\n  )\n\n\nWe have collected data on graduate students and their weekly frustration levels. Data that were also collected included the amount of time they were spending on their computer as well as the amount of statistics homework that they had."
+  },
+  {
+    "objectID": "slides/lec-08_multiple-reg.html#what-are-the-correlations",
+    "href": "slides/lec-08_multiple-reg.html#what-are-the-correlations",
+    "title": "Week 08: Multiple Regression I",
+    "section": "What are the correlations?",
+    "text": "What are the correlations?\n\nstudent_data %&gt;% select(-stats_homework_bin) %&gt;% cor() %&gt;% round(3)\n\n               frustration computer_use stats_homework\nfrustration          1.000        0.717          0.845\ncomputer_use         0.717        1.000          0.751\nstats_homework       0.845        0.751          1.000"
   },
   {
     "objectID": "slides/lec-08_multiple-reg.html#well-that-doesnt-look-nice",
@@ -3965,18 +3993,53 @@
     "text": "Well that doesn’t look nice…"
   },
   {
-    "objectID": "slides/lec-08_multiple-reg.html#who-correlates-with-stress-but-looks-nice",
-    "href": "slides/lec-08_multiple-reg.html#who-correlates-with-stress-but-looks-nice",
+    "objectID": "slides/lec-08_multiple-reg.html#what-are-the-correlations-1",
+    "href": "slides/lec-08_multiple-reg.html#what-are-the-correlations-1",
     "title": "Week 08: Multiple Regression I",
-    "section": "Who correlates with stress? (but looks nice)",
-    "text": "Who correlates with stress? (but looks nice)\nhttps://strengejacke.github.io/sjPlot/reference/tab_corr.html\n\nstress %&gt;% \n  sjPlot::tab_corr(var.labels = c(\"Sleep Quality\", \"Headaches\", \n                                  \"Academic Performance\", \"Study Load\", \n                                  \"Extracurricular\", \"Stress\"),\n                   triangle = \"lower\")\n\n\n\n\n \nSleep Quality\nHeadaches\nAcademic Performance\nStudy Load\nExtracurricular\nStress\n\n\nSleep Quality\n \n \n \n \n \n \n\n\nHeadaches\n-0.059\n \n \n \n \n \n\n\nAcademic Performance\n0.254***\n-0.205***\n \n \n \n \n\n\nStudy Load\n0.065\n-0.007\n0.096*\n \n \n \n\n\nExtracurricular\n0.001\n-0.073\n0.153***\n0.175***\n \n \n\n\nStress\n0.165***\n-0.072\n0.055\n0.392***\n0.052\n \n\n\nComputed correlation used pearson-method with listwise-deletion.\n\n\n\n\n\n\nstudy_load is the obvious candidate: r = .39\nsleep_quality is next: r = .17\nAnd the two predictors barely know each other: r = .065"
+    "section": "What are the correlations? 💅",
+    "text": "What are the correlations? 💅\nhttps://strengejacke.github.io/sjPlot/reference/tab_corr.html\n\nstudent_data %&gt;% \n  select(-stats_homework_bin) %&gt;% \n  sjPlot::tab_corr(var.labels = c(\"Frustration\", \"Computer Use\", \n                                  \"Statistics Homework\"),\n                   triangle = \"lower\")\n\n\n\n\n \nFrustration\nComputer Use\nStatistics Homework\n\n\nFrustration\n \n \n \n\n\nComputer Use\n0.717***\n \n \n\n\nStatistics Homework\n0.845***\n0.751***\n \n\n\nComputed correlation used pearson-method with listwise-deletion."
+  },
+  {
+    "objectID": "slides/lec-08_multiple-reg.html#model-assumptions-frustration",
+    "href": "slides/lec-08_multiple-reg.html#model-assumptions-frustration",
+    "title": "Week 08: Multiple Regression I",
+    "section": "Model Assumptions: Frustration",
+    "text": "Model Assumptions: Frustration\n\nperformance::check_model(frus.lm2)"
+  },
+  {
+    "objectID": "slides/lec-08_multiple-reg.html#model-selection---stepwise",
+    "href": "slides/lec-08_multiple-reg.html#model-selection---stepwise",
+    "title": "Week 08: Multiple Regression I",
+    "section": "Model Selection - Stepwise",
+    "text": "Model Selection - Stepwise\n\nBackward elimination\n\nStart with the full model (all potential predictors)\nPredictors eliminated one-at-a-time from the model until we cannot improve the model any further\n\nForward selection\n\nStart with nothing in the model\nContinue to add predictors one-at-a-time until we cannot find any predictors that improve the model any further"
+  },
+  {
+    "objectID": "slides/lec-08_multiple-reg.html#model-selection",
+    "href": "slides/lec-08_multiple-reg.html#model-selection",
+    "title": "Week 08: Multiple Regression I",
+    "section": "Model Selection",
+    "text": "Model Selection\nALWAYS start with theory and previous work\nYou should NEVER just go into data with just a lot of predictors and backward selection in mind. 🧨"
+  },
+  {
+    "objectID": "slides/lec-08_multiple-reg.html#one-more-example---bringing-it-together",
+    "href": "slides/lec-08_multiple-reg.html#one-more-example---bringing-it-together",
+    "title": "Week 08: Multiple Regression I",
+    "section": "One More Example - Bringing it together",
+    "text": "One More Example - Bringing it together\n520 students, one survey 😵‍💫\nA student-stress survey: everything rated 1–5. The column names are, charitably, a disaster — so we rename by position.\n\nstress &lt;- import(here(\"files\", \"data\", \"student_stress.xlsx\")) %&gt;%\n  set_names(c(\"sleep_quality\", \"headaches\", \"academic_perf\",\n              \"study_load\", \"extracurricular\", \"stress\"))\n\nstress %&gt;% describe(fast = TRUE)\n\n                vars   n mean   sd median min max range  skew kurtosis   se\nsleep_quality      1 520 3.12 1.10    3.0   1   5     4  0.01    -0.66 0.05\nheadaches          2 520 2.18 1.25    2.0   1   5     4  0.75    -0.48 0.05\nacademic_perf      3 520 3.33 1.06    3.0   1   5     4 -0.34    -0.28 0.05\nstudy_load         4 520 2.75 1.37    2.5   1   5     4  0.23    -1.25 0.06\nextracurricular    5 520 2.68 1.47    3.0   1   5     4  0.32    -1.26 0.06\nstress             6 520 2.88 1.36    3.0   1   5     4  0.09    -1.18 0.06"
+  },
+  {
+    "objectID": "slides/lec-08_multiple-reg.html#who-correlates-with-stress",
+    "href": "slides/lec-08_multiple-reg.html#who-correlates-with-stress",
+    "title": "Week 08: Multiple Regression I",
+    "section": "Who correlates with stress?",
+    "text": "Who correlates with stress?\n\nstress %&gt;% \n  sjPlot::tab_corr(var.labels = c(\"Sleep Quality\", \"Headaches\", \n                                  \"Academic Performance\", \"Study Load\", \n                                  \"Extracurricular\", \"Stress\"),\n                   triangle = \"lower\")\n\n\n\n\n \nSleep Quality\nHeadaches\nAcademic Performance\nStudy Load\nExtracurricular\nStress\n\n\nSleep Quality\n \n \n \n \n \n \n\n\nHeadaches\n-0.059\n \n \n \n \n \n\n\nAcademic Performance\n0.254***\n-0.205***\n \n \n \n \n\n\nStudy Load\n0.065\n-0.007\n0.096*\n \n \n \n\n\nExtracurricular\n0.001\n-0.073\n0.153***\n0.175***\n \n \n\n\nStress\n0.165***\n-0.072\n0.055\n0.392***\n0.052\n \n\n\nComputed correlation used pearson-method with listwise-deletion.\n\n\n\n\n\n\nstudy_load is the obvious candidate: r = .39\nsleep_quality is next: r = .17\nAnd the two predictors barely know each other: r = .065"
   },
   {
     "objectID": "slides/lec-08_multiple-reg.html#model-1-study-load-alone",
     "href": "slides/lec-08_multiple-reg.html#model-1-study-load-alone",
     "title": "Week 08: Multiple Regression I",
     "section": "Model 1: study load alone",
-    "text": "Model 1: study load alone\n\ns_one &lt;- lm(stress ~ study_load, data = stress)\ntidy(s_one)\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)    1.81     0.123      14.7  3.11e-41\n2 study_load     0.387    0.0400      9.69 1.66e-20\n\nglance(s_one) %&gt;% select(r.squared, adj.r.squared, sigma)\n\n# A tibble: 1 × 3\n  r.squared adj.r.squared sigma\n      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;\n1     0.153         0.152  1.25\n\n\n\nEach 1-point increase in study load → 0.39 points more stress. \\(R^2\\) = .153."
+    "text": "Model 1: study load alone\n\ns_one &lt;- lm(stress ~ study_load, data = stress)\nsummary(s_one)\n\n\nCall:\nlm(formula = stress ~ study_load, data = stress)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-2.7468 -0.9719 -0.1969  1.0844  2.8031 \n\nCoefficients:\n            Estimate Std. Error t value            Pr(&gt;|t|)    \n(Intercept)   1.8095     0.1229  14.722 &lt;0.0000000000000002 ***\nstudy_load    0.3875     0.0400   9.687 &lt;0.0000000000000002 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.251 on 518 degrees of freedom\nMultiple R-squared:  0.1534,    Adjusted R-squared:  0.1517 \nF-statistic: 93.84 on 1 and 518 DF,  p-value: &lt; 0.00000000000000022\n\n\n\nEach 1-point increase in study load → 0.39 points more stress. \\(R^2\\) = .153."
   },
   {
     "objectID": "slides/lec-08_multiple-reg.html#model-2-add-sleep-quality",
@@ -4046,14 +4109,14 @@
     "href": "slides/lec-08_multiple-reg.html#b-or-β",
     "title": "Week 08: Multiple Regression I",
     "section": "b or β?",
-    "text": "b or β?\n\nstress %&gt;%\n  mutate(across(everything(), ~ as.numeric(scale(.x)))) %&gt;%\n  lm(stress ~ study_load + sleep_quality, data = .) %&gt;%\n  tidy() %&gt;%\n  select(term, estimate)\n\n# A tibble: 3 × 2\n  term          estimate\n  &lt;chr&gt;            &lt;dbl&gt;\n1 (Intercept)   1.26e-16\n2 study_load    3.82e- 1\n3 sleep_quality 1.40e- 1\n\n\n\n\nReport b when\n\nthe units mean something (dollars, hours, mg)\nyou want to compare predictors within this sample\n\n\nReport β when\n\nthe units are arbitrary (survey points)\nyou want to compare across studies or scales\n\n\n\nHere: β = .38 vs .14. Study load matters roughly 2.7× as much as sleep quality for stress."
+    "text": "b or β?\n\nstress %&gt;%\n  mutate(across(everything(), ~ as.numeric(scale(.x)))) %&gt;%\n  lm(stress ~ study_load + sleep_quality, data = .) %&gt;%\n  tidy() %&gt;%\n  select(term, estimate)\n\n# A tibble: 3 × 2\n  term          estimate\n  &lt;chr&gt;            &lt;dbl&gt;\n1 (Intercept)   1.78e-16\n2 study_load    3.82e- 1\n3 sleep_quality 1.40e- 1\n\n\n\n\nReport b when\n\nthe units mean something (dollars, hours, mg)\nyou want to compare predictors within this sample\n\n\nReport β when\n\nthe units are arbitrary (survey points)\nyou want to compare across studies or scales\n\n\n\nHere: β = .38 vs .14. Study load matters roughly 2.7× as much as sleep quality for stress."
   },
   {
     "objectID": "slides/lec-08_multiple-reg.html#when-predictors-step-on-each-other",
     "href": "slides/lec-08_multiple-reg.html#when-predictors-step-on-each-other",
     "title": "Week 08: Multiple Regression I",
     "section": "When predictors step on each other",
-    "text": "When predictors step on each other\nIf two predictors are nearly the same variable, the model cannot tell them apart. Coefficients get unstable and standard errors balloon.\nVIF (variance inflation factor) measures it: \\(VIF_j = \\frac{1}{1 - R^2_j}\\), where \\(R^2_j\\) is from regressing predictor \\(j\\) on all the others.\nWith two predictors you can compute it by hand — regress one predictor on the other:\n\n# stress model\n1 / (1 - summary(lm(study_load ~ sleep_quality, data = stress))$r.squared)\n\n[1] 1.004305\n\n# fire model\n1 / (1 - summary(lm(trucks ~ acres, data = fire))$r.squared)\n\n[1] 4.997326\n\n\n\nStress model: VIF = 1.004 — these predictors are strangers\nFire model: VIF = 5.00 — acres and trucks are nearly redundant (r = .89), and the SE on trucks rose from 0.515 to 0.579 as a result\n\n\nRules of thumb: &gt; 5 is worth a sentence, &gt; 10 is a problem. Note that the fire model still worked — high VIF widens your SEs, it does not invalidate the model."
+    "text": "When predictors step on each other\nIf two predictors are nearly the same variable, the model cannot tell them apart. Coefficients get unstable and standard errors balloon.\nVIF (variance inflation factor) measures it: \\(VIF_j = \\frac{1}{1 - R^2_j}\\), where \\(R^2_j\\) is from regressing predictor \\(j\\) on all the others.\nWith two predictors you can compute it by hand — regress one predictor on the other:\n\n# stress model\n1 / (1 - summary(lm(study_load ~ sleep_quality, data = stress))$r.squared)\n\n[1] 1.004305\n\n# fire model\n1 / (1 - summary(lm(trucks ~ acres, data = fire_data))$r.squared)\n\n[1] 4.997326\n\n\n\nStress model: VIF = 1.004 — these predictors are strangers\nFire model: VIF = 5.00 — acres and trucks are nearly redundant (r = .89), and the SE on trucks rose from 0.515 to 0.579 as a result\n\n\nRules of thumb: &gt; 5 is worth a sentence, &gt; 10 is a problem. Note that the fire model still worked — high VIF widens your SEs, it does not invalidate the model."
   },
   {
     "objectID": "slides/lec-08_multiple-reg.html#checking-the-model---easy",
