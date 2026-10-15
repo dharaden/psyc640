@@ -18,7 +18,7 @@ Every step is given **both ways**.
 **By the end you should be able to:**
 
 - Fit and interpret a model with two predictors
-- Attach "holding ___ constant" to a coefficient and mean it
+- Attach "holding \_\_\_ constant" to a coefficient and mean it
 - Say *why* a coefficient changed when a second predictor entered
 - Compute Δ*R²* and test it with a nested *F*
 - Report a null result for a predictor that a lot of people care about
@@ -48,15 +48,12 @@ glimpse(films_raw)
 ::: callout-warning
 ## This file is dirty on purpose
 
-Look at `intgross_2013` in your `glimpse()` output. It came in as **character**, not numeric, because somewhere in those 1,774 rows the spreadsheet wrote `#N/A` instead of leaving a cell empty. R will not do arithmetic on that.
-
-Also: the raw dollar columns are in **dollars**, so every coefficient would come out in dollars and the output becomes unreadable. We will work in **millions**.
+The raw dollar columns are in **dollars**, so every coefficient would come out in dollars and the output becomes unreadable. We will work in **millions**.
 :::
 
 ``` r
 films <- films_raw %>%
-  mutate(intgross_2013 = as.numeric(na_if(intgross_2013, "#N/A")),
-         gross_m  = intgross_2013 / 1e6,     # international gross, $M (2013 dollars)
+  mutate(gross_m  = intgross_2013 / 1e6,     # international gross, $M (2013 dollars)
          budget_m = budget_2013   / 1e6,     # budget, $M (2013 dollars)
          bechdel  = factor(binary, levels = c("fail", "pass"))) %>%
   drop_na(gross_m, budget_m, year)
@@ -119,8 +116,8 @@ films %>%
 ``` r
 mod_budget <- lm(gross_m ~ budget_m, data = films)
 
-tidy(mod_budget)
-glance(mod_budget) %>% select(r.squared, adj.r.squared, sigma)
+summary(mod_budget)
+#glance(mod_budget) %>% select(r.squared, adj.r.squared, sigma)
 ```
 
 ::: callout-note
@@ -151,8 +148,8 @@ The data span **1970 to 2013**. That is four decades of changing audiences, chan
 
 ``` r
 mod_year <- lm(gross_m ~ year, data = films)
-tidy(mod_year)
-glance(mod_year) %>% select(r.squared, adj.r.squared)
+summary(mod_year)
+#glance(mod_year) %>% select(r.squared, adj.r.squared)
 ```
 
 **Q5.** Year alone: *R²* = .019, *b* = **−4.32**. Write the interpretation. Does the sign surprise you? (Remember every dollar here is already inflation-adjusted to 2013.)
@@ -161,8 +158,8 @@ glance(mod_year) %>% select(r.squared, adj.r.squared)
 
 ``` r
 mod_both <- lm(gross_m ~ budget_m + year, data = films)
-tidy(mod_both)
-glance(mod_both) %>% select(r.squared, adj.r.squared, sigma)
+summary(mod_both)
+#glance(mod_both) %>% select(r.squared, adj.r.squared, sigma)
 ```
 
 ::: callout-note
@@ -174,11 +171,11 @@ Same **Linear Regression** panel — drag `year` into **Covariates** alongside `
 ::: callout-tip
 ## Check yourself
 
-| | *b* | *p* |
-|---|---|---|
-| intercept | 11654.52 | \< .001 |
-| `budget_m` | **3.127** | \< .001 |
-| `year` | **−5.808** | \< .001 |
+|            | *b*        | *p*     |
+|------------|------------|---------|
+| intercept  | 11654.52   | \< .001 |
+| `budget_m` | **3.127**  | \< .001 |
+| `year`     | **−5.808** | \< .001 |
 
 *R²* = **.3829**, adj. *R²* = **.3822**, RSE = **223.3**
 :::
@@ -186,6 +183,10 @@ Same **Linear Regression** panel — drag `year` into **Covariates** alongside `
 **Q6.** Interpret **both** coefficients, each with its *holding constant* clause.
 
 **Q7.** The budget slope went **up**: 3.054 → 3.127. Most people expect a coefficient to shrink when you add a control. Use these three correlations to explain why this one grew:
+
+::: callout-note
+Try to use the sjPlot library to make it look nice!
+:::
 
 ``` r
 films %>% select(year, budget_m, gross_m) %>% cor() %>% round(3)
@@ -248,10 +249,10 @@ films %>%
 ::: callout-tip
 ## What you get
 
-| | n | mean gross | mean budget |
-|---|---|---|---|
-| fail | 972 | **223.3** | 63.5 |
-| pass | 791 | **166.6** | 46.4 |
+|      | n   | mean gross | mean budget |
+|------|-----|------------|-------------|
+| fail | 972 | **223.3**  | 63.5        |
+| pass | 791 | **166.6**  | 46.4        |
 :::
 
 **Q11.** Taken alone, films that pass gross about **\$57M less**. Before you conclude anything — what else is different about those two groups in that table?
@@ -260,7 +261,7 @@ films %>%
 
 ``` r
 mod_bechdel <- lm(gross_m ~ budget_m + year + bechdel, data = films)
-tidy(mod_bechdel)
+summary(mod_bechdel)
 
 anova(mod_both, mod_bechdel)
 ```

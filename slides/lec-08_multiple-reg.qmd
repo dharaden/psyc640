@@ -55,7 +55,7 @@ options(scipen = 999)
 ## Where we have been
 
 | Week | Model                                | What was new                     |
-|---------------|-------------------------------|---------------------------|
+|-----------------|-----------------------------|--------------------------|
 | 5    | $Y = b_0 + b_1X$                     | one continuous predictor         |
 | 6    | $Y = b_0 + b_1D$                     | the predictor can be a **group** |
 | 7    | $SS_{total} = SS_{model} + SS_{res}$ | how well the line fits           |
