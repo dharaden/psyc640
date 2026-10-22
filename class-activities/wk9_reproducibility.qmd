@@ -1,0 +1,384 @@
+---
+title: "Week 9 Exercises - Is It Really There?"
+subtitle: "Anxiety, extroversion, and a result that depends on who you sampled"
+editor: visual
+---
+
+::: callout-note
+## Overview
+
+About 55 minutes, **split across today's lecture** · Pairs · 🧰 R (`tidyverse`, `rio`, `here`, `janitor`, `datawizard`)
+
+Do one part, then we go back to the slides.
+
+- **Part A: Build it and look (\~15 min):** clean real survey data, fit the additive model, and guess whether the lines are parallel.
+- **Part B: Test it (\~15 min):** fit the interaction, center, and decide what you can conclude.
+- **Part C: Your sample, someone else's file (\~25 min):** draw your own sample, render, then try to reproduce another pair's analysis.
+
+**By the end you should be able to:**
+
+- Fit and interpret an interaction between two **continuous** predictors
+- Explain what centering changes in an interaction model, and what it doesn't
+- Report a null interaction without "marginally significant" or probing it anyway
+- Tell the difference between a result that is **reproducible** (same data, same code), **robust** (different defensible choices) and **replicable** (a new sample)
+:::
+
+::: callout-warning
+## Before you start
+
+1.  Run this once in the console: `install.packages(c("janitor", "datawizard"))`. If you already had `datawizard` and later get `could not find function "row_sums"`, your copy is too old: reinstall it.
+2.  **No names anywhere in your document**: not the title, not `author:`, not in comments. In Part C another pair receives your file without knowing whose it is.
+:::
+
+------------------------------------------------------------------------
+
+# The study
+
+These are real responses to the **Depression Anxiety Stress Scales (DASS-42)**, collected through the free online version at [openpsychometrics.org.](https://openpsychometrics.org/_rawdata/) The full file has about 40,000 people. You will work with a random sample of 400.
+
+| Variables | What they are |
+|------------------------------------|------------------------------------|
+| `q1a` … `q42a` | DASS items, rated **1–4** in this file (1 = "did not apply to me at all", 4 = "applied to me very much") |
+| `tipi1` … `tipi10` | Ten-Item Personality Inventory, a short Big Five measure, rated **1–7** |
+| `vcl1` … `vcl16` | "Check the words you know." `vcl6`, `vcl9` and `vcl12` are **not real words** |
+
+**The question:** anxiety and depression go together. Is that link stronger or weaker depending on how extroverted someone is?
+
+------------------------------------------------------------------------
+
+# Set up (5 min)
+
+1.  **Download the data** into the `data` folder of your PSYC 640 R Project.
+
+    - <a href="../files/data/dass_data.csv" download="dass_data.csv">DASS survey data (.csv, 20 MB)</a>
+    - <a href="../files/data/dass_data.csv" download="dass_codebook.txt">DASS codebook from openpsychometrics (.txt)</a>
+    - Scoring: [DASS scoring key (UNSW)](https://www2.psy.unsw.edu.au/dass/down.htm)
+
+2.  New Quarto document, `Week 9 - Is It Really There?`, saved as `week9_reproducibility.qmd`. **Delete the `author:` line.**
+
+``` r
+library(tidyverse)
+library(rio)
+library(here)
+library(janitor)
+library(datawizard)
+
+my_seed <- 42   # Parts A and B: leave this at 42. Part C: change it.
+
+set.seed(my_seed)
+
+dass <- import(here("data", "dass_data.csv")) %>%
+  slice_sample(n = 400) %>%
+  clean_names()
+```
+
+::: callout-tip
+## Check yourself
+
+400 rows, 172 columns. The file is tab-separated even though it ends in `.csv`; `import()` figures that out on its own.
+:::
+
+::: callout-note
+## 🖱️ In JAMOVI instead
+
+Parts A and B work in JAMOVI with an already-cleaned version of the seed-42 sample (n = 337, columns `depression`, `anxiety`, `extroversion`)
+
+Read Part A anyway, because the cleaning decisions matter in Part C. **Part C needs R.** If you are working in JAMOVI, pair with someone using R for that part.
+:::
+
+------------------------------------------------------------------------
+
+# Part A — Build it and look (15 min)
+
+## A1. Validity check
+
+Anyone who says they know the definition of a word that doesn't exist probably isn't reading carefully. Remove them.
+
+``` r
+valid <- dass %>%
+  filter(vcl6 == 0, vcl9 == 0, vcl12 == 0)
+
+## OR
+
+valid <- dass %>% 
+  mutate(
+    check = vcl6 + vcl9 + vcl12
+  ) %>% 
+  fitler(check < 1)
+
+nrow(valid)
+```
+
+::: callout-tip
+## Check yourself
+
+400 → **346**. 54 people checked at least one fake word.
+:::
+
+## A2. Score the scales
+
+- **Depression:** items 3, 5, 10, 13, 16, 17, 21, 24, 26, 31, 34, 37, 38, 42
+- **Anxiety:** items 2, 4, 7, 9, 15, 19, 20, 23, 25, 28, 30, 36, 40, 41
+- **Extroversion:** the mean of `tipi1` ("Extroverted, enthusiastic") and **reverse-scored** `tipi6` ("Reserved, quiet"). On a 1–7 scale, the reverse of *x* is 8 − *x*.
+
+Before you compute extroversion, look at what's actually in those two columns.
+
+``` r
+valid %>% count(tipi1)
+valid %>% count(tipi6)
+```
+
+**Q1.** The scale runs 1–7. What are the 0s, and what should you do with them?
+
+::: {.callout-tip collapse="true"}
+## Show the scoring code
+
+A 0 means the person **skipped the item**. It is missing, not "very low." Recode it to `NA` before computing anything, then drop anyone without an extroversion score.
+
+Use the `row_sums()` function from `datawizard` (<https://easystats.github.io/datawizard/reference/row_means.html>)
+
+``` r
+final <- valid %>%
+  mutate(
+    dass_dep = row_sums(., select = c(q3a, q5a, q10a, q13a, q16a, q17a, q21a,
+                                      q24a, q26a, q31a, q34a, q37a, q38a, q42a),
+                        min_valid = 0.8),
+    dass_anx = row_sums(., select = c(q2a, q4a, q7a, q9a, q15a, q19a, q20a,
+                                      q23a, q25a, q28a, q30a, q36a, q40a, q41a),
+                        min_valid = 0.8),
+    tipi1 = na_if(tipi1, 0),
+    tipi6 = na_if(tipi6, 0),
+    extra = (tipi1 + (8 - tipi6)) / 2
+  ) %>%
+  filter(!is.na(extra))
+```
+:::
+
+::: callout-tip
+## Check yourself
+
+**n = 337.** If you have 346, the 0s are still in, and some people have an extroversion score of 0.5 on a 1–7 scale.
+
+| Variable   | *M*   | *SD*  | Range   |
+|------------|-------|-------|---------|
+| `dass_dep` | 33.90 | 12.46 | 14 – 56 |
+| `dass_anx` | 29.26 | 10.30 | 14 – 56 |
+| `extra`    | 3.44  | 1.53  | 1 – 7   |
+:::
+
+**Q2.** Each DASS score runs 14–56, but the published DASS norms run 0–42. Why? Does it matter for a regression? Does it matter for anything else?
+
+## A3. The model you already know
+
+``` r
+mod_add <- lm(dass_dep ~ dass_anx + extra, data = final)
+summary(mod_add)
+```
+
+::: callout-note
+## 🖱️ In JAMOVI
+
+**Regression → Linear Regression**: `depression` → **Dependent Variable**, `anxiety` and `extroversion` → **Covariates**. Tick **Model Fit → R²**.
+:::
+
+::: callout-tip
+## What you get
+
+| Term       | *b*    | *p*     |
+|------------|--------|---------|
+| Intercept  | 16.27  | \< .001 |
+| `dass_anx` | 0.778  | \< .001 |
+| `extra`    | −1.492 | \< .001 |
+
+*R²* = .496
+:::
+
+**Q3.** Interpret the anxiety slope in one sentence, with its holding-constant clause.
+
+## A4. Look before you test
+
+``` r
+final %>%
+  mutate(ex_grp = if_else(extra >= median(extra),
+                          "Higher extroversion", "Lower extroversion")) %>%
+  ggplot(aes(x = dass_anx, y = dass_dep, color = ex_grp)) +
+  geom_point(alpha = .4) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(x = "Anxiety", y = "Depression", color = NULL)
+```
+
+::: callout-tip
+## What you get
+
+Anxiety slope of **0.69** for lower extroversion (n = 155) and **0.88** for higher extroversion (n = 182).
+:::
+
+**Q4.** Are the lines parallel? **Write down a guess now:** will the interaction be significant?
+
+> **STOP.** Back to the slides.
+
+------------------------------------------------------------------------
+
+# Part B — Test it (15 min)
+
+::: callout-note
+## From groups to a continuum
+
+In lecture, the moderator was a group (tutor: yes/no), and the interaction was how much the study slope changed **between the two groups**. Here the moderator is extroversion, which runs from 1 to 7.
+
+The model is the same, `y ~ x * z`. The only change is how you read the interaction coefficient: **how much the anxiety slope changes for each 1-point increase in extroversion.** The median split in A4 was a picture of that, chopped into two groups.
+:::
+
+## B1. The interaction
+
+``` r
+mod_int <- lm(dass_dep ~ dass_anx * extra, data = final)
+summary(mod_int)
+
+anova(mod_add, mod_int)
+```
+
+::: callout-note
+## 🖱️ In JAMOVI
+
+In **Model Builder**, Ctrl/Cmd-click `anxiety` and `extroversion`, then use the **arrow dropdown ▾ → Interaction**. To compare models, put the main effects in Block 1 and the interaction in Block 2, and open **Model Comparisons**.
+:::
+
+::: callout-tip
+## What you get
+
+| Term             | *b*    | *p*      |
+|------------------|--------|----------|
+| Intercept        | 21.30  | \< .001  |
+| `dass_anx`       | 0.611  | \< .001  |
+| `extra`          | −2.895 | .001     |
+| `dass_anx:extra` | 0.048  | **.097** |
+
+Δ*R²* = .004, *F*(1, 333) = **2.76**, *p* = **.097**
+:::
+
+## B2. Center
+
+``` r
+final <- final %>%
+  mutate(anx_c   = dass_anx - mean(dass_anx),
+         extra_c = extra - mean(extra))
+
+mod_int_c <- lm(dass_dep ~ anx_c * extra_c, data = final)
+summary(mod_int_c)
+```
+
+::: callout-note
+## 🖱️ In JAMOVI
+
+**Data → Compute**: `anx_c = anxiety - VMEAN(anxiety)` and `extra_c = extroversion - VMEAN(extroversion)`. Refit with the centered variables.
+:::
+
+**Q5.** Fill in the table.
+
+|                          | Uncentered | Centered |
+|--------------------------|------------|----------|
+| extroversion coefficient |            |          |
+| interaction coefficient  |            |          |
+| interaction *p*          |            |          |
+| *R²*                     |            |          |
+
+The extroversion coefficient changed. What does each version describe? (Hint: what is the lowest possible anxiety score in this file?)
+
+::: {.callout-tip collapse="true"}
+## Check yourself
+
+Centered: extroversion **−1.490**, interaction **0.048**, *p* = .097, *R²* = .500. Only the lower-order terms moved.
+:::
+
+## B3. What can you conclude?
+
+**Q6.** Is there evidence that extroversion moderates the anxiety–depression link in this sample? Was your guess from A4 right?
+
+**Q7.** A classmate writes:
+
+> *"The interaction was marginally significant (p = .097), so we probed it: anxiety predicted depression more strongly at high extroversion."*
+
+What's wrong with this? Name at least two problems.
+
+> **STOP.** Back to the slides.
+
+------------------------------------------------------------------------
+
+# Part C — Your sample, someone else's file (25 min) 
+
+::: callout-note
+This is only if we have time.
+:::
+
+Same population, same code. The only thing that changes is **which 400 people** you draw.
+
+## C1. Your own sample
+
+1.  Pick a whole number between 1 and 1000. **Write it on the board** so no two pairs use the same one.
+2.  Change `my_seed` in your setup chunk. Pick any number you want.
+3.  **Click Render.** Don't just run chunks. Rendering starts R fresh, which is the whole point.
+
+**Q8.** From your rendered document:
+
+|                                  |     |
+|----------------------------------|-----|
+| Seed                             |     |
+| *n* after cleaning               |     |
+| Interaction *b* (centered model) |     |
+| Interaction *p*                  |     |
+
+## C2. Write it up
+
+**Q9.** Two or three sentences, Results-section style: the interaction test and your conclusion, using only what **you** found with **your** seed. Put this paragraph in your document.
+
+## C3. Submit
+
+Check one more time that your name is nowhere in the file. Upload your **`.qmd`** (not the rendered output) to the myCourses folder **Reproducibility Swap**.
+
+> **WAIT** for the swapped files to be posted.
+
+## C4. Reproduce someone else's analysis
+
+1.  Download the file you were assigned (for example, `R-07.qmd`) into your project.
+2.  **Render it without changing anything.**
+3.  If it fails, find the **smallest** fix that makes it run, and write down what it was.
+
+**Q10.**
+
+|                                                                 |     |
+|-----------------------------------------------------------------|-----|
+| File you received                                               |     |
+| Did it render on the first try?                                 |     |
+| If not: what broke, and what was the smallest fix?              |     |
+| Their seed                                                      |     |
+| Do your rendered numbers match their Q8 table and Q9 paragraph? |     |
+
+## C5. The class tally
+
+**Q11.** Add the file you reproduced to the board: their seed, their interaction *p*, and whether it was below .05.
+
+## ❓ Questions for the debrief
+
+1.  How many files rendered on the first try? What broke most often?
+2.  When the numbers didn't match the paragraph, what was missing from the paragraph?
+3.  Some pairs got *p* \< .05. Did they do anything wrong?
+4.  Imagine every pair's result was a separate published study, and only the significant ones got published. What would that literature say about extroversion?
+
+::: callout-note
+## The point of Part C
+
+**Reproducible** means same data and same code give the same numbers. That's what rendering someone else's file tested.
+
+**Robust** means different defensible choices (dropping the TIPI 0s or not, centering or not) lead to the same conclusion. That's what checking their numbers against their paragraph tested.
+
+**Replicable** means a new sample gives the same conclusion. That's what the tally tested. A single study with *n* ≈ 340 can come out either way on a small effect, which is why one significant result isn't the end of the story, and one null result isn't either.
+:::
+
+------------------------------------------------------------------------
+
+# Exit ticket ✅
+
+1.  What does an interaction let you say that two separate models cannot?
+2.  Why can't you interpret the main effect of anxiety on its own once an interaction is in the model?
+3.  One thing that is still muddy → journal.

@@ -216,6 +216,10 @@ anova(m_study, m_both)
 This is exactly the midterm's Part 6 table. One continuous predictor, one categorical predictor, one model with both, and the comparison between them.
 :::
 
+# 💻 Your Turn - Part 1
+
+[Open the activity](../class-activities/wk9_reproducibility.html){.button target="_blank"}
+
 # Part 2: What If The Slopes Differ?
 
 ------------------------------------------------------------------------
@@ -603,32 +607,6 @@ Report that you **tested** it. A reader who cannot tell whether you looked will 
 
 ------------------------------------------------------------------------
 
-## 🛠️ Activity: Did the Program Work?
-
-::: callout-tip
-**Week 9 Exercises** · \~45 min · Pairs
-:::
-
-30 students, three instructional groups, pre-test and post-test scores.
-
-- One group scores significantly higher at post-test
-- Then you control for where they **started**
-- The entire group effect disappears — *F*(2, 26) = 0.03, *p* = .97
-
-[Open the activity](../class-activities/wk9_interactions.html){.button target="_blank"}
-
-------------------------------------------------------------------------
-
-## ✍️ Wrap-Up
-
-Finish these at the bottom of your activity file:
-
-1.  What does an interaction let you say that two separate models cannot?
-2.  Why can't you interpret the main effect of a group once an interaction is in the model?
-3.  One thing that is still muddy → journal.
-
-------------------------------------------------------------------------
-
 ## For next time
 
 ::: callout-important
@@ -638,8 +616,6 @@ Five days. If Part 6 is not drafted by this weekend, it will not be good by Tues
 
 You are **not** required to include an interaction. If you fit one, test it and report the test either way.
 :::
-
-📋 **Lab 9 — Groups, Slopes & Interactions**, due **Tuesday 11/3 at 11:59pm** — posted today, start it after the midterm is in
 
 📖 Chapter 11 — ROS · Chapter 12.1 — ST (assumptions and diagnostics)
 
