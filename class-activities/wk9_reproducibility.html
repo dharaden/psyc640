@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Week 9 Exercises - Did the Program Work? – PSYC 640 - Graduate Statistics</title>
+<title>Week 9 Exercises - Is It Really There? – PSYC 640 - Graduate Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -81,9 +81,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-27924616e6f43b6096edbf59851b5f7e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-5160c140c96ad5806dfb95b86dcd5d2b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-27924616e6f43b6096edbf59851b5f7e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-3502d72582367641a98a453c687a2354.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-9fe6195f28bedb9d423a5f9902e70718.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-3502d72582367641a98a453c687a2354.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -113,8 +113,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="Week 9 Exercises - Did the Program Work? – PSYC 640 - Graduate Statistics">
-<meta property="og:description" content="Groups, baselines, and an effect that evaporates">
+<meta property="og:title" content="Week 9 Exercises - Is It Really There? – PSYC 640 - Graduate Statistics">
+<meta property="og:description" content="Anxiety, extroversion, and a result that depends on who you sampled">
 <meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
 </head>
 
@@ -289,7 +289,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Week 9 Exercises - Did the Program Work?</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Week 9 Exercises - Is It Really There?</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -514,27 +514,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#the-study" id="toc-the-study" class="nav-link active" data-scroll-target="#the-study">The study</a></li>
   <li><a href="#set-up-5-min" id="toc-set-up-5-min" class="nav-link" data-scroll-target="#set-up-5-min">Set up (5 min)</a></li>
-  <li><a href="#part-a-follow-along-15-min" id="toc-part-a-follow-along-15-min" class="nav-link" data-scroll-target="#part-a-follow-along-15-min">Part A — Follow along (15 min)</a>
+  <li><a href="#part-a-build-it-and-look-15-min" id="toc-part-a-build-it-and-look-15-min" class="nav-link" data-scroll-target="#part-a-build-it-and-look-15-min">Part A — Build it and look (15 min)</a>
   <ul class="collapse">
-  <li><a href="#a1.-describe-first" id="toc-a1.-describe-first" class="nav-link" data-scroll-target="#a1.-describe-first">A1. Describe first</a></li>
-  <li><a href="#a2.-the-question-the-district-asked" id="toc-a2.-the-question-the-district-asked" class="nav-link" data-scroll-target="#a2.-the-question-the-district-asked">A2. The question the district asked</a></li>
+  <li><a href="#a1.-validity-check" id="toc-a1.-validity-check" class="nav-link" data-scroll-target="#a1.-validity-check">A1. Validity check</a></li>
+  <li><a href="#a2.-score-the-scales" id="toc-a2.-score-the-scales" class="nav-link" data-scroll-target="#a2.-score-the-scales">A2. Score the scales</a></li>
+  <li><a href="#a3.-the-model-you-already-know" id="toc-a3.-the-model-you-already-know" class="nav-link" data-scroll-target="#a3.-the-model-you-already-know">A3. The model you already know</a></li>
+  <li><a href="#a4.-look-before-you-test" id="toc-a4.-look-before-you-test" class="nav-link" data-scroll-target="#a4.-look-before-you-test">A4. Look before you test</a></li>
   </ul></li>
-  <li><a href="#part-b-on-your-own-20-min" id="toc-part-b-on-your-own-20-min" class="nav-link" data-scroll-target="#part-b-on-your-own-20-min">Part B — On your own (20 min)</a>
+  <li><a href="#part-b-test-it-15-min" id="toc-part-b-test-it-15-min" class="nav-link" data-scroll-target="#part-b-test-it-15-min">Part B — Test it (15 min)</a>
   <ul class="collapse">
-  <li><a href="#b1.-the-variable-we-have-been-sitting-on" id="toc-b1.-the-variable-we-have-been-sitting-on" class="nav-link" data-scroll-target="#b1.-the-variable-we-have-been-sitting-on">B1. The variable we have been sitting on</a></li>
-  <li><a href="#b2.-pre-test-predicts-post-test" id="toc-b2.-pre-test-predicts-post-test" class="nav-link" data-scroll-target="#b2.-pre-test-predicts-post-test">B2. Pre-test predicts post-test</a></li>
-  <li><a href="#b3.-both-together" id="toc-b3.-both-together" class="nav-link" data-scroll-target="#b3.-both-together">B3. Both together</a></li>
-  <li><a href="#b4.-test-the-interaction" id="toc-b4.-test-the-interaction" class="nav-link" data-scroll-target="#b4.-test-the-interaction">B4. Test the interaction</a></li>
-  <li><a href="#b5.-bonus-the-most-null-result-you-will-ever-see" id="toc-b5.-bonus-the-most-null-result-you-will-ever-see" class="nav-link" data-scroll-target="#b5.-bonus-the-most-null-result-you-will-ever-see">B5. Bonus: the most null result you will ever see</a></li>
+  <li><a href="#b1.-the-interaction" id="toc-b1.-the-interaction" class="nav-link" data-scroll-target="#b1.-the-interaction">B1. The interaction</a></li>
+  <li><a href="#b2.-center" id="toc-b2.-center" class="nav-link" data-scroll-target="#b2.-center">B2. Center</a></li>
+  <li><a href="#b3.-what-can-you-conclude" id="toc-b3.-what-can-you-conclude" class="nav-link" data-scroll-target="#b3.-what-can-you-conclude">B3. What can you conclude?</a></li>
   </ul></li>
-  <li><a href="#part-c-together-10-min" id="toc-part-c-together-10-min" class="nav-link" data-scroll-target="#part-c-together-10-min">Part C — Together (10 min)</a>
+  <li><a href="#part-c-your-sample-someone-elses-file-25-min" id="toc-part-c-your-sample-someone-elses-file-25-min" class="nav-link" data-scroll-target="#part-c-your-sample-someone-elses-file-25-min">Part C — Your sample, someone else’s file (25 min)</a>
   <ul class="collapse">
-  <li><a href="#c1.-write-the-memo" id="toc-c1.-write-the-memo" class="nav-link" data-scroll-target="#c1.-write-the-memo">C1. Write the memo</a></li>
-  <li><a href="#questions-for-part-c" id="toc-questions-for-part-c" class="nav-link" data-scroll-target="#questions-for-part-c">❓Questions for Part C</a></li>
+  <li><a href="#c1.-your-own-sample" id="toc-c1.-your-own-sample" class="nav-link" data-scroll-target="#c1.-your-own-sample">C1. Your own sample</a></li>
+  <li><a href="#c2.-write-it-up" id="toc-c2.-write-it-up" class="nav-link" data-scroll-target="#c2.-write-it-up">C2. Write it up</a></li>
+  <li><a href="#c3.-submit" id="toc-c3.-submit" class="nav-link" data-scroll-target="#c3.-submit">C3. Submit</a></li>
+  <li><a href="#c4.-reproduce-someone-elses-analysis" id="toc-c4.-reproduce-someone-elses-analysis" class="nav-link" data-scroll-target="#c4.-reproduce-someone-elses-analysis">C4. Reproduce someone else’s analysis</a></li>
+  <li><a href="#c5.-the-class-tally" id="toc-c5.-the-class-tally" class="nav-link" data-scroll-target="#c5.-the-class-tally">C5. The class tally</a></li>
+  <li><a href="#questions-for-the-debrief" id="toc-questions-for-the-debrief" class="nav-link" data-scroll-target="#questions-for-the-debrief">❓ Questions for the debrief</a></li>
   </ul></li>
   <li><a href="#exit-ticket" id="toc-exit-ticket" class="nav-link" data-scroll-target="#exit-ticket">Exit ticket ✅</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/class-activities/wk9_interactions.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/class-activities/wk9_reproducibility.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -542,8 +546,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 9 Exercises - Did the Program Work?</h1>
-<p class="subtitle lead">Groups, baselines, and an effect that evaporates</p>
+<h1 class="title">Week 9 Exercises - Is It Really There?</h1>
+<p class="subtitle lead">Anxiety, extroversion, and a result that depends on who you sampled</p>
 </div>
 
 
@@ -570,27 +574,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>About 45 minutes · Pairs or small groups · 🧰 R (<code>tidyverse</code>, <code>rio</code>, <code>here</code>, <code>janitor</code>, <code>broom</code>) <strong>or</strong> JAMOVI</p>
-<p>Every step is given <strong>both ways</strong>.</p>
+<p>About 55 minutes, <strong>split across today’s lecture</strong> · Pairs · 🧰 R (<code>tidyverse</code>, <code>rio</code>, <code>here</code>, <code>janitor</code>, <code>datawizard</code>)</p>
+<p>Do one part, then we go back to the slides.</p>
 <ul>
-<li><strong>Part A: Follow along (~15 min):</strong> which instructional group did best?</li>
-<li><strong>Part B: On your own (~20 min):</strong> control for where students started, and watch the finding disappear.</li>
-<li><strong>Part C: Together (~10 min):</strong> what you would actually tell the school.</li>
+<li><strong>Part A: Build it and look (~15 min):</strong> clean real survey data, fit the additive model, and guess whether the lines are parallel.</li>
+<li><strong>Part B: Test it (~15 min):</strong> fit the interaction, center, and decide what you can conclude.</li>
+<li><strong>Part C: Your sample, someone else’s file (~25 min):</strong> draw your own sample, render, then try to reproduce another pair’s analysis.</li>
 </ul>
 <p><strong>By the end you should be able to:</strong></p>
 <ul>
-<li>Fit a model with a 3-level factor and a continuous predictor together</li>
-<li>Explain why a significant group difference can be a baseline difference in disguise</li>
-<li>Test an interaction between a factor and a covariate, and report a null one properly</li>
-<li>Tell the difference between “the program didn’t work” and “we can’t tell whether it worked”</li>
+<li>Fit and interpret an interaction between two <strong>continuous</strong> predictors</li>
+<li>Explain what centering changes in an interaction model, and what it doesn’t</li>
+<li>Report a null interaction without “marginally significant” or probing it anyway</li>
+<li>Tell the difference between a result that is <strong>reproducible</strong> (same data, same code), <strong>robust</strong> (different defensible choices) and <strong>replicable</strong> (a new sample)</li>
 </ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Before you start
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Run this once in the console: <code>install.packages(c("janitor", "datawizard"))</code>. If you already had <code>datawizard</code> and later get <code>could not find function "row_sums"</code>, your copy is too old: reinstall it.</li>
+<li><strong>No names anywhere in your document</strong>: not the title, not <code>author:</code>, not in comments. In Part C another pair receives your file without knowing whose it is.</li>
+</ol>
 </div>
 </div>
 <hr>
 <section id="the-study" class="level1">
 <h1>The study</h1>
-<p>A middle school ran a reading intervention. Thirty students, split across <strong>two schools</strong>, were placed into one of <strong>three instructional groups</strong> (Green, Orange, Yellow). Everyone took a 20-point reading assessment <strong>before</strong> the program (<code>pre_score</code>) and <strong>after</strong> it (<code>post_score</code>).</p>
-<p>The district wants to know which group’s instruction worked best.</p>
+<p>These are real responses to the <strong>Depression Anxiety Stress Scales (DASS-42)</strong>, collected through the free online version at <a href="https://openpsychometrics.org/_rawdata/">openpsychometrics.org.</a> The full file has about 40,000 people. You will work with a random sample of 400.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variables</th>
+<th>What they are</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>q1a</code> … <code>q42a</code></td>
+<td>DASS items, rated <strong>1–4</strong> in this file (1 = “did not apply to me at all”, 4 = “applied to me very much”)</td>
+</tr>
+<tr class="even">
+<td><code>tipi1</code> … <code>tipi10</code></td>
+<td>Ten-Item Personality Inventory, a short Big Five measure, rated <strong>1–7</strong></td>
+</tr>
+<tr class="odd">
+<td><code>vcl1</code> … <code>vcl16</code></td>
+<td>“Check the words you know.” <code>vcl6</code>, <code>vcl9</code> and <code>vcl12</code> are <strong>not real words</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>The question:</strong> anxiety and depression go together. Is that link stronger or weaker depending on how extroverted someone is?</p>
 <hr>
 </section>
 <section id="set-up-5-min" class="level1">
@@ -598,22 +644,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li><p><strong>Download the data</strong> into the <code>data</code> folder of your PSYC 640 R Project.</p>
 <ul>
-<li><a href="../files/data/cat_reg_complete.xlsx" download="cat_reg_complete.xlsx">Reading program data (.xlsx)</a></li>
+<li><a href="../files/data/dass_data.csv" download="dass_data.csv">DASS survey data (.csv, 20 MB)</a></li>
+<li><a href="../files/data/dass_data.csv" download="dass_codebook.txt">DASS codebook from openpsychometrics (.txt)</a></li>
+<li>Scoring: <a href="https://www2.psy.unsw.edu.au/dass/down.htm">DASS scoring key (UNSW)</a></li>
 </ul></li>
-<li><p>New Quarto document, <code>Week 9 - Groups &amp; Interactions</code>, saved as <code>week9_inclass.qmd</code>.</p></li>
+<li><p>New Quarto document, <code>Week 9 - Is It Really There?</code>, saved as <code>week9_reproducibility.qmd</code>. <strong>Delete the <code>author:</code> line.</strong></p></li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(datawizard)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>reading <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"cat_reg_complete.xlsx"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group  =</span> <span class="fu">factor</span>(group,  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Green"</span>, <span class="st">"Orange"</span>, <span class="st">"Yellow"</span>)),</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">school =</span> <span class="fu">factor</span>(school))</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(reading)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>my_seed <span class="ot">&lt;-</span> <span class="dv">42</span>   <span class="co"># Parts A and B: leave this at 42. Part C: change it.</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(my_seed)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>dass <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"dass_data.csv"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">400</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -624,8 +673,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>30 rows, 6 columns. The original headers were <code>Pre-Score</code> and <code>Post-Score</code> — hyphens are illegal in R names, which is why <code>clean_names()</code> is the second line of the pipe. You should now have <code>pre_score</code> and <code>post_score</code>.</p>
-<p><strong>10 students per group</strong>, <strong>15 per school</strong>.</p>
+<p>400 rows, 172 columns. The file is tab-separated even though it ends in <code>.csv</code>; <code>import()</code> figures that out on its own.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -638,169 +686,82 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ol type="1">
-<li><strong>☰ Menu → Open → Browse →</strong> <code>cat_reg_complete.xlsx</code></li>
-<li>Set <code>Group</code> and <code>School</code> to <strong>Nominal</strong>; <code>Pre-Score</code>, <code>Post-Score</code> and <code>Age</code> to <strong>Continuous</strong></li>
-<li>Under any analysis’s <strong>Reference Levels</strong>, set the <code>Group</code> reference to <strong>Green</strong></li>
-</ol>
+<p>Parts A and B work in JAMOVI with an already-cleaned version of the seed-42 sample (n = 337, columns <code>depression</code>, <code>anxiety</code>, <code>extroversion</code>)</p>
+<p>Read Part A anyway, because the cleaning decisions matter in Part C. <strong>Part C needs R.</strong> If you are working in JAMOVI, pair with someone using R for that part.</p>
 </div>
 </div>
 <hr>
 </section>
-<section id="part-a-follow-along-15-min" class="level1">
-<h1>Part A — Follow along (15 min)</h1>
-<section id="a1.-describe-first" class="level2">
-<h2 class="anchored" data-anchor-id="a1.-describe-first">A1. Describe first</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>reading <span class="sc">%&gt;%</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">pre_m  =</span> <span class="fu">mean</span>(pre_score),  <span class="at">pre_sd  =</span> <span class="fu">sd</span>(pre_score),</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">post_m =</span> <span class="fu">mean</span>(post_score), <span class="at">post_sd =</span> <span class="fu">sd</span>(post_score))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>🖱️ In JAMOVI
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Exploration → Descriptives</strong>: <code>Pre-Score</code> and <code>Post-Score</code> → <strong>Variables</strong>, <code>Group</code> → <strong>Split by</strong></p>
-</div>
-</div>
+<section id="part-a-build-it-and-look-15-min" class="level1">
+<h1>Part A — Build it and look (15 min)</h1>
+<section id="a1.-validity-check" class="level2">
+<h2 class="anchored" data-anchor-id="a1.-validity-check">A1. Validity check</h2>
+<p>Anyone who says they know the definition of a word that doesn’t exist probably isn’t reading carefully. Remove them.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>valid <span class="ot">&lt;-</span> dass <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(vcl6 <span class="sc">==</span> <span class="dv">0</span>, vcl9 <span class="sc">==</span> <span class="dv">0</span>, vcl12 <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="do">## OR</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>valid <span class="ot">&lt;-</span> dass <span class="sc">%&gt;%</span> </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">check =</span> vcl6 <span class="sc">+</span> vcl9 <span class="sc">+</span> vcl12</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fitler</span>(check <span class="sc">&lt;</span> <span class="dv">1</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(valid)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>What you get
+<span class="screen-reader-only">Tip</span>Check yourself
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Group</th>
-<th>n</th>
-<th>pre <em>M</em></th>
-<th>post <em>M</em></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Green</td>
-<td>10</td>
-<td>14.3</td>
-<td>11.5</td>
-</tr>
-<tr class="even">
-<td>Orange</td>
-<td>10</td>
-<td>15.5</td>
-<td>13.0</td>
-</tr>
-<tr class="odd">
-<td>Yellow</td>
-<td>10</td>
-<td><strong>16.8</strong></td>
-<td><strong>14.5</strong></td>
-</tr>
-</tbody>
-</table>
+<p>400 → <strong>346</strong>. 54 people checked at least one fake word.</p>
 </div>
 </div>
-<p><strong>Q1.</strong> Before any test: write down what you notice about those two columns side by side.</p>
 </section>
-<section id="a2.-the-question-the-district-asked" class="level2">
-<h2 class="anchored" data-anchor-id="a2.-the-question-the-district-asked">A2. The question the district asked</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mod_group <span class="ot">&lt;-</span> <span class="fu">lm</span>(post_score <span class="sc">~</span> group, <span class="at">data =</span> reading)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(mod_group)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod_group)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(mod_group) <span class="sc">%&gt;%</span> <span class="fu">select</span>(r.squared, adj.r.squared)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>🖱️ In JAMOVI
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Regression → Linear Regression</strong>: <code>Post-Score</code> → <strong>Dependent Variable</strong>, <code>Group</code> → <strong>Factors</strong>. Tick <strong>Model Fit → R², Adjusted R², Overall model test</strong>, and <strong>Model Coefficients → Omnibus test (ANOVA test)</strong>.</p>
-</div>
-</div>
+<section id="a2.-score-the-scales" class="level2">
+<h2 class="anchored" data-anchor-id="a2.-score-the-scales">A2. Score the scales</h2>
+<ul>
+<li><strong>Depression:</strong> items 3, 5, 10, 13, 16, 17, 21, 24, 26, 31, 34, 37, 38, 42</li>
+<li><strong>Anxiety:</strong> items 2, 4, 7, 9, 15, 19, 20, 23, 25, 28, 30, 36, 40, 41</li>
+<li><strong>Extroversion:</strong> the mean of <code>tipi1</code> (“Extroverted, enthusiastic”) and <strong>reverse-scored</strong> <code>tipi6</code> (“Reserved, quiet”). On a 1–7 scale, the reverse of <em>x</em> is 8 − <em>x</em>.</li>
+</ul>
+<p>Before you compute extroversion, look at what’s actually in those two columns.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>valid <span class="sc">%&gt;%</span> <span class="fu">count</span>(tipi1)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>valid <span class="sc">%&gt;%</span> <span class="fu">count</span>(tipi6)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Q1.</strong> The scale runs 1–7. What are the 0s, and what should you do with them?</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>What you get
+<span class="screen-reader-only">Tip</span>Show the scoring code
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Term</th>
-<th><em>b</em></th>
-<th><em>p</em></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Intercept (Green)</td>
-<td>11.50</td>
-<td>&lt; .001</td>
-</tr>
-<tr class="even">
-<td>Orange – Green</td>
-<td>+1.50</td>
-<td>.273</td>
-</tr>
-<tr class="odd">
-<td>Yellow – Green</td>
-<td><strong>+3.00</strong></td>
-<td><strong>.034</strong></td>
-</tr>
-</tbody>
-</table>
-<p>Omnibus: <em>F</em>(2, 27) = <strong>2.50</strong>, <em>p</em> = <strong>.101</strong>. <em>R²</em> = .156</p>
+<p>A 0 means the person <strong>skipped the item</strong>. It is missing, not “very low.” Recode it to <code>NA</code> before computing anything, then drop anyone without an extroversion score.</p>
+<p>Use the <code>row_sums()</code> function from <code>datawizard</code> (<a href="https://easystats.github.io/datawizard/reference/row_means.html" class="uri">https://easystats.github.io/datawizard/reference/row_means.html</a>)</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>final <span class="ot">&lt;-</span> valid <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">dass_dep =</span> <span class="fu">row_sums</span>(., <span class="at">select =</span> <span class="fu">c</span>(q3a, q5a, q10a, q13a, q16a, q17a, q21a,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                                      q24a, q26a, q31a, q34a, q37a, q38a, q42a),</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">min_valid =</span> <span class="fl">0.8</span>),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">dass_anx =</span> <span class="fu">row_sums</span>(., <span class="at">select =</span> <span class="fu">c</span>(q2a, q4a, q7a, q9a, q15a, q19a, q20a,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                                      q23a, q25a, q28a, q30a, q36a, q40a, q41a),</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                        <span class="at">min_valid =</span> <span class="fl">0.8</span>),</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">tipi1 =</span> <span class="fu">na_if</span>(tipi1, <span class="dv">0</span>),</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">tipi6 =</span> <span class="fu">na_if</span>(tipi6, <span class="dv">0</span>),</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">extra =</span> (tipi1 <span class="sc">+</span> (<span class="dv">8</span> <span class="sc">-</span> tipi6)) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(extra))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</div>
-<p><strong>Q2.</strong> The Yellow–Green contrast is significant (<em>p</em> = .034) but the <strong>omnibus test is not</strong> (<em>p</em> = .101). Which one would you report, and why? (Think back to Week 6 and familywise error.)</p>
-<p><strong>Q3.</strong> Write the APA sentence for the omnibus test as it stands.</p>
-<hr>
-</section>
-</section>
-<section id="part-b-on-your-own-20-min" class="level1">
-<h1>Part B — On your own (20 min)</h1>
-<section id="b1.-the-variable-we-have-been-sitting-on" class="level2">
-<h2 class="anchored" data-anchor-id="b1.-the-variable-we-have-been-sitting-on">B1. The variable we have been sitting on</h2>
-<p>Students were <strong>not</strong> randomly assigned — they were <em>placed</em> into groups. Check whether the groups started in the same place.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(<span class="fu">lm</span>(pre_score <span class="sc">~</span> group, <span class="at">data =</span> reading))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Q4.</strong> <em>F</em>(2, 27) = 2.77, <em>p</em> = .080. Strictly, that is not significant. Is “not significant” a good enough reason to ignore it here? Look back at the pre-test means in A1 before you answer.</p>
-</section>
-<section id="b2.-pre-test-predicts-post-test" class="level2">
-<h2 class="anchored" data-anchor-id="b2.-pre-test-predicts-post-test">B2. Pre-test predicts post-test</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mod_pre <span class="ot">&lt;-</span> <span class="fu">lm</span>(post_score <span class="sc">~</span> pre_score, <span class="at">data =</span> reading)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(mod_pre)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(mod_pre) <span class="sc">%&gt;%</span> <span class="fu">select</span>(r.squared, adj.r.squared, sigma)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>🖱️ In JAMOVI
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><code>Post-Score</code> → <strong>Dependent Variable</strong>, <code>Pre-Score</code> → <strong>Covariates</strong> (remove <code>Group</code> for now).</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -813,18 +774,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>b</em><sub>0</sub> = <strong>−4.95</strong>, <em>b</em><sub>1</sub> = <strong>1.156</strong>, <em>R²</em> = <strong>.851</strong>, RSE = 1.240</p>
+<p><strong>n = 337.</strong> If you have 346, the 0s are still in, and some people have an extroversion score of 0.5 on a 1–7 scale.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th><em>M</em></th>
+<th><em>SD</em></th>
+<th>Range</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>dass_dep</code></td>
+<td>33.90</td>
+<td>12.46</td>
+<td>14 – 56</td>
+</tr>
+<tr class="even">
+<td><code>dass_anx</code></td>
+<td>29.26</td>
+<td>10.30</td>
+<td>14 – 56</td>
+</tr>
+<tr class="odd">
+<td><code>extra</code></td>
+<td>3.44</td>
+<td>1.53</td>
+<td>1 – 7</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<p><strong>Q5.</strong> Interpret the slope. Then interpret <em>R²</em> = .851 in one sentence — and say what that single number does to the credibility of Part A’s analysis.</p>
+<p><strong>Q2.</strong> Each DASS score runs 14–56, but the published DASS norms run 0–42. Why? Does it matter for a regression? Does it matter for anything else?</p>
 </section>
-<section id="b3.-both-together" class="level2">
-<h2 class="anchored" data-anchor-id="b3.-both-together">B3. Both together</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mod_both <span class="ot">&lt;-</span> <span class="fu">lm</span>(post_score <span class="sc">~</span> pre_score <span class="sc">+</span> group, <span class="at">data =</span> reading)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(mod_both)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(mod_both) <span class="sc">%&gt;%</span> <span class="fu">select</span>(r.squared, adj.r.squared, sigma)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod_pre, mod_both)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="a3.-the-model-you-already-know" class="level2">
+<h2 class="anchored" data-anchor-id="a3.-the-model-you-already-know">A3. The model you already know</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mod_add <span class="ot">&lt;-</span> <span class="fu">lm</span>(dass_dep <span class="sc">~</span> dass_anx <span class="sc">+</span> extra, <span class="at">data =</span> final)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_add)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -835,7 +823,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><code>Pre-Score</code> → <strong>Covariates</strong>, <code>Group</code> → <strong>Factors</strong>. Then use <strong>Model Builder</strong>: Block 1 = <code>Pre-Score</code>, Block 2 = <code>Group</code>, and open <strong>Model Comparisons</strong>.</p>
+<p><strong>Regression → Linear Regression</strong>: <code>depression</code> → <strong>Dependent Variable</strong>, <code>anxiety</code> and <code>extroversion</code> → <strong>Covariates</strong>. Tick <strong>Model Fit → R²</strong>.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -859,40 +847,77 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>Intercept</td>
-<td>−4.895</td>
-<td>.004</td>
+<td>16.27</td>
+<td>&lt; .001</td>
 </tr>
 <tr class="even">
-<td><code>pre_score</code></td>
-<td>1.147</td>
+<td><code>dass_anx</code></td>
+<td>0.778</td>
 <td>&lt; .001</td>
 </tr>
 <tr class="odd">
-<td>Orange – Green</td>
-<td><strong>+0.124</strong></td>
-<td><strong>.834</strong></td>
-</tr>
-<tr class="even">
-<td>Yellow – Green</td>
-<td><strong>+0.134</strong></td>
-<td><strong>.834</strong></td>
+<td><code>extra</code></td>
+<td>−1.492</td>
+<td>&lt; .001</td>
 </tr>
 </tbody>
 </table>
-<p><em>R²</em> = .8509, adj. <em>R²</em> = .8337 · Δ<em>R²</em> = <strong>.0003</strong>, <em>F</em>(2, 26) = <strong>0.03</strong>, <em>p</em> = <strong>.971</strong></p>
+<p><em>R²</em> = .496</p>
 </div>
 </div>
-<p><strong>Q6.</strong> The Yellow advantage went from <strong>+3.00</strong> to <strong>+0.13</strong>. Explain in plain English what happened to it.</p>
-<p><strong>Q7.</strong> Compare adjusted <em>R²</em> for <code>post ~ pre</code> (.8453) and <code>post ~ pre + group</code> (.8337). What does that comparison say about keeping <code>group</code> in the model?</p>
-<p><strong>Q8.</strong> Write the APA sentence reporting the group effect <strong>after</strong> controlling for pre-test.</p>
+<p><strong>Q3.</strong> Interpret the anxiety slope in one sentence, with its holding-constant clause.</p>
 </section>
-<section id="b4.-test-the-interaction" class="level2">
-<h2 class="anchored" data-anchor-id="b4.-test-the-interaction">B4. Test the interaction</h2>
-<p>Maybe the program worked differently depending on how strong a reader you already were.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mod_int <span class="ot">&lt;-</span> <span class="fu">lm</span>(post_score <span class="sc">~</span> pre_score <span class="sc">*</span> group, <span class="at">data =</span> reading)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(mod_int)</span>
+<section id="a4.-look-before-you-test" class="level2">
+<h2 class="anchored" data-anchor-id="a4.-look-before-you-test">A4. Look before you test</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>final <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ex_grp =</span> <span class="fu">if_else</span>(extra <span class="sc">&gt;=</span> <span class="fu">median</span>(extra),</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                          <span class="st">"Higher extroversion"</span>, <span class="st">"Lower extroversion"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> dass_anx, <span class="at">y =</span> dass_dep, <span class="at">color =</span> ex_grp)) <span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Anxiety"</span>, <span class="at">y =</span> <span class="st">"Depression"</span>, <span class="at">color =</span> <span class="cn">NULL</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>What you get
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Anxiety slope of <strong>0.69</strong> for lower extroversion (n = 155) and <strong>0.88</strong> for higher extroversion (n = 182).</p>
+</div>
+</div>
+<p><strong>Q4.</strong> Are the lines parallel? <strong>Write down a guess now:</strong> will the interaction be significant?</p>
+<blockquote class="blockquote">
+<p><strong>STOP.</strong> Back to the slides.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="part-b-test-it-15-min" class="level1">
+<h1>Part B — Test it (15 min)</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>From groups to a continuum
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In lecture, the moderator was a group (tutor: yes/no), and the interaction was how much the study slope changed <strong>between the two groups</strong>. Here the moderator is extroversion, which runs from 1 to 7.</p>
+<p>The model is the same, <code>y ~ x * z</code>. The only change is how you read the interaction coefficient: <strong>how much the anxiety slope changes for each 1-point increase in extroversion.</strong> The median split in A4 was a picture of that, chopped into two groups.</p>
+</div>
+</div>
+<section id="b1.-the-interaction" class="level2">
+<h2 class="anchored" data-anchor-id="b1.-the-interaction">B1. The interaction</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mod_int <span class="ot">&lt;-</span> <span class="fu">lm</span>(dass_dep <span class="sc">~</span> dass_anx <span class="sc">*</span> extra, <span class="at">data =</span> final)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_int)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod_both, mod_int)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod_add, mod_int)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -903,7 +928,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In <strong>Model Builder</strong>, Ctrl/Cmd-click <code>Pre-Score</code> and <code>Group</code>, then use the <strong>arrow dropdown ▾ → Interaction</strong>. Add it as <strong>Block 3</strong>.</p>
+<p>In <strong>Model Builder</strong>, Ctrl/Cmd-click <code>anxiety</code> and <code>extroversion</code>, then use the <strong>arrow dropdown ▾ → Interaction</strong>. To compare models, put the main effects in Block 1 and the interaction in Block 2, and open <strong>Model Comparisons</strong>.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -916,33 +941,230 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Both interaction terms are nowhere near significant (<em>p</em> = .82 and <em>p</em> = .97).</p>
-<p>Δ<em>R²</em> = <strong>.0007</strong>, <em>F</em>(2, 24) = <strong>0.05</strong>, <em>p</em> = <strong>.951</strong>. Adjusted <em>R²</em> falls from .8337 to .8206.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Term</th>
+<th><em>b</em></th>
+<th><em>p</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Intercept</td>
+<td>21.30</td>
+<td>&lt; .001</td>
+</tr>
+<tr class="even">
+<td><code>dass_anx</code></td>
+<td>0.611</td>
+<td>&lt; .001</td>
+</tr>
+<tr class="odd">
+<td><code>extra</code></td>
+<td>−2.895</td>
+<td>.001</td>
+</tr>
+<tr class="even">
+<td><code>dass_anx:extra</code></td>
+<td>0.048</td>
+<td><strong>.097</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Δ<em>R²</em> = .004, <em>F</em>(1, 333) = <strong>2.76</strong>, <em>p</em> = <strong>.097</strong></p>
 </div>
 </div>
-<p><strong>Q9.</strong> Report the interaction test in one APA sentence, and say which model you will interpret.</p>
-<p><strong>Q10.</strong> With 10 students per group, how much power do you have to detect a difference in slopes? What does that do to your confidence in the phrase “there is no interaction”?</p>
 </section>
-<section id="b5.-bonus-the-most-null-result-you-will-ever-see" class="level2">
-<h2 class="anchored" data-anchor-id="b5.-bonus-the-most-null-result-you-will-ever-see">B5. Bonus: the most null result you will ever see</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(post_score <span class="sc">~</span> pre_score <span class="sc">+</span> school, <span class="at">data =</span> reading) <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Q11.</strong> The <code>school</code> coefficient is <strong>0.000</strong> with <em>p</em> = <strong>1.000</strong>. Is this a bug? What do you think happened when this dataset was put together?</p>
+<section id="b2.-center" class="level2">
+<h2 class="anchored" data-anchor-id="b2.-center">B2. Center</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>final <span class="ot">&lt;-</span> final <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">anx_c   =</span> dass_anx <span class="sc">-</span> <span class="fu">mean</span>(dass_anx),</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">extra_c =</span> extra <span class="sc">-</span> <span class="fu">mean</span>(extra))</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>mod_int_c <span class="ot">&lt;-</span> <span class="fu">lm</span>(dass_dep <span class="sc">~</span> anx_c <span class="sc">*</span> extra_c, <span class="at">data =</span> final)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_int_c)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🖱️ In JAMOVI
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Data → Compute</strong>: <code>anx_c = anxiety - VMEAN(anxiety)</code> and <code>extra_c = extroversion - VMEAN(extroversion)</code>. Refit with the centered variables.</p>
+</div>
+</div>
+<p><strong>Q5.</strong> Fill in the table.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Uncentered</th>
+<th>Centered</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>extroversion coefficient</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>interaction coefficient</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>interaction <em>p</em></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><em>R²</em></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The extroversion coefficient changed. What does each version describe? (Hint: what is the lowest possible anxiety score in this file?)</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Check yourself
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Centered: extroversion <strong>−1.490</strong>, interaction <strong>0.048</strong>, <em>p</em> = .097, <em>R²</em> = .500. Only the lower-order terms moved.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="b3.-what-can-you-conclude" class="level2">
+<h2 class="anchored" data-anchor-id="b3.-what-can-you-conclude">B3. What can you conclude?</h2>
+<p><strong>Q6.</strong> Is there evidence that extroversion moderates the anxiety–depression link in this sample? Was your guess from A4 right?</p>
+<p><strong>Q7.</strong> A classmate writes:</p>
+<blockquote class="blockquote">
+<p><em>“The interaction was marginally significant (p = .097), so we probed it: anxiety predicted depression more strongly at high extroversion.”</em></p>
+</blockquote>
+<p>What’s wrong with this? Name at least two problems.</p>
+<blockquote class="blockquote">
+<p><strong>STOP.</strong> Back to the slides.</p>
+</blockquote>
 <hr>
 </section>
 </section>
-<section id="part-c-together-10-min" class="level1">
-<h1>Part C — Together (10 min)</h1>
-<section id="c1.-write-the-memo" class="level2">
-<h2 class="anchored" data-anchor-id="c1.-write-the-memo">C1. Write the memo</h2>
-<p>The district asked: <strong>which instructional group worked best?</strong></p>
-</section>
-<section id="questions-for-part-c" class="level2">
-<h2 class="anchored" data-anchor-id="questions-for-part-c">❓Questions for Part C</h2>
+<section id="part-c-your-sample-someone-elses-file-25-min" class="level1">
+<h1>Part C — Your sample, someone else’s file (25 min)</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is only if we have time.</p>
+</div>
+</div>
+<p>Same population, same code. The only thing that changes is <strong>which 400 people</strong> you draw.</p>
+<section id="c1.-your-own-sample" class="level2">
+<h2 class="anchored" data-anchor-id="c1.-your-own-sample">C1. Your own sample</h2>
 <ol type="1">
-<li>Answer the district’s question in three sentences, using numbers. You are allowed to tell them the question cannot be answered — but you have to say <em>why</em>.</li>
-<li>Part A’s analysis was not wrong. Every number in it was correct. What was wrong with it?</li>
-<li>Suppose the groups had been assigned <strong>at random</strong>. Would you still control for pre-test score? What would it buy you, and what would change about your interpretation?</li>
-<li>Yellow started at 16.8 and finished at 14.5. Every group’s scores went <strong>down</strong> from pre to post. Does that change what you would tell the district? What would you need to know to interpret it?</li>
+<li>Pick a whole number between 1 and 1000. <strong>Write it on the board</strong> so no two pairs use the same one.</li>
+<li>Change <code>my_seed</code> in your setup chunk. Pick any number you want.</li>
+<li><strong>Click Render.</strong> Don’t just run chunks. Rendering starts R fresh, which is the whole point.</li>
+</ol>
+<p><strong>Q8.</strong> From your rendered document:</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td>Seed</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><em>n</em> after cleaning</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Interaction <em>b</em> (centered model)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Interaction <em>p</em></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="c2.-write-it-up" class="level2">
+<h2 class="anchored" data-anchor-id="c2.-write-it-up">C2. Write it up</h2>
+<p><strong>Q9.</strong> Two or three sentences, Results-section style: the interaction test and your conclusion, using only what <strong>you</strong> found with <strong>your</strong> seed. Put this paragraph in your document.</p>
+</section>
+<section id="c3.-submit" class="level2">
+<h2 class="anchored" data-anchor-id="c3.-submit">C3. Submit</h2>
+<p>Check one more time that your name is nowhere in the file. Upload your <strong><code>.qmd</code></strong> (not the rendered output) to the myCourses folder <strong>Reproducibility Swap</strong>.</p>
+<blockquote class="blockquote">
+<p><strong>WAIT</strong> for the swapped files to be posted.</p>
+</blockquote>
+</section>
+<section id="c4.-reproduce-someone-elses-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="c4.-reproduce-someone-elses-analysis">C4. Reproduce someone else’s analysis</h2>
+<ol type="1">
+<li>Download the file you were assigned (for example, <code>R-07.qmd</code>) into your project.</li>
+<li><strong>Render it without changing anything.</strong></li>
+<li>If it fails, find the <strong>smallest</strong> fix that makes it run, and write down what it was.</li>
+</ol>
+<p><strong>Q10.</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 92%">
+<col style="width: 7%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>File you received</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Did it render on the first try?</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>If not: what broke, and what was the smallest fix?</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Their seed</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Do your rendered numbers match their Q8 table and Q9 paragraph?</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="c5.-the-class-tally" class="level2">
+<h2 class="anchored" data-anchor-id="c5.-the-class-tally">C5. The class tally</h2>
+<p><strong>Q11.</strong> Add the file you reproduced to the board: their seed, their interaction <em>p</em>, and whether it was below .05.</p>
+</section>
+<section id="questions-for-the-debrief" class="level2">
+<h2 class="anchored" data-anchor-id="questions-for-the-debrief">❓ Questions for the debrief</h2>
+<ol type="1">
+<li>How many files rendered on the first try? What broke most often?</li>
+<li>When the numbers didn’t match the paragraph, what was missing from the paragraph?</li>
+<li>Some pairs got <em>p</em> &lt; .05. Did they do anything wrong?</li>
+<li>Imagine every pair’s result was a separate published study, and only the significant ones got published. What would that literature say about extroversion?</li>
 </ol>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -954,8 +1176,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Controlling for a covariate is not a technique for rescuing a result — it is a question about what comparison you meant to make. “Which group ended up highest?” and “which group gained the most, given where students started?” are different questions with different answers, and only one of them is about the program.</p>
-<p>When assignment is not random, the second question is usually the one worth asking, and the first one is a description of who got sorted where.</p>
+<p><strong>Reproducible</strong> means same data and same code give the same numbers. That’s what rendering someone else’s file tested.</p>
+<p><strong>Robust</strong> means different defensible choices (dropping the TIPI 0s or not, centering or not) lead to the same conclusion. That’s what checking their numbers against their paragraph tested.</p>
+<p><strong>Replicable</strong> means a new sample gives the same conclusion. That’s what the tally tested. A single study with <em>n</em> ≈ 340 can come out either way on a small effect, which is why one significant result isn’t the end of the story, and one null result isn’t either.</p>
 </div>
 </div>
 <hr>
@@ -965,7 +1188,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Exit ticket ✅</h1>
 <ol type="1">
 <li>What does an interaction let you say that two separate models cannot?</li>
-<li>Why can’t you interpret the main effect of a group once an interaction is in the model?</li>
+<li>Why can’t you interpret the main effect of anxiety on its own once an interaction is in the model?</li>
 <li>One thing that is still muddy → journal.</li>
 </ol>
 
@@ -1394,7 +1617,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/class-activities/wk9_interactions.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dharaden/psyc640/edit/main/class-activities/wk9_reproducibility.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dharaden/psyc640/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with ☕ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

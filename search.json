@@ -1470,74 +1470,102 @@
     "text": "Working with R-Studio\nR-Studio is just like a kitchen 🧑‍🍳\nThe Environment pane is the pantry/fridge\nThe Console is like the oven/stove\nThe Markdown document is the recipe\nThe bottom right sometimes acts as the little window on the oven where you can see things baking"
   },
   {
-    "objectID": "class-activities/wk9_interactions.html",
-    "href": "class-activities/wk9_interactions.html",
-    "title": "Week 9 Exercises - Did the Program Work?",
+    "objectID": "class-activities/wk9_reproducibility.html",
+    "href": "class-activities/wk9_reproducibility.html",
+    "title": "Week 9 Exercises - Is It Really There?",
     "section": "",
-    "text": "NoteOverview\n\n\n\nAbout 45 minutes · Pairs or small groups · 🧰 R (tidyverse, rio, here, janitor, broom) or JAMOVI\nEvery step is given both ways.\n\nPart A: Follow along (~15 min): which instructional group did best?\nPart B: On your own (~20 min): control for where students started, and watch the finding disappear.\nPart C: Together (~10 min): what you would actually tell the school.\n\nBy the end you should be able to:\n\nFit a model with a 3-level factor and a continuous predictor together\nExplain why a significant group difference can be a baseline difference in disguise\nTest an interaction between a factor and a covariate, and report a null one properly\nTell the difference between “the program didn’t work” and “we can’t tell whether it worked”"
+    "text": "NoteOverview\n\n\n\nAbout 55 minutes, split across today’s lecture · Pairs · 🧰 R (tidyverse, rio, here, janitor, datawizard)\nDo one part, then we go back to the slides.\n\nPart A: Build it and look (~15 min): clean real survey data, fit the additive model, and guess whether the lines are parallel.\nPart B: Test it (~15 min): fit the interaction, center, and decide what you can conclude.\nPart C: Your sample, someone else’s file (~25 min): draw your own sample, render, then try to reproduce another pair’s analysis.\n\nBy the end you should be able to:\n\nFit and interpret an interaction between two continuous predictors\nExplain what centering changes in an interaction model, and what it doesn’t\nReport a null interaction without “marginally significant” or probing it anyway\nTell the difference between a result that is reproducible (same data, same code), robust (different defensible choices) and replicable (a new sample)"
   },
   {
-    "objectID": "class-activities/wk9_interactions.html#a1.-describe-first",
-    "href": "class-activities/wk9_interactions.html#a1.-describe-first",
-    "title": "Week 9 Exercises - Did the Program Work?",
-    "section": "A1. Describe first",
-    "text": "A1. Describe first\nreading %&gt;%\n  group_by(group) %&gt;%\n  summarise(n = n(),\n            pre_m  = mean(pre_score),  pre_sd  = sd(pre_score),\n            post_m = mean(post_score), post_sd = sd(post_score))\n\n\n\n\n\n\nNote🖱️ In JAMOVI\n\n\n\nExploration → Descriptives: Pre-Score and Post-Score → Variables, Group → Split by\n\n\n\n\n\n\n\n\nTipWhat you get\n\n\n\n\n\n\nGroup\nn\npre M\npost M\n\n\n\n\nGreen\n10\n14.3\n11.5\n\n\nOrange\n10\n15.5\n13.0\n\n\nYellow\n10\n16.8\n14.5\n\n\n\n\n\nQ1. Before any test: write down what you notice about those two columns side by side."
+    "objectID": "class-activities/wk9_reproducibility.html#a1.-validity-check",
+    "href": "class-activities/wk9_reproducibility.html#a1.-validity-check",
+    "title": "Week 9 Exercises - Is It Really There?",
+    "section": "A1. Validity check",
+    "text": "A1. Validity check\nAnyone who says they know the definition of a word that doesn’t exist probably isn’t reading carefully. Remove them.\nvalid &lt;- dass %&gt;%\n  filter(vcl6 == 0, vcl9 == 0, vcl12 == 0)\n\n## OR\n\nvalid &lt;- dass %&gt;% \n  mutate(\n    check = vcl6 + vcl9 + vcl12\n  ) %&gt;% \n  fitler(check &lt; 1)\n\nnrow(valid)\n\n\n\n\n\n\nTipCheck yourself\n\n\n\n400 → 346. 54 people checked at least one fake word."
   },
   {
-    "objectID": "class-activities/wk9_interactions.html#a2.-the-question-the-district-asked",
-    "href": "class-activities/wk9_interactions.html#a2.-the-question-the-district-asked",
-    "title": "Week 9 Exercises - Did the Program Work?",
-    "section": "A2. The question the district asked",
-    "text": "A2. The question the district asked\nmod_group &lt;- lm(post_score ~ group, data = reading)\n\ntidy(mod_group)\nanova(mod_group)\nglance(mod_group) %&gt;% select(r.squared, adj.r.squared)\n\n\n\n\n\n\nNote🖱️ In JAMOVI\n\n\n\nRegression → Linear Regression: Post-Score → Dependent Variable, Group → Factors. Tick Model Fit → R², Adjusted R², Overall model test, and Model Coefficients → Omnibus test (ANOVA test).\n\n\n\n\n\n\n\n\nTipWhat you get\n\n\n\n\n\n\nTerm\nb\np\n\n\n\n\nIntercept (Green)\n11.50\n&lt; .001\n\n\nOrange – Green\n+1.50\n.273\n\n\nYellow – Green\n+3.00\n.034\n\n\n\nOmnibus: F(2, 27) = 2.50, p = .101. R² = .156\n\n\nQ2. The Yellow–Green contrast is significant (p = .034) but the omnibus test is not (p = .101). Which one would you report, and why? (Think back to Week 6 and familywise error.)\nQ3. Write the APA sentence for the omnibus test as it stands."
+    "objectID": "class-activities/wk9_reproducibility.html#a2.-score-the-scales",
+    "href": "class-activities/wk9_reproducibility.html#a2.-score-the-scales",
+    "title": "Week 9 Exercises - Is It Really There?",
+    "section": "A2. Score the scales",
+    "text": "A2. Score the scales\n\nDepression: items 3, 5, 10, 13, 16, 17, 21, 24, 26, 31, 34, 37, 38, 42\nAnxiety: items 2, 4, 7, 9, 15, 19, 20, 23, 25, 28, 30, 36, 40, 41\nExtroversion: the mean of tipi1 (“Extroverted, enthusiastic”) and reverse-scored tipi6 (“Reserved, quiet”). On a 1–7 scale, the reverse of x is 8 − x.\n\nBefore you compute extroversion, look at what’s actually in those two columns.\nvalid %&gt;% count(tipi1)\nvalid %&gt;% count(tipi6)\nQ1. The scale runs 1–7. What are the 0s, and what should you do with them?\n\n\n\n\n\n\nTipShow the scoring code\n\n\n\n\n\nA 0 means the person skipped the item. It is missing, not “very low.” Recode it to NA before computing anything, then drop anyone without an extroversion score.\nUse the row_sums() function from datawizard (https://easystats.github.io/datawizard/reference/row_means.html)\nfinal &lt;- valid %&gt;%\n  mutate(\n    dass_dep = row_sums(., select = c(q3a, q5a, q10a, q13a, q16a, q17a, q21a,\n                                      q24a, q26a, q31a, q34a, q37a, q38a, q42a),\n                        min_valid = 0.8),\n    dass_anx = row_sums(., select = c(q2a, q4a, q7a, q9a, q15a, q19a, q20a,\n                                      q23a, q25a, q28a, q30a, q36a, q40a, q41a),\n                        min_valid = 0.8),\n    tipi1 = na_if(tipi1, 0),\n    tipi6 = na_if(tipi6, 0),\n    extra = (tipi1 + (8 - tipi6)) / 2\n  ) %&gt;%\n  filter(!is.na(extra))\n\n\n\n\n\n\n\n\n\nTipCheck yourself\n\n\n\nn = 337. If you have 346, the 0s are still in, and some people have an extroversion score of 0.5 on a 1–7 scale.\n\n\n\nVariable\nM\nSD\nRange\n\n\n\n\ndass_dep\n33.90\n12.46\n14 – 56\n\n\ndass_anx\n29.26\n10.30\n14 – 56\n\n\nextra\n3.44\n1.53\n1 – 7\n\n\n\n\n\nQ2. Each DASS score runs 14–56, but the published DASS norms run 0–42. Why? Does it matter for a regression? Does it matter for anything else?"
   },
   {
-    "objectID": "class-activities/wk9_interactions.html#b1.-the-variable-we-have-been-sitting-on",
-    "href": "class-activities/wk9_interactions.html#b1.-the-variable-we-have-been-sitting-on",
-    "title": "Week 9 Exercises - Did the Program Work?",
-    "section": "B1. The variable we have been sitting on",
-    "text": "B1. The variable we have been sitting on\nStudents were not randomly assigned — they were placed into groups. Check whether the groups started in the same place.\nanova(lm(pre_score ~ group, data = reading))\nQ4. F(2, 27) = 2.77, p = .080. Strictly, that is not significant. Is “not significant” a good enough reason to ignore it here? Look back at the pre-test means in A1 before you answer."
+    "objectID": "class-activities/wk9_reproducibility.html#a3.-the-model-you-already-know",
+    "href": "class-activities/wk9_reproducibility.html#a3.-the-model-you-already-know",
+    "title": "Week 9 Exercises - Is It Really There?",
+    "section": "A3. The model you already know",
+    "text": "A3. The model you already know\nmod_add &lt;- lm(dass_dep ~ dass_anx + extra, data = final)\nsummary(mod_add)\n\n\n\n\n\n\nNote🖱️ In JAMOVI\n\n\n\nRegression → Linear Regression: depression → Dependent Variable, anxiety and extroversion → Covariates. Tick Model Fit → R².\n\n\n\n\n\n\n\n\nTipWhat you get\n\n\n\n\n\n\nTerm\nb\np\n\n\n\n\nIntercept\n16.27\n&lt; .001\n\n\ndass_anx\n0.778\n&lt; .001\n\n\nextra\n−1.492\n&lt; .001\n\n\n\nR² = .496\n\n\nQ3. Interpret the anxiety slope in one sentence, with its holding-constant clause."
   },
   {
-    "objectID": "class-activities/wk9_interactions.html#b2.-pre-test-predicts-post-test",
-    "href": "class-activities/wk9_interactions.html#b2.-pre-test-predicts-post-test",
-    "title": "Week 9 Exercises - Did the Program Work?",
-    "section": "B2. Pre-test predicts post-test",
-    "text": "B2. Pre-test predicts post-test\nmod_pre &lt;- lm(post_score ~ pre_score, data = reading)\ntidy(mod_pre)\nglance(mod_pre) %&gt;% select(r.squared, adj.r.squared, sigma)\n\n\n\n\n\n\nNote🖱️ In JAMOVI\n\n\n\nPost-Score → Dependent Variable, Pre-Score → Covariates (remove Group for now).\n\n\n\n\n\n\n\n\nTipCheck yourself\n\n\n\nb0 = −4.95, b1 = 1.156, R² = .851, RSE = 1.240\n\n\nQ5. Interpret the slope. Then interpret R² = .851 in one sentence — and say what that single number does to the credibility of Part A’s analysis."
+    "objectID": "class-activities/wk9_reproducibility.html#a4.-look-before-you-test",
+    "href": "class-activities/wk9_reproducibility.html#a4.-look-before-you-test",
+    "title": "Week 9 Exercises - Is It Really There?",
+    "section": "A4. Look before you test",
+    "text": "A4. Look before you test\nfinal %&gt;%\n  mutate(ex_grp = if_else(extra &gt;= median(extra),\n                          \"Higher extroversion\", \"Lower extroversion\")) %&gt;%\n  ggplot(aes(x = dass_anx, y = dass_dep, color = ex_grp)) +\n  geom_point(alpha = .4) +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  labs(x = \"Anxiety\", y = \"Depression\", color = NULL)\n\n\n\n\n\n\nTipWhat you get\n\n\n\nAnxiety slope of 0.69 for lower extroversion (n = 155) and 0.88 for higher extroversion (n = 182).\n\n\nQ4. Are the lines parallel? Write down a guess now: will the interaction be significant?\n\nSTOP. Back to the slides."
   },
   {
-    "objectID": "class-activities/wk9_interactions.html#b3.-both-together",
-    "href": "class-activities/wk9_interactions.html#b3.-both-together",
-    "title": "Week 9 Exercises - Did the Program Work?",
-    "section": "B3. Both together",
-    "text": "B3. Both together\nmod_both &lt;- lm(post_score ~ pre_score + group, data = reading)\ntidy(mod_both)\nglance(mod_both) %&gt;% select(r.squared, adj.r.squared, sigma)\n\nanova(mod_pre, mod_both)\n\n\n\n\n\n\nNote🖱️ In JAMOVI\n\n\n\nPre-Score → Covariates, Group → Factors. Then use Model Builder: Block 1 = Pre-Score, Block 2 = Group, and open Model Comparisons.\n\n\n\n\n\n\n\n\nTipWhat you get\n\n\n\n\n\n\nTerm\nb\np\n\n\n\n\nIntercept\n−4.895\n.004\n\n\npre_score\n1.147\n&lt; .001\n\n\nOrange – Green\n+0.124\n.834\n\n\nYellow – Green\n+0.134\n.834\n\n\n\nR² = .8509, adj. R² = .8337 · ΔR² = .0003, F(2, 26) = 0.03, p = .971\n\n\nQ6. The Yellow advantage went from +3.00 to +0.13. Explain in plain English what happened to it.\nQ7. Compare adjusted R² for post ~ pre (.8453) and post ~ pre + group (.8337). What does that comparison say about keeping group in the model?\nQ8. Write the APA sentence reporting the group effect after controlling for pre-test."
+    "objectID": "class-activities/wk9_reproducibility.html#b1.-the-interaction",
+    "href": "class-activities/wk9_reproducibility.html#b1.-the-interaction",
+    "title": "Week 9 Exercises - Is It Really There?",
+    "section": "B1. The interaction",
+    "text": "B1. The interaction\nmod_int &lt;- lm(dass_dep ~ dass_anx * extra, data = final)\nsummary(mod_int)\n\nanova(mod_add, mod_int)\n\n\n\n\n\n\nNote🖱️ In JAMOVI\n\n\n\nIn Model Builder, Ctrl/Cmd-click anxiety and extroversion, then use the arrow dropdown ▾ → Interaction. To compare models, put the main effects in Block 1 and the interaction in Block 2, and open Model Comparisons.\n\n\n\n\n\n\n\n\nTipWhat you get\n\n\n\n\n\n\nTerm\nb\np\n\n\n\n\nIntercept\n21.30\n&lt; .001\n\n\ndass_anx\n0.611\n&lt; .001\n\n\nextra\n−2.895\n.001\n\n\ndass_anx:extra\n0.048\n.097\n\n\n\nΔR² = .004, F(1, 333) = 2.76, p = .097"
   },
   {
-    "objectID": "class-activities/wk9_interactions.html#b4.-test-the-interaction",
-    "href": "class-activities/wk9_interactions.html#b4.-test-the-interaction",
-    "title": "Week 9 Exercises - Did the Program Work?",
-    "section": "B4. Test the interaction",
-    "text": "B4. Test the interaction\nMaybe the program worked differently depending on how strong a reader you already were.\nmod_int &lt;- lm(post_score ~ pre_score * group, data = reading)\ntidy(mod_int)\n\nanova(mod_both, mod_int)\n\n\n\n\n\n\nNote🖱️ In JAMOVI\n\n\n\nIn Model Builder, Ctrl/Cmd-click Pre-Score and Group, then use the arrow dropdown ▾ → Interaction. Add it as Block 3.\n\n\n\n\n\n\n\n\nTipWhat you get\n\n\n\nBoth interaction terms are nowhere near significant (p = .82 and p = .97).\nΔR² = .0007, F(2, 24) = 0.05, p = .951. Adjusted R² falls from .8337 to .8206.\n\n\nQ9. Report the interaction test in one APA sentence, and say which model you will interpret.\nQ10. With 10 students per group, how much power do you have to detect a difference in slopes? What does that do to your confidence in the phrase “there is no interaction”?"
+    "objectID": "class-activities/wk9_reproducibility.html#b2.-center",
+    "href": "class-activities/wk9_reproducibility.html#b2.-center",
+    "title": "Week 9 Exercises - Is It Really There?",
+    "section": "B2. Center",
+    "text": "B2. Center\nfinal &lt;- final %&gt;%\n  mutate(anx_c   = dass_anx - mean(dass_anx),\n         extra_c = extra - mean(extra))\n\nmod_int_c &lt;- lm(dass_dep ~ anx_c * extra_c, data = final)\nsummary(mod_int_c)\n\n\n\n\n\n\nNote🖱️ In JAMOVI\n\n\n\nData → Compute: anx_c = anxiety - VMEAN(anxiety) and extra_c = extroversion - VMEAN(extroversion). Refit with the centered variables.\n\n\nQ5. Fill in the table.\n\n\n\n\nUncentered\nCentered\n\n\n\n\nextroversion coefficient\n\n\n\n\ninteraction coefficient\n\n\n\n\ninteraction p\n\n\n\n\nR²\n\n\n\n\n\nThe extroversion coefficient changed. What does each version describe? (Hint: what is the lowest possible anxiety score in this file?)\n\n\n\n\n\n\nTipCheck yourself\n\n\n\n\n\nCentered: extroversion −1.490, interaction 0.048, p = .097, R² = .500. Only the lower-order terms moved."
   },
   {
-    "objectID": "class-activities/wk9_interactions.html#b5.-bonus-the-most-null-result-you-will-ever-see",
-    "href": "class-activities/wk9_interactions.html#b5.-bonus-the-most-null-result-you-will-ever-see",
-    "title": "Week 9 Exercises - Did the Program Work?",
-    "section": "B5. Bonus: the most null result you will ever see",
-    "text": "B5. Bonus: the most null result you will ever see\nlm(post_score ~ pre_score + school, data = reading) %&gt;% tidy()\nQ11. The school coefficient is 0.000 with p = 1.000. Is this a bug? What do you think happened when this dataset was put together?"
+    "objectID": "class-activities/wk9_reproducibility.html#b3.-what-can-you-conclude",
+    "href": "class-activities/wk9_reproducibility.html#b3.-what-can-you-conclude",
+    "title": "Week 9 Exercises - Is It Really There?",
+    "section": "B3. What can you conclude?",
+    "text": "B3. What can you conclude?\nQ6. Is there evidence that extroversion moderates the anxiety–depression link in this sample? Was your guess from A4 right?\nQ7. A classmate writes:\n\n“The interaction was marginally significant (p = .097), so we probed it: anxiety predicted depression more strongly at high extroversion.”\n\nWhat’s wrong with this? Name at least two problems.\n\nSTOP. Back to the slides."
   },
   {
-    "objectID": "class-activities/wk9_interactions.html#c1.-write-the-memo",
-    "href": "class-activities/wk9_interactions.html#c1.-write-the-memo",
-    "title": "Week 9 Exercises - Did the Program Work?",
-    "section": "C1. Write the memo",
-    "text": "C1. Write the memo\nThe district asked: which instructional group worked best?"
+    "objectID": "class-activities/wk9_reproducibility.html#c1.-your-own-sample",
+    "href": "class-activities/wk9_reproducibility.html#c1.-your-own-sample",
+    "title": "Week 9 Exercises - Is It Really There?",
+    "section": "C1. Your own sample",
+    "text": "C1. Your own sample\n\nPick a whole number between 1 and 1000. Write it on the board so no two pairs use the same one.\nChange my_seed in your setup chunk. Pick any number you want.\nClick Render. Don’t just run chunks. Rendering starts R fresh, which is the whole point.\n\nQ8. From your rendered document:\n\n\n\nSeed\n\n\n\nn after cleaning\n\n\n\nInteraction b (centered model)\n\n\n\nInteraction p"
   },
   {
-    "objectID": "class-activities/wk9_interactions.html#questions-for-part-c",
-    "href": "class-activities/wk9_interactions.html#questions-for-part-c",
-    "title": "Week 9 Exercises - Did the Program Work?",
-    "section": "❓Questions for Part C",
-    "text": "❓Questions for Part C\n\nAnswer the district’s question in three sentences, using numbers. You are allowed to tell them the question cannot be answered — but you have to say why.\nPart A’s analysis was not wrong. Every number in it was correct. What was wrong with it?\nSuppose the groups had been assigned at random. Would you still control for pre-test score? What would it buy you, and what would change about your interpretation?\nYellow started at 16.8 and finished at 14.5. Every group’s scores went down from pre to post. Does that change what you would tell the district? What would you need to know to interpret it?\n\n\n\n\n\n\n\nNoteThe point of Part C\n\n\n\nControlling for a covariate is not a technique for rescuing a result — it is a question about what comparison you meant to make. “Which group ended up highest?” and “which group gained the most, given where students started?” are different questions with different answers, and only one of them is about the program.\nWhen assignment is not random, the second question is usually the one worth asking, and the first one is a description of who got sorted where."
+    "objectID": "class-activities/wk9_reproducibility.html#c2.-write-it-up",
+    "href": "class-activities/wk9_reproducibility.html#c2.-write-it-up",
+    "title": "Week 9 Exercises - Is It Really There?",
+    "section": "C2. Write it up",
+    "text": "C2. Write it up\nQ9. Two or three sentences, Results-section style: the interaction test and your conclusion, using only what you found with your seed. Put this paragraph in your document."
+  },
+  {
+    "objectID": "class-activities/wk9_reproducibility.html#c3.-submit",
+    "href": "class-activities/wk9_reproducibility.html#c3.-submit",
+    "title": "Week 9 Exercises - Is It Really There?",
+    "section": "C3. Submit",
+    "text": "C3. Submit\nCheck one more time that your name is nowhere in the file. Upload your .qmd (not the rendered output) to the myCourses folder Reproducibility Swap.\n\nWAIT for the swapped files to be posted."
+  },
+  {
+    "objectID": "class-activities/wk9_reproducibility.html#c4.-reproduce-someone-elses-analysis",
+    "href": "class-activities/wk9_reproducibility.html#c4.-reproduce-someone-elses-analysis",
+    "title": "Week 9 Exercises - Is It Really There?",
+    "section": "C4. Reproduce someone else’s analysis",
+    "text": "C4. Reproduce someone else’s analysis\n\nDownload the file you were assigned (for example, R-07.qmd) into your project.\nRender it without changing anything.\nIf it fails, find the smallest fix that makes it run, and write down what it was.\n\nQ10.\n\n\n\n\n\n\n\nFile you received\n\n\n\nDid it render on the first try?\n\n\n\nIf not: what broke, and what was the smallest fix?\n\n\n\nTheir seed\n\n\n\nDo your rendered numbers match their Q8 table and Q9 paragraph?"
+  },
+  {
+    "objectID": "class-activities/wk9_reproducibility.html#c5.-the-class-tally",
+    "href": "class-activities/wk9_reproducibility.html#c5.-the-class-tally",
+    "title": "Week 9 Exercises - Is It Really There?",
+    "section": "C5. The class tally",
+    "text": "C5. The class tally\nQ11. Add the file you reproduced to the board: their seed, their interaction p, and whether it was below .05."
+  },
+  {
+    "objectID": "class-activities/wk9_reproducibility.html#questions-for-the-debrief",
+    "href": "class-activities/wk9_reproducibility.html#questions-for-the-debrief",
+    "title": "Week 9 Exercises - Is It Really There?",
+    "section": "❓ Questions for the debrief",
+    "text": "❓ Questions for the debrief\n\nHow many files rendered on the first try? What broke most often?\nWhen the numbers didn’t match the paragraph, what was missing from the paragraph?\nSome pairs got p &lt; .05. Did they do anything wrong?\nImagine every pair’s result was a separate published study, and only the significant ones got published. What would that literature say about extroversion?\n\n\n\n\n\n\n\nNoteThe point of Part C\n\n\n\nReproducible means same data and same code give the same numbers. That’s what rendering someone else’s file tested.\nRobust means different defensible choices (dropping the TIPI 0s or not, centering or not) lead to the same conclusion. That’s what checking their numbers against their paragraph tested.\nReplicable means a new sample gives the same conclusion. That’s what the tally tested. A single study with n ≈ 340 can come out either way on a small effect, which is why one significant result isn’t the end of the story, and one null result isn’t either."
   },
   {
     "objectID": "class-activities/wk7_fit.html",
@@ -2742,7 +2770,7 @@
     "href": "weeks/week-9.html",
     "title": "Week 9 - Multiple Regression II",
     "section": "",
-    "text": "Week 6 taught you that a group is just a predictor. Week 8 taught you that a predictor’s coefficient depends on what else is in the model. This week those two facts meet in a single regression: one categorical predictor, one continuous predictor, and a question neither week could ask.\nThe additive model — group plus covariate — draws parallel lines: same slope for every group, different heights. That is a strong assumption, and most people never notice they made it. An interaction relaxes it, and lets the slope itself differ from group to group.\n\n\n\n\n\n\nNoteThe sentence to watch for this week\n\n\n\nOnce an interaction is in the model, there is no such thing as “the effect of X.” There is only the effect of X at a particular value of the other variable. That is why we report simple slopes, and why centering stops being cosmetic.\n\n\nWe work two examples deliberately: one where the interaction is real and changes the story (tutoring helps the students who study least), and one where we test for an interaction, do not find it, and report the additive model like adults. Both are correct outcomes. Only one of them usually gets written up honestly.\n\n\n\n\n\n\nImportantIn-class check today\n\n\n\nIn-Class Check 3 runs at the start of class — about 20 minutes, open notes, open readings, open past labs. It covers Weeks 7 and 8: R², adjusted R², the residual standard error, the nested F test, and interpreting a coefficient with its holding constant clause.\n\n\n\n\n\n📖Chapter 14.3 - ST\n📖Chapter 8.1 - MSR\n📖Chapter 10 - ROS — the interaction sections\n\n\n\n\n💻 Multiple Regression II\n💻 Multiple Regression II - JAMOVI\n\n\n\n\n\n\nNote\n\n\n\nThe interaction menu is the one thing in JAMOVI that is genuinely hard to find the first time — it lives behind the arrow dropdown ▾ in Model Builder, not in the variable boxes. The JAMOVI deck walks through it twice.\n\n\n\n\n\nLecture: Study, Tutoring & Grades (.csv) · Sleep, Parenting & Anxiety (.csv)\nIn-class activity: Reading Program Data (.xlsx)\n\n\n\n📓Did the Program Work?\n\n\n\n📋Midterm Project — due Tuesday 10/27 at 11:59pm\n\n\n\n\n\n\nWarningFive days\n\n\n\nThe midterm is due Tuesday. No lab is due that week, which means there is nothing competing for your time and nothing to blame if it is not done. If Part 6 is not drafted by this weekend, it will not be good by Tuesday.\n\n\n📋Lab 9 - Groups, Slopes & Interactions — due Tuesday 11/3 at 11:59pm, posted today\n\n\n\n\n\n\nNote\n\n\n\nLab 9 is posted now so you can see what is coming, but do the midterm first. The lab assumes everything from today and nothing from after today.\n\n\n📖Chapter 11 - ROS — assumptions and diagnostics\n📖Chapter 12.1 - ST\n\n\n\n\n\n\nNoteWhere this is heading\n\n\n\nFor four weeks we have been glancing at residual plots and saying “nothing obviously wrong.” Next week each of those glances becomes a named assumption with a diagnostic, a test, and something to do about it when it fails.\n\n\n\n\nBack to course schedule ⏎",
+    "text": "Week 6 taught you that a group is just a predictor. Week 8 taught you that a predictor’s coefficient depends on what else is in the model. This week those two facts meet in a single regression: one categorical predictor, one continuous predictor, and a question neither week could ask.\nThe additive model — group plus covariate — draws parallel lines: same slope for every group, different heights. That is a strong assumption, and most people never notice they made it. An interaction relaxes it, and lets the slope itself differ from group to group.\n\n\n\n\n\n\nNoteThe sentence to watch for this week\n\n\n\nOnce an interaction is in the model, there is no such thing as “the effect of X.” There is only the effect of X at a particular value of the other variable. That is why we report simple slopes, and why centering stops being cosmetic.\n\n\nWe work two examples deliberately: one where the interaction is real and changes the story (tutoring helps the students who study least), and one where we test for an interaction, do not find it, and report the additive model like adults. Both are correct outcomes. Only one of them usually gets written up honestly.\n\n\n\n\n\n\nImportantIn-class check today\n\n\n\nIn-Class Check 3 runs at the start of class — about 20 minutes, open notes, open readings, open past labs. It covers Weeks 7 and 8: R², adjusted R², the residual standard error, the nested F test, and interpreting a coefficient with its holding constant clause.\n\n\n\n\n\n📖Chapter 14.3 - ST\n📖Chapter 8.1 - MSR\n📖Chapter 10 - ROS — the interaction sections\n\n\n\n\n💻 Multiple Regression II\n💻 Multiple Regression II - JAMOVI\n\n\n\n\n\n\nNote\n\n\n\nThe interaction menu is the one thing in JAMOVI that is genuinely hard to find the first time — it lives behind the arrow dropdown ▾ in Model Builder, not in the variable boxes. The JAMOVI deck walks through it twice.\n\n\n\n\n\nLecture: Study, Tutoring & Grades (.csv) · Sleep, Parenting & Anxiety (.csv)\nIn-class activity: &lt;DASS survey data (.csv, 20 MB)\n\n\n\n📓Is It Really There?\n\n\n\n📋Midterm Project — due Tuesday 10/27 at 11:59pm\n\n\n\n\n\n\nWarningFive days\n\n\n\nThe midterm is due Tuesday. No lab is due that week, which means there is nothing competing for your time and nothing to blame if it is not done. If Part 6 is not drafted by this weekend, it will not be good by Tuesday.\n\n\n📋Lab 9 - Groups, Slopes & Interactions — due Tuesday 11/3 at 11:59pm, posted this week\n\n\n\n\n\n\nNote\n\n\n\nLab 9 is posted now so you can see what is coming, but do the midterm first. The lab assumes everything from today and nothing from after today.\n\n\n📖Chapter 11 - ROS — assumptions and diagnostics\n📖Chapter 12.1 - ST\n\n\n\n\n\n\nNoteWhere this is heading\n\n\n\nFor four weeks we have been glancing at residual plots and saying “nothing obviously wrong.” Next week each of those glances becomes a named assumption with a diagnostic, a test, and something to do about it when it fails.\n\n\n\n\nBack to course schedule ⏎",
     "crumbs": [
       "Weekly Materials",
       "Week 9 - Multiple Reg. II"
@@ -2775,7 +2803,7 @@
     "href": "weeks/week-9.html#data",
     "title": "Week 9 - Multiple Regression II",
     "section": "",
-    "text": "Lecture: Study, Tutoring & Grades (.csv) · Sleep, Parenting & Anxiety (.csv)\nIn-class activity: Reading Program Data (.xlsx)",
+    "text": "Lecture: Study, Tutoring & Grades (.csv) · Sleep, Parenting & Anxiety (.csv)\nIn-class activity: &lt;DASS survey data (.csv, 20 MB)",
     "crumbs": [
       "Weekly Materials",
       "Week 9 - Multiple Reg. II"
@@ -2786,7 +2814,7 @@
     "href": "weeks/week-9.html#in-class-activity",
     "title": "Week 9 - Multiple Regression II",
     "section": "",
-    "text": "📓Did the Program Work?",
+    "text": "📓Is It Really There?",
     "crumbs": [
       "Weekly Materials",
       "Week 9 - Multiple Reg. II"
@@ -2797,7 +2825,7 @@
     "href": "weeks/week-9.html#for-next-time",
     "title": "Week 9 - Multiple Regression II",
     "section": "",
-    "text": "📋Midterm Project — due Tuesday 10/27 at 11:59pm\n\n\n\n\n\n\nWarningFive days\n\n\n\nThe midterm is due Tuesday. No lab is due that week, which means there is nothing competing for your time and nothing to blame if it is not done. If Part 6 is not drafted by this weekend, it will not be good by Tuesday.\n\n\n📋Lab 9 - Groups, Slopes & Interactions — due Tuesday 11/3 at 11:59pm, posted today\n\n\n\n\n\n\nNote\n\n\n\nLab 9 is posted now so you can see what is coming, but do the midterm first. The lab assumes everything from today and nothing from after today.\n\n\n📖Chapter 11 - ROS — assumptions and diagnostics\n📖Chapter 12.1 - ST\n\n\n\n\n\n\nNoteWhere this is heading\n\n\n\nFor four weeks we have been glancing at residual plots and saying “nothing obviously wrong.” Next week each of those glances becomes a named assumption with a diagnostic, a test, and something to do about it when it fails.\n\n\n\n\nBack to course schedule ⏎",
+    "text": "📋Midterm Project — due Tuesday 10/27 at 11:59pm\n\n\n\n\n\n\nWarningFive days\n\n\n\nThe midterm is due Tuesday. No lab is due that week, which means there is nothing competing for your time and nothing to blame if it is not done. If Part 6 is not drafted by this weekend, it will not be good by Tuesday.\n\n\n📋Lab 9 - Groups, Slopes & Interactions — due Tuesday 11/3 at 11:59pm, posted this week\n\n\n\n\n\n\nNote\n\n\n\nLab 9 is posted now so you can see what is coming, but do the midterm first. The lab assumes everything from today and nothing from after today.\n\n\n📖Chapter 11 - ROS — assumptions and diagnostics\n📖Chapter 12.1 - ST\n\n\n\n\n\n\nNoteWhere this is heading\n\n\n\nFor four weeks we have been glancing at residual plots and saying “nothing obviously wrong.” Next week each of those glances becomes a named assumption with a diagnostic, a test, and something to do about it when it fails.\n\n\n\n\nBack to course schedule ⏎",
     "crumbs": [
       "Weekly Materials",
       "Week 9 - Multiple Reg. II"
@@ -4675,24 +4703,10 @@
     "text": "The write-up: interaction absent\n\nAnxiety was regressed on hours of sleep and parenting style (N = 100). The additive model accounted for 83.3% of the variance, F(2, 97) = 241.87, p &lt; .001. Each additional hour of sleep was associated with a 4.26-point decrease in anxiety, holding parenting style constant (p &lt; .001), and children with permissive parenting scored 14.88 points higher than those with authoritative parenting, holding sleep constant (p &lt; .001). A sleep × parenting interaction was tested and was not supported, b = −0.35, p = .666, ΔR² = .0003; the additive model is therefore reported.\n\n\n\n\n\n\n\n\nTip\n\n\nReport that you tested it. A reader who cannot tell whether you looked will assume you looked and did not like the answer."
   },
   {
-    "objectID": "slides/lec-09_interactions.html#activity-did-the-program-work",
-    "href": "slides/lec-09_interactions.html#activity-did-the-program-work",
-    "title": "Week 09: Multiple Regression II",
-    "section": "🛠️ Activity: Did the Program Work?",
-    "text": "🛠️ Activity: Did the Program Work?\n\n\n\n\n\n\nTip\n\n\nWeek 9 Exercises · ~45 min · Pairs\n\n\n\n30 students, three instructional groups, pre-test and post-test scores.\n\nOne group scores significantly higher at post-test\nThen you control for where they started\nThe entire group effect disappears — F(2, 26) = 0.03, p = .97\n\nOpen the activity"
-  },
-  {
-    "objectID": "slides/lec-09_interactions.html#wrap-up",
-    "href": "slides/lec-09_interactions.html#wrap-up",
-    "title": "Week 09: Multiple Regression II",
-    "section": "✍️ Wrap-Up",
-    "text": "✍️ Wrap-Up\nFinish these at the bottom of your activity file:\n\nWhat does an interaction let you say that two separate models cannot?\nWhy can’t you interpret the main effect of a group once an interaction is in the model?\nOne thing that is still muddy → journal."
-  },
-  {
     "objectID": "slides/lec-09_interactions.html#for-next-time",
     "href": "slides/lec-09_interactions.html#for-next-time",
     "title": "Week 09: Multiple Regression II",
     "section": "For next time",
-    "text": "For next time\n\n\n\n\n\n\n📂 Midterm Project — due Tuesday 10/27 at 11:59pm\n\n\nFive days. If Part 6 is not drafted by this weekend, it will not be good by Tuesday.\nYou are not required to include an interaction. If you fit one, test it and report the test either way.\n\n\n\n📋 Lab 9 — Groups, Slopes & Interactions, due Tuesday 11/3 at 11:59pm — posted today, start it after the midterm is in\n📖 Chapter 11 — ROS · Chapter 12.1 — ST (assumptions and diagnostics)\nNext week: everything we have been glancing at on residual plots becomes a named assumption with an actual test."
+    "text": "For next time\n\n\n\n\n\n\n📂 Midterm Project — due Tuesday 10/27 at 11:59pm\n\n\nFive days. If Part 6 is not drafted by this weekend, it will not be good by Tuesday.\nYou are not required to include an interaction. If you fit one, test it and report the test either way.\n\n\n\n📖 Chapter 11 — ROS · Chapter 12.1 — ST (assumptions and diagnostics)\nNext week: everything we have been glancing at on residual plots becomes a named assumption with an actual test."
   }
 ]
