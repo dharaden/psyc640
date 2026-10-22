@@ -95,11 +95,11 @@ reading %>%
 ::: callout-tip
 ## What you get
 
-| Group | n | pre *M* | post *M* |
-|---|---|---|---|
-| Green | 10 | 14.3 | 11.5 |
-| Orange | 10 | 15.5 | 13.0 |
-| Yellow | 10 | **16.8** | **14.5** |
+| Group  | n   | pre *M*  | post *M* |
+|--------|-----|----------|----------|
+| Green  | 10  | 14.3     | 11.5     |
+| Orange | 10  | 15.5     | 13.0     |
+| Yellow | 10  | **16.8** | **14.5** |
 :::
 
 **Q1.** Before any test: write down what you notice about those two columns side by side.
@@ -123,11 +123,11 @@ glance(mod_group) %>% select(r.squared, adj.r.squared)
 ::: callout-tip
 ## What you get
 
-| Term | *b* | *p* |
-|---|---|---|
-| Intercept (Green) | 11.50 | \< .001 |
-| Orange – Green | +1.50 | .273 |
-| Yellow – Green | **+3.00** | **.034** |
+| Term              | *b*       | *p*      |
+|-------------------|-----------|----------|
+| Intercept (Green) | 11.50     | \< .001  |
+| Orange – Green    | +1.50     | .273     |
+| Yellow – Green    | **+3.00** | **.034** |
 
 Omnibus: *F*(2, 27) = **2.50**, *p* = **.101**. *R²* = .156
 :::
@@ -191,10 +191,10 @@ anova(mod_pre, mod_both)
 ::: callout-tip
 ## What you get
 
-| Term | *b* | *p* |
-|---|---|---|
-| Intercept | −4.895 | .004 |
-| `pre_score` | 1.147 | \< .001 |
+| Term           | *b*        | *p*      |
+|----------------|------------|----------|
+| Intercept      | −4.895     | .004     |
+| `pre_score`    | 1.147      | \< .001  |
 | Orange – Green | **+0.124** | **.834** |
 | Yellow – Green | **+0.134** | **.834** |
 

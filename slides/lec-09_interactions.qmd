@@ -18,6 +18,8 @@ editor: visual
 execute:
   echo: true
   freeze: auto
+editor_options: 
+  chunk_output_type: console
 ---
 
 ## Today...
@@ -36,6 +38,8 @@ library(here)
 library(tidyverse)
 library(rio)
 library(broom)
+library(easystats)
+library(patchwork)
 
 options(scipen = 999)
 ```
@@ -79,7 +83,7 @@ tutor <- import(here("files", "data", "tutor.csv")) %>%
 
 tutor %>%
   group_by(tutor_f) %>%
-  summarise(n = n(),
+  summarize(n = n(),
             study_m = mean(study), study_sd = sd(study),
             grade_m = mean(grade), grade_sd = sd(grade)) %>%
   mutate(across(where(is.numeric), ~ round(.x, 3)))
@@ -129,16 +133,16 @@ Notice where the tutored students **sit on the x-axis**. They also study more (1
 
 ```{r}
 m_both <- lm(grade ~ study + tutor_f, data = tutor)
-tidy(m_both)
+summary(m_both)
 glance(m_both) %>% select(r.squared, adj.r.squared, sigma)
 ```
 
 . . .
 
-| Predictor | Alone | Together | Change |
-|---|---|---|---|
-| `study` | 1.750 | **1.178** | −33% |
-| `tutor_f` | 2.130 | **1.375** | −35% |
+| Predictor | Alone | Together  | Change |
+|-----------|-------|-----------|--------|
+| `study`   | 1.750 | **1.178** | −33%   |
+| `tutor_f` | 2.130 | **1.375** | −35%   |
 
 $R^2$: .640 → **.829**
 
@@ -167,7 +171,7 @@ $$\widehat{Grade} = 5.588 + 1.178(Study) + 1.375(Tutor)$$
 ::: incremental
 - `Tutor` is 0 or 1, so this is **two lines**
 - No tutor: $\widehat{Grade} = 5.588 + 1.178(Study)$
-- Tutor: $\widehat{Grade} = 6.963 + 1.178(Study)$
+- Tutor: $\widehat{Grade} = (5.588 + 1.375) +1.178(Study)$
 :::
 
 . . .
@@ -242,7 +246,7 @@ $$Y = b_0 + b_1X + b_2D + b_3(X \times D) + e$$
 
 ```{r}
 m_int <- lm(grade ~ study * tutor_f, data = tutor)
-tidy(m_int)
+summary(m_int)
 ```
 
 . . .
@@ -251,14 +255,22 @@ tidy(m_int)
 
 ------------------------------------------------------------------------
 
+## The interaction term
+
+```{r}
+sjPlot::tab_model(m_both, m_int)
+```
+
+------------------------------------------------------------------------
+
 ## Reading the interaction
 
 | Term | *b* | *p* | What it is |
-|---|---|---|---|
-| intercept | 5.012 | \< .001 | grade for **no tutor**, study = 0 |
-| `study` | **1.757** | \< .001 | slope **for the reference group** |
-| `tutor_f` | 2.920 | .0003 | group gap **at study = 0** |
-| `study:tutor_f` | **−1.171** | **.017** | how much the slope **changes** for tutored students |
+|------------------|------------------|------------------|------------------|
+| intercept | $b_0$ 5.012 | \< .001 | grade for **no tutor**, study = 0 |
+| `study` | $b_1$ **1.757** | \< .001 | slope **for the reference group (no tutor)** |
+| `tutor_f` | $b_2$ 2.920 | .0003 | group gap **at study = 0 (intercept difference)** |
+| `study:tutor_f` | $b_3$ **−1.171** | **.017** | how much the slope **changes** for tutored students |
 
 . . .
 
@@ -299,6 +311,18 @@ coef(m_int)[["study"]] + coef(m_int)[["study:tutor_fTutor"]]
 
 ------------------------------------------------------------------------
 
+## Simple Slopes `modelbased`
+
+<https://easystats.github.io/modelbased/articles/introduction_comparisons_3.html>
+
+```{r}
+estimate_slopes(m_int, "study", by = "tutor_f")
+
+plot(estimate_means(m_int, c("study", "tutor_f")))
+```
+
+------------------------------------------------------------------------
+
 ## Now the picture makes sense
 
 ```{r, fig.height=3.8}
@@ -315,6 +339,8 @@ tutor %>%
 The lines **converge**. Tutoring buys a lot for a student studying half an hour a day, and nearly nothing for one studying two hours.
 
 ------------------------------------------------------------------------
+
+<https://interactions.jacob-long.com/>
 
 ## Say it in words
 
@@ -339,10 +365,10 @@ Pick the direction that answers your research question, say it in one sentence, 
 anova(m_both, m_int)
 ```
 
-| Model | $R^2$ | adj. $R^2$ | RSE |
-|---|---|---|---|
-| additive | .8285 | .8083 | 0.610 |
-| \+ interaction | **.8811** | **.8588** | **0.523** |
+| Model          | $R^2$     | adj. $R^2$ | RSE       |
+|----------------|-----------|------------|-----------|
+| additive       | .8285     | .8083      | 0.610     |
+| \+ interaction | **.8811** | **.8588**  | **0.523** |
 
 $\Delta R^2$ = **.053**, $F$(1, 16) = **7.08**, *p* = .017. Adjusted $R^2$ rose. Keep it.
 
@@ -350,7 +376,7 @@ $\Delta R^2$ = **.053**, $F$(1, 16) = **7.08**, *p* = .017. Adjusted $R^2$ rose.
 
 ## ⚠️ Centering is no longer optional {background-color="#FDF0D5"}
 
-In the interaction model, `tutor_f` = **2.92** was the group gap **at study = 0** — a student who studies zero hours a day. Extrapolation.
+In the interaction model, `tutor_f` = **2.92** was the group gap **at study = 0** — a student who studies zero hours a day. This doesn't exist. It is purely extrapolation.
 
 ```{r}
 tutor_c <- tutor %>% mutate(study_c = study - mean(study))
@@ -358,7 +384,7 @@ lm(grade ~ study_c * tutor_f, data = tutor_c) %>% tidy()
 ```
 
 ::: incremental
-- Mean study = **1.316** hours
+- Mean `study` = **1.316** hours
 - Group gap at the **mean**: **1.379**, not 2.92
 - `study_c` slope and the interaction: **identical** — centering did not change the model, only where we read it
 :::
@@ -372,6 +398,71 @@ Centering a predictor moves the intercept and the **other** variable's main effe
 
 In a model with an interaction, always center your continuous predictor — or be ready to explain what X = 0 means.
 :::
+
+------------------------------------------------------------------------
+
+```{r}
+#| echo: false
+#| code-fold: true
+
+# Source - https://stackoverflow.com/a/26706130
+# Posted by agstudy, modified by community. See post 'Timeline' for change history
+# Retrieved 2026-10-21, License - CC BY-SA 3.0
+
+## decorate lm object with a new class lm_left
+lm_left <- function(formula,data,...){
+  mod <- lm(formula,data)
+  class(mod) <- c('lm_left',class(mod))
+  mod
+}
+
+
+predictdf.lm_left <- 
+  function(model, xseq, se, level){
+    init_range = range(model$model$x)
+    ## here the main code: truncate to x values at the left
+    xseq <- xseq[xseq <=init_range[2]]
+    ggplot2:::predictdf.default(model, xseq[-length(xseq)], se, level)
+  }
+
+
+reg <- tutor %>%
+  ggplot(aes(x = study, y = grade, color = tutor_f)) +
+  geom_point(size = 3, alpha = .6) +
+  geom_smooth(method = "lm_left", fullrange=TRUE, se = FALSE, linewidth = 1.2) +
+  geom_vline(xintercept=0, linewidth = 1.2) + 
+  labs(x = "Daily study hours", y = "Final grade", color = NULL,
+       title = "grade ~ study * tutor") +
+  theme_bw(base_size = 16) + 
+  theme(legend.position = "blank")
+
+int <- tutor_c %>%
+  ggplot(aes(x = study_c, y = grade, color = tutor_f)) +
+  geom_point(size = 3, alpha = .6) +
+  geom_smooth(method = "lm", se = FALSE, linewidth = 1.2) +
+  geom_vline(xintercept=0, linewidth = 1.2) + 
+  labs(x = "Mean centered daily study hours", y = "Final grade", color = NULL,
+       title = "grade ~ study_c * tutor") +
+  theme_bw(base_size = 16)
+
+reg + int
+
+#library(gganimate)
+#hours <- seq(0, mean(tutor$study),.1)
+#gif <- tutor %>%
+#  ggplot(aes(x = study, y = grade, color = tutor_f)) +
+#  geom_point(size = 3, alpha = .6) +
+#  geom_smooth(method = "lm_left", fullrange=TRUE, se = FALSE, linewidth = 1.2) +
+#  geom_vline(xintercept=hours, linewidth = 1.2) + 
+#  labs(x = "Daily study hours", y = "Final grade", color = NULL,
+#       title = "grade ~ study * tutor") +
+#  theme_bw(base_size = 16) + 
+#  theme(legend.position = "blank") + 
+#  transition_reveal(hours) 
+#
+#animate(gif, fps = 70, renderer = gifski_renderer(loop = FALSE))
+#anim_save("int_transition.gif")
+```
 
 # Part 3: When It Isn't There
 
@@ -399,11 +490,14 @@ kids %>%
 ## Build it up
 
 ```{r}
+
 k_sleep <- lm(anxiety_score ~ sleep_hours, data = kids)
 k_both  <- lm(anxiety_score ~ sleep_hours + ps, data = kids)
 
 tidy(k_sleep)
+glance(k_sleep)
 tidy(k_both)
+glance(k_both)
 ```
 
 ::: incremental
@@ -434,6 +528,7 @@ The two groups sleep almost identically (9.51 vs 9.36 hours). With the predictor
 ```{r}
 k_int <- lm(anxiety_score ~ sleep_hours * ps, data = kids)
 tidy(k_int)
+glance(k_int)
 ```
 
 . . .
@@ -444,10 +539,10 @@ tidy(k_int)
 
 ## The fit table tells the story
 
-| Model | $R^2$ | adj. $R^2$ | RSE |
-|---|---|---|---|
-| additive | .8330 | **.8295** | **4.048** |
-| \+ interaction | .8333 | **.8281** ⬇️ | 4.066 ⬆️ |
+| Model          | $R^2$ | adj. $R^2$   | RSE       |
+|----------------|-------|--------------|-----------|
+| additive       | .8330 | **.8295**    | **4.048** |
+| \+ interaction | .8333 | **.8281** ⬇️ | 4.066 ⬆️  |
 
 ```{r}
 anova(k_both, k_int)

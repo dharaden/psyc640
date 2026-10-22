@@ -35,11 +35,11 @@ Go ahead — submit your `.omv` plus a Word document with your written answers. 
 
 **90 graduate students** reported how many hours a week they spent on academic work, and completed a burnout inventory. Each was in one of two kinds of program.
 
-| Variable | Description |
-|------------------------------------|------------------------------------|
-| `student_id` | Participant ID |
-| `program_type` | `"Thesis-Based"` or `"Capstone-Based"` |
-| `weekly_hours` | Self-reported hours per week on academic work |
+| Variable        | Description                                        |
+|-----------------|----------------------------------------------------|
+| `student_id`    | Participant ID                                     |
+| `program_type`  | `"Thesis-Based"` or `"Capstone-Based"`             |
+| `weekly_hours`  | Self-reported hours per week on academic work      |
 | `burnout_score` | Burnout inventory total (higher = more burned out) |
 
 ::: callout-warning
@@ -59,7 +59,7 @@ One of the results in this lab points the **opposite direction** from what most 
 ## Exercises at a glance
 
 | Exercise | What you'll do | Points |
-|------------------------|------------------------|------------------------|
+|----|----|----|
 | **1. Describe** | Import, describe by group, correlation | 3 |
 | **2. Model A** | `burnout ~ weekly_hours` | 4 |
 | **3. Direction check** 🤨 | The sign is backwards. Now what? | 3 |

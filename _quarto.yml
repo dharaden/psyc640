@@ -35,6 +35,7 @@ project:
     - class-activities/wk6_groups.qmd
     - class-activities/wk7_fit.qmd
     - class-activities/wk8_multiple-reg.qmd
+    - class-activities/wk9_interactions.qmd
     - slides/lec-01_syl.qmd
     - slides/lec-02_background.qmd
     - slides/lec-03_wrangle.qmd
@@ -49,6 +50,8 @@ project:
     - slides/lec-07_fit_JAMOVI.qmd
     - slides/lec-08_multiple-reg.qmd
     - slides/lec-08_multiple-reg_JAMOVI.qmd
+    - slides/lec-09_interactions.qmd
+    - slides/lec-09_interactions_JAMOVI.qmd
   
     
     
@@ -115,8 +118,8 @@ website:
             text: "Week 7 - Variability & Model Fit"
           - href: weeks/week-8.qmd
             text: "Week 8 - Multiple Reg. I"
-         # - href: weeks/week-9.qmd
-          #  text: "Week 9 - Multiple Reg. II"
+          - href: weeks/week-9.qmd
+            text: "Week 9 - Multiple Reg. II"
           # - href: weeks/week-10.qmd
             # text: "Week 10 - Assumptions & Diagnostic"
           # - href: weeks/week-11.qmd
@@ -124,7 +127,7 @@ website:
           # - href: weeks/week-12.qmd
             # text: "Week 12 - Logistic Reg."
           # - href: weeks/week-13.qmd
-            # text: "Week 13 - Mixed/Mulilevel Models"
+            # text: "Week 13 - Mixed/Multilevel Models"
          # - text: "Week 14 - NO CLASS"
           # - href: weeks/week-15.qmd
             # text: "Week 15 - Wrapping Up"
