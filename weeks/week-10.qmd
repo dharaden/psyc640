@@ -1,31 +1,55 @@
 ---
-title: "Week 10"
+title: "Week 10 - Assumptions + Diagnostics"
 editor: visual
 ---
 
-# Multiple Regression
+# Is the Model Telling the Truth?
+
+For four weeks we have been glancing at residual plots and saying "nothing obviously wrong." This week each of those glances becomes a named assumption, with a diagnostic, a consequence when it fails, and something to do about it.
+
+We work two examples on purpose. One is a model you already know (sleep, stress, and depression in the ASAP study) that passes with only a small caveat. The other is the Spotify model from Week 7, with an R² of .62, that breaks every rule until a single transformation fixes it. Both outcomes are normal. Most of the time, diagnostics take five minutes and one sentence in your write-up.
+
+::: callout-note
+## The sentence to watch for this week
+
+Regression assumptions are claims about the **residuals**, not about your raw variables. A skewed predictor is fine. A skewed set of leftovers is worth a look.
+:::
 
 ## Prepare
 
-📖[Chapter 15.3 - 15.5 - LSR](https://learningstatisticswithr.com/book/){target="_blank"}
+- 📖[Chapter 11 - ROS](https://users.aalto.fi/~ave/ROS.pdf)
 
-📖[Chapter 8 - IMS](https://openintro-ims.netlify.app/){target="_blank"}
+- 📖[Chapter 14.5 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}
+
+- 📖[Chapters 15.8 & 15.9 - LSR](https://learningstatisticswithr.com/book/){target="_blank"}
 
 ## Slides
 
-[💻 Multiple Regression](../slides/lec-10_multiple-reg.html){target="_blank"}
+[💻 Assumptions + Diagnostics](../slides/lec-10_diagnostics.html){target="_blank"}
 
-## In-Class Activity
+## Data
 
-[Many Much Variable Regression](../class-activities/wk10_multiple-reg.html){target="_blank"}
+**Lecture:** <a href="../files/data/asap_data.csv" download="asap_data.csv">ASAP Study (.csv)</a> · <a href="../files/data/popular_spotify.csv" download="popular_spotify.csv">Popular Spotify Songs (.csv)</a> · <a href="../files/data/tutor.csv" download="tutor.csv">Study, Tutoring & Grades (.csv)</a>
+
+**In class:** Same data from activity last week \<<a href="../files/data/dass_data.csv" download="dass_data.csv">DASS survey data (.csv, 20 MB)</a>
 
 ## For Next Time
 
-📋[Lab 10 - Multiple Regression](../labs/lab-10.html)
+📋[Lab 9 - Groups, Slopes & Interactions](../labs/lab-09_groups-slopes.html)
 
-📖[Chapter 9 - IMS](https://openintro-ims.netlify.app/){target="_blank"}
+📖[Chapter 15.10 - LSR](https://learningstatisticswithr.com/book/){target="_blank"}
 
-📖[Chapter 8.3 - MSR](https://www.modernstatisticswithr.com/){target="_blank"}
+📖[Chapter 17 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}
+
+📖[Chapters 17.3 - 17.7 - ROS](https://users.aalto.fi/~ave/ROS.pdf)
+
+📖[Chapter 8.7 - MSR](https://psyteachr.github.io/stat-models-v1/){target="_blank"}
+
+::: callout-important
+## Next week
+
+**In-Class Check** at the start of class.
+:::
 
 <br><br>
 

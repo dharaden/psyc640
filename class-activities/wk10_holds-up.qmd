@@ -1,0 +1,300 @@
+---
+title: "Week 10 Exercises - Does It Hold Up?"
+subtitle: "Your sample, your diagnostics, your conclusion"
+editor: visual
+---
+
+::: callout-note
+## Overview
+
+About 40 minutes, **split across today's lecture** · Pairs · 🧰 R (`tidyverse`, `rio`, `here`, `janitor`, `datawizard`, `easystats`, `sandwich`)
+
+Last week we ran out of time before Part C: drawing your own sample and seeing what you find. Today we finish it, with one change. **Before you write anything up, you diagnose the model.**
+
+- **Part A: Your sample (\~10 min):** pick a seed, render, record your interaction.
+- **Part B: Diagnose it (\~10 min):** `check_model()` on your interaction model.
+- **Part C: Does it hold up? (\~10 min):** refit it three other ways and see whether your conclusion survives.
+- **Part D: Write it up (\~10 min):** a Results paragraph with an assumption sentence and a robustness sentence, then one clean render.
+- **Part E: The class tally (\~5 min)**
+
+**By the end you should be able to:**
+
+- Read `check_model()` for a model you built yourself, and say which panels matter
+- Explain why a bounded scale (like a sum score) produces the diagnostic patterns it does
+- Run a robustness check and report it honestly, whether or not the conclusion changes
+- Tell the difference between **reproducible**, **robust**, and **replicable** using your own numbers
+:::
+
+::: callout-warning
+## Before you start
+
+Run this once in the console: `install.packages("sandwich")`. It's needed for robust standard errors in Part C.
+:::
+
+------------------------------------------------------------------------
+
+# Set up (5 min)
+
+**If you finished Parts A and B last week:** open `week9_reproducibility.qmd`, **Save As** `week10_holds-up.qmd`, and add `library(easystats)` to your setup chunk. Skip to Part A below.
+
+**If you missed last week or your file is a mess:** start a new Quarto document, `Week 10 - Does It Hold Up?`, saved as `week10_holds-up.qmd`. Make sure <a href="../files/data/dass_data.csv" download="dass_data.csv">dass_data.csv</a> is in your project's `data` folder, then paste in this catch-up chunk. It is last week's Parts A and B, cleaning included.
+
+``` r
+library(tidyverse)
+library(rio)
+library(here)
+library(datawizard)
+library(easystats)
+
+my_seed <- 42   # Leave at 42 until Part A tells you to change it
+
+set.seed(my_seed)
+
+dass <- import(here("data", "dass_data.csv")) %>%
+  slice_sample(n = 400) %>%
+  janitor::clean_names()
+
+# Validity check: drop anyone who "knows" a fake word
+valid <- dass %>%
+  filter(vcl6 == 0, vcl9 == 0, vcl12 == 0)
+
+# Score: DASS depression and anxiety (sums), TIPI extroversion (0 = skipped)
+final <- valid %>%
+  mutate(
+    dass_dep = row_sums(., select = c(q3a, q5a, q10a, q13a, q16a, q17a, q21a,
+                                      q24a, q26a, q31a, q34a, q37a, q38a, q42a),
+                        min_valid = 0.8),
+    dass_anx = row_sums(., select = c(q2a, q4a, q7a, q9a, q15a, q19a, q20a,
+                                      q23a, q25a, q28a, q30a, q36a, q40a, q41a),
+                        min_valid = 0.8),
+    tipi1 = na_if(tipi1, 0),
+    tipi6 = na_if(tipi6, 0),
+    extra = (tipi1 + (8 - tipi6)) / 2
+  ) %>%
+  filter(!is.na(extra)) %>%
+  mutate(anx_c   = dass_anx - mean(dass_anx),
+         extra_c = extra - mean(extra))
+
+# The models from last week
+mod_add   <- lm(dass_dep ~ dass_anx + extra, data = final)
+mod_int   <- lm(dass_dep ~ dass_anx * extra, data = final)   # uncentered
+mod_int_c <- lm(dass_dep ~ anx_c * extra_c, data = final)    # centered
+
+summary(mod_int_c)
+```
+
+::: callout-tip
+## Check yourself (seed 42)
+
+**n = 337.** Interaction *b* = **0.048**, *p* = **.097**. If you don't get these, fix it now: everything after this depends on it.
+:::
+
+------------------------------------------------------------------------
+
+# Part A — Your sample (10 min)
+
+Same population, same code. The only thing that changes is **which 400 people** you draw.
+
+1.  Pick a whole number between 1 and 1000. **Write it on the board** so no two pairs use the same one.
+2.  Change `my_seed` in your setup chunk.
+3.  **Click Render.** Don't just run chunks. Rendering starts R fresh, which is the whole point.
+
+**Q1.** From your rendered document:
+
+|                                  |     |
+|----------------------------------|-----|
+| Seed                             |     |
+| *n* after cleaning               |     |
+| Interaction *b* (centered model) |     |
+| Interaction *p*                  |     |
+
+**Q2.** Before you go on: is the interaction significant in **your** sample? Write down what you would conclude if you stopped here.
+
+> **STOP.** Back to the slides.
+
+------------------------------------------------------------------------
+
+# Part B — Diagnose it (10 min)
+
+``` r
+check_model(mod_int_c)
+```
+
+::: callout-note
+## 🖱️ In JAMOVI
+
+You can't draw your own seed in JAMOVI, so pair with someone using R. To see the panels on the seed-42 file: **Regression → Linear Regression → Assumption Checks**, tick **Q-Q plot of residuals** and **Residual plots**.
+:::
+
+**Q3.** Go panel by panel. One short line each: what were you looking for, and what did you see?
+
+| Panel                      | What you saw |
+|----------------------------|--------------|
+| Posterior predictive check |              |
+| Linearity                  |              |
+| Homogeneity of variance    |              |
+| Influential observations   |              |
+| Collinearity               |              |
+| Normality of residuals     |              |
+
+**Q4.** Now run the formal tests.
+
+``` r
+check_heteroscedasticity(mod_int_c)
+check_normality(mod_int_c)
+```
+
+Do the tests agree with what you saw in the Homogeneity and Normality panels? If not, which do you trust, and why?
+
+**Q5.** Depression and anxiety are each a **sum of 14 items scored 1–4**, so nobody can score below 14 or above 56. Look at the PP check and the Homogeneity panel again. How does that floor and ceiling show up in your plots? (Hint: how much room is there to miss for someone predicted at 15? At 35?)
+
+**Q6.** Compare collinearity in the centered and uncentered models.
+
+``` r
+check_collinearity(mod_int)     # uncentered
+check_collinearity(mod_int_c)   # centered
+```
+
+Did the interaction test change between the two models? So what did the high VIF actually mean?
+
+::: {.callout-tip collapse="true"}
+## Check yourself (seed 42)
+
+- **Linearity:** flat. **Influence:** nobody near the contours.
+- **Homogeneity:** an **arch**. Residuals spread widest in the middle and narrowest near the ends. That's the floor and ceiling: someone predicted at 15 can't score much below 14, so there's little room to miss.
+- **PP check:** the model's simulated data run past 56 and below 14. Real scores can't.
+- **Normality:** a U-shape on the detrended Q-Q plot. The tails are **lighter** than normal, also because of the bounded scale.
+- **The tests:** `check_heteroscedasticity()` says OK (*p* = .759). The test looks for variance that rises or falls steadily, and an arch is neither. Your eyes caught what the test missed. `check_normality()` flags it (*p* \< .001).
+- **Collinearity:** interaction VIF ≈ **10.4** uncentered, ≈ **1.0** centered. The interaction *p* is identical. Uncentered VIFs were measuring how the terms were built, not a problem with the data.
+:::
+
+> **STOP.** Back to the slides.
+
+------------------------------------------------------------------------
+
+# Part C — Does it hold up? (10 min)
+
+A **robustness check** refits the model a different way and asks whether the conclusion changes. You'll try three versions. The first two are defensible choices a careful analyst might make. The third is **a mistake**: last week's TIPI-zeros bug, left in.
+
+## C1. Robust standard errors
+
+The Homogeneity panel wasn't flat. Robust SEs don't assume it is.
+
+``` r
+model_parameters(mod_int_c, vcov = "HC3")
+```
+
+## C2. Drop the most influential cases
+
+A common rule of thumb flags any case with Cook's distance above 4/*n*.
+
+``` r
+final_cook <- final %>%
+  mutate(cook = cooks.distance(mod_int_c))
+
+trimmed <- final_cook %>%
+  filter(cook <= 4 / n())
+
+nrow(final) - nrow(trimmed)   # how many dropped?
+
+mod_trim <- lm(dass_dep ~ anx_c * extra_c, data = trimmed)
+summary(mod_trim)
+```
+
+## C3. The mistake: leave the TIPI zeros in
+
+Same scoring, but skip the `na_if()` lines, so skipped items count as 0.
+
+``` r
+final_0 <- valid %>%
+  mutate(
+    dass_dep = row_sums(., select = c(q3a, q5a, q10a, q13a, q16a, q17a, q21a,
+                                      q24a, q26a, q31a, q34a, q37a, q38a, q42a),
+                        min_valid = 0.8),
+    dass_anx = row_sums(., select = c(q2a, q4a, q7a, q9a, q15a, q19a, q20a,
+                                      q23a, q25a, q28a, q30a, q36a, q40a, q41a),
+                        min_valid = 0.8),
+    extra = (tipi1 + (8 - tipi6)) / 2           # no na_if(): zeros stay in
+  ) %>%
+  mutate(anx_c   = dass_anx - mean(dass_anx),
+         extra_c = extra - mean(extra))
+
+mod_zeros <- lm(dass_dep ~ anx_c * extra_c, data = final_0)
+summary(mod_zeros)
+```
+
+**Q7.** Fill in the table.
+
+| Version                     | *n* | Interaction *b* | Interaction *p* | *p* \< .05? |
+|----------------|--------------|--------------|--------------|--------------|
+| Original (Part A)           |     |                 |                 |             |
+| C1: Robust SEs              |     |                 |                 |             |
+| C2: Drop Cook's \> 4/*n*    |     |                 |                 |             |
+| C3: TIPI zeros left in (❌) |     |                 |                 |             |
+
+**Q8.** Did your conclusion change under C1 or C2? Which version would you report, and what would you say about the others?
+
+**Q9.** Look at C3. A pair that missed the zeros last week would have a different answer, from the same people. Would anyone reading their paper be able to tell?
+
+::: {.callout-tip collapse="true"}
+## Check yourself (seed 42)
+
+| Version           | *n* | *b*   | *p*      |
+|-------------------|-----|-------|----------|
+| Original          | 337 | 0.048 | .097     |
+| C1: Robust SEs    | 337 | 0.048 | .066     |
+| C2: Drop 14 cases | 323 | 0.040 | .153     |
+| C3: Zeros left in | 346 | 0.063 | **.021** |
+
+Neither defensible version makes seed 42 significant. **The mistake does.** The coding error moved *p* across .05 in the direction a hopeful researcher would want, and nothing in the output warns you.
+:::
+
+------------------------------------------------------------------------
+
+# Part D — Write it up (10 min)
+
+## D1. The paragraph
+
+**Q10.** Write a short Results paragraph in your document using **your** seed's numbers. It needs three things:
+
+1.  The interaction test and your conclusion
+2.  **One sentence on assumptions:** what you checked and what you found
+3.  **One sentence on robustness:** what you tried (C1 and C2 only) and whether the conclusion held
+
+::: callout-tip
+Report the robustness check even if nothing changed. "Conclusions were unchanged with robust standard errors or after excluding 14 influential cases" is a strong sentence. A reader can't tell the difference between "I checked and it held" and "I never checked."
+:::
+
+## D2. One clean render
+
+Restart R (**Session → Restart R**), then **click Render**.
+
+**Q11.** Does every number in your paragraph match the rendered output? If anything changed, find out why before you move on. (The usual suspect: something you ran in the console that isn't in a chunk.)
+
+------------------------------------------------------------------------
+
+# Part E — The class tally (5 min) - Time Permitting
+
+**Q12.** Add your row to the board:
+
+| Seed | Original *p* | Robust *p* | Trimmed *p* | Zeros *p* | Conclusion changed under C1 or C2? |
+|------------|------------|------------|------------|------------|-------------|
+|  |  |  |  |  |  |
+
+## ❓ Questions for the debrief
+
+1.  How many pairs' conclusions **changed** under a defensible robustness check? Were those the pairs near *p* = .05?
+2.  How many pairs would have "found" the interaction under **at least one** of the three versions? What happens to a literature if each study reports whichever version worked?
+3.  Most pairs' heteroscedasticity tests said "OK," but the plot showed an arch. What does that tell you about running the test instead of looking?
+
+::: callout-note
+## Reproducible, robust, replicable
+
+**Reproducible:** same data and same code give the same numbers. You checked the basic version of that with a clean render in D2. The real test is someone else rendering your file on their own machine. We'll come back to that later in the semester.
+
+**Robust:** different defensible choices lead to the same conclusion. You tested that in Part C, on your own sample.
+
+**Replicable:** a new sample gives the same conclusion. The tally tests that across the room.
+
+Diagnostics sit between the first two. They tell you **which** choices are worth checking, and a write-up that reports them lets the next person check you.
+:::

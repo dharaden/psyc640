@@ -1,0 +1,974 @@
+---
+title: "Week 10: Assumptions + Diagnostics"
+subtitle: "Date: October 29, 2026"
+footer:  "[course-website](https://dharaden.github.io/psyc640/)"
+logo: "images/640_hex.png"
+format:
+  revealjs:
+    theme: [default, brand, clean.scss]
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false
+    chalkboard: true
+    overview: false
+    scrollable: true
+    code-line-numbers: true
+    auto-stretch: false
+editor: visual
+execute:
+  echo: true
+  freeze: auto
+editor_options:
+  chunk_output_type: console
+---
+
+## Today...
+
+**Is the model telling the truth?**
+
+![](/images/linear_regression_2x.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Today...
+
+**Is the model telling the truth?**
+
+- What a regression actually assumes, in order of how much it matters
+- Reading `check_model()` one panel at a time
+- A model with a great R² that breaks every rule, and the one-line fix
+- Influential points, multicollinearity, and the assumption no plot can check
+- Why the formal tests answer the wrong question
+- What to do, and how to write it up
+
+```{r, results = 'hide', message = F, warning = F}
+library(here)
+library(tidyverse)
+library(rio)
+library(broom)
+library(easystats)
+library(patchwork)
+
+options(scipen = 999)
+```
+
+------------------------------------------------------------------------
+
+## Four weeks of glancing
+
+In Week 7 we ended with this:
+
+> That is the entire diagnostic toolkit for now: **plot the residuals, look for a pattern.**
+
+. . .
+
+Since then, every model has come with "nothing obviously wrong." Today each glance gets:
+
+::: incremental
+1.  A **name**: which assumption it checks
+2.  A **consequence**: what breaks if it fails
+3.  A **fix**: what to do about it
+:::
+
+# Part 1: What a Regression Assumes
+
+------------------------------------------------------------------------
+
+## The model makes promises about the errors
+
+$$
+Y_i = b_0 + b_1X_{1i} + b_2X_{2i} + e_i \qquad e_i \sim N(0,\ \sigma)
+$$
+
+. . .
+
+Read that last part out loud: the errors are...
+
+::: incremental
+- centered on **zero** at every value of X → the line is the right shape
+- drawn **independently** for each person
+- spread by the **same** $\sigma$ for everyone
+- **Normally** distributed
+:::
+
+. . .
+
+Almost every assumption is a claim about $e$, the **residuals**. Very few are about your variables.
+
+------------------------------------------------------------------------
+
+## In order of importance (ROS, Ch. 11)
+
+Gelman, Hill & Vehtari list the assumptions **from most to least important**:
+
+::: incremental
+1.  **Validity**: the data measure what your question is about
+2.  **Representativeness**: the sample stands in for the population you care about
+3.  **Linearity and additivity**: the outcome is a straight-line, added-up function of the predictors
+4.  **Independence of errors**
+5.  **Equal variance of errors**
+6.  **Normality of errors**
+:::
+
+. . .
+
+::: callout-important
+The one people test most often (normality) is the one that matters least. The two that matter most (validity, representativeness) **cannot be checked with any plot.** They are checked by thinking about your design (Week 4).
+:::
+
+------------------------------------------------------------------------
+
+## ⚠️ Residuals, not variables {background-color="#FDF0D5"}
+
+The most common mistake in a Methods section:
+
+> "Shapiro-Wilk tests indicated that anxiety was not normally distributed, so..."
+
+. . .
+
+**Regression does not assume your predictors or your outcome are normal.**
+
+- A skewed predictor is fine
+- A dummy-coded group (0/1) is about as non-normal as it gets, and we have used one every week since Week 6
+- What matters is the shape of the **leftovers** after the model has done its work
+
+. . .
+
+Run diagnostics on the **model**, not on the raw columns.
+
+------------------------------------------------------------------------
+
+## What actually breaks
+
+| If this fails... | The coefficients ($b$) | The SEs, CIs, *p*-values |
+|----------------------|--------------------------|------------------------|
+| Linearity | **Wrong.** Wrong-shaped line | Wrong too |
+| Independence | Usually fine | **Too small.** Overconfident |
+| Equal variance | Fine | **Off.** Too big or too small |
+| Normality | Fine | Fine in big samples |
+| One influential point | **Driven by one case** | Off |
+
+. . .
+
+Two more problems that are **not assumptions**, but still show up in `check_model()`:
+
+- **Multicollinearity**: coefficients become unstable and SEs inflate
+- **Influential observations**: one case is running the model
+
+# Part 2: Reading `check_model()`
+
+------------------------------------------------------------------------
+
+## A model we already know 😴
+
+Week 7: the ASAP study, 400 adolescents. Depression predicted from sleep duration and peer stress.
+
+```{r}
+asap <- import(here("files", "data", "asap_data.csv"))
+
+fit_two <- lm(T1_Dep ~ T1_SleepDur + T1_PeerStress, data = asap)
+tidy(fit_two)
+```
+
+. . .
+
+We interpreted these coefficients three weeks ago. Were we allowed to?
+
+------------------------------------------------------------------------
+
+## One function, six panels
+
+```{r, fig.width=11, fig.height=8}
+#| out-width: "65%"
+check_model(fit_two)
+```
+
+Each panel answers one question. Let's take them one at a time.
+
+------------------------------------------------------------------------
+
+## 1. Posterior predictive check
+
+:::::: columns
+::: {.column width="55%"}
+```{r, fig.width=6, fig.height=4.5}
+#| code-fold: true
+#| out-width: "100%"
+plot(check_model(fit_two, check = "pp_check", panel = FALSE))[[1]]
+```
+:::
+
+:::: {.column width="45%"}
+::: {style="font-size: 0.8em;"}
+**Question:** If the model were true, would it produce data that look like ours?
+
+- Green = the real outcome. Blue = outcomes simulated from the fitted model.
+- **Good:** green sits inside the blue
+- **Bad:** green has a peak, skew, or floor the blue lines miss
+
+Here: close. Depression scores are a little more peaked than the model expects, but nothing alarming.
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+## 2. Linearity
+
+:::::: columns
+::: {.column width="55%"}
+```{r, fig.width=6, fig.height=4.5}
+#| code-fold: true
+#| out-width: "100%"
+plot(check_model(fit_two, check = "linearity", panel = FALSE))[[1]]
+```
+:::
+
+:::: {.column width="45%"}
+::: {style="font-size: 0.8em;"}
+**Question:** Is the straight line the right shape?
+
+- Residuals against fitted values (the Week 7 plot)
+- **Good:** the green line is flat at zero
+- **Bad:** a curve. The model is too low at the ends and too high in the middle, or the reverse
+
+Here: flat. ✅
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+## 3. Homogeneity of variance
+
+:::::: columns
+::: {.column width="55%"}
+```{r, fig.width=6, fig.height=4.5}
+#| code-fold: true
+#| out-width: "100%"
+plot(check_model(fit_two, check = "homogeneity", panel = FALSE))[[1]]
+```
+:::
+
+:::: {.column width="45%"}
+::: {style="font-size: 0.8em;"}
+**Question:** Is the model equally wrong for everyone?
+
+- $\sqrt{|\text{standardized residual}|}$ against fitted values
+- **Good:** flat green line, even band
+- **Bad:** a line that clearly rises or falls (the funnel from Week 7)
+
+Here: a gentle downward drift. The model misses a little less for kids with high predicted depression. Hold that thought.
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+## The test disagrees with your eyes
+
+```{r}
+check_heteroscedasticity(fit_two)
+```
+
+. . .
+
+The plot says "slight." The test says "significant." With 400 people, the test can detect a slight tilt. Whether that tilt **matters** is a separate question.
+
+. . .
+
+**Cheap insurance:** heteroscedasticity-robust standard errors. Same coefficients, honest SEs.
+
+```{r}
+#| eval: !expr requireNamespace("sandwich", quietly = TRUE)
+model_parameters(fit_two, vcov = "HC3")   # needs install.packages("sandwich")
+```
+
+SEs barely move (0.10 → 0.11). That is the plot being right: the problem was real but small.
+
+------------------------------------------------------------------------
+
+## 4. Influential observations
+
+:::::: columns
+::: {.column width="55%"}
+```{r, fig.width=6, fig.height=4.5}
+#| code-fold: true
+#| out-width: "100%"
+plot(check_model(fit_two, check = "outliers", panel = FALSE))[[1]]
+```
+:::
+
+:::: {.column width="45%"}
+::: {style="font-size: 0.8em;"}
+**Question:** Is any single person running the model?
+
+- Leverage (how unusual someone's **predictors** are) against residual (how badly the model **misses** them)
+- **Good:** every point inside the dashed contours
+- **Bad:** a labeled point outside them. That case has a large **Cook's distance**
+
+Here: nobody close. ✅
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+## 5. Normality of residuals
+
+:::::: columns
+::: {.column width="55%"}
+```{r, fig.width=6, fig.height=4.5}
+#| code-fold: true
+#| out-width: "100%"
+plot(check_model(fit_two, check = "qq", panel = FALSE))[[1]]
+```
+:::
+
+:::: {.column width="45%"}
+::: {style="font-size: 0.8em;"}
+**Question:** Are the leftovers roughly bell-shaped?
+
+- A Q-Q plot, "detrended" so a perfect fit is a flat line
+- **Good:** dots hug the line, maybe wandering a little at the very ends
+- **Bad:** an S-shape (skew) or tails that peel away (outliers, heavy tails)
+
+Here: fine. ✅ And with n = 400, the Central Limit Theorem covers a lot of sins here.
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+## 6. Collinearity
+
+:::::: columns
+::: {.column width="55%"}
+```{r, fig.width=6, fig.height=4.5}
+#| code-fold: true
+#| out-width: "100%"
+plot(check_model(fit_two, check = "vif", panel = FALSE))[[1]]
+```
+:::
+
+:::: {.column width="45%"}
+::: {style="font-size: 0.8em;"}
+**Question:** Are the predictors stepping on each other? (Week 8)
+
+- **VIF** = variance inflation factor. 1 = no overlap at all
+- Rough guide: **\< 5** fine, **5–10** worth a look, **\> 10** a problem
+
+Here: VIF = 1.02. Sleep and peer stress barely overlap (*r* = −.13). ✅
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+## Verdict on `fit_two`
+
+| Panel          | Verdict                                   |
+|----------------|-------------------------------------------|
+| PP check       | ✅ Close enough                           |
+| Linearity      | ✅ Flat                                   |
+| Equal variance | ⚠️ Slight drift; robust SEs barely differ |
+| Influence      | ✅ Nobody outside the contours            |
+| Normality      | ✅ Fine                                   |
+| Collinearity   | ✅ VIF ≈ 1                                |
+
+. . .
+
+Week 7's interpretation stands. **Most of the time, this is what diagnostics look like.** You check, the model is fine, you write one sentence saying so, and you move on.
+
+------------------------------------------------------------------------
+
+## 💻 Your Turn - Parts A & B
+
+::: callout-tip
+**Week 10 Exercises** · \~25 min · Pairs
+:::
+
+Last week's Part C, finished properly. **Pick a seed, write it on the board, render.** Then run `check_model()` on your interaction model and go panel by panel.
+
+Bring last week's `week9_reproducibility.qmd`. If you don't have it, the activity has a catch-up chunk.
+
+[Open the activity](../class-activities/wk10_holds-up.html){.button target="_blank"}
+
+# Part 3: A Model That Breaks
+
+------------------------------------------------------------------------
+
+## Remember this? 🎵 🎧
+
+Week 7 activity: 952 popular Spotify songs. Four audio features explained about 1% of streams. **Playlists** explained 62%.
+
+```{r}
+spotify <- import(here("files", "data", "popular_spotify.csv")) %>%
+  janitor::clean_names() %>%
+  mutate(streams     = as.numeric(streams),
+         streams_m   = streams / 1e6,                # millions of streams
+         playlists_k = in_spotify_playlists / 1000)  # thousands of playlists
+
+fit_raw <- lm(streams_m ~ playlists_k, data = spotify)
+glance(fit_raw) %>% select(r.squared, sigma, nobs)
+```
+
+. . .
+
+A great model by psychology standards. Let's look at it.
+
+------------------------------------------------------------------------
+
+## Every panel is unhappy
+
+```{r, fig.width=11, fig.height=8}
+#| code-fold: true
+#| out-width: "65%"
+check_model(fit_raw)
+```
+
+------------------------------------------------------------------------
+
+## Reading the damage
+
+::: incremental
+- **PP check:** real streams pile up near zero with a long right tail; the model expects a symmetric bell and predicts **negative streams**
+- **Linearity:** a clear arch. Too low in the middle, way too high at the top
+- **Homogeneity:** the funnel. Small misses for small songs; misses of 1,000M+ for the biggest ones
+- **Influence:** one song (case 757) outside the contour
+- **Normality:** an S-curve, the signature of skew
+:::
+
+. . .
+
+An R² of .62 told us **none** of this.
+
+------------------------------------------------------------------------
+
+## Why: streams grow by multiplying, not adding
+
+```{r, fig.width=10, fig.height=3.8}
+#| code-fold: true
+p1 <- spotify %>%
+  ggplot(aes(x = streams_m)) +
+  geom_histogram(bins = 40, fill = "grey60", color = "white") +
+  labs(x = "Streams (millions)", y = "Songs", title = "Raw") +
+  theme_bw(base_size = 15)
+
+p2 <- spotify %>%
+  ggplot(aes(x = log10(streams))) +
+  geom_histogram(bins = 40, fill = "grey60", color = "white") +
+  labs(x = "log10(streams)", y = "Songs", title = "Logged") +
+  theme_bw(base_size = 15)
+
+p1 + p2
+```
+
+A song going from 1M to 2M streams is the same kind of change as 500M to 1,000M: it **doubled**. Counts like this (streams, income, reaction times, followers, reported drinks) usually behave better on a **log scale**.
+
+------------------------------------------------------------------------
+
+## Log both sides
+
+Both streams and playlists are skewed counts, so log both.
+
+```{r}
+spotify <- spotify %>%
+  mutate(log_streams   = log10(streams),
+         log_playlists = log10(in_spotify_playlists))
+
+fit_log <- lm(log_streams ~ log_playlists, data = spotify)
+tidy(fit_log)
+```
+
+------------------------------------------------------------------------
+
+## Same data, different story
+
+```{r, fig.width=11, fig.height=8}
+#| code-fold: true
+#| out-width: "65%"
+check_model(fit_log)
+```
+
+Flat lines, an even band, a bell-shaped PP check, nobody near the contours. **Except one point.** We'll get to it.
+
+------------------------------------------------------------------------
+
+## Same R². Better model.
+
+```{r}
+bind_rows(raw = glance(fit_raw), logged = glance(fit_log), .id = "model") %>%
+  select(model, r.squared, adj.r.squared)
+```
+
+. . .
+
+The fit **did not improve**. It went from .624 to .619.
+
+::: callout-note
+Diagnostics are not about squeezing out more R². They are about whether the coefficients, SEs, and *p*-values you report **mean what you say they mean**. The raw model was confidently wrong about the songs that matter most; the logged one is not.
+:::
+
+------------------------------------------------------------------------
+
+## Reading a log–log slope
+
+```{r}
+b <- coef(fit_log)["log_playlists"]
+b
+10^b    # what a 10x increase in playlists does to streams
+```
+
+. . .
+
+::: incremental
+- **Ten times** the playlists → about **`r round(10^b, 1)` times** the streams
+- Roughly: **1% more** playlists → about **`r round(b, 2)`% more** streams
+- Streams grow **slower** than playlists (slope \< 1). Being on 10x the playlists does not get you 10x the listening
+:::
+
+. . .
+
+That sentence was impossible to say from the raw model, which claimed every 1,000 playlists added a flat 57 million streams to every song.
+
+------------------------------------------------------------------------
+
+## The log exposed something 🔍
+
+That lone point in the logged model:
+
+```{r}
+augment(fit_log, data = spotify) %>%
+  arrange(.std.resid) %>%
+  select(track_name, streams, in_spotify_playlists, .std.resid) %>%
+  head(3)
+```
+
+. . .
+
+**2,762 streams** for a song on 763 playlists. A standardized residual of **−15**: about **`r format(round(10^-min(resid(fit_log)), -3), big.mark = ",")` times** fewer streams than the model predicts.
+
+::: incremental
+- On the raw scale, 2,762 streams (0.003 million) sat next to a few million streams and looked unremarkable
+- This is almost certainly a **data entry error**. The next step is checking the source, not deleting the row
+:::
+
+------------------------------------------------------------------------
+
+## Fixed. The tests still complain.
+
+Drop that song and re-run the formal tests on 951 songs:
+
+```{r}
+fit_log2 <- lm(log_streams ~ log_playlists,
+               data = filter(spotify, streams > 10000))
+
+check_normality(fit_log2)
+check_heteroscedasticity(fit_log2)
+```
+
+. . .
+
+The plots look fine. Both tests say "violated." Who's right?
+
+------------------------------------------------------------------------
+
+## ⚠️ The tests answer the wrong question {background-color="#FDF0D5"}
+
+A significance test asks *"can I detect any departure at all?"* That depends on **n**, not on whether the departure matters.
+
+```{r, fig.width=10, fig.height=3.6}
+#| code-fold: true
+set.seed(640)
+
+# Small sample, badly skewed errors
+p_small <- replicate(1000, {
+  x <- rnorm(15); y <- x + (rexp(15) - 1)
+  shapiro.test(resid(lm(y ~ x)))$p.value
+})
+
+# Huge sample, nearly normal errors (t with 10 df)
+p_big <- replicate(200, {
+  x <- rnorm(5000); y <- x + rt(5000, df = 10)
+  shapiro.test(resid(lm(y ~ x)))$p.value
+})
+
+x <- rnorm(15); y <- x + (rexp(15) - 1)
+q1 <- tibble(r = resid(lm(y ~ x))) %>%
+  ggplot(aes(sample = r)) + stat_qq() + stat_qq_line() +
+  labs(title = paste0("n = 15, badly skewed\nflagged in ",
+                      round(100 * mean(p_small < .05)), "% of samples")) +
+  theme_bw(base_size = 14)
+
+x <- rnorm(5000); y <- x + rt(5000, df = 10)
+q2 <- tibble(r = resid(lm(y ~ x))) %>%
+  ggplot(aes(sample = r)) + stat_qq(alpha = .2) + stat_qq_line() +
+  labs(title = paste0("n = 5,000, nearly normal\nflagged in ",
+                      round(100 * mean(p_big < .05)), "% of samples")) +
+  theme_bw(base_size = 14)
+
+q1 + q2
+```
+
+. . .
+
+**Small samples:** real problems slip through. **Large samples:** harmless wiggles get flagged. **Look at the plots.** Use the tests as a second opinion, never as the verdict.
+
+# Part 4: Influence, Collinearity, Independence
+
+------------------------------------------------------------------------
+
+## One song moved the line
+
+Back to the **raw** model. Case 757 was outside the contour:
+
+```{r}
+augment(fit_raw, data = spotify) %>%
+  arrange(desc(.cooksd)) %>%
+  select(track_name, streams_m, playlists_k, .hat, .cooksd) %>%
+  head(3)
+```
+
+. . .
+
+*Get Lucky* is on more playlists than any other song in the data (52,898), but has "only" 934M streams.
+
+- **Leverage** (`.hat`): unusual on the **predictors**. Most playlists of anyone
+- **Residual**: far below the line
+- **Cook's distance** (`.cooksd`): leverage × residual. How much **every** prediction would shift if this one case vanished
+
+------------------------------------------------------------------------
+
+## Fit it both ways
+
+```{r}
+fit_raw_no757 <- lm(streams_m ~ playlists_k, data = spotify[-757, ])
+
+bind_rows(with    = tidy(fit_raw),
+          without = tidy(fit_raw_no757), .id = "Get Lucky") %>%
+  filter(term == "playlists_k") %>%
+  select(`Get Lucky`, estimate, std.error)
+```
+
+. . .
+
+One song out of 952 moved the slope by about 2 million streams per thousand playlists. Not a disaster here, but in a sample of 40 one case can flip a sign.
+
+------------------------------------------------------------------------
+
+## What to do with an influential point
+
+::: incremental
+1.  **Is it an error?** (Like *Que Vuelvas*.) Check the source. Fix it, or drop it and say so.
+2.  **Is it from your population?** A 60-year-old in a study of college students: exclude it with a stated rule, ideally decided before you looked.
+3.  **Is it real and in scope?** Keep it. Fit the model **with and without** it and report both if the conclusions differ.
+4.  **Is the model the problem?** Here, the log model had no influential songs at all. *Get Lucky* only looked extreme on the wrong scale.
+:::
+
+. . .
+
+::: callout-warning
+Never delete points to get to *p* \< .05. "Removed outliers" with no rule and no with-and-without comparison is a red flag to every reviewer.
+:::
+
+------------------------------------------------------------------------
+
+## Multicollinearity: three ways to say "popular"
+
+Songs are on playlists on **Spotify, Apple, and Deezer**. Each one alone predicts streams.
+
+```{r}
+spotify <- spotify %>%
+  mutate(deezer_playlists = as.numeric(gsub(",", "", in_deezer_playlists)))
+
+spotify %>%
+  select(streams_m, in_spotify_playlists, in_apple_playlists, deezer_playlists) %>%
+  correlation() %>%
+  summary()
+```
+
+------------------------------------------------------------------------
+
+## Put all three in
+
+```{r}
+fit_plat <- lm(streams_m ~ in_spotify_playlists + in_apple_playlists + deezer_playlists,
+               data = spotify)
+tidy(fit_plat)
+```
+
+. . .
+
+Deezer playlists correlate *r* = .60 with streams on their own. In this model, the Deezer coefficient is **negative and not significant**.
+
+Deezer didn't stop mattering. It correlates *r* = .83 with Spotify playlists, so once Spotify is in the model there is almost nothing left for Deezer to explain, and the model can't tell the two apart.
+
+------------------------------------------------------------------------
+
+## VIF says so
+
+```{r}
+check_collinearity(fit_plat) %>% select(Term, VIF, SE_factor)
+```
+
+. . .
+
+- VIF of 5.35 → the Spotify SE is $\sqrt{5.35}$ = **2.3 times** bigger than it would be with no overlap (the `SE_factor` column)
+- **Collinearity does not bias coefficients. It blurs them.** Wide SEs, unstable signs, coefficients that swing when you add or drop a variable
+
+. . .
+
+**What to do:** ask whether you need all three. Pick the one your question is about, or **combine** them (e.g., average their *z*-scores into one "popularity" score). If you only care about prediction, collinearity barely matters.
+
+------------------------------------------------------------------------
+
+## Remember centering? (Week 9)
+
+Interactions **create** collinearity: `study × tutor` is built out of `study` and `tutor`.
+
+```{r}
+tutor <- import(here("files", "data", "tutor.csv")) %>%
+  mutate(tutor_f = factor(tutor, levels = c(0, 1), labels = c("No tutor", "Tutor")),
+         study_c = study - mean(study))
+
+vif_raw <- check_collinearity(lm(grade ~ study   * tutor_f, data = tutor))
+vif_cen <- check_collinearity(lm(grade ~ study_c * tutor_f, data = tutor))
+
+tibble(term = c("study", "tutor", "study × tutor"),
+       uncentered = round(vif_raw$VIF, 2),
+       centered   = round(vif_cen$VIF, 2))
+```
+
+. . .
+
+Same model, same interaction test. Centering took the interaction's VIF from about 11 down to about 2. A high VIF on an **uncentered interaction** is not a reason to panic. Center, then check.
+
+------------------------------------------------------------------------
+
+## Independence: the assumption no plot will show you
+
+ASAP measured each adolescent **three times**. Stack the three waves and fit one regression:
+
+```{r}
+asap_long <- asap %>%
+  select(ID, matches("^T[123]_(Dep|SleepDur)$")) %>%
+  pivot_longer(-ID, names_to = c("wave", ".value"),
+               names_pattern = "(T[123])_(.*)") %>%
+  drop_na()
+
+fit_stacked <- lm(Dep ~ SleepDur, data = asap_long)
+nobs(fit_stacked); n_distinct(asap_long$ID)
+```
+
+The model thinks it has `r nobs(fit_stacked)` independent observations. It has `r n_distinct(asap_long$ID)` kids.
+
+------------------------------------------------------------------------
+
+## The same kid misses the same way
+
+```{r}
+asap_long %>%
+  mutate(resid = resid(fit_stacked)) %>%
+  select(ID, wave, resid) %>%
+  pivot_wider(names_from = wave, values_from = resid) %>%
+  select(-ID) %>%
+  correlation() %>%
+  summary()
+```
+
+. . .
+
+If the model underpredicts a kid at T2, it probably underpredicts them at T3 too. The errors are **not independent**, so the SEs are **too small** and the *p*-values too optimistic.
+
+::: callout-note
+`check_model()` cannot catch this. Independence is a **design** question: repeated measures, siblings, students in classrooms, therapy clients with the same therapist. The fix is a **multilevel model**.
+:::
+
+# 💻 Your Turn - Part C
+
+::: callout-tip
+\~10 min · Same pairs, same seed
+:::
+
+**Does your conclusion hold up?** Refit your interaction three ways: robust SEs, dropping cases with Cook's distance \> 4/*n*, and one version with last week's TIPI-zeros mistake left in.
+
+[Back to the activity](../class-activities/wk10_holds-up.html#part-c-does-it-hold-up-10-min){.button target="_blank"}
+
+# Part 5: What To Do About It
+
+------------------------------------------------------------------------
+
+## The cheat sheet
+
+| Problem | How you see it | What to do |
+|------------------------|------------------------|------------------------|
+| **Nonlinearity** | Curved line in Linearity panel | Log or other transform; add a squared term; rethink the model |
+| **Unequal variance** | Rising line / funnel | Log the outcome if it's a skewed count; robust SEs (`vcov = "HC3"`) |
+| **Non-normal residuals** | S-curve or peeled tails in Q-Q | Large n: usually ignore. Small n: transform, or bootstrap CIs |
+| **Influential case** | Point outside the Cook's contours | Check for errors; fit with and without; report both |
+| **Collinearity** | VIF \> 5–10 | Center interactions; drop or combine overlapping predictors |
+| **Non-independence** | **Your design**, not a plot | Multilevel model (Week 13) |
+
+------------------------------------------------------------------------
+
+## What not to do
+
+::: incremental
+- ❌ Test normality on the **raw outcome** instead of the residuals
+- ❌ Treat a significant Shapiro-Wilk at n = 900 as an emergency
+- ❌ Delete points, transform, or switch models **until the result is significant**
+- ❌ Run diagnostics after you've seen the results, only to justify what you already wanted
+- ✅ Decide **before** you see the results what you'll check and what you'll do if it fails
+:::
+
+. . .
+
+That last one is the analysis-plan habit. You will need it for the final project.
+
+------------------------------------------------------------------------
+
+## The write-up 🎵 🎧
+
+```{r}
+#| echo: false
+wp <- model_parameters(fit_log2)
+wb <- wp$Coefficient[2]; wl <- wp$CI_low[2]; wh <- wp$CI_high[2]
+wr <- glance(fit_log2)$r.squared
+```
+
+> Model assumptions were evaluated with residual diagnostics (`performance::check_model()`). In the untransformed model, residuals showed marked curvature, increasing variance with fitted values, and right skew, so both streams and playlist counts were log10-transformed. The transformed model showed no evidence of nonlinearity, heteroscedasticity, or influential observations, with one exception: a single song (2,762 streams) had a standardized residual of −15.4, was judged a data-entry error, and was excluded (*N* = `r nobs(fit_log2)`). Each tenfold increase in playlist count was associated with a `r sprintf("%.1f", 10^wb)`-fold increase in streams, *b* = `r sprintf("%.2f", wb)`, 95% CI \[`r sprintf("%.2f", wl)`, `r sprintf("%.2f", wh)`\], *R²* = `r sub("^0", "", sprintf("%.2f", wr))`.
+
+. . .
+
+::: callout-tip
+Say **what you checked, what you found, what you did, and why.** If everything looked fine, one sentence is enough: "Residual diagnostics showed no evidence of nonlinearity, heteroscedasticity, non-normality, or influential observations."
+:::
+
+# 💻 Your Turn - Parts D & E
+
+::: callout-tip
+\~15 min · Write, render, tally
+:::
+
+1.  Write your Results paragraph: the interaction, **one assumption sentence**, **one robustness sentence**
+2.  Restart R and render. Do your numbers still match your paragraph?
+3.  Put your seed's four *p*-values on the board - maybe
+
+[Back to the activity](../class-activities/wk10_holds-up.html#part-d-write-it-up-10-min){.button target="_blank"}
+
+------------------------------------------------------------------------
+
+## The tally, 1,000 times over
+
+The same analysis on 1,000 different seeds, instead of the 15 on the board:
+
+| Version                          | Seeds with *p* \< .05 |
+|----------------------------------|-----------------------|
+| Original                         | 21.6%                 |
+| Robust SEs                       | 26.7%                 |
+| Drop Cook's \> 4/*n*             | 19.7%                 |
+| TIPI zeros left in (the mistake) | 23.1%                 |
+
+. . .
+
+::: incremental
+- In **20.6%** of samples, a defensible robustness check (robust SEs or trimming) **flipped** the conclusion
+- **32.9%** of samples are significant under at least one of the three versions above. Only **12.3%** under all three
+- The heteroscedasticity test flagged only **13%** of samples, even though the outcome is a bounded sum score that produces the arch you saw
+:::
+
+------------------------------------------------------------------------
+
+## And in the full data...
+
+All `r format(33982, big.mark = ",")` usable responses:
+
+- Interaction *b* = **0.039**, *p* ≈ 4 × 10⁻³⁸
+- Δ*R²* = **.003**
+
+. . .
+
+The interaction is **real** and **tiny**. With *n* ≈ 340, about one sample in five can see it, and which version of the analysis you run decides a fifth of the verdicts.
+
+**Reproducible** (it renders) is not **robust** (it survives other defensible choices), and neither is **replicable** (a new sample agrees). Diagnostics tell you which choices to check. Reporting them lets the next person check you.
+
+------------------------------------------------------------------------
+
+## 💻 Your Turn: Name that violation (if time)
+
+::: callout-tip
+**\~10 min** · Pairs
+:::
+
+Each panel comes from a different model. For each one: **which assumption, what's wrong, what would you do?**
+
+```{r, fig.width=11, fig.height=6.5}
+#| code-fold: true
+#| out-width: "62%"
+set.seed(1029)
+n <- 250
+x <- runif(n, 1, 10)
+
+mA <- lm(y ~ x, data = tibble(x, y = 2 + 3 * x - 0.3 * x^2 + rnorm(n, 0, 1.5)))
+mB <- lm(y ~ x, data = tibble(x, y = exp(0.3 * x + rnorm(n, 0, 0.45))))
+
+dC <- tibble(x = c(x[1:39], 25), y = c(2 + 0.5 * x[1:39] + rnorm(39, 0, 1.5), -4))
+mC <- lm(y ~ x, data = dC)
+
+x1 <- rnorm(n); x2 <- x1 + rnorm(n, 0, 0.2); x3 <- rnorm(n)
+mD <- lm(y ~ x1 + x2 + x3, data = tibble(x1, x2, x3, y = x1 + x3 + rnorm(n)))
+
+pA <- plot(check_model(mA, check = "linearity",  panel = FALSE))[[1]] + labs(title = "A")
+pB <- plot(check_model(mB, check = "qq",         panel = FALSE))[[1]] + labs(title = "B")
+pC <- plot(check_model(mC, check = "outliers",   panel = FALSE))[[1]] + labs(title = "C")
+pD <- plot(check_model(mD, check = "vif",        panel = FALSE))[[1]] + labs(title = "D")
+
+(pA + pB) / (pC + pD)
+```
+
+------------------------------------------------------------------------
+
+## Answers
+
+::: incremental
+- **A — Linearity.** The residual line is an arch: the true relationship bends. Add a squared term or transform `x`, then re-check.
+- **B — Normality (and probably variance).** Right-skewed residuals from an outcome that grows multiplicatively. Log the outcome, like streams.
+- **C — Influence.** One case with an extreme `x` and a big miss, outside the Cook's contour, in a sample of only 40. Check it, then fit with and without.
+- **D — Collinearity.** `x1` and `x2` are near copies (VIF way above 10). Keep the one your question is about, or combine them.
+:::
+
+. . .
+
+Notice what's **not** on this slide: independence. No panel would have shown it.
+
+## ✍️ Wrap-Up
+
+Finish these in your notes:
+
+1.  Name one assumption that **no plot** can check, and how you'd check it instead.
+2.  The raw and logged Spotify models had the same R². Why was the logged one better?
+3.  Your residuals fail a Shapiro-Wilk test with n = 800 but the Q-Q plot looks fine. What do you write?
+4.  One thing that is still muddy → journal.
+
+------------------------------------------------------------------------
+
+## For next time
+
+📋 **Lab 9 — Groups, Slopes & Interactions**, due **Tuesday 11/3 at 11:59pm**
+
+📖 Readings for **Missing Data + Model Building/Comparison**:
+
+- Chapter 15.10 — LSR
+- Chapter 17 — ST
+- Chapters 17.3–17.7 — ROS
+- Chapter 8.7 — MSR
+
+💾 **Class Check next week**
+
+::: callout-important
+## 📂 Final Project — posted Friday
+
+The final project will be up on the website **Friday**. It uses everything from today: you'll write an assumption-check plan **before** you run your confirmatory model. Read it over the weekend.
+:::

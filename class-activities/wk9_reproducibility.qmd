@@ -37,7 +37,7 @@ Do one part, then we go back to the slides.
 These are real responses to the **Depression Anxiety Stress Scales (DASS-42)**, collected through the free online version at [openpsychometrics.org.](https://openpsychometrics.org/_rawdata/) The full file has about 40,000 people. You will work with a random sample of 400.
 
 | Variables | What they are |
-|------------------------------------|------------------------------------|
+|----|----|
 | `q1a` … `q42a` | DASS items, rated **1–4** in this file (1 = "did not apply to me at all", 4 = "applied to me very much") |
 | `tipi1` … `tipi10` | Ten-Item Personality Inventory, a short Big Five measure, rated **1–7** |
 | `vcl1` … `vcl16` | "Check the words you know." `vcl6`, `vcl9` and `vcl12` are **not real words** |
@@ -305,7 +305,7 @@ What's wrong with this? Name at least two problems.
 
 ------------------------------------------------------------------------
 
-# Part C — Your sample, someone else's file (25 min) 
+# Part C — Your sample, someone else's file (25 min)
 
 ::: callout-note
 This is only if we have time.
