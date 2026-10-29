@@ -1,0 +1,1879 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
+
+  <title>PSYC 640 - Graduate Statistics – Week 10: Assumptions + Diagnostics</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-257723e3f8c37b3170acb06a96dd7d4b.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+<meta property="og:title" content="Week 10: Assumptions + Diagnostics – PSYC 640 - Graduate Statistics">
+<meta property="og:description" content="Date: October 29, 2026">
+<meta property="og:site_name" content="PSYC 640 - Graduate Statistics">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Week 10: Assumptions + Diagnostics</h1>
+  <p class="subtitle">Date: October 29, 2026</p>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section id="today" class="slide level2">
+<h2>Today…</h2>
+<p><strong>Is the model telling the truth?</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../images/linear_regression_2x.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</section>
+<section id="today-1" class="slide level2">
+<h2>Today…</h2>
+<p><strong>Is the model telling the truth?</strong></p>
+<ul>
+<li>What a regression actually assumes, in order of how much it matters</li>
+<li>Reading <code>check_model()</code> one panel at a time</li>
+<li>A model with a great R² that breaks every rule, and the one-line fix</li>
+<li>Influential points, multicollinearity, and the assumption no plot can check</li>
+<li>Why the formal tests answer the wrong question</li>
+<li>What to do, and how to write it up</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-2"><a aria-label="2"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a aria-label="3"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-4"><a aria-label="4"></a><span class="fu">library</span>(broom)</span>
+<span id="cb1-5"><a aria-label="5"></a><span class="fu">library</span>(easystats)</span>
+<span id="cb1-6"><a aria-label="6"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb1-7"><a aria-label="7"></a></span>
+<span id="cb1-8"><a aria-label="8"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="four-weeks-of-glancing" class="slide level2 scrollable">
+<h2>Four weeks of glancing</h2>
+<p>In Week 7 we ended with this:</p>
+<blockquote>
+<p>That is the entire diagnostic toolkit for now: <strong>plot the residuals, look for a pattern.</strong></p>
+</blockquote>
+<div class="fragment">
+<p>Since then, every model has come with “nothing obviously wrong.” Today each glance gets:</p>
+<ol type="1">
+<li class="fragment">A <strong>name</strong>: which assumption it checks</li>
+<li class="fragment">A <strong>consequence</strong>: what breaks if it fails</li>
+<li class="fragment">A <strong>fix</strong>: what to do about it</li>
+</ol>
+</div>
+</section>
+<section>
+<section id="part-1-what-a-regression-assumes" class="title-slide slide level1 center">
+<h1>Part 1: What a Regression Assumes</h1>
+
+</section>
+<section id="the-model-makes-promises-about-the-errors" class="slide level2">
+<h2>The model makes promises about the errors</h2>
+<p><span class="math display">\[
+Y_i = b_0 + b_1X_{1i} + b_2X_{2i} + e_i \qquad e_i \sim N(0,\ \sigma)
+\]</span></p>
+<div class="fragment">
+<p>Read that last part out loud: the errors are…</p>
+<ul>
+<li class="fragment">centered on <strong>zero</strong> at every value of X → the line is the right shape</li>
+<li class="fragment">drawn <strong>independently</strong> for each person</li>
+<li class="fragment">spread by the <strong>same</strong> <span class="math inline">\(\sigma\)</span> for everyone</li>
+<li class="fragment"><strong>Normally</strong> distributed</li>
+</ul>
+</div>
+<div class="fragment">
+<p>Almost every assumption is a claim about <span class="math inline">\(e\)</span>, the <strong>residuals</strong>. Very few are about your variables.</p>
+</div>
+</section>
+<section id="in-order-of-importance-ros-ch.-11" class="slide level2 scrollable">
+<h2>In order of importance (ROS, Ch. 11)</h2>
+<p>Gelman, Hill &amp; Vehtari list the assumptions <strong>from most to least important</strong>:</p>
+<ol type="1">
+<li class="fragment"><strong>Validity</strong>: the data measure what your question is about</li>
+<li class="fragment"><strong>Representativeness</strong>: the sample stands in for the population you care about</li>
+<li class="fragment"><strong>Linearity and additivity</strong>: the outcome is a straight-line, added-up function of the predictors</li>
+<li class="fragment"><strong>Independence of errors</strong></li>
+<li class="fragment"><strong>Equal variance of errors</strong></li>
+<li class="fragment"><strong>Normality of errors</strong></li>
+</ol>
+<div class="fragment">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>The one people test most often (normality) is the one that matters least. The two that matter most (validity, representativeness) <strong>cannot be checked with any plot.</strong> They are checked by thinking about your design (Week 4).</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="residuals-not-variables" class="slide level2" data-background-color="#FDF0D5">
+<h2>⚠️ Residuals, not variables</h2>
+<p>The most common mistake in a Methods section:</p>
+<blockquote>
+<p>“Shapiro-Wilk tests indicated that anxiety was not normally distributed, so…”</p>
+</blockquote>
+<div class="fragment">
+<p><strong>Regression does not assume your predictors or your outcome are normal.</strong></p>
+<ul>
+<li>A skewed predictor is fine</li>
+<li>A dummy-coded group (0/1) is about as non-normal as it gets, and we have used one every week since Week 6</li>
+<li>What matters is the shape of the <strong>leftovers</strong> after the model has done its work</li>
+</ul>
+</div>
+<div class="fragment">
+<p>Run diagnostics on the <strong>model</strong>, not on the raw columns.</p>
+</div>
+</section>
+<section id="what-actually-breaks" class="slide level2">
+<h2>What actually breaks</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 36%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>If this fails…</th>
+<th>The coefficients (<span class="math inline">\(b\)</span>)</th>
+<th>The SEs, CIs, <em>p</em>-values</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Linearity</td>
+<td><strong>Wrong.</strong> Wrong-shaped line</td>
+<td>Wrong too</td>
+</tr>
+<tr class="even">
+<td>Independence</td>
+<td>Usually fine</td>
+<td><strong>Too small.</strong> Overconfident</td>
+</tr>
+<tr class="odd">
+<td>Equal variance</td>
+<td>Fine</td>
+<td><strong>Off.</strong> Too big or too small</td>
+</tr>
+<tr class="even">
+<td>Normality</td>
+<td>Fine</td>
+<td>Fine in big samples</td>
+</tr>
+<tr class="odd">
+<td>One influential point</td>
+<td><strong>Driven by one case</strong></td>
+<td>Off</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>Two more problems that are <strong>not assumptions</strong>, but still show up in <code>check_model()</code>:</p>
+<ul>
+<li><strong>Multicollinearity</strong>: coefficients become unstable and SEs inflate</li>
+<li><strong>Influential observations</strong>: one case is running the model</li>
+</ul>
+</div>
+</section></section>
+<section>
+<section id="part-2-reading-check_model" class="title-slide slide level1 center">
+<h1>Part 2: Reading <code>check_model()</code></h1>
+
+</section>
+<section id="a-model-we-already-know" class="slide level2">
+<h2>A model we already know 😴</h2>
+<p>Week 7: the ASAP study, 400 adolescents. Depression predicted from sleep duration and peer stress.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a>asap <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"files"</span>, <span class="st">"data"</span>, <span class="st">"asap_data.csv"</span>))</span>
+<span id="cb2-2"><a aria-label="2"></a></span>
+<span id="cb2-3"><a aria-label="3"></a>fit_two <span class="ot">&lt;-</span> <span class="fu">lm</span>(T1_Dep <span class="sc">~</span> T1_SleepDur <span class="sc">+</span> T1_PeerStress, <span class="at">data =</span> asap)</span>
+<span id="cb2-4"><a aria-label="4"></a><span class="fu">tidy</span>(fit_two)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 5
+  term          estimate std.error statistic  p.value
+  &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 (Intercept)     13.0      1.14       11.5  1.74e-26
+2 T1_SleepDur     -0.504    0.103      -4.89 1.47e- 6
+3 T1_PeerStress    0.201    0.0585      3.43 6.57e- 4</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>We interpreted these coefficients three weeks ago. Were we allowed to?</p>
+</div>
+</section>
+<section id="one-function-six-panels" class="slide level2">
+<h2>One function, six panels</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a><span class="fu">check_model</span>(fit_two)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec-10_diagnostics_files/figure-revealjs/unnamed-chunk-3-1.png" style="width:65.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Each panel answers one question. Let’s take them one at a time.</p>
+</section>
+<section id="posterior-predictive-check" class="slide level2">
+<h2>1. Posterior predictive check</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a><span class="fu">plot</span>(<span class="fu">check_model</span>(fit_two, <span class="at">check =</span> <span class="st">"pp_check"</span>, <span class="at">panel =</span> <span class="cn">FALSE</span>))[[<span class="dv">1</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec-10_diagnostics_files/figure-revealjs/unnamed-chunk-4-1.png" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<div style="font-size: 0.8em;">
+<p><strong>Question:</strong> If the model were true, would it produce data that look like ours?</p>
+<ul>
+<li>Green = the real outcome. Blue = outcomes simulated from the fitted model.</li>
+<li><strong>Good:</strong> green sits inside the blue</li>
+<li><strong>Bad:</strong> green has a peak, skew, or floor the blue lines miss</li>
+</ul>
+<p>Here: close. Depression scores are a little more peaked than the model expects, but nothing alarming.</p>
+</div>
+</div></div>
+</section>
+<section id="linearity" class="slide level2">
+<h2>2. Linearity</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a><span class="fu">plot</span>(<span class="fu">check_model</span>(fit_two, <span class="at">check =</span> <span class="st">"linearity"</span>, <span class="at">panel =</span> <span class="cn">FALSE</span>))[[<span class="dv">1</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec-10_diagnostics_files/figure-revealjs/unnamed-chunk-5-1.png" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<div style="font-size: 0.8em;">
+<p><strong>Question:</strong> Is the straight line the right shape?</p>
+<ul>
+<li>Residuals against fitted values (the Week 7 plot)</li>
+<li><strong>Good:</strong> the green line is flat at zero</li>
+<li><strong>Bad:</strong> a curve. The model is too low at the ends and too high in the middle, or the reverse</li>
+</ul>
+<p>Here: flat. ✅</p>
+</div>
+</div></div>
+</section>
+<section id="homogeneity-of-variance" class="slide level2">
+<h2>3. Homogeneity of variance</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a><span class="fu">plot</span>(<span class="fu">check_model</span>(fit_two, <span class="at">check =</span> <span class="st">"homogeneity"</span>, <span class="at">panel =</span> <span class="cn">FALSE</span>))[[<span class="dv">1</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec-10_diagnostics_files/figure-revealjs/unnamed-chunk-6-1.png" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<div style="font-size: 0.8em;">
+<p><strong>Question:</strong> Is the model equally wrong for everyone?</p>
+<ul>
+<li><span class="math inline">\(\sqrt{|\text{standardized residual}|}\)</span> against fitted values</li>
+<li><strong>Good:</strong> flat green line, even band</li>
+<li><strong>Bad:</strong> a line that clearly rises or falls (the funnel from Week 7)</li>
+</ul>
+<p>Here: a gentle downward drift. The model misses a little less for kids with high predicted depression. Hold that thought.</p>
+</div>
+</div></div>
+</section>
+<section id="the-test-disagrees-with-your-eyes" class="slide level2">
+<h2>The test disagrees with your eyes</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a><span class="fu">check_heteroscedasticity</span>(fit_two)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Warning: Heteroscedasticity (non-constant error variance) detected (p = 0.016).</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>The plot says “slight.” The test says “significant.” With 400 people, the test can detect a slight tilt. Whether that tilt <strong>matters</strong> is a separate question.</p>
+</div>
+<div class="fragment">
+<p><strong>Cheap insurance:</strong> heteroscedasticity-robust standard errors. Same coefficients, honest SEs.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-label="1"></a><span class="fu">model_parameters</span>(fit_two, <span class="at">vcov =</span> <span class="st">"HC3"</span>)   <span class="co"># needs install.packages("sandwich")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>SEs barely move (0.10 → 0.11). That is the plot being right: the problem was real but small.</p>
+</div>
+</section>
+<section id="influential-observations" class="slide level2">
+<h2>4. Influential observations</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a><span class="fu">plot</span>(<span class="fu">check_model</span>(fit_two, <span class="at">check =</span> <span class="st">"outliers"</span>, <span class="at">panel =</span> <span class="cn">FALSE</span>))[[<span class="dv">1</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec-10_diagnostics_files/figure-revealjs/unnamed-chunk-9-1.png" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<div style="font-size: 0.8em;">
+<p><strong>Question:</strong> Is any single person running the model?</p>
+<ul>
+<li>Leverage (how unusual someone’s <strong>predictors</strong> are) against residual (how badly the model <strong>misses</strong> them)</li>
+<li><strong>Good:</strong> every point inside the dashed contours</li>
+<li><strong>Bad:</strong> a labeled point outside them. That case has a large <strong>Cook’s distance</strong></li>
+</ul>
+<p>Here: nobody close. ✅</p>
+</div>
+</div></div>
+</section>
+<section id="normality-of-residuals" class="slide level2">
+<h2>5. Normality of residuals</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-label="1"></a><span class="fu">plot</span>(<span class="fu">check_model</span>(fit_two, <span class="at">check =</span> <span class="st">"qq"</span>, <span class="at">panel =</span> <span class="cn">FALSE</span>))[[<span class="dv">1</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec-10_diagnostics_files/figure-revealjs/unnamed-chunk-10-1.png" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<div style="font-size: 0.8em;">
+<p><strong>Question:</strong> Are the leftovers roughly bell-shaped?</p>
+<ul>
+<li>A Q-Q plot, “detrended” so a perfect fit is a flat line</li>
+<li><strong>Good:</strong> dots hug the line, maybe wandering a little at the very ends</li>
+<li><strong>Bad:</strong> an S-shape (skew) or tails that peel away (outliers, heavy tails)</li>
+</ul>
+<p>Here: fine. ✅ And with n = 400, the Central Limit Theorem covers a lot of sins here.</p>
+</div>
+</div></div>
+</section>
+<section id="collinearity" class="slide level2">
+<h2>6. Collinearity</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a><span class="fu">plot</span>(<span class="fu">check_model</span>(fit_two, <span class="at">check =</span> <span class="st">"vif"</span>, <span class="at">panel =</span> <span class="cn">FALSE</span>))[[<span class="dv">1</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec-10_diagnostics_files/figure-revealjs/unnamed-chunk-11-1.png" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<div style="font-size: 0.8em;">
+<p><strong>Question:</strong> Are the predictors stepping on each other? (Week 8)</p>
+<ul>
+<li><strong>VIF</strong> = variance inflation factor. 1 = no overlap at all</li>
+<li>Rough guide: <strong>&lt; 5</strong> fine, <strong>5–10</strong> worth a look, <strong>&gt; 10</strong> a problem</li>
+</ul>
+<p>Here: VIF = 1.02. Sleep and peer stress barely overlap (<em>r</em> = −.13). ✅</p>
+</div>
+</div></div>
+</section>
+<section id="verdict-on-fit_two" class="slide level2">
+<h2>Verdict on <code>fit_two</code></h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Panel</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PP check</td>
+<td>✅ Close enough</td>
+</tr>
+<tr class="even">
+<td>Linearity</td>
+<td>✅ Flat</td>
+</tr>
+<tr class="odd">
+<td>Equal variance</td>
+<td>⚠️ Slight drift; robust SEs barely differ</td>
+</tr>
+<tr class="even">
+<td>Influence</td>
+<td>✅ Nobody outside the contours</td>
+</tr>
+<tr class="odd">
+<td>Normality</td>
+<td>✅ Fine</td>
+</tr>
+<tr class="even">
+<td>Collinearity</td>
+<td>✅ VIF ≈ 1</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>Week 7’s interpretation stands. <strong>Most of the time, this is what diagnostics look like.</strong> You check, the model is fine, you write one sentence saying so, and you move on.</p>
+</div>
+</section>
+<section id="your-turn---parts-a-b" class="slide level2">
+<h2>💻 Your Turn - Parts A &amp; B</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Week 10 Exercises</strong> · ~25 min · Pairs</p>
+</div>
+</div>
+</div>
+<p>Last week’s Part C, finished properly. <strong>Pick a seed, write it on the board, render.</strong> Then run <code>check_model()</code> on your interaction model and go panel by panel.</p>
+<p>Bring last week’s <code>week9_reproducibility.qmd</code>. If you don’t have it, the activity has a catch-up chunk.</p>
+<p><a href="../class-activities/wk10_holds-up.html" class="button" target="_blank">Open the activity</a></p>
+</section></section>
+<section>
+<section id="part-3-a-model-that-breaks" class="title-slide slide level1 center">
+<h1>Part 3: A Model That Breaks</h1>
+
+</section>
+<section id="remember-this" class="slide level2">
+<h2>Remember this? 🎵 🎧</h2>
+<p>Week 7 activity: 952 popular Spotify songs. Four audio features explained about 1% of streams. <strong>Playlists</strong> explained 62%.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a>spotify <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"files"</span>, <span class="st">"data"</span>, <span class="st">"popular_spotify.csv"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a aria-label="2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a aria-label="3"></a>  <span class="fu">mutate</span>(<span class="at">streams     =</span> <span class="fu">as.numeric</span>(streams),</span>
+<span id="cb14-4"><a aria-label="4"></a>         <span class="at">streams_m   =</span> streams <span class="sc">/</span> <span class="fl">1e6</span>,                <span class="co"># millions of streams</span></span>
+<span id="cb14-5"><a aria-label="5"></a>         <span class="at">playlists_k =</span> in_spotify_playlists <span class="sc">/</span> <span class="dv">1000</span>)  <span class="co"># thousands of playlists</span></span>
+<span id="cb14-6"><a aria-label="6"></a></span>
+<span id="cb14-7"><a aria-label="7"></a>fit_raw <span class="ot">&lt;-</span> <span class="fu">lm</span>(streams_m <span class="sc">~</span> playlists_k, <span class="at">data =</span> spotify)</span>
+<span id="cb14-8"><a aria-label="8"></a><span class="fu">glance</span>(fit_raw) <span class="sc">%&gt;%</span> <span class="fu">select</span>(r.squared, sigma, nobs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  r.squared sigma  nobs
+      &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
+1     0.624  348.   952</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>A great model by psychology standards. Let’s look at it.</p>
+</div>
+</section>
+<section id="every-panel-is-unhappy" class="slide level2">
+<h2>Every panel is unhappy</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-label="1"></a><span class="fu">check_model</span>(fit_raw)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec-10_diagnostics_files/figure-revealjs/unnamed-chunk-13-1.png" style="width:65.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="reading-the-damage" class="slide level2">
+<h2>Reading the damage</h2>
+<ul>
+<li class="fragment"><strong>PP check:</strong> real streams pile up near zero with a long right tail; the model expects a symmetric bell and predicts <strong>negative streams</strong></li>
+<li class="fragment"><strong>Linearity:</strong> a clear arch. Too low in the middle, way too high at the top</li>
+<li class="fragment"><strong>Homogeneity:</strong> the funnel. Small misses for small songs; misses of 1,000M+ for the biggest ones</li>
+<li class="fragment"><strong>Influence:</strong> one song (case 757) outside the contour</li>
+<li class="fragment"><strong>Normality:</strong> an S-curve, the signature of skew</li>
+</ul>
+<div class="fragment">
+<p>An R² of .62 told us <strong>none</strong> of this.</p>
+</div>
+</section>
+<section id="why-streams-grow-by-multiplying-not-adding" class="slide level2">
+<h2>Why: streams grow by multiplying, not adding</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-label="1"></a>p1 <span class="ot">&lt;-</span> spotify <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> streams_m)) <span class="sc">+</span></span>
+<span id="cb17-3"><a aria-label="3"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">40</span>, <span class="at">fill =</span> <span class="st">"grey60"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb17-4"><a aria-label="4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Streams (millions)"</span>, <span class="at">y =</span> <span class="st">"Songs"</span>, <span class="at">title =</span> <span class="st">"Raw"</span>) <span class="sc">+</span></span>
+<span id="cb17-5"><a aria-label="5"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">15</span>)</span>
+<span id="cb17-6"><a aria-label="6"></a></span>
+<span id="cb17-7"><a aria-label="7"></a>p2 <span class="ot">&lt;-</span> spotify <span class="sc">%&gt;%</span></span>
+<span id="cb17-8"><a aria-label="8"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log10</span>(streams))) <span class="sc">+</span></span>
+<span id="cb17-9"><a aria-label="9"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">40</span>, <span class="at">fill =</span> <span class="st">"grey60"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb17-10"><a aria-label="10"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"log10(streams)"</span>, <span class="at">y =</span> <span class="st">"Songs"</span>, <span class="at">title =</span> <span class="st">"Logged"</span>) <span class="sc">+</span></span>
+<span id="cb17-11"><a aria-label="11"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">15</span>)</span>
+<span id="cb17-12"><a aria-label="12"></a></span>
+<span id="cb17-13"><a aria-label="13"></a>p1 <span class="sc">+</span> p2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec-10_diagnostics_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A song going from 1M to 2M streams is the same kind of change as 500M to 1,000M: it <strong>doubled</strong>. Counts like this (streams, income, reaction times, followers, reported drinks) usually behave better on a <strong>log scale</strong>.</p>
+</section>
+<section id="log-both-sides" class="slide level2">
+<h2>Log both sides</h2>
+<p>Both streams and playlists are skewed counts, so log both.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-label="1"></a>spotify <span class="ot">&lt;-</span> spotify <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">log_streams   =</span> <span class="fu">log10</span>(streams),</span>
+<span id="cb18-3"><a aria-label="3"></a>         <span class="at">log_playlists =</span> <span class="fu">log10</span>(in_spotify_playlists))</span>
+<span id="cb18-4"><a aria-label="4"></a></span>
+<span id="cb18-5"><a aria-label="5"></a>fit_log <span class="ot">&lt;-</span> <span class="fu">lm</span>(log_streams <span class="sc">~</span> log_playlists, <span class="at">data =</span> spotify)</span>
+<span id="cb18-6"><a aria-label="6"></a><span class="fu">tidy</span>(fit_log)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 5
+  term          estimate std.error statistic   p.value
+  &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)      6.20     0.0586     106.  0        
+2 log_playlists    0.678    0.0172      39.3 1.73e-201</code></pre>
+</div>
+</div>
+</section>
+<section id="same-data-different-story" class="slide level2">
+<h2>Same data, different story</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-label="1"></a><span class="fu">check_model</span>(fit_log)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec-10_diagnostics_files/figure-revealjs/unnamed-chunk-16-1.png" style="width:65.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Flat lines, an even band, a bell-shaped PP check, nobody near the contours. <strong>Except one point.</strong> We’ll get to it.</p>
+</section>
+<section id="same-r².-better-model." class="slide level2">
+<h2>Same R². Better model.</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-label="1"></a><span class="fu">bind_rows</span>(<span class="at">raw =</span> <span class="fu">glance</span>(fit_raw), <span class="at">logged =</span> <span class="fu">glance</span>(fit_log), <span class="at">.id =</span> <span class="st">"model"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a aria-label="2"></a>  <span class="fu">select</span>(model, r.squared, adj.r.squared)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  model  r.squared adj.r.squared
+  &lt;chr&gt;      &lt;dbl&gt;         &lt;dbl&gt;
+1 raw        0.624         0.623
+2 logged     0.619         0.619</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>The fit <strong>did not improve</strong>. It went from .624 to .619.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Diagnostics are not about squeezing out more R². They are about whether the coefficients, SEs, and <em>p</em>-values you report <strong>mean what you say they mean</strong>. The raw model was confidently wrong about the songs that matter most; the logged one is not.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="reading-a-loglog-slope" class="slide level2">
+<h2>Reading a log–log slope</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-label="1"></a>b <span class="ot">&lt;-</span> <span class="fu">coef</span>(fit_log)[<span class="st">"log_playlists"</span>]</span>
+<span id="cb23-2"><a aria-label="2"></a>b</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>log_playlists 
+    0.6775028 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-label="1"></a><span class="dv">10</span><span class="sc">^</span>b    <span class="co"># what a 10x increase in playlists does to streams</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>log_playlists 
+     4.758859 </code></pre>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li class="fragment"><strong>Ten times</strong> the playlists → about <strong>4.8 times</strong> the streams</li>
+<li class="fragment">Roughly: <strong>1% more</strong> playlists → about <strong>0.68% more</strong> streams</li>
+<li class="fragment">Streams grow <strong>slower</strong> than playlists (slope &lt; 1). Being on 10x the playlists does not get you 10x the listening</li>
+</ul>
+</div>
+<div class="fragment">
+<p>That sentence was impossible to say from the raw model, which claimed every 1,000 playlists added a flat 57 million streams to every song.</p>
+</div>
+</section>
+<section id="the-log-exposed-something" class="slide level2">
+<h2>The log exposed something 🔍</h2>
+<p>That lone point in the logged model:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-label="1"></a><span class="fu">augment</span>(fit_log, <span class="at">data =</span> spotify) <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a aria-label="2"></a>  <span class="fu">arrange</span>(.std.resid) <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a aria-label="3"></a>  <span class="fu">select</span>(track_name, streams, in_spotify_playlists, .std.resid) <span class="sc">%&gt;%</span></span>
+<span id="cb27-4"><a aria-label="4"></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 4
+  track_name         streams in_spotify_playlists .std.resid
+  &lt;chr&gt;                &lt;dbl&gt;                &lt;int&gt;      &lt;dbl&gt;
+1 Que Vuelvas           2762                  763     -15.4 
+2 Jhoome Jo Pathaan  1365184                  138      -4.95
+3 QUEMA             11599388                  437      -3.02</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p><strong>2,762 streams</strong> for a song on 763 playlists. A standardized residual of <strong>−15</strong>: about <strong>52,000 times</strong> fewer streams than the model predicts.</p>
+<ul>
+<li class="fragment">On the raw scale, 2,762 streams (0.003 million) sat next to a few million streams and looked unremarkable</li>
+<li class="fragment">This is almost certainly a <strong>data entry error</strong>. The next step is checking the source, not deleting the row</li>
+</ul>
+</div>
+</section>
+<section id="fixed.-the-tests-still-complain." class="slide level2">
+<h2>Fixed. The tests still complain.</h2>
+<p>Drop that song and re-run the formal tests on 951 songs:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-label="1"></a>fit_log2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(log_streams <span class="sc">~</span> log_playlists,</span>
+<span id="cb29-2"><a aria-label="2"></a>               <span class="at">data =</span> <span class="fu">filter</span>(spotify, streams <span class="sc">&gt;</span> <span class="dv">10000</span>))</span>
+<span id="cb29-3"><a aria-label="3"></a></span>
+<span id="cb29-4"><a aria-label="4"></a><span class="fu">check_normality</span>(fit_log2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Warning: Non-normality of residuals detected (p &lt; .001).</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-label="1"></a><span class="fu">check_heteroscedasticity</span>(fit_log2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Warning: Heteroscedasticity (non-constant error variance) detected (p &lt; .001).</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>The plots look fine. Both tests say “violated.” Who’s right?</p>
+</div>
+</section>
+<section id="the-tests-answer-the-wrong-question" class="slide level2" data-background-color="#FDF0D5">
+<h2>⚠️ The tests answer the wrong question</h2>
+<p>A significance test asks <em>“can I detect any departure at all?”</em> That depends on <strong>n</strong>, not on whether the departure matters.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">640</span>)</span>
+<span id="cb33-2"><a aria-label="2"></a></span>
+<span id="cb33-3"><a aria-label="3"></a><span class="co"># Small sample, badly skewed errors</span></span>
+<span id="cb33-4"><a aria-label="4"></a>p_small <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, {</span>
+<span id="cb33-5"><a aria-label="5"></a>  x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">15</span>); y <span class="ot">&lt;-</span> x <span class="sc">+</span> (<span class="fu">rexp</span>(<span class="dv">15</span>) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb33-6"><a aria-label="6"></a>  <span class="fu">shapiro.test</span>(<span class="fu">resid</span>(<span class="fu">lm</span>(y <span class="sc">~</span> x)))<span class="sc">$</span>p.value</span>
+<span id="cb33-7"><a aria-label="7"></a>})</span>
+<span id="cb33-8"><a aria-label="8"></a></span>
+<span id="cb33-9"><a aria-label="9"></a><span class="co"># Huge sample, nearly normal errors (t with 10 df)</span></span>
+<span id="cb33-10"><a aria-label="10"></a>p_big <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">200</span>, {</span>
+<span id="cb33-11"><a aria-label="11"></a>  x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">5000</span>); y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">rt</span>(<span class="dv">5000</span>, <span class="at">df =</span> <span class="dv">10</span>)</span>
+<span id="cb33-12"><a aria-label="12"></a>  <span class="fu">shapiro.test</span>(<span class="fu">resid</span>(<span class="fu">lm</span>(y <span class="sc">~</span> x)))<span class="sc">$</span>p.value</span>
+<span id="cb33-13"><a aria-label="13"></a>})</span>
+<span id="cb33-14"><a aria-label="14"></a></span>
+<span id="cb33-15"><a aria-label="15"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">15</span>); y <span class="ot">&lt;-</span> x <span class="sc">+</span> (<span class="fu">rexp</span>(<span class="dv">15</span>) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb33-16"><a aria-label="16"></a>q1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">r =</span> <span class="fu">resid</span>(<span class="fu">lm</span>(y <span class="sc">~</span> x))) <span class="sc">%&gt;%</span></span>
+<span id="cb33-17"><a aria-label="17"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> r)) <span class="sc">+</span> <span class="fu">stat_qq</span>() <span class="sc">+</span> <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb33-18"><a aria-label="18"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"n = 15, badly skewed</span><span class="sc">\n</span><span class="st">flagged in "</span>,</span>
+<span id="cb33-19"><a aria-label="19"></a>                      <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> <span class="fu">mean</span>(p_small <span class="sc">&lt;</span> .<span class="dv">05</span>)), <span class="st">"% of samples"</span>)) <span class="sc">+</span></span>
+<span id="cb33-20"><a aria-label="20"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span>
+<span id="cb33-21"><a aria-label="21"></a></span>
+<span id="cb33-22"><a aria-label="22"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">5000</span>); y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">rt</span>(<span class="dv">5000</span>, <span class="at">df =</span> <span class="dv">10</span>)</span>
+<span id="cb33-23"><a aria-label="23"></a>q2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">r =</span> <span class="fu">resid</span>(<span class="fu">lm</span>(y <span class="sc">~</span> x))) <span class="sc">%&gt;%</span></span>
+<span id="cb33-24"><a aria-label="24"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> r)) <span class="sc">+</span> <span class="fu">stat_qq</span>(<span class="at">alpha =</span> .<span class="dv">2</span>) <span class="sc">+</span> <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb33-25"><a aria-label="25"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"n = 5,000, nearly normal</span><span class="sc">\n</span><span class="st">flagged in "</span>,</span>
+<span id="cb33-26"><a aria-label="26"></a>                      <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> <span class="fu">mean</span>(p_big <span class="sc">&lt;</span> .<span class="dv">05</span>)), <span class="st">"% of samples"</span>)) <span class="sc">+</span></span>
+<span id="cb33-27"><a aria-label="27"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span>
+<span id="cb33-28"><a aria-label="28"></a></span>
+<span id="cb33-29"><a aria-label="29"></a>q1 <span class="sc">+</span> q2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec-10_diagnostics_files/figure-revealjs/unnamed-chunk-21-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>Small samples:</strong> real problems slip through. <strong>Large samples:</strong> harmless wiggles get flagged. <strong>Look at the plots.</strong> Use the tests as a second opinion, never as the verdict.</p>
+</div>
+</section></section>
+<section>
+<section id="part-4-influence-collinearity-independence" class="title-slide slide level1 center">
+<h1>Part 4: Influence, Collinearity, Independence</h1>
+
+</section>
+<section id="one-song-moved-the-line" class="slide level2">
+<h2>One song moved the line</h2>
+<p>Back to the <strong>raw</strong> model. Case 757 was outside the contour:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-label="1"></a><span class="fu">augment</span>(fit_raw, <span class="at">data =</span> spotify) <span class="sc">%&gt;%</span></span>
+<span id="cb34-2"><a aria-label="2"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(.cooksd)) <span class="sc">%&gt;%</span></span>
+<span id="cb34-3"><a aria-label="3"></a>  <span class="fu">select</span>(track_name, streams_m, playlists_k, .hat, .cooksd) <span class="sc">%&gt;%</span></span>
+<span id="cb34-4"><a aria-label="4"></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 5
+  track_name                                streams_m playlists_k   .hat .cooksd
+  &lt;chr&gt;                                         &lt;dbl&gt;       &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
+1 Get Lucky - Radio Edit                         934.        52.9 0.0394   0.919
+2 Mr. Brightside                                1807.        52.0 0.0379   0.312
+3 Smells Like Teen Spirit - Remastered 2021     1690.        50.0 0.0348   0.287</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p><em>Get Lucky</em> is on more playlists than any other song in the data (52,898), but has “only” 934M streams.</p>
+<ul>
+<li><strong>Leverage</strong> (<code>.hat</code>): unusual on the <strong>predictors</strong>. Most playlists of anyone</li>
+<li><strong>Residual</strong>: far below the line</li>
+<li><strong>Cook’s distance</strong> (<code>.cooksd</code>): leverage × residual. How much <strong>every</strong> prediction would shift if this one case vanished</li>
+</ul>
+</div>
+</section>
+<section id="fit-it-both-ways" class="slide level2">
+<h2>Fit it both ways</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a aria-label="1"></a>fit_raw_no757 <span class="ot">&lt;-</span> <span class="fu">lm</span>(streams_m <span class="sc">~</span> playlists_k, <span class="at">data =</span> spotify[<span class="sc">-</span><span class="dv">757</span>, ])</span>
+<span id="cb36-2"><a aria-label="2"></a></span>
+<span id="cb36-3"><a aria-label="3"></a><span class="fu">bind_rows</span>(<span class="at">with    =</span> <span class="fu">tidy</span>(fit_raw),</span>
+<span id="cb36-4"><a aria-label="4"></a>          <span class="at">without =</span> <span class="fu">tidy</span>(fit_raw_no757), <span class="at">.id =</span> <span class="st">"Get Lucky"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb36-5"><a aria-label="5"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"playlists_k"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb36-6"><a aria-label="6"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">Get Lucky</span><span class="st">`</span>, estimate, std.error)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  `Get Lucky` estimate std.error
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;
+1 with            56.7      1.43
+2 without         58.6      1.42</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>One song out of 952 moved the slope by about 2 million streams per thousand playlists. Not a disaster here, but in a sample of 40 one case can flip a sign.</p>
+</div>
+</section>
+<section id="what-to-do-with-an-influential-point" class="slide level2 scrollable">
+<h2>What to do with an influential point</h2>
+<ol type="1">
+<li class="fragment"><strong>Is it an error?</strong> (Like <em>Que Vuelvas</em>.) Check the source. Fix it, or drop it and say so.</li>
+<li class="fragment"><strong>Is it from your population?</strong> A 60-year-old in a study of college students: exclude it with a stated rule, ideally decided before you looked.</li>
+<li class="fragment"><strong>Is it real and in scope?</strong> Keep it. Fit the model <strong>with and without</strong> it and report both if the conclusions differ.</li>
+<li class="fragment"><strong>Is the model the problem?</strong> Here, the log model had no influential songs at all. <em>Get Lucky</em> only looked extreme on the wrong scale.</li>
+</ol>
+<div class="fragment">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>Never delete points to get to <em>p</em> &lt; .05. “Removed outliers” with no rule and no with-and-without comparison is a red flag to every reviewer.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="multicollinearity-three-ways-to-say-popular" class="slide level2">
+<h2>Multicollinearity: three ways to say “popular”</h2>
+<p>Songs are on playlists on <strong>Spotify, Apple, and Deezer</strong>. Each one alone predicts streams.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a aria-label="1"></a>spotify <span class="ot">&lt;-</span> spotify <span class="sc">%&gt;%</span></span>
+<span id="cb38-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">deezer_playlists =</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">","</span>, <span class="st">""</span>, in_deezer_playlists)))</span>
+<span id="cb38-3"><a aria-label="3"></a></span>
+<span id="cb38-4"><a aria-label="4"></a>spotify <span class="sc">%&gt;%</span></span>
+<span id="cb38-5"><a aria-label="5"></a>  <span class="fu">select</span>(streams_m, in_spotify_playlists, in_apple_playlists, deezer_playlists) <span class="sc">%&gt;%</span></span>
+<span id="cb38-6"><a aria-label="6"></a>  <span class="fu">correlation</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb38-7"><a aria-label="7"></a>  <span class="fu">summary</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Correlation Matrix (pearson-method)
+
+Parameter            | deezer_playlists | in_apple_playlists | in_spotify_playlists
+-----------------------------------------------------------------------------------
+streams_m            |          0.60*** |            0.77*** |              0.79***
+in_spotify_playlists |          0.83*** |            0.71*** |                     
+in_apple_playlists   |          0.47*** |                    |                     
+
+p-value adjustment method: Holm (1979)</code></pre>
+</div>
+</div>
+</section>
+<section id="put-all-three-in" class="slide level2">
+<h2>Put all three in</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a aria-label="1"></a>fit_plat <span class="ot">&lt;-</span> <span class="fu">lm</span>(streams_m <span class="sc">~</span> in_spotify_playlists <span class="sc">+</span> in_apple_playlists <span class="sc">+</span> deezer_playlists,</span>
+<span id="cb40-2"><a aria-label="2"></a>               <span class="at">data =</span> spotify)</span>
+<span id="cb40-3"><a aria-label="3"></a><span class="fu">tidy</span>(fit_plat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 5
+  term                 estimate std.error statistic  p.value
+  &lt;chr&gt;                   &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 (Intercept)          141.      12.8        11.0   1.56e-26
+2 in_spotify_playlists   0.0365   0.00288    12.7   4.00e-34
+3 in_apple_playlists     2.77     0.168      16.5   1.04e-53
+4 deezer_playlists      -0.0107   0.0161     -0.666 5.05e- 1</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>Deezer playlists correlate <em>r</em> = .60 with streams on their own. In this model, the Deezer coefficient is <strong>negative and not significant</strong>.</p>
+<p>Deezer didn’t stop mattering. It correlates <em>r</em> = .83 with Spotify playlists, so once Spotify is in the model there is almost nothing left for Deezer to explain, and the model can’t tell the two apart.</p>
+</div>
+</section>
+<section id="vif-says-so" class="slide level2">
+<h2>VIF says so</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a aria-label="1"></a><span class="fu">check_collinearity</span>(fit_plat) <span class="sc">%&gt;%</span> <span class="fu">select</span>(Term, VIF, SE_factor)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Check for Multicollinearity
+
+Low Correlation
+
+               Term  VIF adj. VIF
+ in_apple_playlists 2.18     1.48
+   deezer_playlists 3.43     1.85
+
+Moderate Correlation
+
+                 Term  VIF adj. VIF
+ in_spotify_playlists 5.35     2.31</code></pre>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>VIF of 5.35 → the Spotify SE is <span class="math inline">\(\sqrt{5.35}\)</span> = <strong>2.3 times</strong> bigger than it would be with no overlap (the <code>SE_factor</code> column)</li>
+<li><strong>Collinearity does not bias coefficients. It blurs them.</strong> Wide SEs, unstable signs, coefficients that swing when you add or drop a variable</li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>What to do:</strong> ask whether you need all three. Pick the one your question is about, or <strong>combine</strong> them (e.g., average their <em>z</em>-scores into one “popularity” score). If you only care about prediction, collinearity barely matters.</p>
+</div>
+</section>
+<section id="remember-centering-week-9" class="slide level2">
+<h2>Remember centering? (Week 9)</h2>
+<p>Interactions <strong>create</strong> collinearity: <code>study × tutor</code> is built out of <code>study</code> and <code>tutor</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a aria-label="1"></a>tutor <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">"files"</span>, <span class="st">"data"</span>, <span class="st">"tutor.csv"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb44-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">tutor_f =</span> <span class="fu">factor</span>(tutor, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No tutor"</span>, <span class="st">"Tutor"</span>)),</span>
+<span id="cb44-3"><a aria-label="3"></a>         <span class="at">study_c =</span> study <span class="sc">-</span> <span class="fu">mean</span>(study))</span>
+<span id="cb44-4"><a aria-label="4"></a></span>
+<span id="cb44-5"><a aria-label="5"></a>vif_raw <span class="ot">&lt;-</span> <span class="fu">check_collinearity</span>(<span class="fu">lm</span>(grade <span class="sc">~</span> study   <span class="sc">*</span> tutor_f, <span class="at">data =</span> tutor))</span>
+<span id="cb44-6"><a aria-label="6"></a>vif_cen <span class="ot">&lt;-</span> <span class="fu">check_collinearity</span>(<span class="fu">lm</span>(grade <span class="sc">~</span> study_c <span class="sc">*</span> tutor_f, <span class="at">data =</span> tutor))</span>
+<span id="cb44-7"><a aria-label="7"></a></span>
+<span id="cb44-8"><a aria-label="8"></a><span class="fu">tibble</span>(<span class="at">term =</span> <span class="fu">c</span>(<span class="st">"study"</span>, <span class="st">"tutor"</span>, <span class="st">"study × tutor"</span>),</span>
+<span id="cb44-9"><a aria-label="9"></a>       <span class="at">uncentered =</span> <span class="fu">round</span>(vif_raw<span class="sc">$</span>VIF, <span class="dv">2</span>),</span>
+<span id="cb44-10"><a aria-label="10"></a>       <span class="at">centered   =</span> <span class="fu">round</span>(vif_cen<span class="sc">$</span>VIF, <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  term          uncentered centered
+  &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt;
+1 study               2.7      2.7 
+2 tutor               7.52     1.36
+3 study × tutor      11.4      2.34</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>Same model, same interaction test. Centering took the interaction’s VIF from about 11 down to about 2. A high VIF on an <strong>uncentered interaction</strong> is not a reason to panic. Center, then check.</p>
+</div>
+</section>
+<section id="independence-the-assumption-no-plot-will-show-you" class="slide level2">
+<h2>Independence: the assumption no plot will show you</h2>
+<p>ASAP measured each adolescent <strong>three times</strong>. Stack the three waves and fit one regression:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a aria-label="1"></a>asap_long <span class="ot">&lt;-</span> asap <span class="sc">%&gt;%</span></span>
+<span id="cb46-2"><a aria-label="2"></a>  <span class="fu">select</span>(ID, <span class="fu">matches</span>(<span class="st">"^T[123]_(Dep|SleepDur)$"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb46-3"><a aria-label="3"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>ID, <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"wave"</span>, <span class="st">".value"</span>),</span>
+<span id="cb46-4"><a aria-label="4"></a>               <span class="at">names_pattern =</span> <span class="st">"(T[123])_(.*)"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb46-5"><a aria-label="5"></a>  <span class="fu">drop_na</span>()</span>
+<span id="cb46-6"><a aria-label="6"></a></span>
+<span id="cb46-7"><a aria-label="7"></a>fit_stacked <span class="ot">&lt;-</span> <span class="fu">lm</span>(Dep <span class="sc">~</span> SleepDur, <span class="at">data =</span> asap_long)</span>
+<span id="cb46-8"><a aria-label="8"></a><span class="fu">nobs</span>(fit_stacked); <span class="fu">n_distinct</span>(asap_long<span class="sc">$</span>ID)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1076</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 400</code></pre>
+</div>
+</div>
+<p>The model thinks it has 1076 independent observations. It has 400 kids.</p>
+</section>
+<section id="the-same-kid-misses-the-same-way" class="slide level2">
+<h2>The same kid misses the same way</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a aria-label="1"></a>asap_long <span class="sc">%&gt;%</span></span>
+<span id="cb49-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">resid =</span> <span class="fu">resid</span>(fit_stacked)) <span class="sc">%&gt;%</span></span>
+<span id="cb49-3"><a aria-label="3"></a>  <span class="fu">select</span>(ID, wave, resid) <span class="sc">%&gt;%</span></span>
+<span id="cb49-4"><a aria-label="4"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> wave, <span class="at">values_from =</span> resid) <span class="sc">%&gt;%</span></span>
+<span id="cb49-5"><a aria-label="5"></a>  <span class="fu">select</span>(<span class="sc">-</span>ID) <span class="sc">%&gt;%</span></span>
+<span id="cb49-6"><a aria-label="6"></a>  <span class="fu">correlation</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb49-7"><a aria-label="7"></a>  <span class="fu">summary</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Correlation Matrix (pearson-method)
+
+Parameter |      T3 |      T2
+-----------------------------
+T1        |  0.18** | 0.35***
+T2        | 0.47*** |        
+
+p-value adjustment method: Holm (1979)</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>If the model underpredicts a kid at T2, it probably underpredicts them at T3 too. The errors are <strong>not independent</strong>, so the SEs are <strong>too small</strong> and the <em>p</em>-values too optimistic.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><code>check_model()</code> cannot catch this. Independence is a <strong>design</strong> question: repeated measures, siblings, students in classrooms, therapy clients with the same therapist. The fix is a <strong>multilevel model</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section id="your-turn---part-c" class="title-slide slide level1 center">
+<h1>💻 Your Turn - Part C</h1>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>~10 min · Same pairs, same seed</p>
+</div>
+</div>
+</div>
+<p><strong>Does your conclusion hold up?</strong> Refit your interaction three ways: robust SEs, dropping cases with Cook’s distance &gt; 4/<em>n</em>, and one version with last week’s TIPI-zeros mistake left in.</p>
+<p><a href="../class-activities/wk10_holds-up.html#part-c-does-it-hold-up-10-min" class="button" target="_blank">Back to the activity</a></p>
+</section>
+
+<section>
+<section id="part-5-what-to-do-about-it" class="title-slide slide level1 center">
+<h1>Part 5: What To Do About It</h1>
+
+</section>
+<section id="the-cheat-sheet" class="slide level2">
+<h2>The cheat sheet</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Problem</th>
+<th>How you see it</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Nonlinearity</strong></td>
+<td>Curved line in Linearity panel</td>
+<td>Log or other transform; add a squared term; rethink the model</td>
+</tr>
+<tr class="even">
+<td><strong>Unequal variance</strong></td>
+<td>Rising line / funnel</td>
+<td>Log the outcome if it’s a skewed count; robust SEs (<code>vcov = "HC3"</code>)</td>
+</tr>
+<tr class="odd">
+<td><strong>Non-normal residuals</strong></td>
+<td>S-curve or peeled tails in Q-Q</td>
+<td>Large n: usually ignore. Small n: transform, or bootstrap CIs</td>
+</tr>
+<tr class="even">
+<td><strong>Influential case</strong></td>
+<td>Point outside the Cook’s contours</td>
+<td>Check for errors; fit with and without; report both</td>
+</tr>
+<tr class="odd">
+<td><strong>Collinearity</strong></td>
+<td>VIF &gt; 5–10</td>
+<td>Center interactions; drop or combine overlapping predictors</td>
+</tr>
+<tr class="even">
+<td><strong>Non-independence</strong></td>
+<td><strong>Your design</strong>, not a plot</td>
+<td>Multilevel model (Week 13)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="what-not-to-do" class="slide level2">
+<h2>What not to do</h2>
+<ul>
+<li class="fragment">❌ Test normality on the <strong>raw outcome</strong> instead of the residuals</li>
+<li class="fragment">❌ Treat a significant Shapiro-Wilk at n = 900 as an emergency</li>
+<li class="fragment">❌ Delete points, transform, or switch models <strong>until the result is significant</strong></li>
+<li class="fragment">❌ Run diagnostics after you’ve seen the results, only to justify what you already wanted</li>
+<li class="fragment">✅ Decide <strong>before</strong> you see the results what you’ll check and what you’ll do if it fails</li>
+</ul>
+<div class="fragment">
+<p>That last one is the analysis-plan habit. You will need it for the final project.</p>
+</div>
+</section>
+<section id="the-write-up" class="slide level2">
+<h2>The write-up 🎵 🎧</h2>
+<blockquote>
+<p>Model assumptions were evaluated with residual diagnostics (<code>performance::check_model()</code>). In the untransformed model, residuals showed marked curvature, increasing variance with fitted values, and right skew, so both streams and playlist counts were log10-transformed. The transformed model showed no evidence of nonlinearity, heteroscedasticity, or influential observations, with one exception: a single song (2,762 streams) had a standardized residual of −15.4, was judged a data-entry error, and was excluded (<em>N</em> = 951). Each tenfold increase in playlist count was associated with a 4.7-fold increase in streams, <em>b</em> = 0.67, 95% CI [0.64, 0.70], <em>R²</em> = .68.</p>
+</blockquote>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Say <strong>what you checked, what you found, what you did, and why.</strong> If everything looked fine, one sentence is enough: “Residual diagnostics showed no evidence of nonlinearity, heteroscedasticity, non-normality, or influential observations.”</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="your-turn---parts-d-e" class="title-slide slide level1 center scrollable">
+<h1>💻 Your Turn - Parts D &amp; E</h1>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>~15 min · Write, render, tally</p>
+</div>
+</div>
+</div>
+<ol type="1">
+<li>Write your Results paragraph: the interaction, <strong>one assumption sentence</strong>, <strong>one robustness sentence</strong></li>
+<li>Restart R and render. Do your numbers still match your paragraph?</li>
+<li>Put your seed’s four <em>p</em>-values on the board - maybe</li>
+</ol>
+<p><a href="../class-activities/wk10_holds-up.html#part-d-write-it-up-10-min" class="button" target="_blank">Back to the activity</a></p>
+</section>
+<section id="the-tally-1000-times-over" class="slide level2">
+<h2>The tally, 1,000 times over</h2>
+<p>The same analysis on 1,000 different seeds, instead of the 15 on the board:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Version</th>
+<th>Seeds with <em>p</em> &lt; .05</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Original</td>
+<td>21.6%</td>
+</tr>
+<tr class="even">
+<td>Robust SEs</td>
+<td>26.7%</td>
+</tr>
+<tr class="odd">
+<td>Drop Cook’s &gt; 4/<em>n</em></td>
+<td>19.7%</td>
+</tr>
+<tr class="even">
+<td>TIPI zeros left in (the mistake)</td>
+<td>23.1%</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<ul>
+<li class="fragment">In <strong>20.6%</strong> of samples, a defensible robustness check (robust SEs or trimming) <strong>flipped</strong> the conclusion</li>
+<li class="fragment"><strong>32.9%</strong> of samples are significant under at least one of the three versions above. Only <strong>12.3%</strong> under all three</li>
+<li class="fragment">The heteroscedasticity test flagged only <strong>13%</strong> of samples, even though the outcome is a bounded sum score that produces the arch you saw</li>
+</ul>
+</div>
+</section>
+<section id="and-in-the-full-data" class="slide level2">
+<h2>And in the full data…</h2>
+<p>All 33,982 usable responses:</p>
+<ul>
+<li>Interaction <em>b</em> = <strong>0.039</strong>, <em>p</em> ≈ 4 × 10⁻³⁸</li>
+<li>Δ<em>R²</em> = <strong>.003</strong></li>
+</ul>
+<div class="fragment">
+<p>The interaction is <strong>real</strong> and <strong>tiny</strong>. With <em>n</em> ≈ 340, about one sample in five can see it, and which version of the analysis you run decides a fifth of the verdicts.</p>
+<p><strong>Reproducible</strong> (it renders) is not <strong>robust</strong> (it survives other defensible choices), and neither is <strong>replicable</strong> (a new sample agrees). Diagnostics tell you which choices to check. Reporting them lets the next person check you.</p>
+</div>
+</section>
+<section id="your-turn-name-that-violation-if-time" class="slide level2">
+<h2>💻 Your Turn: Name that violation (if time)</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>~10 min</strong> · Pairs</p>
+</div>
+</div>
+</div>
+<p>Each panel comes from a different model. For each one: <strong>which assumption, what’s wrong, what would you do?</strong></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">1029</span>)</span>
+<span id="cb51-2"><a aria-label="2"></a>n <span class="ot">&lt;-</span> <span class="dv">250</span></span>
+<span id="cb51-3"><a aria-label="3"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(n, <span class="dv">1</span>, <span class="dv">10</span>)</span>
+<span id="cb51-4"><a aria-label="4"></a></span>
+<span id="cb51-5"><a aria-label="5"></a>mA <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> <span class="fu">tibble</span>(x, <span class="at">y =</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="fl">0.3</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, <span class="fl">1.5</span>)))</span>
+<span id="cb51-6"><a aria-label="6"></a>mB <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> <span class="fu">tibble</span>(x, <span class="at">y =</span> <span class="fu">exp</span>(<span class="fl">0.3</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, <span class="fl">0.45</span>))))</span>
+<span id="cb51-7"><a aria-label="7"></a></span>
+<span id="cb51-8"><a aria-label="8"></a>dC <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(x[<span class="dv">1</span><span class="sc">:</span><span class="dv">39</span>], <span class="dv">25</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">2</span> <span class="sc">+</span> <span class="fl">0.5</span> <span class="sc">*</span> x[<span class="dv">1</span><span class="sc">:</span><span class="dv">39</span>] <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">39</span>, <span class="dv">0</span>, <span class="fl">1.5</span>), <span class="sc">-</span><span class="dv">4</span>))</span>
+<span id="cb51-9"><a aria-label="9"></a>mC <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> dC)</span>
+<span id="cb51-10"><a aria-label="10"></a></span>
+<span id="cb51-11"><a aria-label="11"></a>x1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n); x2 <span class="ot">&lt;-</span> x1 <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, <span class="fl">0.2</span>); x3 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb51-12"><a aria-label="12"></a>mD <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">+</span> x3, <span class="at">data =</span> <span class="fu">tibble</span>(x1, x2, x3, <span class="at">y =</span> x1 <span class="sc">+</span> x3 <span class="sc">+</span> <span class="fu">rnorm</span>(n)))</span>
+<span id="cb51-13"><a aria-label="13"></a></span>
+<span id="cb51-14"><a aria-label="14"></a>pA <span class="ot">&lt;-</span> <span class="fu">plot</span>(<span class="fu">check_model</span>(mA, <span class="at">check =</span> <span class="st">"linearity"</span>,  <span class="at">panel =</span> <span class="cn">FALSE</span>))[[<span class="dv">1</span>]] <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"A"</span>)</span>
+<span id="cb51-15"><a aria-label="15"></a>pB <span class="ot">&lt;-</span> <span class="fu">plot</span>(<span class="fu">check_model</span>(mB, <span class="at">check =</span> <span class="st">"qq"</span>,         <span class="at">panel =</span> <span class="cn">FALSE</span>))[[<span class="dv">1</span>]] <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"B"</span>)</span>
+<span id="cb51-16"><a aria-label="16"></a>pC <span class="ot">&lt;-</span> <span class="fu">plot</span>(<span class="fu">check_model</span>(mC, <span class="at">check =</span> <span class="st">"outliers"</span>,   <span class="at">panel =</span> <span class="cn">FALSE</span>))[[<span class="dv">1</span>]] <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"C"</span>)</span>
+<span id="cb51-17"><a aria-label="17"></a>pD <span class="ot">&lt;-</span> <span class="fu">plot</span>(<span class="fu">check_model</span>(mD, <span class="at">check =</span> <span class="st">"vif"</span>,        <span class="at">panel =</span> <span class="cn">FALSE</span>))[[<span class="dv">1</span>]] <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"D"</span>)</span>
+<span id="cb51-18"><a aria-label="18"></a></span>
+<span id="cb51-19"><a aria-label="19"></a>(pA <span class="sc">+</span> pB) <span class="sc">/</span> (pC <span class="sc">+</span> pD)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec-10_diagnostics_files/figure-revealjs/unnamed-chunk-31-1.png" style="width:62.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="answers" class="slide level2">
+<h2>Answers</h2>
+<ul>
+<li class="fragment"><strong>A — Linearity.</strong> The residual line is an arch: the true relationship bends. Add a squared term or transform <code>x</code>, then re-check.</li>
+<li class="fragment"><strong>B — Normality (and probably variance).</strong> Right-skewed residuals from an outcome that grows multiplicatively. Log the outcome, like streams.</li>
+<li class="fragment"><strong>C — Influence.</strong> One case with an extreme <code>x</code> and a big miss, outside the Cook’s contour, in a sample of only 40. Check it, then fit with and without.</li>
+<li class="fragment"><strong>D — Collinearity.</strong> <code>x1</code> and <code>x2</code> are near copies (VIF way above 10). Keep the one your question is about, or combine them.</li>
+</ul>
+<div class="fragment">
+<p>Notice what’s <strong>not</strong> on this slide: independence. No panel would have shown it.</p>
+</div>
+</section>
+<section id="wrap-up" class="slide level2 scrollable">
+<h2>✍️ Wrap-Up</h2>
+<p>Finish these in your notes:</p>
+<ol type="1">
+<li>Name one assumption that <strong>no plot</strong> can check, and how you’d check it instead.</li>
+<li>The raw and logged Spotify models had the same R². Why was the logged one better?</li>
+<li>Your residuals fail a Shapiro-Wilk test with n = 800 but the Q-Q plot looks fine. What do you write?</li>
+<li>One thing that is still muddy → journal.</li>
+</ol>
+</section>
+<section id="for-next-time" class="slide level2">
+<h2>For next time</h2>
+<p>📋 <strong>Lab 9 — Groups, Slopes &amp; Interactions</strong>, due <strong>Tuesday 11/3 at 11:59pm</strong></p>
+<p>📖 Readings for <strong>Missing Data + Model Building/Comparison</strong>:</p>
+<ul>
+<li>Chapter 15.10 — LSR</li>
+<li>Chapter 17 — ST</li>
+<li>Chapters 17.3–17.7 — ROS</li>
+<li>Chapter 8.7 — MSR</li>
+</ul>
+<p>💾 <strong>Class Check next week</strong></p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>📂 Final Project — posted Friday</strong></p>
+</div>
+<div class="callout-content">
+<p>The final project will be up on the website <strong>Friday</strong>. It uses everything from today: you’ll write an assumption-check plan <strong>before</strong> you run your confirmatory model. Read it over the weekend.</p>
+</div>
+</div>
+</div>
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="../images/640_hex.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p><a href="https://dharaden.github.io/psyc640/">course-website</a></p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: false,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/dharaden\.github\.io\/psyc640");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
