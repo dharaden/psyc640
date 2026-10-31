@@ -1,0 +1,359 @@
+---
+title: "Final Project"
+subtitle: "From raw data to a model you can test next semester"
+editor: visual
+---
+
+## Overview
+
+The midterm gave you one messy dataset. The final asks you to **find your own**: a large public dataset that can answer a question nobody has answered yet. You'll take it from raw file to model: wrangle it into an analytic dataset, describe and visualize it, and build a regression model step by step.
+
+This is the first half of a two-semester project. This semester you handle the **data and the statistics**. Next semester, in Applied Research Methods, you build the theory, preregister, run the confirmatory analysis, and write the paper.
+
+::: callout-important
+## Dates
+
+**Final package due:** Friday, December 11 at 11:59 pm
+
+**250 points**, 25% of your course grade. Four milestones along the way are worth 100 of those points; see the timeline below.
+:::
+
+## What you'll need
+
+- <a href="../files/psyc640-final-project.zip" download="psyc640-final-project.zip">Download the project template (.zip)</a>. Unzip it, open `project.Rproj`, and read `START_HERE.md` first. It walks through every milestone.
+
+Everything is a Quarto file, like your labs:
+
+| File | What it does | When |
+|------------------------|------------------------|------------------------|
+| `split.qmd` | Splits your data 30/70 and fingerprints the holdout | M2 |
+| `wrangle.qmd` | Raw data to analysis-ready: audit, your wrangling steps, codebook | M2 |
+| `memo.qmd` | Your memo: wrangling, description, model building, and the plan for the holdout | M3, final |
+| `README.md` | Dataset, holdout statement, open questions, AI use | Final |
+
+Submit each milestone to myCourses unless it says otherwise.
+
+::: callout-note
+## Why the 30/70 split?
+
+On the first day of M2 you split your data: **30% to explore** this semester, and **70% held out**, untouched, until next semester. Anything you find in the 30% is a hypothesis. The real test runs on data nobody has seen, which is what makes a preregistration mean something. So the one rule that matters most: **never open `data/holdout.csv`**.
+:::
+
+::: callout-note
+## Working in JAMOVI?
+
+This project has to be done in R and Quarto. The holdout and the reproducibility swap only work if every step is code that someone else can rerun. If that's a problem for you, talk to me before M1.
+:::
+
+For this project you will:
+
+1.  **Find** a public dataset that can answer a novel research question.
+2.  **Split** it 30/70 before looking at any outcome, and timestamp the split on Zenodo.
+3.  **Wrangle** the 30% into an analytic dataset: fix missing-data codes, apply exclusions, and create the variables you need, all in code anyone can rerun.
+4.  **Describe** your sample and every analysis variable with descriptive statistics, correlations, and visualizations.
+5.  **Build** a statistical model step by step, comparing models and checking diagnostics.
+6.  **Plan** how the model will be tested on the 70% next semester.
+7.  **Reproduce:** have a classmate render your project from scratch.
+
+Large public datasets rarely arrive analysis-ready, so most of the work, and most of the points, are in wrangling and describing.
+
+The goal is a **publication-ready** project. Whether it gets published depends on things outside this course, including the results, so no project is promised publication, and **your grade does not depend on it being published**.
+
+------------------------------------------------------------------------
+
+## Timeline ⏱️
+
+The milestones build on each other, so feedback comes fast: M1 approvals within 3 days, so you can split by Nov 15; other milestones within a week.
+
+| Due                 | Milestone                                  | Points |
+|---------------------|--------------------------------------------|--------|
+| Fri 11/6            | **M1** Dataset pitch                       | 20     |
+| Sun 11/15           | **M2** Split and wrangle                   | 35     |
+| Mon 11/30           | **M3** Describe and build an initial model | 30     |
+| Thu 12/3 (in class) | **M4** Reproducibility swap                | 15     |
+| Fri 12/11           | **Final package**                          | 150    |
+
+Thanksgiving week has nothing due. Use it as buffer if you need it, but you don't have to.
+
+------------------------------------------------------------------------
+
+## Choosing a dataset
+
+Your dataset must meet **every** requirement below. If it fails one, pick another; don't argue around it.
+
+- **Public and de-identified.** No data you collected for this course, no data needing new consent, no restricted-use files. (Thesis data: see Policies.)
+- **Licensed for reuse and publication.** Record the license. If redistribution isn't allowed, your code downloads the data instead of storing it.
+- **Documented.** A codebook or questionnaire that defines every variable you use and how it was coded.
+- **Large enough to split.** At least n = 1,000 usable units of analysis (if less, please confirm with me), so the 70% holdout can detect a small-to-moderate effect. Units are usually participants, but items count in item-level designs (for example, 40,000 words in a lexicon megastudy).
+- **Fit for regression.** One outcome, at least one focal predictor, and theory-motivated covariates or a moderator. If you have another type of analysis in mind, please check with me.
+- **Not already answered.** This is the requirement most likely to sink a paper later, so it is checked hardest. Search Google Scholar, other databases such as PsycINFO, and the repository's publication list for papers using this dataset. List the 3 to 5 closest papers and state in one sentence what your question adds. "Same question, different dataset" or "same dataset, different question" can work. Same question and same dataset does not.
+
+### Where to look
+
+Sources are grouped by research area. Registration and licenses vary, so read them before you commit. Datasets hosted on OSF stay downloadable: public OSF projects remain readable even though OSF no longer accepts new files.
+
+::: {style="overflow-x: auto;"}
+| Area | Source | What's there | Access notes |
+|------------------|------------------|------------------|------------------|
+| Any | [ResearchBox](https://researchbox.org/) | Data and code from published psychology studies, searchable by variable name | Free |
+| Any | [PsychArchives](https://www.psycharchives.org/) | Psychology's disciplinary repository (Leibniz Institute for Psychology): data, code, preregistrations | Free; tiered access levels |
+| Any | [Harvard Dataverse](https://dataverse.harvard.edu/) | Thousands of datasets deposited with published papers | Free; license per dataset |
+| Any | [OSF search](https://osf.io/search) | Many Labs replications and data from thousands of published studies | Free; read-only |
+| Any | [Journal of Open Psychology Data](https://openpsychologydata.metajnl.com/) | Peer-reviewed papers describing reusable datasets, with links to the data | Free; good documentation |
+| Any | [ICPSR](https://www.icpsr.umich.edu/) | Archived social and behavioral studies | Public-use files only |
+| Cognition, perception | [Confidence Database](https://osf.io/s46pr/) | 145+ studies of perception, memory, and decision tasks with confidence ratings; 8,700+ participants, \~4M trials | Free; most single studies are small, so pool across studies |
+| Language, memory | [English Lexicon Project](https://elexicon.wustl.edu/) | Lexical decision and naming times for 40,481 words plus lexical properties | Free; analyze at the word level |
+| Language, semantic memory | [Small World of Words](https://smallworldofwords.org/en/project/research) | Word associations for 12,000+ English cues from 90,000+ participants, plus other languages | Free; check each release's license |
+| Development | [Wordbank](https://wordbank.stanford.edu/); [LDBase](https://ldbase.org/) | Wordbank: children's vocabulary (MacArthur-Bates CDI) across many languages. LDBase: behavioral data from education and developmental studies | Wordbank: free Redivis account; R package `wordbankr`. LDBase: public datasets are free; embargoed ones need a request that may not arrive in time |
+| Social cognition | [Project Implicit](https://www.projectimplicit.net/) | IAT scores, explicit attitudes, and demographics; millions of sessions across many topics | Free; yearly releases on OSF; no zip codes |
+| Personality | [SAPA Project](https://doi.org/10.7910/DVN/SD7SVE) | \~24,000 people answering subsets of 696 public-domain personality items | Free; CC BY-NC-ND |
+| Personality, clinical | [Open Psychometrics](https://openpsychometrics.org/_rawdata/) | Large online samples on personality and clinical scales (our DASS data) | Free; check documentation quality |
+| Health, lifespan | [MIDUS](https://www.icpsr.umich.edu/sites/nacda/midus) | Longitudinal US adults: psychosocial, health, cognition, daily stress | Free public-use files; Milwaukee sample restricted |
+| Health | [NHANES](https://www.cdc.gov/nchs/nhanes/) | US health, questionnaires, and lab measures | Free; survey weights matter |
+| Neuroscience | [OpenNeuro](https://openneuro.org/) | MRI, EEG, and MEG studies with participant-level demographic and behavioral files | Free, CC0; most studies are small, so best for students with neuro training |
+| Attitudes, society | [General Social Survey](https://gss.norc.org/) | US attitudes and behavior since 1972 | Free |
+| Cross-national | [European Social Survey](https://www.europeansocialsurvey.org/) and [World Values Survey](https://www.worldvaluessurvey.org/) | Attitudes, values, and wellbeing across many countries | Free with registration |
+:::
+
+::: callout-warning
+## Not eligible
+
+Sources that require a signed data use agreement, such as ABCD, the NIMH Data Archive, Databrary, and restricted ICPSR files. They fail the public-data requirement, and approval rarely arrives within a semester.
+
+Kaggle and similar sites are allowed only if you can trace the data to its original source and documentation.
+:::
+
+------------------------------------------------------------------------
+
+# The assignment
+
+## M1 — Dataset pitch (Fri 11/6, 20 points)
+
+**Purpose:** choose a dataset that can answer a new question before you invest any work in it. No code.
+
+**Submit:** one Word or PDF file, at most one page per candidate plus references. Start with one line saying whether you're working alone or with a partner (and who).
+
+**For each of two candidate datasets:**
+
+- name, link, and citation;
+- license, and whether redistribution is allowed;
+- n (usable units of analysis) and who the participants are;
+- the outcome, focal predictor, and covariates you would use, with how each is measured;
+- a draft research question in one sentence;
+- a check against the dataset requirements (public, licensed, documented, large enough, fit for regression), one line each;
+- the novelty check: the 3 to 5 closest papers, and one sentence on what your question adds.
+
+| Graded on                                                      | Points |
+|----------------------------------------------------------------|--------|
+| Both candidates fully described                                | 8      |
+| Honest check against every requirement                         | 6      |
+| A real novelty check: papers found and the contribution stated | 6      |
+
+I approve one candidate or send you back with what to fix. **Do not split any data until you have approval.**
+
+## M2 — Split and wrangle (Sun 11/15, 35 points)
+
+**Purpose:** lock the holdout, then turn the raw 30% into an analytic dataset. For large public datasets this is usually the biggest job in the project.
+
+1.  **Split.** Put the raw file in `data/raw/`, set the three settings lines in `split.qmd`, and render it **before you look at any outcome variable**. If each person has many rows, split by the ID column.
+2.  **Timestamp.** Publish a Zenodo record holding only `split.qmd` and `holdout_checksum.txt`, and copy the DOI into the README. The record's date and DOI let anyone verify later that the holdout was never changed or re-drawn. Because the dataset is public, the checksum is a commitment, not proof that no one looked at the full data.
+3.  **Audit.** In `wrangle.qmd`, check every variable you'll use for range, missing-data codes, and anything odd, and write up what you found.
+4.  **Wrangle.** Add whatever steps your data need, each under its own heading with a sentence on why. Depending on the dataset, that might mean recoding missing-data codes, exclusions (recording the n left after each one), joining files, aggregating trials to people, reverse scoring, scale scores with a missing-item rule, or labeled categories. The template's Toolbox has code for each.
+5.  **Required outputs.** However you get there, `wrangle.qmd` must end with a participant-flow table, a check of every variable you created, the saved analytic dataset, and a codebook covering every raw and created variable.
+
+**Submit:** the rendered `wrangle.qmd` and your Zenodo DOI.
+
+| Graded on | Points |
+|------------------------------------|------------------------------------|
+| Split before outcomes were seen, seed recorded, split by person if needed; Zenodo record holds only the script and checksum | 6 |
+| Every analysis variable audited, with findings written up | 8 |
+| Missing-data codes and exclusions handled in `wrangle.qmd`, each with a reason | 8 |
+| Variables created correctly: whatever the question needs, e.g., scale scores with a missing-item rule, recodes, joined or aggregated variables | 8 |
+| Codebook covers every raw and created variable | 5 |
+
+## M3 — Describe and build an initial model (Mon 11/30, 30 points)
+
+**Purpose:** know your sample and variables before you model them, then fit and check a first model.
+
+1.  In `memo.qmd`, replace the example variable names with yours. For a 0/1 outcome or many rows per person, use the logistic or multilevel line shown under Model 1.
+2.  **Descriptives:** a table for every analysis variable: n, M, SD, range, and skew for continuous variables; counts and percentages for categorical ones.
+3.  **Correlations:** a correlation matrix of the continuous analysis variables, shown as a table and a heat map.
+4.  **Visualizations:** the distribution of every analysis variable (histograms or bar charts), plus at least one plot of the focal relationship.
+5.  **Initial model:** fit Model 1, the theory-driven starting model. Check its diagnostics (residuals vs. fitted, Q-Q plot, influential cases) and interpret it in a few sentences.
+
+**Submit:** the rendered memo. Rough prose is fine.
+
+| Graded on | Points |
+|------------------------------------|------------------------------------|
+| Descriptives for every analysis variable, continuous and categorical | 8 |
+| Correlation matrix and heat map | 5 |
+| Distribution plots for every variable, plus the focal relationship | 9 |
+| Initial model fit, diagnostics checked, and interpreted | 8 |
+
+After M3, finish building the model: add predictors in planned blocks, compare the models, and write the plan for the holdout as the memo's last section.
+
+## M4 — Reproducibility swap (Thu 12/3, in class, 15 points)
+
+**Purpose:** find out whether your project works on someone else's computer, while there's still time to fix it.
+
+**Before class:** copy your project folder, **delete `data/holdout.csv` from the copy**, and zip it.
+
+**In class:** trade zips with your assigned swap partner. Render their project without help from them or from AI tools. Record every problem *before* you try to fix it.
+
+**Submit (end of class):** a swap report on your partner's project. For each problem: what broke, the file and line, and a suggested fix. Also: did it render on the first try, and do the numbers match their memo?
+
+| Graded on | Points |
+|------------------------------------|------------------------------------|
+| Thorough, specific swap report on your partner's project | 8 |
+| Your project renders on your partner's machine (partial credit for each problem fixed by Dec 11) | 4 |
+| A short list in your README of what you fixed after the swap, due with the final | 3 |
+
+## Final package (Fri 12/11, 150 points)
+
+Submit one zipped project folder, **including** the unopened `data/holdout.csv`. It must render from a clean R session.
+
+::: callout-tip
+Before you submit, restart R (Session → Restart R) and render `split.qmd`, `wrangle.qmd`, and `memo.qmd` in that order. `split.qmd` should say MATCH. If anything fails, it will fail on my computer too.
+:::
+
+The heart of the submission is the memo: **3 to 4 pages of text**, rendered to Word or PDF. Tables and figures don't count toward the page limit. It follows the project's arc (question and data, wrangling, description, model building, plan for the holdout) and claims no confirmatory finding. Writing is graded for clarity; argument and framing belong to next semester.
+
+### 1. Data wrangling (50 points)
+
+Graded from `wrangle.qmd`, the memo's wrangling section, and the codebook.
+
+| Criterion | What it needs | Points |
+|------------------------|------------------------|------------------------|
+| Pipeline | Raw file to analytic dataset entirely in code; renders from a clean session on another machine | 10 |
+| Cleaning and exclusions | Missing-data codes recoded; each exclusion in `wrangle.qmd` with its reason; participant-flow table from raw n to analytic n | 12 |
+| Created variables | Every variable you built (e.g., scale scores with a stated missing-item rule, recodes, joined or aggregated variables), each correct and explained in the memo | 16 |
+| Codebook | Every raw and created variable: source item, coding, range, missing codes, and how it was computed | 12 |
+
+### 2. Description (35 points)
+
+| Criterion | What it needs | Points |
+|------------------------|------------------------|------------------------|
+| Descriptive statistics | Every analysis variable: n, M, SD, range, and skew for continuous; counts and percentages for categorical | 10 |
+| Correlations | Matrix of continuous analysis variables, as a table and a heat map | 7 |
+| Visualizations | Distribution of every analysis variable, plus at least one plot of the focal relationship; labeled axes and readable | 12 |
+| Written description | The sample (who, how many, key demographics) and anything notable: skew, ceiling effects, outliers, sparse categories | 6 |
+
+### 3. Model building (40 points)
+
+| Criterion | What it needs | Points |
+|------------------------|------------------------|------------------------|
+| Initial model | Model 1 is theory-driven and interpreted in plain words, labeled exploratory | 10 |
+| Building steps | Predictors added in planned blocks (e.g., covariates, then an interaction), with a comparison table (R² or AIC, and the test of each added block) | 12 |
+| Diagnostics | Residuals vs. fitted, Q-Q plot, and influential cases checked, with what you did about any problem | 10 |
+| Final exploratory model and log | The chosen model interpreted; the appendix logs each step and why you took it | 8 |
+
+A sensitivity check, rerunning the final model under one other defensible choice, is optional and ungraded. It's worth doing if you plan to publish.
+
+### 4. Plan for the holdout (last section of the memo, 15 points)
+
+About half a page: the one test that runs on the 70% next semester, written so someone else could run it without asking you a question. Next semester it becomes your preregistration.
+
+| Criterion | Points |
+|------------------------------------|------------------------------------|
+| The final model as exact code, with exclusions being the rules in `wrangle.qmd` | 5 |
+| Decision rule: what counts as support, and what you'll report regardless | 4 |
+| Power for the holdout n, and whether that effect is small enough to matter | 3 |
+| Each decision labeled as coming from theory, prior papers, or exploration | 3 |
+
+### 5. Holdout and README (10 points)
+
+| Criterion | Points |
+|------------------------------------|------------------------------------|
+| Rendering `split.qmd` says MATCH, and the holdout statement is complete and honest | 5 |
+| README complete: dataset and license, how to reproduce, open questions for next semester, AI use, post-swap fixes, and contribution statements (pairs) | 5 |
+
+------------------------------------------------------------------------
+
+## How it's graded
+
+More than half the points are for wrangling and description, because that's where the work is with large public datasets. Milestones are graded mainly on completion and good faith; the final is graded on quality.
+
+| Component                              | Points  |
+|----------------------------------------|---------|
+| M1 Dataset pitch                       | 20      |
+| M2 Split and wrangle                   | 35      |
+| M3 Describe and build an initial model | 30      |
+| M4 Reproducibility swap                | 15      |
+| Final: Data wrangling                  | 50      |
+| Final: Description                     | 35      |
+| Final: Model building                  | 40      |
+| Final: Plan for the holdout            | 15      |
+| Final: Holdout and README              | 10      |
+| **Total**                              | **250** |
+
+------------------------------------------------------------------------
+
+## What happens next semester
+
+This course owns the data and the statistics; Applied Research Methods owns the research and the writing. The split keeps you from redoing work in January, and leaves real work to grow into.
+
+|   | This semester | Applied Research Methods |
+|------------------------|------------------------|------------------------|
+| Question | A clear, answerable question and what it adds | Theory, rationale, hypotheses |
+| Literature | 3 to 5 closest papers using these data | Full literature review |
+| Measures | Audit, cleaning, created variables, codebook | Construct validity |
+| Analysis | Wrangling, description, model building, plan for the holdout, power | Formal preregistration; confirmatory test on the 70% |
+| Writing | Short technical report | Introduction, discussion, submission |
+
+Your project folder must make sense to someone who has never met you. The template already has this structure:
+
+```         
+project-name/
+├── START_HERE.md          step-by-step guide to each milestone
+├── README.md              dataset, holdout statement, open questions, AI use, contributions
+├── project.Rproj
+├── split.qmd              30/70 split and checksum; re-rendering only checks the holdout
+├── wrangle.qmd            audit, your wrangling steps, codebook; saves the analytic data
+├── memo.qmd               wrangling summary, description, model building, plan for the holdout
+├── references.bib
+├── holdout_checksum.txt   created by split.qmd; published on Zenodo
+└── data/
+    ├── raw/               original file(s)
+    ├── explore.csv        the 30% exploratory subset
+    ├── analytic_explore.csv  created by wrangle.qmd
+    └── holdout.csv        the 70% holdout (unopened)
+```
+
+Next semester, `wrangle.qmd` runs on the holdout by changing one line (`DATA_FILE`), so the same rules apply unchanged. You preregister (OSF Registries still accepts preregistrations) before opening `holdout.csv`. [Van den Akker et al. (2021)](https://doi.org/10.15626/MP.2020.2625) give a preregistration template built for secondary data.
+
+------------------------------------------------------------------------
+
+## Policies
+
+- **Alone or in pairs.** You can work alone or with one partner whose interests overlap with yours. Expectations are the same either way. Declare your choice at M1; pairs can't split or form after M2, because partners share one split and holdout. Partners submit under one name, are graded together, and each adds a contribution statement to the README. Swap partners for M4 are assigned separately, whether you work alone or in a pair.
+- **Thesis or dissertation data.** Allowed only if you meet all four conditions at M1:
+  1.  Written approval from your advisor, including agreement on authorship of anything published from the project.
+  2.  Confirmation that your IRB protocol allows course use and sharing de-identified data with a classmate. If it doesn't, your swap partner works from a synthetic copy (for example, made with the `synthpop` package).
+  3.  A research question that is not a specific thesis or dissertation chapter.
+  4.  Outcome data you haven't analyzed yet, so the split still works. If you have, the holdout requirement is waived and your plan is framed as exploratory.
+- **Authorship.** Papers that go to submission will list authors by [CRediT](https://credit.niso.org/) contribution roles, with a faculty co-author responsible for the paper after the spring semester ends. Partners agree on first-author order, in writing, before writing begins.
+- **Open science.** This semester, only the split script and checksum are public, on Zenodo. Working files stay on university storage or in a private GitHub repository. At publication, the full project goes to [ResearchBox](https://researchbox.org/), which archives public boxes to Zenodo with a DOI: code under an open license, materials, and data where its license allows. ResearchBox requires a university email address to register.
+- **Data ethics.** Use only de-identified data under its stated license. Never try to identify participants or link records to outside sources.
+- **Late work.** Milestones build on each other, so a late milestone delays your feedback. Talk to me before a deadline, not after.
+
+### Use of AI tools
+
+The [syllabus policy on generative AI](../syllabus.qmd) applies. For this project specifically, use AI tools the way you'd use a knowledgeable classmate. You are responsible for everything you submit, and you should be able to explain every line of your code and every decision in your plan.
+
+**Allowed:**
+
+- debugging R code, as long as you can explain what each line does;
+- explaining error messages, statistical concepts, or model output;
+- editing your own writing for clarity (minimally).
+
+**Not allowed:**
+
+- **Giving an AI tool `data/holdout.csv`, or the full dataset after your split.** Uploading the holdout counts as opening it. Share only a summary of it.
+- **Letting an AI tool make analytic decisions you can't justify yourself:** exclusions, covariates, or model choice. Every decision in your plan for the holdout needs a reason in your own words.
+- **Citing papers you haven't read.** AI tools invent references and can misstate findings. Your novelty check and memo can only cite papers you have opened and read.
+- **Using AI to fix your partner's project during the M4 swap.** You need to identify the problems on your own. The goal of the swap is to test the files and highlight problems, not fix them.
+- **Uploading open, thesis, or dissertation data** to any AI tool, unless your IRB protocol or data use agreement explicitly allows it.
+
+**Disclose:** your README has an "AI use" line naming each tool and what you used it for (for example, "Claude: debugging the scoring code in `wrangle.qmd`; tightening the Limitations paragraph"). This is the acknowledgment note the syllabus requires. "None" is a fine answer. Disclosed use is never penalized; undisclosed use falls under the course's academic integrity policy.
+
+This log also prepares you for publication: journals have their own AI rules, AI tools can't be listed as authors, and most journals ask for a disclosure like this one.

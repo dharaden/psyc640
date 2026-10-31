@@ -19,11 +19,13 @@ For a PDF copy of the syllabus: [Download File](files/PSYC640_Stats_Fall26.pdf)
 
 This course is the introduction to statistics for graduate students. The goal of the course is to provide a grounding in statistical concepts, methods and application to research. I aim to increase student's confidence in using these techniques and introducing them to R. Topics will range from including mathematical conceptualizations to practical application with various techniques ranging from descriptive statistics to regression.
 
+Last Updated: 10/31/26
+
 ------------------------------------------------------------------------
 
 ### **Course Materials**
 
-We will be using R and JAMOVI for all data wrangling, visualization, and analysis. You may use other statistical programs in this course, but the examples in class (and what I am most familiar with) will be in R and JAMOVI. Students must have the latest version of R and it is strongly recommended that students also download the RStudio GUI, both can be found [here](https://posit.co/download/rstudio-desktop/#download). JAMOVI can be downloaded [here](https://www.jamovi.org/index.html). All software here is free.
+We will be using R and JAMOVI for all data wrangling, visualization, and analysis. You may use other statistical programs in this course, but the examples in class (and what I am most familiar with) will be in R and JAMOVI. Students must have the latest version of R and it is strongly recommended that students also download the RStudio GUI, both can be found [here](https://posit.co/download/rstudio-desktop/#download). JAMOVI can be downloaded [here](https://www.jamovi.org/index.html). All software here is free. The final project must be completed in R and Quarto, because it depends on code that someone else can rerun.
 
 We will primarily be referring to chapters in the following textbooks:
 
@@ -90,7 +92,10 @@ This is a comprehensive analysis of a dataset I will provide. You will be asked 
 
 ***Final Project***
 
-For your final project, you will choose a dataset (either your own research data that is not your thesis or from a list of options), develop your own research questions, and conduct a full analysis from start to finish. You will present your work in a short, manuscript-style report and a brief "lightning talk" to the class in our final meeting. This is your capstone assignment to demonstrate your independent data analysis skills.
+<s>For your final project, you will choose a dataset (either your own research data that is not your thesis or from a list of options), develop your own research questions, and conduct a full analysis from start to finish. You will present your work in a short, manuscript-style report and a brief "lightning talk" to the class in our final meeting. This is your capstone assignment to demonstrate your independent data analysis skills.</s>
+
+Update 10/31/26: 
+For your final project, you will choose a large public dataset, develop your own research question, and take the data from raw file to model: wrangling it into an analytic dataset, describing and visualizing it, and building an initial regression model. Before you analyze anything, you will set aside 70% of the data, untouched, so that your model can be tested next semester in Applied Research Methods. The project runs in four milestones and a final package that includes a short, manuscript-style memo. In our final meeting, a classmate will try to reproduce your project from scratch. Full details, including the rules for working with a partner and for using thesis or dissertation data, are on the Final Project page.
 
 **Grade Scheme**
 

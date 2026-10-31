@@ -28,6 +28,7 @@ project:
     - labs/lab-08_model-fit.qmd
     - labs/midterm-project.qmd
     - labs/lab-09_groups-slopes.qmd
+    - labs/final-proj.qmd
     - class-activities/day1.qmd
     - class-activities/wk2_tidy-intro.qmd
     - class-activities/wk3_desc-viz.qmd
@@ -169,8 +170,8 @@ website:
         contents:
           - href: labs/midterm-project.qmd
             text: "Midterm Project"
-          # - href: labs/final-proj.qmd
-            # text: "Final Project"
+          - href: labs/final-proj.qmd
+            text: "Final Project"
       - href: resources.qmd
         text: "Resources" 
       - href: previous-years.qmd
