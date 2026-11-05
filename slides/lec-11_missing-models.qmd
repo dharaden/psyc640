@@ -1,0 +1,891 @@
+---
+title: "Week 11: Missing Data + Model Building"
+subtitle: "Date: November 5, 2026"
+footer:  "[course-website](https://dharaden.github.io/psyc640/)"
+logo: "images/640_hex.png"
+format:
+  revealjs:
+    theme: [default, brand, clean.scss]
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false
+    chalkboard: true
+    overview: false
+    scrollable: true
+    code-line-numbers: true
+    auto-stretch: false
+editor: visual
+execute:
+  echo: true
+  freeze: auto
+editor_options:
+  chunk_output_type: console
+---
+
+## 💾 Class Check 4
+
+::: callout-important
+**25 minutes** · On myCourses · Closed notes
+
+This one is **5 minutes longer** than usual. Start when I say go.
+:::
+
+When you finish: open today's activity and do the **Set up** section so you're ready for Part A.
+
+[Open the activity](../class-activities/wk11_missing-models.html){.button target="_blank"}
+
+------------------------------------------------------------------------
+
+## Today...
+
+**Who is missing, and which model do you keep?**
+
+- Why `lm()` quietly threw away 99 kids, and when that's a problem
+- MCAR, MAR, MNAR: the reason data are missing matters more than the amount
+- What to do about it: listwise deletion, mean imputation (❌), multiple imputation
+- Building a model in planned blocks, and comparing the blocks
+- R², adjusted R², AIC, BIC: four ways to say "better"
+- Why letting the computer choose your predictors goes wrong, and why your final project has a holdout
+
+```{r, results = 'hide', message = F, warning = F}
+library(here)
+library(tidyverse)
+library(rio)
+library(broom)
+library(easystats)
+library(mice)       # new this week: install.packages("mice")
+library(patchwork)
+
+options(scipen = 999)
+```
+
+------------------------------------------------------------------------
+
+## Two decisions you are about to make
+
+Your final project starts for real this month.
+
+::: incremental
+- **M2 (Sun 11/15):** turn a raw public dataset into an analytic dataset. Every public dataset has missing values, and many of them hide behind codes like `0` or `-99`.
+- **The memo:** build a model in planned blocks and compare them, with a comparison table.
+:::
+
+. . .
+
+Today is those two sections of the project, in order. The activity is a **dress rehearsal** on data you already know.
+
+# Part 1: Who Is Missing?
+
+------------------------------------------------------------------------
+
+## The ASAP study, one more time 😴
+
+400 kids, measured three times. Last month we predicted Time 3 depression from Time 1:
+
+```{r}
+asap <- import(here("files", "data", "asap_data.csv"))
+
+m_t3 <- lm(T3_Dep ~ T1_Dep + T1_SleepQual, data = asap)
+tidy(m_t3)
+```
+
+. . .
+
+**How many kids are in this model?**
+
+------------------------------------------------------------------------
+
+## R didn't ask
+
+```{r}
+nrow(asap)
+nobs(m_t3)
+```
+
+. . .
+
+`lm()` drops every row with a missing value on **any** variable in the formula. No warning in `tidy()`. A one-line note at the bottom of `summary()`: "(99 observations deleted due to missingness)."
+
+. . .
+
+```{r}
+asap %>%
+  summarise(across(c(T1_Dep, T2_Dep, T3_Dep), ~ sum(is.na(.x))))
+```
+
+Everyone came at Time 1. 25 were gone by Time 2, and 99 by Time 3.
+
+------------------------------------------------------------------------
+
+## The question is not "how much"
+
+It's **why**.
+
+. . .
+
+If the 99 kids who left are just like the 301 who stayed, losing them costs you power, and nothing else.
+
+. . .
+
+If they left **because of** something related to depression, the 301 who stayed are a different population, and everything you estimate describes the wrong people.
+
+. . .
+
+Rubin (1976) gave us three names for the "why."
+
+------------------------------------------------------------------------
+
+## Three reasons a value goes missing
+
+|   | The chance a value is missing depends on... | Example |
+|------------------------|------------------------|------------------------|
+| **MCAR**<br>Missing Completely At Random | Nothing. Pure bad luck. | A family moved; a survey page failed to load |
+| **MAR**<br>Missing At Random | Something you **did** measure | Lower-SES families are harder to schedule, and you recorded SES |
+| **MNAR**<br>Missing Not At Random | The missing value **itself** (or something you didn't measure) | The most depressed kids skip the follow-up *because* they're depressed |
+
+. . .
+
+::: callout-warning
+"Missing **at random**" does **not** mean random. It means random **once you account for what you measured.** Blame Rubin's naming. It's dumb and confusing.
+:::
+
+------------------------------------------------------------------------
+
+## The missingness machine 🎰
+
+I can only show you what each kind does if I know the truth. So: simulate.
+
+- 400 kids: **sleep problems**, **stress** (correlated with sleep, *r* = .5), and **depression**
+- True model: `dep = 0.3 × sleep + 0.5 × stress + error` (everything standardized, so the true mean is 0)
+- Then delete about 30% of depression scores, four different ways, and do it 1,000 times
+
+```{r}
+#| code-fold: true
+sim_missing <- function(mech, n = 400) {
+  sleep  <- rnorm(n)
+  stress <- 0.5 * sleep + rnorm(n, 0, sqrt(0.75))
+  dep    <- 0.3 * sleep + 0.5 * stress + rnorm(n, 0, 0.8)
+
+  p_miss <- switch(mech,
+    "MCAR"              = rep(0.3, n),
+    "MAR: sleep"        = plogis(-1.2 + 1.5 * sleep),   # cause is a predictor
+    "MAR: stress"       = plogis(-1.2 + 1.5 * stress),  # cause is measured, maybe not modeled
+    "MNAR"              = plogis(-1.2 + 1.5 * dep))     # cause is the missing value itself
+
+  dep_obs <- dep
+  dep_obs[rbinom(n, 1, p_miss) == 1] <- NA
+
+  tibble(
+    `Mean of depression`         = mean(dep_obs, na.rm = TRUE),
+    `Slope: dep ~ sleep`         = coef(lm(dep_obs ~ sleep))[2],
+    `Slope: dep ~ sleep + stress` = coef(lm(dep_obs ~ sleep + stress))[2]
+  )
+}
+
+set.seed(1105)
+mechs <- c("MCAR", "MAR: sleep", "MAR: stress", "MNAR")
+sims <- map_dfr(mechs, ~ map_dfr(1:1000, function(i) sim_missing(.x)) %>%
+                  mutate(mechanism = .x))
+
+truth <- tibble(
+  estimate = c("Mean of depression", "Slope: dep ~ sleep", "Slope: dep ~ sleep + stress"),
+  true     = c(0, 0.55, 0.30)
+)
+```
+
+------------------------------------------------------------------------
+
+## What listwise deletion gets right, and wrong
+
+```{r, fig.width=12, fig.height=5}
+#| code-fold: true
+#| out-width: "100%"
+sims %>%
+  pivot_longer(-mechanism, names_to = "estimate") %>%
+  group_by(mechanism, estimate) %>%
+  summarise(m = mean(value), lo = quantile(value, .05), hi = quantile(value, .95),
+            .groups = "drop") %>%
+  left_join(truth, by = "estimate") %>%
+  mutate(mechanism = factor(mechanism, levels = rev(mechs))) %>%
+  ggplot(aes(x = m, y = mechanism)) +
+  geom_vline(aes(xintercept = true), linetype = "dashed", color = "gray40") +
+  geom_errorbar(aes(xmin = lo, xmax = hi), width = 0.2) +
+  geom_point(size = 3, color = "#C8102E") +
+  facet_wrap(~ estimate, scales = "free_x") +
+  labs(x = "Estimate from the complete cases (dashed line = truth)", y = NULL) +
+  theme_bw(base_size = 15)
+```
+
+------------------------------------------------------------------------
+
+## Reading the machine
+
+::: incremental
+- **MCAR:** every estimate is right on target. You lost 30% of your power, and that's the only cost.
+- **MAR on sleep (a predictor):** the **mean** is wrong (low-sleep-problem kids are overrepresented), but **both slopes are fine**. If the cause of missingness is a predictor in your model, regression handles it.
+- **MAR on stress:** the mean is wrong, and so is the sleep-only slope. Put stress **in the model** and the slope is right again.
+- **MNAR:** everything is off, and no variable you have can fix it.
+:::
+
+. . .
+
+::: callout-important
+## The rule
+
+Listwise deletion is fine when the cause of missingness is **in your model**. When it's measured but not in your model, put it in the model **or** use it to impute. When it isn't measured at all, no method rescues you. Say so in your limitations.
+:::
+
+------------------------------------------------------------------------
+
+## ⚠️ You can't test which one you have {background-color="#FDF0D5"}
+
+MCAR vs. MNAR depends on values **you don't have**. No test in your data can tell them apart.
+
+. . .
+
+What you **can** do:
+
+1.  **Check the observable part.** Do the people who are missing differ on things you *did* measure?
+2.  **Think about the design.** Why would someone skip this item, or leave this study?
+3.  **Include likely causes** in the model or the imputation.
+4.  **Report it**, so a reader can judge.
+
+------------------------------------------------------------------------
+
+## Step 1 in the ASAP data: who left?
+
+```{r}
+asap <- asap %>%
+  mutate(t3_status = if_else(is.na(T3_Dep), "Left by T3", "Stayed"))
+
+asap %>%
+  group_by(t3_status) %>%
+  summarise(n = n(),
+            across(c(SES, Sex, T1_Puberty, T1_SleepQual, T1_Dep), ~ round(mean(.x), 2)))
+```
+
+. . .
+
+The kids who left look the same on **Time 1 depression** and sleep. They differ on **SES**.
+
+------------------------------------------------------------------------
+
+## Predict the missingness itself
+
+```{r}
+miss_model <- glm(is.na(T3_Dep) ~ SES + Sex + T1_Puberty + T1_Dep + T1_SleepQual,
+                  family = binomial, data = asap)
+
+model_parameters(miss_model)
+```
+
+. . .
+
+Lower-SES kids were more likely to leave. That's **MAR on SES**, at least for the part we can see. (Logistic regression is next week. For now: negative coefficient = less likely to be missing.)
+
+. . .
+
+::: callout-note
+I simulated this dataset, so I can tell you the real answer: dropout depended on **SES and Time 2 puberty**. Both were measured. You will never get this confirmation with real data.
+:::
+
+------------------------------------------------------------------------
+
+## So is `m_t3` wrong?
+
+Missingness depends on SES. Does SES predict Time 3 depression?
+
+```{r}
+cor(asap$SES, asap$T3_Dep, use = "complete.obs")
+```
+
+. . .
+
+Basically zero. The cause of the missingness is unrelated to the outcome, so the 301 kids should give about the right answer.
+
+. . .
+
+**"Should."** The way to check is to fill in the missing values honestly and see whether anything moves.
+
+# Part 2: What To Do About It
+
+------------------------------------------------------------------------
+
+## The options
+
+| Method | What it does | Verdict |
+|------------------------|------------------------|------------------------|
+| **Listwise deletion** | Analyze complete cases only (R's default) | ✅ Fine under MCAR, or MAR when the cause is in the model. Costs power. |
+| **Pairwise deletion** | Each correlation uses whoever has both values | ⚠️ Different *n* for every number; can't be used for a regression |
+| **Mean imputation** | Replace each NA with the variable's mean | ❌ Shrinks variance, weakens correlations, SEs too small |
+| **Last value carried forward** | Use the person's earlier score | ❌ Assumes nobody changed |
+| **Multiple imputation** | Fill in many plausible values, analyze each, pool | ✅ Handles MAR, including causes not in your model |
+| **FIML** | Estimate directly from all available data | ✅ Same idea as MI; common in SEM software |
+
+------------------------------------------------------------------------
+
+## ❌ Why mean imputation looks fine and isn't
+
+```{r}
+#| code-fold: true
+t1 <- asap %>% select(T1_Dep, T1_SleepQual)
+
+set.seed(2)
+holes <- t1
+holes$T1_Dep[rbinom(400, 1, 0.3) == 1] <- NA   # MCAR, 30%
+
+filled <- holes %>%
+  mutate(T1_Dep = if_else(is.na(T1_Dep), mean(T1_Dep, na.rm = TRUE), T1_Dep))
+
+tibble(
+  Version = c("Truth (all 400)", "Complete cases", "Mean-imputed"),
+  n       = c(400, sum(!is.na(holes$T1_Dep)), 400),
+  SD      = c(sd(t1$T1_Dep), sd(holes$T1_Dep, na.rm = TRUE), sd(filled$T1_Dep)),
+  r       = c(cor(t1)[1, 2], cor(holes, use = "complete.obs")[1, 2], cor(filled)[1, 2])
+) %>%
+  mutate(across(c(SD, r), ~ round(.x, 2)))
+```
+
+. . .
+
+Even under **MCAR**, where listwise deletion is unbiased, mean imputation **shrinks the SD and the correlation**, then reports *n* = 400 as if you had measured everyone. Every filled-in kid sits exactly at the mean, with no uncertainty.
+
+------------------------------------------------------------------------
+
+## Multiple imputation, in one picture
+
+::::: columns
+::: {.column width="55%"}
+1.  **Impute.** Predict each missing value from everything else, **plus random noise**, so the filled-in values vary as much as real ones would. Do it *m* times (say, 20): 20 complete datasets, each a little different.
+2.  **Analyze.** Fit your model in each one.
+3.  **Pool.** Average the 20 estimates. The SE combines the uncertainty *within* each dataset and the disagreement *between* them (Rubin's rules).
+:::
+
+::: {.column width="45%"}
+```{r, fig.width=5, fig.height=5}
+#| echo: false
+#| out-width: "90%"
+tibble(step = factor(c("Data\nwith holes", paste("Imputed", 1:5), "Pooled\nresult"),
+                     levels = c("Data\nwith holes", paste("Imputed", 1:5), "Pooled\nresult")),
+       x = c(1, 2, 2, 2, 2, 2, 3), y = c(3, 5, 4, 3, 2, 1, 3)) %>%
+  ggplot(aes(x, y)) +
+  geom_segment(data = tibble(x = 1, y = 3, xend = 2, yend = 1:5), aes(xend = xend, yend = yend),
+               color = "gray60") +
+  geom_segment(data = tibble(x = 2, y = 1:5, xend = 3, yend = 3), aes(xend = xend, yend = yend),
+               color = "gray60") +
+  geom_label(aes(label = step), size = 4.5) +
+  annotate("text", x = c(1.5, 2.5), y = 5.6, label = c("impute", "analyze + pool"),
+           size = 5, fontface = "italic") +
+  xlim(0.6, 3.4) + ylim(0.5, 5.9) +
+  theme_void()
+```
+:::
+:::::
+
+. . .
+
+The noise is the point: it keeps the method **honest about what you don't know**.
+
+------------------------------------------------------------------------
+
+## `mice` in three lines
+
+**M**ultivariate **I**mputation by **C**hained **E**quations. Give it the analysis variables **plus** anything that predicts missingness (SES) or the missing values (Time 2 depression):
+
+```{r}
+imp_data <- asap %>%
+  select(T3_Dep, T1_Dep, T1_SleepQual, SES, Sex, T1_Puberty, T2_Dep, T2_Puberty)
+
+imp <- mice(imp_data, m = 20, seed = 1105, printFlag = FALSE)   # 1. impute 20 times
+fits <- with(imp, lm(T3_Dep ~ T1_Dep + T1_SleepQual))           # 2. fit in each
+pooled <- pool(fits)                                            # 3. pool
+```
+
+. . .
+
+```{r}
+#| echo: false
+cc_tab <- tidy(m_t3) %>% select(term, b_listwise = estimate, se_listwise = std.error)
+mi_tab <- summary(pooled) %>% as_tibble() %>%
+  transmute(term = as.character(term), b_MI = estimate, se_MI = std.error)
+left_join(cc_tab, mi_tab, by = "term") %>%
+  mutate(across(where(is.numeric), ~ round(.x, 3))) %>%
+  knitr::kable()
+```
+
+Nearly identical, as the SES check predicted. The SEs are a bit **smaller** with MI: it used information from the 99 kids who left (their Time 1 and Time 2 scores).
+
+------------------------------------------------------------------------
+
+## When MI and listwise disagree
+
+Here they agree, and that is a **result**. It goes in your write-up:
+
+```{r}
+#| echo: false
+mp <- model_parameters(miss_model)
+r_ses <- cor(asap$SES, asap$T3_Dep, use = "complete.obs")
+r_txt <- sprintf("%.2f", r_ses)
+r_txt <- if (r_txt %in% c("-0.00", "0.00")) ".00" else sub("0\\.", ".", r_txt)
+```
+
+> Of the 400 participants, 99 (24.8%) were missing Time 3 depression. Missingness was more likely among lower-SES families (*b* = `r sprintf("%.2f", mp$Coefficient[2])`, *p* `r if (mp$p[2] < .001) "< .001" else paste("=", round(mp$p[2], 3))`) but was unrelated to Time 1 depression or sleep quality. Because SES was unrelated to Time 3 depression (*r* = `r r_txt`), we report complete-case estimates; results from multiple imputation (*m* = 20) were nearly identical.
+
+. . .
+
+When they **disagree**, trust the one with fewer assumptions you can't defend (usually MI, if you gave it the right variables), and report both.
+
+------------------------------------------------------------------------
+
+## The missingness you can't see 👻
+
+Some missing values aren't `NA`. Public datasets code them as numbers:
+
+| Code | Means | If you forget... |
+|------------------------|------------------------|------------------------|
+| `0` on a 1–7 scale | Skipped | Pulls scale means toward 0 |
+| `-99`, `-999`, `999` | Missing | An "age" of 999 moves the mean by years |
+| `1998` in an age column | A birth year typed into the wrong box | One 1,998-year-old |
+
+. . .
+
+Remember the DASS activity: in Part C, leaving the TIPI **zeros** in turned *p* = .097 into *p* = **.021**. Nothing in the output warned you.
+
+. . .
+
+::: callout-tip
+**For M2:** audit every variable **before** you change anything: `range()`, `table()`, and the codebook. `na_if(x, 0)` fixes a code; it can't fix one you never looked for.
+:::
+
+------------------------------------------------------------------------
+
+## 💻 Your Turn - Parts A & B
+
+::: callout-tip
+**\~20 min** · Pairs
+:::
+
+- **Part A:** draw a project-sized sample and split it 30/70, exactly like `split.qmd`
+- **Part B:** audit the missing-data codes, recode them, and find out who's missing
+
+[Open the activity](../class-activities/wk11_missing-models.html#part-a){.button target="_blank"}
+
+# ☕ Break
+
+# Part 3: Building a Model on Purpose
+
+------------------------------------------------------------------------
+
+## Two jobs a model can do
+
+::::: columns
+::: {.column width="50%"}
+### 🎯 Explain
+
+"Does sleep predict depression **beyond** demographics?"
+
+- Predictors chosen from **theory**, in an order you decide **before** you look
+- You care about specific coefficients
+- **This course. Your final project.**
+:::
+
+::: {.column width="50%"}
+### 🔮 Predict
+
+"Which students will drop out next term?"
+
+- Use whatever predicts best
+- Coefficients are a means to an end
+- Judged on **new data**
+- Machine learning lives here
+:::
+:::::
+
+. . .
+
+Most bad model building comes from doing the second job while claiming the first.
+
+------------------------------------------------------------------------
+
+## Hierarchical (block) regression
+
+Add predictors in **planned blocks**. Each block answers one question.
+
+. . .
+
+Back to ASAP at Time 1 (everyone present, *n* = 400). Depression from:
+
+1.  **Block 1, demographics:** sex, SES, age. "Who is this kid?"
+2.  **Block 2, sleep:** duration and quality. "Does sleep add anything **beyond** who they are?"
+3.  **Block 3, stress:** peer and academic. "Does stress add anything **beyond** sleep?"
+
+```{r}
+b1 <- lm(T1_Dep ~ Sex + SES + T1_Age, data = asap)
+b2 <- lm(T1_Dep ~ Sex + SES + T1_Age + T1_SleepDur + T1_SleepQual, data = asap)
+b3 <- lm(T1_Dep ~ Sex + SES + T1_Age + T1_SleepDur + T1_SleepQual +
+                  T1_PeerStress + T1_AcadStress, data = asap)
+```
+
+. . .
+
+The order is a **claim** about your question. Put sleep first and you're asking a different one.
+
+------------------------------------------------------------------------
+
+## Did each block earn its place?
+
+```{r}
+anova(b1, b2, b3)
+```
+
+. . .
+
+Each row tests: **is the drop in leftover error (RSS) bigger than chance, for the predictors we added?**
+
+$$
+F = \frac{(RSS_{\text{smaller}} - RSS_{\text{bigger}}) / \text{df}_{\text{added}}}{RSS_{\text{bigger}} / \text{df}_{\text{residual}}}
+$$
+
+Same logic as the *F* test for one model (Week 7). Now the "null model" is the previous block instead of the mean.
+
+------------------------------------------------------------------------
+
+## How much did each block add? Δ*R*²
+
+```{r}
+r2 <- map_dbl(list(b1, b2, b3), ~ summary(.x)$r.squared)
+tibble(Model = c("Block 1: demographics", "+ Block 2: sleep", "+ Block 3: stress"),
+       R2 = round(r2, 3),
+       delta_R2 = round(c(r2[1], diff(r2)), 3))
+```
+
+. . .
+
+::: incremental
+- Demographics explain almost nothing (*R*² = .006)
+- Sleep adds **9 points** of variance explained, *F*(2, 394) = 19.4, *p* \< .001
+- Stress adds **2 more**, *F*(2, 392) = 5.0, *p* = .007
+:::
+
+. . .
+
+The *p*-value says each block is **detectable**. Δ*R*² says **how much it matters.** Report both.
+
+------------------------------------------------------------------------
+
+## ⚠️ The same-*n* trap {background-color="#FDF0D5"}
+
+Add Time 2 peer stress as a Block 4:
+
+```{r}
+b4 <- lm(T1_Dep ~ Sex + SES + T1_Age + T1_SleepDur + T1_SleepQual +
+                  T1_PeerStress + T1_AcadStress + T2_PeerStress, data = asap)
+c(nobs(b3), nobs(b4))
+```
+
+```{r}
+#| error: true
+anova(b3, b4)
+```
+
+. . .
+
+R refused. If it hadn't, you'd be comparing models fit to **different people**, and any difference could come from the 25 kids who disappeared, not from the new predictor.
+
+------------------------------------------------------------------------
+
+## The fix: one analytic dataset, decided first
+
+```{r}
+model_vars <- c("T1_Dep", "Sex", "SES", "T1_Age", "T1_SleepDur", "T1_SleepQual",
+                "T1_PeerStress", "T1_AcadStress", "T2_PeerStress")
+
+analytic <- asap %>% drop_na(all_of(model_vars))
+nrow(analytic)
+```
+
+. . .
+
+Then fit **every** block to `analytic`. Every model has the same 375 people, and `anova()` works.
+
+. . .
+
+::: callout-tip
+This is why your project's `wrangle.qmd` ends with an `analytic` dataset that's complete on **all** of your analysis variables, not just the ones in Model 1. And it's why the missing-data check from Part 2 matters: `drop_na()` is listwise deletion.
+:::
+
+------------------------------------------------------------------------
+
+## Four ways to say "better"
+
+| Index | What it rewards | What it penalizes | Read it as |
+|------------------|------------------|------------------|------------------|
+| ***R*****²** | Fit | Nothing. It **never goes down** when you add a predictor | Proportion of variance explained |
+| **Adjusted *R*²** | Fit | Each predictor, a little | *R*² for the population, roughly |
+| **AIC** | Fit | 2 per parameter | Lower is better. Expected **prediction** error on new data |
+| **BIC** | Fit | log(*n*) per parameter (≈ 6 here) | Lower is better. Prefers **simpler** models as *n* grows |
+
+. . .
+
+AIC and BIC only compare models with the **same outcome** on the **same rows**. An AIC of 1714 means nothing alone. (Same reason you can't compare AIC for raw and logged streams from Week 10: different outcomes.)
+
+------------------------------------------------------------------------
+
+## `compare_performance()`
+
+```{r}
+compare_performance(b1, b2, b3, metrics = c("R2", "R2_adj", "AIC", "BIC"))
+```
+
+. . .
+
+**AIC** prefers Block 3. **BIC** prefers Block 2. They disagree when a block helps a little: AIC asks "does it predict better?", while BIC asks "is it worth the complexity?"
+
+. . .
+
+A disagreement is not a crisis. It tells you the stress block is **small**. Your **planned** test (the *F* for Block 3) is the one you report, and you say Δ*R*² = .02.
+
+------------------------------------------------------------------------
+
+## Rules of thumb
+
+- **Δ*R*²**: you decide what's meaningful, ideally before you look. .01 in a large sample can be real and still not matter.
+- **ΔAIC / ΔBIC** between two models:
+
+| Difference | Support for the lower one           |
+|------------|-------------------------------------|
+| 0–2        | Barely any. Treat them as tied.     |
+| 4–7        | Clearly more                        |
+| \> 10      | Essentially none for the higher one |
+
+. . .
+
+::: callout-note
+For **nested, planned** comparisons (Block 1 inside Block 2 inside Block 3), the *F* test is the main event. AIC and BIC earn their keep when models **aren't** nested, or when you're choosing among several defensible options.
+:::
+
+# Part 4: Let the Computer Choose?
+
+------------------------------------------------------------------------
+
+## The tempting idea
+
+"I have 40 variables. Let the data tell me which ones matter."
+
+. . .
+
+That's **stepwise regression**: add or drop predictors one at a time, keeping whatever improves AIC or *p*. It's in every stats package, and `step()` does it in one line.
+
+. . .
+
+Let's give it data where we **know** the answer: 100 people, 30 predictors, and **every one is pure noise.**
+
+------------------------------------------------------------------------
+
+## Stepwise finds something in nothing
+
+```{r}
+set.seed(1105)
+noise <- as_tibble(matrix(rnorm(100 * 31), 100, 31,
+                          dimnames = list(NULL, c("y", paste0("x", 1:30)))))
+
+picked <- step(lm(y ~ 1, data = noise),
+               scope = formula(lm(y ~ ., data = noise)),
+               direction = "both", trace = 0)
+
+model_parameters(picked)
+#summary(picked)
+```
+
+. . .
+
+```{r}
+#| echo: false
+fs <- summary(picked)$fstatistic
+```
+
+Six "predictors," three of them significant, and the whole model has *p* = `r sub("^0", "", sprintf("%.3f", pf(fs[1], fs[2], fs[3], lower.tail = FALSE)))`. **None of it is real.** In 200 runs like this, stepwise "found" at least one significant noise predictor 90% of the time.
+
+------------------------------------------------------------------------
+
+## Why the *p*-values lie
+
+::: incremental
+- Stepwise tried **30** predictors and kept the ones that happened to look best **in this sample**
+- The *p*-values on the final model pretend those were the only predictors you ever considered
+- They're computed as if the model were planned. It wasn't.
+:::
+
+. . .
+
+It's last week's robustness problem, automated: try many versions of an analysis, keep the one that worked, and report it as if it were the only one.
+
+------------------------------------------------------------------------
+
+## Overfitting: the model memorizes noise
+
+ASAP, split in half. Fit on 200 kids, then predict the **other** 200. Keep adding columns of random junk:
+
+```{r}
+#| code-fold: true
+set.seed(1105)
+train_rows <- sample(400, 200)
+junk <- matrix(rnorm(400 * 60), 400, 60, dimnames = list(NULL, paste0("junk", 1:60)))
+asap_j <- bind_cols(asap, as_tibble(junk))
+train <- asap_j[train_rows, ]
+test  <- asap_j[-train_rows, ]
+
+oos_r2 <- function(m, d) 1 - sum((d$T1_Dep - predict(m, d))^2) /
+                              sum((d$T1_Dep - mean(d$T1_Dep))^2)
+
+base <- "T1_Dep ~ Sex + SES + T1_Age + T1_SleepDur + T1_SleepQual + T1_PeerStress + T1_AcadStress"
+
+overfit <- map_dfr(c(0, 5, 10, 20, 30, 40, 50, 60), function(k) {
+  f <- if (k == 0) base else paste(base, "+", paste0("junk", 1:k, collapse = " + "))
+  m <- lm(as.formula(f), data = train)
+  tibble(junk = k,
+         `R² (training half)` = summary(m)$r.squared,
+         `Adjusted R² (training half)` = summary(m)$adj.r.squared,
+         `R² on the other half` = oos_r2(m, test))
+})
+```
+
+```{r, fig.width=10, fig.height=4.5}
+#| code-fold: true
+#| out-width: "85%"
+overfit %>%
+  pivot_longer(-junk) %>%
+  mutate(name = factor(name, levels = names(overfit)[-1])) %>%
+  ggplot(aes(junk, value, color = name)) +
+  geom_hline(yintercept = 0, color = "gray50") +
+  geom_line(linewidth = 1.2) + geom_point(size = 2.5) +
+  labs(x = "Columns of pure noise added", y = NULL, color = NULL) +
+  theme_bw(base_size = 15) + theme(legend.position = "top")
+```
+
+------------------------------------------------------------------------
+
+## What the picture says
+
+::: incremental
+- **Training *R*²** climbs with every column of noise, from .15 to almost .50. It always will.
+- **Adjusted *R*²** slows it down but still climbs. A penalty is not a cure.
+- **New-data *R*²** falls below **zero**: worse than guessing the mean for everyone.
+:::
+
+. . .
+
+The only honest test of a model you chose by looking at the data is **data you didn't look at.**
+
+. . .
+
+::: callout-important
+## That's your holdout
+
+Your project explores 30% and locks 70% away. Explore freely, try things, overfit if you must. Next semester, one planned model meets data it has never seen. That's when the *p*-value means what it says.
+:::
+
+------------------------------------------------------------------------
+
+## A model-building checklist
+
+::: incremental
+1.  **Write the question first.** Which coefficient or block answers it?
+2.  **Order the blocks by theory:** covariates → focal predictor → moderators/interactions.
+3.  **Build one analytic dataset** that's complete on every variable in every model. Check who it dropped.
+4.  **Fit the blocks; compare with `anova()`**; report *R*², Δ*R*², and the *F* for each block.
+5.  **Check diagnostics** on the final model (Week 10).
+6.  **Don't** add or drop predictors because of their *p*-values. If you explore, call it exploration.
+:::
+
+------------------------------------------------------------------------
+
+## 💻 Your Turn - Parts C & D
+
+::: callout-tip
+**\~25 min** · Pairs
+:::
+
+- **Part C:** build three planned blocks on the explore sample, hit the same-*n* trap, fix it, compare
+- **Part D:** throw everything in, then (just this once) check both models against the holdout
+
+[Back to the activity](../class-activities/wk11_missing-models.html#part-c){.button target="_blank"}
+
+# Part 5: Writing It Up
+
+------------------------------------------------------------------------
+
+## The comparison table
+
+```{r}
+#| echo: false
+blocks_tab <- tibble(
+  Model = c("1. Demographics", "2. + Sleep", "3. + Stress"),
+  R2 = r2,
+  dR2 = c(NA, diff(r2)),
+  F = c(NA, anova(b1, b2, b3)$F[2:3]),
+  df = c(NA, "2, 394", "2, 392"),
+  p = c(NA, anova(b1, b2, b3)$`Pr(>F)`[2:3]),
+  AIC = map_dbl(list(b1, b2, b3), AIC)
+) %>%
+  mutate(across(c(R2, dR2), ~ sub("^0", "", sprintf("%.3f", .x))),
+         F = sprintf("%.2f", F),
+         p = if_else(p < .001, "< .001", sub("^0", "", sprintf("%.3f", p))),
+         AIC = sprintf("%.1f", AIC)) %>%
+  mutate(across(everything(), ~ replace_na(na_if(as.character(.x), "NA"), "")))
+knitr::kable(blocks_tab, col.names = c("Model", "R²", "ΔR²", "F change", "df", "p", "AIC"),
+             align = "lcccccc")
+```
+
+. . .
+
+This table is the one your memo needs ("a comparison table: *R*² or AIC, and the test of each added block").
+
+------------------------------------------------------------------------
+
+## The paragraph
+
+```{r}
+#| echo: false
+b3p <- model_parameters(b3)
+d2 <- sub("^0", "", sprintf("%.3f", diff(r2)))
+```
+
+> We fit three nested models predicting Time 1 depression (*N* = 400; no missing data at Time 1). Demographics (sex, SES, age) explained little variance, *R*² = .006. Adding sleep duration and quality improved fit, Δ*R*² = `r d2[1]`, *F*(2, 394) = 19.36, *p* \< .001. Adding peer and academic stress improved fit further, Δ*R*² = `r d2[2]`, *F*(2, 392) = 5.03, *p* = .007, an effect carried by peer stress (*b* = `r sprintf("%.2f", b3p$Coefficient[7])`, *p* = `r sub("^0", "", sprintf("%.3f", b3p$p[7]))`). AIC favored the full model; BIC favored the sleep-only model, consistent with the small increment from stress.
+
+. . .
+
+::: callout-tip
+Three things every block paragraph needs: **who's in it** (*N*, and how missing data was handled), **what each block added** (Δ*R*² and its test), and **an honest size**, even when the test is significant.
+:::
+
+------------------------------------------------------------------------
+
+## ✍️ Wrap-Up
+
+Finish these in your notes:
+
+1.  In your own words: what's the difference between MAR and MNAR? Give an example of each from your own research area.
+2.  Why is mean imputation worse than doing nothing, even under MCAR?
+3.  Your Block 2 model has 40 fewer people than your Block 1 model. What went wrong, and how do you fix it?
+4.  AIC prefers Model 3; BIC prefers Model 2. What does that tell you about the predictors you added in Model 3?
+
+------------------------------------------------------------------------
+
+## For next time
+
+📂 **Final Project M1 — Dataset pitch**, due **Friday 11/6**
+
+📋 **Lab 10**, due **Tuesday 11/10 at 11:59pm**
+
+📖 Readings for **Logistic Regression**:
+
+- Chapter 13 — ROS
+- Chapter 8.3 — MSR
+
+::: callout-important
+## 📂 M2 is due Sunday 11/15
+
+Today's activity **is** M2 on a smaller scale: split, audit the missing-data codes, recode, check who's missing, build `analytic`. If you can do it on the DASS data, you can do it on yours. Once your M1 is approved, split right away.
+:::

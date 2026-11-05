@@ -1,0 +1,376 @@
+---
+title: "Week 11 Exercises - Build It on Purpose"
+subtitle: "A dress rehearsal for M2 and your memo's model-building section"
+editor: visual
+---
+
+::: callout-note
+## Overview
+
+About 45 minutes, **split across today's lecture** · Pairs · 🧰 R (`tidyverse`, `rio`, `here`, `janitor`, `datawizard`, `easystats`, `mice`)
+
+You're going to do your final project's first steps on a dataset you already know. Same DASS data as the last two weeks, but treated the way you'll treat **your** dataset: split it, audit it, decide who's in, then build a model in planned blocks.
+
+- **Part A: Draw and split (\~5 min):** a project-sized sample, split 30/70 like `split.qmd`.
+- **Part B: Who's missing? (\~15 min):** find the hidden missing-data codes, recode them, and check whether the people with missing data are different.
+- **Part C: Build in blocks (\~15 min):** three planned models, the same-*n* trap, and a comparison table.
+- **Part D: The kitchen sink (\~10 min):** throw everything in, then test both models on data they've never seen.
+- **Part E: Multiple imputation (if time):** does filling in the gaps change your answer?
+
+**By the end you should be able to:**
+
+- Find missing-data codes that aren't `NA`, using the codebook and a quick audit
+- Build one analytic dataset that every model shares, and report who it dropped
+- Compare nested models with `anova()`, Δ*R*², AIC, and BIC, and say what each one tells you
+- Explain, with your own numbers, why a model picked by looking at the data needs new data to test it
+:::
+
+::: callout-warning
+## Before you start
+
+Run this once in the console: `install.packages("mice")` and `install.packages("rsample")`
+:::
+
+------------------------------------------------------------------------
+
+# Set up (5 min) {#setup}
+
+Start a new Quarto document, `Week 11 - Build It on Purpose`, saved as `week11_build.qmd`. Make sure <a href="../files/data/dass_data.csv" download="dass_data.csv">dass_data.csv</a> is in your project's `data` folder (same file as the last two weeks).
+
+``` r
+library(tidyverse)
+library(rio)
+library(here)
+library(datawizard)
+library(easystats)
+library(mice)
+library(rsample)
+```
+
+------------------------------------------------------------------------
+
+# Part A — Draw and split (5 min) {#part-a}
+
+Your final project needs at least 1,000 people. So we'll pretend the DASS study had exactly 1,000, the smallest dataset you're allowed to use, and split it the way `split.qmd` does.
+
+``` r
+raw <- import(here("data", "dass_data.csv")) %>%
+  janitor::clean_names()
+
+set.seed(1105)
+dass <- raw %>% slice_sample(n = 1000)   # our "project-sized" dataset
+
+# Another way to split using rsample
+split_dass <- rsample::initial_split(dass, prop = 0.7, strata = NULL)
+explore <- assessment(split_dass)
+holdout <- analysis(split_dass)
+
+c(explore = nrow(explore), holdout = nrow(holdout))
+```
+
+::: callout-tip
+## Check yourself
+
+**explore = 300, holdout = 700.** If you get anything else, check the seed and that you ran `slice_sample()` **after** `set.seed()`.
+:::
+
+From here until Part D, **only touch `explore`.** In your project, `holdout` would be a file you never open.
+
+------------------------------------------------------------------------
+
+# Part B — Who's missing? (15 min) {#part-b}
+
+## B1. Audit before you change anything
+
+Our model will use depression (the 14 DASS depression items), **age**, **gender**, **education**, and two TIPI personality scales: **emotional stability** (items 4 and 9) and **extraversion** (items 1 and 6).
+
+First, look. Change nothing yet.
+
+``` r
+explore %>%
+  select(age, gender, education, tipi1, tipi4, tipi6, tipi9) %>%
+  map(~ table(.x, useNA = "ifany"))
+
+## OR
+
+library(dataReporter)
+explore %>% 
+  select(age, gender, education, tipi1, tipi4, tipi6, tipi9) %>%
+  dataReporter::summarize()
+
+## OR
+
+explore %>% 
+  select(age, gender, education, tipi1, tipi4, tipi6, tipi9) %>%
+  map(janitor::tabyl)
+```
+
+Now open `dass_codebook.txt` (or the [codebook link](../files/data/dass_codebook.txt){target="_blank"}) and compare.
+
+**Q1.** For each variable, list any value that **isn't in the codebook**. What do you think each one means?
+
+| Variable   | Codebook says | Value(s) not in the codebook | Probably means |
+|------------|---------------|------------------------------|----------------|
+| gender     | 1, 2, 3       |                              |                |
+| education  | 1–4           |                              |                |
+| TIPI items | 1–7           |                              |                |
+| age        | years         |                              |                |
+
+::: callout-note
+The codebook never mentions `0`. That's typical: the missing-data code is often whatever the survey software stored when someone clicked past a question. **A value the codebook doesn't list is your first clue.** Also check `age` in the full data with `range(raw$age)`: some people typed their birth year.
+:::
+
+## B2. Wrangle, as a function
+
+Write the cleaning as a **function**, so the exact same steps can run on the holdout later. (In your project, that "later" is next semester.)
+
+``` r
+wrangle <- function(d) {
+  d %>%
+    # Exclusion: anyone who "knows" a fake vocabulary word
+    filter(vcl6 == 0, vcl9 == 0, vcl12 == 0) %>%
+    mutate(
+      # Missing-data codes -> NA
+      across(c(gender, education, starts_with("tipi")), ~ na_if(.x, 0)),
+      age = if_else(age > 100, NA, age),          # birth years typed as ages
+
+      # Scale scores
+      dass_dep = row_sums(., select = c(q3a, q5a, q10a, q13a, q16a, q17a, q21a,
+                                        q24a, q26a, q31a, q34a, q37a, q38a, q42a)),
+      stability = (tipi9 + (8 - tipi4)) / 2,       # item 4 is reversed
+      extra     = (tipi1 + (8 - tipi6)) / 2,       # item 6 is reversed
+
+      # Labeled categories
+      gender    = factor(gender, levels = 1:3, labels = c("Man", "Woman", "Other")),
+      education = factor(education, levels = 1:4,
+                         labels = c("Less than HS", "High school", "University", "Graduate"))
+    )
+}
+
+explore_w <- wrangle(explore)
+```
+
+## B3. Count what's missing
+
+``` r
+model_vars <- c("dass_dep", "age", "gender", "education", "stability", "extra",
+                paste0("tipi", 1:10))
+
+explore_w %>%
+  summarise(across(all_of(model_vars), ~ sum(is.na(.x)))) %>%
+  pivot_longer(everything(), names_to = "variable", values_to = "n_missing")
+```
+
+(All ten TIPI items are in `model_vars` because Part D uses them. Every model we compare needs the same people.)
+
+**Q2.** Fill in the participant flow. This is the table your M2 needs.
+
+| Step                            | *n* |
+|---------------------------------|-----|
+| Explore sample                  | 300 |
+| After the vocabulary check      |     |
+| Complete on all model variables |     |
+
+## B4. Are the missing people different?
+
+You can't test MCAR directly, but you can check the part you can see:
+
+``` r
+explore_w <- explore_w %>%
+  mutate(incomplete = !complete.cases(across(all_of(model_vars))))
+
+explore_w %>%
+  group_by(incomplete) %>%
+  summarise(n = n(), 
+            mean_dep = mean(dass_dep), 
+            mean_age = mean(age, na.rm = TRUE))
+
+t.test(dass_dep ~ incomplete, data = explore_w)
+```
+
+**Q3.** Do the people with missing data differ in depression? With how many incomplete cases? Write one sentence for your write-up describing the missing data and whether listwise deletion seems reasonable here.
+
+::: {.callout-tip collapse="true"}
+## Check yourself (click after you've tried)
+
+After the vocabulary check: **258**. Missing: education 2, TIPI items 4–8 each, stability 5, extra 6. Complete on everything: **248** (10 incomplete).
+
+Mean depression: **35.2** (complete) vs. **33.9** (incomplete), *p* = .70.
+
+A sentence like: "Of 258 participants who passed the validity check, 10 (3.9%) were missing at least one analysis variable, almost all from skipped personality items; they did not differ in depression (*p* = .70), so analyses used complete cases (*N* = 248)." Ten people is a small comparison group. That's why the next step (Part E) is a sensitivity check, not a formality.
+
+Also notice: only **1** person in the explore sample chose "Other" for gender. A coefficient for one person is meaningless. In your project, small categories are a decision to make (and justify) **before** you see results.
+:::
+
+> **STOP.** Back to the slides.
+
+------------------------------------------------------------------------
+
+# Part C — Build in blocks (15 min) {#part-c}
+
+The question: **Does emotional stability predict depression beyond demographics, and does extraversion add anything beyond that?** That question decides the order:
+
+1.  **Block 1:** age, gender, education
+2.  **Block 2:** + emotional stability
+3.  **Block 3:** + extraversion
+
+## C1. Walk into the trap
+
+Fit the first two blocks on `explore_w` directly:
+
+``` r
+trap1 <- lm(dass_dep ~ age + gender + education, data = explore_w)
+trap2 <- lm(dass_dep ~ age + gender + education + stability, data = explore_w)
+
+c(nobs(trap1), nobs(trap2))
+anova(trap1, trap2)
+```
+
+**Q4.** What are the two *n*s? What does `anova()` say, and why is it right to refuse?
+
+## C2. One analytic dataset, then the blocks
+
+``` r
+analytic <- explore_w %>% drop_na(all_of(model_vars))
+
+m1 <- lm(dass_dep ~ age + gender + education, data = analytic)
+m2 <- lm(dass_dep ~ age + gender + education + stability, data = analytic)
+m3 <- lm(dass_dep ~ age + gender + education + stability + extra, data = analytic)
+
+anova(m1, m2, m3)
+compare_performance(m1, m2, m3, metrics = c("R2", "R2_adj", "AIC", "BIC"))
+```
+
+**Q5.** Fill in your comparison table:
+
+| Model              | *R*² | Δ*R*² | *F* change | *p* | AIC | BIC |
+|--------------------|------|-------|------------|-----|-----|-----|
+| 1\. Demographics   |      | —     | —          | —   |     |     |
+| 2\. + Stability    |      |       |            |     |     |     |
+| 3\. + Extraversion |      |       |            |     |     |     |
+
+**Q6.** Answer the research question in two sentences. Then: do AIC and BIC agree about Model 3? What does that tell you about extraversion?
+
+::: {.callout-tip collapse="true"}
+## Check yourself
+
+*n* = **248** in every model. *R*² = .081 → .291 → .307.
+
+- Stability: Δ*R*² = **.210**, *F*(1, 240) = 72.37, *p* \< .001
+- Extraversion: Δ*R*² = **.016**, *F*(1, 239) = 5.64, *p* = .018
+- AIC: 1945.0 → 1882.8 → **1879.0**. BIC: 1973.1 → 1914.4 → **1914.1**
+
+AIC prefers Model 3 by about 4. BIC calls Models 2 and 3 a **tie** (a difference of 0.3). Extraversion is detectable at this sample size, but small: worth reporting, not worth a headline. Emotional stability is the story.
+:::
+
+------------------------------------------------------------------------
+
+# Part D — The kitchen sink (10 min) {#part-d}
+
+Your planned Model 3 has 8 coefficients. Now try it the other way: all ten TIPI items, **every pairwise interaction** between them, plus demographics. "Let the data decide."
+
+``` r
+sink <- lm(dass_dep ~ (tipi1 + tipi2 + tipi3 + tipi4 + tipi5 +
+                       tipi6 + tipi7 + tipi8 + tipi9 + tipi10)^2 +
+             age + gender + education,
+           data = analytic)
+
+length(coef(sink))
+compare_performance(m3, sink, metrics = c("R2", "R2_adj", "AIC", "BIC"))
+```
+
+**Q7.** How many coefficients does `sink` estimate, for 248 people? Which model has the higher *R*²? Which has the better AIC and BIC?
+
+## D2. Just this once: the holdout
+
+::: callout-important
+**This is a demonstration.** In your project you **never** open `holdout.csv` this semester. We're doing it today so you can see why that rule exists.
+:::
+
+Run the **same** `wrangle()` function on the holdout, and see how well each model, built on the explore sample, predicts 700 people it has never seen:
+
+``` r
+holdout_w <- wrangle(holdout) %>% drop_na(all_of(model_vars))
+
+# R² on new data: how much better than guessing the mean for everyone?
+new_data_r2 <- function(model, data) {
+  1 - sum((data$dass_dep - predict(model, data))^2) /
+      sum((data$dass_dep - mean(data$dass_dep))^2)
+}
+
+tibble(
+  model       = c("m1", "m2", "m3", "sink"),
+  R2_explore  = map_dbl(list(m1, m2, m3, sink), ~ summary(.x)$r.squared),
+  R2_holdout  = map_dbl(list(m1, m2, m3, sink), ~ new_data_r2(.x, holdout_w))
+) %>%
+  mutate(shrinkage = R2_explore - R2_holdout)
+```
+
+**Q8.** Which model **lost** the most when it met new people? Which one would you rather take into next semester, and why?
+
+**Q9.** Your `wrangle()` function ran on the holdout without changes. Why does that matter for a project where the holdout gets analyzed by a **different person, next semester**?
+
+::: {.callout-tip collapse="true"}
+## Check yourself
+
+`sink` estimates **62** coefficients. Holdout *n* after wrangling = **581**.
+
+| Model | *R*² explore | *R*² holdout |
+|-------|--------------|--------------|
+| m1    | .081         | .048         |
+| m2    | .291         | .266         |
+| m3    | .307         | .276         |
+| sink  | **.451**     | **.129**     |
+
+The kitchen sink "won" in the explore sample by 14 points of *R*² and lost on new data by 15. Its adjusted *R*² (.271) and AIC both warned you; its raw *R*² never will. The planned model barely shrank. That's what a holdout is for.
+:::
+
+------------------------------------------------------------------------
+
+# Part E — Multiple imputation (if time) {#part-e}
+
+Ten people were dropped. Would including them change anything? Impute their missing values 20 times and pool Model 3:
+
+``` r
+imp_data <- explore_w %>%
+  select(dass_dep, age, gender, education, stability, extra)
+
+imp    <- mice(imp_data, m = 20, seed = 1105, printFlag = FALSE)
+pooled <- pool(with(imp, lm(dass_dep ~ age + gender + education + stability + extra)))
+
+summary(pooled) %>% filter(term %in% c("stability", "extra"))
+model_parameters(m3) %>% filter(Parameter %in% c("stability", "extra"))
+```
+
+**Q10.** Compare the stability and extraversion coefficients from listwise deletion (`m3`) and MI (`pooled`). Write the one-sentence sensitivity check for your Methods section.
+
+::: {.callout-tip collapse="true"}
+## Check yourself
+
+|                       | Listwise (*n* = 248) | MI (*n* = 258) |
+|-----------------------|----------------------|----------------|
+| Stability *b* (SE)    | −3.72 (0.47)         | −3.76 (0.47)   |
+| Extraversion *b* (SE) | −1.04 (0.44)         | −1.04 (0.44)   |
+
+Essentially identical: "Results were unchanged when missing values were multiply imputed (*m* = 20)." With 4% missing, unrelated to the outcome, that's what you'd expect. The check is cheap, and now you can **say** it instead of assuming it.
+:::
+
+------------------------------------------------------------------------
+
+## ❓ Questions for the debrief
+
+1.  How did you find the missing-data codes? Would you have found them without looking at `table()` output?
+2.  The kitchen sink had the best *R*² in the explore sample. What would a reviewer need to see before believing it?
+3.  BIC called Models 2 and 3 a tie. If you were writing this up, would you keep extraversion? What would make you decide **before** seeing the numbers?
+4.  Which parts of today will you reuse in `wrangle.qmd` for M2?
+
+::: callout-note
+## Your M2 checklist, from today
+
+- [ ] Split with `split.qmd` **before** looking at your outcome
+- [ ] Audit every variable against the codebook; list values it doesn't explain
+- [ ] Recode missing-data codes with `na_if()`, each with a one-line reason
+- [ ] Record *n* after each exclusion (participant flow)
+- [ ] Build `analytic`, complete on **every** variable you'll use in **any** model
+- [ ] Compare complete vs. incomplete cases on your outcome
+:::

@@ -1,0 +1,178 @@
+---
+title: "Lab 10: Missing Data & Model Building"
+author: "Your Name Here"
+date: "`r Sys.Date()`"
+format: docx
+editor_options:
+  chunk_output_type: console
+  markdown:
+    wrap: 72
+---
+
+```{r setup, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(rio)
+library(here)
+library(broom)
+library(easystats)
+
+cats <- import(here("data", "cat_contentment.csv"))
+```
+
+# Lab 10 — Missing Data & Model Building 🐈
+
+Render to Word and submit both files.
+
+The owners of 240 cats reported each cat's age, whether it's indoor
+only, how much it naps, how many cardboard boxes are in the home, and
+how many hours a day it spends on a lap. They also scored the cat on
+the Cat Contentment Index (0 to 40). The codebook is on the lab page.
+
+Answer under each **Your Answer:** line, in complete sentences. A number
+with no sentence attached earns no credit.
+
+------------------------------------------------------------------------
+
+## Exercise 1 — Audit (4 points)
+
+a)  Use `summary()` (and `table()` where it helps) to check every
+    variable against the codebook. Which variable has a value the
+    codebook doesn't allow? What is the value, how many cats have it,
+    and what do you think it means?
+b)  Which variable has ordinary `NA`s, and how many?
+c)  Create `cats_clean`, with the problem value from (a) recoded to
+    `NA`. Show that it worked.
+
+```{r}
+# Your code here
+
+```
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 2 — Who's missing? (5 points)
+
+Your models will use `age_years`, `indoor`, `nap_hours`, `boxes`,
+`lap_hours`, and `contentment`.
+
+a)  Create a variable `incomplete` that is `TRUE` for any cat missing
+    at least one of these variables. How many cats are incomplete?
+b)  Compare the complete and incomplete groups on `contentment` and
+    `age_years` (means and a *t*-test for each).
+c)  Create `kitten` (`TRUE` if `age_years < 1`) and count how many
+    kittens vs. adult cats are missing `lap_hours`. Why might owners of
+    kittens have skipped this item?
+d)  Is this missingness closer to MCAR, MAR, or MNAR? Is listwise
+    deletion reasonable here? Use the rule from lecture: is the cause of
+    the missingness **in your model**?
+
+```{r}
+# Your code here
+
+```
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 3 — Three blocks (8 points)
+
+Research question: **Does a cat's lifestyle predict contentment beyond
+the basics, and does lap time add anything beyond that?**
+
+a)  Create `analytic`, complete on all six model variables. Report its
+    *n*.
+b)  Fit the three blocks on `analytic`:
+    - **Model 1, the basics:** `age_years` + `indoor`
+    - **Model 2, + lifestyle:** Model 1 + `nap_hours` + `boxes`
+    - **Model 3, + lap time:** Model 2 + `lap_hours`
+c)  Compare them with `anova()`. Fill in the table below with *R*²,
+    Δ*R*², and the *F* test for each added block.
+d)  In your own words, answer the research question. Which block added
+    the most?
+e)  Interpret the `boxes` coefficient in Model 3, **with** its
+    holding-constant clause.
+f)  Interpret the `lap_hours` coefficient in Model 3, **with** its
+    holding-constant clause.
+
+```{r}
+# Your code here
+
+```
+
+| Model          | *R*² | Δ*R*² | *F* change (df) | *p* |
+|----------------|------|-------|-----------------|-----|
+| 1. Basics      |      | —     | —               | —   |
+| 2. + Lifestyle |      |       |                 |     |
+| 3. + Lap time  |      |       |                 |     |
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 4 — AIC and BIC (3 points)
+
+a)  Use `compare_performance()` to get AIC and BIC for all three models.
+b)  Which model does each one prefer? Do they agree?
+c)  Why can't you compare these AIC values to the AIC of a model fit to
+    `cats_clean` without dropping the incomplete cases?
+
+```{r}
+# Your code here
+
+```
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 5 — What if you hadn't looked? (4 points)
+
+a)  Fit Model 3 again, but on the **original** `cats` data, with the
+    problem value from Exercise 1 still in it.
+b)  Report its *n*, and the `lap_hours` coefficient and *p*-value, next
+    to the ones from Exercise 3.
+c)  What would you have concluded about lap time, and why did the
+    results change so much?
+d)  Name one quick check that would have caught the problem **before**
+    you fit the model.
+
+```{r}
+# Your code here
+
+```
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 6 — Write-up (4 points)
+
+Write one Results paragraph in APA style. It needs:
+
+1.  **Who's in it:** the analytic *N*, and how you handled missing data
+    and why
+2.  **What each block added:** Δ*R*² and its *F* test
+3.  **The final block's coefficient:** `lap_hours`, with its *b*, 95%
+    CI, and *p*
+4.  **One honest sentence about size:** which block mattered most
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Bonus — Multiple imputation (+2 points)
+
+Using `mice` (`m = 20`, `seed = 1110`), impute the six model variables
+from `cats_clean` and pool Model 3. Compare the pooled `lap_hours`
+coefficient and SE to Exercise 3, and write the one-sentence
+sensitivity check you'd put in a Methods section.
+
+```{r}
+# Your code here
+
+```
+
+**Your Answer:**

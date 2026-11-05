@@ -1,33 +1,55 @@
 ---
-title: "Week 11 - Regression with Categories"
+title: "Week 11 - Missing Data + Model Building"
 editor: visual
 ---
 
-# Categorical Data in Regression
+# Who Is Missing, and Which Model Do You Keep?
 
-## Stuff for Today
+Every real dataset has holes, and every model is a choice among many. This week covers both, in the order your final project meets them. First, the missing data: why the **reason** a value is missing matters more than how many are missing, how to check what you can, and when listwise deletion is fine versus when you need multiple imputation. Then, the model: building it in **planned blocks**, comparing the blocks with Δ*R*², AIC, and BIC, and seeing why a model chosen by looking at the data needs new data to test it. That last point is the reason your project has a holdout.
 
--   <a href="../files/data/cat_reg.csv" download="categorical_reg.csv">Download Categorical data (.csv)</a>
+The in-class activity is a dress rehearsal for M2 and your memo's model-building section, on the DASS data you already know.
+
+::: callout-important
+## Today
+
+**💾 In-Class Check 4** at the start of class: **25 minutes**
+
+**📂 M1 Dataset pitch** is due **Friday 11/6**.
+:::
+
+## Prepare
+
+- 📖[Chapter 15.10 - LSR](https://learningstatisticswithr.com/book/){target="_blank"}
+
+- 📖[Chapter 17 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}
+
+- 📖[Chapters 17.3 - 17.7 - ROS](https://users.aalto.fi/~ave/ROS.pdf){target="_blank"}
+
+- 📖[Chapter 8.7 - MSR](https://www.modernstatisticswithr.com/){target="_blank"}
 
 ## Slides
 
-[💻 Categorical Data - Regression](../slides/lec-11_categor.html){target="_blank"}
+[💻 Missing Data + Model Building](../slides/lec-11_missing-models.html){target="_blank"}
+
+## Data
+
+**Lecture:** <a href="../files/data/asap_data.csv" download="asap_data.csv">ASAP Study (.csv)</a>
+
+**In class:** <a href="../files/data/dass_data.csv" download="dass_data.csv">DASS survey data (.csv, 20 MB)</a> (same file as the last two weeks) · <a href="../files/data/dass_codebook.txt" download="dass_codebook.txt">DASS codebook (.txt)</a>
 
 ## In-Class Activity
 
-[Getting Comfy with R](../class-activities/day1.html){target="_blank"}
+[📓 Build It on Purpose](../class-activities/wk11_missing-models.html){target="_blank"}
 
 ## For Next Time
 
-📋[Lab 11 - Categories & Regression](../labs/lab-11.html)
+📂 **Final Project M1 — Dataset pitch**, due Friday 11/6
 
-📖[Chapter 7.3 - IMS](https://openintro-ims.netlify.app/){target="_blank"}
+📋 **Lab 10**, due Tuesday 11/10
 
-📖[Chapter 14.5 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}
+📖[Chapter 13 - ROS](https://users.aalto.fi/~ave/ROS.pdf){target="_blank"}
 
-📖[Chapter 8.1.4 - MSR](https://www.modernstatisticswithr.com/){target="_blank"}
-
-📖[Chapter 15.8 - LSR](https://learningstatisticswithr.com/book/){target="_blank"}
+📖[Chapter 8.3 - MSR](https://www.modernstatisticswithr.com/){target="_blank"}
 
 <br><br>
 

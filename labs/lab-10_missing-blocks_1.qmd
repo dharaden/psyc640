@@ -1,0 +1,74 @@
+---
+title: "Lab 10: Missing Data & Model Building"
+subtitle: "Who's in the model, and did each block earn its place?"
+editor: visual
+---
+
+## Instructions
+
+This is a short lab. It covers the two skills from Week 11 that your final project needs first: finding and handling missing data, and building a model in planned blocks. This time the participants are cats.
+
+Here is what you'll need:
+
+- <a href="../files/_lab-qmd/lab-10_missing-blocks.qmd" download="lab-10_missing-blocks.qmd">Download Lab 10 (.qmd)</a>
+- <a href="../files/data/cat_contentment.csv" download="cat_contentment.csv">Download the Cat Contentment Data (.csv)</a>
+
+Save the `.csv` in your `data` folder and the `.qmd` in your project folder. Render to Word and submit **both** files to myCourses.
+
+**Due Tuesday 11/10 at 11:59pm.**
+
+::: callout-note
+## Working in JAMOVI?
+
+You can do Exercises 1, 3, and 4 in JAMOVI. Its **Linear Regression → Model Builder** handles the blocks. For Exercise 2, you'll need to filter cases by hand. Submit your `.omv` and a Word document with your answers. The final project has to be done in R, so this is a good week to try R.
+:::
+
+## The study 🐈
+
+The **National Cat Contentment Survey** (not a real thing) asked the owners of **240 cats** about their cat's daily life. Each owner also scored their cat on the **Cat Contentment Index (CCI)**: a count of slow blinks, purring episodes, and "loaf" sittings over one evening. The CCI is not validated by anyone, least of all the cats.
+
+| Variable      | Description                                            |
+|---------------|--------------------------------------------------------|
+| `cat_id`      | Cat ID                                                 |
+| `age_years`   | Cat's age in years                                     |
+| `indoor`      | 1 = indoor only, 0 = goes outside                      |
+| `nap_hours`   | Average hours asleep per day                           |
+| `boxes`       | Number of cardboard boxes currently in the home        |
+| `lap_hours`   | Average hours per day spent on a human's lap           |
+| `contentment` | Cat Contentment Index, 0 to 40 (higher = more content) |
+
+::: callout-warning
+The codebook above is all you get. Check every variable against it **before** you fit anything. Cats are not reliable reporters, and neither are their owners.
+:::
+
+## What you'll practice
+
+- Auditing variables for missing-data codes that aren't `NA`
+- Checking whether the cases with missing data are different
+- Building one analytic dataset that every model shares
+- Comparing nested models with `anova()`, Δ*R*², AIC, and BIC
+- Writing up a block regression in APA style
+
+## Exercises at a glance
+
+| Exercise | What you'll do | Points |
+|------------------------|------------------------|------------------------|
+| **1. Audit** | Find the problem, fix it | 4 |
+| **2. Who's missing?** | Count, compare, and decide | 5 |
+| **3. Three blocks** | Fit, compare, report Δ*R*² | 8 |
+| **4. AIC and BIC** | Do they agree? | 3 |
+| **5. What if you hadn't looked?** | Refit with the missing-data code left in | 4 |
+| **6. Write-up** | One paragraph, APA style | 4 |
+| **Bonus** | Multiple imputation with `mice` | +2 |
+
+------------------------------------------------------------------------
+
+**Total: 28 points (+2 bonus)**
+
+Exercises 2 and 3 carry nearly half the points, and both are graded on your **interpretation**, not on whether the code runs.
+
+<br><br>
+
+::: {style="font-size: 0.875em;"}
+Back to [course schedule](../index.qmd "Course schedule") ⏎
+:::
