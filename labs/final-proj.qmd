@@ -25,7 +25,7 @@ This is the first half of a two-semester project. This semester you handle the *
 Everything is a Quarto file, like your labs:
 
 | File | What it does | When |
-|------------------------|------------------------|------------------------|
+|----|----|----|
 | `split.qmd` | Splits your data 30/70 and fingerprints the holdout | M2 |
 | `wrangle.qmd` | Raw data to analysis-ready: audit, your wrangling steps, codebook | M2 |
 | `memo.qmd` | Your memo: wrangling, description, model building, and the plan for the holdout | M3, final |
@@ -94,7 +94,7 @@ Sources are grouped by research area. Registration and licenses vary, so read th
 
 ::: {style="overflow-x: auto;"}
 | Area | Source | What's there | Access notes |
-|------------------|------------------|------------------|------------------|
+|----|----|----|----|
 | Any | [ResearchBox](https://researchbox.org/) | Data and code from published psychology studies, searchable by variable name | Free |
 | Any | [PsychArchives](https://www.psycharchives.org/) | Psychology's disciplinary repository (Leibniz Institute for Psychology): data, code, preregistrations | Free; tiered access levels |
 | Any | [Harvard Dataverse](https://dataverse.harvard.edu/) | Thousands of datasets deposited with published papers | Free; license per dataset |
@@ -246,7 +246,7 @@ However you get there, wrangle.qmd must end with:
 **Submit:** the rendered memo. Rough prose is fine.
 
 | Graded on | Points |
-|------------------------------------|------------------------------------|
+|----|----|
 | Descriptives for every analysis variable, continuous and categorical | 8 |
 | Correlation matrix and heat map | 5 |
 | Distribution plots for every variable, plus the focal relationship | 9 |
@@ -265,7 +265,7 @@ After M3, finish building the model: add predictors in planned blocks, compare t
 **Submit (end of class):** a swap report on your partner's project. For each problem: what broke, the file and line, and a suggested fix. Also: did it render on the first try, and do the numbers match their memo?
 
 | Graded on | Points |
-|------------------------------------|------------------------------------|
+|----|----|
 | Thorough, specific swap report on your partner's project | 8 |
 | Your project renders on your partner's machine (partial credit for each problem fixed by Dec 11) | 4 |
 | A short list in your README of what you fixed after the swap, due with the final | 3 |
@@ -285,7 +285,7 @@ The heart of the submission is the memo: **3 to 4 pages of text**, rendered to W
 Graded from `wrangle.qmd`, the memo's wrangling section, and the codebook.
 
 | Criterion | What it needs | Points |
-|------------------------|------------------------|------------------------|
+|----|----|----|
 | Pipeline | Raw file to analytic dataset entirely in code; renders from a clean session on another machine | 10 |
 | Cleaning and exclusions | Missing-data codes recoded; each exclusion in `wrangle.qmd` with its reason; participant-flow table from raw n to analytic n | 12 |
 | Created variables | Every variable you built (e.g., scale scores with a stated missing-item rule, recodes, joined or aggregated variables), each correct and explained in the memo | 16 |
@@ -294,7 +294,7 @@ Graded from `wrangle.qmd`, the memo's wrangling section, and the codebook.
 ### 2. Description (35 points)
 
 | Criterion | What it needs | Points |
-|------------------------|------------------------|------------------------|
+|----|----|----|
 | Descriptive statistics | Every analysis variable: n, M, SD, range, and skew for continuous; counts and percentages for categorical | 10 |
 | Correlations | Matrix of continuous analysis variables, as a table and a heat map | 7 |
 | Visualizations | Distribution of every analysis variable, plus at least one plot of the focal relationship; labeled axes and readable | 12 |
@@ -303,7 +303,7 @@ Graded from `wrangle.qmd`, the memo's wrangling section, and the codebook.
 ### 3. Model building (40 points)
 
 | Criterion | What it needs | Points |
-|------------------------|------------------------|------------------------|
+|----|----|----|
 | Initial model | Model 1 is theory-driven and interpreted in plain words, labeled exploratory | 10 |
 | Building steps | Predictors added in planned blocks (e.g., covariates, then an interaction), with a comparison table (R² or AIC, and the test of each added block) | 12 |
 | Diagnostics | Residuals vs. fitted, Q-Q plot, and influential cases checked, with what you did about any problem | 10 |
@@ -316,7 +316,7 @@ A sensitivity check, rerunning the final model under one other defensible choice
 About half a page: the one test that runs on the 70% next semester, written so someone else could run it without asking you a question. Next semester it becomes your preregistration.
 
 | Criterion | Points |
-|------------------------------------|------------------------------------|
+|----|----|
 | The final model as exact code, with exclusions being the rules in `wrangle.qmd` | 5 |
 | Decision rule: what counts as support, and what you'll report regardless | 4 |
 | Power for the holdout n, and whether that effect is small enough to matter | 3 |
@@ -325,7 +325,7 @@ About half a page: the one test that runs on the 70% next semester, written so s
 ### 5. Holdout and README (10 points)
 
 | Criterion | Points |
-|------------------------------------|------------------------------------|
+|----|----|
 | Rendering `split.qmd` says MATCH, and the holdout statement is complete and honest | 5 |
 | README complete: dataset and license, how to reproduce, open questions for next semester, AI use, post-swap fixes, and contribution statements (pairs) | 5 |
 
@@ -355,7 +355,7 @@ More than half the points are for wrangling and description, because that's wher
 This course owns the data and the statistics; Applied Research Methods owns the research and the writing. The split keeps you from redoing work in January, and leaves real work to grow into.
 
 |   | This semester | Applied Research Methods |
-|------------------------|------------------------|------------------------|
+|----|----|----|
 | Question | A clear, answerable question and what it adds | Theory, rationale, hypotheses |
 | Literature | 3 to 5 closest papers using these data | Full literature review |
 | Measures | Audit, cleaning, created variables, codebook | Construct validity |

@@ -295,7 +295,7 @@ Coefficients come out in **log-odds**, and nobody thinks in log-odds.
 So we translate:
 
 | Scale | How to get there | Read it as |
-|------------------------|------------------------|------------------------|
+|----|----|----|
 | Log-odds | what `glm()` gives you | sign and *p*-value only |
 | Odds ratio | `exp(b)` | "the odds are multiplied by \_\_\_" |
 | Probability | `predict(..., type = "response")` | "a \_\_\_ has a \_\_% chance" |
@@ -416,7 +416,7 @@ pp <- function(x) sub("^0", "", sprintf("%.2f", x))
 A **25-year-old woman.** Plug her into the model, one scale at a time:
 
 | Step | Woman, 25 | Man, 25 |
-|:--------------------|:------------------------:|:------------------------:|
+|:---|:--:|:--:|
 | **Log-odds** = *b*~0~ + *b*~age~ × 25 (+ *b*~man~) | `r f3(b[1])` + (`r sprintf("%.4f", b[2])` × 25) = **`r f2(lo_w)`** | `r f2(lo_w)` + (`r f2(b[3])`) = **`r f2(lo_m)`** |
 | **Odds** = e^log-odds^ | e\^`r f2(lo_w)`\^ = **`r f2(exp(lo_w))`** | e\^`r f2(lo_m)`\^ = **`r f2(exp(lo_m))`** |
 | **Probability** = odds / (1 + odds) | `r f2(exp(lo_w))` / `r f2(1 + exp(lo_w))` = **`r pp(plogis(lo_w))`** | `r f2(exp(lo_m))` / `r f2(1 + exp(lo_m))` = **`r pp(plogis(lo_m))`** |
