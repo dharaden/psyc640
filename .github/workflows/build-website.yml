@@ -5,8 +5,6 @@
 name: Build and Deploy Website
 
 on:
-  push:
-    branches: main
   workflow_dispatch:
 
 jobs:
