@@ -1,5 +1,6 @@
 project:
   type: website
+  output-dir: docs
   # Only these files are built and published. Add each week's files here when you post them.
   render:
     - index.qmd

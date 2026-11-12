@@ -1,0 +1,200 @@
+---
+title: "Lab 8: How Good Is This Model?"
+author: "Your Name Here"
+date: "`r Sys.Date()`"
+format: docx
+editor_options:
+  chunk_output_type: console
+  markdown:
+    wrap: 72
+---
+
+```{r setup, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(rio)
+library(here)
+library(broom)
+
+coping <- import(here("data", "stress.csv"))
+```
+
+# Lab 8 — How Good Is This Model?
+
+**Due Tuesday, October 13, 11:59 pm** (during Fall Break — submitted
+online as usual). Render to Word and submit both files.
+
+118 undergraduates reported their current `Anxiety`, their perceived
+`Stress` over the past month, and their perceived social `Support`. Half
+completed a brief coping workshop (`Condition`).
+
+Answer under each **Your Answer:** line, in complete sentences.
+
+------------------------------------------------------------------------
+
+## Exercise 1 — Describe the data (3 points)
+
+a)  Report n, mean and SD for `Anxiety`, `Stress`, and `Support`.
+b)  Produce a correlation matrix of those three variables.
+c)  Before fitting anything: based on the correlations alone, which
+    variable looks like the better predictor of anxiety?
+
+```{r}
+# Your code here
+
+```
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 2 — Model 1: stress alone (4 points)
+
+Fit `Anxiety ~ Stress` and print the full summary.
+
+```{r}
+# Your code here
+
+```
+
+a)  Report the slope, its *t*, and its *p*-value.
+b)  Report R² **and** adjusted R².
+c)  The adjusted R² is **negative**. What does that mean? (It is not a
+    typo and not an error.)
+d)  Compare the residual standard error to the SD of `Anxiety`. What
+    does that comparison tell you about this model?
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 3 — Model 2: support alone (4 points)
+
+Fit `Anxiety ~ Support`.
+
+```{r}
+# Your code here
+
+```
+
+a)  Report the slope and interpret it in the units of the study.
+b)  Report R² and the residual standard error.
+c)  How much better is this model than Model 1? Use both R² and the
+    residual SE in your answer.
+d)  Is support a *cause* of lower anxiety? Why or why not?
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 4 — Partition the variance (4 points)
+
+For **Model 2**, verify the decomposition by hand.
+
+```{r}
+# Hint: anova(model2) gives you the sums of squares,
+# and augment() gives you fitted values and residuals.
+
+```
+
+a)  Report $SS_{model}$ and $SS_{residual}$.
+b)  Add them. Show that the total equals
+    $\sum(Y_i - \bar{Y})^2$ computed directly from `Anxiety`.
+c)  Compute R² as $SS_{model} / SS_{total}$ and confirm it matches the
+    R² the summary printed.
+d)  In one sentence: what does $SS_{residual}$ represent, in terms of
+    actual people in this study?
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 5 — Fit in real units (3 points)
+
+A campus counseling center is deciding whether to use a support
+questionnaire to flag students who may need follow-up.
+
+a)  Using Model 2, what is the typical size of the model's error, in
+    anxiety points?
+b)  The anxiety scale in this sample runs from about 0.7 to 14.6. Given
+    your answer to (a), would you be comfortable using this model to
+    predict an individual student's anxiety? Explain.
+c)  R² = .30 is a *large* effect by psychology standards. Reconcile that
+    with your answer to (b).
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 6 — 👀 Sneak peek: both predictors (6 points)
+
+Now fit `Anxiety ~ Stress + Support`.
+
+```{r}
+# Your code here
+
+```
+
+a)  Report R² and adjusted R² for this model.
+b)  Compute $\Delta R^2$ relative to Model 2 (support alone).
+c)  **Look at the `Stress` coefficient.** Compare it to Model 1. What
+    changed — the estimate, its sign, its significance, or all three?
+d)  In Model 1, stress was unrelated to anxiety. In Model 3, it is a
+    significant **positive** predictor. Both results come from the same
+    118 people. How is that possible?
+e)  Look at the correlation between `Stress` and `Support` from Exercise
+    1. How might that explain what you just saw?
+f)  Which model would you report, and why?
+
+::: callout-note
+You are not expected to know the technical name for this. Week 8 is
+where we unpack it. Describe what you see and make your best reasoned
+guess — (d) and (e) are graded on the quality of the reasoning, not on
+getting the vocabulary right.
+:::
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 7 — Judgment (2 points)
+
+Suppose the researcher had only run Model 1, seen *p* = .61, and
+concluded: *"Perceived stress is unrelated to anxiety in college
+students."*
+
+a)  What is wrong with that conclusion, given everything you now know?
+b)  What does this tell you about reporting a single-predictor model as
+    if it were the whole story?
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 8 — Write it up (2 points)
+
+Write **one paragraph** reporting Model 3 as it would appear in a Results
+section: the overall model test, R², both coefficients, and one sentence
+about what it means.
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Bonus (+1 point)
+
+Add `Condition` to the model (`Anxiety ~ Stress + Support + Condition`).
+Does the coping workshop predict anxiety once stress and support are
+accounted for? Report the coefficient and say what you conclude.
+
+```{r}
+# Your code here
+
+```
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+**Total: 28 points (+1 bonus)**
+
+*Remember to render to Word before submitting.*

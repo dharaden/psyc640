@@ -1,0 +1,59 @@
+---
+title: "PSYC 640 Midterm Project"
+author: "Your Name Here"
+date: "`r Sys.Date()`"
+format: docx
+toc: true
+editor_options:
+  chunk_output_type: console
+  markdown:
+    wrap: 72
+---
+
+```{r setup, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(rio)
+library(here)
+library(janitor)
+library(broom)
+
+wb <- import(here("data", "midterm_dataset.csv"))
+```
+
+<!--
+This is a STARTER, not an outline. It gets you a document that renders
+and finds the data; the structure of the report is yours to decide.
+
+Organize it however makes the analysis easiest to follow. I should be
+able to locate every part of the assignment, but the headings, the order
+within a section, and how you thread the narrative are up to you.
+
+A few things that are not negotiable:
+  - Your prose lives outside the code chunks.
+  - Every table and figure is labeled and readable on its own.
+  - It renders from a fresh session (Session -> Restart R, then Render).
+  - The AI acknowledgment from the syllabus is somewhere in the document.
+
+Delete this comment before you submit.
+-->
+
+#
+
+<!-- Before you submit, check:
+
+  [ ] Renders from a restarted session, no errors
+  [ ] No absolute paths (no setwd(), no C:/Users/...)
+  [ ] ARS item 6 reverse-scored; both subscales are means
+  [ ] sex and employment print as words, not numbers
+  [ ] Missing data reported and a decision stated
+  [ ] Research question and directional predictions written BEFORE results
+  [ ] Descriptives table + frequencies + two labeled figures
+  [ ] Both one-predictor models, interpreted in study units
+  [ ] Two-predictor model, compared against the one-predictor models
+  [ ] R2, adjusted R2 and Delta R2 for all three models
+  [ ] Direction check against your predictions
+  [ ] Causal language limited to what the design supports
+  [ ] AI acknowledgment included
+  [ ] Files named LastName_Midterm.qmd and LastName_Midterm.docx
+
+-->

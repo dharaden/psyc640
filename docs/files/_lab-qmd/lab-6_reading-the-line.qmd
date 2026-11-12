@@ -1,0 +1,208 @@
+---
+title: "Lab 6: Reading the Line"
+author: "Your Name Here"
+date: "`r Sys.Date()`"
+format: docx
+editor_options:
+  chunk_output_type: console
+  markdown:
+    wrap: 72
+---
+
+# Lab 6 — Reading the Line
+
+Render this document to Word and submit it to myCourses. (If you prefer
+to answer in a Word doc directly, that is fine — keep the question
+numbers.)
+
+All of the output you need is printed below. You do not have to run
+anything, except for the optional bonus at the end. Your readings for
+this week (ROS Ch. 6, ST 14.1, LSR Ch. 11) answer most of these
+questions in the authors' own words — that is the fastest way through.
+
+Write your answers under each **Your Answer:** line. Answers in complete
+sentences, please; "0.18" by itself will not earn the points.
+
+------------------------------------------------------------------------
+
+# Part 1 — The study strategies data (14 points)
+
+Same study as Lab 5. 120 graduate students were **randomly assigned** to
+*Rereading* or *Retrieval Practice*. The researchers also **measured**
+study time, sleep, and test anxiety. Everyone took the same stats quiz
+(`exam_score`, 0–100).
+
+This time the predictor is `study_minutes` — minutes spent studying,
+which ranged from **40 to 146** minutes (M = 89.79).
+
+Here is the model:
+
+```         
+lm(formula = exam_score ~ study_minutes, data = study)
+
+Residuals:
+    Min      1Q  Median      3Q     Max
+-23.445  -7.295  -0.092   6.602  26.616
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)
+(Intercept)   43.92291    3.45312  12.720  < 2e-16 ***
+study_minutes  0.17766    0.03724   4.771 5.31e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 9.436 on 118 degrees of freedom
+Multiple R-squared:  0.1617,    Adjusted R-squared:  0.1546
+F-statistic: 22.76 on 1 and 118 DF,  p-value: 5.31e-06
+```
+
+## Q1. Write the fitted regression equation (2 points)
+
+Use the variable names, not generic `x` and `y`. Round to two decimals.
+
+**Your Answer:**
+
+## Q2. Interpret the slope (3 points)
+
+What does the slope mean, in the units of this study? Then: two students
+differ by **30 minutes** of studying. How many points does the model
+predict separates them?
+
+**Your Answer:**
+
+## Q3. Interpret the intercept (3 points)
+
+What does the intercept mean here? Then answer the harder half: is that
+a meaningful value in this study? Why or why not? (Look again at the
+range of `study_minutes`.)
+
+**Your Answer:**
+
+## Q4. Predict and find a residual (3 points)
+
+a)  What exam score does the model predict for a student who studied
+    **100 minutes**? Show the arithmetic.
+
+b)  Student **S062** actually studied 100 minutes and scored **63**.
+    What is that student's residual?
+
+c)  Did the model **over-predict** or **under-predict** this student's
+    score? How do you know from the sign?
+
+**Your Answer:**
+
+## Q5. Connect it back to Lab 5 (2 points)
+
+In Lab 5, the correlation between `study_minutes` and `exam_score` was *r*(118) = .40, *t* = 4.77, *p* \< .001.
+
+Look at the output above and find **two** numbers that are not a coincidence. Name them and explain the connection.
+
+**Your Answer:**
+
+## Q6. Causal or not? (1 point)
+
+Does this model let you tell a student that studying 30 more minutes *will raise* their score by that amount? One or two sentences.
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+# Part 2 — What does a LEGO set cost? (10 points)
+
+A different dataset, to show the skill travels. We have **59** current LEGO sets (104 to 10,001 pieces; \$9.99 to \$999.99). The model predicts retail `price` (US dollars) from the number of `pieces`.
+
+```         
+lm(formula = price ~ pieces, data = lego)
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)
+(Intercept) 18.77300   16.14237   1.163     0.25
+pieces       0.08252    0.00478  17.277  < 2e-16 ***
+---
+Residual standard error: 86.71 on 57 degrees of freedom
+Multiple R-squared:  0.8397,    Adjusted R-squared:  0.8369
+F-statistic: 298.5 on 1 and 57 DF,  p-value: < 2.2e-16
+```
+
+## Q7. Write the fitted equation (2 points)
+
+**Your Answer:**
+
+## Q8. Interpret the slope in dollars (2 points)
+
+What does the slope mean here? What does the model say **100 additional pieces** are worth?
+
+**Your Answer:**
+
+## Q9. Interpret the intercept (2 points)
+
+What is the intercept saying, and should you take it seriously? Note its p-value (.25) in your answer.
+
+**Your Answer:**
+
+## Q10. Compare the two models (2 points)
+
+R² is **.16** for the study model and **.84** for the LEGO model. Explain what R² means in plain language, and what the difference between these two values tells you. Does the bigger R² mean the LEGO model is the better piece of *science*? Why or why not?
+
+**Your Answer:**
+
+## Q11. The set the model gets wrong (2 points)
+
+The **Eiffel Tower** set has **10,001 pieces** and sells for **\$629.99** — the largest set in the data.
+
+a)  What price does the model predict for it?
+b)  What is the residual?
+c)  Give one plausible reason the model misses this set by so much.
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+# Part 3 — Would you trust it? (4 points)
+
+Back to the study strategies data. Two more one-predictor models:
+
+```         
+Model C: exam_score ~ test_anxiety
+              Estimate Std. Error t value Pr(>|t|)
+(Intercept)   70.00480    3.78190  18.511  < 2e-16 ***
+test_anxiety  -0.33480    0.12130  -2.760   0.0067 **
+Multiple R-squared:  0.0606
+
+Model D: exam_score ~ sleep_hours
+             Estimate Std. Error t value Pr(>|t|)
+(Intercept)  50.92040    6.32630   8.049 7.42e-13 ***
+sleep_hours   1.33380    0.93200   1.431    0.155
+Multiple R-squared:  0.0171
+```
+
+## Q12. Model C: small but significant (2 points)
+
+The anxiety slope is statistically significant (*p* = .007) and R² is .06. Write the one sentence you would put in a results section, and then say what a reader should **not** conclude from it.
+
+**Your Answer:**
+
+## Q13. Model D: not significant (2 points)
+
+A classmate says: "*p* = .155, so sleep has no effect on exam scores." Rewrite their claim so that it is accurate, and give one reason a real relationship could still exist here even with this result.
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+# Bonus (+1 point)
+
+Pick any **one** number from Part 1 and reproduce it in R. For example, compute the predicted score for a student who studied 100 minutes, or confirm that `sqrt(0.1617)` is the correlation from Lab 5. Paste your code and its output.
+
+```{r}
+# Your code here (optional)
+
+```
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+**Total: 28 points (+1 bonus)**
+
+*Remember to render to Word before submitting.*

@@ -1,0 +1,158 @@
+---
+title: "DASS Data"
+author: "Dustin Haraden"
+date: "2025-12-01"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse) #pipe, mutate, filter, select (dplyr) ggplot 
+library(here) #Creates relative file paths
+library(psych) #describe()
+library(rio) #generic import function
+library(datawizard) #renaming and computing sums/means
+library(sjPlot) #Nice tables
+
+set.seed(42) #keep randomness consistent 
+
+dass <- import(here("Data", "data.csv")) %>% 
+  slice_sample(n = 400) %>% 
+  janitor::clean_names()
+
+
+```
+
+DASS Scoring: <https://www2.psy.unsw.edu.au/dass/down.htm>
+
+## Validity Checking
+
+Using the codebook we are able to identify participants who may not be
+responding appropriately
+
+The following items were presented as a check-list and subjects were
+instructed "In the grid below, check all the words whose definitions you
+are sure you know":
+
+VCL1 boat VCL2 incoherent VCL3 pallid VCL4 robot VCL5 audible VCL6
+cuivocal VCL7 paucity VCL8 epistemology VCL9 florted VCL10 decide VCL11
+pastiche VCL12 verdid VCL13 abysmal VCL14 lucid VCL15 betray VCL16 funny
+
+A value of 1 is checked, 0 means unchecked. The words at VCL6, VCL9, and
+VCL12 are not real words and can be used as a validity check.
+
+```{r}
+# filter based on if it is checked on the three items
+check1 <- dass %>% 
+  filter(vcl6 == 0, 
+         vcl9 == 0, 
+         vcl12 == 0)
+
+check2 <- dass %>% 
+  filter(vcl6 == 1 | 
+         vcl9 == 1 | 
+         vcl12 == 1)
+
+check3 <- dass %>% 
+  mutate(
+    check = vcl6 + vcl9 + vcl12
+  ) %>% 
+  filter(check == 0)
+
+check4 <- dass %>% 
+  select(vcl6, vcl9, vcl12) %>% 
+  filter(vcl6 == 0, 
+         vcl9 == 0, 
+         vcl12 == 0)
+
+table(check3$check)
+```
+
+We will use `check1` as our dataset moving forward.
+
+DASS Scoring:
+
+Stress: 1, 6, 8, 11, 12, 14, 18, 22, 27, 29, 32, 33, 35, 39
+
+Depression: 3, 5, 10, 13, 16, 17, 21, 24, 26, 31, 34, 37, 38, 42
+
+```{r}
+final <- check3 %>% 
+  mutate(
+    dass_stress = row_sums(.,
+      select = c(q1a, q6a, q8a, q11a, q12a, q14a,
+                 q18a, q22a, q27a, q29a, q32a, q33a,
+                 q35a, q39a), 
+      min_valid = 0.8
+    )
+  )
+```
+
+## Renaming variables
+
+Or use `data_rename()` from datawizard
+
+```{r}
+demo_names <- check3 %>% 
+  select(1:5)
+
+#new names
+list <- c("item1", "item2", "item3", "item4", "item5")
+
+names(demo_names) <- list
+names(demo_names)
+```
+
+## Correlation Table
+
+```{r}
+descrip <- final %>% 
+  select(q1a:q42a, age, familysize) %>% 
+  select(contains("a"))
+
+descrip %>% 
+  select(age, familysize, q1a, q6a, q8a, q11a, q12a, q14a,
+                 q18a, q22a, q27a, q29a, q32a, q33a,
+                 q35a, q39a) %>% 
+  tab_corr(triangle = "lower", 
+           title = "Table 1 - Correlations", 
+           var.labels = c("Age", "Family Size", "DSS1", "DSS6", "DSS8",
+                          'DSS11', 'DSS12', 'DSS14',
+                 'DSS18', 'DSS22', 'DSS27', 'DSS29', 'DSS32', 'DSS33',
+                 'DSS35', 'DSS39'))
+```
+
+## Regression
+
+Does age and family size impact self-reported stress?
+
+```{r}
+
+stress.reg <- lm(dass_stress ~ age + familysize, data = final)
+summary(stress.reg)
+
+```
+
+To examine the impact of age and family size on self-reported stress, we
+ran a multiple linear regression. Age significantly predicted
+self-reported stress (*b* = -0.17, *p =* .010) while holding family size
+constant, suggesting that the older participants have less self-reported
+stress. Family size was not statistically significant (*p* = .88).
+
+## ANOVA
+
+Does handedness impact self-reported stress? Are there group differences
+in self-reported stress by handedness?
+
+```{r}
+
+stress.aov <- aov(dass_stress ~ hand, data = final)
+summary(stress.aov)
+
+
+
+```

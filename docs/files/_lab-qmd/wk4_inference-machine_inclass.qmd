@@ -1,0 +1,183 @@
+---
+title: "Week 4 - The Inference Machine"
+author: "YOUR NAME + PARTNER'S NAME"
+format: docx
+execute:
+  error: true   # lets the file render even before every blank is filled
+---
+
+```{r setup}
+#| message: false
+library(tidyverse)
+```
+
+# Part 0: Design warm-up
+
+> "Grad students who work more than 50 hours a week are more burned out, so universities should cap lab hours."
+
+1.  Predictor / outcome and how they might be operationalized:
+
+2.  Association or causal claim?
+
+3.  Which rules of causality can a survey satisfy, and which can't it?
+
+4.  One possible confound:
+
+5.  An experiment (or why not):
+
+# Part 1: Build a population
+
+```{r population}
+set.seed(640)
+population <- tibble(
+  student_id = 1:10000,
+  burnout    = round(rnorm(10000, mean = 50, sd = 12))
+)
+
+# True population mean
+true_mean <- mean(population$___)
+true_mean
+
+# Histogram of burnout
+ggplot(population, aes(x = ___)) +
+  geom_histogram(binwidth = 2)
+```
+
+❓ Why can we almost never calculate the true mean in real research?
+
+**Answer:**
+
+# Part 2: One sample vs. many samples
+
+```{r one-sample}
+one_sample <- population %>%
+  slice_sample(n = ___)
+
+mean(one_sample$burnout)
+```
+
+❓ Why is your mean different from your neighbor's?
+
+**Answer:**
+
+```{r many-samples}
+# Draws ONE sample of size n and returns its mean (provided for you)
+sample_mean <- function(n) {
+  population %>%
+    slice_sample(n = n) %>%
+    summarize(m = mean(burnout)) %>%
+    pull(m)
+}
+
+set.seed(2)
+sims <- tibble(n = rep(c(10, 50, 200), each = ___)) %>%
+  mutate(sample_mean = map_dbl(n, sample_mean))   # this may take ~10 seconds
+
+# Center and spread of the sample means for each n
+sims %>%
+  group_by(___) %>%
+  summarize(avg_of_means = mean(sample_mean),
+            se           = sd(sample_mean))
+
+# Compare to the formula for the standard error
+12 / sqrt(c(10, 50, 200))
+```
+
+```{r sampling-dist-plot}
+ggplot(sims, aes(x = sample_mean)) +
+  geom_histogram(binwidth = 0.5) +
+  geom_vline(xintercept = ___, color = "red") +
+  facet_wrap(~ n, ncol = 1, labeller = label_both)
+```
+
+❓ What happens to the center and the spread as n increases? Which idea from lecture is this?
+
+**Answer:**
+
+❓ How do the SDs of the sample means compare to `12 / sqrt(n)`?
+
+**Answer:**
+
+# Part 3: The null world
+
+```{r null-world}
+# One "study": two groups drawn from the SAME population (no true difference)
+null_study <- function(n_per_group) {
+  g1 <- sample(population$burnout, n_per_group)
+  g2 <- sample(population$burnout, n_per_group)
+  t.test(g1, g2)$p.value
+}
+
+null_study(20)   # run this line a few times!
+
+set.seed(3)
+null_ps <- tibble(p = map_dbl(1:1000, ~ null_study(20)))
+
+# Proportion of "significant" results
+null_ps %>%
+  summarize(false_positive_rate = mean(p < ___))
+
+ggplot(null_ps, aes(x = p)) +
+  geom_histogram(binwidth = 0.05, boundary = 0) +
+  geom_vline(xintercept = .05, color = "red")
+```
+
+❓ What proportion was significant? What do we call those results?
+
+**Answer:**
+
+❓ What shape is the p-value histogram? Does a single p = .03 "prove" anything?
+
+**Answer:**
+
+# Part 4: A real effect
+
+```{r real-effect}
+# Group 2 truly scores `effect` points higher
+effect_study <- function(n_per_group, effect = 5) {
+  g1 <- sample(population$burnout, n_per_group)
+  g2 <- sample(population$burnout, n_per_group) + effect
+  t.test(g1, g2)$p.value
+}
+
+set.seed(4)
+power_sims <- tibble(n_per_group = rep(c(___, ___, ___), each = 1000)) %>%
+  mutate(p = map_dbl(n_per_group, effect_study))
+
+# Power = proportion of studies that detected the real effect
+power_sims %>%
+  group_by(n_per_group) %>%
+  summarize(power = mean(___))
+```
+
+❓ With 20 per group, how often did we miss the real effect? What is that error called?
+
+**Answer:**
+
+❓ What does this tell you about planning the burnout study's sample size?
+
+**Answer:**
+
+# Challenge: The forking paths
+
+```{r forking-paths}
+# Each simulated researcher tests 5 outcomes and keeps the smallest p-value
+set.seed(5)
+hack <- tibble(sim = 1:1000) %>%
+  mutate(min_p = map_dbl(sim, ~ min(map_dbl(1:5, function(i) null_study(20)))))
+
+hack %>%
+  summarize(any_significant = mean(min_p < .05))
+
+1 - .95^5
+```
+
+❓ How does this connect to the replication crisis?
+
+**Answer:**
+
+# Wrap-up
+
+*"A p-value tells me \_\_\_, but it does not tell me \_\_\_."*
+
+**Answer:**
