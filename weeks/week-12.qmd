@@ -1,30 +1,49 @@
 ---
-title: "Week 12 - Logistic Regression & More"
+title: "Week 12 - Logistic Regression"
 editor: visual
 ---
 
-# Categorical Data in Regression
+# When the Outcome Is Yes or No
 
-## Data for Today
+So far every outcome has been a number on a scale. This week the outcome is **binary**: believed or didn't, relapsed or didn't, passed or failed. We'll see why `lm()` breaks down for a 0/1 outcome, translate between probability, odds, and log-odds, and fit our first **generalized** linear model with `glm()`. The goal is to be able to explain a logistic model two ways: with **odds ratios** for the Results section, and with **predicted probabilities** for everyone else.
 
--   <a href="../files/data/CAH.csv" download="cards_CAH.csv">Download Cards Against Humanity Data (.csv)</a>
--   <a href="../files/data/cat_reg_complete.xlsx" download="cat_reg_complete.xlsx">Download Categorical data (.xlsx)</a>
+The lecture and activity are short so that most of class is **M2 work time**.
+
+::: callout-important
+## This week
+
+**📂 M2** is due **Sunday 11/15**. Bring your project to class.
+:::
+
+## Prepare
+
+- 📖[Chapter 13 - ROS](https://users.aalto.fi/~ave/ROS.pdf){target="_blank"}
+
+- 📖[Chapter 8.3 - MSR](https://www.modernstatisticswithr.com/){target="_blank"}
 
 ## Slides
 
-[💻 Categorical & Logistic Regression](../slides/lec-12_logistic.html){target="_blank"}
+[💻 Logistic Regression](../slides/lec-12_logistic-reg.html){target="_blank"}
+
+## Data
+
+<a href="../files/data/CAH.csv" download="CAH.csv">Cards Against Humanity, *Pulse of the Nation* (.csv)</a>: used in the lecture and the activity
 
 ## In-Class Activity
 
-Lego Logistic Regression
+[📓 Is It Acceptable? 🚿](../class-activities/wk12_logistic.html){target="_blank"}
+
+Then: **M2 work time**.
 
 ## For Next Time
 
-[Part 1 of Final Project](../labs/final_project.html)
+📂 **Final Project M2**, due Sunday 11/15
 
-📋[Lab 11 - Categories & Regression](../labs/lab-11.html)
+📋[Lab 11 - Logistic Regression](../labs/lab-11_logistic.html), due Tuesday 11/17
 
-📖[Chapter 14.2 & 14.3 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}
+📖[Chapter 8.8 - MSR](https://www.modernstatisticswithr.com/){target="_blank"}
+
+📖[Chapter 15.8 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}
 
 <br><br>
 

@@ -1,0 +1,612 @@
+---
+title: "Week 12: Logistic Regression"
+subtitle: "Date: November 12, 2026"
+footer:  "[course-website](https://dharaden.github.io/psyc640/)"
+logo: "images/640_hex.png"
+format:
+  revealjs:
+    theme: [default, brand, clean.scss]
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false
+    chalkboard: true
+    overview: false
+    scrollable: true
+    code-line-numbers: true
+    auto-stretch: false
+editor: visual
+execute:
+  echo: true
+  freeze: auto
+editor_options:
+  chunk_output_type: console
+---
+
+## Today...
+
+**When the outcome is yes or no**
+
+- Why `lm()` breaks when Y is 0 or 1
+- Probability → odds → log-odds (the one new idea today)
+- `glm(..., family = binomial)`, and turning its output into odds ratios
+- Predicted probabilities: the way to *explain* a logistic model
+- 👻 Who believes in ghosts?
+
+. . .
+
+::: callout-tip
+## The plan for class
+
+|                     |                       |
+|---------------------|-----------------------|
+| Lecture             | \~50 min              |
+| 🚿 Activity         | \~20 min              |
+| ☕ Break            |                       |
+| 📂 **M2 work time** | **the rest of class** |
+
+M2 is due **Sunday 11/15**. Bring your questions.
+:::
+
+------------------------------------------------------------------------
+
+```{r, results = 'hide', message = F, warning = F}
+library(tidyverse)
+library(rio)
+library(here)
+library(broom)
+library(easystats)
+
+options(scipen = 999)
+
+cah <- import(here("files", "data", "CAH.csv")) %>%
+  mutate(across(where(is.character), ~ na_if(.x, "")))
+```
+
+**The data:** Cards Against Humanity's *Pulse of the Nation* poll (2017). 1,000 U.S. adults, real survey questions, and some less serious ones.
+
+# Part 1: Why Not Just `lm()`?
+
+------------------------------------------------------------------------
+
+## A yes/no outcome
+
+So far every outcome has been a number on a scale. Lots of outcomes in psychology are **binary**:
+
+- Diagnosed or not
+- Relapsed or not
+- Completed the study or dropped out
+- Answered the item correctly or not
+
+. . .
+
+Code it **1 = the thing happened** and **0 = it didn't**. Then the mean of the 0s and 1s is the **proportion** of 1s, which is a probability.
+
+------------------------------------------------------------------------
+
+## What happens with `lm()`?
+
+A made-up class of 200: hours studied and whether they passed the exam.
+
+```{r}
+#| code-fold: true
+set.seed(1112)
+exam <- tibble(hours = runif(200, 0, 20),
+               passed = rbinom(200, 1, plogis(-6 + 0.6 * hours)))
+
+lpm <- lm(passed ~ hours, data = exam)
+range(predict(lpm))
+```
+
+```{r, fig.width=9, fig.height=4}
+#| code-fold: true
+#| out-width: "75%"
+ggplot(exam, aes(hours, passed)) +
+  geom_jitter(width = 0, height = 0.03, alpha = 0.4) +
+  geom_smooth(method = "lm", se = FALSE, color = "#C8102E") +
+  geom_hline(yintercept = c(0, 1), linetype = "dashed") +
+  labs(x = "Hours studied", y = "Passed (1) or not (0)") +
+  theme_bw(base_size = 15)
+```
+
+------------------------------------------------------------------------
+
+## Three problems
+
+::: incremental
+1.  **Impossible predictions.** A student who studied 0 hours has a "probability" of passing of −16%. Someone at 20 hours: 119%.
+2.  **The residuals can't be normal.** For any *X*, the residual can only take two values (1 − *Ŷ* or 0 − *Ŷ*).
+3.  **The variance isn't constant.** It's largest near *p* = .5 and shrinks toward 0 and 1. (Week 10: heteroscedasticity, built in.)
+:::
+
+. . .
+
+We need a model whose predictions **stay between 0 and 1** and bend near the edges.
+
+------------------------------------------------------------------------
+
+## The S-curve
+
+```{r, fig.width=9, fig.height=4}
+#| code-fold: true
+#| out-width: "75%"
+ggplot(exam, aes(hours, passed)) +
+  geom_jitter(width = 0, height = 0.03, alpha = 0.4) +
+  geom_smooth(method = "lm", se = FALSE, color = "gray60", linetype = "dashed") +
+  geom_smooth(method = "glm", method.args = list(family = binomial),
+              se = FALSE, color = "#C8102E", linewidth = 1.3) +
+  labs(x = "Hours studied", y = "Probability of passing") +
+  theme_bw(base_size = 15)
+```
+
+Same data. The red curve is a **logistic regression**: never below 0, never above 1, steepest in the middle.
+
+# Part 2: Probability, Odds, Log-Odds
+
+------------------------------------------------------------------------
+
+## Three ways to say the same thing
+
+| Probability *p* | Odds = *p* / (1 − *p*) | Log-odds = ln(odds) |
+|:---------------:|:----------------------:|:-------------------:|
+|       .10       |     0.11 (1 to 9)      |        −2.20        |
+|       .25       |     0.33 (1 to 3)      |        −1.10        |
+|     **.50**     |      **1** (even)      |        **0**        |
+|       .75       |       3 (3 to 1)       |        1.10         |
+|       .90       |       9 (9 to 1)       |        2.20         |
+
+. . .
+
+- **Probability** is stuck between 0 and 1.
+- **Odds** run from 0 to ∞.
+- **Log-odds** run from −∞ to +∞, like any regression outcome.
+
+So logistic regression fits a **straight line on the log-odds scale**:
+
+$$
+\ln\left(\frac{p}{1-p}\right) = b_0 + b_1 X_1 + b_2 X_2 + \cdots
+$$
+
+------------------------------------------------------------------------
+
+## A room of 10 people 👻
+
+Ten people answer "Do you believe in ghosts?"
+
+::::: columns
+::: {.column width="50%"}
+### Room A
+
+👻👻👻👻👻👻👻👻🙅🙅
+
+|                 |                          |
+|-----------------|--------------------------|
+| **Probability** | 8 of 10 = **.80**        |
+| **Odds**        | 8 believers to 2 = **4** |
+| **Log-odds**    | ln(4) = **+1.39**        |
+:::
+
+::: {.column width="50%"}
+### Room B
+
+🙅🙅🙅🙅🙅🙅🙅🙅👻👻
+
+|                 |                             |
+|-----------------|-----------------------------|
+| **Probability** | 2 of 10 = **.20**           |
+| **Odds**        | 2 believers to 8 = **0.25** |
+| **Log-odds**    | ln(0.25) = **−1.39**        |
+:::
+:::::
+
+. . .
+
+- **Odds** are a head count: "4 believers for every non-believer."
+- Room B is Room A **flipped**, but the odds (4 vs. 0.25) don't look like mirror images.
+- The **log-odds** do: +1.39 vs. −1.39. Zero is the 5-and-5 room.
+
+------------------------------------------------------------------------
+
+## Why bother with the log?
+
+Because **adding** on the log-odds scale is **multiplying** the odds.
+
+|    Log-odds     |     |     Odds      |     | Probability |
+|:---------------:|:---:|:-------------:|:---:|:-----------:|
+|        0        |     |       1       |     |     .50     |
+|  0 **+ 0.69**   |  →  | 1 **× 2** = 2 |  →  |     .67     |
+| 0.69 **+ 0.69** |  →  | 2 **× 2** = 4 |  →  |     .80     |
+| 1.39 **+ 0.69** |  →  | 4 **× 2** = 8 |  →  |     .89     |
+
+. . .
+
+- A regression line **adds** a fixed amount for each unit of *X*. That's the log-odds column.
+- exp(0.69) = 2, so each step **doubles** the odds. That's the odds ratio.
+- The **probability** goes up by less and less each step: +.17, then +.13, then +.09. It can't pass 1.
+
+::: callout-important
+One coefficient, three readings: **+0.69** in log-odds = **× 2** in odds = **"it depends where you start"** in probability.
+:::
+
+------------------------------------------------------------------------
+
+## Turn the dial 🎛️
+
+```{=html}
+<div id="dial" style="font-size: 0.75em;">
+  <label for="dial-lo"><b>Log-odds</b></label>
+  <input id="dial-lo" type="range" min="-4" max="4" step="0.1" value="0" style="width: 60%; vertical-align: middle;">
+  <p id="dial-out" style="margin: 0.4em 0;"></p>
+  <svg id="dial-svg" viewBox="0 0 760 280" style="width: 85%; height: auto;"></svg>
+</div>
+<script>
+(function () {
+  const W = 760, H = 280, L = 60, R = 20, T = 10, B = 40;
+  const sx = x => L + (x + 4) / 8 * (W - L - R);
+  const sy = p => T + (1 - p) * (H - T - B);
+  const ns = "http://www.w3.org/2000/svg";
+  const svg = document.getElementById("dial-svg");
+  const el = (tag, attrs, text) => {
+    const e = document.createElementNS(ns, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text !== undefined) e.textContent = text;
+    svg.appendChild(e); return e;
+  };
+  [0, 0.25, 0.5, 0.75, 1].forEach(p => {
+    el("line", {x1: L, x2: W - R, y1: sy(p), y2: sy(p), stroke: "#ddd"});
+    el("text", {x: L - 8, y: sy(p) + 5, "text-anchor": "end", "font-size": 14, fill: "#555"}, p.toFixed(2));
+  });
+  [-4, -2, 0, 2, 4].forEach(x =>
+    el("text", {x: sx(x), y: H - B + 22, "text-anchor": "middle", "font-size": 14, fill: "#555"}, x));
+  el("text", {x: (L + W - R) / 2, y: H - 2, "text-anchor": "middle", "font-size": 14, fill: "#333"}, "Log-odds");
+  el("text", {x: 14, y: H / 2, "text-anchor": "middle", "font-size": 14, fill: "#333",
+              transform: `rotate(-90 14 ${H / 2})`}, "Probability");
+  let d = "";
+  for (let x = -4; x <= 4.0001; x += 0.05) d += (d ? "L" : "M") + sx(x) + "," + sy(1 / (1 + Math.exp(-x)));
+  el("path", {d: d, fill: "none", stroke: "gray", "stroke-width": 3});
+  const rule = el("line", {y1: T, y2: H - B, stroke: "#C8102E", "stroke-dasharray": "5,5", "stroke-width": 2});
+  const dot = el("circle", {r: 9, fill: "#C8102E"});
+  const input = document.getElementById("dial-lo");
+  const out = document.getElementById("dial-out");
+  const update = () => {
+    const lo = parseFloat(input.value), odds = Math.exp(lo), p = odds / (1 + odds);
+    rule.setAttribute("x1", sx(lo)); rule.setAttribute("x2", sx(lo));
+    dot.setAttribute("cx", sx(lo)); dot.setAttribute("cy", sy(p));
+    out.innerHTML = `<b>Log-odds</b> = ${lo.toFixed(1)} &rarr; <b>Odds</b> = e<sup>${lo.toFixed(1)}</sup> = ${odds.toFixed(2)} &rarr; <b>Probability</b> = ${odds.toFixed(2)} / (1 + ${odds.toFixed(2)}) = <b>${p.toFixed(2)}</b>`;
+  };
+  input.addEventListener("input", update);
+  // keep the arrow keys moving the slider, not the slides
+  input.addEventListener("keydown", e => e.stopPropagation());
+  update();
+})();
+</script>
+```
+
+Try 0, then ±1.39 (the two rooms), then ±4. Each step of 1 near the middle moves the probability a lot; out near the edges it barely moves.
+
+------------------------------------------------------------------------
+
+## The catch
+
+Coefficients come out in **log-odds**, and nobody thinks in log-odds.
+
+. . .
+
+So we translate:
+
+| Scale | How to get there | Read it as |
+|------------------------|------------------------|------------------------|
+| Log-odds | what `glm()` gives you | sign and *p*-value only |
+| Odds ratio | `exp(b)` | "the odds are multiplied by \_\_\_" |
+| Probability | `predict(..., type = "response")` | "a \_\_\_ has a \_\_% chance" |
+
+. . .
+
+::: callout-important
+Odds ratio = 1 means no effect. **Above 1:** higher odds. **Below 1:** lower odds. An OR of 0.40 means the odds are 60% lower, **not** that the probability is.
+:::
+
+# Part 3: Who Believes in Ghosts? 👻
+
+------------------------------------------------------------------------
+
+## The question
+
+> "Do you believe in ghosts?" (Yes / No)
+
+```{r}
+ghosts <- cah %>%
+  filter(gender %in% c("Female", "Male"), !is.na(ghosts)) %>%
+  mutate(ghost  = if_else(ghosts == "Yes", 1, 0),          # 1 = believes
+         gender = factor(gender, levels = c("Female", "Male"),
+                         labels = c("Woman", "Man")))
+
+ghosts %>% summarise(n = n(), prop_believe = mean(ghost))
+```
+
+. . .
+
+About 38% believe. (I dropped the 28 people who answered "Other" for gender. With *n* = 28, the estimate would be very noisy. In your own work, make that decision before you see the results, and report it.)
+
+------------------------------------------------------------------------
+
+## `glm()`: one new argument
+
+```{r}
+m_age <- glm(ghost ~ age, data = ghosts, family = binomial)
+tidy(m_age)
+```
+
+. . .
+
+- `family = binomial` is what makes it logistic. Leave it off and you've fit `lm()` again.
+- The age coefficient is **−0.011** in log-odds: older people are less likely to believe, *p* = .008.
+- What does −0.011 log-odds per year **mean**? Nothing intuitive. Translate.
+
+------------------------------------------------------------------------
+
+## Odds ratio for age
+
+```{r}
+model_parameters(m_age, exponentiate = TRUE)
+```
+
+. . .
+
+**OR = 0.989** per year: each year of age multiplies the odds of believing by 0.989, about **1% lower odds per year**.
+
+. . .
+
+Per year is tiny. Per **decade**: exp(10 × −0.0109) = `r sprintf("%.2f", exp(10 * coef(m_age)["age"]))`, so **`r round(100 * (1 - exp(10 * coef(m_age)["age"])))`% lower odds** for every 10 years older.
+
+------------------------------------------------------------------------
+
+## A categorical predictor: gender
+
+Before the model, the 2 × 2 table:
+
+```{r}
+ghosts %>%
+  group_by(gender) %>%
+  summarise(n = n(), believe = sum(ghost), p = mean(ghost)) %>%
+  mutate(odds = p / (1 - p))
+```
+
+. . .
+
+Odds ratio by hand: **0.362 / 0.951 = 0.38**. Men have about 38% of the odds that women do.
+
+```{r}
+m_gender <- glm(ghost ~ gender, data = ghosts, family = binomial)
+model_parameters(m_gender, exponentiate = TRUE)
+```
+
+Same number. **The odds ratio is just a ratio of two groups' odds.** The intercept (0.95) is the reference group's odds: women.
+
+------------------------------------------------------------------------
+
+## Both predictors
+
+```{r}
+m_both <- glm(ghost ~ age + gender, data = ghosts, family = binomial)
+model_parameters(m_both, exponentiate = TRUE)
+```
+
+. . .
+
+Same "holding constant" logic as multiple regression:
+
+- **Age:** holding gender constant, each year multiplies the odds of believing by 0.99.
+- **Gender:** holding age constant, men have **0.37 times** the odds of believing that women do (63% lower odds).
+
+------------------------------------------------------------------------
+
+## Follow one person through the model
+
+```{r}
+#| echo: false
+b <- coef(m_both)
+lo_w <- b["(Intercept)"] + 25 * b["age"]
+lo_m <- lo_w + b["genderMan"]
+f2 <- function(x) sprintf("%.2f", x)
+f3 <- function(x) sprintf("%.3f", x)
+pp <- function(x) sub("^0", "", sprintf("%.2f", x))
+```
+
+A **25-year-old woman.** Plug her into the model, one scale at a time:
+
+| Step | Woman, 25 | Man, 25 |
+|:--------------------|:------------------------:|:------------------------:|
+| **Log-odds** = *b*~0~ + *b*~age~ × 25 (+ *b*~man~) | `r f3(b[1])` + (`r sprintf("%.4f", b[2])` × 25) = **`r f2(lo_w)`** | `r f2(lo_w)` + (`r f2(b[3])`) = **`r f2(lo_m)`** |
+| **Odds** = e^log-odds^ | e\^`r f2(lo_w)`\^ = **`r f2(exp(lo_w))`** | e\^`r f2(lo_m)`\^ = **`r f2(exp(lo_m))`** |
+| **Probability** = odds / (1 + odds) | `r f2(exp(lo_w))` / `r f2(1 + exp(lo_w))` = **`r pp(plogis(lo_w))`** | `r f2(exp(lo_m))` / `r f2(1 + exp(lo_m))` = **`r pp(plogis(lo_m))`** |
+
+. . .
+
+- On the **log-odds** scale, being a man **subtracts `r f2(abs(b[3]))`**.
+- On the **odds** scale, it **multiplies by `r f2(exp(b[3]))`**: `r f2(exp(lo_w))` × `r f2(exp(b[3]))` = `r f2(exp(lo_m))`. That's the odds ratio.
+- On the **probability** scale, it's `r pp(plogis(lo_w))` → `r pp(plogis(lo_m))`. That is **not** `r pp(plogis(lo_w))` × `r f2(exp(b[3]))`.
+
+. . .
+
+`plogis()` does the last two steps in one go: `plogis(`r f2(lo_w)`)` = `r f2(plogis(lo_w))`.
+
+------------------------------------------------------------------------
+
+## Same odds ratio, different probability change
+
+Men have `r f2(exp(b[3]))` times the odds. What that does to the **probability** depends on where you start:
+
+```{r}
+#| echo: false
+OR <- exp(b[3])
+tibble(start = c(.05, .20, .50, .80, .95)) %>%
+  mutate(new = { o <- start / (1 - start) * OR; o / (1 + o) },
+         change = round(100 * (new - start))) %>%
+  transmute(`Woman's probability` = pp(start),
+            `Same-age man (× OR on the odds)` = pp(new),
+            `Change (percentage points)` = change) %>%
+  knitr::kable(align = "ccc")
+```
+
+. . .
+
+The odds ratio is the **same in every row**. The change in probability is biggest near .50 and tiny near 0 or 1, because that's where the S-curve is steepest.
+
+::: callout-tip
+This is why a Results section reports the **odds ratio** (one number that's true everywhere), and the Discussion uses **predicted probabilities** at values of *X* that matter.
+:::
+
+------------------------------------------------------------------------
+
+## The best way to explain it: predicted probabilities
+
+Odds ratios are for the Results section. **Probabilities** are for humans.
+
+```{r}
+new_people <- expand_grid(age = c(25, 65), gender = c("Woman", "Man"))
+
+new_people %>%
+  mutate(p_believe = predict(m_both, newdata = new_people, type = "response")) %>%
+  mutate(p_believe = round(p_believe, 2))
+```
+
+. . .
+
+A 25-year-old woman: **57%**. A 65-year-old man: **22%**.
+
+::: callout-warning
+`type = "response"` matters. Leave it off and `predict()` returns **log-odds**.
+:::
+
+------------------------------------------------------------------------
+
+## Plot the probabilities
+
+```{r, fig.width=9, fig.height=4.5}
+#| out-width: "80%"
+augment(m_both, type.predict = "response") %>%
+  ggplot(aes(age, .fitted, color = gender)) +
+  geom_line(linewidth = 1.3) +
+  labs(x = "Age", y = "Predicted probability of believing in ghosts", color = NULL) +
+  ylim(0, 1) +
+  theme_bw(base_size = 15)
+```
+
+The lines look almost straight here because the probabilities stay in the middle of the range. The S only shows up near 0 and 1.
+
+------------------------------------------------------------------------
+
+## Did gender earn its place?
+
+Last week's block comparison works here too, with one change:
+
+```{r}
+anova(m_age, m_both, test = "Chisq")
+```
+
+. . .
+
+Logistic regression has no *F* test. It compares **deviance** (the logistic version of leftover error) with a χ² test. Adding gender reduced deviance by 53.1, χ²(1) = 53.14, *p* \< .001.
+
+. . .
+
+```{r}
+r2(m_both)
+```
+
+There's no true *R*² either. **Tjur's *R*²** = .063: the gap between the average predicted probability for believers and for non-believers. Small, so most of what decides who believes in ghosts isn't in this model.
+
+------------------------------------------------------------------------
+
+## Writing it up
+
+```{r}
+#| echo: false
+mb <- model_parameters(m_both, exponentiate = TRUE)
+fmt_ci <- function(i, d = 2) sprintf(paste0("95%% CI [%.", d, "f, %.", d, "f]"), mb$CI_low[i], mb$CI_high[i])
+```
+
+> We used logistic regression to predict belief in ghosts (1 = yes) from age and gender (*N* = 946; 37.7% believed). Holding age constant, men had lower odds of believing than women, OR = `r sprintf("%.2f", mb$Coefficient[3])`, `r fmt_ci(3)`, *p* \< .001. Each additional year of age was associated with slightly lower odds, OR = `r sprintf("%.3f", mb$Coefficient[2])`, `r fmt_ci(2, 3)`, *p* = `r sub("^0", "", sprintf("%.3f", mb$p[2]))`. For example, the model predicts a 57% probability of believing for a 25-year-old woman and 22% for a 65-year-old man.
+
+. . .
+
+::: callout-tip
+Report the **odds ratio with its CI**, then give at least one **predicted probability** so readers can tell how big the effect is.
+:::
+
+------------------------------------------------------------------------
+
+## Three ways to get it wrong
+
+::: incremental
+1.  **Not checking which level is 1.** If R treats "No" as the outcome, every odds ratio flips. Always create the 0/1 variable yourself and say what 1 means.
+2.  **Reading log-odds as probabilities.** "−0.011" doesn't mean 1.1 percentage points. Exponentiate, or predict.
+3.  **Treating an odds ratio as a risk ratio.** OR = 0.37 doesn't mean men are 37% as *likely* to believe. Their probability is 27% vs. 49%, a ratio of 0.55. Odds ratios exaggerate when the outcome is common.
+:::
+
+------------------------------------------------------------------------
+
+## Logistic vs. linear, side by side
+
+|                 | Linear          | Logistic                             |
+|:----------------|:----------------|:-------------------------------------|
+| Outcome         | Continuous      | Binary (0/1)                         |
+| R               | `lm(y ~ x)`     | `glm(y ~ x, family = binomial)`      |
+| Coefficient     | Change in *Y*   | Change in **log-odds**               |
+| Easier to read  | *b* itself      | **exp(*b*)** = odds ratio            |
+| Compare models  | `anova()` → *F* | `anova(test = "Chisq")` → χ²         |
+| Fit             | *R*²            | Tjur's *R*² (or another pseudo-*R*²) |
+| Explain it with | Predicted *Y*   | **Predicted probability**            |
+
+------------------------------------------------------------------------
+
+## 💻 Your Turn: 🚿 Is It Acceptable?
+
+::: callout-tip
+**\~20 min** · Pairs · Same CAH data
+:::
+
+> "Is it acceptable to pee in the shower?"
+
+Who says yes? Age, gender, and a predicted probability for two people.
+
+[Open the activity](../class-activities/wk12_logistic.html){.button target="_blank"}
+
+# ☕ Break
+
+------------------------------------------------------------------------
+
+## 📂 M2 Work Time
+
+**Due Sunday 11/15.** Use the rest of class. I'll come around.
+
+::: callout-note
+## M2 checklist (from Week 11)
+
+- [ ] `split.qmd` run: the explore sample is the **only** file you open
+- [ ] Every variable audited against the codebook, with the codes it doesn't explain listed
+- [ ] Missing-data codes recoded with `na_if()`, each with a one-line reason
+- [ ] Participant flow: *n* after each exclusion
+- [ ] `analytic` built, complete on **every** variable in **any** planned model
+- [ ] Complete vs. incomplete cases compared on your outcome
+:::
+
+. . .
+
+**Is your outcome binary?** Then today's model is your model. Ask me about it while you're here.
+
+------------------------------------------------------------------------
+
+## For next time
+
+📂 **M2**, due **Sunday 11/15**
+
+📋 **Lab 11: Logistic Regression**, due **Tuesday 11/17 at 11:59pm**
+
+📖 Readings for **Mixed/Multilevel Models**:
+
+- Chapter 8.8 — MSR
+- Chapter 15.8 — ST
+
+💾 **Class Check** next week

@@ -1,0 +1,138 @@
+---
+title: "Week 12 Exercises - Is It Acceptable? 🚿"
+subtitle: "A short logistic regression, then back to M2"
+editor: visual
+---
+
+::: callout-note
+## Overview
+
+**About 20 minutes** · Pairs · 🧰 R (`tidyverse`, `rio`, `here`, `broom`, `easystats`)
+
+Same Cards Against Humanity poll as the lecture, different question:
+
+> "Is it acceptable to pee in the shower?" (Acceptable / Unacceptable)
+
+- **Part A (\~5 min):** build the 0/1 outcome, and check which level is 1
+- **Part B (\~5 min):** fit the model and turn log-odds into an odds ratio
+- **Part C (\~5 min):** predicted probabilities for two people
+- **Part D (\~5 min):** does gender add anything? One sentence to write it up
+
+When you finish, **go straight to M2.**
+:::
+
+------------------------------------------------------------------------
+
+# Set up {#setup}
+
+Start a new Quarto document, `week12_logistic.qmd`. Put <a href="../files/data/CAH.csv" download="CAH.csv">CAH.csv</a> in your `data` folder.
+
+``` r
+library(tidyverse)
+library(rio)
+library(here)
+library(broom)
+library(easystats)
+
+cah <- import(here("data", "CAH.csv")) %>%
+  mutate(across(where(is.character), ~ na_if(.x, "")))
+```
+
+------------------------------------------------------------------------
+
+# Part A — Build the outcome (5 min) {#part-a}
+
+``` r
+table(cah$shower_pee, useNA = "ifany")
+
+shower <- cah %>%
+  filter(gender %in% c("Female", "Male"), !is.na(shower_pee)) %>%
+  mutate(pee_ok = if_else(shower_pee == "Acceptable", 1, 0),   # 1 = acceptable
+         gender = factor(gender, levels = c("Female", "Male"),
+                         labels = c("Woman", "Man")))
+
+shower %>% summarise(n = n(), prop_acceptable = mean(pee_ok))
+shower %>% group_by(gender) %>% summarise(n = n(), prop_acceptable = mean(pee_ok))
+```
+
+**Q1.** How many people are in `shower`, and what proportion said "Acceptable"? How many did we lose to missing answers?
+
+------------------------------------------------------------------------
+
+# Part B — Fit it (5 min) {#part-b}
+
+``` r
+m_age <- glm(pee_ok ~ age, data = shower, family = binomial)
+
+tidy(m_age)                                    # log-odds
+model_parameters(m_age, exponentiate = TRUE)   # odds ratios
+```
+
+**Q2.** What's the age coefficient in **log-odds**? What's the **odds ratio**? Write one sentence interpreting the odds ratio.
+
+**Q3.** Per year is tiny. What's the odds ratio for **10 years**? (Hint: `exp(10 * coef(m_age)["age"])`.)
+
+------------------------------------------------------------------------
+
+# Part C — Predicted probabilities (5 min) {#part-c}
+
+``` r
+two_people <- tibble(age = c(25, 65))
+
+two_people %>%
+  mutate(p_acceptable = predict(m_age, newdata = two_people, type = "response"))
+```
+
+**Q4.** What's the predicted probability that a 25-year-old says "Acceptable"? A 65-year-old? Which number would you put in a press release, the odds ratio or these?
+
+**Q5.** Run `predict(m_age, newdata = two_people)` **without** `type = "response"`. What did you get, and why don't those numbers look like probabilities?
+
+------------------------------------------------------------------------
+
+# Part D — Add gender, write it up (5 min) {#part-d}
+
+``` r
+m_both <- glm(pee_ok ~ age + gender, data = shower, family = binomial)
+
+model_parameters(m_both, exponentiate = TRUE)
+anova(m_age, m_both, test = "Chisq")
+```
+
+**Q6.** Holding age constant, do men and women differ? Did gender earn its place?
+
+**Q7.** Write the one-sentence result for **age** in APA style (OR, 95% CI, *p*, and one predicted probability).
+
+::: {.callout-tip collapse="true"}
+## Check yourself (click after you've tried)
+
+**Q1.** *n* = **870** (102 skipped the question; 28 who answered "Other" for gender were filtered out), and **43.1%** said "Acceptable." By gender, 40.4% of women vs. 45.9% of men.
+
+**Q2.** Log-odds: *b* = **−0.017**, *p* < .001. OR = **0.98**, 95% CI [0.98, 0.99]: each additional year of age multiplies the odds of calling it acceptable by 0.98, about 2% lower odds per year.
+
+**Q3.** exp(10 × −0.0166) = **0.85**: about 15% lower odds per decade.
+
+**Q4.** **53%** at age 25, **37%** at age 65. The probabilities go in the press release.
+
+**Q5.** 0.11 and −0.55. Those are **log-odds**. Negative means the probability is below .50.
+
+**Q6.** Men: OR = 1.21, 95% CI [0.92, 1.59], *p* = .17. The χ² test for adding gender is χ²(1) = 1.88, *p* = .17, so gender didn't earn its place.
+
+**Q7.** "Older adults had lower odds of finding it acceptable to pee in the shower, OR = 0.98 per year, 95% CI [0.98, 0.99], *p* < .001; the model predicts 53% of 25-year-olds but 37% of 65-year-olds would say it is acceptable."
+
+**If you coded it the other way** (1 = Unacceptable), your age OR is **1.017**, the reciprocal. Same finding, flipped. That's why you always say what 1 means.
+:::
+
+------------------------------------------------------------------------
+
+# 📂 Now: M2 {#m2}
+
+M2 is due **Sunday 11/15**. Open your project and work through the checklist:
+
+- [ ] `split.qmd` run: the explore sample is the **only** file you open
+- [ ] Every variable audited against the codebook, with the codes it doesn't explain listed
+- [ ] Missing-data codes recoded with `na_if()`, each with a one-line reason
+- [ ] Participant flow: *n* after each exclusion
+- [ ] `analytic` built, complete on **every** variable in **any** planned model
+- [ ] Complete vs. incomplete cases compared on your outcome
+
+**Binary outcome?** Today's model is your model. Flag me down.

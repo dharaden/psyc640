@@ -1,0 +1,156 @@
+---
+title: "Lab 11: Logistic Regression"
+author: "Your Name Here"
+date: "`r Sys.Date()`"
+format: docx
+editor_options:
+  chunk_output_type: console
+  markdown:
+    wrap: 72
+---
+
+```{r setup, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(rio)
+library(here)
+library(broom)
+library(easystats)
+
+cats <- import(here("data", "cat_chaos.csv"))
+```
+
+# Lab 11 — Which Cats Knock Things Off the Counter? 🐈☕
+
+Render to Word and submit both files.
+
+250 cat owners answered: *Did your cat knock at least one thing off a
+counter or table this week?* `knocked_off` is **1 = yes**, 0 = no. You
+also have each cat's `age_years`, whether it's `indoor` only (1) or
+goes outside (0), and its average `zoomies` per day.
+
+**How this lab works:** the code is mostly written. Replace each `___`,
+remove `eval: false` from the chunk, and run it. Then answer under
+**Your Answer:** in complete sentences.
+
+------------------------------------------------------------------------
+
+## Exercise 1 — The outcome (3 points)
+
+```{r}
+#| eval: false
+table(cats$___)
+
+mean(cats$___)          # the mean of a 0/1 variable is a proportion
+
+cats %>%
+  group_by(___) %>%
+  summarise(n = n(), prop_knocked = mean(knocked_off))
+```
+
+a)  How many cats knocked something off this week? What proportion is
+    that?
+b)  What proportion of **indoor** cats knocked something off? Of cats
+    that go **outside**?
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 2 — One predictor (6 points)
+
+Do cats with more zoomies knock more things off?
+
+```{r}
+#| eval: false
+m1 <- glm(knocked_off ~ ___, data = cats, family = ___)
+
+tidy(m1)                                     # log-odds
+model_parameters(m1, exponentiate = ___)     # odds ratios
+```
+
+a)  What is the `zoomies` coefficient in **log-odds**? Is it positive
+    or negative, and is it significant? (2 points)
+b)  What is the **odds ratio** for `zoomies`, with its 95% CI? (2
+    points)
+c)  Interpret the odds ratio in one sentence: "Each additional zoomie
+    per day..." (2 points)
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 3 — Three predictors (8 points)
+
+```{r}
+#| eval: false
+m2 <- glm(knocked_off ~ zoomies + ___ + ___, data = cats, family = binomial)
+
+model_parameters(m2, exponentiate = TRUE)
+```
+
+a)  Interpret the odds ratio for `indoor`, **with** its holding-constant
+    clause. (3 points)
+b)  Interpret the odds ratio for `age_years`, **with** its
+    holding-constant clause. Is it above or below 1, and what does that
+    mean? (3 points)
+c)  The `zoomies` odds ratio changed from Exercise 2. Did it get bigger
+    or smaller? In one sentence, why might that happen? (Hint: younger
+    cats have more zoomies.) (2 points)
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 4 — Did they help? (3 points)
+
+```{r}
+#| eval: false
+anova(m1, m2, test = "___")
+
+r2(m2)
+```
+
+a)  Report the χ² test for adding `indoor` and `age_years`: χ²(df) =
+    \_\_, *p* = \_\_. Did they improve the model? (2 points)
+b)  What is Tjur's *R*² for `m2`? (1 point)
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 5 — Two suspects (5 points)
+
+A mug was knocked off the counter. Two suspects:
+
+- **Biscuit:** 2 years old, indoor only, 5 zoomies a day
+- **Professor Whiskers:** 12 years old, goes outside, 1 zoomie a day
+
+```{r}
+#| eval: false
+suspects <- tibble(
+  cat       = c("Biscuit", "Professor Whiskers"),
+  zoomies   = c(5, ___),
+  indoor    = c(1, ___),
+  age_years = c(2, ___)
+)
+
+suspects %>%
+  mutate(p_knock = predict(m2, newdata = suspects, type = "___"))
+```
+
+a)  What is each cat's predicted probability of knocking something off
+    this week? Who's your prime suspect? (3 points)
+b)  What would `predict()` give you if you left off `type = "response"`?
+    (2 points)
+
+**Your Answer:**
+
+------------------------------------------------------------------------
+
+## Exercise 6 — Write-up (3 points)
+
+Write one APA-style sentence reporting the effect of `indoor` from
+Exercise 3. Include the **odds ratio**, its **95% CI**, the ***p***
+**value**, and the holding-constant clause.
+
+**Your Answer:**

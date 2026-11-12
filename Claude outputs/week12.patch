@@ -1,0 +1,1263 @@
+From ee69d184948825da44fb1635c75825ffefc2559f Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Thu, 12 Nov 2026 01:27:54 +0000
+Subject: [PATCH] Add Week 12 (logistic regression) and Lab 11
+
+- Week 12 slides, short in-class activity, and week page
+- Lab 11 page, fill-in-the-blank template, and cat chaos data + sim script
+- Render list and nav entries in _quarto.yml
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01EihUSqAkoYezBW7o5jfAcm
+---
+ _quarto.yml                        |  10 +-
+ class-activities/wk12_logistic.qmd | 138 +++++++++
+ files/_lab-qmd/lab-11_logistic.qmd | 156 ++++++++++
+ files/data/cat_chaos.csv           | 251 +++++++++++++++++
+ files/data/data_sim_cat-chaos.R    |  23 ++
+ labs/lab-11_logistic.qmd           |  71 +++++
+ slides/lec-12_logistic-reg.qmd     | 437 +++++++++++++++++++++++++++++
+ weeks/week-12.qmd                  |  39 ++-
+ 8 files changed, 1113 insertions(+), 12 deletions(-)
+ create mode 100644 class-activities/wk12_logistic.qmd
+ create mode 100644 files/_lab-qmd/lab-11_logistic.qmd
+ create mode 100644 files/data/cat_chaos.csv
+ create mode 100644 files/data/data_sim_cat-chaos.R
+ create mode 100644 labs/lab-11_logistic.qmd
+ create mode 100644 slides/lec-12_logistic-reg.qmd
+
+diff --git a/_quarto.yml b/_quarto.yml
+index caeaf34..2e8728e 100644
+--- a/_quarto.yml
++++ b/_quarto.yml
+@@ -19,6 +19,7 @@ project:
+     - weeks/week-9.qmd
+     - weeks/week-10.qmd
+     - weeks/week-11.qmd
++    - weeks/week-12.qmd
+     - labs/lab-01_introduction.qmd
+     - labs/lab-02_data-workflow.qmd
+     - labs/lab-03_data-wrangling.qmd
+@@ -31,6 +32,7 @@ project:
+     - labs/lab-09_groups-slopes.qmd
+     - labs/final-proj.qmd
+     - labs/lab-10_missing-blocks_1.qmd
++    - labs/lab-11_logistic.qmd
+     - class-activities/day1.qmd
+     - class-activities/wk2_tidy-intro.qmd
+     - class-activities/wk3_desc-viz.qmd
+@@ -43,6 +45,7 @@ project:
+     - class-activities/wk9_reproducibility.qmd
+     - class-activities/wk10_holds-up.qmd
+     - class-activities/wk11_missing-models.qmd
++    - class-activities/wk12_logistic.qmd
+     - slides/lec-01_syl.qmd
+     - slides/lec-02_background.qmd
+     - slides/lec-03_wrangle.qmd
+@@ -61,6 +64,7 @@ project:
+     - slides/lec-09_interactions_JAMOVI.qmd
+     - slides/lec-10_diagnostics.qmd
+     - slides/lec-11_missing-models.qmd
++    - slides/lec-12_logistic-reg.qmd
+   
+     
+     
+@@ -133,8 +137,8 @@ website:
+             text: "Week 10 - Assumptions & Diagnostic"
+           - href: weeks/week-11.qmd
+             text: "Week 11 - Missing Data & ModelBuilding"
+-          # - href: weeks/week-12.qmd
+-            # text: "Week 12 - Logistic Reg."
++          - href: weeks/week-12.qmd
++            text: "Week 12 - Logistic Reg."
+           # - href: weeks/week-13.qmd
+             # text: "Week 13 - Mixed/Multilevel Models"
+          # - text: "Week 14 - NO CLASS"
+@@ -162,6 +166,8 @@ website:
+             text: "Lab 9 - Groups, Slopes & Interactions"
+           - href: labs/lab-10_missing-blocks_1.qmd
+             text: "Lab 10 - Missing & Building"  
++          - href: labs/lab-11_logistic.qmd
++            text: "Lab 11 - Logistic Regression"
+       - section: "Projects"
+         contents:
+           - href: labs/midterm-project.qmd
+diff --git a/class-activities/wk12_logistic.qmd b/class-activities/wk12_logistic.qmd
+new file mode 100644
+index 0000000..100af87
+--- /dev/null
++++ b/class-activities/wk12_logistic.qmd
+@@ -0,0 +1,138 @@
++---
++title: "Week 12 Exercises - Is It Acceptable? 🚿"
++subtitle: "A short logistic regression, then back to M2"
++editor: visual
++---
++
++::: callout-note
++## Overview
++
++**About 20 minutes** · Pairs · 🧰 R (`tidyverse`, `rio`, `here`, `broom`, `easystats`)
++
++Same Cards Against Humanity poll as the lecture, different question:
++
++> "Is it acceptable to pee in the shower?" (Acceptable / Unacceptable)
++
++- **Part A (\~5 min):** build the 0/1 outcome, and check which level is 1
++- **Part B (\~5 min):** fit the model and turn log-odds into an odds ratio
++- **Part C (\~5 min):** predicted probabilities for two people
++- **Part D (\~5 min):** does gender add anything? One sentence to write it up
++
++When you finish, **go straight to M2.**
++:::
++
++------------------------------------------------------------------------
++
++# Set up {#setup}
++
++Start a new Quarto document, `week12_logistic.qmd`. Put <a href="../files/data/CAH.csv" download="CAH.csv">CAH.csv</a> in your `data` folder.
++
++``` r
++library(tidyverse)
++library(rio)
++library(here)
++library(broom)
++library(easystats)
++
++cah <- import(here("data", "CAH.csv")) %>%
++  mutate(across(where(is.character), ~ na_if(.x, "")))
++```
++
++------------------------------------------------------------------------
++
++# Part A — Build the outcome (5 min) {#part-a}
++
++``` r
++table(cah$shower_pee, useNA = "ifany")
++
++shower <- cah %>%
++  filter(gender %in% c("Female", "Male"), !is.na(shower_pee)) %>%
++  mutate(pee_ok = if_else(shower_pee == "Acceptable", 1, 0),   # 1 = acceptable
++         gender = factor(gender, levels = c("Female", "Male"),
++                         labels = c("Woman", "Man")))
++
++shower %>% summarise(n = n(), prop_acceptable = mean(pee_ok))
++shower %>% group_by(gender) %>% summarise(n = n(), prop_acceptable = mean(pee_ok))
++```
++
++**Q1.** How many people are in `shower`, and what proportion said "Acceptable"? How many did we lose to missing answers?
++
++------------------------------------------------------------------------
++
++# Part B — Fit it (5 min) {#part-b}
++
++``` r
++m_age <- glm(pee_ok ~ age, data = shower, family = binomial)
++
++tidy(m_age)                                    # log-odds
++model_parameters(m_age, exponentiate = TRUE)   # odds ratios
++```
++
++**Q2.** What's the age coefficient in **log-odds**? What's the **odds ratio**? Write one sentence interpreting the odds ratio.
++
++**Q3.** Per year is tiny. What's the odds ratio for **10 years**? (Hint: `exp(10 * coef(m_age)["age"])`.)
++
++------------------------------------------------------------------------
++
++# Part C — Predicted probabilities (5 min) {#part-c}
++
++``` r
++two_people <- tibble(age = c(25, 65))
++
++two_people %>%
++  mutate(p_acceptable = predict(m_age, newdata = two_people, type = "response"))
++```
++
++**Q4.** What's the predicted probability that a 25-year-old says "Acceptable"? A 65-year-old? Which number would you put in a press release, the odds ratio or these?
++
++**Q5.** Run `predict(m_age, newdata = two_people)` **without** `type = "response"`. What did you get, and why don't those numbers look like probabilities?
++
++------------------------------------------------------------------------
++
++# Part D — Add gender, write it up (5 min) {#part-d}
++
++``` r
++m_both <- glm(pee_ok ~ age + gender, data = shower, family = binomial)
++
++model_parameters(m_both, exponentiate = TRUE)
++anova(m_age, m_both, test = "Chisq")
++```
++
++**Q6.** Holding age constant, do men and women differ? Did gender earn its place?
++
++**Q7.** Write the one-sentence result for **age** in APA style (OR, 95% CI, *p*, and one predicted probability).
++
++::: {.callout-tip collapse="true"}
++## Check yourself (click after you've tried)
++
++**Q1.** *n* = **870** (102 skipped the question; 28 who answered "Other" for gender were filtered out), and **43.1%** said "Acceptable." By gender, 40.4% of women vs. 45.9% of men.
++
++**Q2.** Log-odds: *b* = **−0.017**, *p* < .001. OR = **0.98**, 95% CI [0.98, 0.99]: each additional year of age multiplies the odds of calling it acceptable by 0.98, about 2% lower odds per year.
++
++**Q3.** exp(10 × −0.0166) = **0.85**: about 15% lower odds per decade.
++
++**Q4.** **53%** at age 25, **37%** at age 65. The probabilities go in the press release.
++
++**Q5.** 0.11 and −0.55. Those are **log-odds**. Negative means the probability is below .50.
++
++**Q6.** Men: OR = 1.21, 95% CI [0.92, 1.59], *p* = .17. The χ² test for adding gender is χ²(1) = 1.88, *p* = .17, so gender didn't earn its place.
++
++**Q7.** "Older adults had lower odds of finding it acceptable to pee in the shower, OR = 0.98 per year, 95% CI [0.98, 0.99], *p* < .001; the model predicts 53% of 25-year-olds but 37% of 65-year-olds would say it is acceptable."
++
++**If you coded it the other way** (1 = Unacceptable), your age OR is **1.017**, the reciprocal. Same finding, flipped. That's why you always say what 1 means.
++:::
++
++------------------------------------------------------------------------
++
++# 📂 Now: M2 {#m2}
++
++M2 is due **Sunday 11/15**. Open your project and work through the checklist:
++
++- [ ] `split.qmd` run: the explore sample is the **only** file you open
++- [ ] Every variable audited against the codebook, with the codes it doesn't explain listed
++- [ ] Missing-data codes recoded with `na_if()`, each with a one-line reason
++- [ ] Participant flow: *n* after each exclusion
++- [ ] `analytic` built, complete on **every** variable in **any** planned model
++- [ ] Complete vs. incomplete cases compared on your outcome
++
++**Binary outcome?** Today's model is your model. Flag me down.
+diff --git a/files/_lab-qmd/lab-11_logistic.qmd b/files/_lab-qmd/lab-11_logistic.qmd
+new file mode 100644
+index 0000000..b7556c1
+--- /dev/null
++++ b/files/_lab-qmd/lab-11_logistic.qmd
+@@ -0,0 +1,156 @@
++---
++title: "Lab 11: Logistic Regression"
++author: "Your Name Here"
++date: "`r Sys.Date()`"
++format: docx
++editor_options:
++  chunk_output_type: console
++  markdown:
++    wrap: 72
++---
++
++```{r setup, message = FALSE, warning = FALSE}
++library(tidyverse)
++library(rio)
++library(here)
++library(broom)
++library(easystats)
++
++cats <- import(here("data", "cat_chaos.csv"))
++```
++
++# Lab 11 — Which Cats Knock Things Off the Counter? 🐈☕
++
++Render to Word and submit both files.
++
++250 cat owners answered: *Did your cat knock at least one thing off a
++counter or table this week?* `knocked_off` is **1 = yes**, 0 = no. You
++also have each cat's `age_years`, whether it's `indoor` only (1) or
++goes outside (0), and its average `zoomies` per day.
++
++**How this lab works:** the code is mostly written. Replace each `___`,
++remove `eval: false` from the chunk, and run it. Then answer under
++**Your Answer:** in complete sentences.
++
++------------------------------------------------------------------------
++
++## Exercise 1 — The outcome (3 points)
++
++```{r}
++#| eval: false
++table(cats$___)
++
++mean(cats$___)          # the mean of a 0/1 variable is a proportion
++
++cats %>%
++  group_by(___) %>%
++  summarise(n = n(), prop_knocked = mean(knocked_off))
++```
++
++a)  How many cats knocked something off this week? What proportion is
++    that?
++b)  What proportion of **indoor** cats knocked something off? Of cats
++    that go **outside**?
++
++**Your Answer:**
++
++------------------------------------------------------------------------
++
++## Exercise 2 — One predictor (6 points)
++
++Do cats with more zoomies knock more things off?
++
++```{r}
++#| eval: false
++m1 <- glm(knocked_off ~ ___, data = cats, family = ___)
++
++tidy(m1)                                     # log-odds
++model_parameters(m1, exponentiate = ___)     # odds ratios
++```
++
++a)  What is the `zoomies` coefficient in **log-odds**? Is it positive
++    or negative, and is it significant? (2 points)
++b)  What is the **odds ratio** for `zoomies`, with its 95% CI? (2
++    points)
++c)  Interpret the odds ratio in one sentence: "Each additional zoomie
++    per day..." (2 points)
++
++**Your Answer:**
++
++------------------------------------------------------------------------
++
++## Exercise 3 — Three predictors (8 points)
++
++```{r}
++#| eval: false
++m2 <- glm(knocked_off ~ zoomies + ___ + ___, data = cats, family = binomial)
++
++model_parameters(m2, exponentiate = TRUE)
++```
++
++a)  Interpret the odds ratio for `indoor`, **with** its holding-constant
++    clause. (3 points)
++b)  Interpret the odds ratio for `age_years`, **with** its
++    holding-constant clause. Is it above or below 1, and what does that
++    mean? (3 points)
++c)  The `zoomies` odds ratio changed from Exercise 2. Did it get bigger
++    or smaller? In one sentence, why might that happen? (Hint: younger
++    cats have more zoomies.) (2 points)
++
++**Your Answer:**
++
++------------------------------------------------------------------------
++
++## Exercise 4 — Did they help? (3 points)
++
++```{r}
++#| eval: false
++anova(m1, m2, test = "___")
++
++r2(m2)
++```
++
++a)  Report the χ² test for adding `indoor` and `age_years`: χ²(df) =
++    \_\_, *p* = \_\_. Did they improve the model? (2 points)
++b)  What is Tjur's *R*² for `m2`? (1 point)
++
++**Your Answer:**
++
++------------------------------------------------------------------------
++
++## Exercise 5 — Two suspects (5 points)
++
++A mug was knocked off the counter. Two suspects:
++
++- **Biscuit:** 2 years old, indoor only, 5 zoomies a day
++- **Professor Whiskers:** 12 years old, goes outside, 1 zoomie a day
++
++```{r}
++#| eval: false
++suspects <- tibble(
++  cat       = c("Biscuit", "Professor Whiskers"),
++  zoomies   = c(5, ___),
++  indoor    = c(1, ___),
++  age_years = c(2, ___)
++)
++
++suspects %>%
++  mutate(p_knock = predict(m2, newdata = suspects, type = "___"))
++```
++
++a)  What is each cat's predicted probability of knocking something off
++    this week? Who's your prime suspect? (3 points)
++b)  What would `predict()` give you if you left off `type = "response"`?
++    (2 points)
++
++**Your Answer:**
++
++------------------------------------------------------------------------
++
++## Exercise 6 — Write-up (3 points)
++
++Write one APA-style sentence reporting the effect of `indoor` from
++Exercise 3. Include the **odds ratio**, its **95% CI**, the ***p***
++**value**, and the holding-constant clause.
++
++**Your Answer:**
+diff --git a/files/data/cat_chaos.csv b/files/data/cat_chaos.csv
+new file mode 100644
+index 0000000..851d6fb
+--- /dev/null
++++ b/files/data/cat_chaos.csv
+@@ -0,0 +1,251 @@
++cat_id,age_years,indoor,zoomies,knocked_off
++K001,5.3,0,2,1
++K002,6.5,1,3,0
++K003,5.3,1,2,0
++K004,9.4,0,1,0
++K005,14.6,0,0,0
++K006,2.4,1,1,0
++K007,9.8,0,0,0
++K008,3.1,0,2,0
++K009,4.7,0,2,0
++K010,3.4,0,3,0
++K011,10.9,1,2,1
++K012,3.7,1,5,1
++K013,14.8,1,0,0
++K014,4.4,1,1,1
++K015,3.1,1,2,1
++K016,6.7,1,0,0
++K017,14.9,0,1,0
++K018,5.3,1,6,1
++K019,3.1,1,4,1
++K020,5.9,1,1,0
++K021,2.8,1,3,1
++K022,2.1,1,1,0
++K023,3.3,1,2,0
++K024,8.7,0,0,0
++K025,3.6,0,5,0
++K026,10.7,0,1,0
++K027,5.2,1,3,1
++K028,6.5,1,1,1
++K029,2.1,0,3,0
++K030,1.4,0,0,0
++K031,4.1,1,1,0
++K032,4.9,0,0,0
++K033,5.4,1,4,1
++K034,3,1,2,0
++K035,5.3,0,3,0
++K036,6.8,1,1,0
++K037,1.4,1,2,1
++K038,0.7,0,2,1
++K039,3.5,0,2,0
++K040,6.5,0,1,0
++K041,8.2,1,0,0
++K042,6.7,0,0,0
++K043,10.6,1,3,1
++K044,4.7,1,2,0
++K045,6,1,2,0
++K046,5.1,1,5,1
++K047,7.3,0,0,0
++K048,4,1,2,0
++K049,1.5,1,0,0
++K050,1.9,1,1,0
++K051,7.5,0,0,0
++K052,3,1,3,1
++K053,5.8,1,2,1
++K054,13.7,1,0,0
++K055,4.4,1,3,0
++K056,6.5,0,2,0
++K057,1.9,1,0,0
++K058,5.6,0,3,0
++K059,13.5,1,0,0
++K060,3.3,0,4,0
++K061,3.1,1,3,0
++K062,12.9,1,2,0
++K063,4.8,0,4,1
++K064,2.9,1,3,1
++K065,4.8,0,1,0
++K066,9.9,1,2,0
++K067,4.5,0,2,0
++K068,4,1,3,1
++K069,2.8,0,5,1
++K070,7.9,0,2,0
++K071,10.6,0,0,0
++K072,10.8,0,3,0
++K073,8.3,1,3,0
++K074,18,1,1,0
++K075,7.6,1,1,0
++K076,3.4,1,2,1
++K077,5,1,4,1
++K078,3.9,0,3,1
++K079,7.4,0,0,0
++K080,2.3,1,2,1
++K081,3.5,1,2,1
++K082,4,1,6,0
++K083,5.8,1,4,1
++K084,4.7,1,3,1
++K085,5.9,0,4,0
++K086,1.9,0,2,1
++K087,1.5,1,3,1
++K088,5.1,0,4,0
++K089,1.8,0,0,0
++K090,6.3,1,5,0
++K091,10.4,1,3,0
++K092,12.4,1,1,0
++K093,12.6,1,3,0
++K094,6.3,1,4,1
++K095,4.5,0,2,1
++K096,7.5,1,6,0
++K097,5.9,0,1,0
++K098,3.6,0,4,1
++K099,7.3,1,4,1
++K100,6.4,1,1,1
++K101,13.9,0,4,0
++K102,7.8,0,2,1
++K103,0.9,1,3,0
++K104,5.3,1,2,0
++K105,15.3,0,2,0
++K106,12.4,1,0,0
++K107,6.7,1,0,1
++K108,6.6,0,1,0
++K109,1.9,1,4,1
++K110,6.4,0,0,0
++K111,12.3,0,1,0
++K112,4.5,1,4,0
++K113,3.7,1,1,0
++K114,7.1,1,3,1
++K115,8.6,0,1,0
++K116,4.4,1,4,1
++K117,2.3,0,1,1
++K118,2.4,1,3,1
++K119,1.2,0,0,0
++K120,8.1,0,3,0
++K121,2.6,1,2,1
++K122,7.1,1,3,1
++K123,3.1,1,1,0
++K124,3,0,4,1
++K125,5.1,1,3,0
++K126,8.5,0,3,0
++K127,8,1,0,0
++K128,4.9,1,3,0
++K129,8.4,0,0,0
++K130,2.3,1,2,0
++K131,2.4,1,4,1
++K132,3.8,0,3,0
++K133,7.2,1,0,0
++K134,12.7,0,0,0
++K135,1.5,0,3,0
++K136,0.8,0,1,0
++K137,2.5,1,3,1
++K138,1.4,0,2,0
++K139,4.6,1,5,1
++K140,6.7,0,4,1
++K141,6,0,5,0
++K142,4.8,1,1,1
++K143,2.9,0,3,1
++K144,1.4,1,7,1
++K145,12.8,0,2,0
++K146,3.8,0,6,1
++K147,9.5,0,0,0
++K148,1,1,5,1
++K149,9.4,1,3,0
++K150,18,1,0,0
++K151,15.2,1,2,0
++K152,1.8,0,1,1
++K153,8.7,0,2,0
++K154,1.1,1,5,1
++K155,7.6,1,3,0
++K156,1.4,1,4,0
++K157,2.8,1,4,1
++K158,1.2,0,3,1
++K159,1.9,1,3,1
++K160,16.4,1,2,0
++K161,5.5,0,5,0
++K162,2,0,3,0
++K163,5,0,3,1
++K164,2.6,0,3,0
++K165,9.2,1,2,0
++K166,3.9,1,4,0
++K167,1.9,1,2,0
++K168,1.8,0,2,0
++K169,3,1,0,1
++K170,7,1,0,0
++K171,15,1,1,0
++K172,0.6,1,4,1
++K173,10.7,0,1,0
++K174,1.7,0,5,1
++K175,3.2,0,0,0
++K176,8.1,0,0,1
++K177,10.3,1,2,0
++K178,11.5,0,1,0
++K179,5.7,1,2,0
++K180,6.7,1,3,1
++K181,4.2,0,3,0
++K182,5.2,0,2,0
++K183,7.1,0,3,1
++K184,6.8,1,0,1
++K185,3.9,1,1,1
++K186,2.5,1,3,1
++K187,10.3,0,3,0
++K188,1.8,1,2,1
++K189,6.6,1,7,1
++K190,3.9,1,2,0
++K191,12.1,0,1,1
++K192,10.1,1,4,1
++K193,6.2,1,2,1
++K194,2.8,1,4,0
++K195,6.2,1,2,1
++K196,2.4,0,2,1
++K197,5.2,1,4,1
++K198,4.7,0,4,1
++K199,9.7,0,1,1
++K200,1.8,1,5,1
++K201,7.3,0,3,0
++K202,5.8,1,5,1
++K203,4.6,0,2,0
++K204,1.5,0,3,0
++K205,4.9,0,5,1
++K206,12.6,0,2,0
++K207,8,1,2,0
++K208,6,1,3,1
++K209,5.1,0,2,0
++K210,2.9,1,2,0
++K211,0.9,1,4,1
++K212,2.5,0,1,1
++K213,8.6,1,0,0
++K214,0.8,1,3,1
++K215,9.3,1,2,1
++K216,4.1,1,4,1
++K217,6.4,1,3,1
++K218,5.7,1,2,0
++K219,16.6,0,1,0
++K220,4.1,1,1,0
++K221,3.6,1,1,1
++K222,8.4,0,2,0
++K223,7.1,0,1,0
++K224,6.2,1,3,0
++K225,17,1,0,0
++K226,4.5,1,0,0
++K227,5,0,3,1
++K228,7.9,0,0,0
++K229,10.2,0,0,0
++K230,4.4,0,2,0
++K231,4.9,1,0,0
++K232,4.6,0,2,1
++K233,9,0,1,0
++K234,8.6,0,1,0
++K235,11.6,1,0,0
++K236,11.4,1,0,0
++K237,3.5,1,3,1
++K238,6.6,1,5,1
++K239,10.7,0,3,0
++K240,3,1,3,1
++K241,5.9,1,3,1
++K242,3.9,1,3,0
++K243,6.9,1,0,0
++K244,5,1,4,0
++K245,6,1,1,0
++K246,9.5,0,3,0
++K247,14.9,1,0,1
++K248,1.5,0,4,0
++K249,4.5,1,4,1
++K250,9.3,0,2,0
+diff --git a/files/data/data_sim_cat-chaos.R b/files/data/data_sim_cat-chaos.R
+new file mode 100644
+index 0000000..a8c760a
+--- /dev/null
++++ b/files/data/data_sim_cat-chaos.R
+@@ -0,0 +1,23 @@
++# Simulates cat_chaos.csv for Lab 11 (Logistic Regression)
++library(tidyverse)
++
++set.seed(1121)
++n <- 250
++
++age_years <- round(pmin(0.5 + rgamma(n, 2, 0.35), 18), 1)
++indoor    <- rbinom(n, 1, 0.6)
++zoomies   <- pmin(rpois(n, pmax(3.2 - 0.15 * age_years, 0.3)), 8)   # zoomies per day
++
++# 1 = knocked at least one thing off a counter or table this week
++p_knock <- plogis(-1.0 - 0.12 * (age_years - 5) + 0.8 * indoor + 0.45 * (zoomies - 2))
++knocked_off <- rbinom(n, 1, p_knock)
++
++cat_chaos <- tibble(
++  cat_id = sprintf("K%03d", 1:n),
++  age_years = age_years,
++  indoor = indoor,
++  zoomies = zoomies,
++  knocked_off = knocked_off
++)
++
++rio::export(cat_chaos, here::here("files", "data", "cat_chaos.csv"))
+diff --git a/labs/lab-11_logistic.qmd b/labs/lab-11_logistic.qmd
+new file mode 100644
+index 0000000..a440b33
+--- /dev/null
++++ b/labs/lab-11_logistic.qmd
+@@ -0,0 +1,71 @@
++---
++title: "Lab 11: Logistic Regression"
++subtitle: "Which cats knock things off the counter? 🐈☕"
++editor: visual
++---
++
++## Instructions
++
++A short, straightforward lab, so you can spend this week on M2. Most of the code is written for you. Fill in the blanks (`___`) and spend your time on the interpretations.
++
++Here is what you'll need:
++
++- <a href="../files/_lab-qmd/lab-11_logistic.qmd" download="lab-11_logistic.qmd">Download Lab 11 (.qmd)</a>
++- <a href="../files/data/cat_chaos.csv" download="cat_chaos.csv">Download the Cat Chaos Data (.csv)</a>
++
++Save the `.csv` in your `data` folder and the `.qmd` in your project folder. Render to Word and submit **both** files to myCourses.
++
++**Due Tuesday 11/17 at 11:59pm.**
++
++::: callout-note
++## Working in JAMOVI?
++
++Use **Regression → 2 Outcomes: Binomial**. Under **Model Coefficients**, check **Odds ratio** and its **Confidence interval**. You can do every exercise except the predicted probabilities in Exercise 5, which needs R. Submit your `.omv` and a Word document with your answers.
++:::
++
++## The study 🐈
++
++The (still not real) **National Cat Contentment Survey** sent a follow-up to the owners of **250 cats**. The main question: *Did your cat knock at least one thing off a counter or table this week?*
++
++| Variable | Description |
++|----|----|
++| `cat_id` | Cat ID |
++| `age_years` | Cat's age in years |
++| `indoor` | 1 = indoor only, 0 = goes outside |
++| `zoomies` | Average number of zoomies (sudden full-speed sprints) per day |
++| `knocked_off` | **1 = knocked something off this week**, 0 = did not |
++
++No missing data and no hidden codes this time. Promise.
++
++## What you'll practice
++
++- Fitting a logistic regression with `glm(..., family = binomial)`
++- Turning log-odds into odds ratios, and interpreting them
++- Comparing nested logistic models with a χ² test
++- Getting predicted probabilities with `predict(..., type = "response")`
++- Writing up an odds ratio in APA style
++
++## Exercises at a glance
++
++| Exercise | What you'll do | Points |
++|----|----|----|
++| **1. The outcome** | How common is counter crime? | 3 |
++| **2. One predictor** | Zoomies → knocking things off | 6 |
++| **3. Three predictors** | Add indoor and age; interpret | 8 |
++| **4. Did they help?** | χ² model comparison | 3 |
++| **5. Two suspects** | Predicted probabilities for two cats | 5 |
++| **6. Write-up** | One APA sentence | 3 |
++
++------------------------------------------------------------------------
++
++**Total: 28 points**
++
++::: callout-tip
++The ghost example in this week's slides uses every function you need, in the same order as this lab.
++:::
++
++<br><br>
++
++::: {style="font-size: 0.875em;"}
++Back to [course schedule](../index.qmd "Course schedule") ⏎
++:::
+diff --git a/slides/lec-12_logistic-reg.qmd b/slides/lec-12_logistic-reg.qmd
+new file mode 100644
+index 0000000..d28a3cb
+--- /dev/null
++++ b/slides/lec-12_logistic-reg.qmd
+@@ -0,0 +1,437 @@
++---
++title: "Week 12: Logistic Regression"
++subtitle: "Date: November 12, 2026"
++footer:  "[course-website](https://dharaden.github.io/psyc640/)"
++logo: "images/640_hex.png"
++format:
++  revealjs:
++    theme: [default, brand, clean.scss]
++    multiplex: false
++    transition: fade
++    slide-number: true
++    incremental: false
++    chalkboard: true
++    overview: false
++    scrollable: true
++    code-line-numbers: true
++    auto-stretch: false
++editor: visual
++execute:
++  echo: true
++  freeze: auto
++editor_options:
++  chunk_output_type: console
++---
++
++## Today...
++
++**When the outcome is yes or no**
++
++- Why `lm()` breaks when Y is 0 or 1
++- Probability → odds → log-odds (the one new idea today)
++- `glm(..., family = binomial)`, and turning its output into odds ratios
++- Predicted probabilities: the way to *explain* a logistic model
++- 👻 Who believes in ghosts?
++
++. . .
++
++::: callout-tip
++## The plan for class
++
++| | |
++|---|---|
++| Lecture | \~50 min |
++| 🚿 Activity | \~20 min |
++| ☕ Break | |
++| 📂 **M2 work time** | **the rest of class** |
++
++M2 is due **Sunday 11/15**. Bring your questions.
++:::
++
++------------------------------------------------------------------------
++
++```{r, results = 'hide', message = F, warning = F}
++library(tidyverse)
++library(rio)
++library(here)
++library(broom)
++library(easystats)
++
++options(scipen = 999)
++
++cah <- import(here("files", "data", "CAH.csv")) %>%
++  mutate(across(where(is.character), ~ na_if(.x, "")))
++```
++
++**The data:** Cards Against Humanity's *Pulse of the Nation* poll (2017). 1,000 U.S. adults, real survey questions, and some less serious ones.
++
++# Part 1: Why Not Just `lm()`?
++
++------------------------------------------------------------------------
++
++## A yes/no outcome
++
++So far every outcome has been a number on a scale. Lots of outcomes in psychology are **binary**:
++
++- Diagnosed or not
++- Relapsed or not
++- Completed the study or dropped out
++- Answered the item correctly or not
++
++. . .
++
++Code it **1 = the thing happened** and **0 = it didn't**. Then the mean of the 0s and 1s is the **proportion** of 1s, which is a probability.
++
++------------------------------------------------------------------------
++
++## What happens with `lm()`?
++
++A made-up class of 200: hours studied and whether they passed the exam.
++
++```{r}
++#| code-fold: true
++set.seed(1112)
++exam <- tibble(hours = runif(200, 0, 20),
++               passed = rbinom(200, 1, plogis(-6 + 0.6 * hours)))
++
++lpm <- lm(passed ~ hours, data = exam)
++range(predict(lpm))
++```
++
++```{r, fig.width=9, fig.height=4}
++#| code-fold: true
++#| out-width: "75%"
++ggplot(exam, aes(hours, passed)) +
++  geom_jitter(width = 0, height = 0.03, alpha = 0.4) +
++  geom_smooth(method = "lm", se = FALSE, color = "#C8102E") +
++  geom_hline(yintercept = c(0, 1), linetype = "dashed") +
++  labs(x = "Hours studied", y = "Passed (1) or not (0)") +
++  theme_bw(base_size = 15)
++```
++
++------------------------------------------------------------------------
++
++## Three problems
++
++::: incremental
++1.  **Impossible predictions.** A student who studied 0 hours has a "probability" of passing of −16%. Someone at 20 hours: 119%.
++2.  **The residuals can't be normal.** For any *X*, the residual can only take two values (1 − *Ŷ* or 0 − *Ŷ*).
++3.  **The variance isn't constant.** It's largest near *p* = .5 and shrinks toward 0 and 1. (Week 10: heteroscedasticity, built in.)
++:::
++
++. . .
++
++We need a model whose predictions **stay between 0 and 1** and bend near the edges.
++
++------------------------------------------------------------------------
++
++## The S-curve
++
++```{r, fig.width=9, fig.height=4}
++#| code-fold: true
++#| out-width: "75%"
++ggplot(exam, aes(hours, passed)) +
++  geom_jitter(width = 0, height = 0.03, alpha = 0.4) +
++  geom_smooth(method = "lm", se = FALSE, color = "gray60", linetype = "dashed") +
++  geom_smooth(method = "glm", method.args = list(family = binomial),
++              se = FALSE, color = "#C8102E", linewidth = 1.3) +
++  labs(x = "Hours studied", y = "Probability of passing") +
++  theme_bw(base_size = 15)
++```
++
++Same data. The red curve is a **logistic regression**: never below 0, never above 1, steepest in the middle.
++
++# Part 2: Probability, Odds, Log-Odds
++
++------------------------------------------------------------------------
++
++## Three ways to say the same thing
++
++| Probability *p* | Odds = *p* / (1 − *p*) | Log-odds = ln(odds) |
++|:---:|:---:|:---:|
++| .10 | 0.11 (1 to 9) | −2.20 |
++| .25 | 0.33 (1 to 3) | −1.10 |
++| **.50** | **1** (even) | **0** |
++| .75 | 3 (3 to 1) | 1.10 |
++| .90 | 9 (9 to 1) | 2.20 |
++
++. . .
++
++- **Probability** is stuck between 0 and 1.
++- **Odds** run from 0 to ∞.
++- **Log-odds** run from −∞ to +∞, like any regression outcome.
++
++So logistic regression fits a **straight line on the log-odds scale**:
++
++$$
++\ln\left(\frac{p}{1-p}\right) = b_0 + b_1 X_1 + b_2 X_2 + \cdots
++$$
++
++------------------------------------------------------------------------
++
++## The catch
++
++Coefficients come out in **log-odds**, and nobody thinks in log-odds.
++
++. . .
++
++So we translate:
++
++| Scale | How to get there | Read it as |
++|---|---|---|
++| Log-odds | what `glm()` gives you | sign and *p*-value only |
++| **Odds ratio** | `exp(b)` | "the odds are multiplied by ___" |
++| **Probability** | `predict(..., type = "response")` | "a ___ has a __% chance" |
++
++. . .
++
++::: callout-important
++Odds ratio = 1 means no effect. **Above 1:** higher odds. **Below 1:** lower odds. An OR of 0.40 means the odds are 60% lower, **not** that the probability is.
++:::
++
++# Part 3: Who Believes in Ghosts? 👻
++
++------------------------------------------------------------------------
++
++## The question
++
++> "Do you believe in ghosts?" (Yes / No)
++
++```{r}
++ghosts <- cah %>%
++  filter(gender %in% c("Female", "Male"), !is.na(ghosts)) %>%
++  mutate(ghost  = if_else(ghosts == "Yes", 1, 0),          # 1 = believes
++         gender = factor(gender, levels = c("Female", "Male"),
++                         labels = c("Woman", "Man")))
++
++ghosts %>% summarise(n = n(), prop_believe = mean(ghost))
++```
++
++. . .
++
++About 38% believe. (I dropped the 28 people who answered "Other" for gender. With *n* = 28, the estimate would be very noisy. In your own work, make that decision before you see the results, and report it.)
++
++------------------------------------------------------------------------
++
++## `glm()`: one new argument
++
++```{r}
++m_age <- glm(ghost ~ age, data = ghosts, family = binomial)
++tidy(m_age)
++```
++
++. . .
++
++- `family = binomial` is what makes it logistic. Leave it off and you've fit `lm()` again.
++- The age coefficient is **−0.011** in log-odds: older people are less likely to believe, *p* = .008.
++- What does −0.011 log-odds per year **mean**? Nothing intuitive. Translate.
++
++------------------------------------------------------------------------
++
++## Odds ratio for age
++
++```{r}
++model_parameters(m_age, exponentiate = TRUE)
++```
++
++. . .
++
++**OR = 0.989** per year: each year of age multiplies the odds of believing by 0.989, about **1% lower odds per year**.
++
++. . .
++
++Per year is tiny. Per **decade**: exp(10 × −0.0109) = `r sprintf("%.2f", exp(10 * coef(m_age)["age"]))`, so **`r round(100 * (1 - exp(10 * coef(m_age)["age"])))`% lower odds** for every 10 years older.
++
++------------------------------------------------------------------------
++
++## A categorical predictor: gender
++
++Before the model, the 2 × 2 table:
++
++```{r}
++ghosts %>%
++  group_by(gender) %>%
++  summarise(n = n(), believe = sum(ghost), p = mean(ghost)) %>%
++  mutate(odds = p / (1 - p))
++```
++
++. . .
++
++Odds ratio by hand: **0.362 / 0.951 = 0.38**. Men have about 38% of the odds that women do.
++
++```{r}
++m_gender <- glm(ghost ~ gender, data = ghosts, family = binomial)
++model_parameters(m_gender, exponentiate = TRUE)
++```
++
++Same number. **The odds ratio is just a ratio of two groups' odds.** The intercept (0.95) is the reference group's odds: women.
++
++------------------------------------------------------------------------
++
++## Both predictors
++
++```{r}
++m_both <- glm(ghost ~ age + gender, data = ghosts, family = binomial)
++model_parameters(m_both, exponentiate = TRUE)
++```
++
++. . .
++
++Same "holding constant" logic as multiple regression:
++
++- **Age:** holding gender constant, each year multiplies the odds of believing by 0.99.
++- **Gender:** holding age constant, men have **0.37 times** the odds of believing that women do (63% lower odds).
++
++------------------------------------------------------------------------
++
++## The best way to explain it: predicted probabilities
++
++Odds ratios are for the Results section. **Probabilities** are for humans.
++
++```{r}
++new_people <- expand_grid(age = c(25, 65), gender = c("Woman", "Man"))
++
++new_people %>%
++  mutate(p_believe = predict(m_both, newdata = new_people, type = "response")) %>%
++  mutate(p_believe = round(p_believe, 2))
++```
++
++. . .
++
++A 25-year-old woman: **57%**. A 65-year-old man: **22%**.
++
++::: callout-warning
++`type = "response"` matters. Leave it off and `predict()` returns **log-odds**.
++:::
++
++------------------------------------------------------------------------
++
++## Plot the probabilities
++
++```{r, fig.width=9, fig.height=4.5}
++#| out-width: "80%"
++augment(m_both, type.predict = "response") %>%
++  ggplot(aes(age, .fitted, color = gender)) +
++  geom_line(linewidth = 1.3) +
++  labs(x = "Age", y = "Predicted probability of believing in ghosts", color = NULL) +
++  ylim(0, 1) +
++  theme_bw(base_size = 15)
++```
++
++The lines look almost straight here because the probabilities stay in the middle of the range. The S only shows up near 0 and 1.
++
++------------------------------------------------------------------------
++
++## Did gender earn its place?
++
++Last week's block comparison works here too, with one change:
++
++```{r}
++anova(m_age, m_both, test = "Chisq")
++```
++
++. . .
++
++Logistic regression has no *F* test. It compares **deviance** (the logistic version of leftover error) with a χ² test. Adding gender reduced deviance by 53.1, χ²(1) = 53.14, *p* < .001.
++
++. . .
++
++```{r}
++r2(m_both)
++```
++
++There's no true *R*² either. **Tjur's *R*²** = .063: the gap between the average predicted probability for believers and for non-believers. Small, so most of what decides who believes in ghosts isn't in this model.
++
++------------------------------------------------------------------------
++
++## Writing it up
++
++```{r}
++#| echo: false
++mb <- model_parameters(m_both, exponentiate = TRUE)
++fmt_ci <- function(i, d = 2) sprintf(paste0("95%% CI [%.", d, "f, %.", d, "f]"), mb$CI_low[i], mb$CI_high[i])
++```
++
++> We used logistic regression to predict belief in ghosts (1 = yes) from age and gender (*N* = 946; 37.7% believed). Holding age constant, men had lower odds of believing than women, OR = `r sprintf("%.2f", mb$Coefficient[3])`, `r fmt_ci(3)`, *p* < .001. Each additional year of age was associated with slightly lower odds, OR = `r sprintf("%.3f", mb$Coefficient[2])`, `r fmt_ci(2, 3)`, *p* = `r sub("^0", "", sprintf("%.3f", mb$p[2]))`. For example, the model predicts a 57% probability of believing for a 25-year-old woman and 22% for a 65-year-old man.
++
++. . .
++
++::: callout-tip
++Report the **odds ratio with its CI**, then give at least one **predicted probability** so readers can tell how big the effect is.
++:::
++
++------------------------------------------------------------------------
++
++## Three ways to get it wrong
++
++::: incremental
++1.  **Not checking which level is 1.** If R treats "No" as the outcome, every odds ratio flips. Always create the 0/1 variable yourself and say what 1 means.
++2.  **Reading log-odds as probabilities.** "−0.011" doesn't mean 1.1 percentage points. Exponentiate, or predict.
++3.  **Treating an odds ratio as a risk ratio.** OR = 0.37 doesn't mean men are 37% as *likely* to believe. Their probability is 27% vs. 49%, a ratio of 0.55. Odds ratios exaggerate when the outcome is common.
++:::
++
++------------------------------------------------------------------------
++
++## Logistic vs. linear, side by side
++
++| | Linear | Logistic |
++|:---|:---|:---|
++| Outcome | Continuous | Binary (0/1) |
++| R | `lm(y ~ x)` | `glm(y ~ x, family = binomial)` |
++| Coefficient | Change in *Y* | Change in **log-odds** |
++| Easier to read | *b* itself | **exp(*b*)** = odds ratio |
++| Compare models | `anova()` → *F* | `anova(test = "Chisq")` → χ² |
++| Fit | *R*² | Tjur's *R*² (or another pseudo-*R*²) |
++| Explain it with | Predicted *Y* | **Predicted probability** |
++
++------------------------------------------------------------------------
++
++## 💻 Your Turn: 🚿 Is It Acceptable?
++
++::: callout-tip
++**\~20 min** · Pairs · Same CAH data
++:::
++
++> "Is it acceptable to pee in the shower?"
++
++Who says yes? Age, gender, and a predicted probability for two people.
++
++[Open the activity](../class-activities/wk12_logistic.html){.button target="_blank"}
++
++# ☕ Break
++
++------------------------------------------------------------------------
++
++## 📂 M2 Work Time
++
++**Due Sunday 11/15.** Use the rest of class. I'll come around.
++
++::: callout-note
++## M2 checklist (from Week 11)
++
++- [ ] `split.qmd` run: the explore sample is the **only** file you open
++- [ ] Every variable audited against the codebook, with the codes it doesn't explain listed
++- [ ] Missing-data codes recoded with `na_if()`, each with a one-line reason
++- [ ] Participant flow: *n* after each exclusion
++- [ ] `analytic` built, complete on **every** variable in **any** planned model
++- [ ] Complete vs. incomplete cases compared on your outcome
++:::
++
++. . .
++
++**Is your outcome binary?** Then today's model is your model. Ask me about it while you're here.
++
++------------------------------------------------------------------------
++
++## For next time
++
++📂 **M2**, due **Sunday 11/15**
++
++📋 **Lab 11: Logistic Regression**, due **Tuesday 11/17 at 11:59pm**
++
++📖 Readings for **Mixed/Multilevel Models**:
++
++- Chapter 8.8 — MSR
++- Chapter 15.8 — ST
++
++💾 **Class Check** next week
+diff --git a/weeks/week-12.qmd b/weeks/week-12.qmd
+index 2c6f515..4737baf 100644
+--- a/weeks/week-12.qmd
++++ b/weeks/week-12.qmd
+@@ -1,30 +1,49 @@
+ ---
+-title: "Week 12 - Logistic Regression & More"
++title: "Week 12 - Logistic Regression"
+ editor: visual
+ ---
+ 
+-# Categorical Data in Regression
++# When the Outcome Is Yes or No
+ 
+-## Data for Today
++So far every outcome has been a number on a scale. This week the outcome is **binary**: believed or didn't, relapsed or didn't, passed or failed. We'll see why `lm()` breaks down for a 0/1 outcome, translate between probability, odds, and log-odds, and fit our first **generalized** linear model with `glm()`. The goal is to be able to explain a logistic model two ways: with **odds ratios** for the Results section, and with **predicted probabilities** for everyone else.
+ 
+--   <a href="../files/data/CAH.csv" download="cards_CAH.csv">Download Cards Against Humanity Data (.csv)</a>
+--   <a href="../files/data/cat_reg_complete.xlsx" download="cat_reg_complete.xlsx">Download Categorical data (.xlsx)</a>
++The lecture and activity are short so that most of class is **M2 work time**.
++
++::: callout-important
++## This week
++
++**📂 M2** is due **Sunday 11/15**. Bring your project to class.
++:::
++
++## Prepare
++
++- 📖[Chapter 13 - ROS](https://users.aalto.fi/~ave/ROS.pdf){target="_blank"}
++
++- 📖[Chapter 8.3 - MSR](https://www.modernstatisticswithr.com/){target="_blank"}
+ 
+ ## Slides
+ 
+-[💻 Categorical & Logistic Regression](../slides/lec-12_logistic.html){target="_blank"}
++[💻 Logistic Regression](../slides/lec-12_logistic-reg.html){target="_blank"}
++
++## Data
++
++<a href="../files/data/CAH.csv" download="CAH.csv">Cards Against Humanity, *Pulse of the Nation* (.csv)</a>: used in the lecture and the activity
+ 
+ ## In-Class Activity
+ 
+-Lego Logistic Regression
++[📓 Is It Acceptable? 🚿](../class-activities/wk12_logistic.html){target="_blank"}
++
++Then: **M2 work time**.
+ 
+ ## For Next Time
+ 
+-[Part 1 of Final Project](../labs/final_project.html)
++📂 **Final Project M2**, due Sunday 11/15
++
++📋[Lab 11 - Logistic Regression](../labs/lab-11_logistic.html), due Tuesday 11/17
+ 
+-📋[Lab 11 - Categories & Regression](../labs/lab-11.html)
++📖[Chapter 8.8 - MSR](https://www.modernstatisticswithr.com/){target="_blank"}
+ 
+-📖[Chapter 14.2 & 14.3 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}
++📖[Chapter 15.8 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}
+ 
+ <br><br>
+ 
+-- 
+2.43.0
+

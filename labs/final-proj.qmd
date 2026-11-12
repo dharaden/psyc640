@@ -153,23 +153,85 @@ I approve one candidate or send you back with what to fix. **Do not split any da
 
 ## M2 — Split and wrangle (Sun 11/15, 35 points)
 
-**Purpose:** lock the holdout, then turn the raw 30% into an analytic dataset. For large public datasets this is usually the biggest job in the project.
+**Purpose.** First, lock away the holdout (70%) so it stays untouched until the final analysis. Then turn your exploration sample (30%) into a clean analytic dataset. For large public datasets, this can be a big job
 
-1.  **Split.** Put the raw file in `data/raw/`, set the three settings lines in `split.qmd`, and render it **before you look at any outcome variable**. If each person has many rows, split by the ID column.
-2.  **Timestamp.** Publish a Zenodo record holding only `split.qmd` and `holdout_checksum.txt`, and copy the DOI into the README. The record's date and DOI let anyone verify later that the holdout was never changed or re-drawn. Because the dataset is public, the checksum is a commitment, not proof that no one looked at the full data.
-3.  **Audit.** In `wrangle.qmd`, check every variable you'll use for range, missing-data codes, and anything odd, and write up what you found.
-4.  **Wrangle.** Add whatever steps your data need, each under its own heading with a sentence on why. Depending on the dataset, that might mean recoding missing-data codes, exclusions (recording the n left after each one), joining files, aggregating trials to people, reverse scoring, scale scores with a missing-item rule, or labeled categories. The template's Toolbox has code for each.
-5.  **Required outputs.** However you get there, `wrangle.qmd` must end with a participant-flow table, a check of every variable you created, the saved analytic dataset, and a codebook covering every raw and created variable.
+**1. Split (split.qmd)**
 
-**Submit:** the rendered `wrangle.qmd` and your Zenodo DOI.
+- Put the raw data file in `data/raw/`.
 
-| Graded on | Points |
-|------------------------------------|------------------------------------|
-| Split before outcomes were seen, seed recorded, split by person if needed; Zenodo record holds only the script and checksum | 6 |
+- In split.qmd, fill in the three settings lines: file path, random seed, ID column, or NA if each person has one row.
+
+- **Render split.qmd before you look at your outcome variable.** It’s fine to read the dataset’s documentation and check variable names (you need the ID column name). Do not make summaries, tables or plots of the outcome in the full data.
+
+- If each person has more than one row (e.g., trials, visits, waves), set the ID column. That keeps all of a person’s rows together, so no one appears in both the exploration sample and the holdout.
+
+- Rendering creates `data/explore.csv`, `data/holdout.csv`, and `holdout_checksum.txt`. From here on, work only with `data/explore.csv`. Don’t open the holdout.
+
+- At the top of wrangle.qmd, add one sentence: “I rendered split.qmd before examining the outcome variable.” This works on the honor system, and we take your word for it.
+
+**2. Timestamp (Zenodo)**
+
+- Log in to zenodo.org, click New upload, and upload **only** `split.qmd` and `holdout_checksum.txt`. **No data files.**
+
+- Fill in the title and author, then click **Publish**. Saving a draft is not enough: only a published record gets a DOI. Published records can’t be edited, so check your files first.
+
+- Copy the DOI into the README at the root of your project.
+
+*Why:* the checksum is a fingerprint of your holdout file. If the holdout were ever re-drawn or changed, its fingerprint wouldn’t match. Zenodo’s date and DOI let anyone confirm the holdout hasn’t changed since you published. Because the data are public, this is a commitment, not proof that you never looked at the full dataset.
+
+**3. Audit (wrangle.qmd)**\
+
+Working in the exploration sample, check every variable you’ll use, including the outcome, for:
+
+- **Range:** are the minimum and maximum possible?
+
+- **Missing-data codes:** values like -9, 99 or 999 that mean “missing” but look like numbers.
+
+- **Anything odd:** duplicate IDs, unexpected categories, numbers stored as text, very skewed or nearly empty variables.
+
+Write up what you found: a short table or a sentence per variable will work. The audit is where you *find* problems. Wrangling is where you *fix* them.
+
+**4. Wrangle (wrangle.qmd)**\
+
+Each problem from your audit, and anything your research question needs, becomes a step. Give each step its own heading and one sentence on why you did it. Depending on your data, steps might include:
+
+- Recoding missing-data codes to `NA`
+
+- Exclusions, recording how many people remain after each one
+
+- Joining files (e.g., merging a demographics file with a responses file by ID)
+
+- Aggregating trials to people (e.g., one mean reaction time per person instead of 200 rows)
+
+- Reverse-scoring items
+
+- Scale scores with a missing-item rule (e.g., “average the items if the person answered at least 80% of them; otherwise NA”)
+
+- Turning numeric codes into labeled categories (1/2 → “control”/”treatment”)
+
+The Toolbox section at the end of the wrangle.qmd file has code to help.
+
+**5. Required outputs (end of wrangle.qmd)**\
+
+However you get there, wrangle.qmd must end with:
+
+- **A check of every variable you created:** e.g., a crosstab of each recoded variable against the original, the range of each new variable, and a few rows checked by hand for computed scores.
+
+- **The saved analytic dataset** in `data/processed/analytic.csv`.
+
+- **A codebook** for every variable in the analytic dataset (raw and created), with name, description, type, values or range, missing codes, and, for created variables, how it was made.
+
+**Submit:** the rendered wrangle.qmd (Word Doc, on myCourses ) and your Zenodo DOI/URL. You don’t need to submit split.qmd separately because it’s on Zenodo.
+
+**Graded on**
+
+| Criterion | Points |
+|----|----|
+| Statement that the split was rendered before examining the outcome; seed recorded; split by ID if people have multiple rows; Zenodo record published with only split.qmd and the checksum; DOI in README | 6 |
 | Every analysis variable audited, with findings written up | 8 |
-| Missing-data codes and exclusions handled in `wrangle.qmd`, each with a reason | 8 |
-| Variables created correctly: whatever the question needs, e.g., scale scores with a missing-item rule, recodes, joined or aggregated variables | 8 |
-| Codebook covers every raw and created variable | 5 |
+| Missing-data codes and exclusions handled in wrangle.qmd, each with a reason and the n remaining after each exclusion | 8 |
+| Variables created correctly for the question (e.g., scale scores with a missing-item rule, recodes, joined or aggregated variables), each with a check; analytic dataset saved | 8 |
+| Codebook covers every variable in the analytic dataset | 5 |
 
 ## M3 — Describe and build an initial model (Mon 11/30, 30 points)
 

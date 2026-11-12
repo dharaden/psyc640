@@ -1,0 +1,71 @@
+---
+title: "Lab 11: Logistic Regression"
+subtitle: "Which cats knock things off the counter? 🐈☕"
+editor: visual
+---
+
+## Instructions
+
+A short, straightforward lab, so you can spend this week on M2. Most of the code is written for you. Fill in the blanks (`___`) and spend your time on the interpretations.
+
+Here is what you'll need:
+
+- <a href="../files/_lab-qmd/lab-11_logistic.qmd" download="lab-11_logistic.qmd">Download Lab 11 (.qmd)</a>
+- <a href="../files/data/cat_chaos.csv" download="cat_chaos.csv">Download the Cat Chaos Data (.csv)</a>
+
+Save the `.csv` in your `data` folder and the `.qmd` in your project folder. Render to Word and submit **both** files to myCourses.
+
+**Due Tuesday 11/17 at 11:59pm.**
+
+::: callout-note
+## Working in JAMOVI?
+
+Use **Regression → 2 Outcomes: Binomial**. Under **Model Coefficients**, check **Odds ratio** and its **Confidence interval**. You can do every exercise except the predicted probabilities in Exercise 5, which needs R. Submit your `.omv` and a Word document with your answers.
+:::
+
+## The study 🐈
+
+The (still not real) **National Cat Contentment Survey** sent a follow-up to the owners of **250 cats**. The main question: *Did your cat knock at least one thing off a counter or table this week?*
+
+| Variable | Description |
+|----|----|
+| `cat_id` | Cat ID |
+| `age_years` | Cat's age in years |
+| `indoor` | 1 = indoor only, 0 = goes outside |
+| `zoomies` | Average number of zoomies (sudden full-speed sprints) per day |
+| `knocked_off` | **1 = knocked something off this week**, 0 = did not |
+
+No missing data and no hidden codes this time. Promise.
+
+## What you'll practice
+
+- Fitting a logistic regression with `glm(..., family = binomial)`
+- Turning log-odds into odds ratios, and interpreting them
+- Comparing nested logistic models with a χ² test
+- Getting predicted probabilities with `predict(..., type = "response")`
+- Writing up an odds ratio in APA style
+
+## Exercises at a glance
+
+| Exercise | What you'll do | Points |
+|----|----|----|
+| **1. The outcome** | How common is counter crime? | 3 |
+| **2. One predictor** | Zoomies → knocking things off | 6 |
+| **3. Three predictors** | Add indoor and age; interpret | 8 |
+| **4. Did they help?** | χ² model comparison | 3 |
+| **5. Two suspects** | Predicted probabilities for two cats | 5 |
+| **6. Write-up** | One APA sentence | 3 |
+
+------------------------------------------------------------------------
+
+**Total: 28 points**
+
+::: callout-tip
+The ghost example in this week's slides uses every function you need, in the same order as this lab.
+:::
+
+<br><br>
+
+::: {style="font-size: 0.875em;"}
+Back to [course schedule](../index.qmd "Course schedule") ⏎
+:::

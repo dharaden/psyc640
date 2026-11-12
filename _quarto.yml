@@ -19,6 +19,7 @@ project:
     - weeks/week-9.qmd
     - weeks/week-10.qmd
     - weeks/week-11.qmd
+    - weeks/week-12.qmd
     - labs/lab-01_introduction.qmd
     - labs/lab-02_data-workflow.qmd
     - labs/lab-03_data-wrangling.qmd
@@ -31,6 +32,7 @@ project:
     - labs/lab-09_groups-slopes.qmd
     - labs/final-proj.qmd
     - labs/lab-10_missing-blocks_1.qmd
+    - labs/lab-11_logistic.qmd
     - class-activities/day1.qmd
     - class-activities/wk2_tidy-intro.qmd
     - class-activities/wk3_desc-viz.qmd
@@ -43,6 +45,7 @@ project:
     - class-activities/wk9_reproducibility.qmd
     - class-activities/wk10_holds-up.qmd
     - class-activities/wk11_missing-models.qmd
+    - class-activities/wk12_logistic.qmd
     - slides/lec-01_syl.qmd
     - slides/lec-02_background.qmd
     - slides/lec-03_wrangle.qmd
@@ -61,6 +64,7 @@ project:
     - slides/lec-09_interactions_JAMOVI.qmd
     - slides/lec-10_diagnostics.qmd
     - slides/lec-11_missing-models.qmd
+    - slides/lec-12_logistic-reg.qmd
   
     
     
@@ -133,8 +137,8 @@ website:
             text: "Week 10 - Assumptions & Diagnostic"
           - href: weeks/week-11.qmd
             text: "Week 11 - Missing Data & ModelBuilding"
-          # - href: weeks/week-12.qmd
-            # text: "Week 12 - Logistic Reg."
+          - href: weeks/week-12.qmd
+            text: "Week 12 - Logistic Reg."
           # - href: weeks/week-13.qmd
             # text: "Week 13 - Mixed/Multilevel Models"
          # - text: "Week 14 - NO CLASS"
@@ -162,6 +166,8 @@ website:
             text: "Lab 9 - Groups, Slopes & Interactions"
           - href: labs/lab-10_missing-blocks_1.qmd
             text: "Lab 10 - Missing & Building"  
+          - href: labs/lab-11_logistic.qmd
+            text: "Lab 11 - Logistic Regression"
       - section: "Projects"
         contents:
           - href: labs/midterm-project.qmd
