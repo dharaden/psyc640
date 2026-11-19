@@ -3795,42 +3795,66 @@
     "href": "weeks/week-13.html",
     "title": "Week 13 - Mixed/Multilevel Models",
     "section": "",
-    "text": "Every model so far has assumed each row is a different, independent person. This week the rows come in clusters: three waves from the same kid, ten days from the same sleepy participant. We’ll reshape wide data to long, see why lm() gets the standard errors wrong when rows aren’t independent, and fit our first mixed model with lmer(): random intercepts, the ICC, random slopes, and the difference between a between-person and a within-person effect.\nThe lecture and activity are short so that most of class is M3 work time.\n\n\n\n\n\n\nImportantThis week\n\n\n\n💾 Class Check 5 at the start of class (20 min, on myCourses). Covers Weeks 11–12: missing data, model building, logistic regression.\n📂 M3 is due Monday 11/30. Bring your project to class.\n\n\n\n\n\n📖Chapter 8.8 - MSR\n📖Chapter 15.8 - ST\n🧰 Install two new packages before class: install.packages(c(\"lme4\", \"lmerTest\"))\n\n\n\n\n💻 Mixed/Multilevel Models\n\n\n\nASAP Study (.csv): used in the lecture\nThe activity uses sleepstudy, which comes with lme4. Nothing to download.\n\n\n\n📓 How Much Does a Short Night Cost? 😴\nThen: M3 work time.\n\n\n\n🦃 No class Thursday 11/26 (Thanksgiving)\n📂 Final Project M3, due Monday 11/30\n📖Chapter 18 - ST\n🔁 M4 Reproducibility swap, in class Thursday 12/3\n\n\nBack to course schedule ⏎"
+    "text": "Every model so far has assumed each row is a different, independent person. This week the rows come in clusters: three waves from the same kid, ten days from the same sleepy participant. We’ll reshape wide data to long, see why lm() gets the standard errors wrong when rows aren’t independent, and fit our first mixed model with lmer(): random intercepts, the ICC, random slopes, and the difference between a between-person and a within-person effect.\nThe lecture and activity are short so that most of class is M3 work time.\n\n\n\n\n\n\nImportantThis week\n\n\n\n💾 Class Check 5 at the start of class (20 min, on myCourses). Covers Weeks 11–12: missing data, model building, logistic regression.\n📂 M3 is due Monday 11/30. Bring your project to class.\n\n\n\n\n\n📖Chapter 8.8 - MSR\n📖Chapter 15.8 - ST\n🧰 Install two new packages before class: install.packages(c(\"lme4\", \"lmerTest\"))\n\n\n\n\n💻 Mixed/Multilevel Models\n\n\n\nASAP Study (.csv): used in the lecture\nThe activity uses sleepstudy, which comes with lme4. Nothing to download.\n\n\n\n📓 How Much Does a Short Night Cost? 😴\nThen: M3 work time.\n\n\n\n🦃 No class Thursday 11/26 (Thanksgiving)\n📂 Final Project M3, due Monday 11/30\n📖Chapter 18 - ST\n🔁 M4 Reproducibility swap, in class Thursday 12/3\n\n\nBack to course schedule ⏎",
+    "crumbs": [
+      "Weekly Materials",
+      "Week 13 - Mixed/Multilevel Models"
+    ]
   },
   {
     "objectID": "weeks/week-13.html#prepare",
     "href": "weeks/week-13.html#prepare",
     "title": "Week 13 - Mixed/Multilevel Models",
     "section": "",
-    "text": "📖Chapter 8.8 - MSR\n📖Chapter 15.8 - ST\n🧰 Install two new packages before class: install.packages(c(\"lme4\", \"lmerTest\"))"
+    "text": "📖Chapter 8.8 - MSR\n📖Chapter 15.8 - ST\n🧰 Install two new packages before class: install.packages(c(\"lme4\", \"lmerTest\"))",
+    "crumbs": [
+      "Weekly Materials",
+      "Week 13 - Mixed/Multilevel Models"
+    ]
   },
   {
     "objectID": "weeks/week-13.html#slides",
     "href": "weeks/week-13.html#slides",
     "title": "Week 13 - Mixed/Multilevel Models",
     "section": "",
-    "text": "💻 Mixed/Multilevel Models"
+    "text": "💻 Mixed/Multilevel Models",
+    "crumbs": [
+      "Weekly Materials",
+      "Week 13 - Mixed/Multilevel Models"
+    ]
   },
   {
     "objectID": "weeks/week-13.html#data",
     "href": "weeks/week-13.html#data",
     "title": "Week 13 - Mixed/Multilevel Models",
     "section": "",
-    "text": "ASAP Study (.csv): used in the lecture\nThe activity uses sleepstudy, which comes with lme4. Nothing to download."
+    "text": "ASAP Study (.csv): used in the lecture\nThe activity uses sleepstudy, which comes with lme4. Nothing to download.",
+    "crumbs": [
+      "Weekly Materials",
+      "Week 13 - Mixed/Multilevel Models"
+    ]
   },
   {
     "objectID": "weeks/week-13.html#in-class-activity",
     "href": "weeks/week-13.html#in-class-activity",
     "title": "Week 13 - Mixed/Multilevel Models",
     "section": "",
-    "text": "📓 How Much Does a Short Night Cost? 😴\nThen: M3 work time."
+    "text": "📓 How Much Does a Short Night Cost? 😴\nThen: M3 work time.",
+    "crumbs": [
+      "Weekly Materials",
+      "Week 13 - Mixed/Multilevel Models"
+    ]
   },
   {
     "objectID": "weeks/week-13.html#for-next-time",
     "href": "weeks/week-13.html#for-next-time",
     "title": "Week 13 - Mixed/Multilevel Models",
     "section": "",
-    "text": "🦃 No class Thursday 11/26 (Thanksgiving)\n📂 Final Project M3, due Monday 11/30\n📖Chapter 18 - ST\n🔁 M4 Reproducibility swap, in class Thursday 12/3\n\n\nBack to course schedule ⏎"
+    "text": "🦃 No class Thursday 11/26 (Thanksgiving)\n📂 Final Project M3, due Monday 11/30\n📖Chapter 18 - ST\n🔁 M4 Reproducibility swap, in class Thursday 12/3\n\n\nBack to course schedule ⏎",
+    "crumbs": [
+      "Weekly Materials",
+      "Week 13 - Mixed/Multilevel Models"
+    ]
   },
   {
     "objectID": "labs/lab-02_data-workflow.html",

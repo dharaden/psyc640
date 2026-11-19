@@ -194,7 +194,7 @@ $$
 . . .
 
 | Piece | What it is |   |
-|:--------|:-----------------------|:-----------------------|
+|:---|:---|:---|
 | *b*~0~, *b*~1~ | **Fixed effects**: one number for everyone | the average kid |
 | *u~j~* | Kid *j*'s **random intercept**: how far they sit above or below average | between kids |
 | *e~ij~* | What's left at each wave | within a kid |
@@ -282,7 +282,7 @@ fp <- function(p) if (p < .001) "< .001" else sub("^0", "", sprintf("%.3f", p))
 ```
 
 |   | `lm()` |   |   | `lmer()` |   |   |
-|:----------|:---------:|:---------:|:---------:|:---------:|:---------:|:---------:|
+|:---|:--:|:--:|:--:|:--:|:--:|:--:|
 |  | *b* | *SE* | *p* | *b* | *SE* | *p* |
 | **wave** (changes within a kid) | `r f2(s_lm["wave", 1])` | `r f3(s_lm["wave", 2])` | `r fp(s_lm["wave", 4])` | `r f2(s_m1["wave", 1])` | **`r f3(s_m1["wave", 2])`** | `r fp(s_m1["wave", 5])` |
 | **Sex** (same on every row) | `r f2(s_lm["Sex", 1])` | `r f3(s_lm["Sex", 2])` | **`r fp(s_lm["Sex", 4])`** | `r f2(s_m1["Sex", 1])` | **`r f3(s_m1["Sex", 2])`** | **`r fp(s_m1["Sex", 5])`** |
@@ -303,7 +303,7 @@ Ignoring the nesting doesn't just make you overconfident. It makes you wrong in 
 ## Fixed vs. random
 
 |   | Fixed effect | Random effect |
-|:-----------------------|:-----------------------|:-----------------------|
+|:---|:---|:---|
 | What it is | One number for everyone | How much people **differ** |
 | ASAP example | Average change per year: `r f2(fixef(m1)["wave"])` | SD of kids' intercepts: `r f2(as.data.frame(VarCorr(m1))$sdcor[1])` |
 | The question it answers | "What happens on average?" | "How much do kids vary around that?" |
@@ -466,7 +466,7 @@ A warning from `lmer()` is information, not noise. You'll fit random slopes that
 ## Between and within
 
 | Predictor |        Changes within a kid?        | Can tell you about...        |
-|:---------------------|:---------------------------:|:---------------------|
+|:----------|:-----------------------------------:|:-----------------------------|
 | Sex, SES  |                 No                  | Differences **between** kids |
 | wave      |           Yes, by design            | Change **within** a kid      |
 | SleepQual | **Yes, and** kids differ on average | **Both**, mixed together     |
@@ -596,7 +596,7 @@ You should always cite the libraries that you use in R. This gives the developer
 ## `lm()` vs. `lmer()`, side by side
 
 |   | `lm()` | `lmer()` |
-|:-----------------------|:-----------------------|:-----------------------|
+|:---|:---|:---|
 | Data | One row per person | One row per **observation** (long) |
 | Assumes | Every row independent | Rows **within a cluster** are related |
 | R | `lm(y ~ x)` | `lmer(y ~ x + (1 | id))` |

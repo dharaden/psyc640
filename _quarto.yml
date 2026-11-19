@@ -143,8 +143,8 @@ website:
             text: "Week 11 - Missing Data & ModelBuilding"
           - href: weeks/week-12.qmd
             text: "Week 12 - Logistic Reg."
-          # - href: weeks/week-13.qmd
-            # text: "Week 13 - Mixed/Multilevel Models"
+          - href: weeks/week-13.qmd
+            text: "Week 13 - Mixed/Multilevel Models"
          # - text: "Week 14 - NO CLASS"
           # - href: weeks/week-15.qmd
             # text: "Week 15 - Wrapping Up"
