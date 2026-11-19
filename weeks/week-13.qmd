@@ -1,27 +1,55 @@
 ---
-title: "Week 13 - Moderation"
+title: "Week 13 - Mixed/Multilevel Models"
 editor: visual
 ---
 
-# Introduction to Moderation
+# When the Same Person Shows Up More Than Once
 
-## Data for Today (maybe?)
+Every model so far has assumed each row is a different, independent person. This week the rows come in **clusters**: three waves from the same kid, ten days from the same sleepy participant. We'll reshape wide data to long, see why `lm()` gets the standard errors wrong when rows aren't independent, and fit our first **mixed model** with `lmer()`: random intercepts, the ICC, random slopes, and the difference between a **between-person** and a **within-person** effect.
 
--   <a href="../files/data/CAH.csv" download="cards_CAH.csv">Download Cards Against Humanity Data (.csv)</a>
+The lecture and activity are short so that most of class is **M3 work time**.
+
+::: callout-important
+## This week
+
+💾 **Class Check 5** at the start of class (20 min, on myCourses). Covers Weeks 11–12: missing data, model building, logistic regression.
+
+**📂 M3** is due **Monday 11/30**. Bring your project to class.
+:::
+
+## Prepare
+
+- 📖[Chapter 8.8 - MSR](https://www.modernstatisticswithr.com/){target="_blank"}
+
+- 📖[Chapter 15.8 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}
+
+- 🧰 Install two new packages before class: `install.packages(c("lme4", "lmerTest"))`
 
 ## Slides
 
-[💻 Intro to Moderation](../slides/lec-13_mod.html){target="_blank"}
+[💻 Mixed/Multilevel Models](../slides/lec-13_mixed-models.html){target="_blank"}
+
+## Data
+
+<a href="../files/data/asap_data.csv" download="asap_data.csv">ASAP Study (.csv)</a>: used in the lecture
+
+The activity uses `sleepstudy`, which comes with `lme4`. Nothing to download.
 
 ## In-Class Activity
 
-📎On Paper
+[📓 How Much Does a Short Night Cost? 😴](../class-activities/wk13_mixed-models.html){target="_blank"}
+
+Then: **M3 work time**.
 
 ## For Next Time
 
-[Part 2 of Final Project](../labs/final_project.html)
+🦃 **No class Thursday 11/26** (Thanksgiving)
 
-📖[Chapter 15.8 - 15.10 - LSR](https://learningstatisticswithr.com/book/){target="_blank"}
+📂 **Final Project M3**, due Monday 11/30
+
+📖[Chapter 18 - ST](https://statsthinking21.github.io/statsthinking21-core-site/){target="_blank"}
+
+🔁 **M4 Reproducibility swap**, in class Thursday 12/3
 
 <br><br>
 

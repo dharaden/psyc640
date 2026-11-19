@@ -1,0 +1,154 @@
+---
+title: "Week 13 Exercises - How Much Does a Short Night Cost? 😴"
+subtitle: "Random intercepts, random slopes, then back to M3"
+editor: visual
+---
+
+::: callout-note
+## Overview
+
+**About 20 minutes** · Pairs · 🧰 R (`tidyverse`, `broom`, `easystats`, `lme4`, `lmerTest`)
+
+A classic sleep study: **18 people** were allowed only **3 hours in bed per night**, and their average reaction time (in milliseconds) was measured every day for **10 days** (Day 0 to Day 9). Higher = slower.
+
+- **Part A (\~4 min):** look at the data, count people vs. rows
+- **Part B (\~5 min):** `lm()` vs. random intercepts, and the ICC
+- **Part C (\~6 min):** random slopes: does everyone fall apart at the same rate?
+- **Part D (\~5 min):** one paragraph to write it up
+
+When you finish, **go straight to M3.**
+:::
+
+------------------------------------------------------------------------
+
+# Set up {#setup}
+
+Start a new Quarto document, `week13_mixed.qmd`. **Nothing to download**: the data ship with `lme4`.
+
+``` r
+# install.packages(c("lme4", "lmerTest"))   # once, if you haven't
+library(tidyverse)
+library(broom)
+library(easystats)
+library(lme4)
+library(lmerTest)   # load AFTER lme4
+
+sleep <- as_tibble(sleepstudy)   # Reaction, Days, Subject
+```
+
+------------------------------------------------------------------------
+
+# Part A — Look first (4 min) {#part-a}
+
+``` r
+sleep %>% summarise(rows = n(), people = n_distinct(Subject))
+
+ggplot(sleep, aes(Days, Reaction)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth(method = "lm", se = FALSE, color = "#C8102E") +
+  facet_wrap(~ Subject, nrow = 3) +
+  scale_x_continuous(breaks = c(0, 3, 6, 9)) +
+  labs(x = "Days of sleep restriction", y = "Reaction time (ms)") +
+  theme_bw()
+```
+
+**Q1.** How many rows? How many people? So how many **independent** pieces of information does this study really have about the effect of a short night?
+
+**Q2.** Look at the 18 panels. Does everyone start at the same reaction time? Does everyone get slower **at the same rate**? Name one person who barely changes.
+
+------------------------------------------------------------------------
+
+# Part B — Random intercepts (5 min) {#part-b}
+
+``` r
+m_lm  <- lm(Reaction ~ Days, data = sleep)                     # pretends 180 people
+m_0   <- lmer(Reaction ~ 1 + (1 | Subject), data = sleep)      # null model
+m_ri  <- lmer(Reaction ~ Days + (1 | Subject), data = sleep)   # random intercepts
+
+icc(m_0)
+tidy(m_lm)                       # df for lm = n - 2
+summary(m_ri)$coefficients       # lmerTest adds a df column
+```
+
+**Q3.** What's the ICC? Say in one sentence what it means **for reaction time**.
+
+**Q4.** Fill in the table for the `Days` slope. What stayed the same, and what changed?
+
+|                   | *b* | *SE* | *df* |
+|-------------------|:---:|:----:|:----:|
+| `lm()`            |     |      |      |
+| Random intercepts |     |      |      |
+
+------------------------------------------------------------------------
+
+# Part C — Random slopes (6 min) {#part-c}
+
+``` r
+m_rs <- lmer(Reaction ~ Days + (Days | Subject), data = sleep)
+
+summary(m_rs)$coefficients
+model_parameters(m_rs)   # fixed effects + the SDs of the random effects
+anova(m_ri, m_rs)        # did random slopes earn their place?
+
+coef(m_rs)$Subject %>%   # each person's own intercept and slope
+  rownames_to_column("Subject") %>%
+  arrange(Days)
+```
+
+**Q5.** Add a third row to your Q4 table for the random-slopes model. Why did the *df* drop to about **17**? (Hint: Q1.)
+
+**Q6.** Did the random slopes earn their place? Give the χ² and *p*.
+
+**Q7.** The SD of the `Days` slopes is about 5.9. If slopes are roughly normal, 95% of people fall within ±2 SD of the average slope. What's that range in ms per day? Who has the **steepest** slope, and who has the **flattest**?
+
+------------------------------------------------------------------------
+
+# Part D — Write it up (5 min) {#part-d}
+
+``` r
+r2(m_rs)
+```
+
+**Q8.** Write a short paragraph (3–4 sentences) with: people **and** observations, the random-effects structure, the fixed effect of Days with its 95% CI and *p*, and **one sentence about how much people differed.**
+
+::: {.callout-tip collapse="true"}
+## Check yourself (click after you've tried)
+
+**Q1.** **180 rows, 18 people.** For anything about how people differ, you have 18 pieces of information, not 180.
+
+**Q2.** No and no. On Day 0, reaction times range from about 200 to 320 ms, and the slopes fan out. Subject **335** is flat (if anything, slightly faster); 309 barely moves either.
+
+**Q3.** ICC = **.40**: about 40% of the variation in reaction time is stable differences between people (some people are just faster); the rest is day-to-day change and noise.
+
+**Q4.**
+
+|                   |  *b*  | *SE* | *df* |
+|-------------------|:-----:|:----:|:----:|
+| `lm()`            | 10.47 | 1.24 | 178  |
+| Random intercepts | 10.47 | 0.80 | 161  |
+| Random slopes     | 10.47 | 1.55 |  17  |
+
+The slope is **identical**: about 10.5 ms slower per day. Only the uncertainty changes. With random intercepts, each person's baseline is pulled out of the noise, so *SE* shrinks (Days is a within-person predictor).
+
+**Q5.** With random slopes, the question becomes "what's the **average** slope across people?", and there are only 18 people to average over, so *df* ≈ 18 − 1. *SE* goes **up** to 1.55: once the model knows people differ in their slopes, it's honest about how much the average depends on which 18 people you happened to get.
+
+**Q6.** Yes. χ²(2) = **42.14**, *p* \< .001. (2 *df*: the slope SD and its correlation with the intercepts.)
+
+**Q7.** 10.47 ± 2 × 5.92 ≈ **−1.4 to 22.3 ms per day**. Steepest: **Subject 308** (≈ 19.7 ms/day). Flattest: **Subject 335** (≈ −0.3 ms/day). Some people barely notice; others slow by 20 ms every day.
+
+**Q8.** "We fit a linear mixed model to 180 daily reaction-time measurements from 18 participants, with random intercepts and random slopes for days of sleep restriction. On average, reaction time slowed by 10.47 ms per day, 95% CI \[7.42, 13.52\], *p* \< .001. Participants differed substantially in how fast they declined (*SD* of slopes = 5.92 ms/day), from essentially no change to about 20 ms per day. Days explained 28% of the variance (marginal *R*²); with person-level differences, 80% (conditional *R*²)."
+:::
+
+------------------------------------------------------------------------
+
+# 📂 Now: M3 {#m3}
+
+M3 is due **Monday 11/30**. Open your project and work through the checklist:
+
+- [ ] `memo.qmd`: example variable names replaced with yours
+- [ ] **Descriptives** for every analysis variable (n, M, SD, range, skew; counts and % for categorical)
+- [ ] **Correlation matrix** of the continuous variables, as a table or a heat map
+- [ ] **Distribution plot** for every variable, plus at least one plot of the focal relationship
+- [ ] **Model 1** fit, diagnostics checked, interpreted in a few sentences
+
+**Same person in more than one row of your data?** Today's model is your model. Flag me down.
